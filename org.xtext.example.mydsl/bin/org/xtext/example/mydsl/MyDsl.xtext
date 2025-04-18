@@ -1,0 +1,23 @@
+grammar org.xtext.example.mydsl.MyDsl with de.fraunhofer.ipa.ros.Basics
+
+generate myDsl "http://www.xtext.org/example/mydsl/MyDsl"
+import "http://www.ipa.fraunhofer.de/rossystem" as rossys
+import "http://www.ipa.fraunhofer.de/ros" as ros
+
+Model:
+	(imports+=Import*)
+	'ros_system' rossystem=[rossys::System]';'
+	'reconfigs' reconfigurations+=Reconfiguration*;
+
+Import:
+	'import' importURI=STRING ';' //AS name=ID
+;
+
+Reconfiguration:
+	SetParam
+;
+
+SetParam:
+	'SetParameter(' node=[rossys::RosNode] ',' param=[rossys::RosParameter] ',' value=ParameterValue  ')'
+;
+//

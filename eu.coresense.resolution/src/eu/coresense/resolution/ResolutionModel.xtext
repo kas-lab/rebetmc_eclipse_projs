@@ -1,0 +1,27 @@
+grammar eu.coresense.resolution.ResolutionModel with de.fraunhofer.ipa.ros.Basics
+
+generate resolutionModel "http://coresense.eu/resolution/ResolutionModel"
+import "http://www.ipa.fraunhofer.de/rossystem" as rossys
+import "http://www.ipa.fraunhofer.de/ros" as ros
+
+ResolutionModel:
+	(imports+=Import*)
+	'ros_system' rossystem=[rossys::System]';'
+	'resolutions' resolutions+=Resolution*;
+	
+Resolution:
+	{Resolution} STRING ':'reconfigurations+=Reconfiguration*
+;
+
+Import:
+	'import' importURI=STRING ';' //AS name=ID
+;
+
+Reconfiguration:
+	SetParam
+;
+
+SetParam:
+	'SetParameter(' node=[rossys::RosNode] ',' param=[rossys::RosParameter] ',' value=ParameterValue  ')'
+;
+//

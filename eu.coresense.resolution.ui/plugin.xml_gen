@@ -1,0 +1,434 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<plugin>
+	<extension
+		point="org.eclipse.ui.editors">
+		<editor
+			class="eu.coresense.resolution.ui.ResolutionModelExecutableExtensionFactory:org.eclipse.xtext.ui.editor.XtextEditor"
+			contributorClass="org.eclipse.ui.editors.text.TextEditorActionContributor"
+			default="true"
+			extensions="resolution"
+			id="eu.coresense.resolution.ResolutionModel"
+			name="ResolutionModel Editor">
+		</editor>
+	</extension>
+	<extension
+		point="org.eclipse.ui.handlers">
+		<handler
+			class="eu.coresense.resolution.ui.ResolutionModelExecutableExtensionFactory:org.eclipse.xtext.ui.editor.hyperlinking.OpenDeclarationHandler"
+			commandId="org.eclipse.xtext.ui.editor.hyperlinking.OpenDeclaration">
+			<activeWhen>
+				<reference
+					definitionId="eu.coresense.resolution.ResolutionModel.Editor.opened">
+				</reference>
+			</activeWhen>
+		</handler>
+		<handler
+			class="eu.coresense.resolution.ui.ResolutionModelExecutableExtensionFactory:org.eclipse.xtext.ui.editor.handler.ValidateActionHandler"
+			commandId="eu.coresense.resolution.ResolutionModel.validate">
+			<activeWhen>
+				<reference
+					definitionId="eu.coresense.resolution.ResolutionModel.Editor.opened">
+				</reference>
+			</activeWhen>
+		</handler>
+		<!-- copy qualified name -->
+		<handler
+			class="eu.coresense.resolution.ui.ResolutionModelExecutableExtensionFactory:org.eclipse.xtext.ui.editor.copyqualifiedname.EditorCopyQualifiedNameHandler"
+			commandId="org.eclipse.xtext.ui.editor.copyqualifiedname.EditorCopyQualifiedName">
+			<activeWhen>
+				<reference definitionId="eu.coresense.resolution.ResolutionModel.Editor.opened" />
+			</activeWhen>
+		</handler>
+		<handler
+			class="eu.coresense.resolution.ui.ResolutionModelExecutableExtensionFactory:org.eclipse.xtext.ui.editor.copyqualifiedname.OutlineCopyQualifiedNameHandler"
+			commandId="org.eclipse.xtext.ui.editor.copyqualifiedname.OutlineCopyQualifiedName">
+			<activeWhen>
+				<and>
+					<reference definitionId="eu.coresense.resolution.ResolutionModel.XtextEditor.opened" />
+					<iterate>
+						<adapt type="org.eclipse.xtext.ui.editor.outline.IOutlineNode" />
+					</iterate>
+				</and>
+			</activeWhen>
+		</handler>
+	</extension>
+	<extension point="org.eclipse.core.expressions.definitions">
+		<definition id="eu.coresense.resolution.ResolutionModel.Editor.opened">
+			<and>
+				<reference definitionId="isActiveEditorAnInstanceOfXtextEditor"/>
+				<with variable="activeEditor">
+					<test property="org.eclipse.xtext.ui.editor.XtextEditor.languageName"
+						value="eu.coresense.resolution.ResolutionModel"
+						forcePluginActivation="true"/>
+				</with>
+			</and>
+		</definition>
+		<definition id="eu.coresense.resolution.ResolutionModel.XtextEditor.opened">
+			<and>
+				<reference definitionId="isXtextEditorActive"/>
+				<with variable="activeEditor">
+					<test property="org.eclipse.xtext.ui.editor.XtextEditor.languageName"
+						value="eu.coresense.resolution.ResolutionModel"
+						forcePluginActivation="true"/>
+				</with>
+			</and>
+		</definition>
+	</extension>
+	<extension
+			point="org.eclipse.ui.preferencePages">
+		<page
+			class="eu.coresense.resolution.ui.ResolutionModelExecutableExtensionFactory:org.eclipse.xtext.ui.editor.preferences.LanguageRootPreferencePage"
+			id="eu.coresense.resolution.ResolutionModel"
+			name="ResolutionModel">
+			<keywordReference id="eu.coresense.resolution.ui.keyword_ResolutionModel"/>
+		</page>
+		<page
+			category="eu.coresense.resolution.ResolutionModel"
+			class="eu.coresense.resolution.ui.ResolutionModelExecutableExtensionFactory:org.eclipse.xtext.ui.editor.syntaxcoloring.SyntaxColoringPreferencePage"
+			id="eu.coresense.resolution.ResolutionModel.coloring"
+			name="Syntax Coloring">
+			<keywordReference id="eu.coresense.resolution.ui.keyword_ResolutionModel"/>
+		</page>
+		<page
+			category="eu.coresense.resolution.ResolutionModel"
+			class="eu.coresense.resolution.ui.ResolutionModelExecutableExtensionFactory:org.eclipse.xtext.ui.editor.templates.XtextTemplatePreferencePage"
+			id="eu.coresense.resolution.ResolutionModel.templates"
+			name="Templates">
+			<keywordReference id="eu.coresense.resolution.ui.keyword_ResolutionModel"/>
+		</page>
+	</extension>
+	<extension
+			point="org.eclipse.ui.propertyPages">
+		<page
+			class="eu.coresense.resolution.ui.ResolutionModelExecutableExtensionFactory:org.eclipse.xtext.ui.editor.preferences.LanguageRootPreferencePage"
+			id="eu.coresense.resolution.ResolutionModel"
+			name="ResolutionModel">
+			<keywordReference id="eu.coresense.resolution.ui.keyword_ResolutionModel"/>
+			<enabledWhen>
+				<adapt type="org.eclipse.core.resources.IProject"/>
+			</enabledWhen>
+			<filter name="projectNature" value="org.eclipse.xtext.ui.shared.xtextNature"/>
+		</page>
+	</extension>
+	<extension
+		point="org.eclipse.ui.keywords">
+		<keyword
+			id="eu.coresense.resolution.ui.keyword_ResolutionModel"
+			label="ResolutionModel"/>
+	</extension>
+	<extension
+		point="org.eclipse.ui.commands">
+		<command
+			description="Trigger expensive validation"
+			id="eu.coresense.resolution.ResolutionModel.validate"
+			name="Validate">
+		</command>
+		<!-- copy qualified name -->
+		<command
+			id="org.eclipse.xtext.ui.editor.copyqualifiedname.EditorCopyQualifiedName"
+			categoryId="org.eclipse.ui.category.edit"
+			description="Copy the qualified name for the selected element"
+			name="Copy Qualified Name">
+		</command>
+		<command
+			id="org.eclipse.xtext.ui.editor.copyqualifiedname.OutlineCopyQualifiedName"
+			categoryId="org.eclipse.ui.category.edit"
+			description="Copy the qualified name for the selected element"
+			name="Copy Qualified Name">
+		</command>
+	</extension>
+	<extension point="org.eclipse.ui.menus">
+		<menuContribution
+			locationURI="popup:#TextEditorContext?after=group.edit">
+			<command
+				commandId="eu.coresense.resolution.ResolutionModel.validate"
+				style="push"
+				tooltip="Trigger expensive validation">
+				<visibleWhen checkEnabled="false">
+					<reference
+						definitionId="eu.coresense.resolution.ResolutionModel.Editor.opened">
+					</reference>
+				</visibleWhen>
+			</command>
+		</menuContribution>
+		<!-- copy qualified name -->
+		<menuContribution locationURI="popup:#TextEditorContext?after=copy">
+			<command commandId="org.eclipse.xtext.ui.editor.copyqualifiedname.EditorCopyQualifiedName"
+				style="push" tooltip="Copy Qualified Name">
+				<visibleWhen checkEnabled="false">
+					<reference definitionId="eu.coresense.resolution.ResolutionModel.Editor.opened" />
+				</visibleWhen>
+			</command>
+		</menuContribution>
+		<menuContribution locationURI="menu:edit?after=copy">
+			<command commandId="org.eclipse.xtext.ui.editor.copyqualifiedname.EditorCopyQualifiedName"
+				style="push" tooltip="Copy Qualified Name">
+				<visibleWhen checkEnabled="false">
+					<reference definitionId="eu.coresense.resolution.ResolutionModel.Editor.opened" />
+				</visibleWhen>
+			</command>
+		</menuContribution>
+		<menuContribution locationURI="popup:org.eclipse.xtext.ui.outline?after=additions">
+			<command commandId="org.eclipse.xtext.ui.editor.copyqualifiedname.OutlineCopyQualifiedName"
+				style="push" tooltip="Copy Qualified Name">
+				<visibleWhen checkEnabled="false">
+					<and>
+						<reference definitionId="eu.coresense.resolution.ResolutionModel.XtextEditor.opened" />
+						<iterate>
+							<adapt type="org.eclipse.xtext.ui.editor.outline.IOutlineNode" />
+						</iterate>
+					</and>
+				</visibleWhen>
+			</command>
+		</menuContribution>
+	</extension>
+	<extension point="org.eclipse.ui.menus">
+		<menuContribution locationURI="popup:#TextEditorContext?endof=group.find">
+			<command commandId="org.eclipse.xtext.ui.editor.FindReferences">
+				<visibleWhen checkEnabled="false">
+					<reference definitionId="eu.coresense.resolution.ResolutionModel.Editor.opened">
+					</reference>
+				</visibleWhen>
+			</command>
+		</menuContribution>
+	</extension>
+	<extension point="org.eclipse.ui.handlers">
+		<handler
+			class="eu.coresense.resolution.ui.ResolutionModelExecutableExtensionFactory:org.eclipse.xtext.ui.editor.findrefs.FindReferencesHandler"
+			commandId="org.eclipse.xtext.ui.editor.FindReferences">
+			<activeWhen>
+				<reference
+					definitionId="eu.coresense.resolution.ResolutionModel.Editor.opened">
+				</reference>
+			</activeWhen>
+		</handler>
+	</extension>
+	<extension point="org.eclipse.core.contenttype.contentTypes">
+		<content-type
+			base-type="org.eclipse.core.runtime.text"
+			file-extensions="resolution"
+			id="eu.coresense.resolution.ResolutionModel.contenttype"
+			name="ResolutionModel File"
+			priority="normal">
+		</content-type>
+	</extension>
+	<!-- adding resource factories -->
+	<extension
+		point="org.eclipse.emf.ecore.extension_parser">
+		<parser
+			class="eu.coresense.resolution.ui.ResolutionModelExecutableExtensionFactory:org.eclipse.xtext.resource.IResourceFactory"
+			type="resolution">
+		</parser>
+	</extension>
+	<extension point="org.eclipse.xtext.extension_resourceServiceProvider">
+		<resourceServiceProvider
+			class="eu.coresense.resolution.ui.ResolutionModelExecutableExtensionFactory:org.eclipse.xtext.ui.resource.IResourceUIServiceProvider"
+			uriExtension="resolution">
+		</resourceServiceProvider>
+	</extension>
+	<!-- marker definitions for eu.coresense.resolution.ResolutionModel -->
+	<extension
+			id="resolutionmodel.check.fast"
+			name="ResolutionModel Problem"
+			point="org.eclipse.core.resources.markers">
+		<super type="org.eclipse.xtext.ui.check.fast"/>
+		<persistent value="true"/>
+	</extension>
+	<extension
+			id="resolutionmodel.check.normal"
+			name="ResolutionModel Problem"
+			point="org.eclipse.core.resources.markers">
+		<super type="org.eclipse.xtext.ui.check.normal"/>
+		<persistent value="true"/>
+	</extension>
+	<extension
+			id="resolutionmodel.check.expensive"
+			name="ResolutionModel Problem"
+			point="org.eclipse.core.resources.markers">
+		<super type="org.eclipse.xtext.ui.check.expensive"/>
+		<persistent value="true"/>
+	</extension>
+	<extension point="org.eclipse.ui.preferencePages">
+		<page
+			category="eu.coresense.resolution.ResolutionModel"
+			class="eu.coresense.resolution.ui.ResolutionModelExecutableExtensionFactory:org.eclipse.xtext.ui.validation.ValidatorPreferencePage"
+			id="eu.coresense.resolution.ResolutionModel.validator.preferencePage"
+			name="Errors/Warnings">
+			<keywordReference id="eu.coresense.resolution.ui.keyword_ResolutionModel"/>
+		</page>
+	</extension>
+	<extension point="org.eclipse.xtext.builder.participant">
+		<participant
+			class="eu.coresense.resolution.ui.ResolutionModelExecutableExtensionFactory:org.eclipse.xtext.builder.IXtextBuilderParticipant"
+			fileExtensions="resolution"/>
+	</extension>
+	<extension point="org.eclipse.ui.preferencePages">
+		<page
+			category="eu.coresense.resolution.ResolutionModel"
+			class="eu.coresense.resolution.ui.ResolutionModelExecutableExtensionFactory:org.eclipse.xtext.builder.preferences.BuilderPreferencePage"
+			id="eu.coresense.resolution.ResolutionModel.compiler.preferencePage"
+			name="Compiler">
+			<keywordReference id="eu.coresense.resolution.ui.keyword_ResolutionModel"/>
+		</page>
+	</extension>
+	<extension point="org.eclipse.ui.propertyPages">
+		<page
+			category="eu.coresense.resolution.ResolutionModel"
+			class="eu.coresense.resolution.ui.ResolutionModelExecutableExtensionFactory:org.eclipse.xtext.builder.preferences.BuilderPreferencePage"
+			id="eu.coresense.resolution.ResolutionModel.compiler.propertyPage"
+			name="Compiler">
+			<keywordReference id="eu.coresense.resolution.ui.keyword_ResolutionModel"/>
+			<enabledWhen>
+				<adapt type="org.eclipse.core.resources.IProject"/>
+			</enabledWhen>
+			<filter name="projectNature" value="org.eclipse.xtext.ui.shared.xtextNature"/>
+		</page>
+	</extension>
+	<extension point="org.eclipse.ui.menus">
+		<menuContribution locationURI="popup:#TextEditorContext?after=xtext.ui.openDeclaration">
+			<command
+				commandId="org.eclipse.xtext.ui.OpenGeneratedFileCommand"
+				id="eu.coresense.resolution.ResolutionModel.OpenGeneratedCode"
+				style="push">
+				<visibleWhen checkEnabled="false">
+					<reference definitionId="eu.coresense.resolution.ResolutionModel.Editor.opened" />
+				</visibleWhen>
+			</command>
+		</menuContribution>
+	</extension>
+	<extension point="org.eclipse.ui.handlers">
+		<handler
+			class="eu.coresense.resolution.ui.ResolutionModelExecutableExtensionFactory:org.eclipse.xtext.ui.generator.trace.OpenGeneratedFileHandler"
+			commandId="org.eclipse.xtext.ui.OpenGeneratedFileCommand">
+			<activeWhen>
+				<reference definitionId="eu.coresense.resolution.ResolutionModel.Editor.opened" />
+			</activeWhen>
+		</handler>
+	</extension>
+	<!-- Quick Outline -->
+	<extension
+		point="org.eclipse.ui.handlers">
+		<handler
+			class="eu.coresense.resolution.ui.ResolutionModelExecutableExtensionFactory:org.eclipse.xtext.ui.editor.outline.quickoutline.ShowQuickOutlineActionHandler"
+			commandId="org.eclipse.xtext.ui.editor.outline.QuickOutline">
+			<activeWhen>
+				<reference
+					definitionId="eu.coresense.resolution.ResolutionModel.Editor.opened">
+				</reference>
+			</activeWhen>
+		</handler>
+	</extension>
+	<extension
+		point="org.eclipse.ui.commands">
+		<command
+			description="Open the quick outline."
+			id="org.eclipse.xtext.ui.editor.outline.QuickOutline"
+			name="Quick Outline">
+		</command>
+	</extension>
+	<extension point="org.eclipse.ui.menus">
+		<menuContribution
+			locationURI="popup:#TextEditorContext?after=group.open">
+			<command commandId="org.eclipse.xtext.ui.editor.outline.QuickOutline"
+				style="push"
+				tooltip="Open Quick Outline">
+				<visibleWhen checkEnabled="false">
+					<reference definitionId="eu.coresense.resolution.ResolutionModel.Editor.opened"/>
+				</visibleWhen>
+			</command>
+		</menuContribution>
+	</extension>
+	<!-- quickfix marker resolution generator for eu.coresense.resolution.ResolutionModel -->
+	<extension
+			point="org.eclipse.ui.ide.markerResolution">
+		<markerResolutionGenerator
+			class="eu.coresense.resolution.ui.ResolutionModelExecutableExtensionFactory:org.eclipse.xtext.ui.editor.quickfix.MarkerResolutionGenerator"
+			markerType="eu.coresense.resolution.ui.resolutionmodel.check.fast">
+			<attribute
+				name="FIXABLE_KEY"
+				value="true">
+			</attribute>
+		</markerResolutionGenerator>
+		<markerResolutionGenerator
+			class="eu.coresense.resolution.ui.ResolutionModelExecutableExtensionFactory:org.eclipse.xtext.ui.editor.quickfix.MarkerResolutionGenerator"
+			markerType="eu.coresense.resolution.ui.resolutionmodel.check.normal">
+			<attribute
+				name="FIXABLE_KEY"
+				value="true">
+			</attribute>
+		</markerResolutionGenerator>
+		<markerResolutionGenerator
+			class="eu.coresense.resolution.ui.ResolutionModelExecutableExtensionFactory:org.eclipse.xtext.ui.editor.quickfix.MarkerResolutionGenerator"
+			markerType="eu.coresense.resolution.ui.resolutionmodel.check.expensive">
+			<attribute
+				name="FIXABLE_KEY"
+				value="true">
+			</attribute>
+		</markerResolutionGenerator>
+	</extension>
+	<!-- Rename Refactoring -->
+	<extension point="org.eclipse.ui.handlers">
+		<handler
+			class="eu.coresense.resolution.ui.ResolutionModelExecutableExtensionFactory:org.eclipse.xtext.ui.refactoring.ui.DefaultRenameElementHandler"
+			commandId="org.eclipse.xtext.ui.refactoring.RenameElement">
+			<activeWhen>
+				<reference
+					definitionId="eu.coresense.resolution.ResolutionModel.Editor.opened">
+				</reference>
+			</activeWhen>
+		</handler>
+	</extension>
+	<extension point="org.eclipse.ui.menus">
+		<menuContribution
+			locationURI="popup:#TextEditorContext?after=group.edit">
+			<command commandId="org.eclipse.xtext.ui.refactoring.RenameElement"
+				style="push">
+				<visibleWhen checkEnabled="false">
+					<reference
+						definitionId="eu.coresense.resolution.ResolutionModel.Editor.opened">
+					</reference>
+				</visibleWhen>
+			</command>
+		</menuContribution>
+	</extension>
+	<extension point="org.eclipse.ui.preferencePages">
+		<page
+			category="eu.coresense.resolution.ResolutionModel"
+			class="eu.coresense.resolution.ui.ResolutionModelExecutableExtensionFactory:org.eclipse.xtext.ui.refactoring.ui.RefactoringPreferencePage"
+			id="eu.coresense.resolution.ResolutionModel.refactoring"
+			name="Refactoring">
+			<keywordReference id="eu.coresense.resolution.ui.keyword_ResolutionModel"/>
+		</page>
+	</extension>
+	<extension point="org.eclipse.compare.contentViewers">
+		<viewer id="eu.coresense.resolution.ResolutionModel.compare.contentViewers"
+			class="eu.coresense.resolution.ui.ResolutionModelExecutableExtensionFactory:org.eclipse.xtext.ui.compare.InjectableViewerCreator"
+			extensions="resolution">
+		</viewer>
+		<contentTypeBinding
+			contentTypeId="eu.coresense.resolution.ResolutionModel.contenttype"
+			contentViewerId="eu.coresense.resolution.ResolutionModel.compare.contentViewers" />
+	</extension>
+	<extension point="org.eclipse.compare.contentMergeViewers">
+		<viewer id="eu.coresense.resolution.ResolutionModel.compare.contentMergeViewers"
+			class="eu.coresense.resolution.ui.ResolutionModelExecutableExtensionFactory:org.eclipse.xtext.ui.compare.InjectableViewerCreator"
+			extensions="resolution" label="ResolutionModel Compare">
+		</viewer>
+		<contentTypeBinding
+			contentTypeId="eu.coresense.resolution.ResolutionModel.contenttype"
+			contentMergeViewerId="eu.coresense.resolution.ResolutionModel.compare.contentMergeViewers" />
+	</extension>
+	<extension point="org.eclipse.ui.editors.documentProviders">
+		<provider id="eu.coresense.resolution.ResolutionModel.editors.documentProviders"
+			class="eu.coresense.resolution.ui.ResolutionModelExecutableExtensionFactory:org.eclipse.xtext.ui.editor.model.XtextDocumentProvider"
+			extensions="resolution">
+		</provider>
+	</extension>
+	<extension point="org.eclipse.team.core.fileTypes">
+		<fileTypes
+			extension="resolution"
+			type="text">
+		</fileTypes>
+	</extension>
+</plugin>

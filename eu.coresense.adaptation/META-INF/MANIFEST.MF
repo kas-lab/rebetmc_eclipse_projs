@@ -1,0 +1,31 @@
+Manifest-Version: 1.0
+Automatic-Module-Name: eu.coresense.adaptation
+Bundle-ManifestVersion: 2
+Bundle-Name: eu.coresense.adaptation
+Bundle-Vendor: My Company
+Bundle-Version: 1.0.0.qualifier
+Bundle-SymbolicName: eu.coresense.adaptation; singleton:=true
+Bundle-ActivationPolicy: lazy
+Require-Bundle: org.eclipse.xtext,
+ org.eclipse.xtext.xbase,
+ org.eclipse.equinox.common;bundle-version="3.19.0",
+ org.eclipse.emf.ecore,
+ org.eclipse.xtext.xbase.lib;bundle-version="2.38.0",
+ org.eclipse.emf.common,
+ org.antlr.runtime;bundle-version="[3.2.0,3.2.1)",
+ eu.coresense.resolution;bundle-version="1.0.0",
+ de.fraunhofer.ipa.rossystem;bundle-version="3.0.0",
+ de.fraunhofer.ipa.ros.xtext;bundle-version="3.0.0"
+Bundle-RequiredExecutionEnvironment: JavaSE-21
+Export-Package: eu.coresense.adaptation.parser.antlr.internal,
+ eu.coresense.adaptation.validation,
+ eu.coresense.adaptation,
+ eu.coresense.adaptation.tactics.impl,
+ eu.coresense.adaptation.generator,
+ eu.coresense.adaptation.tactics,
+ eu.coresense.adaptation.parser.antlr,
+ eu.coresense.adaptation.services,
+ eu.coresense.adaptation.serializer,
+ eu.coresense.adaptation.scoping,
+ eu.coresense.adaptation.tactics.util
+Import-Package: org.apache.log4j

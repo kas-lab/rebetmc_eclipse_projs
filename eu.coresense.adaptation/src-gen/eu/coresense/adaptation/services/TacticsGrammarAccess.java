@@ -34,21 +34,26 @@ public class TacticsGrammarAccess extends AbstractElementFinder.AbstractGrammarE
 		private final Keyword cSemicolonKeyword_2 = (Keyword)cGroup.eContents().get(2);
 		private final Assignment cImportsAssignment_3 = (Assignment)cGroup.eContents().get(3);
 		private final RuleCall cImportsImportParserRuleCall_3_0 = (RuleCall)cImportsAssignment_3.eContents().get(0);
-		private final Keyword cResolution_modelKeyword_4 = (Keyword)cGroup.eContents().get(4);
-		private final Assignment cResolutionModelAssignment_5 = (Assignment)cGroup.eContents().get(5);
-		private final CrossReference cResolutionModelResolutionModelCrossReference_5_0 = (CrossReference)cResolutionModelAssignment_5.eContents().get(0);
-		private final RuleCall cResolutionModelResolutionModelIDTerminalRuleCall_5_0_1 = (RuleCall)cResolutionModelResolutionModelCrossReference_5_0.eContents().get(1);
-		private final Keyword cSemicolonKeyword_6 = (Keyword)cGroup.eContents().get(6);
-		private final Keyword cPeriodMsKeyword_7 = (Keyword)cGroup.eContents().get(7);
-		private final Assignment cPeriodAssignment_8 = (Assignment)cGroup.eContents().get(8);
-		private final RuleCall cPeriodINTTerminalRuleCall_8_0 = (RuleCall)cPeriodAssignment_8.eContents().get(0);
-		private final Keyword cSemicolonKeyword_9 = (Keyword)cGroup.eContents().get(9);
-		private final Assignment cAdaptationRulesAssignment_10 = (Assignment)cGroup.eContents().get(10);
-		private final RuleCall cAdaptationRulesAdaptationRuleParserRuleCall_10_0 = (RuleCall)cAdaptationRulesAssignment_10.eContents().get(0);
+		private final Keyword cVariability_modelKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		private final Assignment cFeatureModelAssignment_5 = (Assignment)cGroup.eContents().get(5);
+		private final CrossReference cFeatureModelFeatureModelCrossReference_5_0 = (CrossReference)cFeatureModelAssignment_5.eContents().get(0);
+		private final RuleCall cFeatureModelFeatureModelIDTerminalRuleCall_5_0_1 = (RuleCall)cFeatureModelFeatureModelCrossReference_5_0.eContents().get(1);
+		private final Keyword cResolution_modelKeyword_6 = (Keyword)cGroup.eContents().get(6);
+		private final Assignment cResolutionModelAssignment_7 = (Assignment)cGroup.eContents().get(7);
+		private final CrossReference cResolutionModelResolutionModelCrossReference_7_0 = (CrossReference)cResolutionModelAssignment_7.eContents().get(0);
+		private final RuleCall cResolutionModelResolutionModelIDTerminalRuleCall_7_0_1 = (RuleCall)cResolutionModelResolutionModelCrossReference_7_0.eContents().get(1);
+		private final Keyword cSemicolonKeyword_8 = (Keyword)cGroup.eContents().get(8);
+		private final Keyword cPeriodMsKeyword_9 = (Keyword)cGroup.eContents().get(9);
+		private final Assignment cPeriodAssignment_10 = (Assignment)cGroup.eContents().get(10);
+		private final RuleCall cPeriodINTTerminalRuleCall_10_0 = (RuleCall)cPeriodAssignment_10.eContents().get(0);
+		private final Keyword cSemicolonKeyword_11 = (Keyword)cGroup.eContents().get(11);
+		private final Assignment cAdaptationRulesAssignment_12 = (Assignment)cGroup.eContents().get(12);
+		private final RuleCall cAdaptationRulesAdaptationRuleParserRuleCall_12_0 = (RuleCall)cAdaptationRulesAssignment_12.eContents().get(0);
 		
 		//TacticsModel:
 		//    'name' name=ID ';'
 		//    (imports+=Import*)
+		//    'variability_model' featureModel=[BasicFMmetamodel::FeatureModel]
 		//    'resolution_model' resolutionModel=[resolutionModel::ResolutionModel]';'
 		//    'period[ms]' period=INT ';'
 		//    (adaptationRules+=AdaptationRule*)
@@ -57,6 +62,7 @@ public class TacticsGrammarAccess extends AbstractElementFinder.AbstractGrammarE
 		
 		//'name' name=ID ';'
 		//(imports+=Import*)
+		//'variability_model' featureModel=[BasicFMmetamodel::FeatureModel]
 		//'resolution_model' resolutionModel=[resolutionModel::ResolutionModel]';'
 		//'period[ms]' period=INT ';'
 		//(adaptationRules+=AdaptationRule*)
@@ -80,38 +86,50 @@ public class TacticsGrammarAccess extends AbstractElementFinder.AbstractGrammarE
 		//Import
 		public RuleCall getImportsImportParserRuleCall_3_0() { return cImportsImportParserRuleCall_3_0; }
 		
-		//'resolution_model'
-		public Keyword getResolution_modelKeyword_4() { return cResolution_modelKeyword_4; }
+		//'variability_model'
+		public Keyword getVariability_modelKeyword_4() { return cVariability_modelKeyword_4; }
 		
-		//resolutionModel=[resolutionModel::ResolutionModel]
-		public Assignment getResolutionModelAssignment_5() { return cResolutionModelAssignment_5; }
+		//featureModel=[BasicFMmetamodel::FeatureModel]
+		public Assignment getFeatureModelAssignment_5() { return cFeatureModelAssignment_5; }
 		
-		//[resolutionModel::ResolutionModel]
-		public CrossReference getResolutionModelResolutionModelCrossReference_5_0() { return cResolutionModelResolutionModelCrossReference_5_0; }
+		//[BasicFMmetamodel::FeatureModel]
+		public CrossReference getFeatureModelFeatureModelCrossReference_5_0() { return cFeatureModelFeatureModelCrossReference_5_0; }
 		
 		//ID
-		public RuleCall getResolutionModelResolutionModelIDTerminalRuleCall_5_0_1() { return cResolutionModelResolutionModelIDTerminalRuleCall_5_0_1; }
+		public RuleCall getFeatureModelFeatureModelIDTerminalRuleCall_5_0_1() { return cFeatureModelFeatureModelIDTerminalRuleCall_5_0_1; }
+		
+		//'resolution_model'
+		public Keyword getResolution_modelKeyword_6() { return cResolution_modelKeyword_6; }
+		
+		//resolutionModel=[resolutionModel::ResolutionModel]
+		public Assignment getResolutionModelAssignment_7() { return cResolutionModelAssignment_7; }
+		
+		//[resolutionModel::ResolutionModel]
+		public CrossReference getResolutionModelResolutionModelCrossReference_7_0() { return cResolutionModelResolutionModelCrossReference_7_0; }
+		
+		//ID
+		public RuleCall getResolutionModelResolutionModelIDTerminalRuleCall_7_0_1() { return cResolutionModelResolutionModelIDTerminalRuleCall_7_0_1; }
 		
 		//';'
-		public Keyword getSemicolonKeyword_6() { return cSemicolonKeyword_6; }
+		public Keyword getSemicolonKeyword_8() { return cSemicolonKeyword_8; }
 		
 		//'period[ms]'
-		public Keyword getPeriodMsKeyword_7() { return cPeriodMsKeyword_7; }
+		public Keyword getPeriodMsKeyword_9() { return cPeriodMsKeyword_9; }
 		
 		//period=INT
-		public Assignment getPeriodAssignment_8() { return cPeriodAssignment_8; }
+		public Assignment getPeriodAssignment_10() { return cPeriodAssignment_10; }
 		
 		//INT
-		public RuleCall getPeriodINTTerminalRuleCall_8_0() { return cPeriodINTTerminalRuleCall_8_0; }
+		public RuleCall getPeriodINTTerminalRuleCall_10_0() { return cPeriodINTTerminalRuleCall_10_0; }
 		
 		//';'
-		public Keyword getSemicolonKeyword_9() { return cSemicolonKeyword_9; }
+		public Keyword getSemicolonKeyword_11() { return cSemicolonKeyword_11; }
 		
 		//(adaptationRules+=AdaptationRule*)
-		public Assignment getAdaptationRulesAssignment_10() { return cAdaptationRulesAssignment_10; }
+		public Assignment getAdaptationRulesAssignment_12() { return cAdaptationRulesAssignment_12; }
 		
 		//AdaptationRule
-		public RuleCall getAdaptationRulesAdaptationRuleParserRuleCall_10_0() { return cAdaptationRulesAdaptationRuleParserRuleCall_10_0; }
+		public RuleCall getAdaptationRulesAdaptationRuleParserRuleCall_12_0() { return cAdaptationRulesAdaptationRuleParserRuleCall_12_0; }
 	}
 	public class ImportElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "eu.coresense.adaptation.Tactics.Import");
@@ -569,16 +587,16 @@ public class TacticsGrammarAccess extends AbstractElementFinder.AbstractGrammarE
 		private final Keyword cSelect_variantKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Keyword cLeftParenthesisKeyword_1 = (Keyword)cGroup.eContents().get(1);
 		private final Assignment cVariantAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final CrossReference cVariantResolutionCrossReference_2_0 = (CrossReference)cVariantAssignment_2.eContents().get(0);
-		private final RuleCall cVariantResolutionIDTerminalRuleCall_2_0_1 = (RuleCall)cVariantResolutionCrossReference_2_0.eContents().get(1);
+		private final CrossReference cVariantFeatureCrossReference_2_0 = (CrossReference)cVariantAssignment_2.eContents().get(0);
+		private final RuleCall cVariantFeatureIDTerminalRuleCall_2_0_1 = (RuleCall)cVariantFeatureCrossReference_2_0.eContents().get(1);
 		private final Keyword cRightParenthesisKeyword_3 = (Keyword)cGroup.eContents().get(3);
 		
 		//AtomicActionSelectFeature:
-		//    'select_variant' '(' variant=[resolutionModel::Resolution] ')'
+		//    'select_variant' '(' variant=[BasicFMmetamodel::Feature] ')'
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'select_variant' '(' variant=[resolutionModel::Resolution] ')'
+		//'select_variant' '(' variant=[BasicFMmetamodel::Feature] ')'
 		public Group getGroup() { return cGroup; }
 		
 		//'select_variant'
@@ -587,14 +605,14 @@ public class TacticsGrammarAccess extends AbstractElementFinder.AbstractGrammarE
 		//'('
 		public Keyword getLeftParenthesisKeyword_1() { return cLeftParenthesisKeyword_1; }
 		
-		//variant=[resolutionModel::Resolution]
+		//variant=[BasicFMmetamodel::Feature]
 		public Assignment getVariantAssignment_2() { return cVariantAssignment_2; }
 		
-		//[resolutionModel::Resolution]
-		public CrossReference getVariantResolutionCrossReference_2_0() { return cVariantResolutionCrossReference_2_0; }
+		//[BasicFMmetamodel::Feature]
+		public CrossReference getVariantFeatureCrossReference_2_0() { return cVariantFeatureCrossReference_2_0; }
 		
 		//ID
-		public RuleCall getVariantResolutionIDTerminalRuleCall_2_0_1() { return cVariantResolutionIDTerminalRuleCall_2_0_1; }
+		public RuleCall getVariantFeatureIDTerminalRuleCall_2_0_1() { return cVariantFeatureIDTerminalRuleCall_2_0_1; }
 		
 		//')'
 		public Keyword getRightParenthesisKeyword_3() { return cRightParenthesisKeyword_3; }
@@ -605,16 +623,16 @@ public class TacticsGrammarAccess extends AbstractElementFinder.AbstractGrammarE
 		private final Keyword cUnselect_variantKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Keyword cLeftParenthesisKeyword_1 = (Keyword)cGroup.eContents().get(1);
 		private final Assignment cVariantAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final CrossReference cVariantResolutionCrossReference_2_0 = (CrossReference)cVariantAssignment_2.eContents().get(0);
-		private final RuleCall cVariantResolutionIDTerminalRuleCall_2_0_1 = (RuleCall)cVariantResolutionCrossReference_2_0.eContents().get(1);
+		private final CrossReference cVariantFeatureCrossReference_2_0 = (CrossReference)cVariantAssignment_2.eContents().get(0);
+		private final RuleCall cVariantFeatureIDTerminalRuleCall_2_0_1 = (RuleCall)cVariantFeatureCrossReference_2_0.eContents().get(1);
 		private final Keyword cRightParenthesisKeyword_3 = (Keyword)cGroup.eContents().get(3);
 		
 		//AtomicActionDeselectFeature:
-		//    'unselect_variant' '('variant=[resolutionModel::Resolution]')'
+		//    'unselect_variant' '('variant=[BasicFMmetamodel::Feature]')'
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'unselect_variant' '('variant=[resolutionModel::Resolution]')'
+		//'unselect_variant' '('variant=[BasicFMmetamodel::Feature]')'
 		public Group getGroup() { return cGroup; }
 		
 		//'unselect_variant'
@@ -623,14 +641,14 @@ public class TacticsGrammarAccess extends AbstractElementFinder.AbstractGrammarE
 		//'('
 		public Keyword getLeftParenthesisKeyword_1() { return cLeftParenthesisKeyword_1; }
 		
-		//variant=[resolutionModel::Resolution]
+		//variant=[BasicFMmetamodel::Feature]
 		public Assignment getVariantAssignment_2() { return cVariantAssignment_2; }
 		
-		//[resolutionModel::Resolution]
-		public CrossReference getVariantResolutionCrossReference_2_0() { return cVariantResolutionCrossReference_2_0; }
+		//[BasicFMmetamodel::Feature]
+		public CrossReference getVariantFeatureCrossReference_2_0() { return cVariantFeatureCrossReference_2_0; }
 		
 		//ID
-		public RuleCall getVariantResolutionIDTerminalRuleCall_2_0_1() { return cVariantResolutionIDTerminalRuleCall_2_0_1; }
+		public RuleCall getVariantFeatureIDTerminalRuleCall_2_0_1() { return cVariantFeatureIDTerminalRuleCall_2_0_1; }
 		
 		//')'
 		public Keyword getRightParenthesisKeyword_3() { return cRightParenthesisKeyword_3; }
@@ -783,6 +801,7 @@ public class TacticsGrammarAccess extends AbstractElementFinder.AbstractGrammarE
 	//TacticsModel:
 	//    'name' name=ID ';'
 	//    (imports+=Import*)
+	//    'variability_model' featureModel=[BasicFMmetamodel::FeatureModel]
 	//    'resolution_model' resolutionModel=[resolutionModel::ResolutionModel]';'
 	//    'period[ms]' period=INT ';'
 	//    (adaptationRules+=AdaptationRule*)
@@ -973,7 +992,7 @@ public class TacticsGrammarAccess extends AbstractElementFinder.AbstractGrammarE
 	}
 	
 	//AtomicActionSelectFeature:
-	//    'select_variant' '(' variant=[resolutionModel::Resolution] ')'
+	//    'select_variant' '(' variant=[BasicFMmetamodel::Feature] ')'
 	//;
 	public AtomicActionSelectFeatureElements getAtomicActionSelectFeatureAccess() {
 		return pAtomicActionSelectFeature;
@@ -984,7 +1003,7 @@ public class TacticsGrammarAccess extends AbstractElementFinder.AbstractGrammarE
 	}
 	
 	//AtomicActionDeselectFeature:
-	//    'unselect_variant' '('variant=[resolutionModel::Resolution]')'
+	//    'unselect_variant' '('variant=[BasicFMmetamodel::Feature]')'
 	//;
 	public AtomicActionDeselectFeatureElements getAtomicActionDeselectFeatureAccess() {
 		return pAtomicActionDeselectFeature;

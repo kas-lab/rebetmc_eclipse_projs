@@ -9,6 +9,8 @@ import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EObject;
 
+import uma.caosd.rhea.BasicFMmetamodel.FeatureModel;
+
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Model</b></em>'.
@@ -20,6 +22,7 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link eu.coresense.adaptation.tactics.TacticsModel#getName <em>Name</em>}</li>
  *   <li>{@link eu.coresense.adaptation.tactics.TacticsModel#getImports <em>Imports</em>}</li>
+ *   <li>{@link eu.coresense.adaptation.tactics.TacticsModel#getFeatureModel <em>Feature Model</em>}</li>
  *   <li>{@link eu.coresense.adaptation.tactics.TacticsModel#getResolutionModel <em>Resolution Model</em>}</li>
  *   <li>{@link eu.coresense.adaptation.tactics.TacticsModel#getPeriod <em>Period</em>}</li>
  *   <li>{@link eu.coresense.adaptation.tactics.TacticsModel#getAdaptationRules <em>Adaptation Rules</em>}</li>
@@ -64,6 +67,28 @@ public interface TacticsModel extends EObject
    * @generated
    */
   EList<Import> getImports();
+
+  /**
+   * Returns the value of the '<em><b>Feature Model</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Feature Model</em>' reference.
+   * @see #setFeatureModel(FeatureModel)
+   * @see eu.coresense.adaptation.tactics.TacticsPackage#getTacticsModel_FeatureModel()
+   * @model
+   * @generated
+   */
+  FeatureModel getFeatureModel();
+
+  /**
+   * Sets the value of the '{@link eu.coresense.adaptation.tactics.TacticsModel#getFeatureModel <em>Feature Model</em>}' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Feature Model</em>' reference.
+   * @see #getFeatureModel()
+   * @generated
+   */
+  void setFeatureModel(FeatureModel value);
 
   /**
    * Returns the value of the '<em><b>Resolution Model</b></em>' reference.

@@ -33,6 +33,7 @@ public class ResolutionModelParser extends AbstractContentAssistParser {
 		}
 		
 		private static void init(ImmutableMap.Builder<AbstractElement, String> builder, ResolutionModelGrammarAccess grammarAccess) {
+			builder.put(grammarAccess.getReconfigurationAccess().getAlternatives(), "rule__Reconfiguration__Alternatives");
 			builder.put(grammarAccess.getNamespaceAccess().getAlternatives(), "rule__Namespace__Alternatives");
 			builder.put(grammarAccess.getRosParamNamesAccess().getAlternatives(), "rule__RosParamNames__Alternatives");
 			builder.put(grammarAccess.getParameterTypeAccess().getAlternatives(), "rule__ParameterType__Alternatives");
@@ -42,10 +43,12 @@ public class ResolutionModelParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getKEYWORDAccess().getAlternatives(), "rule__KEYWORD__Alternatives");
 			builder.put(grammarAccess.getEStringAccess().getAlternatives(), "rule__EString__Alternatives");
 			builder.put(grammarAccess.getRosNamesAccess().getAlternatives(), "rule__RosNames__Alternatives");
+			builder.put(grammarAccess.getLifecycleStateAccess().getAlternatives(), "rule__LifecycleState__Alternatives");
 			builder.put(grammarAccess.getResolutionModelAccess().getGroup(), "rule__ResolutionModel__Group__0");
 			builder.put(grammarAccess.getResolutionAccess().getGroup(), "rule__Resolution__Group__0");
 			builder.put(grammarAccess.getImportAccess().getGroup(), "rule__Import__Group__0");
 			builder.put(grammarAccess.getSetParamAccess().getGroup(), "rule__SetParam__Group__0");
+			builder.put(grammarAccess.getSetLifecycleAccess().getGroup(), "rule__SetLifecycle__Group__0");
 			builder.put(grammarAccess.getGlobalNamespaceAccess().getGroup(), "rule__GlobalNamespace__Group__0");
 			builder.put(grammarAccess.getGlobalNamespaceAccess().getGroup_2(), "rule__GlobalNamespace__Group_2__0");
 			builder.put(grammarAccess.getGlobalNamespaceAccess().getGroup_2_2(), "rule__GlobalNamespace__Group_2_2__0");
@@ -119,14 +122,22 @@ public class ResolutionModelParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getCharArrayAccess().getGroup(), "rule__CharArray__Group__0");
 			builder.put(grammarAccess.getHeaderAccess().getGroup(), "rule__Header__Group__0");
 			builder.put(grammarAccess.getArraySpecRefAccess().getGroup(), "rule__ArraySpecRef__Group__0");
-			builder.put(grammarAccess.getResolutionModelAccess().getImportsAssignment_0(), "rule__ResolutionModel__ImportsAssignment_0");
-			builder.put(grammarAccess.getResolutionModelAccess().getRossystemAssignment_2(), "rule__ResolutionModel__RossystemAssignment_2");
-			builder.put(grammarAccess.getResolutionModelAccess().getResolutionsAssignment_5(), "rule__ResolutionModel__ResolutionsAssignment_5");
-			builder.put(grammarAccess.getResolutionAccess().getReconfigurationsAssignment_3(), "rule__Resolution__ReconfigurationsAssignment_3");
+			builder.put(grammarAccess.getResolutionModelAccess().getNameAssignment_1(), "rule__ResolutionModel__NameAssignment_1");
+			builder.put(grammarAccess.getResolutionModelAccess().getImportsAssignment_3(), "rule__ResolutionModel__ImportsAssignment_3");
+			builder.put(grammarAccess.getResolutionModelAccess().getFeatureModelAssignment_5(), "rule__ResolutionModel__FeatureModelAssignment_5");
+			builder.put(grammarAccess.getResolutionModelAccess().getRossystemAssignment_8(), "rule__ResolutionModel__RossystemAssignment_8");
+			builder.put(grammarAccess.getResolutionModelAccess().getResolutionsAssignment_11(), "rule__ResolutionModel__ResolutionsAssignment_11");
+			builder.put(grammarAccess.getResolutionAccess().getFeatureAssignment_1(), "rule__Resolution__FeatureAssignment_1");
+			builder.put(grammarAccess.getResolutionAccess().getSelection_actionsAssignment_4(), "rule__Resolution__Selection_actionsAssignment_4");
+			builder.put(grammarAccess.getResolutionAccess().getDeselection_actionsAssignment_6(), "rule__Resolution__Deselection_actionsAssignment_6");
 			builder.put(grammarAccess.getImportAccess().getImportURIAssignment_1(), "rule__Import__ImportURIAssignment_1");
+			builder.put(grammarAccess.getReconfigurationAccess().getSet_paramAssignment_0(), "rule__Reconfiguration__Set_paramAssignment_0");
+			builder.put(grammarAccess.getReconfigurationAccess().getSet_lcAssignment_1(), "rule__Reconfiguration__Set_lcAssignment_1");
 			builder.put(grammarAccess.getSetParamAccess().getNodeAssignment_1(), "rule__SetParam__NodeAssignment_1");
 			builder.put(grammarAccess.getSetParamAccess().getParamAssignment_3(), "rule__SetParam__ParamAssignment_3");
 			builder.put(grammarAccess.getSetParamAccess().getValueAssignment_5(), "rule__SetParam__ValueAssignment_5");
+			builder.put(grammarAccess.getSetLifecycleAccess().getNodeAssignment_1(), "rule__SetLifecycle__NodeAssignment_1");
+			builder.put(grammarAccess.getSetLifecycleAccess().getStateAssignment_3(), "rule__SetLifecycle__StateAssignment_3");
 			builder.put(grammarAccess.getGlobalNamespaceAccess().getPartsAssignment_2_1(), "rule__GlobalNamespace__PartsAssignment_2_1");
 			builder.put(grammarAccess.getGlobalNamespaceAccess().getPartsAssignment_2_2_1(), "rule__GlobalNamespace__PartsAssignment_2_2_1");
 			builder.put(grammarAccess.getRelativeNamespace_ImplAccess().getPartsAssignment_2_1(), "rule__RelativeNamespace_Impl__PartsAssignment_2_1");

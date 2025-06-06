@@ -9,6 +9,7 @@ import eu.coresense.resolution.resolutionModel.ResolutionModelPackage;
 
 import java.util.Collection;
 
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
@@ -16,10 +17,13 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
+
+import uma.caosd.rhea.BasicFMmetamodel.Feature;
 
 /**
  * <!-- begin-user-doc -->
@@ -29,7 +33,9 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link eu.coresense.resolution.resolutionModel.impl.ResolutionImpl#getReconfigurations <em>Reconfigurations</em>}</li>
+ *   <li>{@link eu.coresense.resolution.resolutionModel.impl.ResolutionImpl#getFeature <em>Feature</em>}</li>
+ *   <li>{@link eu.coresense.resolution.resolutionModel.impl.ResolutionImpl#getSelection_actions <em>Selection actions</em>}</li>
+ *   <li>{@link eu.coresense.resolution.resolutionModel.impl.ResolutionImpl#getDeselection_actions <em>Deselection actions</em>}</li>
  * </ul>
  *
  * @generated
@@ -37,14 +43,34 @@ import org.eclipse.emf.ecore.util.InternalEList;
 public class ResolutionImpl extends MinimalEObjectImpl.Container implements Resolution
 {
   /**
-   * The cached value of the '{@link #getReconfigurations() <em>Reconfigurations</em>}' containment reference list.
+   * The cached value of the '{@link #getFeature() <em>Feature</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getReconfigurations()
+   * @see #getFeature()
    * @generated
    * @ordered
    */
-  protected EList<Reconfiguration> reconfigurations;
+  protected Feature feature;
+
+  /**
+   * The cached value of the '{@link #getSelection_actions() <em>Selection actions</em>}' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getSelection_actions()
+   * @generated
+   * @ordered
+   */
+  protected EList<Reconfiguration> selection_actions;
+
+  /**
+   * The cached value of the '{@link #getDeselection_actions() <em>Deselection actions</em>}' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getDeselection_actions()
+   * @generated
+   * @ordered
+   */
+  protected EList<Reconfiguration> deselection_actions;
 
   /**
    * <!-- begin-user-doc -->
@@ -73,13 +99,73 @@ public class ResolutionImpl extends MinimalEObjectImpl.Container implements Reso
    * @generated
    */
   @Override
-  public EList<Reconfiguration> getReconfigurations()
+  public Feature getFeature()
   {
-    if (reconfigurations == null)
+    if (feature != null && feature.eIsProxy())
     {
-      reconfigurations = new EObjectContainmentEList<Reconfiguration>(Reconfiguration.class, this, ResolutionModelPackage.RESOLUTION__RECONFIGURATIONS);
+      InternalEObject oldFeature = (InternalEObject)feature;
+      feature = (Feature)eResolveProxy(oldFeature);
+      if (feature != oldFeature)
+      {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, ResolutionModelPackage.RESOLUTION__FEATURE, oldFeature, feature));
+      }
     }
-    return reconfigurations;
+    return feature;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Feature basicGetFeature()
+  {
+    return feature;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setFeature(Feature newFeature)
+  {
+    Feature oldFeature = feature;
+    feature = newFeature;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, ResolutionModelPackage.RESOLUTION__FEATURE, oldFeature, feature));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EList<Reconfiguration> getSelection_actions()
+  {
+    if (selection_actions == null)
+    {
+      selection_actions = new EObjectContainmentEList<Reconfiguration>(Reconfiguration.class, this, ResolutionModelPackage.RESOLUTION__SELECTION_ACTIONS);
+    }
+    return selection_actions;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EList<Reconfiguration> getDeselection_actions()
+  {
+    if (deselection_actions == null)
+    {
+      deselection_actions = new EObjectContainmentEList<Reconfiguration>(Reconfiguration.class, this, ResolutionModelPackage.RESOLUTION__DESELECTION_ACTIONS);
+    }
+    return deselection_actions;
   }
 
   /**
@@ -92,8 +178,10 @@ public class ResolutionImpl extends MinimalEObjectImpl.Container implements Reso
   {
     switch (featureID)
     {
-      case ResolutionModelPackage.RESOLUTION__RECONFIGURATIONS:
-        return ((InternalEList<?>)getReconfigurations()).basicRemove(otherEnd, msgs);
+      case ResolutionModelPackage.RESOLUTION__SELECTION_ACTIONS:
+        return ((InternalEList<?>)getSelection_actions()).basicRemove(otherEnd, msgs);
+      case ResolutionModelPackage.RESOLUTION__DESELECTION_ACTIONS:
+        return ((InternalEList<?>)getDeselection_actions()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -108,8 +196,13 @@ public class ResolutionImpl extends MinimalEObjectImpl.Container implements Reso
   {
     switch (featureID)
     {
-      case ResolutionModelPackage.RESOLUTION__RECONFIGURATIONS:
-        return getReconfigurations();
+      case ResolutionModelPackage.RESOLUTION__FEATURE:
+        if (resolve) return getFeature();
+        return basicGetFeature();
+      case ResolutionModelPackage.RESOLUTION__SELECTION_ACTIONS:
+        return getSelection_actions();
+      case ResolutionModelPackage.RESOLUTION__DESELECTION_ACTIONS:
+        return getDeselection_actions();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -125,9 +218,16 @@ public class ResolutionImpl extends MinimalEObjectImpl.Container implements Reso
   {
     switch (featureID)
     {
-      case ResolutionModelPackage.RESOLUTION__RECONFIGURATIONS:
-        getReconfigurations().clear();
-        getReconfigurations().addAll((Collection<? extends Reconfiguration>)newValue);
+      case ResolutionModelPackage.RESOLUTION__FEATURE:
+        setFeature((Feature)newValue);
+        return;
+      case ResolutionModelPackage.RESOLUTION__SELECTION_ACTIONS:
+        getSelection_actions().clear();
+        getSelection_actions().addAll((Collection<? extends Reconfiguration>)newValue);
+        return;
+      case ResolutionModelPackage.RESOLUTION__DESELECTION_ACTIONS:
+        getDeselection_actions().clear();
+        getDeselection_actions().addAll((Collection<? extends Reconfiguration>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -143,8 +243,14 @@ public class ResolutionImpl extends MinimalEObjectImpl.Container implements Reso
   {
     switch (featureID)
     {
-      case ResolutionModelPackage.RESOLUTION__RECONFIGURATIONS:
-        getReconfigurations().clear();
+      case ResolutionModelPackage.RESOLUTION__FEATURE:
+        setFeature((Feature)null);
+        return;
+      case ResolutionModelPackage.RESOLUTION__SELECTION_ACTIONS:
+        getSelection_actions().clear();
+        return;
+      case ResolutionModelPackage.RESOLUTION__DESELECTION_ACTIONS:
+        getDeselection_actions().clear();
         return;
     }
     super.eUnset(featureID);
@@ -160,8 +266,12 @@ public class ResolutionImpl extends MinimalEObjectImpl.Container implements Reso
   {
     switch (featureID)
     {
-      case ResolutionModelPackage.RESOLUTION__RECONFIGURATIONS:
-        return reconfigurations != null && !reconfigurations.isEmpty();
+      case ResolutionModelPackage.RESOLUTION__FEATURE:
+        return feature != null;
+      case ResolutionModelPackage.RESOLUTION__SELECTION_ACTIONS:
+        return selection_actions != null && !selection_actions.isEmpty();
+      case ResolutionModelPackage.RESOLUTION__DESELECTION_ACTIONS:
+        return deselection_actions != null && !deselection_actions.isEmpty();
     }
     return super.eIsSet(featureID);
   }

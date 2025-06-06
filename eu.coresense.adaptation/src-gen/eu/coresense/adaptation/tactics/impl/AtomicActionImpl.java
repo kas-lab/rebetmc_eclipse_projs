@@ -6,8 +6,6 @@ package eu.coresense.adaptation.tactics.impl;
 import eu.coresense.adaptation.tactics.AtomicAction;
 import eu.coresense.adaptation.tactics.TacticsPackage;
 
-import eu.coresense.resolution.resolutionModel.Resolution;
-
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
@@ -16,6 +14,8 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+
+import uma.caosd.rhea.BasicFMmetamodel.Feature;
 
 /**
  * <!-- begin-user-doc -->
@@ -51,7 +51,7 @@ public class AtomicActionImpl extends MinimalEObjectImpl.Container implements At
    * @generated
    * @ordered
    */
-  protected Resolution variant;
+  protected Feature variant;
 
   /**
    * <!-- begin-user-doc -->
@@ -130,12 +130,12 @@ public class AtomicActionImpl extends MinimalEObjectImpl.Container implements At
    * @generated
    */
   @Override
-  public Resolution getVariant()
+  public Feature getVariant()
   {
     if (variant != null && variant.eIsProxy())
     {
       InternalEObject oldVariant = (InternalEObject)variant;
-      variant = (Resolution)eResolveProxy(oldVariant);
+      variant = (Feature)eResolveProxy(oldVariant);
       if (variant != oldVariant)
       {
         if (eNotificationRequired())
@@ -150,7 +150,7 @@ public class AtomicActionImpl extends MinimalEObjectImpl.Container implements At
    * <!-- end-user-doc -->
    * @generated
    */
-  public Resolution basicGetVariant()
+  public Feature basicGetVariant()
   {
     return variant;
   }
@@ -161,9 +161,9 @@ public class AtomicActionImpl extends MinimalEObjectImpl.Container implements At
    * @generated
    */
   @Override
-  public void setVariant(Resolution newVariant)
+  public void setVariant(Feature newVariant)
   {
-    Resolution oldVariant = variant;
+    Feature oldVariant = variant;
     variant = newVariant;
     if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, TacticsPackage.ATOMIC_ACTION__VARIANT, oldVariant, variant));
@@ -218,7 +218,7 @@ public class AtomicActionImpl extends MinimalEObjectImpl.Container implements At
         setSecondAction((AtomicAction)newValue);
         return;
       case TacticsPackage.ATOMIC_ACTION__VARIANT:
-        setVariant((Resolution)newValue);
+        setVariant((Feature)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -238,7 +238,7 @@ public class AtomicActionImpl extends MinimalEObjectImpl.Container implements At
         setSecondAction((AtomicAction)null);
         return;
       case TacticsPackage.ATOMIC_ACTION__VARIANT:
-        setVariant((Resolution)null);
+        setVariant((Feature)null);
         return;
     }
     super.eUnset(featureID);

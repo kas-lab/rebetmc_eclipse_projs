@@ -13,6 +13,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import ros.ParameterValue;
 
@@ -34,7 +35,7 @@ import system.RosParameter;
  *
  * @generated
  */
-public class SetParamImpl extends ReconfigurationImpl implements SetParam
+public class SetParamImpl extends MinimalEObjectImpl.Container implements SetParam
 {
   /**
    * The cached value of the '{@link #getNode() <em>Node</em>}' reference.

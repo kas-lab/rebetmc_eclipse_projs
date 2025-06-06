@@ -16,6 +16,7 @@ import org.eclipse.xtext.parser.*;
 import org.eclipse.xtext.parser.impl.*;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.common.util.Enumerator;
 import org.eclipse.xtext.parser.antlr.AbstractInternalAntlrParser;
 import org.eclipse.xtext.parser.antlr.XtextTokenStream;
 import org.eclipse.xtext.parser.antlr.XtextTokenStream.HiddenTokens;
@@ -69,12 +70,38 @@ ruleResolutionModel returns [EObject current=null]
 	leaveRule();
 }:
 	(
+		otherlv_0=Name
+		{
+			newLeafNode(otherlv_0, grammarAccess.getResolutionModelAccess().getNameKeyword_0());
+		}
+		(
+			(
+				lv_name_1_0=RULE_ID
+				{
+					newLeafNode(lv_name_1_0, grammarAccess.getResolutionModelAccess().getNameIDTerminalRuleCall_1_0());
+				}
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getResolutionModelRule());
+					}
+					setWithLastConsumed(
+						$current,
+						"name",
+						lv_name_1_0,
+						"org.eclipse.xtext.common.Terminals.ID");
+				}
+			)
+		)
+		otherlv_2=Semicolon
+		{
+			newLeafNode(otherlv_2, grammarAccess.getResolutionModelAccess().getSemicolonKeyword_2());
+		}
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getResolutionModelAccess().getImportsImportParserRuleCall_0_0());
+					newCompositeNode(grammarAccess.getResolutionModelAccess().getImportsImportParserRuleCall_3_0());
 				}
-				lv_imports_0_0=ruleImport
+				lv_imports_3_0=ruleImport
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getResolutionModelRule());
@@ -82,15 +109,15 @@ ruleResolutionModel returns [EObject current=null]
 					add(
 						$current,
 						"imports",
-						lv_imports_0_0,
+						lv_imports_3_0,
 						"eu.coresense.resolution.ResolutionModel.Import");
 					afterParserOrEnumRuleCall();
 				}
 			)
 		)*
-		otherlv_1=Ros_system
+		otherlv_4=Variability_model
 		{
-			newLeafNode(otherlv_1, grammarAccess.getResolutionModelAccess().getRos_systemKeyword_1());
+			newLeafNode(otherlv_4, grammarAccess.getResolutionModelAccess().getVariability_modelKeyword_4());
 		}
 		(
 			(
@@ -99,26 +126,47 @@ ruleResolutionModel returns [EObject current=null]
 						$current = createModelElement(grammarAccess.getResolutionModelRule());
 					}
 				}
-				otherlv_2=RULE_ID
+				otherlv_5=RULE_ID
 				{
-					newLeafNode(otherlv_2, grammarAccess.getResolutionModelAccess().getRossystemSystemCrossReference_2_0());
+					newLeafNode(otherlv_5, grammarAccess.getResolutionModelAccess().getFeatureModelFeatureModelCrossReference_5_0());
 				}
 			)
 		)
-		otherlv_3=Semicolon
+		otherlv_6=Semicolon
 		{
-			newLeafNode(otherlv_3, grammarAccess.getResolutionModelAccess().getSemicolonKeyword_3());
+			newLeafNode(otherlv_6, grammarAccess.getResolutionModelAccess().getSemicolonKeyword_6());
 		}
-		otherlv_4=Resolutions
+		otherlv_7=Ros_system
 		{
-			newLeafNode(otherlv_4, grammarAccess.getResolutionModelAccess().getResolutionsKeyword_4());
+			newLeafNode(otherlv_7, grammarAccess.getResolutionModelAccess().getRos_systemKeyword_7());
 		}
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getResolutionModelAccess().getResolutionsResolutionParserRuleCall_5_0());
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getResolutionModelRule());
+					}
 				}
-				lv_resolutions_5_0=ruleResolution
+				otherlv_8=RULE_ID
+				{
+					newLeafNode(otherlv_8, grammarAccess.getResolutionModelAccess().getRossystemSystemCrossReference_8_0());
+				}
+			)
+		)
+		otherlv_9=Semicolon
+		{
+			newLeafNode(otherlv_9, grammarAccess.getResolutionModelAccess().getSemicolonKeyword_9());
+		}
+		otherlv_10=Resolutions
+		{
+			newLeafNode(otherlv_10, grammarAccess.getResolutionModelAccess().getResolutionsKeyword_10());
+		}
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getResolutionModelAccess().getResolutionsResolutionParserRuleCall_11_0());
+				}
+				lv_resolutions_11_0=ruleResolution
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getResolutionModelRule());
@@ -126,7 +174,7 @@ ruleResolutionModel returns [EObject current=null]
 					add(
 						$current,
 						"resolutions",
-						lv_resolutions_5_0,
+						lv_resolutions_11_0,
 						"eu.coresense.resolution.ResolutionModel.Resolution");
 					afterParserOrEnumRuleCall();
 				}
@@ -158,28 +206,64 @@ ruleResolution returns [EObject current=null]
 					$current);
 			}
 		)
-		this_STRING_1=RULE_STRING
-		{
-			newLeafNode(this_STRING_1, grammarAccess.getResolutionAccess().getSTRINGTerminalRuleCall_1());
-		}
+		(
+			(
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getResolutionRule());
+					}
+				}
+				otherlv_1=RULE_ID
+				{
+					newLeafNode(otherlv_1, grammarAccess.getResolutionAccess().getFeatureFeatureCrossReference_1_0());
+				}
+			)
+		)
 		otherlv_2=Colon
 		{
 			newLeafNode(otherlv_2, grammarAccess.getResolutionAccess().getColonKeyword_2());
 		}
+		otherlv_3=Select
+		{
+			newLeafNode(otherlv_3, grammarAccess.getResolutionAccess().getSelectKeyword_3());
+		}
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getResolutionAccess().getReconfigurationsReconfigurationParserRuleCall_3_0());
+					newCompositeNode(grammarAccess.getResolutionAccess().getSelection_actionsReconfigurationParserRuleCall_4_0());
 				}
-				lv_reconfigurations_3_0=ruleReconfiguration
+				lv_selection_actions_4_0=ruleReconfiguration
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getResolutionRule());
 					}
 					add(
 						$current,
-						"reconfigurations",
-						lv_reconfigurations_3_0,
+						"selection_actions",
+						lv_selection_actions_4_0,
+						"eu.coresense.resolution.ResolutionModel.Reconfiguration");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)*
+		otherlv_5=Deselect
+		{
+			newLeafNode(otherlv_5, grammarAccess.getResolutionAccess().getDeselectKeyword_5());
+		}
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getResolutionAccess().getDeselection_actionsReconfigurationParserRuleCall_6_0());
+				}
+				lv_deselection_actions_6_0=ruleReconfiguration
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getResolutionRule());
+					}
+					add(
+						$current,
+						"deselection_actions",
+						lv_deselection_actions_6_0,
 						"eu.coresense.resolution.ResolutionModel.Reconfiguration");
 					afterParserOrEnumRuleCall();
 				}
@@ -248,14 +332,47 @@ ruleReconfiguration returns [EObject current=null]
 @after {
 	leaveRule();
 }:
-	{
-		newCompositeNode(grammarAccess.getReconfigurationAccess().getSetParamParserRuleCall());
-	}
-	this_SetParam_0=ruleSetParam
-	{
-		$current = $this_SetParam_0.current;
-		afterParserOrEnumRuleCall();
-	}
+	(
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getReconfigurationAccess().getSet_paramSetParamParserRuleCall_0_0());
+				}
+				lv_set_param_0_0=ruleSetParam
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getReconfigurationRule());
+					}
+					set(
+						$current,
+						"set_param",
+						lv_set_param_0_0,
+						"eu.coresense.resolution.ResolutionModel.SetParam");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
+		    |
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getReconfigurationAccess().getSet_lcSetLifecycleParserRuleCall_1_0());
+				}
+				lv_set_lc_1_0=ruleSetLifecycle
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getReconfigurationRule());
+					}
+					set(
+						$current,
+						"set_lc",
+						lv_set_lc_1_0,
+						"eu.coresense.resolution.ResolutionModel.SetLifecycle");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
+	)
 ;
 
 // Entry rule entryRuleSetParam
@@ -334,6 +451,69 @@ ruleSetParam returns [EObject current=null]
 		otherlv_6=RightParenthesis
 		{
 			newLeafNode(otherlv_6, grammarAccess.getSetParamAccess().getRightParenthesisKeyword_6());
+		}
+	)
+;
+
+// Entry rule entryRuleSetLifecycle
+entryRuleSetLifecycle returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getSetLifecycleRule()); }
+	iv_ruleSetLifecycle=ruleSetLifecycle
+	{ $current=$iv_ruleSetLifecycle.current; }
+	EOF;
+
+// Rule SetLifecycle
+ruleSetLifecycle returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		otherlv_0=SetLifecycleState
+		{
+			newLeafNode(otherlv_0, grammarAccess.getSetLifecycleAccess().getSetLifecycleStateKeyword_0());
+		}
+		(
+			(
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getSetLifecycleRule());
+					}
+				}
+				otherlv_1=RULE_ID
+				{
+					newLeafNode(otherlv_1, grammarAccess.getSetLifecycleAccess().getNodeRosNodeCrossReference_1_0());
+				}
+			)
+		)
+		otherlv_2=Comma
+		{
+			newLeafNode(otherlv_2, grammarAccess.getSetLifecycleAccess().getCommaKeyword_2());
+		}
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getSetLifecycleAccess().getStateLifecycleStateEnumRuleCall_3_0());
+				}
+				lv_state_3_0=ruleLifecycleState
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getSetLifecycleRule());
+					}
+					set(
+						$current,
+						"state",
+						lv_state_3_0,
+						"eu.coresense.resolution.ResolutionModel.LifecycleState");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
+		otherlv_4=RightParenthesis
+		{
+			newLeafNode(otherlv_4, grammarAccess.getSetLifecycleAccess().getRightParenthesisKeyword_4());
 		}
 	)
 ;
@@ -3424,5 +3604,48 @@ ruleEString returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()
 		{
 			newLeafNode(this_ID_1, grammarAccess.getEStringAccess().getIDTerminalRuleCall_1());
 		}
+	)
+;
+
+// Rule LifecycleState
+ruleLifecycleState returns [Enumerator current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		(
+			enumLiteral_0=UNCONFIGURED
+			{
+				$current = grammarAccess.getLifecycleStateAccess().getUNCONFIGUREDEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
+				newLeafNode(enumLiteral_0, grammarAccess.getLifecycleStateAccess().getUNCONFIGUREDEnumLiteralDeclaration_0());
+			}
+		)
+		    |
+		(
+			enumLiteral_1=INACTIVE
+			{
+				$current = grammarAccess.getLifecycleStateAccess().getINACTIVEEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
+				newLeafNode(enumLiteral_1, grammarAccess.getLifecycleStateAccess().getINACTIVEEnumLiteralDeclaration_1());
+			}
+		)
+		    |
+		(
+			enumLiteral_2=ACTIVE
+			{
+				$current = grammarAccess.getLifecycleStateAccess().getACTIVEEnumLiteralDeclaration_2().getEnumLiteral().getInstance();
+				newLeafNode(enumLiteral_2, grammarAccess.getLifecycleStateAccess().getACTIVEEnumLiteralDeclaration_2());
+			}
+		)
+		    |
+		(
+			enumLiteral_3=FINALIZED
+			{
+				$current = grammarAccess.getLifecycleStateAccess().getFINALIZEDEnumLiteralDeclaration_3().getEnumLiteral().getInstance();
+				newLeafNode(enumLiteral_3, grammarAccess.getLifecycleStateAccess().getFINALIZEDEnumLiteralDeclaration_3());
+			}
+		)
 	)
 ;

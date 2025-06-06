@@ -6,6 +6,7 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="imports" upperBound="-1"
         eType="#//Import" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="featureModel" eType="ecore:EClass platform:/resource/fms.metamodel/model/BasicFMmetamodel.ecore#//FeatureModel"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="resolutionModel" eType="ecore:EClass platform:/resource/eu.coresense.resolution/model/generated/ResolutionModel.ecore#//ResolutionModel"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="period" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="adaptationRules" upperBound="-1"
@@ -34,7 +35,7 @@
   <eClassifiers xsi:type="ecore:EClass" name="AtomicAction">
     <eStructuralFeatures xsi:type="ecore:EReference" name="secondAction" eType="#//AtomicAction"
         containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="variant" eType="ecore:EClass platform:/resource/eu.coresense.resolution/model/generated/ResolutionModel.ecore#//Resolution"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="variant" eType="ecore:EClass platform:/resource/fms.metamodel/model/BasicFMmetamodel.ecore#//Feature"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="RuleBody">
     <eStructuralFeatures xsi:type="ecore:EReference" name="atomicAction" eType="#//AtomicAction"

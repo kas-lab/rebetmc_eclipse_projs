@@ -24,6 +24,8 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
+import uma.caosd.rhea.BasicFMmetamodel.FeatureModel;
+
 /**
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Resolution Model</b></em>'.
@@ -32,7 +34,9 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * </p>
  * <ul>
+ *   <li>{@link eu.coresense.resolution.resolutionModel.impl.ResolutionModelImpl#getName <em>Name</em>}</li>
  *   <li>{@link eu.coresense.resolution.resolutionModel.impl.ResolutionModelImpl#getImports <em>Imports</em>}</li>
+ *   <li>{@link eu.coresense.resolution.resolutionModel.impl.ResolutionModelImpl#getFeatureModel <em>Feature Model</em>}</li>
  *   <li>{@link eu.coresense.resolution.resolutionModel.impl.ResolutionModelImpl#getRossystem <em>Rossystem</em>}</li>
  *   <li>{@link eu.coresense.resolution.resolutionModel.impl.ResolutionModelImpl#getResolutions <em>Resolutions</em>}</li>
  * </ul>
@@ -42,6 +46,26 @@ import org.eclipse.emf.ecore.util.InternalEList;
 public class ResolutionModelImpl extends MinimalEObjectImpl.Container implements ResolutionModel
 {
   /**
+   * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getName()
+   * @generated
+   * @ordered
+   */
+  protected static final String NAME_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getName()
+   * @generated
+   * @ordered
+   */
+  protected String name = NAME_EDEFAULT;
+
+  /**
    * The cached value of the '{@link #getImports() <em>Imports</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -50,6 +74,16 @@ public class ResolutionModelImpl extends MinimalEObjectImpl.Container implements
    * @ordered
    */
   protected EList<Import> imports;
+
+  /**
+   * The cached value of the '{@link #getFeatureModel() <em>Feature Model</em>}' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getFeatureModel()
+   * @generated
+   * @ordered
+   */
+  protected FeatureModel featureModel;
 
   /**
    * The cached value of the '{@link #getRossystem() <em>Rossystem</em>}' reference.
@@ -98,6 +132,31 @@ public class ResolutionModelImpl extends MinimalEObjectImpl.Container implements
    * @generated
    */
   @Override
+  public String getName()
+  {
+    return name;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setName(String newName)
+  {
+    String oldName = name;
+    name = newName;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, ResolutionModelPackage.RESOLUTION_MODEL__NAME, oldName, name));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public EList<Import> getImports()
   {
     if (imports == null)
@@ -105,6 +164,51 @@ public class ResolutionModelImpl extends MinimalEObjectImpl.Container implements
       imports = new EObjectContainmentEList<Import>(Import.class, this, ResolutionModelPackage.RESOLUTION_MODEL__IMPORTS);
     }
     return imports;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public FeatureModel getFeatureModel()
+  {
+    if (featureModel != null && featureModel.eIsProxy())
+    {
+      InternalEObject oldFeatureModel = (InternalEObject)featureModel;
+      featureModel = (FeatureModel)eResolveProxy(oldFeatureModel);
+      if (featureModel != oldFeatureModel)
+      {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, ResolutionModelPackage.RESOLUTION_MODEL__FEATURE_MODEL, oldFeatureModel, featureModel));
+      }
+    }
+    return featureModel;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public FeatureModel basicGetFeatureModel()
+  {
+    return featureModel;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setFeatureModel(FeatureModel newFeatureModel)
+  {
+    FeatureModel oldFeatureModel = featureModel;
+    featureModel = newFeatureModel;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, ResolutionModelPackage.RESOLUTION_MODEL__FEATURE_MODEL, oldFeatureModel, featureModel));
   }
 
   /**
@@ -195,8 +299,13 @@ public class ResolutionModelImpl extends MinimalEObjectImpl.Container implements
   {
     switch (featureID)
     {
+      case ResolutionModelPackage.RESOLUTION_MODEL__NAME:
+        return getName();
       case ResolutionModelPackage.RESOLUTION_MODEL__IMPORTS:
         return getImports();
+      case ResolutionModelPackage.RESOLUTION_MODEL__FEATURE_MODEL:
+        if (resolve) return getFeatureModel();
+        return basicGetFeatureModel();
       case ResolutionModelPackage.RESOLUTION_MODEL__ROSSYSTEM:
         if (resolve) return getRossystem();
         return basicGetRossystem();
@@ -217,9 +326,15 @@ public class ResolutionModelImpl extends MinimalEObjectImpl.Container implements
   {
     switch (featureID)
     {
+      case ResolutionModelPackage.RESOLUTION_MODEL__NAME:
+        setName((String)newValue);
+        return;
       case ResolutionModelPackage.RESOLUTION_MODEL__IMPORTS:
         getImports().clear();
         getImports().addAll((Collection<? extends Import>)newValue);
+        return;
+      case ResolutionModelPackage.RESOLUTION_MODEL__FEATURE_MODEL:
+        setFeatureModel((FeatureModel)newValue);
         return;
       case ResolutionModelPackage.RESOLUTION_MODEL__ROSSYSTEM:
         setRossystem((system.System)newValue);
@@ -242,8 +357,14 @@ public class ResolutionModelImpl extends MinimalEObjectImpl.Container implements
   {
     switch (featureID)
     {
+      case ResolutionModelPackage.RESOLUTION_MODEL__NAME:
+        setName(NAME_EDEFAULT);
+        return;
       case ResolutionModelPackage.RESOLUTION_MODEL__IMPORTS:
         getImports().clear();
+        return;
+      case ResolutionModelPackage.RESOLUTION_MODEL__FEATURE_MODEL:
+        setFeatureModel((FeatureModel)null);
         return;
       case ResolutionModelPackage.RESOLUTION_MODEL__ROSSYSTEM:
         setRossystem((system.System)null);
@@ -265,14 +386,35 @@ public class ResolutionModelImpl extends MinimalEObjectImpl.Container implements
   {
     switch (featureID)
     {
+      case ResolutionModelPackage.RESOLUTION_MODEL__NAME:
+        return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
       case ResolutionModelPackage.RESOLUTION_MODEL__IMPORTS:
         return imports != null && !imports.isEmpty();
+      case ResolutionModelPackage.RESOLUTION_MODEL__FEATURE_MODEL:
+        return featureModel != null;
       case ResolutionModelPackage.RESOLUTION_MODEL__ROSSYSTEM:
         return rossystem != null;
       case ResolutionModelPackage.RESOLUTION_MODEL__RESOLUTIONS:
         return resolutions != null && !resolutions.isEmpty();
     }
     return super.eIsSet(featureID);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public String toString()
+  {
+    if (eIsProxy()) return super.toString();
+
+    StringBuilder result = new StringBuilder(super.toString());
+    result.append(" (name: ");
+    result.append(name);
+    result.append(')');
+    return result.toString();
   }
 
 } //ResolutionModelImpl

@@ -7,6 +7,8 @@ import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EObject;
 
+import uma.caosd.rhea.BasicFMmetamodel.Feature;
+
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Resolution</b></em>'.
@@ -16,7 +18,9 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link eu.coresense.resolution.resolutionModel.Resolution#getReconfigurations <em>Reconfigurations</em>}</li>
+ *   <li>{@link eu.coresense.resolution.resolutionModel.Resolution#getFeature <em>Feature</em>}</li>
+ *   <li>{@link eu.coresense.resolution.resolutionModel.Resolution#getSelection_actions <em>Selection actions</em>}</li>
+ *   <li>{@link eu.coresense.resolution.resolutionModel.Resolution#getDeselection_actions <em>Deselection actions</em>}</li>
  * </ul>
  *
  * @see eu.coresense.resolution.resolutionModel.ResolutionModelPackage#getResolution()
@@ -26,15 +30,49 @@ import org.eclipse.emf.ecore.EObject;
 public interface Resolution extends EObject
 {
   /**
-   * Returns the value of the '<em><b>Reconfigurations</b></em>' containment reference list.
+   * Returns the value of the '<em><b>Feature</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Feature</em>' reference.
+   * @see #setFeature(Feature)
+   * @see eu.coresense.resolution.resolutionModel.ResolutionModelPackage#getResolution_Feature()
+   * @model
+   * @generated
+   */
+  Feature getFeature();
+
+  /**
+   * Sets the value of the '{@link eu.coresense.resolution.resolutionModel.Resolution#getFeature <em>Feature</em>}' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Feature</em>' reference.
+   * @see #getFeature()
+   * @generated
+   */
+  void setFeature(Feature value);
+
+  /**
+   * Returns the value of the '<em><b>Selection actions</b></em>' containment reference list.
    * The list contents are of type {@link eu.coresense.resolution.resolutionModel.Reconfiguration}.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Reconfigurations</em>' containment reference list.
-   * @see eu.coresense.resolution.resolutionModel.ResolutionModelPackage#getResolution_Reconfigurations()
+   * @return the value of the '<em>Selection actions</em>' containment reference list.
+   * @see eu.coresense.resolution.resolutionModel.ResolutionModelPackage#getResolution_Selection_actions()
    * @model containment="true"
    * @generated
    */
-  EList<Reconfiguration> getReconfigurations();
+  EList<Reconfiguration> getSelection_actions();
+
+  /**
+   * Returns the value of the '<em><b>Deselection actions</b></em>' containment reference list.
+   * The list contents are of type {@link eu.coresense.resolution.resolutionModel.Reconfiguration}.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Deselection actions</em>' containment reference list.
+   * @see eu.coresense.resolution.resolutionModel.ResolutionModelPackage#getResolution_Deselection_actions()
+   * @model containment="true"
+   * @generated
+   */
+  EList<Reconfiguration> getDeselection_actions();
 
 } // Resolution

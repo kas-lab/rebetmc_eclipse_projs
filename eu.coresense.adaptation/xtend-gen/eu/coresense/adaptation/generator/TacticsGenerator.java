@@ -3,10 +3,53 @@
  */
 package eu.coresense.adaptation.generator;
 
+import com.google.common.collect.Iterables;
+import eu.coresense.adaptation.tactics.AdaptationRule;
+import eu.coresense.adaptation.tactics.AtomicRule;
+import eu.coresense.adaptation.tactics.Condition;
+import eu.coresense.adaptation.tactics.ConditionAction;
+import eu.coresense.adaptation.tactics.LogicalOperator;
+import eu.coresense.adaptation.tactics.MathOperator;
+import eu.coresense.adaptation.tactics.RuleBody;
+import eu.coresense.adaptation.tactics.TacticsModel;
+import eu.coresense.resolution.resolutionModel.Reconfiguration;
+import eu.coresense.resolution.resolutionModel.Resolution;
+import eu.coresense.resolution.resolutionModel.ResolutionModel;
+import eu.coresense.resolution.resolutionModel.SetParam;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.function.Function;
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.generator.AbstractGenerator;
 import org.eclipse.xtext.generator.IFileSystemAccess2;
 import org.eclipse.xtext.generator.IGeneratorContext;
+import org.eclipse.xtext.xbase.lib.CollectionLiterals;
+import org.eclipse.xtext.xbase.lib.Functions.Function1;
+import org.eclipse.xtext.xbase.lib.InputOutput;
+import org.eclipse.xtext.xbase.lib.IterableExtensions;
+import org.eclipse.xtext.xbase.lib.IteratorExtensions;
+import org.eclipse.xtext.xbase.lib.ListExtensions;
+import org.eclipse.xtext.xbase.lib.ObjectExtensions;
+import org.eclipse.xtext.xbase.lib.Pair;
+import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
+import org.eclipse.xtext.xbase.lib.XbaseGenerated;
+import ros.ParameterArrayType;
+import ros.ParameterBoolean;
+import ros.ParameterBooleanType;
+import ros.ParameterDouble;
+import ros.ParameterDoubleType;
+import ros.ParameterInteger;
+import ros.ParameterSequence;
+import ros.ParameterString;
+import ros.ParameterStringType;
+import ros.ParameterType;
+import ros.ParameterValue;
 
 /**
  * Generates code from your model files on save.
@@ -17,5 +60,512 @@ import org.eclipse.xtext.generator.IGeneratorContext;
 public class TacticsGenerator extends AbstractGenerator {
   @Override
   public void doGenerate(final Resource resource, final IFileSystemAccess2 fsa, final IGeneratorContext context) {
+    Iterable<TacticsModel> _filter = Iterables.<TacticsModel>filter(IteratorExtensions.<EObject>toIterable(resource.getAllContents()), TacticsModel.class);
+    for (final TacticsModel e : _filter) {
+      fsa.generateFile(
+        "x.tql", 
+        this.compile(e));
+    }
+  }
+
+  private final Map<String, Integer> nameMap = CollectionLiterals.<String, Integer>newHashMap();
+
+  private final Map<Condition, String> conditionNames = CollectionLiterals.<Condition, String>newHashMap();
+
+  private final Map<Pair<String, String>, String> logicNames = CollectionLiterals.<Pair<String, String>, String>newHashMap();
+
+  private final Map<SetParam, String> setparamNames = CollectionLiterals.<SetParam, String>newHashMap();
+
+  private final Map<Resolution, String> resolutionNames = CollectionLiterals.<Resolution, String>newHashMap();
+
+  public String makeUniqueName(final String baseName) {
+    String _xblockexpression = null;
+    {
+      Integer _elvis = null;
+      Integer _get = this.nameMap.get(baseName);
+      if (_get != null) {
+        _elvis = _get;
+      } else {
+        _elvis = Integer.valueOf(0);
+      }
+      final Integer count = _elvis;
+      String _xifexpression = null;
+      if (((count).intValue() == 0)) {
+        _xifexpression = baseName;
+      } else {
+        _xifexpression = ((baseName + "_") + count);
+      }
+      final String newName = _xifexpression;
+      this.nameMap.put(baseName, Integer.valueOf(((count).intValue() + 1)));
+      _xblockexpression = newName;
+    }
+    return _xblockexpression;
+  }
+
+  public String name_a_condition(final Condition condition) {
+    final Function<Condition, String> _function = (Condition it) -> {
+      String _lowerCase = condition.getMeasurement().toLowerCase();
+      String _plus = (_lowerCase + "_");
+      String _lowerCase_1 = condition.getOperator().getName().toLowerCase();
+      String _plus_1 = (_plus + _lowerCase_1);
+      return this.makeUniqueName(_plus_1);
+    };
+    return this.conditionNames.computeIfAbsent(condition, _function);
+  }
+
+  private CharSequence inequality(final Condition condition) {
+    CharSequence _xblockexpression = null;
+    {
+      final String measure = condition.getMeasurement();
+      final MathOperator operator = condition.getOperator();
+      final String name = this.name_a_condition(condition);
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("$");
+      _builder.append(name);
+      _builder.append("_val isa Term, has term_name \"");
+      _builder.append(name);
+      _builder.append("_val\", has term_value ");
+      String _value = condition.getValue();
+      _builder.append(_value);
+      _builder.append(";");
+      _builder.newLineIfNotEmpty();
+      _builder.append("$");
+      _builder.append(name);
+      _builder.append(" (lhs_term:$t_measured_");
+      _builder.append(measure);
+      _builder.append(", rhs_term: $");
+      _builder.append(name);
+      _builder.append("_val) isa inequality_expression, has operator \"");
+      _builder.append(operator);
+      _builder.append("\";");
+      _builder.newLineIfNotEmpty();
+      _xblockexpression = _builder;
+    }
+    return _xblockexpression;
+  }
+
+  private String name_a_logop(final LogicalOperator logicalOp, final String lhs_name, final String rhs_name) {
+    String _xblockexpression = null;
+    {
+      final String lhs_short_name = lhs_name.substring(0, Math.min(3, lhs_name.length()));
+      final String rhs_short_name = rhs_name.substring(0, Math.min(3, rhs_name.length()));
+      final Pair<String, String> key = Pair.<String, String>of(lhs_name, rhs_name);
+      final Function<Pair<String, String>, String> _function = (Pair<String, String> it) -> {
+        String _lowerCase = logicalOp.getLiteral().toLowerCase();
+        String _plus = (_lowerCase + "_");
+        String _plus_1 = (_plus + lhs_short_name);
+        String _plus_2 = (_plus_1 + "_");
+        String _plus_3 = (_plus_2 + rhs_short_name);
+        return this.makeUniqueName(_plus_3);
+      };
+      _xblockexpression = this.logicNames.computeIfAbsent(key, _function);
+    }
+    return _xblockexpression;
+  }
+
+  private String name_a_reconfiguration(final Reconfiguration reconf) {
+    if (((reconf.getSet_lc() == null) && (reconf.getSet_param() != null))) {
+      final SetParam set_param = reconf.getSet_param();
+      return this.name_a_setparam(set_param);
+    } else {
+      if (((reconf.getSet_lc() != null) && (reconf.getSet_param() == null))) {
+        return "placeholder_name_a_setlifecycle";
+      }
+    }
+    return "shouldn\'t happen";
+  }
+
+  private String name_a_setparam(final SetParam setp) {
+    final Function<SetParam, String> _function = (SetParam it) -> {
+      String _lowerCase = setp.getParam().getName().toLowerCase();
+      String _plus = ("sp_" + _lowerCase);
+      return this.makeUniqueName(_plus);
+    };
+    return this.setparamNames.computeIfAbsent(setp, _function);
+  }
+
+  private String name_a_resolution(final Resolution res) {
+    final Function<Resolution, String> _function = (Resolution it) -> {
+      String _lowerCase = res.getFeature().getName().toLowerCase();
+      String _plus = (_lowerCase + "_resolution");
+      return this.makeUniqueName(_plus);
+    };
+    return this.resolutionNames.computeIfAbsent(res, _function);
+  }
+
+  private CharSequence logic_op(final LogicalOperator logicalOp, final String lhs_name, final String rhs_name) {
+    CharSequence _xblockexpression = null;
+    {
+      final String name = this.name_a_logop(logicalOp, lhs_name, rhs_name);
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("$");
+      _builder.append(name);
+      _builder.append(" (expression:$");
+      _builder.append(lhs_name);
+      _builder.append(", expression:$");
+      _builder.append(rhs_name);
+      _builder.append(") isa ");
+      String _lowerCase = logicalOp.getLiteral().toLowerCase();
+      _builder.append(_lowerCase);
+      _builder.append("_expression;");
+      _builder.newLineIfNotEmpty();
+      _xblockexpression = _builder;
+    }
+    return _xblockexpression;
+  }
+
+  private Pair<String, CharSequence> buildExpression(final Condition condition) {
+    final String condName = this.name_a_condition(condition);
+    final CharSequence ineqCode = this.inequality(condition);
+    if (((condition.getLogicalOp() == null) || (condition.getSecondTerm() == null))) {
+      return new Pair<String, CharSequence>(condName, ineqCode);
+    }
+    final Pair<String, CharSequence> right = this.buildExpression(condition.getSecondTerm());
+    final String rightName = right.getKey();
+    final CharSequence rightCode = right.getValue();
+    final String logicName = this.name_a_logop(condition.getLogicalOp(), condName, rightName);
+    final CharSequence logicExpr = this.logic_op(condition.getLogicalOp(), condName, rightName);
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append(ineqCode);
+    _builder.newLineIfNotEmpty();
+    _builder.append(rightCode);
+    _builder.newLineIfNotEmpty();
+    _builder.append(logicExpr);
+    _builder.newLineIfNotEmpty();
+    final String fullCode = _builder.toString();
+    return new Pair<String, CharSequence>(logicName, fullCode);
+  }
+
+  private Pair<String, CharSequence> create_antecedent(final Condition condition) {
+    return this.buildExpression(condition);
+  }
+
+  private CharSequence compile(final TacticsModel t) {
+    CharSequence _xblockexpression = null;
+    {
+      final String tacticName = t.getName();
+      final String lc_tacticName = t.getName().toLowerCase();
+      final Function1<Resolution, String> _function = (Resolution it) -> {
+        StringConcatenation _builder = new StringConcatenation();
+        _builder.append("variant_resolution:$");
+        String _name_a_resolution = this.name_a_resolution(it);
+        _builder.append(_name_a_resolution);
+        return _builder.toString();
+      };
+      final String resolutionLines = IterableExtensions.join(ListExtensions.<Resolution, String>map(t.getResolutionModel().getResolutions(), _function), ", ");
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("insert");
+      _builder.newLine();
+      _builder.newLine();
+      _builder.append("$ta_");
+      _builder.append(lc_tacticName);
+      _builder.append(" isa Tactic, has tactic_name \"");
+      _builder.append(tacticName);
+      _builder.append("\", has tactic_period ");
+      int _period = t.getPeriod();
+      _builder.append(_period);
+      _builder.append(";");
+      _builder.newLineIfNotEmpty();
+      _builder.newLine();
+      CharSequence _registerMeasurements = this.registerMeasurements(t.getAdaptationRules());
+      _builder.append(_registerMeasurements);
+      _builder.newLineIfNotEmpty();
+      {
+        EList<AdaptationRule> _adaptationRules = t.getAdaptationRules();
+        for(final AdaptationRule rule : _adaptationRules) {
+          CharSequence _compileRule = this.compileRule(rule, lc_tacticName);
+          _builder.append(_compileRule);
+          _builder.newLineIfNotEmpty();
+        }
+      }
+      CharSequence _compileResolution = this.compileResolution(t.getResolutionModel());
+      _builder.append(_compileResolution);
+      _builder.newLineIfNotEmpty();
+      _builder.append("$res_");
+      String _name = t.getResolutionModel().getName();
+      _builder.append(_name);
+      _builder.append(" (tactic: $ta_");
+      _builder.append(lc_tacticName);
+      _builder.append(", ");
+      _builder.append(resolutionLines);
+      _builder.append(") isa resolution_model, ");
+      _builder.newLineIfNotEmpty();
+      _builder.append("    ");
+      _builder.append("has resolution_model_name \"");
+      String _name_1 = t.getResolutionModel().getName();
+      _builder.append(_name_1, "    ");
+      _builder.append("\", has ros_system \"");
+      String _name_2 = t.getResolutionModel().getRossystem().getName();
+      _builder.append(_name_2, "    ");
+      _builder.append("\";");
+      _builder.newLineIfNotEmpty();
+      _xblockexpression = _builder;
+    }
+    return _xblockexpression;
+  }
+
+  private CharSequence registerMeasurements(final List<AdaptationRule> adap_rules) {
+    CharSequence _xblockexpression = null;
+    {
+      final HashSet<String> unique_measurements = new HashSet<String>();
+      for (final AdaptationRule rule : adap_rules) {
+        if ((rule instanceof AtomicRule)) {
+          RuleBody _ruleBody = ((AtomicRule)rule).getRuleBody();
+          if ((_ruleBody instanceof ConditionAction)) {
+            RuleBody _ruleBody_1 = ((AtomicRule)rule).getRuleBody();
+            final ConditionAction cond_acc = ((ConditionAction) _ruleBody_1);
+            final List<Condition> rule_conditions = this.collectSecondTerms(cond_acc.getCondition());
+            for (final Condition cond : rule_conditions) {
+              unique_measurements.add(cond.getMeasurement());
+            }
+          }
+        }
+      }
+      StringConcatenation _builder = new StringConcatenation();
+      {
+        for(final String mes : unique_measurements) {
+          _builder.append("$t_measured_");
+          _builder.append(mes);
+          _builder.append(" isa Term, has term_name \"t_measured_");
+          _builder.append(mes);
+          _builder.append("\";");
+          _builder.newLineIfNotEmpty();
+        }
+      }
+      _xblockexpression = _builder;
+    }
+    return _xblockexpression;
+  }
+
+  private CharSequence compileResolution(final ResolutionModel resModel) {
+    StringConcatenation _builder = new StringConcatenation();
+    {
+      EList<Resolution> _resolutions = resModel.getResolutions();
+      for(final Resolution resolution : _resolutions) {
+        CharSequence _compileSingleResolution = this.compileSingleResolution(resolution);
+        _builder.append(_compileSingleResolution);
+        _builder.newLineIfNotEmpty();
+      }
+    }
+    return _builder;
+  }
+
+  private CharSequence compileSingleResolution(final Resolution resolution) {
+    CharSequence _xblockexpression = null;
+    {
+      final Reconfiguration acc_one_temp = resolution.getSelection_actions().get(0);
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.newLine();
+      CharSequence _compileReconfiguration = this.compileReconfiguration(acc_one_temp);
+      _builder.append(_compileReconfiguration);
+      _builder.newLineIfNotEmpty();
+      _builder.append("$");
+      String _name_a_resolution = this.name_a_resolution(resolution);
+      _builder.append(_name_a_resolution);
+      _builder.append(" (resolution_action: $");
+      String _name_a_reconfiguration = this.name_a_reconfiguration(acc_one_temp);
+      _builder.append(_name_a_reconfiguration);
+      _builder.append(") isa variant_resolution, has variant_name \"");
+      String _name = resolution.getFeature().getName();
+      _builder.append(_name);
+      _builder.append("\";");
+      _builder.newLineIfNotEmpty();
+      _xblockexpression = _builder;
+    }
+    return _xblockexpression;
+  }
+
+  protected String _ParamValueToString(final ParameterSequence p) {
+    final Function1<ParameterValue, String> _function = (ParameterValue it) -> {
+      return this.ParamValueToString(it);
+    };
+    final List<String> parts = ListExtensions.<ParameterValue, String>map(p.getValue(), _function);
+    String _join = IterableExtensions.join(parts, ", ");
+    String _plus = ("[" + _join);
+    return (_plus + "]");
+  }
+
+  protected String _ParamValueToString(final ParameterBoolean p) {
+    return Boolean.valueOf(p.isValue()).toString();
+  }
+
+  protected String _ParamValueToString(final ParameterInteger p) {
+    return p.getValue().toString();
+  }
+
+  protected String _ParamValueToString(final ParameterDouble p) {
+    return Double.valueOf(p.getValue()).toString();
+  }
+
+  protected String _ParamValueToString(final ParameterString p) {
+    return p.getValue();
+  }
+
+  protected String _ParamValueToString(final ParameterValue p) {
+    String _name = p.getClass().getName();
+    String _plus = ("Unknown parameter type: " + _name);
+    InputOutput.<String>println(_plus);
+    return "ValueTypeNotYetImplementedInGenerator";
+  }
+
+  public String NiceNameParamType(final ParameterType param_type) {
+    String _switchResult = null;
+    boolean _matched = false;
+    if (param_type instanceof ParameterBooleanType) {
+      _matched=true;
+      _switchResult = "boolean";
+    }
+    if (!_matched) {
+      if (param_type instanceof ParameterDoubleType) {
+        _matched=true;
+        _switchResult = "double";
+      }
+    }
+    if (!_matched) {
+      if (param_type instanceof ParameterStringType) {
+        _matched=true;
+        _switchResult = "string";
+      }
+    }
+    if (!_matched) {
+      if (param_type instanceof ParameterArrayType) {
+        _matched=true;
+        String _NiceNameParamType = this.NiceNameParamType(((ParameterArrayType)param_type).getType());
+        _switchResult = (_NiceNameParamType + "_array");
+      }
+    }
+    return _switchResult;
+  }
+
+  private CharSequence compileReconfiguration(final Reconfiguration reconfig) {
+    CharSequence _xifexpression = null;
+    if (((reconfig.getSet_lc() == null) && (reconfig.getSet_param() != null))) {
+      CharSequence _xblockexpression = null;
+      {
+        final SetParam set_param = reconfig.getSet_param();
+        final String node_name = set_param.getNode().getName();
+        final ParameterValue param_val = set_param.getValue();
+        final String param_name = set_param.getParam().getName();
+        final String param_str = this.ParamValueToString(param_val);
+        final String param_type = this.NiceNameParamType(set_param.getParam().getFrom().getType());
+        InputOutput.<String>print("BRRR");
+        InputOutput.<String>println(param_type);
+        InputOutput.<String>print("CRRR");
+        StringConcatenation _builder = new StringConcatenation();
+        _builder.append("$");
+        String _name_a_setparam = this.name_a_setparam(set_param);
+        _builder.append(_name_a_setparam);
+        _builder.append(" isa SetParameter, has node_name \"");
+        _builder.append(node_name);
+        _builder.append("\", has parameter_name \"");
+        _builder.append(param_name);
+        _builder.append("\", has parameter-value \"");
+        _builder.append(param_str);
+        _builder.append("\", has parameter-type \"");
+        _builder.append(param_type);
+        _builder.append("\";");
+        _builder.newLineIfNotEmpty();
+        _xblockexpression = _builder;
+      }
+      _xifexpression = _xblockexpression;
+    } else {
+      CharSequence _xifexpression_1 = null;
+      if (((reconfig.getSet_lc() != null) && (reconfig.getSet_param() == null))) {
+        StringConcatenation _builder = new StringConcatenation();
+        _builder.append("placeholderrr");
+        _builder.newLine();
+        _xifexpression_1 = _builder;
+      } else {
+        System.out.println("SOMETHING WRONG RECONFIG.!");
+      }
+      _xifexpression = _xifexpression_1;
+    }
+    return _xifexpression;
+  }
+
+  private CharSequence compileRule(final AdaptationRule c, final String lc_tacticName) {
+    CharSequence _xifexpression = null;
+    if ((c instanceof AtomicRule)) {
+      CharSequence _xblockexpression = null;
+      {
+        final String ruleName = ((AtomicRule)c).getName();
+        final String lc_ruleName = ((AtomicRule)c).getName().toLowerCase();
+        final String ruleVarName = ((AtomicRule)c).getRuleBody().getAtomicAction().getVariant().getName();
+        CharSequence _xifexpression_1 = null;
+        RuleBody _ruleBody = ((AtomicRule)c).getRuleBody();
+        if ((_ruleBody instanceof ConditionAction)) {
+          CharSequence _xblockexpression_1 = null;
+          {
+            RuleBody _ruleBody_1 = ((AtomicRule)c).getRuleBody();
+            final ConditionAction con = ((ConditionAction) _ruleBody_1);
+            final Pair<String, CharSequence> pair = this.create_antecedent(con.getCondition());
+            final String ant_name = pair.getKey();
+            final CharSequence ant = pair.getValue();
+            StringConcatenation _builder = new StringConcatenation();
+            _builder.newLine();
+            _builder.append("$t_variant_");
+            String _lowerCase = ruleVarName.toLowerCase();
+            _builder.append(_lowerCase);
+            _builder.append(" isa Term, has term_name \"");
+            _builder.append(ruleVarName);
+            _builder.append("\";");
+            _builder.newLineIfNotEmpty();
+            _builder.append(ant);
+            _builder.newLineIfNotEmpty();
+            _builder.append("$tactic_rule_");
+            _builder.append(lc_ruleName);
+            _builder.append(" (tactic:$ta_");
+            _builder.append(lc_tacticName);
+            _builder.append(", antecedent:$");
+            _builder.append(ant_name);
+            _builder.append(", consequent:$t_variant_");
+            String _lowerCase_1 = ruleVarName.toLowerCase();
+            _builder.append(_lowerCase_1);
+            _builder.append("  ) isa tactic_rule, has rule_name \"");
+            _builder.append(ruleName);
+            _builder.append("\";");
+            _builder.newLineIfNotEmpty();
+            _xblockexpression_1 = _builder;
+          }
+          _xifexpression_1 = _xblockexpression_1;
+        }
+        _xblockexpression = _xifexpression_1;
+      }
+      _xifexpression = _xblockexpression;
+    }
+    return _xifexpression;
+  }
+
+  public List<Condition> collectSecondTerms(final Condition condition) {
+    if ((condition == null)) {
+      return CollectionLiterals.<Condition>emptyList();
+    } else {
+      ArrayList<Condition> _newArrayList = CollectionLiterals.<Condition>newArrayList();
+      final Procedure1<ArrayList<Condition>> _function = (ArrayList<Condition> it) -> {
+        it.add(condition);
+        it.addAll(this.collectSecondTerms(condition.getSecondTerm()));
+      };
+      return ObjectExtensions.<ArrayList<Condition>>operator_doubleArrow(_newArrayList, _function);
+    }
+  }
+
+  @XbaseGenerated
+  public String ParamValueToString(final ParameterValue p) {
+    if (p instanceof ParameterBoolean) {
+      return _ParamValueToString((ParameterBoolean)p);
+    } else if (p instanceof ParameterDouble) {
+      return _ParamValueToString((ParameterDouble)p);
+    } else if (p instanceof ParameterInteger) {
+      return _ParamValueToString((ParameterInteger)p);
+    } else if (p instanceof ParameterSequence) {
+      return _ParamValueToString((ParameterSequence)p);
+    } else if (p instanceof ParameterString) {
+      return _ParamValueToString((ParameterString)p);
+    } else if (p != null) {
+      return _ParamValueToString(p);
+    } else {
+      throw new IllegalArgumentException("Unhandled parameter types: " +
+        Arrays.<Object>asList(p).toString());
+    }
   }
 }

@@ -8,8 +8,11 @@ import com.google.inject.Singleton;
 import de.fraunhofer.ipa.ros.services.BasicsGrammarAccess;
 import java.util.List;
 import org.eclipse.xtext.Action;
+import org.eclipse.xtext.Alternatives;
 import org.eclipse.xtext.Assignment;
 import org.eclipse.xtext.CrossReference;
+import org.eclipse.xtext.EnumLiteralDeclaration;
+import org.eclipse.xtext.EnumRule;
 import org.eclipse.xtext.Grammar;
 import org.eclipse.xtext.GrammarUtil;
 import org.eclipse.xtext.Group;
@@ -27,89 +30,153 @@ public class ResolutionModelGrammarAccess extends AbstractElementFinder.Abstract
 	public class ResolutionModelElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "eu.coresense.resolution.ResolutionModel.ResolutionModel");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Assignment cImportsAssignment_0 = (Assignment)cGroup.eContents().get(0);
-		private final RuleCall cImportsImportParserRuleCall_0_0 = (RuleCall)cImportsAssignment_0.eContents().get(0);
-		private final Keyword cRos_systemKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Assignment cRossystemAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final CrossReference cRossystemSystemCrossReference_2_0 = (CrossReference)cRossystemAssignment_2.eContents().get(0);
-		private final RuleCall cRossystemSystemIDTerminalRuleCall_2_0_1 = (RuleCall)cRossystemSystemCrossReference_2_0.eContents().get(1);
-		private final Keyword cSemicolonKeyword_3 = (Keyword)cGroup.eContents().get(3);
-		private final Keyword cResolutionsKeyword_4 = (Keyword)cGroup.eContents().get(4);
-		private final Assignment cResolutionsAssignment_5 = (Assignment)cGroup.eContents().get(5);
-		private final RuleCall cResolutionsResolutionParserRuleCall_5_0 = (RuleCall)cResolutionsAssignment_5.eContents().get(0);
+		private final Keyword cNameKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
+		private final Keyword cSemicolonKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Assignment cImportsAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cImportsImportParserRuleCall_3_0 = (RuleCall)cImportsAssignment_3.eContents().get(0);
+		private final Keyword cVariability_modelKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		private final Assignment cFeatureModelAssignment_5 = (Assignment)cGroup.eContents().get(5);
+		private final CrossReference cFeatureModelFeatureModelCrossReference_5_0 = (CrossReference)cFeatureModelAssignment_5.eContents().get(0);
+		private final RuleCall cFeatureModelFeatureModelIDTerminalRuleCall_5_0_1 = (RuleCall)cFeatureModelFeatureModelCrossReference_5_0.eContents().get(1);
+		private final Keyword cSemicolonKeyword_6 = (Keyword)cGroup.eContents().get(6);
+		private final Keyword cRos_systemKeyword_7 = (Keyword)cGroup.eContents().get(7);
+		private final Assignment cRossystemAssignment_8 = (Assignment)cGroup.eContents().get(8);
+		private final CrossReference cRossystemSystemCrossReference_8_0 = (CrossReference)cRossystemAssignment_8.eContents().get(0);
+		private final RuleCall cRossystemSystemIDTerminalRuleCall_8_0_1 = (RuleCall)cRossystemSystemCrossReference_8_0.eContents().get(1);
+		private final Keyword cSemicolonKeyword_9 = (Keyword)cGroup.eContents().get(9);
+		private final Keyword cResolutionsKeyword_10 = (Keyword)cGroup.eContents().get(10);
+		private final Assignment cResolutionsAssignment_11 = (Assignment)cGroup.eContents().get(11);
+		private final RuleCall cResolutionsResolutionParserRuleCall_11_0 = (RuleCall)cResolutionsAssignment_11.eContents().get(0);
 		
 		//ResolutionModel:
+		//    'name' name=ID ';'
 		//    (imports+=Import*)
+		//    'variability_model' featureModel=[BasicFMmetamodel::FeatureModel]';'
 		//    'ros_system' rossystem=[rossys::System]';'
 		//    'resolutions' resolutions+=Resolution*;
 		@Override public ParserRule getRule() { return rule; }
 		
+		//'name' name=ID ';'
 		//(imports+=Import*)
+		//'variability_model' featureModel=[BasicFMmetamodel::FeatureModel]';'
 		//'ros_system' rossystem=[rossys::System]';'
 		//'resolutions' resolutions+=Resolution*
 		public Group getGroup() { return cGroup; }
 		
-		//(imports+=Import*)
-		public Assignment getImportsAssignment_0() { return cImportsAssignment_0; }
+		//'name'
+		public Keyword getNameKeyword_0() { return cNameKeyword_0; }
 		
-		//Import
-		public RuleCall getImportsImportParserRuleCall_0_0() { return cImportsImportParserRuleCall_0_0; }
-		
-		//'ros_system'
-		public Keyword getRos_systemKeyword_1() { return cRos_systemKeyword_1; }
-		
-		//rossystem=[rossys::System]
-		public Assignment getRossystemAssignment_2() { return cRossystemAssignment_2; }
-		
-		//[rossys::System]
-		public CrossReference getRossystemSystemCrossReference_2_0() { return cRossystemSystemCrossReference_2_0; }
+		//name=ID
+		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
 		
 		//ID
-		public RuleCall getRossystemSystemIDTerminalRuleCall_2_0_1() { return cRossystemSystemIDTerminalRuleCall_2_0_1; }
+		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
 		
 		//';'
-		public Keyword getSemicolonKeyword_3() { return cSemicolonKeyword_3; }
+		public Keyword getSemicolonKeyword_2() { return cSemicolonKeyword_2; }
+		
+		//(imports+=Import*)
+		public Assignment getImportsAssignment_3() { return cImportsAssignment_3; }
+		
+		//Import
+		public RuleCall getImportsImportParserRuleCall_3_0() { return cImportsImportParserRuleCall_3_0; }
+		
+		//'variability_model'
+		public Keyword getVariability_modelKeyword_4() { return cVariability_modelKeyword_4; }
+		
+		//featureModel=[BasicFMmetamodel::FeatureModel]
+		public Assignment getFeatureModelAssignment_5() { return cFeatureModelAssignment_5; }
+		
+		//[BasicFMmetamodel::FeatureModel]
+		public CrossReference getFeatureModelFeatureModelCrossReference_5_0() { return cFeatureModelFeatureModelCrossReference_5_0; }
+		
+		//ID
+		public RuleCall getFeatureModelFeatureModelIDTerminalRuleCall_5_0_1() { return cFeatureModelFeatureModelIDTerminalRuleCall_5_0_1; }
+		
+		//';'
+		public Keyword getSemicolonKeyword_6() { return cSemicolonKeyword_6; }
+		
+		//'ros_system'
+		public Keyword getRos_systemKeyword_7() { return cRos_systemKeyword_7; }
+		
+		//rossystem=[rossys::System]
+		public Assignment getRossystemAssignment_8() { return cRossystemAssignment_8; }
+		
+		//[rossys::System]
+		public CrossReference getRossystemSystemCrossReference_8_0() { return cRossystemSystemCrossReference_8_0; }
+		
+		//ID
+		public RuleCall getRossystemSystemIDTerminalRuleCall_8_0_1() { return cRossystemSystemIDTerminalRuleCall_8_0_1; }
+		
+		//';'
+		public Keyword getSemicolonKeyword_9() { return cSemicolonKeyword_9; }
 		
 		//'resolutions'
-		public Keyword getResolutionsKeyword_4() { return cResolutionsKeyword_4; }
+		public Keyword getResolutionsKeyword_10() { return cResolutionsKeyword_10; }
 		
 		//resolutions+=Resolution*
-		public Assignment getResolutionsAssignment_5() { return cResolutionsAssignment_5; }
+		public Assignment getResolutionsAssignment_11() { return cResolutionsAssignment_11; }
 		
 		//Resolution
-		public RuleCall getResolutionsResolutionParserRuleCall_5_0() { return cResolutionsResolutionParserRuleCall_5_0; }
+		public RuleCall getResolutionsResolutionParserRuleCall_11_0() { return cResolutionsResolutionParserRuleCall_11_0; }
 	}
 	public class ResolutionElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "eu.coresense.resolution.ResolutionModel.Resolution");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Action cResolutionAction_0 = (Action)cGroup.eContents().get(0);
-		private final RuleCall cSTRINGTerminalRuleCall_1 = (RuleCall)cGroup.eContents().get(1);
+		private final Assignment cFeatureAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final CrossReference cFeatureFeatureCrossReference_1_0 = (CrossReference)cFeatureAssignment_1.eContents().get(0);
+		private final RuleCall cFeatureFeatureIDTerminalRuleCall_1_0_1 = (RuleCall)cFeatureFeatureCrossReference_1_0.eContents().get(1);
 		private final Keyword cColonKeyword_2 = (Keyword)cGroup.eContents().get(2);
-		private final Assignment cReconfigurationsAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final RuleCall cReconfigurationsReconfigurationParserRuleCall_3_0 = (RuleCall)cReconfigurationsAssignment_3.eContents().get(0);
+		private final Keyword cSelectKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		private final Assignment cSelection_actionsAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final RuleCall cSelection_actionsReconfigurationParserRuleCall_4_0 = (RuleCall)cSelection_actionsAssignment_4.eContents().get(0);
+		private final Keyword cDeselectKeyword_5 = (Keyword)cGroup.eContents().get(5);
+		private final Assignment cDeselection_actionsAssignment_6 = (Assignment)cGroup.eContents().get(6);
+		private final RuleCall cDeselection_actionsReconfigurationParserRuleCall_6_0 = (RuleCall)cDeselection_actionsAssignment_6.eContents().get(0);
 		
 		//Resolution:
-		//    {Resolution} STRING ':'reconfigurations+=Reconfiguration*
+		//    {Resolution} feature=[BasicFMmetamodel::Feature] ':' 'select:' selection_actions+=Reconfiguration* 'deselect:' deselection_actions+=Reconfiguration*
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//{Resolution} STRING ':'reconfigurations+=Reconfiguration*
+		//{Resolution} feature=[BasicFMmetamodel::Feature] ':' 'select:' selection_actions+=Reconfiguration* 'deselect:' deselection_actions+=Reconfiguration*
 		public Group getGroup() { return cGroup; }
 		
 		//{Resolution}
 		public Action getResolutionAction_0() { return cResolutionAction_0; }
 		
-		//STRING
-		public RuleCall getSTRINGTerminalRuleCall_1() { return cSTRINGTerminalRuleCall_1; }
+		//feature=[BasicFMmetamodel::Feature]
+		public Assignment getFeatureAssignment_1() { return cFeatureAssignment_1; }
+		
+		//[BasicFMmetamodel::Feature]
+		public CrossReference getFeatureFeatureCrossReference_1_0() { return cFeatureFeatureCrossReference_1_0; }
+		
+		//ID
+		public RuleCall getFeatureFeatureIDTerminalRuleCall_1_0_1() { return cFeatureFeatureIDTerminalRuleCall_1_0_1; }
 		
 		//':'
 		public Keyword getColonKeyword_2() { return cColonKeyword_2; }
 		
-		//reconfigurations+=Reconfiguration*
-		public Assignment getReconfigurationsAssignment_3() { return cReconfigurationsAssignment_3; }
+		//'select:'
+		public Keyword getSelectKeyword_3() { return cSelectKeyword_3; }
+		
+		//selection_actions+=Reconfiguration*
+		public Assignment getSelection_actionsAssignment_4() { return cSelection_actionsAssignment_4; }
 		
 		//Reconfiguration
-		public RuleCall getReconfigurationsReconfigurationParserRuleCall_3_0() { return cReconfigurationsReconfigurationParserRuleCall_3_0; }
+		public RuleCall getSelection_actionsReconfigurationParserRuleCall_4_0() { return cSelection_actionsReconfigurationParserRuleCall_4_0; }
+		
+		//'deselect:'
+		public Keyword getDeselectKeyword_5() { return cDeselectKeyword_5; }
+		
+		//deselection_actions+=Reconfiguration*
+		public Assignment getDeselection_actionsAssignment_6() { return cDeselection_actionsAssignment_6; }
+		
+		//Reconfiguration
+		public RuleCall getDeselection_actionsReconfigurationParserRuleCall_6_0() { return cDeselection_actionsReconfigurationParserRuleCall_6_0; }
 	}
 	public class ImportElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "eu.coresense.resolution.ResolutionModel.Import");
@@ -141,15 +208,31 @@ public class ResolutionModelGrammarAccess extends AbstractElementFinder.Abstract
 	}
 	public class ReconfigurationElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "eu.coresense.resolution.ResolutionModel.Reconfiguration");
-		private final RuleCall cSetParamParserRuleCall = (RuleCall)rule.eContents().get(1);
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final Assignment cSet_paramAssignment_0 = (Assignment)cAlternatives.eContents().get(0);
+		private final RuleCall cSet_paramSetParamParserRuleCall_0_0 = (RuleCall)cSet_paramAssignment_0.eContents().get(0);
+		private final Assignment cSet_lcAssignment_1 = (Assignment)cAlternatives.eContents().get(1);
+		private final RuleCall cSet_lcSetLifecycleParserRuleCall_1_0 = (RuleCall)cSet_lcAssignment_1.eContents().get(0);
 		
 		//Reconfiguration:
-		//    SetParam
+		//    set_param=SetParam | set_lc=SetLifecycle
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
+		//set_param=SetParam | set_lc=SetLifecycle
+		public Alternatives getAlternatives() { return cAlternatives; }
+		
+		//set_param=SetParam
+		public Assignment getSet_paramAssignment_0() { return cSet_paramAssignment_0; }
+		
 		//SetParam
-		public RuleCall getSetParamParserRuleCall() { return cSetParamParserRuleCall; }
+		public RuleCall getSet_paramSetParamParserRuleCall_0_0() { return cSet_paramSetParamParserRuleCall_0_0; }
+		
+		//set_lc=SetLifecycle
+		public Assignment getSet_lcAssignment_1() { return cSet_lcAssignment_1; }
+		
+		//SetLifecycle
+		public RuleCall getSet_lcSetLifecycleParserRuleCall_1_0() { return cSet_lcSetLifecycleParserRuleCall_1_0; }
 	}
 	public class SetParamElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "eu.coresense.resolution.ResolutionModel.SetParam");
@@ -211,13 +294,102 @@ public class ResolutionModelGrammarAccess extends AbstractElementFinder.Abstract
 		//')'
 		public Keyword getRightParenthesisKeyword_6() { return cRightParenthesisKeyword_6; }
 	}
+	public class SetLifecycleElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "eu.coresense.resolution.ResolutionModel.SetLifecycle");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cSetLifecycleStateKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cNodeAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final CrossReference cNodeRosNodeCrossReference_1_0 = (CrossReference)cNodeAssignment_1.eContents().get(0);
+		private final RuleCall cNodeRosNodeIDTerminalRuleCall_1_0_1 = (RuleCall)cNodeRosNodeCrossReference_1_0.eContents().get(1);
+		private final Keyword cCommaKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Assignment cStateAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cStateLifecycleStateEnumRuleCall_3_0 = (RuleCall)cStateAssignment_3.eContents().get(0);
+		private final Keyword cRightParenthesisKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		
+		//SetLifecycle:
+		//    'SetLifecycleState(' node=[rossys::RosNode] ',' state=LifecycleState ')'
+		//;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//'SetLifecycleState(' node=[rossys::RosNode] ',' state=LifecycleState ')'
+		public Group getGroup() { return cGroup; }
+		
+		//'SetLifecycleState('
+		public Keyword getSetLifecycleStateKeyword_0() { return cSetLifecycleStateKeyword_0; }
+		
+		//node=[rossys::RosNode]
+		public Assignment getNodeAssignment_1() { return cNodeAssignment_1; }
+		
+		//[rossys::RosNode]
+		public CrossReference getNodeRosNodeCrossReference_1_0() { return cNodeRosNodeCrossReference_1_0; }
+		
+		//ID
+		public RuleCall getNodeRosNodeIDTerminalRuleCall_1_0_1() { return cNodeRosNodeIDTerminalRuleCall_1_0_1; }
+		
+		//','
+		public Keyword getCommaKeyword_2() { return cCommaKeyword_2; }
+		
+		//state=LifecycleState
+		public Assignment getStateAssignment_3() { return cStateAssignment_3; }
+		
+		//LifecycleState
+		public RuleCall getStateLifecycleStateEnumRuleCall_3_0() { return cStateLifecycleStateEnumRuleCall_3_0; }
+		
+		//')'
+		public Keyword getRightParenthesisKeyword_4() { return cRightParenthesisKeyword_4; }
+	}
 	
+	public class LifecycleStateElements extends AbstractElementFinder.AbstractEnumRuleElementFinder {
+		private final EnumRule rule = (EnumRule) GrammarUtil.findRuleForName(getGrammar(), "eu.coresense.resolution.ResolutionModel.LifecycleState");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final EnumLiteralDeclaration cUNCONFIGUREDEnumLiteralDeclaration_0 = (EnumLiteralDeclaration)cAlternatives.eContents().get(0);
+		private final Keyword cUNCONFIGUREDUNCONFIGUREDKeyword_0_0 = (Keyword)cUNCONFIGUREDEnumLiteralDeclaration_0.eContents().get(0);
+		private final EnumLiteralDeclaration cINACTIVEEnumLiteralDeclaration_1 = (EnumLiteralDeclaration)cAlternatives.eContents().get(1);
+		private final Keyword cINACTIVEINACTIVEKeyword_1_0 = (Keyword)cINACTIVEEnumLiteralDeclaration_1.eContents().get(0);
+		private final EnumLiteralDeclaration cACTIVEEnumLiteralDeclaration_2 = (EnumLiteralDeclaration)cAlternatives.eContents().get(2);
+		private final Keyword cACTIVEACTIVEKeyword_2_0 = (Keyword)cACTIVEEnumLiteralDeclaration_2.eContents().get(0);
+		private final EnumLiteralDeclaration cFINALIZEDEnumLiteralDeclaration_3 = (EnumLiteralDeclaration)cAlternatives.eContents().get(3);
+		private final Keyword cFINALIZEDFINALIZEDKeyword_3_0 = (Keyword)cFINALIZEDEnumLiteralDeclaration_3.eContents().get(0);
+		
+		//enum LifecycleState returns LifecycleState:
+		//                UNCONFIGURED = 'UNCONFIGURED' | INACTIVE = 'INACTIVE' | ACTIVE = 'ACTIVE' | FINALIZED = 'FINALIZED';
+		public EnumRule getRule() { return rule; }
+		
+		//UNCONFIGURED = 'UNCONFIGURED' | INACTIVE = 'INACTIVE' | ACTIVE = 'ACTIVE' | FINALIZED = 'FINALIZED'
+		public Alternatives getAlternatives() { return cAlternatives; }
+		
+		//UNCONFIGURED = 'UNCONFIGURED'
+		public EnumLiteralDeclaration getUNCONFIGUREDEnumLiteralDeclaration_0() { return cUNCONFIGUREDEnumLiteralDeclaration_0; }
+		
+		//'UNCONFIGURED'
+		public Keyword getUNCONFIGUREDUNCONFIGUREDKeyword_0_0() { return cUNCONFIGUREDUNCONFIGUREDKeyword_0_0; }
+		
+		//INACTIVE = 'INACTIVE'
+		public EnumLiteralDeclaration getINACTIVEEnumLiteralDeclaration_1() { return cINACTIVEEnumLiteralDeclaration_1; }
+		
+		//'INACTIVE'
+		public Keyword getINACTIVEINACTIVEKeyword_1_0() { return cINACTIVEINACTIVEKeyword_1_0; }
+		
+		//ACTIVE = 'ACTIVE'
+		public EnumLiteralDeclaration getACTIVEEnumLiteralDeclaration_2() { return cACTIVEEnumLiteralDeclaration_2; }
+		
+		//'ACTIVE'
+		public Keyword getACTIVEACTIVEKeyword_2_0() { return cACTIVEACTIVEKeyword_2_0; }
+		
+		//FINALIZED = 'FINALIZED'
+		public EnumLiteralDeclaration getFINALIZEDEnumLiteralDeclaration_3() { return cFINALIZEDEnumLiteralDeclaration_3; }
+		
+		//'FINALIZED'
+		public Keyword getFINALIZEDFINALIZEDKeyword_3_0() { return cFINALIZEDFINALIZEDKeyword_3_0; }
+	}
 	
 	private final ResolutionModelElements pResolutionModel;
 	private final ResolutionElements pResolution;
 	private final ImportElements pImport;
 	private final ReconfigurationElements pReconfiguration;
 	private final SetParamElements pSetParam;
+	private final SetLifecycleElements pSetLifecycle;
+	private final LifecycleStateElements eLifecycleState;
 	
 	private final Grammar grammar;
 	
@@ -237,6 +409,8 @@ public class ResolutionModelGrammarAccess extends AbstractElementFinder.Abstract
 		this.pImport = new ImportElements();
 		this.pReconfiguration = new ReconfigurationElements();
 		this.pSetParam = new SetParamElements();
+		this.pSetLifecycle = new SetLifecycleElements();
+		this.eLifecycleState = new LifecycleStateElements();
 	}
 	
 	protected Grammar internalFindGrammar(GrammarProvider grammarProvider) {
@@ -271,7 +445,9 @@ public class ResolutionModelGrammarAccess extends AbstractElementFinder.Abstract
 
 	
 	//ResolutionModel:
+	//    'name' name=ID ';'
 	//    (imports+=Import*)
+	//    'variability_model' featureModel=[BasicFMmetamodel::FeatureModel]';'
 	//    'ros_system' rossystem=[rossys::System]';'
 	//    'resolutions' resolutions+=Resolution*;
 	public ResolutionModelElements getResolutionModelAccess() {
@@ -283,7 +459,7 @@ public class ResolutionModelGrammarAccess extends AbstractElementFinder.Abstract
 	}
 	
 	//Resolution:
-	//    {Resolution} STRING ':'reconfigurations+=Reconfiguration*
+	//    {Resolution} feature=[BasicFMmetamodel::Feature] ':' 'select:' selection_actions+=Reconfiguration* 'deselect:' deselection_actions+=Reconfiguration*
 	//;
 	public ResolutionElements getResolutionAccess() {
 		return pResolution;
@@ -305,7 +481,7 @@ public class ResolutionModelGrammarAccess extends AbstractElementFinder.Abstract
 	}
 	
 	//Reconfiguration:
-	//    SetParam
+	//    set_param=SetParam | set_lc=SetLifecycle
 	//;
 	public ReconfigurationElements getReconfigurationAccess() {
 		return pReconfiguration;
@@ -324,6 +500,27 @@ public class ResolutionModelGrammarAccess extends AbstractElementFinder.Abstract
 	
 	public ParserRule getSetParamRule() {
 		return getSetParamAccess().getRule();
+	}
+	
+	//SetLifecycle:
+	//    'SetLifecycleState(' node=[rossys::RosNode] ',' state=LifecycleState ')'
+	//;
+	public SetLifecycleElements getSetLifecycleAccess() {
+		return pSetLifecycle;
+	}
+	
+	public ParserRule getSetLifecycleRule() {
+		return getSetLifecycleAccess().getRule();
+	}
+	
+	//enum LifecycleState returns LifecycleState:
+	//                UNCONFIGURED = 'UNCONFIGURED' | INACTIVE = 'INACTIVE' | ACTIVE = 'ACTIVE' | FINALIZED = 'FINALIZED';
+	public LifecycleStateElements getLifecycleStateAccess() {
+		return eLifecycleState;
+	}
+	
+	public EnumRule getLifecycleStateRule() {
+		return getLifecycleStateAccess().getRule();
 	}
 	
 	/////////////////////

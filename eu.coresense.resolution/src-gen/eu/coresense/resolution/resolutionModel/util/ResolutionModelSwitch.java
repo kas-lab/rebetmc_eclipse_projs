@@ -105,7 +105,13 @@ public class ResolutionModelSwitch<T> extends Switch<T>
       {
         SetParam setParam = (SetParam)theEObject;
         T result = caseSetParam(setParam);
-        if (result == null) result = caseReconfiguration(setParam);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case ResolutionModelPackage.SET_LIFECYCLE:
+      {
+        SetLifecycle setLifecycle = (SetLifecycle)theEObject;
+        T result = caseSetLifecycle(setLifecycle);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -189,6 +195,22 @@ public class ResolutionModelSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseSetParam(SetParam object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Set Lifecycle</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Set Lifecycle</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseSetLifecycle(SetLifecycle object)
   {
     return null;
   }

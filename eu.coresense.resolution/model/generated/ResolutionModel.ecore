@@ -3,24 +3,44 @@
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="resolutionModel" nsURI="http://coresense.eu/resolution/ResolutionModel"
     nsPrefix="resolutionModel">
   <eClassifiers xsi:type="ecore:EClass" name="ResolutionModel">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="imports" upperBound="-1"
         eType="#//Import" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="featureModel" eType="ecore:EClass platform:/resource/fms.metamodel/model/BasicFMmetamodel.ecore#//FeatureModel"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="rossystem" eType="ecore:EClass platform:/resource/de.fraunhofer.ipa.rossystem/model/rossystem.ecore#//System"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="resolutions" upperBound="-1"
         eType="#//Resolution" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Resolution">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="reconfigurations" upperBound="-1"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="feature" eType="ecore:EClass platform:/resource/fms.metamodel/model/BasicFMmetamodel.ecore#//Feature"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="selection_actions" upperBound="-1"
+        eType="#//Reconfiguration" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="deselection_actions" upperBound="-1"
         eType="#//Reconfiguration" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Import">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="importURI" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Reconfiguration"/>
-  <eClassifiers xsi:type="ecore:EClass" name="SetParam" eSuperTypes="#//Reconfiguration">
+  <eClassifiers xsi:type="ecore:EClass" name="Reconfiguration">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="set_param" eType="#//SetParam"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="set_lc" eType="#//SetLifecycle"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SetParam">
     <eStructuralFeatures xsi:type="ecore:EReference" name="node" eType="ecore:EClass platform:/resource/de.fraunhofer.ipa.rossystem/model/rossystem.ecore#//RosNode"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="param" eType="ecore:EClass platform:/resource/de.fraunhofer.ipa.rossystem/model/rossystem.ecore#//RosParameter"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="value" eType="ecore:EClass platform:/resource/de.fraunhofer.ipa.ros/model/ros.ecore#//ParameterValue"
         containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SetLifecycle">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="node" eType="ecore:EClass platform:/resource/de.fraunhofer.ipa.rossystem/model/rossystem.ecore#//RosNode"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="state" eType="#//LifecycleState"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="LifecycleState">
+    <eLiterals name="UNCONFIGURED" literal="UNCONFIGURED"/>
+    <eLiterals name="INACTIVE" value="1" literal="INACTIVE"/>
+    <eLiterals name="ACTIVE" value="2" literal="ACTIVE"/>
+    <eLiterals name="FINALIZED" value="3" literal="FINALIZED"/>
   </eClassifiers>
 </ecore:EPackage>

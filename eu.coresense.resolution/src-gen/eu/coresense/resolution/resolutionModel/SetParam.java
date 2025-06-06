@@ -3,6 +3,8 @@
  */
 package eu.coresense.resolution.resolutionModel;
 
+import org.eclipse.emf.ecore.EObject;
+
 import ros.ParameterValue;
 
 import system.RosNode;
@@ -26,7 +28,7 @@ import system.RosParameter;
  * @model
  * @generated
  */
-public interface SetParam extends Reconfiguration
+public interface SetParam extends EObject
 {
   /**
    * Returns the value of the '<em><b>Node</b></em>' reference.

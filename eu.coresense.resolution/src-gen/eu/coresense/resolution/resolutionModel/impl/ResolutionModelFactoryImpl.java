@@ -6,6 +6,7 @@ package eu.coresense.resolution.resolutionModel.impl;
 import eu.coresense.resolution.resolutionModel.*;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 
@@ -70,8 +71,43 @@ public class ResolutionModelFactoryImpl extends EFactoryImpl implements Resoluti
       case ResolutionModelPackage.IMPORT: return createImport();
       case ResolutionModelPackage.RECONFIGURATION: return createReconfiguration();
       case ResolutionModelPackage.SET_PARAM: return createSetParam();
+      case ResolutionModelPackage.SET_LIFECYCLE: return createSetLifecycle();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
+    }
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Object createFromString(EDataType eDataType, String initialValue)
+  {
+    switch (eDataType.getClassifierID())
+    {
+      case ResolutionModelPackage.LIFECYCLE_STATE:
+        return createLifecycleStateFromString(eDataType, initialValue);
+      default:
+        throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
+    }
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public String convertToString(EDataType eDataType, Object instanceValue)
+  {
+    switch (eDataType.getClassifierID())
+    {
+      case ResolutionModelPackage.LIFECYCLE_STATE:
+        return convertLifecycleStateToString(eDataType, instanceValue);
+      default:
+        throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
     }
   }
 
@@ -133,6 +169,40 @@ public class ResolutionModelFactoryImpl extends EFactoryImpl implements Resoluti
   {
     SetParamImpl setParam = new SetParamImpl();
     return setParam;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public SetLifecycle createSetLifecycle()
+  {
+    SetLifecycleImpl setLifecycle = new SetLifecycleImpl();
+    return setLifecycle;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public LifecycleState createLifecycleStateFromString(EDataType eDataType, String initialValue)
+  {
+    LifecycleState result = LifecycleState.get(initialValue);
+    if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+    return result;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public String convertLifecycleStateToString(EDataType eDataType, Object instanceValue)
+  {
+    return instanceValue == null ? null : instanceValue.toString();
   }
 
   /**

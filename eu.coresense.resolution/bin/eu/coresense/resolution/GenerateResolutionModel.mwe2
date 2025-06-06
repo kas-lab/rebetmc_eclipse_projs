@@ -34,6 +34,8 @@ Workflow {
 			name = "eu.coresense.resolution.ResolutionModel"
 			fileExtensions = "resolution"
 			referencedResource = "platform:/resource/de.fraunhofer.ipa.rossystem/model/rossystem.genmodel"
+			referencedResource = "platform:/resource/eu.coresense.variability/model/generated/FeatureModel.genmodel"
+			referencedResource = "platform:/resource/fms.metamodel/model/BasicConstraintsFM/BasicConstraintsFMmetamodel.genmodel"
 		
 			fragment = ecore2xtext.Ecore2XtextValueConverterServiceFragment2 auto-inject {}
 

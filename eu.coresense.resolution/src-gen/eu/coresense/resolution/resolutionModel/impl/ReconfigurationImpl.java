@@ -5,20 +5,54 @@ package eu.coresense.resolution.resolutionModel.impl;
 
 import eu.coresense.resolution.resolutionModel.Reconfiguration;
 import eu.coresense.resolution.resolutionModel.ResolutionModelPackage;
+import eu.coresense.resolution.resolutionModel.SetLifecycle;
+import eu.coresense.resolution.resolutionModel.SetParam;
+
+import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
 
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 /**
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Reconfiguration</b></em>'.
  * <!-- end-user-doc -->
+ * <p>
+ * The following features are implemented:
+ * </p>
+ * <ul>
+ *   <li>{@link eu.coresense.resolution.resolutionModel.impl.ReconfigurationImpl#getSet_param <em>Set param</em>}</li>
+ *   <li>{@link eu.coresense.resolution.resolutionModel.impl.ReconfigurationImpl#getSet_lc <em>Set lc</em>}</li>
+ * </ul>
  *
  * @generated
  */
 public class ReconfigurationImpl extends MinimalEObjectImpl.Container implements Reconfiguration
 {
+  /**
+   * The cached value of the '{@link #getSet_param() <em>Set param</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getSet_param()
+   * @generated
+   * @ordered
+   */
+  protected SetParam set_param;
+
+  /**
+   * The cached value of the '{@link #getSet_lc() <em>Set lc</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getSet_lc()
+   * @generated
+   * @ordered
+   */
+  protected SetLifecycle set_lc;
+
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -38,6 +72,200 @@ public class ReconfigurationImpl extends MinimalEObjectImpl.Container implements
   protected EClass eStaticClass()
   {
     return ResolutionModelPackage.Literals.RECONFIGURATION;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public SetParam getSet_param()
+  {
+    return set_param;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetSet_param(SetParam newSet_param, NotificationChain msgs)
+  {
+    SetParam oldSet_param = set_param;
+    set_param = newSet_param;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ResolutionModelPackage.RECONFIGURATION__SET_PARAM, oldSet_param, newSet_param);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setSet_param(SetParam newSet_param)
+  {
+    if (newSet_param != set_param)
+    {
+      NotificationChain msgs = null;
+      if (set_param != null)
+        msgs = ((InternalEObject)set_param).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ResolutionModelPackage.RECONFIGURATION__SET_PARAM, null, msgs);
+      if (newSet_param != null)
+        msgs = ((InternalEObject)newSet_param).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ResolutionModelPackage.RECONFIGURATION__SET_PARAM, null, msgs);
+      msgs = basicSetSet_param(newSet_param, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, ResolutionModelPackage.RECONFIGURATION__SET_PARAM, newSet_param, newSet_param));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public SetLifecycle getSet_lc()
+  {
+    return set_lc;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetSet_lc(SetLifecycle newSet_lc, NotificationChain msgs)
+  {
+    SetLifecycle oldSet_lc = set_lc;
+    set_lc = newSet_lc;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ResolutionModelPackage.RECONFIGURATION__SET_LC, oldSet_lc, newSet_lc);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setSet_lc(SetLifecycle newSet_lc)
+  {
+    if (newSet_lc != set_lc)
+    {
+      NotificationChain msgs = null;
+      if (set_lc != null)
+        msgs = ((InternalEObject)set_lc).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ResolutionModelPackage.RECONFIGURATION__SET_LC, null, msgs);
+      if (newSet_lc != null)
+        msgs = ((InternalEObject)newSet_lc).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ResolutionModelPackage.RECONFIGURATION__SET_LC, null, msgs);
+      msgs = basicSetSet_lc(newSet_lc, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, ResolutionModelPackage.RECONFIGURATION__SET_LC, newSet_lc, newSet_lc));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
+  {
+    switch (featureID)
+    {
+      case ResolutionModelPackage.RECONFIGURATION__SET_PARAM:
+        return basicSetSet_param(null, msgs);
+      case ResolutionModelPackage.RECONFIGURATION__SET_LC:
+        return basicSetSet_lc(null, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Object eGet(int featureID, boolean resolve, boolean coreType)
+  {
+    switch (featureID)
+    {
+      case ResolutionModelPackage.RECONFIGURATION__SET_PARAM:
+        return getSet_param();
+      case ResolutionModelPackage.RECONFIGURATION__SET_LC:
+        return getSet_lc();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void eSet(int featureID, Object newValue)
+  {
+    switch (featureID)
+    {
+      case ResolutionModelPackage.RECONFIGURATION__SET_PARAM:
+        setSet_param((SetParam)newValue);
+        return;
+      case ResolutionModelPackage.RECONFIGURATION__SET_LC:
+        setSet_lc((SetLifecycle)newValue);
+        return;
+    }
+    super.eSet(featureID, newValue);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void eUnset(int featureID)
+  {
+    switch (featureID)
+    {
+      case ResolutionModelPackage.RECONFIGURATION__SET_PARAM:
+        setSet_param((SetParam)null);
+        return;
+      case ResolutionModelPackage.RECONFIGURATION__SET_LC:
+        setSet_lc((SetLifecycle)null);
+        return;
+    }
+    super.eUnset(featureID);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public boolean eIsSet(int featureID)
+  {
+    switch (featureID)
+    {
+      case ResolutionModelPackage.RECONFIGURATION__SET_PARAM:
+        return set_param != null;
+      case ResolutionModelPackage.RECONFIGURATION__SET_LC:
+        return set_lc != null;
+    }
+    return super.eIsSet(featureID);
   }
 
 } //ReconfigurationImpl

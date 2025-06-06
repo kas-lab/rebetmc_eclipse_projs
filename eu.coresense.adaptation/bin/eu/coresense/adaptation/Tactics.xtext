@@ -1,12 +1,15 @@
 grammar eu.coresense.adaptation.Tactics with org.eclipse.xtext.common.Terminals
 
 import "http://coresense.eu/resolution/ResolutionModel" as resolutionModel
+import "http://www.coresense.eu/variability/FeatureModel" as variabilityModel
+import "http://caosd.lcc.uma.es/BasicFMmetamodel" as BasicFMmetamodel
 
 generate tactics "http://www.coresense.eu/adaptation/Tactics"
 
 TacticsModel:
 	'name' name=ID ';' 
 	(imports+=Import*)
+	'variability_model' featureModel=[BasicFMmetamodel::FeatureModel]
 	'resolution_model' resolutionModel=[resolutionModel::ResolutionModel]';'	
 	'period[ms]' period=INT ';' 
 	(adaptationRules+=AdaptationRule*)
@@ -105,9 +108,9 @@ enum LogicalOperator:
 ;
 
 AtomicActionSelectFeature:
-	'select_variant' '(' variant=[resolutionModel::Resolution] ')'	
+	'select_variant' '(' variant=[BasicFMmetamodel::Feature] ')'	
 ;
 
 AtomicActionDeselectFeature:
-	'unselect_variant' '('variant=[resolutionModel::Resolution]')'
+	'unselect_variant' '('variant=[BasicFMmetamodel::Feature]')'
 ;

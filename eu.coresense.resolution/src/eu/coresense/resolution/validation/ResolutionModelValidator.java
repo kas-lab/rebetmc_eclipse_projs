@@ -3,11 +3,17 @@
  */
 package eu.coresense.resolution.validation;
 
+import java.util.Iterator;
+
 import org.eclipse.xtext.validation.Check;
 import eu.coresense.resolution.resolutionModel.ResolutionModelPackage;
+import eu.coresense.resolution.resolutionModel.SetLifecycle;
 import eu.coresense.resolution.resolutionModel.SetParam;
 
 import ros.ParameterValue;
+import ros.ServiceServer;
+import ros.Node;
+import system.RosInterface;
 import system.RosNode;
 import system.RosParameter;
 
@@ -51,6 +57,7 @@ public class ResolutionModelValidator extends AbstractResolutionModelValidator {
 	
 	@Check
 	public void checkParameterBelongsToNode(SetParam setParam) {
+		System.out.println("testt2");
 	    RosNode node = setParam.getNode();
 	    RosParameter param = setParam.getParam();
 
@@ -63,6 +70,29 @@ public class ResolutionModelValidator extends AbstractResolutionModelValidator {
 	            "Parameter '" + param.getName() + "' does not belong to node '" + node.getName() + "'.",
 	            ResolutionModelPackage.Literals.SET_PARAM__PARAM
 	        );
+	    }
+	}
+	
+	@Check
+	public void checkNodeIsLifecycleNode(SetLifecycle setLife) {
+	    RosNode node = setLife.getNode();
+	    
+	    if (node == null) {
+	        return; // Don't validate incomplete models
+	    }
+	    
+	    Node original = node.getFrom();
+	    var serviceServers = original.getServiceserver();
+	    
+	    boolean hasMatch = serviceServers.stream()
+	    	    .anyMatch(server -> "lifecycle_msgs/ChangeState".equals(server.getService().getFullname()));
+	    if(!hasMatch)
+	    {
+	    	 error(
+	 	            "Node '" + node.getName() + "' does not seem to be a lifecycle node",
+	 	            ResolutionModelPackage.Literals.SET_LIFECYCLE__NODE
+	 	        );
+	    	
 	    }
 	}
 }

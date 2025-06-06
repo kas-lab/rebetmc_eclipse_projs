@@ -5,6 +5,7 @@ package eu.coresense.resolution.resolutionModel;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
@@ -68,13 +69,31 @@ public interface ResolutionModelPackage extends EPackage
   int RESOLUTION_MODEL = 0;
 
   /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int RESOLUTION_MODEL__NAME = 0;
+
+  /**
    * The feature id for the '<em><b>Imports</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int RESOLUTION_MODEL__IMPORTS = 0;
+  int RESOLUTION_MODEL__IMPORTS = 1;
+
+  /**
+   * The feature id for the '<em><b>Feature Model</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int RESOLUTION_MODEL__FEATURE_MODEL = 2;
 
   /**
    * The feature id for the '<em><b>Rossystem</b></em>' reference.
@@ -83,7 +102,7 @@ public interface ResolutionModelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int RESOLUTION_MODEL__ROSSYSTEM = 1;
+  int RESOLUTION_MODEL__ROSSYSTEM = 3;
 
   /**
    * The feature id for the '<em><b>Resolutions</b></em>' containment reference list.
@@ -92,7 +111,7 @@ public interface ResolutionModelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int RESOLUTION_MODEL__RESOLUTIONS = 2;
+  int RESOLUTION_MODEL__RESOLUTIONS = 4;
 
   /**
    * The number of structural features of the '<em>Resolution Model</em>' class.
@@ -101,7 +120,7 @@ public interface ResolutionModelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int RESOLUTION_MODEL_FEATURE_COUNT = 3;
+  int RESOLUTION_MODEL_FEATURE_COUNT = 5;
 
   /**
    * The meta object id for the '{@link eu.coresense.resolution.resolutionModel.impl.ResolutionImpl <em>Resolution</em>}' class.
@@ -114,13 +133,31 @@ public interface ResolutionModelPackage extends EPackage
   int RESOLUTION = 1;
 
   /**
-   * The feature id for the '<em><b>Reconfigurations</b></em>' containment reference list.
+   * The feature id for the '<em><b>Feature</b></em>' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int RESOLUTION__RECONFIGURATIONS = 0;
+  int RESOLUTION__FEATURE = 0;
+
+  /**
+   * The feature id for the '<em><b>Selection actions</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int RESOLUTION__SELECTION_ACTIONS = 1;
+
+  /**
+   * The feature id for the '<em><b>Deselection actions</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int RESOLUTION__DESELECTION_ACTIONS = 2;
 
   /**
    * The number of structural features of the '<em>Resolution</em>' class.
@@ -129,7 +166,7 @@ public interface ResolutionModelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int RESOLUTION_FEATURE_COUNT = 1;
+  int RESOLUTION_FEATURE_COUNT = 3;
 
   /**
    * The meta object id for the '{@link eu.coresense.resolution.resolutionModel.impl.ImportImpl <em>Import</em>}' class.
@@ -170,13 +207,31 @@ public interface ResolutionModelPackage extends EPackage
   int RECONFIGURATION = 3;
 
   /**
+   * The feature id for the '<em><b>Set param</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int RECONFIGURATION__SET_PARAM = 0;
+
+  /**
+   * The feature id for the '<em><b>Set lc</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int RECONFIGURATION__SET_LC = 1;
+
+  /**
    * The number of structural features of the '<em>Reconfiguration</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int RECONFIGURATION_FEATURE_COUNT = 0;
+  int RECONFIGURATION_FEATURE_COUNT = 2;
 
   /**
    * The meta object id for the '{@link eu.coresense.resolution.resolutionModel.impl.SetParamImpl <em>Set Param</em>}' class.
@@ -195,7 +250,7 @@ public interface ResolutionModelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int SET_PARAM__NODE = RECONFIGURATION_FEATURE_COUNT + 0;
+  int SET_PARAM__NODE = 0;
 
   /**
    * The feature id for the '<em><b>Param</b></em>' reference.
@@ -204,7 +259,7 @@ public interface ResolutionModelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int SET_PARAM__PARAM = RECONFIGURATION_FEATURE_COUNT + 1;
+  int SET_PARAM__PARAM = 1;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' containment reference.
@@ -213,7 +268,7 @@ public interface ResolutionModelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int SET_PARAM__VALUE = RECONFIGURATION_FEATURE_COUNT + 2;
+  int SET_PARAM__VALUE = 2;
 
   /**
    * The number of structural features of the '<em>Set Param</em>' class.
@@ -222,7 +277,54 @@ public interface ResolutionModelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int SET_PARAM_FEATURE_COUNT = RECONFIGURATION_FEATURE_COUNT + 3;
+  int SET_PARAM_FEATURE_COUNT = 3;
+
+  /**
+   * The meta object id for the '{@link eu.coresense.resolution.resolutionModel.impl.SetLifecycleImpl <em>Set Lifecycle</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see eu.coresense.resolution.resolutionModel.impl.SetLifecycleImpl
+   * @see eu.coresense.resolution.resolutionModel.impl.ResolutionModelPackageImpl#getSetLifecycle()
+   * @generated
+   */
+  int SET_LIFECYCLE = 5;
+
+  /**
+   * The feature id for the '<em><b>Node</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SET_LIFECYCLE__NODE = 0;
+
+  /**
+   * The feature id for the '<em><b>State</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SET_LIFECYCLE__STATE = 1;
+
+  /**
+   * The number of structural features of the '<em>Set Lifecycle</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SET_LIFECYCLE_FEATURE_COUNT = 2;
+
+  /**
+   * The meta object id for the '{@link eu.coresense.resolution.resolutionModel.LifecycleState <em>Lifecycle State</em>}' enum.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see eu.coresense.resolution.resolutionModel.LifecycleState
+   * @see eu.coresense.resolution.resolutionModel.impl.ResolutionModelPackageImpl#getLifecycleState()
+   * @generated
+   */
+  int LIFECYCLE_STATE = 6;
 
 
   /**
@@ -236,6 +338,17 @@ public interface ResolutionModelPackage extends EPackage
   EClass getResolutionModel();
 
   /**
+   * Returns the meta object for the attribute '{@link eu.coresense.resolution.resolutionModel.ResolutionModel#getName <em>Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Name</em>'.
+   * @see eu.coresense.resolution.resolutionModel.ResolutionModel#getName()
+   * @see #getResolutionModel()
+   * @generated
+   */
+  EAttribute getResolutionModel_Name();
+
+  /**
    * Returns the meta object for the containment reference list '{@link eu.coresense.resolution.resolutionModel.ResolutionModel#getImports <em>Imports</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -245,6 +358,17 @@ public interface ResolutionModelPackage extends EPackage
    * @generated
    */
   EReference getResolutionModel_Imports();
+
+  /**
+   * Returns the meta object for the reference '{@link eu.coresense.resolution.resolutionModel.ResolutionModel#getFeatureModel <em>Feature Model</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Feature Model</em>'.
+   * @see eu.coresense.resolution.resolutionModel.ResolutionModel#getFeatureModel()
+   * @see #getResolutionModel()
+   * @generated
+   */
+  EReference getResolutionModel_FeatureModel();
 
   /**
    * Returns the meta object for the reference '{@link eu.coresense.resolution.resolutionModel.ResolutionModel#getRossystem <em>Rossystem</em>}'.
@@ -279,15 +403,37 @@ public interface ResolutionModelPackage extends EPackage
   EClass getResolution();
 
   /**
-   * Returns the meta object for the containment reference list '{@link eu.coresense.resolution.resolutionModel.Resolution#getReconfigurations <em>Reconfigurations</em>}'.
+   * Returns the meta object for the reference '{@link eu.coresense.resolution.resolutionModel.Resolution#getFeature <em>Feature</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Reconfigurations</em>'.
-   * @see eu.coresense.resolution.resolutionModel.Resolution#getReconfigurations()
+   * @return the meta object for the reference '<em>Feature</em>'.
+   * @see eu.coresense.resolution.resolutionModel.Resolution#getFeature()
    * @see #getResolution()
    * @generated
    */
-  EReference getResolution_Reconfigurations();
+  EReference getResolution_Feature();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link eu.coresense.resolution.resolutionModel.Resolution#getSelection_actions <em>Selection actions</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Selection actions</em>'.
+   * @see eu.coresense.resolution.resolutionModel.Resolution#getSelection_actions()
+   * @see #getResolution()
+   * @generated
+   */
+  EReference getResolution_Selection_actions();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link eu.coresense.resolution.resolutionModel.Resolution#getDeselection_actions <em>Deselection actions</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Deselection actions</em>'.
+   * @see eu.coresense.resolution.resolutionModel.Resolution#getDeselection_actions()
+   * @see #getResolution()
+   * @generated
+   */
+  EReference getResolution_Deselection_actions();
 
   /**
    * Returns the meta object for class '{@link eu.coresense.resolution.resolutionModel.Import <em>Import</em>}'.
@@ -319,6 +465,28 @@ public interface ResolutionModelPackage extends EPackage
    * @generated
    */
   EClass getReconfiguration();
+
+  /**
+   * Returns the meta object for the containment reference '{@link eu.coresense.resolution.resolutionModel.Reconfiguration#getSet_param <em>Set param</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Set param</em>'.
+   * @see eu.coresense.resolution.resolutionModel.Reconfiguration#getSet_param()
+   * @see #getReconfiguration()
+   * @generated
+   */
+  EReference getReconfiguration_Set_param();
+
+  /**
+   * Returns the meta object for the containment reference '{@link eu.coresense.resolution.resolutionModel.Reconfiguration#getSet_lc <em>Set lc</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Set lc</em>'.
+   * @see eu.coresense.resolution.resolutionModel.Reconfiguration#getSet_lc()
+   * @see #getReconfiguration()
+   * @generated
+   */
+  EReference getReconfiguration_Set_lc();
 
   /**
    * Returns the meta object for class '{@link eu.coresense.resolution.resolutionModel.SetParam <em>Set Param</em>}'.
@@ -364,6 +532,48 @@ public interface ResolutionModelPackage extends EPackage
   EReference getSetParam_Value();
 
   /**
+   * Returns the meta object for class '{@link eu.coresense.resolution.resolutionModel.SetLifecycle <em>Set Lifecycle</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Set Lifecycle</em>'.
+   * @see eu.coresense.resolution.resolutionModel.SetLifecycle
+   * @generated
+   */
+  EClass getSetLifecycle();
+
+  /**
+   * Returns the meta object for the reference '{@link eu.coresense.resolution.resolutionModel.SetLifecycle#getNode <em>Node</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Node</em>'.
+   * @see eu.coresense.resolution.resolutionModel.SetLifecycle#getNode()
+   * @see #getSetLifecycle()
+   * @generated
+   */
+  EReference getSetLifecycle_Node();
+
+  /**
+   * Returns the meta object for the attribute '{@link eu.coresense.resolution.resolutionModel.SetLifecycle#getState <em>State</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>State</em>'.
+   * @see eu.coresense.resolution.resolutionModel.SetLifecycle#getState()
+   * @see #getSetLifecycle()
+   * @generated
+   */
+  EAttribute getSetLifecycle_State();
+
+  /**
+   * Returns the meta object for enum '{@link eu.coresense.resolution.resolutionModel.LifecycleState <em>Lifecycle State</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for enum '<em>Lifecycle State</em>'.
+   * @see eu.coresense.resolution.resolutionModel.LifecycleState
+   * @generated
+   */
+  EEnum getLifecycleState();
+
+  /**
    * Returns the factory that creates the instances of the model.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -397,12 +607,28 @@ public interface ResolutionModelPackage extends EPackage
     EClass RESOLUTION_MODEL = eINSTANCE.getResolutionModel();
 
     /**
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute RESOLUTION_MODEL__NAME = eINSTANCE.getResolutionModel_Name();
+
+    /**
      * The meta object literal for the '<em><b>Imports</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
     EReference RESOLUTION_MODEL__IMPORTS = eINSTANCE.getResolutionModel_Imports();
+
+    /**
+     * The meta object literal for the '<em><b>Feature Model</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference RESOLUTION_MODEL__FEATURE_MODEL = eINSTANCE.getResolutionModel_FeatureModel();
 
     /**
      * The meta object literal for the '<em><b>Rossystem</b></em>' reference feature.
@@ -431,12 +657,28 @@ public interface ResolutionModelPackage extends EPackage
     EClass RESOLUTION = eINSTANCE.getResolution();
 
     /**
-     * The meta object literal for the '<em><b>Reconfigurations</b></em>' containment reference list feature.
+     * The meta object literal for the '<em><b>Feature</b></em>' reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference RESOLUTION__RECONFIGURATIONS = eINSTANCE.getResolution_Reconfigurations();
+    EReference RESOLUTION__FEATURE = eINSTANCE.getResolution_Feature();
+
+    /**
+     * The meta object literal for the '<em><b>Selection actions</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference RESOLUTION__SELECTION_ACTIONS = eINSTANCE.getResolution_Selection_actions();
+
+    /**
+     * The meta object literal for the '<em><b>Deselection actions</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference RESOLUTION__DESELECTION_ACTIONS = eINSTANCE.getResolution_Deselection_actions();
 
     /**
      * The meta object literal for the '{@link eu.coresense.resolution.resolutionModel.impl.ImportImpl <em>Import</em>}' class.
@@ -465,6 +707,22 @@ public interface ResolutionModelPackage extends EPackage
      * @generated
      */
     EClass RECONFIGURATION = eINSTANCE.getReconfiguration();
+
+    /**
+     * The meta object literal for the '<em><b>Set param</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference RECONFIGURATION__SET_PARAM = eINSTANCE.getReconfiguration_Set_param();
+
+    /**
+     * The meta object literal for the '<em><b>Set lc</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference RECONFIGURATION__SET_LC = eINSTANCE.getReconfiguration_Set_lc();
 
     /**
      * The meta object literal for the '{@link eu.coresense.resolution.resolutionModel.impl.SetParamImpl <em>Set Param</em>}' class.
@@ -499,6 +757,42 @@ public interface ResolutionModelPackage extends EPackage
      * @generated
      */
     EReference SET_PARAM__VALUE = eINSTANCE.getSetParam_Value();
+
+    /**
+     * The meta object literal for the '{@link eu.coresense.resolution.resolutionModel.impl.SetLifecycleImpl <em>Set Lifecycle</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see eu.coresense.resolution.resolutionModel.impl.SetLifecycleImpl
+     * @see eu.coresense.resolution.resolutionModel.impl.ResolutionModelPackageImpl#getSetLifecycle()
+     * @generated
+     */
+    EClass SET_LIFECYCLE = eINSTANCE.getSetLifecycle();
+
+    /**
+     * The meta object literal for the '<em><b>Node</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference SET_LIFECYCLE__NODE = eINSTANCE.getSetLifecycle_Node();
+
+    /**
+     * The meta object literal for the '<em><b>State</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute SET_LIFECYCLE__STATE = eINSTANCE.getSetLifecycle_State();
+
+    /**
+     * The meta object literal for the '{@link eu.coresense.resolution.resolutionModel.LifecycleState <em>Lifecycle State</em>}' enum.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see eu.coresense.resolution.resolutionModel.LifecycleState
+     * @see eu.coresense.resolution.resolutionModel.impl.ResolutionModelPackageImpl#getLifecycleState()
+     * @generated
+     */
+    EEnum LIFECYCLE_STATE = eINSTANCE.getLifecycleState();
 
   }
 

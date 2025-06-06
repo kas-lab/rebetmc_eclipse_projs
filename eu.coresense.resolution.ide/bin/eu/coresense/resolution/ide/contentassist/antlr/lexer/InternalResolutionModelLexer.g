@@ -11,7 +11,11 @@ package eu.coresense.resolution.ide.contentassist.antlr.lexer;
 import org.eclipse.xtext.ide.editor.contentassist.antlr.internal.Lexer;
 }
 
+SetLifecycleState : 'SetLifecycleState(';
+
 RelativeNamespace : 'RelativeNamespace';
+
+Variability_model : 'variability_model';
 
 PrivateNamespace : 'PrivateNamespace';
 
@@ -21,15 +25,23 @@ SetParameter : 'SetParameter(';
 
 ParameterAny : 'ParameterAny';
 
+UNCONFIGURED : 'UNCONFIGURED';
+
 Resolutions : 'resolutions';
 
 Ros_system : 'ros_system';
 
+FINALIZED : 'FINALIZED';
+
 GraphName : 'GraphName';
+
+Deselect : 'deselect:';
 
 Float32_1 : 'float32[]';
 
 Float64_1 : 'float64[]';
+
+INACTIVE : 'INACTIVE';
 
 Default : 'default:';
 
@@ -61,9 +73,13 @@ Int64_1 : 'int64[]';
 
 Message : 'message';
 
+Select : 'select:';
+
 Service : 'service';
 
 Uint8_1 : 'uint8[]';
+
+ACTIVE : 'ACTIVE';
 
 Base64 : 'Base64';
 

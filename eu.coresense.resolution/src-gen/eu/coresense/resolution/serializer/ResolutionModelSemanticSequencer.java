@@ -6,9 +6,11 @@ package eu.coresense.resolution.serializer;
 import com.google.inject.Inject;
 import de.fraunhofer.ipa.ros.serializer.BasicsSemanticSequencer;
 import eu.coresense.resolution.resolutionModel.Import;
+import eu.coresense.resolution.resolutionModel.Reconfiguration;
 import eu.coresense.resolution.resolutionModel.Resolution;
 import eu.coresense.resolution.resolutionModel.ResolutionModel;
 import eu.coresense.resolution.resolutionModel.ResolutionModelPackage;
+import eu.coresense.resolution.resolutionModel.SetLifecycle;
 import eu.coresense.resolution.resolutionModel.SetParam;
 import eu.coresense.resolution.services.ResolutionModelGrammarAccess;
 import java.util.Set;
@@ -196,11 +198,17 @@ public class ResolutionModelSemanticSequencer extends BasicsSemanticSequencer {
 			case ResolutionModelPackage.IMPORT:
 				sequence_Import(context, (Import) semanticObject); 
 				return; 
+			case ResolutionModelPackage.RECONFIGURATION:
+				sequence_Reconfiguration(context, (Reconfiguration) semanticObject); 
+				return; 
 			case ResolutionModelPackage.RESOLUTION:
 				sequence_Resolution(context, (Resolution) semanticObject); 
 				return; 
 			case ResolutionModelPackage.RESOLUTION_MODEL:
 				sequence_ResolutionModel(context, (ResolutionModel) semanticObject); 
+				return; 
+			case ResolutionModelPackage.SET_LIFECYCLE:
+				sequence_SetLifecycle(context, (SetLifecycle) semanticObject); 
 				return; 
 			case ResolutionModelPackage.SET_PARAM:
 				sequence_SetParam(context, (SetParam) semanticObject); 
@@ -317,10 +325,24 @@ public class ResolutionModelSemanticSequencer extends BasicsSemanticSequencer {
 	/**
 	 * <pre>
 	 * Contexts:
+	 *     Reconfiguration returns Reconfiguration
+	 *
+	 * Constraint:
+	 *     (set_param=SetParam | set_lc=SetLifecycle)
+	 * </pre>
+	 */
+	protected void sequence_Reconfiguration(ISerializationContext context, Reconfiguration semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
 	 *     ResolutionModel returns ResolutionModel
 	 *
 	 * Constraint:
-	 *     (imports+=Import* rossystem=[System|ID] resolutions+=Resolution*)
+	 *     (name=ID imports+=Import* featureModel=[FeatureModel|ID] rossystem=[System|ID] resolutions+=Resolution*)
 	 * </pre>
 	 */
 	protected void sequence_ResolutionModel(ISerializationContext context, ResolutionModel semanticObject) {
@@ -334,7 +356,7 @@ public class ResolutionModelSemanticSequencer extends BasicsSemanticSequencer {
 	 *     Resolution returns Resolution
 	 *
 	 * Constraint:
-	 *     reconfigurations+=Reconfiguration*
+	 *     (feature=[Feature|ID] selection_actions+=Reconfiguration* deselection_actions+=Reconfiguration*)
 	 * </pre>
 	 */
 	protected void sequence_Resolution(ISerializationContext context, Resolution semanticObject) {
@@ -345,7 +367,29 @@ public class ResolutionModelSemanticSequencer extends BasicsSemanticSequencer {
 	/**
 	 * <pre>
 	 * Contexts:
-	 *     Reconfiguration returns SetParam
+	 *     SetLifecycle returns SetLifecycle
+	 *
+	 * Constraint:
+	 *     (node=[RosNode|ID] state=LifecycleState)
+	 * </pre>
+	 */
+	protected void sequence_SetLifecycle(ISerializationContext context, SetLifecycle semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, ResolutionModelPackage.Literals.SET_LIFECYCLE__NODE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ResolutionModelPackage.Literals.SET_LIFECYCLE__NODE));
+			if (transientValues.isValueTransient(semanticObject, ResolutionModelPackage.Literals.SET_LIFECYCLE__STATE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ResolutionModelPackage.Literals.SET_LIFECYCLE__STATE));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getSetLifecycleAccess().getNodeRosNodeIDTerminalRuleCall_1_0_1(), semanticObject.eGet(ResolutionModelPackage.Literals.SET_LIFECYCLE__NODE, false));
+		feeder.accept(grammarAccess.getSetLifecycleAccess().getStateLifecycleStateEnumRuleCall_3_0(), semanticObject.getState());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
 	 *     SetParam returns SetParam
 	 *
 	 * Constraint:

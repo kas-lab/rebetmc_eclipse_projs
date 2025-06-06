@@ -122,9 +122,9 @@ ruleTacticsModel returns [EObject current=null]
 				}
 			)
 		)*
-		otherlv_4='resolution_model'
+		otherlv_4='variability_model'
 		{
-			newLeafNode(otherlv_4, grammarAccess.getTacticsModelAccess().getResolution_modelKeyword_4());
+			newLeafNode(otherlv_4, grammarAccess.getTacticsModelAccess().getVariability_modelKeyword_4());
 		}
 		(
 			(
@@ -135,23 +135,40 @@ ruleTacticsModel returns [EObject current=null]
 				}
 				otherlv_5=RULE_ID
 				{
-					newLeafNode(otherlv_5, grammarAccess.getTacticsModelAccess().getResolutionModelResolutionModelCrossReference_5_0());
+					newLeafNode(otherlv_5, grammarAccess.getTacticsModelAccess().getFeatureModelFeatureModelCrossReference_5_0());
 				}
 			)
 		)
-		otherlv_6=';'
+		otherlv_6='resolution_model'
 		{
-			newLeafNode(otherlv_6, grammarAccess.getTacticsModelAccess().getSemicolonKeyword_6());
-		}
-		otherlv_7='period[ms]'
-		{
-			newLeafNode(otherlv_7, grammarAccess.getTacticsModelAccess().getPeriodMsKeyword_7());
+			newLeafNode(otherlv_6, grammarAccess.getTacticsModelAccess().getResolution_modelKeyword_6());
 		}
 		(
 			(
-				lv_period_8_0=RULE_INT
 				{
-					newLeafNode(lv_period_8_0, grammarAccess.getTacticsModelAccess().getPeriodINTTerminalRuleCall_8_0());
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getTacticsModelRule());
+					}
+				}
+				otherlv_7=RULE_ID
+				{
+					newLeafNode(otherlv_7, grammarAccess.getTacticsModelAccess().getResolutionModelResolutionModelCrossReference_7_0());
+				}
+			)
+		)
+		otherlv_8=';'
+		{
+			newLeafNode(otherlv_8, grammarAccess.getTacticsModelAccess().getSemicolonKeyword_8());
+		}
+		otherlv_9='period[ms]'
+		{
+			newLeafNode(otherlv_9, grammarAccess.getTacticsModelAccess().getPeriodMsKeyword_9());
+		}
+		(
+			(
+				lv_period_10_0=RULE_INT
+				{
+					newLeafNode(lv_period_10_0, grammarAccess.getTacticsModelAccess().getPeriodINTTerminalRuleCall_10_0());
 				}
 				{
 					if ($current==null) {
@@ -160,21 +177,21 @@ ruleTacticsModel returns [EObject current=null]
 					setWithLastConsumed(
 						$current,
 						"period",
-						lv_period_8_0,
+						lv_period_10_0,
 						"org.eclipse.xtext.common.Terminals.INT");
 				}
 			)
 		)
-		otherlv_9=';'
+		otherlv_11=';'
 		{
-			newLeafNode(otherlv_9, grammarAccess.getTacticsModelAccess().getSemicolonKeyword_9());
+			newLeafNode(otherlv_11, grammarAccess.getTacticsModelAccess().getSemicolonKeyword_11());
 		}
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getTacticsModelAccess().getAdaptationRulesAdaptationRuleParserRuleCall_10_0());
+					newCompositeNode(grammarAccess.getTacticsModelAccess().getAdaptationRulesAdaptationRuleParserRuleCall_12_0());
 				}
-				lv_adaptationRules_10_0=ruleAdaptationRule
+				lv_adaptationRules_12_0=ruleAdaptationRule
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getTacticsModelRule());
@@ -182,7 +199,7 @@ ruleTacticsModel returns [EObject current=null]
 					add(
 						$current,
 						"adaptationRules",
-						lv_adaptationRules_10_0,
+						lv_adaptationRules_12_0,
 						"eu.coresense.adaptation.Tactics.AdaptationRule");
 					afterParserOrEnumRuleCall();
 				}
@@ -925,7 +942,7 @@ ruleAtomicActionSelectFeature returns [EObject current=null]
 				}
 				otherlv_2=RULE_ID
 				{
-					newLeafNode(otherlv_2, grammarAccess.getAtomicActionSelectFeatureAccess().getVariantResolutionCrossReference_2_0());
+					newLeafNode(otherlv_2, grammarAccess.getAtomicActionSelectFeatureAccess().getVariantFeatureCrossReference_2_0());
 				}
 			)
 		)
@@ -969,7 +986,7 @@ ruleAtomicActionDeselectFeature returns [EObject current=null]
 				}
 				otherlv_2=RULE_ID
 				{
-					newLeafNode(otherlv_2, grammarAccess.getAtomicActionDeselectFeatureAccess().getVariantResolutionCrossReference_2_0());
+					newLeafNode(otherlv_2, grammarAccess.getAtomicActionDeselectFeatureAccess().getVariantFeatureCrossReference_2_0());
 				}
 			)
 		)

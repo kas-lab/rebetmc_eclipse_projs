@@ -34,6 +34,8 @@ Workflow {
 			name = "eu.coresense.adaptation.Tactics"
 			fileExtensions = "tactics"
 			referencedResource = "platform:/resource/eu.coresense.resolution/model/generated/ResolutionModel.genmodel"
+			referencedResource = "platform:/resource/eu.coresense.variability/model/generated/FeatureModel.genmodel"
+			referencedResource = "platform:/resource/fms.metamodel/model/BasicConstraintsFM/BasicConstraintsFMmetamodel.genmodel"
 
 			serializer = {
 				generateStub = false

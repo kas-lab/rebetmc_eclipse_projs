@@ -26,6 +26,8 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
+import uma.caosd.rhea.BasicFMmetamodel.FeatureModel;
+
 /**
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Model</b></em>'.
@@ -36,6 +38,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <ul>
  *   <li>{@link eu.coresense.adaptation.tactics.impl.TacticsModelImpl#getName <em>Name</em>}</li>
  *   <li>{@link eu.coresense.adaptation.tactics.impl.TacticsModelImpl#getImports <em>Imports</em>}</li>
+ *   <li>{@link eu.coresense.adaptation.tactics.impl.TacticsModelImpl#getFeatureModel <em>Feature Model</em>}</li>
  *   <li>{@link eu.coresense.adaptation.tactics.impl.TacticsModelImpl#getResolutionModel <em>Resolution Model</em>}</li>
  *   <li>{@link eu.coresense.adaptation.tactics.impl.TacticsModelImpl#getPeriod <em>Period</em>}</li>
  *   <li>{@link eu.coresense.adaptation.tactics.impl.TacticsModelImpl#getAdaptationRules <em>Adaptation Rules</em>}</li>
@@ -74,6 +77,16 @@ public class TacticsModelImpl extends MinimalEObjectImpl.Container implements Ta
    * @ordered
    */
   protected EList<Import> imports;
+
+  /**
+   * The cached value of the '{@link #getFeatureModel() <em>Feature Model</em>}' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getFeatureModel()
+   * @generated
+   * @ordered
+   */
+  protected FeatureModel featureModel;
 
   /**
    * The cached value of the '{@link #getResolutionModel() <em>Resolution Model</em>}' reference.
@@ -174,6 +187,51 @@ public class TacticsModelImpl extends MinimalEObjectImpl.Container implements Ta
       imports = new EObjectContainmentEList<Import>(Import.class, this, TacticsPackage.TACTICS_MODEL__IMPORTS);
     }
     return imports;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public FeatureModel getFeatureModel()
+  {
+    if (featureModel != null && featureModel.eIsProxy())
+    {
+      InternalEObject oldFeatureModel = (InternalEObject)featureModel;
+      featureModel = (FeatureModel)eResolveProxy(oldFeatureModel);
+      if (featureModel != oldFeatureModel)
+      {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, TacticsPackage.TACTICS_MODEL__FEATURE_MODEL, oldFeatureModel, featureModel));
+      }
+    }
+    return featureModel;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public FeatureModel basicGetFeatureModel()
+  {
+    return featureModel;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setFeatureModel(FeatureModel newFeatureModel)
+  {
+    FeatureModel oldFeatureModel = featureModel;
+    featureModel = newFeatureModel;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, TacticsPackage.TACTICS_MODEL__FEATURE_MODEL, oldFeatureModel, featureModel));
   }
 
   /**
@@ -293,6 +351,9 @@ public class TacticsModelImpl extends MinimalEObjectImpl.Container implements Ta
         return getName();
       case TacticsPackage.TACTICS_MODEL__IMPORTS:
         return getImports();
+      case TacticsPackage.TACTICS_MODEL__FEATURE_MODEL:
+        if (resolve) return getFeatureModel();
+        return basicGetFeatureModel();
       case TacticsPackage.TACTICS_MODEL__RESOLUTION_MODEL:
         if (resolve) return getResolutionModel();
         return basicGetResolutionModel();
@@ -321,6 +382,9 @@ public class TacticsModelImpl extends MinimalEObjectImpl.Container implements Ta
       case TacticsPackage.TACTICS_MODEL__IMPORTS:
         getImports().clear();
         getImports().addAll((Collection<? extends Import>)newValue);
+        return;
+      case TacticsPackage.TACTICS_MODEL__FEATURE_MODEL:
+        setFeatureModel((FeatureModel)newValue);
         return;
       case TacticsPackage.TACTICS_MODEL__RESOLUTION_MODEL:
         setResolutionModel((ResolutionModel)newValue);
@@ -352,6 +416,9 @@ public class TacticsModelImpl extends MinimalEObjectImpl.Container implements Ta
       case TacticsPackage.TACTICS_MODEL__IMPORTS:
         getImports().clear();
         return;
+      case TacticsPackage.TACTICS_MODEL__FEATURE_MODEL:
+        setFeatureModel((FeatureModel)null);
+        return;
       case TacticsPackage.TACTICS_MODEL__RESOLUTION_MODEL:
         setResolutionModel((ResolutionModel)null);
         return;
@@ -379,6 +446,8 @@ public class TacticsModelImpl extends MinimalEObjectImpl.Container implements Ta
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
       case TacticsPackage.TACTICS_MODEL__IMPORTS:
         return imports != null && !imports.isEmpty();
+      case TacticsPackage.TACTICS_MODEL__FEATURE_MODEL:
+        return featureModel != null;
       case TacticsPackage.TACTICS_MODEL__RESOLUTION_MODEL:
         return resolutionModel != null;
       case TacticsPackage.TACTICS_MODEL__PERIOD:

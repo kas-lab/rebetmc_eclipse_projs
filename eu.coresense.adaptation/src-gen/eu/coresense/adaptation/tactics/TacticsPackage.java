@@ -87,13 +87,22 @@ public interface TacticsPackage extends EPackage
   int TACTICS_MODEL__IMPORTS = 1;
 
   /**
+   * The feature id for the '<em><b>Feature Model</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TACTICS_MODEL__FEATURE_MODEL = 2;
+
+  /**
    * The feature id for the '<em><b>Resolution Model</b></em>' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int TACTICS_MODEL__RESOLUTION_MODEL = 2;
+  int TACTICS_MODEL__RESOLUTION_MODEL = 3;
 
   /**
    * The feature id for the '<em><b>Period</b></em>' attribute.
@@ -102,7 +111,7 @@ public interface TacticsPackage extends EPackage
    * @generated
    * @ordered
    */
-  int TACTICS_MODEL__PERIOD = 3;
+  int TACTICS_MODEL__PERIOD = 4;
 
   /**
    * The feature id for the '<em><b>Adaptation Rules</b></em>' containment reference list.
@@ -111,7 +120,7 @@ public interface TacticsPackage extends EPackage
    * @generated
    * @ordered
    */
-  int TACTICS_MODEL__ADAPTATION_RULES = 4;
+  int TACTICS_MODEL__ADAPTATION_RULES = 5;
 
   /**
    * The number of structural features of the '<em>Model</em>' class.
@@ -120,7 +129,7 @@ public interface TacticsPackage extends EPackage
    * @generated
    * @ordered
    */
-  int TACTICS_MODEL_FEATURE_COUNT = 5;
+  int TACTICS_MODEL_FEATURE_COUNT = 6;
 
   /**
    * The meta object id for the '{@link eu.coresense.adaptation.tactics.impl.ImportImpl <em>Import</em>}' class.
@@ -629,6 +638,17 @@ public interface TacticsPackage extends EPackage
   EReference getTacticsModel_Imports();
 
   /**
+   * Returns the meta object for the reference '{@link eu.coresense.adaptation.tactics.TacticsModel#getFeatureModel <em>Feature Model</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Feature Model</em>'.
+   * @see eu.coresense.adaptation.tactics.TacticsModel#getFeatureModel()
+   * @see #getTacticsModel()
+   * @generated
+   */
+  EReference getTacticsModel_FeatureModel();
+
+  /**
    * Returns the meta object for the reference '{@link eu.coresense.adaptation.tactics.TacticsModel#getResolutionModel <em>Resolution Model</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1036,6 +1056,14 @@ public interface TacticsPackage extends EPackage
      * @generated
      */
     EReference TACTICS_MODEL__IMPORTS = eINSTANCE.getTacticsModel_Imports();
+
+    /**
+     * The meta object literal for the '<em><b>Feature Model</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference TACTICS_MODEL__FEATURE_MODEL = eINSTANCE.getTacticsModel_FeatureModel();
 
     /**
      * The meta object literal for the '<em><b>Resolution Model</b></em>' reference feature.

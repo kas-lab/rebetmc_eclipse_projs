@@ -3,9 +3,9 @@
  */
 package eu.coresense.adaptation.tactics;
 
-import eu.coresense.resolution.resolutionModel.Resolution;
-
 import org.eclipse.emf.ecore.EObject;
+
+import uma.caosd.rhea.BasicFMmetamodel.Feature;
 
 /**
  * <!-- begin-user-doc -->
@@ -53,12 +53,12 @@ public interface AtomicAction extends EObject
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the value of the '<em>Variant</em>' reference.
-   * @see #setVariant(Resolution)
+   * @see #setVariant(Feature)
    * @see eu.coresense.adaptation.tactics.TacticsPackage#getAtomicAction_Variant()
    * @model
    * @generated
    */
-  Resolution getVariant();
+  Feature getVariant();
 
   /**
    * Sets the value of the '{@link eu.coresense.adaptation.tactics.AtomicAction#getVariant <em>Variant</em>}' reference.
@@ -68,6 +68,6 @@ public interface AtomicAction extends EObject
    * @see #getVariant()
    * @generated
    */
-  void setVariant(Resolution value);
+  void setVariant(Feature value);
 
 } // AtomicAction

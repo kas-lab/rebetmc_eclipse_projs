@@ -7,6 +7,31 @@ import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.xtext.generator.AbstractGenerator
 import org.eclipse.xtext.generator.IFileSystemAccess2
 import org.eclipse.xtext.generator.IGeneratorContext
+import eu.coresense.adaptation.tactics.AtomicRule
+import eu.coresense.adaptation.tactics.TacticsModel
+import eu.coresense.adaptation.tactics.AdaptationRule
+import eu.coresense.adaptation.tactics.ConditionAction
+import java.util.List
+import eu.coresense.adaptation.tactics.Condition
+import java.util.HashSet
+import eu.coresense.adaptation.tactics.LogicalOperator
+import eu.coresense.adaptation.tactics.TacticsPackage
+import java.util.Map
+import eu.coresense.resolution.resolutionModel.ResolutionModel
+import eu.coresense.resolution.resolutionModel.Resolution
+import eu.coresense.resolution.resolutionModel.Reconfiguration
+import ros.ParameterValue
+import ros.ParameterSequence
+import ros.ParameterBoolean
+import ros.ParameterInteger
+import ros.ParameterDouble
+import ros.ParameterString
+import eu.coresense.resolution.resolutionModel.SetParam
+import ros.ParameterType
+import ros.ParameterBooleanType
+import ros.ParameterDoubleType
+import ros.ParameterStringType
+import ros.ParameterArrayType
 
 /**
  * Generates code from your model files on save.
@@ -14,12 +39,299 @@ import org.eclipse.xtext.generator.IGeneratorContext
  * See https://www.eclipse.org/Xtext/documentation/303_runtime_concepts.html#code-generation
  */
 class TacticsGenerator extends AbstractGenerator {
-
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
-//		fsa.generateFile('greetings.txt', 'People to greet: ' + 
-//			resource.allContents
-//				.filter(Greeting)
-//				.map[name]
-//				.join(', '))
+    for (e : resource.allContents.toIterable.filter(TacticsModel)) {
+        fsa.generateFile(
+            "x.tql",
+            e.compile)
+	}
+
+	
+	}
+	val Map<String, Integer> nameMap = newHashMap
+	val Map<Condition, String> conditionNames = newHashMap 
+	val Map<Pair<String, String>, String> logicNames = newHashMap
+	val Map<SetParam, String> setparamNames = newHashMap
+	val Map<Resolution, String> resolutionNames = newHashMap
+
+	def makeUniqueName(String baseName) {
+	    val count = nameMap.get(baseName) ?: 0
+	    val newName = if (count == 0) baseName else baseName + "_" + count
+	    nameMap.put(baseName, count + 1)
+	    newName
+	}
+//	$ineq_nearest_lower_than_10 (lhs_term:$t_measured_nearest_object, rhs_term: $t_nearest_object_close) isa inequality_expression, has operator "<";
+//$ineq_nearest_greater_than_15 (lhs_term:$t_measured_nearest_object, rhs_term: $t_nearest_object_far) isa inequality_expression, has operator ">";
+//
+//$ineq_mv_pwer_greater_than_40  (lhs_term:$t_measured_movement_power, rhs_term: $t_movement_power_high) isa inequality_expression, has operator ">";
+//$ineq_mv_pwer_lower_than_39  (lhs_term:$t_measured_movement_power, rhs_term: $t_movement_power_low) isa inequality_expression, has operator "<";
+	
+	def name_a_condition(Condition condition) {
+	    conditionNames.computeIfAbsent(condition) [
+	        makeUniqueName(condition.measurement.toLowerCase + "_" + condition.operator.getName().toLowerCase)
+	    ]
+	}
+	private def inequality(Condition condition)
+	{
+		val measure = condition.measurement
+		val operator = condition.operator
+		val name = name_a_condition(condition)
+		'''
+		$«name»_val isa Term, has term_name "«name»_val", has term_value «condition.value»;
+		$«name» (lhs_term:$t_measured_«measure», rhs_term: $«name»_val) isa inequality_expression, has operator "«operator»";
+		'''
+	}
+	
+	private def name_a_logop(LogicalOperator logicalOp, String lhs_name, String rhs_name)
+	{
+		val lhs_short_name = lhs_name.substring(0, Math.min(3, lhs_name.length))
+		val rhs_short_name = rhs_name.substring(0, Math.min(3, rhs_name.length))
+		val key = Pair.of(lhs_name, rhs_name)
+		    logicNames.computeIfAbsent(key) [
+        makeUniqueName(logicalOp.literal.toLowerCase + "_" + lhs_short_name + "_" + rhs_short_name)
+    ]
+	}
+	
+	private def name_a_reconfiguration(Reconfiguration reconf)
+	{
+		if(reconf.set_lc === null && reconf.set_param !== null)
+		{
+			val set_param = reconf.set_param
+			return name_a_setparam(set_param)
+		}
+		else if(reconf.set_lc !== null && reconf.set_param === null)
+		{
+			return "placeholder_name_a_setlifecycle"	
+		}
+		return "shouldn't happen"
+		
+	}
+	
+	private def name_a_setparam(SetParam setp)
+	{
+		setparamNames.computeIfAbsent(setp) [
+        	makeUniqueName("sp_" + setp.param.name.toLowerCase())
+    ]
+	}
+	
+	private def name_a_resolution(Resolution res)
+	{
+		resolutionNames.computeIfAbsent(res) [
+        	makeUniqueName(res.feature.name.toLowerCase() + "_resolution")
+    ]
+	}
+	
+	private def logic_op(LogicalOperator logicalOp, String lhs_name, String rhs_name)
+	{
+		val name = name_a_logop(logicalOp, lhs_name, rhs_name)
+		'''
+		$«name» (expression:$«lhs_name», expression:$«rhs_name») isa «logicalOp.literal.toLowerCase»_expression;
+		'''
+	}
+	
+	private def Pair<String, CharSequence> buildExpression(Condition condition) {
+		val condName = name_a_condition(condition)
+		val ineqCode = inequality(condition)
+	
+		// Base case: leaf condition (no further chaining)
+		if (condition.logicalOp === null || condition.secondTerm === null) {
+			return new Pair(condName, ineqCode)
+		}
+	
+		// Recursive case: build RHS expression
+		val right = buildExpression(condition.secondTerm)
+		val rightName = right.key
+		val rightCode = right.value
+	
+		val logicName = name_a_logop(condition.logicalOp, condName, rightName)
+		val logicExpr = logic_op(condition.logicalOp, condName, rightName)
+	
+		val fullCode = '''
+			«ineqCode»
+			«rightCode»
+			«logicExpr»
+		'''
+	
+		return new Pair(logicName, fullCode)
+	}
+	
+	private def create_antecedent(Condition condition)
+	{
+		return buildExpression(condition)
+	}
+	private def compile(TacticsModel t)
+	{ 
+		val tacticName = t.name
+		val lc_tacticName = t.name.toLowerCase	
+		
+		val resolutionLines = t.resolutionModel.resolutions
+	                      .map['''variant_resolution:$«name_a_resolution(it)»''']
+	                      .join(", ")
+		
+		'''
+		insert
+		
+		$ta_«lc_tacticName» isa Tactic, has tactic_name "«tacticName»", has tactic_period «t.period»;
+		
+		«registerMeasurements(t.adaptationRules)»
+		«FOR rule : t.adaptationRules»
+		«compileRule(rule,lc_tacticName)»
+		«ENDFOR»
+		«compileResolution(t.resolutionModel)»
+		$res_«t.resolutionModel.name» (tactic: $ta_«lc_tacticName», «resolutionLines») isa resolution_model, 
+		    has resolution_model_name "«t.resolutionModel.name»", has ros_system "«t.resolutionModel.rossystem.name»";
+		'''
+	}
+	
+	private def registerMeasurements(List<AdaptationRule> adap_rules)
+	{
+		val unique_measurements = new HashSet<String>()
+		for (rule : adap_rules) {
+			if (rule instanceof AtomicRule)
+			{
+				if (rule.ruleBody instanceof ConditionAction)
+				{
+					val cond_acc = rule.ruleBody as ConditionAction
+					val rule_conditions = collectSecondTerms(cond_acc.condition)
+					for (cond : rule_conditions) {
+						unique_measurements.add(cond.measurement)
+					}
+				}
+			}
+		}
+		'''
+		«FOR mes : unique_measurements»
+		$t_measured_«mes» isa Term, has term_name "t_measured_«mes»";
+		«ENDFOR»
+		'''
+		
+	}
+	
+	private def compileResolution(ResolutionModel resModel)
+	{
+	 '''
+	«FOR resolution : resModel.resolutions»
+	«compileSingleResolution(resolution)»
+	«ENDFOR»
+	 '''
+	}
+	
+	private def compileSingleResolution(Resolution resolution)
+	{
+		val acc_one_temp = resolution.selection_actions.get(0)
+				
+		'''
+		
+		«compileReconfiguration(acc_one_temp)»
+		$«name_a_resolution(resolution)» (resolution_action: $«name_a_reconfiguration(acc_one_temp)») isa variant_resolution, has variant_name "«resolution.feature.name»";
+		'''
+	}
+
+	def dispatch String ParamValueToString(ParameterSequence p) {
+	    val parts = p.value.map[ParamValueToString(it)]
+    	return "[" + parts.join(", ") + "]"
+	}
+	
+	def dispatch String ParamValueToString(ParameterBoolean p) { p.value.toString()}
+	def dispatch String ParamValueToString(ParameterInteger p) { p.value.toString()}
+	def dispatch String ParamValueToString(ParameterDouble p) { p.value.toString()}
+	def dispatch String ParamValueToString(ParameterString p) { p.value}
+	
+	
+	def dispatch String ParamValueToString(ParameterValue p) {
+	    println("Unknown parameter type: " + p.class.name)
+	    return "ValueTypeNotYetImplementedInGenerator"
+	}
+	
+	def String NiceNameParamType(ParameterType param_type)
+	{
+		//(boolean|boolean_array|double|double_array|long|long_array|string|string_array)
+		switch param_type
+		{
+			ParameterBooleanType:
+				"boolean"
+			ParameterDoubleType:
+				"double"
+			ParameterStringType:
+				"string"
+			ParameterArrayType:
+				NiceNameParamType(param_type.type) + "_array" 
+		}
+		
+	}
+	
+	private def compileReconfiguration(Reconfiguration reconfig)
+	{
+		if(reconfig.set_lc === null && reconfig.set_param !== null)
+		{
+			val set_param = reconfig.set_param
+			val node_name = set_param.node.getName()
+			val param_val = set_param.value
+			val param_name = set_param.param.name
+			
+			val param_str = ParamValueToString(param_val)
+			
+			val param_type = NiceNameParamType(set_param.param.from.type)
+			print("BRRR")
+			println(param_type)
+			print("CRRR")
+			
+			'''
+			$«name_a_setparam(set_param)» isa SetParameter, has node_name "«node_name»", has parameter_name "«param_name»", has parameter-value "«param_str»", has parameter-type "«param_type»";
+			'''
+			//sp_max_speed_low isa SetParameter, has node_name "velocity_smoother", has parameter-value "ros.impl.ParameterSequenceImpl@6d63db68", has parameter-type "ros.impl.ParameterArrayTypeImpl@54206577";
+		}
+		else if(reconfig.set_lc !== null && reconfig.set_param === null)
+		{
+			'''
+			placeholderrr
+			'''
+			
+		}
+		else
+		{
+			System.out.println("SOMETHING WRONG RECONFIG.!")
+		}
+		
+		
+	}
+	
+	private def compileRule(AdaptationRule c, String lc_tacticName)
+	{
+	if (c instanceof AtomicRule)
+	{
+		val ruleName = c.name
+		val lc_ruleName = c.name.toLowerCase
+		val ruleVarName = c.ruleBody.atomicAction.variant.name
+		if(c.ruleBody instanceof ConditionAction)
+		{
+			val con = c.ruleBody as ConditionAction
+			val pair = create_antecedent(con.condition)
+			val ant_name = pair.key
+			val ant = pair.value
+//			val all_conditions = collectSecondTerms(con.condition)
+//			val mes = con.condition.measurement
+//		 	con.condition.secondTerm.measurement
+			
+		'''
+
+		$t_variant_«ruleVarName.toLowerCase» isa Term, has term_name "«ruleVarName»";
+		«ant»
+		$tactic_rule_«lc_ruleName» (tactic:$ta_«lc_tacticName», antecedent:$«ant_name», consequent:$t_variant_«ruleVarName.toLowerCase»  ) isa tactic_rule, has rule_name "«ruleName»";
+		'''
+		}
+		
+
+	}
+	}
+	
+	def List<Condition> collectSecondTerms(Condition condition) {
+    if (condition === null)
+        return emptyList
+    else
+         return newArrayList => [
+            add(condition)
+            addAll(collectSecondTerms(condition.secondTerm))
+        ]
 	}
 }

@@ -54,9 +54,10 @@ public class TacticsParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getAtomicActionDeselectFeatureAccess().getGroup(), "rule__AtomicActionDeselectFeature__Group__0");
 			builder.put(grammarAccess.getTacticsModelAccess().getNameAssignment_1(), "rule__TacticsModel__NameAssignment_1");
 			builder.put(grammarAccess.getTacticsModelAccess().getImportsAssignment_3(), "rule__TacticsModel__ImportsAssignment_3");
-			builder.put(grammarAccess.getTacticsModelAccess().getResolutionModelAssignment_5(), "rule__TacticsModel__ResolutionModelAssignment_5");
-			builder.put(grammarAccess.getTacticsModelAccess().getPeriodAssignment_8(), "rule__TacticsModel__PeriodAssignment_8");
-			builder.put(grammarAccess.getTacticsModelAccess().getAdaptationRulesAssignment_10(), "rule__TacticsModel__AdaptationRulesAssignment_10");
+			builder.put(grammarAccess.getTacticsModelAccess().getFeatureModelAssignment_5(), "rule__TacticsModel__FeatureModelAssignment_5");
+			builder.put(grammarAccess.getTacticsModelAccess().getResolutionModelAssignment_7(), "rule__TacticsModel__ResolutionModelAssignment_7");
+			builder.put(grammarAccess.getTacticsModelAccess().getPeriodAssignment_10(), "rule__TacticsModel__PeriodAssignment_10");
+			builder.put(grammarAccess.getTacticsModelAccess().getAdaptationRulesAssignment_12(), "rule__TacticsModel__AdaptationRulesAssignment_12");
 			builder.put(grammarAccess.getImportAccess().getImportURIAssignment_1(), "rule__Import__ImportURIAssignment_1");
 			builder.put(grammarAccess.getAtomicRuleAccess().getNameAssignment_1(), "rule__AtomicRule__NameAssignment_1");
 			builder.put(grammarAccess.getAtomicRuleAccess().getRuleBodyAssignment_3(), "rule__AtomicRule__RuleBodyAssignment_3");

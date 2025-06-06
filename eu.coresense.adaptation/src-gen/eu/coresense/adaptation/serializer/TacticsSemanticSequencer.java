@@ -96,7 +96,7 @@ public class TacticsSemanticSequencer extends AbstractDelegatingSemanticSequence
 	 *     AtomicActionDeselectFeature returns AtomicActionDeselectFeature
 	 *
 	 * Constraint:
-	 *     variant=[Resolution|ID]
+	 *     variant=[Feature|ID]
 	 * </pre>
 	 */
 	protected void sequence_AtomicActionDeselectFeature(ISerializationContext context, AtomicActionDeselectFeature semanticObject) {
@@ -105,7 +105,7 @@ public class TacticsSemanticSequencer extends AbstractDelegatingSemanticSequence
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, TacticsPackage.Literals.ATOMIC_ACTION__VARIANT));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getAtomicActionDeselectFeatureAccess().getVariantResolutionIDTerminalRuleCall_2_0_1(), semanticObject.eGet(TacticsPackage.Literals.ATOMIC_ACTION__VARIANT, false));
+		feeder.accept(grammarAccess.getAtomicActionDeselectFeatureAccess().getVariantFeatureIDTerminalRuleCall_2_0_1(), semanticObject.eGet(TacticsPackage.Literals.ATOMIC_ACTION__VARIANT, false));
 		feeder.finish();
 	}
 	
@@ -116,7 +116,7 @@ public class TacticsSemanticSequencer extends AbstractDelegatingSemanticSequence
 	 *     AtomicActionSelectFeature returns AtomicActionSelectFeature
 	 *
 	 * Constraint:
-	 *     variant=[Resolution|ID]
+	 *     variant=[Feature|ID]
 	 * </pre>
 	 */
 	protected void sequence_AtomicActionSelectFeature(ISerializationContext context, AtomicActionSelectFeature semanticObject) {
@@ -125,7 +125,7 @@ public class TacticsSemanticSequencer extends AbstractDelegatingSemanticSequence
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, TacticsPackage.Literals.ATOMIC_ACTION__VARIANT));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getAtomicActionSelectFeatureAccess().getVariantResolutionIDTerminalRuleCall_2_0_1(), semanticObject.eGet(TacticsPackage.Literals.ATOMIC_ACTION__VARIANT, false));
+		feeder.accept(grammarAccess.getAtomicActionSelectFeatureAccess().getVariantFeatureIDTerminalRuleCall_2_0_1(), semanticObject.eGet(TacticsPackage.Literals.ATOMIC_ACTION__VARIANT, false));
 		feeder.finish();
 	}
 	
@@ -136,7 +136,7 @@ public class TacticsSemanticSequencer extends AbstractDelegatingSemanticSequence
 	 *     AtomicAction returns AtomicActionDeselectFeature
 	 *
 	 * Constraint:
-	 *     (variant=[Resolution|ID] secondAction=AtomicAction?)
+	 *     (variant=[Feature|ID] secondAction=AtomicAction?)
 	 * </pre>
 	 */
 	protected void sequence_AtomicAction_AtomicActionDeselectFeature(ISerializationContext context, AtomicActionDeselectFeature semanticObject) {
@@ -150,7 +150,7 @@ public class TacticsSemanticSequencer extends AbstractDelegatingSemanticSequence
 	 *     AtomicAction returns AtomicActionSelectFeature
 	 *
 	 * Constraint:
-	 *     (variant=[Resolution|ID] secondAction=AtomicAction?)
+	 *     (variant=[Feature|ID] secondAction=AtomicAction?)
 	 * </pre>
 	 */
 	protected void sequence_AtomicAction_AtomicActionSelectFeature(ISerializationContext context, AtomicActionSelectFeature semanticObject) {
@@ -299,7 +299,14 @@ public class TacticsSemanticSequencer extends AbstractDelegatingSemanticSequence
 	 *     TacticsModel returns TacticsModel
 	 *
 	 * Constraint:
-	 *     (name=ID imports+=Import* resolutionModel=[ResolutionModel|ID] period=INT adaptationRules+=AdaptationRule*)
+	 *     (
+	 *         name=ID 
+	 *         imports+=Import* 
+	 *         featureModel=[FeatureModel|ID] 
+	 *         resolutionModel=[ResolutionModel|ID] 
+	 *         period=INT 
+	 *         adaptationRules+=AdaptationRule*
+	 *     )
 	 * </pre>
 	 */
 	protected void sequence_TacticsModel(ISerializationContext context, TacticsModel semanticObject) {

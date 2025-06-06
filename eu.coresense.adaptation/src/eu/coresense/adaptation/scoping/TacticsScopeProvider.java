@@ -3,6 +3,9 @@
  */
 package eu.coresense.adaptation.scoping;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.xtext.EcoreUtil2;
@@ -12,6 +15,8 @@ import org.eclipse.xtext.scoping.Scopes;
 import eu.coresense.adaptation.tactics.TacticsModel;
 import eu.coresense.adaptation.tactics.TacticsPackage;
 import eu.coresense.resolution.resolutionModel.ResolutionModel;
+import uma.caosd.rhea.BasicFMmetamodel.Feature;
+import uma.caosd.rhea.BasicFMmetamodel.FeatureModel;
 
 /**
  * This class contains custom scoping description.
@@ -24,12 +29,31 @@ public class TacticsScopeProvider extends AbstractTacticsScopeProvider {
 	public IScope getScope(EObject context, EReference reference) {
 	    if (reference == TacticsPackage.Literals.ATOMIC_ACTION__VARIANT) {
 	        TacticsModel model = EcoreUtil2.getContainerOfType(context, TacticsModel.class);
-	        if (model != null && model.getResolutionModel() != null) {
-	            ResolutionModel resolutionModel = model.getResolutionModel();
-	            return Scopes.scopeFor(resolutionModel.getResolutions());
+	        if (model != null && model.getFeatureModel() != null) {
+	            FeatureModel featureModel = model.getFeatureModel();
+	            Feature root = featureModel.getRoot();
+	            //Gather all the leaves, you have access to getChildren() and isLeaf()
+	            List<Feature> leafFeatures = new ArrayList<>();
+	            collectLeafFeatures(root, leafFeatures);
+	            System.out.println(leafFeatures);
+	            return Scopes.scopeFor(leafFeatures);
 	        }
 	    }
 	    return super.getScope(context, reference);
-	}
+	}	
+
+
+private void collectLeafFeatures(Feature feature, List<Feature> leafFeatures) {
+    if(feature != null)
+    {
+		if (feature.isLeaf()) {
+	        leafFeatures.add(feature);
+	    } else {
+	        for (Feature child : feature.getChildren()) {
+	            collectLeafFeatures(child, leafFeatures);
+	        }
+	    }
+    }
+}
 
 }

@@ -7,6 +7,8 @@ import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EObject;
 
+import uma.caosd.rhea.BasicFMmetamodel.FeatureModel;
+
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Resolution Model</b></em>'.
@@ -16,7 +18,9 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
+ *   <li>{@link eu.coresense.resolution.resolutionModel.ResolutionModel#getName <em>Name</em>}</li>
  *   <li>{@link eu.coresense.resolution.resolutionModel.ResolutionModel#getImports <em>Imports</em>}</li>
+ *   <li>{@link eu.coresense.resolution.resolutionModel.ResolutionModel#getFeatureModel <em>Feature Model</em>}</li>
  *   <li>{@link eu.coresense.resolution.resolutionModel.ResolutionModel#getRossystem <em>Rossystem</em>}</li>
  *   <li>{@link eu.coresense.resolution.resolutionModel.ResolutionModel#getResolutions <em>Resolutions</em>}</li>
  * </ul>
@@ -28,6 +32,28 @@ import org.eclipse.emf.ecore.EObject;
 public interface ResolutionModel extends EObject
 {
   /**
+   * Returns the value of the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Name</em>' attribute.
+   * @see #setName(String)
+   * @see eu.coresense.resolution.resolutionModel.ResolutionModelPackage#getResolutionModel_Name()
+   * @model
+   * @generated
+   */
+  String getName();
+
+  /**
+   * Sets the value of the '{@link eu.coresense.resolution.resolutionModel.ResolutionModel#getName <em>Name</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Name</em>' attribute.
+   * @see #getName()
+   * @generated
+   */
+  void setName(String value);
+
+  /**
    * Returns the value of the '<em><b>Imports</b></em>' containment reference list.
    * The list contents are of type {@link eu.coresense.resolution.resolutionModel.Import}.
    * <!-- begin-user-doc -->
@@ -38,6 +64,28 @@ public interface ResolutionModel extends EObject
    * @generated
    */
   EList<Import> getImports();
+
+  /**
+   * Returns the value of the '<em><b>Feature Model</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Feature Model</em>' reference.
+   * @see #setFeatureModel(FeatureModel)
+   * @see eu.coresense.resolution.resolutionModel.ResolutionModelPackage#getResolutionModel_FeatureModel()
+   * @model
+   * @generated
+   */
+  FeatureModel getFeatureModel();
+
+  /**
+   * Sets the value of the '{@link eu.coresense.resolution.resolutionModel.ResolutionModel#getFeatureModel <em>Feature Model</em>}' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Feature Model</em>' reference.
+   * @see #getFeatureModel()
+   * @generated
+   */
+  void setFeatureModel(FeatureModel value);
 
   /**
    * Returns the value of the '<em><b>Rossystem</b></em>' reference.

@@ -1,0 +1,29 @@
+Manifest-Version: 1.0
+Automatic-Module-Name: eu.coresense.variability
+Bundle-ManifestVersion: 2
+Bundle-Name: eu.coresense.variability
+Bundle-Vendor: My Company
+Bundle-Version: 1.0.0.qualifier
+Bundle-SymbolicName: eu.coresense.variability; singleton:=true
+Bundle-ActivationPolicy: lazy
+Require-Bundle: org.eclipse.xtext,
+ org.eclipse.xtext.xbase,
+ org.eclipse.equinox.common;bundle-version="3.19.0",
+ fms.metamodel;bundle-version="1.0.0",
+ org.eclipse.emf.ecore,
+ org.eclipse.xtext.xbase.lib;bundle-version="2.38.0",
+ org.eclipse.emf.common,
+ org.antlr.runtime;bundle-version="[3.2.0,3.2.1)"
+Bundle-RequiredExecutionEnvironment: JavaSE-21
+Export-Package: eu.coresense.variability.generator,
+ eu.coresense.variability.featureModel.impl,
+ eu.coresense.variability.parser.antlr,
+ eu.coresense.variability.parser.antlr.internal,
+ eu.coresense.variability.featureModel,
+ eu.coresense.variability.featureModel.util,
+ eu.coresense.variability.validation,
+ eu.coresense.variability.scoping,
+ eu.coresense.variability,
+ eu.coresense.variability.services,
+ eu.coresense.variability.serializer
+Import-Package: org.apache.log4j

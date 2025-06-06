@@ -69,6 +69,15 @@ public interface ResolutionModelFactory extends EFactory
   SetParam createSetParam();
 
   /**
+   * Returns a new object of class '<em>Set Lifecycle</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Set Lifecycle</em>'.
+   * @generated
+   */
+  SetLifecycle createSetLifecycle();
+
+  /**
    * Returns the package supported by this factory.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

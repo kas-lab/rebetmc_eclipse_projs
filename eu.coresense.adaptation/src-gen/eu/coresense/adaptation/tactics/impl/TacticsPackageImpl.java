@@ -37,6 +37,8 @@ import ros.RosPackage;
 
 import system.RossystemPackage;
 
+import uma.caosd.rhea.BasicFMmetamodel.BasicFMmetamodelPackage;
+
 /**
  * <!-- begin-user-doc -->
  * An implementation of the model <b>Package</b>.
@@ -200,6 +202,7 @@ public class TacticsPackageImpl extends EPackageImpl implements TacticsPackage
 
     // Initialize simple dependencies
     ResolutionModelPackage.eINSTANCE.eClass();
+    BasicFMmetamodelPackage.eINSTANCE.eClass();
     RossystemPackage.eINSTANCE.eClass();
     RosPackage.eINSTANCE.eClass();
     PrimitivesPackage.eINSTANCE.eClass();
@@ -257,7 +260,7 @@ public class TacticsPackageImpl extends EPackageImpl implements TacticsPackage
    * @generated
    */
   @Override
-  public EReference getTacticsModel_ResolutionModel()
+  public EReference getTacticsModel_FeatureModel()
   {
     return (EReference)tacticsModelEClass.getEStructuralFeatures().get(2);
   }
@@ -268,9 +271,20 @@ public class TacticsPackageImpl extends EPackageImpl implements TacticsPackage
    * @generated
    */
   @Override
+  public EReference getTacticsModel_ResolutionModel()
+  {
+    return (EReference)tacticsModelEClass.getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public EAttribute getTacticsModel_Period()
   {
-    return (EAttribute)tacticsModelEClass.getEStructuralFeatures().get(3);
+    return (EAttribute)tacticsModelEClass.getEStructuralFeatures().get(4);
   }
 
   /**
@@ -281,7 +295,7 @@ public class TacticsPackageImpl extends EPackageImpl implements TacticsPackage
   @Override
   public EReference getTacticsModel_AdaptationRules()
   {
-    return (EReference)tacticsModelEClass.getEStructuralFeatures().get(4);
+    return (EReference)tacticsModelEClass.getEStructuralFeatures().get(5);
   }
 
   /**
@@ -659,6 +673,7 @@ public class TacticsPackageImpl extends EPackageImpl implements TacticsPackage
     tacticsModelEClass = createEClass(TACTICS_MODEL);
     createEAttribute(tacticsModelEClass, TACTICS_MODEL__NAME);
     createEReference(tacticsModelEClass, TACTICS_MODEL__IMPORTS);
+    createEReference(tacticsModelEClass, TACTICS_MODEL__FEATURE_MODEL);
     createEReference(tacticsModelEClass, TACTICS_MODEL__RESOLUTION_MODEL);
     createEAttribute(tacticsModelEClass, TACTICS_MODEL__PERIOD);
     createEReference(tacticsModelEClass, TACTICS_MODEL__ADAPTATION_RULES);
@@ -734,6 +749,7 @@ public class TacticsPackageImpl extends EPackageImpl implements TacticsPackage
     setNsURI(eNS_URI);
 
     // Obtain other dependent packages
+    BasicFMmetamodelPackage theBasicFMmetamodelPackage = (BasicFMmetamodelPackage)EPackage.Registry.INSTANCE.getEPackage(BasicFMmetamodelPackage.eNS_URI);
     ResolutionModelPackage theResolutionModelPackage = (ResolutionModelPackage)EPackage.Registry.INSTANCE.getEPackage(ResolutionModelPackage.eNS_URI);
 
     // Create type parameters
@@ -752,6 +768,7 @@ public class TacticsPackageImpl extends EPackageImpl implements TacticsPackage
     initEClass(tacticsModelEClass, TacticsModel.class, "TacticsModel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getTacticsModel_Name(), ecorePackage.getEString(), "name", null, 0, 1, TacticsModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getTacticsModel_Imports(), this.getImport(), null, "imports", null, 0, -1, TacticsModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getTacticsModel_FeatureModel(), theBasicFMmetamodelPackage.getFeatureModel(), null, "featureModel", null, 0, 1, TacticsModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getTacticsModel_ResolutionModel(), theResolutionModelPackage.getResolutionModel(), null, "resolutionModel", null, 0, 1, TacticsModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getTacticsModel_Period(), ecorePackage.getEInt(), "period", null, 0, 1, TacticsModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getTacticsModel_AdaptationRules(), this.getAdaptationRule(), null, "adaptationRules", null, 0, -1, TacticsModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -775,7 +792,7 @@ public class TacticsPackageImpl extends EPackageImpl implements TacticsPackage
 
     initEClass(atomicActionEClass, AtomicAction.class, "AtomicAction", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getAtomicAction_SecondAction(), this.getAtomicAction(), null, "secondAction", null, 0, 1, AtomicAction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getAtomicAction_Variant(), theResolutionModelPackage.getResolution(), null, "variant", null, 0, 1, AtomicAction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getAtomicAction_Variant(), theBasicFMmetamodelPackage.getFeature(), null, "variant", null, 0, 1, AtomicAction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(ruleBodyEClass, RuleBody.class, "RuleBody", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getRuleBody_AtomicAction(), this.getAtomicAction(), null, "atomicAction", null, 0, 1, RuleBody.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

@@ -3,14 +3,18 @@ grammar eu.coresense.resolution.ResolutionModel with de.fraunhofer.ipa.ros.Basic
 generate resolutionModel "http://coresense.eu/resolution/ResolutionModel"
 import "http://www.ipa.fraunhofer.de/rossystem" as rossys
 import "http://www.ipa.fraunhofer.de/ros" as ros
+import "http://www.coresense.eu/variability/FeatureModel" as variabilityModel
+import "http://caosd.lcc.uma.es/BasicFMmetamodel" as BasicFMmetamodel
 
 ResolutionModel:
+	'name' name=ID ';' 
 	(imports+=Import*)
+	'variability_model' featureModel=[BasicFMmetamodel::FeatureModel]';'
 	'ros_system' rossystem=[rossys::System]';'
 	'resolutions' resolutions+=Resolution*;
 	
 Resolution:
-	{Resolution} STRING ':'reconfigurations+=Reconfiguration*
+	{Resolution} feature=[BasicFMmetamodel::Feature] ':' 'select:' selection_actions+=Reconfiguration* 'deselect:' deselection_actions+=Reconfiguration*
 ;
 
 Import:
@@ -18,10 +22,17 @@ Import:
 ;
 
 Reconfiguration:
-	SetParam
+	set_param=SetParam | set_lc=SetLifecycle
 ;
 
 SetParam:
 	'SetParameter(' node=[rossys::RosNode] ',' param=[rossys::RosParameter] ',' value=ParameterValue  ')'
 ;
+
+SetLifecycle:
+	'SetLifecycleState(' node=[rossys::RosNode] ',' state=LifecycleState ')'
+;
+
+enum LifecycleState returns LifecycleState:
+				UNCONFIGURED = 'UNCONFIGURED' | INACTIVE = 'INACTIVE' | ACTIVE = 'ACTIVE' | FINALIZED = 'FINALIZED';
 //

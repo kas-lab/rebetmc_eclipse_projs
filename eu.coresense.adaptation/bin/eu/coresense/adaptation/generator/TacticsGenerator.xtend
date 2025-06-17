@@ -16,6 +16,7 @@ import eu.coresense.adaptation.tactics.Condition
 import java.util.HashSet
 import eu.coresense.adaptation.tactics.LogicalOperator
 import eu.coresense.adaptation.tactics.TacticsPackage
+import uma.caosd.rhea.BasicFMmetamodel.FeatureModel
 import java.util.Map
 import eu.coresense.resolution.resolutionModel.ResolutionModel
 import eu.coresense.resolution.resolutionModel.Resolution
@@ -48,6 +49,10 @@ class TacticsGenerator extends AbstractGenerator {
 
 	
 	}
+	
+    def String generateTQL(TacticsModel model) {
+    	return model.compile.toString()
+    }
 	val Map<String, Integer> nameMap = newHashMap
 	val Map<Condition, String> conditionNames = newHashMap 
 	val Map<Pair<String, String>, String> logicNames = newHashMap

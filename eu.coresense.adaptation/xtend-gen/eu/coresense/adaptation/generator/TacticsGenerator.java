@@ -68,6 +68,10 @@ public class TacticsGenerator extends AbstractGenerator {
     }
   }
 
+  public String generateTQL(final TacticsModel model) {
+    return this.compile(model).toString();
+  }
+
   private final Map<String, Integer> nameMap = CollectionLiterals.<String, Integer>newHashMap();
 
   private final Map<Condition, String> conditionNames = CollectionLiterals.<Condition, String>newHashMap();

@@ -3,9 +3,6 @@
  */
 package eu.coresense.resolution.resolutionModel;
 
-import org.eclipse.emf.ecore.EObject;
-
-import system.RosNode;
 
 /**
  * <!-- begin-user-doc -->
@@ -16,7 +13,6 @@ import system.RosNode;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link eu.coresense.resolution.resolutionModel.SetLifecycle#getNode <em>Node</em>}</li>
  *   <li>{@link eu.coresense.resolution.resolutionModel.SetLifecycle#getState <em>State</em>}</li>
  * </ul>
  *
@@ -24,30 +20,8 @@ import system.RosNode;
  * @model
  * @generated
  */
-public interface SetLifecycle extends EObject
+public interface SetLifecycle extends Reconfiguration
 {
-  /**
-   * Returns the value of the '<em><b>Node</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Node</em>' reference.
-   * @see #setNode(RosNode)
-   * @see eu.coresense.resolution.resolutionModel.ResolutionModelPackage#getSetLifecycle_Node()
-   * @model
-   * @generated
-   */
-  RosNode getNode();
-
-  /**
-   * Sets the value of the '{@link eu.coresense.resolution.resolutionModel.SetLifecycle#getNode <em>Node</em>}' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Node</em>' reference.
-   * @see #getNode()
-   * @generated
-   */
-  void setNode(RosNode value);
-
   /**
    * Returns the value of the '<em><b>State</b></em>' attribute.
    * The literals are from the enumeration {@link eu.coresense.resolution.resolutionModel.LifecycleState}.

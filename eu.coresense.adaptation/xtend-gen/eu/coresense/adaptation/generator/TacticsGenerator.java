@@ -6,18 +6,22 @@ package eu.coresense.adaptation.generator;
 import com.google.common.collect.Iterables;
 import eu.coresense.adaptation.tactics.AdaptationRule;
 import eu.coresense.adaptation.tactics.AtomicRule;
+import eu.coresense.adaptation.tactics.AtomicRuleWithPriority;
 import eu.coresense.adaptation.tactics.Condition;
 import eu.coresense.adaptation.tactics.ConditionAction;
 import eu.coresense.adaptation.tactics.LogicalOperator;
 import eu.coresense.adaptation.tactics.MathOperator;
 import eu.coresense.adaptation.tactics.RuleBody;
+import eu.coresense.adaptation.tactics.RuleSet;
 import eu.coresense.adaptation.tactics.TacticsModel;
 import eu.coresense.resolution.resolutionModel.Reconfiguration;
 import eu.coresense.resolution.resolutionModel.Resolution;
 import eu.coresense.resolution.resolutionModel.ResolutionModel;
+import eu.coresense.resolution.resolutionModel.SetLifecycle;
 import eu.coresense.resolution.resolutionModel.SetParam;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
@@ -50,6 +54,8 @@ import ros.ParameterString;
 import ros.ParameterStringType;
 import ros.ParameterType;
 import ros.ParameterValue;
+import system.RosNode;
+import system.RosParameter;
 
 /**
  * Generates code from your model files on save.
@@ -81,6 +87,10 @@ public class TacticsGenerator extends AbstractGenerator {
   private final Map<SetParam, String> setparamNames = CollectionLiterals.<SetParam, String>newHashMap();
 
   private final Map<Resolution, String> resolutionNames = CollectionLiterals.<Resolution, String>newHashMap();
+
+  private final Map<RosNode, String> nodeNames = CollectionLiterals.<RosNode, String>newHashMap();
+
+  private final Map<ParameterValue, String> paramvalNames = CollectionLiterals.<ParameterValue, String>newHashMap();
 
   public String makeUniqueName(final String baseName) {
     String _xblockexpression = null;
@@ -168,11 +178,10 @@ public class TacticsGenerator extends AbstractGenerator {
   }
 
   private String name_a_reconfiguration(final Reconfiguration reconf) {
-    if (((reconf.getSet_lc() == null) && (reconf.getSet_param() != null))) {
-      final SetParam set_param = reconf.getSet_param();
-      return this.name_a_setparam(set_param);
+    if ((reconf instanceof SetParam)) {
+      return this.name_a_setparam(((SetParam)reconf));
     } else {
-      if (((reconf.getSet_lc() != null) && (reconf.getSet_param() == null))) {
+      if ((reconf instanceof SetLifecycle)) {
         return "placeholder_name_a_setlifecycle";
       }
     }
@@ -195,6 +204,22 @@ public class TacticsGenerator extends AbstractGenerator {
       return this.makeUniqueName(_plus);
     };
     return this.resolutionNames.computeIfAbsent(res, _function);
+  }
+
+  private String name_a_rosnode(final RosNode node) {
+    final Function<RosNode, String> _function = (RosNode it) -> {
+      String _name = node.getName();
+      String _plus = (_name + "_node");
+      return this.makeUniqueName(_plus);
+    };
+    return this.nodeNames.computeIfAbsent(node, _function);
+  }
+
+  private String name_a_paramval(final ParameterValue vall) {
+    final Function<ParameterValue, String> _function = (ParameterValue it) -> {
+      return this.makeUniqueName("p_");
+    };
+    return this.paramvalNames.computeIfAbsent(vall, _function);
   }
 
   private CharSequence logic_op(final LogicalOperator logicalOp, final String lhs_name, final String rhs_name) {
@@ -274,6 +299,9 @@ public class TacticsGenerator extends AbstractGenerator {
       CharSequence _registerMeasurements = this.registerMeasurements(t.getAdaptationRules());
       _builder.append(_registerMeasurements);
       _builder.newLineIfNotEmpty();
+      CharSequence _registerNodes = this.registerNodes(t.getResolutionModel());
+      _builder.append(_registerNodes);
+      _builder.newLineIfNotEmpty();
       {
         EList<AdaptationRule> _adaptationRules = t.getAdaptationRules();
         for(final AdaptationRule rule : _adaptationRules) {
@@ -308,19 +336,28 @@ public class TacticsGenerator extends AbstractGenerator {
     return _xblockexpression;
   }
 
+  private void measurementFromRuleBody(final RuleBody rule_body, final HashSet<String> rules) {
+    if ((rule_body instanceof ConditionAction)) {
+      final ConditionAction cond_acc = ((ConditionAction) rule_body);
+      final List<Condition> rule_conditions = this.collectSecondTerms(cond_acc.getCondition());
+      for (final Condition cond : rule_conditions) {
+        rules.add(cond.getMeasurement());
+      }
+    }
+  }
+
   private CharSequence registerMeasurements(final List<AdaptationRule> adap_rules) {
     CharSequence _xblockexpression = null;
     {
       final HashSet<String> unique_measurements = new HashSet<String>();
       for (final AdaptationRule rule : adap_rules) {
         if ((rule instanceof AtomicRule)) {
-          RuleBody _ruleBody = ((AtomicRule)rule).getRuleBody();
-          if ((_ruleBody instanceof ConditionAction)) {
-            RuleBody _ruleBody_1 = ((AtomicRule)rule).getRuleBody();
-            final ConditionAction cond_acc = ((ConditionAction) _ruleBody_1);
-            final List<Condition> rule_conditions = this.collectSecondTerms(cond_acc.getCondition());
-            for (final Condition cond : rule_conditions) {
-              unique_measurements.add(cond.getMeasurement());
+          this.measurementFromRuleBody(((AtomicRule)rule).getRuleBody(), unique_measurements);
+        } else {
+          if ((rule instanceof RuleSet)) {
+            EList<AtomicRuleWithPriority> _atomicRules = ((RuleSet)rule).getAtomicRules();
+            for (final AtomicRuleWithPriority set_rule : _atomicRules) {
+              this.measurementFromRuleBody(set_rule.getRuleBody(), unique_measurements);
             }
           }
         }
@@ -332,6 +369,39 @@ public class TacticsGenerator extends AbstractGenerator {
           _builder.append(mes);
           _builder.append(" isa Term, has term_name \"t_measured_");
           _builder.append(mes);
+          _builder.append("\";");
+          _builder.newLineIfNotEmpty();
+        }
+      }
+      _xblockexpression = _builder;
+    }
+    return _xblockexpression;
+  }
+
+  private CharSequence registerNodes(final ResolutionModel res_model) {
+    CharSequence _xblockexpression = null;
+    {
+      final HashSet<RosNode> unique_nodes = new HashSet<RosNode>();
+      EList<Resolution> _resolutions = res_model.getResolutions();
+      for (final Resolution resolution : _resolutions) {
+        {
+          EList<Reconfiguration> _deselection_actions = resolution.getDeselection_actions();
+          EList<Reconfiguration> _selection_actions = resolution.getSelection_actions();
+          final Iterable<Reconfiguration> all_reconfs = Iterables.<Reconfiguration>concat(_deselection_actions, _selection_actions);
+          for (final Reconfiguration reconf : all_reconfs) {
+            unique_nodes.add(reconf.getNode());
+          }
+        }
+      }
+      StringConcatenation _builder = new StringConcatenation();
+      {
+        for(final RosNode node_name : unique_nodes) {
+          _builder.append("$");
+          String _name_a_rosnode = this.name_a_rosnode(node_name);
+          _builder.append(_name_a_rosnode);
+          _builder.append(" isa ROSNode, has node_name \"");
+          String _name = node_name.getName();
+          _builder.append(_name);
           _builder.append("\";");
           _builder.newLineIfNotEmpty();
         }
@@ -357,17 +427,31 @@ public class TacticsGenerator extends AbstractGenerator {
   private CharSequence compileSingleResolution(final Resolution resolution) {
     CharSequence _xblockexpression = null;
     {
-      final Reconfiguration acc_one_temp = resolution.getSelection_actions().get(0);
+      Reconfiguration _get = resolution.getSelection_actions().get(0);
+      String _plus = ("ID " + _get);
+      String _plus_1 = (_plus + " ");
+      Reconfiguration _get_1 = resolution.getSelection_actions().get(0);
+      String _plus_2 = (_plus_1 + _get_1);
+      InputOutput.<String>println(_plus_2);
+      EList<Reconfiguration> _selection_actions = resolution.getSelection_actions();
+      for (final Reconfiguration element : _selection_actions) {
+        if ((element instanceof SetParam)) {
+          InputOutput.<RosParameter>println(((SetParam)element).getParam());
+          InputOutput.<ParameterValue>println(((SetParam)element).getParam().getValue());
+        }
+      }
+      int _size = resolution.getSelection_actions().size();
+      String _plus_3 = ("LENGNNTTT " + Integer.valueOf(_size));
+      InputOutput.<String>println(_plus_3);
       StringConcatenation _builder = new StringConcatenation();
-      _builder.newLine();
-      CharSequence _compileReconfiguration = this.compileReconfiguration(acc_one_temp);
+      CharSequence _compileReconfiguration = this.compileReconfiguration(resolution.getSelection_actions().get(0));
       _builder.append(_compileReconfiguration);
       _builder.newLineIfNotEmpty();
       _builder.append("$");
       String _name_a_resolution = this.name_a_resolution(resolution);
       _builder.append(_name_a_resolution);
       _builder.append(" (resolution_action: $");
-      String _name_a_reconfiguration = this.name_a_reconfiguration(acc_one_temp);
+      String _name_a_reconfiguration = this.name_a_reconfiguration(resolution.getSelection_actions().get(0));
       _builder.append(_name_a_reconfiguration);
       _builder.append(") isa variant_resolution, has variant_name \"");
       String _name = resolution.getFeature().getName();
@@ -412,6 +496,120 @@ public class TacticsGenerator extends AbstractGenerator {
     return "ValueTypeNotYetImplementedInGenerator";
   }
 
+  public Pair<CharSequence, List<String>> ParamValueToValueEntity(final ParameterValue the_value) {
+    final String param_str = this.ParamValueToString(the_value);
+    InputOutput.<String>println(("ta " + param_str));
+    if ((the_value instanceof ParameterSequence)) {
+      final ArrayList<String> result = CollectionLiterals.<String>newArrayList();
+      StringConcatenation _builder = new StringConcatenation();
+      {
+        Iterable<Pair<Integer, ParameterValue>> _indexed = IterableExtensions.<ParameterValue>indexed(((ParameterSequence)the_value).getValue());
+        for(final Pair<Integer, ParameterValue> param_value : _indexed) {
+          _builder.append("$");
+          String _name_a_paramval = this.name_a_paramval(param_value.getValue());
+          _builder.append(_name_a_paramval);
+          _builder.append(" isa ");
+          String _NiceNameParamValueClass = this.NiceNameParamValueClass(param_value.getValue());
+          _builder.append(_NiceNameParamValueClass);
+          _builder.append(", has parameter_value_index ");
+          Integer _key = param_value.getKey();
+          _builder.append(_key);
+          _builder.append(", has ");
+          String _NiceNameParamValueType = this.NiceNameParamValueType(param_value.getValue());
+          _builder.append(_NiceNameParamValueType);
+          _builder.append("_value ");
+          String _ParamValueToString = this.ParamValueToString(param_value.getValue());
+          _builder.append(_ParamValueToString);
+          _builder.append(";");
+          _builder.newLineIfNotEmpty();
+        }
+      }
+      final String body = _builder.toString();
+      EList<ParameterValue> _value = ((ParameterSequence)the_value).getValue();
+      for (final ParameterValue param_value_1 : _value) {
+        result.add(this.name_a_paramval(param_value_1));
+      }
+      return Pair.<CharSequence, List<String>>of(body, result);
+    } else {
+      final String name = this.name_a_paramval(the_value);
+      StringConcatenation _builder_1 = new StringConcatenation();
+      _builder_1.append("$");
+      String _name_a_paramval_1 = this.name_a_paramval(the_value);
+      _builder_1.append(_name_a_paramval_1);
+      _builder_1.append(" isa ");
+      String _NiceNameParamValueClass_1 = this.NiceNameParamValueClass(the_value);
+      _builder_1.append(_NiceNameParamValueClass_1);
+      _builder_1.append(", has ");
+      String _NiceNameParamValueType_1 = this.NiceNameParamValueType(the_value);
+      _builder_1.append(_NiceNameParamValueType_1);
+      _builder_1.append("_value ");
+      String _ParamValueToString_1 = this.ParamValueToString(the_value);
+      _builder_1.append(_ParamValueToString_1);
+      _builder_1.append(";");
+      _builder_1.newLineIfNotEmpty();
+      final String single = _builder_1.toString();
+      return Pair.<CharSequence, List<String>>of(single, Collections.<String>unmodifiableList(CollectionLiterals.<String>newArrayList(name)));
+    }
+  }
+
+  protected String _ParamValueToEntity(final ParameterValue p) {
+    String _name = p.getClass().getName();
+    String _plus = ("Unknown parameter type: " + _name);
+    InputOutput.<String>println(_plus);
+    return "ValueTypeNotYetImplementedInGenerator";
+  }
+
+  public String NiceNameParamValueClass(final ParameterValue param_value) {
+    String _switchResult = null;
+    boolean _matched = false;
+    if (param_value instanceof ParameterBoolean) {
+      _matched=true;
+      _switchResult = "ParameterBoolean";
+    }
+    if (!_matched) {
+      if (param_value instanceof ParameterDouble) {
+        _matched=true;
+        _switchResult = "ParameterDouble";
+      }
+    }
+    if (!_matched) {
+      if (param_value instanceof ParameterString) {
+        _matched=true;
+        _switchResult = "ParameterString";
+      }
+    }
+    if (!_matched) {
+      if (param_value instanceof ParameterSequence) {
+        _matched=true;
+        String _NiceNameParamValueClass = this.NiceNameParamValueClass(((ParameterSequence)param_value).getValue().get(0));
+        _switchResult = (_NiceNameParamValueClass + "Array");
+      }
+    }
+    return _switchResult;
+  }
+
+  public String NiceNameParamValueType(final ParameterValue param_value) {
+    String _switchResult = null;
+    boolean _matched = false;
+    if (param_value instanceof ParameterBoolean) {
+      _matched=true;
+      _switchResult = "boolean";
+    }
+    if (!_matched) {
+      if (param_value instanceof ParameterDouble) {
+        _matched=true;
+        _switchResult = "double";
+      }
+    }
+    if (!_matched) {
+      if (param_value instanceof ParameterString) {
+        _matched=true;
+        _switchResult = "string";
+      }
+    }
+    return _switchResult;
+  }
+
   public String NiceNameParamType(final ParameterType param_type) {
     String _switchResult = null;
     boolean _matched = false;
@@ -441,50 +639,101 @@ public class TacticsGenerator extends AbstractGenerator {
     return _switchResult;
   }
 
-  private CharSequence compileReconfiguration(final Reconfiguration reconfig) {
-    CharSequence _xifexpression = null;
-    if (((reconfig.getSet_lc() == null) && (reconfig.getSet_param() != null))) {
-      CharSequence _xblockexpression = null;
+  private CharSequence compileParameter(final ParameterValue param, final String parent_name, final String param_name) {
+    CharSequence _xblockexpression = null;
+    {
+      final Pair<CharSequence, List<String>> value_and_names = this.ParamValueToValueEntity(param);
+      final CharSequence x = value_and_names.getKey();
+      final List<String> names = value_and_names.getValue();
+      InputOutput.<String>println("BRRR");
+      InputOutput.<ParameterValue>println(param);
+      InputOutput.<String>println("CRRR");
+      final ParameterValue the_value = param;
+      final String param_str = this.ParamValueToString(the_value);
+      InputOutput.<String>println(("ba " + param_str));
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append(x);
+      _builder.newLineIfNotEmpty();
+      _builder.newLine();
+      _builder.append("$p_");
+      _builder.append(parent_name);
+      _builder.append(" (");
+      _builder.newLineIfNotEmpty();
       {
-        final SetParam set_param = reconfig.getSet_param();
-        final String node_name = set_param.getNode().getName();
-        final ParameterValue param_val = set_param.getValue();
-        final String param_name = set_param.getParam().getName();
-        final String param_str = this.ParamValueToString(param_val);
-        final String param_type = this.NiceNameParamType(set_param.getParam().getFrom().getType());
-        InputOutput.<String>print("BRRR");
-        InputOutput.<String>println(param_type);
-        InputOutput.<String>print("CRRR");
-        StringConcatenation _builder = new StringConcatenation();
-        _builder.append("$");
-        String _name_a_setparam = this.name_a_setparam(set_param);
-        _builder.append(_name_a_setparam);
-        _builder.append(" isa SetParameter, has node_name \"");
-        _builder.append(node_name);
-        _builder.append("\", has parameter_name \"");
-        _builder.append(param_name);
-        _builder.append("\", has parameter-value \"");
-        _builder.append(param_str);
-        _builder.append("\", has parameter-type \"");
-        _builder.append(param_type);
-        _builder.append("\";");
-        _builder.newLineIfNotEmpty();
-        _xblockexpression = _builder;
+        boolean _hasElements = false;
+        for(final String name : names) {
+          if (!_hasElements) {
+            _hasElements = true;
+          } else {
+            _builder.appendImmediate(", ", "\t\t");
+          }
+          _builder.append("\t\t");
+          _builder.append("parameter_value: $");
+          _builder.append(name, "\t\t");
+          _builder.newLineIfNotEmpty();
+        }
       }
-      _xifexpression = _xblockexpression;
-    } else {
-      CharSequence _xifexpression_1 = null;
-      if (((reconfig.getSet_lc() != null) && (reconfig.getSet_param() == null))) {
-        StringConcatenation _builder = new StringConcatenation();
-        _builder.append("placeholderrr");
-        _builder.newLine();
-        _xifexpression_1 = _builder;
-      } else {
-        System.out.println("SOMETHING WRONG RECONFIG.!");
-      }
-      _xifexpression = _xifexpression_1;
+      _builder.append("\t");
+      _builder.append(") isa parameter, has parameter_name \"");
+      _builder.append(param_name, "\t");
+      _builder.append("\";");
+      _builder.newLineIfNotEmpty();
+      _xblockexpression = _builder;
     }
-    return _xifexpression;
+    return _xblockexpression;
+  }
+
+  private CharSequence compileReconfiguration(final Reconfiguration reconfig) {
+    CharSequence _xblockexpression = null;
+    {
+      InputOutput.<String>println("A");
+      InputOutput.<Reconfiguration>println(reconfig);
+      InputOutput.<String>println("B");
+      CharSequence _xifexpression = null;
+      if ((reconfig instanceof SetParam)) {
+        CharSequence _xblockexpression_1 = null;
+        {
+          InputOutput.<String>println("C");
+          InputOutput.<RosParameter>println(((SetParam)reconfig).getParam());
+          InputOutput.<String>println("D");
+          final ParameterValue param_val = ((SetParam)reconfig).getValue();
+          final String param_name = ((SetParam)reconfig).getParam().getName();
+          final String named_set_param = this.name_a_setparam(((SetParam)reconfig));
+          final String param_str = this.ParamValueToString(param_val);
+          InputOutput.<String>println(param_str);
+          final String param_type = this.NiceNameParamType(((SetParam)reconfig).getParam().getFrom().getType());
+          StringConcatenation _builder = new StringConcatenation();
+          CharSequence _compileParameter = this.compileParameter(((SetParam)reconfig).getValue(), named_set_param, ((SetParam)reconfig).getParam().getName());
+          _builder.append(_compileParameter);
+          _builder.newLineIfNotEmpty();
+          _builder.newLine();
+          _builder.append("$");
+          _builder.append(named_set_param);
+          _builder.append(" (node: $");
+          String _name_a_rosnode = this.name_a_rosnode(((SetParam)reconfig).getNode());
+          _builder.append(_name_a_rosnode);
+          _builder.append(", parameter: $p_");
+          _builder.append(named_set_param);
+          _builder.append(") isa set_nodes_parameters;");
+          _builder.newLineIfNotEmpty();
+          _xblockexpression_1 = _builder;
+        }
+        _xifexpression = _xblockexpression_1;
+      } else {
+        CharSequence _xifexpression_1 = null;
+        if ((reconfig instanceof SetLifecycle)) {
+          StringConcatenation _builder = new StringConcatenation();
+          _builder.append("placeholderrr");
+          _builder.newLine();
+          _xifexpression_1 = _builder;
+        } else {
+          System.out.println("SOMETHING WRONG RECONFIG.!");
+        }
+        _xifexpression = _xifexpression_1;
+      }
+      _xblockexpression = _xifexpression;
+    }
+    return _xblockexpression;
   }
 
   private CharSequence compileRule(final AdaptationRule c, final String lc_tacticName) {
@@ -571,5 +820,10 @@ public class TacticsGenerator extends AbstractGenerator {
       throw new IllegalArgumentException("Unhandled parameter types: " +
         Arrays.<Object>asList(p).toString());
     }
+  }
+
+  @XbaseGenerated
+  public String ParamValueToEntity(final ParameterValue p) {
+    return _ParamValueToEntity(p);
   }
 }

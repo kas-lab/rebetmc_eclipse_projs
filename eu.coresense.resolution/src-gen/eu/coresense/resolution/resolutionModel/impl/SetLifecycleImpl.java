@@ -10,12 +10,8 @@ import eu.coresense.resolution.resolutionModel.SetLifecycle;
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
-import system.RosNode;
 
 /**
  * <!-- begin-user-doc -->
@@ -25,24 +21,13 @@ import system.RosNode;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link eu.coresense.resolution.resolutionModel.impl.SetLifecycleImpl#getNode <em>Node</em>}</li>
  *   <li>{@link eu.coresense.resolution.resolutionModel.impl.SetLifecycleImpl#getState <em>State</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class SetLifecycleImpl extends MinimalEObjectImpl.Container implements SetLifecycle
+public class SetLifecycleImpl extends ReconfigurationImpl implements SetLifecycle
 {
-  /**
-   * The cached value of the '{@link #getNode() <em>Node</em>}' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getNode()
-   * @generated
-   * @ordered
-   */
-  protected RosNode node;
-
   /**
    * The default value of the '{@link #getState() <em>State</em>}' attribute.
    * <!-- begin-user-doc -->
@@ -90,51 +75,6 @@ public class SetLifecycleImpl extends MinimalEObjectImpl.Container implements Se
    * @generated
    */
   @Override
-  public RosNode getNode()
-  {
-    if (node != null && node.eIsProxy())
-    {
-      InternalEObject oldNode = (InternalEObject)node;
-      node = (RosNode)eResolveProxy(oldNode);
-      if (node != oldNode)
-      {
-        if (eNotificationRequired())
-          eNotify(new ENotificationImpl(this, Notification.RESOLVE, ResolutionModelPackage.SET_LIFECYCLE__NODE, oldNode, node));
-      }
-    }
-    return node;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public RosNode basicGetNode()
-  {
-    return node;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public void setNode(RosNode newNode)
-  {
-    RosNode oldNode = node;
-    node = newNode;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ResolutionModelPackage.SET_LIFECYCLE__NODE, oldNode, node));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
   public LifecycleState getState()
   {
     return state;
@@ -164,9 +104,6 @@ public class SetLifecycleImpl extends MinimalEObjectImpl.Container implements Se
   {
     switch (featureID)
     {
-      case ResolutionModelPackage.SET_LIFECYCLE__NODE:
-        if (resolve) return getNode();
-        return basicGetNode();
       case ResolutionModelPackage.SET_LIFECYCLE__STATE:
         return getState();
     }
@@ -183,9 +120,6 @@ public class SetLifecycleImpl extends MinimalEObjectImpl.Container implements Se
   {
     switch (featureID)
     {
-      case ResolutionModelPackage.SET_LIFECYCLE__NODE:
-        setNode((RosNode)newValue);
-        return;
       case ResolutionModelPackage.SET_LIFECYCLE__STATE:
         setState((LifecycleState)newValue);
         return;
@@ -203,9 +137,6 @@ public class SetLifecycleImpl extends MinimalEObjectImpl.Container implements Se
   {
     switch (featureID)
     {
-      case ResolutionModelPackage.SET_LIFECYCLE__NODE:
-        setNode((RosNode)null);
-        return;
       case ResolutionModelPackage.SET_LIFECYCLE__STATE:
         setState(STATE_EDEFAULT);
         return;
@@ -223,8 +154,6 @@ public class SetLifecycleImpl extends MinimalEObjectImpl.Container implements Se
   {
     switch (featureID)
     {
-      case ResolutionModelPackage.SET_LIFECYCLE__NODE:
-        return node != null;
       case ResolutionModelPackage.SET_LIFECYCLE__STATE:
         return state != STATE_EDEFAULT;
     }

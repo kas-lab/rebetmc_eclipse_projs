@@ -303,20 +303,9 @@ public class ResolutionModelPackageImpl extends EPackageImpl implements Resoluti
    * @generated
    */
   @Override
-  public EReference getReconfiguration_Set_param()
+  public EReference getReconfiguration_Node()
   {
     return (EReference)reconfigurationEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EReference getReconfiguration_Set_lc()
-  {
-    return (EReference)reconfigurationEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -336,7 +325,7 @@ public class ResolutionModelPackageImpl extends EPackageImpl implements Resoluti
    * @generated
    */
   @Override
-  public EReference getSetParam_Node()
+  public EReference getSetParam_Param()
   {
     return (EReference)setParamEClass.getEStructuralFeatures().get(0);
   }
@@ -347,20 +336,9 @@ public class ResolutionModelPackageImpl extends EPackageImpl implements Resoluti
    * @generated
    */
   @Override
-  public EReference getSetParam_Param()
-  {
-    return (EReference)setParamEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
   public EReference getSetParam_Value()
   {
-    return (EReference)setParamEClass.getEStructuralFeatures().get(2);
+    return (EReference)setParamEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -380,20 +358,9 @@ public class ResolutionModelPackageImpl extends EPackageImpl implements Resoluti
    * @generated
    */
   @Override
-  public EReference getSetLifecycle_Node()
-  {
-    return (EReference)setLifecycleEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
   public EAttribute getSetLifecycle_State()
   {
-    return (EAttribute)setLifecycleEClass.getEStructuralFeatures().get(1);
+    return (EAttribute)setLifecycleEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -454,16 +421,13 @@ public class ResolutionModelPackageImpl extends EPackageImpl implements Resoluti
     createEAttribute(importEClass, IMPORT__IMPORT_URI);
 
     reconfigurationEClass = createEClass(RECONFIGURATION);
-    createEReference(reconfigurationEClass, RECONFIGURATION__SET_PARAM);
-    createEReference(reconfigurationEClass, RECONFIGURATION__SET_LC);
+    createEReference(reconfigurationEClass, RECONFIGURATION__NODE);
 
     setParamEClass = createEClass(SET_PARAM);
-    createEReference(setParamEClass, SET_PARAM__NODE);
     createEReference(setParamEClass, SET_PARAM__PARAM);
     createEReference(setParamEClass, SET_PARAM__VALUE);
 
     setLifecycleEClass = createEClass(SET_LIFECYCLE);
-    createEReference(setLifecycleEClass, SET_LIFECYCLE__NODE);
     createEAttribute(setLifecycleEClass, SET_LIFECYCLE__STATE);
 
     // Create enums
@@ -504,6 +468,8 @@ public class ResolutionModelPackageImpl extends EPackageImpl implements Resoluti
     // Set bounds for type parameters
 
     // Add supertypes to classes
+    setParamEClass.getESuperTypes().add(this.getReconfiguration());
+    setLifecycleEClass.getESuperTypes().add(this.getReconfiguration());
 
     // Initialize classes and features; add operations and parameters
     initEClass(resolutionModelEClass, ResolutionModel.class, "ResolutionModel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -522,16 +488,13 @@ public class ResolutionModelPackageImpl extends EPackageImpl implements Resoluti
     initEAttribute(getImport_ImportURI(), ecorePackage.getEString(), "importURI", null, 0, 1, Import.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(reconfigurationEClass, Reconfiguration.class, "Reconfiguration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getReconfiguration_Set_param(), this.getSetParam(), null, "set_param", null, 0, 1, Reconfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getReconfiguration_Set_lc(), this.getSetLifecycle(), null, "set_lc", null, 0, 1, Reconfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getReconfiguration_Node(), theRossystemPackage.getRosNode(), null, "node", null, 0, 1, Reconfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(setParamEClass, SetParam.class, "SetParam", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getSetParam_Node(), theRossystemPackage.getRosNode(), null, "node", null, 0, 1, SetParam.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getSetParam_Param(), theRossystemPackage.getRosParameter(), null, "param", null, 0, 1, SetParam.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getSetParam_Value(), theRosPackage.getParameterValue(), null, "value", null, 0, 1, SetParam.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(setLifecycleEClass, SetLifecycle.class, "SetLifecycle", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getSetLifecycle_Node(), theRossystemPackage.getRosNode(), null, "node", null, 0, 1, SetLifecycle.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getSetLifecycle_State(), this.getLifecycleState(), "state", null, 0, 1, SetLifecycle.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     // Initialize enums and add enum literals

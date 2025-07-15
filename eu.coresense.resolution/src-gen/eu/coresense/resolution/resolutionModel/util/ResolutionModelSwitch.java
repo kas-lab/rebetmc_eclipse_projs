@@ -105,6 +105,7 @@ public class ResolutionModelSwitch<T> extends Switch<T>
       {
         SetParam setParam = (SetParam)theEObject;
         T result = caseSetParam(setParam);
+        if (result == null) result = caseReconfiguration(setParam);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -112,6 +113,7 @@ public class ResolutionModelSwitch<T> extends Switch<T>
       {
         SetLifecycle setLifecycle = (SetLifecycle)theEObject;
         T result = caseSetLifecycle(setLifecycle);
+        if (result == null) result = caseReconfiguration(setLifecycle);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }

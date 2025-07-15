@@ -5,6 +5,8 @@ package eu.coresense.resolution.resolutionModel;
 
 import org.eclipse.emf.ecore.EObject;
 
+import system.RosNode;
+
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Reconfiguration</b></em>'.
@@ -14,8 +16,7 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link eu.coresense.resolution.resolutionModel.Reconfiguration#getSet_param <em>Set param</em>}</li>
- *   <li>{@link eu.coresense.resolution.resolutionModel.Reconfiguration#getSet_lc <em>Set lc</em>}</li>
+ *   <li>{@link eu.coresense.resolution.resolutionModel.Reconfiguration#getNode <em>Node</em>}</li>
  * </ul>
  *
  * @see eu.coresense.resolution.resolutionModel.ResolutionModelPackage#getReconfiguration()
@@ -25,47 +26,25 @@ import org.eclipse.emf.ecore.EObject;
 public interface Reconfiguration extends EObject
 {
   /**
-   * Returns the value of the '<em><b>Set param</b></em>' containment reference.
+   * Returns the value of the '<em><b>Node</b></em>' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Set param</em>' containment reference.
-   * @see #setSet_param(SetParam)
-   * @see eu.coresense.resolution.resolutionModel.ResolutionModelPackage#getReconfiguration_Set_param()
-   * @model containment="true"
+   * @return the value of the '<em>Node</em>' reference.
+   * @see #setNode(RosNode)
+   * @see eu.coresense.resolution.resolutionModel.ResolutionModelPackage#getReconfiguration_Node()
+   * @model
    * @generated
    */
-  SetParam getSet_param();
+  RosNode getNode();
 
   /**
-   * Sets the value of the '{@link eu.coresense.resolution.resolutionModel.Reconfiguration#getSet_param <em>Set param</em>}' containment reference.
+   * Sets the value of the '{@link eu.coresense.resolution.resolutionModel.Reconfiguration#getNode <em>Node</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Set param</em>' containment reference.
-   * @see #getSet_param()
+   * @param value the new value of the '<em>Node</em>' reference.
+   * @see #getNode()
    * @generated
    */
-  void setSet_param(SetParam value);
-
-  /**
-   * Returns the value of the '<em><b>Set lc</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Set lc</em>' containment reference.
-   * @see #setSet_lc(SetLifecycle)
-   * @see eu.coresense.resolution.resolutionModel.ResolutionModelPackage#getReconfiguration_Set_lc()
-   * @model containment="true"
-   * @generated
-   */
-  SetLifecycle getSet_lc();
-
-  /**
-   * Sets the value of the '{@link eu.coresense.resolution.resolutionModel.Reconfiguration#getSet_lc <em>Set lc</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Set lc</em>' containment reference.
-   * @see #getSet_lc()
-   * @generated
-   */
-  void setSet_lc(SetLifecycle value);
+  void setNode(RosNode value);
 
 } // Reconfiguration

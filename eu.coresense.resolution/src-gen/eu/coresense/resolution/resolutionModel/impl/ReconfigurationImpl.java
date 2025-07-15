@@ -5,17 +5,16 @@ package eu.coresense.resolution.resolutionModel.impl;
 
 import eu.coresense.resolution.resolutionModel.Reconfiguration;
 import eu.coresense.resolution.resolutionModel.ResolutionModelPackage;
-import eu.coresense.resolution.resolutionModel.SetLifecycle;
-import eu.coresense.resolution.resolutionModel.SetParam;
 
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+
+import system.RosNode;
 
 /**
  * <!-- begin-user-doc -->
@@ -25,8 +24,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link eu.coresense.resolution.resolutionModel.impl.ReconfigurationImpl#getSet_param <em>Set param</em>}</li>
- *   <li>{@link eu.coresense.resolution.resolutionModel.impl.ReconfigurationImpl#getSet_lc <em>Set lc</em>}</li>
+ *   <li>{@link eu.coresense.resolution.resolutionModel.impl.ReconfigurationImpl#getNode <em>Node</em>}</li>
  * </ul>
  *
  * @generated
@@ -34,24 +32,14 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 public class ReconfigurationImpl extends MinimalEObjectImpl.Container implements Reconfiguration
 {
   /**
-   * The cached value of the '{@link #getSet_param() <em>Set param</em>}' containment reference.
+   * The cached value of the '{@link #getNode() <em>Node</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getSet_param()
+   * @see #getNode()
    * @generated
    * @ordered
    */
-  protected SetParam set_param;
-
-  /**
-   * The cached value of the '{@link #getSet_lc() <em>Set lc</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getSet_lc()
-   * @generated
-   * @ordered
-   */
-  protected SetLifecycle set_lc;
+  protected RosNode node;
 
   /**
    * <!-- begin-user-doc -->
@@ -80,9 +68,19 @@ public class ReconfigurationImpl extends MinimalEObjectImpl.Container implements
    * @generated
    */
   @Override
-  public SetParam getSet_param()
+  public RosNode getNode()
   {
-    return set_param;
+    if (node != null && node.eIsProxy())
+    {
+      InternalEObject oldNode = (InternalEObject)node;
+      node = (RosNode)eResolveProxy(oldNode);
+      if (node != oldNode)
+      {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, ResolutionModelPackage.RECONFIGURATION__NODE, oldNode, node));
+      }
+    }
+    return node;
   }
 
   /**
@@ -90,106 +88,23 @@ public class ReconfigurationImpl extends MinimalEObjectImpl.Container implements
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetSet_param(SetParam newSet_param, NotificationChain msgs)
+  public RosNode basicGetNode()
   {
-    SetParam oldSet_param = set_param;
-    set_param = newSet_param;
+    return node;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setNode(RosNode newNode)
+  {
+    RosNode oldNode = node;
+    node = newNode;
     if (eNotificationRequired())
-    {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ResolutionModelPackage.RECONFIGURATION__SET_PARAM, oldSet_param, newSet_param);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
-    }
-    return msgs;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public void setSet_param(SetParam newSet_param)
-  {
-    if (newSet_param != set_param)
-    {
-      NotificationChain msgs = null;
-      if (set_param != null)
-        msgs = ((InternalEObject)set_param).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ResolutionModelPackage.RECONFIGURATION__SET_PARAM, null, msgs);
-      if (newSet_param != null)
-        msgs = ((InternalEObject)newSet_param).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ResolutionModelPackage.RECONFIGURATION__SET_PARAM, null, msgs);
-      msgs = basicSetSet_param(newSet_param, msgs);
-      if (msgs != null) msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ResolutionModelPackage.RECONFIGURATION__SET_PARAM, newSet_param, newSet_param));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public SetLifecycle getSet_lc()
-  {
-    return set_lc;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public NotificationChain basicSetSet_lc(SetLifecycle newSet_lc, NotificationChain msgs)
-  {
-    SetLifecycle oldSet_lc = set_lc;
-    set_lc = newSet_lc;
-    if (eNotificationRequired())
-    {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ResolutionModelPackage.RECONFIGURATION__SET_LC, oldSet_lc, newSet_lc);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
-    }
-    return msgs;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public void setSet_lc(SetLifecycle newSet_lc)
-  {
-    if (newSet_lc != set_lc)
-    {
-      NotificationChain msgs = null;
-      if (set_lc != null)
-        msgs = ((InternalEObject)set_lc).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ResolutionModelPackage.RECONFIGURATION__SET_LC, null, msgs);
-      if (newSet_lc != null)
-        msgs = ((InternalEObject)newSet_lc).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ResolutionModelPackage.RECONFIGURATION__SET_LC, null, msgs);
-      msgs = basicSetSet_lc(newSet_lc, msgs);
-      if (msgs != null) msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ResolutionModelPackage.RECONFIGURATION__SET_LC, newSet_lc, newSet_lc));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
-  {
-    switch (featureID)
-    {
-      case ResolutionModelPackage.RECONFIGURATION__SET_PARAM:
-        return basicSetSet_param(null, msgs);
-      case ResolutionModelPackage.RECONFIGURATION__SET_LC:
-        return basicSetSet_lc(null, msgs);
-    }
-    return super.eInverseRemove(otherEnd, featureID, msgs);
+      eNotify(new ENotificationImpl(this, Notification.SET, ResolutionModelPackage.RECONFIGURATION__NODE, oldNode, node));
   }
 
   /**
@@ -202,10 +117,9 @@ public class ReconfigurationImpl extends MinimalEObjectImpl.Container implements
   {
     switch (featureID)
     {
-      case ResolutionModelPackage.RECONFIGURATION__SET_PARAM:
-        return getSet_param();
-      case ResolutionModelPackage.RECONFIGURATION__SET_LC:
-        return getSet_lc();
+      case ResolutionModelPackage.RECONFIGURATION__NODE:
+        if (resolve) return getNode();
+        return basicGetNode();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -220,11 +134,8 @@ public class ReconfigurationImpl extends MinimalEObjectImpl.Container implements
   {
     switch (featureID)
     {
-      case ResolutionModelPackage.RECONFIGURATION__SET_PARAM:
-        setSet_param((SetParam)newValue);
-        return;
-      case ResolutionModelPackage.RECONFIGURATION__SET_LC:
-        setSet_lc((SetLifecycle)newValue);
+      case ResolutionModelPackage.RECONFIGURATION__NODE:
+        setNode((RosNode)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -240,11 +151,8 @@ public class ReconfigurationImpl extends MinimalEObjectImpl.Container implements
   {
     switch (featureID)
     {
-      case ResolutionModelPackage.RECONFIGURATION__SET_PARAM:
-        setSet_param((SetParam)null);
-        return;
-      case ResolutionModelPackage.RECONFIGURATION__SET_LC:
-        setSet_lc((SetLifecycle)null);
+      case ResolutionModelPackage.RECONFIGURATION__NODE:
+        setNode((RosNode)null);
         return;
     }
     super.eUnset(featureID);
@@ -260,10 +168,8 @@ public class ReconfigurationImpl extends MinimalEObjectImpl.Container implements
   {
     switch (featureID)
     {
-      case ResolutionModelPackage.RECONFIGURATION__SET_PARAM:
-        return set_param != null;
-      case ResolutionModelPackage.RECONFIGURATION__SET_LC:
-        return set_lc != null;
+      case ResolutionModelPackage.RECONFIGURATION__NODE:
+        return node != null;
     }
     return super.eIsSet(featureID);
   }

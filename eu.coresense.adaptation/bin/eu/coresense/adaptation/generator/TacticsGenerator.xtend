@@ -33,6 +33,13 @@ import ros.ParameterBooleanType
 import ros.ParameterDoubleType
 import ros.ParameterStringType
 import ros.ParameterArrayType
+import eu.coresense.adaptation.tactics.RuleSet
+import eu.coresense.adaptation.tactics.RuleBody
+import eu.coresense.adaptation.tactics.AtomicAction
+import eu.coresense.adaptation.tactics.AtomicActionSelectFeature
+import eu.coresense.resolution.resolutionModel.SetLifecycle
+import system.RosNode
+import system.RosParameter
 
 /**
  * Generates code from your model files on save.
@@ -58,6 +65,9 @@ class TacticsGenerator extends AbstractGenerator {
 	val Map<Pair<String, String>, String> logicNames = newHashMap
 	val Map<SetParam, String> setparamNames = newHashMap
 	val Map<Resolution, String> resolutionNames = newHashMap
+	val Map<RosNode, String> nodeNames = newHashMap
+	val Map<ParameterValue, String> paramvalNames = newHashMap
+	
 
 	def makeUniqueName(String baseName) {
 	    val count = nameMap.get(baseName) ?: 0
@@ -99,12 +109,12 @@ class TacticsGenerator extends AbstractGenerator {
 	
 	private def name_a_reconfiguration(Reconfiguration reconf)
 	{
-		if(reconf.set_lc === null && reconf.set_param !== null)
+		
+		if(reconf instanceof SetParam)
 		{
-			val set_param = reconf.set_param
-			return name_a_setparam(set_param)
+			return name_a_setparam(reconf)
 		}
-		else if(reconf.set_lc !== null && reconf.set_param === null)
+		else if(reconf instanceof SetLifecycle)
 		{
 			return "placeholder_name_a_setlifecycle"	
 		}
@@ -123,6 +133,20 @@ class TacticsGenerator extends AbstractGenerator {
 	{
 		resolutionNames.computeIfAbsent(res) [
         	makeUniqueName(res.feature.name.toLowerCase() + "_resolution")
+    ]
+	}
+	
+	private def name_a_rosnode(RosNode node)
+	{
+		nodeNames.computeIfAbsent(node) [
+        	makeUniqueName(node.name + "_node")
+    ]
+	}
+	
+	private def name_a_paramval(ParameterValue vall)
+	{
+		paramvalNames.computeIfAbsent(vall) [
+        	makeUniqueName("p_")
     ]
 	}
 	
@@ -179,6 +203,7 @@ class TacticsGenerator extends AbstractGenerator {
 		$ta_«lc_tacticName» isa Tactic, has tactic_name "«tacticName»", has tactic_period «t.period»;
 		
 		«registerMeasurements(t.adaptationRules)»
+		«registerNodes(t.resolutionModel)»
 		«FOR rule : t.adaptationRules»
 		«compileRule(rule,lc_tacticName)»
 		«ENDFOR»
@@ -188,19 +213,31 @@ class TacticsGenerator extends AbstractGenerator {
 		'''
 	}
 	
+	private def measurementFromRuleBody(RuleBody rule_body, HashSet<String> rules)
+	{
+		if (rule_body instanceof ConditionAction)
+		{
+			val cond_acc = rule_body as ConditionAction
+			val rule_conditions = collectSecondTerms(cond_acc.condition)
+			for (cond : rule_conditions) {
+				rules.add(cond.measurement)
+			}
+		}
+	}
+	
 	private def registerMeasurements(List<AdaptationRule> adap_rules)
 	{
 		val unique_measurements = new HashSet<String>()
 		for (rule : adap_rules) {
 			if (rule instanceof AtomicRule)
 			{
-				if (rule.ruleBody instanceof ConditionAction)
+				measurementFromRuleBody(rule.ruleBody, unique_measurements)
+			}
+			else if(rule instanceof RuleSet)
+			{
+				for (set_rule : rule.atomicRules)
 				{
-					val cond_acc = rule.ruleBody as ConditionAction
-					val rule_conditions = collectSecondTerms(cond_acc.condition)
-					for (cond : rule_conditions) {
-						unique_measurements.add(cond.measurement)
-					}
+					measurementFromRuleBody(set_rule.ruleBody, unique_measurements)
 				}
 			}
 		}
@@ -209,8 +246,28 @@ class TacticsGenerator extends AbstractGenerator {
 		$t_measured_«mes» isa Term, has term_name "t_measured_«mes»";
 		«ENDFOR»
 		'''
-		
 	}
+	
+
+	private def registerNodes(ResolutionModel res_model)
+	{
+		val unique_nodes = new HashSet<RosNode>()
+		for (resolution : res_model.resolutions) {
+			val all_reconfs = resolution.deselection_actions + resolution.selection_actions
+			for (reconf : all_reconfs)
+			{
+				unique_nodes.add(reconf.node)
+			}
+		}
+		'''
+		«FOR node_name : unique_nodes»
+		$«name_a_rosnode(node_name)» isa ROSNode, has node_name "«node_name.name»";
+		«ENDFOR»
+		'''
+	}
+	
+	
+
 	
 	private def compileResolution(ResolutionModel resModel)
 	{
@@ -223,12 +280,22 @@ class TacticsGenerator extends AbstractGenerator {
 	
 	private def compileSingleResolution(Resolution resolution)
 	{
-		val acc_one_temp = resolution.selection_actions.get(0)
-				
-		'''
+		println("ID " + resolution.selection_actions.get(0) + " " + resolution.selection_actions.get(0))
+		//TODO: make multiple selections work, as well as deselections.
+		for (element : resolution.selection_actions) {
+			if(element instanceof SetParam)
+			{
+				println(element.param)
+				println(element.param.value)
+			}
+			
+		}
+//		val acc_one_temp = resolution.selection_actions.get(0)
+		println("LENGNNTTT " + resolution.selection_actions.size)
 		
-		«compileReconfiguration(acc_one_temp)»
-		$«name_a_resolution(resolution)» (resolution_action: $«name_a_reconfiguration(acc_one_temp)») isa variant_resolution, has variant_name "«resolution.feature.name»";
+		'''
+		«compileReconfiguration(resolution.selection_actions.get(0))»
+		$«name_a_resolution(resolution)» (resolution_action: $«name_a_reconfiguration(resolution.selection_actions.get(0))») isa variant_resolution, has variant_name "«resolution.feature.name»";
 		'''
 	}
 
@@ -248,6 +315,79 @@ class TacticsGenerator extends AbstractGenerator {
 	    return "ValueTypeNotYetImplementedInGenerator"
 	}
 	
+//	def dispatch String ParamValueToEntity(ParameterSequence p) {
+//    val parts = p.value.map[ParamValueToEntity(it)]
+//	return "[" + parts.join(", ") + "]"
+//	}
+//	
+
+	def Pair<CharSequence, List<String>> ParamValueToValueEntity(ParameterValue the_value) {
+		
+		val param_str = ParamValueToString(the_value)
+		println("ta " + param_str)
+		if(the_value instanceof ParameterSequence)
+		{
+		val result = newArrayList	
+		val body = '''
+		«FOR param_value : the_value.value.indexed»
+		$«name_a_paramval(param_value.value)» isa «NiceNameParamValueClass(param_value.value)», has parameter_value_index «param_value.key», has «NiceNameParamValueType(param_value.value)»_value «ParamValueToString(param_value.value)»;
+		«ENDFOR»
+		'''
+		
+		for (param_value : the_value.value) {
+			result.add(name_a_paramval(param_value))
+		}
+		return body -> result
+		} 
+		else
+		{
+			val name = name_a_paramval(the_value)
+			val single = '''
+			$«name_a_paramval(the_value)» isa «NiceNameParamValueClass(the_value)», has «NiceNameParamValueType(the_value)»_value «ParamValueToString(the_value)»;
+			'''
+			return single -> #[name]
+		}
+	}
+	
+	
+	def dispatch String ParamValueToEntity(ParameterValue p) {
+	    println("Unknown parameter type: " + p.class.name)
+	    return "ValueTypeNotYetImplementedInGenerator"
+	}
+	
+	def String NiceNameParamValueClass(ParameterValue param_value)
+	{
+		//(boolean|boolean_array|double|double_array|long|long_array|string|string_array)
+		switch param_value
+		{
+			ParameterBoolean:
+				"ParameterBoolean"
+			ParameterDouble:
+				"ParameterDouble"
+			ParameterString:
+				"ParameterString"
+			ParameterSequence:
+				NiceNameParamValueClass(param_value.value.get(0)) + "Array" 
+		}
+		
+	}
+	
+	def String NiceNameParamValueType(ParameterValue param_value)
+	{
+		//(boolean|boolean_array|double|double_array|long|long_array|string|string_array)
+		switch param_value
+		{
+			ParameterBoolean:
+				"boolean"
+			ParameterDouble:
+				"double"
+			ParameterString:
+				"string"
+		}
+		
+	}
+	
+	
 	def String NiceNameParamType(ParameterType param_type)
 	{
 		//(boolean|boolean_array|double|double_array|long|long_array|string|string_array)
@@ -265,28 +405,57 @@ class TacticsGenerator extends AbstractGenerator {
 		
 	}
 	
+	private def compileParameter(ParameterValue param, String parent_name, String param_name)
+	{
+		val value_and_names = ParamValueToValueEntity(param)
+		val x = value_and_names.key
+		val names = value_and_names.value
+		println("BRRR")
+		println(param)
+		println("CRRR")
+		val the_value = param
+		val param_str = ParamValueToString(the_value)
+		println("ba " + param_str)
+		'''
+		«x»
+		
+		$p_«parent_name» (
+				«FOR name : names SEPARATOR ", "»
+					parameter_value: $«name»
+				«ENDFOR»
+			) isa parameter, has parameter_name "«param_name»";
+		'''
+		
+	}
+	
 	private def compileReconfiguration(Reconfiguration reconfig)
 	{
-		if(reconfig.set_lc === null && reconfig.set_param !== null)
+		println("A")
+		println(reconfig)
+		println("B")
+		if(reconfig instanceof SetParam)
 		{
-			val set_param = reconfig.set_param
-			val node_name = set_param.node.getName()
-			val param_val = set_param.value
-			val param_name = set_param.param.name
-			
+			println("C")
+			println(reconfig.param)
+			println("D")
+			val param_val = reconfig.value
+			val param_name = reconfig.param.name
+			val named_set_param = name_a_setparam(reconfig)
 			val param_str = ParamValueToString(param_val)
 			
-			val param_type = NiceNameParamType(set_param.param.from.type)
-			print("BRRR")
-			println(param_type)
-			print("CRRR")
+			println(param_str)
+			
+			val param_type = NiceNameParamType(reconfig.param.from.type)
+
 			
 			'''
-			$«name_a_setparam(set_param)» isa SetParameter, has node_name "«node_name»", has parameter_name "«param_name»", has parameter-value "«param_str»", has parameter-type "«param_type»";
+			«compileParameter(reconfig.value, named_set_param, reconfig.param.name)»
+			
+			$«named_set_param» (node: $«name_a_rosnode(reconfig.node)», parameter: $p_«named_set_param») isa set_nodes_parameters;
 			'''
 			//sp_max_speed_low isa SetParameter, has node_name "velocity_smoother", has parameter-value "ros.impl.ParameterSequenceImpl@6d63db68", has parameter-type "ros.impl.ParameterArrayTypeImpl@54206577";
 		}
-		else if(reconfig.set_lc !== null && reconfig.set_param === null)
+		else if(reconfig instanceof SetLifecycle)
 		{
 			'''
 			placeholderrr

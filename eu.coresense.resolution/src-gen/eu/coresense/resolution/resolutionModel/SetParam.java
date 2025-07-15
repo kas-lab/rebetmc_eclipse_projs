@@ -3,11 +3,8 @@
  */
 package eu.coresense.resolution.resolutionModel;
 
-import org.eclipse.emf.ecore.EObject;
-
 import ros.ParameterValue;
 
-import system.RosNode;
 import system.RosParameter;
 
 /**
@@ -19,7 +16,6 @@ import system.RosParameter;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link eu.coresense.resolution.resolutionModel.SetParam#getNode <em>Node</em>}</li>
  *   <li>{@link eu.coresense.resolution.resolutionModel.SetParam#getParam <em>Param</em>}</li>
  *   <li>{@link eu.coresense.resolution.resolutionModel.SetParam#getValue <em>Value</em>}</li>
  * </ul>
@@ -28,30 +24,8 @@ import system.RosParameter;
  * @model
  * @generated
  */
-public interface SetParam extends EObject
+public interface SetParam extends Reconfiguration
 {
-  /**
-   * Returns the value of the '<em><b>Node</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Node</em>' reference.
-   * @see #setNode(RosNode)
-   * @see eu.coresense.resolution.resolutionModel.ResolutionModelPackage#getSetParam_Node()
-   * @model
-   * @generated
-   */
-  RosNode getNode();
-
-  /**
-   * Sets the value of the '{@link eu.coresense.resolution.resolutionModel.SetParam#getNode <em>Node</em>}' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Node</em>' reference.
-   * @see #getNode()
-   * @generated
-   */
-  void setNode(RosNode value);
-
   /**
    * Returns the value of the '<em><b>Param</b></em>' reference.
    * <!-- begin-user-doc -->

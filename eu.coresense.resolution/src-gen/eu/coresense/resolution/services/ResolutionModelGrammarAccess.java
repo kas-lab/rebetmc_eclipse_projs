@@ -209,30 +209,22 @@ public class ResolutionModelGrammarAccess extends AbstractElementFinder.Abstract
 	public class ReconfigurationElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "eu.coresense.resolution.ResolutionModel.Reconfiguration");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final Assignment cSet_paramAssignment_0 = (Assignment)cAlternatives.eContents().get(0);
-		private final RuleCall cSet_paramSetParamParserRuleCall_0_0 = (RuleCall)cSet_paramAssignment_0.eContents().get(0);
-		private final Assignment cSet_lcAssignment_1 = (Assignment)cAlternatives.eContents().get(1);
-		private final RuleCall cSet_lcSetLifecycleParserRuleCall_1_0 = (RuleCall)cSet_lcAssignment_1.eContents().get(0);
+		private final RuleCall cSetParamParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final RuleCall cSetLifecycleParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
 		
 		//Reconfiguration:
-		//    set_param=SetParam | set_lc=SetLifecycle
+		//    SetParam | SetLifecycle
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//set_param=SetParam | set_lc=SetLifecycle
+		//SetParam | SetLifecycle
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
-		//set_param=SetParam
-		public Assignment getSet_paramAssignment_0() { return cSet_paramAssignment_0; }
-		
 		//SetParam
-		public RuleCall getSet_paramSetParamParserRuleCall_0_0() { return cSet_paramSetParamParserRuleCall_0_0; }
-		
-		//set_lc=SetLifecycle
-		public Assignment getSet_lcAssignment_1() { return cSet_lcAssignment_1; }
+		public RuleCall getSetParamParserRuleCall_0() { return cSetParamParserRuleCall_0; }
 		
 		//SetLifecycle
-		public RuleCall getSet_lcSetLifecycleParserRuleCall_1_0() { return cSet_lcSetLifecycleParserRuleCall_1_0; }
+		public RuleCall getSetLifecycleParserRuleCall_1() { return cSetLifecycleParserRuleCall_1; }
 	}
 	public class SetParamElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "eu.coresense.resolution.ResolutionModel.SetParam");
@@ -481,7 +473,7 @@ public class ResolutionModelGrammarAccess extends AbstractElementFinder.Abstract
 	}
 	
 	//Reconfiguration:
-	//    set_param=SetParam | set_lc=SetLifecycle
+	//    SetParam | SetLifecycle
 	//;
 	public ReconfigurationElements getReconfigurationAccess() {
 		return pReconfiguration;

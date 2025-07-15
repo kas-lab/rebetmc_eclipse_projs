@@ -22,19 +22,14 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="importURI" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Reconfiguration">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="set_param" eType="#//SetParam"
-        containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="set_lc" eType="#//SetLifecycle"
-        containment="true"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="SetParam">
     <eStructuralFeatures xsi:type="ecore:EReference" name="node" eType="ecore:EClass platform:/resource/de.fraunhofer.ipa.rossystem/model/rossystem.ecore#//RosNode"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SetParam" eSuperTypes="#//Reconfiguration">
     <eStructuralFeatures xsi:type="ecore:EReference" name="param" eType="ecore:EClass platform:/resource/de.fraunhofer.ipa.rossystem/model/rossystem.ecore#//RosParameter"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="value" eType="ecore:EClass platform:/resource/de.fraunhofer.ipa.ros/model/ros.ecore#//ParameterValue"
         containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="SetLifecycle">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="node" eType="ecore:EClass platform:/resource/de.fraunhofer.ipa.rossystem/model/rossystem.ecore#//RosNode"/>
+  <eClassifiers xsi:type="ecore:EClass" name="SetLifecycle" eSuperTypes="#//Reconfiguration">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="state" eType="#//LifecycleState"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="LifecycleState">

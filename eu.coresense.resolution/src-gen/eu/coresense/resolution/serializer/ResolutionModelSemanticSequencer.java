@@ -6,7 +6,6 @@ package eu.coresense.resolution.serializer;
 import com.google.inject.Inject;
 import de.fraunhofer.ipa.ros.serializer.BasicsSemanticSequencer;
 import eu.coresense.resolution.resolutionModel.Import;
-import eu.coresense.resolution.resolutionModel.Reconfiguration;
 import eu.coresense.resolution.resolutionModel.Resolution;
 import eu.coresense.resolution.resolutionModel.ResolutionModel;
 import eu.coresense.resolution.resolutionModel.ResolutionModelPackage;
@@ -198,9 +197,6 @@ public class ResolutionModelSemanticSequencer extends BasicsSemanticSequencer {
 			case ResolutionModelPackage.IMPORT:
 				sequence_Import(context, (Import) semanticObject); 
 				return; 
-			case ResolutionModelPackage.RECONFIGURATION:
-				sequence_Reconfiguration(context, (Reconfiguration) semanticObject); 
-				return; 
 			case ResolutionModelPackage.RESOLUTION:
 				sequence_Resolution(context, (Resolution) semanticObject); 
 				return; 
@@ -325,20 +321,6 @@ public class ResolutionModelSemanticSequencer extends BasicsSemanticSequencer {
 	/**
 	 * <pre>
 	 * Contexts:
-	 *     Reconfiguration returns Reconfiguration
-	 *
-	 * Constraint:
-	 *     (set_param=SetParam | set_lc=SetLifecycle)
-	 * </pre>
-	 */
-	protected void sequence_Reconfiguration(ISerializationContext context, Reconfiguration semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * <pre>
-	 * Contexts:
 	 *     ResolutionModel returns ResolutionModel
 	 *
 	 * Constraint:
@@ -367,6 +349,7 @@ public class ResolutionModelSemanticSequencer extends BasicsSemanticSequencer {
 	/**
 	 * <pre>
 	 * Contexts:
+	 *     Reconfiguration returns SetLifecycle
 	 *     SetLifecycle returns SetLifecycle
 	 *
 	 * Constraint:
@@ -375,13 +358,13 @@ public class ResolutionModelSemanticSequencer extends BasicsSemanticSequencer {
 	 */
 	protected void sequence_SetLifecycle(ISerializationContext context, SetLifecycle semanticObject) {
 		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, ResolutionModelPackage.Literals.SET_LIFECYCLE__NODE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ResolutionModelPackage.Literals.SET_LIFECYCLE__NODE));
+			if (transientValues.isValueTransient(semanticObject, ResolutionModelPackage.Literals.RECONFIGURATION__NODE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ResolutionModelPackage.Literals.RECONFIGURATION__NODE));
 			if (transientValues.isValueTransient(semanticObject, ResolutionModelPackage.Literals.SET_LIFECYCLE__STATE) == ValueTransient.YES)
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ResolutionModelPackage.Literals.SET_LIFECYCLE__STATE));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getSetLifecycleAccess().getNodeRosNodeIDTerminalRuleCall_1_0_1(), semanticObject.eGet(ResolutionModelPackage.Literals.SET_LIFECYCLE__NODE, false));
+		feeder.accept(grammarAccess.getSetLifecycleAccess().getNodeRosNodeIDTerminalRuleCall_1_0_1(), semanticObject.eGet(ResolutionModelPackage.Literals.RECONFIGURATION__NODE, false));
 		feeder.accept(grammarAccess.getSetLifecycleAccess().getStateLifecycleStateEnumRuleCall_3_0(), semanticObject.getState());
 		feeder.finish();
 	}
@@ -390,6 +373,7 @@ public class ResolutionModelSemanticSequencer extends BasicsSemanticSequencer {
 	/**
 	 * <pre>
 	 * Contexts:
+	 *     Reconfiguration returns SetParam
 	 *     SetParam returns SetParam
 	 *
 	 * Constraint:
@@ -398,15 +382,15 @@ public class ResolutionModelSemanticSequencer extends BasicsSemanticSequencer {
 	 */
 	protected void sequence_SetParam(ISerializationContext context, SetParam semanticObject) {
 		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, ResolutionModelPackage.Literals.SET_PARAM__NODE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ResolutionModelPackage.Literals.SET_PARAM__NODE));
+			if (transientValues.isValueTransient(semanticObject, ResolutionModelPackage.Literals.RECONFIGURATION__NODE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ResolutionModelPackage.Literals.RECONFIGURATION__NODE));
 			if (transientValues.isValueTransient(semanticObject, ResolutionModelPackage.Literals.SET_PARAM__PARAM) == ValueTransient.YES)
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ResolutionModelPackage.Literals.SET_PARAM__PARAM));
 			if (transientValues.isValueTransient(semanticObject, ResolutionModelPackage.Literals.SET_PARAM__VALUE) == ValueTransient.YES)
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ResolutionModelPackage.Literals.SET_PARAM__VALUE));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getSetParamAccess().getNodeRosNodeIDTerminalRuleCall_1_0_1(), semanticObject.eGet(ResolutionModelPackage.Literals.SET_PARAM__NODE, false));
+		feeder.accept(grammarAccess.getSetParamAccess().getNodeRosNodeIDTerminalRuleCall_1_0_1(), semanticObject.eGet(ResolutionModelPackage.Literals.RECONFIGURATION__NODE, false));
 		feeder.accept(grammarAccess.getSetParamAccess().getParamRosParameterIDTerminalRuleCall_3_0_1(), semanticObject.eGet(ResolutionModelPackage.Literals.SET_PARAM__PARAM, false));
 		feeder.accept(grammarAccess.getSetParamAccess().getValueParameterValueParserRuleCall_5_0(), semanticObject.getValue());
 		feeder.finish();

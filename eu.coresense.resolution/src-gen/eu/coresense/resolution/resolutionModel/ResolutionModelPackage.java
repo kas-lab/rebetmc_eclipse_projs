@@ -207,22 +207,13 @@ public interface ResolutionModelPackage extends EPackage
   int RECONFIGURATION = 3;
 
   /**
-   * The feature id for the '<em><b>Set param</b></em>' containment reference.
+   * The feature id for the '<em><b>Node</b></em>' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int RECONFIGURATION__SET_PARAM = 0;
-
-  /**
-   * The feature id for the '<em><b>Set lc</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int RECONFIGURATION__SET_LC = 1;
+  int RECONFIGURATION__NODE = 0;
 
   /**
    * The number of structural features of the '<em>Reconfiguration</em>' class.
@@ -231,7 +222,7 @@ public interface ResolutionModelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int RECONFIGURATION_FEATURE_COUNT = 2;
+  int RECONFIGURATION_FEATURE_COUNT = 1;
 
   /**
    * The meta object id for the '{@link eu.coresense.resolution.resolutionModel.impl.SetParamImpl <em>Set Param</em>}' class.
@@ -250,7 +241,7 @@ public interface ResolutionModelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int SET_PARAM__NODE = 0;
+  int SET_PARAM__NODE = RECONFIGURATION__NODE;
 
   /**
    * The feature id for the '<em><b>Param</b></em>' reference.
@@ -259,7 +250,7 @@ public interface ResolutionModelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int SET_PARAM__PARAM = 1;
+  int SET_PARAM__PARAM = RECONFIGURATION_FEATURE_COUNT + 0;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' containment reference.
@@ -268,7 +259,7 @@ public interface ResolutionModelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int SET_PARAM__VALUE = 2;
+  int SET_PARAM__VALUE = RECONFIGURATION_FEATURE_COUNT + 1;
 
   /**
    * The number of structural features of the '<em>Set Param</em>' class.
@@ -277,7 +268,7 @@ public interface ResolutionModelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int SET_PARAM_FEATURE_COUNT = 3;
+  int SET_PARAM_FEATURE_COUNT = RECONFIGURATION_FEATURE_COUNT + 2;
 
   /**
    * The meta object id for the '{@link eu.coresense.resolution.resolutionModel.impl.SetLifecycleImpl <em>Set Lifecycle</em>}' class.
@@ -296,7 +287,7 @@ public interface ResolutionModelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int SET_LIFECYCLE__NODE = 0;
+  int SET_LIFECYCLE__NODE = RECONFIGURATION__NODE;
 
   /**
    * The feature id for the '<em><b>State</b></em>' attribute.
@@ -305,7 +296,7 @@ public interface ResolutionModelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int SET_LIFECYCLE__STATE = 1;
+  int SET_LIFECYCLE__STATE = RECONFIGURATION_FEATURE_COUNT + 0;
 
   /**
    * The number of structural features of the '<em>Set Lifecycle</em>' class.
@@ -314,7 +305,7 @@ public interface ResolutionModelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int SET_LIFECYCLE_FEATURE_COUNT = 2;
+  int SET_LIFECYCLE_FEATURE_COUNT = RECONFIGURATION_FEATURE_COUNT + 1;
 
   /**
    * The meta object id for the '{@link eu.coresense.resolution.resolutionModel.LifecycleState <em>Lifecycle State</em>}' enum.
@@ -467,26 +458,15 @@ public interface ResolutionModelPackage extends EPackage
   EClass getReconfiguration();
 
   /**
-   * Returns the meta object for the containment reference '{@link eu.coresense.resolution.resolutionModel.Reconfiguration#getSet_param <em>Set param</em>}'.
+   * Returns the meta object for the reference '{@link eu.coresense.resolution.resolutionModel.Reconfiguration#getNode <em>Node</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Set param</em>'.
-   * @see eu.coresense.resolution.resolutionModel.Reconfiguration#getSet_param()
+   * @return the meta object for the reference '<em>Node</em>'.
+   * @see eu.coresense.resolution.resolutionModel.Reconfiguration#getNode()
    * @see #getReconfiguration()
    * @generated
    */
-  EReference getReconfiguration_Set_param();
-
-  /**
-   * Returns the meta object for the containment reference '{@link eu.coresense.resolution.resolutionModel.Reconfiguration#getSet_lc <em>Set lc</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Set lc</em>'.
-   * @see eu.coresense.resolution.resolutionModel.Reconfiguration#getSet_lc()
-   * @see #getReconfiguration()
-   * @generated
-   */
-  EReference getReconfiguration_Set_lc();
+  EReference getReconfiguration_Node();
 
   /**
    * Returns the meta object for class '{@link eu.coresense.resolution.resolutionModel.SetParam <em>Set Param</em>}'.
@@ -497,17 +477,6 @@ public interface ResolutionModelPackage extends EPackage
    * @generated
    */
   EClass getSetParam();
-
-  /**
-   * Returns the meta object for the reference '{@link eu.coresense.resolution.resolutionModel.SetParam#getNode <em>Node</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the reference '<em>Node</em>'.
-   * @see eu.coresense.resolution.resolutionModel.SetParam#getNode()
-   * @see #getSetParam()
-   * @generated
-   */
-  EReference getSetParam_Node();
 
   /**
    * Returns the meta object for the reference '{@link eu.coresense.resolution.resolutionModel.SetParam#getParam <em>Param</em>}'.
@@ -540,17 +509,6 @@ public interface ResolutionModelPackage extends EPackage
    * @generated
    */
   EClass getSetLifecycle();
-
-  /**
-   * Returns the meta object for the reference '{@link eu.coresense.resolution.resolutionModel.SetLifecycle#getNode <em>Node</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the reference '<em>Node</em>'.
-   * @see eu.coresense.resolution.resolutionModel.SetLifecycle#getNode()
-   * @see #getSetLifecycle()
-   * @generated
-   */
-  EReference getSetLifecycle_Node();
 
   /**
    * Returns the meta object for the attribute '{@link eu.coresense.resolution.resolutionModel.SetLifecycle#getState <em>State</em>}'.
@@ -709,20 +667,12 @@ public interface ResolutionModelPackage extends EPackage
     EClass RECONFIGURATION = eINSTANCE.getReconfiguration();
 
     /**
-     * The meta object literal for the '<em><b>Set param</b></em>' containment reference feature.
+     * The meta object literal for the '<em><b>Node</b></em>' reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference RECONFIGURATION__SET_PARAM = eINSTANCE.getReconfiguration_Set_param();
-
-    /**
-     * The meta object literal for the '<em><b>Set lc</b></em>' containment reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference RECONFIGURATION__SET_LC = eINSTANCE.getReconfiguration_Set_lc();
+    EReference RECONFIGURATION__NODE = eINSTANCE.getReconfiguration_Node();
 
     /**
      * The meta object literal for the '{@link eu.coresense.resolution.resolutionModel.impl.SetParamImpl <em>Set Param</em>}' class.
@@ -733,14 +683,6 @@ public interface ResolutionModelPackage extends EPackage
      * @generated
      */
     EClass SET_PARAM = eINSTANCE.getSetParam();
-
-    /**
-     * The meta object literal for the '<em><b>Node</b></em>' reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference SET_PARAM__NODE = eINSTANCE.getSetParam_Node();
 
     /**
      * The meta object literal for the '<em><b>Param</b></em>' reference feature.
@@ -767,14 +709,6 @@ public interface ResolutionModelPackage extends EPackage
      * @generated
      */
     EClass SET_LIFECYCLE = eINSTANCE.getSetLifecycle();
-
-    /**
-     * The meta object literal for the '<em><b>Node</b></em>' reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference SET_LIFECYCLE__NODE = eINSTANCE.getSetLifecycle_Node();
 
     /**
      * The meta object literal for the '<em><b>State</b></em>' attribute feature.

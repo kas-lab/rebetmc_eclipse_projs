@@ -131,8 +131,6 @@ public class ResolutionModelParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getResolutionAccess().getSelection_actionsAssignment_4(), "rule__Resolution__Selection_actionsAssignment_4");
 			builder.put(grammarAccess.getResolutionAccess().getDeselection_actionsAssignment_6(), "rule__Resolution__Deselection_actionsAssignment_6");
 			builder.put(grammarAccess.getImportAccess().getImportURIAssignment_1(), "rule__Import__ImportURIAssignment_1");
-			builder.put(grammarAccess.getReconfigurationAccess().getSet_paramAssignment_0(), "rule__Reconfiguration__Set_paramAssignment_0");
-			builder.put(grammarAccess.getReconfigurationAccess().getSet_lcAssignment_1(), "rule__Reconfiguration__Set_lcAssignment_1");
 			builder.put(grammarAccess.getSetParamAccess().getNodeAssignment_1(), "rule__SetParam__NodeAssignment_1");
 			builder.put(grammarAccess.getSetParamAccess().getParamAssignment_3(), "rule__SetParam__ParamAssignment_3");
 			builder.put(grammarAccess.getSetParamAccess().getValueAssignment_5(), "rule__SetParam__ValueAssignment_5");

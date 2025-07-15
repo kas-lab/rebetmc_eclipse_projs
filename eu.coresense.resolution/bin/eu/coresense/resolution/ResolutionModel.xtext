@@ -22,7 +22,7 @@ Import:
 ;
 
 Reconfiguration:
-	set_param=SetParam | set_lc=SetLifecycle
+	SetParam | SetLifecycle
 ;
 
 SetParam:

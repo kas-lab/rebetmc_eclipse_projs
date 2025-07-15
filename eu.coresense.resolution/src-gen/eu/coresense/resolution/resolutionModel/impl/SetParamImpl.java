@@ -13,11 +13,9 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import ros.ParameterValue;
 
-import system.RosNode;
 import system.RosParameter;
 
 /**
@@ -28,25 +26,14 @@ import system.RosParameter;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link eu.coresense.resolution.resolutionModel.impl.SetParamImpl#getNode <em>Node</em>}</li>
  *   <li>{@link eu.coresense.resolution.resolutionModel.impl.SetParamImpl#getParam <em>Param</em>}</li>
  *   <li>{@link eu.coresense.resolution.resolutionModel.impl.SetParamImpl#getValue <em>Value</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class SetParamImpl extends MinimalEObjectImpl.Container implements SetParam
+public class SetParamImpl extends ReconfigurationImpl implements SetParam
 {
-  /**
-   * The cached value of the '{@link #getNode() <em>Node</em>}' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getNode()
-   * @generated
-   * @ordered
-   */
-  protected RosNode node;
-
   /**
    * The cached value of the '{@link #getParam() <em>Param</em>}' reference.
    * <!-- begin-user-doc -->
@@ -86,51 +73,6 @@ public class SetParamImpl extends MinimalEObjectImpl.Container implements SetPar
   protected EClass eStaticClass()
   {
     return ResolutionModelPackage.Literals.SET_PARAM;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public RosNode getNode()
-  {
-    if (node != null && node.eIsProxy())
-    {
-      InternalEObject oldNode = (InternalEObject)node;
-      node = (RosNode)eResolveProxy(oldNode);
-      if (node != oldNode)
-      {
-        if (eNotificationRequired())
-          eNotify(new ENotificationImpl(this, Notification.RESOLVE, ResolutionModelPackage.SET_PARAM__NODE, oldNode, node));
-      }
-    }
-    return node;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public RosNode basicGetNode()
-  {
-    return node;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public void setNode(RosNode newNode)
-  {
-    RosNode oldNode = node;
-    node = newNode;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ResolutionModelPackage.SET_PARAM__NODE, oldNode, node));
   }
 
   /**
@@ -254,9 +196,6 @@ public class SetParamImpl extends MinimalEObjectImpl.Container implements SetPar
   {
     switch (featureID)
     {
-      case ResolutionModelPackage.SET_PARAM__NODE:
-        if (resolve) return getNode();
-        return basicGetNode();
       case ResolutionModelPackage.SET_PARAM__PARAM:
         if (resolve) return getParam();
         return basicGetParam();
@@ -276,9 +215,6 @@ public class SetParamImpl extends MinimalEObjectImpl.Container implements SetPar
   {
     switch (featureID)
     {
-      case ResolutionModelPackage.SET_PARAM__NODE:
-        setNode((RosNode)newValue);
-        return;
       case ResolutionModelPackage.SET_PARAM__PARAM:
         setParam((RosParameter)newValue);
         return;
@@ -299,9 +235,6 @@ public class SetParamImpl extends MinimalEObjectImpl.Container implements SetPar
   {
     switch (featureID)
     {
-      case ResolutionModelPackage.SET_PARAM__NODE:
-        setNode((RosNode)null);
-        return;
       case ResolutionModelPackage.SET_PARAM__PARAM:
         setParam((RosParameter)null);
         return;
@@ -322,8 +255,6 @@ public class SetParamImpl extends MinimalEObjectImpl.Container implements SetPar
   {
     switch (featureID)
     {
-      case ResolutionModelPackage.SET_PARAM__NODE:
-        return node != null;
       case ResolutionModelPackage.SET_PARAM__PARAM:
         return param != null;
       case ResolutionModelPackage.SET_PARAM__VALUE:

@@ -90,7 +90,7 @@ public class ResolutionModelValidator extends AbstractResolutionModelValidator {
 	    {
 	    	 error(
 	 	            "Node '" + node.getName() + "' does not seem to be a lifecycle node",
-	 	            ResolutionModelPackage.Literals.SET_LIFECYCLE__NODE
+	 	            ResolutionModelPackage.Literals.RECONFIGURATION__NODE
 	 	        );
 	    	
 	    }

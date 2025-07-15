@@ -333,45 +333,23 @@ ruleReconfiguration returns [EObject current=null]
 	leaveRule();
 }:
 	(
-		(
-			(
-				{
-					newCompositeNode(grammarAccess.getReconfigurationAccess().getSet_paramSetParamParserRuleCall_0_0());
-				}
-				lv_set_param_0_0=ruleSetParam
-				{
-					if ($current==null) {
-						$current = createModelElementForParent(grammarAccess.getReconfigurationRule());
-					}
-					set(
-						$current,
-						"set_param",
-						lv_set_param_0_0,
-						"eu.coresense.resolution.ResolutionModel.SetParam");
-					afterParserOrEnumRuleCall();
-				}
-			)
-		)
+		{
+			newCompositeNode(grammarAccess.getReconfigurationAccess().getSetParamParserRuleCall_0());
+		}
+		this_SetParam_0=ruleSetParam
+		{
+			$current = $this_SetParam_0.current;
+			afterParserOrEnumRuleCall();
+		}
 		    |
-		(
-			(
-				{
-					newCompositeNode(grammarAccess.getReconfigurationAccess().getSet_lcSetLifecycleParserRuleCall_1_0());
-				}
-				lv_set_lc_1_0=ruleSetLifecycle
-				{
-					if ($current==null) {
-						$current = createModelElementForParent(grammarAccess.getReconfigurationRule());
-					}
-					set(
-						$current,
-						"set_lc",
-						lv_set_lc_1_0,
-						"eu.coresense.resolution.ResolutionModel.SetLifecycle");
-					afterParserOrEnumRuleCall();
-				}
-			)
-		)
+		{
+			newCompositeNode(grammarAccess.getReconfigurationAccess().getSetLifecycleParserRuleCall_1());
+		}
+		this_SetLifecycle_1=ruleSetLifecycle
+		{
+			$current = $this_SetLifecycle_1.current;
+			afterParserOrEnumRuleCall();
+		}
 	)
 ;
 

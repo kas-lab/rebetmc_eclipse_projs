@@ -28,16 +28,13 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ResolutionModel.ecore#//Import/importURI"/>
     </genClasses>
     <genClasses ecoreClass="ResolutionModel.ecore#//Reconfiguration">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ResolutionModel.ecore#//Reconfiguration/set_param"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ResolutionModel.ecore#//Reconfiguration/set_lc"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ResolutionModel.ecore#//Reconfiguration/node"/>
     </genClasses>
     <genClasses ecoreClass="ResolutionModel.ecore#//SetParam">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ResolutionModel.ecore#//SetParam/node"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ResolutionModel.ecore#//SetParam/param"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ResolutionModel.ecore#//SetParam/value"/>
     </genClasses>
     <genClasses ecoreClass="ResolutionModel.ecore#//SetLifecycle">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ResolutionModel.ecore#//SetLifecycle/node"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ResolutionModel.ecore#//SetLifecycle/state"/>
     </genClasses>
   </genPackages>

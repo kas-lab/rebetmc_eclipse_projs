@@ -87,6 +87,15 @@ public interface TacticsFactory extends EFactory
   AtomicAction createAtomicAction();
 
   /**
+   * Returns a new object of class '<em>Atomic Simple Action</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Atomic Simple Action</em>'.
+   * @generated
+   */
+  AtomicSimpleAction createAtomicSimpleAction();
+
+  /**
    * Returns a new object of class '<em>Rule Body</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -114,6 +123,15 @@ public interface TacticsFactory extends EFactory
   ConditionAction createConditionAction();
 
   /**
+   * Returns a new object of class '<em>Effect</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Effect</em>'.
+   * @generated
+   */
+  Effect createEffect();
+
+  /**
    * Returns a new object of class '<em>Condition</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -139,6 +157,60 @@ public interface TacticsFactory extends EFactory
    * @generated
    */
   AtomicActionDeselectFeature createAtomicActionDeselectFeature();
+
+  /**
+   * Returns a new object of class '<em>Qualified Feature Ref</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Qualified Feature Ref</em>'.
+   * @generated
+   */
+  QualifiedFeatureRef createQualifiedFeatureRef();
+
+  /**
+   * Returns a new object of class '<em>Literal</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Literal</em>'.
+   * @generated
+   */
+  Literal createLiteral();
+
+  /**
+   * Returns a new object of class '<em>Int Literal</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Int Literal</em>'.
+   * @generated
+   */
+  IntLiteral createIntLiteral();
+
+  /**
+   * Returns a new object of class '<em>Decimal Literal</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Decimal Literal</em>'.
+   * @generated
+   */
+  DecimalLiteral createDecimalLiteral();
+
+  /**
+   * Returns a new object of class '<em>String Literal</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>String Literal</em>'.
+   * @generated
+   */
+  StringLiteral createStringLiteral();
+
+  /**
+   * Returns a new object of class '<em>Boolean Literal</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Boolean Literal</em>'.
+   * @generated
+   */
+  BooleanLiteral createBooleanLiteral();
 
   /**
    * Returns the package supported by this factory.

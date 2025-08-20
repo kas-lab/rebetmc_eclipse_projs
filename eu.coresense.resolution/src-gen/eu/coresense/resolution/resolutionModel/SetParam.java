@@ -3,9 +3,8 @@
  */
 package eu.coresense.resolution.resolutionModel;
 
+import ros.Parameter;
 import ros.ParameterValue;
-
-import system.RosParameter;
 
 /**
  * <!-- begin-user-doc -->
@@ -31,12 +30,12 @@ public interface SetParam extends Reconfiguration
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the value of the '<em>Param</em>' reference.
-   * @see #setParam(RosParameter)
+   * @see #setParam(Parameter)
    * @see eu.coresense.resolution.resolutionModel.ResolutionModelPackage#getSetParam_Param()
    * @model
    * @generated
    */
-  RosParameter getParam();
+  Parameter getParam();
 
   /**
    * Sets the value of the '{@link eu.coresense.resolution.resolutionModel.SetParam#getParam <em>Param</em>}' reference.
@@ -46,7 +45,7 @@ public interface SetParam extends Reconfiguration
    * @see #getParam()
    * @generated
    */
-  void setParam(RosParameter value);
+  void setParam(Parameter value);
 
   /**
    * Returns the value of the '<em><b>Value</b></em>' containment reference.

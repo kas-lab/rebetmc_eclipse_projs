@@ -11,9 +11,9 @@ package eu.coresense.resolution.ide.contentassist.antlr.lexer;
 import org.eclipse.xtext.ide.editor.contentassist.antlr.internal.Lexer;
 }
 
-SetLifecycleState : 'SetLifecycleState(';
-
 RelativeNamespace : 'RelativeNamespace';
+
+SetLifecycleState : 'SetLifecycleState';
 
 Variability_model : 'variability_model';
 
@@ -21,9 +21,9 @@ PrivateNamespace : 'PrivateNamespace';
 
 GlobalNamespace : 'GlobalNamespace';
 
-SetParameter : 'SetParameter(';
-
 ParameterAny : 'ParameterAny';
+
+SetParameter : 'SetParameter';
 
 UNCONFIGURED : 'UNCONFIGURED';
 
@@ -157,6 +157,8 @@ Ns : 'ns:';
 
 LeftSquareBracketRightSquareBracket : '[]';
 
+LeftParenthesis : '(';
+
 RightParenthesis : ')';
 
 Comma : ',';
@@ -168,6 +170,8 @@ Semicolon : ';';
 LeftSquareBracket : '[';
 
 RightSquareBracket : ']';
+
+RULE_WS : (' '|'\t'|'\r'? '\n')+;
 
 fragment RULE_DIGIT : '0'..'9';
 
@@ -210,7 +214,5 @@ fragment RULE_INT : ('0'..'9')+;
 RULE_STRING : ('"' ('\\' .|~(('\\'|'"')))* '"'|'\'' ('\\' .|~(('\\'|'\'')))* '\'');
 
 RULE_ML_COMMENT : '/*' ( options {greedy=false;} : . )*'*/';
-
-RULE_WS : (' '|'\t'|'\r'|'\n')+;
 
 RULE_ANY_OTHER : .;

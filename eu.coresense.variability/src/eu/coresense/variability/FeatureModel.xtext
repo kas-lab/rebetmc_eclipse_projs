@@ -9,7 +9,6 @@ generate featureModel "http://www.coresense.eu/variability/FeatureModel"
 Model:
 	'feature_model'
 	'{' 
-	'featureDefinitions' '{' featureDefinitions+=Feature ("," featureDefinitions+=Feature)* '}'
 	fm=FeatureModel 
 	'}'
 ;
@@ -17,8 +16,7 @@ Model:
 FeatureModel returns BasicFMmetamodel::FeatureModel:
 	'name' name=EString
 	'root' root=Feature	
-	'features' features+=[BasicFMmetamodel::Feature]
-	'crossTreeConstraints' crossTreeConstraints+=BasicConstraint*
+	'crossTreeConstraints' '{' crossTreeConstraints+=BasicConstraint* '}'
 ;
 
 
@@ -37,8 +35,8 @@ enum CrossTreeConstraintType returns CrossTreeConstraintType:
 				REQUIRES = 'REQUIRES' | EXCLUDES = 'EXCLUDES';
 
 Feature_Impl returns BasicFMmetamodel::Feature:
-	mandatory?='mandatory'
-	selected?='selected'
+	('mandatory'? => mandatory?='mandatory')?
+	('selected'? => selected?='selected')?
 	'Feature'
 	name=EString
 	'{'
@@ -53,8 +51,8 @@ EBoolean returns ecore::EBoolean:
 	'true' | 'false';
 
 Alternative returns BasicFMmetamodel::Alternative:
-	mandatory?='mandatory'
-	selected?='selected'
+	('mandatory'? => mandatory?='mandatory')?
+	('selected'? => selected?='selected')?
 	'Alternative'
 	name=EString
 	'{'
@@ -63,8 +61,8 @@ Alternative returns BasicFMmetamodel::Alternative:
 	'}';
 
 OrGroup returns BasicFMmetamodel::OrGroup:
-	mandatory?='mandatory'
-	selected?='selected'
+	('mandatory'? => mandatory?='mandatory')?
+	('selected'? => selected?='selected')?
 	'OrGroup'
 	name=EString
 	'{'

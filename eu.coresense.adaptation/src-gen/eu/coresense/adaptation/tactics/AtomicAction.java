@@ -3,9 +3,9 @@
  */
 package eu.coresense.adaptation.tactics;
 
-import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.common.util.EList;
 
-import uma.caosd.rhea.BasicFMmetamodel.Feature;
+import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
@@ -16,8 +16,7 @@ import uma.caosd.rhea.BasicFMmetamodel.Feature;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link eu.coresense.adaptation.tactics.AtomicAction#getSecondAction <em>Second Action</em>}</li>
- *   <li>{@link eu.coresense.adaptation.tactics.AtomicAction#getVariant <em>Variant</em>}</li>
+ *   <li>{@link eu.coresense.adaptation.tactics.AtomicAction#getActions <em>Actions</em>}</li>
  * </ul>
  *
  * @see eu.coresense.adaptation.tactics.TacticsPackage#getAtomicAction()
@@ -27,47 +26,15 @@ import uma.caosd.rhea.BasicFMmetamodel.Feature;
 public interface AtomicAction extends EObject
 {
   /**
-   * Returns the value of the '<em><b>Second Action</b></em>' containment reference.
+   * Returns the value of the '<em><b>Actions</b></em>' containment reference list.
+   * The list contents are of type {@link eu.coresense.adaptation.tactics.AtomicSimpleAction}.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Second Action</em>' containment reference.
-   * @see #setSecondAction(AtomicAction)
-   * @see eu.coresense.adaptation.tactics.TacticsPackage#getAtomicAction_SecondAction()
+   * @return the value of the '<em>Actions</em>' containment reference list.
+   * @see eu.coresense.adaptation.tactics.TacticsPackage#getAtomicAction_Actions()
    * @model containment="true"
    * @generated
    */
-  AtomicAction getSecondAction();
-
-  /**
-   * Sets the value of the '{@link eu.coresense.adaptation.tactics.AtomicAction#getSecondAction <em>Second Action</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Second Action</em>' containment reference.
-   * @see #getSecondAction()
-   * @generated
-   */
-  void setSecondAction(AtomicAction value);
-
-  /**
-   * Returns the value of the '<em><b>Variant</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Variant</em>' reference.
-   * @see #setVariant(Feature)
-   * @see eu.coresense.adaptation.tactics.TacticsPackage#getAtomicAction_Variant()
-   * @model
-   * @generated
-   */
-  Feature getVariant();
-
-  /**
-   * Sets the value of the '{@link eu.coresense.adaptation.tactics.AtomicAction#getVariant <em>Variant</em>}' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Variant</em>' reference.
-   * @see #getVariant()
-   * @generated
-   */
-  void setVariant(Feature value);
+  EList<AtomicSimpleAction> getActions();
 
 } // AtomicAction

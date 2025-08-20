@@ -3,11 +3,8 @@
  */
 package eu.coresense.variability.featureModel;
 
-import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EObject;
 
-import uma.caosd.rhea.BasicFMmetamodel.Feature;
 import uma.caosd.rhea.BasicFMmetamodel.FeatureModel;
 
 /**
@@ -19,7 +16,6 @@ import uma.caosd.rhea.BasicFMmetamodel.FeatureModel;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link eu.coresense.variability.featureModel.Model#getFeatureDefinitions <em>Feature Definitions</em>}</li>
  *   <li>{@link eu.coresense.variability.featureModel.Model#getFm <em>Fm</em>}</li>
  * </ul>
  *
@@ -29,18 +25,6 @@ import uma.caosd.rhea.BasicFMmetamodel.FeatureModel;
  */
 public interface Model extends EObject
 {
-  /**
-   * Returns the value of the '<em><b>Feature Definitions</b></em>' containment reference list.
-   * The list contents are of type {@link uma.caosd.rhea.BasicFMmetamodel.Feature}.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Feature Definitions</em>' containment reference list.
-   * @see eu.coresense.variability.featureModel.FeatureModelPackage#getModel_FeatureDefinitions()
-   * @model containment="true"
-   * @generated
-   */
-  EList<Feature> getFeatureDefinitions();
-
   /**
    * Returns the value of the '<em><b>Fm</b></em>' containment reference.
    * <!-- begin-user-doc -->

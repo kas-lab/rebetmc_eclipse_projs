@@ -131,11 +131,11 @@ public class ResolutionModelParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getResolutionAccess().getSelection_actionsAssignment_4(), "rule__Resolution__Selection_actionsAssignment_4");
 			builder.put(grammarAccess.getResolutionAccess().getDeselection_actionsAssignment_6(), "rule__Resolution__Deselection_actionsAssignment_6");
 			builder.put(grammarAccess.getImportAccess().getImportURIAssignment_1(), "rule__Import__ImportURIAssignment_1");
-			builder.put(grammarAccess.getSetParamAccess().getNodeAssignment_1(), "rule__SetParam__NodeAssignment_1");
-			builder.put(grammarAccess.getSetParamAccess().getParamAssignment_3(), "rule__SetParam__ParamAssignment_3");
-			builder.put(grammarAccess.getSetParamAccess().getValueAssignment_5(), "rule__SetParam__ValueAssignment_5");
-			builder.put(grammarAccess.getSetLifecycleAccess().getNodeAssignment_1(), "rule__SetLifecycle__NodeAssignment_1");
-			builder.put(grammarAccess.getSetLifecycleAccess().getStateAssignment_3(), "rule__SetLifecycle__StateAssignment_3");
+			builder.put(grammarAccess.getSetParamAccess().getNodeAssignment_2(), "rule__SetParam__NodeAssignment_2");
+			builder.put(grammarAccess.getSetParamAccess().getParamAssignment_4(), "rule__SetParam__ParamAssignment_4");
+			builder.put(grammarAccess.getSetParamAccess().getValueAssignment_6(), "rule__SetParam__ValueAssignment_6");
+			builder.put(grammarAccess.getSetLifecycleAccess().getNodeAssignment_2(), "rule__SetLifecycle__NodeAssignment_2");
+			builder.put(grammarAccess.getSetLifecycleAccess().getStateAssignment_4(), "rule__SetLifecycle__StateAssignment_4");
 			builder.put(grammarAccess.getGlobalNamespaceAccess().getPartsAssignment_2_1(), "rule__GlobalNamespace__PartsAssignment_2_1");
 			builder.put(grammarAccess.getGlobalNamespaceAccess().getPartsAssignment_2_2_1(), "rule__GlobalNamespace__PartsAssignment_2_2_1");
 			builder.put(grammarAccess.getRelativeNamespace_ImplAccess().getPartsAssignment_2_1(), "rule__RelativeNamespace_Impl__PartsAssignment_2_1");

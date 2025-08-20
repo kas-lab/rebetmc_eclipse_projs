@@ -12,8 +12,10 @@ import org.eclipse.xtext.EcoreUtil2;
 import org.eclipse.xtext.scoping.IScope;
 import org.eclipse.xtext.scoping.Scopes;
 
+import eu.coresense.adaptation.tactics.QualifiedFeatureRef;
 import eu.coresense.adaptation.tactics.TacticsModel;
 import eu.coresense.adaptation.tactics.TacticsPackage;
+import eu.coresense.resolution.resolutionModel.Resolution;
 import eu.coresense.resolution.resolutionModel.ResolutionModel;
 import uma.caosd.rhea.BasicFMmetamodel.Feature;
 import uma.caosd.rhea.BasicFMmetamodel.FeatureModel;
@@ -27,32 +29,35 @@ import uma.caosd.rhea.BasicFMmetamodel.FeatureModel;
 public class TacticsScopeProvider extends AbstractTacticsScopeProvider {
 	@Override
 	public IScope getScope(EObject context, EReference reference) {
-	    if (reference == TacticsPackage.Literals.ATOMIC_ACTION__VARIANT) {
+	    if (reference == TacticsPackage.Literals.ATOMIC_SIMPLE_ACTION__VARIANT) {
 	        TacticsModel model = EcoreUtil2.getContainerOfType(context, TacticsModel.class);
-	        if (model != null && model.getFeatureModel() != null) {
-	            FeatureModel featureModel = model.getFeatureModel();
-	            Feature root = featureModel.getRoot();
+	       
+	        if (model != null && model.getResolutionModel() != null) {
 	            //Gather all the leaves, you have access to getChildren() and isLeaf()
-	            List<Feature> leafFeatures = new ArrayList<>();
-	            collectLeafFeatures(root, leafFeatures);
-	            System.out.println(leafFeatures);
-	            return Scopes.scopeFor(leafFeatures);
+	            List<Feature> resolutionFeatures = new ArrayList<>();
+	            collectResolutionFeatures(model.getResolutionModel() , resolutionFeatures);
+	            return Scopes.scopeFor(resolutionFeatures);
 	        }
+	    }
+	    if (reference == TacticsPackage.Literals.QUALIFIED_FEATURE_REF__FEATURE)
+	    {
+	        QualifiedFeatureRef qref = (QualifiedFeatureRef) context;
+	        ResolutionModel model = qref.getModel();
+	        if (model != null && model.getFeatureModel() != null) {
+	            FeatureModel fm = model.getFeatureModel();
+	            // scope over all features in the model
+	            return Scopes.scopeFor(EcoreUtil2.getAllContentsOfType(fm, Feature.class));
+	        }
+	        return IScope.NULLSCOPE;
 	    }
 	    return super.getScope(context, reference);
 	}	
 
 
-private void collectLeafFeatures(Feature feature, List<Feature> leafFeatures) {
-    if(feature != null)
+private void collectResolutionFeatures(ResolutionModel res_model, List<Feature> features) {
+    for( Resolution res : res_model.getResolutions())
     {
-		if (feature.isLeaf()) {
-	        leafFeatures.add(feature);
-	    } else {
-	        for (Feature child : feature.getChildren()) {
-	            collectLeafFeatures(child, leafFeatures);
-	        }
-	    }
+    	features.add(res.getFeature());
     }
 }
 

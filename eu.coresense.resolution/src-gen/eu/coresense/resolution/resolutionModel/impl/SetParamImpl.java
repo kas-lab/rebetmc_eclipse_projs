@@ -14,9 +14,8 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import ros.Parameter;
 import ros.ParameterValue;
-
-import system.RosParameter;
 
 /**
  * <!-- begin-user-doc -->
@@ -42,7 +41,7 @@ public class SetParamImpl extends ReconfigurationImpl implements SetParam
    * @generated
    * @ordered
    */
-  protected RosParameter param;
+  protected Parameter param;
 
   /**
    * The cached value of the '{@link #getValue() <em>Value</em>}' containment reference.
@@ -81,12 +80,12 @@ public class SetParamImpl extends ReconfigurationImpl implements SetParam
    * @generated
    */
   @Override
-  public RosParameter getParam()
+  public Parameter getParam()
   {
     if (param != null && param.eIsProxy())
     {
       InternalEObject oldParam = (InternalEObject)param;
-      param = (RosParameter)eResolveProxy(oldParam);
+      param = (Parameter)eResolveProxy(oldParam);
       if (param != oldParam)
       {
         if (eNotificationRequired())
@@ -101,7 +100,7 @@ public class SetParamImpl extends ReconfigurationImpl implements SetParam
    * <!-- end-user-doc -->
    * @generated
    */
-  public RosParameter basicGetParam()
+  public Parameter basicGetParam()
   {
     return param;
   }
@@ -112,9 +111,9 @@ public class SetParamImpl extends ReconfigurationImpl implements SetParam
    * @generated
    */
   @Override
-  public void setParam(RosParameter newParam)
+  public void setParam(Parameter newParam)
   {
-    RosParameter oldParam = param;
+    Parameter oldParam = param;
     param = newParam;
     if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, ResolutionModelPackage.SET_PARAM__PARAM, oldParam, param));
@@ -216,7 +215,7 @@ public class SetParamImpl extends ReconfigurationImpl implements SetParam
     switch (featureID)
     {
       case ResolutionModelPackage.SET_PARAM__PARAM:
-        setParam((RosParameter)newValue);
+        setParam((Parameter)newValue);
         return;
       case ResolutionModelPackage.SET_PARAM__VALUE:
         setValue((ParameterValue)newValue);
@@ -236,7 +235,7 @@ public class SetParamImpl extends ReconfigurationImpl implements SetParam
     switch (featureID)
     {
       case ResolutionModelPackage.SET_PARAM__PARAM:
-        setParam((RosParameter)null);
+        setParam((Parameter)null);
         return;
       case ResolutionModelPackage.SET_PARAM__VALUE:
         setValue((ParameterValue)null);

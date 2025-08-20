@@ -3,6 +3,8 @@
  */
 package eu.coresense.adaptation.tactics;
 
+import eu.coresense.context.contextModel.ContextVar;
+
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -28,26 +30,26 @@ import org.eclipse.emf.ecore.EObject;
 public interface Condition extends EObject
 {
   /**
-   * Returns the value of the '<em><b>Measurement</b></em>' attribute.
+   * Returns the value of the '<em><b>Measurement</b></em>' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Measurement</em>' attribute.
-   * @see #setMeasurement(String)
+   * @return the value of the '<em>Measurement</em>' reference.
+   * @see #setMeasurement(ContextVar)
    * @see eu.coresense.adaptation.tactics.TacticsPackage#getCondition_Measurement()
    * @model
    * @generated
    */
-  String getMeasurement();
+  ContextVar getMeasurement();
 
   /**
-   * Sets the value of the '{@link eu.coresense.adaptation.tactics.Condition#getMeasurement <em>Measurement</em>}' attribute.
+   * Sets the value of the '{@link eu.coresense.adaptation.tactics.Condition#getMeasurement <em>Measurement</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Measurement</em>' attribute.
+   * @param value the new value of the '<em>Measurement</em>' reference.
    * @see #getMeasurement()
    * @generated
    */
-  void setMeasurement(String value);
+  void setMeasurement(ContextVar value);
 
   /**
    * Returns the value of the '<em><b>Operator</b></em>' attribute.
@@ -75,26 +77,26 @@ public interface Condition extends EObject
   void setOperator(MathOperator value);
 
   /**
-   * Returns the value of the '<em><b>Value</b></em>' attribute.
+   * Returns the value of the '<em><b>Value</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Value</em>' attribute.
-   * @see #setValue(String)
+   * @return the value of the '<em>Value</em>' containment reference.
+   * @see #setValue(Literal)
    * @see eu.coresense.adaptation.tactics.TacticsPackage#getCondition_Value()
-   * @model
+   * @model containment="true"
    * @generated
    */
-  String getValue();
+  Literal getValue();
 
   /**
-   * Sets the value of the '{@link eu.coresense.adaptation.tactics.Condition#getValue <em>Value</em>}' attribute.
+   * Sets the value of the '{@link eu.coresense.adaptation.tactics.Condition#getValue <em>Value</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Value</em>' attribute.
+   * @param value the new value of the '<em>Value</em>' containment reference.
    * @see #getValue()
    * @generated
    */
-  void setValue(String value);
+  void setValue(Literal value);
 
   /**
    * Returns the value of the '<em><b>Logical Op</b></em>' attribute.

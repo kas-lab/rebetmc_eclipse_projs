@@ -3,6 +3,27 @@
  */
 package eu.coresense.resolution.scoping;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
+
+import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.xtext.EcoreUtil2;
+import org.eclipse.xtext.scoping.IScope;
+import org.eclipse.xtext.scoping.Scopes;
+
+import eu.coresense.resolution.resolutionModel.Import;
+import eu.coresense.resolution.resolutionModel.ResolutionModel;
+import eu.coresense.resolution.resolutionModel.ResolutionModelPackage;
+import ros.Node;
+import uma.caosd.rhea.BasicFMmetamodel.Feature;
+import uma.caosd.rhea.BasicFMmetamodel.FeatureModel;
 
 /**
  * This class contains custom scoping description.
@@ -11,5 +32,119 @@ package eu.coresense.resolution.scoping;
  * on how and when to use it.
  */
 public class ResolutionModelScopeProvider extends AbstractResolutionModelScopeProvider {
+	@Override
+	public IScope getScope(EObject context, EReference reference) {
+	    if (reference == ResolutionModelPackage.Literals.RESOLUTION__FEATURE) {
+	    	ResolutionModel model = EcoreUtil2.getContainerOfType(context, ResolutionModel.class);
+	        if (model != null && model.getFeatureModel() != null) {
+	            FeatureModel featureModel = model.getFeatureModel();
+	            Feature root = featureModel.getRoot();
+	            //Gather all the leaves, you have access to getChildren() and isLeaf()
+	            List<Feature> optFeatures = new ArrayList<>();
+	            collectOptionalFeatures(root, optFeatures);
+	            return Scopes.scopeFor(optFeatures);
+	        }
+	    }
+	    if (reference == ResolutionModelPackage.Literals.RESOLUTION_MODEL__ROSSYSTEM) {
+	        var currentResource = context.eResource();
+	        var resourceSet = currentResource.getResourceSet();
+	        List<system.System> rosSystems = new ArrayList<>();
+	        
+	    	ResolutionModel model = EcoreUtil2.getContainerOfType(context, ResolutionModel.class);
+	    	if (model != null) {
+	    	    rosSystems = collectAllSystems(model, currentResource);
+	    	    return Scopes.scopeFor(rosSystems);
+	    	}
+	    }
+	    if (reference == ResolutionModelPackage.Literals.RECONFIGURATION__NODE) {
+	        ResolutionModel model = EcoreUtil2.getContainerOfType(context, ResolutionModel.class);
+	        if (model == null) return IScope.NULLSCOPE;
 
+	        List<system.System> systems = collectAllSystems(model, context.eResource());
+
+	        List<system.RosNode> allNodes = new ArrayList<>();
+	        for (system.System sys : systems) {
+	            for (system.Component comp : sys.getComponents()) {
+	                if (comp instanceof system.RosNode node) {
+	                    allNodes.add(node);
+	                }
+	            }
+	        }
+
+	        return Scopes.scopeFor(allNodes);
+	    }
+	    if (reference == ResolutionModelPackage.Literals.SET_PARAM__PARAM) {
+	        ResolutionModel model = EcoreUtil2.getContainerOfType(context, ResolutionModel.class);
+	        if (model == null) return IScope.NULLSCOPE;
+
+	        List<system.System> systems = collectAllSystems(model, context.eResource());
+
+	        List<ros.Parameter> allParams = new ArrayList<>();
+	        for (system.System sys : systems) {
+	            for (system.Component comp : sys.getComponents()) {
+	                if (comp instanceof system.RosNode node) {
+	                	allParams.addAll(node.getFrom().getParameter());
+	                }
+	            }
+	        }
+
+	        return Scopes.scopeFor(allParams);
+	    }
+	    return super.getScope(context, reference);
+	}	
+
+
+private void collectOptionalFeatures(Feature feature, List<Feature> optFeatures) {
+    if(feature != null)
+    {
+		if (!feature.isMandatory()) {
+			optFeatures.add(feature);
+	    } 
+        for (Feature child : feature.getChildren()) {
+        	collectOptionalFeatures(child, optFeatures);
+	    }
+    }
+}
+
+
+private List<system.System> collectAllSystems(ResolutionModel model, Resource currentResource) {
+    List<system.System> result = new ArrayList<>();
+    ResourceSet resourceSet = currentResource.getResourceSet();
+
+    for (Import imp : model.getImports()) {
+        String uriStr = imp.getImportURI();
+        if (uriStr == null || !uriStr.endsWith(".rossystem")) continue;
+
+        URI uri = URI.createURI(uriStr);
+        if (uri.isRelative()) {
+            uri = uri.resolve(currentResource.getURI());
+        }
+
+        try {
+            Resource imported = resourceSet.getResource(uri, true);
+            if (imported == null || imported.getContents().isEmpty()) continue;
+
+            EObject root = imported.getContents().get(0);
+            if (root instanceof system.System rossystem) {
+                collectRecursively(rossystem, result);
+            }
+        } catch (Exception e) {
+            System.err.println("Failed to load .rossystem import: " + uriStr);
+            e.printStackTrace();
+        }
+    }
+
+    return result;
+}
+
+private void collectRecursively(system.System system, List<system.System> result) {
+    if (system == null || result.contains(system)) return;
+    result.add(system);
+
+    for (system.Component comp : system.getComponents()) {
+        if (comp instanceof system.SubSystem sub) {
+            collectRecursively(sub.getSystem(), result);
+        }
+    }
+}
 }

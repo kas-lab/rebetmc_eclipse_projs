@@ -67,22 +67,13 @@ public interface FeatureModelPackage extends EPackage
   int MODEL = 0;
 
   /**
-   * The feature id for the '<em><b>Feature Definitions</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int MODEL__FEATURE_DEFINITIONS = 0;
-
-  /**
    * The feature id for the '<em><b>Fm</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int MODEL__FM = 1;
+  int MODEL__FM = 0;
 
   /**
    * The number of structural features of the '<em>Model</em>' class.
@@ -91,7 +82,7 @@ public interface FeatureModelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int MODEL_FEATURE_COUNT = 2;
+  int MODEL_FEATURE_COUNT = 1;
 
 
   /**
@@ -103,17 +94,6 @@ public interface FeatureModelPackage extends EPackage
    * @generated
    */
   EClass getModel();
-
-  /**
-   * Returns the meta object for the containment reference list '{@link eu.coresense.variability.featureModel.Model#getFeatureDefinitions <em>Feature Definitions</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Feature Definitions</em>'.
-   * @see eu.coresense.variability.featureModel.Model#getFeatureDefinitions()
-   * @see #getModel()
-   * @generated
-   */
-  EReference getModel_FeatureDefinitions();
 
   /**
    * Returns the meta object for the containment reference '{@link eu.coresense.variability.featureModel.Model#getFm <em>Fm</em>}'.
@@ -158,14 +138,6 @@ public interface FeatureModelPackage extends EPackage
      * @generated
      */
     EClass MODEL = eINSTANCE.getModel();
-
-    /**
-     * The meta object literal for the '<em><b>Feature Definitions</b></em>' containment reference list feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference MODEL__FEATURE_DEFINITIONS = eINSTANCE.getModel_FeatureDefinitions();
 
     /**
      * The meta object literal for the '<em><b>Fm</b></em>' containment reference feature.

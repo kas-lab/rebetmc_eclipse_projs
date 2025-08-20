@@ -17,7 +17,9 @@ Require-Bundle: org.eclipse.xtext,
  de.fraunhofer.ipa.rossystem;bundle-version="3.0.0",
  de.fraunhofer.ipa.ros.xtext;bundle-version="3.0.0",
  fms.metamodel;bundle-version="1.0.0",
- eu.coresense.variability;bundle-version="1.0.0"
+ eu.coresense.variability;bundle-version="1.0.0",
+ eu.coresense.context;bundle-version="1.0.0",
+ pythonfunctions;bundle-version="0.1.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-21
 Export-Package: eu.coresense.adaptation.parser.antlr.internal,
  eu.coresense.adaptation.validation,

@@ -112,20 +112,9 @@ public class FeatureModelPackageImpl extends EPackageImpl implements FeatureMode
    * @generated
    */
   @Override
-  public EReference getModel_FeatureDefinitions()
-  {
-    return (EReference)modelEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
   public EReference getModel_Fm()
   {
-    return (EReference)modelEClass.getEStructuralFeatures().get(1);
+    return (EReference)modelEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -160,7 +149,6 @@ public class FeatureModelPackageImpl extends EPackageImpl implements FeatureMode
 
     // Create classes and their features
     modelEClass = createEClass(MODEL);
-    createEReference(modelEClass, MODEL__FEATURE_DEFINITIONS);
     createEReference(modelEClass, MODEL__FM);
   }
 
@@ -199,7 +187,6 @@ public class FeatureModelPackageImpl extends EPackageImpl implements FeatureMode
 
     // Initialize classes and features; add operations and parameters
     initEClass(modelEClass, Model.class, "Model", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getModel_FeatureDefinitions(), theBasicFMmetamodelPackage.getFeature(), null, "featureDefinitions", null, 0, -1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getModel_Fm(), theBasicFMmetamodelPackage.getFeatureModel(), null, "fm", null, 0, 1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     // Create resource

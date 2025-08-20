@@ -18,9 +18,6 @@ import org.eclipse.xtext.ui.editor.contentassist.ICompletionProposalAcceptor;
  */
 public abstract class AbstractFeatureModelProposalProvider extends TerminalsProposalProvider {
 
-	public void completeModel_FeatureDefinitions(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
-		completeRuleCall(((RuleCall)assignment.getTerminal()), context, acceptor);
-	}
 	public void completeModel_Fm(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
 		completeRuleCall(((RuleCall)assignment.getTerminal()), context, acceptor);
 	}
@@ -29,9 +26,6 @@ public abstract class AbstractFeatureModelProposalProvider extends TerminalsProp
 	}
 	public void completeFeatureModel_Root(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
 		completeRuleCall(((RuleCall)assignment.getTerminal()), context, acceptor);
-	}
-	public void completeFeatureModel_Features(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
-		lookupCrossReference(((CrossReference)assignment.getTerminal()), context, acceptor);
 	}
 	public void completeFeatureModel_CrossTreeConstraints(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
 		completeRuleCall(((RuleCall)assignment.getTerminal()), context, acceptor);

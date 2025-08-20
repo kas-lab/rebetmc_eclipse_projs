@@ -87,31 +87,13 @@ public interface TacticsPackage extends EPackage
   int TACTICS_MODEL__IMPORTS = 1;
 
   /**
-   * The feature id for the '<em><b>Feature Model</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int TACTICS_MODEL__FEATURE_MODEL = 2;
-
-  /**
    * The feature id for the '<em><b>Resolution Model</b></em>' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int TACTICS_MODEL__RESOLUTION_MODEL = 3;
-
-  /**
-   * The feature id for the '<em><b>Period</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int TACTICS_MODEL__PERIOD = 4;
+  int TACTICS_MODEL__RESOLUTION_MODEL = 2;
 
   /**
    * The feature id for the '<em><b>Adaptation Rules</b></em>' containment reference list.
@@ -120,7 +102,7 @@ public interface TacticsPackage extends EPackage
    * @generated
    * @ordered
    */
-  int TACTICS_MODEL__ADAPTATION_RULES = 5;
+  int TACTICS_MODEL__ADAPTATION_RULES = 3;
 
   /**
    * The number of structural features of the '<em>Model</em>' class.
@@ -129,7 +111,7 @@ public interface TacticsPackage extends EPackage
    * @generated
    * @ordered
    */
-  int TACTICS_MODEL_FEATURE_COUNT = 6;
+  int TACTICS_MODEL_FEATURE_COUNT = 4;
 
   /**
    * The meta object id for the '{@link eu.coresense.adaptation.tactics.impl.ImportImpl <em>Import</em>}' class.
@@ -318,22 +300,13 @@ public interface TacticsPackage extends EPackage
   int ATOMIC_ACTION = 6;
 
   /**
-   * The feature id for the '<em><b>Second Action</b></em>' containment reference.
+   * The feature id for the '<em><b>Actions</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int ATOMIC_ACTION__SECOND_ACTION = 0;
-
-  /**
-   * The feature id for the '<em><b>Variant</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int ATOMIC_ACTION__VARIANT = 1;
+  int ATOMIC_ACTION__ACTIONS = 0;
 
   /**
    * The number of structural features of the '<em>Atomic Action</em>' class.
@@ -342,7 +315,35 @@ public interface TacticsPackage extends EPackage
    * @generated
    * @ordered
    */
-  int ATOMIC_ACTION_FEATURE_COUNT = 2;
+  int ATOMIC_ACTION_FEATURE_COUNT = 1;
+
+  /**
+   * The meta object id for the '{@link eu.coresense.adaptation.tactics.impl.AtomicSimpleActionImpl <em>Atomic Simple Action</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see eu.coresense.adaptation.tactics.impl.AtomicSimpleActionImpl
+   * @see eu.coresense.adaptation.tactics.impl.TacticsPackageImpl#getAtomicSimpleAction()
+   * @generated
+   */
+  int ATOMIC_SIMPLE_ACTION = 7;
+
+  /**
+   * The feature id for the '<em><b>Variant</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ATOMIC_SIMPLE_ACTION__VARIANT = 0;
+
+  /**
+   * The number of structural features of the '<em>Atomic Simple Action</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ATOMIC_SIMPLE_ACTION_FEATURE_COUNT = 1;
 
   /**
    * The meta object id for the '{@link eu.coresense.adaptation.tactics.impl.RuleBodyImpl <em>Rule Body</em>}' class.
@@ -352,7 +353,16 @@ public interface TacticsPackage extends EPackage
    * @see eu.coresense.adaptation.tactics.impl.TacticsPackageImpl#getRuleBody()
    * @generated
    */
-  int RULE_BODY = 7;
+  int RULE_BODY = 8;
+
+  /**
+   * The feature id for the '<em><b>Effect</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int RULE_BODY__EFFECT = 0;
 
   /**
    * The feature id for the '<em><b>Atomic Action</b></em>' containment reference.
@@ -361,7 +371,7 @@ public interface TacticsPackage extends EPackage
    * @generated
    * @ordered
    */
-  int RULE_BODY__ATOMIC_ACTION = 0;
+  int RULE_BODY__ATOMIC_ACTION = 1;
 
   /**
    * The number of structural features of the '<em>Rule Body</em>' class.
@@ -370,7 +380,7 @@ public interface TacticsPackage extends EPackage
    * @generated
    * @ordered
    */
-  int RULE_BODY_FEATURE_COUNT = 1;
+  int RULE_BODY_FEATURE_COUNT = 2;
 
   /**
    * The meta object id for the '{@link eu.coresense.adaptation.tactics.impl.PureActionImpl <em>Pure Action</em>}' class.
@@ -380,7 +390,16 @@ public interface TacticsPackage extends EPackage
    * @see eu.coresense.adaptation.tactics.impl.TacticsPackageImpl#getPureAction()
    * @generated
    */
-  int PURE_ACTION = 8;
+  int PURE_ACTION = 9;
+
+  /**
+   * The feature id for the '<em><b>Effect</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PURE_ACTION__EFFECT = RULE_BODY__EFFECT;
 
   /**
    * The feature id for the '<em><b>Atomic Action</b></em>' containment reference.
@@ -408,7 +427,16 @@ public interface TacticsPackage extends EPackage
    * @see eu.coresense.adaptation.tactics.impl.TacticsPackageImpl#getConditionAction()
    * @generated
    */
-  int CONDITION_ACTION = 9;
+  int CONDITION_ACTION = 10;
+
+  /**
+   * The feature id for the '<em><b>Effect</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CONDITION_ACTION__EFFECT = RULE_BODY__EFFECT;
 
   /**
    * The feature id for the '<em><b>Atomic Action</b></em>' containment reference.
@@ -447,6 +475,34 @@ public interface TacticsPackage extends EPackage
   int CONDITION_ACTION_FEATURE_COUNT = RULE_BODY_FEATURE_COUNT + 2;
 
   /**
+   * The meta object id for the '{@link eu.coresense.adaptation.tactics.impl.EffectImpl <em>Effect</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see eu.coresense.adaptation.tactics.impl.EffectImpl
+   * @see eu.coresense.adaptation.tactics.impl.TacticsPackageImpl#getEffect()
+   * @generated
+   */
+  int EFFECT = 11;
+
+  /**
+   * The feature id for the '<em><b>Condition</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EFFECT__CONDITION = 0;
+
+  /**
+   * The number of structural features of the '<em>Effect</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EFFECT_FEATURE_COUNT = 1;
+
+  /**
    * The meta object id for the '{@link eu.coresense.adaptation.tactics.impl.ConditionImpl <em>Condition</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -454,10 +510,10 @@ public interface TacticsPackage extends EPackage
    * @see eu.coresense.adaptation.tactics.impl.TacticsPackageImpl#getCondition()
    * @generated
    */
-  int CONDITION = 10;
+  int CONDITION = 12;
 
   /**
-   * The feature id for the '<em><b>Measurement</b></em>' attribute.
+   * The feature id for the '<em><b>Measurement</b></em>' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -475,7 +531,7 @@ public interface TacticsPackage extends EPackage
   int CONDITION__OPERATOR = 1;
 
   /**
-   * The feature id for the '<em><b>Value</b></em>' attribute.
+   * The feature id for the '<em><b>Value</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -518,25 +574,16 @@ public interface TacticsPackage extends EPackage
    * @see eu.coresense.adaptation.tactics.impl.TacticsPackageImpl#getAtomicActionSelectFeature()
    * @generated
    */
-  int ATOMIC_ACTION_SELECT_FEATURE = 11;
+  int ATOMIC_ACTION_SELECT_FEATURE = 13;
 
   /**
-   * The feature id for the '<em><b>Second Action</b></em>' containment reference.
+   * The feature id for the '<em><b>Variant</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int ATOMIC_ACTION_SELECT_FEATURE__SECOND_ACTION = ATOMIC_ACTION__SECOND_ACTION;
-
-  /**
-   * The feature id for the '<em><b>Variant</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int ATOMIC_ACTION_SELECT_FEATURE__VARIANT = ATOMIC_ACTION__VARIANT;
+  int ATOMIC_ACTION_SELECT_FEATURE__VARIANT = ATOMIC_SIMPLE_ACTION__VARIANT;
 
   /**
    * The number of structural features of the '<em>Atomic Action Select Feature</em>' class.
@@ -545,7 +592,7 @@ public interface TacticsPackage extends EPackage
    * @generated
    * @ordered
    */
-  int ATOMIC_ACTION_SELECT_FEATURE_FEATURE_COUNT = ATOMIC_ACTION_FEATURE_COUNT + 0;
+  int ATOMIC_ACTION_SELECT_FEATURE_FEATURE_COUNT = ATOMIC_SIMPLE_ACTION_FEATURE_COUNT + 0;
 
   /**
    * The meta object id for the '{@link eu.coresense.adaptation.tactics.impl.AtomicActionDeselectFeatureImpl <em>Atomic Action Deselect Feature</em>}' class.
@@ -555,25 +602,16 @@ public interface TacticsPackage extends EPackage
    * @see eu.coresense.adaptation.tactics.impl.TacticsPackageImpl#getAtomicActionDeselectFeature()
    * @generated
    */
-  int ATOMIC_ACTION_DESELECT_FEATURE = 12;
+  int ATOMIC_ACTION_DESELECT_FEATURE = 14;
 
   /**
-   * The feature id for the '<em><b>Second Action</b></em>' containment reference.
+   * The feature id for the '<em><b>Variant</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int ATOMIC_ACTION_DESELECT_FEATURE__SECOND_ACTION = ATOMIC_ACTION__SECOND_ACTION;
-
-  /**
-   * The feature id for the '<em><b>Variant</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int ATOMIC_ACTION_DESELECT_FEATURE__VARIANT = ATOMIC_ACTION__VARIANT;
+  int ATOMIC_ACTION_DESELECT_FEATURE__VARIANT = ATOMIC_SIMPLE_ACTION__VARIANT;
 
   /**
    * The number of structural features of the '<em>Atomic Action Deselect Feature</em>' class.
@@ -582,7 +620,175 @@ public interface TacticsPackage extends EPackage
    * @generated
    * @ordered
    */
-  int ATOMIC_ACTION_DESELECT_FEATURE_FEATURE_COUNT = ATOMIC_ACTION_FEATURE_COUNT + 0;
+  int ATOMIC_ACTION_DESELECT_FEATURE_FEATURE_COUNT = ATOMIC_SIMPLE_ACTION_FEATURE_COUNT + 0;
+
+  /**
+   * The meta object id for the '{@link eu.coresense.adaptation.tactics.impl.QualifiedFeatureRefImpl <em>Qualified Feature Ref</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see eu.coresense.adaptation.tactics.impl.QualifiedFeatureRefImpl
+   * @see eu.coresense.adaptation.tactics.impl.TacticsPackageImpl#getQualifiedFeatureRef()
+   * @generated
+   */
+  int QUALIFIED_FEATURE_REF = 15;
+
+  /**
+   * The feature id for the '<em><b>Model</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int QUALIFIED_FEATURE_REF__MODEL = 0;
+
+  /**
+   * The feature id for the '<em><b>Feature</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int QUALIFIED_FEATURE_REF__FEATURE = 1;
+
+  /**
+   * The number of structural features of the '<em>Qualified Feature Ref</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int QUALIFIED_FEATURE_REF_FEATURE_COUNT = 2;
+
+  /**
+   * The meta object id for the '{@link eu.coresense.adaptation.tactics.impl.LiteralImpl <em>Literal</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see eu.coresense.adaptation.tactics.impl.LiteralImpl
+   * @see eu.coresense.adaptation.tactics.impl.TacticsPackageImpl#getLiteral()
+   * @generated
+   */
+  int LITERAL = 16;
+
+  /**
+   * The number of structural features of the '<em>Literal</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LITERAL_FEATURE_COUNT = 0;
+
+  /**
+   * The meta object id for the '{@link eu.coresense.adaptation.tactics.impl.IntLiteralImpl <em>Int Literal</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see eu.coresense.adaptation.tactics.impl.IntLiteralImpl
+   * @see eu.coresense.adaptation.tactics.impl.TacticsPackageImpl#getIntLiteral()
+   * @generated
+   */
+  int INT_LITERAL = 17;
+
+  /**
+   * The feature id for the '<em><b>Value</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int INT_LITERAL__VALUE = LITERAL_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>Int Literal</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int INT_LITERAL_FEATURE_COUNT = LITERAL_FEATURE_COUNT + 1;
+
+  /**
+   * The meta object id for the '{@link eu.coresense.adaptation.tactics.impl.DecimalLiteralImpl <em>Decimal Literal</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see eu.coresense.adaptation.tactics.impl.DecimalLiteralImpl
+   * @see eu.coresense.adaptation.tactics.impl.TacticsPackageImpl#getDecimalLiteral()
+   * @generated
+   */
+  int DECIMAL_LITERAL = 18;
+
+  /**
+   * The feature id for the '<em><b>Value</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DECIMAL_LITERAL__VALUE = LITERAL_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>Decimal Literal</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DECIMAL_LITERAL_FEATURE_COUNT = LITERAL_FEATURE_COUNT + 1;
+
+  /**
+   * The meta object id for the '{@link eu.coresense.adaptation.tactics.impl.StringLiteralImpl <em>String Literal</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see eu.coresense.adaptation.tactics.impl.StringLiteralImpl
+   * @see eu.coresense.adaptation.tactics.impl.TacticsPackageImpl#getStringLiteral()
+   * @generated
+   */
+  int STRING_LITERAL = 19;
+
+  /**
+   * The feature id for the '<em><b>Value</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int STRING_LITERAL__VALUE = LITERAL_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>String Literal</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int STRING_LITERAL_FEATURE_COUNT = LITERAL_FEATURE_COUNT + 1;
+
+  /**
+   * The meta object id for the '{@link eu.coresense.adaptation.tactics.impl.BooleanLiteralImpl <em>Boolean Literal</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see eu.coresense.adaptation.tactics.impl.BooleanLiteralImpl
+   * @see eu.coresense.adaptation.tactics.impl.TacticsPackageImpl#getBooleanLiteral()
+   * @generated
+   */
+  int BOOLEAN_LITERAL = 20;
+
+  /**
+   * The feature id for the '<em><b>Value</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int BOOLEAN_LITERAL__VALUE = LITERAL_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>Boolean Literal</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int BOOLEAN_LITERAL_FEATURE_COUNT = LITERAL_FEATURE_COUNT + 1;
 
   /**
    * The meta object id for the '{@link eu.coresense.adaptation.tactics.MathOperator <em>Math Operator</em>}' enum.
@@ -592,7 +798,7 @@ public interface TacticsPackage extends EPackage
    * @see eu.coresense.adaptation.tactics.impl.TacticsPackageImpl#getMathOperator()
    * @generated
    */
-  int MATH_OPERATOR = 13;
+  int MATH_OPERATOR = 21;
 
   /**
    * The meta object id for the '{@link eu.coresense.adaptation.tactics.LogicalOperator <em>Logical Operator</em>}' enum.
@@ -602,7 +808,7 @@ public interface TacticsPackage extends EPackage
    * @see eu.coresense.adaptation.tactics.impl.TacticsPackageImpl#getLogicalOperator()
    * @generated
    */
-  int LOGICAL_OPERATOR = 14;
+  int LOGICAL_OPERATOR = 22;
 
 
   /**
@@ -638,17 +844,6 @@ public interface TacticsPackage extends EPackage
   EReference getTacticsModel_Imports();
 
   /**
-   * Returns the meta object for the reference '{@link eu.coresense.adaptation.tactics.TacticsModel#getFeatureModel <em>Feature Model</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the reference '<em>Feature Model</em>'.
-   * @see eu.coresense.adaptation.tactics.TacticsModel#getFeatureModel()
-   * @see #getTacticsModel()
-   * @generated
-   */
-  EReference getTacticsModel_FeatureModel();
-
-  /**
    * Returns the meta object for the reference '{@link eu.coresense.adaptation.tactics.TacticsModel#getResolutionModel <em>Resolution Model</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -658,17 +853,6 @@ public interface TacticsPackage extends EPackage
    * @generated
    */
   EReference getTacticsModel_ResolutionModel();
-
-  /**
-   * Returns the meta object for the attribute '{@link eu.coresense.adaptation.tactics.TacticsModel#getPeriod <em>Period</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Period</em>'.
-   * @see eu.coresense.adaptation.tactics.TacticsModel#getPeriod()
-   * @see #getTacticsModel()
-   * @generated
-   */
-  EAttribute getTacticsModel_Period();
 
   /**
    * Returns the meta object for the containment reference list '{@link eu.coresense.adaptation.tactics.TacticsModel#getAdaptationRules <em>Adaptation Rules</em>}'.
@@ -819,26 +1003,36 @@ public interface TacticsPackage extends EPackage
   EClass getAtomicAction();
 
   /**
-   * Returns the meta object for the containment reference '{@link eu.coresense.adaptation.tactics.AtomicAction#getSecondAction <em>Second Action</em>}'.
+   * Returns the meta object for the containment reference list '{@link eu.coresense.adaptation.tactics.AtomicAction#getActions <em>Actions</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Second Action</em>'.
-   * @see eu.coresense.adaptation.tactics.AtomicAction#getSecondAction()
+   * @return the meta object for the containment reference list '<em>Actions</em>'.
+   * @see eu.coresense.adaptation.tactics.AtomicAction#getActions()
    * @see #getAtomicAction()
    * @generated
    */
-  EReference getAtomicAction_SecondAction();
+  EReference getAtomicAction_Actions();
 
   /**
-   * Returns the meta object for the reference '{@link eu.coresense.adaptation.tactics.AtomicAction#getVariant <em>Variant</em>}'.
+   * Returns the meta object for class '{@link eu.coresense.adaptation.tactics.AtomicSimpleAction <em>Atomic Simple Action</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the reference '<em>Variant</em>'.
-   * @see eu.coresense.adaptation.tactics.AtomicAction#getVariant()
-   * @see #getAtomicAction()
+   * @return the meta object for class '<em>Atomic Simple Action</em>'.
+   * @see eu.coresense.adaptation.tactics.AtomicSimpleAction
    * @generated
    */
-  EReference getAtomicAction_Variant();
+  EClass getAtomicSimpleAction();
+
+  /**
+   * Returns the meta object for the containment reference '{@link eu.coresense.adaptation.tactics.AtomicSimpleAction#getVariant <em>Variant</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Variant</em>'.
+   * @see eu.coresense.adaptation.tactics.AtomicSimpleAction#getVariant()
+   * @see #getAtomicSimpleAction()
+   * @generated
+   */
+  EReference getAtomicSimpleAction_Variant();
 
   /**
    * Returns the meta object for class '{@link eu.coresense.adaptation.tactics.RuleBody <em>Rule Body</em>}'.
@@ -849,6 +1043,17 @@ public interface TacticsPackage extends EPackage
    * @generated
    */
   EClass getRuleBody();
+
+  /**
+   * Returns the meta object for the containment reference '{@link eu.coresense.adaptation.tactics.RuleBody#getEffect <em>Effect</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Effect</em>'.
+   * @see eu.coresense.adaptation.tactics.RuleBody#getEffect()
+   * @see #getRuleBody()
+   * @generated
+   */
+  EReference getRuleBody_Effect();
 
   /**
    * Returns the meta object for the containment reference '{@link eu.coresense.adaptation.tactics.RuleBody#getAtomicAction <em>Atomic Action</em>}'.
@@ -904,6 +1109,27 @@ public interface TacticsPackage extends EPackage
   EReference getConditionAction_Else();
 
   /**
+   * Returns the meta object for class '{@link eu.coresense.adaptation.tactics.Effect <em>Effect</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Effect</em>'.
+   * @see eu.coresense.adaptation.tactics.Effect
+   * @generated
+   */
+  EClass getEffect();
+
+  /**
+   * Returns the meta object for the containment reference '{@link eu.coresense.adaptation.tactics.Effect#getCondition <em>Condition</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Condition</em>'.
+   * @see eu.coresense.adaptation.tactics.Effect#getCondition()
+   * @see #getEffect()
+   * @generated
+   */
+  EReference getEffect_Condition();
+
+  /**
    * Returns the meta object for class '{@link eu.coresense.adaptation.tactics.Condition <em>Condition</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -914,15 +1140,15 @@ public interface TacticsPackage extends EPackage
   EClass getCondition();
 
   /**
-   * Returns the meta object for the attribute '{@link eu.coresense.adaptation.tactics.Condition#getMeasurement <em>Measurement</em>}'.
+   * Returns the meta object for the reference '{@link eu.coresense.adaptation.tactics.Condition#getMeasurement <em>Measurement</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Measurement</em>'.
+   * @return the meta object for the reference '<em>Measurement</em>'.
    * @see eu.coresense.adaptation.tactics.Condition#getMeasurement()
    * @see #getCondition()
    * @generated
    */
-  EAttribute getCondition_Measurement();
+  EReference getCondition_Measurement();
 
   /**
    * Returns the meta object for the attribute '{@link eu.coresense.adaptation.tactics.Condition#getOperator <em>Operator</em>}'.
@@ -936,15 +1162,15 @@ public interface TacticsPackage extends EPackage
   EAttribute getCondition_Operator();
 
   /**
-   * Returns the meta object for the attribute '{@link eu.coresense.adaptation.tactics.Condition#getValue <em>Value</em>}'.
+   * Returns the meta object for the containment reference '{@link eu.coresense.adaptation.tactics.Condition#getValue <em>Value</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Value</em>'.
+   * @return the meta object for the containment reference '<em>Value</em>'.
    * @see eu.coresense.adaptation.tactics.Condition#getValue()
    * @see #getCondition()
    * @generated
    */
-  EAttribute getCondition_Value();
+  EReference getCondition_Value();
 
   /**
    * Returns the meta object for the attribute '{@link eu.coresense.adaptation.tactics.Condition#getLogicalOp <em>Logical Op</em>}'.
@@ -987,6 +1213,132 @@ public interface TacticsPackage extends EPackage
    * @generated
    */
   EClass getAtomicActionDeselectFeature();
+
+  /**
+   * Returns the meta object for class '{@link eu.coresense.adaptation.tactics.QualifiedFeatureRef <em>Qualified Feature Ref</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Qualified Feature Ref</em>'.
+   * @see eu.coresense.adaptation.tactics.QualifiedFeatureRef
+   * @generated
+   */
+  EClass getQualifiedFeatureRef();
+
+  /**
+   * Returns the meta object for the reference '{@link eu.coresense.adaptation.tactics.QualifiedFeatureRef#getModel <em>Model</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Model</em>'.
+   * @see eu.coresense.adaptation.tactics.QualifiedFeatureRef#getModel()
+   * @see #getQualifiedFeatureRef()
+   * @generated
+   */
+  EReference getQualifiedFeatureRef_Model();
+
+  /**
+   * Returns the meta object for the reference '{@link eu.coresense.adaptation.tactics.QualifiedFeatureRef#getFeature <em>Feature</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Feature</em>'.
+   * @see eu.coresense.adaptation.tactics.QualifiedFeatureRef#getFeature()
+   * @see #getQualifiedFeatureRef()
+   * @generated
+   */
+  EReference getQualifiedFeatureRef_Feature();
+
+  /**
+   * Returns the meta object for class '{@link eu.coresense.adaptation.tactics.Literal <em>Literal</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Literal</em>'.
+   * @see eu.coresense.adaptation.tactics.Literal
+   * @generated
+   */
+  EClass getLiteral();
+
+  /**
+   * Returns the meta object for class '{@link eu.coresense.adaptation.tactics.IntLiteral <em>Int Literal</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Int Literal</em>'.
+   * @see eu.coresense.adaptation.tactics.IntLiteral
+   * @generated
+   */
+  EClass getIntLiteral();
+
+  /**
+   * Returns the meta object for the attribute '{@link eu.coresense.adaptation.tactics.IntLiteral#getValue <em>Value</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Value</em>'.
+   * @see eu.coresense.adaptation.tactics.IntLiteral#getValue()
+   * @see #getIntLiteral()
+   * @generated
+   */
+  EAttribute getIntLiteral_Value();
+
+  /**
+   * Returns the meta object for class '{@link eu.coresense.adaptation.tactics.DecimalLiteral <em>Decimal Literal</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Decimal Literal</em>'.
+   * @see eu.coresense.adaptation.tactics.DecimalLiteral
+   * @generated
+   */
+  EClass getDecimalLiteral();
+
+  /**
+   * Returns the meta object for the attribute '{@link eu.coresense.adaptation.tactics.DecimalLiteral#getValue <em>Value</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Value</em>'.
+   * @see eu.coresense.adaptation.tactics.DecimalLiteral#getValue()
+   * @see #getDecimalLiteral()
+   * @generated
+   */
+  EAttribute getDecimalLiteral_Value();
+
+  /**
+   * Returns the meta object for class '{@link eu.coresense.adaptation.tactics.StringLiteral <em>String Literal</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>String Literal</em>'.
+   * @see eu.coresense.adaptation.tactics.StringLiteral
+   * @generated
+   */
+  EClass getStringLiteral();
+
+  /**
+   * Returns the meta object for the attribute '{@link eu.coresense.adaptation.tactics.StringLiteral#getValue <em>Value</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Value</em>'.
+   * @see eu.coresense.adaptation.tactics.StringLiteral#getValue()
+   * @see #getStringLiteral()
+   * @generated
+   */
+  EAttribute getStringLiteral_Value();
+
+  /**
+   * Returns the meta object for class '{@link eu.coresense.adaptation.tactics.BooleanLiteral <em>Boolean Literal</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Boolean Literal</em>'.
+   * @see eu.coresense.adaptation.tactics.BooleanLiteral
+   * @generated
+   */
+  EClass getBooleanLiteral();
+
+  /**
+   * Returns the meta object for the attribute '{@link eu.coresense.adaptation.tactics.BooleanLiteral#isValue <em>Value</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Value</em>'.
+   * @see eu.coresense.adaptation.tactics.BooleanLiteral#isValue()
+   * @see #getBooleanLiteral()
+   * @generated
+   */
+  EAttribute getBooleanLiteral_Value();
 
   /**
    * Returns the meta object for enum '{@link eu.coresense.adaptation.tactics.MathOperator <em>Math Operator</em>}'.
@@ -1058,28 +1410,12 @@ public interface TacticsPackage extends EPackage
     EReference TACTICS_MODEL__IMPORTS = eINSTANCE.getTacticsModel_Imports();
 
     /**
-     * The meta object literal for the '<em><b>Feature Model</b></em>' reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference TACTICS_MODEL__FEATURE_MODEL = eINSTANCE.getTacticsModel_FeatureModel();
-
-    /**
      * The meta object literal for the '<em><b>Resolution Model</b></em>' reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
     EReference TACTICS_MODEL__RESOLUTION_MODEL = eINSTANCE.getTacticsModel_ResolutionModel();
-
-    /**
-     * The meta object literal for the '<em><b>Period</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute TACTICS_MODEL__PERIOD = eINSTANCE.getTacticsModel_Period();
 
     /**
      * The meta object literal for the '<em><b>Adaptation Rules</b></em>' containment reference list feature.
@@ -1206,20 +1542,30 @@ public interface TacticsPackage extends EPackage
     EClass ATOMIC_ACTION = eINSTANCE.getAtomicAction();
 
     /**
-     * The meta object literal for the '<em><b>Second Action</b></em>' containment reference feature.
+     * The meta object literal for the '<em><b>Actions</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference ATOMIC_ACTION__SECOND_ACTION = eINSTANCE.getAtomicAction_SecondAction();
+    EReference ATOMIC_ACTION__ACTIONS = eINSTANCE.getAtomicAction_Actions();
 
     /**
-     * The meta object literal for the '<em><b>Variant</b></em>' reference feature.
+     * The meta object literal for the '{@link eu.coresense.adaptation.tactics.impl.AtomicSimpleActionImpl <em>Atomic Simple Action</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see eu.coresense.adaptation.tactics.impl.AtomicSimpleActionImpl
+     * @see eu.coresense.adaptation.tactics.impl.TacticsPackageImpl#getAtomicSimpleAction()
+     * @generated
+     */
+    EClass ATOMIC_SIMPLE_ACTION = eINSTANCE.getAtomicSimpleAction();
+
+    /**
+     * The meta object literal for the '<em><b>Variant</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference ATOMIC_ACTION__VARIANT = eINSTANCE.getAtomicAction_Variant();
+    EReference ATOMIC_SIMPLE_ACTION__VARIANT = eINSTANCE.getAtomicSimpleAction_Variant();
 
     /**
      * The meta object literal for the '{@link eu.coresense.adaptation.tactics.impl.RuleBodyImpl <em>Rule Body</em>}' class.
@@ -1230,6 +1576,14 @@ public interface TacticsPackage extends EPackage
      * @generated
      */
     EClass RULE_BODY = eINSTANCE.getRuleBody();
+
+    /**
+     * The meta object literal for the '<em><b>Effect</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference RULE_BODY__EFFECT = eINSTANCE.getRuleBody_Effect();
 
     /**
      * The meta object literal for the '<em><b>Atomic Action</b></em>' containment reference feature.
@@ -1276,6 +1630,24 @@ public interface TacticsPackage extends EPackage
     EReference CONDITION_ACTION__ELSE = eINSTANCE.getConditionAction_Else();
 
     /**
+     * The meta object literal for the '{@link eu.coresense.adaptation.tactics.impl.EffectImpl <em>Effect</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see eu.coresense.adaptation.tactics.impl.EffectImpl
+     * @see eu.coresense.adaptation.tactics.impl.TacticsPackageImpl#getEffect()
+     * @generated
+     */
+    EClass EFFECT = eINSTANCE.getEffect();
+
+    /**
+     * The meta object literal for the '<em><b>Condition</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference EFFECT__CONDITION = eINSTANCE.getEffect_Condition();
+
+    /**
      * The meta object literal for the '{@link eu.coresense.adaptation.tactics.impl.ConditionImpl <em>Condition</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -1286,12 +1658,12 @@ public interface TacticsPackage extends EPackage
     EClass CONDITION = eINSTANCE.getCondition();
 
     /**
-     * The meta object literal for the '<em><b>Measurement</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Measurement</b></em>' reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute CONDITION__MEASUREMENT = eINSTANCE.getCondition_Measurement();
+    EReference CONDITION__MEASUREMENT = eINSTANCE.getCondition_Measurement();
 
     /**
      * The meta object literal for the '<em><b>Operator</b></em>' attribute feature.
@@ -1302,12 +1674,12 @@ public interface TacticsPackage extends EPackage
     EAttribute CONDITION__OPERATOR = eINSTANCE.getCondition_Operator();
 
     /**
-     * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Value</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute CONDITION__VALUE = eINSTANCE.getCondition_Value();
+    EReference CONDITION__VALUE = eINSTANCE.getCondition_Value();
 
     /**
      * The meta object literal for the '<em><b>Logical Op</b></em>' attribute feature.
@@ -1344,6 +1716,114 @@ public interface TacticsPackage extends EPackage
      * @generated
      */
     EClass ATOMIC_ACTION_DESELECT_FEATURE = eINSTANCE.getAtomicActionDeselectFeature();
+
+    /**
+     * The meta object literal for the '{@link eu.coresense.adaptation.tactics.impl.QualifiedFeatureRefImpl <em>Qualified Feature Ref</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see eu.coresense.adaptation.tactics.impl.QualifiedFeatureRefImpl
+     * @see eu.coresense.adaptation.tactics.impl.TacticsPackageImpl#getQualifiedFeatureRef()
+     * @generated
+     */
+    EClass QUALIFIED_FEATURE_REF = eINSTANCE.getQualifiedFeatureRef();
+
+    /**
+     * The meta object literal for the '<em><b>Model</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference QUALIFIED_FEATURE_REF__MODEL = eINSTANCE.getQualifiedFeatureRef_Model();
+
+    /**
+     * The meta object literal for the '<em><b>Feature</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference QUALIFIED_FEATURE_REF__FEATURE = eINSTANCE.getQualifiedFeatureRef_Feature();
+
+    /**
+     * The meta object literal for the '{@link eu.coresense.adaptation.tactics.impl.LiteralImpl <em>Literal</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see eu.coresense.adaptation.tactics.impl.LiteralImpl
+     * @see eu.coresense.adaptation.tactics.impl.TacticsPackageImpl#getLiteral()
+     * @generated
+     */
+    EClass LITERAL = eINSTANCE.getLiteral();
+
+    /**
+     * The meta object literal for the '{@link eu.coresense.adaptation.tactics.impl.IntLiteralImpl <em>Int Literal</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see eu.coresense.adaptation.tactics.impl.IntLiteralImpl
+     * @see eu.coresense.adaptation.tactics.impl.TacticsPackageImpl#getIntLiteral()
+     * @generated
+     */
+    EClass INT_LITERAL = eINSTANCE.getIntLiteral();
+
+    /**
+     * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute INT_LITERAL__VALUE = eINSTANCE.getIntLiteral_Value();
+
+    /**
+     * The meta object literal for the '{@link eu.coresense.adaptation.tactics.impl.DecimalLiteralImpl <em>Decimal Literal</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see eu.coresense.adaptation.tactics.impl.DecimalLiteralImpl
+     * @see eu.coresense.adaptation.tactics.impl.TacticsPackageImpl#getDecimalLiteral()
+     * @generated
+     */
+    EClass DECIMAL_LITERAL = eINSTANCE.getDecimalLiteral();
+
+    /**
+     * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute DECIMAL_LITERAL__VALUE = eINSTANCE.getDecimalLiteral_Value();
+
+    /**
+     * The meta object literal for the '{@link eu.coresense.adaptation.tactics.impl.StringLiteralImpl <em>String Literal</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see eu.coresense.adaptation.tactics.impl.StringLiteralImpl
+     * @see eu.coresense.adaptation.tactics.impl.TacticsPackageImpl#getStringLiteral()
+     * @generated
+     */
+    EClass STRING_LITERAL = eINSTANCE.getStringLiteral();
+
+    /**
+     * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute STRING_LITERAL__VALUE = eINSTANCE.getStringLiteral_Value();
+
+    /**
+     * The meta object literal for the '{@link eu.coresense.adaptation.tactics.impl.BooleanLiteralImpl <em>Boolean Literal</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see eu.coresense.adaptation.tactics.impl.BooleanLiteralImpl
+     * @see eu.coresense.adaptation.tactics.impl.TacticsPackageImpl#getBooleanLiteral()
+     * @generated
+     */
+    EClass BOOLEAN_LITERAL = eINSTANCE.getBooleanLiteral();
+
+    /**
+     * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute BOOLEAN_LITERAL__VALUE = eINSTANCE.getBooleanLiteral_Value();
 
     /**
      * The meta object literal for the '{@link eu.coresense.adaptation.tactics.MathOperator <em>Math Operator</em>}' enum.

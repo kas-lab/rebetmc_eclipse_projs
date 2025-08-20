@@ -4,6 +4,7 @@
 package eu.coresense.adaptation.tactics.impl;
 
 import eu.coresense.adaptation.tactics.AtomicAction;
+import eu.coresense.adaptation.tactics.Effect;
 import eu.coresense.adaptation.tactics.RuleBody;
 import eu.coresense.adaptation.tactics.TacticsPackage;
 
@@ -24,6 +25,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * The following features are implemented:
  * </p>
  * <ul>
+ *   <li>{@link eu.coresense.adaptation.tactics.impl.RuleBodyImpl#getEffect <em>Effect</em>}</li>
  *   <li>{@link eu.coresense.adaptation.tactics.impl.RuleBodyImpl#getAtomicAction <em>Atomic Action</em>}</li>
  * </ul>
  *
@@ -31,6 +33,16 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  */
 public class RuleBodyImpl extends MinimalEObjectImpl.Container implements RuleBody
 {
+  /**
+   * The cached value of the '{@link #getEffect() <em>Effect</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getEffect()
+   * @generated
+   * @ordered
+   */
+  protected Effect effect;
+
   /**
    * The cached value of the '{@link #getAtomicAction() <em>Atomic Action</em>}' containment reference.
    * <!-- begin-user-doc -->
@@ -60,6 +72,56 @@ public class RuleBodyImpl extends MinimalEObjectImpl.Container implements RuleBo
   protected EClass eStaticClass()
   {
     return TacticsPackage.Literals.RULE_BODY;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Effect getEffect()
+  {
+    return effect;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetEffect(Effect newEffect, NotificationChain msgs)
+  {
+    Effect oldEffect = effect;
+    effect = newEffect;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, TacticsPackage.RULE_BODY__EFFECT, oldEffect, newEffect);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setEffect(Effect newEffect)
+  {
+    if (newEffect != effect)
+    {
+      NotificationChain msgs = null;
+      if (effect != null)
+        msgs = ((InternalEObject)effect).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - TacticsPackage.RULE_BODY__EFFECT, null, msgs);
+      if (newEffect != null)
+        msgs = ((InternalEObject)newEffect).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - TacticsPackage.RULE_BODY__EFFECT, null, msgs);
+      msgs = basicSetEffect(newEffect, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, TacticsPackage.RULE_BODY__EFFECT, newEffect, newEffect));
   }
 
   /**
@@ -122,6 +184,8 @@ public class RuleBodyImpl extends MinimalEObjectImpl.Container implements RuleBo
   {
     switch (featureID)
     {
+      case TacticsPackage.RULE_BODY__EFFECT:
+        return basicSetEffect(null, msgs);
       case TacticsPackage.RULE_BODY__ATOMIC_ACTION:
         return basicSetAtomicAction(null, msgs);
     }
@@ -138,6 +202,8 @@ public class RuleBodyImpl extends MinimalEObjectImpl.Container implements RuleBo
   {
     switch (featureID)
     {
+      case TacticsPackage.RULE_BODY__EFFECT:
+        return getEffect();
       case TacticsPackage.RULE_BODY__ATOMIC_ACTION:
         return getAtomicAction();
     }
@@ -154,6 +220,9 @@ public class RuleBodyImpl extends MinimalEObjectImpl.Container implements RuleBo
   {
     switch (featureID)
     {
+      case TacticsPackage.RULE_BODY__EFFECT:
+        setEffect((Effect)newValue);
+        return;
       case TacticsPackage.RULE_BODY__ATOMIC_ACTION:
         setAtomicAction((AtomicAction)newValue);
         return;
@@ -171,6 +240,9 @@ public class RuleBodyImpl extends MinimalEObjectImpl.Container implements RuleBo
   {
     switch (featureID)
     {
+      case TacticsPackage.RULE_BODY__EFFECT:
+        setEffect((Effect)null);
+        return;
       case TacticsPackage.RULE_BODY__ATOMIC_ACTION:
         setAtomicAction((AtomicAction)null);
         return;
@@ -188,6 +260,8 @@ public class RuleBodyImpl extends MinimalEObjectImpl.Container implements RuleBo
   {
     switch (featureID)
     {
+      case TacticsPackage.RULE_BODY__EFFECT:
+        return effect != null;
       case TacticsPackage.RULE_BODY__ATOMIC_ACTION:
         return atomicAction != null;
     }

@@ -6,9 +6,7 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="imports" upperBound="-1"
         eType="#//Import" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="featureModel" eType="ecore:EClass platform:/resource/fms.metamodel/model/BasicFMmetamodel.ecore#//FeatureModel"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="resolutionModel" eType="ecore:EClass platform:/resource/eu.coresense.resolution/model/generated/ResolutionModel.ecore#//ResolutionModel"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="period" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="adaptationRules" upperBound="-1"
         eType="#//AdaptationRule" containment="true"/>
   </eClassifiers>
@@ -33,11 +31,16 @@
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AtomicAction">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="secondAction" eType="#//AtomicAction"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="actions" upperBound="-1"
+        eType="#//AtomicSimpleAction" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AtomicSimpleAction">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="variant" eType="#//QualifiedFeatureRef"
         containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="variant" eType="ecore:EClass platform:/resource/fms.metamodel/model/BasicFMmetamodel.ecore#//Feature"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="RuleBody">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="effect" eType="#//Effect"
+        containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="atomicAction" eType="#//AtomicAction"
         containment="true"/>
   </eClassifiers>
@@ -48,10 +51,15 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="else" eType="#//RuleBody"
         containment="true"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Effect">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="condition" eType="#//Condition"
+        containment="true"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Condition">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="measurement" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="measurement" eType="ecore:EClass platform:/resource/eu.coresense.context/model/generated/ContextModel.ecore#//ContextVar"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="operator" eType="#//MathOperator"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="value" eType="#//Literal"
+        containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="logicalOp" eType="#//LogicalOperator"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="secondTerm" eType="#//Condition"
         containment="true"/>
@@ -66,6 +74,23 @@
     <eLiterals name="AND" literal="AND"/>
     <eLiterals name="OR" value="1" literal="OR"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="AtomicActionSelectFeature" eSuperTypes="#//AtomicAction"/>
-  <eClassifiers xsi:type="ecore:EClass" name="AtomicActionDeselectFeature" eSuperTypes="#//AtomicAction"/>
+  <eClassifiers xsi:type="ecore:EClass" name="AtomicActionSelectFeature" eSuperTypes="#//AtomicSimpleAction"/>
+  <eClassifiers xsi:type="ecore:EClass" name="AtomicActionDeselectFeature" eSuperTypes="#//AtomicSimpleAction"/>
+  <eClassifiers xsi:type="ecore:EClass" name="QualifiedFeatureRef">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="model" eType="ecore:EClass platform:/resource/eu.coresense.resolution/model/generated/ResolutionModel.ecore#//ResolutionModel"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="feature" eType="ecore:EClass platform:/resource/fms.metamodel/model/BasicFMmetamodel.ecore#//Feature"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Literal"/>
+  <eClassifiers xsi:type="ecore:EClass" name="IntLiteral" eSuperTypes="#//Literal">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DecimalLiteral" eSuperTypes="#//Literal">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBigDecimal"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="StringLiteral" eSuperTypes="#//Literal">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="BooleanLiteral" eSuperTypes="#//Literal">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+  </eClassifiers>
 </ecore:EPackage>

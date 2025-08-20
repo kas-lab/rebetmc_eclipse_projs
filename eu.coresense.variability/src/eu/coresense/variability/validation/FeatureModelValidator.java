@@ -3,6 +3,16 @@
  */
 package eu.coresense.variability.validation;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.eclipse.xtext.validation.Check;
+
+import eu.coresense.variability.featureModel.FeatureModelPackage;
+import uma.caosd.rhea.BasicFMmetamodel.Alternative;
+import uma.caosd.rhea.BasicFMmetamodel.BasicFMmetamodelPackage;
+import uma.caosd.rhea.BasicFMmetamodel.Feature;
+import uma.caosd.rhea.BasicFMmetamodel.OrGroup;
 
 /**
  * This class contains custom validation rules. 
@@ -11,15 +21,91 @@ package eu.coresense.variability.validation;
  */
 public class FeatureModelValidator extends AbstractFeatureModelValidator {
 	
-//	public static final String INVALID_NAME = "invalidName";
-//
-//	@Check
-//	public void checkGreetingStartsWithCapital(Greeting greeting) {
-//		if (!Character.isUpperCase(greeting.getName().charAt(0))) {
-//			warning("Name should start with a capital",
-//					FeatureModelPackage.Literals.GREETING__NAME,
-//					INVALID_NAME);
-//		}
-//	}
+	
+	@Check
+	public void checkParentChild(Feature feature) {
+		List<Feature> allFeatures = new ArrayList<Feature>();
+		collectAllFeatures(feature, allFeatures);
+		allFeatures.remove(feature);
+		Boolean flag = false;
+		Feature culprit = feature;
+		
+		
+		if(!feature.isSelected())
+		{
+			for (Feature child : allFeatures) {
+	            if(child.isSelected())
+	            {
+	            	System.out.println("Violation triggered! ");
+	            	flag = true;
+	            	culprit = child;
+	            }
+	    }
+		}
+			
+		if(flag)
+		{
+			 error("Parent-Child error: A child is selected while its parent is not! The child is named " + culprit.getName(),
+					 BasicFMmetamodelPackage.Literals.FEATURE__NAME);
+		}
+						
+		
+	}
+	
+	@Check
+	public void checkMandatory(Feature feature) {
+		
+		Boolean flag = false;
+		Feature culprit = feature;
+		
+		if(feature instanceof Alternative || feature instanceof OrGroup)
+		{
+			for (Feature child : feature.getChildren()) {
+				if(child.isMandatory())
+				{
+					flag = true;
+					culprit = child;
+					
+				}
+				
+			}
+			
+		}
+		if(flag)
+		{error("The child of an Alternative or OrGroup should not be mandatory, child in question is " + culprit.getName(),
+				 BasicFMmetamodelPackage.Literals.FEATURE__NAME);}
+	}
+	
+	@Check
+	public void checkAlternative(Feature feature) 
+	{
+		if(feature instanceof Alternative)
+		{
+			int count = 0;
+			for (Feature child : feature.getChildren()) {
+				if(child.isSelected())
+				{
+					count+=1;
+				}
+			}
+			if(count > 1)
+			{
+				error("An Alternative can only have one child selected, " + count + " children are selected",
+						 BasicFMmetamodelPackage.Literals.FEATURE__NAME);
+				
+			}
+			
+		}
+	}
+	
+	private void collectAllFeatures(Feature feature, List<Feature> allFeatures) {
+	    if(feature != null)
+	    {
+		    allFeatures.add(feature);
+		   	for (Feature child : feature.getChildren()) {
+		            collectAllFeatures(child, allFeatures);
+		    }
+		}
+	}
 	
 }

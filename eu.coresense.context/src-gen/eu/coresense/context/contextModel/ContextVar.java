@@ -5,7 +5,7 @@ package eu.coresense.context.contextModel;
 
 import org.eclipse.emf.ecore.EObject;
 
-import pythonfunctions.PythonModel.PythonFunction;
+import ros.Publisher;
 
 /**
  * <!-- begin-user-doc -->
@@ -18,7 +18,12 @@ import pythonfunctions.PythonModel.PythonFunction;
  * <ul>
  *   <li>{@link eu.coresense.context.contextModel.ContextVar#getName <em>Name</em>}</li>
  *   <li>{@link eu.coresense.context.contextModel.ContextVar#getSource <em>Source</em>}</li>
- *   <li>{@link eu.coresense.context.contextModel.ContextVar#getFunction <em>Function</em>}</li>
+ *   <li>{@link eu.coresense.context.contextModel.ContextVar#getProcessed_source <em>Processed source</em>}</li>
+ *   <li>{@link eu.coresense.context.contextModel.ContextVar#isDoCache <em>Do Cache</em>}</li>
+ *   <li>{@link eu.coresense.context.contextModel.ContextVar#getLength <em>Length</em>}</li>
+ *   <li>{@link eu.coresense.context.contextModel.ContextVar#getPeriod <em>Period</em>}</li>
+ *   <li>{@link eu.coresense.context.contextModel.ContextVar#getFunctionName <em>Function Name</em>}</li>
+ *   <li>{@link eu.coresense.context.contextModel.ContextVar#getFunctionLibrary <em>Function Library</em>}</li>
  * </ul>
  *
  * @see eu.coresense.context.contextModel.ContextModelPackage#getContextVar()
@@ -72,25 +77,135 @@ public interface ContextVar extends EObject
   void setSource(DataSource value);
 
   /**
-   * Returns the value of the '<em><b>Function</b></em>' reference.
+   * Returns the value of the '<em><b>Processed source</b></em>' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Function</em>' reference.
-   * @see #setFunction(PythonFunction)
-   * @see eu.coresense.context.contextModel.ContextModelPackage#getContextVar_Function()
+   * @return the value of the '<em>Processed source</em>' reference.
+   * @see #setProcessed_source(Publisher)
+   * @see eu.coresense.context.contextModel.ContextModelPackage#getContextVar_Processed_source()
    * @model
    * @generated
    */
-  PythonFunction getFunction();
+  Publisher getProcessed_source();
 
   /**
-   * Sets the value of the '{@link eu.coresense.context.contextModel.ContextVar#getFunction <em>Function</em>}' reference.
+   * Sets the value of the '{@link eu.coresense.context.contextModel.ContextVar#getProcessed_source <em>Processed source</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Function</em>' reference.
-   * @see #getFunction()
+   * @param value the new value of the '<em>Processed source</em>' reference.
+   * @see #getProcessed_source()
    * @generated
    */
-  void setFunction(PythonFunction value);
+  void setProcessed_source(Publisher value);
+
+  /**
+   * Returns the value of the '<em><b>Do Cache</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Do Cache</em>' attribute.
+   * @see #setDoCache(boolean)
+   * @see eu.coresense.context.contextModel.ContextModelPackage#getContextVar_DoCache()
+   * @model
+   * @generated
+   */
+  boolean isDoCache();
+
+  /**
+   * Sets the value of the '{@link eu.coresense.context.contextModel.ContextVar#isDoCache <em>Do Cache</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Do Cache</em>' attribute.
+   * @see #isDoCache()
+   * @generated
+   */
+  void setDoCache(boolean value);
+
+  /**
+   * Returns the value of the '<em><b>Length</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Length</em>' attribute.
+   * @see #setLength(int)
+   * @see eu.coresense.context.contextModel.ContextModelPackage#getContextVar_Length()
+   * @model
+   * @generated
+   */
+  int getLength();
+
+  /**
+   * Sets the value of the '{@link eu.coresense.context.contextModel.ContextVar#getLength <em>Length</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Length</em>' attribute.
+   * @see #getLength()
+   * @generated
+   */
+  void setLength(int value);
+
+  /**
+   * Returns the value of the '<em><b>Period</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Period</em>' attribute.
+   * @see #setPeriod(int)
+   * @see eu.coresense.context.contextModel.ContextModelPackage#getContextVar_Period()
+   * @model
+   * @generated
+   */
+  int getPeriod();
+
+  /**
+   * Sets the value of the '{@link eu.coresense.context.contextModel.ContextVar#getPeriod <em>Period</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Period</em>' attribute.
+   * @see #getPeriod()
+   * @generated
+   */
+  void setPeriod(int value);
+
+  /**
+   * Returns the value of the '<em><b>Function Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Function Name</em>' attribute.
+   * @see #setFunctionName(String)
+   * @see eu.coresense.context.contextModel.ContextModelPackage#getContextVar_FunctionName()
+   * @model
+   * @generated
+   */
+  String getFunctionName();
+
+  /**
+   * Sets the value of the '{@link eu.coresense.context.contextModel.ContextVar#getFunctionName <em>Function Name</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Function Name</em>' attribute.
+   * @see #getFunctionName()
+   * @generated
+   */
+  void setFunctionName(String value);
+
+  /**
+   * Returns the value of the '<em><b>Function Library</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Function Library</em>' attribute.
+   * @see #setFunctionLibrary(String)
+   * @see eu.coresense.context.contextModel.ContextModelPackage#getContextVar_FunctionLibrary()
+   * @model
+   * @generated
+   */
+  String getFunctionLibrary();
+
+  /**
+   * Sets the value of the '{@link eu.coresense.context.contextModel.ContextVar#getFunctionLibrary <em>Function Library</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Function Library</em>' attribute.
+   * @see #getFunctionLibrary()
+   * @generated
+   */
+  void setFunctionLibrary(String value);
 
 } // ContextVar

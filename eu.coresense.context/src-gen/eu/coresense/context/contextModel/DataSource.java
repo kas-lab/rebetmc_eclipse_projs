@@ -5,9 +5,7 @@ package eu.coresense.context.contextModel;
 
 import org.eclipse.emf.ecore.EObject;
 
-import ros.ActionSpec;
-import ros.ServiceSpec;
-import ros.TopicSpec;
+import ros.Node;
 
 /**
  * <!-- begin-user-doc -->
@@ -18,9 +16,7 @@ import ros.TopicSpec;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link eu.coresense.context.contextModel.DataSource#getTopic <em>Topic</em>}</li>
- *   <li>{@link eu.coresense.context.contextModel.DataSource#getService <em>Service</em>}</li>
- *   <li>{@link eu.coresense.context.contextModel.DataSource#getAction <em>Action</em>}</li>
+ *   <li>{@link eu.coresense.context.contextModel.DataSource#getNode <em>Node</em>}</li>
  * </ul>
  *
  * @see eu.coresense.context.contextModel.ContextModelPackage#getDataSource()
@@ -30,69 +26,25 @@ import ros.TopicSpec;
 public interface DataSource extends EObject
 {
   /**
-   * Returns the value of the '<em><b>Topic</b></em>' reference.
+   * Returns the value of the '<em><b>Node</b></em>' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Topic</em>' reference.
-   * @see #setTopic(TopicSpec)
-   * @see eu.coresense.context.contextModel.ContextModelPackage#getDataSource_Topic()
+   * @return the value of the '<em>Node</em>' reference.
+   * @see #setNode(Node)
+   * @see eu.coresense.context.contextModel.ContextModelPackage#getDataSource_Node()
    * @model
    * @generated
    */
-  TopicSpec getTopic();
+  Node getNode();
 
   /**
-   * Sets the value of the '{@link eu.coresense.context.contextModel.DataSource#getTopic <em>Topic</em>}' reference.
+   * Sets the value of the '{@link eu.coresense.context.contextModel.DataSource#getNode <em>Node</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Topic</em>' reference.
-   * @see #getTopic()
+   * @param value the new value of the '<em>Node</em>' reference.
+   * @see #getNode()
    * @generated
    */
-  void setTopic(TopicSpec value);
-
-  /**
-   * Returns the value of the '<em><b>Service</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Service</em>' reference.
-   * @see #setService(ServiceSpec)
-   * @see eu.coresense.context.contextModel.ContextModelPackage#getDataSource_Service()
-   * @model
-   * @generated
-   */
-  ServiceSpec getService();
-
-  /**
-   * Sets the value of the '{@link eu.coresense.context.contextModel.DataSource#getService <em>Service</em>}' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Service</em>' reference.
-   * @see #getService()
-   * @generated
-   */
-  void setService(ServiceSpec value);
-
-  /**
-   * Returns the value of the '<em><b>Action</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Action</em>' reference.
-   * @see #setAction(ActionSpec)
-   * @see eu.coresense.context.contextModel.ContextModelPackage#getDataSource_Action()
-   * @model
-   * @generated
-   */
-  ActionSpec getAction();
-
-  /**
-   * Sets the value of the '{@link eu.coresense.context.contextModel.DataSource#getAction <em>Action</em>}' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Action</em>' reference.
-   * @see #getAction()
-   * @generated
-   */
-  void setAction(ActionSpec value);
+  void setNode(Node value);
 
 } // DataSource

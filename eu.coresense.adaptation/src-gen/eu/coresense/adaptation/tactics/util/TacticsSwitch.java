@@ -191,45 +191,6 @@ public class TacticsSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case TacticsPackage.LITERAL:
-      {
-        Literal literal = (Literal)theEObject;
-        T result = caseLiteral(literal);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case TacticsPackage.INT_LITERAL:
-      {
-        IntLiteral intLiteral = (IntLiteral)theEObject;
-        T result = caseIntLiteral(intLiteral);
-        if (result == null) result = caseLiteral(intLiteral);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case TacticsPackage.DECIMAL_LITERAL:
-      {
-        DecimalLiteral decimalLiteral = (DecimalLiteral)theEObject;
-        T result = caseDecimalLiteral(decimalLiteral);
-        if (result == null) result = caseLiteral(decimalLiteral);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case TacticsPackage.STRING_LITERAL:
-      {
-        StringLiteral stringLiteral = (StringLiteral)theEObject;
-        T result = caseStringLiteral(stringLiteral);
-        if (result == null) result = caseLiteral(stringLiteral);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case TacticsPackage.BOOLEAN_LITERAL:
-      {
-        BooleanLiteral booleanLiteral = (BooleanLiteral)theEObject;
-        T result = caseBooleanLiteral(booleanLiteral);
-        if (result == null) result = caseLiteral(booleanLiteral);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
       default: return defaultCase(theEObject);
     }
   }
@@ -486,86 +447,6 @@ public class TacticsSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseQualifiedFeatureRef(QualifiedFeatureRef object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Literal</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Literal</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseLiteral(Literal object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Int Literal</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Int Literal</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseIntLiteral(IntLiteral object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Decimal Literal</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Decimal Literal</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseDecimalLiteral(DecimalLiteral object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>String Literal</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>String Literal</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseStringLiteral(StringLiteral object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Boolean Literal</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Boolean Literal</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseBooleanLiteral(BooleanLiteral object)
   {
     return null;
   }

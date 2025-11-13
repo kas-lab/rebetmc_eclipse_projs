@@ -68,7 +68,11 @@ public class ContextModelFactoryImpl extends EFactoryImpl implements ContextMode
       case ContextModelPackage.CONTEXT_MODEL: return createContextModel();
       case ContextModelPackage.CONTEXT_VAR: return createContextVar();
       case ContextModelPackage.DATA_SOURCE: return createDataSource();
+      case ContextModelPackage.QUALIFIED_PUBLISHER_REF: return createQualifiedPublisherRef();
+      case ContextModelPackage.QUALIFIED_SERVICE_SERVER_REF: return createQualifiedServiceServerRef();
+      case ContextModelPackage.QUALIFIED_ACTION_SERVER_REF: return createQualifiedActionServerRef();
       case ContextModelPackage.IMPORT: return createImport();
+      case ContextModelPackage.CONTEXT_MODEL_NODE: return createContextModelNode();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -116,10 +120,58 @@ public class ContextModelFactoryImpl extends EFactoryImpl implements ContextMode
    * @generated
    */
   @Override
+  public QualifiedPublisherRef createQualifiedPublisherRef()
+  {
+    QualifiedPublisherRefImpl qualifiedPublisherRef = new QualifiedPublisherRefImpl();
+    return qualifiedPublisherRef;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public QualifiedServiceServerRef createQualifiedServiceServerRef()
+  {
+    QualifiedServiceServerRefImpl qualifiedServiceServerRef = new QualifiedServiceServerRefImpl();
+    return qualifiedServiceServerRef;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public QualifiedActionServerRef createQualifiedActionServerRef()
+  {
+    QualifiedActionServerRefImpl qualifiedActionServerRef = new QualifiedActionServerRefImpl();
+    return qualifiedActionServerRef;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public Import createImport()
   {
     ImportImpl import_ = new ImportImpl();
     return import_;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public ContextModelNode createContextModelNode()
+  {
+    ContextModelNodeImpl contextModelNode = new ContextModelNodeImpl();
+    return contextModelNode;
   }
 
   /**

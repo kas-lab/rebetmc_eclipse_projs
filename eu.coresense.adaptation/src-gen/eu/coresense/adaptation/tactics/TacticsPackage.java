@@ -87,22 +87,13 @@ public interface TacticsPackage extends EPackage
   int TACTICS_MODEL__IMPORTS = 1;
 
   /**
-   * The feature id for the '<em><b>Resolution Model</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int TACTICS_MODEL__RESOLUTION_MODEL = 2;
-
-  /**
    * The feature id for the '<em><b>Adaptation Rules</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int TACTICS_MODEL__ADAPTATION_RULES = 3;
+  int TACTICS_MODEL__ADAPTATION_RULES = 2;
 
   /**
    * The number of structural features of the '<em>Model</em>' class.
@@ -111,7 +102,7 @@ public interface TacticsPackage extends EPackage
    * @generated
    * @ordered
    */
-  int TACTICS_MODEL_FEATURE_COUNT = 4;
+  int TACTICS_MODEL_FEATURE_COUNT = 3;
 
   /**
    * The meta object id for the '{@link eu.coresense.adaptation.tactics.impl.ImportImpl <em>Import</em>}' class.
@@ -660,137 +651,6 @@ public interface TacticsPackage extends EPackage
   int QUALIFIED_FEATURE_REF_FEATURE_COUNT = 2;
 
   /**
-   * The meta object id for the '{@link eu.coresense.adaptation.tactics.impl.LiteralImpl <em>Literal</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see eu.coresense.adaptation.tactics.impl.LiteralImpl
-   * @see eu.coresense.adaptation.tactics.impl.TacticsPackageImpl#getLiteral()
-   * @generated
-   */
-  int LITERAL = 16;
-
-  /**
-   * The number of structural features of the '<em>Literal</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int LITERAL_FEATURE_COUNT = 0;
-
-  /**
-   * The meta object id for the '{@link eu.coresense.adaptation.tactics.impl.IntLiteralImpl <em>Int Literal</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see eu.coresense.adaptation.tactics.impl.IntLiteralImpl
-   * @see eu.coresense.adaptation.tactics.impl.TacticsPackageImpl#getIntLiteral()
-   * @generated
-   */
-  int INT_LITERAL = 17;
-
-  /**
-   * The feature id for the '<em><b>Value</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int INT_LITERAL__VALUE = LITERAL_FEATURE_COUNT + 0;
-
-  /**
-   * The number of structural features of the '<em>Int Literal</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int INT_LITERAL_FEATURE_COUNT = LITERAL_FEATURE_COUNT + 1;
-
-  /**
-   * The meta object id for the '{@link eu.coresense.adaptation.tactics.impl.DecimalLiteralImpl <em>Decimal Literal</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see eu.coresense.adaptation.tactics.impl.DecimalLiteralImpl
-   * @see eu.coresense.adaptation.tactics.impl.TacticsPackageImpl#getDecimalLiteral()
-   * @generated
-   */
-  int DECIMAL_LITERAL = 18;
-
-  /**
-   * The feature id for the '<em><b>Value</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int DECIMAL_LITERAL__VALUE = LITERAL_FEATURE_COUNT + 0;
-
-  /**
-   * The number of structural features of the '<em>Decimal Literal</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int DECIMAL_LITERAL_FEATURE_COUNT = LITERAL_FEATURE_COUNT + 1;
-
-  /**
-   * The meta object id for the '{@link eu.coresense.adaptation.tactics.impl.StringLiteralImpl <em>String Literal</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see eu.coresense.adaptation.tactics.impl.StringLiteralImpl
-   * @see eu.coresense.adaptation.tactics.impl.TacticsPackageImpl#getStringLiteral()
-   * @generated
-   */
-  int STRING_LITERAL = 19;
-
-  /**
-   * The feature id for the '<em><b>Value</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int STRING_LITERAL__VALUE = LITERAL_FEATURE_COUNT + 0;
-
-  /**
-   * The number of structural features of the '<em>String Literal</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int STRING_LITERAL_FEATURE_COUNT = LITERAL_FEATURE_COUNT + 1;
-
-  /**
-   * The meta object id for the '{@link eu.coresense.adaptation.tactics.impl.BooleanLiteralImpl <em>Boolean Literal</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see eu.coresense.adaptation.tactics.impl.BooleanLiteralImpl
-   * @see eu.coresense.adaptation.tactics.impl.TacticsPackageImpl#getBooleanLiteral()
-   * @generated
-   */
-  int BOOLEAN_LITERAL = 20;
-
-  /**
-   * The feature id for the '<em><b>Value</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int BOOLEAN_LITERAL__VALUE = LITERAL_FEATURE_COUNT + 0;
-
-  /**
-   * The number of structural features of the '<em>Boolean Literal</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int BOOLEAN_LITERAL_FEATURE_COUNT = LITERAL_FEATURE_COUNT + 1;
-
-  /**
    * The meta object id for the '{@link eu.coresense.adaptation.tactics.MathOperator <em>Math Operator</em>}' enum.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -798,7 +658,7 @@ public interface TacticsPackage extends EPackage
    * @see eu.coresense.adaptation.tactics.impl.TacticsPackageImpl#getMathOperator()
    * @generated
    */
-  int MATH_OPERATOR = 21;
+  int MATH_OPERATOR = 16;
 
   /**
    * The meta object id for the '{@link eu.coresense.adaptation.tactics.LogicalOperator <em>Logical Operator</em>}' enum.
@@ -808,7 +668,7 @@ public interface TacticsPackage extends EPackage
    * @see eu.coresense.adaptation.tactics.impl.TacticsPackageImpl#getLogicalOperator()
    * @generated
    */
-  int LOGICAL_OPERATOR = 22;
+  int LOGICAL_OPERATOR = 17;
 
 
   /**
@@ -842,17 +702,6 @@ public interface TacticsPackage extends EPackage
    * @generated
    */
   EReference getTacticsModel_Imports();
-
-  /**
-   * Returns the meta object for the reference '{@link eu.coresense.adaptation.tactics.TacticsModel#getResolutionModel <em>Resolution Model</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the reference '<em>Resolution Model</em>'.
-   * @see eu.coresense.adaptation.tactics.TacticsModel#getResolutionModel()
-   * @see #getTacticsModel()
-   * @generated
-   */
-  EReference getTacticsModel_ResolutionModel();
 
   /**
    * Returns the meta object for the containment reference list '{@link eu.coresense.adaptation.tactics.TacticsModel#getAdaptationRules <em>Adaptation Rules</em>}'.
@@ -1247,100 +1096,6 @@ public interface TacticsPackage extends EPackage
   EReference getQualifiedFeatureRef_Feature();
 
   /**
-   * Returns the meta object for class '{@link eu.coresense.adaptation.tactics.Literal <em>Literal</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Literal</em>'.
-   * @see eu.coresense.adaptation.tactics.Literal
-   * @generated
-   */
-  EClass getLiteral();
-
-  /**
-   * Returns the meta object for class '{@link eu.coresense.adaptation.tactics.IntLiteral <em>Int Literal</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Int Literal</em>'.
-   * @see eu.coresense.adaptation.tactics.IntLiteral
-   * @generated
-   */
-  EClass getIntLiteral();
-
-  /**
-   * Returns the meta object for the attribute '{@link eu.coresense.adaptation.tactics.IntLiteral#getValue <em>Value</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Value</em>'.
-   * @see eu.coresense.adaptation.tactics.IntLiteral#getValue()
-   * @see #getIntLiteral()
-   * @generated
-   */
-  EAttribute getIntLiteral_Value();
-
-  /**
-   * Returns the meta object for class '{@link eu.coresense.adaptation.tactics.DecimalLiteral <em>Decimal Literal</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Decimal Literal</em>'.
-   * @see eu.coresense.adaptation.tactics.DecimalLiteral
-   * @generated
-   */
-  EClass getDecimalLiteral();
-
-  /**
-   * Returns the meta object for the attribute '{@link eu.coresense.adaptation.tactics.DecimalLiteral#getValue <em>Value</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Value</em>'.
-   * @see eu.coresense.adaptation.tactics.DecimalLiteral#getValue()
-   * @see #getDecimalLiteral()
-   * @generated
-   */
-  EAttribute getDecimalLiteral_Value();
-
-  /**
-   * Returns the meta object for class '{@link eu.coresense.adaptation.tactics.StringLiteral <em>String Literal</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>String Literal</em>'.
-   * @see eu.coresense.adaptation.tactics.StringLiteral
-   * @generated
-   */
-  EClass getStringLiteral();
-
-  /**
-   * Returns the meta object for the attribute '{@link eu.coresense.adaptation.tactics.StringLiteral#getValue <em>Value</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Value</em>'.
-   * @see eu.coresense.adaptation.tactics.StringLiteral#getValue()
-   * @see #getStringLiteral()
-   * @generated
-   */
-  EAttribute getStringLiteral_Value();
-
-  /**
-   * Returns the meta object for class '{@link eu.coresense.adaptation.tactics.BooleanLiteral <em>Boolean Literal</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Boolean Literal</em>'.
-   * @see eu.coresense.adaptation.tactics.BooleanLiteral
-   * @generated
-   */
-  EClass getBooleanLiteral();
-
-  /**
-   * Returns the meta object for the attribute '{@link eu.coresense.adaptation.tactics.BooleanLiteral#isValue <em>Value</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Value</em>'.
-   * @see eu.coresense.adaptation.tactics.BooleanLiteral#isValue()
-   * @see #getBooleanLiteral()
-   * @generated
-   */
-  EAttribute getBooleanLiteral_Value();
-
-  /**
    * Returns the meta object for enum '{@link eu.coresense.adaptation.tactics.MathOperator <em>Math Operator</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1408,14 +1163,6 @@ public interface TacticsPackage extends EPackage
      * @generated
      */
     EReference TACTICS_MODEL__IMPORTS = eINSTANCE.getTacticsModel_Imports();
-
-    /**
-     * The meta object literal for the '<em><b>Resolution Model</b></em>' reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference TACTICS_MODEL__RESOLUTION_MODEL = eINSTANCE.getTacticsModel_ResolutionModel();
 
     /**
      * The meta object literal for the '<em><b>Adaptation Rules</b></em>' containment reference list feature.
@@ -1742,88 +1489,6 @@ public interface TacticsPackage extends EPackage
      * @generated
      */
     EReference QUALIFIED_FEATURE_REF__FEATURE = eINSTANCE.getQualifiedFeatureRef_Feature();
-
-    /**
-     * The meta object literal for the '{@link eu.coresense.adaptation.tactics.impl.LiteralImpl <em>Literal</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see eu.coresense.adaptation.tactics.impl.LiteralImpl
-     * @see eu.coresense.adaptation.tactics.impl.TacticsPackageImpl#getLiteral()
-     * @generated
-     */
-    EClass LITERAL = eINSTANCE.getLiteral();
-
-    /**
-     * The meta object literal for the '{@link eu.coresense.adaptation.tactics.impl.IntLiteralImpl <em>Int Literal</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see eu.coresense.adaptation.tactics.impl.IntLiteralImpl
-     * @see eu.coresense.adaptation.tactics.impl.TacticsPackageImpl#getIntLiteral()
-     * @generated
-     */
-    EClass INT_LITERAL = eINSTANCE.getIntLiteral();
-
-    /**
-     * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute INT_LITERAL__VALUE = eINSTANCE.getIntLiteral_Value();
-
-    /**
-     * The meta object literal for the '{@link eu.coresense.adaptation.tactics.impl.DecimalLiteralImpl <em>Decimal Literal</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see eu.coresense.adaptation.tactics.impl.DecimalLiteralImpl
-     * @see eu.coresense.adaptation.tactics.impl.TacticsPackageImpl#getDecimalLiteral()
-     * @generated
-     */
-    EClass DECIMAL_LITERAL = eINSTANCE.getDecimalLiteral();
-
-    /**
-     * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute DECIMAL_LITERAL__VALUE = eINSTANCE.getDecimalLiteral_Value();
-
-    /**
-     * The meta object literal for the '{@link eu.coresense.adaptation.tactics.impl.StringLiteralImpl <em>String Literal</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see eu.coresense.adaptation.tactics.impl.StringLiteralImpl
-     * @see eu.coresense.adaptation.tactics.impl.TacticsPackageImpl#getStringLiteral()
-     * @generated
-     */
-    EClass STRING_LITERAL = eINSTANCE.getStringLiteral();
-
-    /**
-     * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute STRING_LITERAL__VALUE = eINSTANCE.getStringLiteral_Value();
-
-    /**
-     * The meta object literal for the '{@link eu.coresense.adaptation.tactics.impl.BooleanLiteralImpl <em>Boolean Literal</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see eu.coresense.adaptation.tactics.impl.BooleanLiteralImpl
-     * @see eu.coresense.adaptation.tactics.impl.TacticsPackageImpl#getBooleanLiteral()
-     * @generated
-     */
-    EClass BOOLEAN_LITERAL = eINSTANCE.getBooleanLiteral();
-
-    /**
-     * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute BOOLEAN_LITERAL__VALUE = eINSTANCE.getBooleanLiteral_Value();
 
     /**
      * The meta object literal for the '{@link eu.coresense.adaptation.tactics.MathOperator <em>Math Operator</em>}' enum.

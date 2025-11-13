@@ -28,15 +28,19 @@ public class ContextModelGrammarAccess extends AbstractElementFinder.AbstractGra
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Assignment cImportsAssignment_0 = (Assignment)cGroup.eContents().get(0);
 		private final RuleCall cImportsImportParserRuleCall_0_0 = (RuleCall)cImportsAssignment_0.eContents().get(0);
-		private final Assignment cContext_variablesAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cContext_variablesContextVarParserRuleCall_1_0 = (RuleCall)cContext_variablesAssignment_1.eContents().get(0);
+		private final Assignment cContext_model_nodeAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cContext_model_nodeContextModelNodeParserRuleCall_1_0 = (RuleCall)cContext_model_nodeAssignment_1.eContents().get(0);
+		private final Assignment cContext_variablesAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cContext_variablesContextVarParserRuleCall_2_0 = (RuleCall)cContext_variablesAssignment_2.eContents().get(0);
 		
 		//ContextModel:
 		//    (imports+=Import*)
+		//    context_model_node=ContextModelNode
 		//    context_variables+=ContextVar*;
 		@Override public ParserRule getRule() { return rule; }
 		
 		//(imports+=Import*)
+		//context_model_node=ContextModelNode
 		//context_variables+=ContextVar*
 		public Group getGroup() { return cGroup; }
 		
@@ -46,11 +50,17 @@ public class ContextModelGrammarAccess extends AbstractElementFinder.AbstractGra
 		//Import
 		public RuleCall getImportsImportParserRuleCall_0_0() { return cImportsImportParserRuleCall_0_0; }
 		
+		//context_model_node=ContextModelNode
+		public Assignment getContext_model_nodeAssignment_1() { return cContext_model_nodeAssignment_1; }
+		
+		//ContextModelNode
+		public RuleCall getContext_model_nodeContextModelNodeParserRuleCall_1_0() { return cContext_model_nodeContextModelNodeParserRuleCall_1_0; }
+		
 		//context_variables+=ContextVar*
-		public Assignment getContext_variablesAssignment_1() { return cContext_variablesAssignment_1; }
+		public Assignment getContext_variablesAssignment_2() { return cContext_variablesAssignment_2; }
 		
 		//ContextVar
-		public RuleCall getContext_variablesContextVarParserRuleCall_1_0() { return cContext_variablesContextVarParserRuleCall_1_0; }
+		public RuleCall getContext_variablesContextVarParserRuleCall_2_0() { return cContext_variablesContextVarParserRuleCall_2_0; }
 	}
 	public class ContextVarElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "eu.coresense.context.ContextModel.ContextVar");
@@ -61,24 +71,55 @@ public class ContextModelGrammarAccess extends AbstractElementFinder.AbstractGra
 		private final Keyword cLeftCurlyBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
 		private final Assignment cSourceAssignment_3 = (Assignment)cGroup.eContents().get(3);
 		private final RuleCall cSourceDataSourceParserRuleCall_3_0 = (RuleCall)cSourceAssignment_3.eContents().get(0);
-		private final Keyword cFunction_nameKeyword_4 = (Keyword)cGroup.eContents().get(4);
-		private final Assignment cFunctionAssignment_5 = (Assignment)cGroup.eContents().get(5);
-		private final CrossReference cFunctionPythonFunctionCrossReference_5_0 = (CrossReference)cFunctionAssignment_5.eContents().get(0);
-		private final RuleCall cFunctionPythonFunctionIDTerminalRuleCall_5_0_1 = (RuleCall)cFunctionPythonFunctionCrossReference_5_0.eContents().get(1);
-		private final Keyword cRightCurlyBracketKeyword_6 = (Keyword)cGroup.eContents().get(6);
+		private final Keyword cEfferentKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		private final Assignment cProcessed_sourceAssignment_5 = (Assignment)cGroup.eContents().get(5);
+		private final CrossReference cProcessed_sourcePublisherCrossReference_5_0 = (CrossReference)cProcessed_sourceAssignment_5.eContents().get(0);
+		private final RuleCall cProcessed_sourcePublisherIDTerminalRuleCall_5_0_1 = (RuleCall)cProcessed_sourcePublisherCrossReference_5_0.eContents().get(1);
+		private final Keyword cCacheKeyword_6 = (Keyword)cGroup.eContents().get(6);
+		private final Assignment cDoCacheAssignment_7 = (Assignment)cGroup.eContents().get(7);
+		private final RuleCall cDoCacheBOOLEANTerminalRuleCall_7_0 = (RuleCall)cDoCacheAssignment_7.eContents().get(0);
+		private final Group cGroup_8 = (Group)cGroup.eContents().get(8);
+		private final Keyword cCacheKeyword_8_0 = (Keyword)cGroup_8.eContents().get(0);
+		private final Keyword cLengthKeyword_8_1 = (Keyword)cGroup_8.eContents().get(1);
+		private final Assignment cLengthAssignment_8_2 = (Assignment)cGroup_8.eContents().get(2);
+		private final RuleCall cLengthINTTerminalRuleCall_8_2_0 = (RuleCall)cLengthAssignment_8_2.eContents().get(0);
+		private final Keyword cSKeyword_8_3 = (Keyword)cGroup_8.eContents().get(3);
+		private final Group cGroup_9 = (Group)cGroup.eContents().get(9);
+		private final Keyword cPeriodKeyword_9_0 = (Keyword)cGroup_9.eContents().get(0);
+		private final Assignment cPeriodAssignment_9_1 = (Assignment)cGroup_9.eContents().get(1);
+		private final RuleCall cPeriodINTTerminalRuleCall_9_1_0 = (RuleCall)cPeriodAssignment_9_1.eContents().get(0);
+		private final Keyword cNsKeyword_9_2 = (Keyword)cGroup_9.eContents().get(2);
+		private final Keyword cFunction_nameKeyword_10 = (Keyword)cGroup.eContents().get(10);
+		private final Assignment cFunctionNameAssignment_11 = (Assignment)cGroup.eContents().get(11);
+		private final RuleCall cFunctionNameSTRINGTerminalRuleCall_11_0 = (RuleCall)cFunctionNameAssignment_11.eContents().get(0);
+		private final Group cGroup_12 = (Group)cGroup.eContents().get(12);
+		private final Keyword cFunction_libKeyword_12_0 = (Keyword)cGroup_12.eContents().get(0);
+		private final Assignment cFunctionLibraryAssignment_12_1 = (Assignment)cGroup_12.eContents().get(1);
+		private final RuleCall cFunctionLibrarySTRINGTerminalRuleCall_12_1_0 = (RuleCall)cFunctionLibraryAssignment_12_1.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_13 = (Keyword)cGroup.eContents().get(13);
 		
 		//ContextVar:
 		//    'ContextVariable' name=ID
 		//    '{'
 		//        source=DataSource
-		//        'function_name:' function=[py::PythonFunction]
+		//        'efferent:' processed_source=[ros::Publisher]
+		//        'cache?' doCache=BOOLEAN
+		//        ('cache' 'length' length=INT 's')?
+		//        ('period' period=INT 'ns')?
+		//        'function_name' functionName=STRING
+		//        ('function_lib' functionLibrary=STRING)?
 		//    '}';
 		@Override public ParserRule getRule() { return rule; }
 		
 		//'ContextVariable' name=ID
 		//'{'
 		//    source=DataSource
-		//    'function_name:' function=[py::PythonFunction]
+		//    'efferent:' processed_source=[ros::Publisher]
+		//    'cache?' doCache=BOOLEAN
+		//    ('cache' 'length' length=INT 's')?
+		//    ('period' period=INT 'ns')?
+		//    'function_name' functionName=STRING
+		//    ('function_lib' functionLibrary=STRING)?
 		//'}'
 		public Group getGroup() { return cGroup; }
 		
@@ -100,92 +141,273 @@ public class ContextModelGrammarAccess extends AbstractElementFinder.AbstractGra
 		//DataSource
 		public RuleCall getSourceDataSourceParserRuleCall_3_0() { return cSourceDataSourceParserRuleCall_3_0; }
 		
-		//'function_name:'
-		public Keyword getFunction_nameKeyword_4() { return cFunction_nameKeyword_4; }
+		//'efferent:'
+		public Keyword getEfferentKeyword_4() { return cEfferentKeyword_4; }
 		
-		//function=[py::PythonFunction]
-		public Assignment getFunctionAssignment_5() { return cFunctionAssignment_5; }
+		//processed_source=[ros::Publisher]
+		public Assignment getProcessed_sourceAssignment_5() { return cProcessed_sourceAssignment_5; }
 		
-		//[py::PythonFunction]
-		public CrossReference getFunctionPythonFunctionCrossReference_5_0() { return cFunctionPythonFunctionCrossReference_5_0; }
+		//[ros::Publisher]
+		public CrossReference getProcessed_sourcePublisherCrossReference_5_0() { return cProcessed_sourcePublisherCrossReference_5_0; }
 		
 		//ID
-		public RuleCall getFunctionPythonFunctionIDTerminalRuleCall_5_0_1() { return cFunctionPythonFunctionIDTerminalRuleCall_5_0_1; }
+		public RuleCall getProcessed_sourcePublisherIDTerminalRuleCall_5_0_1() { return cProcessed_sourcePublisherIDTerminalRuleCall_5_0_1; }
+		
+		//'cache?'
+		public Keyword getCacheKeyword_6() { return cCacheKeyword_6; }
+		
+		//doCache=BOOLEAN
+		public Assignment getDoCacheAssignment_7() { return cDoCacheAssignment_7; }
+		
+		//BOOLEAN
+		public RuleCall getDoCacheBOOLEANTerminalRuleCall_7_0() { return cDoCacheBOOLEANTerminalRuleCall_7_0; }
+		
+		//('cache' 'length' length=INT 's')?
+		public Group getGroup_8() { return cGroup_8; }
+		
+		//'cache'
+		public Keyword getCacheKeyword_8_0() { return cCacheKeyword_8_0; }
+		
+		//'length'
+		public Keyword getLengthKeyword_8_1() { return cLengthKeyword_8_1; }
+		
+		//length=INT
+		public Assignment getLengthAssignment_8_2() { return cLengthAssignment_8_2; }
+		
+		//INT
+		public RuleCall getLengthINTTerminalRuleCall_8_2_0() { return cLengthINTTerminalRuleCall_8_2_0; }
+		
+		//'s'
+		public Keyword getSKeyword_8_3() { return cSKeyword_8_3; }
+		
+		//('period' period=INT 'ns')?
+		public Group getGroup_9() { return cGroup_9; }
+		
+		//'period'
+		public Keyword getPeriodKeyword_9_0() { return cPeriodKeyword_9_0; }
+		
+		//period=INT
+		public Assignment getPeriodAssignment_9_1() { return cPeriodAssignment_9_1; }
+		
+		//INT
+		public RuleCall getPeriodINTTerminalRuleCall_9_1_0() { return cPeriodINTTerminalRuleCall_9_1_0; }
+		
+		//'ns'
+		public Keyword getNsKeyword_9_2() { return cNsKeyword_9_2; }
+		
+		//'function_name'
+		public Keyword getFunction_nameKeyword_10() { return cFunction_nameKeyword_10; }
+		
+		//functionName=STRING
+		public Assignment getFunctionNameAssignment_11() { return cFunctionNameAssignment_11; }
+		
+		//STRING
+		public RuleCall getFunctionNameSTRINGTerminalRuleCall_11_0() { return cFunctionNameSTRINGTerminalRuleCall_11_0; }
+		
+		//('function_lib' functionLibrary=STRING)?
+		public Group getGroup_12() { return cGroup_12; }
+		
+		//'function_lib'
+		public Keyword getFunction_libKeyword_12_0() { return cFunction_libKeyword_12_0; }
+		
+		//functionLibrary=STRING
+		public Assignment getFunctionLibraryAssignment_12_1() { return cFunctionLibraryAssignment_12_1; }
+		
+		//STRING
+		public RuleCall getFunctionLibrarySTRINGTerminalRuleCall_12_1_0() { return cFunctionLibrarySTRINGTerminalRuleCall_12_1_0; }
 		
 		//'}'
-		public Keyword getRightCurlyBracketKeyword_6() { return cRightCurlyBracketKeyword_6; }
+		public Keyword getRightCurlyBracketKeyword_13() { return cRightCurlyBracketKeyword_13; }
 	}
 	public class DataSourceElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "eu.coresense.context.ContextModel.DataSource");
-		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final Group cGroup_0 = (Group)cAlternatives.eContents().get(0);
-		private final Keyword cTopicKeyword_0_0 = (Keyword)cGroup_0.eContents().get(0);
-		private final Assignment cTopicAssignment_0_1 = (Assignment)cGroup_0.eContents().get(1);
-		private final CrossReference cTopicTopicSpecCrossReference_0_1_0 = (CrossReference)cTopicAssignment_0_1.eContents().get(0);
-		private final RuleCall cTopicTopicSpecIDTerminalRuleCall_0_1_0_1 = (RuleCall)cTopicTopicSpecCrossReference_0_1_0.eContents().get(1);
-		private final Group cGroup_1 = (Group)cAlternatives.eContents().get(1);
-		private final Keyword cServiceKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
-		private final Assignment cServiceAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
-		private final CrossReference cServiceServiceSpecCrossReference_1_1_0 = (CrossReference)cServiceAssignment_1_1.eContents().get(0);
-		private final RuleCall cServiceServiceSpecIDTerminalRuleCall_1_1_0_1 = (RuleCall)cServiceServiceSpecCrossReference_1_1_0.eContents().get(1);
-		private final Group cGroup_2 = (Group)cAlternatives.eContents().get(2);
-		private final Keyword cActionKeyword_2_0 = (Keyword)cGroup_2.eContents().get(0);
-		private final Assignment cActionAssignment_2_1 = (Assignment)cGroup_2.eContents().get(1);
-		private final CrossReference cActionActionSpecCrossReference_2_1_0 = (CrossReference)cActionAssignment_2_1.eContents().get(0);
-		private final RuleCall cActionActionSpecIDTerminalRuleCall_2_1_0_1 = (RuleCall)cActionActionSpecCrossReference_2_1_0.eContents().get(1);
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cAfferentKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Alternatives cAlternatives_1 = (Alternatives)cGroup.eContents().get(1);
+		private final Group cGroup_1_0 = (Group)cAlternatives_1.eContents().get(0);
+		private final Keyword cPublisherKeyword_1_0_0 = (Keyword)cGroup_1_0.eContents().get(0);
+		private final RuleCall cQualifiedPublisherRefParserRuleCall_1_0_1 = (RuleCall)cGroup_1_0.eContents().get(1);
+		private final Group cGroup_1_1 = (Group)cAlternatives_1.eContents().get(1);
+		private final Keyword cServiceKeyword_1_1_0 = (Keyword)cGroup_1_1.eContents().get(0);
+		private final RuleCall cQualifiedServiceServerRefParserRuleCall_1_1_1 = (RuleCall)cGroup_1_1.eContents().get(1);
+		private final Group cGroup_1_2 = (Group)cAlternatives_1.eContents().get(2);
+		private final Keyword cActionKeyword_1_2_0 = (Keyword)cGroup_1_2.eContents().get(0);
+		private final RuleCall cQualifiedActionServerRefParserRuleCall_1_2_1 = (RuleCall)cGroup_1_2.eContents().get(1);
 		
 		//DataSource:
-		//    'topic:' topic=[ros::TopicSpec] | 'service:' service=[ros::ServiceSpec] | 'action:' action=[ros::ActionSpec]
+		//    'afferent:'
+		//    (
+		//        'publisher:' QualifiedPublisherRef
+		//      | 'service:' QualifiedServiceServerRef
+		//      | 'action:' QualifiedActionServerRef
+		//    )
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'topic:' topic=[ros::TopicSpec] | 'service:' service=[ros::ServiceSpec] | 'action:' action=[ros::ActionSpec]
-		public Alternatives getAlternatives() { return cAlternatives; }
+		//'afferent:'
+		//(
+		//    'publisher:' QualifiedPublisherRef
+		//  | 'service:' QualifiedServiceServerRef
+		//  | 'action:' QualifiedActionServerRef
+		//)
+		public Group getGroup() { return cGroup; }
 		
-		//'topic:' topic=[ros::TopicSpec]
-		public Group getGroup_0() { return cGroup_0; }
+		//'afferent:'
+		public Keyword getAfferentKeyword_0() { return cAfferentKeyword_0; }
 		
-		//'topic:'
-		public Keyword getTopicKeyword_0_0() { return cTopicKeyword_0_0; }
+		//(
+		//    'publisher:' QualifiedPublisherRef
+		//  | 'service:' QualifiedServiceServerRef
+		//  | 'action:' QualifiedActionServerRef
+		//)
+		public Alternatives getAlternatives_1() { return cAlternatives_1; }
 		
-		//topic=[ros::TopicSpec]
-		public Assignment getTopicAssignment_0_1() { return cTopicAssignment_0_1; }
+		//'publisher:' QualifiedPublisherRef
+		public Group getGroup_1_0() { return cGroup_1_0; }
 		
-		//[ros::TopicSpec]
-		public CrossReference getTopicTopicSpecCrossReference_0_1_0() { return cTopicTopicSpecCrossReference_0_1_0; }
+		//'publisher:'
+		public Keyword getPublisherKeyword_1_0_0() { return cPublisherKeyword_1_0_0; }
 		
-		//ID
-		public RuleCall getTopicTopicSpecIDTerminalRuleCall_0_1_0_1() { return cTopicTopicSpecIDTerminalRuleCall_0_1_0_1; }
+		//QualifiedPublisherRef
+		public RuleCall getQualifiedPublisherRefParserRuleCall_1_0_1() { return cQualifiedPublisherRefParserRuleCall_1_0_1; }
 		
-		//'service:' service=[ros::ServiceSpec]
-		public Group getGroup_1() { return cGroup_1; }
+		//'service:' QualifiedServiceServerRef
+		public Group getGroup_1_1() { return cGroup_1_1; }
 		
 		//'service:'
-		public Keyword getServiceKeyword_1_0() { return cServiceKeyword_1_0; }
+		public Keyword getServiceKeyword_1_1_0() { return cServiceKeyword_1_1_0; }
 		
-		//service=[ros::ServiceSpec]
-		public Assignment getServiceAssignment_1_1() { return cServiceAssignment_1_1; }
+		//QualifiedServiceServerRef
+		public RuleCall getQualifiedServiceServerRefParserRuleCall_1_1_1() { return cQualifiedServiceServerRefParserRuleCall_1_1_1; }
 		
-		//[ros::ServiceSpec]
-		public CrossReference getServiceServiceSpecCrossReference_1_1_0() { return cServiceServiceSpecCrossReference_1_1_0; }
-		
-		//ID
-		public RuleCall getServiceServiceSpecIDTerminalRuleCall_1_1_0_1() { return cServiceServiceSpecIDTerminalRuleCall_1_1_0_1; }
-		
-		//'action:' action=[ros::ActionSpec]
-		public Group getGroup_2() { return cGroup_2; }
+		//'action:' QualifiedActionServerRef
+		public Group getGroup_1_2() { return cGroup_1_2; }
 		
 		//'action:'
-		public Keyword getActionKeyword_2_0() { return cActionKeyword_2_0; }
+		public Keyword getActionKeyword_1_2_0() { return cActionKeyword_1_2_0; }
 		
-		//action=[ros::ActionSpec]
-		public Assignment getActionAssignment_2_1() { return cActionAssignment_2_1; }
+		//QualifiedActionServerRef
+		public RuleCall getQualifiedActionServerRefParserRuleCall_1_2_1() { return cQualifiedActionServerRefParserRuleCall_1_2_1; }
+	}
+	public class QualifiedPublisherRefElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "eu.coresense.context.ContextModel.QualifiedPublisherRef");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Assignment cNodeAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final CrossReference cNodeNodeCrossReference_0_0 = (CrossReference)cNodeAssignment_0.eContents().get(0);
+		private final RuleCall cNodeNodeIDTerminalRuleCall_0_0_1 = (RuleCall)cNodeNodeCrossReference_0_0.eContents().get(1);
+		private final Keyword cFullStopKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cPublisherAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final CrossReference cPublisherPublisherCrossReference_2_0 = (CrossReference)cPublisherAssignment_2.eContents().get(0);
+		private final RuleCall cPublisherPublisherIDTerminalRuleCall_2_0_1 = (RuleCall)cPublisherPublisherCrossReference_2_0.eContents().get(1);
 		
-		//[ros::ActionSpec]
-		public CrossReference getActionActionSpecCrossReference_2_1_0() { return cActionActionSpecCrossReference_2_1_0; }
+		//QualifiedPublisherRef:
+		//    node=[ros::Node] '.' publisher=[ros::Publisher]
+		//;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//node=[ros::Node] '.' publisher=[ros::Publisher]
+		public Group getGroup() { return cGroup; }
+		
+		//node=[ros::Node]
+		public Assignment getNodeAssignment_0() { return cNodeAssignment_0; }
+		
+		//[ros::Node]
+		public CrossReference getNodeNodeCrossReference_0_0() { return cNodeNodeCrossReference_0_0; }
 		
 		//ID
-		public RuleCall getActionActionSpecIDTerminalRuleCall_2_1_0_1() { return cActionActionSpecIDTerminalRuleCall_2_1_0_1; }
+		public RuleCall getNodeNodeIDTerminalRuleCall_0_0_1() { return cNodeNodeIDTerminalRuleCall_0_0_1; }
+		
+		//'.'
+		public Keyword getFullStopKeyword_1() { return cFullStopKeyword_1; }
+		
+		//publisher=[ros::Publisher]
+		public Assignment getPublisherAssignment_2() { return cPublisherAssignment_2; }
+		
+		//[ros::Publisher]
+		public CrossReference getPublisherPublisherCrossReference_2_0() { return cPublisherPublisherCrossReference_2_0; }
+		
+		//ID
+		public RuleCall getPublisherPublisherIDTerminalRuleCall_2_0_1() { return cPublisherPublisherIDTerminalRuleCall_2_0_1; }
+	}
+	public class QualifiedServiceServerRefElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "eu.coresense.context.ContextModel.QualifiedServiceServerRef");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Assignment cNodeAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final CrossReference cNodeNodeCrossReference_0_0 = (CrossReference)cNodeAssignment_0.eContents().get(0);
+		private final RuleCall cNodeNodeIDTerminalRuleCall_0_0_1 = (RuleCall)cNodeNodeCrossReference_0_0.eContents().get(1);
+		private final Keyword cFullStopKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cServiceServerAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final CrossReference cServiceServerServiceServerCrossReference_2_0 = (CrossReference)cServiceServerAssignment_2.eContents().get(0);
+		private final RuleCall cServiceServerServiceServerIDTerminalRuleCall_2_0_1 = (RuleCall)cServiceServerServiceServerCrossReference_2_0.eContents().get(1);
+		
+		//QualifiedServiceServerRef:
+		//    node=[ros::Node] '.' serviceServer=[ros::ServiceServer]
+		//;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//node=[ros::Node] '.' serviceServer=[ros::ServiceServer]
+		public Group getGroup() { return cGroup; }
+		
+		//node=[ros::Node]
+		public Assignment getNodeAssignment_0() { return cNodeAssignment_0; }
+		
+		//[ros::Node]
+		public CrossReference getNodeNodeCrossReference_0_0() { return cNodeNodeCrossReference_0_0; }
+		
+		//ID
+		public RuleCall getNodeNodeIDTerminalRuleCall_0_0_1() { return cNodeNodeIDTerminalRuleCall_0_0_1; }
+		
+		//'.'
+		public Keyword getFullStopKeyword_1() { return cFullStopKeyword_1; }
+		
+		//serviceServer=[ros::ServiceServer]
+		public Assignment getServiceServerAssignment_2() { return cServiceServerAssignment_2; }
+		
+		//[ros::ServiceServer]
+		public CrossReference getServiceServerServiceServerCrossReference_2_0() { return cServiceServerServiceServerCrossReference_2_0; }
+		
+		//ID
+		public RuleCall getServiceServerServiceServerIDTerminalRuleCall_2_0_1() { return cServiceServerServiceServerIDTerminalRuleCall_2_0_1; }
+	}
+	public class QualifiedActionServerRefElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "eu.coresense.context.ContextModel.QualifiedActionServerRef");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Assignment cNodeAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final CrossReference cNodeNodeCrossReference_0_0 = (CrossReference)cNodeAssignment_0.eContents().get(0);
+		private final RuleCall cNodeNodeIDTerminalRuleCall_0_0_1 = (RuleCall)cNodeNodeCrossReference_0_0.eContents().get(1);
+		private final Keyword cFullStopKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cActionServerAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final CrossReference cActionServerActionServerCrossReference_2_0 = (CrossReference)cActionServerAssignment_2.eContents().get(0);
+		private final RuleCall cActionServerActionServerIDTerminalRuleCall_2_0_1 = (RuleCall)cActionServerActionServerCrossReference_2_0.eContents().get(1);
+		
+		//QualifiedActionServerRef:
+		//    node=[ros::Node] '.' actionServer=[ros::ActionServer]
+		//;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//node=[ros::Node] '.' actionServer=[ros::ActionServer]
+		public Group getGroup() { return cGroup; }
+		
+		//node=[ros::Node]
+		public Assignment getNodeAssignment_0() { return cNodeAssignment_0; }
+		
+		//[ros::Node]
+		public CrossReference getNodeNodeCrossReference_0_0() { return cNodeNodeCrossReference_0_0; }
+		
+		//ID
+		public RuleCall getNodeNodeIDTerminalRuleCall_0_0_1() { return cNodeNodeIDTerminalRuleCall_0_0_1; }
+		
+		//'.'
+		public Keyword getFullStopKeyword_1() { return cFullStopKeyword_1; }
+		
+		//actionServer=[ros::ActionServer]
+		public Assignment getActionServerAssignment_2() { return cActionServerAssignment_2; }
+		
+		//[ros::ActionServer]
+		public CrossReference getActionServerActionServerCrossReference_2_0() { return cActionServerActionServerCrossReference_2_0; }
+		
+		//ID
+		public RuleCall getActionServerActionServerIDTerminalRuleCall_2_0_1() { return cActionServerActionServerIDTerminalRuleCall_2_0_1; }
 	}
 	public class ImportElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "eu.coresense.context.ContextModel.Import");
@@ -196,7 +418,7 @@ public class ContextModelGrammarAccess extends AbstractElementFinder.AbstractGra
 		private final Keyword cSemicolonKeyword_2 = (Keyword)cGroup.eContents().get(2);
 		
 		//Import:
-		//    'import' importURI=STRING ';' //AS name=ID
+		//    'import' importURI=STRING ';'
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
@@ -215,12 +437,41 @@ public class ContextModelGrammarAccess extends AbstractElementFinder.AbstractGra
 		//';'
 		public Keyword getSemicolonKeyword_2() { return cSemicolonKeyword_2; }
 	}
+	public class ContextModelNodeElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "eu.coresense.context.ContextModel.ContextModelNode");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cContextModelNodeKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cNode_importAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cNode_importImportParserRuleCall_1_0 = (RuleCall)cNode_importAssignment_1.eContents().get(0);
+		
+		//ContextModelNode:
+		//    'contextModelNode' node_import=Import
+		//;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//'contextModelNode' node_import=Import
+		public Group getGroup() { return cGroup; }
+		
+		//'contextModelNode'
+		public Keyword getContextModelNodeKeyword_0() { return cContextModelNodeKeyword_0; }
+		
+		//node_import=Import
+		public Assignment getNode_importAssignment_1() { return cNode_importAssignment_1; }
+		
+		//Import
+		public RuleCall getNode_importImportParserRuleCall_1_0() { return cNode_importImportParserRuleCall_1_0; }
+	}
 	
 	
 	private final ContextModelElements pContextModel;
 	private final ContextVarElements pContextVar;
 	private final DataSourceElements pDataSource;
+	private final QualifiedPublisherRefElements pQualifiedPublisherRef;
+	private final QualifiedServiceServerRefElements pQualifiedServiceServerRef;
+	private final QualifiedActionServerRefElements pQualifiedActionServerRef;
 	private final ImportElements pImport;
+	private final ContextModelNodeElements pContextModelNode;
+	private final TerminalRule tBOOLEAN;
 	
 	private final Grammar grammar;
 	
@@ -234,7 +485,12 @@ public class ContextModelGrammarAccess extends AbstractElementFinder.AbstractGra
 		this.pContextModel = new ContextModelElements();
 		this.pContextVar = new ContextVarElements();
 		this.pDataSource = new DataSourceElements();
+		this.pQualifiedPublisherRef = new QualifiedPublisherRefElements();
+		this.pQualifiedServiceServerRef = new QualifiedServiceServerRefElements();
+		this.pQualifiedActionServerRef = new QualifiedActionServerRefElements();
 		this.pImport = new ImportElements();
+		this.pContextModelNode = new ContextModelNodeElements();
+		this.tBOOLEAN = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "eu.coresense.context.ContextModel.BOOLEAN");
 	}
 	
 	protected Grammar internalFindGrammar(GrammarProvider grammarProvider) {
@@ -266,6 +522,7 @@ public class ContextModelGrammarAccess extends AbstractElementFinder.AbstractGra
 	
 	//ContextModel:
 	//    (imports+=Import*)
+	//    context_model_node=ContextModelNode
 	//    context_variables+=ContextVar*;
 	public ContextModelElements getContextModelAccess() {
 		return pContextModel;
@@ -279,7 +536,12 @@ public class ContextModelGrammarAccess extends AbstractElementFinder.AbstractGra
 	//    'ContextVariable' name=ID
 	//    '{'
 	//        source=DataSource
-	//        'function_name:' function=[py::PythonFunction]
+	//        'efferent:' processed_source=[ros::Publisher]
+	//        'cache?' doCache=BOOLEAN
+	//        ('cache' 'length' length=INT 's')?
+	//        ('period' period=INT 'ns')?
+	//        'function_name' functionName=STRING
+	//        ('function_lib' functionLibrary=STRING)?
 	//    '}';
 	public ContextVarElements getContextVarAccess() {
 		return pContextVar;
@@ -290,7 +552,12 @@ public class ContextModelGrammarAccess extends AbstractElementFinder.AbstractGra
 	}
 	
 	//DataSource:
-	//    'topic:' topic=[ros::TopicSpec] | 'service:' service=[ros::ServiceSpec] | 'action:' action=[ros::ActionSpec]
+	//    'afferent:'
+	//    (
+	//        'publisher:' QualifiedPublisherRef
+	//      | 'service:' QualifiedServiceServerRef
+	//      | 'action:' QualifiedActionServerRef
+	//    )
 	//;
 	public DataSourceElements getDataSourceAccess() {
 		return pDataSource;
@@ -300,8 +567,41 @@ public class ContextModelGrammarAccess extends AbstractElementFinder.AbstractGra
 		return getDataSourceAccess().getRule();
 	}
 	
+	//QualifiedPublisherRef:
+	//    node=[ros::Node] '.' publisher=[ros::Publisher]
+	//;
+	public QualifiedPublisherRefElements getQualifiedPublisherRefAccess() {
+		return pQualifiedPublisherRef;
+	}
+	
+	public ParserRule getQualifiedPublisherRefRule() {
+		return getQualifiedPublisherRefAccess().getRule();
+	}
+	
+	//QualifiedServiceServerRef:
+	//    node=[ros::Node] '.' serviceServer=[ros::ServiceServer]
+	//;
+	public QualifiedServiceServerRefElements getQualifiedServiceServerRefAccess() {
+		return pQualifiedServiceServerRef;
+	}
+	
+	public ParserRule getQualifiedServiceServerRefRule() {
+		return getQualifiedServiceServerRefAccess().getRule();
+	}
+	
+	//QualifiedActionServerRef:
+	//    node=[ros::Node] '.' actionServer=[ros::ActionServer]
+	//;
+	public QualifiedActionServerRefElements getQualifiedActionServerRefAccess() {
+		return pQualifiedActionServerRef;
+	}
+	
+	public ParserRule getQualifiedActionServerRefRule() {
+		return getQualifiedActionServerRefAccess().getRule();
+	}
+	
 	//Import:
-	//    'import' importURI=STRING ';' //AS name=ID
+	//    'import' importURI=STRING ';'
 	//;
 	public ImportElements getImportAccess() {
 		return pImport;
@@ -309,6 +609,24 @@ public class ContextModelGrammarAccess extends AbstractElementFinder.AbstractGra
 	
 	public ParserRule getImportRule() {
 		return getImportAccess().getRule();
+	}
+	
+	//ContextModelNode:
+	//    'contextModelNode' node_import=Import
+	//;
+	public ContextModelNodeElements getContextModelNodeAccess() {
+		return pContextModelNode;
+	}
+	
+	public ParserRule getContextModelNodeRule() {
+		return getContextModelNodeAccess().getRule();
+	}
+	
+	//terminal BOOLEAN returns ecore::EBoolean:
+	//    'true' | 'false'
+	//;
+	public TerminalRule getBOOLEANRule() {
+		return tBOOLEAN;
 	}
 	
 	//terminal ID: '^'?('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|'_'|'0'..'9')*;

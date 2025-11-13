@@ -1,0 +1,124 @@
+grammar eu.coresense.requirements.RequirementsModel with org.eclipse.xtext.common.Terminals
+import "http://www.eclipse.org/emf/2002/Ecore" as ecore
+import "http://www.coresense.eu/context/ContextModel" as contextModel
+import "https://coresense.eu/common" as common
+generate requirementsModel "http://www.coresense.eu/requirements/RequirementsModel"
+
+RequirementsModel:
+	requirements+=Requirement*;
+	
+Requirement:
+	name=ID ',' qa=QualityAttribute ':' natural=STRING ',' rule=Statement;
+
+enum QualityAttribute:
+FUNCTIONAL='Functional suitability' |
+PERFORMANCE='Performance efficiency' |
+COMPATIBILITY='Compatibility' |
+INTERACTION='Interaction capability' |
+RELIABILITY='Reliability' |
+SECURITY='Security' |
+MAINTAINABILITY='Maintainability' |
+FLEXIBILITY='Flexibility' |
+SAFETY='Safety'
+;
+
+enum MathOperator:
+	LESS='<' | GREATER='>' | EQUAL='==' | DIFFERENT='<>'	
+;
+
+
+Condition:
+	measurement=[contextModel::ContextVar]
+	operator=MathOperator value=Literal
+	( logicalOp=LogicalOperator secondTerm=Condition )? 
+;
+
+enum LogicalOperator:
+    AND='&&' | OR='||';
+
+
+Proposition:
+	Condition
+;
+
+Statement:
+	{Statement} BOOLEAN |
+	proposition=Proposition |
+	quantifiableStatement=Quantifiable |
+	'SHALL' '(' statement=Statement ')' |
+	MayStatement |
+	'EVENTUALLY' '(' statement=Statement ')' |
+	'THIS' first_statement=Statement 'UNTIL' second_statement=Statement 
+	'BEFORE' event=Event '(' statement=Statement ')' |
+	'AFTER' event=Event '(' statement=Statement ')' |
+	'IN' t=TimeInterval |
+	 AsCloseFreq |
+	 AsCloseLit |
+	'AS' ('EARLY' | 'LATE' | 'MANY' | 'FEW') 'AS' 'POSSIBLE' '(' statement=Quantifiable ')'
+;
+
+AsCloseFreq:
+	'AS' 'CLOSE' 'AS' 'POSSIBLE' 'TO' '(' f=Time  statement=Statement ')'
+;
+
+AsCloseLit:
+	'AS' 'CLOSE' 'AS' 'POSSIBLE' 'TO' '(' q=Literal comparator=Quantifiable ')'
+;
+
+
+
+Quantifiable:
+	var=[contextModel::ContextVar]
+;
+
+MayStatement:
+    'MAY' statements+=AtomicStatement ( 'OR' 'MAY' statements+=AtomicStatement )+ 
+;
+
+AtomicStatement:
+    {Statement} BOOLEAN |
+    proposition=Proposition
+;
+Event:
+	STRING
+;
+
+TimeInterval:
+	after=Time '-' before=Time
+;
+
+Time:
+	value=INT ('hr' | 'min' | 's' | 'ms' | 'ns')
+;
+
+Literal returns common::Literal:
+	IntLiteral
+    | DecimalLiteral
+    | StringLiteral
+    | BooleanLiteral
+;
+
+IntLiteral returns common::IntLiteral:
+    value=INT
+;
+
+DecimalLiteral returns common::DecimalLiteral:
+    value=DECIMAL
+;
+
+StringLiteral returns common::StringLiteral:
+    value=STRING
+;
+
+BooleanLiteral returns common::BooleanLiteral:
+    value=BOOLEAN
+;
+
+terminal DECIMAL returns ecore::EBigDecimal:
+    INT '.' INT
+;
+
+terminal BOOLEAN returns ecore::EBoolean:
+    'true' | 'false'
+;
+

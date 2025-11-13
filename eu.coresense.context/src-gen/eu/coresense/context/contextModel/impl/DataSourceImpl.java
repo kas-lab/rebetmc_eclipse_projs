@@ -14,9 +14,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
-import ros.ActionSpec;
-import ros.ServiceSpec;
-import ros.TopicSpec;
+import ros.Node;
 
 /**
  * <!-- begin-user-doc -->
@@ -26,9 +24,7 @@ import ros.TopicSpec;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link eu.coresense.context.contextModel.impl.DataSourceImpl#getTopic <em>Topic</em>}</li>
- *   <li>{@link eu.coresense.context.contextModel.impl.DataSourceImpl#getService <em>Service</em>}</li>
- *   <li>{@link eu.coresense.context.contextModel.impl.DataSourceImpl#getAction <em>Action</em>}</li>
+ *   <li>{@link eu.coresense.context.contextModel.impl.DataSourceImpl#getNode <em>Node</em>}</li>
  * </ul>
  *
  * @generated
@@ -36,34 +32,14 @@ import ros.TopicSpec;
 public class DataSourceImpl extends MinimalEObjectImpl.Container implements DataSource
 {
   /**
-   * The cached value of the '{@link #getTopic() <em>Topic</em>}' reference.
+   * The cached value of the '{@link #getNode() <em>Node</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getTopic()
+   * @see #getNode()
    * @generated
    * @ordered
    */
-  protected TopicSpec topic;
-
-  /**
-   * The cached value of the '{@link #getService() <em>Service</em>}' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getService()
-   * @generated
-   * @ordered
-   */
-  protected ServiceSpec service;
-
-  /**
-   * The cached value of the '{@link #getAction() <em>Action</em>}' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getAction()
-   * @generated
-   * @ordered
-   */
-  protected ActionSpec action;
+  protected Node node;
 
   /**
    * <!-- begin-user-doc -->
@@ -92,19 +68,19 @@ public class DataSourceImpl extends MinimalEObjectImpl.Container implements Data
    * @generated
    */
   @Override
-  public TopicSpec getTopic()
+  public Node getNode()
   {
-    if (topic != null && topic.eIsProxy())
+    if (node != null && node.eIsProxy())
     {
-      InternalEObject oldTopic = (InternalEObject)topic;
-      topic = (TopicSpec)eResolveProxy(oldTopic);
-      if (topic != oldTopic)
+      InternalEObject oldNode = (InternalEObject)node;
+      node = (Node)eResolveProxy(oldNode);
+      if (node != oldNode)
       {
         if (eNotificationRequired())
-          eNotify(new ENotificationImpl(this, Notification.RESOLVE, ContextModelPackage.DATA_SOURCE__TOPIC, oldTopic, topic));
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, ContextModelPackage.DATA_SOURCE__NODE, oldNode, node));
       }
     }
-    return topic;
+    return node;
   }
 
   /**
@@ -112,9 +88,9 @@ public class DataSourceImpl extends MinimalEObjectImpl.Container implements Data
    * <!-- end-user-doc -->
    * @generated
    */
-  public TopicSpec basicGetTopic()
+  public Node basicGetNode()
   {
-    return topic;
+    return node;
   }
 
   /**
@@ -123,102 +99,12 @@ public class DataSourceImpl extends MinimalEObjectImpl.Container implements Data
    * @generated
    */
   @Override
-  public void setTopic(TopicSpec newTopic)
+  public void setNode(Node newNode)
   {
-    TopicSpec oldTopic = topic;
-    topic = newTopic;
+    Node oldNode = node;
+    node = newNode;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ContextModelPackage.DATA_SOURCE__TOPIC, oldTopic, topic));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public ServiceSpec getService()
-  {
-    if (service != null && service.eIsProxy())
-    {
-      InternalEObject oldService = (InternalEObject)service;
-      service = (ServiceSpec)eResolveProxy(oldService);
-      if (service != oldService)
-      {
-        if (eNotificationRequired())
-          eNotify(new ENotificationImpl(this, Notification.RESOLVE, ContextModelPackage.DATA_SOURCE__SERVICE, oldService, service));
-      }
-    }
-    return service;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public ServiceSpec basicGetService()
-  {
-    return service;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public void setService(ServiceSpec newService)
-  {
-    ServiceSpec oldService = service;
-    service = newService;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ContextModelPackage.DATA_SOURCE__SERVICE, oldService, service));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public ActionSpec getAction()
-  {
-    if (action != null && action.eIsProxy())
-    {
-      InternalEObject oldAction = (InternalEObject)action;
-      action = (ActionSpec)eResolveProxy(oldAction);
-      if (action != oldAction)
-      {
-        if (eNotificationRequired())
-          eNotify(new ENotificationImpl(this, Notification.RESOLVE, ContextModelPackage.DATA_SOURCE__ACTION, oldAction, action));
-      }
-    }
-    return action;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public ActionSpec basicGetAction()
-  {
-    return action;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public void setAction(ActionSpec newAction)
-  {
-    ActionSpec oldAction = action;
-    action = newAction;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ContextModelPackage.DATA_SOURCE__ACTION, oldAction, action));
+      eNotify(new ENotificationImpl(this, Notification.SET, ContextModelPackage.DATA_SOURCE__NODE, oldNode, node));
   }
 
   /**
@@ -231,15 +117,9 @@ public class DataSourceImpl extends MinimalEObjectImpl.Container implements Data
   {
     switch (featureID)
     {
-      case ContextModelPackage.DATA_SOURCE__TOPIC:
-        if (resolve) return getTopic();
-        return basicGetTopic();
-      case ContextModelPackage.DATA_SOURCE__SERVICE:
-        if (resolve) return getService();
-        return basicGetService();
-      case ContextModelPackage.DATA_SOURCE__ACTION:
-        if (resolve) return getAction();
-        return basicGetAction();
+      case ContextModelPackage.DATA_SOURCE__NODE:
+        if (resolve) return getNode();
+        return basicGetNode();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -254,14 +134,8 @@ public class DataSourceImpl extends MinimalEObjectImpl.Container implements Data
   {
     switch (featureID)
     {
-      case ContextModelPackage.DATA_SOURCE__TOPIC:
-        setTopic((TopicSpec)newValue);
-        return;
-      case ContextModelPackage.DATA_SOURCE__SERVICE:
-        setService((ServiceSpec)newValue);
-        return;
-      case ContextModelPackage.DATA_SOURCE__ACTION:
-        setAction((ActionSpec)newValue);
+      case ContextModelPackage.DATA_SOURCE__NODE:
+        setNode((Node)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -277,14 +151,8 @@ public class DataSourceImpl extends MinimalEObjectImpl.Container implements Data
   {
     switch (featureID)
     {
-      case ContextModelPackage.DATA_SOURCE__TOPIC:
-        setTopic((TopicSpec)null);
-        return;
-      case ContextModelPackage.DATA_SOURCE__SERVICE:
-        setService((ServiceSpec)null);
-        return;
-      case ContextModelPackage.DATA_SOURCE__ACTION:
-        setAction((ActionSpec)null);
+      case ContextModelPackage.DATA_SOURCE__NODE:
+        setNode((Node)null);
         return;
     }
     super.eUnset(featureID);
@@ -300,12 +168,8 @@ public class DataSourceImpl extends MinimalEObjectImpl.Container implements Data
   {
     switch (featureID)
     {
-      case ContextModelPackage.DATA_SOURCE__TOPIC:
-        return topic != null;
-      case ContextModelPackage.DATA_SOURCE__SERVICE:
-        return service != null;
-      case ContextModelPackage.DATA_SOURCE__ACTION:
-        return action != null;
+      case ContextModelPackage.DATA_SOURCE__NODE:
+        return node != null;
     }
     return super.eIsSet(featureID);
   }

@@ -35,25 +35,18 @@ public class TacticsGrammarAccess extends AbstractElementFinder.AbstractGrammarE
 		private final Keyword cSemicolonKeyword_2 = (Keyword)cGroup.eContents().get(2);
 		private final Assignment cImportsAssignment_3 = (Assignment)cGroup.eContents().get(3);
 		private final RuleCall cImportsImportParserRuleCall_3_0 = (RuleCall)cImportsAssignment_3.eContents().get(0);
-		private final Keyword cResolution_modelKeyword_4 = (Keyword)cGroup.eContents().get(4);
-		private final Assignment cResolutionModelAssignment_5 = (Assignment)cGroup.eContents().get(5);
-		private final CrossReference cResolutionModelResolutionModelCrossReference_5_0 = (CrossReference)cResolutionModelAssignment_5.eContents().get(0);
-		private final RuleCall cResolutionModelResolutionModelIDTerminalRuleCall_5_0_1 = (RuleCall)cResolutionModelResolutionModelCrossReference_5_0.eContents().get(1);
-		private final Keyword cSemicolonKeyword_6 = (Keyword)cGroup.eContents().get(6);
-		private final Assignment cAdaptationRulesAssignment_7 = (Assignment)cGroup.eContents().get(7);
-		private final RuleCall cAdaptationRulesAdaptationRuleParserRuleCall_7_0 = (RuleCall)cAdaptationRulesAssignment_7.eContents().get(0);
+		private final Assignment cAdaptationRulesAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final RuleCall cAdaptationRulesAdaptationRuleParserRuleCall_4_0 = (RuleCall)cAdaptationRulesAssignment_4.eContents().get(0);
 		
 		//TacticsModel:
 		//    'name' name=ID ';'
 		//    (imports+=Import*)
-		//    'resolution_model' resolutionModel=[resolutionModel::ResolutionModel]';'
 		//    (adaptationRules+=AdaptationRule*)
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
 		//'name' name=ID ';'
 		//(imports+=Import*)
-		//'resolution_model' resolutionModel=[resolutionModel::ResolutionModel]';'
 		//(adaptationRules+=AdaptationRule*)
 		public Group getGroup() { return cGroup; }
 		
@@ -75,26 +68,11 @@ public class TacticsGrammarAccess extends AbstractElementFinder.AbstractGrammarE
 		//Import
 		public RuleCall getImportsImportParserRuleCall_3_0() { return cImportsImportParserRuleCall_3_0; }
 		
-		//'resolution_model'
-		public Keyword getResolution_modelKeyword_4() { return cResolution_modelKeyword_4; }
-		
-		//resolutionModel=[resolutionModel::ResolutionModel]
-		public Assignment getResolutionModelAssignment_5() { return cResolutionModelAssignment_5; }
-		
-		//[resolutionModel::ResolutionModel]
-		public CrossReference getResolutionModelResolutionModelCrossReference_5_0() { return cResolutionModelResolutionModelCrossReference_5_0; }
-		
-		//ID
-		public RuleCall getResolutionModelResolutionModelIDTerminalRuleCall_5_0_1() { return cResolutionModelResolutionModelIDTerminalRuleCall_5_0_1; }
-		
-		//';'
-		public Keyword getSemicolonKeyword_6() { return cSemicolonKeyword_6; }
-		
 		//(adaptationRules+=AdaptationRule*)
-		public Assignment getAdaptationRulesAssignment_7() { return cAdaptationRulesAssignment_7; }
+		public Assignment getAdaptationRulesAssignment_4() { return cAdaptationRulesAssignment_4; }
 		
 		//AdaptationRule
-		public RuleCall getAdaptationRulesAdaptationRuleParserRuleCall_7_0() { return cAdaptationRulesAdaptationRuleParserRuleCall_7_0; }
+		public RuleCall getAdaptationRulesAdaptationRuleParserRuleCall_4_0() { return cAdaptationRulesAdaptationRuleParserRuleCall_4_0; }
 	}
 	public class ImportElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "eu.coresense.adaptation.Tactics.Import");
@@ -737,15 +715,15 @@ public class TacticsGrammarAccess extends AbstractElementFinder.AbstractGrammarE
 		private final RuleCall cStringLiteralParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
 		private final RuleCall cBooleanLiteralParserRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
 		
-		//Literal:
-		//      IntLiteral
+		//Literal returns common::Literal:
+		//    IntLiteral
 		//    | DecimalLiteral
 		//    | StringLiteral
 		//    | BooleanLiteral
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//  IntLiteral
+		//IntLiteral
 		//| DecimalLiteral
 		//| StringLiteral
 		//| BooleanLiteral
@@ -768,7 +746,7 @@ public class TacticsGrammarAccess extends AbstractElementFinder.AbstractGrammarE
 		private final Assignment cValueAssignment = (Assignment)rule.eContents().get(1);
 		private final RuleCall cValueINTTerminalRuleCall_0 = (RuleCall)cValueAssignment.eContents().get(0);
 		
-		//IntLiteral:
+		//IntLiteral returns common::IntLiteral:
 		//    value=INT
 		//;
 		@Override public ParserRule getRule() { return rule; }
@@ -784,7 +762,7 @@ public class TacticsGrammarAccess extends AbstractElementFinder.AbstractGrammarE
 		private final Assignment cValueAssignment = (Assignment)rule.eContents().get(1);
 		private final RuleCall cValueDECIMALTerminalRuleCall_0 = (RuleCall)cValueAssignment.eContents().get(0);
 		
-		//DecimalLiteral:
+		//DecimalLiteral returns common::DecimalLiteral:
 		//    value=DECIMAL
 		//;
 		@Override public ParserRule getRule() { return rule; }
@@ -800,7 +778,7 @@ public class TacticsGrammarAccess extends AbstractElementFinder.AbstractGrammarE
 		private final Assignment cValueAssignment = (Assignment)rule.eContents().get(1);
 		private final RuleCall cValueSTRINGTerminalRuleCall_0 = (RuleCall)cValueAssignment.eContents().get(0);
 		
-		//StringLiteral:
+		//StringLiteral returns common::StringLiteral:
 		//    value=STRING
 		//;
 		@Override public ParserRule getRule() { return rule; }
@@ -816,7 +794,7 @@ public class TacticsGrammarAccess extends AbstractElementFinder.AbstractGrammarE
 		private final Assignment cValueAssignment = (Assignment)rule.eContents().get(1);
 		private final RuleCall cValueBOOLEANTerminalRuleCall_0 = (RuleCall)cValueAssignment.eContents().get(0);
 		
-		//BooleanLiteral:
+		//BooleanLiteral returns common::BooleanLiteral:
 		//    value=BOOLEAN
 		//;
 		@Override public ParserRule getRule() { return rule; }
@@ -995,7 +973,6 @@ public class TacticsGrammarAccess extends AbstractElementFinder.AbstractGrammarE
 	//TacticsModel:
 	//    'name' name=ID ';'
 	//    (imports+=Import*)
-	//    'resolution_model' resolutionModel=[resolutionModel::ResolutionModel]';'
 	//    (adaptationRules+=AdaptationRule*)
 	//;
 	public TacticsModelElements getTacticsModelAccess() {
@@ -1213,8 +1190,8 @@ public class TacticsGrammarAccess extends AbstractElementFinder.AbstractGrammarE
 		return getQualifiedFeatureRefAccess().getRule();
 	}
 	
-	//Literal:
-	//      IntLiteral
+	//Literal returns common::Literal:
+	//    IntLiteral
 	//    | DecimalLiteral
 	//    | StringLiteral
 	//    | BooleanLiteral
@@ -1227,7 +1204,7 @@ public class TacticsGrammarAccess extends AbstractElementFinder.AbstractGrammarE
 		return getLiteralAccess().getRule();
 	}
 	
-	//IntLiteral:
+	//IntLiteral returns common::IntLiteral:
 	//    value=INT
 	//;
 	public IntLiteralElements getIntLiteralAccess() {
@@ -1238,7 +1215,7 @@ public class TacticsGrammarAccess extends AbstractElementFinder.AbstractGrammarE
 		return getIntLiteralAccess().getRule();
 	}
 	
-	//DecimalLiteral:
+	//DecimalLiteral returns common::DecimalLiteral:
 	//    value=DECIMAL
 	//;
 	public DecimalLiteralElements getDecimalLiteralAccess() {
@@ -1249,7 +1226,7 @@ public class TacticsGrammarAccess extends AbstractElementFinder.AbstractGrammarE
 		return getDecimalLiteralAccess().getRule();
 	}
 	
-	//StringLiteral:
+	//StringLiteral returns common::StringLiteral:
 	//    value=STRING
 	//;
 	public StringLiteralElements getStringLiteralAccess() {
@@ -1260,7 +1237,7 @@ public class TacticsGrammarAccess extends AbstractElementFinder.AbstractGrammarE
 		return getStringLiteralAccess().getRule();
 	}
 	
-	//BooleanLiteral:
+	//BooleanLiteral returns common::BooleanLiteral:
 	//    value=BOOLEAN
 	//;
 	public BooleanLiteralElements getBooleanLiteralAccess() {

@@ -4,12 +4,14 @@
 package eu.coresense.context.contextModel.impl;
 
 import eu.coresense.context.contextModel.ContextModel;
+import eu.coresense.context.contextModel.ContextModelNode;
 import eu.coresense.context.contextModel.ContextModelPackage;
 import eu.coresense.context.contextModel.ContextVar;
 import eu.coresense.context.contextModel.Import;
 
 import java.util.Collection;
 
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
@@ -17,6 +19,7 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
@@ -31,6 +34,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * </p>
  * <ul>
  *   <li>{@link eu.coresense.context.contextModel.impl.ContextModelImpl#getImports <em>Imports</em>}</li>
+ *   <li>{@link eu.coresense.context.contextModel.impl.ContextModelImpl#getContext_model_node <em>Context model node</em>}</li>
  *   <li>{@link eu.coresense.context.contextModel.impl.ContextModelImpl#getContext_variables <em>Context variables</em>}</li>
  * </ul>
  *
@@ -47,6 +51,16 @@ public class ContextModelImpl extends MinimalEObjectImpl.Container implements Co
    * @ordered
    */
   protected EList<Import> imports;
+
+  /**
+   * The cached value of the '{@link #getContext_model_node() <em>Context model node</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getContext_model_node()
+   * @generated
+   * @ordered
+   */
+  protected ContextModelNode context_model_node;
 
   /**
    * The cached value of the '{@link #getContext_variables() <em>Context variables</em>}' containment reference list.
@@ -100,6 +114,56 @@ public class ContextModelImpl extends MinimalEObjectImpl.Container implements Co
    * @generated
    */
   @Override
+  public ContextModelNode getContext_model_node()
+  {
+    return context_model_node;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetContext_model_node(ContextModelNode newContext_model_node, NotificationChain msgs)
+  {
+    ContextModelNode oldContext_model_node = context_model_node;
+    context_model_node = newContext_model_node;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ContextModelPackage.CONTEXT_MODEL__CONTEXT_MODEL_NODE, oldContext_model_node, newContext_model_node);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setContext_model_node(ContextModelNode newContext_model_node)
+  {
+    if (newContext_model_node != context_model_node)
+    {
+      NotificationChain msgs = null;
+      if (context_model_node != null)
+        msgs = ((InternalEObject)context_model_node).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ContextModelPackage.CONTEXT_MODEL__CONTEXT_MODEL_NODE, null, msgs);
+      if (newContext_model_node != null)
+        msgs = ((InternalEObject)newContext_model_node).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ContextModelPackage.CONTEXT_MODEL__CONTEXT_MODEL_NODE, null, msgs);
+      msgs = basicSetContext_model_node(newContext_model_node, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, ContextModelPackage.CONTEXT_MODEL__CONTEXT_MODEL_NODE, newContext_model_node, newContext_model_node));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public EList<ContextVar> getContext_variables()
   {
     if (context_variables == null)
@@ -121,6 +185,8 @@ public class ContextModelImpl extends MinimalEObjectImpl.Container implements Co
     {
       case ContextModelPackage.CONTEXT_MODEL__IMPORTS:
         return ((InternalEList<?>)getImports()).basicRemove(otherEnd, msgs);
+      case ContextModelPackage.CONTEXT_MODEL__CONTEXT_MODEL_NODE:
+        return basicSetContext_model_node(null, msgs);
       case ContextModelPackage.CONTEXT_MODEL__CONTEXT_VARIABLES:
         return ((InternalEList<?>)getContext_variables()).basicRemove(otherEnd, msgs);
     }
@@ -139,6 +205,8 @@ public class ContextModelImpl extends MinimalEObjectImpl.Container implements Co
     {
       case ContextModelPackage.CONTEXT_MODEL__IMPORTS:
         return getImports();
+      case ContextModelPackage.CONTEXT_MODEL__CONTEXT_MODEL_NODE:
+        return getContext_model_node();
       case ContextModelPackage.CONTEXT_MODEL__CONTEXT_VARIABLES:
         return getContext_variables();
     }
@@ -159,6 +227,9 @@ public class ContextModelImpl extends MinimalEObjectImpl.Container implements Co
       case ContextModelPackage.CONTEXT_MODEL__IMPORTS:
         getImports().clear();
         getImports().addAll((Collection<? extends Import>)newValue);
+        return;
+      case ContextModelPackage.CONTEXT_MODEL__CONTEXT_MODEL_NODE:
+        setContext_model_node((ContextModelNode)newValue);
         return;
       case ContextModelPackage.CONTEXT_MODEL__CONTEXT_VARIABLES:
         getContext_variables().clear();
@@ -181,6 +252,9 @@ public class ContextModelImpl extends MinimalEObjectImpl.Container implements Co
       case ContextModelPackage.CONTEXT_MODEL__IMPORTS:
         getImports().clear();
         return;
+      case ContextModelPackage.CONTEXT_MODEL__CONTEXT_MODEL_NODE:
+        setContext_model_node((ContextModelNode)null);
+        return;
       case ContextModelPackage.CONTEXT_MODEL__CONTEXT_VARIABLES:
         getContext_variables().clear();
         return;
@@ -200,6 +274,8 @@ public class ContextModelImpl extends MinimalEObjectImpl.Container implements Co
     {
       case ContextModelPackage.CONTEXT_MODEL__IMPORTS:
         return imports != null && !imports.isEmpty();
+      case ContextModelPackage.CONTEXT_MODEL__CONTEXT_MODEL_NODE:
+        return context_model_node != null;
       case ContextModelPackage.CONTEXT_MODEL__CONTEXT_VARIABLES:
         return context_variables != null && !context_variables.isEmpty();
     }

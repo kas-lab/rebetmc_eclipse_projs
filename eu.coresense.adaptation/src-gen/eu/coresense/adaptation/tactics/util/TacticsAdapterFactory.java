@@ -156,31 +156,6 @@ public class TacticsAdapterFactory extends AdapterFactoryImpl
         return createQualifiedFeatureRefAdapter();
       }
       @Override
-      public Adapter caseLiteral(Literal object)
-      {
-        return createLiteralAdapter();
-      }
-      @Override
-      public Adapter caseIntLiteral(IntLiteral object)
-      {
-        return createIntLiteralAdapter();
-      }
-      @Override
-      public Adapter caseDecimalLiteral(DecimalLiteral object)
-      {
-        return createDecimalLiteralAdapter();
-      }
-      @Override
-      public Adapter caseStringLiteral(StringLiteral object)
-      {
-        return createStringLiteralAdapter();
-      }
-      @Override
-      public Adapter caseBooleanLiteral(BooleanLiteral object)
-      {
-        return createBooleanLiteralAdapter();
-      }
-      @Override
       public Adapter defaultCase(EObject object)
       {
         return createEObjectAdapter();
@@ -438,81 +413,6 @@ public class TacticsAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createQualifiedFeatureRefAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link eu.coresense.adaptation.tactics.Literal <em>Literal</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see eu.coresense.adaptation.tactics.Literal
-   * @generated
-   */
-  public Adapter createLiteralAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link eu.coresense.adaptation.tactics.IntLiteral <em>Int Literal</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see eu.coresense.adaptation.tactics.IntLiteral
-   * @generated
-   */
-  public Adapter createIntLiteralAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link eu.coresense.adaptation.tactics.DecimalLiteral <em>Decimal Literal</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see eu.coresense.adaptation.tactics.DecimalLiteral
-   * @generated
-   */
-  public Adapter createDecimalLiteralAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link eu.coresense.adaptation.tactics.StringLiteral <em>String Literal</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see eu.coresense.adaptation.tactics.StringLiteral
-   * @generated
-   */
-  public Adapter createStringLiteralAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link eu.coresense.adaptation.tactics.BooleanLiteral <em>Boolean Literal</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see eu.coresense.adaptation.tactics.BooleanLiteral
-   * @generated
-   */
-  public Adapter createBooleanLiteralAdapter()
   {
     return null;
   }

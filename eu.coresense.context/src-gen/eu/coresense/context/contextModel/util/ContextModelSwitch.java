@@ -94,10 +94,41 @@ public class ContextModelSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case ContextModelPackage.QUALIFIED_PUBLISHER_REF:
+      {
+        QualifiedPublisherRef qualifiedPublisherRef = (QualifiedPublisherRef)theEObject;
+        T result = caseQualifiedPublisherRef(qualifiedPublisherRef);
+        if (result == null) result = caseDataSource(qualifiedPublisherRef);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case ContextModelPackage.QUALIFIED_SERVICE_SERVER_REF:
+      {
+        QualifiedServiceServerRef qualifiedServiceServerRef = (QualifiedServiceServerRef)theEObject;
+        T result = caseQualifiedServiceServerRef(qualifiedServiceServerRef);
+        if (result == null) result = caseDataSource(qualifiedServiceServerRef);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case ContextModelPackage.QUALIFIED_ACTION_SERVER_REF:
+      {
+        QualifiedActionServerRef qualifiedActionServerRef = (QualifiedActionServerRef)theEObject;
+        T result = caseQualifiedActionServerRef(qualifiedActionServerRef);
+        if (result == null) result = caseDataSource(qualifiedActionServerRef);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case ContextModelPackage.IMPORT:
       {
         Import import_ = (Import)theEObject;
         T result = caseImport(import_);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case ContextModelPackage.CONTEXT_MODEL_NODE:
+      {
+        ContextModelNode contextModelNode = (ContextModelNode)theEObject;
+        T result = caseContextModelNode(contextModelNode);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -154,6 +185,54 @@ public class ContextModelSwitch<T> extends Switch<T>
   }
 
   /**
+   * Returns the result of interpreting the object as an instance of '<em>Qualified Publisher Ref</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Qualified Publisher Ref</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseQualifiedPublisherRef(QualifiedPublisherRef object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Qualified Service Server Ref</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Qualified Service Server Ref</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseQualifiedServiceServerRef(QualifiedServiceServerRef object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Qualified Action Server Ref</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Qualified Action Server Ref</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseQualifiedActionServerRef(QualifiedActionServerRef object)
+  {
+    return null;
+  }
+
+  /**
    * Returns the result of interpreting the object as an instance of '<em>Import</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -165,6 +244,22 @@ public class ContextModelSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseImport(Import object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Node</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Node</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseContextModelNode(ContextModelNode object)
   {
     return null;
   }

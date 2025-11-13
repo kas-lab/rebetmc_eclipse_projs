@@ -77,13 +77,22 @@ public interface ContextModelPackage extends EPackage
   int CONTEXT_MODEL__IMPORTS = 0;
 
   /**
+   * The feature id for the '<em><b>Context model node</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CONTEXT_MODEL__CONTEXT_MODEL_NODE = 1;
+
+  /**
    * The feature id for the '<em><b>Context variables</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int CONTEXT_MODEL__CONTEXT_VARIABLES = 1;
+  int CONTEXT_MODEL__CONTEXT_VARIABLES = 2;
 
   /**
    * The number of structural features of the '<em>Context Model</em>' class.
@@ -92,7 +101,7 @@ public interface ContextModelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CONTEXT_MODEL_FEATURE_COUNT = 2;
+  int CONTEXT_MODEL_FEATURE_COUNT = 3;
 
   /**
    * The meta object id for the '{@link eu.coresense.context.contextModel.impl.ContextVarImpl <em>Context Var</em>}' class.
@@ -123,13 +132,58 @@ public interface ContextModelPackage extends EPackage
   int CONTEXT_VAR__SOURCE = 1;
 
   /**
-   * The feature id for the '<em><b>Function</b></em>' reference.
+   * The feature id for the '<em><b>Processed source</b></em>' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int CONTEXT_VAR__FUNCTION = 2;
+  int CONTEXT_VAR__PROCESSED_SOURCE = 2;
+
+  /**
+   * The feature id for the '<em><b>Do Cache</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CONTEXT_VAR__DO_CACHE = 3;
+
+  /**
+   * The feature id for the '<em><b>Length</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CONTEXT_VAR__LENGTH = 4;
+
+  /**
+   * The feature id for the '<em><b>Period</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CONTEXT_VAR__PERIOD = 5;
+
+  /**
+   * The feature id for the '<em><b>Function Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CONTEXT_VAR__FUNCTION_NAME = 6;
+
+  /**
+   * The feature id for the '<em><b>Function Library</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CONTEXT_VAR__FUNCTION_LIBRARY = 7;
 
   /**
    * The number of structural features of the '<em>Context Var</em>' class.
@@ -138,7 +192,7 @@ public interface ContextModelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CONTEXT_VAR_FEATURE_COUNT = 3;
+  int CONTEXT_VAR_FEATURE_COUNT = 8;
 
   /**
    * The meta object id for the '{@link eu.coresense.context.contextModel.impl.DataSourceImpl <em>Data Source</em>}' class.
@@ -151,31 +205,13 @@ public interface ContextModelPackage extends EPackage
   int DATA_SOURCE = 2;
 
   /**
-   * The feature id for the '<em><b>Topic</b></em>' reference.
+   * The feature id for the '<em><b>Node</b></em>' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int DATA_SOURCE__TOPIC = 0;
-
-  /**
-   * The feature id for the '<em><b>Service</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int DATA_SOURCE__SERVICE = 1;
-
-  /**
-   * The feature id for the '<em><b>Action</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int DATA_SOURCE__ACTION = 2;
+  int DATA_SOURCE__NODE = 0;
 
   /**
    * The number of structural features of the '<em>Data Source</em>' class.
@@ -184,7 +220,118 @@ public interface ContextModelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int DATA_SOURCE_FEATURE_COUNT = 3;
+  int DATA_SOURCE_FEATURE_COUNT = 1;
+
+  /**
+   * The meta object id for the '{@link eu.coresense.context.contextModel.impl.QualifiedPublisherRefImpl <em>Qualified Publisher Ref</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see eu.coresense.context.contextModel.impl.QualifiedPublisherRefImpl
+   * @see eu.coresense.context.contextModel.impl.ContextModelPackageImpl#getQualifiedPublisherRef()
+   * @generated
+   */
+  int QUALIFIED_PUBLISHER_REF = 3;
+
+  /**
+   * The feature id for the '<em><b>Node</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int QUALIFIED_PUBLISHER_REF__NODE = DATA_SOURCE__NODE;
+
+  /**
+   * The feature id for the '<em><b>Publisher</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int QUALIFIED_PUBLISHER_REF__PUBLISHER = DATA_SOURCE_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>Qualified Publisher Ref</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int QUALIFIED_PUBLISHER_REF_FEATURE_COUNT = DATA_SOURCE_FEATURE_COUNT + 1;
+
+  /**
+   * The meta object id for the '{@link eu.coresense.context.contextModel.impl.QualifiedServiceServerRefImpl <em>Qualified Service Server Ref</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see eu.coresense.context.contextModel.impl.QualifiedServiceServerRefImpl
+   * @see eu.coresense.context.contextModel.impl.ContextModelPackageImpl#getQualifiedServiceServerRef()
+   * @generated
+   */
+  int QUALIFIED_SERVICE_SERVER_REF = 4;
+
+  /**
+   * The feature id for the '<em><b>Node</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int QUALIFIED_SERVICE_SERVER_REF__NODE = DATA_SOURCE__NODE;
+
+  /**
+   * The feature id for the '<em><b>Service Server</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int QUALIFIED_SERVICE_SERVER_REF__SERVICE_SERVER = DATA_SOURCE_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>Qualified Service Server Ref</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int QUALIFIED_SERVICE_SERVER_REF_FEATURE_COUNT = DATA_SOURCE_FEATURE_COUNT + 1;
+
+  /**
+   * The meta object id for the '{@link eu.coresense.context.contextModel.impl.QualifiedActionServerRefImpl <em>Qualified Action Server Ref</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see eu.coresense.context.contextModel.impl.QualifiedActionServerRefImpl
+   * @see eu.coresense.context.contextModel.impl.ContextModelPackageImpl#getQualifiedActionServerRef()
+   * @generated
+   */
+  int QUALIFIED_ACTION_SERVER_REF = 5;
+
+  /**
+   * The feature id for the '<em><b>Node</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int QUALIFIED_ACTION_SERVER_REF__NODE = DATA_SOURCE__NODE;
+
+  /**
+   * The feature id for the '<em><b>Action Server</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int QUALIFIED_ACTION_SERVER_REF__ACTION_SERVER = DATA_SOURCE_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>Qualified Action Server Ref</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int QUALIFIED_ACTION_SERVER_REF_FEATURE_COUNT = DATA_SOURCE_FEATURE_COUNT + 1;
 
   /**
    * The meta object id for the '{@link eu.coresense.context.contextModel.impl.ImportImpl <em>Import</em>}' class.
@@ -194,7 +341,7 @@ public interface ContextModelPackage extends EPackage
    * @see eu.coresense.context.contextModel.impl.ContextModelPackageImpl#getImport()
    * @generated
    */
-  int IMPORT = 3;
+  int IMPORT = 6;
 
   /**
    * The feature id for the '<em><b>Import URI</b></em>' attribute.
@@ -213,6 +360,34 @@ public interface ContextModelPackage extends EPackage
    * @ordered
    */
   int IMPORT_FEATURE_COUNT = 1;
+
+  /**
+   * The meta object id for the '{@link eu.coresense.context.contextModel.impl.ContextModelNodeImpl <em>Node</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see eu.coresense.context.contextModel.impl.ContextModelNodeImpl
+   * @see eu.coresense.context.contextModel.impl.ContextModelPackageImpl#getContextModelNode()
+   * @generated
+   */
+  int CONTEXT_MODEL_NODE = 7;
+
+  /**
+   * The feature id for the '<em><b>Node import</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CONTEXT_MODEL_NODE__NODE_IMPORT = 0;
+
+  /**
+   * The number of structural features of the '<em>Node</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CONTEXT_MODEL_NODE_FEATURE_COUNT = 1;
 
 
   /**
@@ -235,6 +410,17 @@ public interface ContextModelPackage extends EPackage
    * @generated
    */
   EReference getContextModel_Imports();
+
+  /**
+   * Returns the meta object for the containment reference '{@link eu.coresense.context.contextModel.ContextModel#getContext_model_node <em>Context model node</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Context model node</em>'.
+   * @see eu.coresense.context.contextModel.ContextModel#getContext_model_node()
+   * @see #getContextModel()
+   * @generated
+   */
+  EReference getContextModel_Context_model_node();
 
   /**
    * Returns the meta object for the containment reference list '{@link eu.coresense.context.contextModel.ContextModel#getContext_variables <em>Context variables</em>}'.
@@ -280,15 +466,70 @@ public interface ContextModelPackage extends EPackage
   EReference getContextVar_Source();
 
   /**
-   * Returns the meta object for the reference '{@link eu.coresense.context.contextModel.ContextVar#getFunction <em>Function</em>}'.
+   * Returns the meta object for the reference '{@link eu.coresense.context.contextModel.ContextVar#getProcessed_source <em>Processed source</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the reference '<em>Function</em>'.
-   * @see eu.coresense.context.contextModel.ContextVar#getFunction()
+   * @return the meta object for the reference '<em>Processed source</em>'.
+   * @see eu.coresense.context.contextModel.ContextVar#getProcessed_source()
    * @see #getContextVar()
    * @generated
    */
-  EReference getContextVar_Function();
+  EReference getContextVar_Processed_source();
+
+  /**
+   * Returns the meta object for the attribute '{@link eu.coresense.context.contextModel.ContextVar#isDoCache <em>Do Cache</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Do Cache</em>'.
+   * @see eu.coresense.context.contextModel.ContextVar#isDoCache()
+   * @see #getContextVar()
+   * @generated
+   */
+  EAttribute getContextVar_DoCache();
+
+  /**
+   * Returns the meta object for the attribute '{@link eu.coresense.context.contextModel.ContextVar#getLength <em>Length</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Length</em>'.
+   * @see eu.coresense.context.contextModel.ContextVar#getLength()
+   * @see #getContextVar()
+   * @generated
+   */
+  EAttribute getContextVar_Length();
+
+  /**
+   * Returns the meta object for the attribute '{@link eu.coresense.context.contextModel.ContextVar#getPeriod <em>Period</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Period</em>'.
+   * @see eu.coresense.context.contextModel.ContextVar#getPeriod()
+   * @see #getContextVar()
+   * @generated
+   */
+  EAttribute getContextVar_Period();
+
+  /**
+   * Returns the meta object for the attribute '{@link eu.coresense.context.contextModel.ContextVar#getFunctionName <em>Function Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Function Name</em>'.
+   * @see eu.coresense.context.contextModel.ContextVar#getFunctionName()
+   * @see #getContextVar()
+   * @generated
+   */
+  EAttribute getContextVar_FunctionName();
+
+  /**
+   * Returns the meta object for the attribute '{@link eu.coresense.context.contextModel.ContextVar#getFunctionLibrary <em>Function Library</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Function Library</em>'.
+   * @see eu.coresense.context.contextModel.ContextVar#getFunctionLibrary()
+   * @see #getContextVar()
+   * @generated
+   */
+  EAttribute getContextVar_FunctionLibrary();
 
   /**
    * Returns the meta object for class '{@link eu.coresense.context.contextModel.DataSource <em>Data Source</em>}'.
@@ -301,37 +542,78 @@ public interface ContextModelPackage extends EPackage
   EClass getDataSource();
 
   /**
-   * Returns the meta object for the reference '{@link eu.coresense.context.contextModel.DataSource#getTopic <em>Topic</em>}'.
+   * Returns the meta object for the reference '{@link eu.coresense.context.contextModel.DataSource#getNode <em>Node</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the reference '<em>Topic</em>'.
-   * @see eu.coresense.context.contextModel.DataSource#getTopic()
+   * @return the meta object for the reference '<em>Node</em>'.
+   * @see eu.coresense.context.contextModel.DataSource#getNode()
    * @see #getDataSource()
    * @generated
    */
-  EReference getDataSource_Topic();
+  EReference getDataSource_Node();
 
   /**
-   * Returns the meta object for the reference '{@link eu.coresense.context.contextModel.DataSource#getService <em>Service</em>}'.
+   * Returns the meta object for class '{@link eu.coresense.context.contextModel.QualifiedPublisherRef <em>Qualified Publisher Ref</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the reference '<em>Service</em>'.
-   * @see eu.coresense.context.contextModel.DataSource#getService()
-   * @see #getDataSource()
+   * @return the meta object for class '<em>Qualified Publisher Ref</em>'.
+   * @see eu.coresense.context.contextModel.QualifiedPublisherRef
    * @generated
    */
-  EReference getDataSource_Service();
+  EClass getQualifiedPublisherRef();
 
   /**
-   * Returns the meta object for the reference '{@link eu.coresense.context.contextModel.DataSource#getAction <em>Action</em>}'.
+   * Returns the meta object for the reference '{@link eu.coresense.context.contextModel.QualifiedPublisherRef#getPublisher <em>Publisher</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the reference '<em>Action</em>'.
-   * @see eu.coresense.context.contextModel.DataSource#getAction()
-   * @see #getDataSource()
+   * @return the meta object for the reference '<em>Publisher</em>'.
+   * @see eu.coresense.context.contextModel.QualifiedPublisherRef#getPublisher()
+   * @see #getQualifiedPublisherRef()
    * @generated
    */
-  EReference getDataSource_Action();
+  EReference getQualifiedPublisherRef_Publisher();
+
+  /**
+   * Returns the meta object for class '{@link eu.coresense.context.contextModel.QualifiedServiceServerRef <em>Qualified Service Server Ref</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Qualified Service Server Ref</em>'.
+   * @see eu.coresense.context.contextModel.QualifiedServiceServerRef
+   * @generated
+   */
+  EClass getQualifiedServiceServerRef();
+
+  /**
+   * Returns the meta object for the reference '{@link eu.coresense.context.contextModel.QualifiedServiceServerRef#getServiceServer <em>Service Server</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Service Server</em>'.
+   * @see eu.coresense.context.contextModel.QualifiedServiceServerRef#getServiceServer()
+   * @see #getQualifiedServiceServerRef()
+   * @generated
+   */
+  EReference getQualifiedServiceServerRef_ServiceServer();
+
+  /**
+   * Returns the meta object for class '{@link eu.coresense.context.contextModel.QualifiedActionServerRef <em>Qualified Action Server Ref</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Qualified Action Server Ref</em>'.
+   * @see eu.coresense.context.contextModel.QualifiedActionServerRef
+   * @generated
+   */
+  EClass getQualifiedActionServerRef();
+
+  /**
+   * Returns the meta object for the reference '{@link eu.coresense.context.contextModel.QualifiedActionServerRef#getActionServer <em>Action Server</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Action Server</em>'.
+   * @see eu.coresense.context.contextModel.QualifiedActionServerRef#getActionServer()
+   * @see #getQualifiedActionServerRef()
+   * @generated
+   */
+  EReference getQualifiedActionServerRef_ActionServer();
 
   /**
    * Returns the meta object for class '{@link eu.coresense.context.contextModel.Import <em>Import</em>}'.
@@ -353,6 +635,27 @@ public interface ContextModelPackage extends EPackage
    * @generated
    */
   EAttribute getImport_ImportURI();
+
+  /**
+   * Returns the meta object for class '{@link eu.coresense.context.contextModel.ContextModelNode <em>Node</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Node</em>'.
+   * @see eu.coresense.context.contextModel.ContextModelNode
+   * @generated
+   */
+  EClass getContextModelNode();
+
+  /**
+   * Returns the meta object for the containment reference '{@link eu.coresense.context.contextModel.ContextModelNode#getNode_import <em>Node import</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Node import</em>'.
+   * @see eu.coresense.context.contextModel.ContextModelNode#getNode_import()
+   * @see #getContextModelNode()
+   * @generated
+   */
+  EReference getContextModelNode_Node_import();
 
   /**
    * Returns the factory that creates the instances of the model.
@@ -396,6 +699,14 @@ public interface ContextModelPackage extends EPackage
     EReference CONTEXT_MODEL__IMPORTS = eINSTANCE.getContextModel_Imports();
 
     /**
+     * The meta object literal for the '<em><b>Context model node</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference CONTEXT_MODEL__CONTEXT_MODEL_NODE = eINSTANCE.getContextModel_Context_model_node();
+
+    /**
      * The meta object literal for the '<em><b>Context variables</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -430,12 +741,52 @@ public interface ContextModelPackage extends EPackage
     EReference CONTEXT_VAR__SOURCE = eINSTANCE.getContextVar_Source();
 
     /**
-     * The meta object literal for the '<em><b>Function</b></em>' reference feature.
+     * The meta object literal for the '<em><b>Processed source</b></em>' reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference CONTEXT_VAR__FUNCTION = eINSTANCE.getContextVar_Function();
+    EReference CONTEXT_VAR__PROCESSED_SOURCE = eINSTANCE.getContextVar_Processed_source();
+
+    /**
+     * The meta object literal for the '<em><b>Do Cache</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute CONTEXT_VAR__DO_CACHE = eINSTANCE.getContextVar_DoCache();
+
+    /**
+     * The meta object literal for the '<em><b>Length</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute CONTEXT_VAR__LENGTH = eINSTANCE.getContextVar_Length();
+
+    /**
+     * The meta object literal for the '<em><b>Period</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute CONTEXT_VAR__PERIOD = eINSTANCE.getContextVar_Period();
+
+    /**
+     * The meta object literal for the '<em><b>Function Name</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute CONTEXT_VAR__FUNCTION_NAME = eINSTANCE.getContextVar_FunctionName();
+
+    /**
+     * The meta object literal for the '<em><b>Function Library</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute CONTEXT_VAR__FUNCTION_LIBRARY = eINSTANCE.getContextVar_FunctionLibrary();
 
     /**
      * The meta object literal for the '{@link eu.coresense.context.contextModel.impl.DataSourceImpl <em>Data Source</em>}' class.
@@ -448,28 +799,66 @@ public interface ContextModelPackage extends EPackage
     EClass DATA_SOURCE = eINSTANCE.getDataSource();
 
     /**
-     * The meta object literal for the '<em><b>Topic</b></em>' reference feature.
+     * The meta object literal for the '<em><b>Node</b></em>' reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference DATA_SOURCE__TOPIC = eINSTANCE.getDataSource_Topic();
+    EReference DATA_SOURCE__NODE = eINSTANCE.getDataSource_Node();
 
     /**
-     * The meta object literal for the '<em><b>Service</b></em>' reference feature.
+     * The meta object literal for the '{@link eu.coresense.context.contextModel.impl.QualifiedPublisherRefImpl <em>Qualified Publisher Ref</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * @see eu.coresense.context.contextModel.impl.QualifiedPublisherRefImpl
+     * @see eu.coresense.context.contextModel.impl.ContextModelPackageImpl#getQualifiedPublisherRef()
      * @generated
      */
-    EReference DATA_SOURCE__SERVICE = eINSTANCE.getDataSource_Service();
+    EClass QUALIFIED_PUBLISHER_REF = eINSTANCE.getQualifiedPublisherRef();
 
     /**
-     * The meta object literal for the '<em><b>Action</b></em>' reference feature.
+     * The meta object literal for the '<em><b>Publisher</b></em>' reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference DATA_SOURCE__ACTION = eINSTANCE.getDataSource_Action();
+    EReference QUALIFIED_PUBLISHER_REF__PUBLISHER = eINSTANCE.getQualifiedPublisherRef_Publisher();
+
+    /**
+     * The meta object literal for the '{@link eu.coresense.context.contextModel.impl.QualifiedServiceServerRefImpl <em>Qualified Service Server Ref</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see eu.coresense.context.contextModel.impl.QualifiedServiceServerRefImpl
+     * @see eu.coresense.context.contextModel.impl.ContextModelPackageImpl#getQualifiedServiceServerRef()
+     * @generated
+     */
+    EClass QUALIFIED_SERVICE_SERVER_REF = eINSTANCE.getQualifiedServiceServerRef();
+
+    /**
+     * The meta object literal for the '<em><b>Service Server</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference QUALIFIED_SERVICE_SERVER_REF__SERVICE_SERVER = eINSTANCE.getQualifiedServiceServerRef_ServiceServer();
+
+    /**
+     * The meta object literal for the '{@link eu.coresense.context.contextModel.impl.QualifiedActionServerRefImpl <em>Qualified Action Server Ref</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see eu.coresense.context.contextModel.impl.QualifiedActionServerRefImpl
+     * @see eu.coresense.context.contextModel.impl.ContextModelPackageImpl#getQualifiedActionServerRef()
+     * @generated
+     */
+    EClass QUALIFIED_ACTION_SERVER_REF = eINSTANCE.getQualifiedActionServerRef();
+
+    /**
+     * The meta object literal for the '<em><b>Action Server</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference QUALIFIED_ACTION_SERVER_REF__ACTION_SERVER = eINSTANCE.getQualifiedActionServerRef_ActionServer();
 
     /**
      * The meta object literal for the '{@link eu.coresense.context.contextModel.impl.ImportImpl <em>Import</em>}' class.
@@ -488,6 +877,24 @@ public interface ContextModelPackage extends EPackage
      * @generated
      */
     EAttribute IMPORT__IMPORT_URI = eINSTANCE.getImport_ImportURI();
+
+    /**
+     * The meta object literal for the '{@link eu.coresense.context.contextModel.impl.ContextModelNodeImpl <em>Node</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see eu.coresense.context.contextModel.impl.ContextModelNodeImpl
+     * @see eu.coresense.context.contextModel.impl.ContextModelPackageImpl#getContextModelNode()
+     * @generated
+     */
+    EClass CONTEXT_MODEL_NODE = eINSTANCE.getContextModelNode();
+
+    /**
+     * The meta object literal for the '<em><b>Node import</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference CONTEXT_MODEL_NODE__NODE_IMPORT = eINSTANCE.getContextModelNode_Node_import();
 
   }
 

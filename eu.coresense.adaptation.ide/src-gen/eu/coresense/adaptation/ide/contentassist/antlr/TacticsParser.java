@@ -58,8 +58,7 @@ public class TacticsParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getQualifiedFeatureRefAccess().getGroup(), "rule__QualifiedFeatureRef__Group__0");
 			builder.put(grammarAccess.getTacticsModelAccess().getNameAssignment_1(), "rule__TacticsModel__NameAssignment_1");
 			builder.put(grammarAccess.getTacticsModelAccess().getImportsAssignment_3(), "rule__TacticsModel__ImportsAssignment_3");
-			builder.put(grammarAccess.getTacticsModelAccess().getResolutionModelAssignment_5(), "rule__TacticsModel__ResolutionModelAssignment_5");
-			builder.put(grammarAccess.getTacticsModelAccess().getAdaptationRulesAssignment_7(), "rule__TacticsModel__AdaptationRulesAssignment_7");
+			builder.put(grammarAccess.getTacticsModelAccess().getAdaptationRulesAssignment_4(), "rule__TacticsModel__AdaptationRulesAssignment_4");
 			builder.put(grammarAccess.getImportAccess().getImportURIAssignment_1(), "rule__Import__ImportURIAssignment_1");
 			builder.put(grammarAccess.getAtomicRuleAccess().getNameAssignment_1(), "rule__AtomicRule__NameAssignment_1");
 			builder.put(grammarAccess.getAtomicRuleAccess().getRuleBodyAssignment_3(), "rule__AtomicRule__RuleBodyAssignment_3");

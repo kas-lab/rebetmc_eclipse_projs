@@ -3,8 +3,6 @@
  */
 package eu.coresense.adaptation.tactics;
 
-import eu.coresense.resolution.resolutionModel.ResolutionModel;
-
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EObject;
@@ -20,7 +18,6 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link eu.coresense.adaptation.tactics.TacticsModel#getName <em>Name</em>}</li>
  *   <li>{@link eu.coresense.adaptation.tactics.TacticsModel#getImports <em>Imports</em>}</li>
- *   <li>{@link eu.coresense.adaptation.tactics.TacticsModel#getResolutionModel <em>Resolution Model</em>}</li>
  *   <li>{@link eu.coresense.adaptation.tactics.TacticsModel#getAdaptationRules <em>Adaptation Rules</em>}</li>
  * </ul>
  *
@@ -63,28 +60,6 @@ public interface TacticsModel extends EObject
    * @generated
    */
   EList<Import> getImports();
-
-  /**
-   * Returns the value of the '<em><b>Resolution Model</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Resolution Model</em>' reference.
-   * @see #setResolutionModel(ResolutionModel)
-   * @see eu.coresense.adaptation.tactics.TacticsPackage#getTacticsModel_ResolutionModel()
-   * @model
-   * @generated
-   */
-  ResolutionModel getResolutionModel();
-
-  /**
-   * Sets the value of the '{@link eu.coresense.adaptation.tactics.TacticsModel#getResolutionModel <em>Resolution Model</em>}' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Resolution Model</em>' reference.
-   * @see #getResolutionModel()
-   * @generated
-   */
-  void setResolutionModel(ResolutionModel value);
 
   /**
    * Returns the value of the '<em><b>Adaptation Rules</b></em>' containment reference list.

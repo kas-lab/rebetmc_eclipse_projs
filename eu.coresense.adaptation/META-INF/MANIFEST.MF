@@ -19,7 +19,8 @@ Require-Bundle: org.eclipse.xtext,
  fms.metamodel;bundle-version="1.0.0",
  eu.coresense.variability;bundle-version="1.0.0",
  eu.coresense.context;bundle-version="1.0.0",
- pythonfunctions;bundle-version="0.1.0"
+ eu.coresense.requirements;bundle-version="1.0.0",
+ eu.coresense.common;bundle-version="0.1.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-21
 Export-Package: eu.coresense.adaptation.parser.antlr.internal,
  eu.coresense.adaptation.validation,

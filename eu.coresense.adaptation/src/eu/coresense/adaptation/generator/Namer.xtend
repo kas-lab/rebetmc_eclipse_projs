@@ -22,6 +22,12 @@ import ros.ParameterStringType
 import ros.ParameterArrayType
 import ros.ParameterInteger
 import ros.ParameterType
+import ros.ParameterIntegerType
+import eu.coresense.context.contextModel.ContextVar
+import eu.coresense.context.contextModel.DataSource
+import eu.coresense.context.contextModel.QualifiedActionServerRef
+import eu.coresense.context.contextModel.QualifiedPublisherRef
+import eu.coresense.context.contextModel.QualifiedServiceServerRef
 
 class Namer {
 	val Map<String, Integer> nameMap = newHashMap
@@ -38,6 +44,16 @@ class Namer {
 	val Map<Alternative, String> altNames = newHashMap
 	val Map<OrGroup, String> orGroupNames = newHashMap
 	val Map<SetLifecycle,String> setlcNames = newHashMap
+	val Map<ros.Subscriber,String> subNames = newHashMap
+	val Map<ros.Publisher,String> pubNames = newHashMap
+	val Map<ros.ActionClient, String> acNames = newHashMap
+	val Map<ros.ActionServer, String> asNames = newHashMap
+	val Map<ros.ServiceClient, String> scNames = newHashMap
+	val Map<ros.ServiceServer, String> ssNames = newHashMap
+	val Map<ros.QualityOfService,String> qosNames = newHashMap
+	val Map<ContextVar,String> cvNames = newHashMap
+	
+	
 	
 	def makeUniqueName(String baseName) {
 	    val count = nameMap.get(baseName) ?: 0
@@ -48,7 +64,13 @@ class Namer {
 	
 	def uniqueName(Condition condition) {
 	    conditionNames.computeIfAbsent(condition) [
-	        makeUniqueName(condition.measurement.toLowerCase + "_" + condition.operator.getName().toLowerCase)
+	        makeUniqueName(condition.measurement.name.toLowerCase + "_" + condition.operator.getName().toLowerCase)
+	    ]
+	}
+	
+	def uniqueName(ContextVar contextVariable) {
+	    cvNames.computeIfAbsent(contextVariable) [
+	        makeUniqueName("t_measured_" + contextVariable.name.toLowerCase)
 	    ]
 	}
 
@@ -78,6 +100,62 @@ class Namer {
 		
 	}
 	
+	def uniqueName(DataSource dataSource, String nodeName)
+	{
+		if(dataSource instanceof QualifiedActionServerRef)
+		{
+			println("nonnull1")
+			return uniqueName(dataSource.actionServer, nodeName)
+		}
+		if(dataSource instanceof QualifiedPublisherRef)
+		{
+			println("nonnull2")
+			return uniqueName(dataSource.publisher, nodeName)
+		}
+		if(dataSource instanceof QualifiedServiceServerRef)
+		{
+			println("nonnull3")
+			return uniqueName(dataSource.serviceServer, nodeName)
+		}
+		
+	}
+	
+	def uniqueName(ros.Subscriber subscriber, String node_name)
+	{
+		subNames.computeIfAbsent(subscriber) [
+        	makeUniqueName(node_name + "_sub")]
+	}
+	
+	def uniqueName(ros.Publisher publisher, String node_name)
+	{
+		pubNames.computeIfAbsent(publisher) [
+        	makeUniqueName(node_name + "_pub")]
+	}
+	
+	def uniqueName(ros.ActionClient actionClient, String node_name)
+	{
+		acNames.computeIfAbsent(actionClient) [
+        	makeUniqueName(node_name + "_action_client")]
+	}
+	
+	def uniqueName(ros.ActionServer actionServer, String node_name)
+	{
+		asNames.computeIfAbsent(actionServer) [
+        	makeUniqueName(node_name + "_action_server")]
+	}
+	
+	def uniqueName(ros.ServiceClient serviceClient, String node_name)
+	{
+		scNames.computeIfAbsent(serviceClient) [
+        	makeUniqueName(node_name + "_service_client")]
+	}
+	
+	def uniqueName(ros.ServiceServer serviceServer, String node_name)
+	{
+		ssNames.computeIfAbsent(serviceServer) [
+        	makeUniqueName(node_name + "_service_server")]
+	}
+	
 	def uniqueName(SetLifecycle setl)
 	{
 		setlcNames.computeIfAbsent(setl) [
@@ -104,6 +182,13 @@ class Namer {
 	{
 		rosnodeNames.computeIfAbsent(node) [
         	makeUniqueName(node.name + "_node")
+    ]
+	}
+	
+	def uniqueName(ros.QualityOfService qos, String interface_name)
+	{
+		qosNames.computeIfAbsent(qos) [
+        	makeUniqueName(interface_name + "_qos")
     ]
 	}
 	
@@ -152,30 +237,51 @@ class Namer {
 	def uniqueName(ros.Parameter parameter)
 	{
 		paramNames.computeIfAbsent(parameter) [
-			makeUniqueName(parameter.name + "_param")
+			makeUniqueName(parameter.name.replace('.','_').replace('/','') + "_param")
 		]
 	}
 	
-	def String NiceNameParamValueClass(ParameterValue param_value)
+	def String SchemaValueFromParam(ParameterValue param_value)
 	{
 		//(boolean|boolean_array|double|double_array|long|long_array|string|string_array)
 		switch param_value
 		{
 			ParameterBoolean:
-				"ParameterValueBoolean"
+				"ValueBool"
 			ParameterDouble:
-				"ParameterValueDouble"
+				"ValueDouble"
 			ParameterString:
-				"ParameterValueString"
+				"ValueString"
 			ParameterInteger:
-				"ParameterValueInteger"
+				"ValueInteger"
 			ParameterSequence:
-				NiceNameParamValueClass(param_value.value.get(0)) + "Array" 
+				"ValueArray" 
 			default:
 				param_value.class.toString()
 		}
 		
 	}
+	def String SchemaValueFromParam(ParameterType param_type)
+	{
+		//(boolean|boolean_array|double|double_array|long|long_array|string|string_array)
+		switch param_type
+		{
+			ParameterBooleanType:
+				"ValueBool"
+			ParameterDoubleType:
+				"ValueDouble"
+			ParameterStringType:
+				"ValueString"
+			ParameterIntegerType:
+				"ValueInteger"
+			ParameterArrayType:
+				"ValueArray"
+			default:
+				param_type.class.toString()
+		}
+		
+	}
+	
 	
 	def String paramSubClass (ParameterValue param_value)
 	{
@@ -183,7 +289,7 @@ class Namer {
 		switch param_value
 		{
 			ParameterBoolean:
-				"ParameterBoolean"
+				"ParameterBool"
 			ParameterDouble:
 				"ParameterDouble"
 			ParameterString:
@@ -191,10 +297,30 @@ class Namer {
 			ParameterInteger:
 				"ParameterInteger"
 			ParameterSequence:
-				NiceNameParamValueClass(param_value.value.get(0)) + "Array" 
+				"Parameter" + SchemaValueFromParam(param_value.value.get(0)) + "Array" 
 		}
 		
 	}
+	
+	def String paramSubClass (ParameterType param_type)
+	{
+		//(boolean|boolean_array|double|double_array|long|long_array|string|string_array)
+		switch param_type
+		{
+			ParameterBooleanType:
+				"ParameterBool"
+			ParameterDoubleType:
+				"ParameterDouble"
+			ParameterStringType:
+				"ParameterString"
+			ParameterIntegerType:
+				"ParameterInteger"
+			ParameterArrayType:
+				paramSubClass(param_type.type) + "Array" 
+		}
+		
+	}
+	
 	
 	def String NiceNameParamValueType(ParameterValue param_value)
 	{

@@ -3,38 +3,58 @@
  */
 package eu.coresense.adaptation.generator
 
+import com.google.inject.Inject
+import eu.coresense.adaptation.tactics.AdaptationRule
+import eu.coresense.adaptation.tactics.AtomicRule
+import eu.coresense.adaptation.tactics.Condition
+import eu.coresense.adaptation.tactics.ConditionAction
+import eu.coresense.adaptation.tactics.LogicalOperator
+import eu.coresense.adaptation.tactics.RuleBody
+import eu.coresense.adaptation.tactics.RuleSet
+import eu.coresense.adaptation.tactics.TacticsModel
+import eu.coresense.resolution.resolutionModel.Reconfiguration
+import eu.coresense.resolution.resolutionModel.Resolution
+import eu.coresense.resolution.resolutionModel.ResolutionModel
+import eu.coresense.resolution.resolutionModel.SetLifecycle
+import eu.coresense.resolution.resolutionModel.SetParam
+import eu.coresense.requirements.requirementsModel.RequirementsModel
+import java.util.HashSet
+import java.util.List
+import java.util.Map
 import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.xtext.generator.AbstractGenerator
 import org.eclipse.xtext.generator.IFileSystemAccess2
 import org.eclipse.xtext.generator.IGeneratorContext
-import eu.coresense.adaptation.tactics.AtomicRule
-import eu.coresense.adaptation.tactics.TacticsModel
-import eu.coresense.adaptation.tactics.AdaptationRule
-import eu.coresense.adaptation.tactics.ConditionAction
-import java.util.List
-import eu.coresense.adaptation.tactics.Condition
-import java.util.HashSet
-import eu.coresense.adaptation.tactics.LogicalOperator
-import eu.coresense.resolution.resolutionModel.ResolutionModel
-import eu.coresense.resolution.resolutionModel.Resolution
-import eu.coresense.resolution.resolutionModel.Reconfiguration
-import ros.ParameterValue
-import ros.ParameterSequence
-import ros.ParameterBoolean
-import ros.ParameterInteger
-import ros.ParameterDouble
-import ros.ParameterString
-import eu.coresense.resolution.resolutionModel.SetParam
-import eu.coresense.adaptation.tactics.RuleSet
-import eu.coresense.adaptation.tactics.RuleBody
-import eu.coresense.resolution.resolutionModel.SetLifecycle
-import system.RosNode
-import uma.caosd.rhea.BasicFMmetamodel.Feature
-import uma.caosd.rhea.BasicFMmetamodel.Alternative
-import uma.caosd.rhea.BasicFMmetamodel.OrGroup
-import org.eclipse.xtext.nodemodel.util.NodeModelUtils
 import org.eclipse.xtext.nodemodel.INode
-import com.google.inject.Inject
+import org.eclipse.xtext.nodemodel.util.NodeModelUtils
+import ros.Parameter
+import ros.ParameterBoolean
+import ros.ParameterDouble
+import ros.ParameterInteger
+import ros.ParameterSequence
+import ros.ParameterString
+import ros.ParameterValue
+import system.Component
+import system.RosNode
+import system.RosPublisherReference
+import system.RosSubscriberReference
+import system.SubSystem
+import system.System
+import uma.caosd.rhea.BasicFMmetamodel.Alternative
+import uma.caosd.rhea.BasicFMmetamodel.Feature
+import uma.caosd.rhea.BasicFMmetamodel.OrGroup
+import eu.coresense.requirements.requirementsModel.AsCloseLit
+import ros.InterfaceType
+import eu.coresense.context.contextModel.ContextVar
+import org.eclipse.emf.common.util.URI
+import eu.coresense.context.contextModel.ContextModel
+import eu.coresense.adaptation.tactics.AtomicActionSelectFeature
+import eu.coresense.adaptation.tactics.AtomicActionDeselectFeature
+import eu.coresense.common.Literal
+import eu.coresense.common.IntLiteral
+import eu.coresense.common.DecimalLiteral
+import eu.coresense.common.StringLiteral
+import eu.coresense.common.BooleanLiteral
 
 /**
  * Generates code from your model files on save.
@@ -42,17 +62,24 @@ import com.google.inject.Inject
  * See https://www.eclipse.org/Xtext/documentation/303_runtime_concepts.html#code-generation
  */
 class TQLGenerator extends AbstractGenerator {
-	@Inject extension Namer
+    extension Namer _namer
+	
+	@Inject
+    new(Namer namer) {
+        this._namer = namer
+    }
 	
 	public static final String INDEX_VAR = "findex";
 	public static final String NODE_VAR = "rode";
-	public static final String SUBQUERY_NAME = "param_values";
+	public static final String PARAM_VALUES_SUBQUERY_NAME = "param_values";
 	public static final String FEATURE_VAR = "f"
-	  
-	public val HashSet<String> uniqueMeasurements = newHashSet
+	public static final String RULE_VAR = "tactic_rule"
+	public var Resource globalResource = null
+	public val Map<Pair<String,String>, Pair<HashSet<String>, HashSet<String>>> topics = newHashMap
 	
     
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
+ 	globalResource = resource
     for (e : resource.allContents.toIterable.filter(TacticsModel)) {
         fsa.generateFile(
             e.name + ".tql",
@@ -62,7 +89,8 @@ class TQLGenerator extends AbstractGenerator {
 	
 	}
 	
-    def String generateTQL(TacticsModel model) {
+    def String generateTQL(TacticsModel model, Resource resource) {
+    	globalResource = resource;
     	return model.compile.toString()
     }
     
@@ -81,7 +109,7 @@ class TQLGenerator extends AbstractGenerator {
 	}
 	
 	    
-	def List<ros.Parameter> getParameters(RosNode node)
+	def List<Parameter> getParameters(RosNode node)
 	{
 		val originalParameters = node.from.parameter
 		
@@ -92,84 +120,414 @@ class TQLGenerator extends AbstractGenerator {
 		
 		return originalParameters
 	}
-      
-    def String generateInsertQuery(RosNode node)
-    {
-    	println("I'm in here")
-    	val innerNode = node.from
-    	val pkg = getPackage(node)
-    	println("This is what pkg is")
-    	println(pkg)
-    	val serviceServers = innerNode.getServiceserver();
+	
+	
+	def String generateInsertQuery(RequirementsModel reqModel, String systemName)
+	{
+		'''
+		insert
+		
+		
+		$«systemName.toLowerCase» isa System, has system_name "«systemName»";
+		«FOR requirement : reqModel.requirements»
+		«val rule = requirement.rule»
+		«val name = requirement.name»
+		«IF rule instanceof AsCloseLit»
+			$«name»_set isa FuzzyTriangular,
+				has a -0.5,
+				has b 0.0,
+				has c 0.5;
+			
+			$«name»_as_close_expression (unimodal_membership: $«name»_set, term: $«_namer.uniqueName(rule.comparator.^var)») isa as_close_as_possible_expression,
+				has required_value «valueOfLiteral(rule.q)»;
+			
+			$«name»_shall_expression (relaxed_expression: $«name»_as_close_expression) isa shall_expression;
+			
+			
+			$«name»_requirement (system: $«systemName.toLowerCase», relaxed_expression: $«name»_shall_expression) isa relaxed_requirement,
+				has requirement_name "«name»",
+				has description "«requirement.natural»";
+			
+		«ENDIF»
+			
+		«ENDFOR»
+		
+
+		'''
+	}
+	
+	def String generateInsertQuery(Map<Pair<String,String>, Pair<HashSet<String>, HashSet<String>>> topics)
+	{
+		//TODO: Finish
+		'''
+		«FOR entry : topics.entrySet»
+		«val topicName = entry.key.key»
+		«val type = entry.key.value»
+		«val subsPubsPair = entry.value»
+		«val subs = subsPubsPair.key»
+		«val pubs = subsPubsPair.value»
+		$«topicName»_topic (
+							«FOR publisher : pubs SEPARATOR ", "»
+								publisher: $«publisher»
+							«ENDFOR»,
+							«FOR subscriber : subs SEPARATOR ", "»
+								subscriber: $«subscriber»
+							«ENDFOR»,
+							)
+							isa ros_topic,
+							has interface_type "«type»",
+							has interface_name "«topicName»"
+		«ENDFOR»
+		'''
+//		for (entry : topics.entrySet) {
+//		    val topicName = entry.key
+//		    val pair = entry.value
+//		    '''
+//		    sss
+//		    '''
+//		}
+//		    ""
+	}
+	
+
+	def String describeNode(ros.Node node, String namespace)
+	{
+		val serviceServers = node.getServiceserver();
 	    
 	    val isLifecycle = serviceServers.exists[ server | server.service.fullname == "lifecycle_msgs/ChangeState"]
 	    
 	    val node_kind = isLifecycle ? "LifeCycleNode" : "ROSNode"
-	    
-//    	val value_and_names = ParamValueToValueEntity(reconfig.value)
-//		val x = value_and_names.key
-//		val name = value_and_names.value
-
-			     
+	    val nodeName = _namer.uniqueName(node)
+		'''
+		   $«nodeName» isa «node_kind»,
+		   has node_name "«node.name»",
+		   has namespace "«namespace»";
     	'''
-    	$«uniqueName(innerNode)» isa «node_kind»,
-    		has node_name "«node.name»",
-    		has package "«pkg»",
-    		has executable "«node.name»",
-    		has namespace "«node.namespace»";
-    		
+	}
+      
+    def String generateInsertQuery(RosNode node)
+    {
+    	val innerNode = node.from
+	    
+	    val nodeName = _namer.uniqueName(innerNode)
+	    '''
+    	«describeNode(innerNode, node.namespace)»
     	«FOR parameter : node.getParameters»
-    	$«uniqueName(parameter)» isa «paramSubClass(parameter.value)»,
+    	$«_namer.uniqueName(parameter)» isa «_namer.paramSubClass(parameter.type)»,
     		has parameter_name "«parameter.name»";
-    	
-    	«ParamValueToValueEntity(parameter.value, uniqueName(parameter)).key»
+    	«IF parameter.value !==null»	
+    	«ParamValueToValueEntity(parameter, _namer.uniqueName(parameter)).key»
+    	«ENDIF»
     	«ENDFOR»
-    	
-    	$«uniqueName(innerNode)»_parameters (
-    		node: $«uniqueName(innerNode)»,
-    		«FOR parameter : node.getParameters»
-    		parameter: «uniqueName(parameter)»,
+    	«IF !node.getParameters.empty»
+    		
+    	$«nodeName»_parameters (
+    		node: $«nodeName»,
+    		«FOR parameter : node.getParameters SEPARATOR ", "»
+    		parameter: $«_namer.uniqueName(parameter)»
     		«ENDFOR»
     		) isa has_parameter;
+    	«ENDIF»
+    	«FOR subscription : innerNode.subscriber»
+    		«val subName = _namer.uniqueName(subscription, nodeName)»
+    		«var topicName = getInterfaceName(subscription,node)»
+    		$«subName» isa Subscriber,
+    		has interface_name "«topicName»",
+    		has interface_type "«subscription.message.fullname»";
+    		«handleQoS(subscription.qos, subName)»
     		
+    		(node: $«nodeName», subscriber: $«subName») isa has_topic;
+    		
+    	«ENDFOR»
+    	«FOR publication : innerNode.publisher»
+    		«val pubName = _namer.uniqueName(publication, nodeName)»
+    		«var topicName = getInterfaceName(publication,node)»
+    		$«pubName» isa Publisher,
+    		has interface_name "«topicName»",
+    		has interface_type "«publication.message.fullname»";
+    		«handleQoS(publication.qos, pubName)»
+    		
+    		(node: $«nodeName», publisher: $«pubName») isa has_topic;
+    	«ENDFOR»
+    	«FOR actionClient : innerNode.actionclient»
+    		«val acName = _namer.uniqueName(actionClient, nodeName)»
+    		«var interfaceName = getInterfaceName(actionClient,node)»
+    		$«acName» isa ActionClient,
+    		has interface_name "«interfaceName»",
+    		has interface_type "«actionClient.action.fullname»";
+    		(node: $«nodeName», client: $«acName») isa has_action;	
+    	«ENDFOR»
+    	«FOR actionServer : innerNode.actionserver»
+    		«val asName = _namer.uniqueName(actionServer, nodeName)»
+    		«var interfaceName = getInterfaceName(actionServer,node)»
+    		$«asName» isa ActionServer,
+    		has interface_name "«interfaceName»",
+    		has interface_type "«actionServer.action.fullname»";
+    		(node: $«nodeName», server: $«asName») isa has_action;	
+    	«ENDFOR»
+    	«FOR serviceClient : innerNode.serviceclient»
+    		«val acName = _namer.uniqueName(serviceClient, nodeName)»
+    		«var interfaceName = getInterfaceName(serviceClient,node)»
+    		$«acName» isa ServiceClient,
+    		has interface_name "«interfaceName»",
+    		has interface_type "«serviceClient.service.fullname»";
+    		(node: $«nodeName», client: $«acName») isa has_service;	
+    	«ENDFOR»
+    	«FOR serviceServer : innerNode.serviceserver»
+    		«val asName = _namer.uniqueName(serviceServer, nodeName)»
+    		«var interfaceName = getInterfaceName(serviceServer,node)»
+    		$«asName» isa ServiceServer,
+    		has interface_name "«interfaceName»",
+    		has interface_type "«serviceServer.service.fullname»";
+    		(node: $«nodeName», server: $«asName») isa has_service;	
+    	«ENDFOR»
     	'''
+
+			    
     }
+    
+    def String handleQoS(ros.QualityOfService qos, String interfaceName)
+    {
+    	if(qos !== null)
+    	{
+    	val qosName = _namer.uniqueName(qos, interfaceName)
+    	// TODO: Make it so that these IFs are not necessary. This requires making sure ros2model generates complete qos descriptions for each interface.
+    	val qosProps = newArrayList(
+		    if (qos.reliability !== null) 'has reliability "' + qos.reliability.toUpperCase + '"' else null,
+		    if (qos.history !== null) 'has history "' + qos.history.toUpperCase + '"' else null,
+		    if (qos.depth != 0) 'has depth ' + qos.depth else null,
+		    if (qos.durability !== null) 'has durability "' + qos.durability.toUpperCase + '"' else null,
+		    if (qos.lifespan !== null) 'has lifespan ' + handleDuration(qos.lifespan) else null,
+		    if (qos.deadline !== null) 'has deadline ' + handleDuration(qos.deadline) else null,
+		    if (qos.liveliness !== null) 'has liveliness "' + qos.liveliness.toUpperCase + '"' else null,
+		    if (qos.leaseDuration !== null) 'has lease_duration ' + handleDuration(qos.leaseDuration) else null
+		).filterNull
+    	'''
+			
+			$«qosName» isa QoSProfile,
+    	   	«qosProps.join(",\n")»
+			;
+			
+			$«qosName»_rel (interface: $«interfaceName», qos: $«qosName») isa has_qos;
+    	'''
+    	}
+    }
+    
+    def int handleDuration(String duration_field)
+    {
+    	if(duration_field == 'infinite')
+    	{
+    		return 0
+    	}
+    	else
+    	{
+    		Integer.parseInt(duration_field)
+    	}
+    }
+    
+    def String getInterfaceName(InterfaceType interface_, RosNode node){
+
+	    var interfaceName = interface_.name
+		for(interface: node.rosinterfaces)
+		{
+			val reference = interface.reference
+			if(reference instanceof system.RosSubscriberReference)
+			{
+				if(reference.from === interface_)
+				{
+					interfaceName = interface.name
+				}
+			}
+			if(reference instanceof system.RosPublisherReference)
+			{
+				if(reference.from === interface_)
+				{
+					interfaceName = interface.name
+				}
+			}
+			if(reference instanceof system.RosActionClientReference)
+			{
+				if(reference.from === interface_)
+				{
+					interfaceName = interface.name
+				}
+			}
+			if(reference instanceof system.RosActionServerReference)
+			{
+				if(reference.from === interface_)
+				{
+					interfaceName = interface.name
+				}
+			}
+			if(reference instanceof system.RosServiceServerReference)
+			{
+				if(reference.from === interface_)
+				{
+					interfaceName = interface.name
+				}
+			}
+			if(reference instanceof system.RosServiceClientReference)
+			{
+				if(reference.from === interface_)
+				{
+					interfaceName = interface.name
+				}
+			}
+		}
+		
+		return interfaceName
+    }
+    
+  
     
     def String generateFetchQuery(TacticsModel model) {
-    	''' + action_name, 
+    	'''
 		  match
-		  	$t isa Tactic, has tactic_name "«model.getName()»";
-		    $r (tactic:$t, consequent:$«FEATURE_VAR») isa tactic_rule, has rule_valid true, has rule_architecture_search true;
-		    (tactic:$t, variant_resolution:$vr) isa resolution_model;
-		    $vr (resolution_action:$res_action, variant: $«FEATURE_VAR») isa variant_resolution;
+		  	  $t isa Tactic, has tactic_name "«model.getName()»";
+		      (tactic:$t, consequent:$«FEATURE_VAR») isa tactic_rule, has rule_valid true;
 		  fetch
-		  	set_parameter_action:{
-		  	match
-		  		$res_action (node: $«NODE_VAR», parameter: $parameter, parameter_value: $parameter_value) isa! set_nodes_parameters;
-		  	fetch
-		  		$«NODE_VAR»: node_name;
-		  		$parameter: parameter_name;
-				«SUBQUERY_NAME»: {
-		  			match                     
-		  				$parameter_value isa! ParameterArray;
-		  				$«INDEX_VAR» (parameter_array: $parameter_value, parameter_value: $value) isa at_index;
-		  			fetch
-		  				$«INDEX_VAR»: parameter_value_index;
-		  				$value: attribute;
-		  		};
-		  	};
+		      variant_activation: {
+		          match
+		              $«FEATURE_VAR» (activation: $feature_activate) isa feature_adaptation;
+		              (tactic:$t, variant_resolution:$vr) isa resolution_model;
+		              $vr (resolution_action:$res_action, variant: $feature_activate) isa variant_activation;
+		          fetch
+		              set_parameter_action: {
+		                  match
+		                      $res_action (node: $«NODE_VAR», parameter: $parameter, parameter_value: $parameter_value) isa! set_nodes_parameters;
+		                  fetch
+		                      $«NODE_VAR»: node_name;
+		                      $parameter: parameter_name;
+		                      «PARAM_VALUES_SUBQUERY_NAME»: {
+		                          match
+		                              $parameter_value isa! ValueArray;
+		                              $«INDEX_VAR» (array: $parameter_value, array_value: $value) isa at_index;
+		                          fetch
+		                              $«INDEX_VAR»: index;
+		                              $value: attribute;
+		                      };
+		              };
+		              set_lifecycle_action: {
+		                  match
+		                      $res_action (node: $«NODE_VAR») isa! set_lifecycle_state;
+		                  fetch
+		                      $«NODE_VAR»: node_name;
+		                      $res_action: lifecycle_state;
+		              };
+		      };
+		      variant_deactivation: {
+		          match
+		              $«FEATURE_VAR» (deactivation: $feature_deactivate) isa feature_adaptation;
+		              (tactic:$t, variant_resolution:$vr) isa resolution_model;
+		              $vr (resolution_action:$res_action, variant: $feature_deactivate) isa variant_deactivation;
+		          fetch
+		              set_parameter_action: {
+		                  match
+		                      $res_action (node: $«NODE_VAR», parameter: $parameter, parameter_value: $parameter_value) isa! set_nodes_parameters;
+		                  fetch
+		                      $«NODE_VAR»: node_name;
+		                      $parameter: parameter_name;
+		                      «PARAM_VALUES_SUBQUERY_NAME»: {
+		                          match
+		                              $parameter_value isa! ValueArray;
+		                              $«INDEX_VAR» (array: $parameter_value, array_value: $value) isa at_index;
+		                          fetch
+		                              $«INDEX_VAR»: index;
+		                              $value: attribute;
+		                      };
+		              };
+		              set_lifecycle_action: {
+		                  match
+		                      $res_action (node: $«NODE_VAR») isa! set_lifecycle_state;
+		                  fetch
+		                      $«NODE_VAR»: node_name;
+		                      $res_action: lifecycle_state;
+		              };
+		      };
     	'''
     }
     
-    def String generateInsertMeasurement(String measurement_name, Object measurement_value)
+    def String generateFetchApplicableTactics(ResolutionModel rm, String interfaceName) {
+    	'''
+    	match
+    	   $action isa ActionServer, has interface_name '«interfaceName»';
+    	   $resolution_model isa resolution_model, has resolution_model_name '«rm.name»';
+    	   (action: $action, resolution_model: $resolution_model, tactic_rule: $tactic_rule) isa applicable_tactics;
+    	fetch  $«RULE_VAR»: rule_name;
+    	'''
+    }
+    
+    
+    def String generateInsertMeasurement(ContextVar contextVariable, Object measurementValue, String measurementTime)
     {
+    	val measureName = _namer.uniqueName(contextVariable)
     	'''
 		match
-		$t_measured_«measurement_name» isa Term, has term_name "t_measured_«measurement_name»";
+		$«measureName» isa Measure, has measure_name "«contextVariable.name»";
 
 		insert
-		$t_measured_«measurement_name» has term_value «measurement_value.toString()»;
-    	'''
+		    $value isa «HasValue(measurementValue)»
+		    
+		    (measure: $«measureName», measurement_value: $value) isa measurement,
+		        has measurement_time «measurementTime»;
+    	'''	
+    }
+    
+    def dispatch String HasValue(Double v) { '''ValueDouble, has double_value «v»;'''}
+	def dispatch String HasValue(Boolean v) { '''ValueBool, has bool_value «v»;'''}
+	def dispatch String HasValue(Integer v) { '''ValueInteger, has integer_value «v»;'''}
+	def dispatch String HasValue(String v) { '''ValueString, has string_value"«v»";'''}
+	def dispatch String HasValue(Iterable<?> v) {
+	'''
+	ValueArray;"
+	«FOR element : v.indexed»
+		$elem_"«element.key» isa «HasValue(element.value)»;
+		(array: $value, array_value: $elem_"«element.key») isa at_index, has index «element.key»;
+	«ENDFOR»
+	'''}
+    
+    private def literalValue(Literal lit, String condition_name)
+    {
+    	val name = condition_name + "_val"
+    	if(lit instanceof IntLiteral)
+    	{
+    		
+    		return '''$«name» isa ValueInteger, has integer_value «valueOfLiteral(lit)»;'''
+    	}
+    	if(lit instanceof DecimalLiteral)
+    	{
+    		return '''$«name» isa ValueDouble, has double_value «valueOfLiteral(lit).toString»;'''
+    	}
+    	if(lit instanceof StringLiteral)
+    	{
+    		return '''$«name» isa ValueString, has string_value «valueOfLiteral(lit)»;'''
+    	}
+    	if(lit instanceof BooleanLiteral)
+    	{
+    		return '''$«name» isa ValueBool, has bool_value «valueOfLiteral(lit)»;'''
+    	}
+    	
+    	"Strange Literal received " + lit.class
+    }
+    
+    private def valueOfLiteral(Literal lit)
+    {
+    	if(lit instanceof IntLiteral)
+    	{
+    		return lit.value
+    	}
+    	if(lit instanceof DecimalLiteral)
+    	{
+    		return lit.value
+    	}
+    	if(lit instanceof StringLiteral)
+    	{
+    		return lit.value
+    	}
+    	if(lit instanceof BooleanLiteral)
+    	{
+    		return lit.value
+    	}
     }
     
     
@@ -177,10 +535,11 @@ class TQLGenerator extends AbstractGenerator {
 	{
 		val measure = condition.measurement
 		val operator = condition.operator
-		val name = uniqueName(condition)
+		val name = _namer.uniqueName(condition)
+
 		'''
-			$«name»_val isa Term, has term_name "«name»_val", has term_value «condition.value»;
-			$«name» (lhs_term:$t_measured_«measure», rhs_term: $«name»_val) isa inequality_expression, has operator "«operator»";
+			«literalValue(condition.value, name)»
+			$«name» (lhs_value:$t_measured_«measure.name», rhs_value: $«name»_val) isa inequality_expression, has operator "«operator»";
 		'''
 	}
     
@@ -188,14 +547,14 @@ class TQLGenerator extends AbstractGenerator {
 	
 	private def logic_op(LogicalOperator logicalOp, String lhs_name, String rhs_name)
 	{
-		val name = uniqueName(logicalOp, lhs_name, rhs_name)
+		val name = _namer.uniqueName(logicalOp, lhs_name, rhs_name)
 		'''
 			$«name» (expression:$«lhs_name», expression:$«rhs_name») isa «logicalOp.literal.toLowerCase»_expression;
 		'''
 	}
 	
 	private def Pair<String, CharSequence> buildExpression(Condition condition) {
-		val condName = uniqueName(condition)
+		val condName = _namer.uniqueName(condition)
 		val ineqCode = inequality(condition)
 	
 		// Base case: leaf condition (no further chaining)
@@ -208,7 +567,7 @@ class TQLGenerator extends AbstractGenerator {
 		val rightName = right.key
 		val rightCode = right.value
 	
-		val logicName = uniqueName(condition.logicalOp, condName, rightName)
+		val logicName = _namer.uniqueName(condition.logicalOp, condName, rightName)
 		val logicExpr = logic_op(condition.logicalOp, condName, rightName)
 	
 		val fullCode = '''
@@ -237,24 +596,24 @@ class TQLGenerator extends AbstractGenerator {
 	}
 	
 	
-	private def void collectRecursively(system.System ros_sys, List<system.System> result) {
+	private def void collectRecursively(System ros_sys, List<System> result) {
     	if (ros_sys === null || result.contains(ros_sys)) return;
     	result.add(ros_sys);
 
-	    for (system.Component comp : ros_sys.getComponents()) {
-	        if (comp instanceof system.SubSystem) {
+	    for (Component comp : ros_sys.getComponents()) {
+	        if (comp instanceof SubSystem) {
 	            collectRecursively(comp.getSystem(), result);
 	        }
 	    }
 	}
 	
-	private def List<system.System> collectAllSystems(ResolutionModel model) {
-    	val List<system.System> result = newArrayList
+	def List<System> collectAllSystems(ResolutionModel model) {
+    	val List<System> result = newArrayList
         collectRecursively(model.rossystem, result)
         return result       
     }
     
-    private def List<RosNode> rosNodesFromSystem(system.System ros_system) {
+    def List<RosNode> rosNodesFromSystem(System ros_system) {
     	val node_list = newArrayList
     	
     	for (component : ros_system.components)
@@ -267,111 +626,299 @@ class TQLGenerator extends AbstractGenerator {
     	
     	return node_list    	
     }
-   
+    
+    def String processSubNodes(List<RosNode> rosNodes)
+    {
+    	val Map<ros.Node, List<RosNode>> parenthood = newHashMap
+    	for (rosNode : rosNodes)
+    	{
+    		if(rosNode.parent !== null)
+    		{
+    			var children = parenthood.get(rosNode.parent)
+		        if (children === null) {
+		            children = newArrayList
+		            parenthood.put(rosNode.parent, children)
+		        }
+		        children.add(rosNode)
+    		}
+
+    	}
+    	'''
+    	«FOR family : parenthood.entrySet»
+    		(node: $«uniqueName(family.key)»,
+    		«FOR child : family.value SEPARATOR ", "» 
+    			subnode: $«uniqueName(child.from)»
+    		«ENDFOR»
+    			) isa subnode;
+    	«ENDFOR»
+    	'''
+    }
+    
+    def String generateArchitectureInsertQuery(ResolutionModel resolutionModel)
+    {
+		'''
+		insert
+		
+		«FOR rossys : collectAllSystems(resolutionModel)»
+			«val nodesList = rosNodesFromSystem(rossys)»
+			«FOR comp : nodesList»
+				«generateInsertQuery(comp)»
+			«ENDFOR»
+			«processSubNodes(nodesList)»
+			
+		«ENDFOR»
+		'''	      
+    	
+    }
+    
+    def getResolutionModel(TacticsModel t, Resource resource)
+    {
+    	val List<ResolutionModel> resolutionModels = newArrayList
+		
+		for (imp : t.imports) {
+			if(imp.importURI.endsWith('resolution'))
+			{
+				var uri = URI.createURI(imp.importURI)
+				if (uri.isRelative()) {
+					
+            		uri = uri.resolve(resource.getURI());
+        		}
+        		val imported = resource.resourceSet.getResource(uri, true);
+        		if (imported === null || imported.getContents().isEmpty()) 
+        		{
+        			println("ResolutionModel import fail")
+        		}
+        			
+        		
+        		val root = imported.getContents().get(0);
+	            if (root instanceof ResolutionModel) {
+	               	resolutionModels.add(root)
+				}
+				
+			}
+			
+		}
+		
+		return resolutionModels;	
+    	
+    }
+     def getContextModel(TacticsModel t, Resource resource)
+    {
+    	val List<ContextModel> contextModels = newArrayList
+		
+		for (imp : t.imports) {
+			if(imp.importURI.endsWith('context'))
+			{
+				var uri = URI.createURI(imp.importURI)
+				if (uri.isRelative()) {
+					
+            		uri = uri.resolve(resource.getURI());
+        		}
+        		val imported = resource.resourceSet.getResource(uri, true);
+        		if (imported === null || imported.getContents().isEmpty()) 
+        		{
+        			println("ContextModel import fail")
+        		}
+        			
+        		
+        		val root = imported.getContents().get(0);
+	            if (root instanceof ContextModel) {
+	               	contextModels.add(root)
+				}
+				
+			}
+			
+		}
+		
+		return contextModels;	 	
+    }
+    
+     def getContextModelNode(ContextModel c, Resource resource)
+    {
+		
+		val imp = c.context_model_node.node_import
+		if(imp.importURI.endsWith('ros2'))
+		{
+			var uri = URI.createURI(imp.importURI)
+			if (uri.isRelative()) {
+				
+        		uri = uri.resolve(resource.getURI());
+    		}
+    		val imported = resource.resourceSet.getResource(uri, true);
+    		if (imported === null || imported.getContents().isEmpty()) 
+    		{
+    			println("ContextModel node Import Fail")
+    		}
+    			
+    		
+    		val root = imported.getContents().get(0);
+
+			if (root instanceof ros.AmentPackage) {
+				return root.getArtifact().get(0).getNode()          
+			}
+			
+		} 	
+    }
+       
 	private def compile(TacticsModel t)
 	{
-	 	println("FOO")
-	 	for (rossys : collectAllSystems(t.resolutionModel)) {
-		 	for (comp : rosNodesFromSystem(rossys)) {
-	 			println(generateInsertQuery(comp))
-		 		
-		 	}
-		}
-		println("BAR")
+//		println(generateFetchApplicableTactics(t.resolutionModel, "one", "two"))
+		
 		val tacticName = t.name
 		val lc_tacticName = t.name.toLowerCase	
 		
-		val resolutionLines = t.resolutionModel.resolutions
-	                      .map['''variant_resolution:$«uniqueName(it)»''']
-	                      .join(", ")
+		val List<ResolutionModel> resolutionModels = getResolutionModel(t, globalResource)
+		val List<ContextModel> contextModels = getContextModel(t, globalResource)
+//		println(generateArchitectureInsertQuery(resolutionModels.get(0)))
+//		println("--------")
+//		println(resolutionModels.size)    
+//		println("SZIEEE")
+//		println(contextModels.size)
+                  
 		
-		'''
-			insert
-			
-			$ta_«lc_tacticName» isa Tactic, has tactic_name "«tacticName»", has tactic_period «t.period»;
-			
-			«registerFeatures(gatherResolutionFeatures(t.resolutionModel))»
-			«registerMeasurements(t.adaptationRules)»
-			«registerNodes(t.resolutionModel)»
+		val x ='''			
+			$ta_«lc_tacticName» isa Tactic, has tactic_name "«tacticName»";
+			«FOR resolutionModel : resolutionModels»
+			«registerFeatures(gatherResolutionFeatures(resolutionModel))»	
+			«ENDFOR»
+			«FOR contextModel : contextModels»
+			«registerMeasurements(contextModel)»
+			«ENDFOR»
+«««			«registerNodes(t.resolutionModel)»
 			«FOR rule : t.adaptationRules»
 				«compileRule(rule,lc_tacticName)»
 			«ENDFOR»
-			«compileResolution(t.resolutionModel)»
-			$res_«t.resolutionModel.name» (tactic: $ta_«lc_tacticName», «resolutionLines») isa resolution_model, 
-			    has resolution_model_name "«t.resolutionModel.name»", has ros_system "«t.resolutionModel.rossystem.name»";
-		'''
-	}
-	
-	private def measurementFromRuleBody(RuleBody rule_body)
-	{
-		if (rule_body instanceof ConditionAction)
-		{
-			val cond_acc = rule_body as ConditionAction
-			val rule_conditions = collectSecondTerms(cond_acc.condition)
-			for (cond : rule_conditions) {
-				uniqueMeasurements.add(cond.measurement)
-			}
-		}
-	}
-	
-	private def measurementTQLDeclaration(String measurement)
-	{
-		'''
-		$t_measured_«measurement» isa Term, has term_name "t_measured_«measurement»";
-		'''
-	}
-	
-	private def registerMeasurements(List<AdaptationRule> adap_rules)
-	{
-		for (rule : adap_rules) {
-			if (rule instanceof AtomicRule)
-			{
-				measurementFromRuleBody(rule.ruleBody)
-			}
-			else if(rule instanceof RuleSet)
-			{
-				for (set_rule : rule.atomicRules)
-				{
-					measurementFromRuleBody(set_rule.ruleBody)
-				}
-			}
-		}
-		'''
-			«FOR mes : uniqueMeasurements»
-				«measurementTQLDeclaration(mes)»
+			«FOR resolutionModel : resolutionModels»
+				«compileResolution(resolutionModel)»				
+				$res_«resolutionModel.name» (tactic: $ta_«lc_tacticName»,
+				 «FOR resolution : resolutionModel.resolutions SEPARATOR ", "»
+				«IF !resolution.selection_actions.empty && !resolution.deselection_actions.empty»
+				variant_resolution:$«_namer.uniqueName(resolution)»_act, variant_resolution:$«_namer.uniqueName(resolution)»_deact
+				«ELSE»
+				«IF !resolution.selection_actions.empty»
+				variant_resolution:$«_namer.uniqueName(resolution)»_act
+				«ELSE»
+				«IF !resolution.deselection_actions.empty»
+				variant_resolution:$«_namer.uniqueName(resolution)»_deact
+				«ENDIF»
+				«ENDIF»
+				«ENDIF»
+				 «ENDFOR») 
+				 isa resolution_model, 
+				    has resolution_model_name "«resolutionModel.name»", has ros_system "«resolutionModel.rossystem.name»";
 			«ENDFOR»
+
+
+		'''
+		
+//		println(generateFetchQuery(t))
+		
+		return x
+	}
+	
+	
+//	private def measurementFromRuleBody(RuleBody rule_body)
+//	{
+//		if (rule_body instanceof ConditionAction)
+//		{
+//			val cond_acc = rule_body as ConditionAction
+//			val rule_conditions = collectSecondTerms(cond_acc.condition)
+//			for (cond : rule_conditions) {
+//				uniqueMeasurements.add(cond.measurement)
+//			}
+//		}
+//	}
+	
+//	private def measurementTQLDeclaration(String measurement)
+//	{
+//		'''
+//		$t_measured_«measurement» isa Measure, has measure_name "t_measured_«measurement»";
+//		'''
+//	}
+	
+//	private def registerMeasurements(List<AdaptationRule> adap_rules)
+//	{
+//		for (rule : adap_rules) {
+//			if (rule instanceof AtomicRule)
+//			{
+//				measurementFromRuleBody(rule.ruleBody)
+//			}
+//			else if(rule instanceof RuleSet)
+//			{
+//				for (set_rule : rule.atomicRules)
+//				{
+//					measurementFromRuleBody(set_rule.ruleBody)
+//				}
+//			}
+//		}
+//		'''
+//			«FOR mes : uniqueMeasurements»
+//				«measurementTQLDeclaration(mes.name)»
+//			«ENDFOR»
+//		'''
+//	}
+	
+	private def registerMeasurements(ContextModel contextModel)
+	{
+		val metaNode = getContextModelNode(contextModel,globalResource)
+		val nodeName = _namer.uniqueName(metaNode)
+		'''
+		«describeNode(metaNode,"")»
+    	«FOR publication : metaNode.publisher»
+		«val pubName = _namer.uniqueName(publication, nodeName)»
+		«var topicName = publication.name»
+		$«pubName» isa Publisher,
+		has interface_name "«topicName»",
+		has interface_type "«publication.message.fullname»";
+		«handleQoS(publication.qos, pubName)»
+		
+		(node: $«nodeName», publisher: $«pubName») isa has_topic;
+    	«ENDFOR»
+		«FOR contextVariable : contextModel.context_variables»
+			«val contextvarName = _namer.uniqueName(contextVariable)»
+			$«contextvarName» isa Measure, has measure_name "«contextVariable.name»";
+			
+			(measure: $«contextvarName», source: $«_namer.uniqueName(contextVariable.source, _namer.uniqueName(contextVariable.source.node))», output: $«_namer.uniqueName(contextVariable.processed_source,nodeName)») isa measurement_interface,
+				    «IF contextVariable.functionLibrary !== null»has measurement_function_lib '«contextVariable.functionLibrary»',«ENDIF»
+				    has measurement_function_name '«contextVariable.functionName»';
+«««				    has measurement_function_lib 'ros_monitors.laser_scan_functions',
+«««				    has measurement_function_args 'base_link';
+		«ENDFOR»
+
 		'''
 	}
 	
 
-	private def registerNodes(ResolutionModel res_model)
-	{
-		val unique_nodes = new HashSet<RosNode>()
-		for (resolution : res_model.resolutions) {
-			val all_reconfs = resolution.deselection_actions + resolution.selection_actions
-			for (reconf : all_reconfs)
-			{
-				unique_nodes.add(reconf.node)
-			}
-		}
-		'''
-			
-			# define ROSNodes
-			«FOR node_name : unique_nodes»
-				$«uniqueName(node_name)» isa ROSNode, has node_name "«node_name.name»";
-			«ENDFOR»
-		'''
-	}
 	
-	private def void collectAllFeatures(Feature feature, List<Feature> allFeatures) {
-	    if(feature !== null)
-	    {
-		    allFeatures.add(feature);
-		   	for (Feature child : feature.getChildren()) {
-		            collectAllFeatures(child, allFeatures);
-		    }
-		}
-	}
+
+//	private def registerNodes(ResolutionModel res_model)
+//	{
+//		val unique_nodes = new HashSet<RosNode>()
+//		for (resolution : res_model.resolutions) {
+//			val all_reconfs = resolution.deselection_actions + resolution.selection_actions
+//			for (reconf : all_reconfs)
+//			{
+//				unique_nodes.add(reconf.node)
+//			}
+//		}
+//		'''
+//			
+//			# define ROSNodes
+//			«FOR node_name : unique_nodes»
+//				$«_namer.uniqueName(node_name)» isa ROSNode, has node_name "«node_name.name»";
+//			«ENDFOR»
+//		'''
+//	}
+//	
+//	private def void collectAllFeatures(Feature feature, List<Feature> allFeatures) {
+//	    if(feature !== null)
+//	    {
+//		    allFeatures.add(feature);
+//		   	for (Feature child : feature.getChildren()) {
+//		            collectAllFeatures(child, allFeatures);
+//		    }
+//		}
+//	}
 	
 	private def registerFeatures(List<Feature> f_list)
 	{		
@@ -379,20 +926,20 @@ class TQLGenerator extends AbstractGenerator {
 		
 		# define Feature Model
 		«FOR feature : f_list»
-			$«uniqueName(feature)» isa Feature, has feature_name "«feature.name»", has feature_mandatory «feature.mandatory», has feature_selected «feature.selected»;
+			$«_namer.uniqueName(feature)» isa Feature, has feature_name "«feature.name»", has mandatory «feature.mandatory», has selected «feature.selected»;
 		«ENDFOR»
 		«FOR feature : f_list»
 			«IF feature instanceof Alternative»
-				$«uniqueName(feature)» (parent: $«uniqueName(feature)»,
+				$«_namer.uniqueName(feature)» (parent: $«_namer.uniqueName(feature)»,
 					«FOR child_feature : feature.children SEPARATOR ", "»
-						child: $«uniqueName(child_feature)»
+						child: $«_namer.uniqueName(child_feature)»
 					«ENDFOR»
 				) isa alternative;	
 			«ENDIF»
 			«IF feature instanceof OrGroup»
-				$«uniqueName(feature)» (parent: $«uniqueName(feature)», 
+				$«_namer.uniqueName(feature)» (parent: $«_namer.uniqueName(feature)», 
 					«FOR child_feature : feature.children SEPARATOR ", "»
-						child: $«uniqueName(child_feature)»
+						child: $«_namer.uniqueName(child_feature)»
 					«ENDFOR»
 				) isa or_group;	
 			«ENDIF»
@@ -404,7 +951,7 @@ class TQLGenerator extends AbstractGenerator {
 	
 	private def compileResolution(ResolutionModel resModel)
 	{
-	 '''
+	 	 '''
 			«FOR resolution : resModel.resolutions»
 				«compileSingleResolution(resolution)»
 			«ENDFOR»
@@ -413,28 +960,25 @@ class TQLGenerator extends AbstractGenerator {
 	
 	private def compileSingleResolution(Resolution resolution)
 	{
-		//TODO: make multiple selections work, as well as de-selections.
-//		for (element : resolution.selection_actions) {
-//			if(element instanceof SetParam)
-//			{
-//				println(element.param)
-//				println(element.param.value)
-//			}
-//			
-//		}
-//		val acc_one_temp = resolution.selection_actions.get(0)
-//		println("LENGNNTTT " + resolution.selection_actions.size)
 		val reconfiguration_actions = resolution.selection_actions + resolution.deselection_actions
 		'''
-			«FOR sel_acc : reconfiguration_actions»
-			«compileReconfiguration(sel_acc)»	
+			«FOR acc : reconfiguration_actions»
+			«compileReconfiguration(acc)»	
 			«ENDFOR»
-			
-			$«uniqueName(resolution)» (
-				«FOR selec_action : reconfiguration_actions SEPARATOR ", "»
-					resolution_action: $«uniqueName(selec_action)»
+			«IF !resolution.selection_actions.empty»
+			$«_namer.uniqueName(resolution)»_act (
+				«FOR selec_action : resolution.selection_actions SEPARATOR ", "»
+					resolution_action: $«_namer.uniqueName(selec_action)»
 				«ENDFOR»
-			, variant: $«uniqueName(resolution.feature)») isa variant_resolution;
+			, variant: $«_namer.uniqueName(resolution.feature)») isa variant_activation;
+			«ENDIF»
+			«IF !resolution.deselection_actions.empty»
+			$«_namer.uniqueName(resolution)»_deact (
+				«FOR deselec_action : resolution.deselection_actions SEPARATOR ", "»
+					resolution_action: $«_namer.uniqueName(deselec_action)»
+				«ENDFOR»
+			, variant: $«_namer.uniqueName(resolution.feature)») isa variant_deactivation;
+			«ENDIF»
 		'''
 	}
 
@@ -461,43 +1005,56 @@ class TQLGenerator extends AbstractGenerator {
 //	
 	
 	def describeParameter(String name, ParameterValue the_value) {
-		val paramValNiceName = NiceNameParamValueType(the_value)
+		val paramValNiceName = _namer.NiceNameParamValueType(the_value)
 		if(paramValNiceName == "string")
 			'''
-			$«name» isa «NiceNameParamValueClass(the_value)», has «NiceNameParamValueType(the_value)»_value "«ParamValueToString(the_value)»";	
+			$«name» isa «_namer.SchemaValueFromParam(the_value)», has «_namer.NiceNameParamValueType(the_value)»_value "«ParamValueToString(the_value)»";	
 			'''
 		else
 		{
 			'''
-			$«name» isa «NiceNameParamValueClass(the_value)», has «NiceNameParamValueType(the_value)»_value «ParamValueToString(the_value)»;	
+			$«name» isa «_namer.SchemaValueFromParam(the_value)», has «_namer.NiceNameParamValueType(the_value)»_value «ParamValueToString(the_value)»;	
 			'''
 			
 		}
 	}
-	def Pair<CharSequence, String> ParamValueToValueEntity(ParameterValue the_value, String parent_name) {
-		
+	
+	def describeParameter(String name, Parameter param) {
+		if(param.value !== null)
+		{
+			describeParameter(name, param.value)
+		}
+		val the_type = param.type
+		//TODO: Consider whether I should restore the 'has' and put an empty value.
+		'''
+		$«name» isa «_namer.SchemaValueFromParam(the_type)»;	
+		'''
+
+	}
+	def Pair<CharSequence, String> ParamValueToValueEntity(Parameter the_parameter, String parent_name) {
+		val the_value = the_parameter.value
 		if(the_value instanceof ParameterSequence)
 		{
 			val result = newArrayList
-			val parseq_name = uniqueName(the_value, parent_name)
+			val parseq_name = _namer.uniqueName(the_value, parent_name)
 			val body = '''
-					$«parseq_name» isa ParameterValueArray;
+					$«parseq_name» isa ValueArray;
 					«FOR param_value : the_value.value.indexed»
-						«describeParameter(uniqueName(param_value.value, parent_name), param_value.value)»
-						$«parseq_name»_elem_«param_value.key» (parameter_array: $«parseq_name», parameter_value: $«uniqueName(param_value.value, parent_name)») isa at_index, has parameter_value_index «param_value.key»;
+						«describeParameter(_namer.uniqueName(param_value.value, parent_name), param_value.value)»
+						$«parseq_name»_elem_«param_value.key» (array: $«parseq_name», array_value: $«_namer.uniqueName(param_value.value, parent_name)») isa at_index, has index «param_value.key»;
 					«ENDFOR»
 					
 				'''
 			// Insert end thing for the actual array :-)
 			for (param_value : the_value.value) {
-				result.add(uniqueName(param_value, parent_name))
+				result.add(_namer.uniqueName(param_value, parent_name))
 			}
 			return body -> parseq_name
 		} 
 		else
 		{
-			val name = uniqueName(the_value, parent_name)
-			val single = describeParameter(name, the_value)
+			val name = _namer.uniqueName(the_value, parent_name)
+			val single = describeParameter(name, the_parameter)
 			return single -> name
 		}
 	}
@@ -509,16 +1066,17 @@ class TQLGenerator extends AbstractGenerator {
 //		println("A")
 //		println(reconfig)
 //		println("B")
-		val reconf_name = uniqueName(reconfig)
-		val rosnode_name = uniqueName(reconfig.node)
+		val reconf_name = _namer.uniqueName(reconfig)
+		//TODO: Assess whether it really is the best thing to use .from here (it makes it match the initial arch name though)
+		val rosnode_name = _namer.uniqueName(reconfig.node.from)
 		if(reconfig instanceof SetParam)
 		{
 			val param_val = reconfig.value
 			val param_name = reconfig.param.name
-			val named_set_param = uniqueName(reconfig)
+			val named_set_param = _namer.uniqueName(reconfig)
 			val param_str = ParamValueToString(param_val)
 			
-			val value_and_names = ParamValueToValueEntity(reconfig.value, uniqueName(reconfig.param))
+			val value_and_names = ParamValueToValueEntity(reconfig.param, _namer.uniqueName(reconfig.param))
 			val x = value_and_names.key
 			val name = value_and_names.value
 			
@@ -527,7 +1085,7 @@ class TQLGenerator extends AbstractGenerator {
 			
 			'''
 				«x»
-				$«reconf_name» (node: $«rosnode_name», parameter: $«uniqueName(reconfig.param)», parameter_value: $«name») isa set_nodes_parameters;
+				$«reconf_name» (node: $«rosnode_name», parameter: $«_namer.uniqueName(reconfig.param)», parameter_value: $«name») isa set_nodes_parameters;
 			'''
 			//sp_max_speed_low isa SetParameter, has node_name "velocity_smoother", has parameter-value "ros.impl.ParameterSequenceImpl@6d63db68", has parameter-type "ros.impl.ParameterArrayTypeImpl@54206577";
 		}
@@ -540,7 +1098,7 @@ class TQLGenerator extends AbstractGenerator {
 		}
 		else
 		{
-			System.out.println("SOMETHING WRONG RECONFIG.!")
+			java.lang.System.out.println("SOMETHING WRONG RECONFIG.!")
 		}
 		
 		
@@ -562,9 +1120,22 @@ class TQLGenerator extends AbstractGenerator {
 //			val mes = con.condition.measurement
 //		 	con.condition.secondTerm.measurement
 		//TODO: Below, .get(0) should of course be replaced with parsing all the actions.
+		//_namer.uniqueName(c.ruleBody.atomicAction.actions.get(0).variant.feature)
 		'''
 					«ant»
-					$tactic_rule_«lc_ruleName» (tactic:$ta_«lc_tacticName», antecedent:$«ant_name», consequent:$«uniqueName(c.ruleBody.atomicAction.actions.get(0).variant)» ) isa tactic_rule, has rule_name "«ruleName»";
+					«val someName = lc_ruleName + "fa"»
+					$«someName» (
+					«FOR action : c.ruleBody.atomicAction.actions SEPARATOR ", "»
+					«IF action instanceof AtomicActionSelectFeature»
+					activation: $«_namer.uniqueName(action.variant.feature)»	
+					«ENDIF»
+					«IF action instanceof AtomicActionDeselectFeature»
+					deactivation: $«_namer.uniqueName(action.variant.feature)»	
+					«ENDIF»
+					«ENDFOR»
+					) isa feature_adaptation;
+«««					$tactic_rule_«lc_ruleName» (tactic:$ta_«lc_tacticName», antecedent:$«ant_name», consequent:$«_namer.uniqueName(c.ruleBody.atomicAction.actions.get(0).variant.feature)» ) isa tactic_rule, has rule_name "«ruleName»";
+					$tactic_rule_«lc_ruleName» (tactic:$ta_«lc_tacticName», antecedent:$«ant_name», consequent:$«someName» ) isa tactic_rule, has rule_name "«ruleName»";
 				'''
 		}
 		

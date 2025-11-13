@@ -19,18 +19,21 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.xtext.EcoreUtil2;
+import org.eclipse.xtext.naming.QualifiedName;
 import org.eclipse.xtext.scoping.IScope;
 import org.eclipse.xtext.scoping.Scopes;
 import org.eclipse.xtext.scoping.impl.SimpleScope;
-import org.eclipse.xtext.resource.IEObjectDescription;
-import org.eclipse.xtext.resource.EObjectDescription;
-import org.eclipse.xtext.naming.QualifiedName;
+
+import com.google.common.base.Function;
+
 import eu.coresense.context.contextModel.ContextModel;
 import eu.coresense.context.contextModel.ContextModelPackage;
 import eu.coresense.context.contextModel.Import;
-import pythonfunctions.PythonModel.PythonFile;
-import pythonfunctions.PythonModel.PythonFunction;
-import ros.TopicSpec;
+import eu.coresense.context.contextModel.QualifiedActionServerRef;
+import eu.coresense.context.contextModel.QualifiedPublisherRef;
+import eu.coresense.context.contextModel.QualifiedServiceServerRef;
+import ros.Artifact;
+import ros.Publisher;
 
 
 
@@ -43,83 +46,181 @@ import ros.TopicSpec;
 public class ContextModelScopeProvider extends AbstractContextModelScopeProvider {
 	@Override
 	public IScope getScope(EObject context, EReference reference) {
-	    if (reference == ContextModelPackage.Literals.DATA_SOURCE__TOPIC) {
-	    	ContextModel model = EcoreUtil2.getContainerOfType(context, ContextModel.class);
-	    	
-	    	List<ros.Package> ros_defs = collectAllRosDefinitions(model, context.eResource());
-	    	
-	    	List<ros.TopicSpec> allTopics = new ArrayList<TopicSpec>();
-	    	for (ros.Package ros_def : ros_defs)
-	    	{
-	    		for(ros.SpecBase spec_base : ros_def.getSpec())
-	    		{
-	    			if(spec_base instanceof ros.TopicSpec)
-	    			{
-	    				allTopics.add((ros.TopicSpec)spec_base);
-	    			}
-	    		}
-	    	}
-	    	return Scopes.scopeFor(allTopics);
-	    }
-	    if (reference == ContextModelPackage.Literals.DATA_SOURCE__SERVICE) {
-	    	ContextModel model = EcoreUtil2.getContainerOfType(context, ContextModel.class);
-	    	
-	    	List<ros.Package> ros_defs = collectAllRosDefinitions(model, context.eResource());
-	    	
-	    	List<ros.ServiceSpec> allServices = new ArrayList<ros.ServiceSpec>();
-	    	for (ros.Package ros_def : ros_defs)
-	    	{
-	    		for(ros.SpecBase spec_base : ros_def.getSpec())
-	    		{
-	    			if(spec_base instanceof ros.ServiceSpec)
-	    			{
-	    				allServices.add((ros.ServiceSpec)spec_base);
-	    			}
-	    		}
-	    	}
-	    	return Scopes.scopeFor(allServices);
-	    }
-	    if (reference == ContextModelPackage.Literals.DATA_SOURCE__ACTION) {
-	    	ContextModel model = EcoreUtil2.getContainerOfType(context, ContextModel.class);
-	    	
-	    	List<ros.Package> ros_defs = collectAllRosDefinitions(model, context.eResource());
-	    	
-	    	List<ros.ActionSpec> allActions = new ArrayList<ros.ActionSpec>();
-	    	for (ros.Package ros_def : ros_defs)
-	    	{
-	    		for(ros.SpecBase spec_base : ros_def.getSpec())
-	    		{
-	    			if(spec_base instanceof ros.ActionSpec)
-	    			{
-	    				allActions.add((ros.ActionSpec)spec_base);
-	    			}
-	    		}
-	    	}
-	    	return Scopes.scopeFor(allActions);
-	    }
-        if (reference == ContextModelPackage.Literals.CONTEXT_VAR__FUNCTION) {
-        }
-//	    if (reference == ContextModelPackage.Literals.CONTEXT_VAR__FUNCTION)
-//	    {
+//	    if (reference == ContextModelPackage.Literals.DATA_SOURCE__PUBLISHER) {
 //	    	ContextModel model = EcoreUtil2.getContainerOfType(context, ContextModel.class);
-//	    	List<PythonFile> py_files = collectAllPythonFiles(model, context.eResource());
 //	    	
-//	    	List<PythonFunction> py_funcs = new ArrayList<PythonFunction>();
+//	    	List<system.System> sys_defs = collectAllSystems(model, context.eResource());
 //	    	
-//	    	for(PythonFile py_file : py_files)
+//	    	List<ros.Publisher> allPublishers = new ArrayList<ros.Publisher>();
+//	    	for (system.System sys_def : sys_defs)
 //	    	{
-//	    		py_funcs.addAll(py_file.getFunctions());
+//	    		for(system.Component comp : sys_def.getComponents())
+//	    		{
+//	    			if(comp instanceof system.RosNode)
+//	    			{
+//	    				system.RosNode node = (system.RosNode) comp;
+//	    				allPublishers.addAll(node.getFrom().getPublisher());
+//	    			}
+//	    		}
 //	    	}
-//	    	
-//	    	for(PythonFunction py_func : py_funcs)
-//	    	{
-//	    		System.out.println("Py function name found: " + py_func.getName());
-//	    	}
-//	    	return Scopes.scopeFor(py_funcs);
+//	    	return Scopes.scopeFor(allPublishers);
 //	    }
+//	    if (reference == ContextModelPackage.Literals.DATA_SOURCE__SERVICE_SERVER) {
+//	    	ContextModel model = EcoreUtil2.getContainerOfType(context, ContextModel.class);
+//	    	
+//	    	List<system.System> sys_defs = collectAllSystems(model, context.eResource());
+//	    	
+//	    	List<ros.ServiceServer> allServiceServer = new ArrayList<ros.ServiceServer>();
+//	    	for (system.System sys_def : sys_defs)
+//	    	{
+//	    		for(system.Component comp : sys_def.getComponents())
+//	    		{
+//	    			if(comp instanceof system.RosNode)
+//	    			{
+//	    				system.RosNode node = (system.RosNode) comp;
+//	    				allServiceServer.addAll(node.getFrom().getServiceserver());
+//	    			}
+//	    		}
+//	    	}
+//	    	return Scopes.scopeFor(allServiceServer);
+//	    }
+//	    if (reference == ContextModelPackage.Literals.DATA_SOURCE__ACTION_SERVER) {
+//	    	ContextModel model = EcoreUtil2.getContainerOfType(context, ContextModel.class);
+//	    	
+//	    	List<system.System> sys_defs = collectAllSystems(model, context.eResource());
+//	    	
+//	    	List<ros.ActionServer> allActionServer = new ArrayList<ros.ActionServer>();
+//	    	for (system.System sys_def : sys_defs)
+//	    	{
+//	    		for(system.Component comp : sys_def.getComponents())
+//	    		{
+//	    			if(comp instanceof system.RosNode)
+//	    			{
+//	    				system.RosNode node = (system.RosNode) comp;
+//	    				allActionServer.addAll(node.getFrom().getActionserver());
+//	    			}
+//	    		}
+//	    	}
+//	    	return Scopes.scopeFor(allActionServer);
+//	    }
+	    if(reference == ContextModelPackage.Literals.CONTEXT_VAR__PROCESSED_SOURCE)
+	    {
+    		ContextModel model = EcoreUtil2.getContainerOfType(context, ContextModel.class);    		
+	    	return Scopes.scopeFor(collectContextPublishers(model, context.eResource()));
+	    }
+	    if(reference == ContextModelPackage.Literals.DATA_SOURCE__NODE)
+	    {
+	    	ContextModel model = EcoreUtil2.getContainerOfType(context, ContextModel.class);
+
+	    	return Scopes.scopeFor(allNodes(model,context));
+	    }
+	    if(reference == ContextModelPackage.Literals.QUALIFIED_ACTION_SERVER_REF__ACTION_SERVER)
+	    {
+	    	QualifiedActionServerRef qref = (QualifiedActionServerRef) context;
+	        ros.Node node = qref.getNode();
+	        if (node != null && node.getActionserver().size() != 0) {
+	            // scope over all features in the model
+	            return Scopes.scopeFor(node.getActionserver());
+	        }
+	        return IScope.NULLSCOPE;
+	    }
+	    if(reference == ContextModelPackage.Literals.QUALIFIED_PUBLISHER_REF__PUBLISHER)
+	    {
+	    	QualifiedPublisherRef qref = (QualifiedPublisherRef) context;
+	        ros.Node node = qref.getNode();
+	        
+    		for (var x : node.getPublisher()) {
+    			System.out.println("Publisher name!!");
+    			System.out.println(x.getName());
+			}
+	        if (node != null && node.getPublisher().size() != 0) {
+	            // scope over all features in the model
+//	        	List<Publisher> publishers = node.getPublisher();
+//	            IScope scope = IScope.NULLSCOPE;
+//	            // Convert List to array
+//	            final Publisher[] publisherArray = publishers.toArray(new Publisher[0]);
+//
+//	            // Implement Function interface manually to return QualifiedName
+//	            return Scopes.scopeFor(publisherArray, new Function<EObject, QualifiedName>() {
+//	                @Override
+//	                public QualifiedName apply(EObject input) {
+//	                    Publisher p = (Publisher) input;
+//	                    return QualifiedName.create(p.getName()); // keep '/' literal
+//	                }
+//	            });
+//	            return scope;
+	        }
+	        return IScope.NULLSCOPE;
+	    }
+	    if(reference == ContextModelPackage.Literals.QUALIFIED_SERVICE_SERVER_REF__SERVICE_SERVER)
+	    {
+	    	QualifiedServiceServerRef qref = (QualifiedServiceServerRef) context;
+	        ros.Node node = qref.getNode();
+	        if (node != null && node.getServiceserver().size() != 0) {
+	            // scope over all features in the model
+	            return Scopes.scopeFor(node.getServiceserver());
+	        }
+	        return IScope.NULLSCOPE;
+	    }
+
+
+
 	    	
 	    return super.getScope(context, reference); 
 	}
+	
+	private List<ros.Node> allNodes(ContextModel model, EObject context)
+	{
+    	
+    	List<system.System> sys_defs = collectAllSystems(model, context.eResource());
+    	
+    	List<ros.Node> allNodes = new ArrayList<ros.Node>();
+    	for (system.System sys_def : sys_defs)
+    	{
+    		for(system.Component comp : sys_def.getComponents())
+    		{
+    			if(comp instanceof system.RosNode)
+    			{
+    				system.RosNode node = (system.RosNode) comp;
+    				allNodes.add(node.getFrom());
+    			}
+    		}
+    	}
+    	return allNodes;
+	}
+	
+	private List<ros.Publisher> collectContextPublishers(ContextModel model, Resource currentResource) {
+	    List<ros.Publisher> result = new ArrayList<>();
+	    ResourceSet resourceSet = currentResource.getResourceSet();
+        String uriStr = model.getContext_model_node().getNode_import().getImportURI();
+        if (uriStr == null || !uriStr.endsWith(".ros2")) return new ArrayList<ros.Publisher>();
+
+        URI uri = URI.createURI(uriStr);
+        if (uri.isRelative()) {
+            uri = uri.resolve(currentResource.getURI());
+        }
+
+        try {
+            Resource imported = resourceSet.getResource(uri, true);
+            if (imported == null || imported.getContents().isEmpty()) return new ArrayList<ros.Publisher>();
+
+            EObject root = imported.getContents().get(0);
+            if (root instanceof ros.AmentPackage pkg) {
+                for(ros.Artifact art : pkg.getArtifact())
+                {
+                	result.addAll(art.getNode().getPublisher());
+                }
+            }
+        } catch (Exception e) {
+            System.err.println("Failed to load context model .ros2 import: " + uriStr);
+            e.printStackTrace();
+        }
+    
+
+	    return result;
+	}
+	
+	
 		
 	private List<ros.Package> collectAllRosDefinitions(ContextModel model, Resource currentResource) {
 	    List<ros.Package> result = new ArrayList<>();
@@ -151,6 +252,47 @@ public class ContextModelScopeProvider extends AbstractContextModelScopeProvider
 	    }
 
 	    return result;
+	}
+	//TODO: This is duplicated code with the resolutionModel.
+	private List<system.System> collectAllSystems(ContextModel model, Resource currentResource) {
+	    List<system.System> result = new ArrayList<>();
+	    ResourceSet resourceSet = currentResource.getResourceSet();
+
+	    for (Import imp : model.getImports()) {
+	        String uriStr = imp.getImportURI();
+	        if (uriStr == null || !uriStr.endsWith(".rossystem")) continue;
+
+	        URI uri = URI.createURI(uriStr);
+	        if (uri.isRelative()) {
+	            uri = uri.resolve(currentResource.getURI());
+	        }
+
+	        try {
+	            Resource imported = resourceSet.getResource(uri, true);
+	            if (imported == null || imported.getContents().isEmpty()) continue;
+
+	            EObject root = imported.getContents().get(0);
+	            if (root instanceof system.System rossystem) {
+	                collectRecursively(rossystem, result);
+	            }
+	        } catch (Exception e) {
+	            System.err.println("Failed to load .rossystem import: " + uriStr);
+	            e.printStackTrace();
+	        }
+	    }
+
+	    return result;
+	}
+
+	private void collectRecursively(system.System system, List<system.System> result) {
+	    if (system == null || result.contains(system)) return;
+	    result.add(system);
+
+	    for (system.Component comp : system.getComponents()) {
+	        if (comp instanceof system.SubSystem sub) {
+	            collectRecursively(sub.getSystem(), result);
+	        }
+	    }
 	}
 	
 }

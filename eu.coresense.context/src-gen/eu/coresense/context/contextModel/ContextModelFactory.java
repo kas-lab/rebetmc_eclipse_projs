@@ -51,6 +51,33 @@ public interface ContextModelFactory extends EFactory
   DataSource createDataSource();
 
   /**
+   * Returns a new object of class '<em>Qualified Publisher Ref</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Qualified Publisher Ref</em>'.
+   * @generated
+   */
+  QualifiedPublisherRef createQualifiedPublisherRef();
+
+  /**
+   * Returns a new object of class '<em>Qualified Service Server Ref</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Qualified Service Server Ref</em>'.
+   * @generated
+   */
+  QualifiedServiceServerRef createQualifiedServiceServerRef();
+
+  /**
+   * Returns a new object of class '<em>Qualified Action Server Ref</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Qualified Action Server Ref</em>'.
+   * @generated
+   */
+  QualifiedActionServerRef createQualifiedActionServerRef();
+
+  /**
    * Returns a new object of class '<em>Import</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -58,6 +85,15 @@ public interface ContextModelFactory extends EFactory
    * @generated
    */
   Import createImport();
+
+  /**
+   * Returns a new object of class '<em>Node</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Node</em>'.
+   * @generated
+   */
+  ContextModelNode createContextModelNode();
 
   /**
    * Returns the package supported by this factory.

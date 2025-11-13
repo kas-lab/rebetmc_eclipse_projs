@@ -122,33 +122,12 @@ ruleTacticsModel returns [EObject current=null]
 				}
 			)
 		)*
-		otherlv_4='resolution_model'
-		{
-			newLeafNode(otherlv_4, grammarAccess.getTacticsModelAccess().getResolution_modelKeyword_4());
-		}
 		(
 			(
 				{
-					if ($current==null) {
-						$current = createModelElement(grammarAccess.getTacticsModelRule());
-					}
+					newCompositeNode(grammarAccess.getTacticsModelAccess().getAdaptationRulesAdaptationRuleParserRuleCall_4_0());
 				}
-				otherlv_5=RULE_ID
-				{
-					newLeafNode(otherlv_5, grammarAccess.getTacticsModelAccess().getResolutionModelResolutionModelCrossReference_5_0());
-				}
-			)
-		)
-		otherlv_6=';'
-		{
-			newLeafNode(otherlv_6, grammarAccess.getTacticsModelAccess().getSemicolonKeyword_6());
-		}
-		(
-			(
-				{
-					newCompositeNode(grammarAccess.getTacticsModelAccess().getAdaptationRulesAdaptationRuleParserRuleCall_7_0());
-				}
-				lv_adaptationRules_7_0=ruleAdaptationRule
+				lv_adaptationRules_4_0=ruleAdaptationRule
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getTacticsModelRule());
@@ -156,7 +135,7 @@ ruleTacticsModel returns [EObject current=null]
 					add(
 						$current,
 						"adaptationRules",
-						lv_adaptationRules_7_0,
+						lv_adaptationRules_4_0,
 						"eu.coresense.adaptation.Tactics.AdaptationRule");
 					afterParserOrEnumRuleCall();
 				}

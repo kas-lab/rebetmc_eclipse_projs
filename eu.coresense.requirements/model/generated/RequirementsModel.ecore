@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="requirementsModel" nsURI="http://www.coresense.eu/requirements/RequirementsModel"
+    nsPrefix="requirementsModel">
+  <eClassifiers xsi:type="ecore:EClass" name="RequirementsModel">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="requirements" upperBound="-1"
+        eType="#//Requirement" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Requirement">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="qa" eType="#//QualityAttribute"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="natural" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="rule" eType="#//Statement"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="QualityAttribute">
+    <eLiterals name="FUNCTIONAL" literal="Functional suitability"/>
+    <eLiterals name="PERFORMANCE" value="1" literal="Performance efficiency"/>
+    <eLiterals name="COMPATIBILITY" value="2" literal="Compatibility"/>
+    <eLiterals name="INTERACTION" value="3" literal="Interaction capability"/>
+    <eLiterals name="RELIABILITY" value="4" literal="Reliability"/>
+    <eLiterals name="SECURITY" value="5" literal="Security"/>
+    <eLiterals name="MAINTAINABILITY" value="6" literal="Maintainability"/>
+    <eLiterals name="FLEXIBILITY" value="7" literal="Flexibility"/>
+    <eLiterals name="SAFETY" value="8" literal="Safety"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="MathOperator">
+    <eLiterals name="LESS" literal="&lt;"/>
+    <eLiterals name="GREATER" value="1" literal=">"/>
+    <eLiterals name="EQUAL" value="2" literal="=="/>
+    <eLiterals name="DIFFERENT" value="3" literal="&lt;>"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Condition" eSuperTypes="#//Proposition">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="measurement" eType="ecore:EClass platform:/resource/eu.coresense.context/model/generated/ContextModel.ecore#//ContextVar"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="operator" eType="#//MathOperator"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="value" eType="ecore:EClass platform:/resource/eu.coresense.common/model/common.ecore#//Literal"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="logicalOp" eType="#//LogicalOperator"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="secondTerm" eType="#//Condition"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="LogicalOperator">
+    <eLiterals name="AND" literal="&amp;&amp;"/>
+    <eLiterals name="OR" value="1" literal="||"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Proposition"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Statement" eSuperTypes="#//AtomicStatement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="quantifiableStatement"
+        eType="#//Quantifiable" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="statement" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EObject"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="first_statement" eType="#//Statement"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="second_statement" eType="#//Statement"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="event" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="t" eType="#//TimeInterval"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AsCloseFreq" eSuperTypes="#//Statement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="f" eType="#//Time" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AsCloseLit" eSuperTypes="#//Statement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="q" eType="ecore:EClass platform:/resource/eu.coresense.common/model/common.ecore#//Literal"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="comparator" eType="#//Quantifiable"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Quantifiable">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="var" eType="ecore:EClass platform:/resource/eu.coresense.context/model/generated/ContextModel.ecore#//ContextVar"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MayStatement" eSuperTypes="#//Statement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="statements" upperBound="-1"
+        eType="#//AtomicStatement" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AtomicStatement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="proposition" eType="#//Proposition"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TimeInterval">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="after" eType="#//Time"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="before" eType="#//Time"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Time">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+</ecore:EPackage>

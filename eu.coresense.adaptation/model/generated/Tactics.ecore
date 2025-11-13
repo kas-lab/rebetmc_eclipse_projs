@@ -6,7 +6,6 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="imports" upperBound="-1"
         eType="#//Import" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="resolutionModel" eType="ecore:EClass platform:/resource/eu.coresense.resolution/model/generated/ResolutionModel.ecore#//ResolutionModel"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="adaptationRules" upperBound="-1"
         eType="#//AdaptationRule" containment="true"/>
   </eClassifiers>
@@ -58,7 +57,7 @@
   <eClassifiers xsi:type="ecore:EClass" name="Condition">
     <eStructuralFeatures xsi:type="ecore:EReference" name="measurement" eType="ecore:EClass platform:/resource/eu.coresense.context/model/generated/ContextModel.ecore#//ContextVar"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="operator" eType="#//MathOperator"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="value" eType="#//Literal"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="value" eType="ecore:EClass platform:/resource/eu.coresense.common/model/common.ecore#//Literal"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="logicalOp" eType="#//LogicalOperator"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="secondTerm" eType="#//Condition"
@@ -79,18 +78,5 @@
   <eClassifiers xsi:type="ecore:EClass" name="QualifiedFeatureRef">
     <eStructuralFeatures xsi:type="ecore:EReference" name="model" eType="ecore:EClass platform:/resource/eu.coresense.resolution/model/generated/ResolutionModel.ecore#//ResolutionModel"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="feature" eType="ecore:EClass platform:/resource/fms.metamodel/model/BasicFMmetamodel.ecore#//Feature"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Literal"/>
-  <eClassifiers xsi:type="ecore:EClass" name="IntLiteral" eSuperTypes="#//Literal">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="DecimalLiteral" eSuperTypes="#//Literal">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBigDecimal"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="StringLiteral" eSuperTypes="#//Literal">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="BooleanLiteral" eSuperTypes="#//Literal">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
   </eClassifiers>
 </ecore:EPackage>

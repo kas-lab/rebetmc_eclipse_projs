@@ -3,6 +3,8 @@
  */
 package eu.coresense.adaptation.tactics;
 
+import eu.coresense.common.Literal;
+
 import eu.coresense.context.contextModel.ContextVar;
 
 import org.eclipse.emf.ecore.EObject;

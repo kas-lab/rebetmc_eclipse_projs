@@ -4,10 +4,11 @@
 package eu.coresense.adaptation.tactics.impl;
 
 import eu.coresense.adaptation.tactics.Condition;
-import eu.coresense.adaptation.tactics.Literal;
 import eu.coresense.adaptation.tactics.LogicalOperator;
 import eu.coresense.adaptation.tactics.MathOperator;
 import eu.coresense.adaptation.tactics.TacticsPackage;
+
+import eu.coresense.common.Literal;
 
 import eu.coresense.context.contextModel.ContextVar;
 

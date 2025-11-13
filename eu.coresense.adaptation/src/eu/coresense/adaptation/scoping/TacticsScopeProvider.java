@@ -6,8 +6,11 @@ package eu.coresense.adaptation.scoping;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.xtext.EcoreUtil2;
 import org.eclipse.xtext.scoping.IScope;
 import org.eclipse.xtext.scoping.Scopes;
@@ -32,11 +35,18 @@ public class TacticsScopeProvider extends AbstractTacticsScopeProvider {
 	    if (reference == TacticsPackage.Literals.ATOMIC_SIMPLE_ACTION__VARIANT) {
 	        TacticsModel model = EcoreUtil2.getContainerOfType(context, TacticsModel.class);
 	       
-	        if (model != null && model.getResolutionModel() != null) {
-	            //Gather all the leaves, you have access to getChildren() and isLeaf()
-	            List<Feature> resolutionFeatures = new ArrayList<>();
-	            collectResolutionFeatures(model.getResolutionModel() , resolutionFeatures);
-	            return Scopes.scopeFor(resolutionFeatures);
+	        if (model != null) {
+	        	List<ResolutionModel> res_models = getResolutionModel(model, context.eResource());
+	        	if(!res_models.isEmpty())
+	        	{
+		            //Gather all the leaves, you have access to getChildren() and isLeaf()
+		            List<Feature> resolutionFeatures = new ArrayList<>();
+		            for (ResolutionModel resolutionModel : res_models) {
+		            	collectResolutionFeatures(resolutionModel , resolutionFeatures);
+					}
+		            
+		            return Scopes.scopeFor(resolutionFeatures);
+	        	}
 	        }
 	    }
 	    if (reference == TacticsPackage.Literals.QUALIFIED_FEATURE_REF__FEATURE)
@@ -59,6 +69,38 @@ private void collectResolutionFeatures(ResolutionModel res_model, List<Feature> 
     {
     	features.add(res.getFeature());
     }
+}
+
+private List<ResolutionModel> getResolutionModel(TacticsModel model, Resource currentResource) {
+    List<ResolutionModel> result = new ArrayList<>();
+    ResourceSet resourceSet = currentResource.getResourceSet();
+
+    for (eu.coresense.adaptation.tactics.Import imp : model.getImports()) {
+        String uriStr = imp.getImportURI();
+        if (uriStr == null || !uriStr.endsWith(".resolution")) continue;
+        URI uri = URI.createURI(uriStr);
+        if (uri.isRelative()) {
+            uri = uri.resolve(currentResource.getURI());
+        }
+
+        try {
+            Resource imported = resourceSet.getResource(uri, true);
+            if (imported == null || imported.getContents().isEmpty()) continue;
+            EObject root = imported.getContents().get(0);
+            if (root instanceof ResolutionModel res_model) {
+            	result.add(res_model);
+            }
+            else
+            {
+            	System.out.println(root.getClass());
+            }
+        } catch (Exception e) {
+            System.err.println("Failed to load .resolution import: " + uriStr);
+            e.printStackTrace();
+        }
+    }
+
+    return result;
 }
 
 }

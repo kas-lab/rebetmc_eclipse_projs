@@ -8,8 +8,6 @@ import eu.coresense.adaptation.tactics.Import;
 import eu.coresense.adaptation.tactics.TacticsModel;
 import eu.coresense.adaptation.tactics.TacticsPackage;
 
-import eu.coresense.resolution.resolutionModel.ResolutionModel;
-
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -36,7 +34,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <ul>
  *   <li>{@link eu.coresense.adaptation.tactics.impl.TacticsModelImpl#getName <em>Name</em>}</li>
  *   <li>{@link eu.coresense.adaptation.tactics.impl.TacticsModelImpl#getImports <em>Imports</em>}</li>
- *   <li>{@link eu.coresense.adaptation.tactics.impl.TacticsModelImpl#getResolutionModel <em>Resolution Model</em>}</li>
  *   <li>{@link eu.coresense.adaptation.tactics.impl.TacticsModelImpl#getAdaptationRules <em>Adaptation Rules</em>}</li>
  * </ul>
  *
@@ -73,16 +70,6 @@ public class TacticsModelImpl extends MinimalEObjectImpl.Container implements Ta
    * @ordered
    */
   protected EList<Import> imports;
-
-  /**
-   * The cached value of the '{@link #getResolutionModel() <em>Resolution Model</em>}' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getResolutionModel()
-   * @generated
-   * @ordered
-   */
-  protected ResolutionModel resolutionModel;
 
   /**
    * The cached value of the '{@link #getAdaptationRules() <em>Adaptation Rules</em>}' containment reference list.
@@ -161,51 +148,6 @@ public class TacticsModelImpl extends MinimalEObjectImpl.Container implements Ta
    * @generated
    */
   @Override
-  public ResolutionModel getResolutionModel()
-  {
-    if (resolutionModel != null && resolutionModel.eIsProxy())
-    {
-      InternalEObject oldResolutionModel = (InternalEObject)resolutionModel;
-      resolutionModel = (ResolutionModel)eResolveProxy(oldResolutionModel);
-      if (resolutionModel != oldResolutionModel)
-      {
-        if (eNotificationRequired())
-          eNotify(new ENotificationImpl(this, Notification.RESOLVE, TacticsPackage.TACTICS_MODEL__RESOLUTION_MODEL, oldResolutionModel, resolutionModel));
-      }
-    }
-    return resolutionModel;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public ResolutionModel basicGetResolutionModel()
-  {
-    return resolutionModel;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public void setResolutionModel(ResolutionModel newResolutionModel)
-  {
-    ResolutionModel oldResolutionModel = resolutionModel;
-    resolutionModel = newResolutionModel;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, TacticsPackage.TACTICS_MODEL__RESOLUTION_MODEL, oldResolutionModel, resolutionModel));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
   public EList<AdaptationRule> getAdaptationRules()
   {
     if (adaptationRules == null)
@@ -247,9 +189,6 @@ public class TacticsModelImpl extends MinimalEObjectImpl.Container implements Ta
         return getName();
       case TacticsPackage.TACTICS_MODEL__IMPORTS:
         return getImports();
-      case TacticsPackage.TACTICS_MODEL__RESOLUTION_MODEL:
-        if (resolve) return getResolutionModel();
-        return basicGetResolutionModel();
       case TacticsPackage.TACTICS_MODEL__ADAPTATION_RULES:
         return getAdaptationRules();
     }
@@ -273,9 +212,6 @@ public class TacticsModelImpl extends MinimalEObjectImpl.Container implements Ta
       case TacticsPackage.TACTICS_MODEL__IMPORTS:
         getImports().clear();
         getImports().addAll((Collection<? extends Import>)newValue);
-        return;
-      case TacticsPackage.TACTICS_MODEL__RESOLUTION_MODEL:
-        setResolutionModel((ResolutionModel)newValue);
         return;
       case TacticsPackage.TACTICS_MODEL__ADAPTATION_RULES:
         getAdaptationRules().clear();
@@ -301,9 +237,6 @@ public class TacticsModelImpl extends MinimalEObjectImpl.Container implements Ta
       case TacticsPackage.TACTICS_MODEL__IMPORTS:
         getImports().clear();
         return;
-      case TacticsPackage.TACTICS_MODEL__RESOLUTION_MODEL:
-        setResolutionModel((ResolutionModel)null);
-        return;
       case TacticsPackage.TACTICS_MODEL__ADAPTATION_RULES:
         getAdaptationRules().clear();
         return;
@@ -325,8 +258,6 @@ public class TacticsModelImpl extends MinimalEObjectImpl.Container implements Ta
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
       case TacticsPackage.TACTICS_MODEL__IMPORTS:
         return imports != null && !imports.isEmpty();
-      case TacticsPackage.TACTICS_MODEL__RESOLUTION_MODEL:
-        return resolutionModel != null;
       case TacticsPackage.TACTICS_MODEL__ADAPTATION_RULES:
         return adaptationRules != null && !adaptationRules.isEmpty();
     }

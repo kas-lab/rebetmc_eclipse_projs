@@ -37,7 +37,7 @@ public class ResolutionModelValidator extends AbstractResolutionModelValidator {
 	
 	@Check
 	public void checkParameterValueMatchesType(SetParam param) {
-	    RosParameter declaredParam = param.getParam();
+	    ros.Parameter declaredParam = param.getParam();
 	    ParameterValue assignedValue = param.getValue();
 
 	    if (declaredParam == null || assignedValue == null)
@@ -57,15 +57,14 @@ public class ResolutionModelValidator extends AbstractResolutionModelValidator {
 	
 	@Check
 	public void checkParameterBelongsToNode(SetParam setParam) {
-		System.out.println("testt2");
 	    RosNode node = setParam.getNode();
-	    RosParameter param = setParam.getParam();
+	    ros.Parameter param = setParam.getParam();
 
 	    if (node == null || param == null) {
 	        return; // Don't validate incomplete models
 	    }
 
-	    if (!node.getRosparameters().contains(param)) {
+	    if (!node.getFrom().getParameter().contains(param)) {
 	        error(
 	            "Parameter '" + param.getName() + "' does not belong to node '" + node.getName() + "'.",
 	            ResolutionModelPackage.Literals.SET_PARAM__PARAM

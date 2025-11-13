@@ -5,15 +5,22 @@ package eu.coresense.adaptation.serializer;
 
 import com.google.inject.Inject;
 import eu.coresense.adaptation.services.TacticsGrammarAccess;
+import eu.coresense.adaptation.tactics.AtomicAction;
 import eu.coresense.adaptation.tactics.AtomicActionDeselectFeature;
 import eu.coresense.adaptation.tactics.AtomicActionSelectFeature;
 import eu.coresense.adaptation.tactics.AtomicRule;
 import eu.coresense.adaptation.tactics.AtomicRuleWithPriority;
+import eu.coresense.adaptation.tactics.BooleanLiteral;
 import eu.coresense.adaptation.tactics.Condition;
 import eu.coresense.adaptation.tactics.ConditionAction;
+import eu.coresense.adaptation.tactics.DecimalLiteral;
+import eu.coresense.adaptation.tactics.Effect;
 import eu.coresense.adaptation.tactics.Import;
+import eu.coresense.adaptation.tactics.IntLiteral;
 import eu.coresense.adaptation.tactics.PureAction;
+import eu.coresense.adaptation.tactics.QualifiedFeatureRef;
 import eu.coresense.adaptation.tactics.RuleSet;
+import eu.coresense.adaptation.tactics.StringLiteral;
 import eu.coresense.adaptation.tactics.TacticsModel;
 import eu.coresense.adaptation.tactics.TacticsPackage;
 import java.util.Set;
@@ -41,46 +48,67 @@ public class TacticsSemanticSequencer extends AbstractDelegatingSemanticSequence
 		Set<Parameter> parameters = context.getEnabledBooleanParameters();
 		if (epackage == TacticsPackage.eINSTANCE)
 			switch (semanticObject.eClass().getClassifierID()) {
+			case TacticsPackage.ATOMIC_ACTION:
+				sequence_AtomicAction(context, (AtomicAction) semanticObject); 
+				return; 
 			case TacticsPackage.ATOMIC_ACTION_DESELECT_FEATURE:
-				if (rule == grammarAccess.getAtomicActionDeselectFeatureRule()) {
-					sequence_AtomicActionDeselectFeature(context, (AtomicActionDeselectFeature) semanticObject); 
-					return; 
-				}
-				else if (rule == grammarAccess.getAtomicActionRule()) {
-					sequence_AtomicAction_AtomicActionDeselectFeature(context, (AtomicActionDeselectFeature) semanticObject); 
-					return; 
-				}
-				else break;
+				sequence_AtomicActionDeselectFeature(context, (AtomicActionDeselectFeature) semanticObject); 
+				return; 
 			case TacticsPackage.ATOMIC_ACTION_SELECT_FEATURE:
-				if (rule == grammarAccess.getAtomicActionSelectFeatureRule()) {
-					sequence_AtomicActionSelectFeature(context, (AtomicActionSelectFeature) semanticObject); 
-					return; 
-				}
-				else if (rule == grammarAccess.getAtomicActionRule()) {
-					sequence_AtomicAction_AtomicActionSelectFeature(context, (AtomicActionSelectFeature) semanticObject); 
-					return; 
-				}
-				else break;
+				sequence_AtomicActionSelectFeature(context, (AtomicActionSelectFeature) semanticObject); 
+				return; 
 			case TacticsPackage.ATOMIC_RULE:
 				sequence_AtomicRule(context, (AtomicRule) semanticObject); 
 				return; 
 			case TacticsPackage.ATOMIC_RULE_WITH_PRIORITY:
 				sequence_AtomicRuleWithPriority(context, (AtomicRuleWithPriority) semanticObject); 
 				return; 
+			case TacticsPackage.BOOLEAN_LITERAL:
+				sequence_BooleanLiteral(context, (BooleanLiteral) semanticObject); 
+				return; 
 			case TacticsPackage.CONDITION:
 				sequence_Condition(context, (Condition) semanticObject); 
 				return; 
 			case TacticsPackage.CONDITION_ACTION:
-				sequence_ConditionAction(context, (ConditionAction) semanticObject); 
+				if (rule == grammarAccess.getConditionActionRule()) {
+					sequence_ConditionAction(context, (ConditionAction) semanticObject); 
+					return; 
+				}
+				else if (rule == grammarAccess.getRuleBodyRule()) {
+					sequence_ConditionAction_RuleBody(context, (ConditionAction) semanticObject); 
+					return; 
+				}
+				else break;
+			case TacticsPackage.DECIMAL_LITERAL:
+				sequence_DecimalLiteral(context, (DecimalLiteral) semanticObject); 
+				return; 
+			case TacticsPackage.EFFECT:
+				sequence_Effect(context, (Effect) semanticObject); 
 				return; 
 			case TacticsPackage.IMPORT:
 				sequence_Import(context, (Import) semanticObject); 
 				return; 
+			case TacticsPackage.INT_LITERAL:
+				sequence_IntLiteral(context, (IntLiteral) semanticObject); 
+				return; 
 			case TacticsPackage.PURE_ACTION:
-				sequence_PureAction(context, (PureAction) semanticObject); 
+				if (rule == grammarAccess.getPureActionRule()) {
+					sequence_PureAction(context, (PureAction) semanticObject); 
+					return; 
+				}
+				else if (rule == grammarAccess.getRuleBodyRule()) {
+					sequence_PureAction_RuleBody(context, (PureAction) semanticObject); 
+					return; 
+				}
+				else break;
+			case TacticsPackage.QUALIFIED_FEATURE_REF:
+				sequence_QualifiedFeatureRef(context, (QualifiedFeatureRef) semanticObject); 
 				return; 
 			case TacticsPackage.RULE_SET:
 				sequence_RuleSet(context, (RuleSet) semanticObject); 
+				return; 
+			case TacticsPackage.STRING_LITERAL:
+				sequence_StringLiteral(context, (StringLiteral) semanticObject); 
 				return; 
 			case TacticsPackage.TACTICS_MODEL:
 				sequence_TacticsModel(context, (TacticsModel) semanticObject); 
@@ -93,19 +121,20 @@ public class TacticsSemanticSequencer extends AbstractDelegatingSemanticSequence
 	/**
 	 * <pre>
 	 * Contexts:
+	 *     AtomicSimpleAction returns AtomicActionDeselectFeature
 	 *     AtomicActionDeselectFeature returns AtomicActionDeselectFeature
 	 *
 	 * Constraint:
-	 *     variant=[Feature|ID]
+	 *     variant=QualifiedFeatureRef
 	 * </pre>
 	 */
 	protected void sequence_AtomicActionDeselectFeature(ISerializationContext context, AtomicActionDeselectFeature semanticObject) {
 		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, TacticsPackage.Literals.ATOMIC_ACTION__VARIANT) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, TacticsPackage.Literals.ATOMIC_ACTION__VARIANT));
+			if (transientValues.isValueTransient(semanticObject, TacticsPackage.Literals.ATOMIC_SIMPLE_ACTION__VARIANT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, TacticsPackage.Literals.ATOMIC_SIMPLE_ACTION__VARIANT));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getAtomicActionDeselectFeatureAccess().getVariantFeatureIDTerminalRuleCall_2_0_1(), semanticObject.eGet(TacticsPackage.Literals.ATOMIC_ACTION__VARIANT, false));
+		feeder.accept(grammarAccess.getAtomicActionDeselectFeatureAccess().getVariantQualifiedFeatureRefParserRuleCall_2_0(), semanticObject.getVariant());
 		feeder.finish();
 	}
 	
@@ -113,19 +142,20 @@ public class TacticsSemanticSequencer extends AbstractDelegatingSemanticSequence
 	/**
 	 * <pre>
 	 * Contexts:
+	 *     AtomicSimpleAction returns AtomicActionSelectFeature
 	 *     AtomicActionSelectFeature returns AtomicActionSelectFeature
 	 *
 	 * Constraint:
-	 *     variant=[Feature|ID]
+	 *     variant=QualifiedFeatureRef
 	 * </pre>
 	 */
 	protected void sequence_AtomicActionSelectFeature(ISerializationContext context, AtomicActionSelectFeature semanticObject) {
 		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, TacticsPackage.Literals.ATOMIC_ACTION__VARIANT) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, TacticsPackage.Literals.ATOMIC_ACTION__VARIANT));
+			if (transientValues.isValueTransient(semanticObject, TacticsPackage.Literals.ATOMIC_SIMPLE_ACTION__VARIANT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, TacticsPackage.Literals.ATOMIC_SIMPLE_ACTION__VARIANT));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getAtomicActionSelectFeatureAccess().getVariantFeatureIDTerminalRuleCall_2_0_1(), semanticObject.eGet(TacticsPackage.Literals.ATOMIC_ACTION__VARIANT, false));
+		feeder.accept(grammarAccess.getAtomicActionSelectFeatureAccess().getVariantQualifiedFeatureRefParserRuleCall_2_0(), semanticObject.getVariant());
 		feeder.finish();
 	}
 	
@@ -133,27 +163,13 @@ public class TacticsSemanticSequencer extends AbstractDelegatingSemanticSequence
 	/**
 	 * <pre>
 	 * Contexts:
-	 *     AtomicAction returns AtomicActionDeselectFeature
+	 *     AtomicAction returns AtomicAction
 	 *
 	 * Constraint:
-	 *     (variant=[Feature|ID] secondAction=AtomicAction?)
+	 *     (actions+=AtomicSimpleAction actions+=AtomicSimpleAction*)
 	 * </pre>
 	 */
-	protected void sequence_AtomicAction_AtomicActionDeselectFeature(ISerializationContext context, AtomicActionDeselectFeature semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * <pre>
-	 * Contexts:
-	 *     AtomicAction returns AtomicActionSelectFeature
-	 *
-	 * Constraint:
-	 *     (variant=[Feature|ID] secondAction=AtomicAction?)
-	 * </pre>
-	 */
-	protected void sequence_AtomicAction_AtomicActionSelectFeature(ISerializationContext context, AtomicActionSelectFeature semanticObject) {
+	protected void sequence_AtomicAction(ISerializationContext context, AtomicAction semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -211,7 +227,27 @@ public class TacticsSemanticSequencer extends AbstractDelegatingSemanticSequence
 	/**
 	 * <pre>
 	 * Contexts:
-	 *     RuleBody returns ConditionAction
+	 *     Literal returns BooleanLiteral
+	 *     BooleanLiteral returns BooleanLiteral
+	 *
+	 * Constraint:
+	 *     value=BOOLEAN
+	 * </pre>
+	 */
+	protected void sequence_BooleanLiteral(ISerializationContext context, BooleanLiteral semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, TacticsPackage.Literals.BOOLEAN_LITERAL__VALUE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, TacticsPackage.Literals.BOOLEAN_LITERAL__VALUE));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getBooleanLiteralAccess().getValueBOOLEANTerminalRuleCall_0(), semanticObject.isValue());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
 	 *     ConditionAction returns ConditionAction
 	 *
 	 * Constraint:
@@ -226,13 +262,62 @@ public class TacticsSemanticSequencer extends AbstractDelegatingSemanticSequence
 	/**
 	 * <pre>
 	 * Contexts:
+	 *     RuleBody returns ConditionAction
+	 *
+	 * Constraint:
+	 *     (condition=Condition atomicAction=AtomicAction else=RuleBody? effect=Effect)
+	 * </pre>
+	 */
+	protected void sequence_ConditionAction_RuleBody(ISerializationContext context, ConditionAction semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
 	 *     Condition returns Condition
 	 *
 	 * Constraint:
-	 *     (measurement=QualifiedName operator=MathOperator value=STRING (logicalOp=LogicalOperator secondTerm=Condition)?)
+	 *     (measurement=[ContextVar|ID] operator=MathOperator value=Literal (logicalOp=LogicalOperator secondTerm=Condition)?)
 	 * </pre>
 	 */
 	protected void sequence_Condition(ISerializationContext context, Condition semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
+	 *     Literal returns DecimalLiteral
+	 *     DecimalLiteral returns DecimalLiteral
+	 *
+	 * Constraint:
+	 *     value=DECIMAL
+	 * </pre>
+	 */
+	protected void sequence_DecimalLiteral(ISerializationContext context, DecimalLiteral semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, TacticsPackage.Literals.DECIMAL_LITERAL__VALUE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, TacticsPackage.Literals.DECIMAL_LITERAL__VALUE));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getDecimalLiteralAccess().getValueDECIMALTerminalRuleCall_0(), semanticObject.getValue());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
+	 *     Effect returns Effect
+	 *
+	 * Constraint:
+	 *     condition=Condition?
+	 * </pre>
+	 */
+	protected void sequence_Effect(ISerializationContext context, Effect semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -260,7 +345,27 @@ public class TacticsSemanticSequencer extends AbstractDelegatingSemanticSequence
 	/**
 	 * <pre>
 	 * Contexts:
-	 *     RuleBody returns PureAction
+	 *     Literal returns IntLiteral
+	 *     IntLiteral returns IntLiteral
+	 *
+	 * Constraint:
+	 *     value=INT
+	 * </pre>
+	 */
+	protected void sequence_IntLiteral(ISerializationContext context, IntLiteral semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, TacticsPackage.Literals.INT_LITERAL__VALUE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, TacticsPackage.Literals.INT_LITERAL__VALUE));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getIntLiteralAccess().getValueINTTerminalRuleCall_0(), semanticObject.getValue());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
 	 *     PureAction returns PureAction
 	 *
 	 * Constraint:
@@ -274,6 +379,52 @@ public class TacticsSemanticSequencer extends AbstractDelegatingSemanticSequence
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getPureActionAccess().getAtomicActionAtomicActionParserRuleCall_0(), semanticObject.getAtomicAction());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
+	 *     RuleBody returns PureAction
+	 *
+	 * Constraint:
+	 *     (atomicAction=AtomicAction effect=Effect)
+	 * </pre>
+	 */
+	protected void sequence_PureAction_RuleBody(ISerializationContext context, PureAction semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, TacticsPackage.Literals.RULE_BODY__ATOMIC_ACTION) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, TacticsPackage.Literals.RULE_BODY__ATOMIC_ACTION));
+			if (transientValues.isValueTransient(semanticObject, TacticsPackage.Literals.RULE_BODY__EFFECT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, TacticsPackage.Literals.RULE_BODY__EFFECT));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getPureActionAccess().getAtomicActionAtomicActionParserRuleCall_0(), semanticObject.getAtomicAction());
+		feeder.accept(grammarAccess.getRuleBodyAccess().getEffectEffectParserRuleCall_1_0(), semanticObject.getEffect());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
+	 *     QualifiedFeatureRef returns QualifiedFeatureRef
+	 *
+	 * Constraint:
+	 *     (model=[ResolutionModel|ID] feature=[Feature|ID])
+	 * </pre>
+	 */
+	protected void sequence_QualifiedFeatureRef(ISerializationContext context, QualifiedFeatureRef semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, TacticsPackage.Literals.QUALIFIED_FEATURE_REF__MODEL) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, TacticsPackage.Literals.QUALIFIED_FEATURE_REF__MODEL));
+			if (transientValues.isValueTransient(semanticObject, TacticsPackage.Literals.QUALIFIED_FEATURE_REF__FEATURE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, TacticsPackage.Literals.QUALIFIED_FEATURE_REF__FEATURE));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getQualifiedFeatureRefAccess().getModelResolutionModelIDTerminalRuleCall_0_0_1(), semanticObject.eGet(TacticsPackage.Literals.QUALIFIED_FEATURE_REF__MODEL, false));
+		feeder.accept(grammarAccess.getQualifiedFeatureRefAccess().getFeatureFeatureIDTerminalRuleCall_2_0_1(), semanticObject.eGet(TacticsPackage.Literals.QUALIFIED_FEATURE_REF__FEATURE, false));
 		feeder.finish();
 	}
 	
@@ -296,17 +447,31 @@ public class TacticsSemanticSequencer extends AbstractDelegatingSemanticSequence
 	/**
 	 * <pre>
 	 * Contexts:
+	 *     Literal returns StringLiteral
+	 *     StringLiteral returns StringLiteral
+	 *
+	 * Constraint:
+	 *     value=STRING
+	 * </pre>
+	 */
+	protected void sequence_StringLiteral(ISerializationContext context, StringLiteral semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, TacticsPackage.Literals.STRING_LITERAL__VALUE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, TacticsPackage.Literals.STRING_LITERAL__VALUE));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getStringLiteralAccess().getValueSTRINGTerminalRuleCall_0(), semanticObject.getValue());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
 	 *     TacticsModel returns TacticsModel
 	 *
 	 * Constraint:
-	 *     (
-	 *         name=ID 
-	 *         imports+=Import* 
-	 *         featureModel=[FeatureModel|ID] 
-	 *         resolutionModel=[ResolutionModel|ID] 
-	 *         period=INT 
-	 *         adaptationRules+=AdaptationRule*
-	 *     )
+	 *     (name=ID imports+=Import* resolutionModel=[ResolutionModel|ID] adaptationRules+=AdaptationRule*)
 	 * </pre>
 	 */
 	protected void sequence_TacticsModel(ISerializationContext context, TacticsModel semanticObject) {

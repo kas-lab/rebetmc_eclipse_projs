@@ -1,0 +1,15 @@
+Manifest-Version: 1.0
+Automatic-Module-Name: eu.coresense.context.ide
+Bundle-ManifestVersion: 2
+Bundle-Name: eu.coresense.context.ide
+Bundle-Vendor: My Company
+Bundle-Version: 1.0.0.qualifier
+Bundle-SymbolicName: eu.coresense.context.ide; singleton:=true
+Bundle-ActivationPolicy: lazy
+Require-Bundle: eu.coresense.context,
+ org.eclipse.xtext.ide,
+ org.eclipse.xtext.xbase.ide,
+ org.antlr.runtime;bundle-version="[3.2.0,3.2.1)"
+Bundle-RequiredExecutionEnvironment: JavaSE-21
+Export-Package: eu.coresense.context.ide.contentassist.antlr,
+ eu.coresense.context.ide.contentassist.antlr.internal

@@ -230,105 +230,121 @@ public class ResolutionModelGrammarAccess extends AbstractElementFinder.Abstract
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "eu.coresense.resolution.ResolutionModel.SetParam");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cSetParameterKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Assignment cNodeAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final CrossReference cNodeRosNodeCrossReference_1_0 = (CrossReference)cNodeAssignment_1.eContents().get(0);
-		private final RuleCall cNodeRosNodeIDTerminalRuleCall_1_0_1 = (RuleCall)cNodeRosNodeCrossReference_1_0.eContents().get(1);
-		private final Keyword cCommaKeyword_2 = (Keyword)cGroup.eContents().get(2);
-		private final Assignment cParamAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final CrossReference cParamRosParameterCrossReference_3_0 = (CrossReference)cParamAssignment_3.eContents().get(0);
-		private final RuleCall cParamRosParameterIDTerminalRuleCall_3_0_1 = (RuleCall)cParamRosParameterCrossReference_3_0.eContents().get(1);
-		private final Keyword cCommaKeyword_4 = (Keyword)cGroup.eContents().get(4);
-		private final Assignment cValueAssignment_5 = (Assignment)cGroup.eContents().get(5);
-		private final RuleCall cValueParameterValueParserRuleCall_5_0 = (RuleCall)cValueAssignment_5.eContents().get(0);
-		private final Keyword cRightParenthesisKeyword_6 = (Keyword)cGroup.eContents().get(6);
+		private final Keyword cLeftParenthesisKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cNodeAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final CrossReference cNodeRosNodeCrossReference_2_0 = (CrossReference)cNodeAssignment_2.eContents().get(0);
+		private final RuleCall cNodeRosNodeIDTerminalRuleCall_2_0_1 = (RuleCall)cNodeRosNodeCrossReference_2_0.eContents().get(1);
+		private final Keyword cCommaKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		private final Assignment cParamAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final CrossReference cParamParameterCrossReference_4_0 = (CrossReference)cParamAssignment_4.eContents().get(0);
+		private final RuleCall cParamParameterIDTerminalRuleCall_4_0_1 = (RuleCall)cParamParameterCrossReference_4_0.eContents().get(1);
+		private final Keyword cCommaKeyword_5 = (Keyword)cGroup.eContents().get(5);
+		private final Assignment cValueAssignment_6 = (Assignment)cGroup.eContents().get(6);
+		private final RuleCall cValueParameterValueParserRuleCall_6_0 = (RuleCall)cValueAssignment_6.eContents().get(0);
+		private final Keyword cRightParenthesisKeyword_7 = (Keyword)cGroup.eContents().get(7);
 		
 		//SetParam:
-		//    'SetParameter(' node=[rossys::RosNode] ',' param=[rossys::RosParameter] ',' value=ParameterValue  ')'
+		//    'SetParameter' '('
+		//        node=[rossys::RosNode] ','
+		//        param=[ros::Parameter] ','
+		//        value=ParameterValue
+		//    ')'
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'SetParameter(' node=[rossys::RosNode] ',' param=[rossys::RosParameter] ',' value=ParameterValue  ')'
+		//'SetParameter' '('
+		//    node=[rossys::RosNode] ','
+		//    param=[ros::Parameter] ','
+		//    value=ParameterValue
+		//')'
 		public Group getGroup() { return cGroup; }
 		
-		//'SetParameter('
+		//'SetParameter'
 		public Keyword getSetParameterKeyword_0() { return cSetParameterKeyword_0; }
 		
+		//'('
+		public Keyword getLeftParenthesisKeyword_1() { return cLeftParenthesisKeyword_1; }
+		
 		//node=[rossys::RosNode]
-		public Assignment getNodeAssignment_1() { return cNodeAssignment_1; }
+		public Assignment getNodeAssignment_2() { return cNodeAssignment_2; }
 		
 		//[rossys::RosNode]
-		public CrossReference getNodeRosNodeCrossReference_1_0() { return cNodeRosNodeCrossReference_1_0; }
+		public CrossReference getNodeRosNodeCrossReference_2_0() { return cNodeRosNodeCrossReference_2_0; }
 		
 		//ID
-		public RuleCall getNodeRosNodeIDTerminalRuleCall_1_0_1() { return cNodeRosNodeIDTerminalRuleCall_1_0_1; }
+		public RuleCall getNodeRosNodeIDTerminalRuleCall_2_0_1() { return cNodeRosNodeIDTerminalRuleCall_2_0_1; }
 		
 		//','
-		public Keyword getCommaKeyword_2() { return cCommaKeyword_2; }
+		public Keyword getCommaKeyword_3() { return cCommaKeyword_3; }
 		
-		//param=[rossys::RosParameter]
-		public Assignment getParamAssignment_3() { return cParamAssignment_3; }
+		//param=[ros::Parameter]
+		public Assignment getParamAssignment_4() { return cParamAssignment_4; }
 		
-		//[rossys::RosParameter]
-		public CrossReference getParamRosParameterCrossReference_3_0() { return cParamRosParameterCrossReference_3_0; }
+		//[ros::Parameter]
+		public CrossReference getParamParameterCrossReference_4_0() { return cParamParameterCrossReference_4_0; }
 		
 		//ID
-		public RuleCall getParamRosParameterIDTerminalRuleCall_3_0_1() { return cParamRosParameterIDTerminalRuleCall_3_0_1; }
+		public RuleCall getParamParameterIDTerminalRuleCall_4_0_1() { return cParamParameterIDTerminalRuleCall_4_0_1; }
 		
 		//','
-		public Keyword getCommaKeyword_4() { return cCommaKeyword_4; }
+		public Keyword getCommaKeyword_5() { return cCommaKeyword_5; }
 		
 		//value=ParameterValue
-		public Assignment getValueAssignment_5() { return cValueAssignment_5; }
+		public Assignment getValueAssignment_6() { return cValueAssignment_6; }
 		
 		//ParameterValue
-		public RuleCall getValueParameterValueParserRuleCall_5_0() { return cValueParameterValueParserRuleCall_5_0; }
+		public RuleCall getValueParameterValueParserRuleCall_6_0() { return cValueParameterValueParserRuleCall_6_0; }
 		
 		//')'
-		public Keyword getRightParenthesisKeyword_6() { return cRightParenthesisKeyword_6; }
+		public Keyword getRightParenthesisKeyword_7() { return cRightParenthesisKeyword_7; }
 	}
 	public class SetLifecycleElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "eu.coresense.resolution.ResolutionModel.SetLifecycle");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cSetLifecycleStateKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Assignment cNodeAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final CrossReference cNodeRosNodeCrossReference_1_0 = (CrossReference)cNodeAssignment_1.eContents().get(0);
-		private final RuleCall cNodeRosNodeIDTerminalRuleCall_1_0_1 = (RuleCall)cNodeRosNodeCrossReference_1_0.eContents().get(1);
-		private final Keyword cCommaKeyword_2 = (Keyword)cGroup.eContents().get(2);
-		private final Assignment cStateAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final RuleCall cStateLifecycleStateEnumRuleCall_3_0 = (RuleCall)cStateAssignment_3.eContents().get(0);
-		private final Keyword cRightParenthesisKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		private final Keyword cLeftParenthesisKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cNodeAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final CrossReference cNodeRosNodeCrossReference_2_0 = (CrossReference)cNodeAssignment_2.eContents().get(0);
+		private final RuleCall cNodeRosNodeIDTerminalRuleCall_2_0_1 = (RuleCall)cNodeRosNodeCrossReference_2_0.eContents().get(1);
+		private final Keyword cCommaKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		private final Assignment cStateAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final RuleCall cStateLifecycleStateEnumRuleCall_4_0 = (RuleCall)cStateAssignment_4.eContents().get(0);
+		private final Keyword cRightParenthesisKeyword_5 = (Keyword)cGroup.eContents().get(5);
 		
 		//SetLifecycle:
-		//    'SetLifecycleState(' node=[rossys::RosNode] ',' state=LifecycleState ')'
+		//    'SetLifecycleState' '(' node=[rossys::RosNode] ',' state=LifecycleState ')'
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'SetLifecycleState(' node=[rossys::RosNode] ',' state=LifecycleState ')'
+		//'SetLifecycleState' '(' node=[rossys::RosNode] ',' state=LifecycleState ')'
 		public Group getGroup() { return cGroup; }
 		
-		//'SetLifecycleState('
+		//'SetLifecycleState'
 		public Keyword getSetLifecycleStateKeyword_0() { return cSetLifecycleStateKeyword_0; }
 		
+		//'('
+		public Keyword getLeftParenthesisKeyword_1() { return cLeftParenthesisKeyword_1; }
+		
 		//node=[rossys::RosNode]
-		public Assignment getNodeAssignment_1() { return cNodeAssignment_1; }
+		public Assignment getNodeAssignment_2() { return cNodeAssignment_2; }
 		
 		//[rossys::RosNode]
-		public CrossReference getNodeRosNodeCrossReference_1_0() { return cNodeRosNodeCrossReference_1_0; }
+		public CrossReference getNodeRosNodeCrossReference_2_0() { return cNodeRosNodeCrossReference_2_0; }
 		
 		//ID
-		public RuleCall getNodeRosNodeIDTerminalRuleCall_1_0_1() { return cNodeRosNodeIDTerminalRuleCall_1_0_1; }
+		public RuleCall getNodeRosNodeIDTerminalRuleCall_2_0_1() { return cNodeRosNodeIDTerminalRuleCall_2_0_1; }
 		
 		//','
-		public Keyword getCommaKeyword_2() { return cCommaKeyword_2; }
+		public Keyword getCommaKeyword_3() { return cCommaKeyword_3; }
 		
 		//state=LifecycleState
-		public Assignment getStateAssignment_3() { return cStateAssignment_3; }
+		public Assignment getStateAssignment_4() { return cStateAssignment_4; }
 		
 		//LifecycleState
-		public RuleCall getStateLifecycleStateEnumRuleCall_3_0() { return cStateLifecycleStateEnumRuleCall_3_0; }
+		public RuleCall getStateLifecycleStateEnumRuleCall_4_0() { return cStateLifecycleStateEnumRuleCall_4_0; }
 		
 		//')'
-		public Keyword getRightParenthesisKeyword_4() { return cRightParenthesisKeyword_4; }
+		public Keyword getRightParenthesisKeyword_5() { return cRightParenthesisKeyword_5; }
 	}
 	
 	public class LifecycleStateElements extends AbstractElementFinder.AbstractEnumRuleElementFinder {
@@ -382,6 +398,7 @@ public class ResolutionModelGrammarAccess extends AbstractElementFinder.Abstract
 	private final SetParamElements pSetParam;
 	private final SetLifecycleElements pSetLifecycle;
 	private final LifecycleStateElements eLifecycleState;
+	private final TerminalRule tWS;
 	
 	private final Grammar grammar;
 	
@@ -403,6 +420,7 @@ public class ResolutionModelGrammarAccess extends AbstractElementFinder.Abstract
 		this.pSetParam = new SetParamElements();
 		this.pSetLifecycle = new SetLifecycleElements();
 		this.eLifecycleState = new LifecycleStateElements();
+		this.tWS = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "eu.coresense.resolution.ResolutionModel.WS");
 	}
 	
 	protected Grammar internalFindGrammar(GrammarProvider grammarProvider) {
@@ -484,7 +502,11 @@ public class ResolutionModelGrammarAccess extends AbstractElementFinder.Abstract
 	}
 	
 	//SetParam:
-	//    'SetParameter(' node=[rossys::RosNode] ',' param=[rossys::RosParameter] ',' value=ParameterValue  ')'
+	//    'SetParameter' '('
+	//        node=[rossys::RosNode] ','
+	//        param=[ros::Parameter] ','
+	//        value=ParameterValue
+	//    ')'
 	//;
 	public SetParamElements getSetParamAccess() {
 		return pSetParam;
@@ -495,7 +517,7 @@ public class ResolutionModelGrammarAccess extends AbstractElementFinder.Abstract
 	}
 	
 	//SetLifecycle:
-	//    'SetLifecycleState(' node=[rossys::RosNode] ',' state=LifecycleState ')'
+	//    'SetLifecycleState' '(' node=[rossys::RosNode] ',' state=LifecycleState ')'
 	//;
 	public SetLifecycleElements getSetLifecycleAccess() {
 		return pSetLifecycle;
@@ -513,6 +535,13 @@ public class ResolutionModelGrammarAccess extends AbstractElementFinder.Abstract
 	
 	public EnumRule getLifecycleStateRule() {
 		return getLifecycleStateAccess().getRule();
+	}
+	
+	////
+	//@Override
+	//terminal WS: (' '|'\t'|'\r'? '\n')+;
+	public TerminalRule getWSRule() {
+		return tWS;
 	}
 	
 	/////////////////////
@@ -1502,11 +1531,6 @@ public class ResolutionModelGrammarAccess extends AbstractElementFinder.Abstract
 	//terminal ML_COMMENT : '/*' -> '*/';
 	public TerminalRule getML_COMMENTRule() {
 		return gaTerminals.getML_COMMENTRule();
-	}
-	
-	//terminal WS         : (' '|'\t'|'\r'|'\n')+;
-	public TerminalRule getWSRule() {
-		return gaTerminals.getWSRule();
 	}
 	
 	//terminal ANY_OTHER: .;

@@ -30,23 +30,13 @@ public class FeatureModelGrammarAccess extends AbstractElementFinder.AbstractGra
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cFeature_modelKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Keyword cLeftCurlyBracketKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Keyword cFeatureDefinitionsKeyword_2 = (Keyword)cGroup.eContents().get(2);
-		private final Keyword cLeftCurlyBracketKeyword_3 = (Keyword)cGroup.eContents().get(3);
-		private final Assignment cFeatureDefinitionsAssignment_4 = (Assignment)cGroup.eContents().get(4);
-		private final RuleCall cFeatureDefinitionsFeatureParserRuleCall_4_0 = (RuleCall)cFeatureDefinitionsAssignment_4.eContents().get(0);
-		private final Group cGroup_5 = (Group)cGroup.eContents().get(5);
-		private final Keyword cCommaKeyword_5_0 = (Keyword)cGroup_5.eContents().get(0);
-		private final Assignment cFeatureDefinitionsAssignment_5_1 = (Assignment)cGroup_5.eContents().get(1);
-		private final RuleCall cFeatureDefinitionsFeatureParserRuleCall_5_1_0 = (RuleCall)cFeatureDefinitionsAssignment_5_1.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_6 = (Keyword)cGroup.eContents().get(6);
-		private final Assignment cFmAssignment_7 = (Assignment)cGroup.eContents().get(7);
-		private final RuleCall cFmFeatureModelParserRuleCall_7_0 = (RuleCall)cFmAssignment_7.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_8 = (Keyword)cGroup.eContents().get(8);
+		private final Assignment cFmAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cFmFeatureModelParserRuleCall_2_0 = (RuleCall)cFmAssignment_2.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_3 = (Keyword)cGroup.eContents().get(3);
 		
 		//Model:
 		//    'feature_model'
 		//    '{'
-		//    'featureDefinitions' '{' featureDefinitions+=Feature ("," featureDefinitions+=Feature)* '}'
 		//    fm=FeatureModel
 		//    '}'
 		//;
@@ -54,7 +44,6 @@ public class FeatureModelGrammarAccess extends AbstractElementFinder.AbstractGra
 		
 		//'feature_model'
 		//'{'
-		//'featureDefinitions' '{' featureDefinitions+=Feature ("," featureDefinitions+=Feature)* '}'
 		//fm=FeatureModel
 		//'}'
 		public Group getGroup() { return cGroup; }
@@ -65,41 +54,14 @@ public class FeatureModelGrammarAccess extends AbstractElementFinder.AbstractGra
 		//'{'
 		public Keyword getLeftCurlyBracketKeyword_1() { return cLeftCurlyBracketKeyword_1; }
 		
-		//'featureDefinitions'
-		public Keyword getFeatureDefinitionsKeyword_2() { return cFeatureDefinitionsKeyword_2; }
-		
-		//'{'
-		public Keyword getLeftCurlyBracketKeyword_3() { return cLeftCurlyBracketKeyword_3; }
-		
-		//featureDefinitions+=Feature
-		public Assignment getFeatureDefinitionsAssignment_4() { return cFeatureDefinitionsAssignment_4; }
-		
-		//Feature
-		public RuleCall getFeatureDefinitionsFeatureParserRuleCall_4_0() { return cFeatureDefinitionsFeatureParserRuleCall_4_0; }
-		
-		//("," featureDefinitions+=Feature)*
-		public Group getGroup_5() { return cGroup_5; }
-		
-		//","
-		public Keyword getCommaKeyword_5_0() { return cCommaKeyword_5_0; }
-		
-		//featureDefinitions+=Feature
-		public Assignment getFeatureDefinitionsAssignment_5_1() { return cFeatureDefinitionsAssignment_5_1; }
-		
-		//Feature
-		public RuleCall getFeatureDefinitionsFeatureParserRuleCall_5_1_0() { return cFeatureDefinitionsFeatureParserRuleCall_5_1_0; }
-		
-		//'}'
-		public Keyword getRightCurlyBracketKeyword_6() { return cRightCurlyBracketKeyword_6; }
-		
 		//fm=FeatureModel
-		public Assignment getFmAssignment_7() { return cFmAssignment_7; }
+		public Assignment getFmAssignment_2() { return cFmAssignment_2; }
 		
 		//FeatureModel
-		public RuleCall getFmFeatureModelParserRuleCall_7_0() { return cFmFeatureModelParserRuleCall_7_0; }
+		public RuleCall getFmFeatureModelParserRuleCall_2_0() { return cFmFeatureModelParserRuleCall_2_0; }
 		
 		//'}'
-		public Keyword getRightCurlyBracketKeyword_8() { return cRightCurlyBracketKeyword_8; }
+		public Keyword getRightCurlyBracketKeyword_3() { return cRightCurlyBracketKeyword_3; }
 	}
 	public class FeatureModelElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "eu.coresense.variability.FeatureModel.FeatureModel");
@@ -110,25 +72,19 @@ public class FeatureModelGrammarAccess extends AbstractElementFinder.AbstractGra
 		private final Keyword cRootKeyword_2 = (Keyword)cGroup.eContents().get(2);
 		private final Assignment cRootAssignment_3 = (Assignment)cGroup.eContents().get(3);
 		private final RuleCall cRootFeatureParserRuleCall_3_0 = (RuleCall)cRootAssignment_3.eContents().get(0);
-		private final Keyword cFeaturesKeyword_4 = (Keyword)cGroup.eContents().get(4);
-		private final Assignment cFeaturesAssignment_5 = (Assignment)cGroup.eContents().get(5);
-		private final CrossReference cFeaturesFeatureCrossReference_5_0 = (CrossReference)cFeaturesAssignment_5.eContents().get(0);
-		private final RuleCall cFeaturesFeatureIDTerminalRuleCall_5_0_1 = (RuleCall)cFeaturesFeatureCrossReference_5_0.eContents().get(1);
-		private final Keyword cCrossTreeConstraintsKeyword_6 = (Keyword)cGroup.eContents().get(6);
-		private final Assignment cCrossTreeConstraintsAssignment_7 = (Assignment)cGroup.eContents().get(7);
-		private final RuleCall cCrossTreeConstraintsBasicConstraintParserRuleCall_7_0 = (RuleCall)cCrossTreeConstraintsAssignment_7.eContents().get(0);
+		private final Keyword cCrossTreeConstraintsKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		private final Assignment cCrossTreeConstraintsAssignment_5 = (Assignment)cGroup.eContents().get(5);
+		private final RuleCall cCrossTreeConstraintsBasicConstraintParserRuleCall_5_0 = (RuleCall)cCrossTreeConstraintsAssignment_5.eContents().get(0);
 		
 		//FeatureModel returns BasicFMmetamodel::FeatureModel:
 		//    'name' name=EString
 		//    'root' root=Feature
-		//    'features' features+=[BasicFMmetamodel::Feature]
 		//    'crossTreeConstraints' crossTreeConstraints+=BasicConstraint*
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
 		//'name' name=EString
 		//'root' root=Feature
-		//'features' features+=[BasicFMmetamodel::Feature]
 		//'crossTreeConstraints' crossTreeConstraints+=BasicConstraint*
 		public Group getGroup() { return cGroup; }
 		
@@ -150,26 +106,14 @@ public class FeatureModelGrammarAccess extends AbstractElementFinder.AbstractGra
 		//Feature
 		public RuleCall getRootFeatureParserRuleCall_3_0() { return cRootFeatureParserRuleCall_3_0; }
 		
-		//'features'
-		public Keyword getFeaturesKeyword_4() { return cFeaturesKeyword_4; }
-		
-		//features+=[BasicFMmetamodel::Feature]
-		public Assignment getFeaturesAssignment_5() { return cFeaturesAssignment_5; }
-		
-		//[BasicFMmetamodel::Feature]
-		public CrossReference getFeaturesFeatureCrossReference_5_0() { return cFeaturesFeatureCrossReference_5_0; }
-		
-		//ID
-		public RuleCall getFeaturesFeatureIDTerminalRuleCall_5_0_1() { return cFeaturesFeatureIDTerminalRuleCall_5_0_1; }
-		
 		//'crossTreeConstraints'
-		public Keyword getCrossTreeConstraintsKeyword_6() { return cCrossTreeConstraintsKeyword_6; }
+		public Keyword getCrossTreeConstraintsKeyword_4() { return cCrossTreeConstraintsKeyword_4; }
 		
 		//crossTreeConstraints+=BasicConstraint*
-		public Assignment getCrossTreeConstraintsAssignment_7() { return cCrossTreeConstraintsAssignment_7; }
+		public Assignment getCrossTreeConstraintsAssignment_5() { return cCrossTreeConstraintsAssignment_5; }
 		
 		//BasicConstraint
-		public RuleCall getCrossTreeConstraintsBasicConstraintParserRuleCall_7_0() { return cCrossTreeConstraintsBasicConstraintParserRuleCall_7_0; }
+		public RuleCall getCrossTreeConstraintsBasicConstraintParserRuleCall_5_0() { return cCrossTreeConstraintsBasicConstraintParserRuleCall_5_0; }
 	}
 	public class BasicConstraintElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "eu.coresense.variability.FeatureModel.BasicConstraint");
@@ -274,10 +218,14 @@ public class FeatureModelGrammarAccess extends AbstractElementFinder.AbstractGra
 	public class Feature_ImplElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "eu.coresense.variability.FeatureModel.Feature_Impl");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Assignment cMandatoryAssignment_0 = (Assignment)cGroup.eContents().get(0);
-		private final Keyword cMandatoryMandatoryKeyword_0_0 = (Keyword)cMandatoryAssignment_0.eContents().get(0);
-		private final Assignment cSelectedAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final Keyword cSelectedSelectedKeyword_1_0 = (Keyword)cSelectedAssignment_1.eContents().get(0);
+		private final Group cGroup_0 = (Group)cGroup.eContents().get(0);
+		private final Keyword cMandatoryKeyword_0_0 = (Keyword)cGroup_0.eContents().get(0);
+		private final Assignment cMandatoryAssignment_0_1 = (Assignment)cGroup_0.eContents().get(1);
+		private final Keyword cMandatoryMandatoryKeyword_0_1_0 = (Keyword)cMandatoryAssignment_0_1.eContents().get(0);
+		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
+		private final Keyword cSelectedKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
+		private final Assignment cSelectedAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
+		private final Keyword cSelectedSelectedKeyword_1_1_0 = (Keyword)cSelectedAssignment_1_1.eContents().get(0);
 		private final Keyword cFeatureKeyword_2 = (Keyword)cGroup.eContents().get(2);
 		private final Assignment cNameAssignment_3 = (Assignment)cGroup.eContents().get(3);
 		private final RuleCall cNameEStringParserRuleCall_3_0 = (RuleCall)cNameAssignment_3.eContents().get(0);
@@ -298,8 +246,8 @@ public class FeatureModelGrammarAccess extends AbstractElementFinder.AbstractGra
 		private final Keyword cRightCurlyBracketKeyword_8 = (Keyword)cGroup.eContents().get(8);
 		
 		//Feature_Impl returns BasicFMmetamodel::Feature:
-		//    mandatory?='mandatory'
-		//    selected?='selected'
+		//    ('mandatory'? => mandatory?='mandatory')?
+		//    ('selected'? => selected?='selected')?
 		//    'Feature'
 		//    name=EString
 		//    '{'
@@ -308,8 +256,8 @@ public class FeatureModelGrammarAccess extends AbstractElementFinder.AbstractGra
 		//    '}';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//mandatory?='mandatory'
-		//selected?='selected'
+		//('mandatory'? => mandatory?='mandatory')?
+		//('selected'? => selected?='selected')?
 		//'Feature'
 		//name=EString
 		//'{'
@@ -318,17 +266,29 @@ public class FeatureModelGrammarAccess extends AbstractElementFinder.AbstractGra
 		//'}'
 		public Group getGroup() { return cGroup; }
 		
-		//mandatory?='mandatory'
-		public Assignment getMandatoryAssignment_0() { return cMandatoryAssignment_0; }
+		//('mandatory'? => mandatory?='mandatory')?
+		public Group getGroup_0() { return cGroup_0; }
+		
+		//'mandatory'?
+		public Keyword getMandatoryKeyword_0_0() { return cMandatoryKeyword_0_0; }
+		
+		//=> mandatory?='mandatory'
+		public Assignment getMandatoryAssignment_0_1() { return cMandatoryAssignment_0_1; }
 		
 		//'mandatory'
-		public Keyword getMandatoryMandatoryKeyword_0_0() { return cMandatoryMandatoryKeyword_0_0; }
+		public Keyword getMandatoryMandatoryKeyword_0_1_0() { return cMandatoryMandatoryKeyword_0_1_0; }
 		
-		//selected?='selected'
-		public Assignment getSelectedAssignment_1() { return cSelectedAssignment_1; }
+		//('selected'? => selected?='selected')?
+		public Group getGroup_1() { return cGroup_1; }
+		
+		//'selected'?
+		public Keyword getSelectedKeyword_1_0() { return cSelectedKeyword_1_0; }
+		
+		//=> selected?='selected'
+		public Assignment getSelectedAssignment_1_1() { return cSelectedAssignment_1_1; }
 		
 		//'selected'
-		public Keyword getSelectedSelectedKeyword_1_0() { return cSelectedSelectedKeyword_1_0; }
+		public Keyword getSelectedSelectedKeyword_1_1_0() { return cSelectedSelectedKeyword_1_1_0; }
 		
 		//'Feature'
 		public Keyword getFeatureKeyword_2() { return cFeatureKeyword_2; }
@@ -425,10 +385,14 @@ public class FeatureModelGrammarAccess extends AbstractElementFinder.AbstractGra
 	public class AlternativeElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "eu.coresense.variability.FeatureModel.Alternative");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Assignment cMandatoryAssignment_0 = (Assignment)cGroup.eContents().get(0);
-		private final Keyword cMandatoryMandatoryKeyword_0_0 = (Keyword)cMandatoryAssignment_0.eContents().get(0);
-		private final Assignment cSelectedAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final Keyword cSelectedSelectedKeyword_1_0 = (Keyword)cSelectedAssignment_1.eContents().get(0);
+		private final Group cGroup_0 = (Group)cGroup.eContents().get(0);
+		private final Keyword cMandatoryKeyword_0_0 = (Keyword)cGroup_0.eContents().get(0);
+		private final Assignment cMandatoryAssignment_0_1 = (Assignment)cGroup_0.eContents().get(1);
+		private final Keyword cMandatoryMandatoryKeyword_0_1_0 = (Keyword)cMandatoryAssignment_0_1.eContents().get(0);
+		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
+		private final Keyword cSelectedKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
+		private final Assignment cSelectedAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
+		private final Keyword cSelectedSelectedKeyword_1_1_0 = (Keyword)cSelectedAssignment_1_1.eContents().get(0);
 		private final Keyword cAlternativeKeyword_2 = (Keyword)cGroup.eContents().get(2);
 		private final Assignment cNameAssignment_3 = (Assignment)cGroup.eContents().get(3);
 		private final RuleCall cNameEStringParserRuleCall_3_0 = (RuleCall)cNameAssignment_3.eContents().get(0);
@@ -449,8 +413,8 @@ public class FeatureModelGrammarAccess extends AbstractElementFinder.AbstractGra
 		private final Keyword cRightCurlyBracketKeyword_8 = (Keyword)cGroup.eContents().get(8);
 		
 		//Alternative returns BasicFMmetamodel::Alternative:
-		//    mandatory?='mandatory'
-		//    selected?='selected'
+		//    ('mandatory'? => mandatory?='mandatory')?
+		//    ('selected'? => selected?='selected')?
 		//    'Alternative'
 		//    name=EString
 		//    '{'
@@ -459,8 +423,8 @@ public class FeatureModelGrammarAccess extends AbstractElementFinder.AbstractGra
 		//    '}';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//mandatory?='mandatory'
-		//selected?='selected'
+		//('mandatory'? => mandatory?='mandatory')?
+		//('selected'? => selected?='selected')?
 		//'Alternative'
 		//name=EString
 		//'{'
@@ -469,17 +433,29 @@ public class FeatureModelGrammarAccess extends AbstractElementFinder.AbstractGra
 		//'}'
 		public Group getGroup() { return cGroup; }
 		
-		//mandatory?='mandatory'
-		public Assignment getMandatoryAssignment_0() { return cMandatoryAssignment_0; }
+		//('mandatory'? => mandatory?='mandatory')?
+		public Group getGroup_0() { return cGroup_0; }
+		
+		//'mandatory'?
+		public Keyword getMandatoryKeyword_0_0() { return cMandatoryKeyword_0_0; }
+		
+		//=> mandatory?='mandatory'
+		public Assignment getMandatoryAssignment_0_1() { return cMandatoryAssignment_0_1; }
 		
 		//'mandatory'
-		public Keyword getMandatoryMandatoryKeyword_0_0() { return cMandatoryMandatoryKeyword_0_0; }
+		public Keyword getMandatoryMandatoryKeyword_0_1_0() { return cMandatoryMandatoryKeyword_0_1_0; }
 		
-		//selected?='selected'
-		public Assignment getSelectedAssignment_1() { return cSelectedAssignment_1; }
+		//('selected'? => selected?='selected')?
+		public Group getGroup_1() { return cGroup_1; }
+		
+		//'selected'?
+		public Keyword getSelectedKeyword_1_0() { return cSelectedKeyword_1_0; }
+		
+		//=> selected?='selected'
+		public Assignment getSelectedAssignment_1_1() { return cSelectedAssignment_1_1; }
 		
 		//'selected'
-		public Keyword getSelectedSelectedKeyword_1_0() { return cSelectedSelectedKeyword_1_0; }
+		public Keyword getSelectedSelectedKeyword_1_1_0() { return cSelectedSelectedKeyword_1_1_0; }
 		
 		//'Alternative'
 		public Keyword getAlternativeKeyword_2() { return cAlternativeKeyword_2; }
@@ -538,10 +514,14 @@ public class FeatureModelGrammarAccess extends AbstractElementFinder.AbstractGra
 	public class OrGroupElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "eu.coresense.variability.FeatureModel.OrGroup");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Assignment cMandatoryAssignment_0 = (Assignment)cGroup.eContents().get(0);
-		private final Keyword cMandatoryMandatoryKeyword_0_0 = (Keyword)cMandatoryAssignment_0.eContents().get(0);
-		private final Assignment cSelectedAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final Keyword cSelectedSelectedKeyword_1_0 = (Keyword)cSelectedAssignment_1.eContents().get(0);
+		private final Group cGroup_0 = (Group)cGroup.eContents().get(0);
+		private final Keyword cMandatoryKeyword_0_0 = (Keyword)cGroup_0.eContents().get(0);
+		private final Assignment cMandatoryAssignment_0_1 = (Assignment)cGroup_0.eContents().get(1);
+		private final Keyword cMandatoryMandatoryKeyword_0_1_0 = (Keyword)cMandatoryAssignment_0_1.eContents().get(0);
+		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
+		private final Keyword cSelectedKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
+		private final Assignment cSelectedAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
+		private final Keyword cSelectedSelectedKeyword_1_1_0 = (Keyword)cSelectedAssignment_1_1.eContents().get(0);
 		private final Keyword cOrGroupKeyword_2 = (Keyword)cGroup.eContents().get(2);
 		private final Assignment cNameAssignment_3 = (Assignment)cGroup.eContents().get(3);
 		private final RuleCall cNameEStringParserRuleCall_3_0 = (RuleCall)cNameAssignment_3.eContents().get(0);
@@ -562,8 +542,8 @@ public class FeatureModelGrammarAccess extends AbstractElementFinder.AbstractGra
 		private final Keyword cRightCurlyBracketKeyword_8 = (Keyword)cGroup.eContents().get(8);
 		
 		//OrGroup returns BasicFMmetamodel::OrGroup:
-		//    mandatory?='mandatory'
-		//    selected?='selected'
+		//    ('mandatory'? => mandatory?='mandatory')?
+		//    ('selected'? => selected?='selected')?
 		//    'OrGroup'
 		//    name=EString
 		//    '{'
@@ -572,8 +552,8 @@ public class FeatureModelGrammarAccess extends AbstractElementFinder.AbstractGra
 		//    '}';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//mandatory?='mandatory'
-		//selected?='selected'
+		//('mandatory'? => mandatory?='mandatory')?
+		//('selected'? => selected?='selected')?
 		//'OrGroup'
 		//name=EString
 		//'{'
@@ -582,17 +562,29 @@ public class FeatureModelGrammarAccess extends AbstractElementFinder.AbstractGra
 		//'}'
 		public Group getGroup() { return cGroup; }
 		
-		//mandatory?='mandatory'
-		public Assignment getMandatoryAssignment_0() { return cMandatoryAssignment_0; }
+		//('mandatory'? => mandatory?='mandatory')?
+		public Group getGroup_0() { return cGroup_0; }
+		
+		//'mandatory'?
+		public Keyword getMandatoryKeyword_0_0() { return cMandatoryKeyword_0_0; }
+		
+		//=> mandatory?='mandatory'
+		public Assignment getMandatoryAssignment_0_1() { return cMandatoryAssignment_0_1; }
 		
 		//'mandatory'
-		public Keyword getMandatoryMandatoryKeyword_0_0() { return cMandatoryMandatoryKeyword_0_0; }
+		public Keyword getMandatoryMandatoryKeyword_0_1_0() { return cMandatoryMandatoryKeyword_0_1_0; }
 		
-		//selected?='selected'
-		public Assignment getSelectedAssignment_1() { return cSelectedAssignment_1; }
+		//('selected'? => selected?='selected')?
+		public Group getGroup_1() { return cGroup_1; }
+		
+		//'selected'?
+		public Keyword getSelectedKeyword_1_0() { return cSelectedKeyword_1_0; }
+		
+		//=> selected?='selected'
+		public Assignment getSelectedAssignment_1_1() { return cSelectedAssignment_1_1; }
 		
 		//'selected'
-		public Keyword getSelectedSelectedKeyword_1_0() { return cSelectedSelectedKeyword_1_0; }
+		public Keyword getSelectedSelectedKeyword_1_1_0() { return cSelectedSelectedKeyword_1_1_0; }
 		
 		//'OrGroup'
 		public Keyword getOrGroupKeyword_2() { return cOrGroupKeyword_2; }
@@ -739,7 +731,6 @@ public class FeatureModelGrammarAccess extends AbstractElementFinder.AbstractGra
 	//Model:
 	//    'feature_model'
 	//    '{'
-	//    'featureDefinitions' '{' featureDefinitions+=Feature ("," featureDefinitions+=Feature)* '}'
 	//    fm=FeatureModel
 	//    '}'
 	//;
@@ -754,7 +745,6 @@ public class FeatureModelGrammarAccess extends AbstractElementFinder.AbstractGra
 	//FeatureModel returns BasicFMmetamodel::FeatureModel:
 	//    'name' name=EString
 	//    'root' root=Feature
-	//    'features' features+=[BasicFMmetamodel::Feature]
 	//    'crossTreeConstraints' crossTreeConstraints+=BasicConstraint*
 	//;
 	public FeatureModelElements getFeatureModelAccess() {
@@ -801,8 +791,8 @@ public class FeatureModelGrammarAccess extends AbstractElementFinder.AbstractGra
 	}
 	
 	//Feature_Impl returns BasicFMmetamodel::Feature:
-	//    mandatory?='mandatory'
-	//    selected?='selected'
+	//    ('mandatory'? => mandatory?='mandatory')?
+	//    ('selected'? => selected?='selected')?
 	//    'Feature'
 	//    name=EString
 	//    '{'
@@ -838,8 +828,8 @@ public class FeatureModelGrammarAccess extends AbstractElementFinder.AbstractGra
 	}
 	
 	//Alternative returns BasicFMmetamodel::Alternative:
-	//    mandatory?='mandatory'
-	//    selected?='selected'
+	//    ('mandatory'? => mandatory?='mandatory')?
+	//    ('selected'? => selected?='selected')?
 	//    'Alternative'
 	//    name=EString
 	//    '{'
@@ -855,8 +845,8 @@ public class FeatureModelGrammarAccess extends AbstractElementFinder.AbstractGra
 	}
 	
 	//OrGroup returns BasicFMmetamodel::OrGroup:
-	//    mandatory?='mandatory'
-	//    selected?='selected'
+	//    ('mandatory'? => mandatory?='mandatory')?
+	//    ('selected'? => selected?='selected')?
 	//    'OrGroup'
 	//    name=EString
 	//    '{'

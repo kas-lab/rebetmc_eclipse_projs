@@ -6,12 +6,8 @@ package eu.coresense.variability.featureModel.impl;
 import eu.coresense.variability.featureModel.FeatureModelPackage;
 import eu.coresense.variability.featureModel.Model;
 
-import java.util.Collection;
-
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
-import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -19,10 +15,6 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.InternalEList;
-
-import uma.caosd.rhea.BasicFMmetamodel.Feature;
 import uma.caosd.rhea.BasicFMmetamodel.FeatureModel;
 
 /**
@@ -33,7 +25,6 @@ import uma.caosd.rhea.BasicFMmetamodel.FeatureModel;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link eu.coresense.variability.featureModel.impl.ModelImpl#getFeatureDefinitions <em>Feature Definitions</em>}</li>
  *   <li>{@link eu.coresense.variability.featureModel.impl.ModelImpl#getFm <em>Fm</em>}</li>
  * </ul>
  *
@@ -41,16 +32,6 @@ import uma.caosd.rhea.BasicFMmetamodel.FeatureModel;
  */
 public class ModelImpl extends MinimalEObjectImpl.Container implements Model
 {
-  /**
-   * The cached value of the '{@link #getFeatureDefinitions() <em>Feature Definitions</em>}' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getFeatureDefinitions()
-   * @generated
-   * @ordered
-   */
-  protected EList<Feature> featureDefinitions;
-
   /**
    * The cached value of the '{@link #getFm() <em>Fm</em>}' containment reference.
    * <!-- begin-user-doc -->
@@ -80,21 +61,6 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
   protected EClass eStaticClass()
   {
     return FeatureModelPackage.Literals.MODEL;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EList<Feature> getFeatureDefinitions()
-  {
-    if (featureDefinitions == null)
-    {
-      featureDefinitions = new EObjectContainmentEList<Feature>(Feature.class, this, FeatureModelPackage.MODEL__FEATURE_DEFINITIONS);
-    }
-    return featureDefinitions;
   }
 
   /**
@@ -157,8 +123,6 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
   {
     switch (featureID)
     {
-      case FeatureModelPackage.MODEL__FEATURE_DEFINITIONS:
-        return ((InternalEList<?>)getFeatureDefinitions()).basicRemove(otherEnd, msgs);
       case FeatureModelPackage.MODEL__FM:
         return basicSetFm(null, msgs);
     }
@@ -175,8 +139,6 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
   {
     switch (featureID)
     {
-      case FeatureModelPackage.MODEL__FEATURE_DEFINITIONS:
-        return getFeatureDefinitions();
       case FeatureModelPackage.MODEL__FM:
         return getFm();
     }
@@ -188,16 +150,11 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
    * <!-- end-user-doc -->
    * @generated
    */
-  @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue)
   {
     switch (featureID)
     {
-      case FeatureModelPackage.MODEL__FEATURE_DEFINITIONS:
-        getFeatureDefinitions().clear();
-        getFeatureDefinitions().addAll((Collection<? extends Feature>)newValue);
-        return;
       case FeatureModelPackage.MODEL__FM:
         setFm((FeatureModel)newValue);
         return;
@@ -215,9 +172,6 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
   {
     switch (featureID)
     {
-      case FeatureModelPackage.MODEL__FEATURE_DEFINITIONS:
-        getFeatureDefinitions().clear();
-        return;
       case FeatureModelPackage.MODEL__FM:
         setFm((FeatureModel)null);
         return;
@@ -235,8 +189,6 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
   {
     switch (featureID)
     {
-      case FeatureModelPackage.MODEL__FEATURE_DEFINITIONS:
-        return featureDefinitions != null && !featureDefinitions.isEmpty();
       case FeatureModelPackage.MODEL__FM:
         return fm != null;
     }

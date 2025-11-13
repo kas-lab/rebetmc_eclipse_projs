@@ -14,6 +14,7 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
+ *   <li>{@link eu.coresense.adaptation.tactics.RuleBody#getEffect <em>Effect</em>}</li>
  *   <li>{@link eu.coresense.adaptation.tactics.RuleBody#getAtomicAction <em>Atomic Action</em>}</li>
  * </ul>
  *
@@ -23,6 +24,28 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface RuleBody extends EObject
 {
+  /**
+   * Returns the value of the '<em><b>Effect</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Effect</em>' containment reference.
+   * @see #setEffect(Effect)
+   * @see eu.coresense.adaptation.tactics.TacticsPackage#getRuleBody_Effect()
+   * @model containment="true"
+   * @generated
+   */
+  Effect getEffect();
+
+  /**
+   * Sets the value of the '{@link eu.coresense.adaptation.tactics.RuleBody#getEffect <em>Effect</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Effect</em>' containment reference.
+   * @see #getEffect()
+   * @generated
+   */
+  void setEffect(Effect value);
+
   /**
    * Returns the value of the '<em><b>Atomic Action</b></em>' containment reference.
    * <!-- begin-user-doc -->

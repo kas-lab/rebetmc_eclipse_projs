@@ -4,9 +4,12 @@
 package eu.coresense.adaptation.tactics.impl;
 
 import eu.coresense.adaptation.tactics.Condition;
+import eu.coresense.adaptation.tactics.Literal;
 import eu.coresense.adaptation.tactics.LogicalOperator;
 import eu.coresense.adaptation.tactics.MathOperator;
 import eu.coresense.adaptation.tactics.TacticsPackage;
+
+import eu.coresense.context.contextModel.ContextVar;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -37,24 +40,14 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 public class ConditionImpl extends MinimalEObjectImpl.Container implements Condition
 {
   /**
-   * The default value of the '{@link #getMeasurement() <em>Measurement</em>}' attribute.
+   * The cached value of the '{@link #getMeasurement() <em>Measurement</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getMeasurement()
    * @generated
    * @ordered
    */
-  protected static final String MEASUREMENT_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getMeasurement() <em>Measurement</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getMeasurement()
-   * @generated
-   * @ordered
-   */
-  protected String measurement = MEASUREMENT_EDEFAULT;
+  protected ContextVar measurement;
 
   /**
    * The default value of the '{@link #getOperator() <em>Operator</em>}' attribute.
@@ -77,24 +70,14 @@ public class ConditionImpl extends MinimalEObjectImpl.Container implements Condi
   protected MathOperator operator = OPERATOR_EDEFAULT;
 
   /**
-   * The default value of the '{@link #getValue() <em>Value</em>}' attribute.
+   * The cached value of the '{@link #getValue() <em>Value</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getValue()
    * @generated
    * @ordered
    */
-  protected static final String VALUE_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getValue() <em>Value</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getValue()
-   * @generated
-   * @ordered
-   */
-  protected String value = VALUE_EDEFAULT;
+  protected Literal value;
 
   /**
    * The default value of the '{@link #getLogicalOp() <em>Logical Op</em>}' attribute.
@@ -153,7 +136,27 @@ public class ConditionImpl extends MinimalEObjectImpl.Container implements Condi
    * @generated
    */
   @Override
-  public String getMeasurement()
+  public ContextVar getMeasurement()
+  {
+    if (measurement != null && measurement.eIsProxy())
+    {
+      InternalEObject oldMeasurement = (InternalEObject)measurement;
+      measurement = (ContextVar)eResolveProxy(oldMeasurement);
+      if (measurement != oldMeasurement)
+      {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, TacticsPackage.CONDITION__MEASUREMENT, oldMeasurement, measurement));
+      }
+    }
+    return measurement;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ContextVar basicGetMeasurement()
   {
     return measurement;
   }
@@ -164,9 +167,9 @@ public class ConditionImpl extends MinimalEObjectImpl.Container implements Condi
    * @generated
    */
   @Override
-  public void setMeasurement(String newMeasurement)
+  public void setMeasurement(ContextVar newMeasurement)
   {
-    String oldMeasurement = measurement;
+    ContextVar oldMeasurement = measurement;
     measurement = newMeasurement;
     if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, TacticsPackage.CONDITION__MEASUREMENT, oldMeasurement, measurement));
@@ -203,7 +206,7 @@ public class ConditionImpl extends MinimalEObjectImpl.Container implements Condi
    * @generated
    */
   @Override
-  public String getValue()
+  public Literal getValue()
   {
     return value;
   }
@@ -213,13 +216,38 @@ public class ConditionImpl extends MinimalEObjectImpl.Container implements Condi
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-  public void setValue(String newValue)
+  public NotificationChain basicSetValue(Literal newValue, NotificationChain msgs)
   {
-    String oldValue = value;
+    Literal oldValue = value;
     value = newValue;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, TacticsPackage.CONDITION__VALUE, oldValue, value));
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, TacticsPackage.CONDITION__VALUE, oldValue, newValue);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setValue(Literal newValue)
+  {
+    if (newValue != value)
+    {
+      NotificationChain msgs = null;
+      if (value != null)
+        msgs = ((InternalEObject)value).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - TacticsPackage.CONDITION__VALUE, null, msgs);
+      if (newValue != null)
+        msgs = ((InternalEObject)newValue).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - TacticsPackage.CONDITION__VALUE, null, msgs);
+      msgs = basicSetValue(newValue, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, TacticsPackage.CONDITION__VALUE, newValue, newValue));
   }
 
   /**
@@ -307,6 +335,8 @@ public class ConditionImpl extends MinimalEObjectImpl.Container implements Condi
   {
     switch (featureID)
     {
+      case TacticsPackage.CONDITION__VALUE:
+        return basicSetValue(null, msgs);
       case TacticsPackage.CONDITION__SECOND_TERM:
         return basicSetSecondTerm(null, msgs);
     }
@@ -324,7 +354,8 @@ public class ConditionImpl extends MinimalEObjectImpl.Container implements Condi
     switch (featureID)
     {
       case TacticsPackage.CONDITION__MEASUREMENT:
-        return getMeasurement();
+        if (resolve) return getMeasurement();
+        return basicGetMeasurement();
       case TacticsPackage.CONDITION__OPERATOR:
         return getOperator();
       case TacticsPackage.CONDITION__VALUE:
@@ -348,13 +379,13 @@ public class ConditionImpl extends MinimalEObjectImpl.Container implements Condi
     switch (featureID)
     {
       case TacticsPackage.CONDITION__MEASUREMENT:
-        setMeasurement((String)newValue);
+        setMeasurement((ContextVar)newValue);
         return;
       case TacticsPackage.CONDITION__OPERATOR:
         setOperator((MathOperator)newValue);
         return;
       case TacticsPackage.CONDITION__VALUE:
-        setValue((String)newValue);
+        setValue((Literal)newValue);
         return;
       case TacticsPackage.CONDITION__LOGICAL_OP:
         setLogicalOp((LogicalOperator)newValue);
@@ -377,13 +408,13 @@ public class ConditionImpl extends MinimalEObjectImpl.Container implements Condi
     switch (featureID)
     {
       case TacticsPackage.CONDITION__MEASUREMENT:
-        setMeasurement(MEASUREMENT_EDEFAULT);
+        setMeasurement((ContextVar)null);
         return;
       case TacticsPackage.CONDITION__OPERATOR:
         setOperator(OPERATOR_EDEFAULT);
         return;
       case TacticsPackage.CONDITION__VALUE:
-        setValue(VALUE_EDEFAULT);
+        setValue((Literal)null);
         return;
       case TacticsPackage.CONDITION__LOGICAL_OP:
         setLogicalOp(LOGICAL_OP_EDEFAULT);
@@ -406,11 +437,11 @@ public class ConditionImpl extends MinimalEObjectImpl.Container implements Condi
     switch (featureID)
     {
       case TacticsPackage.CONDITION__MEASUREMENT:
-        return MEASUREMENT_EDEFAULT == null ? measurement != null : !MEASUREMENT_EDEFAULT.equals(measurement);
+        return measurement != null;
       case TacticsPackage.CONDITION__OPERATOR:
         return operator != OPERATOR_EDEFAULT;
       case TacticsPackage.CONDITION__VALUE:
-        return VALUE_EDEFAULT == null ? value != null : !VALUE_EDEFAULT.equals(value);
+        return value != null;
       case TacticsPackage.CONDITION__LOGICAL_OP:
         return logicalOp != LOGICAL_OP_EDEFAULT;
       case TacticsPackage.CONDITION__SECOND_TERM:
@@ -430,12 +461,8 @@ public class ConditionImpl extends MinimalEObjectImpl.Container implements Condi
     if (eIsProxy()) return super.toString();
 
     StringBuilder result = new StringBuilder(super.toString());
-    result.append(" (measurement: ");
-    result.append(measurement);
-    result.append(", operator: ");
+    result.append(" (operator: ");
     result.append(operator);
-    result.append(", value: ");
-    result.append(value);
     result.append(", logicalOp: ");
     result.append(logicalOp);
     result.append(')');

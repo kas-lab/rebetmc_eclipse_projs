@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" uid="_FIRdAGMUEfCDq6JBnpNRYg" version="15.4.1.202403191723">
+  <semanticResources>model/generated/Tactics.ecore</semanticResources>
+  <semanticResources>platform:/resource/fms.metamodel/model/BasicFMmetamodel.ecore</semanticResources>
+  <semanticResources>platform:/resource/eu.coresense.resolution/model/generated/ResolutionModel.ecore</semanticResources>
+  <semanticResources>platform:/resource/de.fraunhofer.ipa.rossystem/model/rossystem.ecore</semanticResources>
+  <semanticResources>platform:/resource/de.fraunhofer.ipa.ros/model/ros.ecore</semanticResources>
+  <semanticResources>platform:/resource/de.fraunhofer.ipa.ros/model/PrimitivesTypes.ecore</semanticResources>
+  <semanticResources>model/generated/Tactics.genmodel</semanticResources>
+  <semanticResources>platform:/resource/eu.coresense.resolution/model/generated/ResolutionModel.genmodel</semanticResources>
+  <semanticResources>platform:/resource/de.fraunhofer.ipa.ros/model/ros.genmodel</semanticResources>
+  <semanticResources>platform:/resource/de.fraunhofer.ipa.rossystem/model/rossystem.genmodel</semanticResources>
+  <semanticResources>platform:/resource/fms.metamodel/model/BasicFMmetamodel.genmodel</semanticResources>
+  <semanticResources>src/eu/coresense/adaptation/GenerateTactics.mwe2</semanticResources>
+  <semanticResources>src/eu/coresense/adaptation/generator/TacticsGenerator.xtend</semanticResources>
+  <semanticResources>src-gen/eu/coresense/adaptation/Tactics.xtextbin</semanticResources>
+</viewpoint:DAnalysis>

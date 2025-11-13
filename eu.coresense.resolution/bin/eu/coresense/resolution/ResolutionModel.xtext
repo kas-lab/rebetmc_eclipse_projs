@@ -26,13 +26,20 @@ Reconfiguration:
 ;
 
 SetParam:
-	'SetParameter(' node=[rossys::RosNode] ',' param=[rossys::RosParameter] ',' value=ParameterValue  ')'
+	'SetParameter' '('
+        node=[rossys::RosNode] ','
+        param=[ros::Parameter] ','
+        value=ParameterValue
+    ')'
 ;
 
 SetLifecycle:
-	'SetLifecycleState(' node=[rossys::RosNode] ',' state=LifecycleState ')'
+	'SetLifecycleState' '(' node=[rossys::RosNode] ',' state=LifecycleState ')'
 ;
 
 enum LifecycleState returns LifecycleState:
 				UNCONFIGURED = 'UNCONFIGURED' | INACTIVE = 'INACTIVE' | ACTIVE = 'ACTIVE' | FINALIZED = 'FINALIZED';
 //
+
+@Override 
+terminal WS: (' '|'\t'|'\r'? '\n')+;

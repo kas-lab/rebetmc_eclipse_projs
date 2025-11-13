@@ -14,6 +14,6 @@ package eu.coresense.adaptation.tactics;
  * @model
  * @generated
  */
-public interface AtomicActionDeselectFeature extends AtomicAction
+public interface AtomicActionDeselectFeature extends AtomicSimpleAction
 {
 } // AtomicActionDeselectFeature

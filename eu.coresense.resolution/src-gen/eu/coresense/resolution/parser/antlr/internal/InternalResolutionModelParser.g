@@ -373,22 +373,9 @@ ruleSetParam returns [EObject current=null]
 		{
 			newLeafNode(otherlv_0, grammarAccess.getSetParamAccess().getSetParameterKeyword_0());
 		}
-		(
-			(
-				{
-					if ($current==null) {
-						$current = createModelElement(grammarAccess.getSetParamRule());
-					}
-				}
-				otherlv_1=RULE_ID
-				{
-					newLeafNode(otherlv_1, grammarAccess.getSetParamAccess().getNodeRosNodeCrossReference_1_0());
-				}
-			)
-		)
-		otherlv_2=Comma
+		otherlv_1=LeftParenthesis
 		{
-			newLeafNode(otherlv_2, grammarAccess.getSetParamAccess().getCommaKeyword_2());
+			newLeafNode(otherlv_1, grammarAccess.getSetParamAccess().getLeftParenthesisKeyword_1());
 		}
 		(
 			(
@@ -397,22 +384,39 @@ ruleSetParam returns [EObject current=null]
 						$current = createModelElement(grammarAccess.getSetParamRule());
 					}
 				}
-				otherlv_3=RULE_ID
+				otherlv_2=RULE_ID
 				{
-					newLeafNode(otherlv_3, grammarAccess.getSetParamAccess().getParamRosParameterCrossReference_3_0());
+					newLeafNode(otherlv_2, grammarAccess.getSetParamAccess().getNodeRosNodeCrossReference_2_0());
 				}
 			)
 		)
-		otherlv_4=Comma
+		otherlv_3=Comma
 		{
-			newLeafNode(otherlv_4, grammarAccess.getSetParamAccess().getCommaKeyword_4());
+			newLeafNode(otherlv_3, grammarAccess.getSetParamAccess().getCommaKeyword_3());
 		}
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getSetParamAccess().getValueParameterValueParserRuleCall_5_0());
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getSetParamRule());
+					}
 				}
-				lv_value_5_0=ruleParameterValue
+				otherlv_4=RULE_ID
+				{
+					newLeafNode(otherlv_4, grammarAccess.getSetParamAccess().getParamParameterCrossReference_4_0());
+				}
+			)
+		)
+		otherlv_5=Comma
+		{
+			newLeafNode(otherlv_5, grammarAccess.getSetParamAccess().getCommaKeyword_5());
+		}
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getSetParamAccess().getValueParameterValueParserRuleCall_6_0());
+				}
+				lv_value_6_0=ruleParameterValue
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getSetParamRule());
@@ -420,15 +424,15 @@ ruleSetParam returns [EObject current=null]
 					set(
 						$current,
 						"value",
-						lv_value_5_0,
+						lv_value_6_0,
 						"de.fraunhofer.ipa.ros.Basics.ParameterValue");
 					afterParserOrEnumRuleCall();
 				}
 			)
 		)
-		otherlv_6=RightParenthesis
+		otherlv_7=RightParenthesis
 		{
-			newLeafNode(otherlv_6, grammarAccess.getSetParamAccess().getRightParenthesisKeyword_6());
+			newLeafNode(otherlv_7, grammarAccess.getSetParamAccess().getRightParenthesisKeyword_7());
 		}
 	)
 ;
@@ -453,6 +457,10 @@ ruleSetLifecycle returns [EObject current=null]
 		{
 			newLeafNode(otherlv_0, grammarAccess.getSetLifecycleAccess().getSetLifecycleStateKeyword_0());
 		}
+		otherlv_1=LeftParenthesis
+		{
+			newLeafNode(otherlv_1, grammarAccess.getSetLifecycleAccess().getLeftParenthesisKeyword_1());
+		}
 		(
 			(
 				{
@@ -460,22 +468,22 @@ ruleSetLifecycle returns [EObject current=null]
 						$current = createModelElement(grammarAccess.getSetLifecycleRule());
 					}
 				}
-				otherlv_1=RULE_ID
+				otherlv_2=RULE_ID
 				{
-					newLeafNode(otherlv_1, grammarAccess.getSetLifecycleAccess().getNodeRosNodeCrossReference_1_0());
+					newLeafNode(otherlv_2, grammarAccess.getSetLifecycleAccess().getNodeRosNodeCrossReference_2_0());
 				}
 			)
 		)
-		otherlv_2=Comma
+		otherlv_3=Comma
 		{
-			newLeafNode(otherlv_2, grammarAccess.getSetLifecycleAccess().getCommaKeyword_2());
+			newLeafNode(otherlv_3, grammarAccess.getSetLifecycleAccess().getCommaKeyword_3());
 		}
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getSetLifecycleAccess().getStateLifecycleStateEnumRuleCall_3_0());
+					newCompositeNode(grammarAccess.getSetLifecycleAccess().getStateLifecycleStateEnumRuleCall_4_0());
 				}
-				lv_state_3_0=ruleLifecycleState
+				lv_state_4_0=ruleLifecycleState
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getSetLifecycleRule());
@@ -483,15 +491,15 @@ ruleSetLifecycle returns [EObject current=null]
 					set(
 						$current,
 						"state",
-						lv_state_3_0,
+						lv_state_4_0,
 						"eu.coresense.resolution.ResolutionModel.LifecycleState");
 					afterParserOrEnumRuleCall();
 				}
 			)
 		)
-		otherlv_4=RightParenthesis
+		otherlv_5=RightParenthesis
 		{
-			newLeafNode(otherlv_4, grammarAccess.getSetLifecycleAccess().getRightParenthesisKeyword_4());
+			newLeafNode(otherlv_5, grammarAccess.getSetLifecycleAccess().getRightParenthesisKeyword_5());
 		}
 	)
 ;

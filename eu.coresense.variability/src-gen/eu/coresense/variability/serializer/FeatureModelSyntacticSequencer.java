@@ -11,6 +11,8 @@ import org.eclipse.xtext.IGrammarAccess;
 import org.eclipse.xtext.RuleCall;
 import org.eclipse.xtext.nodemodel.INode;
 import org.eclipse.xtext.serializer.analysis.GrammarAlias.AbstractElementAlias;
+import org.eclipse.xtext.serializer.analysis.GrammarAlias.TokenAlias;
+import org.eclipse.xtext.serializer.analysis.ISyntacticSequencerPDAProvider.ISynNavigable;
 import org.eclipse.xtext.serializer.analysis.ISyntacticSequencerPDAProvider.ISynTransition;
 import org.eclipse.xtext.serializer.sequencer.AbstractSyntacticSequencer;
 
@@ -18,10 +20,22 @@ import org.eclipse.xtext.serializer.sequencer.AbstractSyntacticSequencer;
 public class FeatureModelSyntacticSequencer extends AbstractSyntacticSequencer {
 
 	protected FeatureModelGrammarAccess grammarAccess;
+	protected AbstractElementAlias match_Alternative_MandatoryKeyword_0_0_q;
+	protected AbstractElementAlias match_Alternative_SelectedKeyword_1_0_q;
+	protected AbstractElementAlias match_Feature_Impl_MandatoryKeyword_0_0_q;
+	protected AbstractElementAlias match_Feature_Impl_SelectedKeyword_1_0_q;
+	protected AbstractElementAlias match_OrGroup_MandatoryKeyword_0_0_q;
+	protected AbstractElementAlias match_OrGroup_SelectedKeyword_1_0_q;
 	
 	@Inject
 	protected void init(IGrammarAccess access) {
 		grammarAccess = (FeatureModelGrammarAccess) access;
+		match_Alternative_MandatoryKeyword_0_0_q = new TokenAlias(false, true, grammarAccess.getAlternativeAccess().getMandatoryKeyword_0_0());
+		match_Alternative_SelectedKeyword_1_0_q = new TokenAlias(false, true, grammarAccess.getAlternativeAccess().getSelectedKeyword_1_0());
+		match_Feature_Impl_MandatoryKeyword_0_0_q = new TokenAlias(false, true, grammarAccess.getFeature_ImplAccess().getMandatoryKeyword_0_0());
+		match_Feature_Impl_SelectedKeyword_1_0_q = new TokenAlias(false, true, grammarAccess.getFeature_ImplAccess().getSelectedKeyword_1_0());
+		match_OrGroup_MandatoryKeyword_0_0_q = new TokenAlias(false, true, grammarAccess.getOrGroupAccess().getMandatoryKeyword_0_0());
+		match_OrGroup_SelectedKeyword_1_0_q = new TokenAlias(false, true, grammarAccess.getOrGroupAccess().getSelectedKeyword_1_0());
 	}
 	
 	@Override
@@ -36,8 +50,107 @@ public class FeatureModelSyntacticSequencer extends AbstractSyntacticSequencer {
 		List<INode> transitionNodes = collectNodes(fromNode, toNode);
 		for (AbstractElementAlias syntax : transition.getAmbiguousSyntaxes()) {
 			List<INode> syntaxNodes = getNodesFor(transitionNodes, syntax);
-			acceptNodes(getLastNavigableState(), syntaxNodes);
+			if (match_Alternative_MandatoryKeyword_0_0_q.equals(syntax))
+				emit_Alternative_MandatoryKeyword_0_0_q(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_Alternative_SelectedKeyword_1_0_q.equals(syntax))
+				emit_Alternative_SelectedKeyword_1_0_q(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_Feature_Impl_MandatoryKeyword_0_0_q.equals(syntax))
+				emit_Feature_Impl_MandatoryKeyword_0_0_q(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_Feature_Impl_SelectedKeyword_1_0_q.equals(syntax))
+				emit_Feature_Impl_SelectedKeyword_1_0_q(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_OrGroup_MandatoryKeyword_0_0_q.equals(syntax))
+				emit_OrGroup_MandatoryKeyword_0_0_q(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_OrGroup_SelectedKeyword_1_0_q.equals(syntax))
+				emit_OrGroup_SelectedKeyword_1_0_q(semanticObject, getLastNavigableState(), syntaxNodes);
+			else acceptNodes(getLastNavigableState(), syntaxNodes);
 		}
 	}
 
+	/**
+	 * <pre>
+	 * Ambiguous syntax:
+	 *     'mandatory'?
+	 *
+	 * This ambiguous syntax occurs at:
+	 *     (rule start) (ambiguity) mandatory?='mandatory'
+	 
+	 * </pre>
+	 */
+	protected void emit_Alternative_MandatoryKeyword_0_0_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * <pre>
+	 * Ambiguous syntax:
+	 *     'selected'?
+	 *
+	 * This ambiguous syntax occurs at:
+	 *     (rule start) (ambiguity) selected?='selected'
+	 *     mandatory?='mandatory' (ambiguity) selected?='selected'
+	 
+	 * </pre>
+	 */
+	protected void emit_Alternative_SelectedKeyword_1_0_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * <pre>
+	 * Ambiguous syntax:
+	 *     'mandatory'?
+	 *
+	 * This ambiguous syntax occurs at:
+	 *     (rule start) (ambiguity) mandatory?='mandatory'
+	 
+	 * </pre>
+	 */
+	protected void emit_Feature_Impl_MandatoryKeyword_0_0_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * <pre>
+	 * Ambiguous syntax:
+	 *     'selected'?
+	 *
+	 * This ambiguous syntax occurs at:
+	 *     (rule start) (ambiguity) selected?='selected'
+	 *     mandatory?='mandatory' (ambiguity) selected?='selected'
+	 
+	 * </pre>
+	 */
+	protected void emit_Feature_Impl_SelectedKeyword_1_0_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * <pre>
+	 * Ambiguous syntax:
+	 *     'mandatory'?
+	 *
+	 * This ambiguous syntax occurs at:
+	 *     (rule start) (ambiguity) mandatory?='mandatory'
+	 
+	 * </pre>
+	 */
+	protected void emit_OrGroup_MandatoryKeyword_0_0_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * <pre>
+	 * Ambiguous syntax:
+	 *     'selected'?
+	 *
+	 * This ambiguous syntax occurs at:
+	 *     (rule start) (ambiguity) selected?='selected'
+	 *     mandatory?='mandatory' (ambiguity) selected?='selected'
+	 
+	 * </pre>
+	 */
+	protected void emit_OrGroup_SelectedKeyword_1_0_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
 }

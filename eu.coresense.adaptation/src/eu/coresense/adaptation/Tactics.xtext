@@ -3,45 +3,16 @@ grammar eu.coresense.adaptation.Tactics with org.eclipse.xtext.common.Terminals
 import "http://coresense.eu/resolution/ResolutionModel" as resolutionModel
 import "http://www.coresense.eu/variability/FeatureModel" as variabilityModel
 import "http://caosd.lcc.uma.es/BasicFMmetamodel" as BasicFMmetamodel
-
+import "http://www.coresense.eu/context/ContextModel" as contextModel
+import "http://www.eclipse.org/emf/2002/Ecore" as ecore
 generate tactics "http://www.coresense.eu/adaptation/Tactics"
 
 TacticsModel:
 	'name' name=ID ';' 
 	(imports+=Import*)
-	'variability_model' featureModel=[BasicFMmetamodel::FeatureModel]
-	'resolution_model' resolutionModel=[resolutionModel::ResolutionModel]';'	
-	'period[ms]' period=INT ';' 
+	'resolution_model' resolutionModel=[resolutionModel::ResolutionModel]';'
 	(adaptationRules+=AdaptationRule*)
 ;
-
-//terminal NUMBER returns ecore::EBigDecimal:
-//    (('0'..'9')+ ('.' ('0'..'9')*)? | '.' ('0'..'9')+)
-//    (('e' | 'E') ('+' | '-')? ('0'..'9')+)?
-//;
- 	
-
-
-//terminal VALUE returns ecore::EString: '"' ('0'..'9' | 'a'..'z' | '0'..'9' '.' '0'..'9')+'"';
-
-//terminal AND             returns ecore::EString: 'AND';
-//terminal OR              returns ecore::EString:  'OR' ;
-//terminal IF              returns ecore::EString: 'if';
-//terminal ELSE            returns ecore::EString: 'else';
-//terminal THEN            returns ecore::EString: 'then';
-//terminal RULE_TERMINAL   returns ecore::EString: 'rule';
-//terminal SELECT          returns ecore::EString: 'select feature';
-//terminal DESELECT        returns ecore::EString: 'deselect feature';
-//terminal CHANGE          returns ecore::EString: 'change feature attribute';
-//terminal WITH            returns ecore::EString: 'with';
-//terminal IMPORT_TERMINAL returns ecore::EString: 'import';
-//terminal AS              returns ecore::EString: 'as';
-//terminal SMALLER		 returns ecore::EString: '<';
-//terminal BIGGER			 returns ecore::EString: '>';
-//terminal EQUAL		     returns ecore::EString: '==';
-//terminal NOT_EQUAL		returns ecore::EString: '<>'
-//terminal SELECT_WHERE    returns ecore::EString: 'select feature * where';
-//terminal FROM 		   returns ecore::EString: 'from';
 
 Import:
 	'import' importURI=STRING ';'
@@ -61,7 +32,6 @@ AtomicRule:
 ;
 
 RuleSet:
-	
 	'rule_set' name=ID '{' 
 	atomicRules+=AtomicRuleWithPriority+
 	'}'';'
@@ -73,12 +43,13 @@ AtomicRuleWithPriority:
 ;
 
 AtomicAction:
-	(AtomicActionSelectFeature | AtomicActionDeselectFeature) 
-	('AND' secondAction=AtomicAction)?
-;
+    'action' '{' actions+=AtomicSimpleAction ('AND' actions+=AtomicSimpleAction)*'}';
+    
+AtomicSimpleAction:
+    AtomicActionSelectFeature | AtomicActionDeselectFeature;
 
 RuleBody:
-	PureAction | ConditionAction
+	(PureAction | ConditionAction) effect=Effect
 ;
 
 PureAction:
@@ -86,16 +57,21 @@ PureAction:
 ;
 
 ConditionAction:
-	('if' '(' condition=Condition ')') atomicAction=AtomicAction
-	('else' (else=RuleBody) )?
+	'condition' '{' ('if' '(' condition=Condition ')') '{' atomicAction=AtomicAction '}'
+	('else' '{'(else=RuleBody) '}' )? 
+;
+
+Effect:
+	{Effect}
+	'effect' '{' condition=Condition? '}'
 ;
 
 // Find a better name for secondTerm
 // Find a way for using parenthesis for priority between operators
 // Find a way of expressing complex conditions, with operators priorities
 Condition:
-	measurement=QualifiedName 
-	operator=MathOperator value=STRING 
+	measurement=[contextModel::ContextVar]
+	operator=MathOperator value=Literal 
 	( logicalOp=LogicalOperator secondTerm=Condition )? 
 ;
 
@@ -108,9 +84,44 @@ enum LogicalOperator:
 ;
 
 AtomicActionSelectFeature:
-	'select_variant' '(' variant=[BasicFMmetamodel::Feature] ')'	
+	'select_variant' '(' variant=QualifiedFeatureRef ')'	
 ;
 
 AtomicActionDeselectFeature:
-	'unselect_variant' '('variant=[BasicFMmetamodel::Feature]')'
+	'unselect_variant' '('variant=QualifiedFeatureRef')'
+;
+
+QualifiedFeatureRef:
+    model=[resolutionModel::ResolutionModel] '.' feature=[BasicFMmetamodel::Feature]
+;
+
+Literal:
+      IntLiteral
+    | DecimalLiteral
+    | StringLiteral
+    | BooleanLiteral
+;
+
+IntLiteral:
+    value=INT
+;
+
+DecimalLiteral:
+    value=DECIMAL
+;
+
+StringLiteral:
+    value=STRING
+;
+
+BooleanLiteral:
+    value=BOOLEAN
+;
+
+terminal DECIMAL returns ecore::EBigDecimal:
+    INT '.' INT
+;
+
+terminal BOOLEAN returns ecore::EBoolean:
+    'true' | 'false'
 ;

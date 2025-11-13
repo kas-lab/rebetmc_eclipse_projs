@@ -75,7 +75,7 @@ public class FeatureModelSemanticSequencer extends AbstractDelegatingSemanticSeq
 	 *     Alternative returns Alternative
 	 *
 	 * Constraint:
-	 *     (mandatory?='mandatory' selected?='selected' name=EString id=EString (children+=Feature children+=Feature*)?)
+	 *     (mandatory?='mandatory'? selected?='selected'? name=EString id=EString (children+=Feature children+=Feature*)?)
 	 * </pre>
 	 */
 	protected void sequence_Alternative(ISerializationContext context, Alternative semanticObject) {
@@ -115,7 +115,7 @@ public class FeatureModelSemanticSequencer extends AbstractDelegatingSemanticSeq
 	 *     FeatureModel returns FeatureModel
 	 *
 	 * Constraint:
-	 *     (name=EString root=Feature features+=[Feature|ID] crossTreeConstraints+=BasicConstraint*)
+	 *     (name=EString root=Feature crossTreeConstraints+=BasicConstraint*)
 	 * </pre>
 	 */
 	protected void sequence_FeatureModel(ISerializationContext context, FeatureModel semanticObject) {
@@ -130,7 +130,7 @@ public class FeatureModelSemanticSequencer extends AbstractDelegatingSemanticSeq
 	 *     Feature_Impl returns Feature
 	 *
 	 * Constraint:
-	 *     (mandatory?='mandatory' selected?='selected' name=EString id=EString (children+=Feature children+=Feature*)?)
+	 *     (mandatory?='mandatory'? selected?='selected'? name=EString id=EString (children+=Feature children+=Feature*)?)
 	 * </pre>
 	 */
 	protected void sequence_Feature_Impl(ISerializationContext context, Feature semanticObject) {
@@ -144,11 +144,17 @@ public class FeatureModelSemanticSequencer extends AbstractDelegatingSemanticSeq
 	 *     Model returns Model
 	 *
 	 * Constraint:
-	 *     (featureDefinitions+=Feature featureDefinitions+=Feature* fm=FeatureModel)
+	 *     fm=FeatureModel
 	 * </pre>
 	 */
 	protected void sequence_Model(ISerializationContext context, Model semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, FeatureModelPackage.Literals.MODEL__FM) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, FeatureModelPackage.Literals.MODEL__FM));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getModelAccess().getFmFeatureModelParserRuleCall_2_0(), semanticObject.getFm());
+		feeder.finish();
 	}
 	
 	
@@ -159,7 +165,7 @@ public class FeatureModelSemanticSequencer extends AbstractDelegatingSemanticSeq
 	 *     OrGroup returns OrGroup
 	 *
 	 * Constraint:
-	 *     (mandatory?='mandatory' selected?='selected' name=EString id=EString (children+=Feature children+=Feature*)?)
+	 *     (mandatory?='mandatory'? selected?='selected'? name=EString id=EString (children+=Feature children+=Feature*)?)
 	 * </pre>
 	 */
 	protected void sequence_OrGroup(ISerializationContext context, OrGroup semanticObject) {

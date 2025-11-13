@@ -73,12 +73,20 @@ public class TacticsFactoryImpl extends EFactoryImpl implements TacticsFactory
       case TacticsPackage.RULE_SET: return createRuleSet();
       case TacticsPackage.ATOMIC_RULE_WITH_PRIORITY: return createAtomicRuleWithPriority();
       case TacticsPackage.ATOMIC_ACTION: return createAtomicAction();
+      case TacticsPackage.ATOMIC_SIMPLE_ACTION: return createAtomicSimpleAction();
       case TacticsPackage.RULE_BODY: return createRuleBody();
       case TacticsPackage.PURE_ACTION: return createPureAction();
       case TacticsPackage.CONDITION_ACTION: return createConditionAction();
+      case TacticsPackage.EFFECT: return createEffect();
       case TacticsPackage.CONDITION: return createCondition();
       case TacticsPackage.ATOMIC_ACTION_SELECT_FEATURE: return createAtomicActionSelectFeature();
       case TacticsPackage.ATOMIC_ACTION_DESELECT_FEATURE: return createAtomicActionDeselectFeature();
+      case TacticsPackage.QUALIFIED_FEATURE_REF: return createQualifiedFeatureRef();
+      case TacticsPackage.LITERAL: return createLiteral();
+      case TacticsPackage.INT_LITERAL: return createIntLiteral();
+      case TacticsPackage.DECIMAL_LITERAL: return createDecimalLiteral();
+      case TacticsPackage.STRING_LITERAL: return createStringLiteral();
+      case TacticsPackage.BOOLEAN_LITERAL: return createBooleanLiteral();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -212,6 +220,18 @@ public class TacticsFactoryImpl extends EFactoryImpl implements TacticsFactory
    * @generated
    */
   @Override
+  public AtomicSimpleAction createAtomicSimpleAction()
+  {
+    AtomicSimpleActionImpl atomicSimpleAction = new AtomicSimpleActionImpl();
+    return atomicSimpleAction;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public RuleBody createRuleBody()
   {
     RuleBodyImpl ruleBody = new RuleBodyImpl();
@@ -248,6 +268,18 @@ public class TacticsFactoryImpl extends EFactoryImpl implements TacticsFactory
    * @generated
    */
   @Override
+  public Effect createEffect()
+  {
+    EffectImpl effect = new EffectImpl();
+    return effect;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public Condition createCondition()
   {
     ConditionImpl condition = new ConditionImpl();
@@ -276,6 +308,78 @@ public class TacticsFactoryImpl extends EFactoryImpl implements TacticsFactory
   {
     AtomicActionDeselectFeatureImpl atomicActionDeselectFeature = new AtomicActionDeselectFeatureImpl();
     return atomicActionDeselectFeature;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public QualifiedFeatureRef createQualifiedFeatureRef()
+  {
+    QualifiedFeatureRefImpl qualifiedFeatureRef = new QualifiedFeatureRefImpl();
+    return qualifiedFeatureRef;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Literal createLiteral()
+  {
+    LiteralImpl literal = new LiteralImpl();
+    return literal;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public IntLiteral createIntLiteral()
+  {
+    IntLiteralImpl intLiteral = new IntLiteralImpl();
+    return intLiteral;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public DecimalLiteral createDecimalLiteral()
+  {
+    DecimalLiteralImpl decimalLiteral = new DecimalLiteralImpl();
+    return decimalLiteral;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public StringLiteral createStringLiteral()
+  {
+    StringLiteralImpl stringLiteral = new StringLiteralImpl();
+    return stringLiteral;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public BooleanLiteral createBooleanLiteral()
+  {
+    BooleanLiteralImpl booleanLiteral = new BooleanLiteralImpl();
+    return booleanLiteral;
   }
 
   /**

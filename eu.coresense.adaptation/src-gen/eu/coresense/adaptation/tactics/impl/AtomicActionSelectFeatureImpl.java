@@ -15,7 +15,7 @@ import org.eclipse.emf.ecore.EClass;
  *
  * @generated
  */
-public class AtomicActionSelectFeatureImpl extends AtomicActionImpl implements AtomicActionSelectFeature
+public class AtomicActionSelectFeatureImpl extends AtomicSimpleActionImpl implements AtomicActionSelectFeature
 {
   /**
    * <!-- begin-user-doc -->

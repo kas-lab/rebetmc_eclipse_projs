@@ -7,7 +7,6 @@
   <genPackages prefix="FeatureModel" basePackage="eu.coresense.variability" disposableProviderFactory="true"
       fileExtensions="var" ecorePackage="FeatureModel.ecore#/">
     <genClasses ecoreClass="FeatureModel.ecore#//Model">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference FeatureModel.ecore#//Model/featureDefinitions"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference FeatureModel.ecore#//Model/fm"/>
     </genClasses>
   </genPackages>

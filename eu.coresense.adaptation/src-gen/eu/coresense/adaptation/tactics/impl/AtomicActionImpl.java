@@ -4,18 +4,22 @@
 package eu.coresense.adaptation.tactics.impl;
 
 import eu.coresense.adaptation.tactics.AtomicAction;
+import eu.coresense.adaptation.tactics.AtomicSimpleAction;
 import eu.coresense.adaptation.tactics.TacticsPackage;
 
-import org.eclipse.emf.common.notify.Notification;
+import java.util.Collection;
+
 import org.eclipse.emf.common.notify.NotificationChain;
+
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
-import uma.caosd.rhea.BasicFMmetamodel.Feature;
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -25,8 +29,7 @@ import uma.caosd.rhea.BasicFMmetamodel.Feature;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link eu.coresense.adaptation.tactics.impl.AtomicActionImpl#getSecondAction <em>Second Action</em>}</li>
- *   <li>{@link eu.coresense.adaptation.tactics.impl.AtomicActionImpl#getVariant <em>Variant</em>}</li>
+ *   <li>{@link eu.coresense.adaptation.tactics.impl.AtomicActionImpl#getActions <em>Actions</em>}</li>
  * </ul>
  *
  * @generated
@@ -34,24 +37,14 @@ import uma.caosd.rhea.BasicFMmetamodel.Feature;
 public class AtomicActionImpl extends MinimalEObjectImpl.Container implements AtomicAction
 {
   /**
-   * The cached value of the '{@link #getSecondAction() <em>Second Action</em>}' containment reference.
+   * The cached value of the '{@link #getActions() <em>Actions</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getSecondAction()
+   * @see #getActions()
    * @generated
    * @ordered
    */
-  protected AtomicAction secondAction;
-
-  /**
-   * The cached value of the '{@link #getVariant() <em>Variant</em>}' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getVariant()
-   * @generated
-   * @ordered
-   */
-  protected Feature variant;
+  protected EList<AtomicSimpleAction> actions;
 
   /**
    * <!-- begin-user-doc -->
@@ -80,93 +73,13 @@ public class AtomicActionImpl extends MinimalEObjectImpl.Container implements At
    * @generated
    */
   @Override
-  public AtomicAction getSecondAction()
+  public EList<AtomicSimpleAction> getActions()
   {
-    return secondAction;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public NotificationChain basicSetSecondAction(AtomicAction newSecondAction, NotificationChain msgs)
-  {
-    AtomicAction oldSecondAction = secondAction;
-    secondAction = newSecondAction;
-    if (eNotificationRequired())
+    if (actions == null)
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, TacticsPackage.ATOMIC_ACTION__SECOND_ACTION, oldSecondAction, newSecondAction);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
+      actions = new EObjectContainmentEList<AtomicSimpleAction>(AtomicSimpleAction.class, this, TacticsPackage.ATOMIC_ACTION__ACTIONS);
     }
-    return msgs;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public void setSecondAction(AtomicAction newSecondAction)
-  {
-    if (newSecondAction != secondAction)
-    {
-      NotificationChain msgs = null;
-      if (secondAction != null)
-        msgs = ((InternalEObject)secondAction).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - TacticsPackage.ATOMIC_ACTION__SECOND_ACTION, null, msgs);
-      if (newSecondAction != null)
-        msgs = ((InternalEObject)newSecondAction).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - TacticsPackage.ATOMIC_ACTION__SECOND_ACTION, null, msgs);
-      msgs = basicSetSecondAction(newSecondAction, msgs);
-      if (msgs != null) msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, TacticsPackage.ATOMIC_ACTION__SECOND_ACTION, newSecondAction, newSecondAction));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public Feature getVariant()
-  {
-    if (variant != null && variant.eIsProxy())
-    {
-      InternalEObject oldVariant = (InternalEObject)variant;
-      variant = (Feature)eResolveProxy(oldVariant);
-      if (variant != oldVariant)
-      {
-        if (eNotificationRequired())
-          eNotify(new ENotificationImpl(this, Notification.RESOLVE, TacticsPackage.ATOMIC_ACTION__VARIANT, oldVariant, variant));
-      }
-    }
-    return variant;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public Feature basicGetVariant()
-  {
-    return variant;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public void setVariant(Feature newVariant)
-  {
-    Feature oldVariant = variant;
-    variant = newVariant;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, TacticsPackage.ATOMIC_ACTION__VARIANT, oldVariant, variant));
+    return actions;
   }
 
   /**
@@ -179,8 +92,8 @@ public class AtomicActionImpl extends MinimalEObjectImpl.Container implements At
   {
     switch (featureID)
     {
-      case TacticsPackage.ATOMIC_ACTION__SECOND_ACTION:
-        return basicSetSecondAction(null, msgs);
+      case TacticsPackage.ATOMIC_ACTION__ACTIONS:
+        return ((InternalEList<?>)getActions()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -195,11 +108,8 @@ public class AtomicActionImpl extends MinimalEObjectImpl.Container implements At
   {
     switch (featureID)
     {
-      case TacticsPackage.ATOMIC_ACTION__SECOND_ACTION:
-        return getSecondAction();
-      case TacticsPackage.ATOMIC_ACTION__VARIANT:
-        if (resolve) return getVariant();
-        return basicGetVariant();
+      case TacticsPackage.ATOMIC_ACTION__ACTIONS:
+        return getActions();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -209,16 +119,15 @@ public class AtomicActionImpl extends MinimalEObjectImpl.Container implements At
    * <!-- end-user-doc -->
    * @generated
    */
+  @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue)
   {
     switch (featureID)
     {
-      case TacticsPackage.ATOMIC_ACTION__SECOND_ACTION:
-        setSecondAction((AtomicAction)newValue);
-        return;
-      case TacticsPackage.ATOMIC_ACTION__VARIANT:
-        setVariant((Feature)newValue);
+      case TacticsPackage.ATOMIC_ACTION__ACTIONS:
+        getActions().clear();
+        getActions().addAll((Collection<? extends AtomicSimpleAction>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -234,11 +143,8 @@ public class AtomicActionImpl extends MinimalEObjectImpl.Container implements At
   {
     switch (featureID)
     {
-      case TacticsPackage.ATOMIC_ACTION__SECOND_ACTION:
-        setSecondAction((AtomicAction)null);
-        return;
-      case TacticsPackage.ATOMIC_ACTION__VARIANT:
-        setVariant((Feature)null);
+      case TacticsPackage.ATOMIC_ACTION__ACTIONS:
+        getActions().clear();
         return;
     }
     super.eUnset(featureID);
@@ -254,10 +160,8 @@ public class AtomicActionImpl extends MinimalEObjectImpl.Container implements At
   {
     switch (featureID)
     {
-      case TacticsPackage.ATOMIC_ACTION__SECOND_ACTION:
-        return secondAction != null;
-      case TacticsPackage.ATOMIC_ACTION__VARIANT:
-        return variant != null;
+      case TacticsPackage.ATOMIC_ACTION__ACTIONS:
+        return actions != null && !actions.isEmpty();
     }
     return super.eIsSet(featureID);
   }

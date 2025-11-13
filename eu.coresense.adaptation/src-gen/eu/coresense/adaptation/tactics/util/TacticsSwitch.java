@@ -124,6 +124,13 @@ public class TacticsSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case TacticsPackage.ATOMIC_SIMPLE_ACTION:
+      {
+        AtomicSimpleAction atomicSimpleAction = (AtomicSimpleAction)theEObject;
+        T result = caseAtomicSimpleAction(atomicSimpleAction);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case TacticsPackage.RULE_BODY:
       {
         RuleBody ruleBody = (RuleBody)theEObject;
@@ -147,6 +154,13 @@ public class TacticsSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case TacticsPackage.EFFECT:
+      {
+        Effect effect = (Effect)theEObject;
+        T result = caseEffect(effect);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case TacticsPackage.CONDITION:
       {
         Condition condition = (Condition)theEObject;
@@ -158,7 +172,7 @@ public class TacticsSwitch<T> extends Switch<T>
       {
         AtomicActionSelectFeature atomicActionSelectFeature = (AtomicActionSelectFeature)theEObject;
         T result = caseAtomicActionSelectFeature(atomicActionSelectFeature);
-        if (result == null) result = caseAtomicAction(atomicActionSelectFeature);
+        if (result == null) result = caseAtomicSimpleAction(atomicActionSelectFeature);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -166,7 +180,53 @@ public class TacticsSwitch<T> extends Switch<T>
       {
         AtomicActionDeselectFeature atomicActionDeselectFeature = (AtomicActionDeselectFeature)theEObject;
         T result = caseAtomicActionDeselectFeature(atomicActionDeselectFeature);
-        if (result == null) result = caseAtomicAction(atomicActionDeselectFeature);
+        if (result == null) result = caseAtomicSimpleAction(atomicActionDeselectFeature);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case TacticsPackage.QUALIFIED_FEATURE_REF:
+      {
+        QualifiedFeatureRef qualifiedFeatureRef = (QualifiedFeatureRef)theEObject;
+        T result = caseQualifiedFeatureRef(qualifiedFeatureRef);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case TacticsPackage.LITERAL:
+      {
+        Literal literal = (Literal)theEObject;
+        T result = caseLiteral(literal);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case TacticsPackage.INT_LITERAL:
+      {
+        IntLiteral intLiteral = (IntLiteral)theEObject;
+        T result = caseIntLiteral(intLiteral);
+        if (result == null) result = caseLiteral(intLiteral);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case TacticsPackage.DECIMAL_LITERAL:
+      {
+        DecimalLiteral decimalLiteral = (DecimalLiteral)theEObject;
+        T result = caseDecimalLiteral(decimalLiteral);
+        if (result == null) result = caseLiteral(decimalLiteral);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case TacticsPackage.STRING_LITERAL:
+      {
+        StringLiteral stringLiteral = (StringLiteral)theEObject;
+        T result = caseStringLiteral(stringLiteral);
+        if (result == null) result = caseLiteral(stringLiteral);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case TacticsPackage.BOOLEAN_LITERAL:
+      {
+        BooleanLiteral booleanLiteral = (BooleanLiteral)theEObject;
+        T result = caseBooleanLiteral(booleanLiteral);
+        if (result == null) result = caseLiteral(booleanLiteral);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -287,6 +347,22 @@ public class TacticsSwitch<T> extends Switch<T>
   }
 
   /**
+   * Returns the result of interpreting the object as an instance of '<em>Atomic Simple Action</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Atomic Simple Action</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseAtomicSimpleAction(AtomicSimpleAction object)
+  {
+    return null;
+  }
+
+  /**
    * Returns the result of interpreting the object as an instance of '<em>Rule Body</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -335,6 +411,22 @@ public class TacticsSwitch<T> extends Switch<T>
   }
 
   /**
+   * Returns the result of interpreting the object as an instance of '<em>Effect</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Effect</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseEffect(Effect object)
+  {
+    return null;
+  }
+
+  /**
    * Returns the result of interpreting the object as an instance of '<em>Condition</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -378,6 +470,102 @@ public class TacticsSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseAtomicActionDeselectFeature(AtomicActionDeselectFeature object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Qualified Feature Ref</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Qualified Feature Ref</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseQualifiedFeatureRef(QualifiedFeatureRef object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Literal</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Literal</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseLiteral(Literal object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Int Literal</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Int Literal</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseIntLiteral(IntLiteral object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Decimal Literal</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Decimal Literal</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseDecimalLiteral(DecimalLiteral object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>String Literal</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>String Literal</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseStringLiteral(StringLiteral object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Boolean Literal</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Boolean Literal</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseBooleanLiteral(BooleanLiteral object)
   {
     return null;
   }

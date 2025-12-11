@@ -12,10 +12,13 @@ import eu.coresense.adaptation.tactics.AtomicRuleWithPriority;
 import eu.coresense.adaptation.tactics.AtomicSimpleAction;
 import eu.coresense.adaptation.tactics.Condition;
 import eu.coresense.adaptation.tactics.ConditionAction;
+import eu.coresense.adaptation.tactics.ContextPart;
 import eu.coresense.adaptation.tactics.Effect;
+import eu.coresense.adaptation.tactics.FeatureCondition;
+import eu.coresense.adaptation.tactics.FeaturePart;
 import eu.coresense.adaptation.tactics.Import;
 import eu.coresense.adaptation.tactics.LogicalOperator;
-import eu.coresense.adaptation.tactics.MathOperator;
+import eu.coresense.adaptation.tactics.MeasurementCondition;
 import eu.coresense.adaptation.tactics.PureAction;
 import eu.coresense.adaptation.tactics.QualifiedFeatureRef;
 import eu.coresense.adaptation.tactics.RuleBody;
@@ -136,6 +139,20 @@ public class TacticsPackageImpl extends EPackageImpl implements TacticsPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  private EClass contextPartEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass featurePartEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   private EClass effectEClass = null;
 
   /**
@@ -144,6 +161,20 @@ public class TacticsPackageImpl extends EPackageImpl implements TacticsPackage
    * @generated
    */
   private EClass conditionEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass featureConditionEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass measurementConditionEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -165,13 +196,6 @@ public class TacticsPackageImpl extends EPackageImpl implements TacticsPackage
    * @generated
    */
   private EClass qualifiedFeatureRefEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EEnum mathOperatorEEnum = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -532,7 +556,7 @@ public class TacticsPackageImpl extends EPackageImpl implements TacticsPackage
    * @generated
    */
   @Override
-  public EReference getConditionAction_Condition()
+  public EReference getConditionAction_ContextPart()
   {
     return (EReference)conditionActionEClass.getEStructuralFeatures().get(0);
   }
@@ -543,9 +567,53 @@ public class TacticsPackageImpl extends EPackageImpl implements TacticsPackage
    * @generated
    */
   @Override
-  public EReference getConditionAction_Else()
+  public EReference getConditionAction_FeaturePart()
   {
     return (EReference)conditionActionEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getContextPart()
+  {
+    return contextPartEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getContextPart_ContextCondition()
+  {
+    return (EReference)contextPartEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getFeaturePart()
+  {
+    return featurePartEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getFeaturePart_FeatureCondition()
+  {
+    return (EReference)featurePartEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -587,42 +655,9 @@ public class TacticsPackageImpl extends EPackageImpl implements TacticsPackage
    * @generated
    */
   @Override
-  public EReference getCondition_Measurement()
-  {
-    return (EReference)conditionEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EAttribute getCondition_Operator()
-  {
-    return (EAttribute)conditionEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EReference getCondition_Value()
-  {
-    return (EReference)conditionEClass.getEStructuralFeatures().get(2);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
   public EAttribute getCondition_LogicalOp()
   {
-    return (EAttribute)conditionEClass.getEStructuralFeatures().get(3);
+    return (EAttribute)conditionEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -633,7 +668,84 @@ public class TacticsPackageImpl extends EPackageImpl implements TacticsPackage
   @Override
   public EReference getCondition_SecondTerm()
   {
-    return (EReference)conditionEClass.getEStructuralFeatures().get(4);
+    return (EReference)conditionEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getFeatureCondition()
+  {
+    return featureConditionEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getFeatureCondition_Not()
+  {
+    return (EAttribute)featureConditionEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getFeatureCondition_Variant()
+  {
+    return (EReference)featureConditionEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getMeasurementCondition()
+  {
+    return measurementConditionEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getMeasurementCondition_Measurement()
+  {
+    return (EReference)measurementConditionEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getMeasurementCondition_Operator()
+  {
+    return (EAttribute)measurementConditionEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getMeasurementCondition_Value()
+  {
+    return (EReference)measurementConditionEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -689,17 +801,6 @@ public class TacticsPackageImpl extends EPackageImpl implements TacticsPackage
   public EReference getQualifiedFeatureRef_Feature()
   {
     return (EReference)qualifiedFeatureRefEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EEnum getMathOperator()
-  {
-    return mathOperatorEEnum;
   }
 
   /**
@@ -779,18 +880,30 @@ public class TacticsPackageImpl extends EPackageImpl implements TacticsPackage
     pureActionEClass = createEClass(PURE_ACTION);
 
     conditionActionEClass = createEClass(CONDITION_ACTION);
-    createEReference(conditionActionEClass, CONDITION_ACTION__CONDITION);
-    createEReference(conditionActionEClass, CONDITION_ACTION__ELSE);
+    createEReference(conditionActionEClass, CONDITION_ACTION__CONTEXT_PART);
+    createEReference(conditionActionEClass, CONDITION_ACTION__FEATURE_PART);
+
+    contextPartEClass = createEClass(CONTEXT_PART);
+    createEReference(contextPartEClass, CONTEXT_PART__CONTEXT_CONDITION);
+
+    featurePartEClass = createEClass(FEATURE_PART);
+    createEReference(featurePartEClass, FEATURE_PART__FEATURE_CONDITION);
 
     effectEClass = createEClass(EFFECT);
     createEReference(effectEClass, EFFECT__CONDITION);
 
     conditionEClass = createEClass(CONDITION);
-    createEReference(conditionEClass, CONDITION__MEASUREMENT);
-    createEAttribute(conditionEClass, CONDITION__OPERATOR);
-    createEReference(conditionEClass, CONDITION__VALUE);
     createEAttribute(conditionEClass, CONDITION__LOGICAL_OP);
     createEReference(conditionEClass, CONDITION__SECOND_TERM);
+
+    featureConditionEClass = createEClass(FEATURE_CONDITION);
+    createEAttribute(featureConditionEClass, FEATURE_CONDITION__NOT);
+    createEReference(featureConditionEClass, FEATURE_CONDITION__VARIANT);
+
+    measurementConditionEClass = createEClass(MEASUREMENT_CONDITION);
+    createEReference(measurementConditionEClass, MEASUREMENT_CONDITION__MEASUREMENT);
+    createEAttribute(measurementConditionEClass, MEASUREMENT_CONDITION__OPERATOR);
+    createEReference(measurementConditionEClass, MEASUREMENT_CONDITION__VALUE);
 
     atomicActionSelectFeatureEClass = createEClass(ATOMIC_ACTION_SELECT_FEATURE);
 
@@ -801,7 +914,6 @@ public class TacticsPackageImpl extends EPackageImpl implements TacticsPackage
     createEReference(qualifiedFeatureRefEClass, QUALIFIED_FEATURE_REF__FEATURE);
 
     // Create enums
-    mathOperatorEEnum = createEEnum(MATH_OPERATOR);
     logicalOperatorEEnum = createEEnum(LOGICAL_OPERATOR);
   }
 
@@ -844,6 +956,8 @@ public class TacticsPackageImpl extends EPackageImpl implements TacticsPackage
     ruleSetEClass.getESuperTypes().add(this.getAdaptationRule());
     pureActionEClass.getESuperTypes().add(this.getRuleBody());
     conditionActionEClass.getESuperTypes().add(this.getRuleBody());
+    featureConditionEClass.getESuperTypes().add(this.getCondition());
+    measurementConditionEClass.getESuperTypes().add(this.getCondition());
     atomicActionSelectFeatureEClass.getESuperTypes().add(this.getAtomicSimpleAction());
     atomicActionDeselectFeatureEClass.getESuperTypes().add(this.getAtomicSimpleAction());
 
@@ -883,18 +997,30 @@ public class TacticsPackageImpl extends EPackageImpl implements TacticsPackage
     initEClass(pureActionEClass, PureAction.class, "PureAction", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     initEClass(conditionActionEClass, ConditionAction.class, "ConditionAction", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getConditionAction_Condition(), this.getCondition(), null, "condition", null, 0, 1, ConditionAction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getConditionAction_Else(), this.getRuleBody(), null, "else", null, 0, 1, ConditionAction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getConditionAction_ContextPart(), this.getContextPart(), null, "contextPart", null, 0, 1, ConditionAction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getConditionAction_FeaturePart(), this.getFeaturePart(), null, "featurePart", null, 0, 1, ConditionAction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(contextPartEClass, ContextPart.class, "ContextPart", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getContextPart_ContextCondition(), this.getMeasurementCondition(), null, "contextCondition", null, 0, 1, ContextPart.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(featurePartEClass, FeaturePart.class, "FeaturePart", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getFeaturePart_FeatureCondition(), this.getFeatureCondition(), null, "featureCondition", null, 0, 1, FeaturePart.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(effectEClass, Effect.class, "Effect", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getEffect_Condition(), this.getCondition(), null, "condition", null, 0, 1, Effect.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getEffect_Condition(), this.getMeasurementCondition(), null, "condition", null, 0, 1, Effect.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(conditionEClass, Condition.class, "Condition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getCondition_Measurement(), theContextModelPackage.getContextVar(), null, "measurement", null, 0, 1, Condition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getCondition_Operator(), this.getMathOperator(), "operator", null, 0, 1, Condition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getCondition_Value(), theCommonPackage.getLiteral(), null, "value", null, 0, 1, Condition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getCondition_LogicalOp(), this.getLogicalOperator(), "logicalOp", null, 0, 1, Condition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getCondition_SecondTerm(), this.getCondition(), null, "secondTerm", null, 0, 1, Condition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(featureConditionEClass, FeatureCondition.class, "FeatureCondition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getFeatureCondition_Not(), ecorePackage.getEString(), "not", null, 0, 1, FeatureCondition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getFeatureCondition_Variant(), this.getQualifiedFeatureRef(), null, "variant", null, 0, 1, FeatureCondition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(measurementConditionEClass, MeasurementCondition.class, "MeasurementCondition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getMeasurementCondition_Measurement(), theContextModelPackage.getContextVar(), null, "measurement", null, 0, 1, MeasurementCondition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getMeasurementCondition_Operator(), theCommonPackage.getMathOperator(), "operator", null, 0, 1, MeasurementCondition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getMeasurementCondition_Value(), theCommonPackage.getLiteral(), null, "value", null, 0, 1, MeasurementCondition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(atomicActionSelectFeatureEClass, AtomicActionSelectFeature.class, "AtomicActionSelectFeature", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -905,12 +1031,6 @@ public class TacticsPackageImpl extends EPackageImpl implements TacticsPackage
     initEReference(getQualifiedFeatureRef_Feature(), theBasicFMmetamodelPackage.getFeature(), null, "feature", null, 0, 1, QualifiedFeatureRef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     // Initialize enums and add enum literals
-    initEEnum(mathOperatorEEnum, MathOperator.class, "MathOperator");
-    addEEnumLiteral(mathOperatorEEnum, MathOperator.LESS);
-    addEEnumLiteral(mathOperatorEEnum, MathOperator.GREATER);
-    addEEnumLiteral(mathOperatorEEnum, MathOperator.EQUAL);
-    addEEnumLiteral(mathOperatorEEnum, MathOperator.DIFFERENT);
-
     initEEnum(logicalOperatorEEnum, LogicalOperator.class, "LogicalOperator");
     addEEnumLiteral(logicalOperatorEEnum, LogicalOperator.AND);
     addEEnumLiteral(logicalOperatorEEnum, LogicalOperator.OR);

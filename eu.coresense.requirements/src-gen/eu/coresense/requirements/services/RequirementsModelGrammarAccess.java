@@ -962,7 +962,7 @@ public class RequirementsModelGrammarAccess extends AbstractElementFinder.Abstra
 		private final EnumLiteralDeclaration cDIFFERENTEnumLiteralDeclaration_3 = (EnumLiteralDeclaration)cAlternatives.eContents().get(3);
 		private final Keyword cDIFFERENTLessThanSignGreaterThanSignKeyword_3_0 = (Keyword)cDIFFERENTEnumLiteralDeclaration_3.eContents().get(0);
 		
-		//enum MathOperator:
+		//enum MathOperator returns common::MathOperator:
 		//    LESS='<' | GREATER='>' | EQUAL='==' | DIFFERENT='<>'
 		//;
 		public EnumRule getRule() { return rule; }
@@ -1146,7 +1146,7 @@ public class RequirementsModelGrammarAccess extends AbstractElementFinder.Abstra
 		return getQualityAttributeAccess().getRule();
 	}
 	
-	//enum MathOperator:
+	//enum MathOperator returns common::MathOperator:
 	//    LESS='<' | GREATER='>' | EQUAL='==' | DIFFERENT='<>'
 	//;
 	public MathOperatorElements getMathOperatorAccess() {

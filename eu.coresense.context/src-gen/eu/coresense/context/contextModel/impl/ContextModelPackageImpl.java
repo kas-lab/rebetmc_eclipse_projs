@@ -5,10 +5,11 @@ package eu.coresense.context.contextModel.impl;
 
 import eu.coresense.context.contextModel.ContextModel;
 import eu.coresense.context.contextModel.ContextModelFactory;
-import eu.coresense.context.contextModel.ContextModelNode;
 import eu.coresense.context.contextModel.ContextModelPackage;
 import eu.coresense.context.contextModel.ContextVar;
 import eu.coresense.context.contextModel.DataSource;
+import eu.coresense.context.contextModel.DoCache;
+import eu.coresense.context.contextModel.DoProxy;
 import eu.coresense.context.contextModel.Import;
 import eu.coresense.context.contextModel.QualifiedActionServerRef;
 import eu.coresense.context.contextModel.QualifiedPublisherRef;
@@ -52,6 +53,20 @@ public class ContextModelPackageImpl extends EPackageImpl implements ContextMode
    * <!-- end-user-doc -->
    * @generated
    */
+  private EClass doCacheEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass doProxyEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   private EClass dataSourceEClass = null;
 
   /**
@@ -81,13 +96,6 @@ public class ContextModelPackageImpl extends EPackageImpl implements ContextMode
    * @generated
    */
   private EClass importEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass contextModelNodeEClass = null;
 
   /**
    * Creates an instance of the model <b>Package</b>, registered with
@@ -183,20 +191,9 @@ public class ContextModelPackageImpl extends EPackageImpl implements ContextMode
    * @generated
    */
   @Override
-  public EReference getContextModel_Context_model_node()
-  {
-    return (EReference)contextModelEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
   public EReference getContextModel_Context_variables()
   {
-    return (EReference)contextModelEClass.getEStructuralFeatures().get(2);
+    return (EReference)contextModelEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -238,7 +235,7 @@ public class ContextModelPackageImpl extends EPackageImpl implements ContextMode
    * @generated
    */
   @Override
-  public EReference getContextVar_Processed_source()
+  public EReference getContextVar_DoCache()
   {
     return (EReference)contextVarEClass.getEStructuralFeatures().get(2);
   }
@@ -249,7 +246,7 @@ public class ContextModelPackageImpl extends EPackageImpl implements ContextMode
    * @generated
    */
   @Override
-  public EAttribute getContextVar_DoCache()
+  public EAttribute getContextVar_Length()
   {
     return (EAttribute)contextVarEClass.getEStructuralFeatures().get(3);
   }
@@ -260,7 +257,7 @@ public class ContextModelPackageImpl extends EPackageImpl implements ContextMode
    * @generated
    */
   @Override
-  public EAttribute getContextVar_Length()
+  public EAttribute getContextVar_Period()
   {
     return (EAttribute)contextVarEClass.getEStructuralFeatures().get(4);
   }
@@ -271,9 +268,9 @@ public class ContextModelPackageImpl extends EPackageImpl implements ContextMode
    * @generated
    */
   @Override
-  public EAttribute getContextVar_Period()
+  public EReference getContextVar_DoProxy()
   {
-    return (EAttribute)contextVarEClass.getEStructuralFeatures().get(5);
+    return (EReference)contextVarEClass.getEStructuralFeatures().get(5);
   }
 
   /**
@@ -304,6 +301,50 @@ public class ContextModelPackageImpl extends EPackageImpl implements ContextMode
    * @generated
    */
   @Override
+  public EClass getDoCache()
+  {
+    return doCacheEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getDoCache_Do()
+  {
+    return (EAttribute)doCacheEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getDoProxy()
+  {
+    return doProxyEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getDoProxy_Do()
+  {
+    return (EAttribute)doProxyEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public EClass getDataSource()
   {
     return dataSourceEClass;
@@ -315,9 +356,20 @@ public class ContextModelPackageImpl extends EPackageImpl implements ContextMode
    * @generated
    */
   @Override
-  public EReference getDataSource_Node()
+  public EReference getDataSource_Ref()
   {
     return (EReference)dataSourceEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getDataSource_Kwargs()
+  {
+    return (EAttribute)dataSourceEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -337,9 +389,20 @@ public class ContextModelPackageImpl extends EPackageImpl implements ContextMode
    * @generated
    */
   @Override
-  public EReference getQualifiedPublisherRef_Publisher()
+  public EReference getQualifiedPublisherRef_Node()
   {
     return (EReference)qualifiedPublisherRefEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getQualifiedPublisherRef_Publisher()
+  {
+    return (EReference)qualifiedPublisherRefEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -359,9 +422,20 @@ public class ContextModelPackageImpl extends EPackageImpl implements ContextMode
    * @generated
    */
   @Override
-  public EReference getQualifiedServiceServerRef_ServiceServer()
+  public EReference getQualifiedServiceServerRef_Node()
   {
     return (EReference)qualifiedServiceServerRefEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getQualifiedServiceServerRef_ServiceServer()
+  {
+    return (EReference)qualifiedServiceServerRefEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -381,9 +455,20 @@ public class ContextModelPackageImpl extends EPackageImpl implements ContextMode
    * @generated
    */
   @Override
-  public EReference getQualifiedActionServerRef_ActionServer()
+  public EReference getQualifiedActionServerRef_Node()
   {
     return (EReference)qualifiedActionServerRefEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getQualifiedActionServerRef_ActionServer()
+  {
+    return (EReference)qualifiedActionServerRefEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -406,28 +491,6 @@ public class ContextModelPackageImpl extends EPackageImpl implements ContextMode
   public EAttribute getImport_ImportURI()
   {
     return (EAttribute)importEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EClass getContextModelNode()
-  {
-    return contextModelNodeEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EReference getContextModelNode_Node_import()
-  {
-    return (EReference)contextModelNodeEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -463,36 +526,42 @@ public class ContextModelPackageImpl extends EPackageImpl implements ContextMode
     // Create classes and their features
     contextModelEClass = createEClass(CONTEXT_MODEL);
     createEReference(contextModelEClass, CONTEXT_MODEL__IMPORTS);
-    createEReference(contextModelEClass, CONTEXT_MODEL__CONTEXT_MODEL_NODE);
     createEReference(contextModelEClass, CONTEXT_MODEL__CONTEXT_VARIABLES);
 
     contextVarEClass = createEClass(CONTEXT_VAR);
     createEAttribute(contextVarEClass, CONTEXT_VAR__NAME);
     createEReference(contextVarEClass, CONTEXT_VAR__SOURCE);
-    createEReference(contextVarEClass, CONTEXT_VAR__PROCESSED_SOURCE);
-    createEAttribute(contextVarEClass, CONTEXT_VAR__DO_CACHE);
+    createEReference(contextVarEClass, CONTEXT_VAR__DO_CACHE);
     createEAttribute(contextVarEClass, CONTEXT_VAR__LENGTH);
     createEAttribute(contextVarEClass, CONTEXT_VAR__PERIOD);
+    createEReference(contextVarEClass, CONTEXT_VAR__DO_PROXY);
     createEAttribute(contextVarEClass, CONTEXT_VAR__FUNCTION_NAME);
     createEAttribute(contextVarEClass, CONTEXT_VAR__FUNCTION_LIBRARY);
 
+    doCacheEClass = createEClass(DO_CACHE);
+    createEAttribute(doCacheEClass, DO_CACHE__DO);
+
+    doProxyEClass = createEClass(DO_PROXY);
+    createEAttribute(doProxyEClass, DO_PROXY__DO);
+
     dataSourceEClass = createEClass(DATA_SOURCE);
-    createEReference(dataSourceEClass, DATA_SOURCE__NODE);
+    createEReference(dataSourceEClass, DATA_SOURCE__REF);
+    createEAttribute(dataSourceEClass, DATA_SOURCE__KWARGS);
 
     qualifiedPublisherRefEClass = createEClass(QUALIFIED_PUBLISHER_REF);
+    createEReference(qualifiedPublisherRefEClass, QUALIFIED_PUBLISHER_REF__NODE);
     createEReference(qualifiedPublisherRefEClass, QUALIFIED_PUBLISHER_REF__PUBLISHER);
 
     qualifiedServiceServerRefEClass = createEClass(QUALIFIED_SERVICE_SERVER_REF);
+    createEReference(qualifiedServiceServerRefEClass, QUALIFIED_SERVICE_SERVER_REF__NODE);
     createEReference(qualifiedServiceServerRefEClass, QUALIFIED_SERVICE_SERVER_REF__SERVICE_SERVER);
 
     qualifiedActionServerRefEClass = createEClass(QUALIFIED_ACTION_SERVER_REF);
+    createEReference(qualifiedActionServerRefEClass, QUALIFIED_ACTION_SERVER_REF__NODE);
     createEReference(qualifiedActionServerRefEClass, QUALIFIED_ACTION_SERVER_REF__ACTION_SERVER);
 
     importEClass = createEClass(IMPORT);
     createEAttribute(importEClass, IMPORT__IMPORT_URI);
-
-    contextModelNodeEClass = createEClass(CONTEXT_MODEL_NODE);
-    createEReference(contextModelNodeEClass, CONTEXT_MODEL_NODE__NODE_IMPORT);
   }
 
   /**
@@ -527,43 +596,46 @@ public class ContextModelPackageImpl extends EPackageImpl implements ContextMode
     // Set bounds for type parameters
 
     // Add supertypes to classes
-    qualifiedPublisherRefEClass.getESuperTypes().add(this.getDataSource());
-    qualifiedServiceServerRefEClass.getESuperTypes().add(this.getDataSource());
-    qualifiedActionServerRefEClass.getESuperTypes().add(this.getDataSource());
 
     // Initialize classes and features; add operations and parameters
     initEClass(contextModelEClass, ContextModel.class, "ContextModel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getContextModel_Imports(), this.getImport(), null, "imports", null, 0, -1, ContextModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getContextModel_Context_model_node(), this.getContextModelNode(), null, "context_model_node", null, 0, 1, ContextModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getContextModel_Context_variables(), this.getContextVar(), null, "context_variables", null, 0, -1, ContextModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(contextVarEClass, ContextVar.class, "ContextVar", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getContextVar_Name(), ecorePackage.getEString(), "name", null, 0, 1, ContextVar.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getContextVar_Source(), this.getDataSource(), null, "source", null, 0, 1, ContextVar.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getContextVar_Processed_source(), theRosPackage.getPublisher(), null, "processed_source", null, 0, 1, ContextVar.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getContextVar_DoCache(), ecorePackage.getEBoolean(), "doCache", null, 0, 1, ContextVar.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getContextVar_DoCache(), this.getDoCache(), null, "doCache", null, 0, 1, ContextVar.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getContextVar_Length(), ecorePackage.getEInt(), "length", null, 0, 1, ContextVar.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getContextVar_Period(), ecorePackage.getEInt(), "period", null, 0, 1, ContextVar.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getContextVar_DoProxy(), this.getDoProxy(), null, "doProxy", null, 0, 1, ContextVar.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getContextVar_FunctionName(), ecorePackage.getEString(), "functionName", null, 0, 1, ContextVar.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getContextVar_FunctionLibrary(), ecorePackage.getEString(), "functionLibrary", null, 0, 1, ContextVar.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+    initEClass(doCacheEClass, DoCache.class, "DoCache", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getDoCache_Do(), ecorePackage.getEBoolean(), "do", null, 0, 1, DoCache.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(doProxyEClass, DoProxy.class, "DoProxy", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getDoProxy_Do(), ecorePackage.getEBoolean(), "do", null, 0, 1, DoProxy.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
     initEClass(dataSourceEClass, DataSource.class, "DataSource", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getDataSource_Node(), theRosPackage.getNode(), null, "node", null, 0, 1, DataSource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getDataSource_Ref(), ecorePackage.getEObject(), null, "ref", null, 0, 1, DataSource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getDataSource_Kwargs(), ecorePackage.getEString(), "kwargs", null, 0, 1, DataSource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(qualifiedPublisherRefEClass, QualifiedPublisherRef.class, "QualifiedPublisherRef", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getQualifiedPublisherRef_Node(), theRosPackage.getNode(), null, "node", null, 0, 1, QualifiedPublisherRef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getQualifiedPublisherRef_Publisher(), theRosPackage.getPublisher(), null, "publisher", null, 0, 1, QualifiedPublisherRef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(qualifiedServiceServerRefEClass, QualifiedServiceServerRef.class, "QualifiedServiceServerRef", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getQualifiedServiceServerRef_Node(), theRosPackage.getNode(), null, "node", null, 0, 1, QualifiedServiceServerRef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getQualifiedServiceServerRef_ServiceServer(), theRosPackage.getServiceServer(), null, "serviceServer", null, 0, 1, QualifiedServiceServerRef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(qualifiedActionServerRefEClass, QualifiedActionServerRef.class, "QualifiedActionServerRef", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getQualifiedActionServerRef_Node(), theRosPackage.getNode(), null, "node", null, 0, 1, QualifiedActionServerRef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getQualifiedActionServerRef_ActionServer(), theRosPackage.getActionServer(), null, "actionServer", null, 0, 1, QualifiedActionServerRef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(importEClass, Import.class, "Import", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getImport_ImportURI(), ecorePackage.getEString(), "importURI", null, 0, 1, Import.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(contextModelNodeEClass, ContextModelNode.class, "ContextModelNode", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getContextModelNode_Node_import(), this.getImport(), null, "node_import", null, 0, 1, ContextModelNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     // Create resource
     createResource(eNS_URI);

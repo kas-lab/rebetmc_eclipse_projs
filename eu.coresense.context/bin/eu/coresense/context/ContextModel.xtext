@@ -7,28 +7,39 @@ import "http://www.eclipse.org/emf/2002/Ecore" as ecore
 
 ContextModel:
 	(imports+=Import*)
-	context_model_node=ContextModelNode
 	context_variables+=ContextVar*;
 
 ContextVar:
 	'ContextVariable' name=ID
 	'{'
 		source=DataSource
-		'efferent:' processed_source=[ros::Publisher]
-		'cache?' doCache=BOOLEAN
+		'cache?' doCache=DoCache
 		('cache' 'length' length=INT 's')?
 		('period' period=INT 'ns')?
+		('proxy' doProxy=DoProxy)?
 		'function_name' functionName=STRING
 		('function_lib' functionLibrary=STRING)?
 	'}';
 
+DoCache:
+	{DoCache} do=BOOLEAN
+;
+
+DoProxy:
+	{DoProxy} do=BOOLEAN
+;
+
 DataSource:
-	'afferent:'
+	'source:'
     (
-        'publisher:' QualifiedPublisherRef
-      | 'service:' QualifiedServiceServerRef
-      | 'action:' QualifiedActionServerRef
+        'publisher:' 'ref:'ref=QualifiedPublisherRef
+      | 'service:' 'ref:' ref=QualifiedServiceServerRef 'request_kwargs:' kwargs=KeyWordArguments
+      | 'action:' 'ref:' ref=QualifiedActionServerRef 'goal_kwargs:' kwargs=KeyWordArguments
     )
+;
+
+KeyWordArguments:
+	STRING
 ;
 
 QualifiedPublisherRef:
@@ -47,9 +58,6 @@ Import:
 	'import' importURI=STRING ';'
 ;
 
-ContextModelNode:
-	'contextModelNode' node_import=Import
-;
 
 terminal BOOLEAN returns ecore::EBoolean:
     'true' | 'false'

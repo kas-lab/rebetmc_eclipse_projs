@@ -55,6 +55,13 @@ import eu.coresense.common.IntLiteral
 import eu.coresense.common.DecimalLiteral
 import eu.coresense.common.StringLiteral
 import eu.coresense.common.BooleanLiteral
+import eu.coresense.context.contextModel.DataSource
+import eu.coresense.context.contextModel.QualifiedPublisherRef
+import eu.coresense.context.contextModel.QualifiedServiceServerRef
+import eu.coresense.context.contextModel.QualifiedActionServerRef
+import eu.coresense.adaptation.tactics.MeasurementCondition
+import eu.coresense.adaptation.tactics.FeatureCondition
+import eu.coresense.common.MathOperator
 
 /**
  * Generates code from your model files on save.
@@ -71,6 +78,8 @@ class TQLGenerator extends AbstractGenerator {
 	
 	public static final String INDEX_VAR = "findex";
 	public static final String NODE_VAR = "rode";
+	public static final String PARAM_VAR = "parameter";
+	
 	public static final String PARAM_VALUES_SUBQUERY_NAME = "param_values";
 	public static final String FEATURE_VAR = "f"
 	public static final String RULE_VAR = "tactic_rule"
@@ -119,6 +128,58 @@ class TQLGenerator extends AbstractGenerator {
 		}
 		
 		return originalParameters
+	}
+	
+	def String generateUpdateInEffect(List<String> inEffectRequirementNames)
+	{
+		'''
+		match
+		$requirement isa relaxed_requirement, has in_effect $in_effect;
+		$in_effect = true;
+		«FOR inEffect_req : inEffectRequirementNames.indexed»
+		$req_«inEffect_req.key» isa relaxed_requirement, has requirement_name '«inEffect_req.value»', has in_effect $eff_«inEffect_req.key»;
+		«ENDFOR»
+		delete
+		$requirement has $in_effect;
+		«FOR inEffect_req : inEffectRequirementNames.indexed»
+		$req_«inEffect_req.key» has $eff_«inEffect_req.key»;
+		«ENDFOR»
+		insert
+		$requirement has in_effect false;
+		«FOR inEffect_req : inEffectRequirementNames.indexed»
+		$req_«inEffect_req.key» has in_effect true;
+		«ENDFOR»
+		'''
+	}
+	
+	def String generateUpdateHasParamValue(String featureName)
+	{
+		'''
+        match
+            $f isa Feature, has feature_name "«featureName»";
+            $vr (variant: $f, resolution_action: $ra) isa variant_resolution;
+            $ra (node: $n, parameter: $p, parameter_value: $pv) isa set_nodes_parameters;
+            $old_hpv (node: $n, parameter: $p) isa has_parameter_value;
+        delete
+            $old_hpv isa has_parameter_value;
+        insert
+            $hpv (node: $n, parameter: $p, parameter_value: $pv) isa has_parameter_value;
+		'''
+	}
+	
+	
+	def String generateInsertStartTime(List<system.RosNode> runningNodes, String startTime)
+	{
+		'''
+				match
+				«FOR node : runningNodes.indexed»
+				$node_«node.key» isa ROSNode, has node_name "«(node.value.from.name)»";
+				«ENDFOR»
+				insert
+				«FOR node : runningNodes.indexed»
+				$node_«node.key» has start_time «startTime»;
+				«ENDFOR»
+        '''
 	}
 	
 	
@@ -215,8 +276,13 @@ class TQLGenerator extends AbstractGenerator {
     	«FOR parameter : node.getParameters»
     	$«_namer.uniqueName(parameter)» isa «_namer.paramSubClass(parameter.type)»,
     		has parameter_name "«parameter.name»";
-    	«IF parameter.value !==null»	
-    	«ParamValueToValueEntity(parameter, _namer.uniqueName(parameter)).key»
+    	«IF parameter.value !==null»
+    	«val paramstringpair = ParamValueToValueEntity(parameter, _namer.uniqueName(parameter))»
+    	«paramstringpair.key»
+    	(node: $«nodeName»,
+    	parameter: $«_namer.uniqueName(parameter)»,
+    	parameter_value: $«paramstringpair.value»)
+    		isa has_parameter_value, has default_value true;
     	«ENDIF»
     	«ENDFOR»
     	«IF !node.getParameters.empty»
@@ -397,7 +463,7 @@ class TQLGenerator extends AbstractGenerator {
 		                      $res_action (node: $«NODE_VAR», parameter: $parameter, parameter_value: $parameter_value) isa! set_nodes_parameters;
 		                  fetch
 		                      $«NODE_VAR»: node_name;
-		                      $parameter: parameter_name;
+		                      $«PARAM_VAR»: parameter_name;
 		                      «PARAM_VALUES_SUBQUERY_NAME»: {
 		                          match
 		                              $parameter_value isa! ValueArray;
@@ -447,15 +513,53 @@ class TQLGenerator extends AbstractGenerator {
     	'''
     }
     
-    def String generateFetchApplicableTactics(ResolutionModel rm, String interfaceName) {
+        def String generateFetchApplicableTactics(ResolutionModel rm, String interfaceName) {
     	'''
-    	match
-    	   $action isa ActionServer, has interface_name '«interfaceName»';
-    	   $resolution_model isa resolution_model, has resolution_model_name '«rm.name»';
-    	   (action: $action, resolution_model: $resolution_model, tactic_rule: $tactic_rule) isa applicable_tactics;
-    	fetch  $«RULE_VAR»: rule_name;
+			match
+			  $action isa ROSInterface, has interface_name "«interfaceName»";
+			  $resolution_model isa resolution_model, has resolution_model_name "«rm.name»";
+			
+			  (interface: $action, resolution_model: $resolution_model, tactic_rule: $«RULE_VAR»)
+			      isa applicable_tactics;
+			
+			  $«RULE_VAR» isa tactic_rule, has rule_valid true;
+			
+			fetch
+			  $«RULE_VAR»: rule_name;
+			
+			  set_parameter_action: {
+			    match
+			      $tactic isa Tactic;
+			      $«RULE_VAR» (tactic: $tactic);
+			
+			      (tactic: $tactic, variant_resolution: $vr) isa resolution_model;
+			      $vr isa variant_resolution;
+			
+			      $vr (resolution_action: $res_action, variant: $«FEATURE_VAR»);
+			
+			      $res_action isa set_nodes_parameters;
+			      $res_action (node: $«NODE_VAR», parameter: $«PARAM_VAR», parameter_value: $parameter_value);
+			
+			    fetch
+				  $«NODE_VAR»: node_name;
+				  $«PARAM_VAR»: parameter_name;
+				  $«FEATURE_VAR»: feature_name;
+			
+			      «PARAM_VALUES_SUBQUERY_NAME»: {
+			        match
+			          $parameter_value isa ValueArray;
+			          $«INDEX_VAR» (array: $parameter_value, array_value: $value) isa at_index;
+			
+			        fetch
+			          $«INDEX_VAR»: index;
+					  $value: attribute;
+				 };
+				 
+		};
     	'''
     }
+    
+    
     
     
     def String generateInsertMeasurement(ContextVar contextVariable, Object measurementValue, String measurementTime)
@@ -530,17 +634,48 @@ class TQLGenerator extends AbstractGenerator {
     	}
     }
     
-    
+    private def expressionType(MathOperator operator)
+    {
+    	switch operator {
+    		case MathOperator.GREATER: {
+    			"greater_than"
+    		}
+    		case MathOperator.GREQ: {
+    			"greater_than_equal"
+    		}
+    		case MathOperator.LESS: {
+    			"less_than"
+    		}
+    		case MathOperator.LEQ: {
+    			"less_than_equal"
+    		}
+    		case MathOperator.EQUAL: {
+    			"equal"
+    		}
+    		case MathOperator.DIFFERENT: {
+    			"not_equal"
+    		}
+    	}
+    }
     private def inequality(Condition condition)
 	{
-		val measure = condition.measurement
-		val operator = condition.operator
-		val name = _namer.uniqueName(condition)
-
-		'''
-			«literalValue(condition.value, name)»
-			$«name» (lhs_value:$t_measured_«measure.name», rhs_value: $«name»_val) isa inequality_expression, has operator "«operator»";
-		'''
+		if(condition instanceof MeasurementCondition)
+		{
+			val measure = condition.measurement
+			val operator = condition.operator
+			val name = _namer.uniqueName(condition)
+	
+			'''
+				«literalValue(condition.value, name)»
+				$«name» (lhs_value:$t_measured_«measure.name», rhs_value: $«name»_val) isa «expressionType(operator)»;
+			'''
+		}
+		else if(condition instanceof FeatureCondition)
+		{
+			'''
+			$«_namer.uniqueName(condition)» (proposition: $«_namer.uniqueName(condition.variant.feature)») isa propositional_expression;
+			'''
+		}
 	}
     
 	
@@ -553,36 +688,77 @@ class TQLGenerator extends AbstractGenerator {
 		'''
 	}
 	
-	private def Pair<String, CharSequence> buildExpression(Condition condition) {
-		val condName = _namer.uniqueName(condition)
-		val ineqCode = inequality(condition)
+//	private def boolean isClause(Condition condition, Condition left)
+//	{
+//		if(condition.secondTerm !== null)
+//		{
+//			if (condition.logicalOp !== null && condition.logicalOp.value == LogicalOperator.OR_VALUE)
+//			{
+//        		return isClause(o.left, null) && isClause(condition.secondTerm);	
+//        	}
+//			
+//		}
+//		return true
+//	}
 	
-		// Base case: leaf condition (no further chaining)
-		if (condition.logicalOp === null || condition.secondTerm === null) {
-			return new Pair(condName, ineqCode)
-		}
-	
-		// Recursive case: build RHS expression
-		val right = buildExpression(condition.secondTerm)
-		val rightName = right.key
-		val rightCode = right.value
-	
-		val logicName = _namer.uniqueName(condition.logicalOp, condName, rightName)
-		val logicExpr = logic_op(condition.logicalOp, condName, rightName)
-	
-		val fullCode = '''
-			«ineqCode»
-			«rightCode»
-			«logicExpr»
-		'''
-	
-		return new Pair(logicName, fullCode)
+//	private def boolean isCNFConjunction(Condition condition, Condition left)
+//	{
+//    	if(condition.secondTerm !== null)
+//		{
+//			if (condition.logicalOp !== null && condition.logicalOp.value == LogicalOperator.AND_VALUE)
+//			{
+//        		return isCNFConjunction(condition.secondTerm);	
+//        	}
+//			
+//		}
+//		return isClause(condition)
+//	}
+
+	def boolean isClause(Expr e) {
+	    switch e {
+	        Or: return isClause(e.left) && isClause(e.right)
+	        Var: return true
+	        default: return false
+	    }
+	}
+
+	def boolean isCNFConjunction(Expr e) {
+	    switch e {
+	        And: return isCNFConjunction(e.left) && isCNFConjunction(e.right)
+	        default: return isClause(e)
+	    }
 	}
 	
-	private def create_antecedent(Condition condition)
-	{
-		return buildExpression(condition)
-	}
+//	private def Pair<String, CharSequence> buildExpression(MeasurementCondition condition) {
+//		val condName = _namer.uniqueName(condition)
+//		val ineqCode = inequality(condition)
+//	
+//		// Base case: leaf condition (no further chaining)
+//		if (condition.logicalOp === null || condition.secondTerm === null) {
+//			return new Pair(condName, ineqCode)
+//		}
+//	
+//		// Recursive case: build RHS expression
+//		val right = buildExpression(condition.secondTerm)
+//		val rightName = right.key
+//		val rightCode = right.value
+//	
+//		val logicName = _namer.uniqueName(condition.logicalOp, condName, rightName)
+//		val logicExpr = logic_op(condition.logicalOp, condName, rightName)
+//	
+//		val fullCode = '''
+//			«ineqCode»
+//			«rightCode»
+//			«logicExpr»
+//		'''
+//	
+//		return new Pair(logicName, fullCode)
+//	}
+	
+//	private def create_antecedent(Condition condition)
+//	{
+//		return buildExpression(condition)
+//	}
 	
 	private def gatherResolutionFeatures(ResolutionModel res_model)
 	{
@@ -733,37 +909,37 @@ class TQLGenerator extends AbstractGenerator {
 		return contextModels;	 	
     }
     
-     def getContextModelNode(ContextModel c, Resource resource)
-    {
-		
-		val imp = c.context_model_node.node_import
-		if(imp.importURI.endsWith('ros2'))
-		{
-			var uri = URI.createURI(imp.importURI)
-			if (uri.isRelative()) {
-				
-        		uri = uri.resolve(resource.getURI());
-    		}
-    		val imported = resource.resourceSet.getResource(uri, true);
-    		if (imported === null || imported.getContents().isEmpty()) 
-    		{
-    			println("ContextModel node Import Fail")
-    		}
-    			
-    		
-    		val root = imported.getContents().get(0);
-
-			if (root instanceof ros.AmentPackage) {
-				return root.getArtifact().get(0).getNode()          
-			}
-			
-		} 	
-    }
+//     def getContextModelNode(ContextModel c, Resource resource)
+//    {
+//		
+//		val imp = c.context_model_node.node_import
+//		if(imp.importURI.endsWith('ros2'))
+//		{
+//			var uri = URI.createURI(imp.importURI)
+//			if (uri.isRelative()) {
+//				
+//        		uri = uri.resolve(resource.getURI());
+//    		}
+//    		val imported = resource.resourceSet.getResource(uri, true);
+//    		if (imported === null || imported.getContents().isEmpty()) 
+//    		{
+//    			println("ContextModel node Import Fail")
+//    		}
+//    			
+//    		
+//    		val root = imported.getContents().get(0);
+//
+//			if (root instanceof ros.AmentPackage) {
+//				return root.getArtifact().get(0).getNode()          
+//			}
+//			
+//		} 	
+//    }
        
 	private def compile(TacticsModel t)
 	{
 //		println(generateFetchApplicableTactics(t.resolutionModel, "one", "two"))
-		
+//		println(generateUpdateInEffect(newArrayList('MoveQuickly')))
 		val tacticName = t.name
 		val lc_tacticName = t.name.toLowerCase	
 		
@@ -857,29 +1033,52 @@ class TQLGenerator extends AbstractGenerator {
 //			«ENDFOR»
 //		'''
 //	}
+
+	private def nodeFromRef(DataSource source)
+	{
+		val ref = source.ref
+		if(ref instanceof QualifiedPublisherRef)
+		{
+			return ref.node
+		}
+		if(ref instanceof QualifiedServiceServerRef)
+		{
+			return ref.node
+		}
+		if(ref instanceof QualifiedActionServerRef)
+		{
+			return ref.node
+		}
+	}
 	
 	private def registerMeasurements(ContextModel contextModel)
 	{
-		val metaNode = getContextModelNode(contextModel,globalResource)
-		val nodeName = _namer.uniqueName(metaNode)
+//		val metaNode = getContextModelNode(contextModel,globalResource)
+//		val nodeName = _namer.uniqueName(metaNode)
+	
 		'''
-		«describeNode(metaNode,"")»
-    	«FOR publication : metaNode.publisher»
-		«val pubName = _namer.uniqueName(publication, nodeName)»
-		«var topicName = publication.name»
-		$«pubName» isa Publisher,
-		has interface_name "«topicName»",
-		has interface_type "«publication.message.fullname»";
-		«handleQoS(publication.qos, pubName)»
-		
-		(node: $«nodeName», publisher: $«pubName») isa has_topic;
-    	«ENDFOR»
+«««		«describeNode(metaNode,"")»
+«««    	«FOR publication : metaNode.publisher»
+«««		«val pubName = _namer.uniqueName(publication, nodeName)»
+«««		«var topicName = publication.name»
+«««		$«pubName» isa Publisher,
+«««		has interface_name "«topicName»",
+«««		has interface_type "«publication.message.fullname»";
+«««		«handleQoS(publication.qos, pubName)»
+«««		
+«««		(node: $«nodeName», publisher: $«pubName») isa has_topic;
+«««    	«ENDFOR»
+
 		«FOR contextVariable : contextModel.context_variables»
 			«val contextvarName = _namer.uniqueName(contextVariable)»
+			«val ref = contextVariable.source»
 			$«contextvarName» isa Measure, has measure_name "«contextVariable.name»";
 			
-			(measure: $«contextvarName», source: $«_namer.uniqueName(contextVariable.source, _namer.uniqueName(contextVariable.source.node))», output: $«_namer.uniqueName(contextVariable.processed_source,nodeName)») isa measurement_interface,
+			(measure: $«contextvarName», source: $«_namer.uniqueName(contextVariable.source, _namer.uniqueName(nodeFromRef(ref)))») isa measurement_interface,
 				    «IF contextVariable.functionLibrary !== null»has measurement_function_lib '«contextVariable.functionLibrary»',«ENDIF»
+				    «IF contextVariable.period != 0»has measurement_period «contextVariable.period»,«ENDIF»
+				    «IF ref.kwargs !== null || ref.kwargs!== ""»has service_request_kwargs '«ref.kwargs»',«ENDIF»
+				    «IF contextVariable.doProxy !== null»has measurement_proxy «contextVariable.doProxy.^do»,«ENDIF»
 				    has measurement_function_name '«contextVariable.functionName»';
 «««				    has measurement_function_lib 'ros_monitors.laser_scan_functions',
 «««				    has measurement_function_args 'base_link';
@@ -926,7 +1125,7 @@ class TQLGenerator extends AbstractGenerator {
 		
 		# define Feature Model
 		«FOR feature : f_list»
-			$«_namer.uniqueName(feature)» isa Feature, has feature_name "«feature.name»", has mandatory «feature.mandatory», has selected «feature.selected»;
+			$«_namer.uniqueName(feature)» isa Feature, has feature_name "«feature.name»", has mandatory «feature.mandatory»;
 		«ENDFOR»
 		«FOR feature : f_list»
 			«IF feature instanceof Alternative»
@@ -963,7 +1162,7 @@ class TQLGenerator extends AbstractGenerator {
 		val reconfiguration_actions = resolution.selection_actions + resolution.deselection_actions
 		'''
 			«FOR acc : reconfiguration_actions»
-			«compileReconfiguration(acc)»	
+				«compileReconfiguration(acc)»	
 			«ENDFOR»
 			«IF !resolution.selection_actions.empty»
 			$«_namer.uniqueName(resolution)»_act (
@@ -989,7 +1188,11 @@ class TQLGenerator extends AbstractGenerator {
 	
 	def dispatch String ParamValueToString(ParameterBoolean p) { p.value.toString()}
 	def dispatch String ParamValueToString(ParameterInteger p) { p.value.toString()}
-	def dispatch String ParamValueToString(ParameterDouble p) { p.value.toString()}
+	def dispatch String ParamValueToString(ParameterDouble p) {
+		val format = new java.text.DecimalFormat("0.############################")
+		format.setMaximumFractionDigits(30)
+		format.format(p.value).toString()
+	}
 	def dispatch String ParamValueToString(ParameterString p) { p.value}
 	
 	
@@ -1033,10 +1236,15 @@ class TQLGenerator extends AbstractGenerator {
 	}
 	def Pair<CharSequence, String> ParamValueToValueEntity(Parameter the_parameter, String parent_name) {
 		val the_value = the_parameter.value
+//		println("parent_name " + parent_name)
+//		println("thevalue " + the_value)
 		if(the_value instanceof ParameterSequence)
 		{
+			
 			val result = newArrayList
 			val parseq_name = _namer.uniqueName(the_value, parent_name)
+//			println(parseq_name)
+//			println(the_value.value)
 			val body = '''
 					$«parseq_name» isa ValueArray;
 					«FOR param_value : the_value.value.indexed»
@@ -1054,7 +1262,71 @@ class TQLGenerator extends AbstractGenerator {
 		else
 		{
 			val name = _namer.uniqueName(the_value, parent_name)
-			val single = describeParameter(name, the_parameter)
+			val single = describeParameter(name, the_parameter.value)
+			return single -> name
+		}
+	}
+	
+	def Pair<Boolean, Parameter> findMatch(RosNode parameterOwner, SetParam reconfig)
+	{
+		for (defaultParameter : getParameters(parameterOwner))
+		{
+			if(defaultParameter.name == reconfig.param.name)
+			{
+//				println("MATCH " + defaultParameter.name)
+				if(defaultParameter.value !== null)
+				{
+//				println("MATCH2")
+				val setParamVal = ParamValueToString(reconfig.value)
+				val originalVal = ParamValueToString(defaultParameter.value)
+//				println("SETPARAMVAL")
+//				println(setParamVal)
+//				println("ORIGINALVAL")
+//				println(originalVal)
+				if(setParamVal == originalVal)
+				{
+					return true -> defaultParameter
+				}
+				}
+			}
+			
+		}
+		return false -> null
+	}
+	
+	def Pair<CharSequence, String> ParamValueToValueEntity(SetParam reconfig, String parent_name, RosNode parameterOwner) {
+		//We need to consider whether the value in the setParam matches the default value of the RosNode in the RosSystem or .Ros2 file.
+		val the_value = reconfig.value
+//		println("parent_name " + parent_name)
+//		println("thevalue " + the_value)
+		val isMatch = findMatch(parameterOwner, reconfig)
+
+		if(the_value instanceof ParameterSequence)
+		{
+			if(isMatch.key) { return "" -> _namer.uniqueName(isMatch.value.value as ParameterSequence,"shouldntHappen") }
+			val result = newArrayList
+			val parseq_name = _namer.uniqueName(the_value, parent_name)
+			println(parseq_name)
+			println(the_value.value)
+			val body = '''
+					$«parseq_name» isa ValueArray;
+					«FOR param_value : the_value.value.indexed»
+						«describeParameter(_namer.uniqueName(param_value.value, parent_name), param_value.value)»
+						$«parseq_name»_elem_«param_value.key» (array: $«parseq_name», array_value: $«_namer.uniqueName(param_value.value, parent_name)») isa at_index, has index «param_value.key»;
+					«ENDFOR»
+					
+				'''
+			// Insert end thing for the actual array :-)
+			for (param_value : the_value.value) {
+				result.add(_namer.uniqueName(param_value, parent_name))
+			}
+			return body -> parseq_name
+		} 
+		else
+		{
+			if(isMatch.key) { return "" -> _namer.uniqueName(isMatch.value.value,"shouldntHappen") }
+			val name = _namer.uniqueName(the_value, parent_name)
+			val single = describeParameter(name, reconfig.value)
 			return single -> name
 		}
 	}
@@ -1063,23 +1335,35 @@ class TQLGenerator extends AbstractGenerator {
 		
 	private def compileReconfiguration(Reconfiguration reconfig)
 	{
-//		println("A")
-//		println(reconfig)
-//		println("B")
+		println("A")
+		println(reconfig)
+		println("B")
+
 		val reconf_name = _namer.uniqueName(reconfig)
 		//TODO: Assess whether it really is the best thing to use .from here (it makes it match the initial arch name though)
 		val rosnode_name = _namer.uniqueName(reconfig.node.from)
 		if(reconfig instanceof SetParam)
 		{
+//			println("C")
+//			println(reconfig )
+//			println("D")
 			val param_val = reconfig.value
-			val param_name = reconfig.param.name
-			val named_set_param = _namer.uniqueName(reconfig)
-			val param_str = ParamValueToString(param_val)
-			
-			val value_and_names = ParamValueToValueEntity(reconfig.param, _namer.uniqueName(reconfig.param))
+//			println("E")
+//			println(param_val )
+//			println("F")
+//			println("FF")
+//			println(reconfig.param)
+//			println(reconfig.param.value)
+//			println("EE")
+//			val yyy = reconfig.param.value as ParameterSequence
+//			println("G")
+//			println(yyy)
+//			println("H")
+//			println("compilereconf" + yyy.value.get(0) + "\n")
+			val value_and_names = ParamValueToValueEntity(reconfig, _namer.uniqueName(reconfig), reconfig.node)
 			val x = value_and_names.key
 			val name = value_and_names.value
-			
+
 			val param_type = NiceNameParamType(reconfig.param.type)
 
 			
@@ -1104,16 +1388,53 @@ class TQLGenerator extends AbstractGenerator {
 		
 	}
 	
+	private def toCNF(Condition condition)
+	{
+			var toCheck = ConditionToExpr(condition)
+			println("original")
+			println(toCheck.toString)
+//			println("to check iss " + toCheck.measurement.name + toCheck.operator + valueOfLiteral(toCheck.value) + toCheck.logicalOp)
+			println("CNF?? " + isCNFConjunction(toCheck))
+			if (!isCNFConjunction(toCheck) ){
+				toCheck = distribute(toCheck)
+				println("distributed")
+				println(toCheck.toString)
+			}
+			
+			return toCheck;
+		
+	}
+	
 	private def compileRule(AdaptationRule c, String lc_tacticName)
 	{
 	if (c instanceof AtomicRule)
 	{
 		val ruleName = c.name
 		val lc_ruleName = c.name.toLowerCase
-		if(c.ruleBody instanceof ConditionAction)
+		val ruleBody = c.ruleBody
+		if(ruleBody instanceof ConditionAction)
 		{
-			val con = c.ruleBody as ConditionAction
-			val pair = create_antecedent(con.condition)
+			val contextCNF = toCNF(ruleBody.contextPart.contextCondition)
+			val featureCNF = toCNF(ruleBody.featurePart.featureCondition)
+//			val con = c.ruleBody as ConditionAction
+////			println("current rule " + ruleName)
+//			val conditions = collectSecondTerms(con.contextCondition)
+//			var toCheck = ConditionToExpr(con.contextCondition)
+//			println("original")
+//			println(toCheck.toString)
+////			println("to check iss " + toCheck.measurement.name + toCheck.operator + valueOfLiteral(toCheck.value) + toCheck.logicalOp)
+//			println("CNF?? " + isCNFConjunction(toCheck))
+//			if (!isCNFConjunction(toCheck) ){
+//				toCheck = distribute(toCheck)
+//				println("distributed")
+//				println(toCheck.toString)
+//			}
+////			println("aa")
+////			println(createAntecedent(toCheck).value)
+//			
+			val toCheck = new And(featureCNF, contextCNF)
+			println("monstrosity:  "  + toCheck.toString)
+			val pair = createAntecedent(toCheck)
 			val ant_name = pair.key
 			val ant = pair.value
 //			val all_conditions = collectSecondTerms(con.condition)
@@ -1152,4 +1473,261 @@ class TQLGenerator extends AbstractGenerator {
             addAll(collectSecondTerms(condition.secondTerm))
         ]
 	}
+	
+	def Expr ConditionToExpr(Condition condition)
+	{
+//		if(condition.secondTerm === null)
+//		{
+//			return new Var(condition)
+//		}
+//		else
+//		{
+//			if(condition.logicalOp.value == LogicalOperator.AND_VALUE)
+//			{
+//				return new And(new Var(condition), ConditionToExpr(condition.secondTerm))
+//			}
+//			if(condition.logicalOp.value == LogicalOperator.OR_VALUE)
+//			{
+//				return new Or(new Var(condition), ConditionToExpr(condition.secondTerm))
+//			}
+//		}
+	    // Base variable is the FIRST condition
+	    var Expr expr = new Var(condition)
+	
+	    // Flatten the chain of (op, nextCondition)
+	    val ops = flatten(condition)
+	
+	    // Fold left: ((A op B) op C)
+	    for (pair : ops) {
+	        val op = pair.key
+	        val next = pair.value
+	
+	        val rightExpr = new Var(next)
+	
+	        switch op {
+	            case LogicalOperator.AND:
+	                expr = new And(expr, rightExpr)
+	            case LogicalOperator.OR:
+	                expr = new Or(expr, rightExpr)
+	        }
+	    }
+	
+	    return expr
+	}
+	
+	def void flattenORs(Expr e, List<Var> expressionList)
+	{
+	    switch e {
+	        Or: {
+	            flattenORs(e.left, expressionList)
+	            flattenORs(e.right, expressionList)
+	        }
+	        And: throw new Exception("There shouldn't be an AND in the OR flattening")
+	        Var: expressionList.add(e)
+	    }
+	}
+	
+	def List<Expr> flattenAnds(Expr e) {
+    switch e {
+        And: {
+            val leftClauses  = flattenAnds(e.left)
+            val rightClauses = flattenAnds(e.right)
+            (leftClauses + rightClauses).toList
+        }
+        default:
+            #[e]  // single clause
+    }
 }
+	
+		
+	def Pair<String,String> handleOR(Or e)
+	{
+	    val lissss = newArrayList
+    	flattenORs(e, lissss)
+    	val name = _namer.uniqueName(e)
+    	var final_expr = ""
+    	for (element : lissss) {
+    		final_expr += inequality(element.condition) + "\n"
+    	}
+    	final_expr+= '''
+    	$«name» (
+    	«FOR element : lissss SEPARATOR ", "» 
+    	expression:$«_namer.uniqueName(element.condition)»
+    	«ENDFOR»
+    	) isa or_expression;
+    	'''
+    	
+    	return new Pair(name, final_expr)
+	}
+	def Pair<String, String> createAntecedent(Expr e) {
+    	switch e {
+	
+	        Or: {
+	        	return handleOR(e)
+	        }
+	
+	        And: {
+	        	var flattenedAnds = flattenAnds(e)
+	        	var handled = newArrayList
+	        	for (element : flattenedAnds) {
+	        		if(element instanceof Or)
+	        		{
+	        			handled.add(handleOR(element))
+	        			
+	        		}
+	        		if(element instanceof Var)
+	        		{
+	        			handled.add(new Pair(_namer.uniqueName(element.condition), inequality(element.condition)))
+	        		}
+	        		else if(element instanceof And)
+	        		{
+	        			throw new Exception("did not expect an AND from flattend ANDs")
+	        		}
+	        	}
+	        	val name = _namer.uniqueName(e)
+				val x = '''
+				«FOR element : handled»
+					«element.value»	
+				«ENDFOR»
+				$«name» (
+		    	«FOR element : handled SEPARATOR ", "» 
+«««		    	«val nammee = _namer.uniqueName(e)»
+		    	expression:$«element.key»
+		    	«ENDFOR»
+		    	) isa and_expression;
+				'''
+				
+				return new Pair(name, x)
+	    	}
+		}
+	}
+	
+	
+	def Expr distribute(Expr e) {
+    	switch e {
+	
+	        Or: {
+	            val A = distribute(e.left)
+	            val B = distribute(e.right)
+	
+	            // A ∨ (B ∧ C) → (A ∨ B) ∧ (A ∨ C)
+	            if (B instanceof And) {
+	                return new And(
+	                    distribute(new Or(A, B.left)),
+	                    distribute(new Or(A, B.right))
+	                )
+	            }
+	
+	            // (A ∧ B) ∨ C → (A ∨ C) ∧ (B ∨ C)
+	            if (A instanceof And) {
+	                return new And(
+	                    distribute(new Or(A.left, B)),
+	                    distribute(new Or(A.right, B))
+	                )
+	            }
+	
+	            // Otherwise it's just OR of two non-ANDs
+	            return new Or(A, B)
+	        }
+	
+	        And: {
+	            // Push distribute through both sides
+	            val L = distribute(e.left)
+	            val R = distribute(e.right)
+	            return new And(L, R)
+	        }
+	
+	        default:
+	            // Var or unknown → unchanged
+	            return e
+	    }
+	}
+	
+	
+	def List<Pair<LogicalOperator, Condition>> flatten(Condition c) {
+    val result = newArrayList
+
+    var current = c
+    while (current.secondTerm !== null) {
+        result += current.logicalOp -> current.secondTerm
+        current = current.secondTerm
+    }
+
+    return result
+	}
+
+
+}
+
+
+
+abstract class Expr {
+}
+
+class Var extends Expr {
+    public Condition condition //lone Condition
+
+    new(Condition condition) {
+        this.condition = condition
+    }
+
+    override toString() {
+    	if(this.condition instanceof MeasurementCondition)
+    	{
+        	condition.measurement.name + condition.operator + valueOfLiteral(condition.value)
+        }
+        else if(this.condition instanceof FeatureCondition)
+        {
+        	"isSelected(" + condition.variant.model.name + "." + condition.variant.feature.name + ")"
+        }
+    }
+    
+    def valueOfLiteral(Literal lit)
+    {
+    	if(lit instanceof IntLiteral)
+    	{
+    		return lit.value
+    	}
+    	if(lit instanceof DecimalLiteral)
+    	{
+    		return lit.value
+    	}
+    	if(lit instanceof StringLiteral)
+    	{
+    		return lit.value
+    	}
+    	if(lit instanceof BooleanLiteral)
+    	{
+    		return lit.value
+    	}
+    }
+}
+
+class And extends Expr {
+    public Expr left
+    public Expr right
+
+    new(Expr left, Expr right) {
+        this.left = left
+        this.right = right
+    }
+
+    override toString() {
+        "(" + left + " ∧ " + right + ")"
+    }
+}
+
+class Or extends Expr {
+    public Expr left
+    public Expr right
+
+    new(Expr left, Expr right) {
+        this.left = left
+        this.right = right
+    }
+
+    override toString() {
+        "(" + left + " ∨ " + right + ")"
+    }
+}
+

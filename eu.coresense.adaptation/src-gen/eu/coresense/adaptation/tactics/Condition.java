@@ -3,10 +3,6 @@
  */
 package eu.coresense.adaptation.tactics;
 
-import eu.coresense.common.Literal;
-
-import eu.coresense.context.contextModel.ContextVar;
-
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -18,9 +14,6 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link eu.coresense.adaptation.tactics.Condition#getMeasurement <em>Measurement</em>}</li>
- *   <li>{@link eu.coresense.adaptation.tactics.Condition#getOperator <em>Operator</em>}</li>
- *   <li>{@link eu.coresense.adaptation.tactics.Condition#getValue <em>Value</em>}</li>
  *   <li>{@link eu.coresense.adaptation.tactics.Condition#getLogicalOp <em>Logical Op</em>}</li>
  *   <li>{@link eu.coresense.adaptation.tactics.Condition#getSecondTerm <em>Second Term</em>}</li>
  * </ul>
@@ -31,75 +24,6 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface Condition extends EObject
 {
-  /**
-   * Returns the value of the '<em><b>Measurement</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Measurement</em>' reference.
-   * @see #setMeasurement(ContextVar)
-   * @see eu.coresense.adaptation.tactics.TacticsPackage#getCondition_Measurement()
-   * @model
-   * @generated
-   */
-  ContextVar getMeasurement();
-
-  /**
-   * Sets the value of the '{@link eu.coresense.adaptation.tactics.Condition#getMeasurement <em>Measurement</em>}' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Measurement</em>' reference.
-   * @see #getMeasurement()
-   * @generated
-   */
-  void setMeasurement(ContextVar value);
-
-  /**
-   * Returns the value of the '<em><b>Operator</b></em>' attribute.
-   * The literals are from the enumeration {@link eu.coresense.adaptation.tactics.MathOperator}.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Operator</em>' attribute.
-   * @see eu.coresense.adaptation.tactics.MathOperator
-   * @see #setOperator(MathOperator)
-   * @see eu.coresense.adaptation.tactics.TacticsPackage#getCondition_Operator()
-   * @model
-   * @generated
-   */
-  MathOperator getOperator();
-
-  /**
-   * Sets the value of the '{@link eu.coresense.adaptation.tactics.Condition#getOperator <em>Operator</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Operator</em>' attribute.
-   * @see eu.coresense.adaptation.tactics.MathOperator
-   * @see #getOperator()
-   * @generated
-   */
-  void setOperator(MathOperator value);
-
-  /**
-   * Returns the value of the '<em><b>Value</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Value</em>' containment reference.
-   * @see #setValue(Literal)
-   * @see eu.coresense.adaptation.tactics.TacticsPackage#getCondition_Value()
-   * @model containment="true"
-   * @generated
-   */
-  Literal getValue();
-
-  /**
-   * Sets the value of the '{@link eu.coresense.adaptation.tactics.Condition#getValue <em>Value</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Value</em>' containment reference.
-   * @see #getValue()
-   * @generated
-   */
-  void setValue(Literal value);
-
   /**
    * Returns the value of the '<em><b>Logical Op</b></em>' attribute.
    * The literals are from the enumeration {@link eu.coresense.adaptation.tactics.LogicalOperator}.

@@ -22,7 +22,7 @@ FLEXIBILITY='Flexibility' |
 SAFETY='Safety'
 ;
 
-enum MathOperator:
+enum MathOperator returns common::MathOperator:
 	LESS='<' | GREATER='>' | EQUAL='==' | DIFFERENT='<>'	
 ;
 

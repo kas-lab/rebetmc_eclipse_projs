@@ -28,12 +28,12 @@ public interface Effect extends EObject
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the value of the '<em>Condition</em>' containment reference.
-   * @see #setCondition(Condition)
+   * @see #setCondition(MeasurementCondition)
    * @see eu.coresense.adaptation.tactics.TacticsPackage#getEffect_Condition()
    * @model containment="true"
    * @generated
    */
-  Condition getCondition();
+  MeasurementCondition getCondition();
 
   /**
    * Sets the value of the '{@link eu.coresense.adaptation.tactics.Effect#getCondition <em>Condition</em>}' containment reference.
@@ -43,6 +43,6 @@ public interface Effect extends EObject
    * @see #getCondition()
    * @generated
    */
-  void setCondition(Condition value);
+  void setCondition(MeasurementCondition value);
 
 } // Effect

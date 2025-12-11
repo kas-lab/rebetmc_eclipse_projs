@@ -10,6 +10,14 @@
   <testsDirectory xsi:nil="true"/>
   <genPackages prefix="Common" basePackage="eu.coresense" disposableProviderFactory="true"
       ecorePackage="common.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="common.ecore#//MathOperator">
+      <genEnumLiterals ecoreEnumLiteral="common.ecore#//MathOperator/LESS"/>
+      <genEnumLiterals ecoreEnumLiteral="common.ecore#//MathOperator/GREATER"/>
+      <genEnumLiterals ecoreEnumLiteral="common.ecore#//MathOperator/EQUAL"/>
+      <genEnumLiterals ecoreEnumLiteral="common.ecore#//MathOperator/DIFFERENT"/>
+      <genEnumLiterals ecoreEnumLiteral="common.ecore#//MathOperator/GREQ"/>
+      <genEnumLiterals ecoreEnumLiteral="common.ecore#//MathOperator/LEQ"/>
+    </genEnums>
     <genClasses ecoreClass="common.ecore#//Literal"/>
     <genClasses ecoreClass="common.ecore#//IntLiteral">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute common.ecore#//IntLiteral/value"/>

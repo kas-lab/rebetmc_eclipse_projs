@@ -17,12 +17,6 @@
       <genEnumLiterals ecoreEnumLiteral="RequirementsModel.ecore#//QualityAttribute/FLEXIBILITY"/>
       <genEnumLiterals ecoreEnumLiteral="RequirementsModel.ecore#//QualityAttribute/SAFETY"/>
     </genEnums>
-    <genEnums typeSafeEnumCompatible="false" ecoreEnum="RequirementsModel.ecore#//MathOperator">
-      <genEnumLiterals ecoreEnumLiteral="RequirementsModel.ecore#//MathOperator/LESS"/>
-      <genEnumLiterals ecoreEnumLiteral="RequirementsModel.ecore#//MathOperator/GREATER"/>
-      <genEnumLiterals ecoreEnumLiteral="RequirementsModel.ecore#//MathOperator/EQUAL"/>
-      <genEnumLiterals ecoreEnumLiteral="RequirementsModel.ecore#//MathOperator/DIFFERENT"/>
-    </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="RequirementsModel.ecore#//LogicalOperator">
       <genEnumLiterals ecoreEnumLiteral="RequirementsModel.ecore#//LogicalOperator/AND"/>
       <genEnumLiterals ecoreEnumLiteral="RequirementsModel.ecore#//LogicalOperator/OR"/>

@@ -13,7 +13,6 @@ import eu.coresense.context.contextModel.ContextModel
 import org.eclipse.xtext.EcoreUtil2
 import java.util.List
 import java.util.ArrayList
-import org.eclipse.emf.ecore.resource.ResourceSet
 import eu.coresense.context.contextModel.Import
 import org.eclipse.emf.common.util.URI
 import org.eclipse.emf.ecore.resource.Resource
@@ -32,7 +31,7 @@ class ContextModelScopeProviderr extends AbstractContextModelScopeProvider {
 	    {
 	    	val qref = context as QualifiedActionServerRef;
 	        val node = qref.node;
-	        if (node != null && node.getActionserver().size() != 0) {
+	        if (node !== null && node.getActionserver().size() != 0) {
 	            // scope over all features in the model
 	           	return Scopes.scopeFor(
 		            node.getActionserver(), 
@@ -46,7 +45,7 @@ class ContextModelScopeProviderr extends AbstractContextModelScopeProvider {
 	    {
 	    	val qref = context as QualifiedServiceServerRef;
 	        val node = qref.node;
-	        if (node != null && node.getServiceserver().size() != 0) {
+	        if (node !== null && node.getServiceserver().size() != 0) {
 	            // scope over all features in the model
 	            return Scopes.scopeFor(
 		            node.getServiceserver(), 
@@ -56,16 +55,15 @@ class ContextModelScopeProviderr extends AbstractContextModelScopeProvider {
 	        }
 	        return IScope.NULLSCOPE;
 	    }
-        if(reference == ContextModelPackage.Literals.DATA_SOURCE__NODE)
+	    //TODO: These could be separated to only get nodes which have at least one service_server, action_server, publisher.
+        if(reference == ContextModelPackage.Literals.QUALIFIED_SERVICE_SERVER_REF__NODE || 
+        	reference ==  ContextModelPackage.Literals.QUALIFIED_ACTION_SERVER_REF__NODE ||
+        	reference ==  ContextModelPackage.Literals.QUALIFIED_PUBLISHER_REF__NODE 
+        )
 	    {
 	    	val model = EcoreUtil2.getContainerOfType(context, ContextModel);
 
 	    	return Scopes.scopeFor(allNodes(model,context));
-	    }
-	    if(reference == ContextModelPackage.Literals.CONTEXT_VAR__PROCESSED_SOURCE)
-	    {
-    		val model = EcoreUtil2.getContainerOfType(context, ContextModel);    		
-	    	return Scopes.scopeFor(collectContextPublishers(model, context.eResource()));
 	    }
         super.getScope(context, reference)
     }
@@ -100,37 +98,6 @@ class ContextModelScopeProviderr extends AbstractContextModelScopeProvider {
     		}
     	}
     	return allNodes;
-	}
-	
-	def List<ros.Publisher> collectContextPublishers(ContextModel model, Resource currentResource) {
-	    val result = new ArrayList;
-	    val resourceSet = currentResource.getResourceSet();
-        val uriStr = model.getContext_model_node().getNode_import().getImportURI();
-        if (uriStr === null || !uriStr.endsWith(".ros2")) return new ArrayList<ros.Publisher>();
-
-        var uri = URI.createURI(uriStr);
-        if (uri.isRelative()) {
-            uri = uri.resolve(currentResource.getURI());
-        }
-
-        try {
-            val imported = resourceSet.getResource(uri, true);
-            if (imported === null || imported.getContents().isEmpty()) return new ArrayList<ros.Publisher>();
-
-            val root = imported.getContents().get(0);
-            if (root instanceof ros.AmentPackage) {
-                for(ros.Artifact art : root.getArtifact())
-                {
-                	result.addAll(art.getNode().getPublisher());
-                }
-            }
-        } catch (Exception e) {
-            System.err.println("Failed to load context model .ros2 import: " + uriStr);
-            e.printStackTrace();
-        }
-    
-
-	    return result;
 	}
 	
 	def List<system.System> collectAllSystems(ContextModel model, Resource currentResource) {

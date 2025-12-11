@@ -5,8 +5,6 @@ package eu.coresense.context.contextModel;
 
 import org.eclipse.emf.ecore.EObject;
 
-import ros.Node;
-
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Data Source</b></em>'.
@@ -16,7 +14,8 @@ import ros.Node;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link eu.coresense.context.contextModel.DataSource#getNode <em>Node</em>}</li>
+ *   <li>{@link eu.coresense.context.contextModel.DataSource#getRef <em>Ref</em>}</li>
+ *   <li>{@link eu.coresense.context.contextModel.DataSource#getKwargs <em>Kwargs</em>}</li>
  * </ul>
  *
  * @see eu.coresense.context.contextModel.ContextModelPackage#getDataSource()
@@ -26,25 +25,47 @@ import ros.Node;
 public interface DataSource extends EObject
 {
   /**
-   * Returns the value of the '<em><b>Node</b></em>' reference.
+   * Returns the value of the '<em><b>Ref</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Node</em>' reference.
-   * @see #setNode(Node)
-   * @see eu.coresense.context.contextModel.ContextModelPackage#getDataSource_Node()
+   * @return the value of the '<em>Ref</em>' containment reference.
+   * @see #setRef(EObject)
+   * @see eu.coresense.context.contextModel.ContextModelPackage#getDataSource_Ref()
+   * @model containment="true"
+   * @generated
+   */
+  EObject getRef();
+
+  /**
+   * Sets the value of the '{@link eu.coresense.context.contextModel.DataSource#getRef <em>Ref</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Ref</em>' containment reference.
+   * @see #getRef()
+   * @generated
+   */
+  void setRef(EObject value);
+
+  /**
+   * Returns the value of the '<em><b>Kwargs</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Kwargs</em>' attribute.
+   * @see #setKwargs(String)
+   * @see eu.coresense.context.contextModel.ContextModelPackage#getDataSource_Kwargs()
    * @model
    * @generated
    */
-  Node getNode();
+  String getKwargs();
 
   /**
-   * Sets the value of the '{@link eu.coresense.context.contextModel.DataSource#getNode <em>Node</em>}' reference.
+   * Sets the value of the '{@link eu.coresense.context.contextModel.DataSource#getKwargs <em>Kwargs</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Node</em>' reference.
-   * @see #getNode()
+   * @param value the new value of the '<em>Kwargs</em>' attribute.
+   * @see #getKwargs()
    * @generated
    */
-  void setNode(Node value);
+  void setKwargs(String value);
 
 } // DataSource

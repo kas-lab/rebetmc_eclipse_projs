@@ -17,7 +17,6 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  * <ul>
  *   <li>{@link eu.coresense.context.contextModel.ContextModel#getImports <em>Imports</em>}</li>
- *   <li>{@link eu.coresense.context.contextModel.ContextModel#getContext_model_node <em>Context model node</em>}</li>
  *   <li>{@link eu.coresense.context.contextModel.ContextModel#getContext_variables <em>Context variables</em>}</li>
  * </ul>
  *
@@ -38,28 +37,6 @@ public interface ContextModel extends EObject
    * @generated
    */
   EList<Import> getImports();
-
-  /**
-   * Returns the value of the '<em><b>Context model node</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Context model node</em>' containment reference.
-   * @see #setContext_model_node(ContextModelNode)
-   * @see eu.coresense.context.contextModel.ContextModelPackage#getContextModel_Context_model_node()
-   * @model containment="true"
-   * @generated
-   */
-  ContextModelNode getContext_model_node();
-
-  /**
-   * Sets the value of the '{@link eu.coresense.context.contextModel.ContextModel#getContext_model_node <em>Context model node</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Context model node</em>' containment reference.
-   * @see #getContext_model_node()
-   * @generated
-   */
-  void setContext_model_node(ContextModelNode value);
 
   /**
    * Returns the value of the '<em><b>Context variables</b></em>' containment reference list.

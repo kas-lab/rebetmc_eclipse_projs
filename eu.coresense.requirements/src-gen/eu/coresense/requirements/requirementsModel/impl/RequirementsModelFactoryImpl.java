@@ -95,8 +95,6 @@ public class RequirementsModelFactoryImpl extends EFactoryImpl implements Requir
     {
       case RequirementsModelPackage.QUALITY_ATTRIBUTE:
         return createQualityAttributeFromString(eDataType, initialValue);
-      case RequirementsModelPackage.MATH_OPERATOR:
-        return createMathOperatorFromString(eDataType, initialValue);
       case RequirementsModelPackage.LOGICAL_OPERATOR:
         return createLogicalOperatorFromString(eDataType, initialValue);
       default:
@@ -116,8 +114,6 @@ public class RequirementsModelFactoryImpl extends EFactoryImpl implements Requir
     {
       case RequirementsModelPackage.QUALITY_ATTRIBUTE:
         return convertQualityAttributeToString(eDataType, instanceValue);
-      case RequirementsModelPackage.MATH_OPERATOR:
-        return convertMathOperatorToString(eDataType, instanceValue);
       case RequirementsModelPackage.LOGICAL_OPERATOR:
         return convertLogicalOperatorToString(eDataType, instanceValue);
       default:
@@ -287,28 +283,6 @@ public class RequirementsModelFactoryImpl extends EFactoryImpl implements Requir
    * @generated
    */
   public String convertQualityAttributeToString(EDataType eDataType, Object instanceValue)
-  {
-    return instanceValue == null ? null : instanceValue.toString();
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public MathOperator createMathOperatorFromString(EDataType eDataType, String initialValue)
-  {
-    MathOperator result = MathOperator.get(initialValue);
-    if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
-    return result;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public String convertMathOperatorToString(EDataType eDataType, Object instanceValue)
   {
     return instanceValue == null ? null : instanceValue.toString();
   }

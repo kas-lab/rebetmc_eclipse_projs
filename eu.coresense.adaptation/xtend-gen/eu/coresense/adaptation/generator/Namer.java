@@ -1,7 +1,9 @@
 package eu.coresense.adaptation.generator;
 
 import eu.coresense.adaptation.tactics.Condition;
+import eu.coresense.adaptation.tactics.FeatureCondition;
 import eu.coresense.adaptation.tactics.LogicalOperator;
+import eu.coresense.adaptation.tactics.MeasurementCondition;
 import eu.coresense.context.contextModel.ContextVar;
 import eu.coresense.context.contextModel.DataSource;
 import eu.coresense.context.contextModel.QualifiedActionServerRef;
@@ -13,8 +15,8 @@ import eu.coresense.resolution.resolutionModel.SetLifecycle;
 import eu.coresense.resolution.resolutionModel.SetParam;
 import java.util.Map;
 import java.util.function.Function;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
-import org.eclipse.xtext.xbase.lib.InputOutput;
 import org.eclipse.xtext.xbase.lib.Pair;
 import ros.ActionClient;
 import ros.ActionServer;
@@ -46,7 +48,9 @@ import uma.caosd.rhea.BasicFMmetamodel.OrGroup;
 public class Namer {
   private final Map<String, Integer> nameMap = CollectionLiterals.<String, Integer>newHashMap();
 
-  private final Map<Condition, String> conditionNames = CollectionLiterals.<Condition, String>newHashMap();
+  private final Map<MeasurementCondition, String> measurementConditionNames = CollectionLiterals.<MeasurementCondition, String>newHashMap();
+
+  private final Map<FeatureCondition, String> featureConditionNames = CollectionLiterals.<FeatureCondition, String>newHashMap();
 
   private final Map<Pair<String, String>, String> logicNames = CollectionLiterals.<Pair<String, String>, String>newHashMap();
 
@@ -88,6 +92,8 @@ public class Namer {
 
   private final Map<ContextVar, String> cvNames = CollectionLiterals.<ContextVar, String>newHashMap();
 
+  private final Map<Expr, String> exprNames = CollectionLiterals.<Expr, String>newHashMap();
+
   public String makeUniqueName(final String baseName) {
     String _xblockexpression = null;
     {
@@ -112,15 +118,24 @@ public class Namer {
     return _xblockexpression;
   }
 
-  public String uniqueName(final Condition condition) {
-    final Function<Condition, String> _function = (Condition it) -> {
+  public String uniqueName(final MeasurementCondition condition) {
+    final Function<MeasurementCondition, String> _function = (MeasurementCondition it) -> {
       String _lowerCase = condition.getMeasurement().getName().toLowerCase();
       String _plus = (_lowerCase + "_");
       String _lowerCase_1 = condition.getOperator().getName().toLowerCase();
       String _plus_1 = (_plus + _lowerCase_1);
       return this.makeUniqueName(_plus_1);
     };
-    return this.conditionNames.computeIfAbsent(condition, _function);
+    return this.measurementConditionNames.computeIfAbsent(condition, _function);
+  }
+
+  public String uniqueName(final FeatureCondition condition) {
+    final Function<FeatureCondition, String> _function = (FeatureCondition it) -> {
+      String _uniqueName = this.uniqueName(condition.getVariant().getFeature());
+      String _plus = ("is_selected_" + _uniqueName);
+      return this.makeUniqueName(_plus);
+    };
+    return this.featureConditionNames.computeIfAbsent(condition, _function);
   }
 
   public String uniqueName(final ContextVar contextVariable) {
@@ -130,6 +145,21 @@ public class Namer {
       return this.makeUniqueName(_plus);
     };
     return this.cvNames.computeIfAbsent(contextVariable, _function);
+  }
+
+  public String uniqueName(final Condition condition) {
+    boolean _matched = false;
+    if (condition instanceof MeasurementCondition) {
+      _matched=true;
+      return this.uniqueName(((MeasurementCondition)condition));
+    }
+    if (!_matched) {
+      if (condition instanceof FeatureCondition) {
+        _matched=true;
+        return this.uniqueName(((FeatureCondition)condition));
+      }
+    }
+    return null;
   }
 
   public String uniqueName(final LogicalOperator logicalOp, final String lhs_name, final String rhs_name) {
@@ -163,19 +193,24 @@ public class Namer {
   }
 
   public String uniqueName(final DataSource dataSource, final String nodeName) {
-    if ((dataSource instanceof QualifiedActionServerRef)) {
-      InputOutput.<String>println("nonnull1");
-      return this.uniqueName(((QualifiedActionServerRef)dataSource).getActionServer(), nodeName);
+    final EObject ref = dataSource.getRef();
+    if ((ref instanceof QualifiedActionServerRef)) {
+      return this.uniqueName(((QualifiedActionServerRef)ref).getActionServer(), nodeName);
     }
-    if ((dataSource instanceof QualifiedPublisherRef)) {
-      InputOutput.<String>println("nonnull2");
-      return this.uniqueName(((QualifiedPublisherRef)dataSource).getPublisher(), nodeName);
+    if ((ref instanceof QualifiedPublisherRef)) {
+      return this.uniqueName(((QualifiedPublisherRef)ref).getPublisher(), nodeName);
     }
-    if ((dataSource instanceof QualifiedServiceServerRef)) {
-      InputOutput.<String>println("nonnull3");
-      return this.uniqueName(((QualifiedServiceServerRef)dataSource).getServiceServer(), nodeName);
+    if ((ref instanceof QualifiedServiceServerRef)) {
+      return this.uniqueName(((QualifiedServiceServerRef)ref).getServiceServer(), nodeName);
     }
     return null;
+  }
+
+  public String uniqueName(final Expr e) {
+    final Function<Expr, String> _function = (Expr it) -> {
+      return this.makeUniqueName("expr_");
+    };
+    return this.exprNames.computeIfAbsent(e, _function);
   }
 
   public String uniqueName(final Subscriber subscriber, final String node_name) {
@@ -252,8 +287,8 @@ public class Namer {
 
   public String uniqueName(final RosNode node) {
     final Function<RosNode, String> _function = (RosNode it) -> {
-      String _name = node.getName();
-      String _plus = (_name + "_node");
+      String _replace = node.getName().replace("/", "");
+      String _plus = (_replace + "_node");
       return this.makeUniqueName(_plus);
     };
     return this.rosnodeNames.computeIfAbsent(node, _function);
@@ -268,8 +303,8 @@ public class Namer {
 
   public String uniqueName(final Node node) {
     final Function<Node, String> _function = (Node it) -> {
-      String _name = node.getName();
-      String _plus = (_name + "_node");
+      String _replace = node.getName().replace("/", "");
+      String _plus = (_replace + "_node");
       return this.makeUniqueName(_plus);
     };
     return this.nodeNames.computeIfAbsent(node, _function);
@@ -475,7 +510,7 @@ public class Namer {
     boolean _matched = false;
     if (param_value instanceof ParameterBoolean) {
       _matched=true;
-      _switchResult = "boolean";
+      _switchResult = "bool";
     }
     if (!_matched) {
       if (param_value instanceof ParameterDouble) {
@@ -487,6 +522,12 @@ public class Namer {
       if (param_value instanceof ParameterString) {
         _matched=true;
         _switchResult = "string";
+      }
+    }
+    if (!_matched) {
+      if (param_value instanceof ParameterInteger) {
+        _matched=true;
+        _switchResult = "integer";
       }
     }
     return _switchResult;

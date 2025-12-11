@@ -28,10 +28,13 @@ import eu.coresense.context.contextModel.DataSource
 import eu.coresense.context.contextModel.QualifiedActionServerRef
 import eu.coresense.context.contextModel.QualifiedPublisherRef
 import eu.coresense.context.contextModel.QualifiedServiceServerRef
+import eu.coresense.adaptation.tactics.MeasurementCondition
+import eu.coresense.adaptation.tactics.FeatureCondition
 
 class Namer {
 	val Map<String, Integer> nameMap = newHashMap
-	val Map<Condition, String> conditionNames = newHashMap 
+	val Map<MeasurementCondition, String> measurementConditionNames = newHashMap 
+	val Map<FeatureCondition, String> featureConditionNames = newHashMap 
 	val Map<Pair<String, String>, String> logicNames = newHashMap
 	val Map<SetParam, String> setparamNames = newHashMap
 	val Map<Resolution, String> resolutionNames = newHashMap
@@ -52,6 +55,7 @@ class Namer {
 	val Map<ros.ServiceServer, String> ssNames = newHashMap
 	val Map<ros.QualityOfService,String> qosNames = newHashMap
 	val Map<ContextVar,String> cvNames = newHashMap
+	val Map<Expr, String> exprNames = newHashMap
 	
 	
 	
@@ -62,9 +66,15 @@ class Namer {
 	    newName
 	}
 	
-	def uniqueName(Condition condition) {
-	    conditionNames.computeIfAbsent(condition) [
+	def uniqueName(MeasurementCondition condition) {
+	    measurementConditionNames.computeIfAbsent(condition) [
 	        makeUniqueName(condition.measurement.name.toLowerCase + "_" + condition.operator.getName().toLowerCase)
+	    ]
+	}
+	
+	def uniqueName(FeatureCondition condition) {
+	    featureConditionNames.computeIfAbsent(condition) [
+	        makeUniqueName("is_selected_" + uniqueName(condition.variant.feature))
 	    ]
 	}
 	
@@ -74,7 +84,17 @@ class Namer {
 	    ]
 	}
 
-	
+	def uniqueName(Condition condition)
+	{
+		switch condition {
+			MeasurementCondition : {
+				return uniqueName(condition)
+			}
+			FeatureCondition: {
+				return uniqueName(condition)
+			}
+		}
+	}
 	def uniqueName(LogicalOperator logicalOp, String lhs_name, String rhs_name)
 	{
 		val lhs_short_name = lhs_name.substring(0, Math.min(3, lhs_name.length))
@@ -101,23 +121,27 @@ class Namer {
 	}
 	
 	def uniqueName(DataSource dataSource, String nodeName)
-	{
-		if(dataSource instanceof QualifiedActionServerRef)
+	{	
+		val ref = dataSource.ref
+		if(ref instanceof QualifiedActionServerRef)
 		{
-			println("nonnull1")
-			return uniqueName(dataSource.actionServer, nodeName)
+			return uniqueName(ref.actionServer, nodeName)
 		}
-		if(dataSource instanceof QualifiedPublisherRef)
+		if(ref instanceof QualifiedPublisherRef)
 		{
-			println("nonnull2")
-			return uniqueName(dataSource.publisher, nodeName)
+			return uniqueName(ref.publisher, nodeName)
 		}
-		if(dataSource instanceof QualifiedServiceServerRef)
+		if(ref instanceof QualifiedServiceServerRef)
 		{
-			println("nonnull3")
-			return uniqueName(dataSource.serviceServer, nodeName)
+			return uniqueName(ref.serviceServer, nodeName)
 		}
 		
+	}
+	
+	def uniqueName(Expr e)
+	{
+		exprNames.computeIfAbsent(e) [
+        	makeUniqueName("expr_")]
 	}
 	
 	def uniqueName(ros.Subscriber subscriber, String node_name)
@@ -181,7 +205,7 @@ class Namer {
 	def uniqueName(RosNode node)
 	{
 		rosnodeNames.computeIfAbsent(node) [
-        	makeUniqueName(node.name + "_node")
+        	makeUniqueName(node.name.replace("/", "") + "_node")
     ]
 	}
 	
@@ -195,7 +219,7 @@ class Namer {
 	def uniqueName(ros.Node node)
 	{
 		nodeNames.computeIfAbsent(node) [
-        	makeUniqueName(node.name + "_node")
+        	makeUniqueName(node.name.replace("/", "") + "_node")
     ]
 	}
 	
@@ -328,11 +352,13 @@ class Namer {
 		switch param_value
 		{
 			ParameterBoolean:
-				"boolean"
+				"bool"
 			ParameterDouble:
 				"double"
 			ParameterString:
 				"string"
+			ParameterInteger:
+				"integer"
 		}
 		
 	}

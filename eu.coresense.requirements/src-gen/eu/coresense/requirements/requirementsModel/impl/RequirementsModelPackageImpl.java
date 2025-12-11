@@ -12,7 +12,6 @@ import eu.coresense.requirements.requirementsModel.AsCloseLit;
 import eu.coresense.requirements.requirementsModel.AtomicStatement;
 import eu.coresense.requirements.requirementsModel.Condition;
 import eu.coresense.requirements.requirementsModel.LogicalOperator;
-import eu.coresense.requirements.requirementsModel.MathOperator;
 import eu.coresense.requirements.requirementsModel.MayStatement;
 import eu.coresense.requirements.requirementsModel.Proposition;
 import eu.coresense.requirements.requirementsModel.QualityAttribute;
@@ -135,13 +134,6 @@ public class RequirementsModelPackageImpl extends EPackageImpl implements Requir
    * @generated
    */
   private EEnum qualityAttributeEEnum = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EEnum mathOperatorEEnum = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -642,17 +634,6 @@ public class RequirementsModelPackageImpl extends EPackageImpl implements Requir
    * @generated
    */
   @Override
-  public EEnum getMathOperator()
-  {
-    return mathOperatorEEnum;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
   public EEnum getLogicalOperator()
   {
     return logicalOperatorEEnum;
@@ -740,7 +721,6 @@ public class RequirementsModelPackageImpl extends EPackageImpl implements Requir
 
     // Create enums
     qualityAttributeEEnum = createEEnum(QUALITY_ATTRIBUTE);
-    mathOperatorEEnum = createEEnum(MATH_OPERATOR);
     logicalOperatorEEnum = createEEnum(LOGICAL_OPERATOR);
   }
 
@@ -795,7 +775,7 @@ public class RequirementsModelPackageImpl extends EPackageImpl implements Requir
 
     initEClass(conditionEClass, Condition.class, "Condition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getCondition_Measurement(), theContextModelPackage.getContextVar(), null, "measurement", null, 0, 1, Condition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getCondition_Operator(), this.getMathOperator(), "operator", null, 0, 1, Condition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getCondition_Operator(), theCommonPackage.getMathOperator(), "operator", null, 0, 1, Condition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getCondition_Value(), theCommonPackage.getLiteral(), null, "value", null, 0, 1, Condition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getCondition_LogicalOp(), this.getLogicalOperator(), "logicalOp", null, 0, 1, Condition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getCondition_SecondTerm(), this.getCondition(), null, "secondTerm", null, 0, 1, Condition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -844,12 +824,6 @@ public class RequirementsModelPackageImpl extends EPackageImpl implements Requir
     addEEnumLiteral(qualityAttributeEEnum, QualityAttribute.MAINTAINABILITY);
     addEEnumLiteral(qualityAttributeEEnum, QualityAttribute.FLEXIBILITY);
     addEEnumLiteral(qualityAttributeEEnum, QualityAttribute.SAFETY);
-
-    initEEnum(mathOperatorEEnum, MathOperator.class, "MathOperator");
-    addEEnumLiteral(mathOperatorEEnum, MathOperator.LESS);
-    addEEnumLiteral(mathOperatorEEnum, MathOperator.GREATER);
-    addEEnumLiteral(mathOperatorEEnum, MathOperator.EQUAL);
-    addEEnumLiteral(mathOperatorEEnum, MathOperator.DIFFERENT);
 
     initEEnum(logicalOperatorEEnum, LogicalOperator.class, "LogicalOperator");
     addEEnumLiteral(logicalOperatorEEnum, LogicalOperator.AND);

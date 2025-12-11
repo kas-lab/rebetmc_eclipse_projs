@@ -3,6 +3,8 @@
  */
 package eu.coresense.resolution.validation;
 
+import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import java.util.Iterator;
 
 import org.eclipse.xtext.validation.Check;

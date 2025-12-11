@@ -5,8 +5,6 @@ package eu.coresense.context.contextModel;
 
 import org.eclipse.emf.ecore.EObject;
 
-import ros.Publisher;
-
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Context Var</b></em>'.
@@ -18,10 +16,10 @@ import ros.Publisher;
  * <ul>
  *   <li>{@link eu.coresense.context.contextModel.ContextVar#getName <em>Name</em>}</li>
  *   <li>{@link eu.coresense.context.contextModel.ContextVar#getSource <em>Source</em>}</li>
- *   <li>{@link eu.coresense.context.contextModel.ContextVar#getProcessed_source <em>Processed source</em>}</li>
- *   <li>{@link eu.coresense.context.contextModel.ContextVar#isDoCache <em>Do Cache</em>}</li>
+ *   <li>{@link eu.coresense.context.contextModel.ContextVar#getDoCache <em>Do Cache</em>}</li>
  *   <li>{@link eu.coresense.context.contextModel.ContextVar#getLength <em>Length</em>}</li>
  *   <li>{@link eu.coresense.context.contextModel.ContextVar#getPeriod <em>Period</em>}</li>
+ *   <li>{@link eu.coresense.context.contextModel.ContextVar#getDoProxy <em>Do Proxy</em>}</li>
  *   <li>{@link eu.coresense.context.contextModel.ContextVar#getFunctionName <em>Function Name</em>}</li>
  *   <li>{@link eu.coresense.context.contextModel.ContextVar#getFunctionLibrary <em>Function Library</em>}</li>
  * </ul>
@@ -77,48 +75,26 @@ public interface ContextVar extends EObject
   void setSource(DataSource value);
 
   /**
-   * Returns the value of the '<em><b>Processed source</b></em>' reference.
+   * Returns the value of the '<em><b>Do Cache</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Processed source</em>' reference.
-   * @see #setProcessed_source(Publisher)
-   * @see eu.coresense.context.contextModel.ContextModelPackage#getContextVar_Processed_source()
-   * @model
-   * @generated
-   */
-  Publisher getProcessed_source();
-
-  /**
-   * Sets the value of the '{@link eu.coresense.context.contextModel.ContextVar#getProcessed_source <em>Processed source</em>}' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Processed source</em>' reference.
-   * @see #getProcessed_source()
-   * @generated
-   */
-  void setProcessed_source(Publisher value);
-
-  /**
-   * Returns the value of the '<em><b>Do Cache</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Do Cache</em>' attribute.
-   * @see #setDoCache(boolean)
+   * @return the value of the '<em>Do Cache</em>' containment reference.
+   * @see #setDoCache(DoCache)
    * @see eu.coresense.context.contextModel.ContextModelPackage#getContextVar_DoCache()
-   * @model
+   * @model containment="true"
    * @generated
    */
-  boolean isDoCache();
+  DoCache getDoCache();
 
   /**
-   * Sets the value of the '{@link eu.coresense.context.contextModel.ContextVar#isDoCache <em>Do Cache</em>}' attribute.
+   * Sets the value of the '{@link eu.coresense.context.contextModel.ContextVar#getDoCache <em>Do Cache</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Do Cache</em>' attribute.
-   * @see #isDoCache()
+   * @param value the new value of the '<em>Do Cache</em>' containment reference.
+   * @see #getDoCache()
    * @generated
    */
-  void setDoCache(boolean value);
+  void setDoCache(DoCache value);
 
   /**
    * Returns the value of the '<em><b>Length</b></em>' attribute.
@@ -163,6 +139,28 @@ public interface ContextVar extends EObject
    * @generated
    */
   void setPeriod(int value);
+
+  /**
+   * Returns the value of the '<em><b>Do Proxy</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Do Proxy</em>' containment reference.
+   * @see #setDoProxy(DoProxy)
+   * @see eu.coresense.context.contextModel.ContextModelPackage#getContextVar_DoProxy()
+   * @model containment="true"
+   * @generated
+   */
+  DoProxy getDoProxy();
+
+  /**
+   * Sets the value of the '{@link eu.coresense.context.contextModel.ContextVar#getDoProxy <em>Do Proxy</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Do Proxy</em>' containment reference.
+   * @see #getDoProxy()
+   * @generated
+   */
+  void setDoProxy(DoProxy value);
 
   /**
    * Returns the value of the '<em><b>Function Name</b></em>' attribute.

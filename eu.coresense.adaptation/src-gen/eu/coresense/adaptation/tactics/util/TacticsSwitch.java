@@ -154,6 +154,20 @@ public class TacticsSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case TacticsPackage.CONTEXT_PART:
+      {
+        ContextPart contextPart = (ContextPart)theEObject;
+        T result = caseContextPart(contextPart);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case TacticsPackage.FEATURE_PART:
+      {
+        FeaturePart featurePart = (FeaturePart)theEObject;
+        T result = caseFeaturePart(featurePart);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case TacticsPackage.EFFECT:
       {
         Effect effect = (Effect)theEObject;
@@ -165,6 +179,22 @@ public class TacticsSwitch<T> extends Switch<T>
       {
         Condition condition = (Condition)theEObject;
         T result = caseCondition(condition);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case TacticsPackage.FEATURE_CONDITION:
+      {
+        FeatureCondition featureCondition = (FeatureCondition)theEObject;
+        T result = caseFeatureCondition(featureCondition);
+        if (result == null) result = caseCondition(featureCondition);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case TacticsPackage.MEASUREMENT_CONDITION:
+      {
+        MeasurementCondition measurementCondition = (MeasurementCondition)theEObject;
+        T result = caseMeasurementCondition(measurementCondition);
+        if (result == null) result = caseCondition(measurementCondition);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -372,6 +402,38 @@ public class TacticsSwitch<T> extends Switch<T>
   }
 
   /**
+   * Returns the result of interpreting the object as an instance of '<em>Context Part</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Context Part</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseContextPart(ContextPart object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Feature Part</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Feature Part</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseFeaturePart(FeaturePart object)
+  {
+    return null;
+  }
+
+  /**
    * Returns the result of interpreting the object as an instance of '<em>Effect</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -399,6 +461,38 @@ public class TacticsSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseCondition(Condition object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Feature Condition</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Feature Condition</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseFeatureCondition(FeatureCondition object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Measurement Condition</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Measurement Condition</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseMeasurementCondition(MeasurementCondition object)
   {
     return null;
   }

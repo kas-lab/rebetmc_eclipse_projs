@@ -3,8 +3,8 @@
  */
 package eu.coresense.adaptation.tactics.impl;
 
-import eu.coresense.adaptation.tactics.Condition;
 import eu.coresense.adaptation.tactics.Effect;
+import eu.coresense.adaptation.tactics.MeasurementCondition;
 import eu.coresense.adaptation.tactics.TacticsPackage;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -39,7 +39,7 @@ public class EffectImpl extends MinimalEObjectImpl.Container implements Effect
    * @generated
    * @ordered
    */
-  protected Condition condition;
+  protected MeasurementCondition condition;
 
   /**
    * <!-- begin-user-doc -->
@@ -68,7 +68,7 @@ public class EffectImpl extends MinimalEObjectImpl.Container implements Effect
    * @generated
    */
   @Override
-  public Condition getCondition()
+  public MeasurementCondition getCondition()
   {
     return condition;
   }
@@ -78,9 +78,9 @@ public class EffectImpl extends MinimalEObjectImpl.Container implements Effect
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetCondition(Condition newCondition, NotificationChain msgs)
+  public NotificationChain basicSetCondition(MeasurementCondition newCondition, NotificationChain msgs)
   {
-    Condition oldCondition = condition;
+    MeasurementCondition oldCondition = condition;
     condition = newCondition;
     if (eNotificationRequired())
     {
@@ -96,7 +96,7 @@ public class EffectImpl extends MinimalEObjectImpl.Container implements Effect
    * @generated
    */
   @Override
-  public void setCondition(Condition newCondition)
+  public void setCondition(MeasurementCondition newCondition)
   {
     if (newCondition != condition)
     {
@@ -155,7 +155,7 @@ public class EffectImpl extends MinimalEObjectImpl.Container implements Effect
     switch (featureID)
     {
       case TacticsPackage.EFFECT__CONDITION:
-        setCondition((Condition)newValue);
+        setCondition((MeasurementCondition)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -172,7 +172,7 @@ public class EffectImpl extends MinimalEObjectImpl.Container implements Effect
     switch (featureID)
     {
       case TacticsPackage.EFFECT__CONDITION:
-        setCondition((Condition)null);
+        setCondition((MeasurementCondition)null);
         return;
     }
     super.eUnset(featureID);

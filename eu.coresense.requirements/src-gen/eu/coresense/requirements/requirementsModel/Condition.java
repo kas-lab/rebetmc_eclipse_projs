@@ -4,6 +4,7 @@
 package eu.coresense.requirements.requirementsModel;
 
 import eu.coresense.common.Literal;
+import eu.coresense.common.MathOperator;
 
 import eu.coresense.context.contextModel.ContextVar;
 
@@ -53,11 +54,11 @@ public interface Condition extends Proposition
 
   /**
    * Returns the value of the '<em><b>Operator</b></em>' attribute.
-   * The literals are from the enumeration {@link eu.coresense.requirements.requirementsModel.MathOperator}.
+   * The literals are from the enumeration {@link eu.coresense.common.MathOperator}.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the value of the '<em>Operator</em>' attribute.
-   * @see eu.coresense.requirements.requirementsModel.MathOperator
+   * @see eu.coresense.common.MathOperator
    * @see #setOperator(MathOperator)
    * @see eu.coresense.requirements.requirementsModel.RequirementsModelPackage#getCondition_Operator()
    * @model
@@ -70,7 +71,7 @@ public interface Condition extends Proposition
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Operator</em>' attribute.
-   * @see eu.coresense.requirements.requirementsModel.MathOperator
+   * @see eu.coresense.common.MathOperator
    * @see #getOperator()
    * @generated
    */

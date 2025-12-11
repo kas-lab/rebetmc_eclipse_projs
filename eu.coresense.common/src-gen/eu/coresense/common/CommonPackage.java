@@ -4,6 +4,7 @@ package eu.coresense.common;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 
 /**
@@ -232,6 +233,16 @@ public interface CommonPackage extends EPackage {
 	int BOOLEAN_LITERAL_OPERATION_COUNT = LITERAL_OPERATION_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link eu.coresense.common.MathOperator <em>Math Operator</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see eu.coresense.common.MathOperator
+	 * @see eu.coresense.common.impl.CommonPackageImpl#getMathOperator()
+	 * @generated
+	 */
+	int MATH_OPERATOR = 5;
+
+	/**
 	 * Returns the meta object for class '{@link eu.coresense.common.Literal <em>Literal</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -324,6 +335,16 @@ public interface CommonPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getBooleanLiteral_Value();
+
+	/**
+	 * Returns the meta object for enum '{@link eu.coresense.common.MathOperator <em>Math Operator</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>Math Operator</em>'.
+	 * @see eu.coresense.common.MathOperator
+	 * @generated
+	 */
+	EEnum getMathOperator();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -429,6 +450,16 @@ public interface CommonPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute BOOLEAN_LITERAL__VALUE = eINSTANCE.getBooleanLiteral_Value();
+
+		/**
+		 * The meta object literal for the '{@link eu.coresense.common.MathOperator <em>Math Operator</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see eu.coresense.common.MathOperator
+		 * @see eu.coresense.common.impl.CommonPackageImpl#getMathOperator()
+		 * @generated
+		 */
+		EEnum MATH_OPERATOR = eINSTANCE.getMathOperator();
 
 	}
 

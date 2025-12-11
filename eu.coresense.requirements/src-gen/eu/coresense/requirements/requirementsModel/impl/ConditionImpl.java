@@ -4,12 +4,12 @@
 package eu.coresense.requirements.requirementsModel.impl;
 
 import eu.coresense.common.Literal;
+import eu.coresense.common.MathOperator;
 
 import eu.coresense.context.contextModel.ContextVar;
 
 import eu.coresense.requirements.requirementsModel.Condition;
 import eu.coresense.requirements.requirementsModel.LogicalOperator;
-import eu.coresense.requirements.requirementsModel.MathOperator;
 import eu.coresense.requirements.requirementsModel.RequirementsModelPackage;
 
 import org.eclipse.emf.common.notify.Notification;

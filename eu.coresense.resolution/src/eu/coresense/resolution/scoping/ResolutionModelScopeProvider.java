@@ -21,6 +21,7 @@ import org.eclipse.xtext.scoping.Scopes;
 import eu.coresense.resolution.resolutionModel.Import;
 import eu.coresense.resolution.resolutionModel.ResolutionModel;
 import eu.coresense.resolution.resolutionModel.ResolutionModelPackage;
+import eu.coresense.resolution.resolutionModel.SetParam;
 import ros.Node;
 import uma.caosd.rhea.BasicFMmetamodel.Feature;
 import uma.caosd.rhea.BasicFMmetamodel.FeatureModel;
@@ -75,6 +76,7 @@ public class ResolutionModelScopeProvider extends AbstractResolutionModelScopePr
 	    }
 	    if (reference == ResolutionModelPackage.Literals.SET_PARAM__PARAM) {
 	        ResolutionModel model = EcoreUtil2.getContainerOfType(context, ResolutionModel.class);
+	        SetParam spRef = (SetParam) context;
 	        if (model == null) return IScope.NULLSCOPE;
 
 	        List<system.System> systems = collectAllSystems(model, context.eResource());
@@ -83,7 +85,9 @@ public class ResolutionModelScopeProvider extends AbstractResolutionModelScopePr
 	        for (system.System sys : systems) {
 	            for (system.Component comp : sys.getComponents()) {
 	                if (comp instanceof system.RosNode node) {
-	                	allParams.addAll(node.getFrom().getParameter());
+	                	if(spRef.getNode() == comp) {
+	                		allParams.addAll(node.getFrom().getParameter());
+	                	}
 	                }
 	            }
 	        }

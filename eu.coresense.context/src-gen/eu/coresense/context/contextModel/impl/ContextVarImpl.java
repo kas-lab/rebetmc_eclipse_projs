@@ -6,6 +6,8 @@ package eu.coresense.context.contextModel.impl;
 import eu.coresense.context.contextModel.ContextModelPackage;
 import eu.coresense.context.contextModel.ContextVar;
 import eu.coresense.context.contextModel.DataSource;
+import eu.coresense.context.contextModel.DoCache;
+import eu.coresense.context.contextModel.DoProxy;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -15,8 +17,6 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
-import ros.Publisher;
 
 /**
  * <!-- begin-user-doc -->
@@ -28,10 +28,10 @@ import ros.Publisher;
  * <ul>
  *   <li>{@link eu.coresense.context.contextModel.impl.ContextVarImpl#getName <em>Name</em>}</li>
  *   <li>{@link eu.coresense.context.contextModel.impl.ContextVarImpl#getSource <em>Source</em>}</li>
- *   <li>{@link eu.coresense.context.contextModel.impl.ContextVarImpl#getProcessed_source <em>Processed source</em>}</li>
- *   <li>{@link eu.coresense.context.contextModel.impl.ContextVarImpl#isDoCache <em>Do Cache</em>}</li>
+ *   <li>{@link eu.coresense.context.contextModel.impl.ContextVarImpl#getDoCache <em>Do Cache</em>}</li>
  *   <li>{@link eu.coresense.context.contextModel.impl.ContextVarImpl#getLength <em>Length</em>}</li>
  *   <li>{@link eu.coresense.context.contextModel.impl.ContextVarImpl#getPeriod <em>Period</em>}</li>
+ *   <li>{@link eu.coresense.context.contextModel.impl.ContextVarImpl#getDoProxy <em>Do Proxy</em>}</li>
  *   <li>{@link eu.coresense.context.contextModel.impl.ContextVarImpl#getFunctionName <em>Function Name</em>}</li>
  *   <li>{@link eu.coresense.context.contextModel.impl.ContextVarImpl#getFunctionLibrary <em>Function Library</em>}</li>
  * </ul>
@@ -71,34 +71,14 @@ public class ContextVarImpl extends MinimalEObjectImpl.Container implements Cont
   protected DataSource source;
 
   /**
-   * The cached value of the '{@link #getProcessed_source() <em>Processed source</em>}' reference.
+   * The cached value of the '{@link #getDoCache() <em>Do Cache</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getProcessed_source()
+   * @see #getDoCache()
    * @generated
    * @ordered
    */
-  protected Publisher processed_source;
-
-  /**
-   * The default value of the '{@link #isDoCache() <em>Do Cache</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #isDoCache()
-   * @generated
-   * @ordered
-   */
-  protected static final boolean DO_CACHE_EDEFAULT = false;
-
-  /**
-   * The cached value of the '{@link #isDoCache() <em>Do Cache</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #isDoCache()
-   * @generated
-   * @ordered
-   */
-  protected boolean doCache = DO_CACHE_EDEFAULT;
+  protected DoCache doCache;
 
   /**
    * The default value of the '{@link #getLength() <em>Length</em>}' attribute.
@@ -139,6 +119,16 @@ public class ContextVarImpl extends MinimalEObjectImpl.Container implements Cont
    * @ordered
    */
   protected int period = PERIOD_EDEFAULT;
+
+  /**
+   * The cached value of the '{@link #getDoProxy() <em>Do Proxy</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getDoProxy()
+   * @generated
+   * @ordered
+   */
+  protected DoProxy doProxy;
 
   /**
    * The default value of the '{@link #getFunctionName() <em>Function Name</em>}' attribute.
@@ -282,52 +272,7 @@ public class ContextVarImpl extends MinimalEObjectImpl.Container implements Cont
    * @generated
    */
   @Override
-  public Publisher getProcessed_source()
-  {
-    if (processed_source != null && processed_source.eIsProxy())
-    {
-      InternalEObject oldProcessed_source = (InternalEObject)processed_source;
-      processed_source = (Publisher)eResolveProxy(oldProcessed_source);
-      if (processed_source != oldProcessed_source)
-      {
-        if (eNotificationRequired())
-          eNotify(new ENotificationImpl(this, Notification.RESOLVE, ContextModelPackage.CONTEXT_VAR__PROCESSED_SOURCE, oldProcessed_source, processed_source));
-      }
-    }
-    return processed_source;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public Publisher basicGetProcessed_source()
-  {
-    return processed_source;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public void setProcessed_source(Publisher newProcessed_source)
-  {
-    Publisher oldProcessed_source = processed_source;
-    processed_source = newProcessed_source;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ContextModelPackage.CONTEXT_VAR__PROCESSED_SOURCE, oldProcessed_source, processed_source));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public boolean isDoCache()
+  public DoCache getDoCache()
   {
     return doCache;
   }
@@ -337,13 +282,38 @@ public class ContextVarImpl extends MinimalEObjectImpl.Container implements Cont
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-  public void setDoCache(boolean newDoCache)
+  public NotificationChain basicSetDoCache(DoCache newDoCache, NotificationChain msgs)
   {
-    boolean oldDoCache = doCache;
+    DoCache oldDoCache = doCache;
     doCache = newDoCache;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ContextModelPackage.CONTEXT_VAR__DO_CACHE, oldDoCache, doCache));
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ContextModelPackage.CONTEXT_VAR__DO_CACHE, oldDoCache, newDoCache);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setDoCache(DoCache newDoCache)
+  {
+    if (newDoCache != doCache)
+    {
+      NotificationChain msgs = null;
+      if (doCache != null)
+        msgs = ((InternalEObject)doCache).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ContextModelPackage.CONTEXT_VAR__DO_CACHE, null, msgs);
+      if (newDoCache != null)
+        msgs = ((InternalEObject)newDoCache).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ContextModelPackage.CONTEXT_VAR__DO_CACHE, null, msgs);
+      msgs = basicSetDoCache(newDoCache, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, ContextModelPackage.CONTEXT_VAR__DO_CACHE, newDoCache, newDoCache));
   }
 
   /**
@@ -394,6 +364,56 @@ public class ContextVarImpl extends MinimalEObjectImpl.Container implements Cont
     period = newPeriod;
     if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, ContextModelPackage.CONTEXT_VAR__PERIOD, oldPeriod, period));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public DoProxy getDoProxy()
+  {
+    return doProxy;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetDoProxy(DoProxy newDoProxy, NotificationChain msgs)
+  {
+    DoProxy oldDoProxy = doProxy;
+    doProxy = newDoProxy;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ContextModelPackage.CONTEXT_VAR__DO_PROXY, oldDoProxy, newDoProxy);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setDoProxy(DoProxy newDoProxy)
+  {
+    if (newDoProxy != doProxy)
+    {
+      NotificationChain msgs = null;
+      if (doProxy != null)
+        msgs = ((InternalEObject)doProxy).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ContextModelPackage.CONTEXT_VAR__DO_PROXY, null, msgs);
+      if (newDoProxy != null)
+        msgs = ((InternalEObject)newDoProxy).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ContextModelPackage.CONTEXT_VAR__DO_PROXY, null, msgs);
+      msgs = basicSetDoProxy(newDoProxy, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, ContextModelPackage.CONTEXT_VAR__DO_PROXY, newDoProxy, newDoProxy));
   }
 
   /**
@@ -458,6 +478,10 @@ public class ContextVarImpl extends MinimalEObjectImpl.Container implements Cont
     {
       case ContextModelPackage.CONTEXT_VAR__SOURCE:
         return basicSetSource(null, msgs);
+      case ContextModelPackage.CONTEXT_VAR__DO_CACHE:
+        return basicSetDoCache(null, msgs);
+      case ContextModelPackage.CONTEXT_VAR__DO_PROXY:
+        return basicSetDoProxy(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -476,15 +500,14 @@ public class ContextVarImpl extends MinimalEObjectImpl.Container implements Cont
         return getName();
       case ContextModelPackage.CONTEXT_VAR__SOURCE:
         return getSource();
-      case ContextModelPackage.CONTEXT_VAR__PROCESSED_SOURCE:
-        if (resolve) return getProcessed_source();
-        return basicGetProcessed_source();
       case ContextModelPackage.CONTEXT_VAR__DO_CACHE:
-        return isDoCache();
+        return getDoCache();
       case ContextModelPackage.CONTEXT_VAR__LENGTH:
         return getLength();
       case ContextModelPackage.CONTEXT_VAR__PERIOD:
         return getPeriod();
+      case ContextModelPackage.CONTEXT_VAR__DO_PROXY:
+        return getDoProxy();
       case ContextModelPackage.CONTEXT_VAR__FUNCTION_NAME:
         return getFunctionName();
       case ContextModelPackage.CONTEXT_VAR__FUNCTION_LIBRARY:
@@ -509,17 +532,17 @@ public class ContextVarImpl extends MinimalEObjectImpl.Container implements Cont
       case ContextModelPackage.CONTEXT_VAR__SOURCE:
         setSource((DataSource)newValue);
         return;
-      case ContextModelPackage.CONTEXT_VAR__PROCESSED_SOURCE:
-        setProcessed_source((Publisher)newValue);
-        return;
       case ContextModelPackage.CONTEXT_VAR__DO_CACHE:
-        setDoCache((Boolean)newValue);
+        setDoCache((DoCache)newValue);
         return;
       case ContextModelPackage.CONTEXT_VAR__LENGTH:
         setLength((Integer)newValue);
         return;
       case ContextModelPackage.CONTEXT_VAR__PERIOD:
         setPeriod((Integer)newValue);
+        return;
+      case ContextModelPackage.CONTEXT_VAR__DO_PROXY:
+        setDoProxy((DoProxy)newValue);
         return;
       case ContextModelPackage.CONTEXT_VAR__FUNCTION_NAME:
         setFunctionName((String)newValue);
@@ -547,17 +570,17 @@ public class ContextVarImpl extends MinimalEObjectImpl.Container implements Cont
       case ContextModelPackage.CONTEXT_VAR__SOURCE:
         setSource((DataSource)null);
         return;
-      case ContextModelPackage.CONTEXT_VAR__PROCESSED_SOURCE:
-        setProcessed_source((Publisher)null);
-        return;
       case ContextModelPackage.CONTEXT_VAR__DO_CACHE:
-        setDoCache(DO_CACHE_EDEFAULT);
+        setDoCache((DoCache)null);
         return;
       case ContextModelPackage.CONTEXT_VAR__LENGTH:
         setLength(LENGTH_EDEFAULT);
         return;
       case ContextModelPackage.CONTEXT_VAR__PERIOD:
         setPeriod(PERIOD_EDEFAULT);
+        return;
+      case ContextModelPackage.CONTEXT_VAR__DO_PROXY:
+        setDoProxy((DoProxy)null);
         return;
       case ContextModelPackage.CONTEXT_VAR__FUNCTION_NAME:
         setFunctionName(FUNCTION_NAME_EDEFAULT);
@@ -583,14 +606,14 @@ public class ContextVarImpl extends MinimalEObjectImpl.Container implements Cont
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
       case ContextModelPackage.CONTEXT_VAR__SOURCE:
         return source != null;
-      case ContextModelPackage.CONTEXT_VAR__PROCESSED_SOURCE:
-        return processed_source != null;
       case ContextModelPackage.CONTEXT_VAR__DO_CACHE:
-        return doCache != DO_CACHE_EDEFAULT;
+        return doCache != null;
       case ContextModelPackage.CONTEXT_VAR__LENGTH:
         return length != LENGTH_EDEFAULT;
       case ContextModelPackage.CONTEXT_VAR__PERIOD:
         return period != PERIOD_EDEFAULT;
+      case ContextModelPackage.CONTEXT_VAR__DO_PROXY:
+        return doProxy != null;
       case ContextModelPackage.CONTEXT_VAR__FUNCTION_NAME:
         return FUNCTION_NAME_EDEFAULT == null ? functionName != null : !FUNCTION_NAME_EDEFAULT.equals(functionName);
       case ContextModelPackage.CONTEXT_VAR__FUNCTION_LIBRARY:
@@ -612,8 +635,6 @@ public class ContextVarImpl extends MinimalEObjectImpl.Container implements Cont
     StringBuilder result = new StringBuilder(super.toString());
     result.append(" (name: ");
     result.append(name);
-    result.append(", doCache: ");
-    result.append(doCache);
     result.append(", length: ");
     result.append(length);
     result.append(", period: ");

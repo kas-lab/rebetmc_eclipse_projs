@@ -6,6 +6,7 @@ package eu.coresense.context.services;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import java.util.List;
+import org.eclipse.xtext.Action;
 import org.eclipse.xtext.Alternatives;
 import org.eclipse.xtext.Assignment;
 import org.eclipse.xtext.CrossReference;
@@ -28,19 +29,15 @@ public class ContextModelGrammarAccess extends AbstractElementFinder.AbstractGra
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Assignment cImportsAssignment_0 = (Assignment)cGroup.eContents().get(0);
 		private final RuleCall cImportsImportParserRuleCall_0_0 = (RuleCall)cImportsAssignment_0.eContents().get(0);
-		private final Assignment cContext_model_nodeAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cContext_model_nodeContextModelNodeParserRuleCall_1_0 = (RuleCall)cContext_model_nodeAssignment_1.eContents().get(0);
-		private final Assignment cContext_variablesAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cContext_variablesContextVarParserRuleCall_2_0 = (RuleCall)cContext_variablesAssignment_2.eContents().get(0);
+		private final Assignment cContext_variablesAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cContext_variablesContextVarParserRuleCall_1_0 = (RuleCall)cContext_variablesAssignment_1.eContents().get(0);
 		
 		//ContextModel:
 		//    (imports+=Import*)
-		//    context_model_node=ContextModelNode
 		//    context_variables+=ContextVar*;
 		@Override public ParserRule getRule() { return rule; }
 		
 		//(imports+=Import*)
-		//context_model_node=ContextModelNode
 		//context_variables+=ContextVar*
 		public Group getGroup() { return cGroup; }
 		
@@ -50,17 +47,11 @@ public class ContextModelGrammarAccess extends AbstractElementFinder.AbstractGra
 		//Import
 		public RuleCall getImportsImportParserRuleCall_0_0() { return cImportsImportParserRuleCall_0_0; }
 		
-		//context_model_node=ContextModelNode
-		public Assignment getContext_model_nodeAssignment_1() { return cContext_model_nodeAssignment_1; }
-		
-		//ContextModelNode
-		public RuleCall getContext_model_nodeContextModelNodeParserRuleCall_1_0() { return cContext_model_nodeContextModelNodeParserRuleCall_1_0; }
-		
 		//context_variables+=ContextVar*
-		public Assignment getContext_variablesAssignment_2() { return cContext_variablesAssignment_2; }
+		public Assignment getContext_variablesAssignment_1() { return cContext_variablesAssignment_1; }
 		
 		//ContextVar
-		public RuleCall getContext_variablesContextVarParserRuleCall_2_0() { return cContext_variablesContextVarParserRuleCall_2_0; }
+		public RuleCall getContext_variablesContextVarParserRuleCall_1_0() { return cContext_variablesContextVarParserRuleCall_1_0; }
 	}
 	public class ContextVarElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "eu.coresense.context.ContextModel.ContextVar");
@@ -71,41 +62,41 @@ public class ContextModelGrammarAccess extends AbstractElementFinder.AbstractGra
 		private final Keyword cLeftCurlyBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
 		private final Assignment cSourceAssignment_3 = (Assignment)cGroup.eContents().get(3);
 		private final RuleCall cSourceDataSourceParserRuleCall_3_0 = (RuleCall)cSourceAssignment_3.eContents().get(0);
-		private final Keyword cEfferentKeyword_4 = (Keyword)cGroup.eContents().get(4);
-		private final Assignment cProcessed_sourceAssignment_5 = (Assignment)cGroup.eContents().get(5);
-		private final CrossReference cProcessed_sourcePublisherCrossReference_5_0 = (CrossReference)cProcessed_sourceAssignment_5.eContents().get(0);
-		private final RuleCall cProcessed_sourcePublisherIDTerminalRuleCall_5_0_1 = (RuleCall)cProcessed_sourcePublisherCrossReference_5_0.eContents().get(1);
-		private final Keyword cCacheKeyword_6 = (Keyword)cGroup.eContents().get(6);
-		private final Assignment cDoCacheAssignment_7 = (Assignment)cGroup.eContents().get(7);
-		private final RuleCall cDoCacheBOOLEANTerminalRuleCall_7_0 = (RuleCall)cDoCacheAssignment_7.eContents().get(0);
+		private final Keyword cCacheKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		private final Assignment cDoCacheAssignment_5 = (Assignment)cGroup.eContents().get(5);
+		private final RuleCall cDoCacheDoCacheParserRuleCall_5_0 = (RuleCall)cDoCacheAssignment_5.eContents().get(0);
+		private final Group cGroup_6 = (Group)cGroup.eContents().get(6);
+		private final Keyword cCacheKeyword_6_0 = (Keyword)cGroup_6.eContents().get(0);
+		private final Keyword cLengthKeyword_6_1 = (Keyword)cGroup_6.eContents().get(1);
+		private final Assignment cLengthAssignment_6_2 = (Assignment)cGroup_6.eContents().get(2);
+		private final RuleCall cLengthINTTerminalRuleCall_6_2_0 = (RuleCall)cLengthAssignment_6_2.eContents().get(0);
+		private final Keyword cSKeyword_6_3 = (Keyword)cGroup_6.eContents().get(3);
+		private final Group cGroup_7 = (Group)cGroup.eContents().get(7);
+		private final Keyword cPeriodKeyword_7_0 = (Keyword)cGroup_7.eContents().get(0);
+		private final Assignment cPeriodAssignment_7_1 = (Assignment)cGroup_7.eContents().get(1);
+		private final RuleCall cPeriodINTTerminalRuleCall_7_1_0 = (RuleCall)cPeriodAssignment_7_1.eContents().get(0);
+		private final Keyword cNsKeyword_7_2 = (Keyword)cGroup_7.eContents().get(2);
 		private final Group cGroup_8 = (Group)cGroup.eContents().get(8);
-		private final Keyword cCacheKeyword_8_0 = (Keyword)cGroup_8.eContents().get(0);
-		private final Keyword cLengthKeyword_8_1 = (Keyword)cGroup_8.eContents().get(1);
-		private final Assignment cLengthAssignment_8_2 = (Assignment)cGroup_8.eContents().get(2);
-		private final RuleCall cLengthINTTerminalRuleCall_8_2_0 = (RuleCall)cLengthAssignment_8_2.eContents().get(0);
-		private final Keyword cSKeyword_8_3 = (Keyword)cGroup_8.eContents().get(3);
-		private final Group cGroup_9 = (Group)cGroup.eContents().get(9);
-		private final Keyword cPeriodKeyword_9_0 = (Keyword)cGroup_9.eContents().get(0);
-		private final Assignment cPeriodAssignment_9_1 = (Assignment)cGroup_9.eContents().get(1);
-		private final RuleCall cPeriodINTTerminalRuleCall_9_1_0 = (RuleCall)cPeriodAssignment_9_1.eContents().get(0);
-		private final Keyword cNsKeyword_9_2 = (Keyword)cGroup_9.eContents().get(2);
-		private final Keyword cFunction_nameKeyword_10 = (Keyword)cGroup.eContents().get(10);
-		private final Assignment cFunctionNameAssignment_11 = (Assignment)cGroup.eContents().get(11);
-		private final RuleCall cFunctionNameSTRINGTerminalRuleCall_11_0 = (RuleCall)cFunctionNameAssignment_11.eContents().get(0);
-		private final Group cGroup_12 = (Group)cGroup.eContents().get(12);
-		private final Keyword cFunction_libKeyword_12_0 = (Keyword)cGroup_12.eContents().get(0);
-		private final Assignment cFunctionLibraryAssignment_12_1 = (Assignment)cGroup_12.eContents().get(1);
-		private final RuleCall cFunctionLibrarySTRINGTerminalRuleCall_12_1_0 = (RuleCall)cFunctionLibraryAssignment_12_1.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_13 = (Keyword)cGroup.eContents().get(13);
+		private final Keyword cProxyKeyword_8_0 = (Keyword)cGroup_8.eContents().get(0);
+		private final Assignment cDoProxyAssignment_8_1 = (Assignment)cGroup_8.eContents().get(1);
+		private final RuleCall cDoProxyDoProxyParserRuleCall_8_1_0 = (RuleCall)cDoProxyAssignment_8_1.eContents().get(0);
+		private final Keyword cFunction_nameKeyword_9 = (Keyword)cGroup.eContents().get(9);
+		private final Assignment cFunctionNameAssignment_10 = (Assignment)cGroup.eContents().get(10);
+		private final RuleCall cFunctionNameSTRINGTerminalRuleCall_10_0 = (RuleCall)cFunctionNameAssignment_10.eContents().get(0);
+		private final Group cGroup_11 = (Group)cGroup.eContents().get(11);
+		private final Keyword cFunction_libKeyword_11_0 = (Keyword)cGroup_11.eContents().get(0);
+		private final Assignment cFunctionLibraryAssignment_11_1 = (Assignment)cGroup_11.eContents().get(1);
+		private final RuleCall cFunctionLibrarySTRINGTerminalRuleCall_11_1_0 = (RuleCall)cFunctionLibraryAssignment_11_1.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_12 = (Keyword)cGroup.eContents().get(12);
 		
 		//ContextVar:
 		//    'ContextVariable' name=ID
 		//    '{'
 		//        source=DataSource
-		//        'efferent:' processed_source=[ros::Publisher]
-		//        'cache?' doCache=BOOLEAN
+		//        'cache?' doCache=DoCache
 		//        ('cache' 'length' length=INT 's')?
 		//        ('period' period=INT 'ns')?
+		//        ('proxy' doProxy=DoProxy)?
 		//        'function_name' functionName=STRING
 		//        ('function_lib' functionLibrary=STRING)?
 		//    '}';
@@ -114,10 +105,10 @@ public class ContextModelGrammarAccess extends AbstractElementFinder.AbstractGra
 		//'ContextVariable' name=ID
 		//'{'
 		//    source=DataSource
-		//    'efferent:' processed_source=[ros::Publisher]
-		//    'cache?' doCache=BOOLEAN
+		//    'cache?' doCache=DoCache
 		//    ('cache' 'length' length=INT 's')?
 		//    ('period' period=INT 'ns')?
+		//    ('proxy' doProxy=DoProxy)?
 		//    'function_name' functionName=STRING
 		//    ('function_lib' functionLibrary=STRING)?
 		//'}'
@@ -141,153 +132,261 @@ public class ContextModelGrammarAccess extends AbstractElementFinder.AbstractGra
 		//DataSource
 		public RuleCall getSourceDataSourceParserRuleCall_3_0() { return cSourceDataSourceParserRuleCall_3_0; }
 		
-		//'efferent:'
-		public Keyword getEfferentKeyword_4() { return cEfferentKeyword_4; }
-		
-		//processed_source=[ros::Publisher]
-		public Assignment getProcessed_sourceAssignment_5() { return cProcessed_sourceAssignment_5; }
-		
-		//[ros::Publisher]
-		public CrossReference getProcessed_sourcePublisherCrossReference_5_0() { return cProcessed_sourcePublisherCrossReference_5_0; }
-		
-		//ID
-		public RuleCall getProcessed_sourcePublisherIDTerminalRuleCall_5_0_1() { return cProcessed_sourcePublisherIDTerminalRuleCall_5_0_1; }
-		
 		//'cache?'
-		public Keyword getCacheKeyword_6() { return cCacheKeyword_6; }
+		public Keyword getCacheKeyword_4() { return cCacheKeyword_4; }
 		
-		//doCache=BOOLEAN
-		public Assignment getDoCacheAssignment_7() { return cDoCacheAssignment_7; }
+		//doCache=DoCache
+		public Assignment getDoCacheAssignment_5() { return cDoCacheAssignment_5; }
 		
-		//BOOLEAN
-		public RuleCall getDoCacheBOOLEANTerminalRuleCall_7_0() { return cDoCacheBOOLEANTerminalRuleCall_7_0; }
+		//DoCache
+		public RuleCall getDoCacheDoCacheParserRuleCall_5_0() { return cDoCacheDoCacheParserRuleCall_5_0; }
 		
 		//('cache' 'length' length=INT 's')?
-		public Group getGroup_8() { return cGroup_8; }
+		public Group getGroup_6() { return cGroup_6; }
 		
 		//'cache'
-		public Keyword getCacheKeyword_8_0() { return cCacheKeyword_8_0; }
+		public Keyword getCacheKeyword_6_0() { return cCacheKeyword_6_0; }
 		
 		//'length'
-		public Keyword getLengthKeyword_8_1() { return cLengthKeyword_8_1; }
+		public Keyword getLengthKeyword_6_1() { return cLengthKeyword_6_1; }
 		
 		//length=INT
-		public Assignment getLengthAssignment_8_2() { return cLengthAssignment_8_2; }
+		public Assignment getLengthAssignment_6_2() { return cLengthAssignment_6_2; }
 		
 		//INT
-		public RuleCall getLengthINTTerminalRuleCall_8_2_0() { return cLengthINTTerminalRuleCall_8_2_0; }
+		public RuleCall getLengthINTTerminalRuleCall_6_2_0() { return cLengthINTTerminalRuleCall_6_2_0; }
 		
 		//'s'
-		public Keyword getSKeyword_8_3() { return cSKeyword_8_3; }
+		public Keyword getSKeyword_6_3() { return cSKeyword_6_3; }
 		
 		//('period' period=INT 'ns')?
-		public Group getGroup_9() { return cGroup_9; }
+		public Group getGroup_7() { return cGroup_7; }
 		
 		//'period'
-		public Keyword getPeriodKeyword_9_0() { return cPeriodKeyword_9_0; }
+		public Keyword getPeriodKeyword_7_0() { return cPeriodKeyword_7_0; }
 		
 		//period=INT
-		public Assignment getPeriodAssignment_9_1() { return cPeriodAssignment_9_1; }
+		public Assignment getPeriodAssignment_7_1() { return cPeriodAssignment_7_1; }
 		
 		//INT
-		public RuleCall getPeriodINTTerminalRuleCall_9_1_0() { return cPeriodINTTerminalRuleCall_9_1_0; }
+		public RuleCall getPeriodINTTerminalRuleCall_7_1_0() { return cPeriodINTTerminalRuleCall_7_1_0; }
 		
 		//'ns'
-		public Keyword getNsKeyword_9_2() { return cNsKeyword_9_2; }
+		public Keyword getNsKeyword_7_2() { return cNsKeyword_7_2; }
+		
+		//('proxy' doProxy=DoProxy)?
+		public Group getGroup_8() { return cGroup_8; }
+		
+		//'proxy'
+		public Keyword getProxyKeyword_8_0() { return cProxyKeyword_8_0; }
+		
+		//doProxy=DoProxy
+		public Assignment getDoProxyAssignment_8_1() { return cDoProxyAssignment_8_1; }
+		
+		//DoProxy
+		public RuleCall getDoProxyDoProxyParserRuleCall_8_1_0() { return cDoProxyDoProxyParserRuleCall_8_1_0; }
 		
 		//'function_name'
-		public Keyword getFunction_nameKeyword_10() { return cFunction_nameKeyword_10; }
+		public Keyword getFunction_nameKeyword_9() { return cFunction_nameKeyword_9; }
 		
 		//functionName=STRING
-		public Assignment getFunctionNameAssignment_11() { return cFunctionNameAssignment_11; }
+		public Assignment getFunctionNameAssignment_10() { return cFunctionNameAssignment_10; }
 		
 		//STRING
-		public RuleCall getFunctionNameSTRINGTerminalRuleCall_11_0() { return cFunctionNameSTRINGTerminalRuleCall_11_0; }
+		public RuleCall getFunctionNameSTRINGTerminalRuleCall_10_0() { return cFunctionNameSTRINGTerminalRuleCall_10_0; }
 		
 		//('function_lib' functionLibrary=STRING)?
-		public Group getGroup_12() { return cGroup_12; }
+		public Group getGroup_11() { return cGroup_11; }
 		
 		//'function_lib'
-		public Keyword getFunction_libKeyword_12_0() { return cFunction_libKeyword_12_0; }
+		public Keyword getFunction_libKeyword_11_0() { return cFunction_libKeyword_11_0; }
 		
 		//functionLibrary=STRING
-		public Assignment getFunctionLibraryAssignment_12_1() { return cFunctionLibraryAssignment_12_1; }
+		public Assignment getFunctionLibraryAssignment_11_1() { return cFunctionLibraryAssignment_11_1; }
 		
 		//STRING
-		public RuleCall getFunctionLibrarySTRINGTerminalRuleCall_12_1_0() { return cFunctionLibrarySTRINGTerminalRuleCall_12_1_0; }
+		public RuleCall getFunctionLibrarySTRINGTerminalRuleCall_11_1_0() { return cFunctionLibrarySTRINGTerminalRuleCall_11_1_0; }
 		
 		//'}'
-		public Keyword getRightCurlyBracketKeyword_13() { return cRightCurlyBracketKeyword_13; }
+		public Keyword getRightCurlyBracketKeyword_12() { return cRightCurlyBracketKeyword_12; }
+	}
+	public class DoCacheElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "eu.coresense.context.ContextModel.DoCache");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cDoCacheAction_0 = (Action)cGroup.eContents().get(0);
+		private final Assignment cDoAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cDoBOOLEANTerminalRuleCall_1_0 = (RuleCall)cDoAssignment_1.eContents().get(0);
+		
+		//DoCache:
+		//    {DoCache} do=BOOLEAN
+		//;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//{DoCache} do=BOOLEAN
+		public Group getGroup() { return cGroup; }
+		
+		//{DoCache}
+		public Action getDoCacheAction_0() { return cDoCacheAction_0; }
+		
+		//do=BOOLEAN
+		public Assignment getDoAssignment_1() { return cDoAssignment_1; }
+		
+		//BOOLEAN
+		public RuleCall getDoBOOLEANTerminalRuleCall_1_0() { return cDoBOOLEANTerminalRuleCall_1_0; }
+	}
+	public class DoProxyElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "eu.coresense.context.ContextModel.DoProxy");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cDoProxyAction_0 = (Action)cGroup.eContents().get(0);
+		private final Assignment cDoAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cDoBOOLEANTerminalRuleCall_1_0 = (RuleCall)cDoAssignment_1.eContents().get(0);
+		
+		//DoProxy:
+		//    {DoProxy} do=BOOLEAN
+		//;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//{DoProxy} do=BOOLEAN
+		public Group getGroup() { return cGroup; }
+		
+		//{DoProxy}
+		public Action getDoProxyAction_0() { return cDoProxyAction_0; }
+		
+		//do=BOOLEAN
+		public Assignment getDoAssignment_1() { return cDoAssignment_1; }
+		
+		//BOOLEAN
+		public RuleCall getDoBOOLEANTerminalRuleCall_1_0() { return cDoBOOLEANTerminalRuleCall_1_0; }
 	}
 	public class DataSourceElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "eu.coresense.context.ContextModel.DataSource");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cAfferentKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Keyword cSourceKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Alternatives cAlternatives_1 = (Alternatives)cGroup.eContents().get(1);
 		private final Group cGroup_1_0 = (Group)cAlternatives_1.eContents().get(0);
 		private final Keyword cPublisherKeyword_1_0_0 = (Keyword)cGroup_1_0.eContents().get(0);
-		private final RuleCall cQualifiedPublisherRefParserRuleCall_1_0_1 = (RuleCall)cGroup_1_0.eContents().get(1);
+		private final Keyword cRefKeyword_1_0_1 = (Keyword)cGroup_1_0.eContents().get(1);
+		private final Assignment cRefAssignment_1_0_2 = (Assignment)cGroup_1_0.eContents().get(2);
+		private final RuleCall cRefQualifiedPublisherRefParserRuleCall_1_0_2_0 = (RuleCall)cRefAssignment_1_0_2.eContents().get(0);
 		private final Group cGroup_1_1 = (Group)cAlternatives_1.eContents().get(1);
 		private final Keyword cServiceKeyword_1_1_0 = (Keyword)cGroup_1_1.eContents().get(0);
-		private final RuleCall cQualifiedServiceServerRefParserRuleCall_1_1_1 = (RuleCall)cGroup_1_1.eContents().get(1);
+		private final Keyword cRefKeyword_1_1_1 = (Keyword)cGroup_1_1.eContents().get(1);
+		private final Assignment cRefAssignment_1_1_2 = (Assignment)cGroup_1_1.eContents().get(2);
+		private final RuleCall cRefQualifiedServiceServerRefParserRuleCall_1_1_2_0 = (RuleCall)cRefAssignment_1_1_2.eContents().get(0);
+		private final Keyword cRequest_kwargsKeyword_1_1_3 = (Keyword)cGroup_1_1.eContents().get(3);
+		private final Assignment cKwargsAssignment_1_1_4 = (Assignment)cGroup_1_1.eContents().get(4);
+		private final RuleCall cKwargsKeyWordArgumentsParserRuleCall_1_1_4_0 = (RuleCall)cKwargsAssignment_1_1_4.eContents().get(0);
 		private final Group cGroup_1_2 = (Group)cAlternatives_1.eContents().get(2);
 		private final Keyword cActionKeyword_1_2_0 = (Keyword)cGroup_1_2.eContents().get(0);
-		private final RuleCall cQualifiedActionServerRefParserRuleCall_1_2_1 = (RuleCall)cGroup_1_2.eContents().get(1);
+		private final Keyword cRefKeyword_1_2_1 = (Keyword)cGroup_1_2.eContents().get(1);
+		private final Assignment cRefAssignment_1_2_2 = (Assignment)cGroup_1_2.eContents().get(2);
+		private final RuleCall cRefQualifiedActionServerRefParserRuleCall_1_2_2_0 = (RuleCall)cRefAssignment_1_2_2.eContents().get(0);
+		private final Keyword cGoal_kwargsKeyword_1_2_3 = (Keyword)cGroup_1_2.eContents().get(3);
+		private final Assignment cKwargsAssignment_1_2_4 = (Assignment)cGroup_1_2.eContents().get(4);
+		private final RuleCall cKwargsKeyWordArgumentsParserRuleCall_1_2_4_0 = (RuleCall)cKwargsAssignment_1_2_4.eContents().get(0);
 		
 		//DataSource:
-		//    'afferent:'
+		//    'source:'
 		//    (
-		//        'publisher:' QualifiedPublisherRef
-		//      | 'service:' QualifiedServiceServerRef
-		//      | 'action:' QualifiedActionServerRef
+		//        'publisher:' 'ref:'ref=QualifiedPublisherRef
+		//      | 'service:' 'ref:' ref=QualifiedServiceServerRef 'request_kwargs:' kwargs=KeyWordArguments
+		//      | 'action:' 'ref:' ref=QualifiedActionServerRef 'goal_kwargs:' kwargs=KeyWordArguments
 		//    )
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'afferent:'
+		//'source:'
 		//(
-		//    'publisher:' QualifiedPublisherRef
-		//  | 'service:' QualifiedServiceServerRef
-		//  | 'action:' QualifiedActionServerRef
+		//    'publisher:' 'ref:'ref=QualifiedPublisherRef
+		//  | 'service:' 'ref:' ref=QualifiedServiceServerRef 'request_kwargs:' kwargs=KeyWordArguments
+		//  | 'action:' 'ref:' ref=QualifiedActionServerRef 'goal_kwargs:' kwargs=KeyWordArguments
 		//)
 		public Group getGroup() { return cGroup; }
 		
-		//'afferent:'
-		public Keyword getAfferentKeyword_0() { return cAfferentKeyword_0; }
+		//'source:'
+		public Keyword getSourceKeyword_0() { return cSourceKeyword_0; }
 		
 		//(
-		//    'publisher:' QualifiedPublisherRef
-		//  | 'service:' QualifiedServiceServerRef
-		//  | 'action:' QualifiedActionServerRef
+		//    'publisher:' 'ref:'ref=QualifiedPublisherRef
+		//  | 'service:' 'ref:' ref=QualifiedServiceServerRef 'request_kwargs:' kwargs=KeyWordArguments
+		//  | 'action:' 'ref:' ref=QualifiedActionServerRef 'goal_kwargs:' kwargs=KeyWordArguments
 		//)
 		public Alternatives getAlternatives_1() { return cAlternatives_1; }
 		
-		//'publisher:' QualifiedPublisherRef
+		//'publisher:' 'ref:'ref=QualifiedPublisherRef
 		public Group getGroup_1_0() { return cGroup_1_0; }
 		
 		//'publisher:'
 		public Keyword getPublisherKeyword_1_0_0() { return cPublisherKeyword_1_0_0; }
 		
-		//QualifiedPublisherRef
-		public RuleCall getQualifiedPublisherRefParserRuleCall_1_0_1() { return cQualifiedPublisherRefParserRuleCall_1_0_1; }
+		//'ref:'
+		public Keyword getRefKeyword_1_0_1() { return cRefKeyword_1_0_1; }
 		
-		//'service:' QualifiedServiceServerRef
+		//ref=QualifiedPublisherRef
+		public Assignment getRefAssignment_1_0_2() { return cRefAssignment_1_0_2; }
+		
+		//QualifiedPublisherRef
+		public RuleCall getRefQualifiedPublisherRefParserRuleCall_1_0_2_0() { return cRefQualifiedPublisherRefParserRuleCall_1_0_2_0; }
+		
+		//'service:' 'ref:' ref=QualifiedServiceServerRef 'request_kwargs:' kwargs=KeyWordArguments
 		public Group getGroup_1_1() { return cGroup_1_1; }
 		
 		//'service:'
 		public Keyword getServiceKeyword_1_1_0() { return cServiceKeyword_1_1_0; }
 		
-		//QualifiedServiceServerRef
-		public RuleCall getQualifiedServiceServerRefParserRuleCall_1_1_1() { return cQualifiedServiceServerRefParserRuleCall_1_1_1; }
+		//'ref:'
+		public Keyword getRefKeyword_1_1_1() { return cRefKeyword_1_1_1; }
 		
-		//'action:' QualifiedActionServerRef
+		//ref=QualifiedServiceServerRef
+		public Assignment getRefAssignment_1_1_2() { return cRefAssignment_1_1_2; }
+		
+		//QualifiedServiceServerRef
+		public RuleCall getRefQualifiedServiceServerRefParserRuleCall_1_1_2_0() { return cRefQualifiedServiceServerRefParserRuleCall_1_1_2_0; }
+		
+		//'request_kwargs:'
+		public Keyword getRequest_kwargsKeyword_1_1_3() { return cRequest_kwargsKeyword_1_1_3; }
+		
+		//kwargs=KeyWordArguments
+		public Assignment getKwargsAssignment_1_1_4() { return cKwargsAssignment_1_1_4; }
+		
+		//KeyWordArguments
+		public RuleCall getKwargsKeyWordArgumentsParserRuleCall_1_1_4_0() { return cKwargsKeyWordArgumentsParserRuleCall_1_1_4_0; }
+		
+		//'action:' 'ref:' ref=QualifiedActionServerRef 'goal_kwargs:' kwargs=KeyWordArguments
 		public Group getGroup_1_2() { return cGroup_1_2; }
 		
 		//'action:'
 		public Keyword getActionKeyword_1_2_0() { return cActionKeyword_1_2_0; }
 		
+		//'ref:'
+		public Keyword getRefKeyword_1_2_1() { return cRefKeyword_1_2_1; }
+		
+		//ref=QualifiedActionServerRef
+		public Assignment getRefAssignment_1_2_2() { return cRefAssignment_1_2_2; }
+		
 		//QualifiedActionServerRef
-		public RuleCall getQualifiedActionServerRefParserRuleCall_1_2_1() { return cQualifiedActionServerRefParserRuleCall_1_2_1; }
+		public RuleCall getRefQualifiedActionServerRefParserRuleCall_1_2_2_0() { return cRefQualifiedActionServerRefParserRuleCall_1_2_2_0; }
+		
+		//'goal_kwargs:'
+		public Keyword getGoal_kwargsKeyword_1_2_3() { return cGoal_kwargsKeyword_1_2_3; }
+		
+		//kwargs=KeyWordArguments
+		public Assignment getKwargsAssignment_1_2_4() { return cKwargsAssignment_1_2_4; }
+		
+		//KeyWordArguments
+		public RuleCall getKwargsKeyWordArgumentsParserRuleCall_1_2_4_0() { return cKwargsKeyWordArgumentsParserRuleCall_1_2_4_0; }
+	}
+	public class KeyWordArgumentsElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "eu.coresense.context.ContextModel.KeyWordArguments");
+		private final RuleCall cSTRINGTerminalRuleCall = (RuleCall)rule.eContents().get(1);
+		
+		//KeyWordArguments:
+		//    STRING
+		//;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//STRING
+		public RuleCall getSTRINGTerminalRuleCall() { return cSTRINGTerminalRuleCall; }
 	}
 	public class QualifiedPublisherRefElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "eu.coresense.context.ContextModel.QualifiedPublisherRef");
@@ -437,40 +536,18 @@ public class ContextModelGrammarAccess extends AbstractElementFinder.AbstractGra
 		//';'
 		public Keyword getSemicolonKeyword_2() { return cSemicolonKeyword_2; }
 	}
-	public class ContextModelNodeElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "eu.coresense.context.ContextModel.ContextModelNode");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cContextModelNodeKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Assignment cNode_importAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cNode_importImportParserRuleCall_1_0 = (RuleCall)cNode_importAssignment_1.eContents().get(0);
-		
-		//ContextModelNode:
-		//    'contextModelNode' node_import=Import
-		//;
-		@Override public ParserRule getRule() { return rule; }
-		
-		//'contextModelNode' node_import=Import
-		public Group getGroup() { return cGroup; }
-		
-		//'contextModelNode'
-		public Keyword getContextModelNodeKeyword_0() { return cContextModelNodeKeyword_0; }
-		
-		//node_import=Import
-		public Assignment getNode_importAssignment_1() { return cNode_importAssignment_1; }
-		
-		//Import
-		public RuleCall getNode_importImportParserRuleCall_1_0() { return cNode_importImportParserRuleCall_1_0; }
-	}
 	
 	
 	private final ContextModelElements pContextModel;
 	private final ContextVarElements pContextVar;
+	private final DoCacheElements pDoCache;
+	private final DoProxyElements pDoProxy;
 	private final DataSourceElements pDataSource;
+	private final KeyWordArgumentsElements pKeyWordArguments;
 	private final QualifiedPublisherRefElements pQualifiedPublisherRef;
 	private final QualifiedServiceServerRefElements pQualifiedServiceServerRef;
 	private final QualifiedActionServerRefElements pQualifiedActionServerRef;
 	private final ImportElements pImport;
-	private final ContextModelNodeElements pContextModelNode;
 	private final TerminalRule tBOOLEAN;
 	
 	private final Grammar grammar;
@@ -484,12 +561,14 @@ public class ContextModelGrammarAccess extends AbstractElementFinder.AbstractGra
 		this.gaTerminals = gaTerminals;
 		this.pContextModel = new ContextModelElements();
 		this.pContextVar = new ContextVarElements();
+		this.pDoCache = new DoCacheElements();
+		this.pDoProxy = new DoProxyElements();
 		this.pDataSource = new DataSourceElements();
+		this.pKeyWordArguments = new KeyWordArgumentsElements();
 		this.pQualifiedPublisherRef = new QualifiedPublisherRefElements();
 		this.pQualifiedServiceServerRef = new QualifiedServiceServerRefElements();
 		this.pQualifiedActionServerRef = new QualifiedActionServerRefElements();
 		this.pImport = new ImportElements();
-		this.pContextModelNode = new ContextModelNodeElements();
 		this.tBOOLEAN = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "eu.coresense.context.ContextModel.BOOLEAN");
 	}
 	
@@ -522,7 +601,6 @@ public class ContextModelGrammarAccess extends AbstractElementFinder.AbstractGra
 	
 	//ContextModel:
 	//    (imports+=Import*)
-	//    context_model_node=ContextModelNode
 	//    context_variables+=ContextVar*;
 	public ContextModelElements getContextModelAccess() {
 		return pContextModel;
@@ -536,10 +614,10 @@ public class ContextModelGrammarAccess extends AbstractElementFinder.AbstractGra
 	//    'ContextVariable' name=ID
 	//    '{'
 	//        source=DataSource
-	//        'efferent:' processed_source=[ros::Publisher]
-	//        'cache?' doCache=BOOLEAN
+	//        'cache?' doCache=DoCache
 	//        ('cache' 'length' length=INT 's')?
 	//        ('period' period=INT 'ns')?
+	//        ('proxy' doProxy=DoProxy)?
 	//        'function_name' functionName=STRING
 	//        ('function_lib' functionLibrary=STRING)?
 	//    '}';
@@ -551,12 +629,34 @@ public class ContextModelGrammarAccess extends AbstractElementFinder.AbstractGra
 		return getContextVarAccess().getRule();
 	}
 	
+	//DoCache:
+	//    {DoCache} do=BOOLEAN
+	//;
+	public DoCacheElements getDoCacheAccess() {
+		return pDoCache;
+	}
+	
+	public ParserRule getDoCacheRule() {
+		return getDoCacheAccess().getRule();
+	}
+	
+	//DoProxy:
+	//    {DoProxy} do=BOOLEAN
+	//;
+	public DoProxyElements getDoProxyAccess() {
+		return pDoProxy;
+	}
+	
+	public ParserRule getDoProxyRule() {
+		return getDoProxyAccess().getRule();
+	}
+	
 	//DataSource:
-	//    'afferent:'
+	//    'source:'
 	//    (
-	//        'publisher:' QualifiedPublisherRef
-	//      | 'service:' QualifiedServiceServerRef
-	//      | 'action:' QualifiedActionServerRef
+	//        'publisher:' 'ref:'ref=QualifiedPublisherRef
+	//      | 'service:' 'ref:' ref=QualifiedServiceServerRef 'request_kwargs:' kwargs=KeyWordArguments
+	//      | 'action:' 'ref:' ref=QualifiedActionServerRef 'goal_kwargs:' kwargs=KeyWordArguments
 	//    )
 	//;
 	public DataSourceElements getDataSourceAccess() {
@@ -565,6 +665,17 @@ public class ContextModelGrammarAccess extends AbstractElementFinder.AbstractGra
 	
 	public ParserRule getDataSourceRule() {
 		return getDataSourceAccess().getRule();
+	}
+	
+	//KeyWordArguments:
+	//    STRING
+	//;
+	public KeyWordArgumentsElements getKeyWordArgumentsAccess() {
+		return pKeyWordArguments;
+	}
+	
+	public ParserRule getKeyWordArgumentsRule() {
+		return getKeyWordArgumentsAccess().getRule();
 	}
 	
 	//QualifiedPublisherRef:
@@ -609,17 +720,6 @@ public class ContextModelGrammarAccess extends AbstractElementFinder.AbstractGra
 	
 	public ParserRule getImportRule() {
 		return getImportAccess().getRule();
-	}
-	
-	//ContextModelNode:
-	//    'contextModelNode' node_import=Import
-	//;
-	public ContextModelNodeElements getContextModelNodeAccess() {
-		return pContextModelNode;
-	}
-	
-	public ParserRule getContextModelNodeRule() {
-		return getContextModelNodeAccess().getRule();
 	}
 	
 	//terminal BOOLEAN returns ecore::EBoolean:

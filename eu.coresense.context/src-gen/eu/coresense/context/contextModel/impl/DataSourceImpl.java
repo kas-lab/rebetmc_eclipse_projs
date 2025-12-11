@@ -7,14 +7,14 @@ import eu.coresense.context.contextModel.ContextModelPackage;
 import eu.coresense.context.contextModel.DataSource;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
-import ros.Node;
 
 /**
  * <!-- begin-user-doc -->
@@ -24,7 +24,8 @@ import ros.Node;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link eu.coresense.context.contextModel.impl.DataSourceImpl#getNode <em>Node</em>}</li>
+ *   <li>{@link eu.coresense.context.contextModel.impl.DataSourceImpl#getRef <em>Ref</em>}</li>
+ *   <li>{@link eu.coresense.context.contextModel.impl.DataSourceImpl#getKwargs <em>Kwargs</em>}</li>
  * </ul>
  *
  * @generated
@@ -32,14 +33,34 @@ import ros.Node;
 public class DataSourceImpl extends MinimalEObjectImpl.Container implements DataSource
 {
   /**
-   * The cached value of the '{@link #getNode() <em>Node</em>}' reference.
+   * The cached value of the '{@link #getRef() <em>Ref</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getNode()
+   * @see #getRef()
    * @generated
    * @ordered
    */
-  protected Node node;
+  protected EObject ref;
+
+  /**
+   * The default value of the '{@link #getKwargs() <em>Kwargs</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getKwargs()
+   * @generated
+   * @ordered
+   */
+  protected static final String KWARGS_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getKwargs() <em>Kwargs</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getKwargs()
+   * @generated
+   * @ordered
+   */
+  protected String kwargs = KWARGS_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
@@ -68,19 +89,9 @@ public class DataSourceImpl extends MinimalEObjectImpl.Container implements Data
    * @generated
    */
   @Override
-  public Node getNode()
+  public EObject getRef()
   {
-    if (node != null && node.eIsProxy())
-    {
-      InternalEObject oldNode = (InternalEObject)node;
-      node = (Node)eResolveProxy(oldNode);
-      if (node != oldNode)
-      {
-        if (eNotificationRequired())
-          eNotify(new ENotificationImpl(this, Notification.RESOLVE, ContextModelPackage.DATA_SOURCE__NODE, oldNode, node));
-      }
-    }
-    return node;
+    return ref;
   }
 
   /**
@@ -88,9 +99,16 @@ public class DataSourceImpl extends MinimalEObjectImpl.Container implements Data
    * <!-- end-user-doc -->
    * @generated
    */
-  public Node basicGetNode()
+  public NotificationChain basicSetRef(EObject newRef, NotificationChain msgs)
   {
-    return node;
+    EObject oldRef = ref;
+    ref = newRef;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ContextModelPackage.DATA_SOURCE__REF, oldRef, newRef);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
   }
 
   /**
@@ -99,12 +117,61 @@ public class DataSourceImpl extends MinimalEObjectImpl.Container implements Data
    * @generated
    */
   @Override
-  public void setNode(Node newNode)
+  public void setRef(EObject newRef)
   {
-    Node oldNode = node;
-    node = newNode;
+    if (newRef != ref)
+    {
+      NotificationChain msgs = null;
+      if (ref != null)
+        msgs = ((InternalEObject)ref).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ContextModelPackage.DATA_SOURCE__REF, null, msgs);
+      if (newRef != null)
+        msgs = ((InternalEObject)newRef).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ContextModelPackage.DATA_SOURCE__REF, null, msgs);
+      msgs = basicSetRef(newRef, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, ContextModelPackage.DATA_SOURCE__REF, newRef, newRef));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public String getKwargs()
+  {
+    return kwargs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setKwargs(String newKwargs)
+  {
+    String oldKwargs = kwargs;
+    kwargs = newKwargs;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ContextModelPackage.DATA_SOURCE__NODE, oldNode, node));
+      eNotify(new ENotificationImpl(this, Notification.SET, ContextModelPackage.DATA_SOURCE__KWARGS, oldKwargs, kwargs));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
+  {
+    switch (featureID)
+    {
+      case ContextModelPackage.DATA_SOURCE__REF:
+        return basicSetRef(null, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
   }
 
   /**
@@ -117,9 +184,10 @@ public class DataSourceImpl extends MinimalEObjectImpl.Container implements Data
   {
     switch (featureID)
     {
-      case ContextModelPackage.DATA_SOURCE__NODE:
-        if (resolve) return getNode();
-        return basicGetNode();
+      case ContextModelPackage.DATA_SOURCE__REF:
+        return getRef();
+      case ContextModelPackage.DATA_SOURCE__KWARGS:
+        return getKwargs();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -134,8 +202,11 @@ public class DataSourceImpl extends MinimalEObjectImpl.Container implements Data
   {
     switch (featureID)
     {
-      case ContextModelPackage.DATA_SOURCE__NODE:
-        setNode((Node)newValue);
+      case ContextModelPackage.DATA_SOURCE__REF:
+        setRef((EObject)newValue);
+        return;
+      case ContextModelPackage.DATA_SOURCE__KWARGS:
+        setKwargs((String)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -151,8 +222,11 @@ public class DataSourceImpl extends MinimalEObjectImpl.Container implements Data
   {
     switch (featureID)
     {
-      case ContextModelPackage.DATA_SOURCE__NODE:
-        setNode((Node)null);
+      case ContextModelPackage.DATA_SOURCE__REF:
+        setRef((EObject)null);
+        return;
+      case ContextModelPackage.DATA_SOURCE__KWARGS:
+        setKwargs(KWARGS_EDEFAULT);
         return;
     }
     super.eUnset(featureID);
@@ -168,10 +242,29 @@ public class DataSourceImpl extends MinimalEObjectImpl.Container implements Data
   {
     switch (featureID)
     {
-      case ContextModelPackage.DATA_SOURCE__NODE:
-        return node != null;
+      case ContextModelPackage.DATA_SOURCE__REF:
+        return ref != null;
+      case ContextModelPackage.DATA_SOURCE__KWARGS:
+        return KWARGS_EDEFAULT == null ? kwargs != null : !KWARGS_EDEFAULT.equals(kwargs);
     }
     return super.eIsSet(featureID);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public String toString()
+  {
+    if (eIsProxy()) return super.toString();
+
+    StringBuilder result = new StringBuilder(super.toString());
+    result.append(" (kwargs: ");
+    result.append(kwargs);
+    result.append(')');
+    return result.toString();
   }
 
 } //DataSourceImpl

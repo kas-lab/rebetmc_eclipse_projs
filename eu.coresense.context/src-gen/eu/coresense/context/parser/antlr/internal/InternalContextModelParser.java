@@ -21,29 +21,31 @@ import java.util.ArrayList;
 @SuppressWarnings("all")
 public class InternalContextModelParser extends AbstractInternalAntlrParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_BOOLEAN", "RULE_INT", "RULE_STRING", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'ContextVariable'", "'{'", "'efferent:'", "'cache?'", "'cache'", "'length'", "'s'", "'period'", "'ns'", "'function_name'", "'function_lib'", "'}'", "'afferent:'", "'publisher:'", "'service:'", "'action:'", "'.'", "'import'", "';'", "'contextModelNode'"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_INT", "RULE_STRING", "RULE_BOOLEAN", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'ContextVariable'", "'{'", "'cache?'", "'cache'", "'length'", "'s'", "'period'", "'ns'", "'proxy'", "'function_name'", "'function_lib'", "'}'", "'source:'", "'publisher:'", "'ref:'", "'service:'", "'request_kwargs:'", "'action:'", "'goal_kwargs:'", "'.'", "'import'", "';'"
     };
-    public static final int RULE_BOOLEAN=5;
-    public static final int RULE_STRING=7;
+    public static final int RULE_BOOLEAN=7;
+    public static final int RULE_STRING=6;
     public static final int RULE_SL_COMMENT=9;
     public static final int T__19=19;
     public static final int T__15=15;
     public static final int T__16=16;
     public static final int T__17=17;
     public static final int T__18=18;
+    public static final int T__33=33;
     public static final int T__12=12;
     public static final int T__13=13;
     public static final int T__14=14;
     public static final int EOF=-1;
     public static final int T__30=30;
     public static final int T__31=31;
+    public static final int T__32=32;
     public static final int RULE_ID=4;
     public static final int RULE_WS=10;
     public static final int RULE_ANY_OTHER=11;
     public static final int T__26=26;
     public static final int T__27=27;
     public static final int T__28=28;
-    public static final int RULE_INT=6;
+    public static final int RULE_INT=5;
     public static final int T__29=29;
     public static final int T__22=22;
     public static final int RULE_ML_COMMENT=8;
@@ -129,26 +131,24 @@ public class InternalContextModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleContextModel"
-    // InternalContextModel.g:71:1: ruleContextModel returns [EObject current=null] : ( ( (lv_imports_0_0= ruleImport ) )* ( (lv_context_model_node_1_0= ruleContextModelNode ) ) ( (lv_context_variables_2_0= ruleContextVar ) )* ) ;
+    // InternalContextModel.g:71:1: ruleContextModel returns [EObject current=null] : ( ( (lv_imports_0_0= ruleImport ) )* ( (lv_context_variables_1_0= ruleContextVar ) )* ) ;
     public final EObject ruleContextModel() throws RecognitionException {
         EObject current = null;
 
         EObject lv_imports_0_0 = null;
 
-        EObject lv_context_model_node_1_0 = null;
-
-        EObject lv_context_variables_2_0 = null;
+        EObject lv_context_variables_1_0 = null;
 
 
 
         	enterRule();
 
         try {
-            // InternalContextModel.g:77:2: ( ( ( (lv_imports_0_0= ruleImport ) )* ( (lv_context_model_node_1_0= ruleContextModelNode ) ) ( (lv_context_variables_2_0= ruleContextVar ) )* ) )
-            // InternalContextModel.g:78:2: ( ( (lv_imports_0_0= ruleImport ) )* ( (lv_context_model_node_1_0= ruleContextModelNode ) ) ( (lv_context_variables_2_0= ruleContextVar ) )* )
+            // InternalContextModel.g:77:2: ( ( ( (lv_imports_0_0= ruleImport ) )* ( (lv_context_variables_1_0= ruleContextVar ) )* ) )
+            // InternalContextModel.g:78:2: ( ( (lv_imports_0_0= ruleImport ) )* ( (lv_context_variables_1_0= ruleContextVar ) )* )
             {
-            // InternalContextModel.g:78:2: ( ( (lv_imports_0_0= ruleImport ) )* ( (lv_context_model_node_1_0= ruleContextModelNode ) ) ( (lv_context_variables_2_0= ruleContextVar ) )* )
-            // InternalContextModel.g:79:3: ( (lv_imports_0_0= ruleImport ) )* ( (lv_context_model_node_1_0= ruleContextModelNode ) ) ( (lv_context_variables_2_0= ruleContextVar ) )*
+            // InternalContextModel.g:78:2: ( ( (lv_imports_0_0= ruleImport ) )* ( (lv_context_variables_1_0= ruleContextVar ) )* )
+            // InternalContextModel.g:79:3: ( (lv_imports_0_0= ruleImport ) )* ( (lv_context_variables_1_0= ruleContextVar ) )*
             {
             // InternalContextModel.g:79:3: ( (lv_imports_0_0= ruleImport ) )*
             loop1:
@@ -156,7 +156,7 @@ public class InternalContextModelParser extends AbstractInternalAntlrParser {
                 int alt1=2;
                 int LA1_0 = input.LA(1);
 
-                if ( (LA1_0==29) ) {
+                if ( (LA1_0==32) ) {
                     alt1=1;
                 }
 
@@ -199,38 +199,7 @@ public class InternalContextModelParser extends AbstractInternalAntlrParser {
                 }
             } while (true);
 
-            // InternalContextModel.g:98:3: ( (lv_context_model_node_1_0= ruleContextModelNode ) )
-            // InternalContextModel.g:99:4: (lv_context_model_node_1_0= ruleContextModelNode )
-            {
-            // InternalContextModel.g:99:4: (lv_context_model_node_1_0= ruleContextModelNode )
-            // InternalContextModel.g:100:5: lv_context_model_node_1_0= ruleContextModelNode
-            {
-
-            					newCompositeNode(grammarAccess.getContextModelAccess().getContext_model_nodeContextModelNodeParserRuleCall_1_0());
-            				
-            pushFollow(FOLLOW_4);
-            lv_context_model_node_1_0=ruleContextModelNode();
-
-            state._fsp--;
-
-
-            					if (current==null) {
-            						current = createModelElementForParent(grammarAccess.getContextModelRule());
-            					}
-            					set(
-            						current,
-            						"context_model_node",
-            						lv_context_model_node_1_0,
-            						"eu.coresense.context.ContextModel.ContextModelNode");
-            					afterParserOrEnumRuleCall();
-            				
-
-            }
-
-
-            }
-
-            // InternalContextModel.g:117:3: ( (lv_context_variables_2_0= ruleContextVar ) )*
+            // InternalContextModel.g:98:3: ( (lv_context_variables_1_0= ruleContextVar ) )*
             loop2:
             do {
                 int alt2=2;
@@ -243,16 +212,16 @@ public class InternalContextModelParser extends AbstractInternalAntlrParser {
 
                 switch (alt2) {
             	case 1 :
-            	    // InternalContextModel.g:118:4: (lv_context_variables_2_0= ruleContextVar )
+            	    // InternalContextModel.g:99:4: (lv_context_variables_1_0= ruleContextVar )
             	    {
-            	    // InternalContextModel.g:118:4: (lv_context_variables_2_0= ruleContextVar )
-            	    // InternalContextModel.g:119:5: lv_context_variables_2_0= ruleContextVar
+            	    // InternalContextModel.g:99:4: (lv_context_variables_1_0= ruleContextVar )
+            	    // InternalContextModel.g:100:5: lv_context_variables_1_0= ruleContextVar
             	    {
 
-            	    					newCompositeNode(grammarAccess.getContextModelAccess().getContext_variablesContextVarParserRuleCall_2_0());
+            	    					newCompositeNode(grammarAccess.getContextModelAccess().getContext_variablesContextVarParserRuleCall_1_0());
             	    				
             	    pushFollow(FOLLOW_4);
-            	    lv_context_variables_2_0=ruleContextVar();
+            	    lv_context_variables_1_0=ruleContextVar();
 
             	    state._fsp--;
 
@@ -263,7 +232,7 @@ public class InternalContextModelParser extends AbstractInternalAntlrParser {
             	    					add(
             	    						current,
             	    						"context_variables",
-            	    						lv_context_variables_2_0,
+            	    						lv_context_variables_1_0,
             	    						"eu.coresense.context.ContextModel.ContextVar");
             	    					afterParserOrEnumRuleCall();
             	    				
@@ -302,7 +271,7 @@ public class InternalContextModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleContextVar"
-    // InternalContextModel.g:140:1: entryRuleContextVar returns [EObject current=null] : iv_ruleContextVar= ruleContextVar EOF ;
+    // InternalContextModel.g:121:1: entryRuleContextVar returns [EObject current=null] : iv_ruleContextVar= ruleContextVar EOF ;
     public final EObject entryRuleContextVar() throws RecognitionException {
         EObject current = null;
 
@@ -310,8 +279,8 @@ public class InternalContextModelParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalContextModel.g:140:51: (iv_ruleContextVar= ruleContextVar EOF )
-            // InternalContextModel.g:141:2: iv_ruleContextVar= ruleContextVar EOF
+            // InternalContextModel.g:121:51: (iv_ruleContextVar= ruleContextVar EOF )
+            // InternalContextModel.g:122:2: iv_ruleContextVar= ruleContextVar EOF
             {
              newCompositeNode(grammarAccess.getContextVarRule()); 
             pushFollow(FOLLOW_1);
@@ -338,7 +307,7 @@ public class InternalContextModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleContextVar"
-    // InternalContextModel.g:147:1: ruleContextVar returns [EObject current=null] : (otherlv_0= 'ContextVariable' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' ( (lv_source_3_0= ruleDataSource ) ) otherlv_4= 'efferent:' ( (otherlv_5= RULE_ID ) ) otherlv_6= 'cache?' ( (lv_doCache_7_0= RULE_BOOLEAN ) ) (otherlv_8= 'cache' otherlv_9= 'length' ( (lv_length_10_0= RULE_INT ) ) otherlv_11= 's' )? (otherlv_12= 'period' ( (lv_period_13_0= RULE_INT ) ) otherlv_14= 'ns' )? otherlv_15= 'function_name' ( (lv_functionName_16_0= RULE_STRING ) ) (otherlv_17= 'function_lib' ( (lv_functionLibrary_18_0= RULE_STRING ) ) )? otherlv_19= '}' ) ;
+    // InternalContextModel.g:128:1: ruleContextVar returns [EObject current=null] : (otherlv_0= 'ContextVariable' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' ( (lv_source_3_0= ruleDataSource ) ) otherlv_4= 'cache?' ( (lv_doCache_5_0= ruleDoCache ) ) (otherlv_6= 'cache' otherlv_7= 'length' ( (lv_length_8_0= RULE_INT ) ) otherlv_9= 's' )? (otherlv_10= 'period' ( (lv_period_11_0= RULE_INT ) ) otherlv_12= 'ns' )? (otherlv_13= 'proxy' ( (lv_doProxy_14_0= ruleDoProxy ) ) )? otherlv_15= 'function_name' ( (lv_functionName_16_0= RULE_STRING ) ) (otherlv_17= 'function_lib' ( (lv_functionLibrary_18_0= RULE_STRING ) ) )? otherlv_19= '}' ) ;
     public final EObject ruleContextVar() throws RecognitionException {
         EObject current = null;
 
@@ -346,16 +315,14 @@ public class InternalContextModelParser extends AbstractInternalAntlrParser {
         Token lv_name_1_0=null;
         Token otherlv_2=null;
         Token otherlv_4=null;
-        Token otherlv_5=null;
         Token otherlv_6=null;
-        Token lv_doCache_7_0=null;
-        Token otherlv_8=null;
+        Token otherlv_7=null;
+        Token lv_length_8_0=null;
         Token otherlv_9=null;
-        Token lv_length_10_0=null;
-        Token otherlv_11=null;
+        Token otherlv_10=null;
+        Token lv_period_11_0=null;
         Token otherlv_12=null;
-        Token lv_period_13_0=null;
-        Token otherlv_14=null;
+        Token otherlv_13=null;
         Token otherlv_15=null;
         Token lv_functionName_16_0=null;
         Token otherlv_17=null;
@@ -363,26 +330,30 @@ public class InternalContextModelParser extends AbstractInternalAntlrParser {
         Token otherlv_19=null;
         EObject lv_source_3_0 = null;
 
+        EObject lv_doCache_5_0 = null;
+
+        EObject lv_doProxy_14_0 = null;
+
 
 
         	enterRule();
 
         try {
-            // InternalContextModel.g:153:2: ( (otherlv_0= 'ContextVariable' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' ( (lv_source_3_0= ruleDataSource ) ) otherlv_4= 'efferent:' ( (otherlv_5= RULE_ID ) ) otherlv_6= 'cache?' ( (lv_doCache_7_0= RULE_BOOLEAN ) ) (otherlv_8= 'cache' otherlv_9= 'length' ( (lv_length_10_0= RULE_INT ) ) otherlv_11= 's' )? (otherlv_12= 'period' ( (lv_period_13_0= RULE_INT ) ) otherlv_14= 'ns' )? otherlv_15= 'function_name' ( (lv_functionName_16_0= RULE_STRING ) ) (otherlv_17= 'function_lib' ( (lv_functionLibrary_18_0= RULE_STRING ) ) )? otherlv_19= '}' ) )
-            // InternalContextModel.g:154:2: (otherlv_0= 'ContextVariable' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' ( (lv_source_3_0= ruleDataSource ) ) otherlv_4= 'efferent:' ( (otherlv_5= RULE_ID ) ) otherlv_6= 'cache?' ( (lv_doCache_7_0= RULE_BOOLEAN ) ) (otherlv_8= 'cache' otherlv_9= 'length' ( (lv_length_10_0= RULE_INT ) ) otherlv_11= 's' )? (otherlv_12= 'period' ( (lv_period_13_0= RULE_INT ) ) otherlv_14= 'ns' )? otherlv_15= 'function_name' ( (lv_functionName_16_0= RULE_STRING ) ) (otherlv_17= 'function_lib' ( (lv_functionLibrary_18_0= RULE_STRING ) ) )? otherlv_19= '}' )
+            // InternalContextModel.g:134:2: ( (otherlv_0= 'ContextVariable' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' ( (lv_source_3_0= ruleDataSource ) ) otherlv_4= 'cache?' ( (lv_doCache_5_0= ruleDoCache ) ) (otherlv_6= 'cache' otherlv_7= 'length' ( (lv_length_8_0= RULE_INT ) ) otherlv_9= 's' )? (otherlv_10= 'period' ( (lv_period_11_0= RULE_INT ) ) otherlv_12= 'ns' )? (otherlv_13= 'proxy' ( (lv_doProxy_14_0= ruleDoProxy ) ) )? otherlv_15= 'function_name' ( (lv_functionName_16_0= RULE_STRING ) ) (otherlv_17= 'function_lib' ( (lv_functionLibrary_18_0= RULE_STRING ) ) )? otherlv_19= '}' ) )
+            // InternalContextModel.g:135:2: (otherlv_0= 'ContextVariable' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' ( (lv_source_3_0= ruleDataSource ) ) otherlv_4= 'cache?' ( (lv_doCache_5_0= ruleDoCache ) ) (otherlv_6= 'cache' otherlv_7= 'length' ( (lv_length_8_0= RULE_INT ) ) otherlv_9= 's' )? (otherlv_10= 'period' ( (lv_period_11_0= RULE_INT ) ) otherlv_12= 'ns' )? (otherlv_13= 'proxy' ( (lv_doProxy_14_0= ruleDoProxy ) ) )? otherlv_15= 'function_name' ( (lv_functionName_16_0= RULE_STRING ) ) (otherlv_17= 'function_lib' ( (lv_functionLibrary_18_0= RULE_STRING ) ) )? otherlv_19= '}' )
             {
-            // InternalContextModel.g:154:2: (otherlv_0= 'ContextVariable' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' ( (lv_source_3_0= ruleDataSource ) ) otherlv_4= 'efferent:' ( (otherlv_5= RULE_ID ) ) otherlv_6= 'cache?' ( (lv_doCache_7_0= RULE_BOOLEAN ) ) (otherlv_8= 'cache' otherlv_9= 'length' ( (lv_length_10_0= RULE_INT ) ) otherlv_11= 's' )? (otherlv_12= 'period' ( (lv_period_13_0= RULE_INT ) ) otherlv_14= 'ns' )? otherlv_15= 'function_name' ( (lv_functionName_16_0= RULE_STRING ) ) (otherlv_17= 'function_lib' ( (lv_functionLibrary_18_0= RULE_STRING ) ) )? otherlv_19= '}' )
-            // InternalContextModel.g:155:3: otherlv_0= 'ContextVariable' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' ( (lv_source_3_0= ruleDataSource ) ) otherlv_4= 'efferent:' ( (otherlv_5= RULE_ID ) ) otherlv_6= 'cache?' ( (lv_doCache_7_0= RULE_BOOLEAN ) ) (otherlv_8= 'cache' otherlv_9= 'length' ( (lv_length_10_0= RULE_INT ) ) otherlv_11= 's' )? (otherlv_12= 'period' ( (lv_period_13_0= RULE_INT ) ) otherlv_14= 'ns' )? otherlv_15= 'function_name' ( (lv_functionName_16_0= RULE_STRING ) ) (otherlv_17= 'function_lib' ( (lv_functionLibrary_18_0= RULE_STRING ) ) )? otherlv_19= '}'
+            // InternalContextModel.g:135:2: (otherlv_0= 'ContextVariable' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' ( (lv_source_3_0= ruleDataSource ) ) otherlv_4= 'cache?' ( (lv_doCache_5_0= ruleDoCache ) ) (otherlv_6= 'cache' otherlv_7= 'length' ( (lv_length_8_0= RULE_INT ) ) otherlv_9= 's' )? (otherlv_10= 'period' ( (lv_period_11_0= RULE_INT ) ) otherlv_12= 'ns' )? (otherlv_13= 'proxy' ( (lv_doProxy_14_0= ruleDoProxy ) ) )? otherlv_15= 'function_name' ( (lv_functionName_16_0= RULE_STRING ) ) (otherlv_17= 'function_lib' ( (lv_functionLibrary_18_0= RULE_STRING ) ) )? otherlv_19= '}' )
+            // InternalContextModel.g:136:3: otherlv_0= 'ContextVariable' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' ( (lv_source_3_0= ruleDataSource ) ) otherlv_4= 'cache?' ( (lv_doCache_5_0= ruleDoCache ) ) (otherlv_6= 'cache' otherlv_7= 'length' ( (lv_length_8_0= RULE_INT ) ) otherlv_9= 's' )? (otherlv_10= 'period' ( (lv_period_11_0= RULE_INT ) ) otherlv_12= 'ns' )? (otherlv_13= 'proxy' ( (lv_doProxy_14_0= ruleDoProxy ) ) )? otherlv_15= 'function_name' ( (lv_functionName_16_0= RULE_STRING ) ) (otherlv_17= 'function_lib' ( (lv_functionLibrary_18_0= RULE_STRING ) ) )? otherlv_19= '}'
             {
             otherlv_0=(Token)match(input,12,FOLLOW_5); 
 
             			newLeafNode(otherlv_0, grammarAccess.getContextVarAccess().getContextVariableKeyword_0());
             		
-            // InternalContextModel.g:159:3: ( (lv_name_1_0= RULE_ID ) )
-            // InternalContextModel.g:160:4: (lv_name_1_0= RULE_ID )
+            // InternalContextModel.g:140:3: ( (lv_name_1_0= RULE_ID ) )
+            // InternalContextModel.g:141:4: (lv_name_1_0= RULE_ID )
             {
-            // InternalContextModel.g:160:4: (lv_name_1_0= RULE_ID )
-            // InternalContextModel.g:161:5: lv_name_1_0= RULE_ID
+            // InternalContextModel.g:141:4: (lv_name_1_0= RULE_ID )
+            // InternalContextModel.g:142:5: lv_name_1_0= RULE_ID
             {
             lv_name_1_0=(Token)match(input,RULE_ID,FOLLOW_6); 
 
@@ -408,11 +379,11 @@ public class InternalContextModelParser extends AbstractInternalAntlrParser {
 
             			newLeafNode(otherlv_2, grammarAccess.getContextVarAccess().getLeftCurlyBracketKeyword_2());
             		
-            // InternalContextModel.g:181:3: ( (lv_source_3_0= ruleDataSource ) )
-            // InternalContextModel.g:182:4: (lv_source_3_0= ruleDataSource )
+            // InternalContextModel.g:162:3: ( (lv_source_3_0= ruleDataSource ) )
+            // InternalContextModel.g:163:4: (lv_source_3_0= ruleDataSource )
             {
-            // InternalContextModel.g:182:4: (lv_source_3_0= ruleDataSource )
-            // InternalContextModel.g:183:5: lv_source_3_0= ruleDataSource
+            // InternalContextModel.g:163:4: (lv_source_3_0= ruleDataSource )
+            // InternalContextModel.g:164:5: lv_source_3_0= ruleDataSource
             {
 
             					newCompositeNode(grammarAccess.getContextVarAccess().getSourceDataSourceParserRuleCall_3_0());
@@ -439,54 +410,34 @@ public class InternalContextModelParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_4=(Token)match(input,14,FOLLOW_5); 
+            otherlv_4=(Token)match(input,14,FOLLOW_9); 
 
-            			newLeafNode(otherlv_4, grammarAccess.getContextVarAccess().getEfferentKeyword_4());
+            			newLeafNode(otherlv_4, grammarAccess.getContextVarAccess().getCacheKeyword_4());
             		
-            // InternalContextModel.g:204:3: ( (otherlv_5= RULE_ID ) )
-            // InternalContextModel.g:205:4: (otherlv_5= RULE_ID )
+            // InternalContextModel.g:185:3: ( (lv_doCache_5_0= ruleDoCache ) )
+            // InternalContextModel.g:186:4: (lv_doCache_5_0= ruleDoCache )
             {
-            // InternalContextModel.g:205:4: (otherlv_5= RULE_ID )
-            // InternalContextModel.g:206:5: otherlv_5= RULE_ID
+            // InternalContextModel.g:186:4: (lv_doCache_5_0= ruleDoCache )
+            // InternalContextModel.g:187:5: lv_doCache_5_0= ruleDoCache
             {
+
+            					newCompositeNode(grammarAccess.getContextVarAccess().getDoCacheDoCacheParserRuleCall_5_0());
+            				
+            pushFollow(FOLLOW_10);
+            lv_doCache_5_0=ruleDoCache();
+
+            state._fsp--;
+
 
             					if (current==null) {
-            						current = createModelElement(grammarAccess.getContextVarRule());
+            						current = createModelElementForParent(grammarAccess.getContextVarRule());
             					}
-            				
-            otherlv_5=(Token)match(input,RULE_ID,FOLLOW_9); 
-
-            					newLeafNode(otherlv_5, grammarAccess.getContextVarAccess().getProcessed_sourcePublisherCrossReference_5_0());
-            				
-
-            }
-
-
-            }
-
-            otherlv_6=(Token)match(input,15,FOLLOW_10); 
-
-            			newLeafNode(otherlv_6, grammarAccess.getContextVarAccess().getCacheKeyword_6());
-            		
-            // InternalContextModel.g:221:3: ( (lv_doCache_7_0= RULE_BOOLEAN ) )
-            // InternalContextModel.g:222:4: (lv_doCache_7_0= RULE_BOOLEAN )
-            {
-            // InternalContextModel.g:222:4: (lv_doCache_7_0= RULE_BOOLEAN )
-            // InternalContextModel.g:223:5: lv_doCache_7_0= RULE_BOOLEAN
-            {
-            lv_doCache_7_0=(Token)match(input,RULE_BOOLEAN,FOLLOW_11); 
-
-            					newLeafNode(lv_doCache_7_0, grammarAccess.getContextVarAccess().getDoCacheBOOLEANTerminalRuleCall_7_0());
-            				
-
-            					if (current==null) {
-            						current = createModelElement(grammarAccess.getContextVarRule());
-            					}
-            					setWithLastConsumed(
+            					set(
             						current,
             						"doCache",
-            						lv_doCache_7_0,
-            						"eu.coresense.context.ContextModel.BOOLEAN");
+            						lv_doCache_5_0,
+            						"eu.coresense.context.ContextModel.DoCache");
+            					afterParserOrEnumRuleCall();
             				
 
             }
@@ -494,34 +445,34 @@ public class InternalContextModelParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalContextModel.g:239:3: (otherlv_8= 'cache' otherlv_9= 'length' ( (lv_length_10_0= RULE_INT ) ) otherlv_11= 's' )?
+            // InternalContextModel.g:204:3: (otherlv_6= 'cache' otherlv_7= 'length' ( (lv_length_8_0= RULE_INT ) ) otherlv_9= 's' )?
             int alt3=2;
             int LA3_0 = input.LA(1);
 
-            if ( (LA3_0==16) ) {
+            if ( (LA3_0==15) ) {
                 alt3=1;
             }
             switch (alt3) {
                 case 1 :
-                    // InternalContextModel.g:240:4: otherlv_8= 'cache' otherlv_9= 'length' ( (lv_length_10_0= RULE_INT ) ) otherlv_11= 's'
+                    // InternalContextModel.g:205:4: otherlv_6= 'cache' otherlv_7= 'length' ( (lv_length_8_0= RULE_INT ) ) otherlv_9= 's'
                     {
-                    otherlv_8=(Token)match(input,16,FOLLOW_12); 
+                    otherlv_6=(Token)match(input,15,FOLLOW_11); 
 
-                    				newLeafNode(otherlv_8, grammarAccess.getContextVarAccess().getCacheKeyword_8_0());
+                    				newLeafNode(otherlv_6, grammarAccess.getContextVarAccess().getCacheKeyword_6_0());
                     			
-                    otherlv_9=(Token)match(input,17,FOLLOW_13); 
+                    otherlv_7=(Token)match(input,16,FOLLOW_12); 
 
-                    				newLeafNode(otherlv_9, grammarAccess.getContextVarAccess().getLengthKeyword_8_1());
+                    				newLeafNode(otherlv_7, grammarAccess.getContextVarAccess().getLengthKeyword_6_1());
                     			
-                    // InternalContextModel.g:248:4: ( (lv_length_10_0= RULE_INT ) )
-                    // InternalContextModel.g:249:5: (lv_length_10_0= RULE_INT )
+                    // InternalContextModel.g:213:4: ( (lv_length_8_0= RULE_INT ) )
+                    // InternalContextModel.g:214:5: (lv_length_8_0= RULE_INT )
                     {
-                    // InternalContextModel.g:249:5: (lv_length_10_0= RULE_INT )
-                    // InternalContextModel.g:250:6: lv_length_10_0= RULE_INT
+                    // InternalContextModel.g:214:5: (lv_length_8_0= RULE_INT )
+                    // InternalContextModel.g:215:6: lv_length_8_0= RULE_INT
                     {
-                    lv_length_10_0=(Token)match(input,RULE_INT,FOLLOW_14); 
+                    lv_length_8_0=(Token)match(input,RULE_INT,FOLLOW_13); 
 
-                    						newLeafNode(lv_length_10_0, grammarAccess.getContextVarAccess().getLengthINTTerminalRuleCall_8_2_0());
+                    						newLeafNode(lv_length_8_0, grammarAccess.getContextVarAccess().getLengthINTTerminalRuleCall_6_2_0());
                     					
 
                     						if (current==null) {
@@ -530,7 +481,7 @@ public class InternalContextModelParser extends AbstractInternalAntlrParser {
                     						setWithLastConsumed(
                     							current,
                     							"length",
-                    							lv_length_10_0,
+                    							lv_length_8_0,
                     							"org.eclipse.xtext.common.Terminals.INT");
                     					
 
@@ -539,9 +490,9 @@ public class InternalContextModelParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_11=(Token)match(input,18,FOLLOW_15); 
+                    otherlv_9=(Token)match(input,17,FOLLOW_14); 
 
-                    				newLeafNode(otherlv_11, grammarAccess.getContextVarAccess().getSKeyword_8_3());
+                    				newLeafNode(otherlv_9, grammarAccess.getContextVarAccess().getSKeyword_6_3());
                     			
 
                     }
@@ -549,30 +500,30 @@ public class InternalContextModelParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalContextModel.g:271:3: (otherlv_12= 'period' ( (lv_period_13_0= RULE_INT ) ) otherlv_14= 'ns' )?
+            // InternalContextModel.g:236:3: (otherlv_10= 'period' ( (lv_period_11_0= RULE_INT ) ) otherlv_12= 'ns' )?
             int alt4=2;
             int LA4_0 = input.LA(1);
 
-            if ( (LA4_0==19) ) {
+            if ( (LA4_0==18) ) {
                 alt4=1;
             }
             switch (alt4) {
                 case 1 :
-                    // InternalContextModel.g:272:4: otherlv_12= 'period' ( (lv_period_13_0= RULE_INT ) ) otherlv_14= 'ns'
+                    // InternalContextModel.g:237:4: otherlv_10= 'period' ( (lv_period_11_0= RULE_INT ) ) otherlv_12= 'ns'
                     {
-                    otherlv_12=(Token)match(input,19,FOLLOW_13); 
+                    otherlv_10=(Token)match(input,18,FOLLOW_12); 
 
-                    				newLeafNode(otherlv_12, grammarAccess.getContextVarAccess().getPeriodKeyword_9_0());
+                    				newLeafNode(otherlv_10, grammarAccess.getContextVarAccess().getPeriodKeyword_7_0());
                     			
-                    // InternalContextModel.g:276:4: ( (lv_period_13_0= RULE_INT ) )
-                    // InternalContextModel.g:277:5: (lv_period_13_0= RULE_INT )
+                    // InternalContextModel.g:241:4: ( (lv_period_11_0= RULE_INT ) )
+                    // InternalContextModel.g:242:5: (lv_period_11_0= RULE_INT )
                     {
-                    // InternalContextModel.g:277:5: (lv_period_13_0= RULE_INT )
-                    // InternalContextModel.g:278:6: lv_period_13_0= RULE_INT
+                    // InternalContextModel.g:242:5: (lv_period_11_0= RULE_INT )
+                    // InternalContextModel.g:243:6: lv_period_11_0= RULE_INT
                     {
-                    lv_period_13_0=(Token)match(input,RULE_INT,FOLLOW_16); 
+                    lv_period_11_0=(Token)match(input,RULE_INT,FOLLOW_15); 
 
-                    						newLeafNode(lv_period_13_0, grammarAccess.getContextVarAccess().getPeriodINTTerminalRuleCall_9_1_0());
+                    						newLeafNode(lv_period_11_0, grammarAccess.getContextVarAccess().getPeriodINTTerminalRuleCall_7_1_0());
                     					
 
                     						if (current==null) {
@@ -581,7 +532,7 @@ public class InternalContextModelParser extends AbstractInternalAntlrParser {
                     						setWithLastConsumed(
                     							current,
                     							"period",
-                    							lv_period_13_0,
+                    							lv_period_11_0,
                     							"org.eclipse.xtext.common.Terminals.INT");
                     					
 
@@ -590,10 +541,62 @@ public class InternalContextModelParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_14=(Token)match(input,20,FOLLOW_17); 
+                    otherlv_12=(Token)match(input,19,FOLLOW_16); 
 
-                    				newLeafNode(otherlv_14, grammarAccess.getContextVarAccess().getNsKeyword_9_2());
+                    				newLeafNode(otherlv_12, grammarAccess.getContextVarAccess().getNsKeyword_7_2());
                     			
+
+                    }
+                    break;
+
+            }
+
+            // InternalContextModel.g:264:3: (otherlv_13= 'proxy' ( (lv_doProxy_14_0= ruleDoProxy ) ) )?
+            int alt5=2;
+            int LA5_0 = input.LA(1);
+
+            if ( (LA5_0==20) ) {
+                alt5=1;
+            }
+            switch (alt5) {
+                case 1 :
+                    // InternalContextModel.g:265:4: otherlv_13= 'proxy' ( (lv_doProxy_14_0= ruleDoProxy ) )
+                    {
+                    otherlv_13=(Token)match(input,20,FOLLOW_9); 
+
+                    				newLeafNode(otherlv_13, grammarAccess.getContextVarAccess().getProxyKeyword_8_0());
+                    			
+                    // InternalContextModel.g:269:4: ( (lv_doProxy_14_0= ruleDoProxy ) )
+                    // InternalContextModel.g:270:5: (lv_doProxy_14_0= ruleDoProxy )
+                    {
+                    // InternalContextModel.g:270:5: (lv_doProxy_14_0= ruleDoProxy )
+                    // InternalContextModel.g:271:6: lv_doProxy_14_0= ruleDoProxy
+                    {
+
+                    						newCompositeNode(grammarAccess.getContextVarAccess().getDoProxyDoProxyParserRuleCall_8_1_0());
+                    					
+                    pushFollow(FOLLOW_17);
+                    lv_doProxy_14_0=ruleDoProxy();
+
+                    state._fsp--;
+
+
+                    						if (current==null) {
+                    							current = createModelElementForParent(grammarAccess.getContextVarRule());
+                    						}
+                    						set(
+                    							current,
+                    							"doProxy",
+                    							lv_doProxy_14_0,
+                    							"eu.coresense.context.ContextModel.DoProxy");
+                    						afterParserOrEnumRuleCall();
+                    					
+
+                    }
+
+
+                    }
+
 
                     }
                     break;
@@ -602,17 +605,17 @@ public class InternalContextModelParser extends AbstractInternalAntlrParser {
 
             otherlv_15=(Token)match(input,21,FOLLOW_18); 
 
-            			newLeafNode(otherlv_15, grammarAccess.getContextVarAccess().getFunction_nameKeyword_10());
+            			newLeafNode(otherlv_15, grammarAccess.getContextVarAccess().getFunction_nameKeyword_9());
             		
-            // InternalContextModel.g:303:3: ( (lv_functionName_16_0= RULE_STRING ) )
-            // InternalContextModel.g:304:4: (lv_functionName_16_0= RULE_STRING )
+            // InternalContextModel.g:293:3: ( (lv_functionName_16_0= RULE_STRING ) )
+            // InternalContextModel.g:294:4: (lv_functionName_16_0= RULE_STRING )
             {
-            // InternalContextModel.g:304:4: (lv_functionName_16_0= RULE_STRING )
-            // InternalContextModel.g:305:5: lv_functionName_16_0= RULE_STRING
+            // InternalContextModel.g:294:4: (lv_functionName_16_0= RULE_STRING )
+            // InternalContextModel.g:295:5: lv_functionName_16_0= RULE_STRING
             {
             lv_functionName_16_0=(Token)match(input,RULE_STRING,FOLLOW_19); 
 
-            					newLeafNode(lv_functionName_16_0, grammarAccess.getContextVarAccess().getFunctionNameSTRINGTerminalRuleCall_11_0());
+            					newLeafNode(lv_functionName_16_0, grammarAccess.getContextVarAccess().getFunctionNameSTRINGTerminalRuleCall_10_0());
             				
 
             					if (current==null) {
@@ -630,30 +633,30 @@ public class InternalContextModelParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalContextModel.g:321:3: (otherlv_17= 'function_lib' ( (lv_functionLibrary_18_0= RULE_STRING ) ) )?
-            int alt5=2;
-            int LA5_0 = input.LA(1);
+            // InternalContextModel.g:311:3: (otherlv_17= 'function_lib' ( (lv_functionLibrary_18_0= RULE_STRING ) ) )?
+            int alt6=2;
+            int LA6_0 = input.LA(1);
 
-            if ( (LA5_0==22) ) {
-                alt5=1;
+            if ( (LA6_0==22) ) {
+                alt6=1;
             }
-            switch (alt5) {
+            switch (alt6) {
                 case 1 :
-                    // InternalContextModel.g:322:4: otherlv_17= 'function_lib' ( (lv_functionLibrary_18_0= RULE_STRING ) )
+                    // InternalContextModel.g:312:4: otherlv_17= 'function_lib' ( (lv_functionLibrary_18_0= RULE_STRING ) )
                     {
                     otherlv_17=(Token)match(input,22,FOLLOW_18); 
 
-                    				newLeafNode(otherlv_17, grammarAccess.getContextVarAccess().getFunction_libKeyword_12_0());
+                    				newLeafNode(otherlv_17, grammarAccess.getContextVarAccess().getFunction_libKeyword_11_0());
                     			
-                    // InternalContextModel.g:326:4: ( (lv_functionLibrary_18_0= RULE_STRING ) )
-                    // InternalContextModel.g:327:5: (lv_functionLibrary_18_0= RULE_STRING )
+                    // InternalContextModel.g:316:4: ( (lv_functionLibrary_18_0= RULE_STRING ) )
+                    // InternalContextModel.g:317:5: (lv_functionLibrary_18_0= RULE_STRING )
                     {
-                    // InternalContextModel.g:327:5: (lv_functionLibrary_18_0= RULE_STRING )
-                    // InternalContextModel.g:328:6: lv_functionLibrary_18_0= RULE_STRING
+                    // InternalContextModel.g:317:5: (lv_functionLibrary_18_0= RULE_STRING )
+                    // InternalContextModel.g:318:6: lv_functionLibrary_18_0= RULE_STRING
                     {
                     lv_functionLibrary_18_0=(Token)match(input,RULE_STRING,FOLLOW_20); 
 
-                    						newLeafNode(lv_functionLibrary_18_0, grammarAccess.getContextVarAccess().getFunctionLibrarySTRINGTerminalRuleCall_12_1_0());
+                    						newLeafNode(lv_functionLibrary_18_0, grammarAccess.getContextVarAccess().getFunctionLibrarySTRINGTerminalRuleCall_11_1_0());
                     					
 
                     						if (current==null) {
@@ -679,7 +682,7 @@ public class InternalContextModelParser extends AbstractInternalAntlrParser {
 
             otherlv_19=(Token)match(input,23,FOLLOW_2); 
 
-            			newLeafNode(otherlv_19, grammarAccess.getContextVarAccess().getRightCurlyBracketKeyword_13());
+            			newLeafNode(otherlv_19, grammarAccess.getContextVarAccess().getRightCurlyBracketKeyword_12());
             		
 
             }
@@ -703,8 +706,232 @@ public class InternalContextModelParser extends AbstractInternalAntlrParser {
     // $ANTLR end "ruleContextVar"
 
 
+    // $ANTLR start "entryRuleDoCache"
+    // InternalContextModel.g:343:1: entryRuleDoCache returns [EObject current=null] : iv_ruleDoCache= ruleDoCache EOF ;
+    public final EObject entryRuleDoCache() throws RecognitionException {
+        EObject current = null;
+
+        EObject iv_ruleDoCache = null;
+
+
+        try {
+            // InternalContextModel.g:343:48: (iv_ruleDoCache= ruleDoCache EOF )
+            // InternalContextModel.g:344:2: iv_ruleDoCache= ruleDoCache EOF
+            {
+             newCompositeNode(grammarAccess.getDoCacheRule()); 
+            pushFollow(FOLLOW_1);
+            iv_ruleDoCache=ruleDoCache();
+
+            state._fsp--;
+
+             current =iv_ruleDoCache; 
+            match(input,EOF,FOLLOW_2); 
+
+            }
+
+        }
+
+            catch (RecognitionException re) {
+                recover(input,re);
+                appendSkippedTokens();
+            }
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "entryRuleDoCache"
+
+
+    // $ANTLR start "ruleDoCache"
+    // InternalContextModel.g:350:1: ruleDoCache returns [EObject current=null] : ( () ( (lv_do_1_0= RULE_BOOLEAN ) ) ) ;
+    public final EObject ruleDoCache() throws RecognitionException {
+        EObject current = null;
+
+        Token lv_do_1_0=null;
+
+
+        	enterRule();
+
+        try {
+            // InternalContextModel.g:356:2: ( ( () ( (lv_do_1_0= RULE_BOOLEAN ) ) ) )
+            // InternalContextModel.g:357:2: ( () ( (lv_do_1_0= RULE_BOOLEAN ) ) )
+            {
+            // InternalContextModel.g:357:2: ( () ( (lv_do_1_0= RULE_BOOLEAN ) ) )
+            // InternalContextModel.g:358:3: () ( (lv_do_1_0= RULE_BOOLEAN ) )
+            {
+            // InternalContextModel.g:358:3: ()
+            // InternalContextModel.g:359:4: 
+            {
+
+            				current = forceCreateModelElement(
+            					grammarAccess.getDoCacheAccess().getDoCacheAction_0(),
+            					current);
+            			
+
+            }
+
+            // InternalContextModel.g:365:3: ( (lv_do_1_0= RULE_BOOLEAN ) )
+            // InternalContextModel.g:366:4: (lv_do_1_0= RULE_BOOLEAN )
+            {
+            // InternalContextModel.g:366:4: (lv_do_1_0= RULE_BOOLEAN )
+            // InternalContextModel.g:367:5: lv_do_1_0= RULE_BOOLEAN
+            {
+            lv_do_1_0=(Token)match(input,RULE_BOOLEAN,FOLLOW_2); 
+
+            					newLeafNode(lv_do_1_0, grammarAccess.getDoCacheAccess().getDoBOOLEANTerminalRuleCall_1_0());
+            				
+
+            					if (current==null) {
+            						current = createModelElement(grammarAccess.getDoCacheRule());
+            					}
+            					setWithLastConsumed(
+            						current,
+            						"do",
+            						lv_do_1_0,
+            						"eu.coresense.context.ContextModel.BOOLEAN");
+            				
+
+            }
+
+
+            }
+
+
+            }
+
+
+            }
+
+
+            	leaveRule();
+
+        }
+
+            catch (RecognitionException re) {
+                recover(input,re);
+                appendSkippedTokens();
+            }
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "ruleDoCache"
+
+
+    // $ANTLR start "entryRuleDoProxy"
+    // InternalContextModel.g:387:1: entryRuleDoProxy returns [EObject current=null] : iv_ruleDoProxy= ruleDoProxy EOF ;
+    public final EObject entryRuleDoProxy() throws RecognitionException {
+        EObject current = null;
+
+        EObject iv_ruleDoProxy = null;
+
+
+        try {
+            // InternalContextModel.g:387:48: (iv_ruleDoProxy= ruleDoProxy EOF )
+            // InternalContextModel.g:388:2: iv_ruleDoProxy= ruleDoProxy EOF
+            {
+             newCompositeNode(grammarAccess.getDoProxyRule()); 
+            pushFollow(FOLLOW_1);
+            iv_ruleDoProxy=ruleDoProxy();
+
+            state._fsp--;
+
+             current =iv_ruleDoProxy; 
+            match(input,EOF,FOLLOW_2); 
+
+            }
+
+        }
+
+            catch (RecognitionException re) {
+                recover(input,re);
+                appendSkippedTokens();
+            }
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "entryRuleDoProxy"
+
+
+    // $ANTLR start "ruleDoProxy"
+    // InternalContextModel.g:394:1: ruleDoProxy returns [EObject current=null] : ( () ( (lv_do_1_0= RULE_BOOLEAN ) ) ) ;
+    public final EObject ruleDoProxy() throws RecognitionException {
+        EObject current = null;
+
+        Token lv_do_1_0=null;
+
+
+        	enterRule();
+
+        try {
+            // InternalContextModel.g:400:2: ( ( () ( (lv_do_1_0= RULE_BOOLEAN ) ) ) )
+            // InternalContextModel.g:401:2: ( () ( (lv_do_1_0= RULE_BOOLEAN ) ) )
+            {
+            // InternalContextModel.g:401:2: ( () ( (lv_do_1_0= RULE_BOOLEAN ) ) )
+            // InternalContextModel.g:402:3: () ( (lv_do_1_0= RULE_BOOLEAN ) )
+            {
+            // InternalContextModel.g:402:3: ()
+            // InternalContextModel.g:403:4: 
+            {
+
+            				current = forceCreateModelElement(
+            					grammarAccess.getDoProxyAccess().getDoProxyAction_0(),
+            					current);
+            			
+
+            }
+
+            // InternalContextModel.g:409:3: ( (lv_do_1_0= RULE_BOOLEAN ) )
+            // InternalContextModel.g:410:4: (lv_do_1_0= RULE_BOOLEAN )
+            {
+            // InternalContextModel.g:410:4: (lv_do_1_0= RULE_BOOLEAN )
+            // InternalContextModel.g:411:5: lv_do_1_0= RULE_BOOLEAN
+            {
+            lv_do_1_0=(Token)match(input,RULE_BOOLEAN,FOLLOW_2); 
+
+            					newLeafNode(lv_do_1_0, grammarAccess.getDoProxyAccess().getDoBOOLEANTerminalRuleCall_1_0());
+            				
+
+            					if (current==null) {
+            						current = createModelElement(grammarAccess.getDoProxyRule());
+            					}
+            					setWithLastConsumed(
+            						current,
+            						"do",
+            						lv_do_1_0,
+            						"eu.coresense.context.ContextModel.BOOLEAN");
+            				
+
+            }
+
+
+            }
+
+
+            }
+
+
+            }
+
+
+            	leaveRule();
+
+        }
+
+            catch (RecognitionException re) {
+                recover(input,re);
+                appendSkippedTokens();
+            }
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "ruleDoProxy"
+
+
     // $ANTLR start "entryRuleDataSource"
-    // InternalContextModel.g:353:1: entryRuleDataSource returns [EObject current=null] : iv_ruleDataSource= ruleDataSource EOF ;
+    // InternalContextModel.g:431:1: entryRuleDataSource returns [EObject current=null] : iv_ruleDataSource= ruleDataSource EOF ;
     public final EObject entryRuleDataSource() throws RecognitionException {
         EObject current = null;
 
@@ -712,8 +939,8 @@ public class InternalContextModelParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalContextModel.g:353:51: (iv_ruleDataSource= ruleDataSource EOF )
-            // InternalContextModel.g:354:2: iv_ruleDataSource= ruleDataSource EOF
+            // InternalContextModel.g:431:51: (iv_ruleDataSource= ruleDataSource EOF )
+            // InternalContextModel.g:432:2: iv_ruleDataSource= ruleDataSource EOF
             {
              newCompositeNode(grammarAccess.getDataSourceRule()); 
             pushFollow(FOLLOW_1);
@@ -740,83 +967,115 @@ public class InternalContextModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleDataSource"
-    // InternalContextModel.g:360:1: ruleDataSource returns [EObject current=null] : (otherlv_0= 'afferent:' ( (otherlv_1= 'publisher:' this_QualifiedPublisherRef_2= ruleQualifiedPublisherRef ) | (otherlv_3= 'service:' this_QualifiedServiceServerRef_4= ruleQualifiedServiceServerRef ) | (otherlv_5= 'action:' this_QualifiedActionServerRef_6= ruleQualifiedActionServerRef ) ) ) ;
+    // InternalContextModel.g:438:1: ruleDataSource returns [EObject current=null] : (otherlv_0= 'source:' ( (otherlv_1= 'publisher:' otherlv_2= 'ref:' ( (lv_ref_3_0= ruleQualifiedPublisherRef ) ) ) | (otherlv_4= 'service:' otherlv_5= 'ref:' ( (lv_ref_6_0= ruleQualifiedServiceServerRef ) ) otherlv_7= 'request_kwargs:' ( (lv_kwargs_8_0= ruleKeyWordArguments ) ) ) | (otherlv_9= 'action:' otherlv_10= 'ref:' ( (lv_ref_11_0= ruleQualifiedActionServerRef ) ) otherlv_12= 'goal_kwargs:' ( (lv_kwargs_13_0= ruleKeyWordArguments ) ) ) ) ) ;
     public final EObject ruleDataSource() throws RecognitionException {
         EObject current = null;
 
         Token otherlv_0=null;
         Token otherlv_1=null;
-        Token otherlv_3=null;
+        Token otherlv_2=null;
+        Token otherlv_4=null;
         Token otherlv_5=null;
-        EObject this_QualifiedPublisherRef_2 = null;
+        Token otherlv_7=null;
+        Token otherlv_9=null;
+        Token otherlv_10=null;
+        Token otherlv_12=null;
+        EObject lv_ref_3_0 = null;
 
-        EObject this_QualifiedServiceServerRef_4 = null;
+        EObject lv_ref_6_0 = null;
 
-        EObject this_QualifiedActionServerRef_6 = null;
+        AntlrDatatypeRuleToken lv_kwargs_8_0 = null;
+
+        EObject lv_ref_11_0 = null;
+
+        AntlrDatatypeRuleToken lv_kwargs_13_0 = null;
 
 
 
         	enterRule();
 
         try {
-            // InternalContextModel.g:366:2: ( (otherlv_0= 'afferent:' ( (otherlv_1= 'publisher:' this_QualifiedPublisherRef_2= ruleQualifiedPublisherRef ) | (otherlv_3= 'service:' this_QualifiedServiceServerRef_4= ruleQualifiedServiceServerRef ) | (otherlv_5= 'action:' this_QualifiedActionServerRef_6= ruleQualifiedActionServerRef ) ) ) )
-            // InternalContextModel.g:367:2: (otherlv_0= 'afferent:' ( (otherlv_1= 'publisher:' this_QualifiedPublisherRef_2= ruleQualifiedPublisherRef ) | (otherlv_3= 'service:' this_QualifiedServiceServerRef_4= ruleQualifiedServiceServerRef ) | (otherlv_5= 'action:' this_QualifiedActionServerRef_6= ruleQualifiedActionServerRef ) ) )
+            // InternalContextModel.g:444:2: ( (otherlv_0= 'source:' ( (otherlv_1= 'publisher:' otherlv_2= 'ref:' ( (lv_ref_3_0= ruleQualifiedPublisherRef ) ) ) | (otherlv_4= 'service:' otherlv_5= 'ref:' ( (lv_ref_6_0= ruleQualifiedServiceServerRef ) ) otherlv_7= 'request_kwargs:' ( (lv_kwargs_8_0= ruleKeyWordArguments ) ) ) | (otherlv_9= 'action:' otherlv_10= 'ref:' ( (lv_ref_11_0= ruleQualifiedActionServerRef ) ) otherlv_12= 'goal_kwargs:' ( (lv_kwargs_13_0= ruleKeyWordArguments ) ) ) ) ) )
+            // InternalContextModel.g:445:2: (otherlv_0= 'source:' ( (otherlv_1= 'publisher:' otherlv_2= 'ref:' ( (lv_ref_3_0= ruleQualifiedPublisherRef ) ) ) | (otherlv_4= 'service:' otherlv_5= 'ref:' ( (lv_ref_6_0= ruleQualifiedServiceServerRef ) ) otherlv_7= 'request_kwargs:' ( (lv_kwargs_8_0= ruleKeyWordArguments ) ) ) | (otherlv_9= 'action:' otherlv_10= 'ref:' ( (lv_ref_11_0= ruleQualifiedActionServerRef ) ) otherlv_12= 'goal_kwargs:' ( (lv_kwargs_13_0= ruleKeyWordArguments ) ) ) ) )
             {
-            // InternalContextModel.g:367:2: (otherlv_0= 'afferent:' ( (otherlv_1= 'publisher:' this_QualifiedPublisherRef_2= ruleQualifiedPublisherRef ) | (otherlv_3= 'service:' this_QualifiedServiceServerRef_4= ruleQualifiedServiceServerRef ) | (otherlv_5= 'action:' this_QualifiedActionServerRef_6= ruleQualifiedActionServerRef ) ) )
-            // InternalContextModel.g:368:3: otherlv_0= 'afferent:' ( (otherlv_1= 'publisher:' this_QualifiedPublisherRef_2= ruleQualifiedPublisherRef ) | (otherlv_3= 'service:' this_QualifiedServiceServerRef_4= ruleQualifiedServiceServerRef ) | (otherlv_5= 'action:' this_QualifiedActionServerRef_6= ruleQualifiedActionServerRef ) )
+            // InternalContextModel.g:445:2: (otherlv_0= 'source:' ( (otherlv_1= 'publisher:' otherlv_2= 'ref:' ( (lv_ref_3_0= ruleQualifiedPublisherRef ) ) ) | (otherlv_4= 'service:' otherlv_5= 'ref:' ( (lv_ref_6_0= ruleQualifiedServiceServerRef ) ) otherlv_7= 'request_kwargs:' ( (lv_kwargs_8_0= ruleKeyWordArguments ) ) ) | (otherlv_9= 'action:' otherlv_10= 'ref:' ( (lv_ref_11_0= ruleQualifiedActionServerRef ) ) otherlv_12= 'goal_kwargs:' ( (lv_kwargs_13_0= ruleKeyWordArguments ) ) ) ) )
+            // InternalContextModel.g:446:3: otherlv_0= 'source:' ( (otherlv_1= 'publisher:' otherlv_2= 'ref:' ( (lv_ref_3_0= ruleQualifiedPublisherRef ) ) ) | (otherlv_4= 'service:' otherlv_5= 'ref:' ( (lv_ref_6_0= ruleQualifiedServiceServerRef ) ) otherlv_7= 'request_kwargs:' ( (lv_kwargs_8_0= ruleKeyWordArguments ) ) ) | (otherlv_9= 'action:' otherlv_10= 'ref:' ( (lv_ref_11_0= ruleQualifiedActionServerRef ) ) otherlv_12= 'goal_kwargs:' ( (lv_kwargs_13_0= ruleKeyWordArguments ) ) ) )
             {
             otherlv_0=(Token)match(input,24,FOLLOW_21); 
 
-            			newLeafNode(otherlv_0, grammarAccess.getDataSourceAccess().getAfferentKeyword_0());
+            			newLeafNode(otherlv_0, grammarAccess.getDataSourceAccess().getSourceKeyword_0());
             		
-            // InternalContextModel.g:372:3: ( (otherlv_1= 'publisher:' this_QualifiedPublisherRef_2= ruleQualifiedPublisherRef ) | (otherlv_3= 'service:' this_QualifiedServiceServerRef_4= ruleQualifiedServiceServerRef ) | (otherlv_5= 'action:' this_QualifiedActionServerRef_6= ruleQualifiedActionServerRef ) )
-            int alt6=3;
+            // InternalContextModel.g:450:3: ( (otherlv_1= 'publisher:' otherlv_2= 'ref:' ( (lv_ref_3_0= ruleQualifiedPublisherRef ) ) ) | (otherlv_4= 'service:' otherlv_5= 'ref:' ( (lv_ref_6_0= ruleQualifiedServiceServerRef ) ) otherlv_7= 'request_kwargs:' ( (lv_kwargs_8_0= ruleKeyWordArguments ) ) ) | (otherlv_9= 'action:' otherlv_10= 'ref:' ( (lv_ref_11_0= ruleQualifiedActionServerRef ) ) otherlv_12= 'goal_kwargs:' ( (lv_kwargs_13_0= ruleKeyWordArguments ) ) ) )
+            int alt7=3;
             switch ( input.LA(1) ) {
             case 25:
                 {
-                alt6=1;
-                }
-                break;
-            case 26:
-                {
-                alt6=2;
+                alt7=1;
                 }
                 break;
             case 27:
                 {
-                alt6=3;
+                alt7=2;
+                }
+                break;
+            case 29:
+                {
+                alt7=3;
                 }
                 break;
             default:
                 NoViableAltException nvae =
-                    new NoViableAltException("", 6, 0, input);
+                    new NoViableAltException("", 7, 0, input);
 
                 throw nvae;
             }
 
-            switch (alt6) {
+            switch (alt7) {
                 case 1 :
-                    // InternalContextModel.g:373:4: (otherlv_1= 'publisher:' this_QualifiedPublisherRef_2= ruleQualifiedPublisherRef )
+                    // InternalContextModel.g:451:4: (otherlv_1= 'publisher:' otherlv_2= 'ref:' ( (lv_ref_3_0= ruleQualifiedPublisherRef ) ) )
                     {
-                    // InternalContextModel.g:373:4: (otherlv_1= 'publisher:' this_QualifiedPublisherRef_2= ruleQualifiedPublisherRef )
-                    // InternalContextModel.g:374:5: otherlv_1= 'publisher:' this_QualifiedPublisherRef_2= ruleQualifiedPublisherRef
+                    // InternalContextModel.g:451:4: (otherlv_1= 'publisher:' otherlv_2= 'ref:' ( (lv_ref_3_0= ruleQualifiedPublisherRef ) ) )
+                    // InternalContextModel.g:452:5: otherlv_1= 'publisher:' otherlv_2= 'ref:' ( (lv_ref_3_0= ruleQualifiedPublisherRef ) )
                     {
-                    otherlv_1=(Token)match(input,25,FOLLOW_5); 
+                    otherlv_1=(Token)match(input,25,FOLLOW_22); 
 
                     					newLeafNode(otherlv_1, grammarAccess.getDataSourceAccess().getPublisherKeyword_1_0_0());
                     				
+                    otherlv_2=(Token)match(input,26,FOLLOW_5); 
 
-                    					newCompositeNode(grammarAccess.getDataSourceAccess().getQualifiedPublisherRefParserRuleCall_1_0_1());
+                    					newLeafNode(otherlv_2, grammarAccess.getDataSourceAccess().getRefKeyword_1_0_1());
                     				
+                    // InternalContextModel.g:460:5: ( (lv_ref_3_0= ruleQualifiedPublisherRef ) )
+                    // InternalContextModel.g:461:6: (lv_ref_3_0= ruleQualifiedPublisherRef )
+                    {
+                    // InternalContextModel.g:461:6: (lv_ref_3_0= ruleQualifiedPublisherRef )
+                    // InternalContextModel.g:462:7: lv_ref_3_0= ruleQualifiedPublisherRef
+                    {
+
+                    							newCompositeNode(grammarAccess.getDataSourceAccess().getRefQualifiedPublisherRefParserRuleCall_1_0_2_0());
+                    						
                     pushFollow(FOLLOW_2);
-                    this_QualifiedPublisherRef_2=ruleQualifiedPublisherRef();
+                    lv_ref_3_0=ruleQualifiedPublisherRef();
 
                     state._fsp--;
 
 
-                    					current = this_QualifiedPublisherRef_2;
-                    					afterParserOrEnumRuleCall();
-                    				
+                    							if (current==null) {
+                    								current = createModelElementForParent(grammarAccess.getDataSourceRule());
+                    							}
+                    							set(
+                    								current,
+                    								"ref",
+                    								lv_ref_3_0,
+                    								"eu.coresense.context.ContextModel.QualifiedPublisherRef");
+                    							afterParserOrEnumRuleCall();
+                    						
+
+                    }
+
+
+                    }
+
 
                     }
 
@@ -824,27 +1083,85 @@ public class InternalContextModelParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // InternalContextModel.g:388:4: (otherlv_3= 'service:' this_QualifiedServiceServerRef_4= ruleQualifiedServiceServerRef )
+                    // InternalContextModel.g:481:4: (otherlv_4= 'service:' otherlv_5= 'ref:' ( (lv_ref_6_0= ruleQualifiedServiceServerRef ) ) otherlv_7= 'request_kwargs:' ( (lv_kwargs_8_0= ruleKeyWordArguments ) ) )
                     {
-                    // InternalContextModel.g:388:4: (otherlv_3= 'service:' this_QualifiedServiceServerRef_4= ruleQualifiedServiceServerRef )
-                    // InternalContextModel.g:389:5: otherlv_3= 'service:' this_QualifiedServiceServerRef_4= ruleQualifiedServiceServerRef
+                    // InternalContextModel.g:481:4: (otherlv_4= 'service:' otherlv_5= 'ref:' ( (lv_ref_6_0= ruleQualifiedServiceServerRef ) ) otherlv_7= 'request_kwargs:' ( (lv_kwargs_8_0= ruleKeyWordArguments ) ) )
+                    // InternalContextModel.g:482:5: otherlv_4= 'service:' otherlv_5= 'ref:' ( (lv_ref_6_0= ruleQualifiedServiceServerRef ) ) otherlv_7= 'request_kwargs:' ( (lv_kwargs_8_0= ruleKeyWordArguments ) )
                     {
-                    otherlv_3=(Token)match(input,26,FOLLOW_5); 
+                    otherlv_4=(Token)match(input,27,FOLLOW_22); 
 
-                    					newLeafNode(otherlv_3, grammarAccess.getDataSourceAccess().getServiceKeyword_1_1_0());
+                    					newLeafNode(otherlv_4, grammarAccess.getDataSourceAccess().getServiceKeyword_1_1_0());
                     				
+                    otherlv_5=(Token)match(input,26,FOLLOW_5); 
 
-                    					newCompositeNode(grammarAccess.getDataSourceAccess().getQualifiedServiceServerRefParserRuleCall_1_1_1());
+                    					newLeafNode(otherlv_5, grammarAccess.getDataSourceAccess().getRefKeyword_1_1_1());
                     				
-                    pushFollow(FOLLOW_2);
-                    this_QualifiedServiceServerRef_4=ruleQualifiedServiceServerRef();
+                    // InternalContextModel.g:490:5: ( (lv_ref_6_0= ruleQualifiedServiceServerRef ) )
+                    // InternalContextModel.g:491:6: (lv_ref_6_0= ruleQualifiedServiceServerRef )
+                    {
+                    // InternalContextModel.g:491:6: (lv_ref_6_0= ruleQualifiedServiceServerRef )
+                    // InternalContextModel.g:492:7: lv_ref_6_0= ruleQualifiedServiceServerRef
+                    {
+
+                    							newCompositeNode(grammarAccess.getDataSourceAccess().getRefQualifiedServiceServerRefParserRuleCall_1_1_2_0());
+                    						
+                    pushFollow(FOLLOW_23);
+                    lv_ref_6_0=ruleQualifiedServiceServerRef();
 
                     state._fsp--;
 
 
-                    					current = this_QualifiedServiceServerRef_4;
-                    					afterParserOrEnumRuleCall();
+                    							if (current==null) {
+                    								current = createModelElementForParent(grammarAccess.getDataSourceRule());
+                    							}
+                    							set(
+                    								current,
+                    								"ref",
+                    								lv_ref_6_0,
+                    								"eu.coresense.context.ContextModel.QualifiedServiceServerRef");
+                    							afterParserOrEnumRuleCall();
+                    						
+
+                    }
+
+
+                    }
+
+                    otherlv_7=(Token)match(input,28,FOLLOW_18); 
+
+                    					newLeafNode(otherlv_7, grammarAccess.getDataSourceAccess().getRequest_kwargsKeyword_1_1_3());
                     				
+                    // InternalContextModel.g:513:5: ( (lv_kwargs_8_0= ruleKeyWordArguments ) )
+                    // InternalContextModel.g:514:6: (lv_kwargs_8_0= ruleKeyWordArguments )
+                    {
+                    // InternalContextModel.g:514:6: (lv_kwargs_8_0= ruleKeyWordArguments )
+                    // InternalContextModel.g:515:7: lv_kwargs_8_0= ruleKeyWordArguments
+                    {
+
+                    							newCompositeNode(grammarAccess.getDataSourceAccess().getKwargsKeyWordArgumentsParserRuleCall_1_1_4_0());
+                    						
+                    pushFollow(FOLLOW_2);
+                    lv_kwargs_8_0=ruleKeyWordArguments();
+
+                    state._fsp--;
+
+
+                    							if (current==null) {
+                    								current = createModelElementForParent(grammarAccess.getDataSourceRule());
+                    							}
+                    							set(
+                    								current,
+                    								"kwargs",
+                    								lv_kwargs_8_0,
+                    								"eu.coresense.context.ContextModel.KeyWordArguments");
+                    							afterParserOrEnumRuleCall();
+                    						
+
+                    }
+
+
+                    }
+
 
                     }
 
@@ -852,27 +1169,85 @@ public class InternalContextModelParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 3 :
-                    // InternalContextModel.g:403:4: (otherlv_5= 'action:' this_QualifiedActionServerRef_6= ruleQualifiedActionServerRef )
+                    // InternalContextModel.g:534:4: (otherlv_9= 'action:' otherlv_10= 'ref:' ( (lv_ref_11_0= ruleQualifiedActionServerRef ) ) otherlv_12= 'goal_kwargs:' ( (lv_kwargs_13_0= ruleKeyWordArguments ) ) )
                     {
-                    // InternalContextModel.g:403:4: (otherlv_5= 'action:' this_QualifiedActionServerRef_6= ruleQualifiedActionServerRef )
-                    // InternalContextModel.g:404:5: otherlv_5= 'action:' this_QualifiedActionServerRef_6= ruleQualifiedActionServerRef
+                    // InternalContextModel.g:534:4: (otherlv_9= 'action:' otherlv_10= 'ref:' ( (lv_ref_11_0= ruleQualifiedActionServerRef ) ) otherlv_12= 'goal_kwargs:' ( (lv_kwargs_13_0= ruleKeyWordArguments ) ) )
+                    // InternalContextModel.g:535:5: otherlv_9= 'action:' otherlv_10= 'ref:' ( (lv_ref_11_0= ruleQualifiedActionServerRef ) ) otherlv_12= 'goal_kwargs:' ( (lv_kwargs_13_0= ruleKeyWordArguments ) )
                     {
-                    otherlv_5=(Token)match(input,27,FOLLOW_5); 
+                    otherlv_9=(Token)match(input,29,FOLLOW_22); 
 
-                    					newLeafNode(otherlv_5, grammarAccess.getDataSourceAccess().getActionKeyword_1_2_0());
+                    					newLeafNode(otherlv_9, grammarAccess.getDataSourceAccess().getActionKeyword_1_2_0());
                     				
+                    otherlv_10=(Token)match(input,26,FOLLOW_5); 
 
-                    					newCompositeNode(grammarAccess.getDataSourceAccess().getQualifiedActionServerRefParserRuleCall_1_2_1());
+                    					newLeafNode(otherlv_10, grammarAccess.getDataSourceAccess().getRefKeyword_1_2_1());
                     				
-                    pushFollow(FOLLOW_2);
-                    this_QualifiedActionServerRef_6=ruleQualifiedActionServerRef();
+                    // InternalContextModel.g:543:5: ( (lv_ref_11_0= ruleQualifiedActionServerRef ) )
+                    // InternalContextModel.g:544:6: (lv_ref_11_0= ruleQualifiedActionServerRef )
+                    {
+                    // InternalContextModel.g:544:6: (lv_ref_11_0= ruleQualifiedActionServerRef )
+                    // InternalContextModel.g:545:7: lv_ref_11_0= ruleQualifiedActionServerRef
+                    {
+
+                    							newCompositeNode(grammarAccess.getDataSourceAccess().getRefQualifiedActionServerRefParserRuleCall_1_2_2_0());
+                    						
+                    pushFollow(FOLLOW_24);
+                    lv_ref_11_0=ruleQualifiedActionServerRef();
 
                     state._fsp--;
 
 
-                    					current = this_QualifiedActionServerRef_6;
-                    					afterParserOrEnumRuleCall();
+                    							if (current==null) {
+                    								current = createModelElementForParent(grammarAccess.getDataSourceRule());
+                    							}
+                    							set(
+                    								current,
+                    								"ref",
+                    								lv_ref_11_0,
+                    								"eu.coresense.context.ContextModel.QualifiedActionServerRef");
+                    							afterParserOrEnumRuleCall();
+                    						
+
+                    }
+
+
+                    }
+
+                    otherlv_12=(Token)match(input,30,FOLLOW_18); 
+
+                    					newLeafNode(otherlv_12, grammarAccess.getDataSourceAccess().getGoal_kwargsKeyword_1_2_3());
                     				
+                    // InternalContextModel.g:566:5: ( (lv_kwargs_13_0= ruleKeyWordArguments ) )
+                    // InternalContextModel.g:567:6: (lv_kwargs_13_0= ruleKeyWordArguments )
+                    {
+                    // InternalContextModel.g:567:6: (lv_kwargs_13_0= ruleKeyWordArguments )
+                    // InternalContextModel.g:568:7: lv_kwargs_13_0= ruleKeyWordArguments
+                    {
+
+                    							newCompositeNode(grammarAccess.getDataSourceAccess().getKwargsKeyWordArgumentsParserRuleCall_1_2_4_0());
+                    						
+                    pushFollow(FOLLOW_2);
+                    lv_kwargs_13_0=ruleKeyWordArguments();
+
+                    state._fsp--;
+
+
+                    							if (current==null) {
+                    								current = createModelElementForParent(grammarAccess.getDataSourceRule());
+                    							}
+                    							set(
+                    								current,
+                    								"kwargs",
+                    								lv_kwargs_13_0,
+                    								"eu.coresense.context.ContextModel.KeyWordArguments");
+                    							afterParserOrEnumRuleCall();
+                    						
+
+                    }
+
+
+                    }
+
 
                     }
 
@@ -904,8 +1279,84 @@ public class InternalContextModelParser extends AbstractInternalAntlrParser {
     // $ANTLR end "ruleDataSource"
 
 
+    // $ANTLR start "entryRuleKeyWordArguments"
+    // InternalContextModel.g:591:1: entryRuleKeyWordArguments returns [String current=null] : iv_ruleKeyWordArguments= ruleKeyWordArguments EOF ;
+    public final String entryRuleKeyWordArguments() throws RecognitionException {
+        String current = null;
+
+        AntlrDatatypeRuleToken iv_ruleKeyWordArguments = null;
+
+
+        try {
+            // InternalContextModel.g:591:56: (iv_ruleKeyWordArguments= ruleKeyWordArguments EOF )
+            // InternalContextModel.g:592:2: iv_ruleKeyWordArguments= ruleKeyWordArguments EOF
+            {
+             newCompositeNode(grammarAccess.getKeyWordArgumentsRule()); 
+            pushFollow(FOLLOW_1);
+            iv_ruleKeyWordArguments=ruleKeyWordArguments();
+
+            state._fsp--;
+
+             current =iv_ruleKeyWordArguments.getText(); 
+            match(input,EOF,FOLLOW_2); 
+
+            }
+
+        }
+
+            catch (RecognitionException re) {
+                recover(input,re);
+                appendSkippedTokens();
+            }
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "entryRuleKeyWordArguments"
+
+
+    // $ANTLR start "ruleKeyWordArguments"
+    // InternalContextModel.g:598:1: ruleKeyWordArguments returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : this_STRING_0= RULE_STRING ;
+    public final AntlrDatatypeRuleToken ruleKeyWordArguments() throws RecognitionException {
+        AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
+
+        Token this_STRING_0=null;
+
+
+        	enterRule();
+
+        try {
+            // InternalContextModel.g:604:2: (this_STRING_0= RULE_STRING )
+            // InternalContextModel.g:605:2: this_STRING_0= RULE_STRING
+            {
+            this_STRING_0=(Token)match(input,RULE_STRING,FOLLOW_2); 
+
+            		current.merge(this_STRING_0);
+            	
+
+            		newLeafNode(this_STRING_0, grammarAccess.getKeyWordArgumentsAccess().getSTRINGTerminalRuleCall());
+            	
+
+            }
+
+
+            	leaveRule();
+
+        }
+
+            catch (RecognitionException re) {
+                recover(input,re);
+                appendSkippedTokens();
+            }
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "ruleKeyWordArguments"
+
+
     // $ANTLR start "entryRuleQualifiedPublisherRef"
-    // InternalContextModel.g:422:1: entryRuleQualifiedPublisherRef returns [EObject current=null] : iv_ruleQualifiedPublisherRef= ruleQualifiedPublisherRef EOF ;
+    // InternalContextModel.g:615:1: entryRuleQualifiedPublisherRef returns [EObject current=null] : iv_ruleQualifiedPublisherRef= ruleQualifiedPublisherRef EOF ;
     public final EObject entryRuleQualifiedPublisherRef() throws RecognitionException {
         EObject current = null;
 
@@ -913,8 +1364,8 @@ public class InternalContextModelParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalContextModel.g:422:62: (iv_ruleQualifiedPublisherRef= ruleQualifiedPublisherRef EOF )
-            // InternalContextModel.g:423:2: iv_ruleQualifiedPublisherRef= ruleQualifiedPublisherRef EOF
+            // InternalContextModel.g:615:62: (iv_ruleQualifiedPublisherRef= ruleQualifiedPublisherRef EOF )
+            // InternalContextModel.g:616:2: iv_ruleQualifiedPublisherRef= ruleQualifiedPublisherRef EOF
             {
              newCompositeNode(grammarAccess.getQualifiedPublisherRefRule()); 
             pushFollow(FOLLOW_1);
@@ -941,7 +1392,7 @@ public class InternalContextModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleQualifiedPublisherRef"
-    // InternalContextModel.g:429:1: ruleQualifiedPublisherRef returns [EObject current=null] : ( ( (otherlv_0= RULE_ID ) ) otherlv_1= '.' ( (otherlv_2= RULE_ID ) ) ) ;
+    // InternalContextModel.g:622:1: ruleQualifiedPublisherRef returns [EObject current=null] : ( ( (otherlv_0= RULE_ID ) ) otherlv_1= '.' ( (otherlv_2= RULE_ID ) ) ) ;
     public final EObject ruleQualifiedPublisherRef() throws RecognitionException {
         EObject current = null;
 
@@ -953,24 +1404,24 @@ public class InternalContextModelParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalContextModel.g:435:2: ( ( ( (otherlv_0= RULE_ID ) ) otherlv_1= '.' ( (otherlv_2= RULE_ID ) ) ) )
-            // InternalContextModel.g:436:2: ( ( (otherlv_0= RULE_ID ) ) otherlv_1= '.' ( (otherlv_2= RULE_ID ) ) )
+            // InternalContextModel.g:628:2: ( ( ( (otherlv_0= RULE_ID ) ) otherlv_1= '.' ( (otherlv_2= RULE_ID ) ) ) )
+            // InternalContextModel.g:629:2: ( ( (otherlv_0= RULE_ID ) ) otherlv_1= '.' ( (otherlv_2= RULE_ID ) ) )
             {
-            // InternalContextModel.g:436:2: ( ( (otherlv_0= RULE_ID ) ) otherlv_1= '.' ( (otherlv_2= RULE_ID ) ) )
-            // InternalContextModel.g:437:3: ( (otherlv_0= RULE_ID ) ) otherlv_1= '.' ( (otherlv_2= RULE_ID ) )
+            // InternalContextModel.g:629:2: ( ( (otherlv_0= RULE_ID ) ) otherlv_1= '.' ( (otherlv_2= RULE_ID ) ) )
+            // InternalContextModel.g:630:3: ( (otherlv_0= RULE_ID ) ) otherlv_1= '.' ( (otherlv_2= RULE_ID ) )
             {
-            // InternalContextModel.g:437:3: ( (otherlv_0= RULE_ID ) )
-            // InternalContextModel.g:438:4: (otherlv_0= RULE_ID )
+            // InternalContextModel.g:630:3: ( (otherlv_0= RULE_ID ) )
+            // InternalContextModel.g:631:4: (otherlv_0= RULE_ID )
             {
-            // InternalContextModel.g:438:4: (otherlv_0= RULE_ID )
-            // InternalContextModel.g:439:5: otherlv_0= RULE_ID
+            // InternalContextModel.g:631:4: (otherlv_0= RULE_ID )
+            // InternalContextModel.g:632:5: otherlv_0= RULE_ID
             {
 
             					if (current==null) {
             						current = createModelElement(grammarAccess.getQualifiedPublisherRefRule());
             					}
             				
-            otherlv_0=(Token)match(input,RULE_ID,FOLLOW_22); 
+            otherlv_0=(Token)match(input,RULE_ID,FOLLOW_25); 
 
             					newLeafNode(otherlv_0, grammarAccess.getQualifiedPublisherRefAccess().getNodeNodeCrossReference_0_0());
             				
@@ -980,15 +1431,15 @@ public class InternalContextModelParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,28,FOLLOW_5); 
+            otherlv_1=(Token)match(input,31,FOLLOW_5); 
 
             			newLeafNode(otherlv_1, grammarAccess.getQualifiedPublisherRefAccess().getFullStopKeyword_1());
             		
-            // InternalContextModel.g:454:3: ( (otherlv_2= RULE_ID ) )
-            // InternalContextModel.g:455:4: (otherlv_2= RULE_ID )
+            // InternalContextModel.g:647:3: ( (otherlv_2= RULE_ID ) )
+            // InternalContextModel.g:648:4: (otherlv_2= RULE_ID )
             {
-            // InternalContextModel.g:455:4: (otherlv_2= RULE_ID )
-            // InternalContextModel.g:456:5: otherlv_2= RULE_ID
+            // InternalContextModel.g:648:4: (otherlv_2= RULE_ID )
+            // InternalContextModel.g:649:5: otherlv_2= RULE_ID
             {
 
             					if (current==null) {
@@ -1028,7 +1479,7 @@ public class InternalContextModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleQualifiedServiceServerRef"
-    // InternalContextModel.g:471:1: entryRuleQualifiedServiceServerRef returns [EObject current=null] : iv_ruleQualifiedServiceServerRef= ruleQualifiedServiceServerRef EOF ;
+    // InternalContextModel.g:664:1: entryRuleQualifiedServiceServerRef returns [EObject current=null] : iv_ruleQualifiedServiceServerRef= ruleQualifiedServiceServerRef EOF ;
     public final EObject entryRuleQualifiedServiceServerRef() throws RecognitionException {
         EObject current = null;
 
@@ -1036,8 +1487,8 @@ public class InternalContextModelParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalContextModel.g:471:66: (iv_ruleQualifiedServiceServerRef= ruleQualifiedServiceServerRef EOF )
-            // InternalContextModel.g:472:2: iv_ruleQualifiedServiceServerRef= ruleQualifiedServiceServerRef EOF
+            // InternalContextModel.g:664:66: (iv_ruleQualifiedServiceServerRef= ruleQualifiedServiceServerRef EOF )
+            // InternalContextModel.g:665:2: iv_ruleQualifiedServiceServerRef= ruleQualifiedServiceServerRef EOF
             {
              newCompositeNode(grammarAccess.getQualifiedServiceServerRefRule()); 
             pushFollow(FOLLOW_1);
@@ -1064,7 +1515,7 @@ public class InternalContextModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleQualifiedServiceServerRef"
-    // InternalContextModel.g:478:1: ruleQualifiedServiceServerRef returns [EObject current=null] : ( ( (otherlv_0= RULE_ID ) ) otherlv_1= '.' ( (otherlv_2= RULE_ID ) ) ) ;
+    // InternalContextModel.g:671:1: ruleQualifiedServiceServerRef returns [EObject current=null] : ( ( (otherlv_0= RULE_ID ) ) otherlv_1= '.' ( (otherlv_2= RULE_ID ) ) ) ;
     public final EObject ruleQualifiedServiceServerRef() throws RecognitionException {
         EObject current = null;
 
@@ -1076,24 +1527,24 @@ public class InternalContextModelParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalContextModel.g:484:2: ( ( ( (otherlv_0= RULE_ID ) ) otherlv_1= '.' ( (otherlv_2= RULE_ID ) ) ) )
-            // InternalContextModel.g:485:2: ( ( (otherlv_0= RULE_ID ) ) otherlv_1= '.' ( (otherlv_2= RULE_ID ) ) )
+            // InternalContextModel.g:677:2: ( ( ( (otherlv_0= RULE_ID ) ) otherlv_1= '.' ( (otherlv_2= RULE_ID ) ) ) )
+            // InternalContextModel.g:678:2: ( ( (otherlv_0= RULE_ID ) ) otherlv_1= '.' ( (otherlv_2= RULE_ID ) ) )
             {
-            // InternalContextModel.g:485:2: ( ( (otherlv_0= RULE_ID ) ) otherlv_1= '.' ( (otherlv_2= RULE_ID ) ) )
-            // InternalContextModel.g:486:3: ( (otherlv_0= RULE_ID ) ) otherlv_1= '.' ( (otherlv_2= RULE_ID ) )
+            // InternalContextModel.g:678:2: ( ( (otherlv_0= RULE_ID ) ) otherlv_1= '.' ( (otherlv_2= RULE_ID ) ) )
+            // InternalContextModel.g:679:3: ( (otherlv_0= RULE_ID ) ) otherlv_1= '.' ( (otherlv_2= RULE_ID ) )
             {
-            // InternalContextModel.g:486:3: ( (otherlv_0= RULE_ID ) )
-            // InternalContextModel.g:487:4: (otherlv_0= RULE_ID )
+            // InternalContextModel.g:679:3: ( (otherlv_0= RULE_ID ) )
+            // InternalContextModel.g:680:4: (otherlv_0= RULE_ID )
             {
-            // InternalContextModel.g:487:4: (otherlv_0= RULE_ID )
-            // InternalContextModel.g:488:5: otherlv_0= RULE_ID
+            // InternalContextModel.g:680:4: (otherlv_0= RULE_ID )
+            // InternalContextModel.g:681:5: otherlv_0= RULE_ID
             {
 
             					if (current==null) {
             						current = createModelElement(grammarAccess.getQualifiedServiceServerRefRule());
             					}
             				
-            otherlv_0=(Token)match(input,RULE_ID,FOLLOW_22); 
+            otherlv_0=(Token)match(input,RULE_ID,FOLLOW_25); 
 
             					newLeafNode(otherlv_0, grammarAccess.getQualifiedServiceServerRefAccess().getNodeNodeCrossReference_0_0());
             				
@@ -1103,15 +1554,15 @@ public class InternalContextModelParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,28,FOLLOW_5); 
+            otherlv_1=(Token)match(input,31,FOLLOW_5); 
 
             			newLeafNode(otherlv_1, grammarAccess.getQualifiedServiceServerRefAccess().getFullStopKeyword_1());
             		
-            // InternalContextModel.g:503:3: ( (otherlv_2= RULE_ID ) )
-            // InternalContextModel.g:504:4: (otherlv_2= RULE_ID )
+            // InternalContextModel.g:696:3: ( (otherlv_2= RULE_ID ) )
+            // InternalContextModel.g:697:4: (otherlv_2= RULE_ID )
             {
-            // InternalContextModel.g:504:4: (otherlv_2= RULE_ID )
-            // InternalContextModel.g:505:5: otherlv_2= RULE_ID
+            // InternalContextModel.g:697:4: (otherlv_2= RULE_ID )
+            // InternalContextModel.g:698:5: otherlv_2= RULE_ID
             {
 
             					if (current==null) {
@@ -1151,7 +1602,7 @@ public class InternalContextModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleQualifiedActionServerRef"
-    // InternalContextModel.g:520:1: entryRuleQualifiedActionServerRef returns [EObject current=null] : iv_ruleQualifiedActionServerRef= ruleQualifiedActionServerRef EOF ;
+    // InternalContextModel.g:713:1: entryRuleQualifiedActionServerRef returns [EObject current=null] : iv_ruleQualifiedActionServerRef= ruleQualifiedActionServerRef EOF ;
     public final EObject entryRuleQualifiedActionServerRef() throws RecognitionException {
         EObject current = null;
 
@@ -1159,8 +1610,8 @@ public class InternalContextModelParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalContextModel.g:520:65: (iv_ruleQualifiedActionServerRef= ruleQualifiedActionServerRef EOF )
-            // InternalContextModel.g:521:2: iv_ruleQualifiedActionServerRef= ruleQualifiedActionServerRef EOF
+            // InternalContextModel.g:713:65: (iv_ruleQualifiedActionServerRef= ruleQualifiedActionServerRef EOF )
+            // InternalContextModel.g:714:2: iv_ruleQualifiedActionServerRef= ruleQualifiedActionServerRef EOF
             {
              newCompositeNode(grammarAccess.getQualifiedActionServerRefRule()); 
             pushFollow(FOLLOW_1);
@@ -1187,7 +1638,7 @@ public class InternalContextModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleQualifiedActionServerRef"
-    // InternalContextModel.g:527:1: ruleQualifiedActionServerRef returns [EObject current=null] : ( ( (otherlv_0= RULE_ID ) ) otherlv_1= '.' ( (otherlv_2= RULE_ID ) ) ) ;
+    // InternalContextModel.g:720:1: ruleQualifiedActionServerRef returns [EObject current=null] : ( ( (otherlv_0= RULE_ID ) ) otherlv_1= '.' ( (otherlv_2= RULE_ID ) ) ) ;
     public final EObject ruleQualifiedActionServerRef() throws RecognitionException {
         EObject current = null;
 
@@ -1199,24 +1650,24 @@ public class InternalContextModelParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalContextModel.g:533:2: ( ( ( (otherlv_0= RULE_ID ) ) otherlv_1= '.' ( (otherlv_2= RULE_ID ) ) ) )
-            // InternalContextModel.g:534:2: ( ( (otherlv_0= RULE_ID ) ) otherlv_1= '.' ( (otherlv_2= RULE_ID ) ) )
+            // InternalContextModel.g:726:2: ( ( ( (otherlv_0= RULE_ID ) ) otherlv_1= '.' ( (otherlv_2= RULE_ID ) ) ) )
+            // InternalContextModel.g:727:2: ( ( (otherlv_0= RULE_ID ) ) otherlv_1= '.' ( (otherlv_2= RULE_ID ) ) )
             {
-            // InternalContextModel.g:534:2: ( ( (otherlv_0= RULE_ID ) ) otherlv_1= '.' ( (otherlv_2= RULE_ID ) ) )
-            // InternalContextModel.g:535:3: ( (otherlv_0= RULE_ID ) ) otherlv_1= '.' ( (otherlv_2= RULE_ID ) )
+            // InternalContextModel.g:727:2: ( ( (otherlv_0= RULE_ID ) ) otherlv_1= '.' ( (otherlv_2= RULE_ID ) ) )
+            // InternalContextModel.g:728:3: ( (otherlv_0= RULE_ID ) ) otherlv_1= '.' ( (otherlv_2= RULE_ID ) )
             {
-            // InternalContextModel.g:535:3: ( (otherlv_0= RULE_ID ) )
-            // InternalContextModel.g:536:4: (otherlv_0= RULE_ID )
+            // InternalContextModel.g:728:3: ( (otherlv_0= RULE_ID ) )
+            // InternalContextModel.g:729:4: (otherlv_0= RULE_ID )
             {
-            // InternalContextModel.g:536:4: (otherlv_0= RULE_ID )
-            // InternalContextModel.g:537:5: otherlv_0= RULE_ID
+            // InternalContextModel.g:729:4: (otherlv_0= RULE_ID )
+            // InternalContextModel.g:730:5: otherlv_0= RULE_ID
             {
 
             					if (current==null) {
             						current = createModelElement(grammarAccess.getQualifiedActionServerRefRule());
             					}
             				
-            otherlv_0=(Token)match(input,RULE_ID,FOLLOW_22); 
+            otherlv_0=(Token)match(input,RULE_ID,FOLLOW_25); 
 
             					newLeafNode(otherlv_0, grammarAccess.getQualifiedActionServerRefAccess().getNodeNodeCrossReference_0_0());
             				
@@ -1226,15 +1677,15 @@ public class InternalContextModelParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,28,FOLLOW_5); 
+            otherlv_1=(Token)match(input,31,FOLLOW_5); 
 
             			newLeafNode(otherlv_1, grammarAccess.getQualifiedActionServerRefAccess().getFullStopKeyword_1());
             		
-            // InternalContextModel.g:552:3: ( (otherlv_2= RULE_ID ) )
-            // InternalContextModel.g:553:4: (otherlv_2= RULE_ID )
+            // InternalContextModel.g:745:3: ( (otherlv_2= RULE_ID ) )
+            // InternalContextModel.g:746:4: (otherlv_2= RULE_ID )
             {
-            // InternalContextModel.g:553:4: (otherlv_2= RULE_ID )
-            // InternalContextModel.g:554:5: otherlv_2= RULE_ID
+            // InternalContextModel.g:746:4: (otherlv_2= RULE_ID )
+            // InternalContextModel.g:747:5: otherlv_2= RULE_ID
             {
 
             					if (current==null) {
@@ -1274,7 +1725,7 @@ public class InternalContextModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleImport"
-    // InternalContextModel.g:569:1: entryRuleImport returns [EObject current=null] : iv_ruleImport= ruleImport EOF ;
+    // InternalContextModel.g:762:1: entryRuleImport returns [EObject current=null] : iv_ruleImport= ruleImport EOF ;
     public final EObject entryRuleImport() throws RecognitionException {
         EObject current = null;
 
@@ -1282,8 +1733,8 @@ public class InternalContextModelParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalContextModel.g:569:47: (iv_ruleImport= ruleImport EOF )
-            // InternalContextModel.g:570:2: iv_ruleImport= ruleImport EOF
+            // InternalContextModel.g:762:47: (iv_ruleImport= ruleImport EOF )
+            // InternalContextModel.g:763:2: iv_ruleImport= ruleImport EOF
             {
              newCompositeNode(grammarAccess.getImportRule()); 
             pushFollow(FOLLOW_1);
@@ -1310,7 +1761,7 @@ public class InternalContextModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleImport"
-    // InternalContextModel.g:576:1: ruleImport returns [EObject current=null] : (otherlv_0= 'import' ( (lv_importURI_1_0= RULE_STRING ) ) otherlv_2= ';' ) ;
+    // InternalContextModel.g:769:1: ruleImport returns [EObject current=null] : (otherlv_0= 'import' ( (lv_importURI_1_0= RULE_STRING ) ) otherlv_2= ';' ) ;
     public final EObject ruleImport() throws RecognitionException {
         EObject current = null;
 
@@ -1322,23 +1773,23 @@ public class InternalContextModelParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalContextModel.g:582:2: ( (otherlv_0= 'import' ( (lv_importURI_1_0= RULE_STRING ) ) otherlv_2= ';' ) )
-            // InternalContextModel.g:583:2: (otherlv_0= 'import' ( (lv_importURI_1_0= RULE_STRING ) ) otherlv_2= ';' )
+            // InternalContextModel.g:775:2: ( (otherlv_0= 'import' ( (lv_importURI_1_0= RULE_STRING ) ) otherlv_2= ';' ) )
+            // InternalContextModel.g:776:2: (otherlv_0= 'import' ( (lv_importURI_1_0= RULE_STRING ) ) otherlv_2= ';' )
             {
-            // InternalContextModel.g:583:2: (otherlv_0= 'import' ( (lv_importURI_1_0= RULE_STRING ) ) otherlv_2= ';' )
-            // InternalContextModel.g:584:3: otherlv_0= 'import' ( (lv_importURI_1_0= RULE_STRING ) ) otherlv_2= ';'
+            // InternalContextModel.g:776:2: (otherlv_0= 'import' ( (lv_importURI_1_0= RULE_STRING ) ) otherlv_2= ';' )
+            // InternalContextModel.g:777:3: otherlv_0= 'import' ( (lv_importURI_1_0= RULE_STRING ) ) otherlv_2= ';'
             {
-            otherlv_0=(Token)match(input,29,FOLLOW_18); 
+            otherlv_0=(Token)match(input,32,FOLLOW_18); 
 
             			newLeafNode(otherlv_0, grammarAccess.getImportAccess().getImportKeyword_0());
             		
-            // InternalContextModel.g:588:3: ( (lv_importURI_1_0= RULE_STRING ) )
-            // InternalContextModel.g:589:4: (lv_importURI_1_0= RULE_STRING )
+            // InternalContextModel.g:781:3: ( (lv_importURI_1_0= RULE_STRING ) )
+            // InternalContextModel.g:782:4: (lv_importURI_1_0= RULE_STRING )
             {
-            // InternalContextModel.g:589:4: (lv_importURI_1_0= RULE_STRING )
-            // InternalContextModel.g:590:5: lv_importURI_1_0= RULE_STRING
+            // InternalContextModel.g:782:4: (lv_importURI_1_0= RULE_STRING )
+            // InternalContextModel.g:783:5: lv_importURI_1_0= RULE_STRING
             {
-            lv_importURI_1_0=(Token)match(input,RULE_STRING,FOLLOW_23); 
+            lv_importURI_1_0=(Token)match(input,RULE_STRING,FOLLOW_26); 
 
             					newLeafNode(lv_importURI_1_0, grammarAccess.getImportAccess().getImportURISTRINGTerminalRuleCall_1_0());
             				
@@ -1358,7 +1809,7 @@ public class InternalContextModelParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_2=(Token)match(input,30,FOLLOW_2); 
+            otherlv_2=(Token)match(input,33,FOLLOW_2); 
 
             			newLeafNode(otherlv_2, grammarAccess.getImportAccess().getSemicolonKeyword_2());
             		
@@ -1383,118 +1834,6 @@ public class InternalContextModelParser extends AbstractInternalAntlrParser {
     }
     // $ANTLR end "ruleImport"
 
-
-    // $ANTLR start "entryRuleContextModelNode"
-    // InternalContextModel.g:614:1: entryRuleContextModelNode returns [EObject current=null] : iv_ruleContextModelNode= ruleContextModelNode EOF ;
-    public final EObject entryRuleContextModelNode() throws RecognitionException {
-        EObject current = null;
-
-        EObject iv_ruleContextModelNode = null;
-
-
-        try {
-            // InternalContextModel.g:614:57: (iv_ruleContextModelNode= ruleContextModelNode EOF )
-            // InternalContextModel.g:615:2: iv_ruleContextModelNode= ruleContextModelNode EOF
-            {
-             newCompositeNode(grammarAccess.getContextModelNodeRule()); 
-            pushFollow(FOLLOW_1);
-            iv_ruleContextModelNode=ruleContextModelNode();
-
-            state._fsp--;
-
-             current =iv_ruleContextModelNode; 
-            match(input,EOF,FOLLOW_2); 
-
-            }
-
-        }
-
-            catch (RecognitionException re) {
-                recover(input,re);
-                appendSkippedTokens();
-            }
-        finally {
-        }
-        return current;
-    }
-    // $ANTLR end "entryRuleContextModelNode"
-
-
-    // $ANTLR start "ruleContextModelNode"
-    // InternalContextModel.g:621:1: ruleContextModelNode returns [EObject current=null] : (otherlv_0= 'contextModelNode' ( (lv_node_import_1_0= ruleImport ) ) ) ;
-    public final EObject ruleContextModelNode() throws RecognitionException {
-        EObject current = null;
-
-        Token otherlv_0=null;
-        EObject lv_node_import_1_0 = null;
-
-
-
-        	enterRule();
-
-        try {
-            // InternalContextModel.g:627:2: ( (otherlv_0= 'contextModelNode' ( (lv_node_import_1_0= ruleImport ) ) ) )
-            // InternalContextModel.g:628:2: (otherlv_0= 'contextModelNode' ( (lv_node_import_1_0= ruleImport ) ) )
-            {
-            // InternalContextModel.g:628:2: (otherlv_0= 'contextModelNode' ( (lv_node_import_1_0= ruleImport ) ) )
-            // InternalContextModel.g:629:3: otherlv_0= 'contextModelNode' ( (lv_node_import_1_0= ruleImport ) )
-            {
-            otherlv_0=(Token)match(input,31,FOLLOW_3); 
-
-            			newLeafNode(otherlv_0, grammarAccess.getContextModelNodeAccess().getContextModelNodeKeyword_0());
-            		
-            // InternalContextModel.g:633:3: ( (lv_node_import_1_0= ruleImport ) )
-            // InternalContextModel.g:634:4: (lv_node_import_1_0= ruleImport )
-            {
-            // InternalContextModel.g:634:4: (lv_node_import_1_0= ruleImport )
-            // InternalContextModel.g:635:5: lv_node_import_1_0= ruleImport
-            {
-
-            					newCompositeNode(grammarAccess.getContextModelNodeAccess().getNode_importImportParserRuleCall_1_0());
-            				
-            pushFollow(FOLLOW_2);
-            lv_node_import_1_0=ruleImport();
-
-            state._fsp--;
-
-
-            					if (current==null) {
-            						current = createModelElementForParent(grammarAccess.getContextModelNodeRule());
-            					}
-            					set(
-            						current,
-            						"node_import",
-            						lv_node_import_1_0,
-            						"eu.coresense.context.ContextModel.Import");
-            					afterParserOrEnumRuleCall();
-            				
-
-            }
-
-
-            }
-
-
-            }
-
-
-            }
-
-
-            	leaveRule();
-
-        }
-
-            catch (RecognitionException re) {
-                recover(input,re);
-                appendSkippedTokens();
-            }
-        finally {
-        }
-        return current;
-    }
-    // $ANTLR end "ruleContextModelNode"
-
     // Delegated rules
 
 
@@ -1502,26 +1841,29 @@ public class InternalContextModelParser extends AbstractInternalAntlrParser {
 
     public static final BitSet FOLLOW_1 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_2 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_3 = new BitSet(new long[]{0x00000000A0000000L});
+    public static final BitSet FOLLOW_3 = new BitSet(new long[]{0x0000000100001002L});
     public static final BitSet FOLLOW_4 = new BitSet(new long[]{0x0000000000001002L});
     public static final BitSet FOLLOW_5 = new BitSet(new long[]{0x0000000000000010L});
     public static final BitSet FOLLOW_6 = new BitSet(new long[]{0x0000000000002000L});
     public static final BitSet FOLLOW_7 = new BitSet(new long[]{0x0000000001000000L});
     public static final BitSet FOLLOW_8 = new BitSet(new long[]{0x0000000000004000L});
-    public static final BitSet FOLLOW_9 = new BitSet(new long[]{0x0000000000008000L});
-    public static final BitSet FOLLOW_10 = new BitSet(new long[]{0x0000000000000020L});
-    public static final BitSet FOLLOW_11 = new BitSet(new long[]{0x0000000000290000L});
-    public static final BitSet FOLLOW_12 = new BitSet(new long[]{0x0000000000020000L});
-    public static final BitSet FOLLOW_13 = new BitSet(new long[]{0x0000000000000040L});
-    public static final BitSet FOLLOW_14 = new BitSet(new long[]{0x0000000000040000L});
-    public static final BitSet FOLLOW_15 = new BitSet(new long[]{0x0000000000280000L});
-    public static final BitSet FOLLOW_16 = new BitSet(new long[]{0x0000000000100000L});
+    public static final BitSet FOLLOW_9 = new BitSet(new long[]{0x0000000000000080L});
+    public static final BitSet FOLLOW_10 = new BitSet(new long[]{0x0000000000348000L});
+    public static final BitSet FOLLOW_11 = new BitSet(new long[]{0x0000000000010000L});
+    public static final BitSet FOLLOW_12 = new BitSet(new long[]{0x0000000000000020L});
+    public static final BitSet FOLLOW_13 = new BitSet(new long[]{0x0000000000020000L});
+    public static final BitSet FOLLOW_14 = new BitSet(new long[]{0x0000000000340000L});
+    public static final BitSet FOLLOW_15 = new BitSet(new long[]{0x0000000000080000L});
+    public static final BitSet FOLLOW_16 = new BitSet(new long[]{0x0000000000300000L});
     public static final BitSet FOLLOW_17 = new BitSet(new long[]{0x0000000000200000L});
-    public static final BitSet FOLLOW_18 = new BitSet(new long[]{0x0000000000000080L});
+    public static final BitSet FOLLOW_18 = new BitSet(new long[]{0x0000000000000040L});
     public static final BitSet FOLLOW_19 = new BitSet(new long[]{0x0000000000C00000L});
     public static final BitSet FOLLOW_20 = new BitSet(new long[]{0x0000000000800000L});
-    public static final BitSet FOLLOW_21 = new BitSet(new long[]{0x000000000E000000L});
-    public static final BitSet FOLLOW_22 = new BitSet(new long[]{0x0000000010000000L});
-    public static final BitSet FOLLOW_23 = new BitSet(new long[]{0x0000000040000000L});
+    public static final BitSet FOLLOW_21 = new BitSet(new long[]{0x000000002A000000L});
+    public static final BitSet FOLLOW_22 = new BitSet(new long[]{0x0000000004000000L});
+    public static final BitSet FOLLOW_23 = new BitSet(new long[]{0x0000000010000000L});
+    public static final BitSet FOLLOW_24 = new BitSet(new long[]{0x0000000040000000L});
+    public static final BitSet FOLLOW_25 = new BitSet(new long[]{0x0000000080000000L});
+    public static final BitSet FOLLOW_26 = new BitSet(new long[]{0x0000000200000000L});
 
 }

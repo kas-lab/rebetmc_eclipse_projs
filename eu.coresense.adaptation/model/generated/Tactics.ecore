@@ -45,29 +45,38 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="PureAction" eSuperTypes="#//RuleBody"/>
   <eClassifiers xsi:type="ecore:EClass" name="ConditionAction" eSuperTypes="#//RuleBody">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="condition" eType="#//Condition"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="contextPart" eType="#//ContextPart"
         containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="else" eType="#//RuleBody"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="featurePart" eType="#//FeaturePart"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ContextPart">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="contextCondition" eType="#//MeasurementCondition"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="FeaturePart">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="featureCondition" eType="#//FeatureCondition"
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Effect">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="condition" eType="#//Condition"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="condition" eType="#//MeasurementCondition"
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Condition">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="measurement" eType="ecore:EClass platform:/resource/eu.coresense.context/model/generated/ContextModel.ecore#//ContextVar"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="operator" eType="#//MathOperator"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="value" eType="ecore:EClass platform:/resource/eu.coresense.common/model/common.ecore#//Literal"
-        containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="logicalOp" eType="#//LogicalOperator"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="secondTerm" eType="#//Condition"
         containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EEnum" name="MathOperator">
-    <eLiterals name="LESS" literal="&lt;"/>
-    <eLiterals name="GREATER" value="1" literal=">"/>
-    <eLiterals name="EQUAL" value="2" literal="=="/>
-    <eLiterals name="DIFFERENT" value="3" literal="&lt;>"/>
+  <eClassifiers xsi:type="ecore:EClass" name="FeatureCondition" eSuperTypes="#//Condition">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="not" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="variant" eType="#//QualifiedFeatureRef"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MeasurementCondition" eSuperTypes="#//Condition">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="measurement" eType="ecore:EClass platform:/resource/eu.coresense.context/model/generated/ContextModel.ecore#//ContextVar"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="operator" eType="ecore:EEnum platform:/resource/eu.coresense.common/model/common.ecore#//MathOperator"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="value" eType="ecore:EClass platform:/resource/eu.coresense.common/model/common.ecore#//Literal"
+        containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="LogicalOperator">
     <eLiterals name="AND" literal="AND"/>

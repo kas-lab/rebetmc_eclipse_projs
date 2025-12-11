@@ -98,28 +98,9 @@ ruleContextModel returns [EObject current=null]
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getContextModelAccess().getContext_model_nodeContextModelNodeParserRuleCall_1_0());
+					newCompositeNode(grammarAccess.getContextModelAccess().getContext_variablesContextVarParserRuleCall_1_0());
 				}
-				lv_context_model_node_1_0=ruleContextModelNode
-				{
-					if ($current==null) {
-						$current = createModelElementForParent(grammarAccess.getContextModelRule());
-					}
-					set(
-						$current,
-						"context_model_node",
-						lv_context_model_node_1_0,
-						"eu.coresense.context.ContextModel.ContextModelNode");
-					afterParserOrEnumRuleCall();
-				}
-			)
-		)
-		(
-			(
-				{
-					newCompositeNode(grammarAccess.getContextModelAccess().getContext_variablesContextVarParserRuleCall_2_0());
-				}
-				lv_context_variables_2_0=ruleContextVar
+				lv_context_variables_1_0=ruleContextVar
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getContextModelRule());
@@ -127,7 +108,7 @@ ruleContextModel returns [EObject current=null]
 					add(
 						$current,
 						"context_variables",
-						lv_context_variables_2_0,
+						lv_context_variables_1_0,
 						"eu.coresense.context.ContextModel.ContextVar");
 					afterParserOrEnumRuleCall();
 				}
@@ -197,59 +178,43 @@ ruleContextVar returns [EObject current=null]
 				}
 			)
 		)
-		otherlv_4='efferent:'
+		otherlv_4='cache?'
 		{
-			newLeafNode(otherlv_4, grammarAccess.getContextVarAccess().getEfferentKeyword_4());
+			newLeafNode(otherlv_4, grammarAccess.getContextVarAccess().getCacheKeyword_4());
 		}
 		(
 			(
 				{
-					if ($current==null) {
-						$current = createModelElement(grammarAccess.getContextVarRule());
-					}
+					newCompositeNode(grammarAccess.getContextVarAccess().getDoCacheDoCacheParserRuleCall_5_0());
 				}
-				otherlv_5=RULE_ID
-				{
-					newLeafNode(otherlv_5, grammarAccess.getContextVarAccess().getProcessed_sourcePublisherCrossReference_5_0());
-				}
-			)
-		)
-		otherlv_6='cache?'
-		{
-			newLeafNode(otherlv_6, grammarAccess.getContextVarAccess().getCacheKeyword_6());
-		}
-		(
-			(
-				lv_doCache_7_0=RULE_BOOLEAN
-				{
-					newLeafNode(lv_doCache_7_0, grammarAccess.getContextVarAccess().getDoCacheBOOLEANTerminalRuleCall_7_0());
-				}
+				lv_doCache_5_0=ruleDoCache
 				{
 					if ($current==null) {
-						$current = createModelElement(grammarAccess.getContextVarRule());
+						$current = createModelElementForParent(grammarAccess.getContextVarRule());
 					}
-					setWithLastConsumed(
+					set(
 						$current,
 						"doCache",
-						lv_doCache_7_0,
-						"eu.coresense.context.ContextModel.BOOLEAN");
+						lv_doCache_5_0,
+						"eu.coresense.context.ContextModel.DoCache");
+					afterParserOrEnumRuleCall();
 				}
 			)
 		)
 		(
-			otherlv_8='cache'
+			otherlv_6='cache'
 			{
-				newLeafNode(otherlv_8, grammarAccess.getContextVarAccess().getCacheKeyword_8_0());
+				newLeafNode(otherlv_6, grammarAccess.getContextVarAccess().getCacheKeyword_6_0());
 			}
-			otherlv_9='length'
+			otherlv_7='length'
 			{
-				newLeafNode(otherlv_9, grammarAccess.getContextVarAccess().getLengthKeyword_8_1());
+				newLeafNode(otherlv_7, grammarAccess.getContextVarAccess().getLengthKeyword_6_1());
 			}
 			(
 				(
-					lv_length_10_0=RULE_INT
+					lv_length_8_0=RULE_INT
 					{
-						newLeafNode(lv_length_10_0, grammarAccess.getContextVarAccess().getLengthINTTerminalRuleCall_8_2_0());
+						newLeafNode(lv_length_8_0, grammarAccess.getContextVarAccess().getLengthINTTerminalRuleCall_6_2_0());
 					}
 					{
 						if ($current==null) {
@@ -258,26 +223,26 @@ ruleContextVar returns [EObject current=null]
 						setWithLastConsumed(
 							$current,
 							"length",
-							lv_length_10_0,
+							lv_length_8_0,
 							"org.eclipse.xtext.common.Terminals.INT");
 					}
 				)
 			)
-			otherlv_11='s'
+			otherlv_9='s'
 			{
-				newLeafNode(otherlv_11, grammarAccess.getContextVarAccess().getSKeyword_8_3());
+				newLeafNode(otherlv_9, grammarAccess.getContextVarAccess().getSKeyword_6_3());
 			}
 		)?
 		(
-			otherlv_12='period'
+			otherlv_10='period'
 			{
-				newLeafNode(otherlv_12, grammarAccess.getContextVarAccess().getPeriodKeyword_9_0());
+				newLeafNode(otherlv_10, grammarAccess.getContextVarAccess().getPeriodKeyword_7_0());
 			}
 			(
 				(
-					lv_period_13_0=RULE_INT
+					lv_period_11_0=RULE_INT
 					{
-						newLeafNode(lv_period_13_0, grammarAccess.getContextVarAccess().getPeriodINTTerminalRuleCall_9_1_0());
+						newLeafNode(lv_period_11_0, grammarAccess.getContextVarAccess().getPeriodINTTerminalRuleCall_7_1_0());
 					}
 					{
 						if ($current==null) {
@@ -286,25 +251,50 @@ ruleContextVar returns [EObject current=null]
 						setWithLastConsumed(
 							$current,
 							"period",
-							lv_period_13_0,
+							lv_period_11_0,
 							"org.eclipse.xtext.common.Terminals.INT");
 					}
 				)
 			)
-			otherlv_14='ns'
+			otherlv_12='ns'
 			{
-				newLeafNode(otherlv_14, grammarAccess.getContextVarAccess().getNsKeyword_9_2());
+				newLeafNode(otherlv_12, grammarAccess.getContextVarAccess().getNsKeyword_7_2());
 			}
+		)?
+		(
+			otherlv_13='proxy'
+			{
+				newLeafNode(otherlv_13, grammarAccess.getContextVarAccess().getProxyKeyword_8_0());
+			}
+			(
+				(
+					{
+						newCompositeNode(grammarAccess.getContextVarAccess().getDoProxyDoProxyParserRuleCall_8_1_0());
+					}
+					lv_doProxy_14_0=ruleDoProxy
+					{
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getContextVarRule());
+						}
+						set(
+							$current,
+							"doProxy",
+							lv_doProxy_14_0,
+							"eu.coresense.context.ContextModel.DoProxy");
+						afterParserOrEnumRuleCall();
+					}
+				)
+			)
 		)?
 		otherlv_15='function_name'
 		{
-			newLeafNode(otherlv_15, grammarAccess.getContextVarAccess().getFunction_nameKeyword_10());
+			newLeafNode(otherlv_15, grammarAccess.getContextVarAccess().getFunction_nameKeyword_9());
 		}
 		(
 			(
 				lv_functionName_16_0=RULE_STRING
 				{
-					newLeafNode(lv_functionName_16_0, grammarAccess.getContextVarAccess().getFunctionNameSTRINGTerminalRuleCall_11_0());
+					newLeafNode(lv_functionName_16_0, grammarAccess.getContextVarAccess().getFunctionNameSTRINGTerminalRuleCall_10_0());
 				}
 				{
 					if ($current==null) {
@@ -321,13 +311,13 @@ ruleContextVar returns [EObject current=null]
 		(
 			otherlv_17='function_lib'
 			{
-				newLeafNode(otherlv_17, grammarAccess.getContextVarAccess().getFunction_libKeyword_12_0());
+				newLeafNode(otherlv_17, grammarAccess.getContextVarAccess().getFunction_libKeyword_11_0());
 			}
 			(
 				(
 					lv_functionLibrary_18_0=RULE_STRING
 					{
-						newLeafNode(lv_functionLibrary_18_0, grammarAccess.getContextVarAccess().getFunctionLibrarySTRINGTerminalRuleCall_12_1_0());
+						newLeafNode(lv_functionLibrary_18_0, grammarAccess.getContextVarAccess().getFunctionLibrarySTRINGTerminalRuleCall_11_1_0());
 					}
 					{
 						if ($current==null) {
@@ -344,8 +334,96 @@ ruleContextVar returns [EObject current=null]
 		)?
 		otherlv_19='}'
 		{
-			newLeafNode(otherlv_19, grammarAccess.getContextVarAccess().getRightCurlyBracketKeyword_13());
+			newLeafNode(otherlv_19, grammarAccess.getContextVarAccess().getRightCurlyBracketKeyword_12());
 		}
+	)
+;
+
+// Entry rule entryRuleDoCache
+entryRuleDoCache returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getDoCacheRule()); }
+	iv_ruleDoCache=ruleDoCache
+	{ $current=$iv_ruleDoCache.current; }
+	EOF;
+
+// Rule DoCache
+ruleDoCache returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		(
+			{
+				$current = forceCreateModelElement(
+					grammarAccess.getDoCacheAccess().getDoCacheAction_0(),
+					$current);
+			}
+		)
+		(
+			(
+				lv_do_1_0=RULE_BOOLEAN
+				{
+					newLeafNode(lv_do_1_0, grammarAccess.getDoCacheAccess().getDoBOOLEANTerminalRuleCall_1_0());
+				}
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getDoCacheRule());
+					}
+					setWithLastConsumed(
+						$current,
+						"do",
+						lv_do_1_0,
+						"eu.coresense.context.ContextModel.BOOLEAN");
+				}
+			)
+		)
+	)
+;
+
+// Entry rule entryRuleDoProxy
+entryRuleDoProxy returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getDoProxyRule()); }
+	iv_ruleDoProxy=ruleDoProxy
+	{ $current=$iv_ruleDoProxy.current; }
+	EOF;
+
+// Rule DoProxy
+ruleDoProxy returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		(
+			{
+				$current = forceCreateModelElement(
+					grammarAccess.getDoProxyAccess().getDoProxyAction_0(),
+					$current);
+			}
+		)
+		(
+			(
+				lv_do_1_0=RULE_BOOLEAN
+				{
+					newLeafNode(lv_do_1_0, grammarAccess.getDoProxyAccess().getDoBOOLEANTerminalRuleCall_1_0());
+				}
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getDoProxyRule());
+					}
+					setWithLastConsumed(
+						$current,
+						"do",
+						lv_do_1_0,
+						"eu.coresense.context.ContextModel.BOOLEAN");
+				}
+			)
+		)
 	)
 ;
 
@@ -365,9 +443,9 @@ ruleDataSource returns [EObject current=null]
 	leaveRule();
 }:
 	(
-		otherlv_0='afferent:'
+		otherlv_0='source:'
 		{
-			newLeafNode(otherlv_0, grammarAccess.getDataSourceAccess().getAfferentKeyword_0());
+			newLeafNode(otherlv_0, grammarAccess.getDataSourceAccess().getSourceKeyword_0());
 		}
 		(
 			(
@@ -375,47 +453,162 @@ ruleDataSource returns [EObject current=null]
 				{
 					newLeafNode(otherlv_1, grammarAccess.getDataSourceAccess().getPublisherKeyword_1_0_0());
 				}
+				otherlv_2='ref:'
 				{
-					newCompositeNode(grammarAccess.getDataSourceAccess().getQualifiedPublisherRefParserRuleCall_1_0_1());
+					newLeafNode(otherlv_2, grammarAccess.getDataSourceAccess().getRefKeyword_1_0_1());
 				}
-				this_QualifiedPublisherRef_2=ruleQualifiedPublisherRef
-				{
-					$current = $this_QualifiedPublisherRef_2.current;
-					afterParserOrEnumRuleCall();
-				}
+				(
+					(
+						{
+							newCompositeNode(grammarAccess.getDataSourceAccess().getRefQualifiedPublisherRefParserRuleCall_1_0_2_0());
+						}
+						lv_ref_3_0=ruleQualifiedPublisherRef
+						{
+							if ($current==null) {
+								$current = createModelElementForParent(grammarAccess.getDataSourceRule());
+							}
+							set(
+								$current,
+								"ref",
+								lv_ref_3_0,
+								"eu.coresense.context.ContextModel.QualifiedPublisherRef");
+							afterParserOrEnumRuleCall();
+						}
+					)
+				)
 			)
 			    |
 			(
-				otherlv_3='service:'
+				otherlv_4='service:'
 				{
-					newLeafNode(otherlv_3, grammarAccess.getDataSourceAccess().getServiceKeyword_1_1_0());
+					newLeafNode(otherlv_4, grammarAccess.getDataSourceAccess().getServiceKeyword_1_1_0());
 				}
+				otherlv_5='ref:'
 				{
-					newCompositeNode(grammarAccess.getDataSourceAccess().getQualifiedServiceServerRefParserRuleCall_1_1_1());
+					newLeafNode(otherlv_5, grammarAccess.getDataSourceAccess().getRefKeyword_1_1_1());
 				}
-				this_QualifiedServiceServerRef_4=ruleQualifiedServiceServerRef
+				(
+					(
+						{
+							newCompositeNode(grammarAccess.getDataSourceAccess().getRefQualifiedServiceServerRefParserRuleCall_1_1_2_0());
+						}
+						lv_ref_6_0=ruleQualifiedServiceServerRef
+						{
+							if ($current==null) {
+								$current = createModelElementForParent(grammarAccess.getDataSourceRule());
+							}
+							set(
+								$current,
+								"ref",
+								lv_ref_6_0,
+								"eu.coresense.context.ContextModel.QualifiedServiceServerRef");
+							afterParserOrEnumRuleCall();
+						}
+					)
+				)
+				otherlv_7='request_kwargs:'
 				{
-					$current = $this_QualifiedServiceServerRef_4.current;
-					afterParserOrEnumRuleCall();
+					newLeafNode(otherlv_7, grammarAccess.getDataSourceAccess().getRequest_kwargsKeyword_1_1_3());
 				}
+				(
+					(
+						{
+							newCompositeNode(grammarAccess.getDataSourceAccess().getKwargsKeyWordArgumentsParserRuleCall_1_1_4_0());
+						}
+						lv_kwargs_8_0=ruleKeyWordArguments
+						{
+							if ($current==null) {
+								$current = createModelElementForParent(grammarAccess.getDataSourceRule());
+							}
+							set(
+								$current,
+								"kwargs",
+								lv_kwargs_8_0,
+								"eu.coresense.context.ContextModel.KeyWordArguments");
+							afterParserOrEnumRuleCall();
+						}
+					)
+				)
 			)
 			    |
 			(
-				otherlv_5='action:'
+				otherlv_9='action:'
 				{
-					newLeafNode(otherlv_5, grammarAccess.getDataSourceAccess().getActionKeyword_1_2_0());
+					newLeafNode(otherlv_9, grammarAccess.getDataSourceAccess().getActionKeyword_1_2_0());
 				}
+				otherlv_10='ref:'
 				{
-					newCompositeNode(grammarAccess.getDataSourceAccess().getQualifiedActionServerRefParserRuleCall_1_2_1());
+					newLeafNode(otherlv_10, grammarAccess.getDataSourceAccess().getRefKeyword_1_2_1());
 				}
-				this_QualifiedActionServerRef_6=ruleQualifiedActionServerRef
+				(
+					(
+						{
+							newCompositeNode(grammarAccess.getDataSourceAccess().getRefQualifiedActionServerRefParserRuleCall_1_2_2_0());
+						}
+						lv_ref_11_0=ruleQualifiedActionServerRef
+						{
+							if ($current==null) {
+								$current = createModelElementForParent(grammarAccess.getDataSourceRule());
+							}
+							set(
+								$current,
+								"ref",
+								lv_ref_11_0,
+								"eu.coresense.context.ContextModel.QualifiedActionServerRef");
+							afterParserOrEnumRuleCall();
+						}
+					)
+				)
+				otherlv_12='goal_kwargs:'
 				{
-					$current = $this_QualifiedActionServerRef_6.current;
-					afterParserOrEnumRuleCall();
+					newLeafNode(otherlv_12, grammarAccess.getDataSourceAccess().getGoal_kwargsKeyword_1_2_3());
 				}
+				(
+					(
+						{
+							newCompositeNode(grammarAccess.getDataSourceAccess().getKwargsKeyWordArgumentsParserRuleCall_1_2_4_0());
+						}
+						lv_kwargs_13_0=ruleKeyWordArguments
+						{
+							if ($current==null) {
+								$current = createModelElementForParent(grammarAccess.getDataSourceRule());
+							}
+							set(
+								$current,
+								"kwargs",
+								lv_kwargs_13_0,
+								"eu.coresense.context.ContextModel.KeyWordArguments");
+							afterParserOrEnumRuleCall();
+						}
+					)
+				)
 			)
 		)
 	)
+;
+
+// Entry rule entryRuleKeyWordArguments
+entryRuleKeyWordArguments returns [String current=null]:
+	{ newCompositeNode(grammarAccess.getKeyWordArgumentsRule()); }
+	iv_ruleKeyWordArguments=ruleKeyWordArguments
+	{ $current=$iv_ruleKeyWordArguments.current.getText(); }
+	EOF;
+
+// Rule KeyWordArguments
+ruleKeyWordArguments returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	this_STRING_0=RULE_STRING
+	{
+		$current.merge(this_STRING_0);
+	}
+	{
+		newLeafNode(this_STRING_0, grammarAccess.getKeyWordArgumentsAccess().getSTRINGTerminalRuleCall());
+	}
 ;
 
 // Entry rule entryRuleQualifiedPublisherRef
@@ -607,48 +800,6 @@ ruleImport returns [EObject current=null]
 		{
 			newLeafNode(otherlv_2, grammarAccess.getImportAccess().getSemicolonKeyword_2());
 		}
-	)
-;
-
-// Entry rule entryRuleContextModelNode
-entryRuleContextModelNode returns [EObject current=null]:
-	{ newCompositeNode(grammarAccess.getContextModelNodeRule()); }
-	iv_ruleContextModelNode=ruleContextModelNode
-	{ $current=$iv_ruleContextModelNode.current; }
-	EOF;
-
-// Rule ContextModelNode
-ruleContextModelNode returns [EObject current=null]
-@init {
-	enterRule();
-}
-@after {
-	leaveRule();
-}:
-	(
-		otherlv_0='contextModelNode'
-		{
-			newLeafNode(otherlv_0, grammarAccess.getContextModelNodeAccess().getContextModelNodeKeyword_0());
-		}
-		(
-			(
-				{
-					newCompositeNode(grammarAccess.getContextModelNodeAccess().getNode_importImportParserRuleCall_1_0());
-				}
-				lv_node_import_1_0=ruleImport
-				{
-					if ($current==null) {
-						$current = createModelElementForParent(grammarAccess.getContextModelNodeRule());
-					}
-					set(
-						$current,
-						"node_import",
-						lv_node_import_1_0,
-						"eu.coresense.context.ContextModel.Import");
-					afterParserOrEnumRuleCall();
-				}
-			)
-		)
 	)
 ;
 

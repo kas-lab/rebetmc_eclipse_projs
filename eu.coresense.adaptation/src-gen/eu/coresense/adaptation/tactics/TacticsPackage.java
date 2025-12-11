@@ -439,22 +439,22 @@ public interface TacticsPackage extends EPackage
   int CONDITION_ACTION__ATOMIC_ACTION = RULE_BODY__ATOMIC_ACTION;
 
   /**
-   * The feature id for the '<em><b>Condition</b></em>' containment reference.
+   * The feature id for the '<em><b>Context Part</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int CONDITION_ACTION__CONDITION = RULE_BODY_FEATURE_COUNT + 0;
+  int CONDITION_ACTION__CONTEXT_PART = RULE_BODY_FEATURE_COUNT + 0;
 
   /**
-   * The feature id for the '<em><b>Else</b></em>' containment reference.
+   * The feature id for the '<em><b>Feature Part</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int CONDITION_ACTION__ELSE = RULE_BODY_FEATURE_COUNT + 1;
+  int CONDITION_ACTION__FEATURE_PART = RULE_BODY_FEATURE_COUNT + 1;
 
   /**
    * The number of structural features of the '<em>Condition Action</em>' class.
@@ -466,6 +466,62 @@ public interface TacticsPackage extends EPackage
   int CONDITION_ACTION_FEATURE_COUNT = RULE_BODY_FEATURE_COUNT + 2;
 
   /**
+   * The meta object id for the '{@link eu.coresense.adaptation.tactics.impl.ContextPartImpl <em>Context Part</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see eu.coresense.adaptation.tactics.impl.ContextPartImpl
+   * @see eu.coresense.adaptation.tactics.impl.TacticsPackageImpl#getContextPart()
+   * @generated
+   */
+  int CONTEXT_PART = 11;
+
+  /**
+   * The feature id for the '<em><b>Context Condition</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CONTEXT_PART__CONTEXT_CONDITION = 0;
+
+  /**
+   * The number of structural features of the '<em>Context Part</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CONTEXT_PART_FEATURE_COUNT = 1;
+
+  /**
+   * The meta object id for the '{@link eu.coresense.adaptation.tactics.impl.FeaturePartImpl <em>Feature Part</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see eu.coresense.adaptation.tactics.impl.FeaturePartImpl
+   * @see eu.coresense.adaptation.tactics.impl.TacticsPackageImpl#getFeaturePart()
+   * @generated
+   */
+  int FEATURE_PART = 12;
+
+  /**
+   * The feature id for the '<em><b>Feature Condition</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FEATURE_PART__FEATURE_CONDITION = 0;
+
+  /**
+   * The number of structural features of the '<em>Feature Part</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FEATURE_PART_FEATURE_COUNT = 1;
+
+  /**
    * The meta object id for the '{@link eu.coresense.adaptation.tactics.impl.EffectImpl <em>Effect</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -473,7 +529,7 @@ public interface TacticsPackage extends EPackage
    * @see eu.coresense.adaptation.tactics.impl.TacticsPackageImpl#getEffect()
    * @generated
    */
-  int EFFECT = 11;
+  int EFFECT = 13;
 
   /**
    * The feature id for the '<em><b>Condition</b></em>' containment reference.
@@ -501,34 +557,7 @@ public interface TacticsPackage extends EPackage
    * @see eu.coresense.adaptation.tactics.impl.TacticsPackageImpl#getCondition()
    * @generated
    */
-  int CONDITION = 12;
-
-  /**
-   * The feature id for the '<em><b>Measurement</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int CONDITION__MEASUREMENT = 0;
-
-  /**
-   * The feature id for the '<em><b>Operator</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int CONDITION__OPERATOR = 1;
-
-  /**
-   * The feature id for the '<em><b>Value</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int CONDITION__VALUE = 2;
+  int CONDITION = 14;
 
   /**
    * The feature id for the '<em><b>Logical Op</b></em>' attribute.
@@ -537,7 +566,7 @@ public interface TacticsPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CONDITION__LOGICAL_OP = 3;
+  int CONDITION__LOGICAL_OP = 0;
 
   /**
    * The feature id for the '<em><b>Second Term</b></em>' containment reference.
@@ -546,7 +575,7 @@ public interface TacticsPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CONDITION__SECOND_TERM = 4;
+  int CONDITION__SECOND_TERM = 1;
 
   /**
    * The number of structural features of the '<em>Condition</em>' class.
@@ -555,7 +584,126 @@ public interface TacticsPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CONDITION_FEATURE_COUNT = 5;
+  int CONDITION_FEATURE_COUNT = 2;
+
+  /**
+   * The meta object id for the '{@link eu.coresense.adaptation.tactics.impl.FeatureConditionImpl <em>Feature Condition</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see eu.coresense.adaptation.tactics.impl.FeatureConditionImpl
+   * @see eu.coresense.adaptation.tactics.impl.TacticsPackageImpl#getFeatureCondition()
+   * @generated
+   */
+  int FEATURE_CONDITION = 15;
+
+  /**
+   * The feature id for the '<em><b>Logical Op</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FEATURE_CONDITION__LOGICAL_OP = CONDITION__LOGICAL_OP;
+
+  /**
+   * The feature id for the '<em><b>Second Term</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FEATURE_CONDITION__SECOND_TERM = CONDITION__SECOND_TERM;
+
+  /**
+   * The feature id for the '<em><b>Not</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FEATURE_CONDITION__NOT = CONDITION_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Variant</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FEATURE_CONDITION__VARIANT = CONDITION_FEATURE_COUNT + 1;
+
+  /**
+   * The number of structural features of the '<em>Feature Condition</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FEATURE_CONDITION_FEATURE_COUNT = CONDITION_FEATURE_COUNT + 2;
+
+  /**
+   * The meta object id for the '{@link eu.coresense.adaptation.tactics.impl.MeasurementConditionImpl <em>Measurement Condition</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see eu.coresense.adaptation.tactics.impl.MeasurementConditionImpl
+   * @see eu.coresense.adaptation.tactics.impl.TacticsPackageImpl#getMeasurementCondition()
+   * @generated
+   */
+  int MEASUREMENT_CONDITION = 16;
+
+  /**
+   * The feature id for the '<em><b>Logical Op</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MEASUREMENT_CONDITION__LOGICAL_OP = CONDITION__LOGICAL_OP;
+
+  /**
+   * The feature id for the '<em><b>Second Term</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MEASUREMENT_CONDITION__SECOND_TERM = CONDITION__SECOND_TERM;
+
+  /**
+   * The feature id for the '<em><b>Measurement</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MEASUREMENT_CONDITION__MEASUREMENT = CONDITION_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Operator</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MEASUREMENT_CONDITION__OPERATOR = CONDITION_FEATURE_COUNT + 1;
+
+  /**
+   * The feature id for the '<em><b>Value</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MEASUREMENT_CONDITION__VALUE = CONDITION_FEATURE_COUNT + 2;
+
+  /**
+   * The number of structural features of the '<em>Measurement Condition</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MEASUREMENT_CONDITION_FEATURE_COUNT = CONDITION_FEATURE_COUNT + 3;
 
   /**
    * The meta object id for the '{@link eu.coresense.adaptation.tactics.impl.AtomicActionSelectFeatureImpl <em>Atomic Action Select Feature</em>}' class.
@@ -565,7 +713,7 @@ public interface TacticsPackage extends EPackage
    * @see eu.coresense.adaptation.tactics.impl.TacticsPackageImpl#getAtomicActionSelectFeature()
    * @generated
    */
-  int ATOMIC_ACTION_SELECT_FEATURE = 13;
+  int ATOMIC_ACTION_SELECT_FEATURE = 17;
 
   /**
    * The feature id for the '<em><b>Variant</b></em>' containment reference.
@@ -593,7 +741,7 @@ public interface TacticsPackage extends EPackage
    * @see eu.coresense.adaptation.tactics.impl.TacticsPackageImpl#getAtomicActionDeselectFeature()
    * @generated
    */
-  int ATOMIC_ACTION_DESELECT_FEATURE = 14;
+  int ATOMIC_ACTION_DESELECT_FEATURE = 18;
 
   /**
    * The feature id for the '<em><b>Variant</b></em>' containment reference.
@@ -621,7 +769,7 @@ public interface TacticsPackage extends EPackage
    * @see eu.coresense.adaptation.tactics.impl.TacticsPackageImpl#getQualifiedFeatureRef()
    * @generated
    */
-  int QUALIFIED_FEATURE_REF = 15;
+  int QUALIFIED_FEATURE_REF = 19;
 
   /**
    * The feature id for the '<em><b>Model</b></em>' reference.
@@ -651,16 +799,6 @@ public interface TacticsPackage extends EPackage
   int QUALIFIED_FEATURE_REF_FEATURE_COUNT = 2;
 
   /**
-   * The meta object id for the '{@link eu.coresense.adaptation.tactics.MathOperator <em>Math Operator</em>}' enum.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see eu.coresense.adaptation.tactics.MathOperator
-   * @see eu.coresense.adaptation.tactics.impl.TacticsPackageImpl#getMathOperator()
-   * @generated
-   */
-  int MATH_OPERATOR = 16;
-
-  /**
    * The meta object id for the '{@link eu.coresense.adaptation.tactics.LogicalOperator <em>Logical Operator</em>}' enum.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -668,7 +806,7 @@ public interface TacticsPackage extends EPackage
    * @see eu.coresense.adaptation.tactics.impl.TacticsPackageImpl#getLogicalOperator()
    * @generated
    */
-  int LOGICAL_OPERATOR = 17;
+  int LOGICAL_OPERATOR = 20;
 
 
   /**
@@ -936,26 +1074,68 @@ public interface TacticsPackage extends EPackage
   EClass getConditionAction();
 
   /**
-   * Returns the meta object for the containment reference '{@link eu.coresense.adaptation.tactics.ConditionAction#getCondition <em>Condition</em>}'.
+   * Returns the meta object for the containment reference '{@link eu.coresense.adaptation.tactics.ConditionAction#getContextPart <em>Context Part</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Condition</em>'.
-   * @see eu.coresense.adaptation.tactics.ConditionAction#getCondition()
+   * @return the meta object for the containment reference '<em>Context Part</em>'.
+   * @see eu.coresense.adaptation.tactics.ConditionAction#getContextPart()
    * @see #getConditionAction()
    * @generated
    */
-  EReference getConditionAction_Condition();
+  EReference getConditionAction_ContextPart();
 
   /**
-   * Returns the meta object for the containment reference '{@link eu.coresense.adaptation.tactics.ConditionAction#getElse <em>Else</em>}'.
+   * Returns the meta object for the containment reference '{@link eu.coresense.adaptation.tactics.ConditionAction#getFeaturePart <em>Feature Part</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Else</em>'.
-   * @see eu.coresense.adaptation.tactics.ConditionAction#getElse()
+   * @return the meta object for the containment reference '<em>Feature Part</em>'.
+   * @see eu.coresense.adaptation.tactics.ConditionAction#getFeaturePart()
    * @see #getConditionAction()
    * @generated
    */
-  EReference getConditionAction_Else();
+  EReference getConditionAction_FeaturePart();
+
+  /**
+   * Returns the meta object for class '{@link eu.coresense.adaptation.tactics.ContextPart <em>Context Part</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Context Part</em>'.
+   * @see eu.coresense.adaptation.tactics.ContextPart
+   * @generated
+   */
+  EClass getContextPart();
+
+  /**
+   * Returns the meta object for the containment reference '{@link eu.coresense.adaptation.tactics.ContextPart#getContextCondition <em>Context Condition</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Context Condition</em>'.
+   * @see eu.coresense.adaptation.tactics.ContextPart#getContextCondition()
+   * @see #getContextPart()
+   * @generated
+   */
+  EReference getContextPart_ContextCondition();
+
+  /**
+   * Returns the meta object for class '{@link eu.coresense.adaptation.tactics.FeaturePart <em>Feature Part</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Feature Part</em>'.
+   * @see eu.coresense.adaptation.tactics.FeaturePart
+   * @generated
+   */
+  EClass getFeaturePart();
+
+  /**
+   * Returns the meta object for the containment reference '{@link eu.coresense.adaptation.tactics.FeaturePart#getFeatureCondition <em>Feature Condition</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Feature Condition</em>'.
+   * @see eu.coresense.adaptation.tactics.FeaturePart#getFeatureCondition()
+   * @see #getFeaturePart()
+   * @generated
+   */
+  EReference getFeaturePart_FeatureCondition();
 
   /**
    * Returns the meta object for class '{@link eu.coresense.adaptation.tactics.Effect <em>Effect</em>}'.
@@ -989,39 +1169,6 @@ public interface TacticsPackage extends EPackage
   EClass getCondition();
 
   /**
-   * Returns the meta object for the reference '{@link eu.coresense.adaptation.tactics.Condition#getMeasurement <em>Measurement</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the reference '<em>Measurement</em>'.
-   * @see eu.coresense.adaptation.tactics.Condition#getMeasurement()
-   * @see #getCondition()
-   * @generated
-   */
-  EReference getCondition_Measurement();
-
-  /**
-   * Returns the meta object for the attribute '{@link eu.coresense.adaptation.tactics.Condition#getOperator <em>Operator</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Operator</em>'.
-   * @see eu.coresense.adaptation.tactics.Condition#getOperator()
-   * @see #getCondition()
-   * @generated
-   */
-  EAttribute getCondition_Operator();
-
-  /**
-   * Returns the meta object for the containment reference '{@link eu.coresense.adaptation.tactics.Condition#getValue <em>Value</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Value</em>'.
-   * @see eu.coresense.adaptation.tactics.Condition#getValue()
-   * @see #getCondition()
-   * @generated
-   */
-  EReference getCondition_Value();
-
-  /**
    * Returns the meta object for the attribute '{@link eu.coresense.adaptation.tactics.Condition#getLogicalOp <em>Logical Op</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1042,6 +1189,81 @@ public interface TacticsPackage extends EPackage
    * @generated
    */
   EReference getCondition_SecondTerm();
+
+  /**
+   * Returns the meta object for class '{@link eu.coresense.adaptation.tactics.FeatureCondition <em>Feature Condition</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Feature Condition</em>'.
+   * @see eu.coresense.adaptation.tactics.FeatureCondition
+   * @generated
+   */
+  EClass getFeatureCondition();
+
+  /**
+   * Returns the meta object for the attribute '{@link eu.coresense.adaptation.tactics.FeatureCondition#getNot <em>Not</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Not</em>'.
+   * @see eu.coresense.adaptation.tactics.FeatureCondition#getNot()
+   * @see #getFeatureCondition()
+   * @generated
+   */
+  EAttribute getFeatureCondition_Not();
+
+  /**
+   * Returns the meta object for the containment reference '{@link eu.coresense.adaptation.tactics.FeatureCondition#getVariant <em>Variant</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Variant</em>'.
+   * @see eu.coresense.adaptation.tactics.FeatureCondition#getVariant()
+   * @see #getFeatureCondition()
+   * @generated
+   */
+  EReference getFeatureCondition_Variant();
+
+  /**
+   * Returns the meta object for class '{@link eu.coresense.adaptation.tactics.MeasurementCondition <em>Measurement Condition</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Measurement Condition</em>'.
+   * @see eu.coresense.adaptation.tactics.MeasurementCondition
+   * @generated
+   */
+  EClass getMeasurementCondition();
+
+  /**
+   * Returns the meta object for the reference '{@link eu.coresense.adaptation.tactics.MeasurementCondition#getMeasurement <em>Measurement</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Measurement</em>'.
+   * @see eu.coresense.adaptation.tactics.MeasurementCondition#getMeasurement()
+   * @see #getMeasurementCondition()
+   * @generated
+   */
+  EReference getMeasurementCondition_Measurement();
+
+  /**
+   * Returns the meta object for the attribute '{@link eu.coresense.adaptation.tactics.MeasurementCondition#getOperator <em>Operator</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Operator</em>'.
+   * @see eu.coresense.adaptation.tactics.MeasurementCondition#getOperator()
+   * @see #getMeasurementCondition()
+   * @generated
+   */
+  EAttribute getMeasurementCondition_Operator();
+
+  /**
+   * Returns the meta object for the containment reference '{@link eu.coresense.adaptation.tactics.MeasurementCondition#getValue <em>Value</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Value</em>'.
+   * @see eu.coresense.adaptation.tactics.MeasurementCondition#getValue()
+   * @see #getMeasurementCondition()
+   * @generated
+   */
+  EReference getMeasurementCondition_Value();
 
   /**
    * Returns the meta object for class '{@link eu.coresense.adaptation.tactics.AtomicActionSelectFeature <em>Atomic Action Select Feature</em>}'.
@@ -1094,16 +1316,6 @@ public interface TacticsPackage extends EPackage
    * @generated
    */
   EReference getQualifiedFeatureRef_Feature();
-
-  /**
-   * Returns the meta object for enum '{@link eu.coresense.adaptation.tactics.MathOperator <em>Math Operator</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for enum '<em>Math Operator</em>'.
-   * @see eu.coresense.adaptation.tactics.MathOperator
-   * @generated
-   */
-  EEnum getMathOperator();
 
   /**
    * Returns the meta object for enum '{@link eu.coresense.adaptation.tactics.LogicalOperator <em>Logical Operator</em>}'.
@@ -1361,20 +1573,56 @@ public interface TacticsPackage extends EPackage
     EClass CONDITION_ACTION = eINSTANCE.getConditionAction();
 
     /**
-     * The meta object literal for the '<em><b>Condition</b></em>' containment reference feature.
+     * The meta object literal for the '<em><b>Context Part</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference CONDITION_ACTION__CONDITION = eINSTANCE.getConditionAction_Condition();
+    EReference CONDITION_ACTION__CONTEXT_PART = eINSTANCE.getConditionAction_ContextPart();
 
     /**
-     * The meta object literal for the '<em><b>Else</b></em>' containment reference feature.
+     * The meta object literal for the '<em><b>Feature Part</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference CONDITION_ACTION__ELSE = eINSTANCE.getConditionAction_Else();
+    EReference CONDITION_ACTION__FEATURE_PART = eINSTANCE.getConditionAction_FeaturePart();
+
+    /**
+     * The meta object literal for the '{@link eu.coresense.adaptation.tactics.impl.ContextPartImpl <em>Context Part</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see eu.coresense.adaptation.tactics.impl.ContextPartImpl
+     * @see eu.coresense.adaptation.tactics.impl.TacticsPackageImpl#getContextPart()
+     * @generated
+     */
+    EClass CONTEXT_PART = eINSTANCE.getContextPart();
+
+    /**
+     * The meta object literal for the '<em><b>Context Condition</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference CONTEXT_PART__CONTEXT_CONDITION = eINSTANCE.getContextPart_ContextCondition();
+
+    /**
+     * The meta object literal for the '{@link eu.coresense.adaptation.tactics.impl.FeaturePartImpl <em>Feature Part</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see eu.coresense.adaptation.tactics.impl.FeaturePartImpl
+     * @see eu.coresense.adaptation.tactics.impl.TacticsPackageImpl#getFeaturePart()
+     * @generated
+     */
+    EClass FEATURE_PART = eINSTANCE.getFeaturePart();
+
+    /**
+     * The meta object literal for the '<em><b>Feature Condition</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference FEATURE_PART__FEATURE_CONDITION = eINSTANCE.getFeaturePart_FeatureCondition();
 
     /**
      * The meta object literal for the '{@link eu.coresense.adaptation.tactics.impl.EffectImpl <em>Effect</em>}' class.
@@ -1405,30 +1653,6 @@ public interface TacticsPackage extends EPackage
     EClass CONDITION = eINSTANCE.getCondition();
 
     /**
-     * The meta object literal for the '<em><b>Measurement</b></em>' reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference CONDITION__MEASUREMENT = eINSTANCE.getCondition_Measurement();
-
-    /**
-     * The meta object literal for the '<em><b>Operator</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute CONDITION__OPERATOR = eINSTANCE.getCondition_Operator();
-
-    /**
-     * The meta object literal for the '<em><b>Value</b></em>' containment reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference CONDITION__VALUE = eINSTANCE.getCondition_Value();
-
-    /**
      * The meta object literal for the '<em><b>Logical Op</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -1443,6 +1667,66 @@ public interface TacticsPackage extends EPackage
      * @generated
      */
     EReference CONDITION__SECOND_TERM = eINSTANCE.getCondition_SecondTerm();
+
+    /**
+     * The meta object literal for the '{@link eu.coresense.adaptation.tactics.impl.FeatureConditionImpl <em>Feature Condition</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see eu.coresense.adaptation.tactics.impl.FeatureConditionImpl
+     * @see eu.coresense.adaptation.tactics.impl.TacticsPackageImpl#getFeatureCondition()
+     * @generated
+     */
+    EClass FEATURE_CONDITION = eINSTANCE.getFeatureCondition();
+
+    /**
+     * The meta object literal for the '<em><b>Not</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute FEATURE_CONDITION__NOT = eINSTANCE.getFeatureCondition_Not();
+
+    /**
+     * The meta object literal for the '<em><b>Variant</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference FEATURE_CONDITION__VARIANT = eINSTANCE.getFeatureCondition_Variant();
+
+    /**
+     * The meta object literal for the '{@link eu.coresense.adaptation.tactics.impl.MeasurementConditionImpl <em>Measurement Condition</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see eu.coresense.adaptation.tactics.impl.MeasurementConditionImpl
+     * @see eu.coresense.adaptation.tactics.impl.TacticsPackageImpl#getMeasurementCondition()
+     * @generated
+     */
+    EClass MEASUREMENT_CONDITION = eINSTANCE.getMeasurementCondition();
+
+    /**
+     * The meta object literal for the '<em><b>Measurement</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference MEASUREMENT_CONDITION__MEASUREMENT = eINSTANCE.getMeasurementCondition_Measurement();
+
+    /**
+     * The meta object literal for the '<em><b>Operator</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute MEASUREMENT_CONDITION__OPERATOR = eINSTANCE.getMeasurementCondition_Operator();
+
+    /**
+     * The meta object literal for the '<em><b>Value</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference MEASUREMENT_CONDITION__VALUE = eINSTANCE.getMeasurementCondition_Value();
 
     /**
      * The meta object literal for the '{@link eu.coresense.adaptation.tactics.impl.AtomicActionSelectFeatureImpl <em>Atomic Action Select Feature</em>}' class.
@@ -1489,16 +1773,6 @@ public interface TacticsPackage extends EPackage
      * @generated
      */
     EReference QUALIFIED_FEATURE_REF__FEATURE = eINSTANCE.getQualifiedFeatureRef_Feature();
-
-    /**
-     * The meta object literal for the '{@link eu.coresense.adaptation.tactics.MathOperator <em>Math Operator</em>}' enum.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see eu.coresense.adaptation.tactics.MathOperator
-     * @see eu.coresense.adaptation.tactics.impl.TacticsPackageImpl#getMathOperator()
-     * @generated
-     */
-    EEnum MATH_OPERATOR = eINSTANCE.getMathOperator();
 
     /**
      * The meta object literal for the '{@link eu.coresense.adaptation.tactics.LogicalOperator <em>Logical Operator</em>}' enum.

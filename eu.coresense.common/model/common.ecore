@@ -14,4 +14,12 @@
   <eClassifiers xsi:type="ecore:EClass" name="BooleanLiteral" eSuperTypes="#//Literal">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="MathOperator">
+    <eLiterals name="LESS"/>
+    <eLiterals name="GREATER" value="1"/>
+    <eLiterals name="EQUAL" value="2"/>
+    <eLiterals name="DIFFERENT" value="3" literal="DIFFERENT"/>
+    <eLiterals name="GREQ" value="4"/>
+    <eLiterals name="LEQ" value="5"/>
+  </eClassifiers>
 </ecore:EPackage>

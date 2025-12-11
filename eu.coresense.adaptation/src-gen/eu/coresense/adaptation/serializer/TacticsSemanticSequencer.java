@@ -10,10 +10,13 @@ import eu.coresense.adaptation.tactics.AtomicActionDeselectFeature;
 import eu.coresense.adaptation.tactics.AtomicActionSelectFeature;
 import eu.coresense.adaptation.tactics.AtomicRule;
 import eu.coresense.adaptation.tactics.AtomicRuleWithPriority;
-import eu.coresense.adaptation.tactics.Condition;
 import eu.coresense.adaptation.tactics.ConditionAction;
+import eu.coresense.adaptation.tactics.ContextPart;
 import eu.coresense.adaptation.tactics.Effect;
+import eu.coresense.adaptation.tactics.FeatureCondition;
+import eu.coresense.adaptation.tactics.FeaturePart;
 import eu.coresense.adaptation.tactics.Import;
+import eu.coresense.adaptation.tactics.MeasurementCondition;
 import eu.coresense.adaptation.tactics.PureAction;
 import eu.coresense.adaptation.tactics.QualifiedFeatureRef;
 import eu.coresense.adaptation.tactics.RuleSet;
@@ -79,9 +82,6 @@ public class TacticsSemanticSequencer extends AbstractDelegatingSemanticSequence
 			case TacticsPackage.ATOMIC_RULE_WITH_PRIORITY:
 				sequence_AtomicRuleWithPriority(context, (AtomicRuleWithPriority) semanticObject); 
 				return; 
-			case TacticsPackage.CONDITION:
-				sequence_Condition(context, (Condition) semanticObject); 
-				return; 
 			case TacticsPackage.CONDITION_ACTION:
 				if (rule == grammarAccess.getConditionActionRule()) {
 					sequence_ConditionAction(context, (ConditionAction) semanticObject); 
@@ -92,11 +92,23 @@ public class TacticsSemanticSequencer extends AbstractDelegatingSemanticSequence
 					return; 
 				}
 				else break;
+			case TacticsPackage.CONTEXT_PART:
+				sequence_ContextPart(context, (ContextPart) semanticObject); 
+				return; 
 			case TacticsPackage.EFFECT:
 				sequence_Effect(context, (Effect) semanticObject); 
 				return; 
+			case TacticsPackage.FEATURE_CONDITION:
+				sequence_FeatureCondition(context, (FeatureCondition) semanticObject); 
+				return; 
+			case TacticsPackage.FEATURE_PART:
+				sequence_FeaturePart(context, (FeaturePart) semanticObject); 
+				return; 
 			case TacticsPackage.IMPORT:
 				sequence_Import(context, (Import) semanticObject); 
+				return; 
+			case TacticsPackage.MEASUREMENT_CONDITION:
+				sequence_MeasurementCondition(context, (MeasurementCondition) semanticObject); 
 				return; 
 			case TacticsPackage.PURE_ACTION:
 				if (rule == grammarAccess.getPureActionRule()) {
@@ -255,7 +267,7 @@ public class TacticsSemanticSequencer extends AbstractDelegatingSemanticSequence
 	 *     ConditionAction returns ConditionAction
 	 *
 	 * Constraint:
-	 *     (condition=Condition atomicAction=AtomicAction else=RuleBody?)
+	 *     (((contextPart=ContextPart featurePart=FeaturePart?) | (featurePart=FeaturePart contextPart=ContextPart?)) atomicAction=AtomicAction)
 	 * </pre>
 	 */
 	protected void sequence_ConditionAction(ISerializationContext context, ConditionAction semanticObject) {
@@ -269,7 +281,11 @@ public class TacticsSemanticSequencer extends AbstractDelegatingSemanticSequence
 	 *     RuleBody returns ConditionAction
 	 *
 	 * Constraint:
-	 *     (condition=Condition atomicAction=AtomicAction else=RuleBody? effect=Effect)
+	 *     (
+	 *         ((contextPart=ContextPart featurePart=FeaturePart?) | (featurePart=FeaturePart contextPart=ContextPart?)) 
+	 *         atomicAction=AtomicAction 
+	 *         effect=Effect
+	 *     )
 	 * </pre>
 	 */
 	protected void sequence_ConditionAction_RuleBody(ISerializationContext context, ConditionAction semanticObject) {
@@ -280,14 +296,20 @@ public class TacticsSemanticSequencer extends AbstractDelegatingSemanticSequence
 	/**
 	 * <pre>
 	 * Contexts:
-	 *     Condition returns Condition
+	 *     ContextPart returns ContextPart
 	 *
 	 * Constraint:
-	 *     (measurement=[ContextVar|ID] operator=MathOperator value=Literal (logicalOp=LogicalOperator secondTerm=Condition)?)
+	 *     contextCondition=MeasurementCondition
 	 * </pre>
 	 */
-	protected void sequence_Condition(ISerializationContext context, Condition semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
+	protected void sequence_ContextPart(ISerializationContext context, ContextPart semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, TacticsPackage.Literals.CONTEXT_PART__CONTEXT_CONDITION) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, TacticsPackage.Literals.CONTEXT_PART__CONTEXT_CONDITION));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getContextPartAccess().getContextConditionMeasurementConditionParserRuleCall_2_0(), semanticObject.getContextCondition());
+		feeder.finish();
 	}
 	
 	
@@ -318,11 +340,46 @@ public class TacticsSemanticSequencer extends AbstractDelegatingSemanticSequence
 	 *     Effect returns Effect
 	 *
 	 * Constraint:
-	 *     condition=Condition?
+	 *     condition=MeasurementCondition?
 	 * </pre>
 	 */
 	protected void sequence_Effect(ISerializationContext context, Effect semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
+	 *     Condition returns FeatureCondition
+	 *     FeatureCondition returns FeatureCondition
+	 *
+	 * Constraint:
+	 *     (not='!'? variant=QualifiedFeatureRef (logicalOp=LogicalOperator secondTerm=Condition)?)
+	 * </pre>
+	 */
+	protected void sequence_FeatureCondition(ISerializationContext context, FeatureCondition semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
+	 *     FeaturePart returns FeaturePart
+	 *
+	 * Constraint:
+	 *     featureCondition=FeatureCondition
+	 * </pre>
+	 */
+	protected void sequence_FeaturePart(ISerializationContext context, FeaturePart semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, TacticsPackage.Literals.FEATURE_PART__FEATURE_CONDITION) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, TacticsPackage.Literals.FEATURE_PART__FEATURE_CONDITION));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getFeaturePartAccess().getFeatureConditionFeatureConditionParserRuleCall_2_0(), semanticObject.getFeatureCondition());
+		feeder.finish();
 	}
 	
 	
@@ -364,6 +421,21 @@ public class TacticsSemanticSequencer extends AbstractDelegatingSemanticSequence
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getIntLiteralAccess().getValueINTTerminalRuleCall_0(), semanticObject.getValue());
 		feeder.finish();
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
+	 *     Condition returns MeasurementCondition
+	 *     MeasurementCondition returns MeasurementCondition
+	 *
+	 * Constraint:
+	 *     (measurement=[ContextVar|ID] operator=MathOperator value=Literal (logicalOp=LogicalOperator secondTerm=Condition)?)
+	 * </pre>
+	 */
+	protected void sequence_MeasurementCondition(ISerializationContext context, MeasurementCondition semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	

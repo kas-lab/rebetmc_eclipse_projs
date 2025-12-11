@@ -86,6 +86,16 @@ public class ContextModelAdapterFactory extends AdapterFactoryImpl
         return createContextVarAdapter();
       }
       @Override
+      public Adapter caseDoCache(DoCache object)
+      {
+        return createDoCacheAdapter();
+      }
+      @Override
+      public Adapter caseDoProxy(DoProxy object)
+      {
+        return createDoProxyAdapter();
+      }
+      @Override
       public Adapter caseDataSource(DataSource object)
       {
         return createDataSourceAdapter();
@@ -109,11 +119,6 @@ public class ContextModelAdapterFactory extends AdapterFactoryImpl
       public Adapter caseImport(Import object)
       {
         return createImportAdapter();
-      }
-      @Override
-      public Adapter caseContextModelNode(ContextModelNode object)
-      {
-        return createContextModelNodeAdapter();
       }
       @Override
       public Adapter defaultCase(EObject object)
@@ -163,6 +168,36 @@ public class ContextModelAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createContextVarAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link eu.coresense.context.contextModel.DoCache <em>Do Cache</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see eu.coresense.context.contextModel.DoCache
+   * @generated
+   */
+  public Adapter createDoCacheAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link eu.coresense.context.contextModel.DoProxy <em>Do Proxy</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see eu.coresense.context.contextModel.DoProxy
+   * @generated
+   */
+  public Adapter createDoProxyAdapter()
   {
     return null;
   }
@@ -238,21 +273,6 @@ public class ContextModelAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createImportAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link eu.coresense.context.contextModel.ContextModelNode <em>Node</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see eu.coresense.context.contextModel.ContextModelNode
-   * @generated
-   */
-  public Adapter createContextModelNodeAdapter()
   {
     return null;
   }

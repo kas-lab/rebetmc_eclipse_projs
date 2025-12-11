@@ -8,10 +8,12 @@ import eu.coresense.common.CommonPackage;
 import eu.coresense.common.DecimalLiteral;
 import eu.coresense.common.IntLiteral;
 import eu.coresense.common.Literal;
+import eu.coresense.common.MathOperator;
 import eu.coresense.common.StringLiteral;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 
 import org.eclipse.emf.ecore.impl.EPackageImpl;
@@ -57,6 +59,13 @@ public class CommonPackageImpl extends EPackageImpl implements CommonPackage {
 	 * @generated
 	 */
 	private EClass booleanLiteralEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum mathOperatorEEnum = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -218,6 +227,16 @@ public class CommonPackageImpl extends EPackageImpl implements CommonPackage {
 	 * @generated
 	 */
 	@Override
+	public EEnum getMathOperator() {
+		return mathOperatorEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public CommonFactory getCommonFactory() {
 		return (CommonFactory) getEFactoryInstance();
 	}
@@ -255,6 +274,9 @@ public class CommonPackageImpl extends EPackageImpl implements CommonPackage {
 
 		booleanLiteralEClass = createEClass(BOOLEAN_LITERAL);
 		createEAttribute(booleanLiteralEClass, BOOLEAN_LITERAL__VALUE);
+
+		// Create enums
+		mathOperatorEEnum = createEEnum(MATH_OPERATOR);
 	}
 
 	/**
@@ -314,6 +336,15 @@ public class CommonPackageImpl extends EPackageImpl implements CommonPackage {
 				IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getBooleanLiteral_Value(), ecorePackage.getEBoolean(), "value", null, 0, 1, BooleanLiteral.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		// Initialize enums and add enum literals
+		initEEnum(mathOperatorEEnum, MathOperator.class, "MathOperator");
+		addEEnumLiteral(mathOperatorEEnum, MathOperator.LESS);
+		addEEnumLiteral(mathOperatorEEnum, MathOperator.GREATER);
+		addEEnumLiteral(mathOperatorEEnum, MathOperator.EQUAL);
+		addEEnumLiteral(mathOperatorEEnum, MathOperator.DIFFERENT);
+		addEEnumLiteral(mathOperatorEEnum, MathOperator.GREQ);
+		addEEnumLiteral(mathOperatorEEnum, MathOperator.LEQ);
 
 		// Create resource
 		createResource(eNS_URI);

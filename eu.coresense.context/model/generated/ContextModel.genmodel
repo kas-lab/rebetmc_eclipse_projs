@@ -8,36 +8,42 @@
       fileExtensions="context" ecorePackage="ContextModel.ecore#/">
     <genClasses ecoreClass="ContextModel.ecore#//ContextModel">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ContextModel.ecore#//ContextModel/imports"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ContextModel.ecore#//ContextModel/context_model_node"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ContextModel.ecore#//ContextModel/context_variables"/>
     </genClasses>
     <genClasses ecoreClass="ContextModel.ecore#//ContextVar">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ContextModel.ecore#//ContextVar/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ContextModel.ecore#//ContextVar/source"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ContextModel.ecore#//ContextVar/processed_source"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ContextModel.ecore#//ContextVar/doCache"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ContextModel.ecore#//ContextVar/doCache"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ContextModel.ecore#//ContextVar/length"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ContextModel.ecore#//ContextVar/period"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ContextModel.ecore#//ContextVar/doProxy"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ContextModel.ecore#//ContextVar/functionName"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ContextModel.ecore#//ContextVar/functionLibrary"/>
     </genClasses>
+    <genClasses ecoreClass="ContextModel.ecore#//DoCache">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ContextModel.ecore#//DoCache/do"/>
+    </genClasses>
+    <genClasses ecoreClass="ContextModel.ecore#//DoProxy">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ContextModel.ecore#//DoProxy/do"/>
+    </genClasses>
     <genClasses ecoreClass="ContextModel.ecore#//DataSource">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ContextModel.ecore#//DataSource/node"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ContextModel.ecore#//DataSource/ref"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ContextModel.ecore#//DataSource/kwargs"/>
     </genClasses>
     <genClasses ecoreClass="ContextModel.ecore#//QualifiedPublisherRef">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ContextModel.ecore#//QualifiedPublisherRef/node"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ContextModel.ecore#//QualifiedPublisherRef/publisher"/>
     </genClasses>
     <genClasses ecoreClass="ContextModel.ecore#//QualifiedServiceServerRef">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ContextModel.ecore#//QualifiedServiceServerRef/node"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ContextModel.ecore#//QualifiedServiceServerRef/serviceServer"/>
     </genClasses>
     <genClasses ecoreClass="ContextModel.ecore#//QualifiedActionServerRef">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ContextModel.ecore#//QualifiedActionServerRef/node"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ContextModel.ecore#//QualifiedActionServerRef/actionServer"/>
     </genClasses>
     <genClasses ecoreClass="ContextModel.ecore#//Import">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ContextModel.ecore#//Import/importURI"/>
-    </genClasses>
-    <genClasses ecoreClass="ContextModel.ecore#//ContextModelNode">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ContextModel.ecore#//ContextModelNode/node_import"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

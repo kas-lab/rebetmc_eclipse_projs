@@ -5,9 +5,11 @@ package eu.coresense.context.serializer;
 
 import com.google.inject.Inject;
 import eu.coresense.context.contextModel.ContextModel;
-import eu.coresense.context.contextModel.ContextModelNode;
 import eu.coresense.context.contextModel.ContextModelPackage;
 import eu.coresense.context.contextModel.ContextVar;
+import eu.coresense.context.contextModel.DataSource;
+import eu.coresense.context.contextModel.DoCache;
+import eu.coresense.context.contextModel.DoProxy;
 import eu.coresense.context.contextModel.Import;
 import eu.coresense.context.contextModel.QualifiedActionServerRef;
 import eu.coresense.context.contextModel.QualifiedPublisherRef;
@@ -41,11 +43,17 @@ public class ContextModelSemanticSequencer extends AbstractDelegatingSemanticSeq
 			case ContextModelPackage.CONTEXT_MODEL:
 				sequence_ContextModel(context, (ContextModel) semanticObject); 
 				return; 
-			case ContextModelPackage.CONTEXT_MODEL_NODE:
-				sequence_ContextModelNode(context, (ContextModelNode) semanticObject); 
-				return; 
 			case ContextModelPackage.CONTEXT_VAR:
 				sequence_ContextVar(context, (ContextVar) semanticObject); 
+				return; 
+			case ContextModelPackage.DATA_SOURCE:
+				sequence_DataSource(context, (DataSource) semanticObject); 
+				return; 
+			case ContextModelPackage.DO_CACHE:
+				sequence_DoCache(context, (DoCache) semanticObject); 
+				return; 
+			case ContextModelPackage.DO_PROXY:
+				sequence_DoProxy(context, (DoProxy) semanticObject); 
 				return; 
 			case ContextModelPackage.IMPORT:
 				sequence_Import(context, (Import) semanticObject); 
@@ -67,30 +75,10 @@ public class ContextModelSemanticSequencer extends AbstractDelegatingSemanticSeq
 	/**
 	 * <pre>
 	 * Contexts:
-	 *     ContextModelNode returns ContextModelNode
-	 *
-	 * Constraint:
-	 *     node_import=Import
-	 * </pre>
-	 */
-	protected void sequence_ContextModelNode(ISerializationContext context, ContextModelNode semanticObject) {
-		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, ContextModelPackage.Literals.CONTEXT_MODEL_NODE__NODE_IMPORT) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ContextModelPackage.Literals.CONTEXT_MODEL_NODE__NODE_IMPORT));
-		}
-		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getContextModelNodeAccess().getNode_importImportParserRuleCall_1_0(), semanticObject.getNode_import());
-		feeder.finish();
-	}
-	
-	
-	/**
-	 * <pre>
-	 * Contexts:
 	 *     ContextModel returns ContextModel
 	 *
 	 * Constraint:
-	 *     (imports+=Import* context_model_node=ContextModelNode context_variables+=ContextVar*)
+	 *     ((imports+=Import+ context_variables+=ContextVar+) | context_variables+=ContextVar+)?
 	 * </pre>
 	 */
 	protected void sequence_ContextModel(ISerializationContext context, ContextModel semanticObject) {
@@ -107,10 +95,10 @@ public class ContextModelSemanticSequencer extends AbstractDelegatingSemanticSeq
 	 *     (
 	 *         name=ID 
 	 *         source=DataSource 
-	 *         processed_source=[Publisher|ID] 
-	 *         doCache=BOOLEAN 
+	 *         doCache=DoCache 
 	 *         length=INT? 
 	 *         period=INT? 
+	 *         doProxy=DoProxy? 
 	 *         functionName=STRING 
 	 *         functionLibrary=STRING?
 	 *     )
@@ -118,6 +106,60 @@ public class ContextModelSemanticSequencer extends AbstractDelegatingSemanticSeq
 	 */
 	protected void sequence_ContextVar(ISerializationContext context, ContextVar semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
+	 *     DataSource returns DataSource
+	 *
+	 * Constraint:
+	 *     (ref=QualifiedPublisherRef | (ref=QualifiedServiceServerRef kwargs=KeyWordArguments) | (ref=QualifiedActionServerRef kwargs=KeyWordArguments))
+	 * </pre>
+	 */
+	protected void sequence_DataSource(ISerializationContext context, DataSource semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
+	 *     DoCache returns DoCache
+	 *
+	 * Constraint:
+	 *     do=BOOLEAN
+	 * </pre>
+	 */
+	protected void sequence_DoCache(ISerializationContext context, DoCache semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, ContextModelPackage.Literals.DO_CACHE__DO) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ContextModelPackage.Literals.DO_CACHE__DO));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getDoCacheAccess().getDoBOOLEANTerminalRuleCall_1_0(), semanticObject.isDo());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
+	 *     DoProxy returns DoProxy
+	 *
+	 * Constraint:
+	 *     do=BOOLEAN
+	 * </pre>
+	 */
+	protected void sequence_DoProxy(ISerializationContext context, DoProxy semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, ContextModelPackage.Literals.DO_PROXY__DO) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ContextModelPackage.Literals.DO_PROXY__DO));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getDoProxyAccess().getDoBOOLEANTerminalRuleCall_1_0(), semanticObject.isDo());
+		feeder.finish();
 	}
 	
 	
@@ -144,7 +186,6 @@ public class ContextModelSemanticSequencer extends AbstractDelegatingSemanticSeq
 	/**
 	 * <pre>
 	 * Contexts:
-	 *     DataSource returns QualifiedActionServerRef
 	 *     QualifiedActionServerRef returns QualifiedActionServerRef
 	 *
 	 * Constraint:
@@ -153,13 +194,13 @@ public class ContextModelSemanticSequencer extends AbstractDelegatingSemanticSeq
 	 */
 	protected void sequence_QualifiedActionServerRef(ISerializationContext context, QualifiedActionServerRef semanticObject) {
 		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, ContextModelPackage.Literals.DATA_SOURCE__NODE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ContextModelPackage.Literals.DATA_SOURCE__NODE));
+			if (transientValues.isValueTransient(semanticObject, ContextModelPackage.Literals.QUALIFIED_ACTION_SERVER_REF__NODE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ContextModelPackage.Literals.QUALIFIED_ACTION_SERVER_REF__NODE));
 			if (transientValues.isValueTransient(semanticObject, ContextModelPackage.Literals.QUALIFIED_ACTION_SERVER_REF__ACTION_SERVER) == ValueTransient.YES)
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ContextModelPackage.Literals.QUALIFIED_ACTION_SERVER_REF__ACTION_SERVER));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getQualifiedActionServerRefAccess().getNodeNodeIDTerminalRuleCall_0_0_1(), semanticObject.eGet(ContextModelPackage.Literals.DATA_SOURCE__NODE, false));
+		feeder.accept(grammarAccess.getQualifiedActionServerRefAccess().getNodeNodeIDTerminalRuleCall_0_0_1(), semanticObject.eGet(ContextModelPackage.Literals.QUALIFIED_ACTION_SERVER_REF__NODE, false));
 		feeder.accept(grammarAccess.getQualifiedActionServerRefAccess().getActionServerActionServerIDTerminalRuleCall_2_0_1(), semanticObject.eGet(ContextModelPackage.Literals.QUALIFIED_ACTION_SERVER_REF__ACTION_SERVER, false));
 		feeder.finish();
 	}
@@ -168,7 +209,6 @@ public class ContextModelSemanticSequencer extends AbstractDelegatingSemanticSeq
 	/**
 	 * <pre>
 	 * Contexts:
-	 *     DataSource returns QualifiedPublisherRef
 	 *     QualifiedPublisherRef returns QualifiedPublisherRef
 	 *
 	 * Constraint:
@@ -177,13 +217,13 @@ public class ContextModelSemanticSequencer extends AbstractDelegatingSemanticSeq
 	 */
 	protected void sequence_QualifiedPublisherRef(ISerializationContext context, QualifiedPublisherRef semanticObject) {
 		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, ContextModelPackage.Literals.DATA_SOURCE__NODE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ContextModelPackage.Literals.DATA_SOURCE__NODE));
+			if (transientValues.isValueTransient(semanticObject, ContextModelPackage.Literals.QUALIFIED_PUBLISHER_REF__NODE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ContextModelPackage.Literals.QUALIFIED_PUBLISHER_REF__NODE));
 			if (transientValues.isValueTransient(semanticObject, ContextModelPackage.Literals.QUALIFIED_PUBLISHER_REF__PUBLISHER) == ValueTransient.YES)
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ContextModelPackage.Literals.QUALIFIED_PUBLISHER_REF__PUBLISHER));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getQualifiedPublisherRefAccess().getNodeNodeIDTerminalRuleCall_0_0_1(), semanticObject.eGet(ContextModelPackage.Literals.DATA_SOURCE__NODE, false));
+		feeder.accept(grammarAccess.getQualifiedPublisherRefAccess().getNodeNodeIDTerminalRuleCall_0_0_1(), semanticObject.eGet(ContextModelPackage.Literals.QUALIFIED_PUBLISHER_REF__NODE, false));
 		feeder.accept(grammarAccess.getQualifiedPublisherRefAccess().getPublisherPublisherIDTerminalRuleCall_2_0_1(), semanticObject.eGet(ContextModelPackage.Literals.QUALIFIED_PUBLISHER_REF__PUBLISHER, false));
 		feeder.finish();
 	}
@@ -192,7 +232,6 @@ public class ContextModelSemanticSequencer extends AbstractDelegatingSemanticSeq
 	/**
 	 * <pre>
 	 * Contexts:
-	 *     DataSource returns QualifiedServiceServerRef
 	 *     QualifiedServiceServerRef returns QualifiedServiceServerRef
 	 *
 	 * Constraint:
@@ -201,13 +240,13 @@ public class ContextModelSemanticSequencer extends AbstractDelegatingSemanticSeq
 	 */
 	protected void sequence_QualifiedServiceServerRef(ISerializationContext context, QualifiedServiceServerRef semanticObject) {
 		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, ContextModelPackage.Literals.DATA_SOURCE__NODE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ContextModelPackage.Literals.DATA_SOURCE__NODE));
+			if (transientValues.isValueTransient(semanticObject, ContextModelPackage.Literals.QUALIFIED_SERVICE_SERVER_REF__NODE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ContextModelPackage.Literals.QUALIFIED_SERVICE_SERVER_REF__NODE));
 			if (transientValues.isValueTransient(semanticObject, ContextModelPackage.Literals.QUALIFIED_SERVICE_SERVER_REF__SERVICE_SERVER) == ValueTransient.YES)
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ContextModelPackage.Literals.QUALIFIED_SERVICE_SERVER_REF__SERVICE_SERVER));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getQualifiedServiceServerRefAccess().getNodeNodeIDTerminalRuleCall_0_0_1(), semanticObject.eGet(ContextModelPackage.Literals.DATA_SOURCE__NODE, false));
+		feeder.accept(grammarAccess.getQualifiedServiceServerRefAccess().getNodeNodeIDTerminalRuleCall_0_0_1(), semanticObject.eGet(ContextModelPackage.Literals.QUALIFIED_SERVICE_SERVER_REF__NODE, false));
 		feeder.accept(grammarAccess.getQualifiedServiceServerRefAccess().getServiceServerServiceServerIDTerminalRuleCall_2_0_1(), semanticObject.eGet(ContextModelPackage.Literals.QUALIFIED_SERVICE_SERVER_REF__SERVICE_SERVER, false));
 		feeder.finish();
 	}

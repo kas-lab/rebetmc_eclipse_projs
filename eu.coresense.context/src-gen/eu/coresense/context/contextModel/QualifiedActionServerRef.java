@@ -3,7 +3,10 @@
  */
 package eu.coresense.context.contextModel;
 
+import org.eclipse.emf.ecore.EObject;
+
 import ros.ActionServer;
+import ros.Node;
 
 /**
  * <!-- begin-user-doc -->
@@ -14,6 +17,7 @@ import ros.ActionServer;
  * The following features are supported:
  * </p>
  * <ul>
+ *   <li>{@link eu.coresense.context.contextModel.QualifiedActionServerRef#getNode <em>Node</em>}</li>
  *   <li>{@link eu.coresense.context.contextModel.QualifiedActionServerRef#getActionServer <em>Action Server</em>}</li>
  * </ul>
  *
@@ -21,8 +25,30 @@ import ros.ActionServer;
  * @model
  * @generated
  */
-public interface QualifiedActionServerRef extends DataSource
+public interface QualifiedActionServerRef extends EObject
 {
+  /**
+   * Returns the value of the '<em><b>Node</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Node</em>' reference.
+   * @see #setNode(Node)
+   * @see eu.coresense.context.contextModel.ContextModelPackage#getQualifiedActionServerRef_Node()
+   * @model
+   * @generated
+   */
+  Node getNode();
+
+  /**
+   * Sets the value of the '{@link eu.coresense.context.contextModel.QualifiedActionServerRef#getNode <em>Node</em>}' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Node</em>' reference.
+   * @see #getNode()
+   * @generated
+   */
+  void setNode(Node value);
+
   /**
    * Returns the value of the '<em><b>Action Server</b></em>' reference.
    * <!-- begin-user-doc -->

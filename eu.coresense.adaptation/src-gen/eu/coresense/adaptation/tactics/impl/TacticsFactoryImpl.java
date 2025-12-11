@@ -77,8 +77,12 @@ public class TacticsFactoryImpl extends EFactoryImpl implements TacticsFactory
       case TacticsPackage.RULE_BODY: return createRuleBody();
       case TacticsPackage.PURE_ACTION: return createPureAction();
       case TacticsPackage.CONDITION_ACTION: return createConditionAction();
+      case TacticsPackage.CONTEXT_PART: return createContextPart();
+      case TacticsPackage.FEATURE_PART: return createFeaturePart();
       case TacticsPackage.EFFECT: return createEffect();
       case TacticsPackage.CONDITION: return createCondition();
+      case TacticsPackage.FEATURE_CONDITION: return createFeatureCondition();
+      case TacticsPackage.MEASUREMENT_CONDITION: return createMeasurementCondition();
       case TacticsPackage.ATOMIC_ACTION_SELECT_FEATURE: return createAtomicActionSelectFeature();
       case TacticsPackage.ATOMIC_ACTION_DESELECT_FEATURE: return createAtomicActionDeselectFeature();
       case TacticsPackage.QUALIFIED_FEATURE_REF: return createQualifiedFeatureRef();
@@ -97,8 +101,6 @@ public class TacticsFactoryImpl extends EFactoryImpl implements TacticsFactory
   {
     switch (eDataType.getClassifierID())
     {
-      case TacticsPackage.MATH_OPERATOR:
-        return createMathOperatorFromString(eDataType, initialValue);
       case TacticsPackage.LOGICAL_OPERATOR:
         return createLogicalOperatorFromString(eDataType, initialValue);
       default:
@@ -116,8 +118,6 @@ public class TacticsFactoryImpl extends EFactoryImpl implements TacticsFactory
   {
     switch (eDataType.getClassifierID())
     {
-      case TacticsPackage.MATH_OPERATOR:
-        return convertMathOperatorToString(eDataType, instanceValue);
       case TacticsPackage.LOGICAL_OPERATOR:
         return convertLogicalOperatorToString(eDataType, instanceValue);
       default:
@@ -263,6 +263,30 @@ public class TacticsFactoryImpl extends EFactoryImpl implements TacticsFactory
    * @generated
    */
   @Override
+  public ContextPart createContextPart()
+  {
+    ContextPartImpl contextPart = new ContextPartImpl();
+    return contextPart;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public FeaturePart createFeaturePart()
+  {
+    FeaturePartImpl featurePart = new FeaturePartImpl();
+    return featurePart;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public Effect createEffect()
   {
     EffectImpl effect = new EffectImpl();
@@ -279,6 +303,30 @@ public class TacticsFactoryImpl extends EFactoryImpl implements TacticsFactory
   {
     ConditionImpl condition = new ConditionImpl();
     return condition;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public FeatureCondition createFeatureCondition()
+  {
+    FeatureConditionImpl featureCondition = new FeatureConditionImpl();
+    return featureCondition;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public MeasurementCondition createMeasurementCondition()
+  {
+    MeasurementConditionImpl measurementCondition = new MeasurementConditionImpl();
+    return measurementCondition;
   }
 
   /**
@@ -315,28 +363,6 @@ public class TacticsFactoryImpl extends EFactoryImpl implements TacticsFactory
   {
     QualifiedFeatureRefImpl qualifiedFeatureRef = new QualifiedFeatureRefImpl();
     return qualifiedFeatureRef;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public MathOperator createMathOperatorFromString(EDataType eDataType, String initialValue)
-  {
-    MathOperator result = MathOperator.get(initialValue);
-    if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
-    return result;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public String convertMathOperatorToString(EDataType eDataType, Object instanceValue)
-  {
-    return instanceValue == null ? null : instanceValue.toString();
   }
 
   /**

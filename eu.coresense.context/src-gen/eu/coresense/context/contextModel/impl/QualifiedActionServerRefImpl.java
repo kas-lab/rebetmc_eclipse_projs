@@ -12,8 +12,10 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import ros.ActionServer;
+import ros.Node;
 
 /**
  * <!-- begin-user-doc -->
@@ -23,13 +25,24 @@ import ros.ActionServer;
  * The following features are implemented:
  * </p>
  * <ul>
+ *   <li>{@link eu.coresense.context.contextModel.impl.QualifiedActionServerRefImpl#getNode <em>Node</em>}</li>
  *   <li>{@link eu.coresense.context.contextModel.impl.QualifiedActionServerRefImpl#getActionServer <em>Action Server</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class QualifiedActionServerRefImpl extends DataSourceImpl implements QualifiedActionServerRef
+public class QualifiedActionServerRefImpl extends MinimalEObjectImpl.Container implements QualifiedActionServerRef
 {
+  /**
+   * The cached value of the '{@link #getNode() <em>Node</em>}' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getNode()
+   * @generated
+   * @ordered
+   */
+  protected Node node;
+
   /**
    * The cached value of the '{@link #getActionServer() <em>Action Server</em>}' reference.
    * <!-- begin-user-doc -->
@@ -59,6 +72,51 @@ public class QualifiedActionServerRefImpl extends DataSourceImpl implements Qual
   protected EClass eStaticClass()
   {
     return ContextModelPackage.Literals.QUALIFIED_ACTION_SERVER_REF;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Node getNode()
+  {
+    if (node != null && node.eIsProxy())
+    {
+      InternalEObject oldNode = (InternalEObject)node;
+      node = (Node)eResolveProxy(oldNode);
+      if (node != oldNode)
+      {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, ContextModelPackage.QUALIFIED_ACTION_SERVER_REF__NODE, oldNode, node));
+      }
+    }
+    return node;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Node basicGetNode()
+  {
+    return node;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setNode(Node newNode)
+  {
+    Node oldNode = node;
+    node = newNode;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, ContextModelPackage.QUALIFIED_ACTION_SERVER_REF__NODE, oldNode, node));
   }
 
   /**
@@ -116,6 +174,9 @@ public class QualifiedActionServerRefImpl extends DataSourceImpl implements Qual
   {
     switch (featureID)
     {
+      case ContextModelPackage.QUALIFIED_ACTION_SERVER_REF__NODE:
+        if (resolve) return getNode();
+        return basicGetNode();
       case ContextModelPackage.QUALIFIED_ACTION_SERVER_REF__ACTION_SERVER:
         if (resolve) return getActionServer();
         return basicGetActionServer();
@@ -133,6 +194,9 @@ public class QualifiedActionServerRefImpl extends DataSourceImpl implements Qual
   {
     switch (featureID)
     {
+      case ContextModelPackage.QUALIFIED_ACTION_SERVER_REF__NODE:
+        setNode((Node)newValue);
+        return;
       case ContextModelPackage.QUALIFIED_ACTION_SERVER_REF__ACTION_SERVER:
         setActionServer((ActionServer)newValue);
         return;
@@ -150,6 +214,9 @@ public class QualifiedActionServerRefImpl extends DataSourceImpl implements Qual
   {
     switch (featureID)
     {
+      case ContextModelPackage.QUALIFIED_ACTION_SERVER_REF__NODE:
+        setNode((Node)null);
+        return;
       case ContextModelPackage.QUALIFIED_ACTION_SERVER_REF__ACTION_SERVER:
         setActionServer((ActionServer)null);
         return;
@@ -167,6 +234,8 @@ public class QualifiedActionServerRefImpl extends DataSourceImpl implements Qual
   {
     switch (featureID)
     {
+      case ContextModelPackage.QUALIFIED_ACTION_SERVER_REF__NODE:
+        return node != null;
       case ContextModelPackage.QUALIFIED_ACTION_SERVER_REF__ACTION_SERVER:
         return actionServer != null;
     }

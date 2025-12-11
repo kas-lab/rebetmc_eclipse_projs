@@ -42,6 +42,24 @@ public interface ContextModelFactory extends EFactory
   ContextVar createContextVar();
 
   /**
+   * Returns a new object of class '<em>Do Cache</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Do Cache</em>'.
+   * @generated
+   */
+  DoCache createDoCache();
+
+  /**
+   * Returns a new object of class '<em>Do Proxy</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Do Proxy</em>'.
+   * @generated
+   */
+  DoProxy createDoProxy();
+
+  /**
    * Returns a new object of class '<em>Data Source</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -85,15 +103,6 @@ public interface ContextModelFactory extends EFactory
    * @generated
    */
   Import createImport();
-
-  /**
-   * Returns a new object of class '<em>Node</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Node</em>'.
-   * @generated
-   */
-  ContextModelNode createContextModelNode();
 
   /**
    * Returns the package supported by this factory.

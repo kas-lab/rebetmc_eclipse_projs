@@ -4,7 +4,10 @@
 package eu.coresense.resolution;
 
 import org.eclipse.xtext.scoping.IGlobalScopeProvider;
+import org.eclipse.xtext.scoping.IScopeProvider;
 import org.eclipse.xtext.scoping.impl.ImportUriGlobalScopeProvider;
+
+import eu.coresense.resolution.scoping.ResolutionModelScopeProviderr;
 
 
 /**
@@ -15,4 +18,10 @@ public class ResolutionModelRuntimeModule extends AbstractResolutionModelRuntime
 	public Class<? extends IGlobalScopeProvider> bindIGlobalScopeProvider() {
 		return ImportUriGlobalScopeProvider.class;
 	}
+	
+    @Override
+    public Class<? extends IScopeProvider> bindIScopeProvider() {
+        // Bind the Xtend scope provider
+        return ResolutionModelScopeProviderr.class;
+    }
 }

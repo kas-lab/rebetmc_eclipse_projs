@@ -3,6 +3,9 @@
  */
 package eu.coresense.context.contextModel;
 
+import org.eclipse.emf.ecore.EObject;
+
+import ros.Node;
 import ros.Publisher;
 
 /**
@@ -14,6 +17,7 @@ import ros.Publisher;
  * The following features are supported:
  * </p>
  * <ul>
+ *   <li>{@link eu.coresense.context.contextModel.QualifiedPublisherRef#getNode <em>Node</em>}</li>
  *   <li>{@link eu.coresense.context.contextModel.QualifiedPublisherRef#getPublisher <em>Publisher</em>}</li>
  * </ul>
  *
@@ -21,8 +25,30 @@ import ros.Publisher;
  * @model
  * @generated
  */
-public interface QualifiedPublisherRef extends DataSource
+public interface QualifiedPublisherRef extends EObject
 {
+  /**
+   * Returns the value of the '<em><b>Node</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Node</em>' reference.
+   * @see #setNode(Node)
+   * @see eu.coresense.context.contextModel.ContextModelPackage#getQualifiedPublisherRef_Node()
+   * @model
+   * @generated
+   */
+  Node getNode();
+
+  /**
+   * Sets the value of the '{@link eu.coresense.context.contextModel.QualifiedPublisherRef#getNode <em>Node</em>}' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Node</em>' reference.
+   * @see #getNode()
+   * @generated
+   */
+  void setNode(Node value);
+
   /**
    * Returns the value of the '<em><b>Publisher</b></em>' reference.
    * <!-- begin-user-doc -->

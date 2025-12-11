@@ -103,17 +103,17 @@ public class ContextModelScopeProvider extends AbstractContextModelScopeProvider
 //	    	}
 //	    	return Scopes.scopeFor(allActionServer);
 //	    }
-	    if(reference == ContextModelPackage.Literals.CONTEXT_VAR__PROCESSED_SOURCE)
-	    {
-    		ContextModel model = EcoreUtil2.getContainerOfType(context, ContextModel.class);    		
-	    	return Scopes.scopeFor(collectContextPublishers(model, context.eResource()));
-	    }
-	    if(reference == ContextModelPackage.Literals.DATA_SOURCE__NODE)
-	    {
-	    	ContextModel model = EcoreUtil2.getContainerOfType(context, ContextModel.class);
-
-	    	return Scopes.scopeFor(allNodes(model,context));
-	    }
+//	    if(reference == ContextModelPackage.Literals.CONTEXT_VAR__PROCESSED_SOURCE)
+//	    {
+//    		ContextModel model = EcoreUtil2.getContainerOfType(context, ContextModel.class);    		
+//	    	return Scopes.scopeFor(collectContextPublishers(model, context.eResource()));
+//	    }
+//	    if(reference == ContextModelPackage.Literals.DATA_SOURCE__NODE)
+//	    {
+//	    	ContextModel model = EcoreUtil2.getContainerOfType(context, ContextModel.class);
+//
+//	    	return Scopes.scopeFor(allNodes(model,context));
+//	    }
 	    if(reference == ContextModelPackage.Literals.QUALIFIED_ACTION_SERVER_REF__ACTION_SERVER)
 	    {
 	    	QualifiedActionServerRef qref = (QualifiedActionServerRef) context;
@@ -189,36 +189,36 @@ public class ContextModelScopeProvider extends AbstractContextModelScopeProvider
     	return allNodes;
 	}
 	
-	private List<ros.Publisher> collectContextPublishers(ContextModel model, Resource currentResource) {
-	    List<ros.Publisher> result = new ArrayList<>();
-	    ResourceSet resourceSet = currentResource.getResourceSet();
-        String uriStr = model.getContext_model_node().getNode_import().getImportURI();
-        if (uriStr == null || !uriStr.endsWith(".ros2")) return new ArrayList<ros.Publisher>();
-
-        URI uri = URI.createURI(uriStr);
-        if (uri.isRelative()) {
-            uri = uri.resolve(currentResource.getURI());
-        }
-
-        try {
-            Resource imported = resourceSet.getResource(uri, true);
-            if (imported == null || imported.getContents().isEmpty()) return new ArrayList<ros.Publisher>();
-
-            EObject root = imported.getContents().get(0);
-            if (root instanceof ros.AmentPackage pkg) {
-                for(ros.Artifact art : pkg.getArtifact())
-                {
-                	result.addAll(art.getNode().getPublisher());
-                }
-            }
-        } catch (Exception e) {
-            System.err.println("Failed to load context model .ros2 import: " + uriStr);
-            e.printStackTrace();
-        }
-    
-
-	    return result;
-	}
+//	private List<ros.Publisher> collectContextPublishers(ContextModel model, Resource currentResource) {
+//	    List<ros.Publisher> result = new ArrayList<>();
+//	    ResourceSet resourceSet = currentResource.getResourceSet();
+//        String uriStr = model.getContext_model_node().getNode_import().getImportURI();
+//        if (uriStr == null || !uriStr.endsWith(".ros2")) return new ArrayList<ros.Publisher>();
+//
+//        URI uri = URI.createURI(uriStr);
+//        if (uri.isRelative()) {
+//            uri = uri.resolve(currentResource.getURI());
+//        }
+//
+//        try {
+//            Resource imported = resourceSet.getResource(uri, true);
+//            if (imported == null || imported.getContents().isEmpty()) return new ArrayList<ros.Publisher>();
+//
+//            EObject root = imported.getContents().get(0);
+//            if (root instanceof ros.AmentPackage pkg) {
+//                for(ros.Artifact art : pkg.getArtifact())
+//                {
+//                	result.addAll(art.getNode().getPublisher());
+//                }
+//            }
+//        } catch (Exception e) {
+//            System.err.println("Failed to load context model .ros2 import: " + uriStr);
+//            e.printStackTrace();
+//        }
+//    
+//
+//	    return result;
+//	}
 	
 	
 		

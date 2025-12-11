@@ -22,8 +22,6 @@ import org.eclipse.xtext.scoping.IScope;
 import org.eclipse.xtext.scoping.Scopes;
 import org.eclipse.xtext.xbase.lib.Exceptions;
 import ros.ActionServer;
-import ros.AmentPackage;
-import ros.Artifact;
 import ros.Node;
 import ros.Publisher;
 import ros.ServiceServer;
@@ -45,7 +43,7 @@ public class ContextModelScopeProviderr extends AbstractContextModelScopeProvide
       if (_equals_1) {
         final QualifiedActionServerRef qref = ((QualifiedActionServerRef) context);
         final Node node = qref.getNode();
-        if (((!Objects.equals(node, null)) && (node.getActionserver().size() != 0))) {
+        if (((node != null) && (node.getActionserver().size() != 0))) {
           final Function<EObject, QualifiedName> _function = (EObject e) -> {
             return QualifiedName.create(ContextModelScopeProviderr.escape(((ActionServer) e).getName()));
           };
@@ -59,7 +57,7 @@ public class ContextModelScopeProviderr extends AbstractContextModelScopeProvide
       if (_equals_2) {
         final QualifiedServiceServerRef qref_1 = ((QualifiedServiceServerRef) context);
         final Node node_1 = qref_1.getNode();
-        if (((!Objects.equals(node_1, null)) && (node_1.getServiceserver().size() != 0))) {
+        if (((node_1 != null) && (node_1.getServiceserver().size() != 0))) {
           final Function<EObject, QualifiedName> _function_1 = (EObject e) -> {
             return QualifiedName.create(ContextModelScopeProviderr.escape(((ServiceServer) e).getName()));
           };
@@ -69,15 +67,11 @@ public class ContextModelScopeProviderr extends AbstractContextModelScopeProvide
         }
         return IScope.NULLSCOPE;
       }
-      boolean _equals_3 = Objects.equals(reference, ContextModelPackage.Literals.DATA_SOURCE__NODE);
-      if (_equals_3) {
+      if (((Objects.equals(reference, ContextModelPackage.Literals.QUALIFIED_SERVICE_SERVER_REF__NODE) || 
+        Objects.equals(reference, ContextModelPackage.Literals.QUALIFIED_ACTION_SERVER_REF__NODE)) || 
+        Objects.equals(reference, ContextModelPackage.Literals.QUALIFIED_PUBLISHER_REF__NODE))) {
         final ContextModel model = EcoreUtil2.<ContextModel>getContainerOfType(context, ContextModel.class);
         return Scopes.scopeFor(this.allNodes(model, context));
-      }
-      boolean _equals_4 = Objects.equals(reference, ContextModelPackage.Literals.CONTEXT_VAR__PROCESSED_SOURCE);
-      if (_equals_4) {
-        final ContextModel model_1 = EcoreUtil2.<ContextModel>getContainerOfType(context, ContextModel.class);
-        return Scopes.scopeFor(this.collectContextPublishers(model_1, context.eResource()));
       }
       _xblockexpression = super.getScope(context, reference);
     }
@@ -111,42 +105,6 @@ public class ContextModelScopeProviderr extends AbstractContextModelScopeProvide
       }
     }
     return allNodes;
-  }
-
-  public List<Publisher> collectContextPublishers(final ContextModel model, final Resource currentResource) {
-    final ArrayList<Publisher> result = new ArrayList<Publisher>();
-    final ResourceSet resourceSet = currentResource.getResourceSet();
-    final String uriStr = model.getContext_model_node().getNode_import().getImportURI();
-    if (((uriStr == null) || (!uriStr.endsWith(".ros2")))) {
-      return new ArrayList<Publisher>();
-    }
-    URI uri = URI.createURI(uriStr);
-    boolean _isRelative = uri.isRelative();
-    if (_isRelative) {
-      uri = uri.resolve(currentResource.getURI());
-    }
-    try {
-      final Resource imported = resourceSet.getResource(uri, true);
-      if (((imported == null) || imported.getContents().isEmpty())) {
-        return new ArrayList<Publisher>();
-      }
-      final EObject root = imported.getContents().get(0);
-      if ((root instanceof AmentPackage)) {
-        EList<Artifact> _artifact = ((AmentPackage)root).getArtifact();
-        for (final Artifact art : _artifact) {
-          result.addAll(art.getNode().getPublisher());
-        }
-      }
-    } catch (final Throwable _t) {
-      if (_t instanceof Exception) {
-        final Exception e = (Exception)_t;
-        System.err.println(("Failed to load context model .ros2 import: " + uriStr));
-        e.printStackTrace();
-      } else {
-        throw Exceptions.sneakyThrow(_t);
-      }
-    }
-    return result;
   }
 
   public List<system.System> collectAllSystems(final ContextModel model, final Resource currentResource) {

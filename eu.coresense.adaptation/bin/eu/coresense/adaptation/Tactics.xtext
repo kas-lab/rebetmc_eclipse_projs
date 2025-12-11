@@ -56,27 +56,52 @@ PureAction:
 	atomicAction=AtomicAction
 ;
 
+//ConditionAction:
+//	'guard' '{' ('context' '(' contextCondition=MeasurementCondition ')') | ('features' '(' featureCondition=FeatureCondition ')') '{' atomicAction=AtomicAction '}'
+//;
+
 ConditionAction:
-	'condition' '{' ('if' '(' condition=Condition ')') '{' atomicAction=AtomicAction '}'
-	('else' '{'(else=RuleBody) '}' )? 
-;
+    'guard' '{'
+        (
+            contextPart=ContextPart featurePart=FeaturePart?
+          | featurePart=FeaturePart contextPart=ContextPart?
+        )
+        '}'
+        atomicAction=AtomicAction;
+    
+ContextPart:
+    'context' '(' contextCondition=MeasurementCondition ')';
+
+FeaturePart:
+    'features' '(' featureCondition=FeatureCondition ')';
 
 Effect:
 	{Effect}
-	'effect' '{' condition=Condition? '}'
+	'effect' '{' condition=MeasurementCondition? '}'
 ;
 
 // Find a better name for secondTerm
 // Find a way for using parenthesis for priority between operators
 // Find a way of expressing complex conditions, with operators priorities
 Condition:
+	MeasurementCondition | FeatureCondition
+;
+
+FeatureCondition:
+	not=('!')? 'selected(' variant=QualifiedFeatureRef ')' 	( logicalOp=LogicalOperator secondTerm=Condition )? 
+;
+
+
+
+
+MeasurementCondition:
 	measurement=[contextModel::ContextVar]
 	operator=MathOperator value=Literal 
 	( logicalOp=LogicalOperator secondTerm=Condition )? 
 ;
 
-enum MathOperator:
-	LESS='<' | GREATER='>' | EQUAL='==' | DIFFERENT='<>'	
+enum MathOperator returns common::MathOperator:
+	LESS='<' | GREATER='>' | EQUAL='==' | DIFFERENT='!=' | GREQ='>=' | LEQ='<=' 	
 ;
 
 enum LogicalOperator:

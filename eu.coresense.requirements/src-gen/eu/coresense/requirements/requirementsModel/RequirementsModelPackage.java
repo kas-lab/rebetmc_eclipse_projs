@@ -720,16 +720,6 @@ public interface RequirementsModelPackage extends EPackage
   int QUALITY_ATTRIBUTE = 12;
 
   /**
-   * The meta object id for the '{@link eu.coresense.requirements.requirementsModel.MathOperator <em>Math Operator</em>}' enum.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see eu.coresense.requirements.requirementsModel.MathOperator
-   * @see eu.coresense.requirements.requirementsModel.impl.RequirementsModelPackageImpl#getMathOperator()
-   * @generated
-   */
-  int MATH_OPERATOR = 13;
-
-  /**
    * The meta object id for the '{@link eu.coresense.requirements.requirementsModel.LogicalOperator <em>Logical Operator</em>}' enum.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -737,7 +727,7 @@ public interface RequirementsModelPackage extends EPackage
    * @see eu.coresense.requirements.requirementsModel.impl.RequirementsModelPackageImpl#getLogicalOperator()
    * @generated
    */
-  int LOGICAL_OPERATOR = 14;
+  int LOGICAL_OPERATOR = 13;
 
 
   /**
@@ -1146,16 +1136,6 @@ public interface RequirementsModelPackage extends EPackage
   EEnum getQualityAttribute();
 
   /**
-   * Returns the meta object for enum '{@link eu.coresense.requirements.requirementsModel.MathOperator <em>Math Operator</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for enum '<em>Math Operator</em>'.
-   * @see eu.coresense.requirements.requirementsModel.MathOperator
-   * @generated
-   */
-  EEnum getMathOperator();
-
-  /**
    * Returns the meta object for enum '{@link eu.coresense.requirements.requirementsModel.LogicalOperator <em>Logical Operator</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1517,16 +1497,6 @@ public interface RequirementsModelPackage extends EPackage
      * @generated
      */
     EEnum QUALITY_ATTRIBUTE = eINSTANCE.getQualityAttribute();
-
-    /**
-     * The meta object literal for the '{@link eu.coresense.requirements.requirementsModel.MathOperator <em>Math Operator</em>}' enum.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see eu.coresense.requirements.requirementsModel.MathOperator
-     * @see eu.coresense.requirements.requirementsModel.impl.RequirementsModelPackageImpl#getMathOperator()
-     * @generated
-     */
-    EEnum MATH_OPERATOR = eINSTANCE.getMathOperator();
 
     /**
      * The meta object literal for the '{@link eu.coresense.requirements.requirementsModel.LogicalOperator <em>Logical Operator</em>}' enum.

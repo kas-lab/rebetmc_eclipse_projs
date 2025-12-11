@@ -87,6 +87,20 @@ public class ContextModelSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case ContextModelPackage.DO_CACHE:
+      {
+        DoCache doCache = (DoCache)theEObject;
+        T result = caseDoCache(doCache);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case ContextModelPackage.DO_PROXY:
+      {
+        DoProxy doProxy = (DoProxy)theEObject;
+        T result = caseDoProxy(doProxy);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case ContextModelPackage.DATA_SOURCE:
       {
         DataSource dataSource = (DataSource)theEObject;
@@ -98,7 +112,6 @@ public class ContextModelSwitch<T> extends Switch<T>
       {
         QualifiedPublisherRef qualifiedPublisherRef = (QualifiedPublisherRef)theEObject;
         T result = caseQualifiedPublisherRef(qualifiedPublisherRef);
-        if (result == null) result = caseDataSource(qualifiedPublisherRef);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -106,7 +119,6 @@ public class ContextModelSwitch<T> extends Switch<T>
       {
         QualifiedServiceServerRef qualifiedServiceServerRef = (QualifiedServiceServerRef)theEObject;
         T result = caseQualifiedServiceServerRef(qualifiedServiceServerRef);
-        if (result == null) result = caseDataSource(qualifiedServiceServerRef);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -114,7 +126,6 @@ public class ContextModelSwitch<T> extends Switch<T>
       {
         QualifiedActionServerRef qualifiedActionServerRef = (QualifiedActionServerRef)theEObject;
         T result = caseQualifiedActionServerRef(qualifiedActionServerRef);
-        if (result == null) result = caseDataSource(qualifiedActionServerRef);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -122,13 +133,6 @@ public class ContextModelSwitch<T> extends Switch<T>
       {
         Import import_ = (Import)theEObject;
         T result = caseImport(import_);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case ContextModelPackage.CONTEXT_MODEL_NODE:
-      {
-        ContextModelNode contextModelNode = (ContextModelNode)theEObject;
-        T result = caseContextModelNode(contextModelNode);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -164,6 +168,38 @@ public class ContextModelSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseContextVar(ContextVar object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Do Cache</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Do Cache</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseDoCache(DoCache object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Do Proxy</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Do Proxy</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseDoProxy(DoProxy object)
   {
     return null;
   }
@@ -244,22 +280,6 @@ public class ContextModelSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseImport(Import object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Node</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Node</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseContextModelNode(ContextModelNode object)
   {
     return null;
   }

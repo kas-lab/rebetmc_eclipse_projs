@@ -6,7 +6,6 @@ package eu.coresense.adaptation.tactics.impl;
 import eu.coresense.adaptation.tactics.MeasurementCondition;
 import eu.coresense.adaptation.tactics.TacticsPackage;
 
-import eu.coresense.common.Literal;
 import eu.coresense.common.MathOperator;
 
 import eu.coresense.context.contextModel.ContextVar;
@@ -29,7 +28,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * <ul>
  *   <li>{@link eu.coresense.adaptation.tactics.impl.MeasurementConditionImpl#getMeasurement <em>Measurement</em>}</li>
  *   <li>{@link eu.coresense.adaptation.tactics.impl.MeasurementConditionImpl#getOperator <em>Operator</em>}</li>
- *   <li>{@link eu.coresense.adaptation.tactics.impl.MeasurementConditionImpl#getValue <em>Value</em>}</li>
+ *   <li>{@link eu.coresense.adaptation.tactics.impl.MeasurementConditionImpl#getSecondTerm <em>Second Term</em>}</li>
  * </ul>
  *
  * @generated
@@ -67,14 +66,14 @@ public class MeasurementConditionImpl extends ConditionImpl implements Measureme
   protected MathOperator operator = OPERATOR_EDEFAULT;
 
   /**
-   * The cached value of the '{@link #getValue() <em>Value</em>}' containment reference.
+   * The cached value of the '{@link #getSecondTerm() <em>Second Term</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getValue()
+   * @see #getSecondTerm()
    * @generated
    * @ordered
    */
-  protected Literal value;
+  protected MeasurementCondition secondTerm;
 
   /**
    * <!-- begin-user-doc -->
@@ -173,9 +172,9 @@ public class MeasurementConditionImpl extends ConditionImpl implements Measureme
    * @generated
    */
   @Override
-  public Literal getValue()
+  public MeasurementCondition getSecondTerm()
   {
-    return value;
+    return secondTerm;
   }
 
   /**
@@ -183,13 +182,13 @@ public class MeasurementConditionImpl extends ConditionImpl implements Measureme
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetValue(Literal newValue, NotificationChain msgs)
+  public NotificationChain basicSetSecondTerm(MeasurementCondition newSecondTerm, NotificationChain msgs)
   {
-    Literal oldValue = value;
-    value = newValue;
+    MeasurementCondition oldSecondTerm = secondTerm;
+    secondTerm = newSecondTerm;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, TacticsPackage.MEASUREMENT_CONDITION__VALUE, oldValue, newValue);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, TacticsPackage.MEASUREMENT_CONDITION__SECOND_TERM, oldSecondTerm, newSecondTerm);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -201,20 +200,20 @@ public class MeasurementConditionImpl extends ConditionImpl implements Measureme
    * @generated
    */
   @Override
-  public void setValue(Literal newValue)
+  public void setSecondTerm(MeasurementCondition newSecondTerm)
   {
-    if (newValue != value)
+    if (newSecondTerm != secondTerm)
     {
       NotificationChain msgs = null;
-      if (value != null)
-        msgs = ((InternalEObject)value).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - TacticsPackage.MEASUREMENT_CONDITION__VALUE, null, msgs);
-      if (newValue != null)
-        msgs = ((InternalEObject)newValue).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - TacticsPackage.MEASUREMENT_CONDITION__VALUE, null, msgs);
-      msgs = basicSetValue(newValue, msgs);
+      if (secondTerm != null)
+        msgs = ((InternalEObject)secondTerm).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - TacticsPackage.MEASUREMENT_CONDITION__SECOND_TERM, null, msgs);
+      if (newSecondTerm != null)
+        msgs = ((InternalEObject)newSecondTerm).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - TacticsPackage.MEASUREMENT_CONDITION__SECOND_TERM, null, msgs);
+      msgs = basicSetSecondTerm(newSecondTerm, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, TacticsPackage.MEASUREMENT_CONDITION__VALUE, newValue, newValue));
+      eNotify(new ENotificationImpl(this, Notification.SET, TacticsPackage.MEASUREMENT_CONDITION__SECOND_TERM, newSecondTerm, newSecondTerm));
   }
 
   /**
@@ -227,8 +226,8 @@ public class MeasurementConditionImpl extends ConditionImpl implements Measureme
   {
     switch (featureID)
     {
-      case TacticsPackage.MEASUREMENT_CONDITION__VALUE:
-        return basicSetValue(null, msgs);
+      case TacticsPackage.MEASUREMENT_CONDITION__SECOND_TERM:
+        return basicSetSecondTerm(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -248,8 +247,8 @@ public class MeasurementConditionImpl extends ConditionImpl implements Measureme
         return basicGetMeasurement();
       case TacticsPackage.MEASUREMENT_CONDITION__OPERATOR:
         return getOperator();
-      case TacticsPackage.MEASUREMENT_CONDITION__VALUE:
-        return getValue();
+      case TacticsPackage.MEASUREMENT_CONDITION__SECOND_TERM:
+        return getSecondTerm();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -270,8 +269,8 @@ public class MeasurementConditionImpl extends ConditionImpl implements Measureme
       case TacticsPackage.MEASUREMENT_CONDITION__OPERATOR:
         setOperator((MathOperator)newValue);
         return;
-      case TacticsPackage.MEASUREMENT_CONDITION__VALUE:
-        setValue((Literal)newValue);
+      case TacticsPackage.MEASUREMENT_CONDITION__SECOND_TERM:
+        setSecondTerm((MeasurementCondition)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -293,8 +292,8 @@ public class MeasurementConditionImpl extends ConditionImpl implements Measureme
       case TacticsPackage.MEASUREMENT_CONDITION__OPERATOR:
         setOperator(OPERATOR_EDEFAULT);
         return;
-      case TacticsPackage.MEASUREMENT_CONDITION__VALUE:
-        setValue((Literal)null);
+      case TacticsPackage.MEASUREMENT_CONDITION__SECOND_TERM:
+        setSecondTerm((MeasurementCondition)null);
         return;
     }
     super.eUnset(featureID);
@@ -314,8 +313,8 @@ public class MeasurementConditionImpl extends ConditionImpl implements Measureme
         return measurement != null;
       case TacticsPackage.MEASUREMENT_CONDITION__OPERATOR:
         return operator != OPERATOR_EDEFAULT;
-      case TacticsPackage.MEASUREMENT_CONDITION__VALUE:
-        return value != null;
+      case TacticsPackage.MEASUREMENT_CONDITION__SECOND_TERM:
+        return secondTerm != null;
     }
     return super.eIsSet(featureID);
   }

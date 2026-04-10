@@ -75,7 +75,7 @@ public class FeatureModelSemanticSequencer extends AbstractDelegatingSemanticSeq
 	 *     Alternative returns Alternative
 	 *
 	 * Constraint:
-	 *     (mandatory?='mandatory'? selected?='selected'? name=EString id=EString (children+=Feature children+=Feature*)?)
+	 *     (mandatory?='mandatory'? selected?='selected'? name=EString (children+=Feature children+=Feature*)?)
 	 * </pre>
 	 */
 	protected void sequence_Alternative(ISerializationContext context, Alternative semanticObject) {
@@ -130,7 +130,7 @@ public class FeatureModelSemanticSequencer extends AbstractDelegatingSemanticSeq
 	 *     Feature_Impl returns Feature
 	 *
 	 * Constraint:
-	 *     (mandatory?='mandatory'? selected?='selected'? name=EString id=EString (children+=Feature children+=Feature*)?)
+	 *     (mandatory?='mandatory'? selected?='selected'? name=EString (children+=Feature children+=Feature*)?)
 	 * </pre>
 	 */
 	protected void sequence_Feature_Impl(ISerializationContext context, Feature semanticObject) {
@@ -165,7 +165,7 @@ public class FeatureModelSemanticSequencer extends AbstractDelegatingSemanticSeq
 	 *     OrGroup returns OrGroup
 	 *
 	 * Constraint:
-	 *     (mandatory?='mandatory'? selected?='selected'? name=EString id=EString (children+=Feature children+=Feature*)?)
+	 *     (mandatory?='mandatory'? selected?='selected'? name=EString (children+=Feature children+=Feature*)?)
 	 * </pre>
 	 */
 	protected void sequence_OrGroup(ISerializationContext context, OrGroup semanticObject) {

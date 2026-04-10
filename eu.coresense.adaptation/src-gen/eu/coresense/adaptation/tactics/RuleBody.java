@@ -29,12 +29,12 @@ public interface RuleBody extends EObject
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the value of the '<em>Effect</em>' containment reference.
-   * @see #setEffect(Effect)
+   * @see #setEffect(EffectBlock)
    * @see eu.coresense.adaptation.tactics.TacticsPackage#getRuleBody_Effect()
    * @model containment="true"
    * @generated
    */
-  Effect getEffect();
+  EffectBlock getEffect();
 
   /**
    * Sets the value of the '{@link eu.coresense.adaptation.tactics.RuleBody#getEffect <em>Effect</em>}' containment reference.
@@ -44,7 +44,7 @@ public interface RuleBody extends EObject
    * @see #getEffect()
    * @generated
    */
-  void setEffect(Effect value);
+  void setEffect(EffectBlock value);
 
   /**
    * Returns the value of the '<em><b>Atomic Action</b></em>' containment reference.

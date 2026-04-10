@@ -3,161 +3,17 @@
  */
 package eu.coresense.requirements.requirementsModel;
 
-import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Statement</b></em>'.
  * <!-- end-user-doc -->
  *
- * <p>
- * The following features are supported:
- * </p>
- * <ul>
- *   <li>{@link eu.coresense.requirements.requirementsModel.Statement#getQuantifiableStatement <em>Quantifiable Statement</em>}</li>
- *   <li>{@link eu.coresense.requirements.requirementsModel.Statement#getStatement <em>Statement</em>}</li>
- *   <li>{@link eu.coresense.requirements.requirementsModel.Statement#getFirst_statement <em>First statement</em>}</li>
- *   <li>{@link eu.coresense.requirements.requirementsModel.Statement#getSecond_statement <em>Second statement</em>}</li>
- *   <li>{@link eu.coresense.requirements.requirementsModel.Statement#getEvent <em>Event</em>}</li>
- *   <li>{@link eu.coresense.requirements.requirementsModel.Statement#getT <em>T</em>}</li>
- * </ul>
  *
  * @see eu.coresense.requirements.requirementsModel.RequirementsModelPackage#getStatement()
  * @model
  * @generated
  */
-public interface Statement extends AtomicStatement
+public interface Statement extends Expression
 {
-  /**
-   * Returns the value of the '<em><b>Quantifiable Statement</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Quantifiable Statement</em>' containment reference.
-   * @see #setQuantifiableStatement(Quantifiable)
-   * @see eu.coresense.requirements.requirementsModel.RequirementsModelPackage#getStatement_QuantifiableStatement()
-   * @model containment="true"
-   * @generated
-   */
-  Quantifiable getQuantifiableStatement();
-
-  /**
-   * Sets the value of the '{@link eu.coresense.requirements.requirementsModel.Statement#getQuantifiableStatement <em>Quantifiable Statement</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Quantifiable Statement</em>' containment reference.
-   * @see #getQuantifiableStatement()
-   * @generated
-   */
-  void setQuantifiableStatement(Quantifiable value);
-
-  /**
-   * Returns the value of the '<em><b>Statement</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Statement</em>' containment reference.
-   * @see #setStatement(EObject)
-   * @see eu.coresense.requirements.requirementsModel.RequirementsModelPackage#getStatement_Statement()
-   * @model containment="true"
-   * @generated
-   */
-  EObject getStatement();
-
-  /**
-   * Sets the value of the '{@link eu.coresense.requirements.requirementsModel.Statement#getStatement <em>Statement</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Statement</em>' containment reference.
-   * @see #getStatement()
-   * @generated
-   */
-  void setStatement(EObject value);
-
-  /**
-   * Returns the value of the '<em><b>First statement</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>First statement</em>' containment reference.
-   * @see #setFirst_statement(Statement)
-   * @see eu.coresense.requirements.requirementsModel.RequirementsModelPackage#getStatement_First_statement()
-   * @model containment="true"
-   * @generated
-   */
-  Statement getFirst_statement();
-
-  /**
-   * Sets the value of the '{@link eu.coresense.requirements.requirementsModel.Statement#getFirst_statement <em>First statement</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>First statement</em>' containment reference.
-   * @see #getFirst_statement()
-   * @generated
-   */
-  void setFirst_statement(Statement value);
-
-  /**
-   * Returns the value of the '<em><b>Second statement</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Second statement</em>' containment reference.
-   * @see #setSecond_statement(Statement)
-   * @see eu.coresense.requirements.requirementsModel.RequirementsModelPackage#getStatement_Second_statement()
-   * @model containment="true"
-   * @generated
-   */
-  Statement getSecond_statement();
-
-  /**
-   * Sets the value of the '{@link eu.coresense.requirements.requirementsModel.Statement#getSecond_statement <em>Second statement</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Second statement</em>' containment reference.
-   * @see #getSecond_statement()
-   * @generated
-   */
-  void setSecond_statement(Statement value);
-
-  /**
-   * Returns the value of the '<em><b>Event</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Event</em>' attribute.
-   * @see #setEvent(String)
-   * @see eu.coresense.requirements.requirementsModel.RequirementsModelPackage#getStatement_Event()
-   * @model
-   * @generated
-   */
-  String getEvent();
-
-  /**
-   * Sets the value of the '{@link eu.coresense.requirements.requirementsModel.Statement#getEvent <em>Event</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Event</em>' attribute.
-   * @see #getEvent()
-   * @generated
-   */
-  void setEvent(String value);
-
-  /**
-   * Returns the value of the '<em><b>T</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>T</em>' containment reference.
-   * @see #setT(TimeInterval)
-   * @see eu.coresense.requirements.requirementsModel.RequirementsModelPackage#getStatement_T()
-   * @model containment="true"
-   * @generated
-   */
-  TimeInterval getT();
-
-  /**
-   * Sets the value of the '{@link eu.coresense.requirements.requirementsModel.Statement#getT <em>T</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>T</em>' containment reference.
-   * @see #getT()
-   * @generated
-   */
-  void setT(TimeInterval value);
-
 } // Statement

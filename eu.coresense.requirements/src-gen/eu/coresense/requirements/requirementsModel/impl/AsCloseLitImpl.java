@@ -25,23 +25,23 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link eu.coresense.requirements.requirementsModel.impl.AsCloseLitImpl#getQ <em>Q</em>}</li>
+ *   <li>{@link eu.coresense.requirements.requirementsModel.impl.AsCloseLitImpl#getQuantity <em>Quantity</em>}</li>
  *   <li>{@link eu.coresense.requirements.requirementsModel.impl.AsCloseLitImpl#getComparator <em>Comparator</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class AsCloseLitImpl extends StatementImpl implements AsCloseLit
+public class AsCloseLitImpl extends ExpressionImpl implements AsCloseLit
 {
   /**
-   * The cached value of the '{@link #getQ() <em>Q</em>}' containment reference.
+   * The cached value of the '{@link #getQuantity() <em>Quantity</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getQ()
+   * @see #getQuantity()
    * @generated
    * @ordered
    */
-  protected Literal q;
+  protected Literal quantity;
 
   /**
    * The cached value of the '{@link #getComparator() <em>Comparator</em>}' containment reference.
@@ -80,9 +80,9 @@ public class AsCloseLitImpl extends StatementImpl implements AsCloseLit
    * @generated
    */
   @Override
-  public Literal getQ()
+  public Literal getQuantity()
   {
-    return q;
+    return quantity;
   }
 
   /**
@@ -90,13 +90,13 @@ public class AsCloseLitImpl extends StatementImpl implements AsCloseLit
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetQ(Literal newQ, NotificationChain msgs)
+  public NotificationChain basicSetQuantity(Literal newQuantity, NotificationChain msgs)
   {
-    Literal oldQ = q;
-    q = newQ;
+    Literal oldQuantity = quantity;
+    quantity = newQuantity;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, RequirementsModelPackage.AS_CLOSE_LIT__Q, oldQ, newQ);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, RequirementsModelPackage.AS_CLOSE_LIT__QUANTITY, oldQuantity, newQuantity);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -108,20 +108,20 @@ public class AsCloseLitImpl extends StatementImpl implements AsCloseLit
    * @generated
    */
   @Override
-  public void setQ(Literal newQ)
+  public void setQuantity(Literal newQuantity)
   {
-    if (newQ != q)
+    if (newQuantity != quantity)
     {
       NotificationChain msgs = null;
-      if (q != null)
-        msgs = ((InternalEObject)q).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - RequirementsModelPackage.AS_CLOSE_LIT__Q, null, msgs);
-      if (newQ != null)
-        msgs = ((InternalEObject)newQ).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - RequirementsModelPackage.AS_CLOSE_LIT__Q, null, msgs);
-      msgs = basicSetQ(newQ, msgs);
+      if (quantity != null)
+        msgs = ((InternalEObject)quantity).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - RequirementsModelPackage.AS_CLOSE_LIT__QUANTITY, null, msgs);
+      if (newQuantity != null)
+        msgs = ((InternalEObject)newQuantity).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - RequirementsModelPackage.AS_CLOSE_LIT__QUANTITY, null, msgs);
+      msgs = basicSetQuantity(newQuantity, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, RequirementsModelPackage.AS_CLOSE_LIT__Q, newQ, newQ));
+      eNotify(new ENotificationImpl(this, Notification.SET, RequirementsModelPackage.AS_CLOSE_LIT__QUANTITY, newQuantity, newQuantity));
   }
 
   /**
@@ -184,8 +184,8 @@ public class AsCloseLitImpl extends StatementImpl implements AsCloseLit
   {
     switch (featureID)
     {
-      case RequirementsModelPackage.AS_CLOSE_LIT__Q:
-        return basicSetQ(null, msgs);
+      case RequirementsModelPackage.AS_CLOSE_LIT__QUANTITY:
+        return basicSetQuantity(null, msgs);
       case RequirementsModelPackage.AS_CLOSE_LIT__COMPARATOR:
         return basicSetComparator(null, msgs);
     }
@@ -202,8 +202,8 @@ public class AsCloseLitImpl extends StatementImpl implements AsCloseLit
   {
     switch (featureID)
     {
-      case RequirementsModelPackage.AS_CLOSE_LIT__Q:
-        return getQ();
+      case RequirementsModelPackage.AS_CLOSE_LIT__QUANTITY:
+        return getQuantity();
       case RequirementsModelPackage.AS_CLOSE_LIT__COMPARATOR:
         return getComparator();
     }
@@ -220,8 +220,8 @@ public class AsCloseLitImpl extends StatementImpl implements AsCloseLit
   {
     switch (featureID)
     {
-      case RequirementsModelPackage.AS_CLOSE_LIT__Q:
-        setQ((Literal)newValue);
+      case RequirementsModelPackage.AS_CLOSE_LIT__QUANTITY:
+        setQuantity((Literal)newValue);
         return;
       case RequirementsModelPackage.AS_CLOSE_LIT__COMPARATOR:
         setComparator((Quantifiable)newValue);
@@ -240,8 +240,8 @@ public class AsCloseLitImpl extends StatementImpl implements AsCloseLit
   {
     switch (featureID)
     {
-      case RequirementsModelPackage.AS_CLOSE_LIT__Q:
-        setQ((Literal)null);
+      case RequirementsModelPackage.AS_CLOSE_LIT__QUANTITY:
+        setQuantity((Literal)null);
         return;
       case RequirementsModelPackage.AS_CLOSE_LIT__COMPARATOR:
         setComparator((Quantifiable)null);
@@ -260,8 +260,8 @@ public class AsCloseLitImpl extends StatementImpl implements AsCloseLit
   {
     switch (featureID)
     {
-      case RequirementsModelPackage.AS_CLOSE_LIT__Q:
-        return q != null;
+      case RequirementsModelPackage.AS_CLOSE_LIT__QUANTITY:
+        return quantity != null;
       case RequirementsModelPackage.AS_CLOSE_LIT__COMPARATOR:
         return comparator != null;
     }

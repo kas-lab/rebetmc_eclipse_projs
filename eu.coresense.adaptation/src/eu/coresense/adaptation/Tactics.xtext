@@ -18,10 +18,6 @@ Import:
 	'import' importURI=STRING ';'
 ;
 
-QualifiedName:
-	ID ('.' ID)*
-;	
-
 AdaptationRule:
  	AtomicRule | RuleSet
 ;
@@ -49,55 +45,67 @@ AtomicSimpleAction:
     AtomicActionSelectFeature | AtomicActionDeselectFeature;
 
 RuleBody:
-	(PureAction | ConditionAction) effect=Effect
+	(PureAction | ConditionAction) effect=EffectBlock?
 ;
 
 PureAction:
 	atomicAction=AtomicAction
 ;
 
-//ConditionAction:
-//	'guard' '{' ('context' '(' contextCondition=MeasurementCondition ')') | ('features' '(' featureCondition=FeatureCondition ')') '{' atomicAction=AtomicAction '}'
-//;
-
 ConditionAction:
     'guard' '{'
         (
-            contextPart=ContextPart featurePart=FeaturePart?
-          | featurePart=FeaturePart contextPart=ContextPart?
+            contextGuard=ContextGuard featureGuard=FeatureGuard?
+          | featureGuard=FeatureGuard contextGuard=ContextGuard?
         )
         '}'
         atomicAction=AtomicAction;
     
-ContextPart:
+ContextGuard:
     'context' '(' contextCondition=MeasurementCondition ')';
 
-FeaturePart:
+FeatureGuard:
     'features' '(' featureCondition=FeatureCondition ')';
 
+EffectBlock:
+	{EffectBlock}
+	'effect' '{' someEffect=Effect'}'
+;
+
 Effect:
-	{Effect}
-	'effect' '{' condition=MeasurementCondition? '}'
+	RelativeEffect
+;
+
+RelativeEffect:
+	sign=INCDEC effectValue=Literal measurement=[contextModel::ContextVar]
 ;
 
 // Find a better name for secondTerm
 // Find a way for using parenthesis for priority between operators
 // Find a way of expressing complex conditions, with operators priorities
+FeatureCondition:
+	not=('!')? 'selected(' variant=QualifiedFeatureRef ')' 	( logicalOp=LogicalOperator secondTerm=FeatureCondition )? 
+;
+
 Condition:
 	MeasurementCondition | FeatureCondition
 ;
 
-FeatureCondition:
-	not=('!')? 'selected(' variant=QualifiedFeatureRef ')' 	( logicalOp=LogicalOperator secondTerm=Condition )? 
-;
-
-
-
 
 MeasurementCondition:
+	MeasurementThresholdCondition | MeasurementMeasurementCondition
+;
+
+MeasurementThresholdCondition:
 	measurement=[contextModel::ContextVar]
-	operator=MathOperator value=Literal 
-	( logicalOp=LogicalOperator secondTerm=Condition )? 
+	operator=MathOperator thresholdValue=Literal 
+	( logicalOp=LogicalOperator secondTerm=MeasurementCondition )? 
+;
+
+MeasurementMeasurementCondition:
+	measurement=[contextModel::ContextVar]
+	operator=MathOperator otherMeasurement=[contextModel::ContextVar] 
+	( logicalOp=LogicalOperator secondTerm=MeasurementCondition )? 
 ;
 
 enum MathOperator returns common::MathOperator:
@@ -149,4 +157,8 @@ terminal DECIMAL returns ecore::EBigDecimal:
 
 terminal BOOLEAN returns ecore::EBoolean:
     'true' | 'false'
+;
+
+terminal INCDEC returns ecore::EString:
+	'+' | '-'
 ;

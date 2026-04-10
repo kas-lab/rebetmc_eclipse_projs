@@ -8,6 +8,8 @@ import eu.coresense.common.MathOperator;
 
 import eu.coresense.context.contextModel.ContextVar;
 
+import org.eclipse.emf.ecore.EObject;
+
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Condition</b></em>'.
@@ -28,7 +30,7 @@ import eu.coresense.context.contextModel.ContextVar;
  * @model
  * @generated
  */
-public interface Condition extends Proposition
+public interface Condition extends EObject
 {
   /**
    * Returns the value of the '<em><b>Measurement</b></em>' reference.

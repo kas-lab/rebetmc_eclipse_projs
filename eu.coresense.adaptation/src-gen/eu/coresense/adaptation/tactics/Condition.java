@@ -15,7 +15,6 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  * <ul>
  *   <li>{@link eu.coresense.adaptation.tactics.Condition#getLogicalOp <em>Logical Op</em>}</li>
- *   <li>{@link eu.coresense.adaptation.tactics.Condition#getSecondTerm <em>Second Term</em>}</li>
  * </ul>
  *
  * @see eu.coresense.adaptation.tactics.TacticsPackage#getCondition()
@@ -48,27 +47,5 @@ public interface Condition extends EObject
    * @generated
    */
   void setLogicalOp(LogicalOperator value);
-
-  /**
-   * Returns the value of the '<em><b>Second Term</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Second Term</em>' containment reference.
-   * @see #setSecondTerm(Condition)
-   * @see eu.coresense.adaptation.tactics.TacticsPackage#getCondition_SecondTerm()
-   * @model containment="true"
-   * @generated
-   */
-  Condition getSecondTerm();
-
-  /**
-   * Sets the value of the '{@link eu.coresense.adaptation.tactics.Condition#getSecondTerm <em>Second Term</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Second Term</em>' containment reference.
-   * @see #getSecondTerm()
-   * @generated
-   */
-  void setSecondTerm(Condition value);
 
 } // Condition

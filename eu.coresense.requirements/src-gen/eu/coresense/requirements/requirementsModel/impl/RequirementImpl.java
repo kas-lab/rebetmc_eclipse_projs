@@ -3,10 +3,10 @@
  */
 package eu.coresense.requirements.requirementsModel.impl;
 
+import eu.coresense.requirements.requirementsModel.Expression;
 import eu.coresense.requirements.requirementsModel.QualityAttribute;
 import eu.coresense.requirements.requirementsModel.Requirement;
 import eu.coresense.requirements.requirementsModel.RequirementsModelPackage;
-import eu.coresense.requirements.requirementsModel.Statement;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -27,8 +27,8 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * <ul>
  *   <li>{@link eu.coresense.requirements.requirementsModel.impl.RequirementImpl#getName <em>Name</em>}</li>
  *   <li>{@link eu.coresense.requirements.requirementsModel.impl.RequirementImpl#getQa <em>Qa</em>}</li>
- *   <li>{@link eu.coresense.requirements.requirementsModel.impl.RequirementImpl#getNatural <em>Natural</em>}</li>
- *   <li>{@link eu.coresense.requirements.requirementsModel.impl.RequirementImpl#getRule <em>Rule</em>}</li>
+ *   <li>{@link eu.coresense.requirements.requirementsModel.impl.RequirementImpl#getNaturalLanguageDescription <em>Natural Language Description</em>}</li>
+ *   <li>{@link eu.coresense.requirements.requirementsModel.impl.RequirementImpl#getExpression <em>Expression</em>}</li>
  * </ul>
  *
  * @generated
@@ -76,34 +76,34 @@ public class RequirementImpl extends MinimalEObjectImpl.Container implements Req
   protected QualityAttribute qa = QA_EDEFAULT;
 
   /**
-   * The default value of the '{@link #getNatural() <em>Natural</em>}' attribute.
+   * The default value of the '{@link #getNaturalLanguageDescription() <em>Natural Language Description</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getNatural()
+   * @see #getNaturalLanguageDescription()
    * @generated
    * @ordered
    */
-  protected static final String NATURAL_EDEFAULT = null;
+  protected static final String NATURAL_LANGUAGE_DESCRIPTION_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getNatural() <em>Natural</em>}' attribute.
+   * The cached value of the '{@link #getNaturalLanguageDescription() <em>Natural Language Description</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getNatural()
+   * @see #getNaturalLanguageDescription()
    * @generated
    * @ordered
    */
-  protected String natural = NATURAL_EDEFAULT;
+  protected String naturalLanguageDescription = NATURAL_LANGUAGE_DESCRIPTION_EDEFAULT;
 
   /**
-   * The cached value of the '{@link #getRule() <em>Rule</em>}' containment reference.
+   * The cached value of the '{@link #getExpression() <em>Expression</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getRule()
+   * @see #getExpression()
    * @generated
    * @ordered
    */
-  protected Statement rule;
+  protected Expression expression;
 
   /**
    * <!-- begin-user-doc -->
@@ -182,9 +182,9 @@ public class RequirementImpl extends MinimalEObjectImpl.Container implements Req
    * @generated
    */
   @Override
-  public String getNatural()
+  public String getNaturalLanguageDescription()
   {
-    return natural;
+    return naturalLanguageDescription;
   }
 
   /**
@@ -193,12 +193,12 @@ public class RequirementImpl extends MinimalEObjectImpl.Container implements Req
    * @generated
    */
   @Override
-  public void setNatural(String newNatural)
+  public void setNaturalLanguageDescription(String newNaturalLanguageDescription)
   {
-    String oldNatural = natural;
-    natural = newNatural;
+    String oldNaturalLanguageDescription = naturalLanguageDescription;
+    naturalLanguageDescription = newNaturalLanguageDescription;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, RequirementsModelPackage.REQUIREMENT__NATURAL, oldNatural, natural));
+      eNotify(new ENotificationImpl(this, Notification.SET, RequirementsModelPackage.REQUIREMENT__NATURAL_LANGUAGE_DESCRIPTION, oldNaturalLanguageDescription, naturalLanguageDescription));
   }
 
   /**
@@ -207,9 +207,9 @@ public class RequirementImpl extends MinimalEObjectImpl.Container implements Req
    * @generated
    */
   @Override
-  public Statement getRule()
+  public Expression getExpression()
   {
-    return rule;
+    return expression;
   }
 
   /**
@@ -217,13 +217,13 @@ public class RequirementImpl extends MinimalEObjectImpl.Container implements Req
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetRule(Statement newRule, NotificationChain msgs)
+  public NotificationChain basicSetExpression(Expression newExpression, NotificationChain msgs)
   {
-    Statement oldRule = rule;
-    rule = newRule;
+    Expression oldExpression = expression;
+    expression = newExpression;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, RequirementsModelPackage.REQUIREMENT__RULE, oldRule, newRule);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, RequirementsModelPackage.REQUIREMENT__EXPRESSION, oldExpression, newExpression);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -235,20 +235,20 @@ public class RequirementImpl extends MinimalEObjectImpl.Container implements Req
    * @generated
    */
   @Override
-  public void setRule(Statement newRule)
+  public void setExpression(Expression newExpression)
   {
-    if (newRule != rule)
+    if (newExpression != expression)
     {
       NotificationChain msgs = null;
-      if (rule != null)
-        msgs = ((InternalEObject)rule).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - RequirementsModelPackage.REQUIREMENT__RULE, null, msgs);
-      if (newRule != null)
-        msgs = ((InternalEObject)newRule).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - RequirementsModelPackage.REQUIREMENT__RULE, null, msgs);
-      msgs = basicSetRule(newRule, msgs);
+      if (expression != null)
+        msgs = ((InternalEObject)expression).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - RequirementsModelPackage.REQUIREMENT__EXPRESSION, null, msgs);
+      if (newExpression != null)
+        msgs = ((InternalEObject)newExpression).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - RequirementsModelPackage.REQUIREMENT__EXPRESSION, null, msgs);
+      msgs = basicSetExpression(newExpression, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, RequirementsModelPackage.REQUIREMENT__RULE, newRule, newRule));
+      eNotify(new ENotificationImpl(this, Notification.SET, RequirementsModelPackage.REQUIREMENT__EXPRESSION, newExpression, newExpression));
   }
 
   /**
@@ -261,8 +261,8 @@ public class RequirementImpl extends MinimalEObjectImpl.Container implements Req
   {
     switch (featureID)
     {
-      case RequirementsModelPackage.REQUIREMENT__RULE:
-        return basicSetRule(null, msgs);
+      case RequirementsModelPackage.REQUIREMENT__EXPRESSION:
+        return basicSetExpression(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -281,10 +281,10 @@ public class RequirementImpl extends MinimalEObjectImpl.Container implements Req
         return getName();
       case RequirementsModelPackage.REQUIREMENT__QA:
         return getQa();
-      case RequirementsModelPackage.REQUIREMENT__NATURAL:
-        return getNatural();
-      case RequirementsModelPackage.REQUIREMENT__RULE:
-        return getRule();
+      case RequirementsModelPackage.REQUIREMENT__NATURAL_LANGUAGE_DESCRIPTION:
+        return getNaturalLanguageDescription();
+      case RequirementsModelPackage.REQUIREMENT__EXPRESSION:
+        return getExpression();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -305,11 +305,11 @@ public class RequirementImpl extends MinimalEObjectImpl.Container implements Req
       case RequirementsModelPackage.REQUIREMENT__QA:
         setQa((QualityAttribute)newValue);
         return;
-      case RequirementsModelPackage.REQUIREMENT__NATURAL:
-        setNatural((String)newValue);
+      case RequirementsModelPackage.REQUIREMENT__NATURAL_LANGUAGE_DESCRIPTION:
+        setNaturalLanguageDescription((String)newValue);
         return;
-      case RequirementsModelPackage.REQUIREMENT__RULE:
-        setRule((Statement)newValue);
+      case RequirementsModelPackage.REQUIREMENT__EXPRESSION:
+        setExpression((Expression)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -331,11 +331,11 @@ public class RequirementImpl extends MinimalEObjectImpl.Container implements Req
       case RequirementsModelPackage.REQUIREMENT__QA:
         setQa(QA_EDEFAULT);
         return;
-      case RequirementsModelPackage.REQUIREMENT__NATURAL:
-        setNatural(NATURAL_EDEFAULT);
+      case RequirementsModelPackage.REQUIREMENT__NATURAL_LANGUAGE_DESCRIPTION:
+        setNaturalLanguageDescription(NATURAL_LANGUAGE_DESCRIPTION_EDEFAULT);
         return;
-      case RequirementsModelPackage.REQUIREMENT__RULE:
-        setRule((Statement)null);
+      case RequirementsModelPackage.REQUIREMENT__EXPRESSION:
+        setExpression((Expression)null);
         return;
     }
     super.eUnset(featureID);
@@ -355,10 +355,10 @@ public class RequirementImpl extends MinimalEObjectImpl.Container implements Req
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
       case RequirementsModelPackage.REQUIREMENT__QA:
         return qa != QA_EDEFAULT;
-      case RequirementsModelPackage.REQUIREMENT__NATURAL:
-        return NATURAL_EDEFAULT == null ? natural != null : !NATURAL_EDEFAULT.equals(natural);
-      case RequirementsModelPackage.REQUIREMENT__RULE:
-        return rule != null;
+      case RequirementsModelPackage.REQUIREMENT__NATURAL_LANGUAGE_DESCRIPTION:
+        return NATURAL_LANGUAGE_DESCRIPTION_EDEFAULT == null ? naturalLanguageDescription != null : !NATURAL_LANGUAGE_DESCRIPTION_EDEFAULT.equals(naturalLanguageDescription);
+      case RequirementsModelPackage.REQUIREMENT__EXPRESSION:
+        return expression != null;
     }
     return super.eIsSet(featureID);
   }
@@ -378,8 +378,8 @@ public class RequirementImpl extends MinimalEObjectImpl.Container implements Req
     result.append(name);
     result.append(", qa: ");
     result.append(qa);
-    result.append(", natural: ");
-    result.append(natural);
+    result.append(", naturalLanguageDescription: ");
+    result.append(naturalLanguageDescription);
     result.append(')');
     return result.toString();
   }

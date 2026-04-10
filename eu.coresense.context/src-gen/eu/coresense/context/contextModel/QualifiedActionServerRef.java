@@ -3,10 +3,7 @@
  */
 package eu.coresense.context.contextModel;
 
-import org.eclipse.emf.ecore.EObject;
-
 import ros.ActionServer;
-import ros.Node;
 
 /**
  * <!-- begin-user-doc -->
@@ -17,38 +14,16 @@ import ros.Node;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link eu.coresense.context.contextModel.QualifiedActionServerRef#getNode <em>Node</em>}</li>
  *   <li>{@link eu.coresense.context.contextModel.QualifiedActionServerRef#getActionServer <em>Action Server</em>}</li>
+ *   <li>{@link eu.coresense.context.contextModel.QualifiedActionServerRef#getKwargs <em>Kwargs</em>}</li>
  * </ul>
  *
  * @see eu.coresense.context.contextModel.ContextModelPackage#getQualifiedActionServerRef()
  * @model
  * @generated
  */
-public interface QualifiedActionServerRef extends EObject
+public interface QualifiedActionServerRef extends QualifiedRef
 {
-  /**
-   * Returns the value of the '<em><b>Node</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Node</em>' reference.
-   * @see #setNode(Node)
-   * @see eu.coresense.context.contextModel.ContextModelPackage#getQualifiedActionServerRef_Node()
-   * @model
-   * @generated
-   */
-  Node getNode();
-
-  /**
-   * Sets the value of the '{@link eu.coresense.context.contextModel.QualifiedActionServerRef#getNode <em>Node</em>}' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Node</em>' reference.
-   * @see #getNode()
-   * @generated
-   */
-  void setNode(Node value);
-
   /**
    * Returns the value of the '<em><b>Action Server</b></em>' reference.
    * <!-- begin-user-doc -->
@@ -70,5 +45,27 @@ public interface QualifiedActionServerRef extends EObject
    * @generated
    */
   void setActionServer(ActionServer value);
+
+  /**
+   * Returns the value of the '<em><b>Kwargs</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Kwargs</em>' attribute.
+   * @see #setKwargs(String)
+   * @see eu.coresense.context.contextModel.ContextModelPackage#getQualifiedActionServerRef_Kwargs()
+   * @model
+   * @generated
+   */
+  String getKwargs();
+
+  /**
+   * Sets the value of the '{@link eu.coresense.context.contextModel.QualifiedActionServerRef#getKwargs <em>Kwargs</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Kwargs</em>' attribute.
+   * @see #getKwargs()
+   * @generated
+   */
+  void setKwargs(String value);
 
 } // QualifiedActionServerRef

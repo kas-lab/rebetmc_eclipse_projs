@@ -123,22 +123,31 @@ public interface TacticsFactory extends EFactory
   ConditionAction createConditionAction();
 
   /**
-   * Returns a new object of class '<em>Context Part</em>'.
+   * Returns a new object of class '<em>Context Guard</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Context Part</em>'.
+   * @return a new object of class '<em>Context Guard</em>'.
    * @generated
    */
-  ContextPart createContextPart();
+  ContextGuard createContextGuard();
 
   /**
-   * Returns a new object of class '<em>Feature Part</em>'.
+   * Returns a new object of class '<em>Feature Guard</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Feature Part</em>'.
+   * @return a new object of class '<em>Feature Guard</em>'.
    * @generated
    */
-  FeaturePart createFeaturePart();
+  FeatureGuard createFeatureGuard();
+
+  /**
+   * Returns a new object of class '<em>Effect Block</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Effect Block</em>'.
+   * @generated
+   */
+  EffectBlock createEffectBlock();
 
   /**
    * Returns a new object of class '<em>Effect</em>'.
@@ -150,13 +159,13 @@ public interface TacticsFactory extends EFactory
   Effect createEffect();
 
   /**
-   * Returns a new object of class '<em>Condition</em>'.
+   * Returns a new object of class '<em>Relative Effect</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Condition</em>'.
+   * @return a new object of class '<em>Relative Effect</em>'.
    * @generated
    */
-  Condition createCondition();
+  RelativeEffect createRelativeEffect();
 
   /**
    * Returns a new object of class '<em>Feature Condition</em>'.
@@ -168,6 +177,15 @@ public interface TacticsFactory extends EFactory
   FeatureCondition createFeatureCondition();
 
   /**
+   * Returns a new object of class '<em>Condition</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Condition</em>'.
+   * @generated
+   */
+  Condition createCondition();
+
+  /**
    * Returns a new object of class '<em>Measurement Condition</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -175,6 +193,24 @@ public interface TacticsFactory extends EFactory
    * @generated
    */
   MeasurementCondition createMeasurementCondition();
+
+  /**
+   * Returns a new object of class '<em>Measurement Threshold Condition</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Measurement Threshold Condition</em>'.
+   * @generated
+   */
+  MeasurementThresholdCondition createMeasurementThresholdCondition();
+
+  /**
+   * Returns a new object of class '<em>Measurement Measurement Condition</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Measurement Measurement Condition</em>'.
+   * @generated
+   */
+  MeasurementMeasurementCondition createMeasurementMeasurementCondition();
 
   /**
    * Returns a new object of class '<em>Atomic Action Select Feature</em>'.

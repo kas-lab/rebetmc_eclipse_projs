@@ -3,6 +3,9 @@
   <viewpoint:DAnalysis uid="_LpQ00MCKEfCI4Obdie5TBg" selectedViews="_LqsYMMCKEfCI4Obdie5TBg" version="15.4.1.202403191723">
     <semanticResources>common.ecore</semanticResources>
     <semanticResources>common.genmodel</semanticResources>
+    <semanticResources>../src/eu/coresense/common/Utilities.xtend</semanticResources>
+    <semanticResources>../src/eu/coresense/common/NameProvider.xtend</semanticResources>
+    <semanticResources>../src/eu/coresense/common/RosNameProvider.xtend</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" uid="_LqsYMMCKEfCI4Obdie5TBg">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']"/>
       <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_Lr7uUMCKEfCI4Obdie5TBg" name="common" repPath="#_Lraw8MCKEfCI4Obdie5TBg" changeId="1763036017227">

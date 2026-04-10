@@ -21,14 +21,20 @@
       <genEnumLiterals ecoreEnumLiteral="RequirementsModel.ecore#//LogicalOperator/AND"/>
       <genEnumLiterals ecoreEnumLiteral="RequirementsModel.ecore#//LogicalOperator/OR"/>
     </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="RequirementsModel.ecore#//Timeliness">
+      <genEnumLiterals ecoreEnumLiteral="RequirementsModel.ecore#//Timeliness/EARLY"/>
+      <genEnumLiterals ecoreEnumLiteral="RequirementsModel.ecore#//Timeliness/LATE"/>
+      <genEnumLiterals ecoreEnumLiteral="RequirementsModel.ecore#//Timeliness/MANY"/>
+      <genEnumLiterals ecoreEnumLiteral="RequirementsModel.ecore#//Timeliness/FEW"/>
+    </genEnums>
     <genClasses ecoreClass="RequirementsModel.ecore#//RequirementsModel">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RequirementsModel.ecore#//RequirementsModel/requirements"/>
     </genClasses>
     <genClasses ecoreClass="RequirementsModel.ecore#//Requirement">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RequirementsModel.ecore#//Requirement/name"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RequirementsModel.ecore#//Requirement/qa"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RequirementsModel.ecore#//Requirement/natural"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RequirementsModel.ecore#//Requirement/rule"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RequirementsModel.ecore#//Requirement/naturalLanguageDescription"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RequirementsModel.ecore#//Requirement/expression"/>
     </genClasses>
     <genClasses ecoreClass="RequirementsModel.ecore#//Condition">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference RequirementsModel.ecore#//Condition/measurement"/>
@@ -37,30 +43,63 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RequirementsModel.ecore#//Condition/logicalOp"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RequirementsModel.ecore#//Condition/secondTerm"/>
     </genClasses>
-    <genClasses ecoreClass="RequirementsModel.ecore#//Proposition"/>
-    <genClasses ecoreClass="RequirementsModel.ecore#//Statement">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RequirementsModel.ecore#//Statement/quantifiableStatement"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RequirementsModel.ecore#//Statement/statement"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RequirementsModel.ecore#//Statement/first_statement"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RequirementsModel.ecore#//Statement/second_statement"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RequirementsModel.ecore#//Statement/event"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RequirementsModel.ecore#//Statement/t"/>
+    <genClasses ecoreClass="RequirementsModel.ecore#//Proposition">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RequirementsModel.ecore#//Proposition/condition"/>
     </genClasses>
+    <genClasses ecoreClass="RequirementsModel.ecore#//BooleanStatement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RequirementsModel.ecore#//BooleanStatement/booleanValue"/>
+    </genClasses>
+    <genClasses ecoreClass="RequirementsModel.ecore#//And"/>
+    <genClasses ecoreClass="RequirementsModel.ecore#//Or"/>
+    <genClasses ecoreClass="RequirementsModel.ecore#//Shall">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RequirementsModel.ecore#//Shall/expression"/>
+    </genClasses>
+    <genClasses ecoreClass="RequirementsModel.ecore#//Negation">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RequirementsModel.ecore#//Negation/expression"/>
+    </genClasses>
+    <genClasses ecoreClass="RequirementsModel.ecore#//Eventually">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RequirementsModel.ecore#//Eventually/expression"/>
+    </genClasses>
+    <genClasses ecoreClass="RequirementsModel.ecore#//ThisUntil"/>
+    <genClasses ecoreClass="RequirementsModel.ecore#//Before">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RequirementsModel.ecore#//Before/event"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RequirementsModel.ecore#//Before/expression"/>
+    </genClasses>
+    <genClasses ecoreClass="RequirementsModel.ecore#//After">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RequirementsModel.ecore#//After/event"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RequirementsModel.ecore#//After/expression"/>
+    </genClasses>
+    <genClasses ecoreClass="RequirementsModel.ecore#//In">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RequirementsModel.ecore#//In/deadline"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RequirementsModel.ecore#//In/expression"/>
+    </genClasses>
+    <genClasses ecoreClass="RequirementsModel.ecore#//AsAsPossible">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RequirementsModel.ecore#//AsAsPossible/timeFrequency"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RequirementsModel.ecore#//AsAsPossible/quantity"/>
+    </genClasses>
+    <genClasses ecoreClass="RequirementsModel.ecore#//CompoundExpression">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RequirementsModel.ecore#//CompoundExpression/leftExpression"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RequirementsModel.ecore#//CompoundExpression/rightExpression"/>
+    </genClasses>
+    <genClasses ecoreClass="RequirementsModel.ecore#//Statement"/>
+    <genClasses ecoreClass="RequirementsModel.ecore#//Expression"/>
     <genClasses ecoreClass="RequirementsModel.ecore#//AsCloseFreq">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RequirementsModel.ecore#//AsCloseFreq/f"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RequirementsModel.ecore#//AsCloseFreq/frequency"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RequirementsModel.ecore#//AsCloseFreq/expression"/>
     </genClasses>
     <genClasses ecoreClass="RequirementsModel.ecore#//AsCloseLit">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RequirementsModel.ecore#//AsCloseLit/q"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RequirementsModel.ecore#//AsCloseLit/quantity"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RequirementsModel.ecore#//AsCloseLit/comparator"/>
     </genClasses>
     <genClasses ecoreClass="RequirementsModel.ecore#//Quantifiable">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference RequirementsModel.ecore#//Quantifiable/var"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference RequirementsModel.ecore#//Quantifiable/contextVariable"/>
     </genClasses>
-    <genClasses ecoreClass="RequirementsModel.ecore#//MayStatement">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RequirementsModel.ecore#//MayStatement/statements"/>
+    <genClasses ecoreClass="RequirementsModel.ecore#//May">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RequirementsModel.ecore#//May/expression"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RequirementsModel.ecore#//May/alternatives"/>
     </genClasses>
-    <genClasses ecoreClass="RequirementsModel.ecore#//AtomicStatement">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RequirementsModel.ecore#//AtomicStatement/proposition"/>
+    <genClasses ecoreClass="RequirementsModel.ecore#//MayAlternative">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RequirementsModel.ecore#//MayAlternative/expression"/>
     </genClasses>
     <genClasses ecoreClass="RequirementsModel.ecore#//TimeInterval">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RequirementsModel.ecore#//TimeInterval/after"/>

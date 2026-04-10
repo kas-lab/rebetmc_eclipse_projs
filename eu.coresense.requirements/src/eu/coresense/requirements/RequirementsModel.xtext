@@ -7,8 +7,14 @@ generate requirementsModel "http://www.coresense.eu/requirements/RequirementsMod
 RequirementsModel:
 	requirements+=Requirement*;
 	
+//Requirement:
+//	name=ID ',' qa=QualityAttribute ':' naturalLanguageDescription=STRING ',' rule=Statement;
+
+	
 Requirement:
-	name=ID ',' qa=QualityAttribute ':' natural=STRING ',' rule=Statement;
+	name=ID ',' qa=QualityAttribute ':' naturalLanguageDescription=STRING ',' expression=Expression;
+
+
 
 enum QualityAttribute:
 FUNCTIONAL='Functional suitability' |
@@ -36,49 +42,101 @@ Condition:
 enum LogicalOperator:
     AND='&&' | OR='||';
 
-
-Proposition:
-	Condition
+enum Timeliness:
+	EARLY='EARLY' | LATE='LATE' | MANY='MANY' | FEW='FEW'
 ;
 
+Proposition:
+	condition=Condition
+;
+
+BooleanStatement:
+	booleanValue=BOOLEAN
+;
+
+And: 'AND' '(' leftExpression=Expression ',' rightExpression=Expression ')';
+Or: 'OR' '(' leftExpression=Expression ',' rightExpression=Expression ')';
+Shall: 'SHALL' '(' expression=Expression ')' ;
+Negation: 'NOT' '(' expression=Expression ')';
+Eventually: 'EVENTUALLY' '(' expression=Expression ')';
+ThisUntil: 'THIS' leftExpression=Expression 'UNTIL' rightExpression=Expression ;
+Before: 'BEFORE' event=Event '(' expression=Expression ')';
+After: 'AFTER' event=Event '(' expression=Expression ')' ;
+In: 'IN' '(' deadline=TimeInterval ',' expression=Expression ')';
+AsAsPossible: 'AS' timeFrequency=Timeliness 'AS' 'POSSIBLE' '(' quantity=Quantifiable ')';
+
+
+CompoundExpression:
+	And |
+	Or |
+	ThisUntil
+;
+
+//Statement:
+//	{Statement} BOOLEAN |
+//	And |
+//	Or |
+//	proposition=Proposition |
+//	Quantifiable |
+//	Shall |
+//	Negation |
+//	MayStatement |
+//	Eventually |
+//	ThisUntil |
+//	Before |
+//	After |
+//	In |
+//	AsCloseFreq |
+//	AsCloseLit |
+//	AsAsPossible
+//;
+
+//ExpressionOrStatement:
+//	Expression | Statement;
+
 Statement:
-	{Statement} BOOLEAN |
-	proposition=Proposition |
-	quantifiableStatement=Quantifiable |
-	'SHALL' '(' statement=Statement ')' |
-	MayStatement |
-	'EVENTUALLY' '(' statement=Statement ')' |
-	'THIS' first_statement=Statement 'UNTIL' second_statement=Statement 
-	'BEFORE' event=Event '(' statement=Statement ')' |
-	'AFTER' event=Event '(' statement=Statement ')' |
-	'IN' t=TimeInterval |
-	 AsCloseFreq |
-	 AsCloseLit |
-	'AS' ('EARLY' | 'LATE' | 'MANY' | 'FEW') 'AS' 'POSSIBLE' '(' statement=Quantifiable ')'
+	BooleanStatement |
+    Proposition |
+    Quantifiable
+;
+
+Expression:
+	Shall |
+	Negation |
+	May |
+	Eventually |
+	CompoundExpression |
+	Before |
+	After |
+	In |
+	AsCloseFreq |
+	AsCloseLit |
+	AsAsPossible |
+	Statement
 ;
 
 AsCloseFreq:
-	'AS' 'CLOSE' 'AS' 'POSSIBLE' 'TO' '(' f=Time  statement=Statement ')'
+	'AS' 'CLOSE' 'AS' 'POSSIBLE' 'TO' '(' frequency=Time ',' expression=Expression ')'
 ;
 
 AsCloseLit:
-	'AS' 'CLOSE' 'AS' 'POSSIBLE' 'TO' '(' q=Literal comparator=Quantifiable ')'
+	'AS' 'CLOSE' 'AS' 'POSSIBLE' 'TO' '(' quantity=Literal ',' comparator=Quantifiable ')'
 ;
 
 
 
 Quantifiable:
-	var=[contextModel::ContextVar]
+	'^' contextVariable=[contextModel::ContextVar]
 ;
 
-MayStatement:
-    'MAY' statements+=AtomicStatement ( 'OR' 'MAY' statements+=AtomicStatement )+ 
+May:
+    'MAY' '('expression=Expression ',' alternatives+=MayAlternative+ ')'
 ;
 
-AtomicStatement:
-    {Statement} BOOLEAN |
-    proposition=Proposition
+MayAlternative:
+    'OR' 'MAY' '(' expression=Expression ')' (',')?
 ;
+
 Event:
 	STRING
 ;

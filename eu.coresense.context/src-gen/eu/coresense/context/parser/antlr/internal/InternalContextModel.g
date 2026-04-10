@@ -448,139 +448,27 @@ ruleDataSource returns [EObject current=null]
 			newLeafNode(otherlv_0, grammarAccess.getDataSourceAccess().getSourceKeyword_0());
 		}
 		(
+			otherlv_1='origin:'
+			{
+				newLeafNode(otherlv_1, grammarAccess.getDataSourceAccess().getOriginKeyword_1_0());
+			}
 			(
-				otherlv_1='publisher:'
-				{
-					newLeafNode(otherlv_1, grammarAccess.getDataSourceAccess().getPublisherKeyword_1_0_0());
-				}
-				otherlv_2='ref:'
-				{
-					newLeafNode(otherlv_2, grammarAccess.getDataSourceAccess().getRefKeyword_1_0_1());
-				}
 				(
-					(
-						{
-							newCompositeNode(grammarAccess.getDataSourceAccess().getRefQualifiedPublisherRefParserRuleCall_1_0_2_0());
+					{
+						newCompositeNode(grammarAccess.getDataSourceAccess().getRefQualifiedRefParserRuleCall_1_1_0());
+					}
+					lv_ref_2_0=ruleQualifiedRef
+					{
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getDataSourceRule());
 						}
-						lv_ref_3_0=ruleQualifiedPublisherRef
-						{
-							if ($current==null) {
-								$current = createModelElementForParent(grammarAccess.getDataSourceRule());
-							}
-							set(
-								$current,
-								"ref",
-								lv_ref_3_0,
-								"eu.coresense.context.ContextModel.QualifiedPublisherRef");
-							afterParserOrEnumRuleCall();
-						}
-					)
-				)
-			)
-			    |
-			(
-				otherlv_4='service:'
-				{
-					newLeafNode(otherlv_4, grammarAccess.getDataSourceAccess().getServiceKeyword_1_1_0());
-				}
-				otherlv_5='ref:'
-				{
-					newLeafNode(otherlv_5, grammarAccess.getDataSourceAccess().getRefKeyword_1_1_1());
-				}
-				(
-					(
-						{
-							newCompositeNode(grammarAccess.getDataSourceAccess().getRefQualifiedServiceServerRefParserRuleCall_1_1_2_0());
-						}
-						lv_ref_6_0=ruleQualifiedServiceServerRef
-						{
-							if ($current==null) {
-								$current = createModelElementForParent(grammarAccess.getDataSourceRule());
-							}
-							set(
-								$current,
-								"ref",
-								lv_ref_6_0,
-								"eu.coresense.context.ContextModel.QualifiedServiceServerRef");
-							afterParserOrEnumRuleCall();
-						}
-					)
-				)
-				otherlv_7='request_kwargs:'
-				{
-					newLeafNode(otherlv_7, grammarAccess.getDataSourceAccess().getRequest_kwargsKeyword_1_1_3());
-				}
-				(
-					(
-						{
-							newCompositeNode(grammarAccess.getDataSourceAccess().getKwargsKeyWordArgumentsParserRuleCall_1_1_4_0());
-						}
-						lv_kwargs_8_0=ruleKeyWordArguments
-						{
-							if ($current==null) {
-								$current = createModelElementForParent(grammarAccess.getDataSourceRule());
-							}
-							set(
-								$current,
-								"kwargs",
-								lv_kwargs_8_0,
-								"eu.coresense.context.ContextModel.KeyWordArguments");
-							afterParserOrEnumRuleCall();
-						}
-					)
-				)
-			)
-			    |
-			(
-				otherlv_9='action:'
-				{
-					newLeafNode(otherlv_9, grammarAccess.getDataSourceAccess().getActionKeyword_1_2_0());
-				}
-				otherlv_10='ref:'
-				{
-					newLeafNode(otherlv_10, grammarAccess.getDataSourceAccess().getRefKeyword_1_2_1());
-				}
-				(
-					(
-						{
-							newCompositeNode(grammarAccess.getDataSourceAccess().getRefQualifiedActionServerRefParserRuleCall_1_2_2_0());
-						}
-						lv_ref_11_0=ruleQualifiedActionServerRef
-						{
-							if ($current==null) {
-								$current = createModelElementForParent(grammarAccess.getDataSourceRule());
-							}
-							set(
-								$current,
-								"ref",
-								lv_ref_11_0,
-								"eu.coresense.context.ContextModel.QualifiedActionServerRef");
-							afterParserOrEnumRuleCall();
-						}
-					)
-				)
-				otherlv_12='goal_kwargs:'
-				{
-					newLeafNode(otherlv_12, grammarAccess.getDataSourceAccess().getGoal_kwargsKeyword_1_2_3());
-				}
-				(
-					(
-						{
-							newCompositeNode(grammarAccess.getDataSourceAccess().getKwargsKeyWordArgumentsParserRuleCall_1_2_4_0());
-						}
-						lv_kwargs_13_0=ruleKeyWordArguments
-						{
-							if ($current==null) {
-								$current = createModelElementForParent(grammarAccess.getDataSourceRule());
-							}
-							set(
-								$current,
-								"kwargs",
-								lv_kwargs_13_0,
-								"eu.coresense.context.ContextModel.KeyWordArguments");
-							afterParserOrEnumRuleCall();
-						}
-					)
+						set(
+							$current,
+							"ref",
+							lv_ref_2_0,
+							"eu.coresense.context.ContextModel.QualifiedRef");
+						afterParserOrEnumRuleCall();
+					}
 				)
 			)
 		)
@@ -611,6 +499,51 @@ ruleKeyWordArguments returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRu
 	}
 ;
 
+// Entry rule entryRuleQualifiedRef
+entryRuleQualifiedRef returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getQualifiedRefRule()); }
+	iv_ruleQualifiedRef=ruleQualifiedRef
+	{ $current=$iv_ruleQualifiedRef.current; }
+	EOF;
+
+// Rule QualifiedRef
+ruleQualifiedRef returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		{
+			newCompositeNode(grammarAccess.getQualifiedRefAccess().getQualifiedPublisherRefParserRuleCall_0());
+		}
+		this_QualifiedPublisherRef_0=ruleQualifiedPublisherRef
+		{
+			$current = $this_QualifiedPublisherRef_0.current;
+			afterParserOrEnumRuleCall();
+		}
+		    |
+		{
+			newCompositeNode(grammarAccess.getQualifiedRefAccess().getQualifiedServiceServerRefParserRuleCall_1());
+		}
+		this_QualifiedServiceServerRef_1=ruleQualifiedServiceServerRef
+		{
+			$current = $this_QualifiedServiceServerRef_1.current;
+			afterParserOrEnumRuleCall();
+		}
+		    |
+		{
+			newCompositeNode(grammarAccess.getQualifiedRefAccess().getQualifiedActionServerRefParserRuleCall_2());
+		}
+		this_QualifiedActionServerRef_2=ruleQualifiedActionServerRef
+		{
+			$current = $this_QualifiedActionServerRef_2.current;
+			afterParserOrEnumRuleCall();
+		}
+	)
+;
+
 // Entry rule entryRuleQualifiedPublisherRef
 entryRuleQualifiedPublisherRef returns [EObject current=null]:
 	{ newCompositeNode(grammarAccess.getQualifiedPublisherRefRule()); }
@@ -627,22 +560,9 @@ ruleQualifiedPublisherRef returns [EObject current=null]
 	leaveRule();
 }:
 	(
-		(
-			(
-				{
-					if ($current==null) {
-						$current = createModelElement(grammarAccess.getQualifiedPublisherRefRule());
-					}
-				}
-				otherlv_0=RULE_ID
-				{
-					newLeafNode(otherlv_0, grammarAccess.getQualifiedPublisherRefAccess().getNodeNodeCrossReference_0_0());
-				}
-			)
-		)
-		otherlv_1='.'
+		otherlv_0='publisher:'
 		{
-			newLeafNode(otherlv_1, grammarAccess.getQualifiedPublisherRefAccess().getFullStopKeyword_1());
+			newLeafNode(otherlv_0, grammarAccess.getQualifiedPublisherRefAccess().getPublisherKeyword_0());
 		}
 		(
 			(
@@ -651,9 +571,26 @@ ruleQualifiedPublisherRef returns [EObject current=null]
 						$current = createModelElement(grammarAccess.getQualifiedPublisherRefRule());
 					}
 				}
-				otherlv_2=RULE_ID
+				otherlv_1=RULE_ID
 				{
-					newLeafNode(otherlv_2, grammarAccess.getQualifiedPublisherRefAccess().getPublisherPublisherCrossReference_2_0());
+					newLeafNode(otherlv_1, grammarAccess.getQualifiedPublisherRefAccess().getNodeNodeCrossReference_1_0());
+				}
+			)
+		)
+		otherlv_2='.'
+		{
+			newLeafNode(otherlv_2, grammarAccess.getQualifiedPublisherRefAccess().getFullStopKeyword_2());
+		}
+		(
+			(
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getQualifiedPublisherRefRule());
+					}
+				}
+				otherlv_3=RULE_ID
+				{
+					newLeafNode(otherlv_3, grammarAccess.getQualifiedPublisherRefAccess().getPublisherPublisherCrossReference_3_0());
 				}
 			)
 		)
@@ -676,22 +613,9 @@ ruleQualifiedServiceServerRef returns [EObject current=null]
 	leaveRule();
 }:
 	(
-		(
-			(
-				{
-					if ($current==null) {
-						$current = createModelElement(grammarAccess.getQualifiedServiceServerRefRule());
-					}
-				}
-				otherlv_0=RULE_ID
-				{
-					newLeafNode(otherlv_0, grammarAccess.getQualifiedServiceServerRefAccess().getNodeNodeCrossReference_0_0());
-				}
-			)
-		)
-		otherlv_1='.'
+		otherlv_0='service:'
 		{
-			newLeafNode(otherlv_1, grammarAccess.getQualifiedServiceServerRefAccess().getFullStopKeyword_1());
+			newLeafNode(otherlv_0, grammarAccess.getQualifiedServiceServerRefAccess().getServiceKeyword_0());
 		}
 		(
 			(
@@ -700,9 +624,49 @@ ruleQualifiedServiceServerRef returns [EObject current=null]
 						$current = createModelElement(grammarAccess.getQualifiedServiceServerRefRule());
 					}
 				}
-				otherlv_2=RULE_ID
+				otherlv_1=RULE_ID
 				{
-					newLeafNode(otherlv_2, grammarAccess.getQualifiedServiceServerRefAccess().getServiceServerServiceServerCrossReference_2_0());
+					newLeafNode(otherlv_1, grammarAccess.getQualifiedServiceServerRefAccess().getNodeNodeCrossReference_1_0());
+				}
+			)
+		)
+		otherlv_2='.'
+		{
+			newLeafNode(otherlv_2, grammarAccess.getQualifiedServiceServerRefAccess().getFullStopKeyword_2());
+		}
+		(
+			(
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getQualifiedServiceServerRefRule());
+					}
+				}
+				otherlv_3=RULE_ID
+				{
+					newLeafNode(otherlv_3, grammarAccess.getQualifiedServiceServerRefAccess().getServiceServerServiceServerCrossReference_3_0());
+				}
+			)
+		)
+		otherlv_4='request_kwargs'
+		{
+			newLeafNode(otherlv_4, grammarAccess.getQualifiedServiceServerRefAccess().getRequest_kwargsKeyword_4());
+		}
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getQualifiedServiceServerRefAccess().getKwargsKeyWordArgumentsParserRuleCall_5_0());
+				}
+				lv_kwargs_5_0=ruleKeyWordArguments
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getQualifiedServiceServerRefRule());
+					}
+					set(
+						$current,
+						"kwargs",
+						lv_kwargs_5_0,
+						"eu.coresense.context.ContextModel.KeyWordArguments");
+					afterParserOrEnumRuleCall();
 				}
 			)
 		)
@@ -725,22 +689,9 @@ ruleQualifiedActionServerRef returns [EObject current=null]
 	leaveRule();
 }:
 	(
-		(
-			(
-				{
-					if ($current==null) {
-						$current = createModelElement(grammarAccess.getQualifiedActionServerRefRule());
-					}
-				}
-				otherlv_0=RULE_ID
-				{
-					newLeafNode(otherlv_0, grammarAccess.getQualifiedActionServerRefAccess().getNodeNodeCrossReference_0_0());
-				}
-			)
-		)
-		otherlv_1='.'
+		otherlv_0='action:'
 		{
-			newLeafNode(otherlv_1, grammarAccess.getQualifiedActionServerRefAccess().getFullStopKeyword_1());
+			newLeafNode(otherlv_0, grammarAccess.getQualifiedActionServerRefAccess().getActionKeyword_0());
 		}
 		(
 			(
@@ -749,9 +700,49 @@ ruleQualifiedActionServerRef returns [EObject current=null]
 						$current = createModelElement(grammarAccess.getQualifiedActionServerRefRule());
 					}
 				}
-				otherlv_2=RULE_ID
+				otherlv_1=RULE_ID
 				{
-					newLeafNode(otherlv_2, grammarAccess.getQualifiedActionServerRefAccess().getActionServerActionServerCrossReference_2_0());
+					newLeafNode(otherlv_1, grammarAccess.getQualifiedActionServerRefAccess().getNodeNodeCrossReference_1_0());
+				}
+			)
+		)
+		otherlv_2='.'
+		{
+			newLeafNode(otherlv_2, grammarAccess.getQualifiedActionServerRefAccess().getFullStopKeyword_2());
+		}
+		(
+			(
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getQualifiedActionServerRefRule());
+					}
+				}
+				otherlv_3=RULE_ID
+				{
+					newLeafNode(otherlv_3, grammarAccess.getQualifiedActionServerRefAccess().getActionServerActionServerCrossReference_3_0());
+				}
+			)
+		)
+		otherlv_4='goal_kwargs'
+		{
+			newLeafNode(otherlv_4, grammarAccess.getQualifiedActionServerRefAccess().getGoal_kwargsKeyword_4());
+		}
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getQualifiedActionServerRefAccess().getKwargsKeyWordArgumentsParserRuleCall_5_0());
+				}
+				lv_kwargs_5_0=ruleKeyWordArguments
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getQualifiedActionServerRefRule());
+					}
+					set(
+						$current,
+						"kwargs",
+						lv_kwargs_5_0,
+						"eu.coresense.context.ContextModel.KeyWordArguments");
+					afterParserOrEnumRuleCall();
 				}
 			)
 		)
@@ -802,6 +793,14 @@ ruleImport returns [EObject current=null]
 		}
 	)
 ;
+
+fragment RULE_DIGIT : '0'..'9';
+
+RULE_BINARY : ('0b'|'0B') ('0'|'1')+;
+
+RULE_DOUBLE : (RULE_DIGIT*|'-' RULE_DIGIT*) ('.' RULE_DECINT*|('.' RULE_DIGIT*)? ('E'|'e') ('-'|'+')? RULE_DIGIT*);
+
+fragment RULE_DECINT : ('0'|'1'..'9' RULE_DIGIT*|'-' '0'..'9' RULE_DIGIT*);
 
 RULE_BOOLEAN : ('true'|'false');
 

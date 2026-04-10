@@ -32,9 +32,7 @@ DoProxy:
 DataSource:
 	'source:'
     (
-        'publisher:' 'ref:'ref=QualifiedPublisherRef
-      | 'service:' 'ref:' ref=QualifiedServiceServerRef 'request_kwargs:' kwargs=KeyWordArguments
-      | 'action:' 'ref:' ref=QualifiedActionServerRef 'goal_kwargs:' kwargs=KeyWordArguments
+        'origin:'ref=QualifiedRef 
     )
 ;
 
@@ -42,22 +40,32 @@ KeyWordArguments:
 	STRING
 ;
 
+QualifiedRef:
+	QualifiedPublisherRef | QualifiedServiceServerRef | QualifiedActionServerRef
+;
 QualifiedPublisherRef:
-    node=[ros::Node] '.' publisher=[ros::Publisher]
+    'publisher:' node=[ros::Node] '.' publisher=[ros::Publisher]
 ;
 
 QualifiedServiceServerRef:
-    node=[ros::Node] '.' serviceServer=[ros::ServiceServer]
+    'service:' node=[ros::Node] '.' serviceServer=[ros::ServiceServer] 'request_kwargs' kwargs=KeyWordArguments
 ;
 
 QualifiedActionServerRef:
-    node=[ros::Node] '.' actionServer=[ros::ActionServer]
+    'action:' node=[ros::Node] '.' actionServer=[ros::ActionServer] 'goal_kwargs' kwargs=KeyWordArguments
 ;
 
 Import:
 	'import' importURI=STRING ';'
 ;
 
+
+terminal DIGIT: '0'..'9';
+
+terminal BINARY: ('0b'|'0B')('0'|'1')+;
+
+terminal DOUBLE returns ecore::EDouble: (DIGIT* | ('-' DIGIT*) ) (('.' DECINT*) | (('.' DIGIT*)? ('E'|'e') ('-'|'+')? DIGIT*));  // Use terminal to avoid 'e' turning into a keyword
+terminal DECINT: '0' | ('1'..'9' DIGIT*) | ('-''0'..'9' DIGIT*) ;
 
 terminal BOOLEAN returns ecore::EBoolean:
     'true' | 'false'

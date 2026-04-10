@@ -67,9 +67,8 @@ public class ContextModelScopeProviderr extends AbstractContextModelScopeProvide
         }
         return IScope.NULLSCOPE;
       }
-      if (((Objects.equals(reference, ContextModelPackage.Literals.QUALIFIED_SERVICE_SERVER_REF__NODE) || 
-        Objects.equals(reference, ContextModelPackage.Literals.QUALIFIED_ACTION_SERVER_REF__NODE)) || 
-        Objects.equals(reference, ContextModelPackage.Literals.QUALIFIED_PUBLISHER_REF__NODE))) {
+      boolean _equals_3 = Objects.equals(reference, ContextModelPackage.Literals.QUALIFIED_REF__NODE);
+      if (_equals_3) {
         final ContextModel model = EcoreUtil2.<ContextModel>getContainerOfType(context, ContextModel.class);
         return Scopes.scopeFor(this.allNodes(model, context));
       }

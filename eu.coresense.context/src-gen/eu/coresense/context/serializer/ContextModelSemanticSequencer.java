@@ -115,11 +115,17 @@ public class ContextModelSemanticSequencer extends AbstractDelegatingSemanticSeq
 	 *     DataSource returns DataSource
 	 *
 	 * Constraint:
-	 *     (ref=QualifiedPublisherRef | (ref=QualifiedServiceServerRef kwargs=KeyWordArguments) | (ref=QualifiedActionServerRef kwargs=KeyWordArguments))
+	 *     ref=QualifiedRef
 	 * </pre>
 	 */
 	protected void sequence_DataSource(ISerializationContext context, DataSource semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, ContextModelPackage.Literals.DATA_SOURCE__REF) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ContextModelPackage.Literals.DATA_SOURCE__REF));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getDataSourceAccess().getRefQualifiedRefParserRuleCall_1_1_0(), semanticObject.getRef());
+		feeder.finish();
 	}
 	
 	
@@ -186,22 +192,26 @@ public class ContextModelSemanticSequencer extends AbstractDelegatingSemanticSeq
 	/**
 	 * <pre>
 	 * Contexts:
+	 *     QualifiedRef returns QualifiedActionServerRef
 	 *     QualifiedActionServerRef returns QualifiedActionServerRef
 	 *
 	 * Constraint:
-	 *     (node=[Node|ID] actionServer=[ActionServer|ID])
+	 *     (node=[Node|ID] actionServer=[ActionServer|ID] kwargs=KeyWordArguments)
 	 * </pre>
 	 */
 	protected void sequence_QualifiedActionServerRef(ISerializationContext context, QualifiedActionServerRef semanticObject) {
 		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, ContextModelPackage.Literals.QUALIFIED_ACTION_SERVER_REF__NODE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ContextModelPackage.Literals.QUALIFIED_ACTION_SERVER_REF__NODE));
+			if (transientValues.isValueTransient(semanticObject, ContextModelPackage.Literals.QUALIFIED_REF__NODE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ContextModelPackage.Literals.QUALIFIED_REF__NODE));
 			if (transientValues.isValueTransient(semanticObject, ContextModelPackage.Literals.QUALIFIED_ACTION_SERVER_REF__ACTION_SERVER) == ValueTransient.YES)
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ContextModelPackage.Literals.QUALIFIED_ACTION_SERVER_REF__ACTION_SERVER));
+			if (transientValues.isValueTransient(semanticObject, ContextModelPackage.Literals.QUALIFIED_ACTION_SERVER_REF__KWARGS) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ContextModelPackage.Literals.QUALIFIED_ACTION_SERVER_REF__KWARGS));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getQualifiedActionServerRefAccess().getNodeNodeIDTerminalRuleCall_0_0_1(), semanticObject.eGet(ContextModelPackage.Literals.QUALIFIED_ACTION_SERVER_REF__NODE, false));
-		feeder.accept(grammarAccess.getQualifiedActionServerRefAccess().getActionServerActionServerIDTerminalRuleCall_2_0_1(), semanticObject.eGet(ContextModelPackage.Literals.QUALIFIED_ACTION_SERVER_REF__ACTION_SERVER, false));
+		feeder.accept(grammarAccess.getQualifiedActionServerRefAccess().getNodeNodeIDTerminalRuleCall_1_0_1(), semanticObject.eGet(ContextModelPackage.Literals.QUALIFIED_REF__NODE, false));
+		feeder.accept(grammarAccess.getQualifiedActionServerRefAccess().getActionServerActionServerIDTerminalRuleCall_3_0_1(), semanticObject.eGet(ContextModelPackage.Literals.QUALIFIED_ACTION_SERVER_REF__ACTION_SERVER, false));
+		feeder.accept(grammarAccess.getQualifiedActionServerRefAccess().getKwargsKeyWordArgumentsParserRuleCall_5_0(), semanticObject.getKwargs());
 		feeder.finish();
 	}
 	
@@ -209,6 +219,7 @@ public class ContextModelSemanticSequencer extends AbstractDelegatingSemanticSeq
 	/**
 	 * <pre>
 	 * Contexts:
+	 *     QualifiedRef returns QualifiedPublisherRef
 	 *     QualifiedPublisherRef returns QualifiedPublisherRef
 	 *
 	 * Constraint:
@@ -217,14 +228,14 @@ public class ContextModelSemanticSequencer extends AbstractDelegatingSemanticSeq
 	 */
 	protected void sequence_QualifiedPublisherRef(ISerializationContext context, QualifiedPublisherRef semanticObject) {
 		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, ContextModelPackage.Literals.QUALIFIED_PUBLISHER_REF__NODE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ContextModelPackage.Literals.QUALIFIED_PUBLISHER_REF__NODE));
+			if (transientValues.isValueTransient(semanticObject, ContextModelPackage.Literals.QUALIFIED_REF__NODE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ContextModelPackage.Literals.QUALIFIED_REF__NODE));
 			if (transientValues.isValueTransient(semanticObject, ContextModelPackage.Literals.QUALIFIED_PUBLISHER_REF__PUBLISHER) == ValueTransient.YES)
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ContextModelPackage.Literals.QUALIFIED_PUBLISHER_REF__PUBLISHER));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getQualifiedPublisherRefAccess().getNodeNodeIDTerminalRuleCall_0_0_1(), semanticObject.eGet(ContextModelPackage.Literals.QUALIFIED_PUBLISHER_REF__NODE, false));
-		feeder.accept(grammarAccess.getQualifiedPublisherRefAccess().getPublisherPublisherIDTerminalRuleCall_2_0_1(), semanticObject.eGet(ContextModelPackage.Literals.QUALIFIED_PUBLISHER_REF__PUBLISHER, false));
+		feeder.accept(grammarAccess.getQualifiedPublisherRefAccess().getNodeNodeIDTerminalRuleCall_1_0_1(), semanticObject.eGet(ContextModelPackage.Literals.QUALIFIED_REF__NODE, false));
+		feeder.accept(grammarAccess.getQualifiedPublisherRefAccess().getPublisherPublisherIDTerminalRuleCall_3_0_1(), semanticObject.eGet(ContextModelPackage.Literals.QUALIFIED_PUBLISHER_REF__PUBLISHER, false));
 		feeder.finish();
 	}
 	
@@ -232,22 +243,26 @@ public class ContextModelSemanticSequencer extends AbstractDelegatingSemanticSeq
 	/**
 	 * <pre>
 	 * Contexts:
+	 *     QualifiedRef returns QualifiedServiceServerRef
 	 *     QualifiedServiceServerRef returns QualifiedServiceServerRef
 	 *
 	 * Constraint:
-	 *     (node=[Node|ID] serviceServer=[ServiceServer|ID])
+	 *     (node=[Node|ID] serviceServer=[ServiceServer|ID] kwargs=KeyWordArguments)
 	 * </pre>
 	 */
 	protected void sequence_QualifiedServiceServerRef(ISerializationContext context, QualifiedServiceServerRef semanticObject) {
 		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, ContextModelPackage.Literals.QUALIFIED_SERVICE_SERVER_REF__NODE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ContextModelPackage.Literals.QUALIFIED_SERVICE_SERVER_REF__NODE));
+			if (transientValues.isValueTransient(semanticObject, ContextModelPackage.Literals.QUALIFIED_REF__NODE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ContextModelPackage.Literals.QUALIFIED_REF__NODE));
 			if (transientValues.isValueTransient(semanticObject, ContextModelPackage.Literals.QUALIFIED_SERVICE_SERVER_REF__SERVICE_SERVER) == ValueTransient.YES)
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ContextModelPackage.Literals.QUALIFIED_SERVICE_SERVER_REF__SERVICE_SERVER));
+			if (transientValues.isValueTransient(semanticObject, ContextModelPackage.Literals.QUALIFIED_SERVICE_SERVER_REF__KWARGS) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ContextModelPackage.Literals.QUALIFIED_SERVICE_SERVER_REF__KWARGS));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getQualifiedServiceServerRefAccess().getNodeNodeIDTerminalRuleCall_0_0_1(), semanticObject.eGet(ContextModelPackage.Literals.QUALIFIED_SERVICE_SERVER_REF__NODE, false));
-		feeder.accept(grammarAccess.getQualifiedServiceServerRefAccess().getServiceServerServiceServerIDTerminalRuleCall_2_0_1(), semanticObject.eGet(ContextModelPackage.Literals.QUALIFIED_SERVICE_SERVER_REF__SERVICE_SERVER, false));
+		feeder.accept(grammarAccess.getQualifiedServiceServerRefAccess().getNodeNodeIDTerminalRuleCall_1_0_1(), semanticObject.eGet(ContextModelPackage.Literals.QUALIFIED_REF__NODE, false));
+		feeder.accept(grammarAccess.getQualifiedServiceServerRefAccess().getServiceServerServiceServerIDTerminalRuleCall_3_0_1(), semanticObject.eGet(ContextModelPackage.Literals.QUALIFIED_SERVICE_SERVER_REF__SERVICE_SERVER, false));
+		feeder.accept(grammarAccess.getQualifiedServiceServerRefAccess().getKwargsKeyWordArgumentsParserRuleCall_5_0(), semanticObject.getKwargs());
 		feeder.finish();
 	}
 	

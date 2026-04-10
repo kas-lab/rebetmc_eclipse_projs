@@ -15,7 +15,6 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  * <ul>
  *   <li>{@link eu.coresense.context.contextModel.DataSource#getRef <em>Ref</em>}</li>
- *   <li>{@link eu.coresense.context.contextModel.DataSource#getKwargs <em>Kwargs</em>}</li>
  * </ul>
  *
  * @see eu.coresense.context.contextModel.ContextModelPackage#getDataSource()
@@ -29,12 +28,12 @@ public interface DataSource extends EObject
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the value of the '<em>Ref</em>' containment reference.
-   * @see #setRef(EObject)
+   * @see #setRef(QualifiedRef)
    * @see eu.coresense.context.contextModel.ContextModelPackage#getDataSource_Ref()
    * @model containment="true"
    * @generated
    */
-  EObject getRef();
+  QualifiedRef getRef();
 
   /**
    * Sets the value of the '{@link eu.coresense.context.contextModel.DataSource#getRef <em>Ref</em>}' containment reference.
@@ -44,28 +43,6 @@ public interface DataSource extends EObject
    * @see #getRef()
    * @generated
    */
-  void setRef(EObject value);
-
-  /**
-   * Returns the value of the '<em><b>Kwargs</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Kwargs</em>' attribute.
-   * @see #setKwargs(String)
-   * @see eu.coresense.context.contextModel.ContextModelPackage#getDataSource_Kwargs()
-   * @model
-   * @generated
-   */
-  String getKwargs();
-
-  /**
-   * Sets the value of the '{@link eu.coresense.context.contextModel.DataSource#getKwargs <em>Kwargs</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Kwargs</em>' attribute.
-   * @see #getKwargs()
-   * @generated
-   */
-  void setKwargs(String value);
+  void setRef(QualifiedRef value);
 
 } // DataSource

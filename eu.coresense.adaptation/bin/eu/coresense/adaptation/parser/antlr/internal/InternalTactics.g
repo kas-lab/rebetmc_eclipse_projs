@@ -608,9 +608,9 @@ ruleRuleBody returns [EObject current=null]
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getRuleBodyAccess().getEffectEffectParserRuleCall_1_0());
+					newCompositeNode(grammarAccess.getRuleBodyAccess().getEffectEffectBlockParserRuleCall_1_0());
 				}
-				lv_effect_2_0=ruleEffect
+				lv_effect_2_0=ruleEffectBlock
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getRuleBodyRule());
@@ -619,11 +619,11 @@ ruleRuleBody returns [EObject current=null]
 						$current,
 						"effect",
 						lv_effect_2_0,
-						"eu.coresense.adaptation.Tactics.Effect");
+						"eu.coresense.adaptation.Tactics.EffectBlock");
 					afterParserOrEnumRuleCall();
 				}
 			)
-		)
+		)?
 	)
 ;
 
@@ -692,18 +692,18 @@ ruleConditionAction returns [EObject current=null]
 				(
 					(
 						{
-							newCompositeNode(grammarAccess.getConditionActionAccess().getContextPartContextPartParserRuleCall_2_0_0_0());
+							newCompositeNode(grammarAccess.getConditionActionAccess().getContextGuardContextGuardParserRuleCall_2_0_0_0());
 						}
-						lv_contextPart_2_0=ruleContextPart
+						lv_contextGuard_2_0=ruleContextGuard
 						{
 							if ($current==null) {
 								$current = createModelElementForParent(grammarAccess.getConditionActionRule());
 							}
 							set(
 								$current,
-								"contextPart",
-								lv_contextPart_2_0,
-								"eu.coresense.adaptation.Tactics.ContextPart");
+								"contextGuard",
+								lv_contextGuard_2_0,
+								"eu.coresense.adaptation.Tactics.ContextGuard");
 							afterParserOrEnumRuleCall();
 						}
 					)
@@ -711,18 +711,18 @@ ruleConditionAction returns [EObject current=null]
 				(
 					(
 						{
-							newCompositeNode(grammarAccess.getConditionActionAccess().getFeaturePartFeaturePartParserRuleCall_2_0_1_0());
+							newCompositeNode(grammarAccess.getConditionActionAccess().getFeatureGuardFeatureGuardParserRuleCall_2_0_1_0());
 						}
-						lv_featurePart_3_0=ruleFeaturePart
+						lv_featureGuard_3_0=ruleFeatureGuard
 						{
 							if ($current==null) {
 								$current = createModelElementForParent(grammarAccess.getConditionActionRule());
 							}
 							set(
 								$current,
-								"featurePart",
-								lv_featurePart_3_0,
-								"eu.coresense.adaptation.Tactics.FeaturePart");
+								"featureGuard",
+								lv_featureGuard_3_0,
+								"eu.coresense.adaptation.Tactics.FeatureGuard");
 							afterParserOrEnumRuleCall();
 						}
 					)
@@ -733,18 +733,18 @@ ruleConditionAction returns [EObject current=null]
 				(
 					(
 						{
-							newCompositeNode(grammarAccess.getConditionActionAccess().getFeaturePartFeaturePartParserRuleCall_2_1_0_0());
+							newCompositeNode(grammarAccess.getConditionActionAccess().getFeatureGuardFeatureGuardParserRuleCall_2_1_0_0());
 						}
-						lv_featurePart_4_0=ruleFeaturePart
+						lv_featureGuard_4_0=ruleFeatureGuard
 						{
 							if ($current==null) {
 								$current = createModelElementForParent(grammarAccess.getConditionActionRule());
 							}
 							set(
 								$current,
-								"featurePart",
-								lv_featurePart_4_0,
-								"eu.coresense.adaptation.Tactics.FeaturePart");
+								"featureGuard",
+								lv_featureGuard_4_0,
+								"eu.coresense.adaptation.Tactics.FeatureGuard");
 							afterParserOrEnumRuleCall();
 						}
 					)
@@ -752,18 +752,18 @@ ruleConditionAction returns [EObject current=null]
 				(
 					(
 						{
-							newCompositeNode(grammarAccess.getConditionActionAccess().getContextPartContextPartParserRuleCall_2_1_1_0());
+							newCompositeNode(grammarAccess.getConditionActionAccess().getContextGuardContextGuardParserRuleCall_2_1_1_0());
 						}
-						lv_contextPart_5_0=ruleContextPart
+						lv_contextGuard_5_0=ruleContextGuard
 						{
 							if ($current==null) {
 								$current = createModelElementForParent(grammarAccess.getConditionActionRule());
 							}
 							set(
 								$current,
-								"contextPart",
-								lv_contextPart_5_0,
-								"eu.coresense.adaptation.Tactics.ContextPart");
+								"contextGuard",
+								lv_contextGuard_5_0,
+								"eu.coresense.adaptation.Tactics.ContextGuard");
 							afterParserOrEnumRuleCall();
 						}
 					)
@@ -796,15 +796,15 @@ ruleConditionAction returns [EObject current=null]
 	)
 ;
 
-// Entry rule entryRuleContextPart
-entryRuleContextPart returns [EObject current=null]:
-	{ newCompositeNode(grammarAccess.getContextPartRule()); }
-	iv_ruleContextPart=ruleContextPart
-	{ $current=$iv_ruleContextPart.current; }
+// Entry rule entryRuleContextGuard
+entryRuleContextGuard returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getContextGuardRule()); }
+	iv_ruleContextGuard=ruleContextGuard
+	{ $current=$iv_ruleContextGuard.current; }
 	EOF;
 
-// Rule ContextPart
-ruleContextPart returns [EObject current=null]
+// Rule ContextGuard
+ruleContextGuard returns [EObject current=null]
 @init {
 	enterRule();
 }
@@ -814,21 +814,21 @@ ruleContextPart returns [EObject current=null]
 	(
 		otherlv_0='context'
 		{
-			newLeafNode(otherlv_0, grammarAccess.getContextPartAccess().getContextKeyword_0());
+			newLeafNode(otherlv_0, grammarAccess.getContextGuardAccess().getContextKeyword_0());
 		}
 		otherlv_1='('
 		{
-			newLeafNode(otherlv_1, grammarAccess.getContextPartAccess().getLeftParenthesisKeyword_1());
+			newLeafNode(otherlv_1, grammarAccess.getContextGuardAccess().getLeftParenthesisKeyword_1());
 		}
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getContextPartAccess().getContextConditionMeasurementConditionParserRuleCall_2_0());
+					newCompositeNode(grammarAccess.getContextGuardAccess().getContextConditionMeasurementConditionParserRuleCall_2_0());
 				}
 				lv_contextCondition_2_0=ruleMeasurementCondition
 				{
 					if ($current==null) {
-						$current = createModelElementForParent(grammarAccess.getContextPartRule());
+						$current = createModelElementForParent(grammarAccess.getContextGuardRule());
 					}
 					set(
 						$current,
@@ -841,20 +841,20 @@ ruleContextPart returns [EObject current=null]
 		)
 		otherlv_3=')'
 		{
-			newLeafNode(otherlv_3, grammarAccess.getContextPartAccess().getRightParenthesisKeyword_3());
+			newLeafNode(otherlv_3, grammarAccess.getContextGuardAccess().getRightParenthesisKeyword_3());
 		}
 	)
 ;
 
-// Entry rule entryRuleFeaturePart
-entryRuleFeaturePart returns [EObject current=null]:
-	{ newCompositeNode(grammarAccess.getFeaturePartRule()); }
-	iv_ruleFeaturePart=ruleFeaturePart
-	{ $current=$iv_ruleFeaturePart.current; }
+// Entry rule entryRuleFeatureGuard
+entryRuleFeatureGuard returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getFeatureGuardRule()); }
+	iv_ruleFeatureGuard=ruleFeatureGuard
+	{ $current=$iv_ruleFeatureGuard.current; }
 	EOF;
 
-// Rule FeaturePart
-ruleFeaturePart returns [EObject current=null]
+// Rule FeatureGuard
+ruleFeatureGuard returns [EObject current=null]
 @init {
 	enterRule();
 }
@@ -864,21 +864,21 @@ ruleFeaturePart returns [EObject current=null]
 	(
 		otherlv_0='features'
 		{
-			newLeafNode(otherlv_0, grammarAccess.getFeaturePartAccess().getFeaturesKeyword_0());
+			newLeafNode(otherlv_0, grammarAccess.getFeatureGuardAccess().getFeaturesKeyword_0());
 		}
 		otherlv_1='('
 		{
-			newLeafNode(otherlv_1, grammarAccess.getFeaturePartAccess().getLeftParenthesisKeyword_1());
+			newLeafNode(otherlv_1, grammarAccess.getFeatureGuardAccess().getLeftParenthesisKeyword_1());
 		}
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getFeaturePartAccess().getFeatureConditionFeatureConditionParserRuleCall_2_0());
+					newCompositeNode(grammarAccess.getFeatureGuardAccess().getFeatureConditionFeatureConditionParserRuleCall_2_0());
 				}
 				lv_featureCondition_2_0=ruleFeatureCondition
 				{
 					if ($current==null) {
-						$current = createModelElementForParent(grammarAccess.getFeaturePartRule());
+						$current = createModelElementForParent(grammarAccess.getFeatureGuardRule());
 					}
 					set(
 						$current,
@@ -891,7 +891,64 @@ ruleFeaturePart returns [EObject current=null]
 		)
 		otherlv_3=')'
 		{
-			newLeafNode(otherlv_3, grammarAccess.getFeaturePartAccess().getRightParenthesisKeyword_3());
+			newLeafNode(otherlv_3, grammarAccess.getFeatureGuardAccess().getRightParenthesisKeyword_3());
+		}
+	)
+;
+
+// Entry rule entryRuleEffectBlock
+entryRuleEffectBlock returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getEffectBlockRule()); }
+	iv_ruleEffectBlock=ruleEffectBlock
+	{ $current=$iv_ruleEffectBlock.current; }
+	EOF;
+
+// Rule EffectBlock
+ruleEffectBlock returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		(
+			{
+				$current = forceCreateModelElement(
+					grammarAccess.getEffectBlockAccess().getEffectBlockAction_0(),
+					$current);
+			}
+		)
+		otherlv_1='effect'
+		{
+			newLeafNode(otherlv_1, grammarAccess.getEffectBlockAccess().getEffectKeyword_1());
+		}
+		otherlv_2='{'
+		{
+			newLeafNode(otherlv_2, grammarAccess.getEffectBlockAccess().getLeftCurlyBracketKeyword_2());
+		}
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getEffectBlockAccess().getSomeEffectEffectParserRuleCall_3_0());
+				}
+				lv_someEffect_3_0=ruleEffect
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getEffectBlockRule());
+					}
+					set(
+						$current,
+						"someEffect",
+						lv_someEffect_3_0,
+						"eu.coresense.adaptation.Tactics.Effect");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
+		otherlv_4='}'
+		{
+			newLeafNode(otherlv_4, grammarAccess.getEffectBlockAccess().getRightCurlyBracketKeyword_4());
 		}
 	)
 ;
@@ -911,57 +968,25 @@ ruleEffect returns [EObject current=null]
 @after {
 	leaveRule();
 }:
-	(
-		(
-			{
-				$current = forceCreateModelElement(
-					grammarAccess.getEffectAccess().getEffectAction_0(),
-					$current);
-			}
-		)
-		otherlv_1='effect'
-		{
-			newLeafNode(otherlv_1, grammarAccess.getEffectAccess().getEffectKeyword_1());
-		}
-		otherlv_2='{'
-		{
-			newLeafNode(otherlv_2, grammarAccess.getEffectAccess().getLeftCurlyBracketKeyword_2());
-		}
-		(
-			(
-				{
-					newCompositeNode(grammarAccess.getEffectAccess().getConditionMeasurementConditionParserRuleCall_3_0());
-				}
-				lv_condition_3_0=ruleMeasurementCondition
-				{
-					if ($current==null) {
-						$current = createModelElementForParent(grammarAccess.getEffectRule());
-					}
-					set(
-						$current,
-						"condition",
-						lv_condition_3_0,
-						"eu.coresense.adaptation.Tactics.MeasurementCondition");
-					afterParserOrEnumRuleCall();
-				}
-			)
-		)?
-		otherlv_4='}'
-		{
-			newLeafNode(otherlv_4, grammarAccess.getEffectAccess().getRightCurlyBracketKeyword_4());
-		}
-	)
+	{
+		newCompositeNode(grammarAccess.getEffectAccess().getRelativeEffectParserRuleCall());
+	}
+	this_RelativeEffect_0=ruleRelativeEffect
+	{
+		$current = $this_RelativeEffect_0.current;
+		afterParserOrEnumRuleCall();
+	}
 ;
 
-// Entry rule entryRuleCondition
-entryRuleCondition returns [EObject current=null]:
-	{ newCompositeNode(grammarAccess.getConditionRule()); }
-	iv_ruleCondition=ruleCondition
-	{ $current=$iv_ruleCondition.current; }
+// Entry rule entryRuleRelativeEffect
+entryRuleRelativeEffect returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getRelativeEffectRule()); }
+	iv_ruleRelativeEffect=ruleRelativeEffect
+	{ $current=$iv_ruleRelativeEffect.current; }
 	EOF;
 
-// Rule Condition
-ruleCondition returns [EObject current=null]
+// Rule RelativeEffect
+ruleRelativeEffect returns [EObject current=null]
 @init {
 	enterRule();
 }
@@ -969,23 +994,56 @@ ruleCondition returns [EObject current=null]
 	leaveRule();
 }:
 	(
-		{
-			newCompositeNode(grammarAccess.getConditionAccess().getMeasurementConditionParserRuleCall_0());
-		}
-		this_MeasurementCondition_0=ruleMeasurementCondition
-		{
-			$current = $this_MeasurementCondition_0.current;
-			afterParserOrEnumRuleCall();
-		}
-		    |
-		{
-			newCompositeNode(grammarAccess.getConditionAccess().getFeatureConditionParserRuleCall_1());
-		}
-		this_FeatureCondition_1=ruleFeatureCondition
-		{
-			$current = $this_FeatureCondition_1.current;
-			afterParserOrEnumRuleCall();
-		}
+		(
+			(
+				lv_sign_0_0=RULE_INCDEC
+				{
+					newLeafNode(lv_sign_0_0, grammarAccess.getRelativeEffectAccess().getSignINCDECTerminalRuleCall_0_0());
+				}
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getRelativeEffectRule());
+					}
+					setWithLastConsumed(
+						$current,
+						"sign",
+						lv_sign_0_0,
+						"eu.coresense.adaptation.Tactics.INCDEC");
+				}
+			)
+		)
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getRelativeEffectAccess().getEffectValueLiteralParserRuleCall_1_0());
+				}
+				lv_effectValue_1_0=ruleLiteral
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getRelativeEffectRule());
+					}
+					set(
+						$current,
+						"effectValue",
+						lv_effectValue_1_0,
+						"eu.coresense.adaptation.Tactics.Literal");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
+		(
+			(
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getRelativeEffectRule());
+					}
+				}
+				otherlv_2=RULE_ID
+				{
+					newLeafNode(otherlv_2, grammarAccess.getRelativeEffectAccess().getMeasurementContextVarCrossReference_2_0());
+				}
+			)
+		)
 	)
 ;
 
@@ -1069,9 +1127,9 @@ ruleFeatureCondition returns [EObject current=null]
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getFeatureConditionAccess().getSecondTermConditionParserRuleCall_4_1_0());
+						newCompositeNode(grammarAccess.getFeatureConditionAccess().getSecondTermFeatureConditionParserRuleCall_4_1_0());
 					}
-					lv_secondTerm_5_0=ruleCondition
+					lv_secondTerm_5_0=ruleFeatureCondition
 					{
 						if ($current==null) {
 							$current = createModelElementForParent(grammarAccess.getFeatureConditionRule());
@@ -1080,7 +1138,7 @@ ruleFeatureCondition returns [EObject current=null]
 							$current,
 							"secondTerm",
 							lv_secondTerm_5_0,
-							"eu.coresense.adaptation.Tactics.Condition");
+							"eu.coresense.adaptation.Tactics.FeatureCondition");
 						afterParserOrEnumRuleCall();
 					}
 				)
@@ -1105,28 +1163,64 @@ ruleMeasurementCondition returns [EObject current=null]
 	leaveRule();
 }:
 	(
+		{
+			newCompositeNode(grammarAccess.getMeasurementConditionAccess().getMeasurementThresholdConditionParserRuleCall_0());
+		}
+		this_MeasurementThresholdCondition_0=ruleMeasurementThresholdCondition
+		{
+			$current = $this_MeasurementThresholdCondition_0.current;
+			afterParserOrEnumRuleCall();
+		}
+		    |
+		{
+			newCompositeNode(grammarAccess.getMeasurementConditionAccess().getMeasurementMeasurementConditionParserRuleCall_1());
+		}
+		this_MeasurementMeasurementCondition_1=ruleMeasurementMeasurementCondition
+		{
+			$current = $this_MeasurementMeasurementCondition_1.current;
+			afterParserOrEnumRuleCall();
+		}
+	)
+;
+
+// Entry rule entryRuleMeasurementThresholdCondition
+entryRuleMeasurementThresholdCondition returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getMeasurementThresholdConditionRule()); }
+	iv_ruleMeasurementThresholdCondition=ruleMeasurementThresholdCondition
+	{ $current=$iv_ruleMeasurementThresholdCondition.current; }
+	EOF;
+
+// Rule MeasurementThresholdCondition
+ruleMeasurementThresholdCondition returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
 		(
 			(
 				{
 					if ($current==null) {
-						$current = createModelElement(grammarAccess.getMeasurementConditionRule());
+						$current = createModelElement(grammarAccess.getMeasurementThresholdConditionRule());
 					}
 				}
 				otherlv_0=RULE_ID
 				{
-					newLeafNode(otherlv_0, grammarAccess.getMeasurementConditionAccess().getMeasurementContextVarCrossReference_0_0());
+					newLeafNode(otherlv_0, grammarAccess.getMeasurementThresholdConditionAccess().getMeasurementContextVarCrossReference_0_0());
 				}
 			)
 		)
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getMeasurementConditionAccess().getOperatorMathOperatorEnumRuleCall_1_0());
+					newCompositeNode(grammarAccess.getMeasurementThresholdConditionAccess().getOperatorMathOperatorEnumRuleCall_1_0());
 				}
 				lv_operator_1_0=ruleMathOperator
 				{
 					if ($current==null) {
-						$current = createModelElementForParent(grammarAccess.getMeasurementConditionRule());
+						$current = createModelElementForParent(grammarAccess.getMeasurementThresholdConditionRule());
 					}
 					set(
 						$current,
@@ -1140,17 +1234,17 @@ ruleMeasurementCondition returns [EObject current=null]
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getMeasurementConditionAccess().getValueLiteralParserRuleCall_2_0());
+					newCompositeNode(grammarAccess.getMeasurementThresholdConditionAccess().getThresholdValueLiteralParserRuleCall_2_0());
 				}
-				lv_value_2_0=ruleLiteral
+				lv_thresholdValue_2_0=ruleLiteral
 				{
 					if ($current==null) {
-						$current = createModelElementForParent(grammarAccess.getMeasurementConditionRule());
+						$current = createModelElementForParent(grammarAccess.getMeasurementThresholdConditionRule());
 					}
 					set(
 						$current,
-						"value",
-						lv_value_2_0,
+						"thresholdValue",
+						lv_thresholdValue_2_0,
 						"eu.coresense.adaptation.Tactics.Literal");
 					afterParserOrEnumRuleCall();
 				}
@@ -1160,12 +1254,12 @@ ruleMeasurementCondition returns [EObject current=null]
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getMeasurementConditionAccess().getLogicalOpLogicalOperatorEnumRuleCall_3_0_0());
+						newCompositeNode(grammarAccess.getMeasurementThresholdConditionAccess().getLogicalOpLogicalOperatorEnumRuleCall_3_0_0());
 					}
 					lv_logicalOp_3_0=ruleLogicalOperator
 					{
 						if ($current==null) {
-							$current = createModelElementForParent(grammarAccess.getMeasurementConditionRule());
+							$current = createModelElementForParent(grammarAccess.getMeasurementThresholdConditionRule());
 						}
 						set(
 							$current,
@@ -1179,18 +1273,122 @@ ruleMeasurementCondition returns [EObject current=null]
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getMeasurementConditionAccess().getSecondTermConditionParserRuleCall_3_1_0());
+						newCompositeNode(grammarAccess.getMeasurementThresholdConditionAccess().getSecondTermMeasurementConditionParserRuleCall_3_1_0());
 					}
-					lv_secondTerm_4_0=ruleCondition
+					lv_secondTerm_4_0=ruleMeasurementCondition
 					{
 						if ($current==null) {
-							$current = createModelElementForParent(grammarAccess.getMeasurementConditionRule());
+							$current = createModelElementForParent(grammarAccess.getMeasurementThresholdConditionRule());
 						}
 						set(
 							$current,
 							"secondTerm",
 							lv_secondTerm_4_0,
-							"eu.coresense.adaptation.Tactics.Condition");
+							"eu.coresense.adaptation.Tactics.MeasurementCondition");
+						afterParserOrEnumRuleCall();
+					}
+				)
+			)
+		)?
+	)
+;
+
+// Entry rule entryRuleMeasurementMeasurementCondition
+entryRuleMeasurementMeasurementCondition returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getMeasurementMeasurementConditionRule()); }
+	iv_ruleMeasurementMeasurementCondition=ruleMeasurementMeasurementCondition
+	{ $current=$iv_ruleMeasurementMeasurementCondition.current; }
+	EOF;
+
+// Rule MeasurementMeasurementCondition
+ruleMeasurementMeasurementCondition returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		(
+			(
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getMeasurementMeasurementConditionRule());
+					}
+				}
+				otherlv_0=RULE_ID
+				{
+					newLeafNode(otherlv_0, grammarAccess.getMeasurementMeasurementConditionAccess().getMeasurementContextVarCrossReference_0_0());
+				}
+			)
+		)
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getMeasurementMeasurementConditionAccess().getOperatorMathOperatorEnumRuleCall_1_0());
+				}
+				lv_operator_1_0=ruleMathOperator
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getMeasurementMeasurementConditionRule());
+					}
+					set(
+						$current,
+						"operator",
+						lv_operator_1_0,
+						"eu.coresense.adaptation.Tactics.MathOperator");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
+		(
+			(
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getMeasurementMeasurementConditionRule());
+					}
+				}
+				otherlv_2=RULE_ID
+				{
+					newLeafNode(otherlv_2, grammarAccess.getMeasurementMeasurementConditionAccess().getOtherMeasurementContextVarCrossReference_2_0());
+				}
+			)
+		)
+		(
+			(
+				(
+					{
+						newCompositeNode(grammarAccess.getMeasurementMeasurementConditionAccess().getLogicalOpLogicalOperatorEnumRuleCall_3_0_0());
+					}
+					lv_logicalOp_3_0=ruleLogicalOperator
+					{
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getMeasurementMeasurementConditionRule());
+						}
+						set(
+							$current,
+							"logicalOp",
+							lv_logicalOp_3_0,
+							"eu.coresense.adaptation.Tactics.LogicalOperator");
+						afterParserOrEnumRuleCall();
+					}
+				)
+			)
+			(
+				(
+					{
+						newCompositeNode(grammarAccess.getMeasurementMeasurementConditionAccess().getSecondTermMeasurementConditionParserRuleCall_3_1_0());
+					}
+					lv_secondTerm_4_0=ruleMeasurementCondition
+					{
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getMeasurementMeasurementConditionRule());
+						}
+						set(
+							$current,
+							"secondTerm",
+							lv_secondTerm_4_0,
+							"eu.coresense.adaptation.Tactics.MeasurementCondition");
 						afterParserOrEnumRuleCall();
 					}
 				)
@@ -1631,6 +1829,8 @@ ruleLogicalOperator returns [Enumerator current=null]
 RULE_DECIMAL : RULE_INT '.' RULE_INT;
 
 RULE_BOOLEAN : ('true'|'false');
+
+RULE_INCDEC : ('+'|'-');
 
 RULE_ID : '^'? ('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|'_'|'0'..'9')*;
 

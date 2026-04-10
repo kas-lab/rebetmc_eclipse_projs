@@ -12,9 +12,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
-import ros.Node;
 import ros.Publisher;
 
 /**
@@ -25,24 +23,13 @@ import ros.Publisher;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link eu.coresense.context.contextModel.impl.QualifiedPublisherRefImpl#getNode <em>Node</em>}</li>
  *   <li>{@link eu.coresense.context.contextModel.impl.QualifiedPublisherRefImpl#getPublisher <em>Publisher</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class QualifiedPublisherRefImpl extends MinimalEObjectImpl.Container implements QualifiedPublisherRef
+public class QualifiedPublisherRefImpl extends QualifiedRefImpl implements QualifiedPublisherRef
 {
-  /**
-   * The cached value of the '{@link #getNode() <em>Node</em>}' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getNode()
-   * @generated
-   * @ordered
-   */
-  protected Node node;
-
   /**
    * The cached value of the '{@link #getPublisher() <em>Publisher</em>}' reference.
    * <!-- begin-user-doc -->
@@ -72,51 +59,6 @@ public class QualifiedPublisherRefImpl extends MinimalEObjectImpl.Container impl
   protected EClass eStaticClass()
   {
     return ContextModelPackage.Literals.QUALIFIED_PUBLISHER_REF;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public Node getNode()
-  {
-    if (node != null && node.eIsProxy())
-    {
-      InternalEObject oldNode = (InternalEObject)node;
-      node = (Node)eResolveProxy(oldNode);
-      if (node != oldNode)
-      {
-        if (eNotificationRequired())
-          eNotify(new ENotificationImpl(this, Notification.RESOLVE, ContextModelPackage.QUALIFIED_PUBLISHER_REF__NODE, oldNode, node));
-      }
-    }
-    return node;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public Node basicGetNode()
-  {
-    return node;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public void setNode(Node newNode)
-  {
-    Node oldNode = node;
-    node = newNode;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ContextModelPackage.QUALIFIED_PUBLISHER_REF__NODE, oldNode, node));
   }
 
   /**
@@ -174,9 +116,6 @@ public class QualifiedPublisherRefImpl extends MinimalEObjectImpl.Container impl
   {
     switch (featureID)
     {
-      case ContextModelPackage.QUALIFIED_PUBLISHER_REF__NODE:
-        if (resolve) return getNode();
-        return basicGetNode();
       case ContextModelPackage.QUALIFIED_PUBLISHER_REF__PUBLISHER:
         if (resolve) return getPublisher();
         return basicGetPublisher();
@@ -194,9 +133,6 @@ public class QualifiedPublisherRefImpl extends MinimalEObjectImpl.Container impl
   {
     switch (featureID)
     {
-      case ContextModelPackage.QUALIFIED_PUBLISHER_REF__NODE:
-        setNode((Node)newValue);
-        return;
       case ContextModelPackage.QUALIFIED_PUBLISHER_REF__PUBLISHER:
         setPublisher((Publisher)newValue);
         return;
@@ -214,9 +150,6 @@ public class QualifiedPublisherRefImpl extends MinimalEObjectImpl.Container impl
   {
     switch (featureID)
     {
-      case ContextModelPackage.QUALIFIED_PUBLISHER_REF__NODE:
-        setNode((Node)null);
-        return;
       case ContextModelPackage.QUALIFIED_PUBLISHER_REF__PUBLISHER:
         setPublisher((Publisher)null);
         return;
@@ -234,8 +167,6 @@ public class QualifiedPublisherRefImpl extends MinimalEObjectImpl.Container impl
   {
     switch (featureID)
     {
-      case ContextModelPackage.QUALIFIED_PUBLISHER_REF__NODE:
-        return node != null;
       case ContextModelPackage.QUALIFIED_PUBLISHER_REF__PUBLISHER:
         return publisher != null;
     }

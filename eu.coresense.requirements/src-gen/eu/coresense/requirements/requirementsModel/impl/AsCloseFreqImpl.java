@@ -4,6 +4,7 @@
 package eu.coresense.requirements.requirementsModel.impl;
 
 import eu.coresense.requirements.requirementsModel.AsCloseFreq;
+import eu.coresense.requirements.requirementsModel.Expression;
 import eu.coresense.requirements.requirementsModel.RequirementsModelPackage;
 import eu.coresense.requirements.requirementsModel.Time;
 
@@ -23,22 +24,33 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link eu.coresense.requirements.requirementsModel.impl.AsCloseFreqImpl#getF <em>F</em>}</li>
+ *   <li>{@link eu.coresense.requirements.requirementsModel.impl.AsCloseFreqImpl#getFrequency <em>Frequency</em>}</li>
+ *   <li>{@link eu.coresense.requirements.requirementsModel.impl.AsCloseFreqImpl#getExpression <em>Expression</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class AsCloseFreqImpl extends StatementImpl implements AsCloseFreq
+public class AsCloseFreqImpl extends ExpressionImpl implements AsCloseFreq
 {
   /**
-   * The cached value of the '{@link #getF() <em>F</em>}' containment reference.
+   * The cached value of the '{@link #getFrequency() <em>Frequency</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getF()
+   * @see #getFrequency()
    * @generated
    * @ordered
    */
-  protected Time f;
+  protected Time frequency;
+
+  /**
+   * The cached value of the '{@link #getExpression() <em>Expression</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getExpression()
+   * @generated
+   * @ordered
+   */
+  protected Expression expression;
 
   /**
    * <!-- begin-user-doc -->
@@ -67,9 +79,9 @@ public class AsCloseFreqImpl extends StatementImpl implements AsCloseFreq
    * @generated
    */
   @Override
-  public Time getF()
+  public Time getFrequency()
   {
-    return f;
+    return frequency;
   }
 
   /**
@@ -77,13 +89,13 @@ public class AsCloseFreqImpl extends StatementImpl implements AsCloseFreq
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetF(Time newF, NotificationChain msgs)
+  public NotificationChain basicSetFrequency(Time newFrequency, NotificationChain msgs)
   {
-    Time oldF = f;
-    f = newF;
+    Time oldFrequency = frequency;
+    frequency = newFrequency;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, RequirementsModelPackage.AS_CLOSE_FREQ__F, oldF, newF);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, RequirementsModelPackage.AS_CLOSE_FREQ__FREQUENCY, oldFrequency, newFrequency);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -95,20 +107,70 @@ public class AsCloseFreqImpl extends StatementImpl implements AsCloseFreq
    * @generated
    */
   @Override
-  public void setF(Time newF)
+  public void setFrequency(Time newFrequency)
   {
-    if (newF != f)
+    if (newFrequency != frequency)
     {
       NotificationChain msgs = null;
-      if (f != null)
-        msgs = ((InternalEObject)f).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - RequirementsModelPackage.AS_CLOSE_FREQ__F, null, msgs);
-      if (newF != null)
-        msgs = ((InternalEObject)newF).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - RequirementsModelPackage.AS_CLOSE_FREQ__F, null, msgs);
-      msgs = basicSetF(newF, msgs);
+      if (frequency != null)
+        msgs = ((InternalEObject)frequency).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - RequirementsModelPackage.AS_CLOSE_FREQ__FREQUENCY, null, msgs);
+      if (newFrequency != null)
+        msgs = ((InternalEObject)newFrequency).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - RequirementsModelPackage.AS_CLOSE_FREQ__FREQUENCY, null, msgs);
+      msgs = basicSetFrequency(newFrequency, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, RequirementsModelPackage.AS_CLOSE_FREQ__F, newF, newF));
+      eNotify(new ENotificationImpl(this, Notification.SET, RequirementsModelPackage.AS_CLOSE_FREQ__FREQUENCY, newFrequency, newFrequency));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Expression getExpression()
+  {
+    return expression;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetExpression(Expression newExpression, NotificationChain msgs)
+  {
+    Expression oldExpression = expression;
+    expression = newExpression;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, RequirementsModelPackage.AS_CLOSE_FREQ__EXPRESSION, oldExpression, newExpression);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setExpression(Expression newExpression)
+  {
+    if (newExpression != expression)
+    {
+      NotificationChain msgs = null;
+      if (expression != null)
+        msgs = ((InternalEObject)expression).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - RequirementsModelPackage.AS_CLOSE_FREQ__EXPRESSION, null, msgs);
+      if (newExpression != null)
+        msgs = ((InternalEObject)newExpression).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - RequirementsModelPackage.AS_CLOSE_FREQ__EXPRESSION, null, msgs);
+      msgs = basicSetExpression(newExpression, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, RequirementsModelPackage.AS_CLOSE_FREQ__EXPRESSION, newExpression, newExpression));
   }
 
   /**
@@ -121,8 +183,10 @@ public class AsCloseFreqImpl extends StatementImpl implements AsCloseFreq
   {
     switch (featureID)
     {
-      case RequirementsModelPackage.AS_CLOSE_FREQ__F:
-        return basicSetF(null, msgs);
+      case RequirementsModelPackage.AS_CLOSE_FREQ__FREQUENCY:
+        return basicSetFrequency(null, msgs);
+      case RequirementsModelPackage.AS_CLOSE_FREQ__EXPRESSION:
+        return basicSetExpression(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -137,8 +201,10 @@ public class AsCloseFreqImpl extends StatementImpl implements AsCloseFreq
   {
     switch (featureID)
     {
-      case RequirementsModelPackage.AS_CLOSE_FREQ__F:
-        return getF();
+      case RequirementsModelPackage.AS_CLOSE_FREQ__FREQUENCY:
+        return getFrequency();
+      case RequirementsModelPackage.AS_CLOSE_FREQ__EXPRESSION:
+        return getExpression();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -153,8 +219,11 @@ public class AsCloseFreqImpl extends StatementImpl implements AsCloseFreq
   {
     switch (featureID)
     {
-      case RequirementsModelPackage.AS_CLOSE_FREQ__F:
-        setF((Time)newValue);
+      case RequirementsModelPackage.AS_CLOSE_FREQ__FREQUENCY:
+        setFrequency((Time)newValue);
+        return;
+      case RequirementsModelPackage.AS_CLOSE_FREQ__EXPRESSION:
+        setExpression((Expression)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -170,8 +239,11 @@ public class AsCloseFreqImpl extends StatementImpl implements AsCloseFreq
   {
     switch (featureID)
     {
-      case RequirementsModelPackage.AS_CLOSE_FREQ__F:
-        setF((Time)null);
+      case RequirementsModelPackage.AS_CLOSE_FREQ__FREQUENCY:
+        setFrequency((Time)null);
+        return;
+      case RequirementsModelPackage.AS_CLOSE_FREQ__EXPRESSION:
+        setExpression((Expression)null);
         return;
     }
     super.eUnset(featureID);
@@ -187,8 +259,10 @@ public class AsCloseFreqImpl extends StatementImpl implements AsCloseFreq
   {
     switch (featureID)
     {
-      case RequirementsModelPackage.AS_CLOSE_FREQ__F:
-        return f != null;
+      case RequirementsModelPackage.AS_CLOSE_FREQ__FREQUENCY:
+        return frequency != null;
+      case RequirementsModelPackage.AS_CLOSE_FREQ__EXPRESSION:
+        return expression != null;
     }
     return super.eIsSet(featureID);
   }

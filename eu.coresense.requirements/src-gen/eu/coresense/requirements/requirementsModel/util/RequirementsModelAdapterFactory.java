@@ -96,9 +96,74 @@ public class RequirementsModelAdapterFactory extends AdapterFactoryImpl
         return createPropositionAdapter();
       }
       @Override
+      public Adapter caseBooleanStatement(BooleanStatement object)
+      {
+        return createBooleanStatementAdapter();
+      }
+      @Override
+      public Adapter caseAnd(And object)
+      {
+        return createAndAdapter();
+      }
+      @Override
+      public Adapter caseOr(Or object)
+      {
+        return createOrAdapter();
+      }
+      @Override
+      public Adapter caseShall(Shall object)
+      {
+        return createShallAdapter();
+      }
+      @Override
+      public Adapter caseNegation(Negation object)
+      {
+        return createNegationAdapter();
+      }
+      @Override
+      public Adapter caseEventually(Eventually object)
+      {
+        return createEventuallyAdapter();
+      }
+      @Override
+      public Adapter caseThisUntil(ThisUntil object)
+      {
+        return createThisUntilAdapter();
+      }
+      @Override
+      public Adapter caseBefore(Before object)
+      {
+        return createBeforeAdapter();
+      }
+      @Override
+      public Adapter caseAfter(After object)
+      {
+        return createAfterAdapter();
+      }
+      @Override
+      public Adapter caseIn(In object)
+      {
+        return createInAdapter();
+      }
+      @Override
+      public Adapter caseAsAsPossible(AsAsPossible object)
+      {
+        return createAsAsPossibleAdapter();
+      }
+      @Override
+      public Adapter caseCompoundExpression(CompoundExpression object)
+      {
+        return createCompoundExpressionAdapter();
+      }
+      @Override
       public Adapter caseStatement(Statement object)
       {
         return createStatementAdapter();
+      }
+      @Override
+      public Adapter caseExpression(Expression object)
+      {
+        return createExpressionAdapter();
       }
       @Override
       public Adapter caseAsCloseFreq(AsCloseFreq object)
@@ -116,14 +181,14 @@ public class RequirementsModelAdapterFactory extends AdapterFactoryImpl
         return createQuantifiableAdapter();
       }
       @Override
-      public Adapter caseMayStatement(MayStatement object)
+      public Adapter caseMay(May object)
       {
-        return createMayStatementAdapter();
+        return createMayAdapter();
       }
       @Override
-      public Adapter caseAtomicStatement(AtomicStatement object)
+      public Adapter caseMayAlternative(MayAlternative object)
       {
-        return createAtomicStatementAdapter();
+        return createMayAlternativeAdapter();
       }
       @Override
       public Adapter caseTimeInterval(TimeInterval object)
@@ -218,6 +283,186 @@ public class RequirementsModelAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
+   * Creates a new adapter for an object of class '{@link eu.coresense.requirements.requirementsModel.BooleanStatement <em>Boolean Statement</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see eu.coresense.requirements.requirementsModel.BooleanStatement
+   * @generated
+   */
+  public Adapter createBooleanStatementAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link eu.coresense.requirements.requirementsModel.And <em>And</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see eu.coresense.requirements.requirementsModel.And
+   * @generated
+   */
+  public Adapter createAndAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link eu.coresense.requirements.requirementsModel.Or <em>Or</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see eu.coresense.requirements.requirementsModel.Or
+   * @generated
+   */
+  public Adapter createOrAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link eu.coresense.requirements.requirementsModel.Shall <em>Shall</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see eu.coresense.requirements.requirementsModel.Shall
+   * @generated
+   */
+  public Adapter createShallAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link eu.coresense.requirements.requirementsModel.Negation <em>Negation</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see eu.coresense.requirements.requirementsModel.Negation
+   * @generated
+   */
+  public Adapter createNegationAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link eu.coresense.requirements.requirementsModel.Eventually <em>Eventually</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see eu.coresense.requirements.requirementsModel.Eventually
+   * @generated
+   */
+  public Adapter createEventuallyAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link eu.coresense.requirements.requirementsModel.ThisUntil <em>This Until</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see eu.coresense.requirements.requirementsModel.ThisUntil
+   * @generated
+   */
+  public Adapter createThisUntilAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link eu.coresense.requirements.requirementsModel.Before <em>Before</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see eu.coresense.requirements.requirementsModel.Before
+   * @generated
+   */
+  public Adapter createBeforeAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link eu.coresense.requirements.requirementsModel.After <em>After</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see eu.coresense.requirements.requirementsModel.After
+   * @generated
+   */
+  public Adapter createAfterAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link eu.coresense.requirements.requirementsModel.In <em>In</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see eu.coresense.requirements.requirementsModel.In
+   * @generated
+   */
+  public Adapter createInAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link eu.coresense.requirements.requirementsModel.AsAsPossible <em>As As Possible</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see eu.coresense.requirements.requirementsModel.AsAsPossible
+   * @generated
+   */
+  public Adapter createAsAsPossibleAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link eu.coresense.requirements.requirementsModel.CompoundExpression <em>Compound Expression</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see eu.coresense.requirements.requirementsModel.CompoundExpression
+   * @generated
+   */
+  public Adapter createCompoundExpressionAdapter()
+  {
+    return null;
+  }
+
+  /**
    * Creates a new adapter for an object of class '{@link eu.coresense.requirements.requirementsModel.Statement <em>Statement</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -228,6 +473,21 @@ public class RequirementsModelAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createStatementAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link eu.coresense.requirements.requirementsModel.Expression <em>Expression</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see eu.coresense.requirements.requirementsModel.Expression
+   * @generated
+   */
+  public Adapter createExpressionAdapter()
   {
     return null;
   }
@@ -278,31 +538,31 @@ public class RequirementsModelAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link eu.coresense.requirements.requirementsModel.MayStatement <em>May Statement</em>}'.
+   * Creates a new adapter for an object of class '{@link eu.coresense.requirements.requirementsModel.May <em>May</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see eu.coresense.requirements.requirementsModel.MayStatement
+   * @see eu.coresense.requirements.requirementsModel.May
    * @generated
    */
-  public Adapter createMayStatementAdapter()
+  public Adapter createMayAdapter()
   {
     return null;
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link eu.coresense.requirements.requirementsModel.AtomicStatement <em>Atomic Statement</em>}'.
+   * Creates a new adapter for an object of class '{@link eu.coresense.requirements.requirementsModel.MayAlternative <em>May Alternative</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see eu.coresense.requirements.requirementsModel.AtomicStatement
+   * @see eu.coresense.requirements.requirementsModel.MayAlternative
    * @generated
    */
-  public Adapter createAtomicStatementAdapter()
+  public Adapter createMayAlternativeAdapter()
   {
     return null;
   }

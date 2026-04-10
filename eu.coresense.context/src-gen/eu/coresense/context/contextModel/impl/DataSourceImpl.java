@@ -5,12 +5,12 @@ package eu.coresense.context.contextModel.impl;
 
 import eu.coresense.context.contextModel.ContextModelPackage;
 import eu.coresense.context.contextModel.DataSource;
+import eu.coresense.context.contextModel.QualifiedRef;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -25,7 +25,6 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * </p>
  * <ul>
  *   <li>{@link eu.coresense.context.contextModel.impl.DataSourceImpl#getRef <em>Ref</em>}</li>
- *   <li>{@link eu.coresense.context.contextModel.impl.DataSourceImpl#getKwargs <em>Kwargs</em>}</li>
  * </ul>
  *
  * @generated
@@ -40,27 +39,7 @@ public class DataSourceImpl extends MinimalEObjectImpl.Container implements Data
    * @generated
    * @ordered
    */
-  protected EObject ref;
-
-  /**
-   * The default value of the '{@link #getKwargs() <em>Kwargs</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getKwargs()
-   * @generated
-   * @ordered
-   */
-  protected static final String KWARGS_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getKwargs() <em>Kwargs</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getKwargs()
-   * @generated
-   * @ordered
-   */
-  protected String kwargs = KWARGS_EDEFAULT;
+  protected QualifiedRef ref;
 
   /**
    * <!-- begin-user-doc -->
@@ -89,7 +68,7 @@ public class DataSourceImpl extends MinimalEObjectImpl.Container implements Data
    * @generated
    */
   @Override
-  public EObject getRef()
+  public QualifiedRef getRef()
   {
     return ref;
   }
@@ -99,9 +78,9 @@ public class DataSourceImpl extends MinimalEObjectImpl.Container implements Data
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetRef(EObject newRef, NotificationChain msgs)
+  public NotificationChain basicSetRef(QualifiedRef newRef, NotificationChain msgs)
   {
-    EObject oldRef = ref;
+    QualifiedRef oldRef = ref;
     ref = newRef;
     if (eNotificationRequired())
     {
@@ -117,7 +96,7 @@ public class DataSourceImpl extends MinimalEObjectImpl.Container implements Data
    * @generated
    */
   @Override
-  public void setRef(EObject newRef)
+  public void setRef(QualifiedRef newRef)
   {
     if (newRef != ref)
     {
@@ -131,31 +110,6 @@ public class DataSourceImpl extends MinimalEObjectImpl.Container implements Data
     }
     else if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, ContextModelPackage.DATA_SOURCE__REF, newRef, newRef));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public String getKwargs()
-  {
-    return kwargs;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public void setKwargs(String newKwargs)
-  {
-    String oldKwargs = kwargs;
-    kwargs = newKwargs;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ContextModelPackage.DATA_SOURCE__KWARGS, oldKwargs, kwargs));
   }
 
   /**
@@ -186,8 +140,6 @@ public class DataSourceImpl extends MinimalEObjectImpl.Container implements Data
     {
       case ContextModelPackage.DATA_SOURCE__REF:
         return getRef();
-      case ContextModelPackage.DATA_SOURCE__KWARGS:
-        return getKwargs();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -203,10 +155,7 @@ public class DataSourceImpl extends MinimalEObjectImpl.Container implements Data
     switch (featureID)
     {
       case ContextModelPackage.DATA_SOURCE__REF:
-        setRef((EObject)newValue);
-        return;
-      case ContextModelPackage.DATA_SOURCE__KWARGS:
-        setKwargs((String)newValue);
+        setRef((QualifiedRef)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -223,10 +172,7 @@ public class DataSourceImpl extends MinimalEObjectImpl.Container implements Data
     switch (featureID)
     {
       case ContextModelPackage.DATA_SOURCE__REF:
-        setRef((EObject)null);
-        return;
-      case ContextModelPackage.DATA_SOURCE__KWARGS:
-        setKwargs(KWARGS_EDEFAULT);
+        setRef((QualifiedRef)null);
         return;
     }
     super.eUnset(featureID);
@@ -244,27 +190,8 @@ public class DataSourceImpl extends MinimalEObjectImpl.Container implements Data
     {
       case ContextModelPackage.DATA_SOURCE__REF:
         return ref != null;
-      case ContextModelPackage.DATA_SOURCE__KWARGS:
-        return KWARGS_EDEFAULT == null ? kwargs != null : !KWARGS_EDEFAULT.equals(kwargs);
     }
     return super.eIsSet(featureID);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public String toString()
-  {
-    if (eIsProxy()) return super.toString();
-
-    StringBuilder result = new StringBuilder(super.toString());
-    result.append(" (kwargs: ");
-    result.append(kwargs);
-    result.append(')');
-    return result.toString();
   }
 
 } //DataSourceImpl

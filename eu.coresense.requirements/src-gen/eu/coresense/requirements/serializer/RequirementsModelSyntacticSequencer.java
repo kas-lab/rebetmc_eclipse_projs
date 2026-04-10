@@ -21,33 +21,21 @@ import org.eclipse.xtext.serializer.sequencer.AbstractSyntacticSequencer;
 public class RequirementsModelSyntacticSequencer extends AbstractSyntacticSequencer {
 
 	protected RequirementsModelGrammarAccess grammarAccess;
-	protected AbstractElementAlias match_Statement_EARLYKeyword_11_1_0_or_FEWKeyword_11_1_3_or_LATEKeyword_11_1_1_or_MANYKeyword_11_1_2;
+	protected AbstractElementAlias match_MayAlternative_CommaKeyword_5_q;
 	protected AbstractElementAlias match_Time_HrKeyword_1_0_or_MinKeyword_1_1_or_MsKeyword_1_3_or_NsKeyword_1_4_or_SKeyword_1_2;
 	
 	@Inject
 	protected void init(IGrammarAccess access) {
 		grammarAccess = (RequirementsModelGrammarAccess) access;
-		match_Statement_EARLYKeyword_11_1_0_or_FEWKeyword_11_1_3_or_LATEKeyword_11_1_1_or_MANYKeyword_11_1_2 = new AlternativeAlias(false, false, new TokenAlias(false, false, grammarAccess.getStatementAccess().getEARLYKeyword_11_1_0()), new TokenAlias(false, false, grammarAccess.getStatementAccess().getFEWKeyword_11_1_3()), new TokenAlias(false, false, grammarAccess.getStatementAccess().getLATEKeyword_11_1_1()), new TokenAlias(false, false, grammarAccess.getStatementAccess().getMANYKeyword_11_1_2()));
+		match_MayAlternative_CommaKeyword_5_q = new TokenAlias(false, true, grammarAccess.getMayAlternativeAccess().getCommaKeyword_5());
 		match_Time_HrKeyword_1_0_or_MinKeyword_1_1_or_MsKeyword_1_3_or_NsKeyword_1_4_or_SKeyword_1_2 = new AlternativeAlias(false, false, new TokenAlias(false, false, grammarAccess.getTimeAccess().getHrKeyword_1_0()), new TokenAlias(false, false, grammarAccess.getTimeAccess().getMinKeyword_1_1()), new TokenAlias(false, false, grammarAccess.getTimeAccess().getMsKeyword_1_3()), new TokenAlias(false, false, grammarAccess.getTimeAccess().getNsKeyword_1_4()), new TokenAlias(false, false, grammarAccess.getTimeAccess().getSKeyword_1_2()));
 	}
 	
 	@Override
 	protected String getUnassignedRuleCallToken(EObject semanticObject, RuleCall ruleCall, INode node) {
-		if (ruleCall.getRule() == grammarAccess.getBOOLEANRule())
-			return getBOOLEANToken(semanticObject, ruleCall, node);
 		return "";
 	}
 	
-	/**
-	 * terminal BOOLEAN returns ecore::EBoolean:
-	 *     'true' | 'false'
-	 * ;
-	 */
-	protected String getBOOLEANToken(EObject semanticObject, RuleCall ruleCall, INode node) {
-		if (node != null)
-			return getTokenText(node);
-		return "true";
-	}
 	
 	@Override
 	protected void emitUnassignedTokens(EObject semanticObject, ISynTransition transition, INode fromNode, INode toNode) {
@@ -55,8 +43,8 @@ public class RequirementsModelSyntacticSequencer extends AbstractSyntacticSequen
 		List<INode> transitionNodes = collectNodes(fromNode, toNode);
 		for (AbstractElementAlias syntax : transition.getAmbiguousSyntaxes()) {
 			List<INode> syntaxNodes = getNodesFor(transitionNodes, syntax);
-			if (match_Statement_EARLYKeyword_11_1_0_or_FEWKeyword_11_1_3_or_LATEKeyword_11_1_1_or_MANYKeyword_11_1_2.equals(syntax))
-				emit_Statement_EARLYKeyword_11_1_0_or_FEWKeyword_11_1_3_or_LATEKeyword_11_1_1_or_MANYKeyword_11_1_2(semanticObject, getLastNavigableState(), syntaxNodes);
+			if (match_MayAlternative_CommaKeyword_5_q.equals(syntax))
+				emit_MayAlternative_CommaKeyword_5_q(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if (match_Time_HrKeyword_1_0_or_MinKeyword_1_1_or_MsKeyword_1_3_or_NsKeyword_1_4_or_SKeyword_1_2.equals(syntax))
 				emit_Time_HrKeyword_1_0_or_MinKeyword_1_1_or_MsKeyword_1_3_or_NsKeyword_1_4_or_SKeyword_1_2(semanticObject, getLastNavigableState(), syntaxNodes);
 			else acceptNodes(getLastNavigableState(), syntaxNodes);
@@ -66,14 +54,14 @@ public class RequirementsModelSyntacticSequencer extends AbstractSyntacticSequen
 	/**
 	 * <pre>
 	 * Ambiguous syntax:
-	 *     'EARLY' | 'LATE' | 'MANY' | 'FEW'
+	 *     ','?
 	 *
 	 * This ambiguous syntax occurs at:
-	 *     (rule start) 'AS' (ambiguity) 'AS' 'POSSIBLE' '(' statement=Quantifiable
+	 *     expression=Expression ')' (ambiguity) (rule end)
 	 
 	 * </pre>
 	 */
-	protected void emit_Statement_EARLYKeyword_11_1_0_or_FEWKeyword_11_1_3_or_LATEKeyword_11_1_1_or_MANYKeyword_11_1_2(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+	protected void emit_MayAlternative_CommaKeyword_5_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
 	}
 	

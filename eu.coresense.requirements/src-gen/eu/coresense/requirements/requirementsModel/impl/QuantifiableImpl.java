@@ -14,7 +14,6 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -24,22 +23,22 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link eu.coresense.requirements.requirementsModel.impl.QuantifiableImpl#getVar <em>Var</em>}</li>
+ *   <li>{@link eu.coresense.requirements.requirementsModel.impl.QuantifiableImpl#getContextVariable <em>Context Variable</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class QuantifiableImpl extends MinimalEObjectImpl.Container implements Quantifiable
+public class QuantifiableImpl extends StatementImpl implements Quantifiable
 {
   /**
-   * The cached value of the '{@link #getVar() <em>Var</em>}' reference.
+   * The cached value of the '{@link #getContextVariable() <em>Context Variable</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getVar()
+   * @see #getContextVariable()
    * @generated
    * @ordered
    */
-  protected ContextVar var;
+  protected ContextVar contextVariable;
 
   /**
    * <!-- begin-user-doc -->
@@ -68,19 +67,19 @@ public class QuantifiableImpl extends MinimalEObjectImpl.Container implements Qu
    * @generated
    */
   @Override
-  public ContextVar getVar()
+  public ContextVar getContextVariable()
   {
-    if (var != null && var.eIsProxy())
+    if (contextVariable != null && contextVariable.eIsProxy())
     {
-      InternalEObject oldVar = (InternalEObject)var;
-      var = (ContextVar)eResolveProxy(oldVar);
-      if (var != oldVar)
+      InternalEObject oldContextVariable = (InternalEObject)contextVariable;
+      contextVariable = (ContextVar)eResolveProxy(oldContextVariable);
+      if (contextVariable != oldContextVariable)
       {
         if (eNotificationRequired())
-          eNotify(new ENotificationImpl(this, Notification.RESOLVE, RequirementsModelPackage.QUANTIFIABLE__VAR, oldVar, var));
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, RequirementsModelPackage.QUANTIFIABLE__CONTEXT_VARIABLE, oldContextVariable, contextVariable));
       }
     }
-    return var;
+    return contextVariable;
   }
 
   /**
@@ -88,9 +87,9 @@ public class QuantifiableImpl extends MinimalEObjectImpl.Container implements Qu
    * <!-- end-user-doc -->
    * @generated
    */
-  public ContextVar basicGetVar()
+  public ContextVar basicGetContextVariable()
   {
-    return var;
+    return contextVariable;
   }
 
   /**
@@ -99,12 +98,12 @@ public class QuantifiableImpl extends MinimalEObjectImpl.Container implements Qu
    * @generated
    */
   @Override
-  public void setVar(ContextVar newVar)
+  public void setContextVariable(ContextVar newContextVariable)
   {
-    ContextVar oldVar = var;
-    var = newVar;
+    ContextVar oldContextVariable = contextVariable;
+    contextVariable = newContextVariable;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, RequirementsModelPackage.QUANTIFIABLE__VAR, oldVar, var));
+      eNotify(new ENotificationImpl(this, Notification.SET, RequirementsModelPackage.QUANTIFIABLE__CONTEXT_VARIABLE, oldContextVariable, contextVariable));
   }
 
   /**
@@ -117,9 +116,9 @@ public class QuantifiableImpl extends MinimalEObjectImpl.Container implements Qu
   {
     switch (featureID)
     {
-      case RequirementsModelPackage.QUANTIFIABLE__VAR:
-        if (resolve) return getVar();
-        return basicGetVar();
+      case RequirementsModelPackage.QUANTIFIABLE__CONTEXT_VARIABLE:
+        if (resolve) return getContextVariable();
+        return basicGetContextVariable();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -134,8 +133,8 @@ public class QuantifiableImpl extends MinimalEObjectImpl.Container implements Qu
   {
     switch (featureID)
     {
-      case RequirementsModelPackage.QUANTIFIABLE__VAR:
-        setVar((ContextVar)newValue);
+      case RequirementsModelPackage.QUANTIFIABLE__CONTEXT_VARIABLE:
+        setContextVariable((ContextVar)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -151,8 +150,8 @@ public class QuantifiableImpl extends MinimalEObjectImpl.Container implements Qu
   {
     switch (featureID)
     {
-      case RequirementsModelPackage.QUANTIFIABLE__VAR:
-        setVar((ContextVar)null);
+      case RequirementsModelPackage.QUANTIFIABLE__CONTEXT_VARIABLE:
+        setContextVariable((ContextVar)null);
         return;
     }
     super.eUnset(featureID);
@@ -168,8 +167,8 @@ public class QuantifiableImpl extends MinimalEObjectImpl.Container implements Qu
   {
     switch (featureID)
     {
-      case RequirementsModelPackage.QUANTIFIABLE__VAR:
-        return var != null;
+      case RequirementsModelPackage.QUANTIFIABLE__CONTEXT_VARIABLE:
+        return contextVariable != null;
     }
     return super.eIsSet(featureID);
   }

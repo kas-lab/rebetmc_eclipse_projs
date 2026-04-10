@@ -11,14 +11,16 @@ import eu.coresense.adaptation.tactics.AtomicActionSelectFeature;
 import eu.coresense.adaptation.tactics.AtomicRule;
 import eu.coresense.adaptation.tactics.AtomicRuleWithPriority;
 import eu.coresense.adaptation.tactics.ConditionAction;
-import eu.coresense.adaptation.tactics.ContextPart;
-import eu.coresense.adaptation.tactics.Effect;
+import eu.coresense.adaptation.tactics.ContextGuard;
+import eu.coresense.adaptation.tactics.EffectBlock;
 import eu.coresense.adaptation.tactics.FeatureCondition;
-import eu.coresense.adaptation.tactics.FeaturePart;
+import eu.coresense.adaptation.tactics.FeatureGuard;
 import eu.coresense.adaptation.tactics.Import;
-import eu.coresense.adaptation.tactics.MeasurementCondition;
+import eu.coresense.adaptation.tactics.MeasurementMeasurementCondition;
+import eu.coresense.adaptation.tactics.MeasurementThresholdCondition;
 import eu.coresense.adaptation.tactics.PureAction;
 import eu.coresense.adaptation.tactics.QualifiedFeatureRef;
+import eu.coresense.adaptation.tactics.RelativeEffect;
 import eu.coresense.adaptation.tactics.RuleSet;
 import eu.coresense.adaptation.tactics.TacticsModel;
 import eu.coresense.adaptation.tactics.TacticsPackage;
@@ -92,23 +94,26 @@ public class TacticsSemanticSequencer extends AbstractDelegatingSemanticSequence
 					return; 
 				}
 				else break;
-			case TacticsPackage.CONTEXT_PART:
-				sequence_ContextPart(context, (ContextPart) semanticObject); 
+			case TacticsPackage.CONTEXT_GUARD:
+				sequence_ContextGuard(context, (ContextGuard) semanticObject); 
 				return; 
-			case TacticsPackage.EFFECT:
-				sequence_Effect(context, (Effect) semanticObject); 
+			case TacticsPackage.EFFECT_BLOCK:
+				sequence_EffectBlock(context, (EffectBlock) semanticObject); 
 				return; 
 			case TacticsPackage.FEATURE_CONDITION:
 				sequence_FeatureCondition(context, (FeatureCondition) semanticObject); 
 				return; 
-			case TacticsPackage.FEATURE_PART:
-				sequence_FeaturePart(context, (FeaturePart) semanticObject); 
+			case TacticsPackage.FEATURE_GUARD:
+				sequence_FeatureGuard(context, (FeatureGuard) semanticObject); 
 				return; 
 			case TacticsPackage.IMPORT:
 				sequence_Import(context, (Import) semanticObject); 
 				return; 
-			case TacticsPackage.MEASUREMENT_CONDITION:
-				sequence_MeasurementCondition(context, (MeasurementCondition) semanticObject); 
+			case TacticsPackage.MEASUREMENT_MEASUREMENT_CONDITION:
+				sequence_MeasurementMeasurementCondition(context, (MeasurementMeasurementCondition) semanticObject); 
+				return; 
+			case TacticsPackage.MEASUREMENT_THRESHOLD_CONDITION:
+				sequence_MeasurementThresholdCondition(context, (MeasurementThresholdCondition) semanticObject); 
 				return; 
 			case TacticsPackage.PURE_ACTION:
 				if (rule == grammarAccess.getPureActionRule()) {
@@ -122,6 +127,9 @@ public class TacticsSemanticSequencer extends AbstractDelegatingSemanticSequence
 				else break;
 			case TacticsPackage.QUALIFIED_FEATURE_REF:
 				sequence_QualifiedFeatureRef(context, (QualifiedFeatureRef) semanticObject); 
+				return; 
+			case TacticsPackage.RELATIVE_EFFECT:
+				sequence_RelativeEffect(context, (RelativeEffect) semanticObject); 
 				return; 
 			case TacticsPackage.RULE_SET:
 				sequence_RuleSet(context, (RuleSet) semanticObject); 
@@ -267,7 +275,7 @@ public class TacticsSemanticSequencer extends AbstractDelegatingSemanticSequence
 	 *     ConditionAction returns ConditionAction
 	 *
 	 * Constraint:
-	 *     (((contextPart=ContextPart featurePart=FeaturePart?) | (featurePart=FeaturePart contextPart=ContextPart?)) atomicAction=AtomicAction)
+	 *     (((contextGuard=ContextGuard featureGuard=FeatureGuard?) | (featureGuard=FeatureGuard contextGuard=ContextGuard?)) atomicAction=AtomicAction)
 	 * </pre>
 	 */
 	protected void sequence_ConditionAction(ISerializationContext context, ConditionAction semanticObject) {
@@ -282,9 +290,9 @@ public class TacticsSemanticSequencer extends AbstractDelegatingSemanticSequence
 	 *
 	 * Constraint:
 	 *     (
-	 *         ((contextPart=ContextPart featurePart=FeaturePart?) | (featurePart=FeaturePart contextPart=ContextPart?)) 
+	 *         ((contextGuard=ContextGuard featureGuard=FeatureGuard?) | (featureGuard=FeatureGuard contextGuard=ContextGuard?)) 
 	 *         atomicAction=AtomicAction 
-	 *         effect=Effect
+	 *         effect=EffectBlock?
 	 *     )
 	 * </pre>
 	 */
@@ -296,19 +304,19 @@ public class TacticsSemanticSequencer extends AbstractDelegatingSemanticSequence
 	/**
 	 * <pre>
 	 * Contexts:
-	 *     ContextPart returns ContextPart
+	 *     ContextGuard returns ContextGuard
 	 *
 	 * Constraint:
 	 *     contextCondition=MeasurementCondition
 	 * </pre>
 	 */
-	protected void sequence_ContextPart(ISerializationContext context, ContextPart semanticObject) {
+	protected void sequence_ContextGuard(ISerializationContext context, ContextGuard semanticObject) {
 		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, TacticsPackage.Literals.CONTEXT_PART__CONTEXT_CONDITION) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, TacticsPackage.Literals.CONTEXT_PART__CONTEXT_CONDITION));
+			if (transientValues.isValueTransient(semanticObject, TacticsPackage.Literals.CONTEXT_GUARD__CONTEXT_CONDITION) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, TacticsPackage.Literals.CONTEXT_GUARD__CONTEXT_CONDITION));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getContextPartAccess().getContextConditionMeasurementConditionParserRuleCall_2_0(), semanticObject.getContextCondition());
+		feeder.accept(grammarAccess.getContextGuardAccess().getContextConditionMeasurementConditionParserRuleCall_2_0(), semanticObject.getContextCondition());
 		feeder.finish();
 	}
 	
@@ -337,25 +345,31 @@ public class TacticsSemanticSequencer extends AbstractDelegatingSemanticSequence
 	/**
 	 * <pre>
 	 * Contexts:
-	 *     Effect returns Effect
+	 *     EffectBlock returns EffectBlock
 	 *
 	 * Constraint:
-	 *     condition=MeasurementCondition?
+	 *     someEffect=Effect
 	 * </pre>
 	 */
-	protected void sequence_Effect(ISerializationContext context, Effect semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
+	protected void sequence_EffectBlock(ISerializationContext context, EffectBlock semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, TacticsPackage.Literals.EFFECT_BLOCK__SOME_EFFECT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, TacticsPackage.Literals.EFFECT_BLOCK__SOME_EFFECT));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getEffectBlockAccess().getSomeEffectEffectParserRuleCall_3_0(), semanticObject.getSomeEffect());
+		feeder.finish();
 	}
 	
 	
 	/**
 	 * <pre>
 	 * Contexts:
-	 *     Condition returns FeatureCondition
 	 *     FeatureCondition returns FeatureCondition
+	 *     Condition returns FeatureCondition
 	 *
 	 * Constraint:
-	 *     (not='!'? variant=QualifiedFeatureRef (logicalOp=LogicalOperator secondTerm=Condition)?)
+	 *     (not='!'? variant=QualifiedFeatureRef (logicalOp=LogicalOperator secondTerm=FeatureCondition)?)
 	 * </pre>
 	 */
 	protected void sequence_FeatureCondition(ISerializationContext context, FeatureCondition semanticObject) {
@@ -366,19 +380,19 @@ public class TacticsSemanticSequencer extends AbstractDelegatingSemanticSequence
 	/**
 	 * <pre>
 	 * Contexts:
-	 *     FeaturePart returns FeaturePart
+	 *     FeatureGuard returns FeatureGuard
 	 *
 	 * Constraint:
 	 *     featureCondition=FeatureCondition
 	 * </pre>
 	 */
-	protected void sequence_FeaturePart(ISerializationContext context, FeaturePart semanticObject) {
+	protected void sequence_FeatureGuard(ISerializationContext context, FeatureGuard semanticObject) {
 		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, TacticsPackage.Literals.FEATURE_PART__FEATURE_CONDITION) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, TacticsPackage.Literals.FEATURE_PART__FEATURE_CONDITION));
+			if (transientValues.isValueTransient(semanticObject, TacticsPackage.Literals.FEATURE_GUARD__FEATURE_CONDITION) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, TacticsPackage.Literals.FEATURE_GUARD__FEATURE_CONDITION));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getFeaturePartAccess().getFeatureConditionFeatureConditionParserRuleCall_2_0(), semanticObject.getFeatureCondition());
+		feeder.accept(grammarAccess.getFeatureGuardAccess().getFeatureConditionFeatureConditionParserRuleCall_2_0(), semanticObject.getFeatureCondition());
 		feeder.finish();
 	}
 	
@@ -427,14 +441,31 @@ public class TacticsSemanticSequencer extends AbstractDelegatingSemanticSequence
 	/**
 	 * <pre>
 	 * Contexts:
-	 *     Condition returns MeasurementCondition
-	 *     MeasurementCondition returns MeasurementCondition
+	 *     Condition returns MeasurementMeasurementCondition
+	 *     MeasurementCondition returns MeasurementMeasurementCondition
+	 *     MeasurementMeasurementCondition returns MeasurementMeasurementCondition
 	 *
 	 * Constraint:
-	 *     (measurement=[ContextVar|ID] operator=MathOperator value=Literal (logicalOp=LogicalOperator secondTerm=Condition)?)
+	 *     (measurement=[ContextVar|ID] operator=MathOperator otherMeasurement=[ContextVar|ID] (logicalOp=LogicalOperator secondTerm=MeasurementCondition)?)
 	 * </pre>
 	 */
-	protected void sequence_MeasurementCondition(ISerializationContext context, MeasurementCondition semanticObject) {
+	protected void sequence_MeasurementMeasurementCondition(ISerializationContext context, MeasurementMeasurementCondition semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
+	 *     Condition returns MeasurementThresholdCondition
+	 *     MeasurementCondition returns MeasurementThresholdCondition
+	 *     MeasurementThresholdCondition returns MeasurementThresholdCondition
+	 *
+	 * Constraint:
+	 *     (measurement=[ContextVar|ID] operator=MathOperator thresholdValue=Literal (logicalOp=LogicalOperator secondTerm=MeasurementCondition)?)
+	 * </pre>
+	 */
+	protected void sequence_MeasurementThresholdCondition(ISerializationContext context, MeasurementThresholdCondition semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -465,20 +496,11 @@ public class TacticsSemanticSequencer extends AbstractDelegatingSemanticSequence
 	 *     RuleBody returns PureAction
 	 *
 	 * Constraint:
-	 *     (atomicAction=AtomicAction effect=Effect)
+	 *     (atomicAction=AtomicAction effect=EffectBlock?)
 	 * </pre>
 	 */
 	protected void sequence_PureAction_RuleBody(ISerializationContext context, PureAction semanticObject) {
-		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, TacticsPackage.Literals.RULE_BODY__ATOMIC_ACTION) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, TacticsPackage.Literals.RULE_BODY__ATOMIC_ACTION));
-			if (transientValues.isValueTransient(semanticObject, TacticsPackage.Literals.RULE_BODY__EFFECT) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, TacticsPackage.Literals.RULE_BODY__EFFECT));
-		}
-		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getPureActionAccess().getAtomicActionAtomicActionParserRuleCall_0(), semanticObject.getAtomicAction());
-		feeder.accept(grammarAccess.getRuleBodyAccess().getEffectEffectParserRuleCall_1_0(), semanticObject.getEffect());
-		feeder.finish();
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
@@ -501,6 +523,33 @@ public class TacticsSemanticSequencer extends AbstractDelegatingSemanticSequence
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getQualifiedFeatureRefAccess().getModelResolutionModelIDTerminalRuleCall_0_0_1(), semanticObject.eGet(TacticsPackage.Literals.QUALIFIED_FEATURE_REF__MODEL, false));
 		feeder.accept(grammarAccess.getQualifiedFeatureRefAccess().getFeatureFeatureIDTerminalRuleCall_2_0_1(), semanticObject.eGet(TacticsPackage.Literals.QUALIFIED_FEATURE_REF__FEATURE, false));
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
+	 *     Effect returns RelativeEffect
+	 *     RelativeEffect returns RelativeEffect
+	 *
+	 * Constraint:
+	 *     (sign=INCDEC effectValue=Literal measurement=[ContextVar|ID])
+	 * </pre>
+	 */
+	protected void sequence_RelativeEffect(ISerializationContext context, RelativeEffect semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, TacticsPackage.Literals.RELATIVE_EFFECT__SIGN) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, TacticsPackage.Literals.RELATIVE_EFFECT__SIGN));
+			if (transientValues.isValueTransient(semanticObject, TacticsPackage.Literals.RELATIVE_EFFECT__EFFECT_VALUE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, TacticsPackage.Literals.RELATIVE_EFFECT__EFFECT_VALUE));
+			if (transientValues.isValueTransient(semanticObject, TacticsPackage.Literals.RELATIVE_EFFECT__MEASUREMENT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, TacticsPackage.Literals.RELATIVE_EFFECT__MEASUREMENT));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getRelativeEffectAccess().getSignINCDECTerminalRuleCall_0_0(), semanticObject.getSign());
+		feeder.accept(grammarAccess.getRelativeEffectAccess().getEffectValueLiteralParserRuleCall_1_0(), semanticObject.getEffectValue());
+		feeder.accept(grammarAccess.getRelativeEffectAccess().getMeasurementContextVarIDTerminalRuleCall_2_0_1(), semanticObject.eGet(TacticsPackage.Literals.RELATIVE_EFFECT__MEASUREMENT, false));
 		feeder.finish();
 	}
 	

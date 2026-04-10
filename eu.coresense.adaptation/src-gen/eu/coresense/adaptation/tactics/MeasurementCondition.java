@@ -3,7 +3,6 @@
  */
 package eu.coresense.adaptation.tactics;
 
-import eu.coresense.common.Literal;
 import eu.coresense.common.MathOperator;
 
 import eu.coresense.context.contextModel.ContextVar;
@@ -19,7 +18,7 @@ import eu.coresense.context.contextModel.ContextVar;
  * <ul>
  *   <li>{@link eu.coresense.adaptation.tactics.MeasurementCondition#getMeasurement <em>Measurement</em>}</li>
  *   <li>{@link eu.coresense.adaptation.tactics.MeasurementCondition#getOperator <em>Operator</em>}</li>
- *   <li>{@link eu.coresense.adaptation.tactics.MeasurementCondition#getValue <em>Value</em>}</li>
+ *   <li>{@link eu.coresense.adaptation.tactics.MeasurementCondition#getSecondTerm <em>Second Term</em>}</li>
  * </ul>
  *
  * @see eu.coresense.adaptation.tactics.TacticsPackage#getMeasurementCondition()
@@ -76,25 +75,25 @@ public interface MeasurementCondition extends Condition
   void setOperator(MathOperator value);
 
   /**
-   * Returns the value of the '<em><b>Value</b></em>' containment reference.
+   * Returns the value of the '<em><b>Second Term</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Value</em>' containment reference.
-   * @see #setValue(Literal)
-   * @see eu.coresense.adaptation.tactics.TacticsPackage#getMeasurementCondition_Value()
+   * @return the value of the '<em>Second Term</em>' containment reference.
+   * @see #setSecondTerm(MeasurementCondition)
+   * @see eu.coresense.adaptation.tactics.TacticsPackage#getMeasurementCondition_SecondTerm()
    * @model containment="true"
    * @generated
    */
-  Literal getValue();
+  MeasurementCondition getSecondTerm();
 
   /**
-   * Sets the value of the '{@link eu.coresense.adaptation.tactics.MeasurementCondition#getValue <em>Value</em>}' containment reference.
+   * Sets the value of the '{@link eu.coresense.adaptation.tactics.MeasurementCondition#getSecondTerm <em>Second Term</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Value</em>' containment reference.
-   * @see #getValue()
+   * @param value the new value of the '<em>Second Term</em>' containment reference.
+   * @see #getSecondTerm()
    * @generated
    */
-  void setValue(Literal value);
+  void setSecondTerm(MeasurementCondition value);
 
 } // MeasurementCondition

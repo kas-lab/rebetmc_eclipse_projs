@@ -44,8 +44,8 @@ import ros.Publisher;
  * on how and when to use it.
  */
 public class ContextModelScopeProvider extends AbstractContextModelScopeProvider {
-	@Override
-	public IScope getScope(EObject context, EReference reference) {
+//	@Override
+//	public IScope getScope(EObject context, EReference reference) {
 //	    if (reference == ContextModelPackage.Literals.DATA_SOURCE__PUBLISHER) {
 //	    	ContextModel model = EcoreUtil2.getContainerOfType(context, ContextModel.class);
 //	    	
@@ -114,185 +114,186 @@ public class ContextModelScopeProvider extends AbstractContextModelScopeProvider
 //
 //	    	return Scopes.scopeFor(allNodes(model,context));
 //	    }
-	    if(reference == ContextModelPackage.Literals.QUALIFIED_ACTION_SERVER_REF__ACTION_SERVER)
-	    {
-	    	QualifiedActionServerRef qref = (QualifiedActionServerRef) context;
-	        ros.Node node = qref.getNode();
-	        if (node != null && node.getActionserver().size() != 0) {
-	            // scope over all features in the model
-	            return Scopes.scopeFor(node.getActionserver());
-	        }
-	        return IScope.NULLSCOPE;
-	    }
-	    if(reference == ContextModelPackage.Literals.QUALIFIED_PUBLISHER_REF__PUBLISHER)
-	    {
-	    	QualifiedPublisherRef qref = (QualifiedPublisherRef) context;
-	        ros.Node node = qref.getNode();
-	        
-    		for (var x : node.getPublisher()) {
-    			System.out.println("Publisher name!!");
-    			System.out.println(x.getName());
-			}
-	        if (node != null && node.getPublisher().size() != 0) {
-	            // scope over all features in the model
-//	        	List<Publisher> publishers = node.getPublisher();
-//	            IScope scope = IScope.NULLSCOPE;
-//	            // Convert List to array
-//	            final Publisher[] publisherArray = publishers.toArray(new Publisher[0]);
+//	    if(reference == ContextModelPackage.Literals.QUALIFIED_ACTION_SERVER_REF__ACTION_SERVER)
+//	    {
+//	    	QualifiedActionServerRef qref = (QualifiedActionServerRef) context;
+//	        ros.Node node = qref.getNode();
+//	        if (node != null && node.getActionserver().size() != 0) {
+//	            // scope over all features in the model
+//	            return Scopes.scopeFor(node.getActionserver());
+//	        }
+//	        return IScope.NULLSCOPE;
+//	    }
+//	    if(reference == ContextModelPackage.Literals.QUALIFIED_PUBLISHER_REF__PUBLISHER)
+//	    {
+//	    	QualifiedPublisherRef qref = (QualifiedPublisherRef) context;
+//	        ros.Node node = qref.getNode();
+//	        
+//    		for (var x : node.getPublisher()) {
+//    			System.out.println("Publisher name!!");
+//    			System.out.println(x.getName());
+//			}
+//	        if (node != null && node.getPublisher().size() != 0) {
+//	            // scope over all features in the model
+////	        	List<Publisher> publishers = node.getPublisher();
+////	            IScope scope = IScope.NULLSCOPE;
+////	            // Convert List to array
+////	            final Publisher[] publisherArray = publishers.toArray(new Publisher[0]);
+////
+////	            // Implement Function interface manually to return QualifiedName
+////	            return Scopes.scopeFor(publisherArray, new Function<EObject, QualifiedName>() {
+////	                @Override
+////	                public QualifiedName apply(EObject input) {
+////	                    Publisher p = (Publisher) input;
+////	                    return QualifiedName.create(p.getName()); // keep '/' literal
+////	                }
+////	            });
+////	            return scope;
+//	        }
+//	        return IScope.NULLSCOPE;
+//	    }
+//	    if(reference == ContextModelPackage.Literals.QUALIFIED_SERVICE_SERVER_REF__SERVICE_SERVER)
+//	    {
+//	    	QualifiedServiceServerRef qref = (QualifiedServiceServerRef) context;
+//	        ros.Node node = qref.getNode();
+//	        if (node != null && node.getServiceserver().size() != 0) {
+//	            // scope over all features in the model
+//	            return Scopes.scopeFor(node.getServiceserver());
+//	        }
+//	        return IScope.NULLSCOPE;
+//	    }
 //
-//	            // Implement Function interface manually to return QualifiedName
-//	            return Scopes.scopeFor(publisherArray, new Function<EObject, QualifiedName>() {
-//	                @Override
-//	                public QualifiedName apply(EObject input) {
-//	                    Publisher p = (Publisher) input;
-//	                    return QualifiedName.create(p.getName()); // keep '/' literal
-//	                }
-//	            });
-//	            return scope;
-	        }
-	        return IScope.NULLSCOPE;
-	    }
-	    if(reference == ContextModelPackage.Literals.QUALIFIED_SERVICE_SERVER_REF__SERVICE_SERVER)
-	    {
-	    	QualifiedServiceServerRef qref = (QualifiedServiceServerRef) context;
-	        ros.Node node = qref.getNode();
-	        if (node != null && node.getServiceserver().size() != 0) {
-	            // scope over all features in the model
-	            return Scopes.scopeFor(node.getServiceserver());
-	        }
-	        return IScope.NULLSCOPE;
-	    }
-
-
-
-	    	
-	    return super.getScope(context, reference); 
-	}
-	
-	private List<ros.Node> allNodes(ContextModel model, EObject context)
-	{
-    	
-    	List<system.System> sys_defs = collectAllSystems(model, context.eResource());
-    	
-    	List<ros.Node> allNodes = new ArrayList<ros.Node>();
-    	for (system.System sys_def : sys_defs)
-    	{
-    		for(system.Component comp : sys_def.getComponents())
-    		{
-    			if(comp instanceof system.RosNode)
-    			{
-    				system.RosNode node = (system.RosNode) comp;
-    				allNodes.add(node.getFrom());
-    			}
-    		}
-    	}
-    	return allNodes;
-	}
-	
-//	private List<ros.Publisher> collectContextPublishers(ContextModel model, Resource currentResource) {
-//	    List<ros.Publisher> result = new ArrayList<>();
+//
+//
+//	    	
+//	    return super.getScope(context, reference); 
+//	}
+//	
+//	private List<ros.Node> allNodes(ContextModel model, EObject context)
+//	{
+//    	
+//    	List<system.System> sys_defs = collectAllSystems(model, context.eResource());
+//    	
+//    	List<ros.Node> allNodes = new ArrayList<ros.Node>();
+//    	for (system.System sys_def : sys_defs)
+//    	{
+//    		for(system.Component comp : sys_def.getComponents())
+//    		{
+//    			if(comp instanceof system.RosNode)
+//    			{
+//    				system.RosNode node = (system.RosNode) comp;
+//    				allNodes.add(node.getFrom());
+//    			}
+//    		}
+//    	}
+//    	return allNodes;
+//	}
+//	
+////	private List<ros.Publisher> collectContextPublishers(ContextModel model, Resource currentResource) {
+////	    List<ros.Publisher> result = new ArrayList<>();
+////	    ResourceSet resourceSet = currentResource.getResourceSet();
+////        String uriStr = model.getContext_model_node().getNode_import().getImportURI();
+////        if (uriStr == null || !uriStr.endsWith(".ros2")) return new ArrayList<ros.Publisher>();
+////
+////        URI uri = URI.createURI(uriStr);
+////        if (uri.isRelative()) {
+////            uri = uri.resolve(currentResource.getURI());
+////        }
+////
+////        try {
+////            Resource imported = resourceSet.getResource(uri, true);
+////            if (imported == null || imported.getContents().isEmpty()) return new ArrayList<ros.Publisher>();
+////
+////            EObject root = imported.getContents().get(0);
+////            if (root instanceof ros.AmentPackage pkg) {
+////                for(ros.Artifact art : pkg.getArtifact())
+////                {
+////                	result.addAll(art.getNode().getPublisher());
+////                }
+////            }
+////        } catch (Exception e) {
+////            System.err.println("Failed to load context model .ros2 import: " + uriStr);
+////            e.printStackTrace();
+////        }
+////    
+////
+////	    return result;
+////	}
+//	
+//	
+//		
+//	private List<ros.Package> collectAllRosDefinitions(ContextModel model, Resource currentResource) {
+//	    List<ros.Package> result = new ArrayList<>();
 //	    ResourceSet resourceSet = currentResource.getResourceSet();
-//        String uriStr = model.getContext_model_node().getNode_import().getImportURI();
-//        if (uriStr == null || !uriStr.endsWith(".ros2")) return new ArrayList<ros.Publisher>();
 //
-//        URI uri = URI.createURI(uriStr);
-//        if (uri.isRelative()) {
-//            uri = uri.resolve(currentResource.getURI());
-//        }
+//	    for (Import imp : model.getImports()) {
+//	        String uriStr = imp.getImportURI();
+//	        if (uriStr == null || !uriStr.endsWith(".ros")) continue;
+//	        URI uri = URI.createURI(uriStr);
+//	        if (uri.isRelative()) {
+//	            uri = uri.resolve(currentResource.getURI());
+//	        }
 //
-//        try {
-//            Resource imported = resourceSet.getResource(uri, true);
-//            if (imported == null || imported.getContents().isEmpty()) return new ArrayList<ros.Publisher>();
-//
-//            EObject root = imported.getContents().get(0);
-//            if (root instanceof ros.AmentPackage pkg) {
-//                for(ros.Artifact art : pkg.getArtifact())
-//                {
-//                	result.addAll(art.getNode().getPublisher());
-//                }
-//            }
-//        } catch (Exception e) {
-//            System.err.println("Failed to load context model .ros2 import: " + uriStr);
-//            e.printStackTrace();
-//        }
-//    
+//	        try {
+//	            Resource imported = resourceSet.getResource(uri, true);
+//	            if (imported == null || imported.getContents().isEmpty()) continue;
+//	            EObject root = imported.getContents().get(0);
+//	            if (root instanceof ros.PackageSet pkg_set) {
+//	            	result.addAll(pkg_set.getPackage());
+//	            }
+//	            else
+//	            {
+//	            	System.out.println(root.getClass());
+//	            }
+//	        } catch (Exception e) {
+//	            System.err.println("Failed to load .ros import: " + uriStr);
+//	            e.printStackTrace();
+//	        }
+//	    }
 //
 //	    return result;
 //	}
-	
-	
-		
-	private List<ros.Package> collectAllRosDefinitions(ContextModel model, Resource currentResource) {
-	    List<ros.Package> result = new ArrayList<>();
-	    ResourceSet resourceSet = currentResource.getResourceSet();
-
-	    for (Import imp : model.getImports()) {
-	        String uriStr = imp.getImportURI();
-	        if (uriStr == null || !uriStr.endsWith(".ros")) continue;
-	        URI uri = URI.createURI(uriStr);
-	        if (uri.isRelative()) {
-	            uri = uri.resolve(currentResource.getURI());
-	        }
-
-	        try {
-	            Resource imported = resourceSet.getResource(uri, true);
-	            if (imported == null || imported.getContents().isEmpty()) continue;
-	            EObject root = imported.getContents().get(0);
-	            if (root instanceof ros.PackageSet pkg_set) {
-	            	result.addAll(pkg_set.getPackage());
-	            }
-	            else
-	            {
-	            	System.out.println(root.getClass());
-	            }
-	        } catch (Exception e) {
-	            System.err.println("Failed to load .ros import: " + uriStr);
-	            e.printStackTrace();
-	        }
-	    }
-
-	    return result;
-	}
-	//TODO: This is duplicated code with the resolutionModel.
-	private List<system.System> collectAllSystems(ContextModel model, Resource currentResource) {
-	    List<system.System> result = new ArrayList<>();
-	    ResourceSet resourceSet = currentResource.getResourceSet();
-
-	    for (Import imp : model.getImports()) {
-	        String uriStr = imp.getImportURI();
-	        if (uriStr == null || !uriStr.endsWith(".rossystem")) continue;
-
-	        URI uri = URI.createURI(uriStr);
-	        if (uri.isRelative()) {
-	            uri = uri.resolve(currentResource.getURI());
-	        }
-
-	        try {
-	            Resource imported = resourceSet.getResource(uri, true);
-	            if (imported == null || imported.getContents().isEmpty()) continue;
-
-	            EObject root = imported.getContents().get(0);
-	            if (root instanceof system.System rossystem) {
-	                collectRecursively(rossystem, result);
-	            }
-	        } catch (Exception e) {
-	            System.err.println("Failed to load .rossystem import: " + uriStr);
-	            e.printStackTrace();
-	        }
-	    }
-
-	    return result;
-	}
-
-	private void collectRecursively(system.System system, List<system.System> result) {
-	    if (system == null || result.contains(system)) return;
-	    result.add(system);
-
-	    for (system.Component comp : system.getComponents()) {
-	        if (comp instanceof system.SubSystem sub) {
-	            collectRecursively(sub.getSystem(), result);
-	        }
-	    }
-	}
+//	//TODO: This is duplicated code with the resolutionModel.
+//	private List<system.System> collectAllSystems(ContextModel model, Resource currentResource) {
+//	    List<system.System> result = new ArrayList<>();
+//	    ResourceSet resourceSet = currentResource.getResourceSet();
+//
+//	    for (Import imp : model.getImports()) {
+//	        String uriStr = imp.getImportURI();
+//	        if (uriStr == null || !uriStr.endsWith(".rossystem")) continue;
+//
+//	        URI uri = URI.createURI(uriStr);
+//	        if (uri.isRelative()) {
+//	            uri = uri.resolve(currentResource.getURI());
+//	        }
+//
+//	        try {
+//	            Resource imported = resourceSet.getResource(uri, true);
+//	            if (imported == null || imported.getContents().isEmpty()) continue;
+//
+//	            EObject root = imported.getContents().get(0);
+//	            if (root instanceof system.System rossystem) {
+//	                collectRecursively(rossystem, result);
+//	            }
+//	        } catch (Exception e) {
+//	            System.err.println("Failed to load .rossystem import: " + uriStr);
+//	            e.printStackTrace();
+//	        }
+//	    }
+//
+//	    return result;
+//	}
+//
+//	private void collectRecursively(system.System system, List<system.System> result) {
+//	    if (system == null || result.contains(system)) return;
+//	    result.add(system);
+//
+//	    for (system.Component comp : system.getComponents()) {
+//	        if (comp instanceof system.SubSystem sub) {
+//	            collectRecursively(sub.getSystem(), result);
+//	        }
+//	    }
+//	}
 	
 }
+//

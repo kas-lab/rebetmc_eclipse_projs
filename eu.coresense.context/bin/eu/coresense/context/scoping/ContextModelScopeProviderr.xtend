@@ -31,10 +31,13 @@ class ContextModelScopeProviderr extends AbstractContextModelScopeProvider {
 	    {
 	    	val qref = context as QualifiedActionServerRef;
 	        val node = qref.node;
+	  
 	        if (node !== null && node.getActionserver().size() != 0) {
+	        	
+
 	            // scope over all features in the model
 	           	return Scopes.scopeFor(
-		            node.getActionserver(), 
+		            node.getActionserver(),
 		            [EObject e | QualifiedName.create(escape((e as ActionServer).name))],
 		            IScope.NULLSCOPE
 		        )
@@ -56,9 +59,7 @@ class ContextModelScopeProviderr extends AbstractContextModelScopeProvider {
 	        return IScope.NULLSCOPE;
 	    }
 	    //TODO: These could be separated to only get nodes which have at least one service_server, action_server, publisher.
-        if(reference == ContextModelPackage.Literals.QUALIFIED_SERVICE_SERVER_REF__NODE || 
-        	reference ==  ContextModelPackage.Literals.QUALIFIED_ACTION_SERVER_REF__NODE ||
-        	reference ==  ContextModelPackage.Literals.QUALIFIED_PUBLISHER_REF__NODE 
+        if(reference == ContextModelPackage.Literals.QUALIFIED_REF__NODE
         )
 	    {
 	    	val model = EcoreUtil2.getContainerOfType(context, ContextModel);

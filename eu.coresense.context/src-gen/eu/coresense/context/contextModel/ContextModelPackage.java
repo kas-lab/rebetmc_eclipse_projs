@@ -261,22 +261,41 @@ public interface ContextModelPackage extends EPackage
   int DATA_SOURCE__REF = 0;
 
   /**
-   * The feature id for the '<em><b>Kwargs</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int DATA_SOURCE__KWARGS = 1;
-
-  /**
    * The number of structural features of the '<em>Data Source</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int DATA_SOURCE_FEATURE_COUNT = 2;
+  int DATA_SOURCE_FEATURE_COUNT = 1;
+
+  /**
+   * The meta object id for the '{@link eu.coresense.context.contextModel.impl.QualifiedRefImpl <em>Qualified Ref</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see eu.coresense.context.contextModel.impl.QualifiedRefImpl
+   * @see eu.coresense.context.contextModel.impl.ContextModelPackageImpl#getQualifiedRef()
+   * @generated
+   */
+  int QUALIFIED_REF = 5;
+
+  /**
+   * The feature id for the '<em><b>Node</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int QUALIFIED_REF__NODE = 0;
+
+  /**
+   * The number of structural features of the '<em>Qualified Ref</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int QUALIFIED_REF_FEATURE_COUNT = 1;
 
   /**
    * The meta object id for the '{@link eu.coresense.context.contextModel.impl.QualifiedPublisherRefImpl <em>Qualified Publisher Ref</em>}' class.
@@ -286,7 +305,7 @@ public interface ContextModelPackage extends EPackage
    * @see eu.coresense.context.contextModel.impl.ContextModelPackageImpl#getQualifiedPublisherRef()
    * @generated
    */
-  int QUALIFIED_PUBLISHER_REF = 5;
+  int QUALIFIED_PUBLISHER_REF = 6;
 
   /**
    * The feature id for the '<em><b>Node</b></em>' reference.
@@ -295,7 +314,7 @@ public interface ContextModelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int QUALIFIED_PUBLISHER_REF__NODE = 0;
+  int QUALIFIED_PUBLISHER_REF__NODE = QUALIFIED_REF__NODE;
 
   /**
    * The feature id for the '<em><b>Publisher</b></em>' reference.
@@ -304,7 +323,7 @@ public interface ContextModelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int QUALIFIED_PUBLISHER_REF__PUBLISHER = 1;
+  int QUALIFIED_PUBLISHER_REF__PUBLISHER = QUALIFIED_REF_FEATURE_COUNT + 0;
 
   /**
    * The number of structural features of the '<em>Qualified Publisher Ref</em>' class.
@@ -313,7 +332,7 @@ public interface ContextModelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int QUALIFIED_PUBLISHER_REF_FEATURE_COUNT = 2;
+  int QUALIFIED_PUBLISHER_REF_FEATURE_COUNT = QUALIFIED_REF_FEATURE_COUNT + 1;
 
   /**
    * The meta object id for the '{@link eu.coresense.context.contextModel.impl.QualifiedServiceServerRefImpl <em>Qualified Service Server Ref</em>}' class.
@@ -323,7 +342,7 @@ public interface ContextModelPackage extends EPackage
    * @see eu.coresense.context.contextModel.impl.ContextModelPackageImpl#getQualifiedServiceServerRef()
    * @generated
    */
-  int QUALIFIED_SERVICE_SERVER_REF = 6;
+  int QUALIFIED_SERVICE_SERVER_REF = 7;
 
   /**
    * The feature id for the '<em><b>Node</b></em>' reference.
@@ -332,7 +351,7 @@ public interface ContextModelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int QUALIFIED_SERVICE_SERVER_REF__NODE = 0;
+  int QUALIFIED_SERVICE_SERVER_REF__NODE = QUALIFIED_REF__NODE;
 
   /**
    * The feature id for the '<em><b>Service Server</b></em>' reference.
@@ -341,7 +360,16 @@ public interface ContextModelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int QUALIFIED_SERVICE_SERVER_REF__SERVICE_SERVER = 1;
+  int QUALIFIED_SERVICE_SERVER_REF__SERVICE_SERVER = QUALIFIED_REF_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Kwargs</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int QUALIFIED_SERVICE_SERVER_REF__KWARGS = QUALIFIED_REF_FEATURE_COUNT + 1;
 
   /**
    * The number of structural features of the '<em>Qualified Service Server Ref</em>' class.
@@ -350,7 +378,7 @@ public interface ContextModelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int QUALIFIED_SERVICE_SERVER_REF_FEATURE_COUNT = 2;
+  int QUALIFIED_SERVICE_SERVER_REF_FEATURE_COUNT = QUALIFIED_REF_FEATURE_COUNT + 2;
 
   /**
    * The meta object id for the '{@link eu.coresense.context.contextModel.impl.QualifiedActionServerRefImpl <em>Qualified Action Server Ref</em>}' class.
@@ -360,7 +388,7 @@ public interface ContextModelPackage extends EPackage
    * @see eu.coresense.context.contextModel.impl.ContextModelPackageImpl#getQualifiedActionServerRef()
    * @generated
    */
-  int QUALIFIED_ACTION_SERVER_REF = 7;
+  int QUALIFIED_ACTION_SERVER_REF = 8;
 
   /**
    * The feature id for the '<em><b>Node</b></em>' reference.
@@ -369,7 +397,7 @@ public interface ContextModelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int QUALIFIED_ACTION_SERVER_REF__NODE = 0;
+  int QUALIFIED_ACTION_SERVER_REF__NODE = QUALIFIED_REF__NODE;
 
   /**
    * The feature id for the '<em><b>Action Server</b></em>' reference.
@@ -378,7 +406,16 @@ public interface ContextModelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int QUALIFIED_ACTION_SERVER_REF__ACTION_SERVER = 1;
+  int QUALIFIED_ACTION_SERVER_REF__ACTION_SERVER = QUALIFIED_REF_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Kwargs</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int QUALIFIED_ACTION_SERVER_REF__KWARGS = QUALIFIED_REF_FEATURE_COUNT + 1;
 
   /**
    * The number of structural features of the '<em>Qualified Action Server Ref</em>' class.
@@ -387,7 +424,7 @@ public interface ContextModelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int QUALIFIED_ACTION_SERVER_REF_FEATURE_COUNT = 2;
+  int QUALIFIED_ACTION_SERVER_REF_FEATURE_COUNT = QUALIFIED_REF_FEATURE_COUNT + 2;
 
   /**
    * The meta object id for the '{@link eu.coresense.context.contextModel.impl.ImportImpl <em>Import</em>}' class.
@@ -397,7 +434,7 @@ public interface ContextModelPackage extends EPackage
    * @see eu.coresense.context.contextModel.impl.ContextModelPackageImpl#getImport()
    * @generated
    */
-  int IMPORT = 8;
+  int IMPORT = 9;
 
   /**
    * The feature id for the '<em><b>Import URI</b></em>' attribute.
@@ -612,15 +649,25 @@ public interface ContextModelPackage extends EPackage
   EReference getDataSource_Ref();
 
   /**
-   * Returns the meta object for the attribute '{@link eu.coresense.context.contextModel.DataSource#getKwargs <em>Kwargs</em>}'.
+   * Returns the meta object for class '{@link eu.coresense.context.contextModel.QualifiedRef <em>Qualified Ref</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Kwargs</em>'.
-   * @see eu.coresense.context.contextModel.DataSource#getKwargs()
-   * @see #getDataSource()
+   * @return the meta object for class '<em>Qualified Ref</em>'.
+   * @see eu.coresense.context.contextModel.QualifiedRef
    * @generated
    */
-  EAttribute getDataSource_Kwargs();
+  EClass getQualifiedRef();
+
+  /**
+   * Returns the meta object for the reference '{@link eu.coresense.context.contextModel.QualifiedRef#getNode <em>Node</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Node</em>'.
+   * @see eu.coresense.context.contextModel.QualifiedRef#getNode()
+   * @see #getQualifiedRef()
+   * @generated
+   */
+  EReference getQualifiedRef_Node();
 
   /**
    * Returns the meta object for class '{@link eu.coresense.context.contextModel.QualifiedPublisherRef <em>Qualified Publisher Ref</em>}'.
@@ -631,17 +678,6 @@ public interface ContextModelPackage extends EPackage
    * @generated
    */
   EClass getQualifiedPublisherRef();
-
-  /**
-   * Returns the meta object for the reference '{@link eu.coresense.context.contextModel.QualifiedPublisherRef#getNode <em>Node</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the reference '<em>Node</em>'.
-   * @see eu.coresense.context.contextModel.QualifiedPublisherRef#getNode()
-   * @see #getQualifiedPublisherRef()
-   * @generated
-   */
-  EReference getQualifiedPublisherRef_Node();
 
   /**
    * Returns the meta object for the reference '{@link eu.coresense.context.contextModel.QualifiedPublisherRef#getPublisher <em>Publisher</em>}'.
@@ -665,17 +701,6 @@ public interface ContextModelPackage extends EPackage
   EClass getQualifiedServiceServerRef();
 
   /**
-   * Returns the meta object for the reference '{@link eu.coresense.context.contextModel.QualifiedServiceServerRef#getNode <em>Node</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the reference '<em>Node</em>'.
-   * @see eu.coresense.context.contextModel.QualifiedServiceServerRef#getNode()
-   * @see #getQualifiedServiceServerRef()
-   * @generated
-   */
-  EReference getQualifiedServiceServerRef_Node();
-
-  /**
    * Returns the meta object for the reference '{@link eu.coresense.context.contextModel.QualifiedServiceServerRef#getServiceServer <em>Service Server</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -685,6 +710,17 @@ public interface ContextModelPackage extends EPackage
    * @generated
    */
   EReference getQualifiedServiceServerRef_ServiceServer();
+
+  /**
+   * Returns the meta object for the attribute '{@link eu.coresense.context.contextModel.QualifiedServiceServerRef#getKwargs <em>Kwargs</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Kwargs</em>'.
+   * @see eu.coresense.context.contextModel.QualifiedServiceServerRef#getKwargs()
+   * @see #getQualifiedServiceServerRef()
+   * @generated
+   */
+  EAttribute getQualifiedServiceServerRef_Kwargs();
 
   /**
    * Returns the meta object for class '{@link eu.coresense.context.contextModel.QualifiedActionServerRef <em>Qualified Action Server Ref</em>}'.
@@ -697,17 +733,6 @@ public interface ContextModelPackage extends EPackage
   EClass getQualifiedActionServerRef();
 
   /**
-   * Returns the meta object for the reference '{@link eu.coresense.context.contextModel.QualifiedActionServerRef#getNode <em>Node</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the reference '<em>Node</em>'.
-   * @see eu.coresense.context.contextModel.QualifiedActionServerRef#getNode()
-   * @see #getQualifiedActionServerRef()
-   * @generated
-   */
-  EReference getQualifiedActionServerRef_Node();
-
-  /**
    * Returns the meta object for the reference '{@link eu.coresense.context.contextModel.QualifiedActionServerRef#getActionServer <em>Action Server</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -717,6 +742,17 @@ public interface ContextModelPackage extends EPackage
    * @generated
    */
   EReference getQualifiedActionServerRef_ActionServer();
+
+  /**
+   * Returns the meta object for the attribute '{@link eu.coresense.context.contextModel.QualifiedActionServerRef#getKwargs <em>Kwargs</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Kwargs</em>'.
+   * @see eu.coresense.context.contextModel.QualifiedActionServerRef#getKwargs()
+   * @see #getQualifiedActionServerRef()
+   * @generated
+   */
+  EAttribute getQualifiedActionServerRef_Kwargs();
 
   /**
    * Returns the meta object for class '{@link eu.coresense.context.contextModel.Import <em>Import</em>}'.
@@ -917,12 +953,22 @@ public interface ContextModelPackage extends EPackage
     EReference DATA_SOURCE__REF = eINSTANCE.getDataSource_Ref();
 
     /**
-     * The meta object literal for the '<em><b>Kwargs</b></em>' attribute feature.
+     * The meta object literal for the '{@link eu.coresense.context.contextModel.impl.QualifiedRefImpl <em>Qualified Ref</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see eu.coresense.context.contextModel.impl.QualifiedRefImpl
+     * @see eu.coresense.context.contextModel.impl.ContextModelPackageImpl#getQualifiedRef()
+     * @generated
+     */
+    EClass QUALIFIED_REF = eINSTANCE.getQualifiedRef();
+
+    /**
+     * The meta object literal for the '<em><b>Node</b></em>' reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute DATA_SOURCE__KWARGS = eINSTANCE.getDataSource_Kwargs();
+    EReference QUALIFIED_REF__NODE = eINSTANCE.getQualifiedRef_Node();
 
     /**
      * The meta object literal for the '{@link eu.coresense.context.contextModel.impl.QualifiedPublisherRefImpl <em>Qualified Publisher Ref</em>}' class.
@@ -933,14 +979,6 @@ public interface ContextModelPackage extends EPackage
      * @generated
      */
     EClass QUALIFIED_PUBLISHER_REF = eINSTANCE.getQualifiedPublisherRef();
-
-    /**
-     * The meta object literal for the '<em><b>Node</b></em>' reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference QUALIFIED_PUBLISHER_REF__NODE = eINSTANCE.getQualifiedPublisherRef_Node();
 
     /**
      * The meta object literal for the '<em><b>Publisher</b></em>' reference feature.
@@ -961,20 +999,20 @@ public interface ContextModelPackage extends EPackage
     EClass QUALIFIED_SERVICE_SERVER_REF = eINSTANCE.getQualifiedServiceServerRef();
 
     /**
-     * The meta object literal for the '<em><b>Node</b></em>' reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference QUALIFIED_SERVICE_SERVER_REF__NODE = eINSTANCE.getQualifiedServiceServerRef_Node();
-
-    /**
      * The meta object literal for the '<em><b>Service Server</b></em>' reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
     EReference QUALIFIED_SERVICE_SERVER_REF__SERVICE_SERVER = eINSTANCE.getQualifiedServiceServerRef_ServiceServer();
+
+    /**
+     * The meta object literal for the '<em><b>Kwargs</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute QUALIFIED_SERVICE_SERVER_REF__KWARGS = eINSTANCE.getQualifiedServiceServerRef_Kwargs();
 
     /**
      * The meta object literal for the '{@link eu.coresense.context.contextModel.impl.QualifiedActionServerRefImpl <em>Qualified Action Server Ref</em>}' class.
@@ -987,20 +1025,20 @@ public interface ContextModelPackage extends EPackage
     EClass QUALIFIED_ACTION_SERVER_REF = eINSTANCE.getQualifiedActionServerRef();
 
     /**
-     * The meta object literal for the '<em><b>Node</b></em>' reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference QUALIFIED_ACTION_SERVER_REF__NODE = eINSTANCE.getQualifiedActionServerRef_Node();
-
-    /**
      * The meta object literal for the '<em><b>Action Server</b></em>' reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
     EReference QUALIFIED_ACTION_SERVER_REF__ACTION_SERVER = eINSTANCE.getQualifiedActionServerRef_ActionServer();
+
+    /**
+     * The meta object literal for the '<em><b>Kwargs</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute QUALIFIED_ACTION_SERVER_REF__KWARGS = eINSTANCE.getQualifiedActionServerRef_Kwargs();
 
     /**
      * The meta object literal for the '{@link eu.coresense.context.contextModel.impl.ImportImpl <em>Import</em>}' class.

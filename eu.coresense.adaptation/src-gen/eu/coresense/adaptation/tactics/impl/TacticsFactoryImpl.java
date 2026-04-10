@@ -77,12 +77,16 @@ public class TacticsFactoryImpl extends EFactoryImpl implements TacticsFactory
       case TacticsPackage.RULE_BODY: return createRuleBody();
       case TacticsPackage.PURE_ACTION: return createPureAction();
       case TacticsPackage.CONDITION_ACTION: return createConditionAction();
-      case TacticsPackage.CONTEXT_PART: return createContextPart();
-      case TacticsPackage.FEATURE_PART: return createFeaturePart();
+      case TacticsPackage.CONTEXT_GUARD: return createContextGuard();
+      case TacticsPackage.FEATURE_GUARD: return createFeatureGuard();
+      case TacticsPackage.EFFECT_BLOCK: return createEffectBlock();
       case TacticsPackage.EFFECT: return createEffect();
-      case TacticsPackage.CONDITION: return createCondition();
+      case TacticsPackage.RELATIVE_EFFECT: return createRelativeEffect();
       case TacticsPackage.FEATURE_CONDITION: return createFeatureCondition();
+      case TacticsPackage.CONDITION: return createCondition();
       case TacticsPackage.MEASUREMENT_CONDITION: return createMeasurementCondition();
+      case TacticsPackage.MEASUREMENT_THRESHOLD_CONDITION: return createMeasurementThresholdCondition();
+      case TacticsPackage.MEASUREMENT_MEASUREMENT_CONDITION: return createMeasurementMeasurementCondition();
       case TacticsPackage.ATOMIC_ACTION_SELECT_FEATURE: return createAtomicActionSelectFeature();
       case TacticsPackage.ATOMIC_ACTION_DESELECT_FEATURE: return createAtomicActionDeselectFeature();
       case TacticsPackage.QUALIFIED_FEATURE_REF: return createQualifiedFeatureRef();
@@ -263,10 +267,10 @@ public class TacticsFactoryImpl extends EFactoryImpl implements TacticsFactory
    * @generated
    */
   @Override
-  public ContextPart createContextPart()
+  public ContextGuard createContextGuard()
   {
-    ContextPartImpl contextPart = new ContextPartImpl();
-    return contextPart;
+    ContextGuardImpl contextGuard = new ContextGuardImpl();
+    return contextGuard;
   }
 
   /**
@@ -275,10 +279,22 @@ public class TacticsFactoryImpl extends EFactoryImpl implements TacticsFactory
    * @generated
    */
   @Override
-  public FeaturePart createFeaturePart()
+  public FeatureGuard createFeatureGuard()
   {
-    FeaturePartImpl featurePart = new FeaturePartImpl();
-    return featurePart;
+    FeatureGuardImpl featureGuard = new FeatureGuardImpl();
+    return featureGuard;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EffectBlock createEffectBlock()
+  {
+    EffectBlockImpl effectBlock = new EffectBlockImpl();
+    return effectBlock;
   }
 
   /**
@@ -299,10 +315,10 @@ public class TacticsFactoryImpl extends EFactoryImpl implements TacticsFactory
    * @generated
    */
   @Override
-  public Condition createCondition()
+  public RelativeEffect createRelativeEffect()
   {
-    ConditionImpl condition = new ConditionImpl();
-    return condition;
+    RelativeEffectImpl relativeEffect = new RelativeEffectImpl();
+    return relativeEffect;
   }
 
   /**
@@ -323,10 +339,46 @@ public class TacticsFactoryImpl extends EFactoryImpl implements TacticsFactory
    * @generated
    */
   @Override
+  public Condition createCondition()
+  {
+    ConditionImpl condition = new ConditionImpl();
+    return condition;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public MeasurementCondition createMeasurementCondition()
   {
     MeasurementConditionImpl measurementCondition = new MeasurementConditionImpl();
     return measurementCondition;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public MeasurementThresholdCondition createMeasurementThresholdCondition()
+  {
+    MeasurementThresholdConditionImpl measurementThresholdCondition = new MeasurementThresholdConditionImpl();
+    return measurementThresholdCondition;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public MeasurementMeasurementCondition createMeasurementMeasurementCondition()
+  {
+    MeasurementMeasurementConditionImpl measurementMeasurementCondition = new MeasurementMeasurementConditionImpl();
+    return measurementMeasurementCondition;
   }
 
   /**

@@ -5,8 +5,6 @@ package eu.coresense.requirements.requirementsModel;
 
 import eu.coresense.context.contextModel.ContextVar;
 
-import org.eclipse.emf.ecore.EObject;
-
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Quantifiable</b></em>'.
@@ -16,35 +14,35 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link eu.coresense.requirements.requirementsModel.Quantifiable#getVar <em>Var</em>}</li>
+ *   <li>{@link eu.coresense.requirements.requirementsModel.Quantifiable#getContextVariable <em>Context Variable</em>}</li>
  * </ul>
  *
  * @see eu.coresense.requirements.requirementsModel.RequirementsModelPackage#getQuantifiable()
  * @model
  * @generated
  */
-public interface Quantifiable extends EObject
+public interface Quantifiable extends Statement
 {
   /**
-   * Returns the value of the '<em><b>Var</b></em>' reference.
+   * Returns the value of the '<em><b>Context Variable</b></em>' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Var</em>' reference.
-   * @see #setVar(ContextVar)
-   * @see eu.coresense.requirements.requirementsModel.RequirementsModelPackage#getQuantifiable_Var()
+   * @return the value of the '<em>Context Variable</em>' reference.
+   * @see #setContextVariable(ContextVar)
+   * @see eu.coresense.requirements.requirementsModel.RequirementsModelPackage#getQuantifiable_ContextVariable()
    * @model
    * @generated
    */
-  ContextVar getVar();
+  ContextVar getContextVariable();
 
   /**
-   * Sets the value of the '{@link eu.coresense.requirements.requirementsModel.Quantifiable#getVar <em>Var</em>}' reference.
+   * Sets the value of the '{@link eu.coresense.requirements.requirementsModel.Quantifiable#getContextVariable <em>Context Variable</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Var</em>' reference.
-   * @see #getVar()
+   * @param value the new value of the '<em>Context Variable</em>' reference.
+   * @see #getContextVariable()
    * @generated
    */
-  void setVar(ContextVar value);
+  void setContextVariable(ContextVar value);
 
 } // Quantifiable

@@ -8,10 +8,8 @@ import eu.coresense.adaptation.tactics.LogicalOperator;
 import eu.coresense.adaptation.tactics.TacticsPackage;
 
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
@@ -25,7 +23,6 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * </p>
  * <ul>
  *   <li>{@link eu.coresense.adaptation.tactics.impl.ConditionImpl#getLogicalOp <em>Logical Op</em>}</li>
- *   <li>{@link eu.coresense.adaptation.tactics.impl.ConditionImpl#getSecondTerm <em>Second Term</em>}</li>
  * </ul>
  *
  * @generated
@@ -51,16 +48,6 @@ public class ConditionImpl extends MinimalEObjectImpl.Container implements Condi
    * @ordered
    */
   protected LogicalOperator logicalOp = LOGICAL_OP_EDEFAULT;
-
-  /**
-   * The cached value of the '{@link #getSecondTerm() <em>Second Term</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getSecondTerm()
-   * @generated
-   * @ordered
-   */
-  protected Condition secondTerm;
 
   /**
    * <!-- begin-user-doc -->
@@ -114,80 +101,12 @@ public class ConditionImpl extends MinimalEObjectImpl.Container implements Condi
    * @generated
    */
   @Override
-  public Condition getSecondTerm()
-  {
-    return secondTerm;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public NotificationChain basicSetSecondTerm(Condition newSecondTerm, NotificationChain msgs)
-  {
-    Condition oldSecondTerm = secondTerm;
-    secondTerm = newSecondTerm;
-    if (eNotificationRequired())
-    {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, TacticsPackage.CONDITION__SECOND_TERM, oldSecondTerm, newSecondTerm);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
-    }
-    return msgs;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public void setSecondTerm(Condition newSecondTerm)
-  {
-    if (newSecondTerm != secondTerm)
-    {
-      NotificationChain msgs = null;
-      if (secondTerm != null)
-        msgs = ((InternalEObject)secondTerm).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - TacticsPackage.CONDITION__SECOND_TERM, null, msgs);
-      if (newSecondTerm != null)
-        msgs = ((InternalEObject)newSecondTerm).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - TacticsPackage.CONDITION__SECOND_TERM, null, msgs);
-      msgs = basicSetSecondTerm(newSecondTerm, msgs);
-      if (msgs != null) msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, TacticsPackage.CONDITION__SECOND_TERM, newSecondTerm, newSecondTerm));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
-  {
-    switch (featureID)
-    {
-      case TacticsPackage.CONDITION__SECOND_TERM:
-        return basicSetSecondTerm(null, msgs);
-    }
-    return super.eInverseRemove(otherEnd, featureID, msgs);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
   public Object eGet(int featureID, boolean resolve, boolean coreType)
   {
     switch (featureID)
     {
       case TacticsPackage.CONDITION__LOGICAL_OP:
         return getLogicalOp();
-      case TacticsPackage.CONDITION__SECOND_TERM:
-        return getSecondTerm();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -204,9 +123,6 @@ public class ConditionImpl extends MinimalEObjectImpl.Container implements Condi
     {
       case TacticsPackage.CONDITION__LOGICAL_OP:
         setLogicalOp((LogicalOperator)newValue);
-        return;
-      case TacticsPackage.CONDITION__SECOND_TERM:
-        setSecondTerm((Condition)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -225,9 +141,6 @@ public class ConditionImpl extends MinimalEObjectImpl.Container implements Condi
       case TacticsPackage.CONDITION__LOGICAL_OP:
         setLogicalOp(LOGICAL_OP_EDEFAULT);
         return;
-      case TacticsPackage.CONDITION__SECOND_TERM:
-        setSecondTerm((Condition)null);
-        return;
     }
     super.eUnset(featureID);
   }
@@ -244,8 +157,6 @@ public class ConditionImpl extends MinimalEObjectImpl.Container implements Condi
     {
       case TacticsPackage.CONDITION__LOGICAL_OP:
         return logicalOp != LOGICAL_OP_EDEFAULT;
-      case TacticsPackage.CONDITION__SECOND_TERM:
-        return secondTerm != null;
     }
     return super.eIsSet(featureID);
   }

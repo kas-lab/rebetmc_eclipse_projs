@@ -7,12 +7,23 @@ import eu.coresense.common.CommonPackage;
 
 import eu.coresense.context.contextModel.ContextModelPackage;
 
+import eu.coresense.requirements.requirementsModel.After;
+import eu.coresense.requirements.requirementsModel.And;
+import eu.coresense.requirements.requirementsModel.AsAsPossible;
 import eu.coresense.requirements.requirementsModel.AsCloseFreq;
 import eu.coresense.requirements.requirementsModel.AsCloseLit;
-import eu.coresense.requirements.requirementsModel.AtomicStatement;
+import eu.coresense.requirements.requirementsModel.Before;
+import eu.coresense.requirements.requirementsModel.BooleanStatement;
+import eu.coresense.requirements.requirementsModel.CompoundExpression;
 import eu.coresense.requirements.requirementsModel.Condition;
+import eu.coresense.requirements.requirementsModel.Eventually;
+import eu.coresense.requirements.requirementsModel.Expression;
+import eu.coresense.requirements.requirementsModel.In;
 import eu.coresense.requirements.requirementsModel.LogicalOperator;
-import eu.coresense.requirements.requirementsModel.MayStatement;
+import eu.coresense.requirements.requirementsModel.May;
+import eu.coresense.requirements.requirementsModel.MayAlternative;
+import eu.coresense.requirements.requirementsModel.Negation;
+import eu.coresense.requirements.requirementsModel.Or;
 import eu.coresense.requirements.requirementsModel.Proposition;
 import eu.coresense.requirements.requirementsModel.QualityAttribute;
 import eu.coresense.requirements.requirementsModel.Quantifiable;
@@ -20,9 +31,12 @@ import eu.coresense.requirements.requirementsModel.Requirement;
 import eu.coresense.requirements.requirementsModel.RequirementsModel;
 import eu.coresense.requirements.requirementsModel.RequirementsModelFactory;
 import eu.coresense.requirements.requirementsModel.RequirementsModelPackage;
+import eu.coresense.requirements.requirementsModel.Shall;
 import eu.coresense.requirements.requirementsModel.Statement;
+import eu.coresense.requirements.requirementsModel.ThisUntil;
 import eu.coresense.requirements.requirementsModel.Time;
 import eu.coresense.requirements.requirementsModel.TimeInterval;
+import eu.coresense.requirements.requirementsModel.Timeliness;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
@@ -77,7 +91,98 @@ public class RequirementsModelPackageImpl extends EPackageImpl implements Requir
    * <!-- end-user-doc -->
    * @generated
    */
+  private EClass booleanStatementEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass andEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass orEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass shallEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass negationEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass eventuallyEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass thisUntilEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass beforeEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass afterEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass inEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass asAsPossibleEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass compoundExpressionEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   private EClass statementEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass expressionEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -105,14 +210,14 @@ public class RequirementsModelPackageImpl extends EPackageImpl implements Requir
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass mayStatementEClass = null;
+  private EClass mayEClass = null;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass atomicStatementEClass = null;
+  private EClass mayAlternativeEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -141,6 +246,13 @@ public class RequirementsModelPackageImpl extends EPackageImpl implements Requir
    * @generated
    */
   private EEnum logicalOperatorEEnum = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EEnum timelinessEEnum = null;
 
   /**
    * Creates an instance of the model <b>Package</b>, registered with
@@ -271,7 +383,7 @@ public class RequirementsModelPackageImpl extends EPackageImpl implements Requir
    * @generated
    */
   @Override
-  public EAttribute getRequirement_Natural()
+  public EAttribute getRequirement_NaturalLanguageDescription()
   {
     return (EAttribute)requirementEClass.getEStructuralFeatures().get(2);
   }
@@ -282,7 +394,7 @@ public class RequirementsModelPackageImpl extends EPackageImpl implements Requir
    * @generated
    */
   @Override
-  public EReference getRequirement_Rule()
+  public EReference getRequirement_Expression()
   {
     return (EReference)requirementEClass.getEStructuralFeatures().get(3);
   }
@@ -370,6 +482,303 @@ public class RequirementsModelPackageImpl extends EPackageImpl implements Requir
    * @generated
    */
   @Override
+  public EReference getProposition_Condition()
+  {
+    return (EReference)propositionEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getBooleanStatement()
+  {
+    return booleanStatementEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getBooleanStatement_BooleanValue()
+  {
+    return (EAttribute)booleanStatementEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getAnd()
+  {
+    return andEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getOr()
+  {
+    return orEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getShall()
+  {
+    return shallEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getShall_Expression()
+  {
+    return (EReference)shallEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getNegation()
+  {
+    return negationEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getNegation_Expression()
+  {
+    return (EReference)negationEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getEventually()
+  {
+    return eventuallyEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getEventually_Expression()
+  {
+    return (EReference)eventuallyEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getThisUntil()
+  {
+    return thisUntilEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getBefore()
+  {
+    return beforeEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getBefore_Event()
+  {
+    return (EAttribute)beforeEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getBefore_Expression()
+  {
+    return (EReference)beforeEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getAfter()
+  {
+    return afterEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getAfter_Event()
+  {
+    return (EAttribute)afterEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getAfter_Expression()
+  {
+    return (EReference)afterEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getIn()
+  {
+    return inEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getIn_Deadline()
+  {
+    return (EReference)inEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getIn_Expression()
+  {
+    return (EReference)inEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getAsAsPossible()
+  {
+    return asAsPossibleEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getAsAsPossible_TimeFrequency()
+  {
+    return (EAttribute)asAsPossibleEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getAsAsPossible_Quantity()
+  {
+    return (EReference)asAsPossibleEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getCompoundExpression()
+  {
+    return compoundExpressionEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getCompoundExpression_LeftExpression()
+  {
+    return (EReference)compoundExpressionEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getCompoundExpression_RightExpression()
+  {
+    return (EReference)compoundExpressionEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public EClass getStatement()
   {
     return statementEClass;
@@ -381,64 +790,9 @@ public class RequirementsModelPackageImpl extends EPackageImpl implements Requir
    * @generated
    */
   @Override
-  public EReference getStatement_QuantifiableStatement()
+  public EClass getExpression()
   {
-    return (EReference)statementEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EReference getStatement_Statement()
-  {
-    return (EReference)statementEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EReference getStatement_First_statement()
-  {
-    return (EReference)statementEClass.getEStructuralFeatures().get(2);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EReference getStatement_Second_statement()
-  {
-    return (EReference)statementEClass.getEStructuralFeatures().get(3);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EAttribute getStatement_Event()
-  {
-    return (EAttribute)statementEClass.getEStructuralFeatures().get(4);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EReference getStatement_T()
-  {
-    return (EReference)statementEClass.getEStructuralFeatures().get(5);
+    return expressionEClass;
   }
 
   /**
@@ -458,9 +812,20 @@ public class RequirementsModelPackageImpl extends EPackageImpl implements Requir
    * @generated
    */
   @Override
-  public EReference getAsCloseFreq_F()
+  public EReference getAsCloseFreq_Frequency()
   {
     return (EReference)asCloseFreqEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getAsCloseFreq_Expression()
+  {
+    return (EReference)asCloseFreqEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -480,7 +845,7 @@ public class RequirementsModelPackageImpl extends EPackageImpl implements Requir
    * @generated
    */
   @Override
-  public EReference getAsCloseLit_Q()
+  public EReference getAsCloseLit_Quantity()
   {
     return (EReference)asCloseLitEClass.getEStructuralFeatures().get(0);
   }
@@ -513,7 +878,7 @@ public class RequirementsModelPackageImpl extends EPackageImpl implements Requir
    * @generated
    */
   @Override
-  public EReference getQuantifiable_Var()
+  public EReference getQuantifiable_ContextVariable()
   {
     return (EReference)quantifiableEClass.getEStructuralFeatures().get(0);
   }
@@ -524,9 +889,9 @@ public class RequirementsModelPackageImpl extends EPackageImpl implements Requir
    * @generated
    */
   @Override
-  public EClass getMayStatement()
+  public EClass getMay()
   {
-    return mayStatementEClass;
+    return mayEClass;
   }
 
   /**
@@ -535,9 +900,9 @@ public class RequirementsModelPackageImpl extends EPackageImpl implements Requir
    * @generated
    */
   @Override
-  public EReference getMayStatement_Statements()
+  public EReference getMay_Expression()
   {
-    return (EReference)mayStatementEClass.getEStructuralFeatures().get(0);
+    return (EReference)mayEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -546,9 +911,9 @@ public class RequirementsModelPackageImpl extends EPackageImpl implements Requir
    * @generated
    */
   @Override
-  public EClass getAtomicStatement()
+  public EReference getMay_Alternatives()
   {
-    return atomicStatementEClass;
+    return (EReference)mayEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -557,9 +922,20 @@ public class RequirementsModelPackageImpl extends EPackageImpl implements Requir
    * @generated
    */
   @Override
-  public EReference getAtomicStatement_Proposition()
+  public EClass getMayAlternative()
   {
-    return (EReference)atomicStatementEClass.getEStructuralFeatures().get(0);
+    return mayAlternativeEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getMayAlternative_Expression()
+  {
+    return (EReference)mayAlternativeEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -645,6 +1021,17 @@ public class RequirementsModelPackageImpl extends EPackageImpl implements Requir
    * @generated
    */
   @Override
+  public EEnum getTimeliness()
+  {
+    return timelinessEEnum;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public RequirementsModelFactory getRequirementsModelFactory()
   {
     return (RequirementsModelFactory)getEFactoryInstance();
@@ -676,8 +1063,8 @@ public class RequirementsModelPackageImpl extends EPackageImpl implements Requir
     requirementEClass = createEClass(REQUIREMENT);
     createEAttribute(requirementEClass, REQUIREMENT__NAME);
     createEAttribute(requirementEClass, REQUIREMENT__QA);
-    createEAttribute(requirementEClass, REQUIREMENT__NATURAL);
-    createEReference(requirementEClass, REQUIREMENT__RULE);
+    createEAttribute(requirementEClass, REQUIREMENT__NATURAL_LANGUAGE_DESCRIPTION);
+    createEReference(requirementEClass, REQUIREMENT__EXPRESSION);
 
     conditionEClass = createEClass(CONDITION);
     createEReference(conditionEClass, CONDITION__MEASUREMENT);
@@ -687,30 +1074,67 @@ public class RequirementsModelPackageImpl extends EPackageImpl implements Requir
     createEReference(conditionEClass, CONDITION__SECOND_TERM);
 
     propositionEClass = createEClass(PROPOSITION);
+    createEReference(propositionEClass, PROPOSITION__CONDITION);
+
+    booleanStatementEClass = createEClass(BOOLEAN_STATEMENT);
+    createEAttribute(booleanStatementEClass, BOOLEAN_STATEMENT__BOOLEAN_VALUE);
+
+    andEClass = createEClass(AND);
+
+    orEClass = createEClass(OR);
+
+    shallEClass = createEClass(SHALL);
+    createEReference(shallEClass, SHALL__EXPRESSION);
+
+    negationEClass = createEClass(NEGATION);
+    createEReference(negationEClass, NEGATION__EXPRESSION);
+
+    eventuallyEClass = createEClass(EVENTUALLY);
+    createEReference(eventuallyEClass, EVENTUALLY__EXPRESSION);
+
+    thisUntilEClass = createEClass(THIS_UNTIL);
+
+    beforeEClass = createEClass(BEFORE);
+    createEAttribute(beforeEClass, BEFORE__EVENT);
+    createEReference(beforeEClass, BEFORE__EXPRESSION);
+
+    afterEClass = createEClass(AFTER);
+    createEAttribute(afterEClass, AFTER__EVENT);
+    createEReference(afterEClass, AFTER__EXPRESSION);
+
+    inEClass = createEClass(IN);
+    createEReference(inEClass, IN__DEADLINE);
+    createEReference(inEClass, IN__EXPRESSION);
+
+    asAsPossibleEClass = createEClass(AS_AS_POSSIBLE);
+    createEAttribute(asAsPossibleEClass, AS_AS_POSSIBLE__TIME_FREQUENCY);
+    createEReference(asAsPossibleEClass, AS_AS_POSSIBLE__QUANTITY);
+
+    compoundExpressionEClass = createEClass(COMPOUND_EXPRESSION);
+    createEReference(compoundExpressionEClass, COMPOUND_EXPRESSION__LEFT_EXPRESSION);
+    createEReference(compoundExpressionEClass, COMPOUND_EXPRESSION__RIGHT_EXPRESSION);
 
     statementEClass = createEClass(STATEMENT);
-    createEReference(statementEClass, STATEMENT__QUANTIFIABLE_STATEMENT);
-    createEReference(statementEClass, STATEMENT__STATEMENT);
-    createEReference(statementEClass, STATEMENT__FIRST_STATEMENT);
-    createEReference(statementEClass, STATEMENT__SECOND_STATEMENT);
-    createEAttribute(statementEClass, STATEMENT__EVENT);
-    createEReference(statementEClass, STATEMENT__T);
+
+    expressionEClass = createEClass(EXPRESSION);
 
     asCloseFreqEClass = createEClass(AS_CLOSE_FREQ);
-    createEReference(asCloseFreqEClass, AS_CLOSE_FREQ__F);
+    createEReference(asCloseFreqEClass, AS_CLOSE_FREQ__FREQUENCY);
+    createEReference(asCloseFreqEClass, AS_CLOSE_FREQ__EXPRESSION);
 
     asCloseLitEClass = createEClass(AS_CLOSE_LIT);
-    createEReference(asCloseLitEClass, AS_CLOSE_LIT__Q);
+    createEReference(asCloseLitEClass, AS_CLOSE_LIT__QUANTITY);
     createEReference(asCloseLitEClass, AS_CLOSE_LIT__COMPARATOR);
 
     quantifiableEClass = createEClass(QUANTIFIABLE);
-    createEReference(quantifiableEClass, QUANTIFIABLE__VAR);
+    createEReference(quantifiableEClass, QUANTIFIABLE__CONTEXT_VARIABLE);
 
-    mayStatementEClass = createEClass(MAY_STATEMENT);
-    createEReference(mayStatementEClass, MAY_STATEMENT__STATEMENTS);
+    mayEClass = createEClass(MAY);
+    createEReference(mayEClass, MAY__EXPRESSION);
+    createEReference(mayEClass, MAY__ALTERNATIVES);
 
-    atomicStatementEClass = createEClass(ATOMIC_STATEMENT);
-    createEReference(atomicStatementEClass, ATOMIC_STATEMENT__PROPOSITION);
+    mayAlternativeEClass = createEClass(MAY_ALTERNATIVE);
+    createEReference(mayAlternativeEClass, MAY_ALTERNATIVE__EXPRESSION);
 
     timeIntervalEClass = createEClass(TIME_INTERVAL);
     createEReference(timeIntervalEClass, TIME_INTERVAL__AFTER);
@@ -722,6 +1146,7 @@ public class RequirementsModelPackageImpl extends EPackageImpl implements Requir
     // Create enums
     qualityAttributeEEnum = createEEnum(QUALITY_ATTRIBUTE);
     logicalOperatorEEnum = createEEnum(LOGICAL_OPERATOR);
+    timelinessEEnum = createEEnum(TIMELINESS);
   }
 
   /**
@@ -757,11 +1182,24 @@ public class RequirementsModelPackageImpl extends EPackageImpl implements Requir
     // Set bounds for type parameters
 
     // Add supertypes to classes
-    conditionEClass.getESuperTypes().add(this.getProposition());
-    statementEClass.getESuperTypes().add(this.getAtomicStatement());
-    asCloseFreqEClass.getESuperTypes().add(this.getStatement());
-    asCloseLitEClass.getESuperTypes().add(this.getStatement());
-    mayStatementEClass.getESuperTypes().add(this.getStatement());
+    propositionEClass.getESuperTypes().add(this.getStatement());
+    booleanStatementEClass.getESuperTypes().add(this.getStatement());
+    andEClass.getESuperTypes().add(this.getCompoundExpression());
+    orEClass.getESuperTypes().add(this.getCompoundExpression());
+    shallEClass.getESuperTypes().add(this.getExpression());
+    negationEClass.getESuperTypes().add(this.getExpression());
+    eventuallyEClass.getESuperTypes().add(this.getExpression());
+    thisUntilEClass.getESuperTypes().add(this.getCompoundExpression());
+    beforeEClass.getESuperTypes().add(this.getExpression());
+    afterEClass.getESuperTypes().add(this.getExpression());
+    inEClass.getESuperTypes().add(this.getExpression());
+    asAsPossibleEClass.getESuperTypes().add(this.getExpression());
+    compoundExpressionEClass.getESuperTypes().add(this.getExpression());
+    statementEClass.getESuperTypes().add(this.getExpression());
+    asCloseFreqEClass.getESuperTypes().add(this.getExpression());
+    asCloseLitEClass.getESuperTypes().add(this.getExpression());
+    quantifiableEClass.getESuperTypes().add(this.getStatement());
+    mayEClass.getESuperTypes().add(this.getExpression());
 
     // Initialize classes and features; add operations and parameters
     initEClass(requirementsModelEClass, RequirementsModel.class, "RequirementsModel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -770,8 +1208,8 @@ public class RequirementsModelPackageImpl extends EPackageImpl implements Requir
     initEClass(requirementEClass, Requirement.class, "Requirement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getRequirement_Name(), ecorePackage.getEString(), "name", null, 0, 1, Requirement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getRequirement_Qa(), this.getQualityAttribute(), "qa", null, 0, 1, Requirement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getRequirement_Natural(), ecorePackage.getEString(), "natural", null, 0, 1, Requirement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getRequirement_Rule(), this.getStatement(), null, "rule", null, 0, 1, Requirement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getRequirement_NaturalLanguageDescription(), ecorePackage.getEString(), "naturalLanguageDescription", null, 0, 1, Requirement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getRequirement_Expression(), this.getExpression(), null, "expression", null, 0, 1, Requirement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(conditionEClass, Condition.class, "Condition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getCondition_Measurement(), theContextModelPackage.getContextVar(), null, "measurement", null, 0, 1, Condition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -781,30 +1219,67 @@ public class RequirementsModelPackageImpl extends EPackageImpl implements Requir
     initEReference(getCondition_SecondTerm(), this.getCondition(), null, "secondTerm", null, 0, 1, Condition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(propositionEClass, Proposition.class, "Proposition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getProposition_Condition(), this.getCondition(), null, "condition", null, 0, 1, Proposition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(booleanStatementEClass, BooleanStatement.class, "BooleanStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getBooleanStatement_BooleanValue(), ecorePackage.getEBoolean(), "booleanValue", null, 0, 1, BooleanStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(andEClass, And.class, "And", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+    initEClass(orEClass, Or.class, "Or", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+    initEClass(shallEClass, Shall.class, "Shall", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getShall_Expression(), this.getExpression(), null, "expression", null, 0, 1, Shall.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(negationEClass, Negation.class, "Negation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getNegation_Expression(), this.getExpression(), null, "expression", null, 0, 1, Negation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(eventuallyEClass, Eventually.class, "Eventually", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getEventually_Expression(), this.getExpression(), null, "expression", null, 0, 1, Eventually.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(thisUntilEClass, ThisUntil.class, "ThisUntil", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+    initEClass(beforeEClass, Before.class, "Before", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getBefore_Event(), ecorePackage.getEString(), "event", null, 0, 1, Before.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getBefore_Expression(), this.getExpression(), null, "expression", null, 0, 1, Before.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(afterEClass, After.class, "After", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getAfter_Event(), ecorePackage.getEString(), "event", null, 0, 1, After.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getAfter_Expression(), this.getExpression(), null, "expression", null, 0, 1, After.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(inEClass, In.class, "In", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getIn_Deadline(), this.getTimeInterval(), null, "deadline", null, 0, 1, In.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getIn_Expression(), this.getExpression(), null, "expression", null, 0, 1, In.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(asAsPossibleEClass, AsAsPossible.class, "AsAsPossible", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getAsAsPossible_TimeFrequency(), this.getTimeliness(), "timeFrequency", null, 0, 1, AsAsPossible.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getAsAsPossible_Quantity(), this.getQuantifiable(), null, "quantity", null, 0, 1, AsAsPossible.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(compoundExpressionEClass, CompoundExpression.class, "CompoundExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getCompoundExpression_LeftExpression(), this.getExpression(), null, "leftExpression", null, 0, 1, CompoundExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getCompoundExpression_RightExpression(), this.getExpression(), null, "rightExpression", null, 0, 1, CompoundExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(statementEClass, Statement.class, "Statement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getStatement_QuantifiableStatement(), this.getQuantifiable(), null, "quantifiableStatement", null, 0, 1, Statement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getStatement_Statement(), ecorePackage.getEObject(), null, "statement", null, 0, 1, Statement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getStatement_First_statement(), this.getStatement(), null, "first_statement", null, 0, 1, Statement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getStatement_Second_statement(), this.getStatement(), null, "second_statement", null, 0, 1, Statement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getStatement_Event(), ecorePackage.getEString(), "event", null, 0, 1, Statement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getStatement_T(), this.getTimeInterval(), null, "t", null, 0, 1, Statement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(expressionEClass, Expression.class, "Expression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     initEClass(asCloseFreqEClass, AsCloseFreq.class, "AsCloseFreq", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getAsCloseFreq_F(), this.getTime(), null, "f", null, 0, 1, AsCloseFreq.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getAsCloseFreq_Frequency(), this.getTime(), null, "frequency", null, 0, 1, AsCloseFreq.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getAsCloseFreq_Expression(), this.getExpression(), null, "expression", null, 0, 1, AsCloseFreq.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(asCloseLitEClass, AsCloseLit.class, "AsCloseLit", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getAsCloseLit_Q(), theCommonPackage.getLiteral(), null, "q", null, 0, 1, AsCloseLit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getAsCloseLit_Quantity(), theCommonPackage.getLiteral(), null, "quantity", null, 0, 1, AsCloseLit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getAsCloseLit_Comparator(), this.getQuantifiable(), null, "comparator", null, 0, 1, AsCloseLit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(quantifiableEClass, Quantifiable.class, "Quantifiable", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getQuantifiable_Var(), theContextModelPackage.getContextVar(), null, "var", null, 0, 1, Quantifiable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getQuantifiable_ContextVariable(), theContextModelPackage.getContextVar(), null, "contextVariable", null, 0, 1, Quantifiable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(mayStatementEClass, MayStatement.class, "MayStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getMayStatement_Statements(), this.getAtomicStatement(), null, "statements", null, 0, -1, MayStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(mayEClass, May.class, "May", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getMay_Expression(), this.getExpression(), null, "expression", null, 0, 1, May.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getMay_Alternatives(), this.getMayAlternative(), null, "alternatives", null, 0, -1, May.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(atomicStatementEClass, AtomicStatement.class, "AtomicStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getAtomicStatement_Proposition(), this.getProposition(), null, "proposition", null, 0, 1, AtomicStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(mayAlternativeEClass, MayAlternative.class, "MayAlternative", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getMayAlternative_Expression(), this.getExpression(), null, "expression", null, 0, 1, MayAlternative.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(timeIntervalEClass, TimeInterval.class, "TimeInterval", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getTimeInterval_After(), this.getTime(), null, "after", null, 0, 1, TimeInterval.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -828,6 +1303,12 @@ public class RequirementsModelPackageImpl extends EPackageImpl implements Requir
     initEEnum(logicalOperatorEEnum, LogicalOperator.class, "LogicalOperator");
     addEEnumLiteral(logicalOperatorEEnum, LogicalOperator.AND);
     addEEnumLiteral(logicalOperatorEEnum, LogicalOperator.OR);
+
+    initEEnum(timelinessEEnum, Timeliness.class, "Timeliness");
+    addEEnumLiteral(timelinessEEnum, Timeliness.EARLY);
+    addEEnumLiteral(timelinessEEnum, Timeliness.LATE);
+    addEEnumLiteral(timelinessEEnum, Timeliness.MANY);
+    addEEnumLiteral(timelinessEEnum, Timeliness.FEW);
 
     // Create resource
     createResource(eNS_URI);

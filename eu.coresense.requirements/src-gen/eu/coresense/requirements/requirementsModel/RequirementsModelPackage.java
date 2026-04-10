@@ -115,22 +115,22 @@ public interface RequirementsModelPackage extends EPackage
   int REQUIREMENT__QA = 1;
 
   /**
-   * The feature id for the '<em><b>Natural</b></em>' attribute.
+   * The feature id for the '<em><b>Natural Language Description</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int REQUIREMENT__NATURAL = 2;
+  int REQUIREMENT__NATURAL_LANGUAGE_DESCRIPTION = 2;
 
   /**
-   * The feature id for the '<em><b>Rule</b></em>' containment reference.
+   * The feature id for the '<em><b>Expression</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int REQUIREMENT__RULE = 3;
+  int REQUIREMENT__EXPRESSION = 3;
 
   /**
    * The number of structural features of the '<em>Requirement</em>' class.
@@ -140,25 +140,6 @@ public interface RequirementsModelPackage extends EPackage
    * @ordered
    */
   int REQUIREMENT_FEATURE_COUNT = 4;
-
-  /**
-   * The meta object id for the '{@link eu.coresense.requirements.requirementsModel.impl.PropositionImpl <em>Proposition</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see eu.coresense.requirements.requirementsModel.impl.PropositionImpl
-   * @see eu.coresense.requirements.requirementsModel.impl.RequirementsModelPackageImpl#getProposition()
-   * @generated
-   */
-  int PROPOSITION = 3;
-
-  /**
-   * The number of structural features of the '<em>Proposition</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int PROPOSITION_FEATURE_COUNT = 0;
 
   /**
    * The meta object id for the '{@link eu.coresense.requirements.requirementsModel.impl.ConditionImpl <em>Condition</em>}' class.
@@ -177,7 +158,7 @@ public interface RequirementsModelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CONDITION__MEASUREMENT = PROPOSITION_FEATURE_COUNT + 0;
+  int CONDITION__MEASUREMENT = 0;
 
   /**
    * The feature id for the '<em><b>Operator</b></em>' attribute.
@@ -186,7 +167,7 @@ public interface RequirementsModelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CONDITION__OPERATOR = PROPOSITION_FEATURE_COUNT + 1;
+  int CONDITION__OPERATOR = 1;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' containment reference.
@@ -195,7 +176,7 @@ public interface RequirementsModelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CONDITION__VALUE = PROPOSITION_FEATURE_COUNT + 2;
+  int CONDITION__VALUE = 2;
 
   /**
    * The feature id for the '<em><b>Logical Op</b></em>' attribute.
@@ -204,7 +185,7 @@ public interface RequirementsModelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CONDITION__LOGICAL_OP = PROPOSITION_FEATURE_COUNT + 3;
+  int CONDITION__LOGICAL_OP = 3;
 
   /**
    * The feature id for the '<em><b>Second Term</b></em>' containment reference.
@@ -213,7 +194,7 @@ public interface RequirementsModelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CONDITION__SECOND_TERM = PROPOSITION_FEATURE_COUNT + 4;
+  int CONDITION__SECOND_TERM = 4;
 
   /**
    * The number of structural features of the '<em>Condition</em>' class.
@@ -222,35 +203,26 @@ public interface RequirementsModelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CONDITION_FEATURE_COUNT = PROPOSITION_FEATURE_COUNT + 5;
+  int CONDITION_FEATURE_COUNT = 5;
 
   /**
-   * The meta object id for the '{@link eu.coresense.requirements.requirementsModel.impl.AtomicStatementImpl <em>Atomic Statement</em>}' class.
+   * The meta object id for the '{@link eu.coresense.requirements.requirementsModel.impl.ExpressionImpl <em>Expression</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see eu.coresense.requirements.requirementsModel.impl.AtomicStatementImpl
-   * @see eu.coresense.requirements.requirementsModel.impl.RequirementsModelPackageImpl#getAtomicStatement()
+   * @see eu.coresense.requirements.requirementsModel.impl.ExpressionImpl
+   * @see eu.coresense.requirements.requirementsModel.impl.RequirementsModelPackageImpl#getExpression()
    * @generated
    */
-  int ATOMIC_STATEMENT = 9;
+  int EXPRESSION = 17;
 
   /**
-   * The feature id for the '<em><b>Proposition</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int ATOMIC_STATEMENT__PROPOSITION = 0;
-
-  /**
-   * The number of structural features of the '<em>Atomic Statement</em>' class.
+   * The number of structural features of the '<em>Expression</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int ATOMIC_STATEMENT_FEATURE_COUNT = 1;
+  int EXPRESSION_FEATURE_COUNT = 0;
 
   /**
    * The meta object id for the '{@link eu.coresense.requirements.requirementsModel.impl.StatementImpl <em>Statement</em>}' class.
@@ -260,70 +232,7 @@ public interface RequirementsModelPackage extends EPackage
    * @see eu.coresense.requirements.requirementsModel.impl.RequirementsModelPackageImpl#getStatement()
    * @generated
    */
-  int STATEMENT = 4;
-
-  /**
-   * The feature id for the '<em><b>Proposition</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int STATEMENT__PROPOSITION = ATOMIC_STATEMENT__PROPOSITION;
-
-  /**
-   * The feature id for the '<em><b>Quantifiable Statement</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int STATEMENT__QUANTIFIABLE_STATEMENT = ATOMIC_STATEMENT_FEATURE_COUNT + 0;
-
-  /**
-   * The feature id for the '<em><b>Statement</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int STATEMENT__STATEMENT = ATOMIC_STATEMENT_FEATURE_COUNT + 1;
-
-  /**
-   * The feature id for the '<em><b>First statement</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int STATEMENT__FIRST_STATEMENT = ATOMIC_STATEMENT_FEATURE_COUNT + 2;
-
-  /**
-   * The feature id for the '<em><b>Second statement</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int STATEMENT__SECOND_STATEMENT = ATOMIC_STATEMENT_FEATURE_COUNT + 3;
-
-  /**
-   * The feature id for the '<em><b>Event</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int STATEMENT__EVENT = ATOMIC_STATEMENT_FEATURE_COUNT + 4;
-
-  /**
-   * The feature id for the '<em><b>T</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int STATEMENT__T = ATOMIC_STATEMENT_FEATURE_COUNT + 5;
+  int STATEMENT = 16;
 
   /**
    * The number of structural features of the '<em>Statement</em>' class.
@@ -332,7 +241,443 @@ public interface RequirementsModelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int STATEMENT_FEATURE_COUNT = ATOMIC_STATEMENT_FEATURE_COUNT + 6;
+  int STATEMENT_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 0;
+
+  /**
+   * The meta object id for the '{@link eu.coresense.requirements.requirementsModel.impl.PropositionImpl <em>Proposition</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see eu.coresense.requirements.requirementsModel.impl.PropositionImpl
+   * @see eu.coresense.requirements.requirementsModel.impl.RequirementsModelPackageImpl#getProposition()
+   * @generated
+   */
+  int PROPOSITION = 3;
+
+  /**
+   * The feature id for the '<em><b>Condition</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PROPOSITION__CONDITION = STATEMENT_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>Proposition</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PROPOSITION_FEATURE_COUNT = STATEMENT_FEATURE_COUNT + 1;
+
+  /**
+   * The meta object id for the '{@link eu.coresense.requirements.requirementsModel.impl.BooleanStatementImpl <em>Boolean Statement</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see eu.coresense.requirements.requirementsModel.impl.BooleanStatementImpl
+   * @see eu.coresense.requirements.requirementsModel.impl.RequirementsModelPackageImpl#getBooleanStatement()
+   * @generated
+   */
+  int BOOLEAN_STATEMENT = 4;
+
+  /**
+   * The feature id for the '<em><b>Boolean Value</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int BOOLEAN_STATEMENT__BOOLEAN_VALUE = STATEMENT_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>Boolean Statement</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int BOOLEAN_STATEMENT_FEATURE_COUNT = STATEMENT_FEATURE_COUNT + 1;
+
+  /**
+   * The meta object id for the '{@link eu.coresense.requirements.requirementsModel.impl.CompoundExpressionImpl <em>Compound Expression</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see eu.coresense.requirements.requirementsModel.impl.CompoundExpressionImpl
+   * @see eu.coresense.requirements.requirementsModel.impl.RequirementsModelPackageImpl#getCompoundExpression()
+   * @generated
+   */
+  int COMPOUND_EXPRESSION = 15;
+
+  /**
+   * The feature id for the '<em><b>Left Expression</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int COMPOUND_EXPRESSION__LEFT_EXPRESSION = EXPRESSION_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Right Expression</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int COMPOUND_EXPRESSION__RIGHT_EXPRESSION = EXPRESSION_FEATURE_COUNT + 1;
+
+  /**
+   * The number of structural features of the '<em>Compound Expression</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int COMPOUND_EXPRESSION_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 2;
+
+  /**
+   * The meta object id for the '{@link eu.coresense.requirements.requirementsModel.impl.AndImpl <em>And</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see eu.coresense.requirements.requirementsModel.impl.AndImpl
+   * @see eu.coresense.requirements.requirementsModel.impl.RequirementsModelPackageImpl#getAnd()
+   * @generated
+   */
+  int AND = 5;
+
+  /**
+   * The feature id for the '<em><b>Left Expression</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int AND__LEFT_EXPRESSION = COMPOUND_EXPRESSION__LEFT_EXPRESSION;
+
+  /**
+   * The feature id for the '<em><b>Right Expression</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int AND__RIGHT_EXPRESSION = COMPOUND_EXPRESSION__RIGHT_EXPRESSION;
+
+  /**
+   * The number of structural features of the '<em>And</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int AND_FEATURE_COUNT = COMPOUND_EXPRESSION_FEATURE_COUNT + 0;
+
+  /**
+   * The meta object id for the '{@link eu.coresense.requirements.requirementsModel.impl.OrImpl <em>Or</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see eu.coresense.requirements.requirementsModel.impl.OrImpl
+   * @see eu.coresense.requirements.requirementsModel.impl.RequirementsModelPackageImpl#getOr()
+   * @generated
+   */
+  int OR = 6;
+
+  /**
+   * The feature id for the '<em><b>Left Expression</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int OR__LEFT_EXPRESSION = COMPOUND_EXPRESSION__LEFT_EXPRESSION;
+
+  /**
+   * The feature id for the '<em><b>Right Expression</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int OR__RIGHT_EXPRESSION = COMPOUND_EXPRESSION__RIGHT_EXPRESSION;
+
+  /**
+   * The number of structural features of the '<em>Or</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int OR_FEATURE_COUNT = COMPOUND_EXPRESSION_FEATURE_COUNT + 0;
+
+  /**
+   * The meta object id for the '{@link eu.coresense.requirements.requirementsModel.impl.ShallImpl <em>Shall</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see eu.coresense.requirements.requirementsModel.impl.ShallImpl
+   * @see eu.coresense.requirements.requirementsModel.impl.RequirementsModelPackageImpl#getShall()
+   * @generated
+   */
+  int SHALL = 7;
+
+  /**
+   * The feature id for the '<em><b>Expression</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SHALL__EXPRESSION = EXPRESSION_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>Shall</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SHALL_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 1;
+
+  /**
+   * The meta object id for the '{@link eu.coresense.requirements.requirementsModel.impl.NegationImpl <em>Negation</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see eu.coresense.requirements.requirementsModel.impl.NegationImpl
+   * @see eu.coresense.requirements.requirementsModel.impl.RequirementsModelPackageImpl#getNegation()
+   * @generated
+   */
+  int NEGATION = 8;
+
+  /**
+   * The feature id for the '<em><b>Expression</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int NEGATION__EXPRESSION = EXPRESSION_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>Negation</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int NEGATION_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 1;
+
+  /**
+   * The meta object id for the '{@link eu.coresense.requirements.requirementsModel.impl.EventuallyImpl <em>Eventually</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see eu.coresense.requirements.requirementsModel.impl.EventuallyImpl
+   * @see eu.coresense.requirements.requirementsModel.impl.RequirementsModelPackageImpl#getEventually()
+   * @generated
+   */
+  int EVENTUALLY = 9;
+
+  /**
+   * The feature id for the '<em><b>Expression</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EVENTUALLY__EXPRESSION = EXPRESSION_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>Eventually</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EVENTUALLY_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 1;
+
+  /**
+   * The meta object id for the '{@link eu.coresense.requirements.requirementsModel.impl.ThisUntilImpl <em>This Until</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see eu.coresense.requirements.requirementsModel.impl.ThisUntilImpl
+   * @see eu.coresense.requirements.requirementsModel.impl.RequirementsModelPackageImpl#getThisUntil()
+   * @generated
+   */
+  int THIS_UNTIL = 10;
+
+  /**
+   * The feature id for the '<em><b>Left Expression</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int THIS_UNTIL__LEFT_EXPRESSION = COMPOUND_EXPRESSION__LEFT_EXPRESSION;
+
+  /**
+   * The feature id for the '<em><b>Right Expression</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int THIS_UNTIL__RIGHT_EXPRESSION = COMPOUND_EXPRESSION__RIGHT_EXPRESSION;
+
+  /**
+   * The number of structural features of the '<em>This Until</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int THIS_UNTIL_FEATURE_COUNT = COMPOUND_EXPRESSION_FEATURE_COUNT + 0;
+
+  /**
+   * The meta object id for the '{@link eu.coresense.requirements.requirementsModel.impl.BeforeImpl <em>Before</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see eu.coresense.requirements.requirementsModel.impl.BeforeImpl
+   * @see eu.coresense.requirements.requirementsModel.impl.RequirementsModelPackageImpl#getBefore()
+   * @generated
+   */
+  int BEFORE = 11;
+
+  /**
+   * The feature id for the '<em><b>Event</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int BEFORE__EVENT = EXPRESSION_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Expression</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int BEFORE__EXPRESSION = EXPRESSION_FEATURE_COUNT + 1;
+
+  /**
+   * The number of structural features of the '<em>Before</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int BEFORE_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 2;
+
+  /**
+   * The meta object id for the '{@link eu.coresense.requirements.requirementsModel.impl.AfterImpl <em>After</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see eu.coresense.requirements.requirementsModel.impl.AfterImpl
+   * @see eu.coresense.requirements.requirementsModel.impl.RequirementsModelPackageImpl#getAfter()
+   * @generated
+   */
+  int AFTER = 12;
+
+  /**
+   * The feature id for the '<em><b>Event</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int AFTER__EVENT = EXPRESSION_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Expression</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int AFTER__EXPRESSION = EXPRESSION_FEATURE_COUNT + 1;
+
+  /**
+   * The number of structural features of the '<em>After</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int AFTER_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 2;
+
+  /**
+   * The meta object id for the '{@link eu.coresense.requirements.requirementsModel.impl.InImpl <em>In</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see eu.coresense.requirements.requirementsModel.impl.InImpl
+   * @see eu.coresense.requirements.requirementsModel.impl.RequirementsModelPackageImpl#getIn()
+   * @generated
+   */
+  int IN = 13;
+
+  /**
+   * The feature id for the '<em><b>Deadline</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int IN__DEADLINE = EXPRESSION_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Expression</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int IN__EXPRESSION = EXPRESSION_FEATURE_COUNT + 1;
+
+  /**
+   * The number of structural features of the '<em>In</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int IN_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 2;
+
+  /**
+   * The meta object id for the '{@link eu.coresense.requirements.requirementsModel.impl.AsAsPossibleImpl <em>As As Possible</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see eu.coresense.requirements.requirementsModel.impl.AsAsPossibleImpl
+   * @see eu.coresense.requirements.requirementsModel.impl.RequirementsModelPackageImpl#getAsAsPossible()
+   * @generated
+   */
+  int AS_AS_POSSIBLE = 14;
+
+  /**
+   * The feature id for the '<em><b>Time Frequency</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int AS_AS_POSSIBLE__TIME_FREQUENCY = EXPRESSION_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Quantity</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int AS_AS_POSSIBLE__QUANTITY = EXPRESSION_FEATURE_COUNT + 1;
+
+  /**
+   * The number of structural features of the '<em>As As Possible</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int AS_AS_POSSIBLE_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 2;
 
   /**
    * The meta object id for the '{@link eu.coresense.requirements.requirementsModel.impl.AsCloseFreqImpl <em>As Close Freq</em>}' class.
@@ -342,79 +687,25 @@ public interface RequirementsModelPackage extends EPackage
    * @see eu.coresense.requirements.requirementsModel.impl.RequirementsModelPackageImpl#getAsCloseFreq()
    * @generated
    */
-  int AS_CLOSE_FREQ = 5;
+  int AS_CLOSE_FREQ = 18;
 
   /**
-   * The feature id for the '<em><b>Proposition</b></em>' containment reference.
+   * The feature id for the '<em><b>Frequency</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int AS_CLOSE_FREQ__PROPOSITION = STATEMENT__PROPOSITION;
+  int AS_CLOSE_FREQ__FREQUENCY = EXPRESSION_FEATURE_COUNT + 0;
 
   /**
-   * The feature id for the '<em><b>Quantifiable Statement</b></em>' containment reference.
+   * The feature id for the '<em><b>Expression</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int AS_CLOSE_FREQ__QUANTIFIABLE_STATEMENT = STATEMENT__QUANTIFIABLE_STATEMENT;
-
-  /**
-   * The feature id for the '<em><b>Statement</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int AS_CLOSE_FREQ__STATEMENT = STATEMENT__STATEMENT;
-
-  /**
-   * The feature id for the '<em><b>First statement</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int AS_CLOSE_FREQ__FIRST_STATEMENT = STATEMENT__FIRST_STATEMENT;
-
-  /**
-   * The feature id for the '<em><b>Second statement</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int AS_CLOSE_FREQ__SECOND_STATEMENT = STATEMENT__SECOND_STATEMENT;
-
-  /**
-   * The feature id for the '<em><b>Event</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int AS_CLOSE_FREQ__EVENT = STATEMENT__EVENT;
-
-  /**
-   * The feature id for the '<em><b>T</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int AS_CLOSE_FREQ__T = STATEMENT__T;
-
-  /**
-   * The feature id for the '<em><b>F</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int AS_CLOSE_FREQ__F = STATEMENT_FEATURE_COUNT + 0;
+  int AS_CLOSE_FREQ__EXPRESSION = EXPRESSION_FEATURE_COUNT + 1;
 
   /**
    * The number of structural features of the '<em>As Close Freq</em>' class.
@@ -423,7 +714,7 @@ public interface RequirementsModelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int AS_CLOSE_FREQ_FEATURE_COUNT = STATEMENT_FEATURE_COUNT + 1;
+  int AS_CLOSE_FREQ_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 2;
 
   /**
    * The meta object id for the '{@link eu.coresense.requirements.requirementsModel.impl.AsCloseLitImpl <em>As Close Lit</em>}' class.
@@ -433,79 +724,16 @@ public interface RequirementsModelPackage extends EPackage
    * @see eu.coresense.requirements.requirementsModel.impl.RequirementsModelPackageImpl#getAsCloseLit()
    * @generated
    */
-  int AS_CLOSE_LIT = 6;
+  int AS_CLOSE_LIT = 19;
 
   /**
-   * The feature id for the '<em><b>Proposition</b></em>' containment reference.
+   * The feature id for the '<em><b>Quantity</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int AS_CLOSE_LIT__PROPOSITION = STATEMENT__PROPOSITION;
-
-  /**
-   * The feature id for the '<em><b>Quantifiable Statement</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int AS_CLOSE_LIT__QUANTIFIABLE_STATEMENT = STATEMENT__QUANTIFIABLE_STATEMENT;
-
-  /**
-   * The feature id for the '<em><b>Statement</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int AS_CLOSE_LIT__STATEMENT = STATEMENT__STATEMENT;
-
-  /**
-   * The feature id for the '<em><b>First statement</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int AS_CLOSE_LIT__FIRST_STATEMENT = STATEMENT__FIRST_STATEMENT;
-
-  /**
-   * The feature id for the '<em><b>Second statement</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int AS_CLOSE_LIT__SECOND_STATEMENT = STATEMENT__SECOND_STATEMENT;
-
-  /**
-   * The feature id for the '<em><b>Event</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int AS_CLOSE_LIT__EVENT = STATEMENT__EVENT;
-
-  /**
-   * The feature id for the '<em><b>T</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int AS_CLOSE_LIT__T = STATEMENT__T;
-
-  /**
-   * The feature id for the '<em><b>Q</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int AS_CLOSE_LIT__Q = STATEMENT_FEATURE_COUNT + 0;
+  int AS_CLOSE_LIT__QUANTITY = EXPRESSION_FEATURE_COUNT + 0;
 
   /**
    * The feature id for the '<em><b>Comparator</b></em>' containment reference.
@@ -514,7 +742,7 @@ public interface RequirementsModelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int AS_CLOSE_LIT__COMPARATOR = STATEMENT_FEATURE_COUNT + 1;
+  int AS_CLOSE_LIT__COMPARATOR = EXPRESSION_FEATURE_COUNT + 1;
 
   /**
    * The number of structural features of the '<em>As Close Lit</em>' class.
@@ -523,7 +751,7 @@ public interface RequirementsModelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int AS_CLOSE_LIT_FEATURE_COUNT = STATEMENT_FEATURE_COUNT + 2;
+  int AS_CLOSE_LIT_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 2;
 
   /**
    * The meta object id for the '{@link eu.coresense.requirements.requirementsModel.impl.QuantifiableImpl <em>Quantifiable</em>}' class.
@@ -533,16 +761,16 @@ public interface RequirementsModelPackage extends EPackage
    * @see eu.coresense.requirements.requirementsModel.impl.RequirementsModelPackageImpl#getQuantifiable()
    * @generated
    */
-  int QUANTIFIABLE = 7;
+  int QUANTIFIABLE = 20;
 
   /**
-   * The feature id for the '<em><b>Var</b></em>' reference.
+   * The feature id for the '<em><b>Context Variable</b></em>' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int QUANTIFIABLE__VAR = 0;
+  int QUANTIFIABLE__CONTEXT_VARIABLE = STATEMENT_FEATURE_COUNT + 0;
 
   /**
    * The number of structural features of the '<em>Quantifiable</em>' class.
@@ -551,98 +779,72 @@ public interface RequirementsModelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int QUANTIFIABLE_FEATURE_COUNT = 1;
+  int QUANTIFIABLE_FEATURE_COUNT = STATEMENT_FEATURE_COUNT + 1;
 
   /**
-   * The meta object id for the '{@link eu.coresense.requirements.requirementsModel.impl.MayStatementImpl <em>May Statement</em>}' class.
+   * The meta object id for the '{@link eu.coresense.requirements.requirementsModel.impl.MayImpl <em>May</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see eu.coresense.requirements.requirementsModel.impl.MayStatementImpl
-   * @see eu.coresense.requirements.requirementsModel.impl.RequirementsModelPackageImpl#getMayStatement()
+   * @see eu.coresense.requirements.requirementsModel.impl.MayImpl
+   * @see eu.coresense.requirements.requirementsModel.impl.RequirementsModelPackageImpl#getMay()
    * @generated
    */
-  int MAY_STATEMENT = 8;
+  int MAY = 21;
 
   /**
-   * The feature id for the '<em><b>Proposition</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int MAY_STATEMENT__PROPOSITION = STATEMENT__PROPOSITION;
-
-  /**
-   * The feature id for the '<em><b>Quantifiable Statement</b></em>' containment reference.
+   * The feature id for the '<em><b>Expression</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int MAY_STATEMENT__QUANTIFIABLE_STATEMENT = STATEMENT__QUANTIFIABLE_STATEMENT;
+  int MAY__EXPRESSION = EXPRESSION_FEATURE_COUNT + 0;
 
   /**
-   * The feature id for the '<em><b>Statement</b></em>' containment reference.
+   * The feature id for the '<em><b>Alternatives</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int MAY_STATEMENT__STATEMENT = STATEMENT__STATEMENT;
+  int MAY__ALTERNATIVES = EXPRESSION_FEATURE_COUNT + 1;
 
   /**
-   * The feature id for the '<em><b>First statement</b></em>' containment reference.
+   * The number of structural features of the '<em>May</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int MAY_STATEMENT__FIRST_STATEMENT = STATEMENT__FIRST_STATEMENT;
+  int MAY_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 2;
 
   /**
-   * The feature id for the '<em><b>Second statement</b></em>' containment reference.
+   * The meta object id for the '{@link eu.coresense.requirements.requirementsModel.impl.MayAlternativeImpl <em>May Alternative</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see eu.coresense.requirements.requirementsModel.impl.MayAlternativeImpl
+   * @see eu.coresense.requirements.requirementsModel.impl.RequirementsModelPackageImpl#getMayAlternative()
+   * @generated
+   */
+  int MAY_ALTERNATIVE = 22;
+
+  /**
+   * The feature id for the '<em><b>Expression</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int MAY_STATEMENT__SECOND_STATEMENT = STATEMENT__SECOND_STATEMENT;
+  int MAY_ALTERNATIVE__EXPRESSION = 0;
 
   /**
-   * The feature id for the '<em><b>Event</b></em>' attribute.
+   * The number of structural features of the '<em>May Alternative</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int MAY_STATEMENT__EVENT = STATEMENT__EVENT;
-
-  /**
-   * The feature id for the '<em><b>T</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int MAY_STATEMENT__T = STATEMENT__T;
-
-  /**
-   * The feature id for the '<em><b>Statements</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int MAY_STATEMENT__STATEMENTS = STATEMENT_FEATURE_COUNT + 0;
-
-  /**
-   * The number of structural features of the '<em>May Statement</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int MAY_STATEMENT_FEATURE_COUNT = STATEMENT_FEATURE_COUNT + 1;
+  int MAY_ALTERNATIVE_FEATURE_COUNT = 1;
 
   /**
    * The meta object id for the '{@link eu.coresense.requirements.requirementsModel.impl.TimeIntervalImpl <em>Time Interval</em>}' class.
@@ -652,7 +854,7 @@ public interface RequirementsModelPackage extends EPackage
    * @see eu.coresense.requirements.requirementsModel.impl.RequirementsModelPackageImpl#getTimeInterval()
    * @generated
    */
-  int TIME_INTERVAL = 10;
+  int TIME_INTERVAL = 23;
 
   /**
    * The feature id for the '<em><b>After</b></em>' containment reference.
@@ -689,7 +891,7 @@ public interface RequirementsModelPackage extends EPackage
    * @see eu.coresense.requirements.requirementsModel.impl.RequirementsModelPackageImpl#getTime()
    * @generated
    */
-  int TIME = 11;
+  int TIME = 24;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -717,7 +919,7 @@ public interface RequirementsModelPackage extends EPackage
    * @see eu.coresense.requirements.requirementsModel.impl.RequirementsModelPackageImpl#getQualityAttribute()
    * @generated
    */
-  int QUALITY_ATTRIBUTE = 12;
+  int QUALITY_ATTRIBUTE = 25;
 
   /**
    * The meta object id for the '{@link eu.coresense.requirements.requirementsModel.LogicalOperator <em>Logical Operator</em>}' enum.
@@ -727,7 +929,17 @@ public interface RequirementsModelPackage extends EPackage
    * @see eu.coresense.requirements.requirementsModel.impl.RequirementsModelPackageImpl#getLogicalOperator()
    * @generated
    */
-  int LOGICAL_OPERATOR = 13;
+  int LOGICAL_OPERATOR = 26;
+
+  /**
+   * The meta object id for the '{@link eu.coresense.requirements.requirementsModel.Timeliness <em>Timeliness</em>}' enum.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see eu.coresense.requirements.requirementsModel.Timeliness
+   * @see eu.coresense.requirements.requirementsModel.impl.RequirementsModelPackageImpl#getTimeliness()
+   * @generated
+   */
+  int TIMELINESS = 27;
 
 
   /**
@@ -784,26 +996,26 @@ public interface RequirementsModelPackage extends EPackage
   EAttribute getRequirement_Qa();
 
   /**
-   * Returns the meta object for the attribute '{@link eu.coresense.requirements.requirementsModel.Requirement#getNatural <em>Natural</em>}'.
+   * Returns the meta object for the attribute '{@link eu.coresense.requirements.requirementsModel.Requirement#getNaturalLanguageDescription <em>Natural Language Description</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Natural</em>'.
-   * @see eu.coresense.requirements.requirementsModel.Requirement#getNatural()
+   * @return the meta object for the attribute '<em>Natural Language Description</em>'.
+   * @see eu.coresense.requirements.requirementsModel.Requirement#getNaturalLanguageDescription()
    * @see #getRequirement()
    * @generated
    */
-  EAttribute getRequirement_Natural();
+  EAttribute getRequirement_NaturalLanguageDescription();
 
   /**
-   * Returns the meta object for the containment reference '{@link eu.coresense.requirements.requirementsModel.Requirement#getRule <em>Rule</em>}'.
+   * Returns the meta object for the containment reference '{@link eu.coresense.requirements.requirementsModel.Requirement#getExpression <em>Expression</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Rule</em>'.
-   * @see eu.coresense.requirements.requirementsModel.Requirement#getRule()
+   * @return the meta object for the containment reference '<em>Expression</em>'.
+   * @see eu.coresense.requirements.requirementsModel.Requirement#getExpression()
    * @see #getRequirement()
    * @generated
    */
-  EReference getRequirement_Rule();
+  EReference getRequirement_Expression();
 
   /**
    * Returns the meta object for class '{@link eu.coresense.requirements.requirementsModel.Condition <em>Condition</em>}'.
@@ -881,6 +1093,291 @@ public interface RequirementsModelPackage extends EPackage
   EClass getProposition();
 
   /**
+   * Returns the meta object for the containment reference '{@link eu.coresense.requirements.requirementsModel.Proposition#getCondition <em>Condition</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Condition</em>'.
+   * @see eu.coresense.requirements.requirementsModel.Proposition#getCondition()
+   * @see #getProposition()
+   * @generated
+   */
+  EReference getProposition_Condition();
+
+  /**
+   * Returns the meta object for class '{@link eu.coresense.requirements.requirementsModel.BooleanStatement <em>Boolean Statement</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Boolean Statement</em>'.
+   * @see eu.coresense.requirements.requirementsModel.BooleanStatement
+   * @generated
+   */
+  EClass getBooleanStatement();
+
+  /**
+   * Returns the meta object for the attribute '{@link eu.coresense.requirements.requirementsModel.BooleanStatement#isBooleanValue <em>Boolean Value</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Boolean Value</em>'.
+   * @see eu.coresense.requirements.requirementsModel.BooleanStatement#isBooleanValue()
+   * @see #getBooleanStatement()
+   * @generated
+   */
+  EAttribute getBooleanStatement_BooleanValue();
+
+  /**
+   * Returns the meta object for class '{@link eu.coresense.requirements.requirementsModel.And <em>And</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>And</em>'.
+   * @see eu.coresense.requirements.requirementsModel.And
+   * @generated
+   */
+  EClass getAnd();
+
+  /**
+   * Returns the meta object for class '{@link eu.coresense.requirements.requirementsModel.Or <em>Or</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Or</em>'.
+   * @see eu.coresense.requirements.requirementsModel.Or
+   * @generated
+   */
+  EClass getOr();
+
+  /**
+   * Returns the meta object for class '{@link eu.coresense.requirements.requirementsModel.Shall <em>Shall</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Shall</em>'.
+   * @see eu.coresense.requirements.requirementsModel.Shall
+   * @generated
+   */
+  EClass getShall();
+
+  /**
+   * Returns the meta object for the containment reference '{@link eu.coresense.requirements.requirementsModel.Shall#getExpression <em>Expression</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Expression</em>'.
+   * @see eu.coresense.requirements.requirementsModel.Shall#getExpression()
+   * @see #getShall()
+   * @generated
+   */
+  EReference getShall_Expression();
+
+  /**
+   * Returns the meta object for class '{@link eu.coresense.requirements.requirementsModel.Negation <em>Negation</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Negation</em>'.
+   * @see eu.coresense.requirements.requirementsModel.Negation
+   * @generated
+   */
+  EClass getNegation();
+
+  /**
+   * Returns the meta object for the containment reference '{@link eu.coresense.requirements.requirementsModel.Negation#getExpression <em>Expression</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Expression</em>'.
+   * @see eu.coresense.requirements.requirementsModel.Negation#getExpression()
+   * @see #getNegation()
+   * @generated
+   */
+  EReference getNegation_Expression();
+
+  /**
+   * Returns the meta object for class '{@link eu.coresense.requirements.requirementsModel.Eventually <em>Eventually</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Eventually</em>'.
+   * @see eu.coresense.requirements.requirementsModel.Eventually
+   * @generated
+   */
+  EClass getEventually();
+
+  /**
+   * Returns the meta object for the containment reference '{@link eu.coresense.requirements.requirementsModel.Eventually#getExpression <em>Expression</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Expression</em>'.
+   * @see eu.coresense.requirements.requirementsModel.Eventually#getExpression()
+   * @see #getEventually()
+   * @generated
+   */
+  EReference getEventually_Expression();
+
+  /**
+   * Returns the meta object for class '{@link eu.coresense.requirements.requirementsModel.ThisUntil <em>This Until</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>This Until</em>'.
+   * @see eu.coresense.requirements.requirementsModel.ThisUntil
+   * @generated
+   */
+  EClass getThisUntil();
+
+  /**
+   * Returns the meta object for class '{@link eu.coresense.requirements.requirementsModel.Before <em>Before</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Before</em>'.
+   * @see eu.coresense.requirements.requirementsModel.Before
+   * @generated
+   */
+  EClass getBefore();
+
+  /**
+   * Returns the meta object for the attribute '{@link eu.coresense.requirements.requirementsModel.Before#getEvent <em>Event</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Event</em>'.
+   * @see eu.coresense.requirements.requirementsModel.Before#getEvent()
+   * @see #getBefore()
+   * @generated
+   */
+  EAttribute getBefore_Event();
+
+  /**
+   * Returns the meta object for the containment reference '{@link eu.coresense.requirements.requirementsModel.Before#getExpression <em>Expression</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Expression</em>'.
+   * @see eu.coresense.requirements.requirementsModel.Before#getExpression()
+   * @see #getBefore()
+   * @generated
+   */
+  EReference getBefore_Expression();
+
+  /**
+   * Returns the meta object for class '{@link eu.coresense.requirements.requirementsModel.After <em>After</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>After</em>'.
+   * @see eu.coresense.requirements.requirementsModel.After
+   * @generated
+   */
+  EClass getAfter();
+
+  /**
+   * Returns the meta object for the attribute '{@link eu.coresense.requirements.requirementsModel.After#getEvent <em>Event</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Event</em>'.
+   * @see eu.coresense.requirements.requirementsModel.After#getEvent()
+   * @see #getAfter()
+   * @generated
+   */
+  EAttribute getAfter_Event();
+
+  /**
+   * Returns the meta object for the containment reference '{@link eu.coresense.requirements.requirementsModel.After#getExpression <em>Expression</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Expression</em>'.
+   * @see eu.coresense.requirements.requirementsModel.After#getExpression()
+   * @see #getAfter()
+   * @generated
+   */
+  EReference getAfter_Expression();
+
+  /**
+   * Returns the meta object for class '{@link eu.coresense.requirements.requirementsModel.In <em>In</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>In</em>'.
+   * @see eu.coresense.requirements.requirementsModel.In
+   * @generated
+   */
+  EClass getIn();
+
+  /**
+   * Returns the meta object for the containment reference '{@link eu.coresense.requirements.requirementsModel.In#getDeadline <em>Deadline</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Deadline</em>'.
+   * @see eu.coresense.requirements.requirementsModel.In#getDeadline()
+   * @see #getIn()
+   * @generated
+   */
+  EReference getIn_Deadline();
+
+  /**
+   * Returns the meta object for the containment reference '{@link eu.coresense.requirements.requirementsModel.In#getExpression <em>Expression</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Expression</em>'.
+   * @see eu.coresense.requirements.requirementsModel.In#getExpression()
+   * @see #getIn()
+   * @generated
+   */
+  EReference getIn_Expression();
+
+  /**
+   * Returns the meta object for class '{@link eu.coresense.requirements.requirementsModel.AsAsPossible <em>As As Possible</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>As As Possible</em>'.
+   * @see eu.coresense.requirements.requirementsModel.AsAsPossible
+   * @generated
+   */
+  EClass getAsAsPossible();
+
+  /**
+   * Returns the meta object for the attribute '{@link eu.coresense.requirements.requirementsModel.AsAsPossible#getTimeFrequency <em>Time Frequency</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Time Frequency</em>'.
+   * @see eu.coresense.requirements.requirementsModel.AsAsPossible#getTimeFrequency()
+   * @see #getAsAsPossible()
+   * @generated
+   */
+  EAttribute getAsAsPossible_TimeFrequency();
+
+  /**
+   * Returns the meta object for the containment reference '{@link eu.coresense.requirements.requirementsModel.AsAsPossible#getQuantity <em>Quantity</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Quantity</em>'.
+   * @see eu.coresense.requirements.requirementsModel.AsAsPossible#getQuantity()
+   * @see #getAsAsPossible()
+   * @generated
+   */
+  EReference getAsAsPossible_Quantity();
+
+  /**
+   * Returns the meta object for class '{@link eu.coresense.requirements.requirementsModel.CompoundExpression <em>Compound Expression</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Compound Expression</em>'.
+   * @see eu.coresense.requirements.requirementsModel.CompoundExpression
+   * @generated
+   */
+  EClass getCompoundExpression();
+
+  /**
+   * Returns the meta object for the containment reference '{@link eu.coresense.requirements.requirementsModel.CompoundExpression#getLeftExpression <em>Left Expression</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Left Expression</em>'.
+   * @see eu.coresense.requirements.requirementsModel.CompoundExpression#getLeftExpression()
+   * @see #getCompoundExpression()
+   * @generated
+   */
+  EReference getCompoundExpression_LeftExpression();
+
+  /**
+   * Returns the meta object for the containment reference '{@link eu.coresense.requirements.requirementsModel.CompoundExpression#getRightExpression <em>Right Expression</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Right Expression</em>'.
+   * @see eu.coresense.requirements.requirementsModel.CompoundExpression#getRightExpression()
+   * @see #getCompoundExpression()
+   * @generated
+   */
+  EReference getCompoundExpression_RightExpression();
+
+  /**
    * Returns the meta object for class '{@link eu.coresense.requirements.requirementsModel.Statement <em>Statement</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -891,70 +1388,14 @@ public interface RequirementsModelPackage extends EPackage
   EClass getStatement();
 
   /**
-   * Returns the meta object for the containment reference '{@link eu.coresense.requirements.requirementsModel.Statement#getQuantifiableStatement <em>Quantifiable Statement</em>}'.
+   * Returns the meta object for class '{@link eu.coresense.requirements.requirementsModel.Expression <em>Expression</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Quantifiable Statement</em>'.
-   * @see eu.coresense.requirements.requirementsModel.Statement#getQuantifiableStatement()
-   * @see #getStatement()
+   * @return the meta object for class '<em>Expression</em>'.
+   * @see eu.coresense.requirements.requirementsModel.Expression
    * @generated
    */
-  EReference getStatement_QuantifiableStatement();
-
-  /**
-   * Returns the meta object for the containment reference '{@link eu.coresense.requirements.requirementsModel.Statement#getStatement <em>Statement</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Statement</em>'.
-   * @see eu.coresense.requirements.requirementsModel.Statement#getStatement()
-   * @see #getStatement()
-   * @generated
-   */
-  EReference getStatement_Statement();
-
-  /**
-   * Returns the meta object for the containment reference '{@link eu.coresense.requirements.requirementsModel.Statement#getFirst_statement <em>First statement</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>First statement</em>'.
-   * @see eu.coresense.requirements.requirementsModel.Statement#getFirst_statement()
-   * @see #getStatement()
-   * @generated
-   */
-  EReference getStatement_First_statement();
-
-  /**
-   * Returns the meta object for the containment reference '{@link eu.coresense.requirements.requirementsModel.Statement#getSecond_statement <em>Second statement</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Second statement</em>'.
-   * @see eu.coresense.requirements.requirementsModel.Statement#getSecond_statement()
-   * @see #getStatement()
-   * @generated
-   */
-  EReference getStatement_Second_statement();
-
-  /**
-   * Returns the meta object for the attribute '{@link eu.coresense.requirements.requirementsModel.Statement#getEvent <em>Event</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Event</em>'.
-   * @see eu.coresense.requirements.requirementsModel.Statement#getEvent()
-   * @see #getStatement()
-   * @generated
-   */
-  EAttribute getStatement_Event();
-
-  /**
-   * Returns the meta object for the containment reference '{@link eu.coresense.requirements.requirementsModel.Statement#getT <em>T</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>T</em>'.
-   * @see eu.coresense.requirements.requirementsModel.Statement#getT()
-   * @see #getStatement()
-   * @generated
-   */
-  EReference getStatement_T();
+  EClass getExpression();
 
   /**
    * Returns the meta object for class '{@link eu.coresense.requirements.requirementsModel.AsCloseFreq <em>As Close Freq</em>}'.
@@ -967,15 +1408,26 @@ public interface RequirementsModelPackage extends EPackage
   EClass getAsCloseFreq();
 
   /**
-   * Returns the meta object for the containment reference '{@link eu.coresense.requirements.requirementsModel.AsCloseFreq#getF <em>F</em>}'.
+   * Returns the meta object for the containment reference '{@link eu.coresense.requirements.requirementsModel.AsCloseFreq#getFrequency <em>Frequency</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>F</em>'.
-   * @see eu.coresense.requirements.requirementsModel.AsCloseFreq#getF()
+   * @return the meta object for the containment reference '<em>Frequency</em>'.
+   * @see eu.coresense.requirements.requirementsModel.AsCloseFreq#getFrequency()
    * @see #getAsCloseFreq()
    * @generated
    */
-  EReference getAsCloseFreq_F();
+  EReference getAsCloseFreq_Frequency();
+
+  /**
+   * Returns the meta object for the containment reference '{@link eu.coresense.requirements.requirementsModel.AsCloseFreq#getExpression <em>Expression</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Expression</em>'.
+   * @see eu.coresense.requirements.requirementsModel.AsCloseFreq#getExpression()
+   * @see #getAsCloseFreq()
+   * @generated
+   */
+  EReference getAsCloseFreq_Expression();
 
   /**
    * Returns the meta object for class '{@link eu.coresense.requirements.requirementsModel.AsCloseLit <em>As Close Lit</em>}'.
@@ -988,15 +1440,15 @@ public interface RequirementsModelPackage extends EPackage
   EClass getAsCloseLit();
 
   /**
-   * Returns the meta object for the containment reference '{@link eu.coresense.requirements.requirementsModel.AsCloseLit#getQ <em>Q</em>}'.
+   * Returns the meta object for the containment reference '{@link eu.coresense.requirements.requirementsModel.AsCloseLit#getQuantity <em>Quantity</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Q</em>'.
-   * @see eu.coresense.requirements.requirementsModel.AsCloseLit#getQ()
+   * @return the meta object for the containment reference '<em>Quantity</em>'.
+   * @see eu.coresense.requirements.requirementsModel.AsCloseLit#getQuantity()
    * @see #getAsCloseLit()
    * @generated
    */
-  EReference getAsCloseLit_Q();
+  EReference getAsCloseLit_Quantity();
 
   /**
    * Returns the meta object for the containment reference '{@link eu.coresense.requirements.requirementsModel.AsCloseLit#getComparator <em>Comparator</em>}'.
@@ -1020,57 +1472,68 @@ public interface RequirementsModelPackage extends EPackage
   EClass getQuantifiable();
 
   /**
-   * Returns the meta object for the reference '{@link eu.coresense.requirements.requirementsModel.Quantifiable#getVar <em>Var</em>}'.
+   * Returns the meta object for the reference '{@link eu.coresense.requirements.requirementsModel.Quantifiable#getContextVariable <em>Context Variable</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the reference '<em>Var</em>'.
-   * @see eu.coresense.requirements.requirementsModel.Quantifiable#getVar()
+   * @return the meta object for the reference '<em>Context Variable</em>'.
+   * @see eu.coresense.requirements.requirementsModel.Quantifiable#getContextVariable()
    * @see #getQuantifiable()
    * @generated
    */
-  EReference getQuantifiable_Var();
+  EReference getQuantifiable_ContextVariable();
 
   /**
-   * Returns the meta object for class '{@link eu.coresense.requirements.requirementsModel.MayStatement <em>May Statement</em>}'.
+   * Returns the meta object for class '{@link eu.coresense.requirements.requirementsModel.May <em>May</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>May Statement</em>'.
-   * @see eu.coresense.requirements.requirementsModel.MayStatement
+   * @return the meta object for class '<em>May</em>'.
+   * @see eu.coresense.requirements.requirementsModel.May
    * @generated
    */
-  EClass getMayStatement();
+  EClass getMay();
 
   /**
-   * Returns the meta object for the containment reference list '{@link eu.coresense.requirements.requirementsModel.MayStatement#getStatements <em>Statements</em>}'.
+   * Returns the meta object for the containment reference '{@link eu.coresense.requirements.requirementsModel.May#getExpression <em>Expression</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Statements</em>'.
-   * @see eu.coresense.requirements.requirementsModel.MayStatement#getStatements()
-   * @see #getMayStatement()
+   * @return the meta object for the containment reference '<em>Expression</em>'.
+   * @see eu.coresense.requirements.requirementsModel.May#getExpression()
+   * @see #getMay()
    * @generated
    */
-  EReference getMayStatement_Statements();
+  EReference getMay_Expression();
 
   /**
-   * Returns the meta object for class '{@link eu.coresense.requirements.requirementsModel.AtomicStatement <em>Atomic Statement</em>}'.
+   * Returns the meta object for the containment reference list '{@link eu.coresense.requirements.requirementsModel.May#getAlternatives <em>Alternatives</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Atomic Statement</em>'.
-   * @see eu.coresense.requirements.requirementsModel.AtomicStatement
+   * @return the meta object for the containment reference list '<em>Alternatives</em>'.
+   * @see eu.coresense.requirements.requirementsModel.May#getAlternatives()
+   * @see #getMay()
    * @generated
    */
-  EClass getAtomicStatement();
+  EReference getMay_Alternatives();
 
   /**
-   * Returns the meta object for the containment reference '{@link eu.coresense.requirements.requirementsModel.AtomicStatement#getProposition <em>Proposition</em>}'.
+   * Returns the meta object for class '{@link eu.coresense.requirements.requirementsModel.MayAlternative <em>May Alternative</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Proposition</em>'.
-   * @see eu.coresense.requirements.requirementsModel.AtomicStatement#getProposition()
-   * @see #getAtomicStatement()
+   * @return the meta object for class '<em>May Alternative</em>'.
+   * @see eu.coresense.requirements.requirementsModel.MayAlternative
    * @generated
    */
-  EReference getAtomicStatement_Proposition();
+  EClass getMayAlternative();
+
+  /**
+   * Returns the meta object for the containment reference '{@link eu.coresense.requirements.requirementsModel.MayAlternative#getExpression <em>Expression</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Expression</em>'.
+   * @see eu.coresense.requirements.requirementsModel.MayAlternative#getExpression()
+   * @see #getMayAlternative()
+   * @generated
+   */
+  EReference getMayAlternative_Expression();
 
   /**
    * Returns the meta object for class '{@link eu.coresense.requirements.requirementsModel.TimeInterval <em>Time Interval</em>}'.
@@ -1146,6 +1609,16 @@ public interface RequirementsModelPackage extends EPackage
   EEnum getLogicalOperator();
 
   /**
+   * Returns the meta object for enum '{@link eu.coresense.requirements.requirementsModel.Timeliness <em>Timeliness</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for enum '<em>Timeliness</em>'.
+   * @see eu.coresense.requirements.requirementsModel.Timeliness
+   * @generated
+   */
+  EEnum getTimeliness();
+
+  /**
    * Returns the factory that creates the instances of the model.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1213,20 +1686,20 @@ public interface RequirementsModelPackage extends EPackage
     EAttribute REQUIREMENT__QA = eINSTANCE.getRequirement_Qa();
 
     /**
-     * The meta object literal for the '<em><b>Natural</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Natural Language Description</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute REQUIREMENT__NATURAL = eINSTANCE.getRequirement_Natural();
+    EAttribute REQUIREMENT__NATURAL_LANGUAGE_DESCRIPTION = eINSTANCE.getRequirement_NaturalLanguageDescription();
 
     /**
-     * The meta object literal for the '<em><b>Rule</b></em>' containment reference feature.
+     * The meta object literal for the '<em><b>Expression</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference REQUIREMENT__RULE = eINSTANCE.getRequirement_Rule();
+    EReference REQUIREMENT__EXPRESSION = eINSTANCE.getRequirement_Expression();
 
     /**
      * The meta object literal for the '{@link eu.coresense.requirements.requirementsModel.impl.ConditionImpl <em>Condition</em>}' class.
@@ -1289,6 +1762,246 @@ public interface RequirementsModelPackage extends EPackage
     EClass PROPOSITION = eINSTANCE.getProposition();
 
     /**
+     * The meta object literal for the '<em><b>Condition</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference PROPOSITION__CONDITION = eINSTANCE.getProposition_Condition();
+
+    /**
+     * The meta object literal for the '{@link eu.coresense.requirements.requirementsModel.impl.BooleanStatementImpl <em>Boolean Statement</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see eu.coresense.requirements.requirementsModel.impl.BooleanStatementImpl
+     * @see eu.coresense.requirements.requirementsModel.impl.RequirementsModelPackageImpl#getBooleanStatement()
+     * @generated
+     */
+    EClass BOOLEAN_STATEMENT = eINSTANCE.getBooleanStatement();
+
+    /**
+     * The meta object literal for the '<em><b>Boolean Value</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute BOOLEAN_STATEMENT__BOOLEAN_VALUE = eINSTANCE.getBooleanStatement_BooleanValue();
+
+    /**
+     * The meta object literal for the '{@link eu.coresense.requirements.requirementsModel.impl.AndImpl <em>And</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see eu.coresense.requirements.requirementsModel.impl.AndImpl
+     * @see eu.coresense.requirements.requirementsModel.impl.RequirementsModelPackageImpl#getAnd()
+     * @generated
+     */
+    EClass AND = eINSTANCE.getAnd();
+
+    /**
+     * The meta object literal for the '{@link eu.coresense.requirements.requirementsModel.impl.OrImpl <em>Or</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see eu.coresense.requirements.requirementsModel.impl.OrImpl
+     * @see eu.coresense.requirements.requirementsModel.impl.RequirementsModelPackageImpl#getOr()
+     * @generated
+     */
+    EClass OR = eINSTANCE.getOr();
+
+    /**
+     * The meta object literal for the '{@link eu.coresense.requirements.requirementsModel.impl.ShallImpl <em>Shall</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see eu.coresense.requirements.requirementsModel.impl.ShallImpl
+     * @see eu.coresense.requirements.requirementsModel.impl.RequirementsModelPackageImpl#getShall()
+     * @generated
+     */
+    EClass SHALL = eINSTANCE.getShall();
+
+    /**
+     * The meta object literal for the '<em><b>Expression</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference SHALL__EXPRESSION = eINSTANCE.getShall_Expression();
+
+    /**
+     * The meta object literal for the '{@link eu.coresense.requirements.requirementsModel.impl.NegationImpl <em>Negation</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see eu.coresense.requirements.requirementsModel.impl.NegationImpl
+     * @see eu.coresense.requirements.requirementsModel.impl.RequirementsModelPackageImpl#getNegation()
+     * @generated
+     */
+    EClass NEGATION = eINSTANCE.getNegation();
+
+    /**
+     * The meta object literal for the '<em><b>Expression</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference NEGATION__EXPRESSION = eINSTANCE.getNegation_Expression();
+
+    /**
+     * The meta object literal for the '{@link eu.coresense.requirements.requirementsModel.impl.EventuallyImpl <em>Eventually</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see eu.coresense.requirements.requirementsModel.impl.EventuallyImpl
+     * @see eu.coresense.requirements.requirementsModel.impl.RequirementsModelPackageImpl#getEventually()
+     * @generated
+     */
+    EClass EVENTUALLY = eINSTANCE.getEventually();
+
+    /**
+     * The meta object literal for the '<em><b>Expression</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference EVENTUALLY__EXPRESSION = eINSTANCE.getEventually_Expression();
+
+    /**
+     * The meta object literal for the '{@link eu.coresense.requirements.requirementsModel.impl.ThisUntilImpl <em>This Until</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see eu.coresense.requirements.requirementsModel.impl.ThisUntilImpl
+     * @see eu.coresense.requirements.requirementsModel.impl.RequirementsModelPackageImpl#getThisUntil()
+     * @generated
+     */
+    EClass THIS_UNTIL = eINSTANCE.getThisUntil();
+
+    /**
+     * The meta object literal for the '{@link eu.coresense.requirements.requirementsModel.impl.BeforeImpl <em>Before</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see eu.coresense.requirements.requirementsModel.impl.BeforeImpl
+     * @see eu.coresense.requirements.requirementsModel.impl.RequirementsModelPackageImpl#getBefore()
+     * @generated
+     */
+    EClass BEFORE = eINSTANCE.getBefore();
+
+    /**
+     * The meta object literal for the '<em><b>Event</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute BEFORE__EVENT = eINSTANCE.getBefore_Event();
+
+    /**
+     * The meta object literal for the '<em><b>Expression</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference BEFORE__EXPRESSION = eINSTANCE.getBefore_Expression();
+
+    /**
+     * The meta object literal for the '{@link eu.coresense.requirements.requirementsModel.impl.AfterImpl <em>After</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see eu.coresense.requirements.requirementsModel.impl.AfterImpl
+     * @see eu.coresense.requirements.requirementsModel.impl.RequirementsModelPackageImpl#getAfter()
+     * @generated
+     */
+    EClass AFTER = eINSTANCE.getAfter();
+
+    /**
+     * The meta object literal for the '<em><b>Event</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute AFTER__EVENT = eINSTANCE.getAfter_Event();
+
+    /**
+     * The meta object literal for the '<em><b>Expression</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference AFTER__EXPRESSION = eINSTANCE.getAfter_Expression();
+
+    /**
+     * The meta object literal for the '{@link eu.coresense.requirements.requirementsModel.impl.InImpl <em>In</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see eu.coresense.requirements.requirementsModel.impl.InImpl
+     * @see eu.coresense.requirements.requirementsModel.impl.RequirementsModelPackageImpl#getIn()
+     * @generated
+     */
+    EClass IN = eINSTANCE.getIn();
+
+    /**
+     * The meta object literal for the '<em><b>Deadline</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference IN__DEADLINE = eINSTANCE.getIn_Deadline();
+
+    /**
+     * The meta object literal for the '<em><b>Expression</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference IN__EXPRESSION = eINSTANCE.getIn_Expression();
+
+    /**
+     * The meta object literal for the '{@link eu.coresense.requirements.requirementsModel.impl.AsAsPossibleImpl <em>As As Possible</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see eu.coresense.requirements.requirementsModel.impl.AsAsPossibleImpl
+     * @see eu.coresense.requirements.requirementsModel.impl.RequirementsModelPackageImpl#getAsAsPossible()
+     * @generated
+     */
+    EClass AS_AS_POSSIBLE = eINSTANCE.getAsAsPossible();
+
+    /**
+     * The meta object literal for the '<em><b>Time Frequency</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute AS_AS_POSSIBLE__TIME_FREQUENCY = eINSTANCE.getAsAsPossible_TimeFrequency();
+
+    /**
+     * The meta object literal for the '<em><b>Quantity</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference AS_AS_POSSIBLE__QUANTITY = eINSTANCE.getAsAsPossible_Quantity();
+
+    /**
+     * The meta object literal for the '{@link eu.coresense.requirements.requirementsModel.impl.CompoundExpressionImpl <em>Compound Expression</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see eu.coresense.requirements.requirementsModel.impl.CompoundExpressionImpl
+     * @see eu.coresense.requirements.requirementsModel.impl.RequirementsModelPackageImpl#getCompoundExpression()
+     * @generated
+     */
+    EClass COMPOUND_EXPRESSION = eINSTANCE.getCompoundExpression();
+
+    /**
+     * The meta object literal for the '<em><b>Left Expression</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference COMPOUND_EXPRESSION__LEFT_EXPRESSION = eINSTANCE.getCompoundExpression_LeftExpression();
+
+    /**
+     * The meta object literal for the '<em><b>Right Expression</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference COMPOUND_EXPRESSION__RIGHT_EXPRESSION = eINSTANCE.getCompoundExpression_RightExpression();
+
+    /**
      * The meta object literal for the '{@link eu.coresense.requirements.requirementsModel.impl.StatementImpl <em>Statement</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -1299,52 +2012,14 @@ public interface RequirementsModelPackage extends EPackage
     EClass STATEMENT = eINSTANCE.getStatement();
 
     /**
-     * The meta object literal for the '<em><b>Quantifiable Statement</b></em>' containment reference feature.
+     * The meta object literal for the '{@link eu.coresense.requirements.requirementsModel.impl.ExpressionImpl <em>Expression</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * @see eu.coresense.requirements.requirementsModel.impl.ExpressionImpl
+     * @see eu.coresense.requirements.requirementsModel.impl.RequirementsModelPackageImpl#getExpression()
      * @generated
      */
-    EReference STATEMENT__QUANTIFIABLE_STATEMENT = eINSTANCE.getStatement_QuantifiableStatement();
-
-    /**
-     * The meta object literal for the '<em><b>Statement</b></em>' containment reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference STATEMENT__STATEMENT = eINSTANCE.getStatement_Statement();
-
-    /**
-     * The meta object literal for the '<em><b>First statement</b></em>' containment reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference STATEMENT__FIRST_STATEMENT = eINSTANCE.getStatement_First_statement();
-
-    /**
-     * The meta object literal for the '<em><b>Second statement</b></em>' containment reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference STATEMENT__SECOND_STATEMENT = eINSTANCE.getStatement_Second_statement();
-
-    /**
-     * The meta object literal for the '<em><b>Event</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute STATEMENT__EVENT = eINSTANCE.getStatement_Event();
-
-    /**
-     * The meta object literal for the '<em><b>T</b></em>' containment reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference STATEMENT__T = eINSTANCE.getStatement_T();
+    EClass EXPRESSION = eINSTANCE.getExpression();
 
     /**
      * The meta object literal for the '{@link eu.coresense.requirements.requirementsModel.impl.AsCloseFreqImpl <em>As Close Freq</em>}' class.
@@ -1357,12 +2032,20 @@ public interface RequirementsModelPackage extends EPackage
     EClass AS_CLOSE_FREQ = eINSTANCE.getAsCloseFreq();
 
     /**
-     * The meta object literal for the '<em><b>F</b></em>' containment reference feature.
+     * The meta object literal for the '<em><b>Frequency</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference AS_CLOSE_FREQ__F = eINSTANCE.getAsCloseFreq_F();
+    EReference AS_CLOSE_FREQ__FREQUENCY = eINSTANCE.getAsCloseFreq_Frequency();
+
+    /**
+     * The meta object literal for the '<em><b>Expression</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference AS_CLOSE_FREQ__EXPRESSION = eINSTANCE.getAsCloseFreq_Expression();
 
     /**
      * The meta object literal for the '{@link eu.coresense.requirements.requirementsModel.impl.AsCloseLitImpl <em>As Close Lit</em>}' class.
@@ -1375,12 +2058,12 @@ public interface RequirementsModelPackage extends EPackage
     EClass AS_CLOSE_LIT = eINSTANCE.getAsCloseLit();
 
     /**
-     * The meta object literal for the '<em><b>Q</b></em>' containment reference feature.
+     * The meta object literal for the '<em><b>Quantity</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference AS_CLOSE_LIT__Q = eINSTANCE.getAsCloseLit_Q();
+    EReference AS_CLOSE_LIT__QUANTITY = eINSTANCE.getAsCloseLit_Quantity();
 
     /**
      * The meta object literal for the '<em><b>Comparator</b></em>' containment reference feature.
@@ -1401,48 +2084,56 @@ public interface RequirementsModelPackage extends EPackage
     EClass QUANTIFIABLE = eINSTANCE.getQuantifiable();
 
     /**
-     * The meta object literal for the '<em><b>Var</b></em>' reference feature.
+     * The meta object literal for the '<em><b>Context Variable</b></em>' reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference QUANTIFIABLE__VAR = eINSTANCE.getQuantifiable_Var();
+    EReference QUANTIFIABLE__CONTEXT_VARIABLE = eINSTANCE.getQuantifiable_ContextVariable();
 
     /**
-     * The meta object literal for the '{@link eu.coresense.requirements.requirementsModel.impl.MayStatementImpl <em>May Statement</em>}' class.
+     * The meta object literal for the '{@link eu.coresense.requirements.requirementsModel.impl.MayImpl <em>May</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see eu.coresense.requirements.requirementsModel.impl.MayStatementImpl
-     * @see eu.coresense.requirements.requirementsModel.impl.RequirementsModelPackageImpl#getMayStatement()
+     * @see eu.coresense.requirements.requirementsModel.impl.MayImpl
+     * @see eu.coresense.requirements.requirementsModel.impl.RequirementsModelPackageImpl#getMay()
      * @generated
      */
-    EClass MAY_STATEMENT = eINSTANCE.getMayStatement();
+    EClass MAY = eINSTANCE.getMay();
 
     /**
-     * The meta object literal for the '<em><b>Statements</b></em>' containment reference list feature.
+     * The meta object literal for the '<em><b>Expression</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference MAY_STATEMENT__STATEMENTS = eINSTANCE.getMayStatement_Statements();
+    EReference MAY__EXPRESSION = eINSTANCE.getMay_Expression();
 
     /**
-     * The meta object literal for the '{@link eu.coresense.requirements.requirementsModel.impl.AtomicStatementImpl <em>Atomic Statement</em>}' class.
+     * The meta object literal for the '<em><b>Alternatives</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see eu.coresense.requirements.requirementsModel.impl.AtomicStatementImpl
-     * @see eu.coresense.requirements.requirementsModel.impl.RequirementsModelPackageImpl#getAtomicStatement()
      * @generated
      */
-    EClass ATOMIC_STATEMENT = eINSTANCE.getAtomicStatement();
+    EReference MAY__ALTERNATIVES = eINSTANCE.getMay_Alternatives();
 
     /**
-     * The meta object literal for the '<em><b>Proposition</b></em>' containment reference feature.
+     * The meta object literal for the '{@link eu.coresense.requirements.requirementsModel.impl.MayAlternativeImpl <em>May Alternative</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see eu.coresense.requirements.requirementsModel.impl.MayAlternativeImpl
+     * @see eu.coresense.requirements.requirementsModel.impl.RequirementsModelPackageImpl#getMayAlternative()
+     * @generated
+     */
+    EClass MAY_ALTERNATIVE = eINSTANCE.getMayAlternative();
+
+    /**
+     * The meta object literal for the '<em><b>Expression</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference ATOMIC_STATEMENT__PROPOSITION = eINSTANCE.getAtomicStatement_Proposition();
+    EReference MAY_ALTERNATIVE__EXPRESSION = eINSTANCE.getMayAlternative_Expression();
 
     /**
      * The meta object literal for the '{@link eu.coresense.requirements.requirementsModel.impl.TimeIntervalImpl <em>Time Interval</em>}' class.
@@ -1507,6 +2198,16 @@ public interface RequirementsModelPackage extends EPackage
      * @generated
      */
     EEnum LOGICAL_OPERATOR = eINSTANCE.getLogicalOperator();
+
+    /**
+     * The meta object literal for the '{@link eu.coresense.requirements.requirementsModel.Timeliness <em>Timeliness</em>}' enum.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see eu.coresense.requirements.requirementsModel.Timeliness
+     * @see eu.coresense.requirements.requirementsModel.impl.RequirementsModelPackageImpl#getTimeliness()
+     * @generated
+     */
+    EEnum TIMELINESS = eINSTANCE.getTimeliness();
 
   }
 

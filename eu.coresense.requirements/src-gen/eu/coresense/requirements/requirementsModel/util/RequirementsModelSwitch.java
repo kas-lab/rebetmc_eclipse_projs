@@ -91,7 +91,6 @@ public class RequirementsModelSwitch<T> extends Switch<T>
       {
         Condition condition = (Condition)theEObject;
         T result = caseCondition(condition);
-        if (result == null) result = caseProposition(condition);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -99,6 +98,108 @@ public class RequirementsModelSwitch<T> extends Switch<T>
       {
         Proposition proposition = (Proposition)theEObject;
         T result = caseProposition(proposition);
+        if (result == null) result = caseStatement(proposition);
+        if (result == null) result = caseExpression(proposition);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case RequirementsModelPackage.BOOLEAN_STATEMENT:
+      {
+        BooleanStatement booleanStatement = (BooleanStatement)theEObject;
+        T result = caseBooleanStatement(booleanStatement);
+        if (result == null) result = caseStatement(booleanStatement);
+        if (result == null) result = caseExpression(booleanStatement);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case RequirementsModelPackage.AND:
+      {
+        And and = (And)theEObject;
+        T result = caseAnd(and);
+        if (result == null) result = caseCompoundExpression(and);
+        if (result == null) result = caseExpression(and);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case RequirementsModelPackage.OR:
+      {
+        Or or = (Or)theEObject;
+        T result = caseOr(or);
+        if (result == null) result = caseCompoundExpression(or);
+        if (result == null) result = caseExpression(or);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case RequirementsModelPackage.SHALL:
+      {
+        Shall shall = (Shall)theEObject;
+        T result = caseShall(shall);
+        if (result == null) result = caseExpression(shall);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case RequirementsModelPackage.NEGATION:
+      {
+        Negation negation = (Negation)theEObject;
+        T result = caseNegation(negation);
+        if (result == null) result = caseExpression(negation);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case RequirementsModelPackage.EVENTUALLY:
+      {
+        Eventually eventually = (Eventually)theEObject;
+        T result = caseEventually(eventually);
+        if (result == null) result = caseExpression(eventually);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case RequirementsModelPackage.THIS_UNTIL:
+      {
+        ThisUntil thisUntil = (ThisUntil)theEObject;
+        T result = caseThisUntil(thisUntil);
+        if (result == null) result = caseCompoundExpression(thisUntil);
+        if (result == null) result = caseExpression(thisUntil);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case RequirementsModelPackage.BEFORE:
+      {
+        Before before = (Before)theEObject;
+        T result = caseBefore(before);
+        if (result == null) result = caseExpression(before);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case RequirementsModelPackage.AFTER:
+      {
+        After after = (After)theEObject;
+        T result = caseAfter(after);
+        if (result == null) result = caseExpression(after);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case RequirementsModelPackage.IN:
+      {
+        In in = (In)theEObject;
+        T result = caseIn(in);
+        if (result == null) result = caseExpression(in);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case RequirementsModelPackage.AS_AS_POSSIBLE:
+      {
+        AsAsPossible asAsPossible = (AsAsPossible)theEObject;
+        T result = caseAsAsPossible(asAsPossible);
+        if (result == null) result = caseExpression(asAsPossible);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case RequirementsModelPackage.COMPOUND_EXPRESSION:
+      {
+        CompoundExpression compoundExpression = (CompoundExpression)theEObject;
+        T result = caseCompoundExpression(compoundExpression);
+        if (result == null) result = caseExpression(compoundExpression);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -106,7 +207,14 @@ public class RequirementsModelSwitch<T> extends Switch<T>
       {
         Statement statement = (Statement)theEObject;
         T result = caseStatement(statement);
-        if (result == null) result = caseAtomicStatement(statement);
+        if (result == null) result = caseExpression(statement);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case RequirementsModelPackage.EXPRESSION:
+      {
+        Expression expression = (Expression)theEObject;
+        T result = caseExpression(expression);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -114,8 +222,7 @@ public class RequirementsModelSwitch<T> extends Switch<T>
       {
         AsCloseFreq asCloseFreq = (AsCloseFreq)theEObject;
         T result = caseAsCloseFreq(asCloseFreq);
-        if (result == null) result = caseStatement(asCloseFreq);
-        if (result == null) result = caseAtomicStatement(asCloseFreq);
+        if (result == null) result = caseExpression(asCloseFreq);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -123,8 +230,7 @@ public class RequirementsModelSwitch<T> extends Switch<T>
       {
         AsCloseLit asCloseLit = (AsCloseLit)theEObject;
         T result = caseAsCloseLit(asCloseLit);
-        if (result == null) result = caseStatement(asCloseLit);
-        if (result == null) result = caseAtomicStatement(asCloseLit);
+        if (result == null) result = caseExpression(asCloseLit);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -132,22 +238,23 @@ public class RequirementsModelSwitch<T> extends Switch<T>
       {
         Quantifiable quantifiable = (Quantifiable)theEObject;
         T result = caseQuantifiable(quantifiable);
+        if (result == null) result = caseStatement(quantifiable);
+        if (result == null) result = caseExpression(quantifiable);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case RequirementsModelPackage.MAY_STATEMENT:
+      case RequirementsModelPackage.MAY:
       {
-        MayStatement mayStatement = (MayStatement)theEObject;
-        T result = caseMayStatement(mayStatement);
-        if (result == null) result = caseStatement(mayStatement);
-        if (result == null) result = caseAtomicStatement(mayStatement);
+        May may = (May)theEObject;
+        T result = caseMay(may);
+        if (result == null) result = caseExpression(may);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case RequirementsModelPackage.ATOMIC_STATEMENT:
+      case RequirementsModelPackage.MAY_ALTERNATIVE:
       {
-        AtomicStatement atomicStatement = (AtomicStatement)theEObject;
-        T result = caseAtomicStatement(atomicStatement);
+        MayAlternative mayAlternative = (MayAlternative)theEObject;
+        T result = caseMayAlternative(mayAlternative);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -234,6 +341,198 @@ public class RequirementsModelSwitch<T> extends Switch<T>
   }
 
   /**
+   * Returns the result of interpreting the object as an instance of '<em>Boolean Statement</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Boolean Statement</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseBooleanStatement(BooleanStatement object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>And</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>And</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseAnd(And object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Or</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Or</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseOr(Or object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Shall</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Shall</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseShall(Shall object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Negation</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Negation</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseNegation(Negation object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Eventually</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Eventually</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseEventually(Eventually object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>This Until</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>This Until</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseThisUntil(ThisUntil object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Before</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Before</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseBefore(Before object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>After</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>After</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseAfter(After object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>In</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>In</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseIn(In object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>As As Possible</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>As As Possible</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseAsAsPossible(AsAsPossible object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Compound Expression</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Compound Expression</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseCompoundExpression(CompoundExpression object)
+  {
+    return null;
+  }
+
+  /**
    * Returns the result of interpreting the object as an instance of '<em>Statement</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -245,6 +544,22 @@ public class RequirementsModelSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseStatement(Statement object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Expression</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Expression</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseExpression(Expression object)
   {
     return null;
   }
@@ -298,33 +613,33 @@ public class RequirementsModelSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>May Statement</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>May</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>May Statement</em>'.
+   * @return the result of interpreting the object as an instance of '<em>May</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseMayStatement(MayStatement object)
+  public T caseMay(May object)
   {
     return null;
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Atomic Statement</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>May Alternative</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Atomic Statement</em>'.
+   * @return the result of interpreting the object as an instance of '<em>May Alternative</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseAtomicStatement(AtomicStatement object)
+  public T caseMayAlternative(MayAlternative object)
   {
     return null;
   }

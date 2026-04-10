@@ -70,12 +70,25 @@ public class RequirementsModelFactoryImpl extends EFactoryImpl implements Requir
       case RequirementsModelPackage.REQUIREMENT: return createRequirement();
       case RequirementsModelPackage.CONDITION: return createCondition();
       case RequirementsModelPackage.PROPOSITION: return createProposition();
+      case RequirementsModelPackage.BOOLEAN_STATEMENT: return createBooleanStatement();
+      case RequirementsModelPackage.AND: return createAnd();
+      case RequirementsModelPackage.OR: return createOr();
+      case RequirementsModelPackage.SHALL: return createShall();
+      case RequirementsModelPackage.NEGATION: return createNegation();
+      case RequirementsModelPackage.EVENTUALLY: return createEventually();
+      case RequirementsModelPackage.THIS_UNTIL: return createThisUntil();
+      case RequirementsModelPackage.BEFORE: return createBefore();
+      case RequirementsModelPackage.AFTER: return createAfter();
+      case RequirementsModelPackage.IN: return createIn();
+      case RequirementsModelPackage.AS_AS_POSSIBLE: return createAsAsPossible();
+      case RequirementsModelPackage.COMPOUND_EXPRESSION: return createCompoundExpression();
       case RequirementsModelPackage.STATEMENT: return createStatement();
+      case RequirementsModelPackage.EXPRESSION: return createExpression();
       case RequirementsModelPackage.AS_CLOSE_FREQ: return createAsCloseFreq();
       case RequirementsModelPackage.AS_CLOSE_LIT: return createAsCloseLit();
       case RequirementsModelPackage.QUANTIFIABLE: return createQuantifiable();
-      case RequirementsModelPackage.MAY_STATEMENT: return createMayStatement();
-      case RequirementsModelPackage.ATOMIC_STATEMENT: return createAtomicStatement();
+      case RequirementsModelPackage.MAY: return createMay();
+      case RequirementsModelPackage.MAY_ALTERNATIVE: return createMayAlternative();
       case RequirementsModelPackage.TIME_INTERVAL: return createTimeInterval();
       case RequirementsModelPackage.TIME: return createTime();
       default:
@@ -97,6 +110,8 @@ public class RequirementsModelFactoryImpl extends EFactoryImpl implements Requir
         return createQualityAttributeFromString(eDataType, initialValue);
       case RequirementsModelPackage.LOGICAL_OPERATOR:
         return createLogicalOperatorFromString(eDataType, initialValue);
+      case RequirementsModelPackage.TIMELINESS:
+        return createTimelinessFromString(eDataType, initialValue);
       default:
         throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
     }
@@ -116,6 +131,8 @@ public class RequirementsModelFactoryImpl extends EFactoryImpl implements Requir
         return convertQualityAttributeToString(eDataType, instanceValue);
       case RequirementsModelPackage.LOGICAL_OPERATOR:
         return convertLogicalOperatorToString(eDataType, instanceValue);
+      case RequirementsModelPackage.TIMELINESS:
+        return convertTimelinessToString(eDataType, instanceValue);
       default:
         throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
     }
@@ -175,10 +192,166 @@ public class RequirementsModelFactoryImpl extends EFactoryImpl implements Requir
    * @generated
    */
   @Override
+  public BooleanStatement createBooleanStatement()
+  {
+    BooleanStatementImpl booleanStatement = new BooleanStatementImpl();
+    return booleanStatement;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public And createAnd()
+  {
+    AndImpl and = new AndImpl();
+    return and;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Or createOr()
+  {
+    OrImpl or = new OrImpl();
+    return or;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Shall createShall()
+  {
+    ShallImpl shall = new ShallImpl();
+    return shall;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Negation createNegation()
+  {
+    NegationImpl negation = new NegationImpl();
+    return negation;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Eventually createEventually()
+  {
+    EventuallyImpl eventually = new EventuallyImpl();
+    return eventually;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public ThisUntil createThisUntil()
+  {
+    ThisUntilImpl thisUntil = new ThisUntilImpl();
+    return thisUntil;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Before createBefore()
+  {
+    BeforeImpl before = new BeforeImpl();
+    return before;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public After createAfter()
+  {
+    AfterImpl after = new AfterImpl();
+    return after;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public In createIn()
+  {
+    InImpl in = new InImpl();
+    return in;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public AsAsPossible createAsAsPossible()
+  {
+    AsAsPossibleImpl asAsPossible = new AsAsPossibleImpl();
+    return asAsPossible;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public CompoundExpression createCompoundExpression()
+  {
+    CompoundExpressionImpl compoundExpression = new CompoundExpressionImpl();
+    return compoundExpression;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public Statement createStatement()
   {
     StatementImpl statement = new StatementImpl();
     return statement;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Expression createExpression()
+  {
+    ExpressionImpl expression = new ExpressionImpl();
+    return expression;
   }
 
   /**
@@ -223,10 +396,10 @@ public class RequirementsModelFactoryImpl extends EFactoryImpl implements Requir
    * @generated
    */
   @Override
-  public MayStatement createMayStatement()
+  public May createMay()
   {
-    MayStatementImpl mayStatement = new MayStatementImpl();
-    return mayStatement;
+    MayImpl may = new MayImpl();
+    return may;
   }
 
   /**
@@ -235,10 +408,10 @@ public class RequirementsModelFactoryImpl extends EFactoryImpl implements Requir
    * @generated
    */
   @Override
-  public AtomicStatement createAtomicStatement()
+  public MayAlternative createMayAlternative()
   {
-    AtomicStatementImpl atomicStatement = new AtomicStatementImpl();
-    return atomicStatement;
+    MayAlternativeImpl mayAlternative = new MayAlternativeImpl();
+    return mayAlternative;
   }
 
   /**
@@ -305,6 +478,28 @@ public class RequirementsModelFactoryImpl extends EFactoryImpl implements Requir
    * @generated
    */
   public String convertLogicalOperatorToString(EDataType eDataType, Object instanceValue)
+  {
+    return instanceValue == null ? null : instanceValue.toString();
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Timeliness createTimelinessFromString(EDataType eDataType, String initialValue)
+  {
+    Timeliness result = Timeliness.get(initialValue);
+    if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+    return result;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public String convertTimelinessToString(EDataType eDataType, Object instanceValue)
   {
     return instanceValue == null ? null : instanceValue.toString();
   }

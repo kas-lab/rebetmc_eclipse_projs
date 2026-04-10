@@ -25,6 +25,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * <ul>
  *   <li>{@link eu.coresense.adaptation.tactics.impl.FeatureConditionImpl#getNot <em>Not</em>}</li>
  *   <li>{@link eu.coresense.adaptation.tactics.impl.FeatureConditionImpl#getVariant <em>Variant</em>}</li>
+ *   <li>{@link eu.coresense.adaptation.tactics.impl.FeatureConditionImpl#getSecondTerm <em>Second Term</em>}</li>
  * </ul>
  *
  * @generated
@@ -60,6 +61,16 @@ public class FeatureConditionImpl extends ConditionImpl implements FeatureCondit
    * @ordered
    */
   protected QualifiedFeatureRef variant;
+
+  /**
+   * The cached value of the '{@link #getSecondTerm() <em>Second Term</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getSecondTerm()
+   * @generated
+   * @ordered
+   */
+  protected FeatureCondition secondTerm;
 
   /**
    * <!-- begin-user-doc -->
@@ -163,12 +174,64 @@ public class FeatureConditionImpl extends ConditionImpl implements FeatureCondit
    * @generated
    */
   @Override
+  public FeatureCondition getSecondTerm()
+  {
+    return secondTerm;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetSecondTerm(FeatureCondition newSecondTerm, NotificationChain msgs)
+  {
+    FeatureCondition oldSecondTerm = secondTerm;
+    secondTerm = newSecondTerm;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, TacticsPackage.FEATURE_CONDITION__SECOND_TERM, oldSecondTerm, newSecondTerm);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setSecondTerm(FeatureCondition newSecondTerm)
+  {
+    if (newSecondTerm != secondTerm)
+    {
+      NotificationChain msgs = null;
+      if (secondTerm != null)
+        msgs = ((InternalEObject)secondTerm).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - TacticsPackage.FEATURE_CONDITION__SECOND_TERM, null, msgs);
+      if (newSecondTerm != null)
+        msgs = ((InternalEObject)newSecondTerm).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - TacticsPackage.FEATURE_CONDITION__SECOND_TERM, null, msgs);
+      msgs = basicSetSecondTerm(newSecondTerm, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, TacticsPackage.FEATURE_CONDITION__SECOND_TERM, newSecondTerm, newSecondTerm));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
   {
     switch (featureID)
     {
       case TacticsPackage.FEATURE_CONDITION__VARIANT:
         return basicSetVariant(null, msgs);
+      case TacticsPackage.FEATURE_CONDITION__SECOND_TERM:
+        return basicSetSecondTerm(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -187,6 +250,8 @@ public class FeatureConditionImpl extends ConditionImpl implements FeatureCondit
         return getNot();
       case TacticsPackage.FEATURE_CONDITION__VARIANT:
         return getVariant();
+      case TacticsPackage.FEATURE_CONDITION__SECOND_TERM:
+        return getSecondTerm();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -206,6 +271,9 @@ public class FeatureConditionImpl extends ConditionImpl implements FeatureCondit
         return;
       case TacticsPackage.FEATURE_CONDITION__VARIANT:
         setVariant((QualifiedFeatureRef)newValue);
+        return;
+      case TacticsPackage.FEATURE_CONDITION__SECOND_TERM:
+        setSecondTerm((FeatureCondition)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -227,6 +295,9 @@ public class FeatureConditionImpl extends ConditionImpl implements FeatureCondit
       case TacticsPackage.FEATURE_CONDITION__VARIANT:
         setVariant((QualifiedFeatureRef)null);
         return;
+      case TacticsPackage.FEATURE_CONDITION__SECOND_TERM:
+        setSecondTerm((FeatureCondition)null);
+        return;
     }
     super.eUnset(featureID);
   }
@@ -245,6 +316,8 @@ public class FeatureConditionImpl extends ConditionImpl implements FeatureCondit
         return NOT_EDEFAULT == null ? not != null : !NOT_EDEFAULT.equals(not);
       case TacticsPackage.FEATURE_CONDITION__VARIANT:
         return variant != null;
+      case TacticsPackage.FEATURE_CONDITION__SECOND_TERM:
+        return secondTerm != null;
     }
     return super.eIsSet(featureID);
   }

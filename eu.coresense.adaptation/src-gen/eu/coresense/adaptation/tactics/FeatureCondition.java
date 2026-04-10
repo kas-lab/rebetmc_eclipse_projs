@@ -15,6 +15,7 @@ package eu.coresense.adaptation.tactics;
  * <ul>
  *   <li>{@link eu.coresense.adaptation.tactics.FeatureCondition#getNot <em>Not</em>}</li>
  *   <li>{@link eu.coresense.adaptation.tactics.FeatureCondition#getVariant <em>Variant</em>}</li>
+ *   <li>{@link eu.coresense.adaptation.tactics.FeatureCondition#getSecondTerm <em>Second Term</em>}</li>
  * </ul>
  *
  * @see eu.coresense.adaptation.tactics.TacticsPackage#getFeatureCondition()
@@ -66,5 +67,27 @@ public interface FeatureCondition extends Condition
    * @generated
    */
   void setVariant(QualifiedFeatureRef value);
+
+  /**
+   * Returns the value of the '<em><b>Second Term</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Second Term</em>' containment reference.
+   * @see #setSecondTerm(FeatureCondition)
+   * @see eu.coresense.adaptation.tactics.TacticsPackage#getFeatureCondition_SecondTerm()
+   * @model containment="true"
+   * @generated
+   */
+  FeatureCondition getSecondTerm();
+
+  /**
+   * Sets the value of the '{@link eu.coresense.adaptation.tactics.FeatureCondition#getSecondTerm <em>Second Term</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Second Term</em>' containment reference.
+   * @see #getSecondTerm()
+   * @generated
+   */
+  void setSecondTerm(FeatureCondition value);
 
 } // FeatureCondition

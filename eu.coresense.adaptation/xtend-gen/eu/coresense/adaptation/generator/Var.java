@@ -6,12 +6,16 @@ package eu.coresense.adaptation.generator;
 import eu.coresense.adaptation.tactics.Condition;
 import eu.coresense.adaptation.tactics.FeatureCondition;
 import eu.coresense.adaptation.tactics.MeasurementCondition;
+import eu.coresense.adaptation.tactics.MeasurementMeasurementCondition;
+import eu.coresense.adaptation.tactics.MeasurementThresholdCondition;
 import eu.coresense.common.BooleanLiteral;
 import eu.coresense.common.DecimalLiteral;
 import eu.coresense.common.IntLiteral;
 import eu.coresense.common.Literal;
 import eu.coresense.common.MathOperator;
 import eu.coresense.common.StringLiteral;
+import eu.coresense.common.Utilities;
+import java.util.Objects;
 
 @SuppressWarnings("all")
 public class Var extends Expr {
@@ -25,22 +29,47 @@ public class Var extends Expr {
   public String toString() {
     String _xifexpression = null;
     if ((this.condition instanceof MeasurementCondition)) {
-      String _name = ((MeasurementCondition)this.condition).getMeasurement().getName();
-      MathOperator _operator = ((MeasurementCondition)this.condition).getOperator();
-      String _plus = (_name + _operator);
-      Object _valueOfLiteral = this.valueOfLiteral(((MeasurementCondition)this.condition).getValue());
-      _xifexpression = (_plus + _valueOfLiteral);
-    } else {
       String _xifexpression_1 = null;
-      if ((this.condition instanceof FeatureCondition)) {
-        String _name_1 = ((FeatureCondition)this.condition).getVariant().getModel().getName();
-        String _plus_1 = ("isSelected(" + _name_1);
-        String _plus_2 = (_plus_1 + ".");
-        String _name_2 = ((FeatureCondition)this.condition).getVariant().getFeature().getName();
-        String _plus_3 = (_plus_2 + _name_2);
-        _xifexpression_1 = (_plus_3 + ")");
+      if ((this.condition instanceof MeasurementThresholdCondition)) {
+        String _name = ((MeasurementThresholdCondition)this.condition).getMeasurement().getName();
+        MathOperator _operator = ((MeasurementThresholdCondition)this.condition).getOperator();
+        String _plus = (_name + _operator);
+        Object _valueOfLiteral = Utilities.valueOfLiteral(((MeasurementThresholdCondition)this.condition).getThresholdValue());
+        _xifexpression_1 = (_plus + _valueOfLiteral);
+      } else {
+        String _xifexpression_2 = null;
+        if ((this.condition instanceof MeasurementMeasurementCondition)) {
+          String _name_1 = ((MeasurementMeasurementCondition)this.condition).getMeasurement().getName();
+          MathOperator _operator_1 = ((MeasurementMeasurementCondition)this.condition).getOperator();
+          String _plus_1 = (_name_1 + _operator_1);
+          String _name_2 = ((MeasurementMeasurementCondition)this.condition).getOtherMeasurement().getName();
+          _xifexpression_2 = (_plus_1 + _name_2);
+        }
+        _xifexpression_1 = _xifexpression_2;
       }
       _xifexpression = _xifexpression_1;
+    } else {
+      String _xifexpression_3 = null;
+      if ((this.condition instanceof FeatureCondition)) {
+        String _xifexpression_4 = null;
+        if (((((FeatureCondition)this.condition).getNot() == null) || Objects.equals(((FeatureCondition)this.condition).getNot(), ""))) {
+          String _name_3 = ((FeatureCondition)this.condition).getVariant().getModel().getName();
+          String _plus_2 = ("isSelected(" + _name_3);
+          String _plus_3 = (_plus_2 + ".");
+          String _name_4 = ((FeatureCondition)this.condition).getVariant().getFeature().getName();
+          String _plus_4 = (_plus_3 + _name_4);
+          _xifexpression_4 = (_plus_4 + ")");
+        } else {
+          String _name_5 = ((FeatureCondition)this.condition).getVariant().getModel().getName();
+          String _plus_5 = ("!isSelected(" + _name_5);
+          String _plus_6 = (_plus_5 + ".");
+          String _name_6 = ((FeatureCondition)this.condition).getVariant().getFeature().getName();
+          String _plus_7 = (_plus_6 + _name_6);
+          _xifexpression_4 = (_plus_7 + ")");
+        }
+        _xifexpression_3 = _xifexpression_4;
+      }
+      _xifexpression = _xifexpression_3;
     }
     return _xifexpression;
   }

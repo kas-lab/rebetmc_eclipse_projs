@@ -28,21 +28,22 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="do" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DataSource">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="ref" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EObject"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ref" eType="#//QualifiedRef"
         containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="kwargs" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="QualifiedPublisherRef">
+  <eClassifiers xsi:type="ecore:EClass" name="QualifiedRef">
     <eStructuralFeatures xsi:type="ecore:EReference" name="node" eType="ecore:EClass platform:/resource/de.fraunhofer.ipa.ros/model/ros.ecore#//Node"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="QualifiedPublisherRef" eSuperTypes="#//QualifiedRef">
     <eStructuralFeatures xsi:type="ecore:EReference" name="publisher" eType="ecore:EClass platform:/resource/de.fraunhofer.ipa.ros/model/ros.ecore#//Publisher"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="QualifiedServiceServerRef">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="node" eType="ecore:EClass platform:/resource/de.fraunhofer.ipa.ros/model/ros.ecore#//Node"/>
+  <eClassifiers xsi:type="ecore:EClass" name="QualifiedServiceServerRef" eSuperTypes="#//QualifiedRef">
     <eStructuralFeatures xsi:type="ecore:EReference" name="serviceServer" eType="ecore:EClass platform:/resource/de.fraunhofer.ipa.ros/model/ros.ecore#//ServiceServer"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="kwargs" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="QualifiedActionServerRef">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="node" eType="ecore:EClass platform:/resource/de.fraunhofer.ipa.ros/model/ros.ecore#//Node"/>
+  <eClassifiers xsi:type="ecore:EClass" name="QualifiedActionServerRef" eSuperTypes="#//QualifiedRef">
     <eStructuralFeatures xsi:type="ecore:EReference" name="actionServer" eType="ecore:EClass platform:/resource/de.fraunhofer.ipa.ros/model/ros.ecore#//ActionServer"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="kwargs" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Import">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="importURI" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>

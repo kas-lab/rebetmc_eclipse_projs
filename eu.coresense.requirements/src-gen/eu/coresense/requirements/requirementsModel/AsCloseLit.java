@@ -14,7 +14,7 @@ import eu.coresense.common.Literal;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link eu.coresense.requirements.requirementsModel.AsCloseLit#getQ <em>Q</em>}</li>
+ *   <li>{@link eu.coresense.requirements.requirementsModel.AsCloseLit#getQuantity <em>Quantity</em>}</li>
  *   <li>{@link eu.coresense.requirements.requirementsModel.AsCloseLit#getComparator <em>Comparator</em>}</li>
  * </ul>
  *
@@ -22,29 +22,29 @@ import eu.coresense.common.Literal;
  * @model
  * @generated
  */
-public interface AsCloseLit extends Statement
+public interface AsCloseLit extends Expression
 {
   /**
-   * Returns the value of the '<em><b>Q</b></em>' containment reference.
+   * Returns the value of the '<em><b>Quantity</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Q</em>' containment reference.
-   * @see #setQ(Literal)
-   * @see eu.coresense.requirements.requirementsModel.RequirementsModelPackage#getAsCloseLit_Q()
+   * @return the value of the '<em>Quantity</em>' containment reference.
+   * @see #setQuantity(Literal)
+   * @see eu.coresense.requirements.requirementsModel.RequirementsModelPackage#getAsCloseLit_Quantity()
    * @model containment="true"
    * @generated
    */
-  Literal getQ();
+  Literal getQuantity();
 
   /**
-   * Sets the value of the '{@link eu.coresense.requirements.requirementsModel.AsCloseLit#getQ <em>Q</em>}' containment reference.
+   * Sets the value of the '{@link eu.coresense.requirements.requirementsModel.AsCloseLit#getQuantity <em>Quantity</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Q</em>' containment reference.
-   * @see #getQ()
+   * @param value the new value of the '<em>Quantity</em>' containment reference.
+   * @see #getQuantity()
    * @generated
    */
-  void setQ(Literal value);
+  void setQuantity(Literal value);
 
   /**
    * Returns the value of the '<em><b>Comparator</b></em>' containment reference.

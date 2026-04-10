@@ -60,6 +60,114 @@ public interface RequirementsModelFactory extends EFactory
   Proposition createProposition();
 
   /**
+   * Returns a new object of class '<em>Boolean Statement</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Boolean Statement</em>'.
+   * @generated
+   */
+  BooleanStatement createBooleanStatement();
+
+  /**
+   * Returns a new object of class '<em>And</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>And</em>'.
+   * @generated
+   */
+  And createAnd();
+
+  /**
+   * Returns a new object of class '<em>Or</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Or</em>'.
+   * @generated
+   */
+  Or createOr();
+
+  /**
+   * Returns a new object of class '<em>Shall</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Shall</em>'.
+   * @generated
+   */
+  Shall createShall();
+
+  /**
+   * Returns a new object of class '<em>Negation</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Negation</em>'.
+   * @generated
+   */
+  Negation createNegation();
+
+  /**
+   * Returns a new object of class '<em>Eventually</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Eventually</em>'.
+   * @generated
+   */
+  Eventually createEventually();
+
+  /**
+   * Returns a new object of class '<em>This Until</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>This Until</em>'.
+   * @generated
+   */
+  ThisUntil createThisUntil();
+
+  /**
+   * Returns a new object of class '<em>Before</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Before</em>'.
+   * @generated
+   */
+  Before createBefore();
+
+  /**
+   * Returns a new object of class '<em>After</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>After</em>'.
+   * @generated
+   */
+  After createAfter();
+
+  /**
+   * Returns a new object of class '<em>In</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>In</em>'.
+   * @generated
+   */
+  In createIn();
+
+  /**
+   * Returns a new object of class '<em>As As Possible</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>As As Possible</em>'.
+   * @generated
+   */
+  AsAsPossible createAsAsPossible();
+
+  /**
+   * Returns a new object of class '<em>Compound Expression</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Compound Expression</em>'.
+   * @generated
+   */
+  CompoundExpression createCompoundExpression();
+
+  /**
    * Returns a new object of class '<em>Statement</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -67,6 +175,15 @@ public interface RequirementsModelFactory extends EFactory
    * @generated
    */
   Statement createStatement();
+
+  /**
+   * Returns a new object of class '<em>Expression</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Expression</em>'.
+   * @generated
+   */
+  Expression createExpression();
 
   /**
    * Returns a new object of class '<em>As Close Freq</em>'.
@@ -96,22 +213,22 @@ public interface RequirementsModelFactory extends EFactory
   Quantifiable createQuantifiable();
 
   /**
-   * Returns a new object of class '<em>May Statement</em>'.
+   * Returns a new object of class '<em>May</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>May Statement</em>'.
+   * @return a new object of class '<em>May</em>'.
    * @generated
    */
-  MayStatement createMayStatement();
+  May createMay();
 
   /**
-   * Returns a new object of class '<em>Atomic Statement</em>'.
+   * Returns a new object of class '<em>May Alternative</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Atomic Statement</em>'.
+   * @return a new object of class '<em>May Alternative</em>'.
    * @generated
    */
-  AtomicStatement createAtomicStatement();
+  MayAlternative createMayAlternative();
 
   /**
    * Returns a new object of class '<em>Time Interval</em>'.

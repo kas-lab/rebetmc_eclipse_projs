@@ -9,16 +9,27 @@ import eu.coresense.common.CommonPackage;
 import eu.coresense.common.DecimalLiteral;
 import eu.coresense.common.IntLiteral;
 import eu.coresense.common.StringLiteral;
+import eu.coresense.requirements.requirementsModel.After;
+import eu.coresense.requirements.requirementsModel.And;
+import eu.coresense.requirements.requirementsModel.AsAsPossible;
 import eu.coresense.requirements.requirementsModel.AsCloseFreq;
 import eu.coresense.requirements.requirementsModel.AsCloseLit;
-import eu.coresense.requirements.requirementsModel.AtomicStatement;
+import eu.coresense.requirements.requirementsModel.Before;
+import eu.coresense.requirements.requirementsModel.BooleanStatement;
 import eu.coresense.requirements.requirementsModel.Condition;
-import eu.coresense.requirements.requirementsModel.MayStatement;
+import eu.coresense.requirements.requirementsModel.Eventually;
+import eu.coresense.requirements.requirementsModel.In;
+import eu.coresense.requirements.requirementsModel.May;
+import eu.coresense.requirements.requirementsModel.MayAlternative;
+import eu.coresense.requirements.requirementsModel.Negation;
+import eu.coresense.requirements.requirementsModel.Or;
+import eu.coresense.requirements.requirementsModel.Proposition;
 import eu.coresense.requirements.requirementsModel.Quantifiable;
 import eu.coresense.requirements.requirementsModel.Requirement;
 import eu.coresense.requirements.requirementsModel.RequirementsModel;
 import eu.coresense.requirements.requirementsModel.RequirementsModelPackage;
-import eu.coresense.requirements.requirementsModel.Statement;
+import eu.coresense.requirements.requirementsModel.Shall;
+import eu.coresense.requirements.requirementsModel.ThisUntil;
 import eu.coresense.requirements.requirementsModel.Time;
 import eu.coresense.requirements.requirementsModel.TimeInterval;
 import eu.coresense.requirements.services.RequirementsModelGrammarAccess;
@@ -62,20 +73,50 @@ public class RequirementsModelSemanticSequencer extends AbstractDelegatingSemant
 			}
 		else if (epackage == RequirementsModelPackage.eINSTANCE)
 			switch (semanticObject.eClass().getClassifierID()) {
+			case RequirementsModelPackage.AFTER:
+				sequence_After(context, (After) semanticObject); 
+				return; 
+			case RequirementsModelPackage.AND:
+				sequence_And(context, (And) semanticObject); 
+				return; 
+			case RequirementsModelPackage.AS_AS_POSSIBLE:
+				sequence_AsAsPossible(context, (AsAsPossible) semanticObject); 
+				return; 
 			case RequirementsModelPackage.AS_CLOSE_FREQ:
 				sequence_AsCloseFreq(context, (AsCloseFreq) semanticObject); 
 				return; 
 			case RequirementsModelPackage.AS_CLOSE_LIT:
 				sequence_AsCloseLit(context, (AsCloseLit) semanticObject); 
 				return; 
-			case RequirementsModelPackage.ATOMIC_STATEMENT:
-				sequence_AtomicStatement(context, (AtomicStatement) semanticObject); 
+			case RequirementsModelPackage.BEFORE:
+				sequence_Before(context, (Before) semanticObject); 
+				return; 
+			case RequirementsModelPackage.BOOLEAN_STATEMENT:
+				sequence_BooleanStatement(context, (BooleanStatement) semanticObject); 
 				return; 
 			case RequirementsModelPackage.CONDITION:
 				sequence_Condition(context, (Condition) semanticObject); 
 				return; 
-			case RequirementsModelPackage.MAY_STATEMENT:
-				sequence_MayStatement(context, (MayStatement) semanticObject); 
+			case RequirementsModelPackage.EVENTUALLY:
+				sequence_Eventually(context, (Eventually) semanticObject); 
+				return; 
+			case RequirementsModelPackage.IN:
+				sequence_In(context, (In) semanticObject); 
+				return; 
+			case RequirementsModelPackage.MAY:
+				sequence_May(context, (May) semanticObject); 
+				return; 
+			case RequirementsModelPackage.MAY_ALTERNATIVE:
+				sequence_MayAlternative(context, (MayAlternative) semanticObject); 
+				return; 
+			case RequirementsModelPackage.NEGATION:
+				sequence_Negation(context, (Negation) semanticObject); 
+				return; 
+			case RequirementsModelPackage.OR:
+				sequence_Or(context, (Or) semanticObject); 
+				return; 
+			case RequirementsModelPackage.PROPOSITION:
+				sequence_Proposition(context, (Proposition) semanticObject); 
 				return; 
 			case RequirementsModelPackage.QUANTIFIABLE:
 				sequence_Quantifiable(context, (Quantifiable) semanticObject); 
@@ -86,16 +127,12 @@ public class RequirementsModelSemanticSequencer extends AbstractDelegatingSemant
 			case RequirementsModelPackage.REQUIREMENTS_MODEL:
 				sequence_RequirementsModel(context, (RequirementsModel) semanticObject); 
 				return; 
-			case RequirementsModelPackage.STATEMENT:
-				if (rule == grammarAccess.getAtomicStatementRule()) {
-					sequence_AtomicStatement(context, (Statement) semanticObject); 
-					return; 
-				}
-				else if (rule == grammarAccess.getStatementRule()) {
-					sequence_Statement(context, (Statement) semanticObject); 
-					return; 
-				}
-				else break;
+			case RequirementsModelPackage.SHALL:
+				sequence_Shall(context, (Shall) semanticObject); 
+				return; 
+			case RequirementsModelPackage.THIS_UNTIL:
+				sequence_ThisUntil(context, (ThisUntil) semanticObject); 
+				return; 
 			case RequirementsModelPackage.TIME:
 				sequence_Time(context, (Time) semanticObject); 
 				return; 
@@ -110,23 +147,96 @@ public class RequirementsModelSemanticSequencer extends AbstractDelegatingSemant
 	/**
 	 * <pre>
 	 * Contexts:
-	 *     Statement returns AsCloseFreq
+	 *     After returns After
+	 *     Expression returns After
+	 *
+	 * Constraint:
+	 *     (event=Event expression=Expression)
+	 * </pre>
+	 */
+	protected void sequence_After(ISerializationContext context, After semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, RequirementsModelPackage.Literals.AFTER__EVENT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, RequirementsModelPackage.Literals.AFTER__EVENT));
+			if (transientValues.isValueTransient(semanticObject, RequirementsModelPackage.Literals.AFTER__EXPRESSION) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, RequirementsModelPackage.Literals.AFTER__EXPRESSION));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getAfterAccess().getEventEventParserRuleCall_1_0(), semanticObject.getEvent());
+		feeder.accept(grammarAccess.getAfterAccess().getExpressionExpressionParserRuleCall_3_0(), semanticObject.getExpression());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
+	 *     And returns And
+	 *     CompoundExpression returns And
+	 *     Expression returns And
+	 *
+	 * Constraint:
+	 *     (leftExpression=Expression rightExpression=Expression)
+	 * </pre>
+	 */
+	protected void sequence_And(ISerializationContext context, And semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, RequirementsModelPackage.Literals.COMPOUND_EXPRESSION__LEFT_EXPRESSION) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, RequirementsModelPackage.Literals.COMPOUND_EXPRESSION__LEFT_EXPRESSION));
+			if (transientValues.isValueTransient(semanticObject, RequirementsModelPackage.Literals.COMPOUND_EXPRESSION__RIGHT_EXPRESSION) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, RequirementsModelPackage.Literals.COMPOUND_EXPRESSION__RIGHT_EXPRESSION));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getAndAccess().getLeftExpressionExpressionParserRuleCall_2_0(), semanticObject.getLeftExpression());
+		feeder.accept(grammarAccess.getAndAccess().getRightExpressionExpressionParserRuleCall_4_0(), semanticObject.getRightExpression());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
+	 *     AsAsPossible returns AsAsPossible
+	 *     Expression returns AsAsPossible
+	 *
+	 * Constraint:
+	 *     (timeFrequency=Timeliness quantity=Quantifiable)
+	 * </pre>
+	 */
+	protected void sequence_AsAsPossible(ISerializationContext context, AsAsPossible semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, RequirementsModelPackage.Literals.AS_AS_POSSIBLE__TIME_FREQUENCY) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, RequirementsModelPackage.Literals.AS_AS_POSSIBLE__TIME_FREQUENCY));
+			if (transientValues.isValueTransient(semanticObject, RequirementsModelPackage.Literals.AS_AS_POSSIBLE__QUANTITY) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, RequirementsModelPackage.Literals.AS_AS_POSSIBLE__QUANTITY));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getAsAsPossibleAccess().getTimeFrequencyTimelinessEnumRuleCall_1_0(), semanticObject.getTimeFrequency());
+		feeder.accept(grammarAccess.getAsAsPossibleAccess().getQuantityQuantifiableParserRuleCall_5_0(), semanticObject.getQuantity());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
+	 *     Expression returns AsCloseFreq
 	 *     AsCloseFreq returns AsCloseFreq
 	 *
 	 * Constraint:
-	 *     (f=Time statement=Statement)
+	 *     (frequency=Time expression=Expression)
 	 * </pre>
 	 */
 	protected void sequence_AsCloseFreq(ISerializationContext context, AsCloseFreq semanticObject) {
 		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, RequirementsModelPackage.Literals.AS_CLOSE_FREQ__F) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, RequirementsModelPackage.Literals.AS_CLOSE_FREQ__F));
-			if (transientValues.isValueTransient(semanticObject, RequirementsModelPackage.Literals.STATEMENT__STATEMENT) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, RequirementsModelPackage.Literals.STATEMENT__STATEMENT));
+			if (transientValues.isValueTransient(semanticObject, RequirementsModelPackage.Literals.AS_CLOSE_FREQ__FREQUENCY) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, RequirementsModelPackage.Literals.AS_CLOSE_FREQ__FREQUENCY));
+			if (transientValues.isValueTransient(semanticObject, RequirementsModelPackage.Literals.AS_CLOSE_FREQ__EXPRESSION) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, RequirementsModelPackage.Literals.AS_CLOSE_FREQ__EXPRESSION));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getAsCloseFreqAccess().getFTimeParserRuleCall_6_0(), semanticObject.getF());
-		feeder.accept(grammarAccess.getAsCloseFreqAccess().getStatementStatementParserRuleCall_7_0(), semanticObject.getStatement());
+		feeder.accept(grammarAccess.getAsCloseFreqAccess().getFrequencyTimeParserRuleCall_6_0(), semanticObject.getFrequency());
+		feeder.accept(grammarAccess.getAsCloseFreqAccess().getExpressionExpressionParserRuleCall_8_0(), semanticObject.getExpression());
 		feeder.finish();
 	}
 	
@@ -134,23 +244,23 @@ public class RequirementsModelSemanticSequencer extends AbstractDelegatingSemant
 	/**
 	 * <pre>
 	 * Contexts:
-	 *     Statement returns AsCloseLit
+	 *     Expression returns AsCloseLit
 	 *     AsCloseLit returns AsCloseLit
 	 *
 	 * Constraint:
-	 *     (q=Literal comparator=Quantifiable)
+	 *     (quantity=Literal comparator=Quantifiable)
 	 * </pre>
 	 */
 	protected void sequence_AsCloseLit(ISerializationContext context, AsCloseLit semanticObject) {
 		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, RequirementsModelPackage.Literals.AS_CLOSE_LIT__Q) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, RequirementsModelPackage.Literals.AS_CLOSE_LIT__Q));
+			if (transientValues.isValueTransient(semanticObject, RequirementsModelPackage.Literals.AS_CLOSE_LIT__QUANTITY) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, RequirementsModelPackage.Literals.AS_CLOSE_LIT__QUANTITY));
 			if (transientValues.isValueTransient(semanticObject, RequirementsModelPackage.Literals.AS_CLOSE_LIT__COMPARATOR) == ValueTransient.YES)
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, RequirementsModelPackage.Literals.AS_CLOSE_LIT__COMPARATOR));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getAsCloseLitAccess().getQLiteralParserRuleCall_6_0(), semanticObject.getQ());
-		feeder.accept(grammarAccess.getAsCloseLitAccess().getComparatorQuantifiableParserRuleCall_7_0(), semanticObject.getComparator());
+		feeder.accept(grammarAccess.getAsCloseLitAccess().getQuantityLiteralParserRuleCall_6_0(), semanticObject.getQuantity());
+		feeder.accept(grammarAccess.getAsCloseLitAccess().getComparatorQuantifiableParserRuleCall_8_0(), semanticObject.getComparator());
 		feeder.finish();
 	}
 	
@@ -158,34 +268,24 @@ public class RequirementsModelSemanticSequencer extends AbstractDelegatingSemant
 	/**
 	 * <pre>
 	 * Contexts:
-	 *     AtomicStatement returns AtomicStatement
+	 *     Before returns Before
+	 *     Expression returns Before
 	 *
 	 * Constraint:
-	 *     proposition=Proposition
+	 *     (event=Event expression=Expression)
 	 * </pre>
 	 */
-	protected void sequence_AtomicStatement(ISerializationContext context, AtomicStatement semanticObject) {
+	protected void sequence_Before(ISerializationContext context, Before semanticObject) {
 		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, RequirementsModelPackage.Literals.ATOMIC_STATEMENT__PROPOSITION) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, RequirementsModelPackage.Literals.ATOMIC_STATEMENT__PROPOSITION));
+			if (transientValues.isValueTransient(semanticObject, RequirementsModelPackage.Literals.BEFORE__EVENT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, RequirementsModelPackage.Literals.BEFORE__EVENT));
+			if (transientValues.isValueTransient(semanticObject, RequirementsModelPackage.Literals.BEFORE__EXPRESSION) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, RequirementsModelPackage.Literals.BEFORE__EXPRESSION));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getAtomicStatementAccess().getPropositionPropositionParserRuleCall_1_0(), semanticObject.getProposition());
+		feeder.accept(grammarAccess.getBeforeAccess().getEventEventParserRuleCall_1_0(), semanticObject.getEvent());
+		feeder.accept(grammarAccess.getBeforeAccess().getExpressionExpressionParserRuleCall_3_0(), semanticObject.getExpression());
 		feeder.finish();
-	}
-	
-	
-	/**
-	 * <pre>
-	 * Contexts:
-	 *     AtomicStatement returns Statement
-	 *
-	 * Constraint:
-	 *     {Statement}
-	 * </pre>
-	 */
-	protected void sequence_AtomicStatement(ISerializationContext context, Statement semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
@@ -213,8 +313,29 @@ public class RequirementsModelSemanticSequencer extends AbstractDelegatingSemant
 	/**
 	 * <pre>
 	 * Contexts:
+	 *     BooleanStatement returns BooleanStatement
+	 *     Statement returns BooleanStatement
+	 *     Expression returns BooleanStatement
+	 *
+	 * Constraint:
+	 *     booleanValue=BOOLEAN
+	 * </pre>
+	 */
+	protected void sequence_BooleanStatement(ISerializationContext context, BooleanStatement semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, RequirementsModelPackage.Literals.BOOLEAN_STATEMENT__BOOLEAN_VALUE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, RequirementsModelPackage.Literals.BOOLEAN_STATEMENT__BOOLEAN_VALUE));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getBooleanStatementAccess().getBooleanValueBOOLEANTerminalRuleCall_0(), semanticObject.isBooleanValue());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
 	 *     Condition returns Condition
-	 *     Proposition returns Condition
 	 *
 	 * Constraint:
 	 *     (measurement=[ContextVar|ID] operator=MathOperator value=Literal (logicalOp=LogicalOperator secondTerm=Condition)?)
@@ -249,6 +370,51 @@ public class RequirementsModelSemanticSequencer extends AbstractDelegatingSemant
 	/**
 	 * <pre>
 	 * Contexts:
+	 *     Eventually returns Eventually
+	 *     Expression returns Eventually
+	 *
+	 * Constraint:
+	 *     expression=Expression
+	 * </pre>
+	 */
+	protected void sequence_Eventually(ISerializationContext context, Eventually semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, RequirementsModelPackage.Literals.EVENTUALLY__EXPRESSION) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, RequirementsModelPackage.Literals.EVENTUALLY__EXPRESSION));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getEventuallyAccess().getExpressionExpressionParserRuleCall_2_0(), semanticObject.getExpression());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
+	 *     In returns In
+	 *     Expression returns In
+	 *
+	 * Constraint:
+	 *     (deadline=TimeInterval expression=Expression)
+	 * </pre>
+	 */
+	protected void sequence_In(ISerializationContext context, In semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, RequirementsModelPackage.Literals.IN__DEADLINE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, RequirementsModelPackage.Literals.IN__DEADLINE));
+			if (transientValues.isValueTransient(semanticObject, RequirementsModelPackage.Literals.IN__EXPRESSION) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, RequirementsModelPackage.Literals.IN__EXPRESSION));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getInAccess().getDeadlineTimeIntervalParserRuleCall_2_0(), semanticObject.getDeadline());
+		feeder.accept(grammarAccess.getInAccess().getExpressionExpressionParserRuleCall_4_0(), semanticObject.getExpression());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
 	 *     Literal returns IntLiteral
 	 *     IntLiteral returns IntLiteral
 	 *
@@ -270,14 +436,34 @@ public class RequirementsModelSemanticSequencer extends AbstractDelegatingSemant
 	/**
 	 * <pre>
 	 * Contexts:
-	 *     Statement returns MayStatement
-	 *     MayStatement returns MayStatement
+	 *     MayAlternative returns MayAlternative
 	 *
 	 * Constraint:
-	 *     (statements+=AtomicStatement statements+=AtomicStatement+)
+	 *     expression=Expression
 	 * </pre>
 	 */
-	protected void sequence_MayStatement(ISerializationContext context, MayStatement semanticObject) {
+	protected void sequence_MayAlternative(ISerializationContext context, MayAlternative semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, RequirementsModelPackage.Literals.MAY_ALTERNATIVE__EXPRESSION) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, RequirementsModelPackage.Literals.MAY_ALTERNATIVE__EXPRESSION));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getMayAlternativeAccess().getExpressionExpressionParserRuleCall_3_0(), semanticObject.getExpression());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
+	 *     Expression returns May
+	 *     May returns May
+	 *
+	 * Constraint:
+	 *     (expression=Expression alternatives+=MayAlternative+)
+	 * </pre>
+	 */
+	protected void sequence_May(ISerializationContext context, May semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -285,19 +471,89 @@ public class RequirementsModelSemanticSequencer extends AbstractDelegatingSemant
 	/**
 	 * <pre>
 	 * Contexts:
+	 *     Negation returns Negation
+	 *     Expression returns Negation
+	 *
+	 * Constraint:
+	 *     expression=Expression
+	 * </pre>
+	 */
+	protected void sequence_Negation(ISerializationContext context, Negation semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, RequirementsModelPackage.Literals.NEGATION__EXPRESSION) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, RequirementsModelPackage.Literals.NEGATION__EXPRESSION));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getNegationAccess().getExpressionExpressionParserRuleCall_2_0(), semanticObject.getExpression());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
+	 *     Or returns Or
+	 *     CompoundExpression returns Or
+	 *     Expression returns Or
+	 *
+	 * Constraint:
+	 *     (leftExpression=Expression rightExpression=Expression)
+	 * </pre>
+	 */
+	protected void sequence_Or(ISerializationContext context, Or semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, RequirementsModelPackage.Literals.COMPOUND_EXPRESSION__LEFT_EXPRESSION) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, RequirementsModelPackage.Literals.COMPOUND_EXPRESSION__LEFT_EXPRESSION));
+			if (transientValues.isValueTransient(semanticObject, RequirementsModelPackage.Literals.COMPOUND_EXPRESSION__RIGHT_EXPRESSION) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, RequirementsModelPackage.Literals.COMPOUND_EXPRESSION__RIGHT_EXPRESSION));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getOrAccess().getLeftExpressionExpressionParserRuleCall_2_0(), semanticObject.getLeftExpression());
+		feeder.accept(grammarAccess.getOrAccess().getRightExpressionExpressionParserRuleCall_4_0(), semanticObject.getRightExpression());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
+	 *     Proposition returns Proposition
+	 *     Statement returns Proposition
+	 *     Expression returns Proposition
+	 *
+	 * Constraint:
+	 *     condition=Condition
+	 * </pre>
+	 */
+	protected void sequence_Proposition(ISerializationContext context, Proposition semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, RequirementsModelPackage.Literals.PROPOSITION__CONDITION) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, RequirementsModelPackage.Literals.PROPOSITION__CONDITION));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getPropositionAccess().getConditionConditionParserRuleCall_0(), semanticObject.getCondition());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
+	 *     Statement returns Quantifiable
+	 *     Expression returns Quantifiable
 	 *     Quantifiable returns Quantifiable
 	 *
 	 * Constraint:
-	 *     var=[ContextVar|ID]
+	 *     contextVariable=[ContextVar|ID]
 	 * </pre>
 	 */
 	protected void sequence_Quantifiable(ISerializationContext context, Quantifiable semanticObject) {
 		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, RequirementsModelPackage.Literals.QUANTIFIABLE__VAR) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, RequirementsModelPackage.Literals.QUANTIFIABLE__VAR));
+			if (transientValues.isValueTransient(semanticObject, RequirementsModelPackage.Literals.QUANTIFIABLE__CONTEXT_VARIABLE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, RequirementsModelPackage.Literals.QUANTIFIABLE__CONTEXT_VARIABLE));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getQuantifiableAccess().getVarContextVarIDTerminalRuleCall_0_1(), semanticObject.eGet(RequirementsModelPackage.Literals.QUANTIFIABLE__VAR, false));
+		feeder.accept(grammarAccess.getQuantifiableAccess().getContextVariableContextVarIDTerminalRuleCall_1_0_1(), semanticObject.eGet(RequirementsModelPackage.Literals.QUANTIFIABLE__CONTEXT_VARIABLE, false));
 		feeder.finish();
 	}
 	
@@ -308,7 +564,7 @@ public class RequirementsModelSemanticSequencer extends AbstractDelegatingSemant
 	 *     Requirement returns Requirement
 	 *
 	 * Constraint:
-	 *     (name=ID qa=QualityAttribute natural=STRING rule=Statement)
+	 *     (name=ID qa=QualityAttribute naturalLanguageDescription=STRING expression=Expression)
 	 * </pre>
 	 */
 	protected void sequence_Requirement(ISerializationContext context, Requirement semanticObject) {
@@ -317,16 +573,16 @@ public class RequirementsModelSemanticSequencer extends AbstractDelegatingSemant
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, RequirementsModelPackage.Literals.REQUIREMENT__NAME));
 			if (transientValues.isValueTransient(semanticObject, RequirementsModelPackage.Literals.REQUIREMENT__QA) == ValueTransient.YES)
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, RequirementsModelPackage.Literals.REQUIREMENT__QA));
-			if (transientValues.isValueTransient(semanticObject, RequirementsModelPackage.Literals.REQUIREMENT__NATURAL) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, RequirementsModelPackage.Literals.REQUIREMENT__NATURAL));
-			if (transientValues.isValueTransient(semanticObject, RequirementsModelPackage.Literals.REQUIREMENT__RULE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, RequirementsModelPackage.Literals.REQUIREMENT__RULE));
+			if (transientValues.isValueTransient(semanticObject, RequirementsModelPackage.Literals.REQUIREMENT__NATURAL_LANGUAGE_DESCRIPTION) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, RequirementsModelPackage.Literals.REQUIREMENT__NATURAL_LANGUAGE_DESCRIPTION));
+			if (transientValues.isValueTransient(semanticObject, RequirementsModelPackage.Literals.REQUIREMENT__EXPRESSION) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, RequirementsModelPackage.Literals.REQUIREMENT__EXPRESSION));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getRequirementAccess().getNameIDTerminalRuleCall_0_0(), semanticObject.getName());
 		feeder.accept(grammarAccess.getRequirementAccess().getQaQualityAttributeEnumRuleCall_2_0(), semanticObject.getQa());
-		feeder.accept(grammarAccess.getRequirementAccess().getNaturalSTRINGTerminalRuleCall_4_0(), semanticObject.getNatural());
-		feeder.accept(grammarAccess.getRequirementAccess().getRuleStatementParserRuleCall_6_0(), semanticObject.getRule());
+		feeder.accept(grammarAccess.getRequirementAccess().getNaturalLanguageDescriptionSTRINGTerminalRuleCall_4_0(), semanticObject.getNaturalLanguageDescription());
+		feeder.accept(grammarAccess.getRequirementAccess().getExpressionExpressionParserRuleCall_6_0(), semanticObject.getExpression());
 		feeder.finish();
 	}
 	
@@ -348,23 +604,21 @@ public class RequirementsModelSemanticSequencer extends AbstractDelegatingSemant
 	/**
 	 * <pre>
 	 * Contexts:
-	 *     Statement returns Statement
+	 *     Shall returns Shall
+	 *     Expression returns Shall
 	 *
 	 * Constraint:
-	 *     (
-	 *         proposition=Proposition | 
-	 *         quantifiableStatement=Quantifiable | 
-	 *         statement=Statement | 
-	 *         statement=Statement | 
-	 *         (first_statement=Statement second_statement=Statement event=Event statement=Statement) | 
-	 *         (event=Event statement=Statement) | 
-	 *         t=TimeInterval | 
-	 *         statement=Quantifiable
-	 *     )?
+	 *     expression=Expression
 	 * </pre>
 	 */
-	protected void sequence_Statement(ISerializationContext context, Statement semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
+	protected void sequence_Shall(ISerializationContext context, Shall semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, RequirementsModelPackage.Literals.SHALL__EXPRESSION) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, RequirementsModelPackage.Literals.SHALL__EXPRESSION));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getShallAccess().getExpressionExpressionParserRuleCall_2_0(), semanticObject.getExpression());
+		feeder.finish();
 	}
 	
 	
@@ -385,6 +639,31 @@ public class RequirementsModelSemanticSequencer extends AbstractDelegatingSemant
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getStringLiteralAccess().getValueSTRINGTerminalRuleCall_0(), semanticObject.getValue());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
+	 *     ThisUntil returns ThisUntil
+	 *     CompoundExpression returns ThisUntil
+	 *     Expression returns ThisUntil
+	 *
+	 * Constraint:
+	 *     (leftExpression=Expression rightExpression=Expression)
+	 * </pre>
+	 */
+	protected void sequence_ThisUntil(ISerializationContext context, ThisUntil semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, RequirementsModelPackage.Literals.COMPOUND_EXPRESSION__LEFT_EXPRESSION) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, RequirementsModelPackage.Literals.COMPOUND_EXPRESSION__LEFT_EXPRESSION));
+			if (transientValues.isValueTransient(semanticObject, RequirementsModelPackage.Literals.COMPOUND_EXPRESSION__RIGHT_EXPRESSION) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, RequirementsModelPackage.Literals.COMPOUND_EXPRESSION__RIGHT_EXPRESSION));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getThisUntilAccess().getLeftExpressionExpressionParserRuleCall_1_0(), semanticObject.getLeftExpression());
+		feeder.accept(grammarAccess.getThisUntilAccess().getRightExpressionExpressionParserRuleCall_3_0(), semanticObject.getRightExpression());
 		feeder.finish();
 	}
 	

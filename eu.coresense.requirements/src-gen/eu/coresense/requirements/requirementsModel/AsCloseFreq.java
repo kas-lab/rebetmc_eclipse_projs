@@ -13,35 +13,58 @@ package eu.coresense.requirements.requirementsModel;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link eu.coresense.requirements.requirementsModel.AsCloseFreq#getF <em>F</em>}</li>
+ *   <li>{@link eu.coresense.requirements.requirementsModel.AsCloseFreq#getFrequency <em>Frequency</em>}</li>
+ *   <li>{@link eu.coresense.requirements.requirementsModel.AsCloseFreq#getExpression <em>Expression</em>}</li>
  * </ul>
  *
  * @see eu.coresense.requirements.requirementsModel.RequirementsModelPackage#getAsCloseFreq()
  * @model
  * @generated
  */
-public interface AsCloseFreq extends Statement
+public interface AsCloseFreq extends Expression
 {
   /**
-   * Returns the value of the '<em><b>F</b></em>' containment reference.
+   * Returns the value of the '<em><b>Frequency</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>F</em>' containment reference.
-   * @see #setF(Time)
-   * @see eu.coresense.requirements.requirementsModel.RequirementsModelPackage#getAsCloseFreq_F()
+   * @return the value of the '<em>Frequency</em>' containment reference.
+   * @see #setFrequency(Time)
+   * @see eu.coresense.requirements.requirementsModel.RequirementsModelPackage#getAsCloseFreq_Frequency()
    * @model containment="true"
    * @generated
    */
-  Time getF();
+  Time getFrequency();
 
   /**
-   * Sets the value of the '{@link eu.coresense.requirements.requirementsModel.AsCloseFreq#getF <em>F</em>}' containment reference.
+   * Sets the value of the '{@link eu.coresense.requirements.requirementsModel.AsCloseFreq#getFrequency <em>Frequency</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>F</em>' containment reference.
-   * @see #getF()
+   * @param value the new value of the '<em>Frequency</em>' containment reference.
+   * @see #getFrequency()
    * @generated
    */
-  void setF(Time value);
+  void setFrequency(Time value);
+
+  /**
+   * Returns the value of the '<em><b>Expression</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Expression</em>' containment reference.
+   * @see #setExpression(Expression)
+   * @see eu.coresense.requirements.requirementsModel.RequirementsModelPackage#getAsCloseFreq_Expression()
+   * @model containment="true"
+   * @generated
+   */
+  Expression getExpression();
+
+  /**
+   * Sets the value of the '{@link eu.coresense.requirements.requirementsModel.AsCloseFreq#getExpression <em>Expression</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Expression</em>' containment reference.
+   * @see #getExpression()
+   * @generated
+   */
+  void setExpression(Expression value);
 
 } // AsCloseFreq

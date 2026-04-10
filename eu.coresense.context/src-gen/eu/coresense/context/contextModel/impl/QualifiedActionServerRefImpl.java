@@ -12,10 +12,8 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import ros.ActionServer;
-import ros.Node;
 
 /**
  * <!-- begin-user-doc -->
@@ -25,24 +23,14 @@ import ros.Node;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link eu.coresense.context.contextModel.impl.QualifiedActionServerRefImpl#getNode <em>Node</em>}</li>
  *   <li>{@link eu.coresense.context.contextModel.impl.QualifiedActionServerRefImpl#getActionServer <em>Action Server</em>}</li>
+ *   <li>{@link eu.coresense.context.contextModel.impl.QualifiedActionServerRefImpl#getKwargs <em>Kwargs</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class QualifiedActionServerRefImpl extends MinimalEObjectImpl.Container implements QualifiedActionServerRef
+public class QualifiedActionServerRefImpl extends QualifiedRefImpl implements QualifiedActionServerRef
 {
-  /**
-   * The cached value of the '{@link #getNode() <em>Node</em>}' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getNode()
-   * @generated
-   * @ordered
-   */
-  protected Node node;
-
   /**
    * The cached value of the '{@link #getActionServer() <em>Action Server</em>}' reference.
    * <!-- begin-user-doc -->
@@ -52,6 +40,26 @@ public class QualifiedActionServerRefImpl extends MinimalEObjectImpl.Container i
    * @ordered
    */
   protected ActionServer actionServer;
+
+  /**
+   * The default value of the '{@link #getKwargs() <em>Kwargs</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getKwargs()
+   * @generated
+   * @ordered
+   */
+  protected static final String KWARGS_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getKwargs() <em>Kwargs</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getKwargs()
+   * @generated
+   * @ordered
+   */
+  protected String kwargs = KWARGS_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
@@ -72,51 +80,6 @@ public class QualifiedActionServerRefImpl extends MinimalEObjectImpl.Container i
   protected EClass eStaticClass()
   {
     return ContextModelPackage.Literals.QUALIFIED_ACTION_SERVER_REF;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public Node getNode()
-  {
-    if (node != null && node.eIsProxy())
-    {
-      InternalEObject oldNode = (InternalEObject)node;
-      node = (Node)eResolveProxy(oldNode);
-      if (node != oldNode)
-      {
-        if (eNotificationRequired())
-          eNotify(new ENotificationImpl(this, Notification.RESOLVE, ContextModelPackage.QUALIFIED_ACTION_SERVER_REF__NODE, oldNode, node));
-      }
-    }
-    return node;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public Node basicGetNode()
-  {
-    return node;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public void setNode(Node newNode)
-  {
-    Node oldNode = node;
-    node = newNode;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ContextModelPackage.QUALIFIED_ACTION_SERVER_REF__NODE, oldNode, node));
   }
 
   /**
@@ -170,16 +133,40 @@ public class QualifiedActionServerRefImpl extends MinimalEObjectImpl.Container i
    * @generated
    */
   @Override
+  public String getKwargs()
+  {
+    return kwargs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setKwargs(String newKwargs)
+  {
+    String oldKwargs = kwargs;
+    kwargs = newKwargs;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, ContextModelPackage.QUALIFIED_ACTION_SERVER_REF__KWARGS, oldKwargs, kwargs));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public Object eGet(int featureID, boolean resolve, boolean coreType)
   {
     switch (featureID)
     {
-      case ContextModelPackage.QUALIFIED_ACTION_SERVER_REF__NODE:
-        if (resolve) return getNode();
-        return basicGetNode();
       case ContextModelPackage.QUALIFIED_ACTION_SERVER_REF__ACTION_SERVER:
         if (resolve) return getActionServer();
         return basicGetActionServer();
+      case ContextModelPackage.QUALIFIED_ACTION_SERVER_REF__KWARGS:
+        return getKwargs();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -194,11 +181,11 @@ public class QualifiedActionServerRefImpl extends MinimalEObjectImpl.Container i
   {
     switch (featureID)
     {
-      case ContextModelPackage.QUALIFIED_ACTION_SERVER_REF__NODE:
-        setNode((Node)newValue);
-        return;
       case ContextModelPackage.QUALIFIED_ACTION_SERVER_REF__ACTION_SERVER:
         setActionServer((ActionServer)newValue);
+        return;
+      case ContextModelPackage.QUALIFIED_ACTION_SERVER_REF__KWARGS:
+        setKwargs((String)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -214,11 +201,11 @@ public class QualifiedActionServerRefImpl extends MinimalEObjectImpl.Container i
   {
     switch (featureID)
     {
-      case ContextModelPackage.QUALIFIED_ACTION_SERVER_REF__NODE:
-        setNode((Node)null);
-        return;
       case ContextModelPackage.QUALIFIED_ACTION_SERVER_REF__ACTION_SERVER:
         setActionServer((ActionServer)null);
+        return;
+      case ContextModelPackage.QUALIFIED_ACTION_SERVER_REF__KWARGS:
+        setKwargs(KWARGS_EDEFAULT);
         return;
     }
     super.eUnset(featureID);
@@ -234,12 +221,29 @@ public class QualifiedActionServerRefImpl extends MinimalEObjectImpl.Container i
   {
     switch (featureID)
     {
-      case ContextModelPackage.QUALIFIED_ACTION_SERVER_REF__NODE:
-        return node != null;
       case ContextModelPackage.QUALIFIED_ACTION_SERVER_REF__ACTION_SERVER:
         return actionServer != null;
+      case ContextModelPackage.QUALIFIED_ACTION_SERVER_REF__KWARGS:
+        return KWARGS_EDEFAULT == null ? kwargs != null : !KWARGS_EDEFAULT.equals(kwargs);
     }
     return super.eIsSet(featureID);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public String toString()
+  {
+    if (eIsProxy()) return super.toString();
+
+    StringBuilder result = new StringBuilder(super.toString());
+    result.append(" (kwargs: ");
+    result.append(kwargs);
+    result.append(')');
+    return result.toString();
   }
 
 } //QualifiedActionServerRefImpl

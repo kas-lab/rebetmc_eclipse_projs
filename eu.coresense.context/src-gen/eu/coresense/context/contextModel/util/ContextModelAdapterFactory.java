@@ -101,6 +101,11 @@ public class ContextModelAdapterFactory extends AdapterFactoryImpl
         return createDataSourceAdapter();
       }
       @Override
+      public Adapter caseQualifiedRef(QualifiedRef object)
+      {
+        return createQualifiedRefAdapter();
+      }
+      @Override
       public Adapter caseQualifiedPublisherRef(QualifiedPublisherRef object)
       {
         return createQualifiedPublisherRefAdapter();
@@ -213,6 +218,21 @@ public class ContextModelAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createDataSourceAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link eu.coresense.context.contextModel.QualifiedRef <em>Qualified Ref</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see eu.coresense.context.contextModel.QualifiedRef
+   * @generated
+   */
+  public Adapter createQualifiedRefAdapter()
   {
     return null;
   }

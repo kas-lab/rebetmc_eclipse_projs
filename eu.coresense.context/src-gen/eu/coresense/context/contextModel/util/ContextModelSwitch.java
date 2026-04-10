@@ -108,10 +108,18 @@ public class ContextModelSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case ContextModelPackage.QUALIFIED_REF:
+      {
+        QualifiedRef qualifiedRef = (QualifiedRef)theEObject;
+        T result = caseQualifiedRef(qualifiedRef);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case ContextModelPackage.QUALIFIED_PUBLISHER_REF:
       {
         QualifiedPublisherRef qualifiedPublisherRef = (QualifiedPublisherRef)theEObject;
         T result = caseQualifiedPublisherRef(qualifiedPublisherRef);
+        if (result == null) result = caseQualifiedRef(qualifiedPublisherRef);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -119,6 +127,7 @@ public class ContextModelSwitch<T> extends Switch<T>
       {
         QualifiedServiceServerRef qualifiedServiceServerRef = (QualifiedServiceServerRef)theEObject;
         T result = caseQualifiedServiceServerRef(qualifiedServiceServerRef);
+        if (result == null) result = caseQualifiedRef(qualifiedServiceServerRef);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -126,6 +135,7 @@ public class ContextModelSwitch<T> extends Switch<T>
       {
         QualifiedActionServerRef qualifiedActionServerRef = (QualifiedActionServerRef)theEObject;
         T result = caseQualifiedActionServerRef(qualifiedActionServerRef);
+        if (result == null) result = caseQualifiedRef(qualifiedActionServerRef);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -216,6 +226,22 @@ public class ContextModelSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseDataSource(DataSource object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Qualified Ref</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Qualified Ref</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseQualifiedRef(QualifiedRef object)
   {
     return null;
   }

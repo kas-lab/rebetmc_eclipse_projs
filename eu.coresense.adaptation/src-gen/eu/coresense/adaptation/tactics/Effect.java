@@ -10,12 +10,6 @@ import org.eclipse.emf.ecore.EObject;
  * A representation of the model object '<em><b>Effect</b></em>'.
  * <!-- end-user-doc -->
  *
- * <p>
- * The following features are supported:
- * </p>
- * <ul>
- *   <li>{@link eu.coresense.adaptation.tactics.Effect#getCondition <em>Condition</em>}</li>
- * </ul>
  *
  * @see eu.coresense.adaptation.tactics.TacticsPackage#getEffect()
  * @model
@@ -23,26 +17,4 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface Effect extends EObject
 {
-  /**
-   * Returns the value of the '<em><b>Condition</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Condition</em>' containment reference.
-   * @see #setCondition(MeasurementCondition)
-   * @see eu.coresense.adaptation.tactics.TacticsPackage#getEffect_Condition()
-   * @model containment="true"
-   * @generated
-   */
-  MeasurementCondition getCondition();
-
-  /**
-   * Sets the value of the '{@link eu.coresense.adaptation.tactics.Effect#getCondition <em>Condition</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Condition</em>' containment reference.
-   * @see #getCondition()
-   * @generated
-   */
-  void setCondition(MeasurementCondition value);
-
 } // Effect

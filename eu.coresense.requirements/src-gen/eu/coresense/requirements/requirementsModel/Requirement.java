@@ -16,8 +16,8 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link eu.coresense.requirements.requirementsModel.Requirement#getName <em>Name</em>}</li>
  *   <li>{@link eu.coresense.requirements.requirementsModel.Requirement#getQa <em>Qa</em>}</li>
- *   <li>{@link eu.coresense.requirements.requirementsModel.Requirement#getNatural <em>Natural</em>}</li>
- *   <li>{@link eu.coresense.requirements.requirementsModel.Requirement#getRule <em>Rule</em>}</li>
+ *   <li>{@link eu.coresense.requirements.requirementsModel.Requirement#getNaturalLanguageDescription <em>Natural Language Description</em>}</li>
+ *   <li>{@link eu.coresense.requirements.requirementsModel.Requirement#getExpression <em>Expression</em>}</li>
  * </ul>
  *
  * @see eu.coresense.requirements.requirementsModel.RequirementsModelPackage#getRequirement()
@@ -74,47 +74,47 @@ public interface Requirement extends EObject
   void setQa(QualityAttribute value);
 
   /**
-   * Returns the value of the '<em><b>Natural</b></em>' attribute.
+   * Returns the value of the '<em><b>Natural Language Description</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Natural</em>' attribute.
-   * @see #setNatural(String)
-   * @see eu.coresense.requirements.requirementsModel.RequirementsModelPackage#getRequirement_Natural()
+   * @return the value of the '<em>Natural Language Description</em>' attribute.
+   * @see #setNaturalLanguageDescription(String)
+   * @see eu.coresense.requirements.requirementsModel.RequirementsModelPackage#getRequirement_NaturalLanguageDescription()
    * @model
    * @generated
    */
-  String getNatural();
+  String getNaturalLanguageDescription();
 
   /**
-   * Sets the value of the '{@link eu.coresense.requirements.requirementsModel.Requirement#getNatural <em>Natural</em>}' attribute.
+   * Sets the value of the '{@link eu.coresense.requirements.requirementsModel.Requirement#getNaturalLanguageDescription <em>Natural Language Description</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Natural</em>' attribute.
-   * @see #getNatural()
+   * @param value the new value of the '<em>Natural Language Description</em>' attribute.
+   * @see #getNaturalLanguageDescription()
    * @generated
    */
-  void setNatural(String value);
+  void setNaturalLanguageDescription(String value);
 
   /**
-   * Returns the value of the '<em><b>Rule</b></em>' containment reference.
+   * Returns the value of the '<em><b>Expression</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Rule</em>' containment reference.
-   * @see #setRule(Statement)
-   * @see eu.coresense.requirements.requirementsModel.RequirementsModelPackage#getRequirement_Rule()
+   * @return the value of the '<em>Expression</em>' containment reference.
+   * @see #setExpression(Expression)
+   * @see eu.coresense.requirements.requirementsModel.RequirementsModelPackage#getRequirement_Expression()
    * @model containment="true"
    * @generated
    */
-  Statement getRule();
+  Expression getExpression();
 
   /**
-   * Sets the value of the '{@link eu.coresense.requirements.requirementsModel.Requirement#getRule <em>Rule</em>}' containment reference.
+   * Sets the value of the '{@link eu.coresense.requirements.requirementsModel.Requirement#getExpression <em>Expression</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Rule</em>' containment reference.
-   * @see #getRule()
+   * @param value the new value of the '<em>Expression</em>' containment reference.
+   * @see #getExpression()
    * @generated
    */
-  void setRule(Statement value);
+  void setExpression(Expression value);
 
 } // Requirement

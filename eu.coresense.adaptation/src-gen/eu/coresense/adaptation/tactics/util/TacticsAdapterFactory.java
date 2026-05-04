@@ -131,14 +131,54 @@ public class TacticsAdapterFactory extends AdapterFactoryImpl
         return createConditionActionAdapter();
       }
       @Override
+      public Adapter caseContextGuard(ContextGuard object)
+      {
+        return createContextGuardAdapter();
+      }
+      @Override
+      public Adapter caseFeatureGuard(FeatureGuard object)
+      {
+        return createFeatureGuardAdapter();
+      }
+      @Override
+      public Adapter caseEffectBlock(EffectBlock object)
+      {
+        return createEffectBlockAdapter();
+      }
+      @Override
       public Adapter caseEffect(Effect object)
       {
         return createEffectAdapter();
       }
       @Override
+      public Adapter caseRelativeEffect(RelativeEffect object)
+      {
+        return createRelativeEffectAdapter();
+      }
+      @Override
+      public Adapter caseFeatureCondition(FeatureCondition object)
+      {
+        return createFeatureConditionAdapter();
+      }
+      @Override
       public Adapter caseCondition(Condition object)
       {
         return createConditionAdapter();
+      }
+      @Override
+      public Adapter caseMeasurementCondition(MeasurementCondition object)
+      {
+        return createMeasurementConditionAdapter();
+      }
+      @Override
+      public Adapter caseMeasurementThresholdCondition(MeasurementThresholdCondition object)
+      {
+        return createMeasurementThresholdConditionAdapter();
+      }
+      @Override
+      public Adapter caseMeasurementMeasurementCondition(MeasurementMeasurementCondition object)
+      {
+        return createMeasurementMeasurementConditionAdapter();
       }
       @Override
       public Adapter caseAtomicActionSelectFeature(AtomicActionSelectFeature object)
@@ -154,31 +194,6 @@ public class TacticsAdapterFactory extends AdapterFactoryImpl
       public Adapter caseQualifiedFeatureRef(QualifiedFeatureRef object)
       {
         return createQualifiedFeatureRefAdapter();
-      }
-      @Override
-      public Adapter caseLiteral(Literal object)
-      {
-        return createLiteralAdapter();
-      }
-      @Override
-      public Adapter caseIntLiteral(IntLiteral object)
-      {
-        return createIntLiteralAdapter();
-      }
-      @Override
-      public Adapter caseDecimalLiteral(DecimalLiteral object)
-      {
-        return createDecimalLiteralAdapter();
-      }
-      @Override
-      public Adapter caseStringLiteral(StringLiteral object)
-      {
-        return createStringLiteralAdapter();
-      }
-      @Override
-      public Adapter caseBooleanLiteral(BooleanLiteral object)
-      {
-        return createBooleanLiteralAdapter();
       }
       @Override
       public Adapter defaultCase(EObject object)
@@ -368,6 +383,51 @@ public class TacticsAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
+   * Creates a new adapter for an object of class '{@link eu.coresense.adaptation.tactics.ContextGuard <em>Context Guard</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see eu.coresense.adaptation.tactics.ContextGuard
+   * @generated
+   */
+  public Adapter createContextGuardAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link eu.coresense.adaptation.tactics.FeatureGuard <em>Feature Guard</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see eu.coresense.adaptation.tactics.FeatureGuard
+   * @generated
+   */
+  public Adapter createFeatureGuardAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link eu.coresense.adaptation.tactics.EffectBlock <em>Effect Block</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see eu.coresense.adaptation.tactics.EffectBlock
+   * @generated
+   */
+  public Adapter createEffectBlockAdapter()
+  {
+    return null;
+  }
+
+  /**
    * Creates a new adapter for an object of class '{@link eu.coresense.adaptation.tactics.Effect <em>Effect</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -383,6 +443,36 @@ public class TacticsAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
+   * Creates a new adapter for an object of class '{@link eu.coresense.adaptation.tactics.RelativeEffect <em>Relative Effect</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see eu.coresense.adaptation.tactics.RelativeEffect
+   * @generated
+   */
+  public Adapter createRelativeEffectAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link eu.coresense.adaptation.tactics.FeatureCondition <em>Feature Condition</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see eu.coresense.adaptation.tactics.FeatureCondition
+   * @generated
+   */
+  public Adapter createFeatureConditionAdapter()
+  {
+    return null;
+  }
+
+  /**
    * Creates a new adapter for an object of class '{@link eu.coresense.adaptation.tactics.Condition <em>Condition</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -393,6 +483,51 @@ public class TacticsAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createConditionAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link eu.coresense.adaptation.tactics.MeasurementCondition <em>Measurement Condition</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see eu.coresense.adaptation.tactics.MeasurementCondition
+   * @generated
+   */
+  public Adapter createMeasurementConditionAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link eu.coresense.adaptation.tactics.MeasurementThresholdCondition <em>Measurement Threshold Condition</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see eu.coresense.adaptation.tactics.MeasurementThresholdCondition
+   * @generated
+   */
+  public Adapter createMeasurementThresholdConditionAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link eu.coresense.adaptation.tactics.MeasurementMeasurementCondition <em>Measurement Measurement Condition</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see eu.coresense.adaptation.tactics.MeasurementMeasurementCondition
+   * @generated
+   */
+  public Adapter createMeasurementMeasurementConditionAdapter()
   {
     return null;
   }
@@ -438,81 +573,6 @@ public class TacticsAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createQualifiedFeatureRefAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link eu.coresense.adaptation.tactics.Literal <em>Literal</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see eu.coresense.adaptation.tactics.Literal
-   * @generated
-   */
-  public Adapter createLiteralAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link eu.coresense.adaptation.tactics.IntLiteral <em>Int Literal</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see eu.coresense.adaptation.tactics.IntLiteral
-   * @generated
-   */
-  public Adapter createIntLiteralAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link eu.coresense.adaptation.tactics.DecimalLiteral <em>Decimal Literal</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see eu.coresense.adaptation.tactics.DecimalLiteral
-   * @generated
-   */
-  public Adapter createDecimalLiteralAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link eu.coresense.adaptation.tactics.StringLiteral <em>String Literal</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see eu.coresense.adaptation.tactics.StringLiteral
-   * @generated
-   */
-  public Adapter createStringLiteralAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link eu.coresense.adaptation.tactics.BooleanLiteral <em>Boolean Literal</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see eu.coresense.adaptation.tactics.BooleanLiteral
-   * @generated
-   */
-  public Adapter createBooleanLiteralAdapter()
   {
     return null;
   }

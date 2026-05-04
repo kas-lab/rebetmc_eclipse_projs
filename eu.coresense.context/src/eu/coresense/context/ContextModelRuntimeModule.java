@@ -3,9 +3,16 @@
  */
 package eu.coresense.context;
 
-
+import org.eclipse.xtext.scoping.IScopeProvider;
+import eu.coresense.context.scoping.ContextModelScopeProviderr; // import your Xtend class
 /**
  * Use this class to register components to be used at runtime / without the Equinox extension registry.
  */
 public class ContextModelRuntimeModule extends AbstractContextModelRuntimeModule {
+	
+    @Override
+    public Class<? extends IScopeProvider> bindIScopeProvider() {
+        // Bind the Xtend scope provider
+        return ContextModelScopeProviderr.class;
+    }
 }

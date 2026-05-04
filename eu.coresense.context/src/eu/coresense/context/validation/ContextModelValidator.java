@@ -3,6 +3,13 @@
  */
 package eu.coresense.context.validation;
 
+import org.eclipse.xtext.validation.Check;
+
+import eu.coresense.context.contextModel.ContextModelPackage;
+import eu.coresense.context.contextModel.ContextVar;
+import eu.coresense.context.contextModel.DataSource;
+import eu.coresense.context.contextModel.DoCache;
+
 
 /**
  * This class contains custom validation rules. 
@@ -22,4 +29,15 @@ public class ContextModelValidator extends AbstractContextModelValidator {
 //		}
 //	}
 	
+	@Check
+	public void checkCache(ContextVar contextVariable) {
+		if(contextVariable.getDoCache().isDo())
+		{
+			if(contextVariable.getLength() == 0)
+			{
+		        error("A cache must have a cache length",ContextModelPackage.Literals.CONTEXT_VAR__DO_CACHE);
+			}
+			
+		}
+	}	
 }

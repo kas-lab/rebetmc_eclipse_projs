@@ -3,7 +3,7 @@ grammar eu.coresense.context.ContextModel with org.eclipse.xtext.common.Terminal
 generate contextModel "http://www.coresense.eu/context/ContextModel"
 import "http://www.ipa.fraunhofer.de/ros" as ros
 import "http://www.eclipse.org/emf/2002/Ecore" as ecore
-import "eu.coresense.context.PythonModel" as py
+
 
 ContextModel:
 	(imports+=Import*)
@@ -13,15 +13,60 @@ ContextVar:
 	'ContextVariable' name=ID
 	'{'
 		source=DataSource
-		'function_name:' function=[py::PythonFunction]
+		'cache?' doCache=DoCache
+		('cache' 'length' length=INT 's')?
+		('period' period=INT 'ns')?
+		('proxy' doProxy=DoProxy)?
+		'function_name' functionName=STRING
+		('function_lib' functionLibrary=STRING)?
 	'}';
-	
+
+DoCache:
+	{DoCache} do=BOOLEAN
+;
+
+DoProxy:
+	{DoProxy} do=BOOLEAN
+;
 
 DataSource:
-	'topic:' topic=[ros::TopicSpec] | 'service:' service=[ros::ServiceSpec] | 'action:' action=[ros::ActionSpec]
+	'source:'
+    (
+        'origin:'ref=QualifiedRef 
+    )
+;
+
+KeyWordArguments:
+	STRING
+;
+
+QualifiedRef:
+	QualifiedPublisherRef | QualifiedServiceServerRef | QualifiedActionServerRef
+;
+QualifiedPublisherRef:
+    'publisher:' node=[ros::Node] '.' publisher=[ros::Publisher]
+;
+
+QualifiedServiceServerRef:
+    'service:' node=[ros::Node] '.' serviceServer=[ros::ServiceServer] 'request_kwargs' kwargs=KeyWordArguments
+;
+
+QualifiedActionServerRef:
+    'action:' node=[ros::Node] '.' actionServer=[ros::ActionServer] 'goal_kwargs' kwargs=KeyWordArguments
 ;
 
 Import:
-	'import' importURI=STRING ';' //AS name=ID
+	'import' importURI=STRING ';'
 ;
 
+
+terminal DIGIT: '0'..'9';
+
+terminal BINARY: ('0b'|'0B')('0'|'1')+;
+
+terminal DOUBLE returns ecore::EDouble: (DIGIT* | ('-' DIGIT*) ) (('.' DECINT*) | (('.' DIGIT*)? ('E'|'e') ('-'|'+')? DIGIT*));  // Use terminal to avoid 'e' turning into a keyword
+terminal DECINT: '0' | ('1'..'9' DIGIT*) | ('-''0'..'9' DIGIT*) ;
+
+terminal BOOLEAN returns ecore::EBoolean:
+    'true' | 'false'
+;

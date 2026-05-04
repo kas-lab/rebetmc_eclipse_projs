@@ -31,21 +31,42 @@ public class ContextModelParser extends AbstractContentAssistParser {
 		}
 		
 		private static void init(ImmutableMap.Builder<AbstractElement, String> builder, ContextModelGrammarAccess grammarAccess) {
-			builder.put(grammarAccess.getDataSourceAccess().getAlternatives(), "rule__DataSource__Alternatives");
+			builder.put(grammarAccess.getQualifiedRefAccess().getAlternatives(), "rule__QualifiedRef__Alternatives");
 			builder.put(grammarAccess.getContextModelAccess().getGroup(), "rule__ContextModel__Group__0");
 			builder.put(grammarAccess.getContextVarAccess().getGroup(), "rule__ContextVar__Group__0");
-			builder.put(grammarAccess.getDataSourceAccess().getGroup_0(), "rule__DataSource__Group_0__0");
+			builder.put(grammarAccess.getContextVarAccess().getGroup_6(), "rule__ContextVar__Group_6__0");
+			builder.put(grammarAccess.getContextVarAccess().getGroup_7(), "rule__ContextVar__Group_7__0");
+			builder.put(grammarAccess.getContextVarAccess().getGroup_8(), "rule__ContextVar__Group_8__0");
+			builder.put(grammarAccess.getContextVarAccess().getGroup_11(), "rule__ContextVar__Group_11__0");
+			builder.put(grammarAccess.getDoCacheAccess().getGroup(), "rule__DoCache__Group__0");
+			builder.put(grammarAccess.getDoProxyAccess().getGroup(), "rule__DoProxy__Group__0");
+			builder.put(grammarAccess.getDataSourceAccess().getGroup(), "rule__DataSource__Group__0");
 			builder.put(grammarAccess.getDataSourceAccess().getGroup_1(), "rule__DataSource__Group_1__0");
-			builder.put(grammarAccess.getDataSourceAccess().getGroup_2(), "rule__DataSource__Group_2__0");
+			builder.put(grammarAccess.getQualifiedPublisherRefAccess().getGroup(), "rule__QualifiedPublisherRef__Group__0");
+			builder.put(grammarAccess.getQualifiedServiceServerRefAccess().getGroup(), "rule__QualifiedServiceServerRef__Group__0");
+			builder.put(grammarAccess.getQualifiedActionServerRefAccess().getGroup(), "rule__QualifiedActionServerRef__Group__0");
 			builder.put(grammarAccess.getImportAccess().getGroup(), "rule__Import__Group__0");
 			builder.put(grammarAccess.getContextModelAccess().getImportsAssignment_0(), "rule__ContextModel__ImportsAssignment_0");
 			builder.put(grammarAccess.getContextModelAccess().getContext_variablesAssignment_1(), "rule__ContextModel__Context_variablesAssignment_1");
 			builder.put(grammarAccess.getContextVarAccess().getNameAssignment_1(), "rule__ContextVar__NameAssignment_1");
 			builder.put(grammarAccess.getContextVarAccess().getSourceAssignment_3(), "rule__ContextVar__SourceAssignment_3");
-			builder.put(grammarAccess.getContextVarAccess().getFunctionAssignment_5(), "rule__ContextVar__FunctionAssignment_5");
-			builder.put(grammarAccess.getDataSourceAccess().getTopicAssignment_0_1(), "rule__DataSource__TopicAssignment_0_1");
-			builder.put(grammarAccess.getDataSourceAccess().getServiceAssignment_1_1(), "rule__DataSource__ServiceAssignment_1_1");
-			builder.put(grammarAccess.getDataSourceAccess().getActionAssignment_2_1(), "rule__DataSource__ActionAssignment_2_1");
+			builder.put(grammarAccess.getContextVarAccess().getDoCacheAssignment_5(), "rule__ContextVar__DoCacheAssignment_5");
+			builder.put(grammarAccess.getContextVarAccess().getLengthAssignment_6_2(), "rule__ContextVar__LengthAssignment_6_2");
+			builder.put(grammarAccess.getContextVarAccess().getPeriodAssignment_7_1(), "rule__ContextVar__PeriodAssignment_7_1");
+			builder.put(grammarAccess.getContextVarAccess().getDoProxyAssignment_8_1(), "rule__ContextVar__DoProxyAssignment_8_1");
+			builder.put(grammarAccess.getContextVarAccess().getFunctionNameAssignment_10(), "rule__ContextVar__FunctionNameAssignment_10");
+			builder.put(grammarAccess.getContextVarAccess().getFunctionLibraryAssignment_11_1(), "rule__ContextVar__FunctionLibraryAssignment_11_1");
+			builder.put(grammarAccess.getDoCacheAccess().getDoAssignment_1(), "rule__DoCache__DoAssignment_1");
+			builder.put(grammarAccess.getDoProxyAccess().getDoAssignment_1(), "rule__DoProxy__DoAssignment_1");
+			builder.put(grammarAccess.getDataSourceAccess().getRefAssignment_1_1(), "rule__DataSource__RefAssignment_1_1");
+			builder.put(grammarAccess.getQualifiedPublisherRefAccess().getNodeAssignment_1(), "rule__QualifiedPublisherRef__NodeAssignment_1");
+			builder.put(grammarAccess.getQualifiedPublisherRefAccess().getPublisherAssignment_3(), "rule__QualifiedPublisherRef__PublisherAssignment_3");
+			builder.put(grammarAccess.getQualifiedServiceServerRefAccess().getNodeAssignment_1(), "rule__QualifiedServiceServerRef__NodeAssignment_1");
+			builder.put(grammarAccess.getQualifiedServiceServerRefAccess().getServiceServerAssignment_3(), "rule__QualifiedServiceServerRef__ServiceServerAssignment_3");
+			builder.put(grammarAccess.getQualifiedServiceServerRefAccess().getKwargsAssignment_5(), "rule__QualifiedServiceServerRef__KwargsAssignment_5");
+			builder.put(grammarAccess.getQualifiedActionServerRefAccess().getNodeAssignment_1(), "rule__QualifiedActionServerRef__NodeAssignment_1");
+			builder.put(grammarAccess.getQualifiedActionServerRefAccess().getActionServerAssignment_3(), "rule__QualifiedActionServerRef__ActionServerAssignment_3");
+			builder.put(grammarAccess.getQualifiedActionServerRefAccess().getKwargsAssignment_5(), "rule__QualifiedActionServerRef__KwargsAssignment_5");
 			builder.put(grammarAccess.getImportAccess().getImportURIAssignment_1(), "rule__Import__ImportURIAssignment_1");
 		}
 	}

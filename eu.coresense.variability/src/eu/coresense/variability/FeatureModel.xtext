@@ -39,10 +39,7 @@ Feature_Impl returns BasicFMmetamodel::Feature:
 	('selected'? => selected?='selected')?
 	'Feature'
 	name=EString
-	'{'
-		'id' id=EString
-		('children' '{' children+=Feature ( "," children+=Feature)* '}' )?
-	'}';
+		('children' '{' children+=Feature ( "," children+=Feature)* '}' )?;
 
 EString returns ecore::EString:
 	STRING | ID;
@@ -55,17 +52,11 @@ Alternative returns BasicFMmetamodel::Alternative:
 	('selected'? => selected?='selected')?
 	'Alternative'
 	name=EString
-	'{'
-		'id' id=EString
-		('children' '{' children+=Feature ( "," children+=Feature)* '}' )?
-	'}';
+		('children' '{' children+=Feature ( "," children+=Feature)* '}' )?;
 
 OrGroup returns BasicFMmetamodel::OrGroup:
 	('mandatory'? => mandatory?='mandatory')?
 	('selected'? => selected?='selected')?
 	'OrGroup'
 	name=EString
-	'{'
-		'id' id=EString
-		('children' '{' children+=Feature ( "," children+=Feature)* '}' )?
-	'}';
+		('children' '{' children+=Feature ( "," children+=Feature)* '}' )?;

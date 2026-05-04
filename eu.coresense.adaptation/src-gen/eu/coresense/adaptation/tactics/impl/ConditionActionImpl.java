@@ -3,9 +3,9 @@
  */
 package eu.coresense.adaptation.tactics.impl;
 
-import eu.coresense.adaptation.tactics.Condition;
 import eu.coresense.adaptation.tactics.ConditionAction;
-import eu.coresense.adaptation.tactics.RuleBody;
+import eu.coresense.adaptation.tactics.ContextGuard;
+import eu.coresense.adaptation.tactics.FeatureGuard;
 import eu.coresense.adaptation.tactics.TacticsPackage;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -24,8 +24,8 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link eu.coresense.adaptation.tactics.impl.ConditionActionImpl#getCondition <em>Condition</em>}</li>
- *   <li>{@link eu.coresense.adaptation.tactics.impl.ConditionActionImpl#getElse <em>Else</em>}</li>
+ *   <li>{@link eu.coresense.adaptation.tactics.impl.ConditionActionImpl#getContextGuard <em>Context Guard</em>}</li>
+ *   <li>{@link eu.coresense.adaptation.tactics.impl.ConditionActionImpl#getFeatureGuard <em>Feature Guard</em>}</li>
  * </ul>
  *
  * @generated
@@ -33,24 +33,24 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 public class ConditionActionImpl extends RuleBodyImpl implements ConditionAction
 {
   /**
-   * The cached value of the '{@link #getCondition() <em>Condition</em>}' containment reference.
+   * The cached value of the '{@link #getContextGuard() <em>Context Guard</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getCondition()
+   * @see #getContextGuard()
    * @generated
    * @ordered
    */
-  protected Condition condition;
+  protected ContextGuard contextGuard;
 
   /**
-   * The cached value of the '{@link #getElse() <em>Else</em>}' containment reference.
+   * The cached value of the '{@link #getFeatureGuard() <em>Feature Guard</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getElse()
+   * @see #getFeatureGuard()
    * @generated
    * @ordered
    */
-  protected RuleBody else_;
+  protected FeatureGuard featureGuard;
 
   /**
    * <!-- begin-user-doc -->
@@ -79,9 +79,9 @@ public class ConditionActionImpl extends RuleBodyImpl implements ConditionAction
    * @generated
    */
   @Override
-  public Condition getCondition()
+  public ContextGuard getContextGuard()
   {
-    return condition;
+    return contextGuard;
   }
 
   /**
@@ -89,13 +89,13 @@ public class ConditionActionImpl extends RuleBodyImpl implements ConditionAction
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetCondition(Condition newCondition, NotificationChain msgs)
+  public NotificationChain basicSetContextGuard(ContextGuard newContextGuard, NotificationChain msgs)
   {
-    Condition oldCondition = condition;
-    condition = newCondition;
+    ContextGuard oldContextGuard = contextGuard;
+    contextGuard = newContextGuard;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, TacticsPackage.CONDITION_ACTION__CONDITION, oldCondition, newCondition);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, TacticsPackage.CONDITION_ACTION__CONTEXT_GUARD, oldContextGuard, newContextGuard);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -107,20 +107,20 @@ public class ConditionActionImpl extends RuleBodyImpl implements ConditionAction
    * @generated
    */
   @Override
-  public void setCondition(Condition newCondition)
+  public void setContextGuard(ContextGuard newContextGuard)
   {
-    if (newCondition != condition)
+    if (newContextGuard != contextGuard)
     {
       NotificationChain msgs = null;
-      if (condition != null)
-        msgs = ((InternalEObject)condition).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - TacticsPackage.CONDITION_ACTION__CONDITION, null, msgs);
-      if (newCondition != null)
-        msgs = ((InternalEObject)newCondition).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - TacticsPackage.CONDITION_ACTION__CONDITION, null, msgs);
-      msgs = basicSetCondition(newCondition, msgs);
+      if (contextGuard != null)
+        msgs = ((InternalEObject)contextGuard).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - TacticsPackage.CONDITION_ACTION__CONTEXT_GUARD, null, msgs);
+      if (newContextGuard != null)
+        msgs = ((InternalEObject)newContextGuard).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - TacticsPackage.CONDITION_ACTION__CONTEXT_GUARD, null, msgs);
+      msgs = basicSetContextGuard(newContextGuard, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, TacticsPackage.CONDITION_ACTION__CONDITION, newCondition, newCondition));
+      eNotify(new ENotificationImpl(this, Notification.SET, TacticsPackage.CONDITION_ACTION__CONTEXT_GUARD, newContextGuard, newContextGuard));
   }
 
   /**
@@ -129,9 +129,9 @@ public class ConditionActionImpl extends RuleBodyImpl implements ConditionAction
    * @generated
    */
   @Override
-  public RuleBody getElse()
+  public FeatureGuard getFeatureGuard()
   {
-    return else_;
+    return featureGuard;
   }
 
   /**
@@ -139,13 +139,13 @@ public class ConditionActionImpl extends RuleBodyImpl implements ConditionAction
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetElse(RuleBody newElse, NotificationChain msgs)
+  public NotificationChain basicSetFeatureGuard(FeatureGuard newFeatureGuard, NotificationChain msgs)
   {
-    RuleBody oldElse = else_;
-    else_ = newElse;
+    FeatureGuard oldFeatureGuard = featureGuard;
+    featureGuard = newFeatureGuard;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, TacticsPackage.CONDITION_ACTION__ELSE, oldElse, newElse);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, TacticsPackage.CONDITION_ACTION__FEATURE_GUARD, oldFeatureGuard, newFeatureGuard);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -157,20 +157,20 @@ public class ConditionActionImpl extends RuleBodyImpl implements ConditionAction
    * @generated
    */
   @Override
-  public void setElse(RuleBody newElse)
+  public void setFeatureGuard(FeatureGuard newFeatureGuard)
   {
-    if (newElse != else_)
+    if (newFeatureGuard != featureGuard)
     {
       NotificationChain msgs = null;
-      if (else_ != null)
-        msgs = ((InternalEObject)else_).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - TacticsPackage.CONDITION_ACTION__ELSE, null, msgs);
-      if (newElse != null)
-        msgs = ((InternalEObject)newElse).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - TacticsPackage.CONDITION_ACTION__ELSE, null, msgs);
-      msgs = basicSetElse(newElse, msgs);
+      if (featureGuard != null)
+        msgs = ((InternalEObject)featureGuard).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - TacticsPackage.CONDITION_ACTION__FEATURE_GUARD, null, msgs);
+      if (newFeatureGuard != null)
+        msgs = ((InternalEObject)newFeatureGuard).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - TacticsPackage.CONDITION_ACTION__FEATURE_GUARD, null, msgs);
+      msgs = basicSetFeatureGuard(newFeatureGuard, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, TacticsPackage.CONDITION_ACTION__ELSE, newElse, newElse));
+      eNotify(new ENotificationImpl(this, Notification.SET, TacticsPackage.CONDITION_ACTION__FEATURE_GUARD, newFeatureGuard, newFeatureGuard));
   }
 
   /**
@@ -183,10 +183,10 @@ public class ConditionActionImpl extends RuleBodyImpl implements ConditionAction
   {
     switch (featureID)
     {
-      case TacticsPackage.CONDITION_ACTION__CONDITION:
-        return basicSetCondition(null, msgs);
-      case TacticsPackage.CONDITION_ACTION__ELSE:
-        return basicSetElse(null, msgs);
+      case TacticsPackage.CONDITION_ACTION__CONTEXT_GUARD:
+        return basicSetContextGuard(null, msgs);
+      case TacticsPackage.CONDITION_ACTION__FEATURE_GUARD:
+        return basicSetFeatureGuard(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -201,10 +201,10 @@ public class ConditionActionImpl extends RuleBodyImpl implements ConditionAction
   {
     switch (featureID)
     {
-      case TacticsPackage.CONDITION_ACTION__CONDITION:
-        return getCondition();
-      case TacticsPackage.CONDITION_ACTION__ELSE:
-        return getElse();
+      case TacticsPackage.CONDITION_ACTION__CONTEXT_GUARD:
+        return getContextGuard();
+      case TacticsPackage.CONDITION_ACTION__FEATURE_GUARD:
+        return getFeatureGuard();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -219,11 +219,11 @@ public class ConditionActionImpl extends RuleBodyImpl implements ConditionAction
   {
     switch (featureID)
     {
-      case TacticsPackage.CONDITION_ACTION__CONDITION:
-        setCondition((Condition)newValue);
+      case TacticsPackage.CONDITION_ACTION__CONTEXT_GUARD:
+        setContextGuard((ContextGuard)newValue);
         return;
-      case TacticsPackage.CONDITION_ACTION__ELSE:
-        setElse((RuleBody)newValue);
+      case TacticsPackage.CONDITION_ACTION__FEATURE_GUARD:
+        setFeatureGuard((FeatureGuard)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -239,11 +239,11 @@ public class ConditionActionImpl extends RuleBodyImpl implements ConditionAction
   {
     switch (featureID)
     {
-      case TacticsPackage.CONDITION_ACTION__CONDITION:
-        setCondition((Condition)null);
+      case TacticsPackage.CONDITION_ACTION__CONTEXT_GUARD:
+        setContextGuard((ContextGuard)null);
         return;
-      case TacticsPackage.CONDITION_ACTION__ELSE:
-        setElse((RuleBody)null);
+      case TacticsPackage.CONDITION_ACTION__FEATURE_GUARD:
+        setFeatureGuard((FeatureGuard)null);
         return;
     }
     super.eUnset(featureID);
@@ -259,10 +259,10 @@ public class ConditionActionImpl extends RuleBodyImpl implements ConditionAction
   {
     switch (featureID)
     {
-      case TacticsPackage.CONDITION_ACTION__CONDITION:
-        return condition != null;
-      case TacticsPackage.CONDITION_ACTION__ELSE:
-        return else_ != null;
+      case TacticsPackage.CONDITION_ACTION__CONTEXT_GUARD:
+        return contextGuard != null;
+      case TacticsPackage.CONDITION_ACTION__FEATURE_GUARD:
+        return featureGuard != null;
     }
     return super.eIsSet(featureID);
   }

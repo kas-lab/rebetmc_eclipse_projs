@@ -77,16 +77,19 @@ public class TacticsFactoryImpl extends EFactoryImpl implements TacticsFactory
       case TacticsPackage.RULE_BODY: return createRuleBody();
       case TacticsPackage.PURE_ACTION: return createPureAction();
       case TacticsPackage.CONDITION_ACTION: return createConditionAction();
+      case TacticsPackage.CONTEXT_GUARD: return createContextGuard();
+      case TacticsPackage.FEATURE_GUARD: return createFeatureGuard();
+      case TacticsPackage.EFFECT_BLOCK: return createEffectBlock();
       case TacticsPackage.EFFECT: return createEffect();
+      case TacticsPackage.RELATIVE_EFFECT: return createRelativeEffect();
+      case TacticsPackage.FEATURE_CONDITION: return createFeatureCondition();
       case TacticsPackage.CONDITION: return createCondition();
+      case TacticsPackage.MEASUREMENT_CONDITION: return createMeasurementCondition();
+      case TacticsPackage.MEASUREMENT_THRESHOLD_CONDITION: return createMeasurementThresholdCondition();
+      case TacticsPackage.MEASUREMENT_MEASUREMENT_CONDITION: return createMeasurementMeasurementCondition();
       case TacticsPackage.ATOMIC_ACTION_SELECT_FEATURE: return createAtomicActionSelectFeature();
       case TacticsPackage.ATOMIC_ACTION_DESELECT_FEATURE: return createAtomicActionDeselectFeature();
       case TacticsPackage.QUALIFIED_FEATURE_REF: return createQualifiedFeatureRef();
-      case TacticsPackage.LITERAL: return createLiteral();
-      case TacticsPackage.INT_LITERAL: return createIntLiteral();
-      case TacticsPackage.DECIMAL_LITERAL: return createDecimalLiteral();
-      case TacticsPackage.STRING_LITERAL: return createStringLiteral();
-      case TacticsPackage.BOOLEAN_LITERAL: return createBooleanLiteral();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -102,8 +105,6 @@ public class TacticsFactoryImpl extends EFactoryImpl implements TacticsFactory
   {
     switch (eDataType.getClassifierID())
     {
-      case TacticsPackage.MATH_OPERATOR:
-        return createMathOperatorFromString(eDataType, initialValue);
       case TacticsPackage.LOGICAL_OPERATOR:
         return createLogicalOperatorFromString(eDataType, initialValue);
       default:
@@ -121,8 +122,6 @@ public class TacticsFactoryImpl extends EFactoryImpl implements TacticsFactory
   {
     switch (eDataType.getClassifierID())
     {
-      case TacticsPackage.MATH_OPERATOR:
-        return convertMathOperatorToString(eDataType, instanceValue);
       case TacticsPackage.LOGICAL_OPERATOR:
         return convertLogicalOperatorToString(eDataType, instanceValue);
       default:
@@ -268,6 +267,42 @@ public class TacticsFactoryImpl extends EFactoryImpl implements TacticsFactory
    * @generated
    */
   @Override
+  public ContextGuard createContextGuard()
+  {
+    ContextGuardImpl contextGuard = new ContextGuardImpl();
+    return contextGuard;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public FeatureGuard createFeatureGuard()
+  {
+    FeatureGuardImpl featureGuard = new FeatureGuardImpl();
+    return featureGuard;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EffectBlock createEffectBlock()
+  {
+    EffectBlockImpl effectBlock = new EffectBlockImpl();
+    return effectBlock;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public Effect createEffect()
   {
     EffectImpl effect = new EffectImpl();
@@ -280,10 +315,70 @@ public class TacticsFactoryImpl extends EFactoryImpl implements TacticsFactory
    * @generated
    */
   @Override
+  public RelativeEffect createRelativeEffect()
+  {
+    RelativeEffectImpl relativeEffect = new RelativeEffectImpl();
+    return relativeEffect;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public FeatureCondition createFeatureCondition()
+  {
+    FeatureConditionImpl featureCondition = new FeatureConditionImpl();
+    return featureCondition;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public Condition createCondition()
   {
     ConditionImpl condition = new ConditionImpl();
     return condition;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public MeasurementCondition createMeasurementCondition()
+  {
+    MeasurementConditionImpl measurementCondition = new MeasurementConditionImpl();
+    return measurementCondition;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public MeasurementThresholdCondition createMeasurementThresholdCondition()
+  {
+    MeasurementThresholdConditionImpl measurementThresholdCondition = new MeasurementThresholdConditionImpl();
+    return measurementThresholdCondition;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public MeasurementMeasurementCondition createMeasurementMeasurementCondition()
+  {
+    MeasurementMeasurementConditionImpl measurementMeasurementCondition = new MeasurementMeasurementConditionImpl();
+    return measurementMeasurementCondition;
   }
 
   /**
@@ -320,88 +415,6 @@ public class TacticsFactoryImpl extends EFactoryImpl implements TacticsFactory
   {
     QualifiedFeatureRefImpl qualifiedFeatureRef = new QualifiedFeatureRefImpl();
     return qualifiedFeatureRef;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public Literal createLiteral()
-  {
-    LiteralImpl literal = new LiteralImpl();
-    return literal;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public IntLiteral createIntLiteral()
-  {
-    IntLiteralImpl intLiteral = new IntLiteralImpl();
-    return intLiteral;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public DecimalLiteral createDecimalLiteral()
-  {
-    DecimalLiteralImpl decimalLiteral = new DecimalLiteralImpl();
-    return decimalLiteral;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public StringLiteral createStringLiteral()
-  {
-    StringLiteralImpl stringLiteral = new StringLiteralImpl();
-    return stringLiteral;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public BooleanLiteral createBooleanLiteral()
-  {
-    BooleanLiteralImpl booleanLiteral = new BooleanLiteralImpl();
-    return booleanLiteral;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public MathOperator createMathOperatorFromString(EDataType eDataType, String initialValue)
-  {
-    MathOperator result = MathOperator.get(initialValue);
-    if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
-    return result;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public String convertMathOperatorToString(EDataType eDataType, Object instanceValue)
-  {
-    return instanceValue == null ? null : instanceValue.toString();
   }
 
   /**

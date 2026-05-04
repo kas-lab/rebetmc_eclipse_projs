@@ -3,10 +3,12 @@
  */
 package eu.coresense.adaptation.generator;
 
+import com.google.inject.Inject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.xtext.generator.AbstractGenerator;
 import org.eclipse.xtext.generator.IFileSystemAccess2;
 import org.eclipse.xtext.generator.IGeneratorContext;
+import org.eclipse.xtext.xbase.lib.Extension;
 
 /**
  * Generates code from your model files on save.
@@ -15,7 +17,12 @@ import org.eclipse.xtext.generator.IGeneratorContext;
  */
 @SuppressWarnings("all")
 public class TacticsGenerator extends AbstractGenerator {
+  @Inject
+  @Extension
+  private TQLGenerator tqlgen;
+
   @Override
   public void doGenerate(final Resource resource, final IFileSystemAccess2 fsa, final IGeneratorContext context) {
+    this.tqlgen.doGenerate(resource, fsa, context);
   }
 }

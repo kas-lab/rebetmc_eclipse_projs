@@ -86,9 +86,39 @@ public class ContextModelAdapterFactory extends AdapterFactoryImpl
         return createContextVarAdapter();
       }
       @Override
+      public Adapter caseDoCache(DoCache object)
+      {
+        return createDoCacheAdapter();
+      }
+      @Override
+      public Adapter caseDoProxy(DoProxy object)
+      {
+        return createDoProxyAdapter();
+      }
+      @Override
       public Adapter caseDataSource(DataSource object)
       {
         return createDataSourceAdapter();
+      }
+      @Override
+      public Adapter caseQualifiedRef(QualifiedRef object)
+      {
+        return createQualifiedRefAdapter();
+      }
+      @Override
+      public Adapter caseQualifiedPublisherRef(QualifiedPublisherRef object)
+      {
+        return createQualifiedPublisherRefAdapter();
+      }
+      @Override
+      public Adapter caseQualifiedServiceServerRef(QualifiedServiceServerRef object)
+      {
+        return createQualifiedServiceServerRefAdapter();
+      }
+      @Override
+      public Adapter caseQualifiedActionServerRef(QualifiedActionServerRef object)
+      {
+        return createQualifiedActionServerRefAdapter();
       }
       @Override
       public Adapter caseImport(Import object)
@@ -148,6 +178,36 @@ public class ContextModelAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
+   * Creates a new adapter for an object of class '{@link eu.coresense.context.contextModel.DoCache <em>Do Cache</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see eu.coresense.context.contextModel.DoCache
+   * @generated
+   */
+  public Adapter createDoCacheAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link eu.coresense.context.contextModel.DoProxy <em>Do Proxy</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see eu.coresense.context.contextModel.DoProxy
+   * @generated
+   */
+  public Adapter createDoProxyAdapter()
+  {
+    return null;
+  }
+
+  /**
    * Creates a new adapter for an object of class '{@link eu.coresense.context.contextModel.DataSource <em>Data Source</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -158,6 +218,66 @@ public class ContextModelAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createDataSourceAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link eu.coresense.context.contextModel.QualifiedRef <em>Qualified Ref</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see eu.coresense.context.contextModel.QualifiedRef
+   * @generated
+   */
+  public Adapter createQualifiedRefAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link eu.coresense.context.contextModel.QualifiedPublisherRef <em>Qualified Publisher Ref</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see eu.coresense.context.contextModel.QualifiedPublisherRef
+   * @generated
+   */
+  public Adapter createQualifiedPublisherRefAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link eu.coresense.context.contextModel.QualifiedServiceServerRef <em>Qualified Service Server Ref</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see eu.coresense.context.contextModel.QualifiedServiceServerRef
+   * @generated
+   */
+  public Adapter createQualifiedServiceServerRefAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link eu.coresense.context.contextModel.QualifiedActionServerRef <em>Qualified Action Server Ref</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see eu.coresense.context.contextModel.QualifiedActionServerRef
+   * @generated
+   */
+  public Adapter createQualifiedActionServerRefAdapter()
   {
     return null;
   }

@@ -42,6 +42,24 @@ public interface ContextModelFactory extends EFactory
   ContextVar createContextVar();
 
   /**
+   * Returns a new object of class '<em>Do Cache</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Do Cache</em>'.
+   * @generated
+   */
+  DoCache createDoCache();
+
+  /**
+   * Returns a new object of class '<em>Do Proxy</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Do Proxy</em>'.
+   * @generated
+   */
+  DoProxy createDoProxy();
+
+  /**
    * Returns a new object of class '<em>Data Source</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -49,6 +67,42 @@ public interface ContextModelFactory extends EFactory
    * @generated
    */
   DataSource createDataSource();
+
+  /**
+   * Returns a new object of class '<em>Qualified Ref</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Qualified Ref</em>'.
+   * @generated
+   */
+  QualifiedRef createQualifiedRef();
+
+  /**
+   * Returns a new object of class '<em>Qualified Publisher Ref</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Qualified Publisher Ref</em>'.
+   * @generated
+   */
+  QualifiedPublisherRef createQualifiedPublisherRef();
+
+  /**
+   * Returns a new object of class '<em>Qualified Service Server Ref</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Qualified Service Server Ref</em>'.
+   * @generated
+   */
+  QualifiedServiceServerRef createQualifiedServiceServerRef();
+
+  /**
+   * Returns a new object of class '<em>Qualified Action Server Ref</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Qualified Action Server Ref</em>'.
+   * @generated
+   */
+  QualifiedActionServerRef createQualifiedActionServerRef();
 
   /**
    * Returns a new object of class '<em>Import</em>'.

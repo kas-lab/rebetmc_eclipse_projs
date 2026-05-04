@@ -6,6 +6,8 @@ package eu.coresense.context.contextModel.impl;
 import eu.coresense.context.contextModel.ContextModelPackage;
 import eu.coresense.context.contextModel.ContextVar;
 import eu.coresense.context.contextModel.DataSource;
+import eu.coresense.context.contextModel.DoCache;
+import eu.coresense.context.contextModel.DoProxy;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -15,8 +17,6 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
-import pythonfunctions.PythonModel.PythonFunction;
 
 /**
  * <!-- begin-user-doc -->
@@ -28,7 +28,12 @@ import pythonfunctions.PythonModel.PythonFunction;
  * <ul>
  *   <li>{@link eu.coresense.context.contextModel.impl.ContextVarImpl#getName <em>Name</em>}</li>
  *   <li>{@link eu.coresense.context.contextModel.impl.ContextVarImpl#getSource <em>Source</em>}</li>
- *   <li>{@link eu.coresense.context.contextModel.impl.ContextVarImpl#getFunction <em>Function</em>}</li>
+ *   <li>{@link eu.coresense.context.contextModel.impl.ContextVarImpl#getDoCache <em>Do Cache</em>}</li>
+ *   <li>{@link eu.coresense.context.contextModel.impl.ContextVarImpl#getLength <em>Length</em>}</li>
+ *   <li>{@link eu.coresense.context.contextModel.impl.ContextVarImpl#getPeriod <em>Period</em>}</li>
+ *   <li>{@link eu.coresense.context.contextModel.impl.ContextVarImpl#getDoProxy <em>Do Proxy</em>}</li>
+ *   <li>{@link eu.coresense.context.contextModel.impl.ContextVarImpl#getFunctionName <em>Function Name</em>}</li>
+ *   <li>{@link eu.coresense.context.contextModel.impl.ContextVarImpl#getFunctionLibrary <em>Function Library</em>}</li>
  * </ul>
  *
  * @generated
@@ -66,14 +71,104 @@ public class ContextVarImpl extends MinimalEObjectImpl.Container implements Cont
   protected DataSource source;
 
   /**
-   * The cached value of the '{@link #getFunction() <em>Function</em>}' reference.
+   * The cached value of the '{@link #getDoCache() <em>Do Cache</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getFunction()
+   * @see #getDoCache()
    * @generated
    * @ordered
    */
-  protected PythonFunction function;
+  protected DoCache doCache;
+
+  /**
+   * The default value of the '{@link #getLength() <em>Length</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getLength()
+   * @generated
+   * @ordered
+   */
+  protected static final int LENGTH_EDEFAULT = 0;
+
+  /**
+   * The cached value of the '{@link #getLength() <em>Length</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getLength()
+   * @generated
+   * @ordered
+   */
+  protected int length = LENGTH_EDEFAULT;
+
+  /**
+   * The default value of the '{@link #getPeriod() <em>Period</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getPeriod()
+   * @generated
+   * @ordered
+   */
+  protected static final int PERIOD_EDEFAULT = 0;
+
+  /**
+   * The cached value of the '{@link #getPeriod() <em>Period</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getPeriod()
+   * @generated
+   * @ordered
+   */
+  protected int period = PERIOD_EDEFAULT;
+
+  /**
+   * The cached value of the '{@link #getDoProxy() <em>Do Proxy</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getDoProxy()
+   * @generated
+   * @ordered
+   */
+  protected DoProxy doProxy;
+
+  /**
+   * The default value of the '{@link #getFunctionName() <em>Function Name</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getFunctionName()
+   * @generated
+   * @ordered
+   */
+  protected static final String FUNCTION_NAME_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getFunctionName() <em>Function Name</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getFunctionName()
+   * @generated
+   * @ordered
+   */
+  protected String functionName = FUNCTION_NAME_EDEFAULT;
+
+  /**
+   * The default value of the '{@link #getFunctionLibrary() <em>Function Library</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getFunctionLibrary()
+   * @generated
+   * @ordered
+   */
+  protected static final String FUNCTION_LIBRARY_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getFunctionLibrary() <em>Function Library</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getFunctionLibrary()
+   * @generated
+   * @ordered
+   */
+  protected String functionLibrary = FUNCTION_LIBRARY_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
@@ -177,19 +272,9 @@ public class ContextVarImpl extends MinimalEObjectImpl.Container implements Cont
    * @generated
    */
   @Override
-  public PythonFunction getFunction()
+  public DoCache getDoCache()
   {
-    if (function != null && function.eIsProxy())
-    {
-      InternalEObject oldFunction = (InternalEObject)function;
-      function = (PythonFunction)eResolveProxy(oldFunction);
-      if (function != oldFunction)
-      {
-        if (eNotificationRequired())
-          eNotify(new ENotificationImpl(this, Notification.RESOLVE, ContextModelPackage.CONTEXT_VAR__FUNCTION, oldFunction, function));
-      }
-    }
-    return function;
+    return doCache;
   }
 
   /**
@@ -197,9 +282,16 @@ public class ContextVarImpl extends MinimalEObjectImpl.Container implements Cont
    * <!-- end-user-doc -->
    * @generated
    */
-  public PythonFunction basicGetFunction()
+  public NotificationChain basicSetDoCache(DoCache newDoCache, NotificationChain msgs)
   {
-    return function;
+    DoCache oldDoCache = doCache;
+    doCache = newDoCache;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ContextModelPackage.CONTEXT_VAR__DO_CACHE, oldDoCache, newDoCache);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
   }
 
   /**
@@ -208,12 +300,170 @@ public class ContextVarImpl extends MinimalEObjectImpl.Container implements Cont
    * @generated
    */
   @Override
-  public void setFunction(PythonFunction newFunction)
+  public void setDoCache(DoCache newDoCache)
   {
-    PythonFunction oldFunction = function;
-    function = newFunction;
+    if (newDoCache != doCache)
+    {
+      NotificationChain msgs = null;
+      if (doCache != null)
+        msgs = ((InternalEObject)doCache).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ContextModelPackage.CONTEXT_VAR__DO_CACHE, null, msgs);
+      if (newDoCache != null)
+        msgs = ((InternalEObject)newDoCache).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ContextModelPackage.CONTEXT_VAR__DO_CACHE, null, msgs);
+      msgs = basicSetDoCache(newDoCache, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, ContextModelPackage.CONTEXT_VAR__DO_CACHE, newDoCache, newDoCache));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public int getLength()
+  {
+    return length;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setLength(int newLength)
+  {
+    int oldLength = length;
+    length = newLength;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ContextModelPackage.CONTEXT_VAR__FUNCTION, oldFunction, function));
+      eNotify(new ENotificationImpl(this, Notification.SET, ContextModelPackage.CONTEXT_VAR__LENGTH, oldLength, length));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public int getPeriod()
+  {
+    return period;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setPeriod(int newPeriod)
+  {
+    int oldPeriod = period;
+    period = newPeriod;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, ContextModelPackage.CONTEXT_VAR__PERIOD, oldPeriod, period));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public DoProxy getDoProxy()
+  {
+    return doProxy;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetDoProxy(DoProxy newDoProxy, NotificationChain msgs)
+  {
+    DoProxy oldDoProxy = doProxy;
+    doProxy = newDoProxy;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ContextModelPackage.CONTEXT_VAR__DO_PROXY, oldDoProxy, newDoProxy);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setDoProxy(DoProxy newDoProxy)
+  {
+    if (newDoProxy != doProxy)
+    {
+      NotificationChain msgs = null;
+      if (doProxy != null)
+        msgs = ((InternalEObject)doProxy).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ContextModelPackage.CONTEXT_VAR__DO_PROXY, null, msgs);
+      if (newDoProxy != null)
+        msgs = ((InternalEObject)newDoProxy).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ContextModelPackage.CONTEXT_VAR__DO_PROXY, null, msgs);
+      msgs = basicSetDoProxy(newDoProxy, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, ContextModelPackage.CONTEXT_VAR__DO_PROXY, newDoProxy, newDoProxy));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public String getFunctionName()
+  {
+    return functionName;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setFunctionName(String newFunctionName)
+  {
+    String oldFunctionName = functionName;
+    functionName = newFunctionName;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, ContextModelPackage.CONTEXT_VAR__FUNCTION_NAME, oldFunctionName, functionName));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public String getFunctionLibrary()
+  {
+    return functionLibrary;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setFunctionLibrary(String newFunctionLibrary)
+  {
+    String oldFunctionLibrary = functionLibrary;
+    functionLibrary = newFunctionLibrary;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, ContextModelPackage.CONTEXT_VAR__FUNCTION_LIBRARY, oldFunctionLibrary, functionLibrary));
   }
 
   /**
@@ -228,6 +478,10 @@ public class ContextVarImpl extends MinimalEObjectImpl.Container implements Cont
     {
       case ContextModelPackage.CONTEXT_VAR__SOURCE:
         return basicSetSource(null, msgs);
+      case ContextModelPackage.CONTEXT_VAR__DO_CACHE:
+        return basicSetDoCache(null, msgs);
+      case ContextModelPackage.CONTEXT_VAR__DO_PROXY:
+        return basicSetDoProxy(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -246,9 +500,18 @@ public class ContextVarImpl extends MinimalEObjectImpl.Container implements Cont
         return getName();
       case ContextModelPackage.CONTEXT_VAR__SOURCE:
         return getSource();
-      case ContextModelPackage.CONTEXT_VAR__FUNCTION:
-        if (resolve) return getFunction();
-        return basicGetFunction();
+      case ContextModelPackage.CONTEXT_VAR__DO_CACHE:
+        return getDoCache();
+      case ContextModelPackage.CONTEXT_VAR__LENGTH:
+        return getLength();
+      case ContextModelPackage.CONTEXT_VAR__PERIOD:
+        return getPeriod();
+      case ContextModelPackage.CONTEXT_VAR__DO_PROXY:
+        return getDoProxy();
+      case ContextModelPackage.CONTEXT_VAR__FUNCTION_NAME:
+        return getFunctionName();
+      case ContextModelPackage.CONTEXT_VAR__FUNCTION_LIBRARY:
+        return getFunctionLibrary();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -269,8 +532,23 @@ public class ContextVarImpl extends MinimalEObjectImpl.Container implements Cont
       case ContextModelPackage.CONTEXT_VAR__SOURCE:
         setSource((DataSource)newValue);
         return;
-      case ContextModelPackage.CONTEXT_VAR__FUNCTION:
-        setFunction((PythonFunction)newValue);
+      case ContextModelPackage.CONTEXT_VAR__DO_CACHE:
+        setDoCache((DoCache)newValue);
+        return;
+      case ContextModelPackage.CONTEXT_VAR__LENGTH:
+        setLength((Integer)newValue);
+        return;
+      case ContextModelPackage.CONTEXT_VAR__PERIOD:
+        setPeriod((Integer)newValue);
+        return;
+      case ContextModelPackage.CONTEXT_VAR__DO_PROXY:
+        setDoProxy((DoProxy)newValue);
+        return;
+      case ContextModelPackage.CONTEXT_VAR__FUNCTION_NAME:
+        setFunctionName((String)newValue);
+        return;
+      case ContextModelPackage.CONTEXT_VAR__FUNCTION_LIBRARY:
+        setFunctionLibrary((String)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -292,8 +570,23 @@ public class ContextVarImpl extends MinimalEObjectImpl.Container implements Cont
       case ContextModelPackage.CONTEXT_VAR__SOURCE:
         setSource((DataSource)null);
         return;
-      case ContextModelPackage.CONTEXT_VAR__FUNCTION:
-        setFunction((PythonFunction)null);
+      case ContextModelPackage.CONTEXT_VAR__DO_CACHE:
+        setDoCache((DoCache)null);
+        return;
+      case ContextModelPackage.CONTEXT_VAR__LENGTH:
+        setLength(LENGTH_EDEFAULT);
+        return;
+      case ContextModelPackage.CONTEXT_VAR__PERIOD:
+        setPeriod(PERIOD_EDEFAULT);
+        return;
+      case ContextModelPackage.CONTEXT_VAR__DO_PROXY:
+        setDoProxy((DoProxy)null);
+        return;
+      case ContextModelPackage.CONTEXT_VAR__FUNCTION_NAME:
+        setFunctionName(FUNCTION_NAME_EDEFAULT);
+        return;
+      case ContextModelPackage.CONTEXT_VAR__FUNCTION_LIBRARY:
+        setFunctionLibrary(FUNCTION_LIBRARY_EDEFAULT);
         return;
     }
     super.eUnset(featureID);
@@ -313,8 +606,18 @@ public class ContextVarImpl extends MinimalEObjectImpl.Container implements Cont
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
       case ContextModelPackage.CONTEXT_VAR__SOURCE:
         return source != null;
-      case ContextModelPackage.CONTEXT_VAR__FUNCTION:
-        return function != null;
+      case ContextModelPackage.CONTEXT_VAR__DO_CACHE:
+        return doCache != null;
+      case ContextModelPackage.CONTEXT_VAR__LENGTH:
+        return length != LENGTH_EDEFAULT;
+      case ContextModelPackage.CONTEXT_VAR__PERIOD:
+        return period != PERIOD_EDEFAULT;
+      case ContextModelPackage.CONTEXT_VAR__DO_PROXY:
+        return doProxy != null;
+      case ContextModelPackage.CONTEXT_VAR__FUNCTION_NAME:
+        return FUNCTION_NAME_EDEFAULT == null ? functionName != null : !FUNCTION_NAME_EDEFAULT.equals(functionName);
+      case ContextModelPackage.CONTEXT_VAR__FUNCTION_LIBRARY:
+        return FUNCTION_LIBRARY_EDEFAULT == null ? functionLibrary != null : !FUNCTION_LIBRARY_EDEFAULT.equals(functionLibrary);
     }
     return super.eIsSet(featureID);
   }
@@ -332,6 +635,14 @@ public class ContextVarImpl extends MinimalEObjectImpl.Container implements Cont
     StringBuilder result = new StringBuilder(super.toString());
     result.append(" (name: ");
     result.append(name);
+    result.append(", length: ");
+    result.append(length);
+    result.append(", period: ");
+    result.append(period);
+    result.append(", functionName: ");
+    result.append(functionName);
+    result.append(", functionLibrary: ");
+    result.append(functionLibrary);
     result.append(')');
     return result.toString();
   }

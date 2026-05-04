@@ -14,6 +14,7 @@ public abstract class AbstractTacticsValidator extends AbstractDeclarativeValida
 	protected List<EPackage> getEPackages() {
 		List<EPackage> result = new ArrayList<EPackage>();
 		result.add(eu.coresense.adaptation.tactics.TacticsPackage.eINSTANCE);
+		result.add(EPackage.Registry.INSTANCE.getEPackage("https://coresense.eu/common"));
 		return result;
 	}
 }

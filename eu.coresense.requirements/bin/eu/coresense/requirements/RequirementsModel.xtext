@@ -1,0 +1,182 @@
+grammar eu.coresense.requirements.RequirementsModel with org.eclipse.xtext.common.Terminals
+import "http://www.eclipse.org/emf/2002/Ecore" as ecore
+import "http://www.coresense.eu/context/ContextModel" as contextModel
+import "https://coresense.eu/common" as common
+generate requirementsModel "http://www.coresense.eu/requirements/RequirementsModel"
+
+RequirementsModel:
+	requirements+=Requirement*;
+	
+//Requirement:
+//	name=ID ',' qa=QualityAttribute ':' naturalLanguageDescription=STRING ',' rule=Statement;
+
+	
+Requirement:
+	name=ID ',' qa=QualityAttribute ':' naturalLanguageDescription=STRING ',' expression=Expression;
+
+
+
+enum QualityAttribute:
+FUNCTIONAL='Functional suitability' |
+PERFORMANCE='Performance efficiency' |
+COMPATIBILITY='Compatibility' |
+INTERACTION='Interaction capability' |
+RELIABILITY='Reliability' |
+SECURITY='Security' |
+MAINTAINABILITY='Maintainability' |
+FLEXIBILITY='Flexibility' |
+SAFETY='Safety'
+;
+
+enum MathOperator returns common::MathOperator:
+	LESS='<' | GREATER='>' | EQUAL='==' | DIFFERENT='<>'	
+;
+
+
+Condition:
+	measurement=[contextModel::ContextVar]
+	operator=MathOperator value=Literal
+	( logicalOp=LogicalOperator secondTerm=Condition )? 
+;
+
+enum LogicalOperator:
+    AND='&&' | OR='||';
+
+enum Timeliness:
+	EARLY='EARLY' | LATE='LATE' | MANY='MANY' | FEW='FEW'
+;
+
+Proposition:
+	condition=Condition
+;
+
+BooleanStatement:
+	booleanValue=BOOLEAN
+;
+
+And: 'AND' '(' leftExpression=Expression ',' rightExpression=Expression ')';
+Or: 'OR' '(' leftExpression=Expression ',' rightExpression=Expression ')';
+Shall: 'SHALL' '(' expression=Expression ')' ;
+Negation: 'NOT' '(' expression=Expression ')';
+Eventually: 'EVENTUALLY' '(' expression=Expression ')';
+ThisUntil: 'THIS' leftExpression=Expression 'UNTIL' rightExpression=Expression ;
+Before: 'BEFORE' event=Event '(' expression=Expression ')';
+After: 'AFTER' event=Event '(' expression=Expression ')' ;
+In: 'IN' '(' deadline=TimeInterval ',' expression=Expression ')';
+AsAsPossible: 'AS' timeFrequency=Timeliness 'AS' 'POSSIBLE' '(' quantity=Quantifiable ')';
+
+
+CompoundExpression:
+	And |
+	Or |
+	ThisUntil
+;
+
+//Statement:
+//	{Statement} BOOLEAN |
+//	And |
+//	Or |
+//	proposition=Proposition |
+//	Quantifiable |
+//	Shall |
+//	Negation |
+//	MayStatement |
+//	Eventually |
+//	ThisUntil |
+//	Before |
+//	After |
+//	In |
+//	AsCloseFreq |
+//	AsCloseLit |
+//	AsAsPossible
+//;
+
+//ExpressionOrStatement:
+//	Expression | Statement;
+
+Statement:
+	BooleanStatement |
+    Proposition |
+    Quantifiable
+;
+
+Expression:
+	Shall |
+	Negation |
+	May |
+	Eventually |
+	CompoundExpression |
+	Before |
+	After |
+	In |
+	AsCloseFreq |
+	AsCloseLit |
+	AsAsPossible |
+	Statement
+;
+
+AsCloseFreq:
+	'AS' 'CLOSE' 'AS' 'POSSIBLE' 'TO' '(' frequency=Time ',' expression=Expression ')'
+;
+
+AsCloseLit:
+	'AS' 'CLOSE' 'AS' 'POSSIBLE' 'TO' '(' quantity=Literal ',' comparator=Quantifiable ')'
+;
+
+
+
+Quantifiable:
+	'^' contextVariable=[contextModel::ContextVar]
+;
+
+May:
+    'MAY' '('expression=Expression ',' alternatives+=MayAlternative+ ')'
+;
+
+MayAlternative:
+    'OR' 'MAY' '(' expression=Expression ')' (',')?
+;
+
+Event:
+	STRING
+;
+
+TimeInterval:
+	after=Time '-' before=Time
+;
+
+Time:
+	value=INT ('hr' | 'min' | 's' | 'ms' | 'ns')
+;
+
+Literal returns common::Literal:
+	IntLiteral
+    | DecimalLiteral
+    | StringLiteral
+    | BooleanLiteral
+;
+
+IntLiteral returns common::IntLiteral:
+    value=INT
+;
+
+DecimalLiteral returns common::DecimalLiteral:
+    value=DECIMAL
+;
+
+StringLiteral returns common::StringLiteral:
+    value=STRING
+;
+
+BooleanLiteral returns common::BooleanLiteral:
+    value=BOOLEAN
+;
+
+terminal DECIMAL returns ecore::EBigDecimal:
+    INT '.' INT
+;
+
+terminal BOOLEAN returns ecore::EBoolean:
+    'true' | 'false'
+;
+

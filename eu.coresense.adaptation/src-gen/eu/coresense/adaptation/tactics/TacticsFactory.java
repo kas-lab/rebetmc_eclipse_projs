@@ -123,6 +123,33 @@ public interface TacticsFactory extends EFactory
   ConditionAction createConditionAction();
 
   /**
+   * Returns a new object of class '<em>Context Guard</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Context Guard</em>'.
+   * @generated
+   */
+  ContextGuard createContextGuard();
+
+  /**
+   * Returns a new object of class '<em>Feature Guard</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Feature Guard</em>'.
+   * @generated
+   */
+  FeatureGuard createFeatureGuard();
+
+  /**
+   * Returns a new object of class '<em>Effect Block</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Effect Block</em>'.
+   * @generated
+   */
+  EffectBlock createEffectBlock();
+
+  /**
    * Returns a new object of class '<em>Effect</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -132,6 +159,24 @@ public interface TacticsFactory extends EFactory
   Effect createEffect();
 
   /**
+   * Returns a new object of class '<em>Relative Effect</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Relative Effect</em>'.
+   * @generated
+   */
+  RelativeEffect createRelativeEffect();
+
+  /**
+   * Returns a new object of class '<em>Feature Condition</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Feature Condition</em>'.
+   * @generated
+   */
+  FeatureCondition createFeatureCondition();
+
+  /**
    * Returns a new object of class '<em>Condition</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -139,6 +184,33 @@ public interface TacticsFactory extends EFactory
    * @generated
    */
   Condition createCondition();
+
+  /**
+   * Returns a new object of class '<em>Measurement Condition</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Measurement Condition</em>'.
+   * @generated
+   */
+  MeasurementCondition createMeasurementCondition();
+
+  /**
+   * Returns a new object of class '<em>Measurement Threshold Condition</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Measurement Threshold Condition</em>'.
+   * @generated
+   */
+  MeasurementThresholdCondition createMeasurementThresholdCondition();
+
+  /**
+   * Returns a new object of class '<em>Measurement Measurement Condition</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Measurement Measurement Condition</em>'.
+   * @generated
+   */
+  MeasurementMeasurementCondition createMeasurementMeasurementCondition();
 
   /**
    * Returns a new object of class '<em>Atomic Action Select Feature</em>'.
@@ -166,51 +238,6 @@ public interface TacticsFactory extends EFactory
    * @generated
    */
   QualifiedFeatureRef createQualifiedFeatureRef();
-
-  /**
-   * Returns a new object of class '<em>Literal</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Literal</em>'.
-   * @generated
-   */
-  Literal createLiteral();
-
-  /**
-   * Returns a new object of class '<em>Int Literal</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Int Literal</em>'.
-   * @generated
-   */
-  IntLiteral createIntLiteral();
-
-  /**
-   * Returns a new object of class '<em>Decimal Literal</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Decimal Literal</em>'.
-   * @generated
-   */
-  DecimalLiteral createDecimalLiteral();
-
-  /**
-   * Returns a new object of class '<em>String Literal</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>String Literal</em>'.
-   * @generated
-   */
-  StringLiteral createStringLiteral();
-
-  /**
-   * Returns a new object of class '<em>Boolean Literal</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Boolean Literal</em>'.
-   * @generated
-   */
-  BooleanLiteral createBooleanLiteral();
 
   /**
    * Returns the package supported by this factory.

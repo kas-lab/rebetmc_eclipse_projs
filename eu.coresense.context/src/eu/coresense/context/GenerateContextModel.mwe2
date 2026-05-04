@@ -34,7 +34,7 @@ Workflow {
 			name = "eu.coresense.context.ContextModel"
 			fileExtensions = "context"
 			referencedResource = "platform:/resource/de.fraunhofer.ipa.ros/model/ros.genmodel"
-			referencedResource = "platform:/resource/pythonfunctions/model/PythonModel.genmodel"
+			referencedResource = "platform:/resource/de.fraunhofer.ipa.rossystem/model/rossystem.genmodel"
 
 			serializer = {
 				generateStub = false

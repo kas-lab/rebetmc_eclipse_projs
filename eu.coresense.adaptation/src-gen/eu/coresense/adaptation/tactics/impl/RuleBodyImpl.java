@@ -4,7 +4,7 @@
 package eu.coresense.adaptation.tactics.impl;
 
 import eu.coresense.adaptation.tactics.AtomicAction;
-import eu.coresense.adaptation.tactics.Effect;
+import eu.coresense.adaptation.tactics.EffectBlock;
 import eu.coresense.adaptation.tactics.RuleBody;
 import eu.coresense.adaptation.tactics.TacticsPackage;
 
@@ -41,7 +41,7 @@ public class RuleBodyImpl extends MinimalEObjectImpl.Container implements RuleBo
    * @generated
    * @ordered
    */
-  protected Effect effect;
+  protected EffectBlock effect;
 
   /**
    * The cached value of the '{@link #getAtomicAction() <em>Atomic Action</em>}' containment reference.
@@ -80,7 +80,7 @@ public class RuleBodyImpl extends MinimalEObjectImpl.Container implements RuleBo
    * @generated
    */
   @Override
-  public Effect getEffect()
+  public EffectBlock getEffect()
   {
     return effect;
   }
@@ -90,9 +90,9 @@ public class RuleBodyImpl extends MinimalEObjectImpl.Container implements RuleBo
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetEffect(Effect newEffect, NotificationChain msgs)
+  public NotificationChain basicSetEffect(EffectBlock newEffect, NotificationChain msgs)
   {
-    Effect oldEffect = effect;
+    EffectBlock oldEffect = effect;
     effect = newEffect;
     if (eNotificationRequired())
     {
@@ -108,7 +108,7 @@ public class RuleBodyImpl extends MinimalEObjectImpl.Container implements RuleBo
    * @generated
    */
   @Override
-  public void setEffect(Effect newEffect)
+  public void setEffect(EffectBlock newEffect)
   {
     if (newEffect != effect)
     {
@@ -221,7 +221,7 @@ public class RuleBodyImpl extends MinimalEObjectImpl.Container implements RuleBo
     switch (featureID)
     {
       case TacticsPackage.RULE_BODY__EFFECT:
-        setEffect((Effect)newValue);
+        setEffect((EffectBlock)newValue);
         return;
       case TacticsPackage.RULE_BODY__ATOMIC_ACTION:
         setAtomicAction((AtomicAction)newValue);
@@ -241,7 +241,7 @@ public class RuleBodyImpl extends MinimalEObjectImpl.Container implements RuleBo
     switch (featureID)
     {
       case TacticsPackage.RULE_BODY__EFFECT:
-        setEffect((Effect)null);
+        setEffect((EffectBlock)null);
         return;
       case TacticsPackage.RULE_BODY__ATOMIC_ACTION:
         setAtomicAction((AtomicAction)null);

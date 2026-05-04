@@ -3,6 +3,21 @@
  */
 package eu.coresense.adaptation.validation;
 
+import java.util.Iterator;
+import java.util.List;
+import java.util.stream.Collectors;
+
+import org.eclipse.xtext.validation.Check;
+
+import eu.coresense.adaptation.tactics.AtomicAction;
+import eu.coresense.adaptation.tactics.AtomicActionDeselectFeature;
+import eu.coresense.adaptation.tactics.AtomicActionSelectFeature;
+import eu.coresense.adaptation.tactics.AtomicSimpleAction;
+import eu.coresense.adaptation.tactics.QualifiedFeatureRef;
+import eu.coresense.adaptation.tactics.TacticsPackage;
+import uma.caosd.rhea.BasicFMmetamodel.Alternative;
+import uma.caosd.rhea.BasicFMmetamodel.BasicFMmetamodelPackage;
+import uma.caosd.rhea.BasicFMmetamodel.Feature;
 
 /**
  * This class contains custom validation rules. 
@@ -11,15 +26,31 @@ package eu.coresense.adaptation.validation;
  */
 public class TacticsValidator extends AbstractTacticsValidator {
 	
-//	public static final String INVALID_NAME = "invalidName";
-//
-//	@Check
-//	public void checkGreetingStartsWithCapital(Greeting greeting) {
-//		if (!Character.isUpperCase(greeting.getName().charAt(0))) {
-//			warning("Name should start with a capital",
-//					TacticsPackage.Literals.GREETING__NAME,
-//					INVALID_NAME);
-//		}
-//	}
-	
+	@Check
+	public void checkDeselect(AtomicAction action)
+	{
+		int numActions = action.getActions().size();
+		for (int i = 0; i < numActions; i++) 
+		{
+			AtomicSimpleAction simpleAction = action.getActions().get(i);
+			if(!(simpleAction instanceof AtomicActionDeselectFeature)) return;
+			
+			Feature featureParent = simpleAction.getVariant().getFeature().getParent();
+			
+			if(featureParent instanceof Alternative && featureParent.isMandatory())
+			{
+				if(featureParent.getChildren().size() <= 2) return;
+				List<AtomicSimpleAction> remainingActions = action.getActions().subList(i+1,numActions);
+				boolean selectPresent = false;
+				for (AtomicSimpleAction remainingAction : remainingActions) {
+					Feature remainingParent = remainingAction.getVariant().getFeature().getParent();
+					selectPresent = (remainingAction instanceof AtomicActionSelectFeature && remainingParent == featureParent);
+				}
+				
+				if(!selectPresent) error("Youu cannot deselect from an mandatory alternative with more than two children without providing a new child to select.",null);	
+			}	
+		}
+	}
 }
+	
+

@@ -67,7 +67,13 @@ public class ContextModelFactoryImpl extends EFactoryImpl implements ContextMode
     {
       case ContextModelPackage.CONTEXT_MODEL: return createContextModel();
       case ContextModelPackage.CONTEXT_VAR: return createContextVar();
+      case ContextModelPackage.DO_CACHE: return createDoCache();
+      case ContextModelPackage.DO_PROXY: return createDoProxy();
       case ContextModelPackage.DATA_SOURCE: return createDataSource();
+      case ContextModelPackage.QUALIFIED_REF: return createQualifiedRef();
+      case ContextModelPackage.QUALIFIED_PUBLISHER_REF: return createQualifiedPublisherRef();
+      case ContextModelPackage.QUALIFIED_SERVICE_SERVER_REF: return createQualifiedServiceServerRef();
+      case ContextModelPackage.QUALIFIED_ACTION_SERVER_REF: return createQualifiedActionServerRef();
       case ContextModelPackage.IMPORT: return createImport();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
@@ -104,10 +110,82 @@ public class ContextModelFactoryImpl extends EFactoryImpl implements ContextMode
    * @generated
    */
   @Override
+  public DoCache createDoCache()
+  {
+    DoCacheImpl doCache = new DoCacheImpl();
+    return doCache;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public DoProxy createDoProxy()
+  {
+    DoProxyImpl doProxy = new DoProxyImpl();
+    return doProxy;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public DataSource createDataSource()
   {
     DataSourceImpl dataSource = new DataSourceImpl();
     return dataSource;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public QualifiedRef createQualifiedRef()
+  {
+    QualifiedRefImpl qualifiedRef = new QualifiedRefImpl();
+    return qualifiedRef;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public QualifiedPublisherRef createQualifiedPublisherRef()
+  {
+    QualifiedPublisherRefImpl qualifiedPublisherRef = new QualifiedPublisherRefImpl();
+    return qualifiedPublisherRef;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public QualifiedServiceServerRef createQualifiedServiceServerRef()
+  {
+    QualifiedServiceServerRefImpl qualifiedServiceServerRef = new QualifiedServiceServerRefImpl();
+    return qualifiedServiceServerRef;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public QualifiedActionServerRef createQualifiedActionServerRef()
+  {
+    QualifiedActionServerRefImpl qualifiedActionServerRef = new QualifiedActionServerRefImpl();
+    return qualifiedActionServerRef;
   }
 
   /**

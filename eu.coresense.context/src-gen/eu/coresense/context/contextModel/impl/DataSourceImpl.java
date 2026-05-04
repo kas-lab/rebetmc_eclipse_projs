@@ -5,18 +5,16 @@ package eu.coresense.context.contextModel.impl;
 
 import eu.coresense.context.contextModel.ContextModelPackage;
 import eu.coresense.context.contextModel.DataSource;
+import eu.coresense.context.contextModel.QualifiedRef;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
-import ros.ActionSpec;
-import ros.ServiceSpec;
-import ros.TopicSpec;
 
 /**
  * <!-- begin-user-doc -->
@@ -26,9 +24,7 @@ import ros.TopicSpec;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link eu.coresense.context.contextModel.impl.DataSourceImpl#getTopic <em>Topic</em>}</li>
- *   <li>{@link eu.coresense.context.contextModel.impl.DataSourceImpl#getService <em>Service</em>}</li>
- *   <li>{@link eu.coresense.context.contextModel.impl.DataSourceImpl#getAction <em>Action</em>}</li>
+ *   <li>{@link eu.coresense.context.contextModel.impl.DataSourceImpl#getRef <em>Ref</em>}</li>
  * </ul>
  *
  * @generated
@@ -36,34 +32,14 @@ import ros.TopicSpec;
 public class DataSourceImpl extends MinimalEObjectImpl.Container implements DataSource
 {
   /**
-   * The cached value of the '{@link #getTopic() <em>Topic</em>}' reference.
+   * The cached value of the '{@link #getRef() <em>Ref</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getTopic()
+   * @see #getRef()
    * @generated
    * @ordered
    */
-  protected TopicSpec topic;
-
-  /**
-   * The cached value of the '{@link #getService() <em>Service</em>}' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getService()
-   * @generated
-   * @ordered
-   */
-  protected ServiceSpec service;
-
-  /**
-   * The cached value of the '{@link #getAction() <em>Action</em>}' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getAction()
-   * @generated
-   * @ordered
-   */
-  protected ActionSpec action;
+  protected QualifiedRef ref;
 
   /**
    * <!-- begin-user-doc -->
@@ -92,19 +68,9 @@ public class DataSourceImpl extends MinimalEObjectImpl.Container implements Data
    * @generated
    */
   @Override
-  public TopicSpec getTopic()
+  public QualifiedRef getRef()
   {
-    if (topic != null && topic.eIsProxy())
-    {
-      InternalEObject oldTopic = (InternalEObject)topic;
-      topic = (TopicSpec)eResolveProxy(oldTopic);
-      if (topic != oldTopic)
-      {
-        if (eNotificationRequired())
-          eNotify(new ENotificationImpl(this, Notification.RESOLVE, ContextModelPackage.DATA_SOURCE__TOPIC, oldTopic, topic));
-      }
-    }
-    return topic;
+    return ref;
   }
 
   /**
@@ -112,54 +78,16 @@ public class DataSourceImpl extends MinimalEObjectImpl.Container implements Data
    * <!-- end-user-doc -->
    * @generated
    */
-  public TopicSpec basicGetTopic()
+  public NotificationChain basicSetRef(QualifiedRef newRef, NotificationChain msgs)
   {
-    return topic;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public void setTopic(TopicSpec newTopic)
-  {
-    TopicSpec oldTopic = topic;
-    topic = newTopic;
+    QualifiedRef oldRef = ref;
+    ref = newRef;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ContextModelPackage.DATA_SOURCE__TOPIC, oldTopic, topic));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public ServiceSpec getService()
-  {
-    if (service != null && service.eIsProxy())
     {
-      InternalEObject oldService = (InternalEObject)service;
-      service = (ServiceSpec)eResolveProxy(oldService);
-      if (service != oldService)
-      {
-        if (eNotificationRequired())
-          eNotify(new ENotificationImpl(this, Notification.RESOLVE, ContextModelPackage.DATA_SOURCE__SERVICE, oldService, service));
-      }
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ContextModelPackage.DATA_SOURCE__REF, oldRef, newRef);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
     }
-    return service;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public ServiceSpec basicGetService()
-  {
-    return service;
+    return msgs;
   }
 
   /**
@@ -168,43 +96,20 @@ public class DataSourceImpl extends MinimalEObjectImpl.Container implements Data
    * @generated
    */
   @Override
-  public void setService(ServiceSpec newService)
+  public void setRef(QualifiedRef newRef)
   {
-    ServiceSpec oldService = service;
-    service = newService;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ContextModelPackage.DATA_SOURCE__SERVICE, oldService, service));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public ActionSpec getAction()
-  {
-    if (action != null && action.eIsProxy())
+    if (newRef != ref)
     {
-      InternalEObject oldAction = (InternalEObject)action;
-      action = (ActionSpec)eResolveProxy(oldAction);
-      if (action != oldAction)
-      {
-        if (eNotificationRequired())
-          eNotify(new ENotificationImpl(this, Notification.RESOLVE, ContextModelPackage.DATA_SOURCE__ACTION, oldAction, action));
-      }
+      NotificationChain msgs = null;
+      if (ref != null)
+        msgs = ((InternalEObject)ref).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ContextModelPackage.DATA_SOURCE__REF, null, msgs);
+      if (newRef != null)
+        msgs = ((InternalEObject)newRef).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ContextModelPackage.DATA_SOURCE__REF, null, msgs);
+      msgs = basicSetRef(newRef, msgs);
+      if (msgs != null) msgs.dispatch();
     }
-    return action;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public ActionSpec basicGetAction()
-  {
-    return action;
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, ContextModelPackage.DATA_SOURCE__REF, newRef, newRef));
   }
 
   /**
@@ -213,12 +118,14 @@ public class DataSourceImpl extends MinimalEObjectImpl.Container implements Data
    * @generated
    */
   @Override
-  public void setAction(ActionSpec newAction)
+  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
   {
-    ActionSpec oldAction = action;
-    action = newAction;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ContextModelPackage.DATA_SOURCE__ACTION, oldAction, action));
+    switch (featureID)
+    {
+      case ContextModelPackage.DATA_SOURCE__REF:
+        return basicSetRef(null, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
   }
 
   /**
@@ -231,15 +138,8 @@ public class DataSourceImpl extends MinimalEObjectImpl.Container implements Data
   {
     switch (featureID)
     {
-      case ContextModelPackage.DATA_SOURCE__TOPIC:
-        if (resolve) return getTopic();
-        return basicGetTopic();
-      case ContextModelPackage.DATA_SOURCE__SERVICE:
-        if (resolve) return getService();
-        return basicGetService();
-      case ContextModelPackage.DATA_SOURCE__ACTION:
-        if (resolve) return getAction();
-        return basicGetAction();
+      case ContextModelPackage.DATA_SOURCE__REF:
+        return getRef();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -254,14 +154,8 @@ public class DataSourceImpl extends MinimalEObjectImpl.Container implements Data
   {
     switch (featureID)
     {
-      case ContextModelPackage.DATA_SOURCE__TOPIC:
-        setTopic((TopicSpec)newValue);
-        return;
-      case ContextModelPackage.DATA_SOURCE__SERVICE:
-        setService((ServiceSpec)newValue);
-        return;
-      case ContextModelPackage.DATA_SOURCE__ACTION:
-        setAction((ActionSpec)newValue);
+      case ContextModelPackage.DATA_SOURCE__REF:
+        setRef((QualifiedRef)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -277,14 +171,8 @@ public class DataSourceImpl extends MinimalEObjectImpl.Container implements Data
   {
     switch (featureID)
     {
-      case ContextModelPackage.DATA_SOURCE__TOPIC:
-        setTopic((TopicSpec)null);
-        return;
-      case ContextModelPackage.DATA_SOURCE__SERVICE:
-        setService((ServiceSpec)null);
-        return;
-      case ContextModelPackage.DATA_SOURCE__ACTION:
-        setAction((ActionSpec)null);
+      case ContextModelPackage.DATA_SOURCE__REF:
+        setRef((QualifiedRef)null);
         return;
     }
     super.eUnset(featureID);
@@ -300,12 +188,8 @@ public class DataSourceImpl extends MinimalEObjectImpl.Container implements Data
   {
     switch (featureID)
     {
-      case ContextModelPackage.DATA_SOURCE__TOPIC:
-        return topic != null;
-      case ContextModelPackage.DATA_SOURCE__SERVICE:
-        return service != null;
-      case ContextModelPackage.DATA_SOURCE__ACTION:
-        return action != null;
+      case ContextModelPackage.DATA_SOURCE__REF:
+        return ref != null;
     }
     return super.eIsSet(featureID);
   }

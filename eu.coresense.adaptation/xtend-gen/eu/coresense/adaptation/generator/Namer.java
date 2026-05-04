@@ -1,15 +1,25 @@
 package eu.coresense.adaptation.generator;
 
 import eu.coresense.adaptation.tactics.Condition;
+import eu.coresense.adaptation.tactics.FeatureCondition;
 import eu.coresense.adaptation.tactics.LogicalOperator;
+import eu.coresense.adaptation.tactics.MeasurementCondition;
+import eu.coresense.context.contextModel.ContextVar;
+import eu.coresense.context.contextModel.DataSource;
+import eu.coresense.context.contextModel.QualifiedActionServerRef;
+import eu.coresense.context.contextModel.QualifiedPublisherRef;
+import eu.coresense.context.contextModel.QualifiedServiceServerRef;
 import eu.coresense.resolution.resolutionModel.Reconfiguration;
 import eu.coresense.resolution.resolutionModel.Resolution;
 import eu.coresense.resolution.resolutionModel.SetLifecycle;
 import eu.coresense.resolution.resolutionModel.SetParam;
 import java.util.Map;
 import java.util.function.Function;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.Pair;
+import ros.ActionClient;
+import ros.ActionServer;
 import ros.Node;
 import ros.Parameter;
 import ros.ParameterArrayType;
@@ -18,11 +28,17 @@ import ros.ParameterBooleanType;
 import ros.ParameterDouble;
 import ros.ParameterDoubleType;
 import ros.ParameterInteger;
+import ros.ParameterIntegerType;
 import ros.ParameterSequence;
 import ros.ParameterString;
 import ros.ParameterStringType;
 import ros.ParameterType;
 import ros.ParameterValue;
+import ros.Publisher;
+import ros.QualityOfService;
+import ros.ServiceClient;
+import ros.ServiceServer;
+import ros.Subscriber;
 import system.RosNode;
 import uma.caosd.rhea.BasicFMmetamodel.Alternative;
 import uma.caosd.rhea.BasicFMmetamodel.Feature;
@@ -32,7 +48,9 @@ import uma.caosd.rhea.BasicFMmetamodel.OrGroup;
 public class Namer {
   private final Map<String, Integer> nameMap = CollectionLiterals.<String, Integer>newHashMap();
 
-  private final Map<Condition, String> conditionNames = CollectionLiterals.<Condition, String>newHashMap();
+  private final Map<MeasurementCondition, String> measurementConditionNames = CollectionLiterals.<MeasurementCondition, String>newHashMap();
+
+  private final Map<FeatureCondition, String> featureConditionNames = CollectionLiterals.<FeatureCondition, String>newHashMap();
 
   private final Map<Pair<String, String>, String> logicNames = CollectionLiterals.<Pair<String, String>, String>newHashMap();
 
@@ -58,6 +76,24 @@ public class Namer {
 
   private final Map<SetLifecycle, String> setlcNames = CollectionLiterals.<SetLifecycle, String>newHashMap();
 
+  private final Map<Subscriber, String> subNames = CollectionLiterals.<Subscriber, String>newHashMap();
+
+  private final Map<Publisher, String> pubNames = CollectionLiterals.<Publisher, String>newHashMap();
+
+  private final Map<ActionClient, String> acNames = CollectionLiterals.<ActionClient, String>newHashMap();
+
+  private final Map<ActionServer, String> asNames = CollectionLiterals.<ActionServer, String>newHashMap();
+
+  private final Map<ServiceClient, String> scNames = CollectionLiterals.<ServiceClient, String>newHashMap();
+
+  private final Map<ServiceServer, String> ssNames = CollectionLiterals.<ServiceServer, String>newHashMap();
+
+  private final Map<QualityOfService, String> qosNames = CollectionLiterals.<QualityOfService, String>newHashMap();
+
+  private final Map<ContextVar, String> cvNames = CollectionLiterals.<ContextVar, String>newHashMap();
+
+  private final Map<Expr, String> exprNames = CollectionLiterals.<Expr, String>newHashMap();
+
   public String makeUniqueName(final String baseName) {
     String _xblockexpression = null;
     {
@@ -82,11 +118,48 @@ public class Namer {
     return _xblockexpression;
   }
 
+  public String uniqueName(final MeasurementCondition condition) {
+    final Function<MeasurementCondition, String> _function = (MeasurementCondition it) -> {
+      String _lowerCase = condition.getMeasurement().getName().toLowerCase();
+      String _plus = (_lowerCase + "_");
+      String _lowerCase_1 = condition.getOperator().getName().toLowerCase();
+      String _plus_1 = (_plus + _lowerCase_1);
+      return this.makeUniqueName(_plus_1);
+    };
+    return this.measurementConditionNames.computeIfAbsent(condition, _function);
+  }
+
+  public String uniqueName(final FeatureCondition condition) {
+    final Function<FeatureCondition, String> _function = (FeatureCondition it) -> {
+      String _uniqueName = this.uniqueName(condition.getVariant().getFeature());
+      String _plus = ("is_selected_" + _uniqueName);
+      return this.makeUniqueName(_plus);
+    };
+    return this.featureConditionNames.computeIfAbsent(condition, _function);
+  }
+
+  public String uniqueName(final ContextVar contextVariable) {
+    final Function<ContextVar, String> _function = (ContextVar it) -> {
+      String _lowerCase = contextVariable.getName().toLowerCase();
+      String _plus = ("t_measured_" + _lowerCase);
+      return this.makeUniqueName(_plus);
+    };
+    return this.cvNames.computeIfAbsent(contextVariable, _function);
+  }
+
   public String uniqueName(final Condition condition) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method or field toLowerCase is undefined for the type ContextVar"
-      + "\n+ cannot be resolved"
-      + "\n+ cannot be resolved");
+    boolean _matched = false;
+    if (condition instanceof MeasurementCondition) {
+      _matched=true;
+      return this.uniqueName(((MeasurementCondition)condition));
+    }
+    if (!_matched) {
+      if (condition instanceof FeatureCondition) {
+        _matched=true;
+        return this.uniqueName(((FeatureCondition)condition));
+      }
+    }
+    return null;
   }
 
   public String uniqueName(final LogicalOperator logicalOp, final String lhs_name, final String rhs_name) {
@@ -117,6 +190,69 @@ public class Namer {
       }
     }
     return "shouldn\'t happen";
+  }
+
+  public String uniqueName(final DataSource dataSource, final String nodeName) {
+    final EObject ref = dataSource.getRef();
+    if ((ref instanceof QualifiedActionServerRef)) {
+      return this.uniqueName(((QualifiedActionServerRef)ref).getActionServer(), nodeName);
+    }
+    if ((ref instanceof QualifiedPublisherRef)) {
+      return this.uniqueName(((QualifiedPublisherRef)ref).getPublisher(), nodeName);
+    }
+    if ((ref instanceof QualifiedServiceServerRef)) {
+      return this.uniqueName(((QualifiedServiceServerRef)ref).getServiceServer(), nodeName);
+    }
+    return null;
+  }
+
+  public String uniqueName(final Expr e) {
+    final Function<Expr, String> _function = (Expr it) -> {
+      return this.makeUniqueName("expr_");
+    };
+    return this.exprNames.computeIfAbsent(e, _function);
+  }
+
+  public String uniqueName(final Subscriber subscriber, final String node_name) {
+    final Function<Subscriber, String> _function = (Subscriber it) -> {
+      return this.makeUniqueName((node_name + "_sub"));
+    };
+    return this.subNames.computeIfAbsent(subscriber, _function);
+  }
+
+  public String uniqueName(final Publisher publisher, final String node_name) {
+    final Function<Publisher, String> _function = (Publisher it) -> {
+      return this.makeUniqueName((node_name + "_pub"));
+    };
+    return this.pubNames.computeIfAbsent(publisher, _function);
+  }
+
+  public String uniqueName(final ActionClient actionClient, final String node_name) {
+    final Function<ActionClient, String> _function = (ActionClient it) -> {
+      return this.makeUniqueName((node_name + "_action_client"));
+    };
+    return this.acNames.computeIfAbsent(actionClient, _function);
+  }
+
+  public String uniqueName(final ActionServer actionServer, final String node_name) {
+    final Function<ActionServer, String> _function = (ActionServer it) -> {
+      return this.makeUniqueName((node_name + "_action_server"));
+    };
+    return this.asNames.computeIfAbsent(actionServer, _function);
+  }
+
+  public String uniqueName(final ServiceClient serviceClient, final String node_name) {
+    final Function<ServiceClient, String> _function = (ServiceClient it) -> {
+      return this.makeUniqueName((node_name + "_service_client"));
+    };
+    return this.scNames.computeIfAbsent(serviceClient, _function);
+  }
+
+  public String uniqueName(final ServiceServer serviceServer, final String node_name) {
+    final Function<ServiceServer, String> _function = (ServiceServer it) -> {
+      return this.makeUniqueName((node_name + "_service_server"));
+    };
+    return this.ssNames.computeIfAbsent(serviceServer, _function);
   }
 
   public String uniqueName(final SetLifecycle setl) {
@@ -151,17 +287,24 @@ public class Namer {
 
   public String uniqueName(final RosNode node) {
     final Function<RosNode, String> _function = (RosNode it) -> {
-      String _name = node.getName();
-      String _plus = (_name + "_node");
+      String _replace = node.getName().replace("/", "");
+      String _plus = (_replace + "_node");
       return this.makeUniqueName(_plus);
     };
     return this.rosnodeNames.computeIfAbsent(node, _function);
   }
 
+  public String uniqueName(final QualityOfService qos, final String interface_name) {
+    final Function<QualityOfService, String> _function = (QualityOfService it) -> {
+      return this.makeUniqueName((interface_name + "_qos"));
+    };
+    return this.qosNames.computeIfAbsent(qos, _function);
+  }
+
   public String uniqueName(final Node node) {
     final Function<Node, String> _function = (Node it) -> {
-      String _name = node.getName();
-      String _plus = (_name + "_node");
+      String _replace = node.getName().replace("/", "");
+      String _plus = (_replace + "_node");
       return this.makeUniqueName(_plus);
     };
     return this.nodeNames.computeIfAbsent(node, _function);
@@ -210,47 +353,83 @@ public class Namer {
 
   public String uniqueName(final Parameter parameter) {
     final Function<Parameter, String> _function = (Parameter it) -> {
-      String _name = parameter.getName();
-      String _plus = (_name + "_param");
+      String _replace = parameter.getName().replace(".", "_").replace("/", "");
+      String _plus = (_replace + "_param");
       return this.makeUniqueName(_plus);
     };
     return this.paramNames.computeIfAbsent(parameter, _function);
   }
 
-  public String NiceNameParamValueClass(final ParameterValue param_value) {
+  public String SchemaValueFromParam(final ParameterValue param_value) {
     String _switchResult = null;
     boolean _matched = false;
     if (param_value instanceof ParameterBoolean) {
       _matched=true;
-      _switchResult = "ParameterValueBoolean";
+      _switchResult = "ValueBool";
     }
     if (!_matched) {
       if (param_value instanceof ParameterDouble) {
         _matched=true;
-        _switchResult = "ParameterValueDouble";
+        _switchResult = "ValueDouble";
       }
     }
     if (!_matched) {
       if (param_value instanceof ParameterString) {
         _matched=true;
-        _switchResult = "ParameterValueString";
+        _switchResult = "ValueString";
       }
     }
     if (!_matched) {
       if (param_value instanceof ParameterInteger) {
         _matched=true;
-        _switchResult = "ParameterValueInteger";
+        _switchResult = "ValueInteger";
       }
     }
     if (!_matched) {
       if (param_value instanceof ParameterSequence) {
         _matched=true;
-        String _NiceNameParamValueClass = this.NiceNameParamValueClass(((ParameterSequence)param_value).getValue().get(0));
-        _switchResult = (_NiceNameParamValueClass + "Array");
+        _switchResult = "ValueArray";
       }
     }
     if (!_matched) {
       _switchResult = param_value.getClass().toString();
+    }
+    return _switchResult;
+  }
+
+  public String SchemaValueFromParam(final ParameterType param_type) {
+    String _switchResult = null;
+    boolean _matched = false;
+    if (param_type instanceof ParameterBooleanType) {
+      _matched=true;
+      _switchResult = "ValueBool";
+    }
+    if (!_matched) {
+      if (param_type instanceof ParameterDoubleType) {
+        _matched=true;
+        _switchResult = "ValueDouble";
+      }
+    }
+    if (!_matched) {
+      if (param_type instanceof ParameterStringType) {
+        _matched=true;
+        _switchResult = "ValueString";
+      }
+    }
+    if (!_matched) {
+      if (param_type instanceof ParameterIntegerType) {
+        _matched=true;
+        _switchResult = "ValueInteger";
+      }
+    }
+    if (!_matched) {
+      if (param_type instanceof ParameterArrayType) {
+        _matched=true;
+        _switchResult = "ValueArray";
+      }
+    }
+    if (!_matched) {
+      _switchResult = param_type.getClass().toString();
     }
     return _switchResult;
   }
@@ -260,7 +439,7 @@ public class Namer {
     boolean _matched = false;
     if (param_value instanceof ParameterBoolean) {
       _matched=true;
-      _switchResult = "ParameterBoolean";
+      _switchResult = "ParameterBool";
     }
     if (!_matched) {
       if (param_value instanceof ParameterDouble) {
@@ -283,8 +462,44 @@ public class Namer {
     if (!_matched) {
       if (param_value instanceof ParameterSequence) {
         _matched=true;
-        String _NiceNameParamValueClass = this.NiceNameParamValueClass(((ParameterSequence)param_value).getValue().get(0));
-        _switchResult = (_NiceNameParamValueClass + "Array");
+        String _SchemaValueFromParam = this.SchemaValueFromParam(((ParameterSequence)param_value).getValue().get(0));
+        String _plus = ("Parameter" + _SchemaValueFromParam);
+        _switchResult = (_plus + "Array");
+      }
+    }
+    return _switchResult;
+  }
+
+  public String paramSubClass(final ParameterType param_type) {
+    String _switchResult = null;
+    boolean _matched = false;
+    if (param_type instanceof ParameterBooleanType) {
+      _matched=true;
+      _switchResult = "ParameterBool";
+    }
+    if (!_matched) {
+      if (param_type instanceof ParameterDoubleType) {
+        _matched=true;
+        _switchResult = "ParameterDouble";
+      }
+    }
+    if (!_matched) {
+      if (param_type instanceof ParameterStringType) {
+        _matched=true;
+        _switchResult = "ParameterString";
+      }
+    }
+    if (!_matched) {
+      if (param_type instanceof ParameterIntegerType) {
+        _matched=true;
+        _switchResult = "ParameterInteger";
+      }
+    }
+    if (!_matched) {
+      if (param_type instanceof ParameterArrayType) {
+        _matched=true;
+        String _paramSubClass = this.paramSubClass(((ParameterArrayType)param_type).getType());
+        _switchResult = (_paramSubClass + "Array");
       }
     }
     return _switchResult;
@@ -295,7 +510,7 @@ public class Namer {
     boolean _matched = false;
     if (param_value instanceof ParameterBoolean) {
       _matched=true;
-      _switchResult = "boolean";
+      _switchResult = "bool";
     }
     if (!_matched) {
       if (param_value instanceof ParameterDouble) {
@@ -307,6 +522,12 @@ public class Namer {
       if (param_value instanceof ParameterString) {
         _matched=true;
         _switchResult = "string";
+      }
+    }
+    if (!_matched) {
+      if (param_value instanceof ParameterInteger) {
+        _matched=true;
+        _switchResult = "integer";
       }
     }
     return _switchResult;

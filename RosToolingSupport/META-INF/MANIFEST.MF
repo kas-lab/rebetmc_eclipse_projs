@@ -1,0 +1,13 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: RosToolingSupport
+Bundle-SymbolicName: RosToolingSupport
+Bundle-Version: 1.0.0.qualifier
+Require-Bundle: de.fraunhofer.ipa.ros,
+ de.fraunhofer.ipa.rossystem,
+ org.eclipse.xtext,
+ eu.coresense.resolution,
+ eu.coresense.adaptation,
+ eu.coresense.requirements
+Automatic-Module-Name: RosToolingSupport
+Bundle-RequiredExecutionEnvironment: JavaSE-21

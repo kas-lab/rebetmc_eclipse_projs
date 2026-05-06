@@ -3,6 +3,11 @@
 	<name>eu.coresense.resolution</name>
 	<comment></comment>
 	<projects>
+		<project>de.fraunhofer.ipa.ros</project>
+		<project>de.fraunhofer.ipa.rossystem</project>
+		<project>eu.coresense.common</project>
+		<project>eu.coresense.variability</project>
+		<project>fms.metamodel</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

@@ -8,6 +8,7 @@ import eu.coresense.context.contextModel.ContextVar;
 import eu.coresense.context.contextModel.DataSource;
 import eu.coresense.context.contextModel.QualifiedActionServerRef;
 import eu.coresense.context.contextModel.QualifiedPublisherRef;
+import eu.coresense.context.contextModel.QualifiedRef;
 import eu.coresense.context.contextModel.QualifiedServiceServerRef;
 import eu.coresense.resolution.resolutionModel.Reconfiguration;
 import eu.coresense.resolution.resolutionModel.Resolution;
@@ -15,7 +16,6 @@ import eu.coresense.resolution.resolutionModel.SetLifecycle;
 import eu.coresense.resolution.resolutionModel.SetParam;
 import java.util.Map;
 import java.util.function.Function;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.Pair;
 import ros.ActionClient;
@@ -193,7 +193,7 @@ public class Namer {
   }
 
   public String uniqueName(final DataSource dataSource, final String nodeName) {
-    final EObject ref = dataSource.getRef();
+    final QualifiedRef ref = dataSource.getRef();
     if ((ref instanceof QualifiedActionServerRef)) {
       return this.uniqueName(((QualifiedActionServerRef)ref).getActionServer(), nodeName);
     }

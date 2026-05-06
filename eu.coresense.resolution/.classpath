@@ -3,6 +3,11 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="src" path="src-gen"/>
 	<classpathentry excluding="**/.*" kind="src" path="xtend-gen"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/eu.coresense.common"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/eu.coresense.variability"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/de.fraunhofer.ipa.ros"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/de.fraunhofer.ipa.rossystem"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/fms.metamodel"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-21"/>
 	<classpathentry kind="con" path="org.eclipse.pde.core.requiredPlugins"/>
 	<classpathentry kind="output" path="bin"/>

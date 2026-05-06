@@ -1,0 +1,8 @@
+/.vscode/
+/.project
+/COLCON_IGNORE
+
+**/bin/
+**/test-bin/
+**/target/classes/
+**/xtend-gen/**/*.xtendbin

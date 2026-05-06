@@ -3,6 +3,9 @@
 	<name>eu.coresense.requirements</name>
 	<comment></comment>
 	<projects>
+		<project>eu.coresense.common</project>
+		<project>eu.coresense.context</project>
+		<project>de.fraunhofer.ipa.ros</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

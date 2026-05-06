@@ -3,6 +3,9 @@
 	<name>eu.coresense.adaptation</name>
 	<comment></comment>
 	<projects>
+		<project>eu.coresense.common</project>
+		<project>de.fraunhofer.ipa.ros</project>
+		<project>de.fraunhofer.ipa.rossystem</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

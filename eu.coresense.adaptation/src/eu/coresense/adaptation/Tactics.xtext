@@ -2,7 +2,7 @@ grammar eu.coresense.adaptation.Tactics with org.eclipse.xtext.common.Terminals
 
 import "http://coresense.eu/resolution/ResolutionModel" as resolutionModel
 import "http://www.coresense.eu/variability/FeatureModel" as variabilityModel
-import "http://caosd.lcc.uma.es/BasicFMmetamodel" as BasicFMmetamodel
+import "platform:/resource/fms.metamodel/model/BasicFMmetamodel.ecore" as BasicFMmetamodel
 import "http://www.coresense.eu/context/ContextModel" as contextModel
 import "http://www.eclipse.org/emf/2002/Ecore" as ecore
 import "https://coresense.eu/common" as common

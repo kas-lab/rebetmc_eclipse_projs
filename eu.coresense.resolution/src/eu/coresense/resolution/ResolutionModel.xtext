@@ -4,7 +4,7 @@ generate resolutionModel "http://coresense.eu/resolution/ResolutionModel"
 import "http://www.ipa.fraunhofer.de/rossystem" as rossys
 import "http://www.ipa.fraunhofer.de/ros" as ros
 import "http://www.coresense.eu/variability/FeatureModel" as variabilityModel
-import "http://caosd.lcc.uma.es/BasicFMmetamodel" as BasicFMmetamodel
+import "platform:/resource/fms.metamodel/model/BasicFMmetamodel.ecore" as BasicFMmetamodel
 
 ResolutionModel:
 	'name' name=ID ';' 

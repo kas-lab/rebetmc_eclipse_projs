@@ -28,7 +28,18 @@ public class FeatureModelParsingTest {
   public void loadModel() {
     try {
       StringConcatenation _builder = new StringConcatenation();
-      _builder.append("Hello Xtext!");
+      _builder.append("feature_model {");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("name test");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("root Feature Root");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("crossTreeConstraints { }");
+      _builder.newLine();
+      _builder.append("}");
       _builder.newLine();
       final Model result = this.parseHelper.parse(_builder);
       Assertions.assertNotNull(result);

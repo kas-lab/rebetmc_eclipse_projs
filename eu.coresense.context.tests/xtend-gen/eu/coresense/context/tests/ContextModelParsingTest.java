@@ -28,7 +28,7 @@ public class ContextModelParsingTest {
   public void loadModel() {
     try {
       StringConcatenation _builder = new StringConcatenation();
-      _builder.append("Hello Xtext!");
+      _builder.append("import \"test.ros\";");
       _builder.newLine();
       final ContextModel result = this.parseHelper.parse(_builder);
       Assertions.assertNotNull(result);
@@ -39,6 +39,8 @@ public class ContextModelParsingTest {
       String _join = IterableExtensions.join(errors, ", ");
       _builder_1.append(_join);
       Assertions.assertTrue(_isEmpty, _builder_1.toString());
+      int _size = result.getImports().size();
+      Assertions.assertEquals(1, _size);
     } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }

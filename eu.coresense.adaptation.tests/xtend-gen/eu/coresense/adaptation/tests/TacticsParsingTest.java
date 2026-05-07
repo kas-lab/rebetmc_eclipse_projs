@@ -28,7 +28,7 @@ public class TacticsParsingTest {
   public void loadModel() {
     try {
       StringConcatenation _builder = new StringConcatenation();
-      _builder.append("Hello Xtext!");
+      _builder.append("name test;");
       _builder.newLine();
       final TacticsModel result = this.parseHelper.parse(_builder);
       Assertions.assertNotNull(result);

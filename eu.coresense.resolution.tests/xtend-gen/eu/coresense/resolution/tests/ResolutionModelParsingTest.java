@@ -28,7 +28,13 @@ public class ResolutionModelParsingTest {
   public void loadModel() {
     try {
       StringConcatenation _builder = new StringConcatenation();
-      _builder.append("Hello Xtext!");
+      _builder.append("name test;");
+      _builder.newLine();
+      _builder.append("variability_model featureModel;");
+      _builder.newLine();
+      _builder.append("ros_system system;");
+      _builder.newLine();
+      _builder.append("resolutions");
       _builder.newLine();
       final ResolutionModel result = this.parseHelper.parse(_builder);
       Assertions.assertNotNull(result);

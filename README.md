@@ -78,13 +78,13 @@ Add/update the Maven settings in `~/.m2/settings.xml` with credentials for the G
 Build the repository with Maven 3.9+ and Java 21:
 
 ```bash
-mvn -B clean package -f eu.coresense.parent/pom.xml
+mvn -B clean verify -f eu.coresense.parent/pom.xml
 ```
 
 If you tried to build before updating the Maven settings and Maven cached authentication errors, add `-U` once:
 
 ```bash
-mvn -U -B clean package -f eu.coresense.parent/pom.xml
+mvn -U -B clean verify -f eu.coresense.parent/pom.xml
 ```
 
 The build creates a local Eclipse p2 update site at:
@@ -101,4 +101,3 @@ After building, install the generated update site in Eclipse:
 2. Click `Add...`, then `Local...`.
 3. Select `eu.coresense.repository/target/repository/`.
 4. Select `CoreSense Plugins` and finish the installation.
-

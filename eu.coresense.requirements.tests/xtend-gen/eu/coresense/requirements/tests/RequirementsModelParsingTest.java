@@ -28,7 +28,7 @@ public class RequirementsModelParsingTest {
   public void loadModel() {
     try {
       StringConcatenation _builder = new StringConcatenation();
-      _builder.append("Hello Xtext!");
+      _builder.append("REQ1, Safety: \"test requirement\", true");
       _builder.newLine();
       final RequirementsModel result = this.parseHelper.parse(_builder);
       Assertions.assertNotNull(result);

@@ -21,7 +21,10 @@ class ResolutionModelParsingTest {
 	@Test
 	def void loadModel() {
 		val result = parseHelper.parse('''
-			Hello Xtext!
+			name test;
+			variability_model featureModel;
+			ros_system system;
+			resolutions
 		''')
 		Assertions.assertNotNull(result)
 		val errors = result.eResource.errors

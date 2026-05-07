@@ -3,7 +3,7 @@ Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: eu.coresense.common.editor;singleton:=true
 Automatic-Module-Name: eu.coresense.common.editor
-Bundle-Version: 1.0.0.qualifier
+Bundle-Version: 0.1.0.qualifier
 Bundle-ClassPath: .
 Bundle-Activator: eu.coresense.common.presentation.CommonEditorPlugin$Implementation
 Bundle-Vendor: %providerName

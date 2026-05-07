@@ -8,9 +8,6 @@
 /.project
 /.classpath
 
-/*.edit/
-/*.editor/
-
 **/bin/
 **/test-bin/
 **/target/

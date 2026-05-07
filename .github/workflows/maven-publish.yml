@@ -1,0 +1,61 @@
+name: Publish rebetmc to GitHub Packages
+
+on:
+  release:
+    types: [created]
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-java@v4
+        with:
+          java-version: '21'
+          distribution: 'temurin'
+          cache: maven
+
+      - name: Write Maven settings (multi-server auth)
+        run: |
+          if [ -z "${READ_WRITE_PACKAGES}" ]; then
+            echo "READ_WRITE_PACKAGES is not configured. Add a classic PAT with read:packages as a repository or organization secret." >&2
+            exit 1
+          fi
+
+          mkdir -p ~/.m2
+          cat > ~/.m2/settings.xml <<EOF
+          <settings>
+            <servers>
+              <server>
+                <id>github</id>
+                <username>${GITHUB_ACTOR}</username>
+                <password>${GITHUB_TOKEN}</password>
+              </server>
+              <server>
+                <id>kas-lab-rostooling</id>
+                <username>${GITHUB_ACTOR}</username>
+                <password>${READ_WRITE_PACKAGES}</password>
+              </server>
+              <server>
+                <id>kas-lab-splc2020</id>
+                <username>${GITHUB_ACTOR}</username>
+                <password>${READ_WRITE_PACKAGES}</password>
+              </server>
+            </servers>
+          </settings>
+          EOF
+        env:
+          GITHUB_ACTOR: ${{ github.actor }}
+          GITHUB_TOKEN: ${{ github.token }}
+          READ_WRITE_PACKAGES: ${{ secrets.READ_WRITE_PACKAGES }}
+
+      - name: Publish to GitHub Packages
+        run: mvn -U deploy -B -f eu.coresense.parent/pom.xml
+        env:
+          GITHUB_ACTOR: ${{ github.actor }}
+          GITHUB_TOKEN: ${{ github.token }}

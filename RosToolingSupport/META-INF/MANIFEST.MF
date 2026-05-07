@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: RosToolingSupport
 Bundle-SymbolicName: RosToolingSupport
-Bundle-Version: 1.0.0.qualifier
+Bundle-Version: 0.1.0.qualifier
 Require-Bundle: de.fraunhofer.ipa.ros;bundle-version="3.1.0.rc1",
  de.fraunhofer.ipa.rossystem;bundle-version="3.1.0.rc1",
  org.eclipse.xtext,

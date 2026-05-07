@@ -8,6 +8,6 @@
     <version>0.1.0-SNAPSHOT</version>
     <relativePath>../eu.coresense.parent/pom.xml</relativePath>
   </parent>
-  <artifactId>RosToolingSupport</artifactId>
+  <artifactId>eu.coresense.rostooling.support</artifactId>
   <packaging>eclipse-plugin</packaging>
 </project>

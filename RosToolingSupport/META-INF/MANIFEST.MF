@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: RosToolingSupport
-Bundle-SymbolicName: RosToolingSupport
+Bundle-Name: CoreSense RosTooling Support
+Bundle-SymbolicName: eu.coresense.rostooling.support
 Bundle-Version: 0.1.0.qualifier
 Require-Bundle: de.fraunhofer.ipa.ros;bundle-version="3.1.0.rc1",
  de.fraunhofer.ipa.rossystem;bundle-version="3.1.0.rc1",
@@ -9,5 +9,5 @@ Require-Bundle: de.fraunhofer.ipa.ros;bundle-version="3.1.0.rc1",
  eu.coresense.resolution,
  eu.coresense.adaptation,
  eu.coresense.requirements
-Automatic-Module-Name: RosToolingSupport
+Automatic-Module-Name: eu.coresense.rostooling.support
 Bundle-RequiredExecutionEnvironment: JavaSE-21

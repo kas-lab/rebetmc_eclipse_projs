@@ -1,0 +1,12 @@
+/.vscode/
+/.project
+/COLCON_IGNORE
+/.pytest_cache/
+
+/*.edit/
+/*.editor/
+
+**/bin/
+**/test-bin/
+**/target/classes/
+**/xtend-gen/**/*.xtendbin

@@ -14,7 +14,7 @@ Require-Bundle: org.eclipse.xtext,
  org.eclipse.xtext.xbase.lib;bundle-version="2.38.0",
  org.eclipse.emf.common,
  org.antlr.runtime;bundle-version="[3.2.0,3.2.1)",
- de.fraunhofer.ipa.ros;bundle-version="3.0.0",
+ de.fraunhofer.ipa.ros;bundle-version="3.1.0.rc1",
  eu.coresense.common;bundle-version="0.1.0";visibility:=reexport
 Bundle-RequiredExecutionEnvironment: JavaSE-21
 Export-Package: eu.coresense.requirements.requirementsModel.impl,

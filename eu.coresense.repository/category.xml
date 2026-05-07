@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+  <feature url="features/eu.coresense.feature_1.0.0.qualifier.jar"
+           id="eu.coresense.feature"
+           version="1.0.0.qualifier">
+    <category name="eu.coresense"/>
+  </feature>
+  <category-def name="eu.coresense" label="CoreSense Plugins"/>
+</site>

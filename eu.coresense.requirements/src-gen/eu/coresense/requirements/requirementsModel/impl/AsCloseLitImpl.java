@@ -6,6 +6,7 @@ package eu.coresense.requirements.requirementsModel.impl;
 import eu.coresense.common.Literal;
 
 import eu.coresense.requirements.requirementsModel.AsCloseLit;
+import eu.coresense.requirements.requirementsModel.MembershipFunction;
 import eu.coresense.requirements.requirementsModel.Quantifiable;
 import eu.coresense.requirements.requirementsModel.RequirementsModelPackage;
 
@@ -27,6 +28,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * <ul>
  *   <li>{@link eu.coresense.requirements.requirementsModel.impl.AsCloseLitImpl#getQuantity <em>Quantity</em>}</li>
  *   <li>{@link eu.coresense.requirements.requirementsModel.impl.AsCloseLitImpl#getComparator <em>Comparator</em>}</li>
+ *   <li>{@link eu.coresense.requirements.requirementsModel.impl.AsCloseLitImpl#getMembershipFunction <em>Membership Function</em>}</li>
  * </ul>
  *
  * @generated
@@ -52,6 +54,16 @@ public class AsCloseLitImpl extends ExpressionImpl implements AsCloseLit
    * @ordered
    */
   protected Quantifiable comparator;
+
+  /**
+   * The cached value of the '{@link #getMembershipFunction() <em>Membership Function</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getMembershipFunction()
+   * @generated
+   * @ordered
+   */
+  protected MembershipFunction membershipFunction;
 
   /**
    * <!-- begin-user-doc -->
@@ -180,6 +192,56 @@ public class AsCloseLitImpl extends ExpressionImpl implements AsCloseLit
    * @generated
    */
   @Override
+  public MembershipFunction getMembershipFunction()
+  {
+    return membershipFunction;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetMembershipFunction(MembershipFunction newMembershipFunction, NotificationChain msgs)
+  {
+    MembershipFunction oldMembershipFunction = membershipFunction;
+    membershipFunction = newMembershipFunction;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, RequirementsModelPackage.AS_CLOSE_LIT__MEMBERSHIP_FUNCTION, oldMembershipFunction, newMembershipFunction);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setMembershipFunction(MembershipFunction newMembershipFunction)
+  {
+    if (newMembershipFunction != membershipFunction)
+    {
+      NotificationChain msgs = null;
+      if (membershipFunction != null)
+        msgs = ((InternalEObject)membershipFunction).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - RequirementsModelPackage.AS_CLOSE_LIT__MEMBERSHIP_FUNCTION, null, msgs);
+      if (newMembershipFunction != null)
+        msgs = ((InternalEObject)newMembershipFunction).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - RequirementsModelPackage.AS_CLOSE_LIT__MEMBERSHIP_FUNCTION, null, msgs);
+      msgs = basicSetMembershipFunction(newMembershipFunction, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, RequirementsModelPackage.AS_CLOSE_LIT__MEMBERSHIP_FUNCTION, newMembershipFunction, newMembershipFunction));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
   {
     switch (featureID)
@@ -188,6 +250,8 @@ public class AsCloseLitImpl extends ExpressionImpl implements AsCloseLit
         return basicSetQuantity(null, msgs);
       case RequirementsModelPackage.AS_CLOSE_LIT__COMPARATOR:
         return basicSetComparator(null, msgs);
+      case RequirementsModelPackage.AS_CLOSE_LIT__MEMBERSHIP_FUNCTION:
+        return basicSetMembershipFunction(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -206,6 +270,8 @@ public class AsCloseLitImpl extends ExpressionImpl implements AsCloseLit
         return getQuantity();
       case RequirementsModelPackage.AS_CLOSE_LIT__COMPARATOR:
         return getComparator();
+      case RequirementsModelPackage.AS_CLOSE_LIT__MEMBERSHIP_FUNCTION:
+        return getMembershipFunction();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -225,6 +291,9 @@ public class AsCloseLitImpl extends ExpressionImpl implements AsCloseLit
         return;
       case RequirementsModelPackage.AS_CLOSE_LIT__COMPARATOR:
         setComparator((Quantifiable)newValue);
+        return;
+      case RequirementsModelPackage.AS_CLOSE_LIT__MEMBERSHIP_FUNCTION:
+        setMembershipFunction((MembershipFunction)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -246,6 +315,9 @@ public class AsCloseLitImpl extends ExpressionImpl implements AsCloseLit
       case RequirementsModelPackage.AS_CLOSE_LIT__COMPARATOR:
         setComparator((Quantifiable)null);
         return;
+      case RequirementsModelPackage.AS_CLOSE_LIT__MEMBERSHIP_FUNCTION:
+        setMembershipFunction((MembershipFunction)null);
+        return;
     }
     super.eUnset(featureID);
   }
@@ -264,6 +336,8 @@ public class AsCloseLitImpl extends ExpressionImpl implements AsCloseLit
         return quantity != null;
       case RequirementsModelPackage.AS_CLOSE_LIT__COMPARATOR:
         return comparator != null;
+      case RequirementsModelPackage.AS_CLOSE_LIT__MEMBERSHIP_FUNCTION:
+        return membershipFunction != null;
     }
     return super.eIsSet(featureID);
   }

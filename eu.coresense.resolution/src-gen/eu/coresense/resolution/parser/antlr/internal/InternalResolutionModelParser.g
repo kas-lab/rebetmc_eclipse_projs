@@ -209,13 +209,19 @@ ruleResolution returns [EObject current=null]
 		(
 			(
 				{
-					if ($current==null) {
-						$current = createModelElement(grammarAccess.getResolutionRule());
-					}
+					newCompositeNode(grammarAccess.getResolutionAccess().getFeatureRefFeatureReferenceParserRuleCall_1_0());
 				}
-				otherlv_1=RULE_ID
+				lv_featureRef_1_0=ruleFeatureReference
 				{
-					newLeafNode(otherlv_1, grammarAccess.getResolutionAccess().getFeatureFeatureCrossReference_1_0());
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getResolutionRule());
+					}
+					set(
+						$current,
+						"featureRef",
+						lv_featureRef_1_0,
+						"eu.coresense.resolution.ResolutionModel.FeatureReference");
+					afterParserOrEnumRuleCall();
 				}
 			)
 		)
@@ -269,6 +275,55 @@ ruleResolution returns [EObject current=null]
 				}
 			)
 		)*
+	)
+;
+
+// Entry rule entryRuleFeatureReference
+entryRuleFeatureReference returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getFeatureReferenceRule()); }
+	iv_ruleFeatureReference=ruleFeatureReference
+	{ $current=$iv_ruleFeatureReference.current; }
+	EOF;
+
+// Rule FeatureReference
+ruleFeatureReference returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		(
+			(
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getFeatureReferenceRule());
+					}
+				}
+				otherlv_0=RULE_ID
+				{
+					newLeafNode(otherlv_0, grammarAccess.getFeatureReferenceAccess().getParentFeatureCrossReference_0_0());
+				}
+			)
+		)
+		otherlv_1=FullStop
+		{
+			newLeafNode(otherlv_1, grammarAccess.getFeatureReferenceAccess().getFullStopKeyword_1());
+		}
+		(
+			(
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getFeatureReferenceRule());
+					}
+				}
+				otherlv_2=RULE_ID
+				{
+					newLeafNode(otherlv_2, grammarAccess.getFeatureReferenceAccess().getFeatureFeatureCrossReference_2_0());
+				}
+			)
+		)
 	)
 ;
 

@@ -3,6 +3,7 @@ grammar eu.coresense.context.ContextModel with org.eclipse.xtext.common.Terminal
 generate contextModel "http://www.coresense.eu/context/ContextModel"
 import "http://www.ipa.fraunhofer.de/ros" as ros
 import "http://www.eclipse.org/emf/2002/Ecore" as ecore
+import "https://coresense.eu/common" as common
 
 
 ContextModel:
@@ -55,7 +56,7 @@ QualifiedActionServerRef:
     'action:' node=[ros::Node] '.' actionServer=[ros::ActionServer] 'goal_kwargs' kwargs=KeyWordArguments
 ;
 
-Import:
+Import returns common::Import:
 	'import' importURI=STRING ';'
 ;
 

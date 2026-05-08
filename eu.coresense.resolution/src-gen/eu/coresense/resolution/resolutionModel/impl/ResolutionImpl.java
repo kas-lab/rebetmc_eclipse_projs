@@ -3,6 +3,7 @@
  */
 package eu.coresense.resolution.resolutionModel.impl;
 
+import eu.coresense.resolution.resolutionModel.FeatureReference;
 import eu.coresense.resolution.resolutionModel.Reconfiguration;
 import eu.coresense.resolution.resolutionModel.Resolution;
 import eu.coresense.resolution.resolutionModel.ResolutionModelPackage;
@@ -23,8 +24,6 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
-import uma.caosd.rhea.BasicFMmetamodel.Feature;
-
 /**
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Resolution</b></em>'.
@@ -33,7 +32,7 @@ import uma.caosd.rhea.BasicFMmetamodel.Feature;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link eu.coresense.resolution.resolutionModel.impl.ResolutionImpl#getFeature <em>Feature</em>}</li>
+ *   <li>{@link eu.coresense.resolution.resolutionModel.impl.ResolutionImpl#getFeatureRef <em>Feature Ref</em>}</li>
  *   <li>{@link eu.coresense.resolution.resolutionModel.impl.ResolutionImpl#getSelection_actions <em>Selection actions</em>}</li>
  *   <li>{@link eu.coresense.resolution.resolutionModel.impl.ResolutionImpl#getDeselection_actions <em>Deselection actions</em>}</li>
  * </ul>
@@ -43,14 +42,14 @@ import uma.caosd.rhea.BasicFMmetamodel.Feature;
 public class ResolutionImpl extends MinimalEObjectImpl.Container implements Resolution
 {
   /**
-   * The cached value of the '{@link #getFeature() <em>Feature</em>}' reference.
+   * The cached value of the '{@link #getFeatureRef() <em>Feature Ref</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getFeature()
+   * @see #getFeatureRef()
    * @generated
    * @ordered
    */
-  protected Feature feature;
+  protected FeatureReference featureRef;
 
   /**
    * The cached value of the '{@link #getSelection_actions() <em>Selection actions</em>}' containment reference list.
@@ -99,19 +98,9 @@ public class ResolutionImpl extends MinimalEObjectImpl.Container implements Reso
    * @generated
    */
   @Override
-  public Feature getFeature()
+  public FeatureReference getFeatureRef()
   {
-    if (feature != null && feature.eIsProxy())
-    {
-      InternalEObject oldFeature = (InternalEObject)feature;
-      feature = (Feature)eResolveProxy(oldFeature);
-      if (feature != oldFeature)
-      {
-        if (eNotificationRequired())
-          eNotify(new ENotificationImpl(this, Notification.RESOLVE, ResolutionModelPackage.RESOLUTION__FEATURE, oldFeature, feature));
-      }
-    }
-    return feature;
+    return featureRef;
   }
 
   /**
@@ -119,9 +108,16 @@ public class ResolutionImpl extends MinimalEObjectImpl.Container implements Reso
    * <!-- end-user-doc -->
    * @generated
    */
-  public Feature basicGetFeature()
+  public NotificationChain basicSetFeatureRef(FeatureReference newFeatureRef, NotificationChain msgs)
   {
-    return feature;
+    FeatureReference oldFeatureRef = featureRef;
+    featureRef = newFeatureRef;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ResolutionModelPackage.RESOLUTION__FEATURE_REF, oldFeatureRef, newFeatureRef);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
   }
 
   /**
@@ -130,12 +126,20 @@ public class ResolutionImpl extends MinimalEObjectImpl.Container implements Reso
    * @generated
    */
   @Override
-  public void setFeature(Feature newFeature)
+  public void setFeatureRef(FeatureReference newFeatureRef)
   {
-    Feature oldFeature = feature;
-    feature = newFeature;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ResolutionModelPackage.RESOLUTION__FEATURE, oldFeature, feature));
+    if (newFeatureRef != featureRef)
+    {
+      NotificationChain msgs = null;
+      if (featureRef != null)
+        msgs = ((InternalEObject)featureRef).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ResolutionModelPackage.RESOLUTION__FEATURE_REF, null, msgs);
+      if (newFeatureRef != null)
+        msgs = ((InternalEObject)newFeatureRef).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ResolutionModelPackage.RESOLUTION__FEATURE_REF, null, msgs);
+      msgs = basicSetFeatureRef(newFeatureRef, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, ResolutionModelPackage.RESOLUTION__FEATURE_REF, newFeatureRef, newFeatureRef));
   }
 
   /**
@@ -178,6 +182,8 @@ public class ResolutionImpl extends MinimalEObjectImpl.Container implements Reso
   {
     switch (featureID)
     {
+      case ResolutionModelPackage.RESOLUTION__FEATURE_REF:
+        return basicSetFeatureRef(null, msgs);
       case ResolutionModelPackage.RESOLUTION__SELECTION_ACTIONS:
         return ((InternalEList<?>)getSelection_actions()).basicRemove(otherEnd, msgs);
       case ResolutionModelPackage.RESOLUTION__DESELECTION_ACTIONS:
@@ -196,9 +202,8 @@ public class ResolutionImpl extends MinimalEObjectImpl.Container implements Reso
   {
     switch (featureID)
     {
-      case ResolutionModelPackage.RESOLUTION__FEATURE:
-        if (resolve) return getFeature();
-        return basicGetFeature();
+      case ResolutionModelPackage.RESOLUTION__FEATURE_REF:
+        return getFeatureRef();
       case ResolutionModelPackage.RESOLUTION__SELECTION_ACTIONS:
         return getSelection_actions();
       case ResolutionModelPackage.RESOLUTION__DESELECTION_ACTIONS:
@@ -218,8 +223,8 @@ public class ResolutionImpl extends MinimalEObjectImpl.Container implements Reso
   {
     switch (featureID)
     {
-      case ResolutionModelPackage.RESOLUTION__FEATURE:
-        setFeature((Feature)newValue);
+      case ResolutionModelPackage.RESOLUTION__FEATURE_REF:
+        setFeatureRef((FeatureReference)newValue);
         return;
       case ResolutionModelPackage.RESOLUTION__SELECTION_ACTIONS:
         getSelection_actions().clear();
@@ -243,8 +248,8 @@ public class ResolutionImpl extends MinimalEObjectImpl.Container implements Reso
   {
     switch (featureID)
     {
-      case ResolutionModelPackage.RESOLUTION__FEATURE:
-        setFeature((Feature)null);
+      case ResolutionModelPackage.RESOLUTION__FEATURE_REF:
+        setFeatureRef((FeatureReference)null);
         return;
       case ResolutionModelPackage.RESOLUTION__SELECTION_ACTIONS:
         getSelection_actions().clear();
@@ -266,8 +271,8 @@ public class ResolutionImpl extends MinimalEObjectImpl.Container implements Reso
   {
     switch (featureID)
     {
-      case ResolutionModelPackage.RESOLUTION__FEATURE:
-        return feature != null;
+      case ResolutionModelPackage.RESOLUTION__FEATURE_REF:
+        return featureRef != null;
       case ResolutionModelPackage.RESOLUTION__SELECTION_ACTIONS:
         return selection_actions != null && !selection_actions.isEmpty();
       case ResolutionModelPackage.RESOLUTION__DESELECTION_ACTIONS:

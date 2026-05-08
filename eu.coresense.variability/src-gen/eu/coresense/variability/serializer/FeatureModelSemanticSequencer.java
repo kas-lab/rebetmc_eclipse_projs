@@ -17,8 +17,9 @@ import org.eclipse.xtext.serializer.ISerializationContext;
 import org.eclipse.xtext.serializer.acceptor.SequenceFeeder;
 import org.eclipse.xtext.serializer.sequencer.AbstractDelegatingSemanticSequencer;
 import org.eclipse.xtext.serializer.sequencer.ITransientValueService.ValueTransient;
-import uma.caosd.rhea.BasicConstraintsFMmetamodel.BasicConstraint;
-import uma.caosd.rhea.BasicConstraintsFMmetamodel.BasicConstraintsFMmetamodelPackage;
+import uma.caosd.rhea.AdvancedConstraintsFMmetamodel.AdvancedConstraint;
+import uma.caosd.rhea.AdvancedConstraintsFMmetamodel.AdvancedConstraintsFMmetamodelPackage;
+import uma.caosd.rhea.AdvancedConstraintsFMmetamodel.Term;
 import uma.caosd.rhea.BasicFMmetamodel.Alternative;
 import uma.caosd.rhea.BasicFMmetamodel.BasicFMmetamodelPackage;
 import uma.caosd.rhea.BasicFMmetamodel.Feature;
@@ -37,11 +38,21 @@ public class FeatureModelSemanticSequencer extends AbstractDelegatingSemanticSeq
 		ParserRule rule = context.getParserRule();
 		Action action = context.getAssignedAction();
 		Set<Parameter> parameters = context.getEnabledBooleanParameters();
-		if (epackage == BasicConstraintsFMmetamodelPackage.eINSTANCE)
+		if (epackage == AdvancedConstraintsFMmetamodelPackage.eINSTANCE)
 			switch (semanticObject.eClass().getClassifierID()) {
-			case BasicConstraintsFMmetamodelPackage.BASIC_CONSTRAINT:
-				sequence_BasicConstraint(context, (BasicConstraint) semanticObject); 
+			case AdvancedConstraintsFMmetamodelPackage.ADVANCED_CONSTRAINT:
+				sequence_AdvancedConstraint(context, (AdvancedConstraint) semanticObject); 
 				return; 
+			case AdvancedConstraintsFMmetamodelPackage.TERM:
+				if (rule == grammarAccess.getTermRule()) {
+					sequence_Term(context, (Term) semanticObject); 
+					return; 
+				}
+				else if (rule == grammarAccess.getSecondTermRule()) {
+					sequence_secondTerm(context, (Term) semanticObject); 
+					return; 
+				}
+				else break;
 			}
 		else if (epackage == BasicFMmetamodelPackage.eINSTANCE)
 			switch (semanticObject.eClass().getClassifierID()) {
@@ -71,11 +82,31 @@ public class FeatureModelSemanticSequencer extends AbstractDelegatingSemanticSeq
 	/**
 	 * <pre>
 	 * Contexts:
+	 *     AdvancedConstraint returns AdvancedConstraint
+	 *
+	 * Constraint:
+	 *     term=Term
+	 * </pre>
+	 */
+	protected void sequence_AdvancedConstraint(ISerializationContext context, AdvancedConstraint semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, AdvancedConstraintsFMmetamodelPackage.Literals.ADVANCED_CONSTRAINT__TERM) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AdvancedConstraintsFMmetamodelPackage.Literals.ADVANCED_CONSTRAINT__TERM));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getAdvancedConstraintAccess().getTermTermParserRuleCall_0(), semanticObject.getTerm());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
 	 *     Feature returns Alternative
 	 *     Alternative returns Alternative
 	 *
 	 * Constraint:
-	 *     (mandatory?='mandatory'? selected?='selected'? name=EString (children+=Feature children+=Feature*)?)
+	 *     (mandatory?='mandatory'? selected?='selected'? name=EString id=EString (children+=Feature children+=Feature*)?)
 	 * </pre>
 	 */
 	protected void sequence_Alternative(ISerializationContext context, Alternative semanticObject) {
@@ -86,36 +117,10 @@ public class FeatureModelSemanticSequencer extends AbstractDelegatingSemanticSeq
 	/**
 	 * <pre>
 	 * Contexts:
-	 *     BasicConstraint returns BasicConstraint
-	 *
-	 * Constraint:
-	 *     (type=CrossTreeConstraintType rightFeature=[Feature|EString] leftFeature=[Feature|EString])
-	 * </pre>
-	 */
-	protected void sequence_BasicConstraint(ISerializationContext context, BasicConstraint semanticObject) {
-		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, BasicConstraintsFMmetamodelPackage.Literals.BASIC_CONSTRAINT__TYPE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, BasicConstraintsFMmetamodelPackage.Literals.BASIC_CONSTRAINT__TYPE));
-			if (transientValues.isValueTransient(semanticObject, BasicConstraintsFMmetamodelPackage.Literals.BASIC_CONSTRAINT__RIGHT_FEATURE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, BasicConstraintsFMmetamodelPackage.Literals.BASIC_CONSTRAINT__RIGHT_FEATURE));
-			if (transientValues.isValueTransient(semanticObject, BasicConstraintsFMmetamodelPackage.Literals.BASIC_CONSTRAINT__LEFT_FEATURE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, BasicConstraintsFMmetamodelPackage.Literals.BASIC_CONSTRAINT__LEFT_FEATURE));
-		}
-		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getBasicConstraintAccess().getTypeCrossTreeConstraintTypeEnumRuleCall_3_0(), semanticObject.getType());
-		feeder.accept(grammarAccess.getBasicConstraintAccess().getRightFeatureFeatureEStringParserRuleCall_5_0_1(), semanticObject.eGet(BasicConstraintsFMmetamodelPackage.Literals.BASIC_CONSTRAINT__RIGHT_FEATURE, false));
-		feeder.accept(grammarAccess.getBasicConstraintAccess().getLeftFeatureFeatureEStringParserRuleCall_7_0_1(), semanticObject.eGet(BasicConstraintsFMmetamodelPackage.Literals.BASIC_CONSTRAINT__LEFT_FEATURE, false));
-		feeder.finish();
-	}
-	
-	
-	/**
-	 * <pre>
-	 * Contexts:
 	 *     FeatureModel returns FeatureModel
 	 *
 	 * Constraint:
-	 *     (name=EString root=Feature crossTreeConstraints+=BasicConstraint*)
+	 *     (name=EString root=Feature crossTreeConstraints+=AdvancedConstraint*)
 	 * </pre>
 	 */
 	protected void sequence_FeatureModel(ISerializationContext context, FeatureModel semanticObject) {
@@ -130,7 +135,7 @@ public class FeatureModelSemanticSequencer extends AbstractDelegatingSemanticSeq
 	 *     Feature_Impl returns Feature
 	 *
 	 * Constraint:
-	 *     (mandatory?='mandatory'? selected?='selected'? name=EString (children+=Feature children+=Feature*)?)
+	 *     (mandatory?='mandatory'? selected?='selected'? name=EString id=EString (children+=Feature children+=Feature*)?)
 	 * </pre>
 	 */
 	protected void sequence_Feature_Impl(ISerializationContext context, Feature semanticObject) {
@@ -165,11 +170,45 @@ public class FeatureModelSemanticSequencer extends AbstractDelegatingSemanticSeq
 	 *     OrGroup returns OrGroup
 	 *
 	 * Constraint:
-	 *     (mandatory?='mandatory'? selected?='selected'? name=EString (children+=Feature children+=Feature*)?)
+	 *     (mandatory?='mandatory'? selected?='selected'? name=EString id=EString (children+=Feature children+=Feature*)?)
 	 * </pre>
 	 */
 	protected void sequence_OrGroup(ISerializationContext context, OrGroup semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
+	 *     Term returns Term
+	 *
+	 * Constraint:
+	 *     (feature=[Feature|EString] type=TermType operands+=secondTerm)
+	 * </pre>
+	 */
+	protected void sequence_Term(ISerializationContext context, Term semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
+	 *     secondTerm returns Term
+	 *
+	 * Constraint:
+	 *     feature=[Feature|EString]
+	 * </pre>
+	 */
+	protected void sequence_secondTerm(ISerializationContext context, Term semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, AdvancedConstraintsFMmetamodelPackage.Literals.TERM__FEATURE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AdvancedConstraintsFMmetamodelPackage.Literals.TERM__FEATURE));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getSecondTermAccess().getFeatureFeatureEStringParserRuleCall_1_0_1(), semanticObject.eGet(AdvancedConstraintsFMmetamodelPackage.Literals.TERM__FEATURE, false));
+		feeder.finish();
 	}
 	
 	

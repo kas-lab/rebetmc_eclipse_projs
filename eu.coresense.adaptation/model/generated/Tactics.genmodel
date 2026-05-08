@@ -15,9 +15,6 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Tactics.ecore#//TacticsModel/imports"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Tactics.ecore#//TacticsModel/adaptationRules"/>
     </genClasses>
-    <genClasses ecoreClass="Tactics.ecore#//Import">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Tactics.ecore#//Import/importURI"/>
-    </genClasses>
     <genClasses ecoreClass="Tactics.ecore#//AdaptationRule">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Tactics.ecore#//AdaptationRule/name"/>
     </genClasses>

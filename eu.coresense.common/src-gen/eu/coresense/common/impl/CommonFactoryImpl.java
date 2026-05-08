@@ -67,6 +67,8 @@ public class CommonFactoryImpl extends EFactoryImpl implements CommonFactory {
 			return createStringLiteral();
 		case CommonPackage.BOOLEAN_LITERAL:
 			return createBooleanLiteral();
+		case CommonPackage.IMPORT:
+			return createImport();
 		default:
 			throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -155,6 +157,17 @@ public class CommonFactoryImpl extends EFactoryImpl implements CommonFactory {
 	public BooleanLiteral createBooleanLiteral() {
 		BooleanLiteralImpl booleanLiteral = new BooleanLiteralImpl();
 		return booleanLiteral;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Import createImport() {
+		ImportImpl import_ = new ImportImpl();
+		return import_;
 	}
 
 	/**

@@ -133,13 +133,13 @@ public interface ResolutionModelPackage extends EPackage
   int RESOLUTION = 1;
 
   /**
-   * The feature id for the '<em><b>Feature</b></em>' reference.
+   * The feature id for the '<em><b>Feature Ref</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int RESOLUTION__FEATURE = 0;
+  int RESOLUTION__FEATURE_REF = 0;
 
   /**
    * The feature id for the '<em><b>Selection actions</b></em>' containment reference list.
@@ -169,6 +169,43 @@ public interface ResolutionModelPackage extends EPackage
   int RESOLUTION_FEATURE_COUNT = 3;
 
   /**
+   * The meta object id for the '{@link eu.coresense.resolution.resolutionModel.impl.FeatureReferenceImpl <em>Feature Reference</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see eu.coresense.resolution.resolutionModel.impl.FeatureReferenceImpl
+   * @see eu.coresense.resolution.resolutionModel.impl.ResolutionModelPackageImpl#getFeatureReference()
+   * @generated
+   */
+  int FEATURE_REFERENCE = 2;
+
+  /**
+   * The feature id for the '<em><b>Parent</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FEATURE_REFERENCE__PARENT = 0;
+
+  /**
+   * The feature id for the '<em><b>Feature</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FEATURE_REFERENCE__FEATURE = 1;
+
+  /**
+   * The number of structural features of the '<em>Feature Reference</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FEATURE_REFERENCE_FEATURE_COUNT = 2;
+
+  /**
    * The meta object id for the '{@link eu.coresense.resolution.resolutionModel.impl.ImportImpl <em>Import</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -176,7 +213,7 @@ public interface ResolutionModelPackage extends EPackage
    * @see eu.coresense.resolution.resolutionModel.impl.ResolutionModelPackageImpl#getImport()
    * @generated
    */
-  int IMPORT = 2;
+  int IMPORT = 3;
 
   /**
    * The feature id for the '<em><b>Import URI</b></em>' attribute.
@@ -204,7 +241,7 @@ public interface ResolutionModelPackage extends EPackage
    * @see eu.coresense.resolution.resolutionModel.impl.ResolutionModelPackageImpl#getReconfiguration()
    * @generated
    */
-  int RECONFIGURATION = 3;
+  int RECONFIGURATION = 4;
 
   /**
    * The feature id for the '<em><b>Node</b></em>' reference.
@@ -232,7 +269,7 @@ public interface ResolutionModelPackage extends EPackage
    * @see eu.coresense.resolution.resolutionModel.impl.ResolutionModelPackageImpl#getSetParam()
    * @generated
    */
-  int SET_PARAM = 4;
+  int SET_PARAM = 5;
 
   /**
    * The feature id for the '<em><b>Node</b></em>' reference.
@@ -278,7 +315,7 @@ public interface ResolutionModelPackage extends EPackage
    * @see eu.coresense.resolution.resolutionModel.impl.ResolutionModelPackageImpl#getSetLifecycle()
    * @generated
    */
-  int SET_LIFECYCLE = 5;
+  int SET_LIFECYCLE = 6;
 
   /**
    * The feature id for the '<em><b>Node</b></em>' reference.
@@ -315,7 +352,7 @@ public interface ResolutionModelPackage extends EPackage
    * @see eu.coresense.resolution.resolutionModel.impl.ResolutionModelPackageImpl#getLifecycleState()
    * @generated
    */
-  int LIFECYCLE_STATE = 6;
+  int LIFECYCLE_STATE = 7;
 
 
   /**
@@ -394,15 +431,15 @@ public interface ResolutionModelPackage extends EPackage
   EClass getResolution();
 
   /**
-   * Returns the meta object for the reference '{@link eu.coresense.resolution.resolutionModel.Resolution#getFeature <em>Feature</em>}'.
+   * Returns the meta object for the containment reference '{@link eu.coresense.resolution.resolutionModel.Resolution#getFeatureRef <em>Feature Ref</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the reference '<em>Feature</em>'.
-   * @see eu.coresense.resolution.resolutionModel.Resolution#getFeature()
+   * @return the meta object for the containment reference '<em>Feature Ref</em>'.
+   * @see eu.coresense.resolution.resolutionModel.Resolution#getFeatureRef()
    * @see #getResolution()
    * @generated
    */
-  EReference getResolution_Feature();
+  EReference getResolution_FeatureRef();
 
   /**
    * Returns the meta object for the containment reference list '{@link eu.coresense.resolution.resolutionModel.Resolution#getSelection_actions <em>Selection actions</em>}'.
@@ -425,6 +462,38 @@ public interface ResolutionModelPackage extends EPackage
    * @generated
    */
   EReference getResolution_Deselection_actions();
+
+  /**
+   * Returns the meta object for class '{@link eu.coresense.resolution.resolutionModel.FeatureReference <em>Feature Reference</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Feature Reference</em>'.
+   * @see eu.coresense.resolution.resolutionModel.FeatureReference
+   * @generated
+   */
+  EClass getFeatureReference();
+
+  /**
+   * Returns the meta object for the reference '{@link eu.coresense.resolution.resolutionModel.FeatureReference#getParent <em>Parent</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Parent</em>'.
+   * @see eu.coresense.resolution.resolutionModel.FeatureReference#getParent()
+   * @see #getFeatureReference()
+   * @generated
+   */
+  EReference getFeatureReference_Parent();
+
+  /**
+   * Returns the meta object for the reference '{@link eu.coresense.resolution.resolutionModel.FeatureReference#getFeature <em>Feature</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Feature</em>'.
+   * @see eu.coresense.resolution.resolutionModel.FeatureReference#getFeature()
+   * @see #getFeatureReference()
+   * @generated
+   */
+  EReference getFeatureReference_Feature();
 
   /**
    * Returns the meta object for class '{@link eu.coresense.resolution.resolutionModel.Import <em>Import</em>}'.
@@ -615,12 +684,12 @@ public interface ResolutionModelPackage extends EPackage
     EClass RESOLUTION = eINSTANCE.getResolution();
 
     /**
-     * The meta object literal for the '<em><b>Feature</b></em>' reference feature.
+     * The meta object literal for the '<em><b>Feature Ref</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference RESOLUTION__FEATURE = eINSTANCE.getResolution_Feature();
+    EReference RESOLUTION__FEATURE_REF = eINSTANCE.getResolution_FeatureRef();
 
     /**
      * The meta object literal for the '<em><b>Selection actions</b></em>' containment reference list feature.
@@ -637,6 +706,32 @@ public interface ResolutionModelPackage extends EPackage
      * @generated
      */
     EReference RESOLUTION__DESELECTION_ACTIONS = eINSTANCE.getResolution_Deselection_actions();
+
+    /**
+     * The meta object literal for the '{@link eu.coresense.resolution.resolutionModel.impl.FeatureReferenceImpl <em>Feature Reference</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see eu.coresense.resolution.resolutionModel.impl.FeatureReferenceImpl
+     * @see eu.coresense.resolution.resolutionModel.impl.ResolutionModelPackageImpl#getFeatureReference()
+     * @generated
+     */
+    EClass FEATURE_REFERENCE = eINSTANCE.getFeatureReference();
+
+    /**
+     * The meta object literal for the '<em><b>Parent</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference FEATURE_REFERENCE__PARENT = eINSTANCE.getFeatureReference_Parent();
+
+    /**
+     * The meta object literal for the '<em><b>Feature</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference FEATURE_REFERENCE__FEATURE = eINSTANCE.getFeatureReference_Feature();
 
     /**
      * The meta object literal for the '{@link eu.coresense.resolution.resolutionModel.impl.ImportImpl <em>Import</em>}' class.

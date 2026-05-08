@@ -13,13 +13,13 @@ import eu.coresense.context.contextModel.ContextModel
 import org.eclipse.xtext.EcoreUtil2
 import java.util.List
 import java.util.ArrayList
-import eu.coresense.context.contextModel.Import
 import org.eclipse.emf.common.util.URI
 import org.eclipse.emf.ecore.resource.Resource
 import eu.coresense.context.contextModel.QualifiedActionServerRef
 import eu.coresense.context.contextModel.QualifiedServiceServerRef
 import ros.ServiceServer
 import ros.ActionServer
+import eu.coresense.common.Import
 
 class ContextModelScopeProviderr extends AbstractContextModelScopeProvider {
 

@@ -4,7 +4,8 @@
     nsPrefix="contextModel">
   <eClassifiers xsi:type="ecore:EClass" name="ContextModel">
     <eStructuralFeatures xsi:type="ecore:EReference" name="imports" upperBound="-1"
-        eType="#//Import" containment="true"/>
+        eType="ecore:EClass platform:/resource/eu.coresense.common/model/common.ecore#//Import"
+        containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="context_variables" upperBound="-1"
         eType="#//ContextVar" containment="true"/>
   </eClassifiers>
@@ -44,8 +45,5 @@
   <eClassifiers xsi:type="ecore:EClass" name="QualifiedActionServerRef" eSuperTypes="#//QualifiedRef">
     <eStructuralFeatures xsi:type="ecore:EReference" name="actionServer" eType="ecore:EClass platform:/resource/de.fraunhofer.ipa.ros/model/ros.ecore#//ActionServer"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="kwargs" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Import">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="importURI" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
 </ecore:EPackage>

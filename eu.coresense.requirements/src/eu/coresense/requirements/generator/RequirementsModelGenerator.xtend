@@ -26,6 +26,8 @@ import eu.coresense.requirements.requirementsModel.CompoundExpression
 import eu.coresense.requirements.requirementsModel.ThisUntil
 import eu.coresense.requirements.requirementsModel.Proposition
 import eu.coresense.requirements.requirementsModel.BooleanStatement
+import eu.coresense.requirements.requirementsModel.MembershipFunction
+import eu.coresense.requirements.requirementsModel.FuzzyTriangular
 
 /**
  * Generates code from your model files on save.
@@ -105,20 +107,31 @@ class RequirementsModelGenerator extends AbstractGenerator {
 		}
 	}
 	
-		
+	def Pair<String, String> generateInsert(MembershipFunction membershipFunction, String parentName)
+	{
+		switch membershipFunction {
+			FuzzyTriangular : {
+				val name = parentName + "_fztri_set"
+				return name -> '''
+	    			$«name» isa FuzzyTriangular,
+	    				has a «membershipFunction.a.toString()»,
+	    				has b «membershipFunction.b.toString()»,
+	    				has c «membershipFunction.c.toString()»;
+				'''
+			}
+			default:
+				throw new Exception("Not yet implemented membership function")
+		}
+	}
 	def Pair<String,String> generateInsert(Expression expression, Requirement parentRequirement)
 	{
 		switch expression {
 	        AsCloseLit: {
 	        	val name = parentRequirement.name.toLowerCase + "_as_close"
 	        	val innerStatement = generateInsert(expression.comparator, null)
-	            return name -> innerStatement.value + '''
-    			$«name»_set isa FuzzyTriangular,
-    				has a -0.5,
-    				has b 0.0,
-    				has c 0.5;
-    			
-    			$«name» (fuzzy_set: $«name»_set, term: $«innerStatement.key») isa as_close_as_possible_expression,
+	        	val membershipStatement = generateInsert(expression.membershipFunction, name)
+	            return name -> innerStatement.value + membershipStatement.value + '''    			
+    			$«name» (fuzzy_set: $«membershipStatement.key», term: $«innerStatement.key») isa as_close_as_possible_expression,
     				has required_value «Utilities.valueOfLiteral(expression.quantity)»;
 	            '''
 	        }
@@ -131,19 +144,29 @@ class RequirementsModelGenerator extends AbstractGenerator {
 	        	'''
 	        }
 	        Negation: {
-	        	val innerStatement = generateInsert(expression.expression, parentRequirement)
+	        	val innerExpression = expression.expression
+	        	var innerStatement = new Pair<String,String>("","")
+	        	if(innerExpression instanceof Quantifiable)
+	        	{
+	        		innerStatement = propExp(innerExpression)
+	        	}
+	        	else{
+	        	innerStatement = generateInsert(expression.expression, parentRequirement)
+	        	
+	        	}
 	        	val negatedName = innerStatement.key + "_neg"
 	        	return negatedName -> innerStatement.value + "\n" + '''
 	        	$«negatedName» (expression: $«innerStatement.key») isa fuzzy_not;
 	        	'''
 	        }
-//	        QuantifiableStatement: {
-//	        	val contextVarName =  _namer.uniqueName(statement.^var)
+	        Quantifiable: {
+	        	val contextVarName =  _namer.uniqueName(expression.contextVariable)
+	        	return contextVarName -> ''''''
 //	        	val propExpName = contextVarName + "_prop_exp"
 //	        	return propExpName -> '''
-//	        	$«propExpName» (atom: $«_namer.uniqueName(statement.^var)») isa propositional_expression;
+//	        	$«propExpName» (atom: $«_namer.uniqueName(expression.contextVariable)») isa propositional_expression;
 //	        	'''
-//	        }
+	        }
 	    }
 		
 
@@ -169,6 +192,15 @@ class RequirementsModelGenerator extends AbstractGenerator {
 			
 		«ENDFOR»
 		'''
+	}
+	
+	def Pair<String,String> propExp(Quantifiable quantifiable)
+	{
+			    val contextVarName =  _namer.uniqueName(quantifiable.contextVariable)
+	        	val propExpName = contextVarName + "_prop_exp"
+	        	return propExpName -> '''
+	        	$«propExpName» (atom: $«_namer.uniqueName(quantifiable.contextVariable)») isa propositional_expression;
+	        	'''
 	}
 	
 	def String generateInsertQuery(RequirementsModel reqModel, String systemName)

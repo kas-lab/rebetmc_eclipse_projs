@@ -4,13 +4,14 @@
 package eu.coresense.context.serializer;
 
 import com.google.inject.Inject;
+import eu.coresense.common.CommonPackage;
+import eu.coresense.common.Import;
 import eu.coresense.context.contextModel.ContextModel;
 import eu.coresense.context.contextModel.ContextModelPackage;
 import eu.coresense.context.contextModel.ContextVar;
 import eu.coresense.context.contextModel.DataSource;
 import eu.coresense.context.contextModel.DoCache;
 import eu.coresense.context.contextModel.DoProxy;
-import eu.coresense.context.contextModel.Import;
 import eu.coresense.context.contextModel.QualifiedActionServerRef;
 import eu.coresense.context.contextModel.QualifiedPublisherRef;
 import eu.coresense.context.contextModel.QualifiedServiceServerRef;
@@ -38,7 +39,13 @@ public class ContextModelSemanticSequencer extends AbstractDelegatingSemanticSeq
 		ParserRule rule = context.getParserRule();
 		Action action = context.getAssignedAction();
 		Set<Parameter> parameters = context.getEnabledBooleanParameters();
-		if (epackage == ContextModelPackage.eINSTANCE)
+		if (epackage == CommonPackage.eINSTANCE)
+			switch (semanticObject.eClass().getClassifierID()) {
+			case CommonPackage.IMPORT:
+				sequence_Import(context, (Import) semanticObject); 
+				return; 
+			}
+		else if (epackage == ContextModelPackage.eINSTANCE)
 			switch (semanticObject.eClass().getClassifierID()) {
 			case ContextModelPackage.CONTEXT_MODEL:
 				sequence_ContextModel(context, (ContextModel) semanticObject); 
@@ -54,9 +61,6 @@ public class ContextModelSemanticSequencer extends AbstractDelegatingSemanticSeq
 				return; 
 			case ContextModelPackage.DO_PROXY:
 				sequence_DoProxy(context, (DoProxy) semanticObject); 
-				return; 
-			case ContextModelPackage.IMPORT:
-				sequence_Import(context, (Import) semanticObject); 
 				return; 
 			case ContextModelPackage.QUALIFIED_ACTION_SERVER_REF:
 				sequence_QualifiedActionServerRef(context, (QualifiedActionServerRef) semanticObject); 
@@ -180,8 +184,8 @@ public class ContextModelSemanticSequencer extends AbstractDelegatingSemanticSeq
 	 */
 	protected void sequence_Import(ISerializationContext context, Import semanticObject) {
 		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, ContextModelPackage.Literals.IMPORT__IMPORT_URI) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ContextModelPackage.Literals.IMPORT__IMPORT_URI));
+			if (transientValues.isValueTransient(semanticObject, CommonPackage.Literals.IMPORT__IMPORT_URI) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, CommonPackage.Literals.IMPORT__IMPORT_URI));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getImportAccess().getImportURISTRINGTerminalRuleCall_1_0(), semanticObject.getImportURI());

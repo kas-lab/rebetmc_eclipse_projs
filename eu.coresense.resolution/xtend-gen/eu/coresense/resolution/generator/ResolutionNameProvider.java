@@ -24,7 +24,7 @@ public class ResolutionNameProvider implements INameProvider {
     boolean _matched = false;
     if (obj instanceof Resolution) {
       _matched=true;
-      String _lowerCase = ((Resolution)obj).getFeature().getName().toLowerCase();
+      String _lowerCase = ((Resolution)obj).getFeatureRef().getFeature().getName().toLowerCase();
       String _plus = (_lowerCase + "_resolution");
       _switchResult = ctx.makeUnique(_plus);
     }

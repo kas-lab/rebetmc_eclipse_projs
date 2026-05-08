@@ -18,7 +18,7 @@ class ResolutionNameProvider implements INameProvider {
     
     override computeName(Object obj, NamingContext ctx, String... args) {
         switch obj {
-            Resolution: ctx.makeUnique(obj.feature.name.toLowerCase() + "_resolution")
+            Resolution: ctx.makeUnique(obj.featureRef.feature.name.toLowerCase() + "_resolution")
             SetParam: ctx.makeUnique("sp_" + obj.param.name.toLowerCase())
             SetLifecycle: {
             	val nodeName = if (args.length > 0) args.get(0) else "noNodeNameGiven"

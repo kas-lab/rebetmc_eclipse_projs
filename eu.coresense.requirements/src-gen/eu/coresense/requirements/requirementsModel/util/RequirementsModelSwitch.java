@@ -234,6 +234,21 @@ public class RequirementsModelSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case RequirementsModelPackage.MEMBERSHIP_FUNCTION:
+      {
+        MembershipFunction membershipFunction = (MembershipFunction)theEObject;
+        T result = caseMembershipFunction(membershipFunction);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case RequirementsModelPackage.FUZZY_TRIANGULAR:
+      {
+        FuzzyTriangular fuzzyTriangular = (FuzzyTriangular)theEObject;
+        T result = caseFuzzyTriangular(fuzzyTriangular);
+        if (result == null) result = caseMembershipFunction(fuzzyTriangular);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case RequirementsModelPackage.QUANTIFIABLE:
       {
         Quantifiable quantifiable = (Quantifiable)theEObject;
@@ -592,6 +607,38 @@ public class RequirementsModelSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseAsCloseLit(AsCloseLit object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Membership Function</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Membership Function</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseMembershipFunction(MembershipFunction object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Fuzzy Triangular</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Fuzzy Triangular</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseFuzzyTriangular(FuzzyTriangular object)
   {
     return null;
   }

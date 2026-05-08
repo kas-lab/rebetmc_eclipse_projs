@@ -1419,9 +1419,150 @@ ruleAsCloseLit returns [EObject current=null]
 				}
 			)
 		)
-		otherlv_9=')'
+		otherlv_9=','
 		{
-			newLeafNode(otherlv_9, grammarAccess.getAsCloseLitAccess().getRightParenthesisKeyword_9());
+			newLeafNode(otherlv_9, grammarAccess.getAsCloseLitAccess().getCommaKeyword_9());
+		}
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getAsCloseLitAccess().getMembershipFunctionMembershipFunctionParserRuleCall_10_0());
+				}
+				lv_membershipFunction_10_0=ruleMembershipFunction
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getAsCloseLitRule());
+					}
+					set(
+						$current,
+						"membershipFunction",
+						lv_membershipFunction_10_0,
+						"eu.coresense.requirements.RequirementsModel.MembershipFunction");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
+		otherlv_11=')'
+		{
+			newLeafNode(otherlv_11, grammarAccess.getAsCloseLitAccess().getRightParenthesisKeyword_11());
+		}
+	)
+;
+
+// Entry rule entryRuleMembershipFunction
+entryRuleMembershipFunction returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getMembershipFunctionRule()); }
+	iv_ruleMembershipFunction=ruleMembershipFunction
+	{ $current=$iv_ruleMembershipFunction.current; }
+	EOF;
+
+// Rule MembershipFunction
+ruleMembershipFunction returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	{
+		newCompositeNode(grammarAccess.getMembershipFunctionAccess().getFuzzyTriangularParserRuleCall());
+	}
+	this_FuzzyTriangular_0=ruleFuzzyTriangular
+	{
+		$current = $this_FuzzyTriangular_0.current;
+		afterParserOrEnumRuleCall();
+	}
+;
+
+// Entry rule entryRuleFuzzyTriangular
+entryRuleFuzzyTriangular returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getFuzzyTriangularRule()); }
+	iv_ruleFuzzyTriangular=ruleFuzzyTriangular
+	{ $current=$iv_ruleFuzzyTriangular.current; }
+	EOF;
+
+// Rule FuzzyTriangular
+ruleFuzzyTriangular returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		otherlv_0='FuzzyTriangular'
+		{
+			newLeafNode(otherlv_0, grammarAccess.getFuzzyTriangularAccess().getFuzzyTriangularKeyword_0());
+		}
+		otherlv_1='('
+		{
+			newLeafNode(otherlv_1, grammarAccess.getFuzzyTriangularAccess().getLeftParenthesisKeyword_1());
+		}
+		(
+			(
+				lv_a_2_0=RULE_DECIMAL
+				{
+					newLeafNode(lv_a_2_0, grammarAccess.getFuzzyTriangularAccess().getADECIMALTerminalRuleCall_2_0());
+				}
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getFuzzyTriangularRule());
+					}
+					setWithLastConsumed(
+						$current,
+						"a",
+						lv_a_2_0,
+						"eu.coresense.requirements.RequirementsModel.DECIMAL");
+				}
+			)
+		)
+		otherlv_3=','
+		{
+			newLeafNode(otherlv_3, grammarAccess.getFuzzyTriangularAccess().getCommaKeyword_3());
+		}
+		(
+			(
+				lv_b_4_0=RULE_DECIMAL
+				{
+					newLeafNode(lv_b_4_0, grammarAccess.getFuzzyTriangularAccess().getBDECIMALTerminalRuleCall_4_0());
+				}
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getFuzzyTriangularRule());
+					}
+					setWithLastConsumed(
+						$current,
+						"b",
+						lv_b_4_0,
+						"eu.coresense.requirements.RequirementsModel.DECIMAL");
+				}
+			)
+		)
+		otherlv_5=','
+		{
+			newLeafNode(otherlv_5, grammarAccess.getFuzzyTriangularAccess().getCommaKeyword_5());
+		}
+		(
+			(
+				lv_c_6_0=RULE_DECIMAL
+				{
+					newLeafNode(lv_c_6_0, grammarAccess.getFuzzyTriangularAccess().getCDECIMALTerminalRuleCall_6_0());
+				}
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getFuzzyTriangularRule());
+					}
+					setWithLastConsumed(
+						$current,
+						"c",
+						lv_c_6_0,
+						"eu.coresense.requirements.RequirementsModel.DECIMAL");
+				}
+			)
+		)
+		otherlv_7=')'
+		{
+			newLeafNode(otherlv_7, grammarAccess.getFuzzyTriangularAccess().getRightParenthesisKeyword_7());
 		}
 	)
 ;
@@ -2133,7 +2274,7 @@ ruleTimeliness returns [Enumerator current=null]
 	)
 ;
 
-RULE_DECIMAL : RULE_INT '.' RULE_INT;
+RULE_DECIMAL : '-'? RULE_INT '.' RULE_INT;
 
 RULE_BOOLEAN : ('true'|'false');
 

@@ -18,10 +18,12 @@ import eu.coresense.requirements.requirementsModel.CompoundExpression;
 import eu.coresense.requirements.requirementsModel.Condition;
 import eu.coresense.requirements.requirementsModel.Eventually;
 import eu.coresense.requirements.requirementsModel.Expression;
+import eu.coresense.requirements.requirementsModel.FuzzyTriangular;
 import eu.coresense.requirements.requirementsModel.In;
 import eu.coresense.requirements.requirementsModel.LogicalOperator;
 import eu.coresense.requirements.requirementsModel.May;
 import eu.coresense.requirements.requirementsModel.MayAlternative;
+import eu.coresense.requirements.requirementsModel.MembershipFunction;
 import eu.coresense.requirements.requirementsModel.Negation;
 import eu.coresense.requirements.requirementsModel.Or;
 import eu.coresense.requirements.requirementsModel.Proposition;
@@ -197,6 +199,20 @@ public class RequirementsModelPackageImpl extends EPackageImpl implements Requir
    * @generated
    */
   private EClass asCloseLitEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass membershipFunctionEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass fuzzyTriangularEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -867,6 +883,72 @@ public class RequirementsModelPackageImpl extends EPackageImpl implements Requir
    * @generated
    */
   @Override
+  public EReference getAsCloseLit_MembershipFunction()
+  {
+    return (EReference)asCloseLitEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getMembershipFunction()
+  {
+    return membershipFunctionEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getFuzzyTriangular()
+  {
+    return fuzzyTriangularEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getFuzzyTriangular_A()
+  {
+    return (EAttribute)fuzzyTriangularEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getFuzzyTriangular_B()
+  {
+    return (EAttribute)fuzzyTriangularEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getFuzzyTriangular_C()
+  {
+    return (EAttribute)fuzzyTriangularEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public EClass getQuantifiable()
   {
     return quantifiableEClass;
@@ -1125,6 +1207,14 @@ public class RequirementsModelPackageImpl extends EPackageImpl implements Requir
     asCloseLitEClass = createEClass(AS_CLOSE_LIT);
     createEReference(asCloseLitEClass, AS_CLOSE_LIT__QUANTITY);
     createEReference(asCloseLitEClass, AS_CLOSE_LIT__COMPARATOR);
+    createEReference(asCloseLitEClass, AS_CLOSE_LIT__MEMBERSHIP_FUNCTION);
+
+    membershipFunctionEClass = createEClass(MEMBERSHIP_FUNCTION);
+
+    fuzzyTriangularEClass = createEClass(FUZZY_TRIANGULAR);
+    createEAttribute(fuzzyTriangularEClass, FUZZY_TRIANGULAR__A);
+    createEAttribute(fuzzyTriangularEClass, FUZZY_TRIANGULAR__B);
+    createEAttribute(fuzzyTriangularEClass, FUZZY_TRIANGULAR__C);
 
     quantifiableEClass = createEClass(QUANTIFIABLE);
     createEReference(quantifiableEClass, QUANTIFIABLE__CONTEXT_VARIABLE);
@@ -1198,6 +1288,7 @@ public class RequirementsModelPackageImpl extends EPackageImpl implements Requir
     statementEClass.getESuperTypes().add(this.getExpression());
     asCloseFreqEClass.getESuperTypes().add(this.getExpression());
     asCloseLitEClass.getESuperTypes().add(this.getExpression());
+    fuzzyTriangularEClass.getESuperTypes().add(this.getMembershipFunction());
     quantifiableEClass.getESuperTypes().add(this.getStatement());
     mayEClass.getESuperTypes().add(this.getExpression());
 
@@ -1270,6 +1361,14 @@ public class RequirementsModelPackageImpl extends EPackageImpl implements Requir
     initEClass(asCloseLitEClass, AsCloseLit.class, "AsCloseLit", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getAsCloseLit_Quantity(), theCommonPackage.getLiteral(), null, "quantity", null, 0, 1, AsCloseLit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getAsCloseLit_Comparator(), this.getQuantifiable(), null, "comparator", null, 0, 1, AsCloseLit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getAsCloseLit_MembershipFunction(), this.getMembershipFunction(), null, "membershipFunction", null, 0, 1, AsCloseLit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(membershipFunctionEClass, MembershipFunction.class, "MembershipFunction", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+    initEClass(fuzzyTriangularEClass, FuzzyTriangular.class, "FuzzyTriangular", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getFuzzyTriangular_A(), ecorePackage.getEBigDecimal(), "a", null, 0, 1, FuzzyTriangular.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getFuzzyTriangular_B(), ecorePackage.getEBigDecimal(), "b", null, 0, 1, FuzzyTriangular.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getFuzzyTriangular_C(), ecorePackage.getEBigDecimal(), "c", null, 0, 1, FuzzyTriangular.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(quantifiableEClass, Quantifiable.class, "Quantifiable", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getQuantifiable_ContextVariable(), theContextModelPackage.getContextVar(), null, "contextVariable", null, 0, 1, Quantifiable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

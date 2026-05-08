@@ -135,7 +135,7 @@ public class TacticsNameProvider implements INameProvider {
     if (!_matched) {
       if (obj instanceof Feature) {
         _matched=true;
-        String _lowerCase = ((Feature)obj).getName().toLowerCase();
+        String _lowerCase = ((Feature)obj).getId().toLowerCase();
         String _plus = ("f_" + _lowerCase);
         _switchResult = ctx.makeUnique(_plus);
       }

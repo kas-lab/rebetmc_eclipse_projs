@@ -18,7 +18,6 @@ import eu.coresense.adaptation.tactics.Effect;
 import eu.coresense.adaptation.tactics.EffectBlock;
 import eu.coresense.adaptation.tactics.FeatureCondition;
 import eu.coresense.adaptation.tactics.FeatureGuard;
-import eu.coresense.adaptation.tactics.Import;
 import eu.coresense.adaptation.tactics.LogicalOperator;
 import eu.coresense.adaptation.tactics.MeasurementCondition;
 import eu.coresense.adaptation.tactics.MeasurementMeasurementCondition;
@@ -26,8 +25,10 @@ import eu.coresense.adaptation.tactics.MeasurementThresholdCondition;
 import eu.coresense.adaptation.tactics.RelativeEffect;
 import eu.coresense.adaptation.tactics.RuleBody;
 import eu.coresense.adaptation.tactics.TacticsModel;
+import eu.coresense.common.ArchitectureTQLGenerator;
 import eu.coresense.common.BooleanLiteral;
 import eu.coresense.common.DecimalLiteral;
+import eu.coresense.common.Import;
 import eu.coresense.common.IntLiteral;
 import eu.coresense.common.Literal;
 import eu.coresense.common.MathOperator;
@@ -37,12 +38,7 @@ import eu.coresense.common.StringLiteral;
 import eu.coresense.common.Utilities;
 import eu.coresense.context.contextModel.ContextModel;
 import eu.coresense.context.contextModel.ContextVar;
-import eu.coresense.context.contextModel.DataSource;
-import eu.coresense.context.contextModel.DoProxy;
-import eu.coresense.context.contextModel.QualifiedActionServerRef;
-import eu.coresense.context.contextModel.QualifiedPublisherRef;
-import eu.coresense.context.contextModel.QualifiedRef;
-import eu.coresense.context.contextModel.QualifiedServiceServerRef;
+import eu.coresense.context.generator.ContextModelGenerator;
 import eu.coresense.context.generator.ContextNameProvider;
 import eu.coresense.resolution.generator.ResolutionNameProvider;
 import eu.coresense.resolution.resolutionModel.Reconfiguration;
@@ -58,10 +54,12 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
+import java.util.function.Consumer;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
@@ -86,7 +84,6 @@ import org.eclipse.xtext.xbase.lib.XbaseGenerated;
 import ros.ActionClient;
 import ros.ActionServer;
 import ros.InterfaceType;
-import ros.Node;
 import ros.Parameter;
 import ros.ParameterArrayType;
 import ros.ParameterBoolean;
@@ -105,7 +102,6 @@ import ros.QualityOfService;
 import ros.ServiceClient;
 import ros.ServiceServer;
 import ros.Subscriber;
-import system.Component;
 import system.InterfaceReference;
 import system.RosActionClientReference;
 import system.RosActionServerReference;
@@ -116,7 +112,6 @@ import system.RosPublisherReference;
 import system.RosServiceClientReference;
 import system.RosServiceServerReference;
 import system.RosSubscriberReference;
-import system.SubSystem;
 import uma.caosd.rhea.BasicFMmetamodel.Alternative;
 import uma.caosd.rhea.BasicFMmetamodel.Feature;
 import uma.caosd.rhea.BasicFMmetamodel.OrGroup;
@@ -157,19 +152,13 @@ public class TQLGenerator extends AbstractGenerator {
 
   public List<State> allStates = CollectionLiterals.<State>newArrayList();
 
-  private final Map<Feature, Set<Boolean>> featureSelections = CollectionLiterals.<Feature, Set<Boolean>>newHashMap();
-
-  private Map<ContextVar, Set<LiteralWrapper>> thresholds = CollectionLiterals.<ContextVar, Set<LiteralWrapper>>newHashMap();
-
-  private Map<ContextVar, List<Pair<LiteralWrapper, LiteralWrapper>>> bounds = CollectionLiterals.<ContextVar, List<Pair<LiteralWrapper, LiteralWrapper>>>newHashMap();
-
   private final Map<Pair<ContextVar, Pair<MathOperator, LiteralWrapper>>, String> definedInequalities = CollectionLiterals.<Pair<ContextVar, Pair<MathOperator, LiteralWrapper>>, String>newHashMap();
 
   private final Set<String> definedFeaturePropositions = CollectionLiterals.<String>newHashSet();
 
-  private HashMap<Pair<String, String>, String> escapes = CollectionLiterals.<Pair<String, String>, String>newHashMap();
+  public HashMap<Pair<String, String>, String> escapes = CollectionLiterals.<Pair<String, String>, String>newHashMap();
 
-  private List<ContextVar> contextKeys = CollectionLiterals.<ContextVar>newArrayList();
+  private int numRules = 0;
 
   @Override
   public void doGenerate(final Resource resource, final IFileSystemAccess2 fsa, final IGeneratorContext context) {
@@ -417,19 +406,6 @@ public class TQLGenerator extends AbstractGenerator {
     return null;
   }
 
-  public List<Parameter> getParameters(final RosNode node) {
-    final EList<Parameter> originalParameters = node.getFrom().getParameter();
-    EList<RosParameter> _rosparameters = node.getRosparameters();
-    for (final RosParameter parameter_override : _rosparameters) {
-      {
-        final int indexOverride = originalParameters.indexOf(parameter_override.getFrom());
-        Parameter _get = originalParameters.get(indexOverride);
-        _get.setValue(parameter_override.getValue());
-      }
-    }
-    return originalParameters;
-  }
-
   public String generateUpdateHasParamValue(final String featureName) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("match");
@@ -567,318 +543,6 @@ public class TQLGenerator extends AbstractGenerator {
       }
     }
     return _builder.toString();
-  }
-
-  public String describeNode(final Node node, final String namespace) {
-    String _xblockexpression = null;
-    {
-      final EList<ServiceServer> serviceServers = node.getServiceserver();
-      final Function1<ServiceServer, Boolean> _function = (ServiceServer server) -> {
-        String _fullname = server.getService().getFullname();
-        return Boolean.valueOf(Objects.equals(_fullname, "lifecycle_msgs/ChangeState"));
-      };
-      final boolean isLifecycle = IterableExtensions.<ServiceServer>exists(serviceServers, _function);
-      String _xifexpression = null;
-      if (isLifecycle) {
-        _xifexpression = "LifeCycleNode";
-      } else {
-        _xifexpression = "ROSNode";
-      }
-      final String node_kind = _xifexpression;
-      final String nodeName = this._namer.uniqueName(node);
-      StringConcatenation _builder = new StringConcatenation();
-      _builder.append("$");
-      _builder.append(nodeName);
-      _builder.append(" isa ");
-      _builder.append(node_kind);
-      _builder.append(",");
-      _builder.newLineIfNotEmpty();
-      _builder.append("has node_name \"");
-      String _name = node.getName();
-      _builder.append(_name);
-      _builder.append("\",");
-      _builder.newLineIfNotEmpty();
-      _builder.append("has namespace \"");
-      _builder.append(namespace);
-      _builder.append("\";");
-      _builder.newLineIfNotEmpty();
-      _xblockexpression = _builder.toString();
-    }
-    return _xblockexpression;
-  }
-
-  public String generateInsertQuery(final RosNode node) {
-    String _xblockexpression = null;
-    {
-      final Node innerNode = node.getFrom();
-      final String nodeName = this._namer.uniqueName(innerNode);
-      StringConcatenation _builder = new StringConcatenation();
-      String _describeNode = this.describeNode(innerNode, node.getNamespace());
-      _builder.append(_describeNode);
-      _builder.newLineIfNotEmpty();
-      {
-        List<Parameter> _parameters = this.getParameters(node);
-        for(final Parameter parameter : _parameters) {
-          _builder.append("$");
-          String _uniqueName = this._namer.uniqueName(parameter);
-          _builder.append(_uniqueName);
-          _builder.append(" isa ");
-          String _paramSubClass = this.paramSubClass(parameter.getType());
-          _builder.append(_paramSubClass);
-          _builder.append(",");
-          _builder.newLineIfNotEmpty();
-          _builder.append("\t");
-          _builder.append("has parameter_name \"");
-          String _name = parameter.getName();
-          _builder.append(_name, "\t");
-          _builder.append("\";");
-          _builder.newLineIfNotEmpty();
-          {
-            ParameterValue _value = parameter.getValue();
-            boolean _tripleNotEquals = (_value != null);
-            if (_tripleNotEquals) {
-              final Pair<CharSequence, String> paramstringpair = this.ParamValueToValueEntity(parameter, this._namer.uniqueName(parameter));
-              _builder.newLineIfNotEmpty();
-              CharSequence _key = paramstringpair.getKey();
-              _builder.append(_key);
-              _builder.newLineIfNotEmpty();
-              _builder.append("(node: $");
-              _builder.append(nodeName);
-              _builder.append(",");
-              _builder.newLineIfNotEmpty();
-              _builder.append("parameter: $");
-              String _uniqueName_1 = this._namer.uniqueName(parameter);
-              _builder.append(_uniqueName_1);
-              _builder.append(",");
-              _builder.newLineIfNotEmpty();
-              _builder.append("parameter_value: $");
-              String _value_1 = paramstringpair.getValue();
-              _builder.append(_value_1);
-              _builder.append(")");
-              _builder.newLineIfNotEmpty();
-              _builder.append("\t");
-              _builder.append("isa has_parameter_value, has default_value true;");
-              _builder.newLine();
-            }
-          }
-        }
-      }
-      {
-        boolean _isEmpty = this.getParameters(node).isEmpty();
-        boolean _not = (!_isEmpty);
-        if (_not) {
-          _builder.append("\t");
-          _builder.newLine();
-          _builder.append("$");
-          _builder.append(nodeName);
-          _builder.append("_parameters (");
-          _builder.newLineIfNotEmpty();
-          _builder.append("\t");
-          _builder.append("node: $");
-          _builder.append(nodeName, "\t");
-          _builder.append(",");
-          _builder.newLineIfNotEmpty();
-          {
-            List<Parameter> _parameters_1 = this.getParameters(node);
-            boolean _hasElements = false;
-            for(final Parameter parameter_1 : _parameters_1) {
-              if (!_hasElements) {
-                _hasElements = true;
-              } else {
-                _builder.appendImmediate(", ", "\t");
-              }
-              _builder.append("\t");
-              _builder.append("parameter: $");
-              String _uniqueName_2 = this._namer.uniqueName(parameter_1);
-              _builder.append(_uniqueName_2, "\t");
-              _builder.newLineIfNotEmpty();
-            }
-          }
-          _builder.append("\t");
-          _builder.append(") isa has_parameter;");
-          _builder.newLine();
-        }
-      }
-      {
-        EList<Subscriber> _subscriber = innerNode.getSubscriber();
-        for(final Subscriber subscription : _subscriber) {
-          final String subName = this._namer.uniqueName(subscription, nodeName);
-          _builder.newLineIfNotEmpty();
-          String topicName = this.getInterfaceName(subscription, node);
-          _builder.newLineIfNotEmpty();
-          _builder.append("$");
-          _builder.append(subName);
-          _builder.append(" isa Subscriber,");
-          _builder.newLineIfNotEmpty();
-          _builder.append("has interface_name \"");
-          _builder.append(topicName);
-          _builder.append("\",");
-          _builder.newLineIfNotEmpty();
-          _builder.append("has interface_type \"");
-          String _fullname = subscription.getMessage().getFullname();
-          _builder.append(_fullname);
-          _builder.append("\";");
-          _builder.newLineIfNotEmpty();
-          String _handleQoS = this.handleQoS(subscription.getQos(), subName);
-          _builder.append(_handleQoS);
-          _builder.newLineIfNotEmpty();
-          _builder.newLine();
-          _builder.append("(node: $");
-          _builder.append(nodeName);
-          _builder.append(", subscriber: $");
-          _builder.append(subName);
-          _builder.append(") isa has_topic;");
-          _builder.newLineIfNotEmpty();
-          _builder.newLine();
-        }
-      }
-      {
-        EList<Publisher> _publisher = innerNode.getPublisher();
-        for(final Publisher publication : _publisher) {
-          final String pubName = this._namer.uniqueName(publication, nodeName);
-          _builder.newLineIfNotEmpty();
-          String topicName_1 = this.getInterfaceName(publication, node);
-          _builder.newLineIfNotEmpty();
-          _builder.append("$");
-          _builder.append(pubName);
-          _builder.append(" isa Publisher,");
-          _builder.newLineIfNotEmpty();
-          _builder.append("has interface_name \"");
-          _builder.append(topicName_1);
-          _builder.append("\",");
-          _builder.newLineIfNotEmpty();
-          _builder.append("has interface_type \"");
-          String _fullname_1 = publication.getMessage().getFullname();
-          _builder.append(_fullname_1);
-          _builder.append("\";");
-          _builder.newLineIfNotEmpty();
-          String _handleQoS_1 = this.handleQoS(publication.getQos(), pubName);
-          _builder.append(_handleQoS_1);
-          _builder.newLineIfNotEmpty();
-          _builder.newLine();
-          _builder.append("(node: $");
-          _builder.append(nodeName);
-          _builder.append(", publisher: $");
-          _builder.append(pubName);
-          _builder.append(") isa has_topic;");
-          _builder.newLineIfNotEmpty();
-        }
-      }
-      {
-        EList<ActionClient> _actionclient = innerNode.getActionclient();
-        for(final ActionClient actionClient : _actionclient) {
-          final String acName = this._namer.uniqueName(actionClient, nodeName);
-          _builder.newLineIfNotEmpty();
-          String interfaceName = this.getInterfaceName(actionClient, node);
-          _builder.newLineIfNotEmpty();
-          _builder.append("$");
-          _builder.append(acName);
-          _builder.append(" isa ActionClient,");
-          _builder.newLineIfNotEmpty();
-          _builder.append("has interface_name \"");
-          _builder.append(interfaceName);
-          _builder.append("\",");
-          _builder.newLineIfNotEmpty();
-          _builder.append("has interface_type \"");
-          String _fullname_2 = actionClient.getAction().getFullname();
-          _builder.append(_fullname_2);
-          _builder.append("\";");
-          _builder.newLineIfNotEmpty();
-          _builder.append("(node: $");
-          _builder.append(nodeName);
-          _builder.append(", client: $");
-          _builder.append(acName);
-          _builder.append(") isa has_action;\t");
-          _builder.newLineIfNotEmpty();
-        }
-      }
-      {
-        EList<ActionServer> _actionserver = innerNode.getActionserver();
-        for(final ActionServer actionServer : _actionserver) {
-          final String asName = this._namer.uniqueName(actionServer, nodeName);
-          _builder.newLineIfNotEmpty();
-          String interfaceName_1 = this.getInterfaceName(actionServer, node);
-          _builder.newLineIfNotEmpty();
-          _builder.append("$");
-          _builder.append(asName);
-          _builder.append(" isa ActionServer,");
-          _builder.newLineIfNotEmpty();
-          _builder.append("has interface_name \"");
-          _builder.append(interfaceName_1);
-          _builder.append("\",");
-          _builder.newLineIfNotEmpty();
-          _builder.append("has interface_type \"");
-          String _fullname_3 = actionServer.getAction().getFullname();
-          _builder.append(_fullname_3);
-          _builder.append("\";");
-          _builder.newLineIfNotEmpty();
-          _builder.append("(node: $");
-          _builder.append(nodeName);
-          _builder.append(", server: $");
-          _builder.append(asName);
-          _builder.append(") isa has_action;\t");
-          _builder.newLineIfNotEmpty();
-        }
-      }
-      {
-        EList<ServiceClient> _serviceclient = innerNode.getServiceclient();
-        for(final ServiceClient serviceClient : _serviceclient) {
-          final String acName_1 = this._namer.uniqueName(serviceClient, nodeName);
-          _builder.newLineIfNotEmpty();
-          String interfaceName_2 = this.getInterfaceName(serviceClient, node);
-          _builder.newLineIfNotEmpty();
-          _builder.append("$");
-          _builder.append(acName_1);
-          _builder.append(" isa ServiceClient,");
-          _builder.newLineIfNotEmpty();
-          _builder.append("has interface_name \"");
-          _builder.append(interfaceName_2);
-          _builder.append("\",");
-          _builder.newLineIfNotEmpty();
-          _builder.append("has interface_type \"");
-          String _fullname_4 = serviceClient.getService().getFullname();
-          _builder.append(_fullname_4);
-          _builder.append("\";");
-          _builder.newLineIfNotEmpty();
-          _builder.append("(node: $");
-          _builder.append(nodeName);
-          _builder.append(", client: $");
-          _builder.append(acName_1);
-          _builder.append(") isa has_service;\t");
-          _builder.newLineIfNotEmpty();
-        }
-      }
-      {
-        EList<ServiceServer> _serviceserver = innerNode.getServiceserver();
-        for(final ServiceServer serviceServer : _serviceserver) {
-          final String asName_1 = this._namer.uniqueName(serviceServer, nodeName);
-          _builder.newLineIfNotEmpty();
-          String interfaceName_3 = this.getInterfaceName(serviceServer, node);
-          _builder.newLineIfNotEmpty();
-          _builder.append("$");
-          _builder.append(asName_1);
-          _builder.append(" isa ServiceServer,");
-          _builder.newLineIfNotEmpty();
-          _builder.append("has interface_name \"");
-          _builder.append(interfaceName_3);
-          _builder.append("\",");
-          _builder.newLineIfNotEmpty();
-          _builder.append("has interface_type \"");
-          String _fullname_5 = serviceServer.getService().getFullname();
-          _builder.append(_fullname_5);
-          _builder.append("\";");
-          _builder.newLineIfNotEmpty();
-          _builder.append("(node: $");
-          _builder.append(nodeName);
-          _builder.append(", server: $");
-          _builder.append(asName_1);
-          _builder.append(") isa has_service;\t");
-          _builder.newLineIfNotEmpty();
-        }
-      }
-      _xblockexpression = _builder.toString();
-    }
-    return _xblockexpression;
   }
 
   public String handleQoS(final QualityOfService qos, final String interfaceName) {
@@ -1054,465 +718,6 @@ public class TQLGenerator extends AbstractGenerator {
       }
     }
     return interfaceName;
-  }
-
-  public String generateFetchQuery(final TacticsModel model) {
-    StringConcatenation _builder = new StringConcatenation();
-    _builder.append("match");
-    _builder.newLine();
-    _builder.append("\t  ");
-    _builder.append("$t isa Tactic, has tactic_name \"");
-    String _name = model.getName();
-    _builder.append(_name, "\t  ");
-    _builder.append("\";");
-    _builder.newLineIfNotEmpty();
-    _builder.append("    ");
-    _builder.append("(tactic:$t, consequent:$");
-    _builder.append(TQLGenerator.FEATURE_VAR, "    ");
-    _builder.append(") isa tactic_rule, has rule_valid true;");
-    _builder.newLineIfNotEmpty();
-    _builder.append("fetch");
-    _builder.newLine();
-    _builder.append("    ");
-    _builder.append("variant_activation: {");
-    _builder.newLine();
-    _builder.append("        ");
-    _builder.append("match");
-    _builder.newLine();
-    _builder.append("            ");
-    _builder.append("$");
-    _builder.append(TQLGenerator.FEATURE_VAR, "            ");
-    _builder.append(" (activation: $feature_activate) isa feature_adaptation;");
-    _builder.newLineIfNotEmpty();
-    _builder.append("            ");
-    _builder.append("(tactic:$t, variant_resolution:$vr) isa resolution_model;");
-    _builder.newLine();
-    _builder.append("            ");
-    _builder.append("$vr (resolution_action:$res_action, variant: $feature_activate) isa variant_activation;");
-    _builder.newLine();
-    _builder.append("        ");
-    _builder.append("fetch");
-    _builder.newLine();
-    _builder.append("            ");
-    _builder.append("set_parameter_action: {");
-    _builder.newLine();
-    _builder.append("                ");
-    _builder.append("match");
-    _builder.newLine();
-    _builder.append("                    ");
-    _builder.append("$res_action (node: $");
-    _builder.append(TQLGenerator.NODE_VAR, "                    ");
-    _builder.append(", parameter: $parameter, parameter_value: $parameter_value) isa! set_nodes_parameters;");
-    _builder.newLineIfNotEmpty();
-    _builder.append("                ");
-    _builder.append("fetch");
-    _builder.newLine();
-    _builder.append("                    ");
-    _builder.append("$");
-    _builder.append(TQLGenerator.NODE_VAR, "                    ");
-    _builder.append(": node_name;");
-    _builder.newLineIfNotEmpty();
-    _builder.append("                    ");
-    _builder.append("$");
-    _builder.append(TQLGenerator.PARAM_VAR, "                    ");
-    _builder.append(": parameter_name;");
-    _builder.newLineIfNotEmpty();
-    _builder.append("                    ");
-    _builder.append(TQLGenerator.PARAM_VALUES_SUBQUERY_NAME, "                    ");
-    _builder.append(": {");
-    _builder.newLineIfNotEmpty();
-    _builder.append("                        ");
-    _builder.append("match");
-    _builder.newLine();
-    _builder.append("                            ");
-    _builder.append("$parameter_value isa! ValueArray;");
-    _builder.newLine();
-    _builder.append("                            ");
-    _builder.append("$");
-    _builder.append(TQLGenerator.INDEX_VAR, "                            ");
-    _builder.append(" (array: $parameter_value, array_value: $value) isa at_index;");
-    _builder.newLineIfNotEmpty();
-    _builder.append("                        ");
-    _builder.append("fetch");
-    _builder.newLine();
-    _builder.append("                            ");
-    _builder.append("$");
-    _builder.append(TQLGenerator.INDEX_VAR, "                            ");
-    _builder.append(": index;");
-    _builder.newLineIfNotEmpty();
-    _builder.append("                            ");
-    _builder.append("$value: attribute;");
-    _builder.newLine();
-    _builder.append("                    ");
-    _builder.append("};");
-    _builder.newLine();
-    _builder.append("            ");
-    _builder.append("};");
-    _builder.newLine();
-    _builder.append("            ");
-    _builder.append("set_lifecycle_action: {");
-    _builder.newLine();
-    _builder.append("                ");
-    _builder.append("match");
-    _builder.newLine();
-    _builder.append("                    ");
-    _builder.append("$res_action (node: $");
-    _builder.append(TQLGenerator.NODE_VAR, "                    ");
-    _builder.append(") isa! set_lifecycle_state;");
-    _builder.newLineIfNotEmpty();
-    _builder.append("                ");
-    _builder.append("fetch");
-    _builder.newLine();
-    _builder.append("                    ");
-    _builder.append("$");
-    _builder.append(TQLGenerator.NODE_VAR, "                    ");
-    _builder.append(": node_name;");
-    _builder.newLineIfNotEmpty();
-    _builder.append("                    ");
-    _builder.append("$res_action: lifecycle_state;");
-    _builder.newLine();
-    _builder.append("            ");
-    _builder.append("};");
-    _builder.newLine();
-    _builder.append("    ");
-    _builder.append("};");
-    _builder.newLine();
-    _builder.append("    ");
-    _builder.append("variant_deactivation: {");
-    _builder.newLine();
-    _builder.append("        ");
-    _builder.append("match");
-    _builder.newLine();
-    _builder.append("            ");
-    _builder.append("$");
-    _builder.append(TQLGenerator.FEATURE_VAR, "            ");
-    _builder.append(" (deactivation: $feature_deactivate) isa feature_adaptation;");
-    _builder.newLineIfNotEmpty();
-    _builder.append("            ");
-    _builder.append("(tactic:$t, variant_resolution:$vr) isa resolution_model;");
-    _builder.newLine();
-    _builder.append("            ");
-    _builder.append("$vr (resolution_action:$res_action, variant: $feature_deactivate) isa variant_deactivation;");
-    _builder.newLine();
-    _builder.append("        ");
-    _builder.append("fetch");
-    _builder.newLine();
-    _builder.append("            ");
-    _builder.append("set_parameter_action: {");
-    _builder.newLine();
-    _builder.append("                ");
-    _builder.append("match");
-    _builder.newLine();
-    _builder.append("                    ");
-    _builder.append("$res_action (node: $");
-    _builder.append(TQLGenerator.NODE_VAR, "                    ");
-    _builder.append(", parameter: $parameter, parameter_value: $parameter_value) isa! set_nodes_parameters;");
-    _builder.newLineIfNotEmpty();
-    _builder.append("                ");
-    _builder.append("fetch");
-    _builder.newLine();
-    _builder.append("                    ");
-    _builder.append("$");
-    _builder.append(TQLGenerator.NODE_VAR, "                    ");
-    _builder.append(": node_name;");
-    _builder.newLineIfNotEmpty();
-    _builder.append("                    ");
-    _builder.append("$parameter: parameter_name;");
-    _builder.newLine();
-    _builder.append("                    ");
-    _builder.append(TQLGenerator.PARAM_VALUES_SUBQUERY_NAME, "                    ");
-    _builder.append(": {");
-    _builder.newLineIfNotEmpty();
-    _builder.append("                        ");
-    _builder.append("match");
-    _builder.newLine();
-    _builder.append("                            ");
-    _builder.append("$parameter_value isa! ValueArray;");
-    _builder.newLine();
-    _builder.append("                            ");
-    _builder.append("$");
-    _builder.append(TQLGenerator.INDEX_VAR, "                            ");
-    _builder.append(" (array: $parameter_value, array_value: $value) isa at_index;");
-    _builder.newLineIfNotEmpty();
-    _builder.append("                        ");
-    _builder.append("fetch");
-    _builder.newLine();
-    _builder.append("                            ");
-    _builder.append("$");
-    _builder.append(TQLGenerator.INDEX_VAR, "                            ");
-    _builder.append(": index;");
-    _builder.newLineIfNotEmpty();
-    _builder.append("                            ");
-    _builder.append("$value: attribute;");
-    _builder.newLine();
-    _builder.append("                    ");
-    _builder.append("};");
-    _builder.newLine();
-    _builder.append("            ");
-    _builder.append("};");
-    _builder.newLine();
-    _builder.append("            ");
-    _builder.append("set_lifecycle_action: {");
-    _builder.newLine();
-    _builder.append("                ");
-    _builder.append("match");
-    _builder.newLine();
-    _builder.append("                    ");
-    _builder.append("$res_action (node: $");
-    _builder.append(TQLGenerator.NODE_VAR, "                    ");
-    _builder.append(") isa! set_lifecycle_state;");
-    _builder.newLineIfNotEmpty();
-    _builder.append("                ");
-    _builder.append("fetch");
-    _builder.newLine();
-    _builder.append("                    ");
-    _builder.append("$");
-    _builder.append(TQLGenerator.NODE_VAR, "                    ");
-    _builder.append(": node_name;");
-    _builder.newLineIfNotEmpty();
-    _builder.append("                    ");
-    _builder.append("$res_action: lifecycle_state;");
-    _builder.newLine();
-    _builder.append("            ");
-    _builder.append("};");
-    _builder.newLine();
-    _builder.append("    ");
-    _builder.append("};");
-    _builder.newLine();
-    return _builder.toString();
-  }
-
-  public String generateFetchApplicableTactics(final String resolutionModelName, final String interfaceName) {
-    StringConcatenation _builder = new StringConcatenation();
-    _builder.append("match");
-    _builder.newLine();
-    _builder.append("  ");
-    _builder.append("$action isa ROSInterface, has interface_name \"");
-    _builder.append(interfaceName, "  ");
-    _builder.append("\";");
-    _builder.newLineIfNotEmpty();
-    _builder.append("  ");
-    _builder.append("$resolution_model isa resolution_model, has resolution_model_name \"");
-    _builder.append(resolutionModelName, "  ");
-    _builder.append("\";");
-    _builder.newLineIfNotEmpty();
-    _builder.newLine();
-    _builder.append("  ");
-    _builder.append("(interface: $action, resolution_model: $resolution_model, tactic_rule: $");
-    _builder.append(TQLGenerator.RULE_VAR, "  ");
-    _builder.append(")");
-    _builder.newLineIfNotEmpty();
-    _builder.append("      ");
-    _builder.append("isa applicable_tactics;");
-    _builder.newLine();
-    _builder.newLine();
-    _builder.append("  ");
-    _builder.append("$");
-    _builder.append(TQLGenerator.RULE_VAR, "  ");
-    _builder.append(" isa tactic_rule, has rule_valid true;");
-    _builder.newLineIfNotEmpty();
-    _builder.newLine();
-    _builder.append("fetch");
-    _builder.newLine();
-    _builder.append("  ");
-    _builder.append("$");
-    _builder.append(TQLGenerator.RULE_VAR, "  ");
-    _builder.append(": rule_name;");
-    _builder.newLineIfNotEmpty();
-    _builder.newLine();
-    _builder.append("  ");
-    _builder.append("set_parameter_action: {");
-    _builder.newLine();
-    _builder.append("    ");
-    _builder.append("match");
-    _builder.newLine();
-    _builder.append("      ");
-    _builder.append("$tactic isa Tactic;");
-    _builder.newLine();
-    _builder.append("      ");
-    _builder.append("$");
-    _builder.append(TQLGenerator.RULE_VAR, "      ");
-    _builder.append(" (tactic: $tactic);");
-    _builder.newLineIfNotEmpty();
-    _builder.newLine();
-    _builder.append("      ");
-    _builder.append("(tactic: $tactic, variant_resolution: $vr) isa resolution_model;");
-    _builder.newLine();
-    _builder.append("      ");
-    _builder.append("$vr isa variant_resolution;");
-    _builder.newLine();
-    _builder.newLine();
-    _builder.append("      ");
-    _builder.append("$vr (resolution_action: $res_action, variant: $");
-    _builder.append(TQLGenerator.FEATURE_VAR, "      ");
-    _builder.append(");");
-    _builder.newLineIfNotEmpty();
-    _builder.newLine();
-    _builder.append("      ");
-    _builder.append("$res_action isa set_nodes_parameters;");
-    _builder.newLine();
-    _builder.append("      ");
-    _builder.append("$res_action (node: $");
-    _builder.append(TQLGenerator.NODE_VAR, "      ");
-    _builder.append(", parameter: $");
-    _builder.append(TQLGenerator.PARAM_VAR, "      ");
-    _builder.append(", parameter_value: $parameter_value);");
-    _builder.newLineIfNotEmpty();
-    _builder.newLine();
-    _builder.append("    ");
-    _builder.append("fetch");
-    _builder.newLine();
-    _builder.append("\t  ");
-    _builder.append("$");
-    _builder.append(TQLGenerator.NODE_VAR, "\t  ");
-    _builder.append(": node_name;");
-    _builder.newLineIfNotEmpty();
-    _builder.append("\t  ");
-    _builder.append("$");
-    _builder.append(TQLGenerator.PARAM_VAR, "\t  ");
-    _builder.append(": parameter_name;");
-    _builder.newLineIfNotEmpty();
-    _builder.append("\t  ");
-    _builder.append("$");
-    _builder.append(TQLGenerator.FEATURE_VAR, "\t  ");
-    _builder.append(": feature_name;");
-    _builder.newLineIfNotEmpty();
-    _builder.newLine();
-    _builder.append("      ");
-    _builder.append(TQLGenerator.PARAM_VALUES_SUBQUERY_NAME, "      ");
-    _builder.append(": {");
-    _builder.newLineIfNotEmpty();
-    _builder.append("        ");
-    _builder.append("match");
-    _builder.newLine();
-    _builder.append("          ");
-    _builder.append("$parameter_value isa ValueArray;");
-    _builder.newLine();
-    _builder.append("          ");
-    _builder.append("$");
-    _builder.append(TQLGenerator.INDEX_VAR, "          ");
-    _builder.append(" (array: $parameter_value, array_value: $value) isa at_index;");
-    _builder.newLineIfNotEmpty();
-    _builder.newLine();
-    _builder.append("        ");
-    _builder.append("fetch");
-    _builder.newLine();
-    _builder.append("          ");
-    _builder.append("$");
-    _builder.append(TQLGenerator.INDEX_VAR, "          ");
-    _builder.append(": index;");
-    _builder.newLineIfNotEmpty();
-    _builder.append("\t\t  ");
-    _builder.append("$value: attribute;");
-    _builder.newLine();
-    _builder.append("\t ");
-    _builder.append("};");
-    _builder.newLine();
-    _builder.append("\t ");
-    _builder.newLine();
-    _builder.append("\t\t");
-    _builder.append("};");
-    _builder.newLine();
-    return _builder.toString();
-  }
-
-  public String generateInsertMeasurement(final ContextVar contextVariable, final Object measurementValue, final String measurementTime) {
-    String _xblockexpression = null;
-    {
-      final String measureName = this._namer.uniqueName(contextVariable);
-      StringConcatenation _builder = new StringConcatenation();
-      _builder.append("match");
-      _builder.newLine();
-      _builder.append("$");
-      _builder.append(measureName);
-      _builder.append(" isa Measure, has measure_name \"");
-      String _name = contextVariable.getName();
-      _builder.append(_name);
-      _builder.append("\";");
-      _builder.newLineIfNotEmpty();
-      _builder.newLine();
-      _builder.append("insert");
-      _builder.newLine();
-      _builder.append("    ");
-      _builder.append("$value isa ");
-      String _HasValue = this.HasValue(measurementValue);
-      _builder.append(_HasValue, "    ");
-      _builder.newLineIfNotEmpty();
-      _builder.append("    ");
-      _builder.newLine();
-      _builder.append("    ");
-      _builder.append("(measure: $");
-      _builder.append(measureName, "    ");
-      _builder.append(", measurement_value: $value) isa measurement,");
-      _builder.newLineIfNotEmpty();
-      _builder.append("        ");
-      _builder.append("has measurement_time ");
-      _builder.append(measurementTime, "        ");
-      _builder.append(";");
-      _builder.newLineIfNotEmpty();
-      _xblockexpression = _builder.toString();
-    }
-    return _xblockexpression;
-  }
-
-  protected String _HasValue(final Double v) {
-    StringConcatenation _builder = new StringConcatenation();
-    _builder.append("ValueDouble, has double_value ");
-    _builder.append(v);
-    _builder.append(";");
-    return _builder.toString();
-  }
-
-  protected String _HasValue(final Boolean v) {
-    StringConcatenation _builder = new StringConcatenation();
-    _builder.append("ValueBool, has bool_value ");
-    _builder.append(v);
-    _builder.append(";");
-    return _builder.toString();
-  }
-
-  protected String _HasValue(final Integer v) {
-    StringConcatenation _builder = new StringConcatenation();
-    _builder.append("ValueInteger, has integer_value ");
-    _builder.append(v);
-    _builder.append(";");
-    return _builder.toString();
-  }
-
-  protected String _HasValue(final String v) {
-    StringConcatenation _builder = new StringConcatenation();
-    _builder.append("ValueString, has string_value\"");
-    _builder.append(v);
-    _builder.append("\";");
-    return _builder.toString();
-  }
-
-  protected String _HasValue(final Iterable<?> v) {
-    StringConcatenation _builder = new StringConcatenation();
-    _builder.append("ValueArray;\"");
-    _builder.newLine();
-    {
-      Iterable<Pair<Integer, Object>> _indexed = IterableExtensions.<Object>indexed(v);
-      for(final Pair<Integer, Object> element : _indexed) {
-        _builder.append("$elem_\"");
-        Integer _key = element.getKey();
-        _builder.append(_key);
-        _builder.append(" isa ");
-        String _HasValue = this.HasValue(element.getValue());
-        _builder.append(_HasValue);
-        _builder.append(";");
-        _builder.newLineIfNotEmpty();
-        _builder.append("(array: $value, array_value: $elem_\"");
-        Integer _key_1 = element.getKey();
-        _builder.append(_key_1);
-        _builder.append(") isa at_index, has index ");
-        Integer _key_2 = element.getKey();
-        _builder.append(_key_2);
-        _builder.append(";");
-        _builder.newLineIfNotEmpty();
-      }
-    }
-    return _builder.toString();
   }
 
   private Pair<String, String> literalValue(final Literal lit, final String condition_name) {
@@ -1786,84 +991,24 @@ public class TQLGenerator extends AbstractGenerator {
     final ArrayList<Feature> features = CollectionLiterals.<Feature>newArrayList();
     EList<Resolution> _resolutions = res_model.getResolutions();
     for (final Resolution resolution : _resolutions) {
-      features.add(resolution.getFeature());
+      features.add(resolution.getFeatureRef().getFeature());
     }
     return features;
   }
 
-  private void collectRecursively(final system.System ros_sys, final List<system.System> result) {
-    if (((ros_sys == null) || result.contains(ros_sys))) {
-      return;
-    }
-    result.add(ros_sys);
-    EList<Component> _components = ros_sys.getComponents();
-    for (final Component comp : _components) {
-      if ((comp instanceof SubSystem)) {
-        this.collectRecursively(((SubSystem)comp).getSystem(), result);
-      }
-    }
-  }
-
-  public List<system.System> collectAllSystems(final ResolutionModel model) {
-    final List<system.System> result = CollectionLiterals.<system.System>newArrayList();
-    this.collectRecursively(model.getRossystem(), result);
-    return result;
-  }
-
-  public List<RosNode> rosNodesFromSystem(final system.System ros_system) {
-    final ArrayList<RosNode> node_list = CollectionLiterals.<RosNode>newArrayList();
-    EList<Component> _components = ros_system.getComponents();
-    for (final Component component : _components) {
-      if ((component instanceof RosNode)) {
-        node_list.add(((RosNode) component));
-      }
-    }
-    return node_list;
-  }
-
-  public String processSubNodes(final List<RosNode> rosNodes) {
+  public String generateArchitectureInsertQuery(final Set<system.System> rosSystems) {
     String _xblockexpression = null;
     {
-      final Map<Node, List<RosNode>> parenthood = CollectionLiterals.<Node, List<RosNode>>newHashMap();
-      for (final RosNode rosNode : rosNodes) {
-        Node _parent = rosNode.getParent();
-        boolean _tripleNotEquals = (_parent != null);
-        if (_tripleNotEquals) {
-          List<RosNode> children = parenthood.get(rosNode.getParent());
-          if ((children == null)) {
-            children = CollectionLiterals.<RosNode>newArrayList();
-            parenthood.put(rosNode.getParent(), children);
-          }
-          children.add(rosNode);
-        }
-      }
+      final ArchitectureTQLGenerator archTQLGenerator = new ArchitectureTQLGenerator(this._namer);
       StringConcatenation _builder = new StringConcatenation();
+      _builder.append("insert");
+      _builder.newLine();
+      _builder.newLine();
       {
-        Set<Map.Entry<Node, List<RosNode>>> _entrySet = parenthood.entrySet();
-        for(final Map.Entry<Node, List<RosNode>> family : _entrySet) {
-          _builder.append("(node: $");
-          String _uniqueName = this._namer.uniqueName(family.getKey());
-          _builder.append(_uniqueName);
-          _builder.append(",");
+        for(final system.System rossys : rosSystems) {
+          String _generateArchitectureInsertQuery = archTQLGenerator.generateArchitectureInsertQuery(rossys, Boolean.valueOf(false));
+          _builder.append(_generateArchitectureInsertQuery);
           _builder.newLineIfNotEmpty();
-          {
-            List<RosNode> _value = family.getValue();
-            boolean _hasElements = false;
-            for(final RosNode child : _value) {
-              if (!_hasElements) {
-                _hasElements = true;
-              } else {
-                _builder.appendImmediate(", ", "");
-              }
-              _builder.append("subnode: $");
-              String _uniqueName_1 = this._namer.uniqueName(child.getFrom());
-              _builder.append(_uniqueName_1);
-              _builder.newLineIfNotEmpty();
-            }
-          }
-          _builder.append("\t");
-          _builder.append(") isa subnode;");
-          _builder.newLine();
         }
       }
       _xblockexpression = _builder.toString();
@@ -1871,61 +1016,23 @@ public class TQLGenerator extends AbstractGenerator {
     return _xblockexpression;
   }
 
-  public String generateArchitectureInsertQuery(final ResolutionModel resolutionModel) {
-    StringConcatenation _builder = new StringConcatenation();
-    _builder.append("insert");
-    _builder.newLine();
-    _builder.newLine();
-    {
-      List<system.System> _collectAllSystems = this.collectAllSystems(resolutionModel);
-      for(final system.System rossys : _collectAllSystems) {
-        final List<RosNode> nodesList = this.rosNodesFromSystem(rossys);
-        _builder.newLineIfNotEmpty();
-        {
-          for(final RosNode comp : nodesList) {
-            String _generateInsertQuery = this.generateInsertQuery(comp);
-            _builder.append(_generateInsertQuery);
-            _builder.newLineIfNotEmpty();
-          }
-        }
-        String _processSubNodes = this.processSubNodes(nodesList);
-        _builder.append(_processSubNodes);
-        _builder.newLineIfNotEmpty();
-        _builder.newLine();
-      }
-    }
-    return _builder.toString();
-  }
-
   public List<ResolutionModel> getResolutionModel(final TacticsModel t, final Resource resource) {
-    final List<ResolutionModel> resolutionModels = CollectionLiterals.<ResolutionModel>newArrayList();
-    EList<Import> _imports = t.getImports();
-    for (final Import imp : _imports) {
-      boolean _endsWith = imp.getImportURI().endsWith("resolution");
-      if (_endsWith) {
-        URI uri = URI.createURI(imp.getImportURI());
-        boolean _isRelative = uri.isRelative();
-        if (_isRelative) {
-          uri = uri.resolve(resource.getURI());
-        }
-        final Resource imported = resource.getResourceSet().getResource(uri, true);
-        if (((imported == null) || imported.getContents().isEmpty())) {
-          InputOutput.<String>println("ResolutionModel import fail");
-        }
-        final EObject root = imported.getContents().get(0);
-        if ((root instanceof ResolutionModel)) {
-          resolutionModels.add(((ResolutionModel)root));
-        }
-      }
-    }
+    List<ResolutionModel> resolutionModels = CollectionLiterals.<ResolutionModel>newArrayList();
+    resolutionModels = Utilities.<ResolutionModel>deriveFromImports(resource, ".resolution", t.getImports(), ResolutionModel.class);
     return resolutionModels;
   }
 
   public List<ContextModel> getContextModel(final TacticsModel t, final Resource resource) {
-    final List<ContextModel> contextModels = CollectionLiterals.<ContextModel>newArrayList();
-    EList<Import> _imports = t.getImports();
+    List<ContextModel> contextModels = CollectionLiterals.<ContextModel>newArrayList();
+    contextModels = Utilities.<ContextModel>deriveFromImports(resource, ".context", t.getImports(), ContextModel.class);
+    return contextModels;
+  }
+
+  public List<system.System> rossystemfromContextModel(final ContextModel c, final Resource resource) {
+    final List<system.System> rossystems = CollectionLiterals.<system.System>newArrayList();
+    EList<Import> _imports = c.getImports();
     for (final Import imp : _imports) {
-      boolean _endsWith = imp.getImportURI().endsWith("context");
+      boolean _endsWith = imp.getImportURI().endsWith("rossystem");
       if (_endsWith) {
         URI uri = URI.createURI(imp.getImportURI());
         boolean _isRelative = uri.isRelative();
@@ -1937,12 +1044,12 @@ public class TQLGenerator extends AbstractGenerator {
           InputOutput.<String>println("ContextModel import fail");
         }
         final EObject root = imported.getContents().get(0);
-        if ((root instanceof ContextModel)) {
-          contextModels.add(((ContextModel)root));
+        if ((root instanceof system.System)) {
+          rossystems.add(((system.System)root));
         }
       }
     }
-    return contextModels;
+    return rossystems;
   }
 
   private String infinityLiteral(final Boolean negative, final Literal otherLiteral, final String name) {
@@ -2128,11 +1235,11 @@ public class TQLGenerator extends AbstractGenerator {
     return _xblockexpression;
   }
 
-  private String thresholdLiterals() {
+  private Pair<String, Map<ContextVar, Set<LiteralWrapper>>> thresholdLiterals(final Map<ContextVar, Set<LiteralWrapper>> thresholds) {
     try {
-      final HashMap<ContextVar, Set<LiteralWrapper>> newThresholds = CollectionLiterals.<ContextVar, Set<LiteralWrapper>>newHashMap();
+      Map<ContextVar, Set<LiteralWrapper>> newThresholds = CollectionLiterals.<ContextVar, Set<LiteralWrapper>>newHashMap();
       String returnText = "";
-      Set<Map.Entry<ContextVar, Set<LiteralWrapper>>> _entrySet = this.thresholds.entrySet();
+      Set<Map.Entry<ContextVar, Set<LiteralWrapper>>> _entrySet = thresholds.entrySet();
       for (final Map.Entry<ContextVar, Set<LiteralWrapper>> thresholdEntry : _entrySet) {
         {
           final HashSet<LiteralWrapper> newThresholdSet = CollectionLiterals.<LiteralWrapper>newHashSet();
@@ -2163,8 +1270,6 @@ public class TQLGenerator extends AbstractGenerator {
                 LiteralWrapper _literalWrapper = new LiteralWrapper(_key, _innerLiteral_1);
                 newThresholdSet.add(_literalWrapper);
               } else {
-                InputOutput.<String>println("HMMMMMM??????????????????????\n\n\n\n\n\n");
-                InputOutput.<String>println(wrappedLiteral.description);
                 newThresholdSet.add(wrappedLiteral);
               }
               i++;
@@ -2173,45 +1278,46 @@ public class TQLGenerator extends AbstractGenerator {
           newThresholds.put(thresholdEntry.getKey(), newThresholdSet);
         }
       }
-      this.thresholds = newThresholds;
-      return returnText;
+      return Pair.<String, Map<ContextVar, Set<LiteralWrapper>>>of(returnText, newThresholds);
     } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }
   }
 
   private String compile(final TacticsModel t, final Boolean doStates) {
+    this.numRules = 0;
     final String tacticName = t.getName();
     final String lc_tacticName = t.getName().toLowerCase();
     final List<ResolutionModel> resolutionModels = this.getResolutionModel(t, this.globalResource);
     final List<ContextModel> contextModels = this.getContextModel(t, this.globalResource);
     String infinityLiteralsTQL = "";
     String thresholdLiteralsTQL = "";
-    final ArrayList<String> states = CollectionLiterals.<String>newArrayList();
+    ArrayList<String> stateTQLs = CollectionLiterals.<String>newArrayList();
+    final Map<Feature, Set<Boolean>> featureSelections = CollectionLiterals.<Feature, Set<Boolean>>newHashMap();
+    Map<ContextVar, Set<LiteralWrapper>> thresholds = CollectionLiterals.<ContextVar, Set<LiteralWrapper>>newHashMap();
     if ((doStates).booleanValue()) {
       EList<AdaptationRule> _adaptationRules = t.getAdaptationRules();
       for (final AdaptationRule rule : _adaptationRules) {
-        this.registerComparisonsFromRule(rule);
+        this.registerComparisonsFromRule(rule, thresholds, featureSelections);
       }
       infinityLiteralsTQL = this.infinityLiterals();
-      thresholdLiteralsTQL = this.thresholdLiterals();
-      this.bounds = CollectionLiterals.<ContextVar, List<Pair<LiteralWrapper, LiteralWrapper>>>newHashMap();
-      this.createBounds();
-      this.contextKeys = IterableExtensions.<ContextVar>toList(this.bounds.keySet());
-      final List<List<Pair<LiteralWrapper, LiteralWrapper>>> values = IterableExtensions.<List<Pair<LiteralWrapper, LiteralWrapper>>>toList(this.bounds.values());
-      InputOutput.<String>println("bound vals?");
-      InputOutput.<List<List<Pair<LiteralWrapper, LiteralWrapper>>>>println(values);
+      Pair<String, Map<ContextVar, Set<LiteralWrapper>>> somePair = this.thresholdLiterals(thresholds);
+      thresholdLiteralsTQL = somePair.getKey();
+      thresholds = somePair.getValue();
+      final Map<ContextVar, List<Pair<LiteralWrapper, LiteralWrapper>>> bounds = this.createBounds(thresholds);
+      final List<ContextVar> contextKeys = IterableExtensions.<ContextVar>toList(bounds.keySet());
+      final List<List<Pair<LiteralWrapper, LiteralWrapper>>> values = IterableExtensions.<List<Pair<LiteralWrapper, LiteralWrapper>>>toList(bounds.values());
       final List<List<Pair<LiteralWrapper, LiteralWrapper>>> product = Utilities.<Pair<LiteralWrapper, LiteralWrapper>>getCartesianProduct(values);
       this.allStates = CollectionLiterals.<State>newArrayList();
       final List<List<Boolean>> featureSelectionsToPairs = CollectionLiterals.<List<Boolean>>newArrayList();
-      Collection<Set<Boolean>> _values = this.featureSelections.values();
+      Collection<Set<Boolean>> _values = featureSelections.values();
       for (final Set<Boolean> featureSelectionEntry : _values) {
         featureSelectionsToPairs.add(IterableExtensions.<Boolean>toList(featureSelectionEntry));
       }
       final List<List<Boolean>> newCombos = Utilities.<Boolean>getCartesianProduct(featureSelectionsToPairs);
       final ArrayList<List<Boolean>> newnewCombos = CollectionLiterals.<List<Boolean>>newArrayList();
       final ArrayList<Feature> coveredFeatures = CollectionLiterals.<Feature>newArrayList();
-      Set<Feature> _keySet = this.featureSelections.keySet();
+      Set<Feature> _keySet = featureSelections.keySet();
       for (final Feature feat : _keySet) {
         int _indexOf = coveredFeatures.indexOf(feat);
         boolean _equals = (_indexOf == (-1));
@@ -2223,7 +1329,7 @@ public class TQLGenerator extends AbstractGenerator {
             EList<Feature> _children = ((Alternative)parent).getChildren();
             for (final Feature altChild : _children) {
               {
-                final int index = IterableExtensions.<Feature>toList(this.featureSelections.keySet()).indexOf(altChild);
+                final int index = IterableExtensions.<Feature>toList(featureSelections.keySet()).indexOf(altChild);
                 if ((index >= 0)) {
                   valuationIndices.add(Integer.valueOf(index));
                 }
@@ -2253,27 +1359,23 @@ public class TQLGenerator extends AbstractGenerator {
       }
       for (final List<Boolean> featurevaluationCombo : newnewCombos) {
         for (final List<Pair<LiteralWrapper, LiteralWrapper>> contextPrecondition : product) {
-          State _state = new State(contextPrecondition, featurevaluationCombo, this.contextKeys);
+          State _state = new State(contextPrecondition, featurevaluationCombo, contextKeys);
           this.allStates.add(_state);
         }
       }
-      int _size = this.allStates.size();
-      String _plus = ("Number of States " + Integer.valueOf(_size));
-      InputOutput.<String>println(_plus);
-      final List<Feature> featureKeys = IterableExtensions.<Feature>toList(this.featureSelections.keySet());
+      final List<Feature> featureKeys = IterableExtensions.<Feature>toList(featureSelections.keySet());
       int ruleCount = 0;
       int stateCount = 0;
       for (final State state : this.allStates) {
         {
           EList<AdaptationRule> _adaptationRules_1 = t.getAdaptationRules();
           for (final AdaptationRule rule_1 : _adaptationRules_1) {
-            boolean _checkAgainstBounds = this.checkAgainstBounds(rule_1, this.contextKeys, featureKeys, state);
+            boolean _checkAgainstBounds = this.checkAgainstBounds(rule_1, contextKeys, featureKeys, state);
             if (_checkAgainstBounds) {
               state.addRule(rule_1.getName());
             }
           }
-          InputOutput.<CharSequence>println(state.describeMedianBounds());
-          final And expr = this.expressionFromState(this.contextKeys, featureKeys, state, "");
+          final And expr = this.expressionFromState(contextKeys, featureKeys, state, "");
           final Expr state_inCNF = this.toCNF(expr);
           final Pair<String, String> antecedent = this.createAntecedent(state_inCNF);
           boolean _hasRules = state.hasRules();
@@ -2284,10 +1386,38 @@ public class TQLGenerator extends AbstractGenerator {
           int _stateCount = stateCount;
           stateCount = (_stateCount + 1);
           String _key = antecedent.getKey();
-          final String name = ("state_" + _key);
+          final String state_name = ("state_" + _key);
+          final ArrayList<String> medianNames = CollectionLiterals.<String>newArrayList();
+          String median_statement = "";
+          List<Map.Entry<ContextVar, LiteralWrapper>> _medians = state.getMedians();
+          for (final Map.Entry<ContextVar, LiteralWrapper> median_entry : _medians) {
+            {
+              String _name = median_entry.getKey().getName();
+              final String median_name = ((state_name + "_median_") + _name);
+              medianNames.add(median_name);
+              String _median_statement = median_statement;
+              StringConcatenation _builder = new StringConcatenation();
+              _builder.append("$");
+              _builder.append(median_name);
+              _builder.append(" (measure: $");
+              String _uniqueName = this._namer.uniqueName(median_entry.getKey());
+              _builder.append(_uniqueName);
+              _builder.append(") isa MedianValuation,");
+              _builder.newLineIfNotEmpty();
+              _builder.append("    ");
+              _builder.append("has median_bound_value ");
+              String _string = median_entry.getValue().toString();
+              _builder.append(_string, "    ");
+              _builder.append(";");
+              _builder.newLineIfNotEmpty();
+              _builder.append("    ");
+              _builder.newLine();
+              median_statement = (_median_statement + _builder);
+            }
+          }
           StringConcatenation _builder = new StringConcatenation();
           _builder.append("$");
-          _builder.append(name);
+          _builder.append(state_name);
           _builder.append("( ");
           _builder.newLineIfNotEmpty();
           {
@@ -2310,25 +1440,44 @@ public class TQLGenerator extends AbstractGenerator {
             }
           }
           _builder.newLineIfNotEmpty();
+          {
+            boolean _hasElements_1 = false;
+            for(final String median_name : medianNames) {
+              if (!_hasElements_1) {
+                _hasElements_1 = true;
+              } else {
+                _builder.appendImmediate(", ", "");
+              }
+              _builder.append("median_valuation: $");
+              _builder.append(median_name);
+            }
+          }
+          _builder.append(",");
+          _builder.newLineIfNotEmpty();
           _builder.append("antecedent: $");
           String _key_1 = antecedent.getKey();
           _builder.append(_key_1);
           _builder.append(") isa state, has state_name \"");
-          _builder.append(name);
+          _builder.append(state_name);
           _builder.append("\";");
           _builder.newLineIfNotEmpty();
           final String state_statement = _builder.toString();
           String _value = antecedent.getValue();
-          String _plus_1 = (_value + state_statement);
-          states.add(_plus_1);
-          state.TQLName = name;
+          String _plus = (_value + median_statement);
+          String _plus_1 = (_plus + state_statement);
+          stateTQLs.add(_plus_1);
+          state.TQLName = state_name;
         }
       }
-      String _plus_1 = (Integer.valueOf(stateCount) + " states were produced, ");
-      String _plus_2 = (_plus_1 + Integer.valueOf(ruleCount));
-      String _plus_3 = (_plus_2 + " of which have a rule attached");
-      InputOutput.<String>println(_plus_3);
+      String _plus = (Integer.valueOf(stateCount) + " states were produced, ");
+      String _plus_1 = (_plus + Integer.valueOf(ruleCount));
+      String _plus_2 = (_plus_1 + " of which have a rule attached and ");
+      int _size = this.escapes.keySet().size();
+      String _plus_3 = (_plus_2 + Integer.valueOf(_size));
+      String _plus_4 = (_plus_3 + " have escaped defined");
+      InputOutput.<String>println(_plus_4);
     }
+    final ContextModelGenerator contextGenerator = new ContextModelGenerator(this._namer);
     this.escapes = CollectionLiterals.<Pair<String, String>, String>newHashMap();
     StringConcatenation _builder = new StringConcatenation();
     _builder.append(infinityLiteralsTQL);
@@ -2343,7 +1492,7 @@ public class TQLGenerator extends AbstractGenerator {
     _builder.newLineIfNotEmpty();
     {
       for(final ResolutionModel resolutionModel : resolutionModels) {
-        CharSequence _registerFeatures = this.registerFeatures(this.gatherResolutionFeatures(resolutionModel));
+        StringBuilder _registerFeatures = this.registerFeatures(resolutionModel.getFeatureModel().getRoot());
         _builder.append(_registerFeatures);
         _builder.append("\t");
         _builder.newLineIfNotEmpty();
@@ -2351,7 +1500,7 @@ public class TQLGenerator extends AbstractGenerator {
     }
     {
       for(final ContextModel contextModel : contextModels) {
-        CharSequence _registerMeasurements = this.registerMeasurements(contextModel);
+        CharSequence _registerMeasurements = contextGenerator.registerMeasurements(contextModel);
         _builder.append(_registerMeasurements);
         _builder.newLineIfNotEmpty();
       }
@@ -2367,8 +1516,8 @@ public class TQLGenerator extends AbstractGenerator {
     {
       if ((doStates).booleanValue()) {
         {
-          for(final String state_1 : states) {
-            _builder.append(state_1);
+          for(final String stateTQL : stateTQLs) {
+            _builder.append(stateTQL);
             _builder.newLineIfNotEmpty();
           }
         }
@@ -2456,12 +1605,13 @@ public class TQLGenerator extends AbstractGenerator {
     return x;
   }
 
-  public void createBounds() {
-    Set<ContextVar> _keySet = this.thresholds.keySet();
+  public Map<ContextVar, List<Pair<LiteralWrapper, LiteralWrapper>>> createBounds(final Map<ContextVar, Set<LiteralWrapper>> thresholds) {
+    final Map<ContextVar, List<Pair<LiteralWrapper, LiteralWrapper>>> bounds = CollectionLiterals.<ContextVar, List<Pair<LiteralWrapper, LiteralWrapper>>>newHashMap();
+    Set<ContextVar> _keySet = thresholds.keySet();
     for (final ContextVar measurement : _keySet) {
       {
         List<Pair<LiteralWrapper, LiteralWrapper>> boundPairs = CollectionLiterals.<Pair<LiteralWrapper, LiteralWrapper>>newArrayList();
-        final List<LiteralWrapper> sortedThresholds = IterableExtensions.<LiteralWrapper>sort(IterableExtensions.<LiteralWrapper>toList(this.thresholds.get(measurement)));
+        final List<LiteralWrapper> sortedThresholds = IterableExtensions.<LiteralWrapper>sort(IterableExtensions.<LiteralWrapper>toList(thresholds.get(measurement)));
         LiteralWrapper _first = sortedThresholds.getFirst();
         Pair<LiteralWrapper, LiteralWrapper> _mappedTo = Pair.<LiteralWrapper, LiteralWrapper>of(null, _first);
         boundPairs.add(_mappedTo);
@@ -2488,10 +1638,11 @@ public class TQLGenerator extends AbstractGenerator {
         LiteralWrapper _last = sortedThresholds.getLast();
         Pair<LiteralWrapper, LiteralWrapper> _mappedTo_2 = Pair.<LiteralWrapper, LiteralWrapper>of(_last, null);
         boundPairs.add(_mappedTo_2);
-        this.bounds.put(measurement, boundPairs);
+        bounds.put(measurement, boundPairs);
         this.printBoundPairs(boundPairs);
       }
     }
+    return bounds;
   }
 
   public String printBoundPairs(final List<Pair<LiteralWrapper, LiteralWrapper>> boundPairs) {
@@ -2553,107 +1704,6 @@ public class TQLGenerator extends AbstractGenerator {
       }
     }
     return null;
-  }
-
-  private Node nodeFromRef(final DataSource source) {
-    final QualifiedRef ref = source.getRef();
-    if ((ref instanceof QualifiedPublisherRef)) {
-      return ((QualifiedPublisherRef)ref).getNode();
-    }
-    if ((ref instanceof QualifiedServiceServerRef)) {
-      return ((QualifiedServiceServerRef)ref).getNode();
-    }
-    if ((ref instanceof QualifiedActionServerRef)) {
-      return ((QualifiedActionServerRef)ref).getNode();
-    }
-    return null;
-  }
-
-  private CharSequence registerMeasurements(final ContextModel contextModel) {
-    StringConcatenation _builder = new StringConcatenation();
-    _builder.newLine();
-    {
-      EList<ContextVar> _context_variables = contextModel.getContext_variables();
-      for(final ContextVar contextVariable : _context_variables) {
-        final String contextvarName = this._namer.uniqueName(contextVariable);
-        _builder.newLineIfNotEmpty();
-        final DataSource ref = contextVariable.getSource();
-        _builder.newLineIfNotEmpty();
-        _builder.append("$");
-        _builder.append(contextvarName);
-        _builder.append(" isa Measure, has measure_name \"");
-        String _name = contextVariable.getName();
-        _builder.append(_name);
-        _builder.append("\";");
-        _builder.newLineIfNotEmpty();
-        _builder.newLine();
-        _builder.append("(measure: $");
-        _builder.append(contextvarName);
-        _builder.append(", source: $");
-        String _uniqueName = this._namer.uniqueName(contextVariable.getSource(), this._namer.uniqueName(this.nodeFromRef(ref)));
-        _builder.append(_uniqueName);
-        _builder.append(") isa measurement_interface,");
-        _builder.newLineIfNotEmpty();
-        _builder.append("\t    ");
-        {
-          String _functionLibrary = contextVariable.getFunctionLibrary();
-          boolean _tripleNotEquals = (_functionLibrary != null);
-          if (_tripleNotEquals) {
-            _builder.append("has measurement_function_lib \'");
-            String _functionLibrary_1 = contextVariable.getFunctionLibrary();
-            _builder.append(_functionLibrary_1, "\t    ");
-            _builder.append("\',");
-          }
-        }
-        _builder.newLineIfNotEmpty();
-        _builder.append("\t    ");
-        {
-          int _period = contextVariable.getPeriod();
-          boolean _notEquals = (_period != 0);
-          if (_notEquals) {
-            _builder.append("has measurement_period ");
-            int _period_1 = contextVariable.getPeriod();
-            _builder.append(_period_1, "\t    ");
-            _builder.append(",");
-          }
-        }
-        _builder.newLineIfNotEmpty();
-        {
-          if ((ref instanceof QualifiedServiceServerRef)) {
-            _builder.append("\t    ");
-            {
-              if (((((QualifiedServiceServerRef)ref).getKwargs() != null) || (((QualifiedServiceServerRef)ref).getKwargs() != ""))) {
-                _builder.append("has service_request_kwargs \'");
-                String _kwargs = ((QualifiedServiceServerRef)ref).getKwargs();
-                _builder.append(_kwargs, "\t    ");
-                _builder.append("\',");
-              }
-            }
-            _builder.newLineIfNotEmpty();
-          }
-        }
-        _builder.append("\t    ");
-        {
-          DoProxy _doProxy = contextVariable.getDoProxy();
-          boolean _tripleNotEquals_1 = (_doProxy != null);
-          if (_tripleNotEquals_1) {
-            _builder.append("has measurement_proxy ");
-            boolean _isDo = contextVariable.getDoProxy().isDo();
-            _builder.append(_isDo, "\t    ");
-            _builder.append(",");
-          }
-        }
-        _builder.newLineIfNotEmpty();
-        _builder.append("\t    ");
-        _builder.append("has measurement_function_name \'");
-        String _functionName = contextVariable.getFunctionName();
-        _builder.append(_functionName, "\t    ");
-        _builder.append("\';");
-        _builder.newLineIfNotEmpty();
-      }
-    }
-    _builder.newLine();
-    return _builder;
   }
 
   private CharSequence registerFeatures(final List<Feature> f_list) {
@@ -2744,6 +1794,152 @@ public class TQLGenerator extends AbstractGenerator {
     return _builder;
   }
 
+  private StringBuilder registerFeatures(final Feature root) {
+    StringBuilder _xblockexpression = null;
+    {
+      final LinkedHashSet<Feature> visited = new LinkedHashSet<Feature>();
+      final StringBuilder result = new StringBuilder();
+      this.collectPostOrder(root, visited);
+      final Consumer<Feature> _function = (Feature feature) -> {
+        result.append(this.generateFeature(feature));
+        result.append("\n");
+      };
+      visited.forEach(_function);
+      _xblockexpression = result;
+    }
+    return _xblockexpression;
+  }
+
+  public void collectPostOrder(final Feature feature, final LinkedHashSet<Feature> visited) {
+    EList<Feature> _children = feature.getChildren();
+    for (final Feature child : _children) {
+      this.collectPostOrder(child, visited);
+    }
+    visited.add(feature);
+  }
+
+  public CharSequence generateFeature(final Feature feature) {
+    final StringBuilder result = new StringBuilder();
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("$");
+    String _uniqueName = this._namer.uniqueName(feature);
+    _builder.append(_uniqueName);
+    _builder.append(" isa Feature, has feature_name \"");
+    String _name = feature.getName();
+    _builder.append(_name);
+    _builder.append("\", has mandatory ");
+    boolean _isMandatory = feature.isMandatory();
+    _builder.append(_isMandatory);
+    _builder.append(";");
+    _builder.newLineIfNotEmpty();
+    result.append(_builder);
+    boolean _matched = false;
+    if (feature instanceof Alternative) {
+      _matched=true;
+      StringConcatenation _builder_1 = new StringConcatenation();
+      _builder_1.append("$");
+      String _uniqueName_1 = this._namer.uniqueName(feature);
+      String _lowerCase = ((Alternative)feature).getId().toLowerCase();
+      String _plus = (_uniqueName_1 + _lowerCase);
+      _builder_1.append(_plus);
+      _builder_1.append(" (parent: $");
+      String _uniqueName_2 = this._namer.uniqueName(feature);
+      _builder_1.append(_uniqueName_2);
+      _builder_1.append(",");
+      _builder_1.newLineIfNotEmpty();
+      {
+        EList<Feature> _children = ((Alternative)feature).getChildren();
+        boolean _hasElements = false;
+        for(final Feature child_feature : _children) {
+          if (!_hasElements) {
+            _hasElements = true;
+          } else {
+            _builder_1.appendImmediate(", ", "\t");
+          }
+          _builder_1.append("\t");
+          _builder_1.append("child: $");
+          String _uniqueName_3 = this._namer.uniqueName(child_feature);
+          _builder_1.append(_uniqueName_3, "\t");
+          _builder_1.newLineIfNotEmpty();
+        }
+      }
+      _builder_1.append(") isa alternative;\t");
+      _builder_1.newLine();
+      result.append(_builder_1);
+    }
+    if (!_matched) {
+      if (feature instanceof OrGroup) {
+        _matched=true;
+        StringConcatenation _builder_1 = new StringConcatenation();
+        _builder_1.append("$");
+        String _uniqueName_1 = this._namer.uniqueName(feature);
+        String _lowerCase = ((OrGroup)feature).getId().toLowerCase();
+        String _plus = (_uniqueName_1 + _lowerCase);
+        _builder_1.append(_plus);
+        _builder_1.append(" (parent: $");
+        String _uniqueName_2 = this._namer.uniqueName(feature);
+        _builder_1.append(_uniqueName_2);
+        _builder_1.append(", ");
+        _builder_1.newLineIfNotEmpty();
+        {
+          EList<Feature> _children = ((OrGroup)feature).getChildren();
+          boolean _hasElements = false;
+          for(final Feature child_feature : _children) {
+            if (!_hasElements) {
+              _hasElements = true;
+            } else {
+              _builder_1.appendImmediate(", ", "\t");
+            }
+            _builder_1.append("\t");
+            _builder_1.append("child: $");
+            String _uniqueName_3 = this._namer.uniqueName(child_feature);
+            _builder_1.append(_uniqueName_3, "\t");
+            _builder_1.newLineIfNotEmpty();
+          }
+        }
+        _builder_1.append(") isa or_group;\t");
+        _builder_1.newLine();
+        result.append(_builder_1);
+      }
+    }
+    if (!_matched) {
+      int _size = feature.getChildren().size();
+      boolean _greaterThan = (_size > 0);
+      if (_greaterThan) {
+        StringConcatenation _builder_1 = new StringConcatenation();
+        _builder_1.append("$");
+        String _uniqueName_1 = this._namer.uniqueName(feature);
+        String _plus = ("feat_hier" + _uniqueName_1);
+        _builder_1.append(_plus);
+        _builder_1.append(" (parent: $");
+        String _uniqueName_2 = this._namer.uniqueName(feature);
+        _builder_1.append(_uniqueName_2);
+        _builder_1.append(", ");
+        _builder_1.newLineIfNotEmpty();
+        {
+          EList<Feature> _children = feature.getChildren();
+          boolean _hasElements = false;
+          for(final Feature child_feature : _children) {
+            if (!_hasElements) {
+              _hasElements = true;
+            } else {
+              _builder_1.appendImmediate(", ", "\t");
+            }
+            _builder_1.append("\t");
+            _builder_1.append("child: $");
+            String _uniqueName_3 = this._namer.uniqueName(child_feature);
+            _builder_1.append(_uniqueName_3, "\t");
+            _builder_1.newLineIfNotEmpty();
+          }
+        }
+        _builder_1.append(") isa feature_hierarchy;\t");
+        _builder_1.newLine();
+        result.append(_builder_1);
+      }
+    }
+    return result;
+  }
+
   private CharSequence compileResolution(final ResolutionModel resModel) {
     StringConcatenation _builder = new StringConcatenation();
     {
@@ -2798,7 +1994,7 @@ public class TQLGenerator extends AbstractGenerator {
             }
           }
           _builder.append(", variant: $");
-          String _uniqueName_2 = this._namer.uniqueName(resolution.getFeature());
+          String _uniqueName_2 = this._namer.uniqueName(resolution.getFeatureRef().getFeature());
           _builder.append(_uniqueName_2);
           _builder.append(") isa variant_activation;");
           _builder.newLineIfNotEmpty();
@@ -2830,7 +2026,7 @@ public class TQLGenerator extends AbstractGenerator {
             }
           }
           _builder.append(", variant: $");
-          String _uniqueName_5 = this._namer.uniqueName(resolution.getFeature());
+          String _uniqueName_5 = this._namer.uniqueName(resolution.getFeatureRef().getFeature());
           _builder.append(_uniqueName_5);
           _builder.append(") isa variant_deactivation;");
           _builder.newLineIfNotEmpty();
@@ -2950,51 +2146,17 @@ public class TQLGenerator extends AbstractGenerator {
     return _xblockexpression;
   }
 
-  public Pair<CharSequence, String> ParamValueToValueEntity(final Parameter the_parameter, final String parent_name) {
-    final ParameterValue the_value = the_parameter.getValue();
-    if ((the_value instanceof ParameterSequence)) {
-      final ArrayList<String> result = CollectionLiterals.<String>newArrayList();
-      final String parseq_name = this._namer.uniqueName(the_value, parent_name);
-      StringConcatenation _builder = new StringConcatenation();
-      _builder.append("$");
-      _builder.append(parseq_name);
-      _builder.append(" isa ValueArray;");
-      _builder.newLineIfNotEmpty();
+  public List<Parameter> getParameters(final RosNode node) {
+    final EList<Parameter> originalParameters = node.getFrom().getParameter();
+    EList<RosParameter> _rosparameters = node.getRosparameters();
+    for (final RosParameter parameter_override : _rosparameters) {
       {
-        Iterable<Pair<Integer, ParameterValue>> _indexed = IterableExtensions.<ParameterValue>indexed(((ParameterSequence)the_value).getValue());
-        for(final Pair<Integer, ParameterValue> param_value : _indexed) {
-          CharSequence _describeParameter = this.describeParameter(this._namer.uniqueName(param_value.getValue(), parent_name), param_value.getValue());
-          _builder.append(_describeParameter);
-          _builder.newLineIfNotEmpty();
-          _builder.append("$");
-          _builder.append(parseq_name);
-          _builder.append("_elem_");
-          Integer _key = param_value.getKey();
-          _builder.append(_key);
-          _builder.append(" (array: $");
-          _builder.append(parseq_name);
-          _builder.append(", array_value: $");
-          String _uniqueName = this._namer.uniqueName(param_value.getValue(), parent_name);
-          _builder.append(_uniqueName);
-          _builder.append(") isa at_index, has index ");
-          Integer _key_1 = param_value.getKey();
-          _builder.append(_key_1);
-          _builder.append(";");
-          _builder.newLineIfNotEmpty();
-        }
+        final int indexOverride = originalParameters.indexOf(parameter_override.getFrom());
+        Parameter _get = originalParameters.get(indexOverride);
+        _get.setValue(parameter_override.getValue());
       }
-      _builder.newLine();
-      final String body = _builder.toString();
-      EList<ParameterValue> _value = ((ParameterSequence)the_value).getValue();
-      for (final ParameterValue param_value_1 : _value) {
-        result.add(this._namer.uniqueName(param_value_1, parent_name));
-      }
-      return Pair.<CharSequence, String>of(body, parseq_name);
-    } else {
-      final String name = this._namer.uniqueName(the_value, parent_name);
-      final CharSequence single = this.describeParameter(name, the_parameter.getValue());
-      return Pair.<CharSequence, String>of(single, name);
     }
+    return originalParameters;
   }
 
   public Pair<Boolean, Parameter> findMatch(final RosNode parameterOwner, final SetParam reconfig) {
@@ -3234,7 +2396,7 @@ public class TQLGenerator extends AbstractGenerator {
     return null;
   }
 
-  private void registerComparisonsFromRule(final AdaptationRule adap_rule) {
+  private void registerComparisonsFromRule(final AdaptationRule adap_rule, final Map<ContextVar, Set<LiteralWrapper>> thresholds, final Map<Feature, Set<Boolean>> featureSelections) {
     if ((adap_rule instanceof AtomicRule)) {
       final RuleBody ruleBody = ((AtomicRule)adap_rule).getRuleBody();
       if ((ruleBody instanceof ConditionAction)) {
@@ -3244,13 +2406,13 @@ public class TQLGenerator extends AbstractGenerator {
           MeasurementCondition _contextCondition = ((ConditionAction)ruleBody).getContextGuard().getContextCondition();
           if ((_contextCondition instanceof MeasurementThresholdCondition)) {
             MeasurementCondition _contextCondition_1 = ((ConditionAction)ruleBody).getContextGuard().getContextCondition();
-            this.recordMeasurementConditionOnlyLiteral(((MeasurementThresholdCondition) _contextCondition_1), this.thresholds);
+            this.recordMeasurementConditionOnlyLiteral(((MeasurementThresholdCondition) _contextCondition_1), thresholds);
           }
         }
         FeatureGuard _featureGuard = ((ConditionAction)ruleBody).getFeatureGuard();
         boolean _tripleNotEquals_1 = (_featureGuard != null);
         if (_tripleNotEquals_1) {
-          this.recordFeatureCondition(((ConditionAction)ruleBody).getFeatureGuard().getFeatureCondition(), this.featureSelections);
+          this.recordFeatureCondition(((ConditionAction)ruleBody).getFeatureGuard().getFeatureCondition(), featureSelections);
         }
       }
     }
@@ -3442,129 +2604,134 @@ public class TQLGenerator extends AbstractGenerator {
   }
 
   private CharSequence compileRule(final AdaptationRule c, final String lc_tacticName, final boolean doingStates) {
-    CharSequence _xifexpression = null;
-    if ((c instanceof AtomicRule)) {
-      CharSequence _xblockexpression = null;
-      {
-        final String ruleName = ((AtomicRule)c).getName();
-        final String lc_ruleName = ((AtomicRule)c).getName().toLowerCase();
-        final RuleBody ruleBody = ((AtomicRule)c).getRuleBody();
-        CharSequence _xifexpression_1 = null;
-        if ((ruleBody instanceof ConditionAction)) {
-          CharSequence _xblockexpression_1 = null;
-          {
-            final Expr toCheck = this.conditionCombos(((ConditionAction)ruleBody));
-            if ((toCheck == null)) {
-              InputOutput.<String>println("NO GUARDS GIVEN FOR A RULE, UNDEFINED BEHAVIOR");
-            }
-            final Pair<String, String> pair = this.createAntecedent(toCheck);
-            final String ant_name = pair.getKey();
-            final String ant = pair.getValue();
-            StringConcatenation _builder = new StringConcatenation();
+    CharSequence _xblockexpression = null;
+    {
+      this.numRules++;
+      CharSequence _xifexpression = null;
+      if ((c instanceof AtomicRule)) {
+        CharSequence _xblockexpression_1 = null;
+        {
+          final String ruleName = ((AtomicRule)c).getName();
+          final String lc_ruleName = ((AtomicRule)c).getName().toLowerCase();
+          final RuleBody ruleBody = ((AtomicRule)c).getRuleBody();
+          CharSequence _xifexpression_1 = null;
+          if ((ruleBody instanceof ConditionAction)) {
+            CharSequence _xblockexpression_2 = null;
             {
-              if ((!doingStates)) {
-                _builder.append(" ");
-                _builder.append(ant);
-                _builder.append(" ");
+              final Expr toCheck = this.conditionCombos(((ConditionAction)ruleBody));
+              if ((toCheck == null)) {
+                InputOutput.<String>println("NO GUARDS GIVEN FOR A RULE, UNDEFINED BEHAVIOR");
               }
-            }
-            _builder.newLineIfNotEmpty();
-            final String someName = (lc_ruleName + "fa");
-            _builder.newLineIfNotEmpty();
-            _builder.append("$");
-            _builder.append(someName);
-            _builder.append(" (");
-            _builder.newLineIfNotEmpty();
-            {
-              EList<AtomicSimpleAction> _actions = ((AtomicRule)c).getRuleBody().getAtomicAction().getActions();
-              boolean _hasElements = false;
-              for(final AtomicSimpleAction action : _actions) {
-                if (!_hasElements) {
-                  _hasElements = true;
+              final Pair<String, String> pair = this.createAntecedent(toCheck);
+              final String ant_name = pair.getKey();
+              final String ant = pair.getValue();
+              StringConcatenation _builder = new StringConcatenation();
+              {
+                if ((!doingStates)) {
+                  _builder.append(" ");
+                  _builder.append(ant);
+                  _builder.append(" ");
+                }
+              }
+              _builder.newLineIfNotEmpty();
+              final String someName = (lc_ruleName + "fa");
+              _builder.newLineIfNotEmpty();
+              _builder.append("$");
+              _builder.append(someName);
+              _builder.append(" (");
+              _builder.newLineIfNotEmpty();
+              {
+                EList<AtomicSimpleAction> _actions = ((AtomicRule)c).getRuleBody().getAtomicAction().getActions();
+                boolean _hasElements = false;
+                for(final AtomicSimpleAction action : _actions) {
+                  if (!_hasElements) {
+                    _hasElements = true;
+                  } else {
+                    _builder.appendImmediate(", ", "");
+                  }
+                  {
+                    if ((action instanceof AtomicActionSelectFeature)) {
+                      _builder.append("activation: $");
+                      String _uniqueName = this._namer.uniqueName(((AtomicActionSelectFeature)action).getVariant().getFeature());
+                      _builder.append(_uniqueName);
+                      _builder.append("\t");
+                      _builder.newLineIfNotEmpty();
+                    }
+                  }
+                  {
+                    if ((action instanceof AtomicActionDeselectFeature)) {
+                      _builder.append("deactivation: $");
+                      String _uniqueName_1 = this._namer.uniqueName(((AtomicActionDeselectFeature)action).getVariant().getFeature());
+                      _builder.append(_uniqueName_1);
+                      _builder.append("\t");
+                      _builder.newLineIfNotEmpty();
+                    }
+                  }
+                }
+              }
+              _builder.append(") isa feature_adaptation;");
+              _builder.newLine();
+              _builder.newLine();
+              {
+                EffectBlock _effect = ((ConditionAction)ruleBody).getEffect();
+                boolean _tripleNotEquals = (_effect != null);
+                if (_tripleNotEquals) {
+                  String _EffectHandling = this.EffectHandling(((ConditionAction)ruleBody).getEffect().getSomeEffect(), ruleName, Boolean.valueOf(doingStates));
+                  _builder.append(_EffectHandling);
+                  _builder.newLineIfNotEmpty();
+                  _builder.append("$tactic_rule_");
+                  _builder.append(lc_ruleName);
+                  _builder.append(" (tactic:$ta_");
+                  _builder.append(lc_tacticName);
+                  _builder.append(", ");
+                  {
+                    if ((!doingStates)) {
+                      _builder.append(" antecedent:$");
+                      _builder.append(ant_name);
+                      _builder.append(", ");
+                    }
+                  }
+                  _builder.append(" consequent:$");
+                  _builder.append(someName);
+                  _builder.append(", effect:$rel_effect_");
+                  String _lowerCase = ruleName.toLowerCase();
+                  _builder.append(_lowerCase);
+                  _builder.append(") isa tactic_rule, has rule_name \"");
+                  _builder.append(ruleName);
+                  _builder.append("\";");
+                  _builder.newLineIfNotEmpty();
                 } else {
-                  _builder.appendImmediate(", ", "");
-                }
-                {
-                  if ((action instanceof AtomicActionSelectFeature)) {
-                    _builder.append("activation: $");
-                    String _uniqueName = this._namer.uniqueName(((AtomicActionSelectFeature)action).getVariant().getFeature());
-                    _builder.append(_uniqueName);
-                    _builder.append("\t");
-                    _builder.newLineIfNotEmpty();
+                  _builder.append("$tactic_rule_");
+                  _builder.append(lc_ruleName);
+                  _builder.append(" (tactic:$ta_");
+                  _builder.append(lc_tacticName);
+                  _builder.append(",  ");
+                  {
+                    if ((!doingStates)) {
+                      _builder.append(" antecedent:$");
+                      _builder.append(ant_name);
+                      _builder.append(", ");
+                    }
                   }
-                }
-                {
-                  if ((action instanceof AtomicActionDeselectFeature)) {
-                    _builder.append("deactivation: $");
-                    String _uniqueName_1 = this._namer.uniqueName(((AtomicActionDeselectFeature)action).getVariant().getFeature());
-                    _builder.append(_uniqueName_1);
-                    _builder.append("\t");
-                    _builder.newLineIfNotEmpty();
-                  }
+                  _builder.append(" consequent:$");
+                  _builder.append(someName);
+                  _builder.append(") isa tactic_rule, has rule_name \"");
+                  _builder.append(ruleName);
+                  _builder.append("\";");
+                  _builder.newLineIfNotEmpty();
                 }
               }
+              _xblockexpression_2 = _builder;
             }
-            _builder.append(") isa feature_adaptation;");
-            _builder.newLine();
-            _builder.newLine();
-            {
-              EffectBlock _effect = ((ConditionAction)ruleBody).getEffect();
-              boolean _tripleNotEquals = (_effect != null);
-              if (_tripleNotEquals) {
-                String _EffectHandling = this.EffectHandling(((ConditionAction)ruleBody).getEffect().getSomeEffect(), ruleName, Boolean.valueOf(doingStates));
-                _builder.append(_EffectHandling);
-                _builder.newLineIfNotEmpty();
-                _builder.append("$tactic_rule_");
-                _builder.append(lc_ruleName);
-                _builder.append(" (tactic:$ta_");
-                _builder.append(lc_tacticName);
-                _builder.append(", ");
-                {
-                  if ((!doingStates)) {
-                    _builder.append(" antecedent:$");
-                    _builder.append(ant_name);
-                    _builder.append(", ");
-                  }
-                }
-                _builder.append(" consequent:$");
-                _builder.append(someName);
-                _builder.append(", effect:$rel_effect_");
-                String _lowerCase = ruleName.toLowerCase();
-                _builder.append(_lowerCase);
-                _builder.append(") isa tactic_rule, has rule_name \"");
-                _builder.append(ruleName);
-                _builder.append("\";");
-                _builder.newLineIfNotEmpty();
-              } else {
-                _builder.append("$tactic_rule_");
-                _builder.append(lc_ruleName);
-                _builder.append(" (tactic:$ta_");
-                _builder.append(lc_tacticName);
-                _builder.append(",  ");
-                {
-                  if ((!doingStates)) {
-                    _builder.append(" antecedent:$");
-                    _builder.append(ant_name);
-                    _builder.append(", ");
-                  }
-                }
-                _builder.append(" consequent:$");
-                _builder.append(someName);
-                _builder.append(") isa tactic_rule, has rule_name \"");
-                _builder.append(ruleName);
-                _builder.append("\";");
-                _builder.newLineIfNotEmpty();
-              }
-            }
-            _xblockexpression_1 = _builder;
+            _xifexpression_1 = _xblockexpression_2;
           }
-          _xifexpression_1 = _xblockexpression_1;
+          _xblockexpression_1 = _xifexpression_1;
         }
-        _xblockexpression = _xifexpression_1;
+        _xifexpression = _xblockexpression_1;
       }
-      _xifexpression = _xblockexpression;
+      _xblockexpression = _xifexpression;
     }
-    return _xifexpression;
+    return _xblockexpression;
   }
 
   public boolean isPositive(final RelativeEffect rel_effect) {
@@ -3695,9 +2862,7 @@ public class TQLGenerator extends AbstractGenerator {
             }
             final LiteralWrapper escaped = _xifexpression;
             if ((escaped != null)) {
-              InputOutput.<String>println("state Escaped!!");
               final State nextState = this.findNextState(escaped, ((RelativeEffect)effect).getMeasurement(), state);
-              InputOutput.<String>println(("next state found: " + nextState.TQLName));
               Pair<String, String> _mappedTo = Pair.<String, String>of(state.TQLName, ruleName);
               this.escapes.put(_mappedTo, nextState.TQLName);
             }
@@ -3996,24 +3161,6 @@ public class TQLGenerator extends AbstractGenerator {
     } else {
       InputOutput.<String>println("REDFLAGGG");
       return null;
-    }
-  }
-
-  @XbaseGenerated
-  public String HasValue(final Object v) {
-    if (v instanceof Double) {
-      return _HasValue((Double)v);
-    } else if (v instanceof Integer) {
-      return _HasValue((Integer)v);
-    } else if (v instanceof Boolean) {
-      return _HasValue((Boolean)v);
-    } else if (v instanceof String) {
-      return _HasValue((String)v);
-    } else if (v instanceof Iterable) {
-      return _HasValue((Iterable<?>)v);
-    } else {
-      throw new IllegalArgumentException("Unhandled parameter types: " +
-        Arrays.<Object>asList(v).toString());
     }
   }
 

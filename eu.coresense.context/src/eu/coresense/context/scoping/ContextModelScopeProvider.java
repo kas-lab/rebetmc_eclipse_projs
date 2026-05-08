@@ -28,7 +28,6 @@ import com.google.common.base.Function;
 
 import eu.coresense.context.contextModel.ContextModel;
 import eu.coresense.context.contextModel.ContextModelPackage;
-import eu.coresense.context.contextModel.Import;
 import eu.coresense.context.contextModel.QualifiedActionServerRef;
 import eu.coresense.context.contextModel.QualifiedPublisherRef;
 import eu.coresense.context.contextModel.QualifiedServiceServerRef;

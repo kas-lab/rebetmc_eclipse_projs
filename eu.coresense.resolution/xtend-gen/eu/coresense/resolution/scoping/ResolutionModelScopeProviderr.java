@@ -1,6 +1,7 @@
 package eu.coresense.resolution.scoping;
 
 import com.google.common.base.Function;
+import eu.coresense.resolution.resolutionModel.FeatureReference;
 import eu.coresense.resolution.resolutionModel.Import;
 import eu.coresense.resolution.resolutionModel.ResolutionModel;
 import eu.coresense.resolution.resolutionModel.ResolutionModelPackage;
@@ -19,6 +20,8 @@ import org.eclipse.xtext.naming.QualifiedName;
 import org.eclipse.xtext.scoping.IScope;
 import org.eclipse.xtext.scoping.Scopes;
 import org.eclipse.xtext.xbase.lib.Exceptions;
+import org.eclipse.xtext.xbase.lib.Functions.Function1;
+import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import ros.Parameter;
 import system.Component;
 import system.RosNode;
@@ -30,19 +33,28 @@ import uma.caosd.rhea.BasicFMmetamodel.FeatureModel;
 public class ResolutionModelScopeProviderr extends AbstractResolutionModelScopeProvider {
   @Override
   public IScope getScope(final EObject context, final EReference reference) {
-    boolean _equals = Objects.equals(reference, ResolutionModelPackage.Literals.RESOLUTION__FEATURE);
+    boolean _equals = Objects.equals(reference, ResolutionModelPackage.Literals.FEATURE_REFERENCE__PARENT);
     if (_equals) {
       final ResolutionModel model = EcoreUtil2.<ResolutionModel>getContainerOfType(context, ResolutionModel.class);
       if (((model != null) && (model.getFeatureModel() != null))) {
         final FeatureModel featureModel = model.getFeatureModel();
         final Feature root = featureModel.getRoot();
         final ArrayList<Feature> optFeatures = new ArrayList<Feature>();
-        this.collectOptionalFeatures(root, optFeatures);
+        this.collectParents(root, optFeatures);
         return Scopes.scopeFor(optFeatures);
       }
     }
-    boolean _equals_1 = Objects.equals(reference, ResolutionModelPackage.Literals.RESOLUTION_MODEL__ROSSYSTEM);
+    boolean _equals_1 = Objects.equals(reference, ResolutionModelPackage.Literals.FEATURE_REFERENCE__FEATURE);
     if (_equals_1) {
+      final FeatureReference fRef = ((FeatureReference) context);
+      final Function1<Feature, Boolean> _function = (Feature element) -> {
+        boolean _isMandatory = element.isMandatory();
+        return Boolean.valueOf((!_isMandatory));
+      };
+      return Scopes.scopeFor(IterableExtensions.<Feature>filter(fRef.getParent().getChildren(), _function));
+    }
+    boolean _equals_2 = Objects.equals(reference, ResolutionModelPackage.Literals.RESOLUTION_MODEL__ROSSYSTEM);
+    if (_equals_2) {
       Resource currentResource = context.eResource();
       final ResolutionModel model_1 = EcoreUtil2.<ResolutionModel>getContainerOfType(context, ResolutionModel.class);
       if ((model_1 != null)) {
@@ -50,8 +62,8 @@ public class ResolutionModelScopeProviderr extends AbstractResolutionModelScopeP
         return Scopes.scopeFor(rosSystems);
       }
     }
-    boolean _equals_2 = Objects.equals(reference, ResolutionModelPackage.Literals.RECONFIGURATION__NODE);
-    if (_equals_2) {
+    boolean _equals_3 = Objects.equals(reference, ResolutionModelPackage.Literals.RECONFIGURATION__NODE);
+    if (_equals_3) {
       final ResolutionModel model_2 = EcoreUtil2.<ResolutionModel>getContainerOfType(context, ResolutionModel.class);
       if ((model_2 == null)) {
         return IScope.NULLSCOPE;
@@ -66,48 +78,52 @@ public class ResolutionModelScopeProviderr extends AbstractResolutionModelScopeP
           }
         }
       }
-      final Function<EObject, QualifiedName> _function = (EObject e) -> {
+      final Function<EObject, QualifiedName> _function_1 = (EObject e) -> {
         return QualifiedName.create(ResolutionModelScopeProviderr.escape(((RosNode) e).getName()));
       };
-      return Scopes.<EObject>scopeFor(allNodes, _function, 
+      return Scopes.<EObject>scopeFor(allNodes, _function_1, 
         IScope.NULLSCOPE);
     }
-    boolean _equals_3 = Objects.equals(reference, ResolutionModelPackage.Literals.SET_PARAM__PARAM);
-    if (_equals_3) {
+    boolean _equals_4 = Objects.equals(reference, ResolutionModelPackage.Literals.SET_PARAM__PARAM);
+    if (_equals_4) {
       final ResolutionModel model_3 = EcoreUtil2.<ResolutionModel>getContainerOfType(context, ResolutionModel.class);
       final SetParam spRef = ((SetParam) context);
       if ((model_3 == null)) {
         return IScope.NULLSCOPE;
       }
       final List<system.System> systems_1 = this.collectAllSystems(model_3, context.eResource());
-      final ArrayList<Parameter> allParams = new ArrayList<Parameter>();
+      final ArrayList<EObject> allParams = new ArrayList<EObject>();
       for (final system.System sys_1 : systems_1) {
         EList<Component> _components_1 = sys_1.getComponents();
         for (final Component comp_1 : _components_1) {
           if ((comp_1 instanceof RosNode)) {
             RosNode _node = spRef.getNode();
-            boolean _equals_4 = Objects.equals(_node, comp_1);
-            if (_equals_4) {
+            boolean _equals_5 = Objects.equals(_node, comp_1);
+            if (_equals_5) {
               allParams.addAll(((RosNode)comp_1).getFrom().getParameter());
             }
           }
         }
       }
-      return Scopes.scopeFor(allParams);
+      final Function<EObject, QualifiedName> _function_2 = (EObject e) -> {
+        return QualifiedName.create(ResolutionModelScopeProviderr.escape(((Parameter) e).getName()));
+      };
+      return Scopes.<EObject>scopeFor(allParams, _function_2, 
+        IScope.NULLSCOPE);
     }
     return super.getScope(context, reference);
   }
 
-  public void collectOptionalFeatures(final Feature feature, final List<Feature> optFeatures) {
+  public void collectParents(final Feature feature, final List<Feature> parentFeatures) {
     if ((feature != null)) {
-      boolean _isMandatory = feature.isMandatory();
-      boolean _not = (!_isMandatory);
-      if (_not) {
-        optFeatures.add(feature);
+      int _size = feature.getChildren().size();
+      boolean _greaterThan = (_size > 0);
+      if (_greaterThan) {
+        parentFeatures.add(feature);
       }
       EList<Feature> _children = feature.getChildren();
       for (final Feature child : _children) {
-        this.collectOptionalFeatures(child, optFeatures);
+        this.collectParents(child, parentFeatures);
       }
     }
   }
@@ -165,7 +181,8 @@ public class ResolutionModelScopeProviderr extends AbstractResolutionModelScopeP
     String _xblockexpression = null;
     {
       String noSlash = name.replace("/", "_slash_");
-      _xblockexpression = noSlash.replace("~", "_tilde_");
+      String noTildenoSlash = noSlash.replace("~", "_tilde_");
+      _xblockexpression = noTildenoSlash.replace(".", "_dot_");
     }
     return _xblockexpression;
   }
@@ -177,7 +194,8 @@ public class ResolutionModelScopeProviderr extends AbstractResolutionModelScopeP
     String _xblockexpression = null;
     {
       String withSlash = name.replace("_slash_", "/");
-      _xblockexpression = withSlash.replace("_tilde_", "~");
+      String withTildewithSlash = withSlash.replace("_tilde_", "~");
+      _xblockexpression = withTildewithSlash.replace("_dot_", ".");
     }
     return _xblockexpression;
   }

@@ -90,6 +90,13 @@
     <genClasses ecoreClass="RequirementsModel.ecore#//AsCloseLit">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RequirementsModel.ecore#//AsCloseLit/quantity"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RequirementsModel.ecore#//AsCloseLit/comparator"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RequirementsModel.ecore#//AsCloseLit/membershipFunction"/>
+    </genClasses>
+    <genClasses ecoreClass="RequirementsModel.ecore#//MembershipFunction"/>
+    <genClasses ecoreClass="RequirementsModel.ecore#//FuzzyTriangular">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RequirementsModel.ecore#//FuzzyTriangular/a"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RequirementsModel.ecore#//FuzzyTriangular/b"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RequirementsModel.ecore#//FuzzyTriangular/c"/>
     </genClasses>
     <genClasses ecoreClass="RequirementsModel.ecore#//Quantifiable">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference RequirementsModel.ecore#//Quantifiable/contextVariable"/>

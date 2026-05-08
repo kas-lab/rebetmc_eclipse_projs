@@ -2,6 +2,8 @@ package eu.coresense.common
 
 import java.util.List
 import java.util.ArrayList
+import org.eclipse.emf.ecore.resource.Resource
+import org.eclipse.emf.common.util.URI
 
 class Utilities {
 	def static valueOfLiteral(Literal lit)
@@ -42,5 +44,37 @@ class Utilities {
 	        getCartesianProductHelper(sets, index+1, current, result)
 	        current.remove(current.size() - 1)
 	    }
+	}
+	
+	def static <T extends Object> List<T> deriveFromImports(Resource resource, String fileSuffix, List<Import> imports, Class<T> clas)
+	{
+		val List<T> entities = newArrayList
+		
+		for (imp : imports) {
+			if(imp.importURI.endsWith(fileSuffix))
+			{
+				var uri = URI.createURI(imp.importURI)
+				if (uri.isRelative()) {
+					
+            		uri = uri.resolve(resource.getURI());
+        		}
+        		val imported = resource.resourceSet.getResource(uri, true);
+        		if (imported === null || imported.getContents().isEmpty()) 
+        		{
+        			println("ResolutionModel import fail")
+        		}
+        			
+        		
+        		val root = imported.getContents().get(0);
+	            if (clas.isInstance(root)) {
+	               	entities.add(clas.cast(root))
+				}
+				
+			}
+			
+		}
+		
+		return entities;	
+		
 	}
 }

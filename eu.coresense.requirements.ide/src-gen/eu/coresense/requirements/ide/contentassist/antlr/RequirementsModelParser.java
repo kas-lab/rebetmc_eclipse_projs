@@ -55,6 +55,7 @@ public class RequirementsModelParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getAsAsPossibleAccess().getGroup(), "rule__AsAsPossible__Group__0");
 			builder.put(grammarAccess.getAsCloseFreqAccess().getGroup(), "rule__AsCloseFreq__Group__0");
 			builder.put(grammarAccess.getAsCloseLitAccess().getGroup(), "rule__AsCloseLit__Group__0");
+			builder.put(grammarAccess.getFuzzyTriangularAccess().getGroup(), "rule__FuzzyTriangular__Group__0");
 			builder.put(grammarAccess.getQuantifiableAccess().getGroup(), "rule__Quantifiable__Group__0");
 			builder.put(grammarAccess.getMayAccess().getGroup(), "rule__May__Group__0");
 			builder.put(grammarAccess.getMayAlternativeAccess().getGroup(), "rule__MayAlternative__Group__0");
@@ -93,6 +94,10 @@ public class RequirementsModelParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getAsCloseFreqAccess().getExpressionAssignment_8(), "rule__AsCloseFreq__ExpressionAssignment_8");
 			builder.put(grammarAccess.getAsCloseLitAccess().getQuantityAssignment_6(), "rule__AsCloseLit__QuantityAssignment_6");
 			builder.put(grammarAccess.getAsCloseLitAccess().getComparatorAssignment_8(), "rule__AsCloseLit__ComparatorAssignment_8");
+			builder.put(grammarAccess.getAsCloseLitAccess().getMembershipFunctionAssignment_10(), "rule__AsCloseLit__MembershipFunctionAssignment_10");
+			builder.put(grammarAccess.getFuzzyTriangularAccess().getAAssignment_2(), "rule__FuzzyTriangular__AAssignment_2");
+			builder.put(grammarAccess.getFuzzyTriangularAccess().getBAssignment_4(), "rule__FuzzyTriangular__BAssignment_4");
+			builder.put(grammarAccess.getFuzzyTriangularAccess().getCAssignment_6(), "rule__FuzzyTriangular__CAssignment_6");
 			builder.put(grammarAccess.getQuantifiableAccess().getContextVariableAssignment_1(), "rule__Quantifiable__ContextVariableAssignment_1");
 			builder.put(grammarAccess.getMayAccess().getExpressionAssignment_2(), "rule__May__ExpressionAssignment_2");
 			builder.put(grammarAccess.getMayAccess().getAlternativesAssignment_4(), "rule__May__AlternativesAssignment_4");

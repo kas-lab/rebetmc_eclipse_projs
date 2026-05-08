@@ -7,8 +7,6 @@ import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EObject;
 
-import uma.caosd.rhea.BasicFMmetamodel.Feature;
-
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Resolution</b></em>'.
@@ -18,7 +16,7 @@ import uma.caosd.rhea.BasicFMmetamodel.Feature;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link eu.coresense.resolution.resolutionModel.Resolution#getFeature <em>Feature</em>}</li>
+ *   <li>{@link eu.coresense.resolution.resolutionModel.Resolution#getFeatureRef <em>Feature Ref</em>}</li>
  *   <li>{@link eu.coresense.resolution.resolutionModel.Resolution#getSelection_actions <em>Selection actions</em>}</li>
  *   <li>{@link eu.coresense.resolution.resolutionModel.Resolution#getDeselection_actions <em>Deselection actions</em>}</li>
  * </ul>
@@ -30,26 +28,26 @@ import uma.caosd.rhea.BasicFMmetamodel.Feature;
 public interface Resolution extends EObject
 {
   /**
-   * Returns the value of the '<em><b>Feature</b></em>' reference.
+   * Returns the value of the '<em><b>Feature Ref</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Feature</em>' reference.
-   * @see #setFeature(Feature)
-   * @see eu.coresense.resolution.resolutionModel.ResolutionModelPackage#getResolution_Feature()
-   * @model
+   * @return the value of the '<em>Feature Ref</em>' containment reference.
+   * @see #setFeatureRef(FeatureReference)
+   * @see eu.coresense.resolution.resolutionModel.ResolutionModelPackage#getResolution_FeatureRef()
+   * @model containment="true"
    * @generated
    */
-  Feature getFeature();
+  FeatureReference getFeatureRef();
 
   /**
-   * Sets the value of the '{@link eu.coresense.resolution.resolutionModel.Resolution#getFeature <em>Feature</em>}' reference.
+   * Sets the value of the '{@link eu.coresense.resolution.resolutionModel.Resolution#getFeatureRef <em>Feature Ref</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Feature</em>' reference.
-   * @see #getFeature()
+   * @param value the new value of the '<em>Feature Ref</em>' containment reference.
+   * @see #getFeatureRef()
    * @generated
    */
-  void setFeature(Feature value);
+  void setFeatureRef(FeatureReference value);
 
   /**
    * Returns the value of the '<em><b>Selection actions</b></em>' containment reference list.

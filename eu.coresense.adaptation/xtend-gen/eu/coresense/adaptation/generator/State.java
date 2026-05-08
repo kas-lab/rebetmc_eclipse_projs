@@ -58,6 +58,10 @@ public class State {
     return this.boundMap.entrySet();
   }
 
+  public List<Map.Entry<ContextVar, LiteralWrapper>> getMedians() {
+    return IterableExtensions.<Map.Entry<ContextVar, LiteralWrapper>>toList(this.medianBounds.entrySet());
+  }
+
   public List<ContextVar> getContextKeys() {
     return IterableExtensions.<ContextVar>toList(this.boundMap.keySet());
   }

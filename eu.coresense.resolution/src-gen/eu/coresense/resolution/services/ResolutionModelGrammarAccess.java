@@ -126,9 +126,8 @@ public class ResolutionModelGrammarAccess extends AbstractElementFinder.Abstract
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "eu.coresense.resolution.ResolutionModel.Resolution");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Action cResolutionAction_0 = (Action)cGroup.eContents().get(0);
-		private final Assignment cFeatureAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final CrossReference cFeatureFeatureCrossReference_1_0 = (CrossReference)cFeatureAssignment_1.eContents().get(0);
-		private final RuleCall cFeatureFeatureIDTerminalRuleCall_1_0_1 = (RuleCall)cFeatureFeatureCrossReference_1_0.eContents().get(1);
+		private final Assignment cFeatureRefAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cFeatureRefFeatureReferenceParserRuleCall_1_0 = (RuleCall)cFeatureRefAssignment_1.eContents().get(0);
 		private final Keyword cColonKeyword_2 = (Keyword)cGroup.eContents().get(2);
 		private final Keyword cSelectKeyword_3 = (Keyword)cGroup.eContents().get(3);
 		private final Assignment cSelection_actionsAssignment_4 = (Assignment)cGroup.eContents().get(4);
@@ -138,24 +137,21 @@ public class ResolutionModelGrammarAccess extends AbstractElementFinder.Abstract
 		private final RuleCall cDeselection_actionsReconfigurationParserRuleCall_6_0 = (RuleCall)cDeselection_actionsAssignment_6.eContents().get(0);
 		
 		//Resolution:
-		//    {Resolution} feature=[BasicFMmetamodel::Feature] ':' 'select:' selection_actions+=Reconfiguration* 'deselect:' deselection_actions+=Reconfiguration*
+		//    {Resolution} featureRef=FeatureReference ':' 'select:' selection_actions+=Reconfiguration* 'deselect:' deselection_actions+=Reconfiguration*
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//{Resolution} feature=[BasicFMmetamodel::Feature] ':' 'select:' selection_actions+=Reconfiguration* 'deselect:' deselection_actions+=Reconfiguration*
+		//{Resolution} featureRef=FeatureReference ':' 'select:' selection_actions+=Reconfiguration* 'deselect:' deselection_actions+=Reconfiguration*
 		public Group getGroup() { return cGroup; }
 		
 		//{Resolution}
 		public Action getResolutionAction_0() { return cResolutionAction_0; }
 		
-		//feature=[BasicFMmetamodel::Feature]
-		public Assignment getFeatureAssignment_1() { return cFeatureAssignment_1; }
+		//featureRef=FeatureReference
+		public Assignment getFeatureRefAssignment_1() { return cFeatureRefAssignment_1; }
 		
-		//[BasicFMmetamodel::Feature]
-		public CrossReference getFeatureFeatureCrossReference_1_0() { return cFeatureFeatureCrossReference_1_0; }
-		
-		//ID
-		public RuleCall getFeatureFeatureIDTerminalRuleCall_1_0_1() { return cFeatureFeatureIDTerminalRuleCall_1_0_1; }
+		//FeatureReference
+		public RuleCall getFeatureRefFeatureReferenceParserRuleCall_1_0() { return cFeatureRefFeatureReferenceParserRuleCall_1_0; }
 		
 		//':'
 		public Keyword getColonKeyword_2() { return cColonKeyword_2; }
@@ -177,6 +173,46 @@ public class ResolutionModelGrammarAccess extends AbstractElementFinder.Abstract
 		
 		//Reconfiguration
 		public RuleCall getDeselection_actionsReconfigurationParserRuleCall_6_0() { return cDeselection_actionsReconfigurationParserRuleCall_6_0; }
+	}
+	public class FeatureReferenceElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "eu.coresense.resolution.ResolutionModel.FeatureReference");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Assignment cParentAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final CrossReference cParentFeatureCrossReference_0_0 = (CrossReference)cParentAssignment_0.eContents().get(0);
+		private final RuleCall cParentFeatureIDTerminalRuleCall_0_0_1 = (RuleCall)cParentFeatureCrossReference_0_0.eContents().get(1);
+		private final Keyword cFullStopKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cFeatureAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final CrossReference cFeatureFeatureCrossReference_2_0 = (CrossReference)cFeatureAssignment_2.eContents().get(0);
+		private final RuleCall cFeatureFeatureIDTerminalRuleCall_2_0_1 = (RuleCall)cFeatureFeatureCrossReference_2_0.eContents().get(1);
+		
+		//FeatureReference:
+		//    (parent=[BasicFMmetamodel::Feature]) '.' feature=[BasicFMmetamodel::Feature]
+		//;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//(parent=[BasicFMmetamodel::Feature]) '.' feature=[BasicFMmetamodel::Feature]
+		public Group getGroup() { return cGroup; }
+		
+		//(parent=[BasicFMmetamodel::Feature])
+		public Assignment getParentAssignment_0() { return cParentAssignment_0; }
+		
+		//[BasicFMmetamodel::Feature]
+		public CrossReference getParentFeatureCrossReference_0_0() { return cParentFeatureCrossReference_0_0; }
+		
+		//ID
+		public RuleCall getParentFeatureIDTerminalRuleCall_0_0_1() { return cParentFeatureIDTerminalRuleCall_0_0_1; }
+		
+		//'.'
+		public Keyword getFullStopKeyword_1() { return cFullStopKeyword_1; }
+		
+		//feature=[BasicFMmetamodel::Feature]
+		public Assignment getFeatureAssignment_2() { return cFeatureAssignment_2; }
+		
+		//[BasicFMmetamodel::Feature]
+		public CrossReference getFeatureFeatureCrossReference_2_0() { return cFeatureFeatureCrossReference_2_0; }
+		
+		//ID
+		public RuleCall getFeatureFeatureIDTerminalRuleCall_2_0_1() { return cFeatureFeatureIDTerminalRuleCall_2_0_1; }
 	}
 	public class ImportElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "eu.coresense.resolution.ResolutionModel.Import");
@@ -393,6 +429,7 @@ public class ResolutionModelGrammarAccess extends AbstractElementFinder.Abstract
 	
 	private final ResolutionModelElements pResolutionModel;
 	private final ResolutionElements pResolution;
+	private final FeatureReferenceElements pFeatureReference;
 	private final ImportElements pImport;
 	private final ReconfigurationElements pReconfiguration;
 	private final SetParamElements pSetParam;
@@ -415,6 +452,7 @@ public class ResolutionModelGrammarAccess extends AbstractElementFinder.Abstract
 		this.gaTerminals = gaTerminals;
 		this.pResolutionModel = new ResolutionModelElements();
 		this.pResolution = new ResolutionElements();
+		this.pFeatureReference = new FeatureReferenceElements();
 		this.pImport = new ImportElements();
 		this.pReconfiguration = new ReconfigurationElements();
 		this.pSetParam = new SetParamElements();
@@ -469,7 +507,7 @@ public class ResolutionModelGrammarAccess extends AbstractElementFinder.Abstract
 	}
 	
 	//Resolution:
-	//    {Resolution} feature=[BasicFMmetamodel::Feature] ':' 'select:' selection_actions+=Reconfiguration* 'deselect:' deselection_actions+=Reconfiguration*
+	//    {Resolution} featureRef=FeatureReference ':' 'select:' selection_actions+=Reconfiguration* 'deselect:' deselection_actions+=Reconfiguration*
 	//;
 	public ResolutionElements getResolutionAccess() {
 		return pResolution;
@@ -477,6 +515,17 @@ public class ResolutionModelGrammarAccess extends AbstractElementFinder.Abstract
 	
 	public ParserRule getResolutionRule() {
 		return getResolutionAccess().getRule();
+	}
+	
+	//FeatureReference:
+	//    (parent=[BasicFMmetamodel::Feature]) '.' feature=[BasicFMmetamodel::Feature]
+	//;
+	public FeatureReferenceElements getFeatureReferenceAccess() {
+		return pFeatureReference;
+	}
+	
+	public ParserRule getFeatureReferenceRule() {
+		return getFeatureReferenceAccess().getRule();
 	}
 	
 	//Import:

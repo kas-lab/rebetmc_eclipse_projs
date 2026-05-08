@@ -163,6 +163,8 @@ RightParenthesis : ')';
 
 Comma : ',';
 
+FullStop : '.';
+
 Colon : ':';
 
 Semicolon : ';';

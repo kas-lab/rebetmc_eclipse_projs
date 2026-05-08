@@ -67,7 +67,6 @@ public class TacticsFactoryImpl extends EFactoryImpl implements TacticsFactory
     switch (eClass.getClassifierID())
     {
       case TacticsPackage.TACTICS_MODEL: return createTacticsModel();
-      case TacticsPackage.IMPORT: return createImport();
       case TacticsPackage.ADAPTATION_RULE: return createAdaptationRule();
       case TacticsPackage.ATOMIC_RULE: return createAtomicRule();
       case TacticsPackage.RULE_SET: return createRuleSet();
@@ -139,18 +138,6 @@ public class TacticsFactoryImpl extends EFactoryImpl implements TacticsFactory
   {
     TacticsModelImpl tacticsModel = new TacticsModelImpl();
     return tacticsModel;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public Import createImport()
-  {
-    ImportImpl import_ = new ImportImpl();
-    return import_;
   }
 
   /**

@@ -797,14 +797,17 @@ public class RequirementsModelGrammarAccess extends AbstractElementFinder.Abstra
 		private final Keyword cCommaKeyword_7 = (Keyword)cGroup.eContents().get(7);
 		private final Assignment cComparatorAssignment_8 = (Assignment)cGroup.eContents().get(8);
 		private final RuleCall cComparatorQuantifiableParserRuleCall_8_0 = (RuleCall)cComparatorAssignment_8.eContents().get(0);
-		private final Keyword cRightParenthesisKeyword_9 = (Keyword)cGroup.eContents().get(9);
+		private final Keyword cCommaKeyword_9 = (Keyword)cGroup.eContents().get(9);
+		private final Assignment cMembershipFunctionAssignment_10 = (Assignment)cGroup.eContents().get(10);
+		private final RuleCall cMembershipFunctionMembershipFunctionParserRuleCall_10_0 = (RuleCall)cMembershipFunctionAssignment_10.eContents().get(0);
+		private final Keyword cRightParenthesisKeyword_11 = (Keyword)cGroup.eContents().get(11);
 		
 		//AsCloseLit:
-		//    'AS' 'CLOSE' 'AS' 'POSSIBLE' 'TO' '(' quantity=Literal ',' comparator=Quantifiable ')'
+		//    'AS' 'CLOSE' 'AS' 'POSSIBLE' 'TO' '(' quantity=Literal ',' comparator=Quantifiable ',' membershipFunction=MembershipFunction ')'
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'AS' 'CLOSE' 'AS' 'POSSIBLE' 'TO' '(' quantity=Literal ',' comparator=Quantifiable ')'
+		//'AS' 'CLOSE' 'AS' 'POSSIBLE' 'TO' '(' quantity=Literal ',' comparator=Quantifiable ',' membershipFunction=MembershipFunction ')'
 		public Group getGroup() { return cGroup; }
 		
 		//'AS'
@@ -840,8 +843,85 @@ public class RequirementsModelGrammarAccess extends AbstractElementFinder.Abstra
 		//Quantifiable
 		public RuleCall getComparatorQuantifiableParserRuleCall_8_0() { return cComparatorQuantifiableParserRuleCall_8_0; }
 		
+		//','
+		public Keyword getCommaKeyword_9() { return cCommaKeyword_9; }
+		
+		//membershipFunction=MembershipFunction
+		public Assignment getMembershipFunctionAssignment_10() { return cMembershipFunctionAssignment_10; }
+		
+		//MembershipFunction
+		public RuleCall getMembershipFunctionMembershipFunctionParserRuleCall_10_0() { return cMembershipFunctionMembershipFunctionParserRuleCall_10_0; }
+		
 		//')'
-		public Keyword getRightParenthesisKeyword_9() { return cRightParenthesisKeyword_9; }
+		public Keyword getRightParenthesisKeyword_11() { return cRightParenthesisKeyword_11; }
+	}
+	public class MembershipFunctionElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "eu.coresense.requirements.RequirementsModel.MembershipFunction");
+		private final RuleCall cFuzzyTriangularParserRuleCall = (RuleCall)rule.eContents().get(1);
+		
+		//MembershipFunction:
+		//    FuzzyTriangular
+		//;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//FuzzyTriangular
+		public RuleCall getFuzzyTriangularParserRuleCall() { return cFuzzyTriangularParserRuleCall; }
+	}
+	public class FuzzyTriangularElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "eu.coresense.requirements.RequirementsModel.FuzzyTriangular");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cFuzzyTriangularKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Keyword cLeftParenthesisKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cAAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cADECIMALTerminalRuleCall_2_0 = (RuleCall)cAAssignment_2.eContents().get(0);
+		private final Keyword cCommaKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		private final Assignment cBAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final RuleCall cBDECIMALTerminalRuleCall_4_0 = (RuleCall)cBAssignment_4.eContents().get(0);
+		private final Keyword cCommaKeyword_5 = (Keyword)cGroup.eContents().get(5);
+		private final Assignment cCAssignment_6 = (Assignment)cGroup.eContents().get(6);
+		private final RuleCall cCDECIMALTerminalRuleCall_6_0 = (RuleCall)cCAssignment_6.eContents().get(0);
+		private final Keyword cRightParenthesisKeyword_7 = (Keyword)cGroup.eContents().get(7);
+		
+		//FuzzyTriangular:
+		//    'FuzzyTriangular' '(' a=DECIMAL ',' b=DECIMAL ',' c=DECIMAL ')'
+		//;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//'FuzzyTriangular' '(' a=DECIMAL ',' b=DECIMAL ',' c=DECIMAL ')'
+		public Group getGroup() { return cGroup; }
+		
+		//'FuzzyTriangular'
+		public Keyword getFuzzyTriangularKeyword_0() { return cFuzzyTriangularKeyword_0; }
+		
+		//'('
+		public Keyword getLeftParenthesisKeyword_1() { return cLeftParenthesisKeyword_1; }
+		
+		//a=DECIMAL
+		public Assignment getAAssignment_2() { return cAAssignment_2; }
+		
+		//DECIMAL
+		public RuleCall getADECIMALTerminalRuleCall_2_0() { return cADECIMALTerminalRuleCall_2_0; }
+		
+		//','
+		public Keyword getCommaKeyword_3() { return cCommaKeyword_3; }
+		
+		//b=DECIMAL
+		public Assignment getBAssignment_4() { return cBAssignment_4; }
+		
+		//DECIMAL
+		public RuleCall getBDECIMALTerminalRuleCall_4_0() { return cBDECIMALTerminalRuleCall_4_0; }
+		
+		//','
+		public Keyword getCommaKeyword_5() { return cCommaKeyword_5; }
+		
+		//c=DECIMAL
+		public Assignment getCAssignment_6() { return cCAssignment_6; }
+		
+		//DECIMAL
+		public RuleCall getCDECIMALTerminalRuleCall_6_0() { return cCDECIMALTerminalRuleCall_6_0; }
+		
+		//')'
+		public Keyword getRightParenthesisKeyword_7() { return cRightParenthesisKeyword_7; }
 	}
 	public class QuantifiableElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "eu.coresense.requirements.RequirementsModel.Quantifiable");
@@ -1382,6 +1462,8 @@ public class RequirementsModelGrammarAccess extends AbstractElementFinder.Abstra
 	private final ExpressionElements pExpression;
 	private final AsCloseFreqElements pAsCloseFreq;
 	private final AsCloseLitElements pAsCloseLit;
+	private final MembershipFunctionElements pMembershipFunction;
+	private final FuzzyTriangularElements pFuzzyTriangular;
 	private final QuantifiableElements pQuantifiable;
 	private final MayElements pMay;
 	private final MayAlternativeElements pMayAlternative;
@@ -1429,6 +1511,8 @@ public class RequirementsModelGrammarAccess extends AbstractElementFinder.Abstra
 		this.pExpression = new ExpressionElements();
 		this.pAsCloseFreq = new AsCloseFreqElements();
 		this.pAsCloseLit = new AsCloseLitElements();
+		this.pMembershipFunction = new MembershipFunctionElements();
+		this.pFuzzyTriangular = new FuzzyTriangularElements();
 		this.pQuantifiable = new QuantifiableElements();
 		this.pMay = new MayElements();
 		this.pMayAlternative = new MayAlternativeElements();
@@ -1749,7 +1833,7 @@ public class RequirementsModelGrammarAccess extends AbstractElementFinder.Abstra
 	}
 	
 	//AsCloseLit:
-	//    'AS' 'CLOSE' 'AS' 'POSSIBLE' 'TO' '(' quantity=Literal ',' comparator=Quantifiable ')'
+	//    'AS' 'CLOSE' 'AS' 'POSSIBLE' 'TO' '(' quantity=Literal ',' comparator=Quantifiable ',' membershipFunction=MembershipFunction ')'
 	//;
 	public AsCloseLitElements getAsCloseLitAccess() {
 		return pAsCloseLit;
@@ -1757,6 +1841,28 @@ public class RequirementsModelGrammarAccess extends AbstractElementFinder.Abstra
 	
 	public ParserRule getAsCloseLitRule() {
 		return getAsCloseLitAccess().getRule();
+	}
+	
+	//MembershipFunction:
+	//    FuzzyTriangular
+	//;
+	public MembershipFunctionElements getMembershipFunctionAccess() {
+		return pMembershipFunction;
+	}
+	
+	public ParserRule getMembershipFunctionRule() {
+		return getMembershipFunctionAccess().getRule();
+	}
+	
+	//FuzzyTriangular:
+	//    'FuzzyTriangular' '(' a=DECIMAL ',' b=DECIMAL ',' c=DECIMAL ')'
+	//;
+	public FuzzyTriangularElements getFuzzyTriangularAccess() {
+		return pFuzzyTriangular;
+	}
+	
+	public ParserRule getFuzzyTriangularRule() {
+		return getFuzzyTriangularAccess().getRule();
 	}
 	
 	//Quantifiable:
@@ -1884,7 +1990,7 @@ public class RequirementsModelGrammarAccess extends AbstractElementFinder.Abstra
 	}
 	
 	//terminal DECIMAL returns ecore::EBigDecimal:
-	//    INT '.' INT
+	//    '-'? INT '.' INT
 	//;
 	public TerminalRule getDECIMALRule() {
 		return tDECIMAL;

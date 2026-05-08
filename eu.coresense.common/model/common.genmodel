@@ -31,5 +31,8 @@
     <genClasses ecoreClass="common.ecore#//BooleanLiteral">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute common.ecore#//BooleanLiteral/value"/>
     </genClasses>
+    <genClasses ecoreClass="common.ecore#//Import">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute common.ecore#//Import/importURI"/>
+    </genClasses>
   </genPackages>
 </genmodel:GenModel>

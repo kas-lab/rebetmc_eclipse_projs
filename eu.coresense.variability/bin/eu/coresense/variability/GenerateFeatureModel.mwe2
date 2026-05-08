@@ -33,7 +33,7 @@ Workflow {
 		language = StandardLanguage {
 			name = "eu.coresense.variability.FeatureModel"
 			fileExtensions = "var"
-			referencedResource = "platform:/resource/fms.metamodel/model/BasicConstraintsFM/BasicConstraintsFMmetamodel.genmodel"
+			referencedResource = "platform:/resource/fms.metamodel/model/AdvancedConstraintsFM/AdvancedConstraintsFMmetamodel.genmodel"
 			referencedResource = "platform:/resource/fms.metamodel/model/BasicFMmetamodel.genmodel"
 
 			serializer = {

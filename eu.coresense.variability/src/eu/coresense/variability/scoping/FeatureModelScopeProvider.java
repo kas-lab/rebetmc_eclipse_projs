@@ -3,6 +3,23 @@
  */
 package eu.coresense.variability.scoping;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.ecore.InternalEObject;
+import org.eclipse.xtext.EcoreUtil2;
+import org.eclipse.xtext.naming.QualifiedName;
+import org.eclipse.xtext.resource.IEObjectDescription;
+import org.eclipse.xtext.scoping.IScope;
+import org.eclipse.xtext.scoping.Scopes;
+
+import eu.coresense.variability.featureModel.FeatureModelPackage;
+import uma.caosd.rhea.AdvancedConstraintsFMmetamodel.AdvancedConstraintsFMmetamodelPackage;
+import uma.caosd.rhea.BasicFMmetamodel.BasicFMmetamodelPackage;
+import uma.caosd.rhea.BasicFMmetamodel.Feature;
+import uma.caosd.rhea.BasicFMmetamodel.FeatureModel;
 
 /**
  * This class contains custom scoping description.
@@ -11,5 +28,58 @@ package eu.coresense.variability.scoping;
  * on how and when to use it.
  */
 public class FeatureModelScopeProvider extends AbstractFeatureModelScopeProvider {
+	@Override
+	public IScope getScope(EObject context, EReference reference) {
+	    if (reference == AdvancedConstraintsFMmetamodelPackage.Literals.TERM__FEATURE) {
+//	    	System.out.println("Triggered scope provider");
+	    	FeatureModel featureModel = EcoreUtil2.getContainerOfType(context, FeatureModel.class);
+            Feature root = featureModel.getRoot();
+            
+            
+            //Gather all the leaves, you have access to getChildren() and isLeaf()
+            List<Feature> optFeatures = new ArrayList<>();
+            collectOptionalFeatures(root, optFeatures);
+            
+//            for (Feature f : optFeatures) {
+//                System.out.println("Feature in scope: name=" + f.getName() + " id=" + f.getId());
+//            }
+            Scopes.scopeFor(optFeatures,
+            	    f -> QualifiedName.create(f.getId()),
+            	    IScope.NULLSCOPE);
+            IScope scope = Scopes.scopeFor(optFeatures);
 
+//            // Now print what the scope actually exposes
+//            for (IEObjectDescription desc : scope.getAllElements()) {
+//                System.out.println("Scope entry: " + desc.getName() + " -> " + desc.getEObjectOrProxy());
+//            }
+            
+            return  Scopes.scopeFor(optFeatures,
+            	    f -> QualifiedName.create(f.getId()),
+            	    IScope.NULLSCOPE);
+	    }
+//	    if (reference == BasicConstraintsFMmetamodelPackage.Literals.BASIC_CONSTRAINT__RIGHT_FEATURE) {
+//	    	System.out.println("Triggered scope provider");
+//	    	FeatureModel featureModel = EcoreUtil2.getContainerOfType(context, FeatureModel.class);
+//            Feature root = featureModel.getRoot();
+//            //Gather all the leaves, you have access to getChildren() and isLeaf()
+//            List<Feature> optFeatures = new ArrayList<>();
+//            collectOptionalFeatures(root, optFeatures);
+//            return  Scopes.scopeFor(optFeatures,
+//            	    f -> QualifiedName.create(f.getId()),
+//            	    IScope.NULLSCOPE);
+//	    }
+
+	    return super.getScope(context, reference);
+	}	
+	private void collectOptionalFeatures(Feature feature, List<Feature> optFeatures) {
+	    if(feature != null)
+	    {
+			if (!feature.isMandatory()) {
+				optFeatures.add(feature);
+		    } 
+	        for (Feature child : feature.getChildren()) {
+	        	collectOptionalFeatures(child, optFeatures);
+		    }
+	    }
+	}
 }

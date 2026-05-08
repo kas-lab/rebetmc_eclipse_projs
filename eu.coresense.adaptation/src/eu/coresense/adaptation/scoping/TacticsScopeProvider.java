@@ -39,7 +39,6 @@ public class TacticsScopeProvider extends AbstractTacticsScopeProvider {
 	        	List<ResolutionModel> res_models = getResolutionModel(model, context.eResource());
 	        	if(!res_models.isEmpty())
 	        	{
-		            //Gather all the leaves, you have access to getChildren() and isLeaf()
 		            List<Feature> resolutionFeatures = new ArrayList<>();
 		            for (ResolutionModel resolutionModel : res_models) {
 		            	collectResolutionFeatures(resolutionModel , resolutionFeatures);
@@ -67,7 +66,7 @@ public class TacticsScopeProvider extends AbstractTacticsScopeProvider {
 private void collectResolutionFeatures(ResolutionModel res_model, List<Feature> features) {
     for( Resolution res : res_model.getResolutions())
     {
-    	features.add(res.getFeature());
+    	features.add(res.getFeatureRef().getFeature());
     }
 }
 
@@ -75,7 +74,7 @@ private List<ResolutionModel> getResolutionModel(TacticsModel model, Resource cu
     List<ResolutionModel> result = new ArrayList<>();
     ResourceSet resourceSet = currentResource.getResourceSet();
 
-    for (eu.coresense.adaptation.tactics.Import imp : model.getImports()) {
+    for (eu.coresense.common.Import imp : model.getImports()) {
         String uriStr = imp.getImportURI();
         if (uriStr == null || !uriStr.endsWith(".resolution")) continue;
         URI uri = URI.createURI(uriStr);

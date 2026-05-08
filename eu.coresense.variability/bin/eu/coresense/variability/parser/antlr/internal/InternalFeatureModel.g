@@ -184,9 +184,9 @@ ruleFeatureModel returns [EObject current=null]
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getFeatureModelAccess().getCrossTreeConstraintsBasicConstraintParserRuleCall_6_0());
+					newCompositeNode(grammarAccess.getFeatureModelAccess().getCrossTreeConstraintsAdvancedConstraintParserRuleCall_6_0());
 				}
-				lv_crossTreeConstraints_6_0=ruleBasicConstraint
+				lv_crossTreeConstraints_6_0=ruleAdvancedConstraint
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getFeatureModelRule());
@@ -195,7 +195,7 @@ ruleFeatureModel returns [EObject current=null]
 						$current,
 						"crossTreeConstraints",
 						lv_crossTreeConstraints_6_0,
-						"eu.coresense.variability.FeatureModel.BasicConstraint");
+						"eu.coresense.variability.FeatureModel.AdvancedConstraint");
 					afterParserOrEnumRuleCall();
 				}
 			)
@@ -207,15 +207,15 @@ ruleFeatureModel returns [EObject current=null]
 	)
 ;
 
-// Entry rule entryRuleBasicConstraint
-entryRuleBasicConstraint returns [EObject current=null]:
-	{ newCompositeNode(grammarAccess.getBasicConstraintRule()); }
-	iv_ruleBasicConstraint=ruleBasicConstraint
-	{ $current=$iv_ruleBasicConstraint.current; }
+// Entry rule entryRuleAdvancedConstraint
+entryRuleAdvancedConstraint returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getAdvancedConstraintRule()); }
+	iv_ruleAdvancedConstraint=ruleAdvancedConstraint
+	{ $current=$iv_ruleAdvancedConstraint.current; }
 	EOF;
 
-// Rule BasicConstraint
-ruleBasicConstraint returns [EObject current=null]
+// Rule AdvancedConstraint
+ruleAdvancedConstraint returns [EObject current=null]
 @init {
 	enterRule();
 }
@@ -223,81 +223,23 @@ ruleBasicConstraint returns [EObject current=null]
 	leaveRule();
 }:
 	(
-		otherlv_0='BasicConstraint'
-		{
-			newLeafNode(otherlv_0, grammarAccess.getBasicConstraintAccess().getBasicConstraintKeyword_0());
-		}
-		otherlv_1='{'
-		{
-			newLeafNode(otherlv_1, grammarAccess.getBasicConstraintAccess().getLeftCurlyBracketKeyword_1());
-		}
-		otherlv_2='type'
-		{
-			newLeafNode(otherlv_2, grammarAccess.getBasicConstraintAccess().getTypeKeyword_2());
-		}
 		(
-			(
-				{
-					newCompositeNode(grammarAccess.getBasicConstraintAccess().getTypeCrossTreeConstraintTypeEnumRuleCall_3_0());
+			{
+				newCompositeNode(grammarAccess.getAdvancedConstraintAccess().getTermTermParserRuleCall_0());
+			}
+			lv_term_0_0=ruleTerm
+			{
+				if ($current==null) {
+					$current = createModelElementForParent(grammarAccess.getAdvancedConstraintRule());
 				}
-				lv_type_3_0=ruleCrossTreeConstraintType
-				{
-					if ($current==null) {
-						$current = createModelElementForParent(grammarAccess.getBasicConstraintRule());
-					}
-					set(
-						$current,
-						"type",
-						lv_type_3_0,
-						"eu.coresense.variability.FeatureModel.CrossTreeConstraintType");
-					afterParserOrEnumRuleCall();
-				}
-			)
+				set(
+					$current,
+					"term",
+					lv_term_0_0,
+					"eu.coresense.variability.FeatureModel.Term");
+				afterParserOrEnumRuleCall();
+			}
 		)
-		otherlv_4='rightFeature'
-		{
-			newLeafNode(otherlv_4, grammarAccess.getBasicConstraintAccess().getRightFeatureKeyword_4());
-		}
-		(
-			(
-				{
-					if ($current==null) {
-						$current = createModelElement(grammarAccess.getBasicConstraintRule());
-					}
-				}
-				{
-					newCompositeNode(grammarAccess.getBasicConstraintAccess().getRightFeatureFeatureCrossReference_5_0());
-				}
-				ruleEString
-				{
-					afterParserOrEnumRuleCall();
-				}
-			)
-		)
-		otherlv_6='leftFeature'
-		{
-			newLeafNode(otherlv_6, grammarAccess.getBasicConstraintAccess().getLeftFeatureKeyword_6());
-		}
-		(
-			(
-				{
-					if ($current==null) {
-						$current = createModelElement(grammarAccess.getBasicConstraintRule());
-					}
-				}
-				{
-					newCompositeNode(grammarAccess.getBasicConstraintAccess().getLeftFeatureFeatureCrossReference_7_0());
-				}
-				ruleEString
-				{
-					afterParserOrEnumRuleCall();
-				}
-			)
-		)
-		otherlv_8='}'
-		{
-			newLeafNode(otherlv_8, grammarAccess.getBasicConstraintAccess().getRightCurlyBracketKeyword_8());
-		}
 	)
 ;
 
@@ -343,6 +285,128 @@ ruleFeature returns [EObject current=null]
 			$current = $this_OrGroup_2.current;
 			afterParserOrEnumRuleCall();
 		}
+	)
+;
+
+// Entry rule entryRuleTerm
+entryRuleTerm returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getTermRule()); }
+	iv_ruleTerm=ruleTerm
+	{ $current=$iv_ruleTerm.current; }
+	EOF;
+
+// Rule Term
+ruleTerm returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		(
+			{
+				$current = forceCreateModelElement(
+					grammarAccess.getTermAccess().getTermAction_0(),
+					$current);
+			}
+		)
+		(
+			(
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getTermRule());
+					}
+				}
+				{
+					newCompositeNode(grammarAccess.getTermAccess().getFeatureFeatureCrossReference_1_0());
+				}
+				ruleEString
+				{
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getTermAccess().getTypeTermTypeEnumRuleCall_2_0());
+				}
+				lv_type_2_0=ruleTermType
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getTermRule());
+					}
+					set(
+						$current,
+						"type",
+						lv_type_2_0,
+						"eu.coresense.variability.FeatureModel.TermType");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getTermAccess().getOperandsSecondTermParserRuleCall_3_0());
+				}
+				lv_operands_3_0=rulesecondTerm
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getTermRule());
+					}
+					add(
+						$current,
+						"operands",
+						lv_operands_3_0,
+						"eu.coresense.variability.FeatureModel.secondTerm");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
+	)
+;
+
+// Entry rule entryRulesecondTerm
+entryRulesecondTerm returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getSecondTermRule()); }
+	iv_rulesecondTerm=rulesecondTerm
+	{ $current=$iv_rulesecondTerm.current; }
+	EOF;
+
+// Rule secondTerm
+rulesecondTerm returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		(
+			{
+				$current = forceCreateModelElement(
+					grammarAccess.getSecondTermAccess().getTermAction_0(),
+					$current);
+			}
+		)
+		(
+			(
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getSecondTermRule());
+					}
+				}
+				{
+					newCompositeNode(grammarAccess.getSecondTermAccess().getFeatureFeatureCrossReference_1_0());
+				}
+				ruleEString
+				{
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
 	)
 ;
 
@@ -437,21 +501,44 @@ ruleFeature_Impl returns [EObject current=null]
 				}
 			)
 		)
+		otherlv_6='id'
+		{
+			newLeafNode(otherlv_6, grammarAccess.getFeature_ImplAccess().getIdKeyword_4());
+		}
 		(
-			otherlv_6='children'
+			(
+				{
+					newCompositeNode(grammarAccess.getFeature_ImplAccess().getIdEStringParserRuleCall_5_0());
+				}
+				lv_id_7_0=ruleEString
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getFeature_ImplRule());
+					}
+					set(
+						$current,
+						"id",
+						lv_id_7_0,
+						"eu.coresense.variability.FeatureModel.EString");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
+		(
+			otherlv_8='children'
 			{
-				newLeafNode(otherlv_6, grammarAccess.getFeature_ImplAccess().getChildrenKeyword_4_0());
+				newLeafNode(otherlv_8, grammarAccess.getFeature_ImplAccess().getChildrenKeyword_6_0());
 			}
-			otherlv_7='{'
+			otherlv_9='{'
 			{
-				newLeafNode(otherlv_7, grammarAccess.getFeature_ImplAccess().getLeftCurlyBracketKeyword_4_1());
+				newLeafNode(otherlv_9, grammarAccess.getFeature_ImplAccess().getLeftCurlyBracketKeyword_6_1());
 			}
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getFeature_ImplAccess().getChildrenFeatureParserRuleCall_4_2_0());
+						newCompositeNode(grammarAccess.getFeature_ImplAccess().getChildrenFeatureParserRuleCall_6_2_0());
 					}
-					lv_children_8_0=ruleFeature
+					lv_children_10_0=ruleFeature
 					{
 						if ($current==null) {
 							$current = createModelElementForParent(grammarAccess.getFeature_ImplRule());
@@ -459,23 +546,23 @@ ruleFeature_Impl returns [EObject current=null]
 						add(
 							$current,
 							"children",
-							lv_children_8_0,
+							lv_children_10_0,
 							"eu.coresense.variability.FeatureModel.Feature");
 						afterParserOrEnumRuleCall();
 					}
 				)
 			)
 			(
-				otherlv_9=','
+				otherlv_11=','
 				{
-					newLeafNode(otherlv_9, grammarAccess.getFeature_ImplAccess().getCommaKeyword_4_3_0());
+					newLeafNode(otherlv_11, grammarAccess.getFeature_ImplAccess().getCommaKeyword_6_3_0());
 				}
 				(
 					(
 						{
-							newCompositeNode(grammarAccess.getFeature_ImplAccess().getChildrenFeatureParserRuleCall_4_3_1_0());
+							newCompositeNode(grammarAccess.getFeature_ImplAccess().getChildrenFeatureParserRuleCall_6_3_1_0());
 						}
-						lv_children_10_0=ruleFeature
+						lv_children_12_0=ruleFeature
 						{
 							if ($current==null) {
 								$current = createModelElementForParent(grammarAccess.getFeature_ImplRule());
@@ -483,16 +570,16 @@ ruleFeature_Impl returns [EObject current=null]
 							add(
 								$current,
 								"children",
-								lv_children_10_0,
+								lv_children_12_0,
 								"eu.coresense.variability.FeatureModel.Feature");
 							afterParserOrEnumRuleCall();
 						}
 					)
 				)
 			)*
-			otherlv_11='}'
+			otherlv_13='}'
 			{
-				newLeafNode(otherlv_11, grammarAccess.getFeature_ImplAccess().getRightCurlyBracketKeyword_4_4());
+				newLeafNode(otherlv_13, grammarAccess.getFeature_ImplAccess().getRightCurlyBracketKeyword_6_4());
 			}
 		)?
 	)
@@ -623,21 +710,44 @@ ruleAlternative returns [EObject current=null]
 				}
 			)
 		)
+		otherlv_6='id'
+		{
+			newLeafNode(otherlv_6, grammarAccess.getAlternativeAccess().getIdKeyword_4());
+		}
 		(
-			otherlv_6='children'
+			(
+				{
+					newCompositeNode(grammarAccess.getAlternativeAccess().getIdEStringParserRuleCall_5_0());
+				}
+				lv_id_7_0=ruleEString
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getAlternativeRule());
+					}
+					set(
+						$current,
+						"id",
+						lv_id_7_0,
+						"eu.coresense.variability.FeatureModel.EString");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
+		(
+			otherlv_8='children'
 			{
-				newLeafNode(otherlv_6, grammarAccess.getAlternativeAccess().getChildrenKeyword_4_0());
+				newLeafNode(otherlv_8, grammarAccess.getAlternativeAccess().getChildrenKeyword_6_0());
 			}
-			otherlv_7='{'
+			otherlv_9='{'
 			{
-				newLeafNode(otherlv_7, grammarAccess.getAlternativeAccess().getLeftCurlyBracketKeyword_4_1());
+				newLeafNode(otherlv_9, grammarAccess.getAlternativeAccess().getLeftCurlyBracketKeyword_6_1());
 			}
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getAlternativeAccess().getChildrenFeatureParserRuleCall_4_2_0());
+						newCompositeNode(grammarAccess.getAlternativeAccess().getChildrenFeatureParserRuleCall_6_2_0());
 					}
-					lv_children_8_0=ruleFeature
+					lv_children_10_0=ruleFeature
 					{
 						if ($current==null) {
 							$current = createModelElementForParent(grammarAccess.getAlternativeRule());
@@ -645,23 +755,23 @@ ruleAlternative returns [EObject current=null]
 						add(
 							$current,
 							"children",
-							lv_children_8_0,
+							lv_children_10_0,
 							"eu.coresense.variability.FeatureModel.Feature");
 						afterParserOrEnumRuleCall();
 					}
 				)
 			)
 			(
-				otherlv_9=','
+				otherlv_11=','
 				{
-					newLeafNode(otherlv_9, grammarAccess.getAlternativeAccess().getCommaKeyword_4_3_0());
+					newLeafNode(otherlv_11, grammarAccess.getAlternativeAccess().getCommaKeyword_6_3_0());
 				}
 				(
 					(
 						{
-							newCompositeNode(grammarAccess.getAlternativeAccess().getChildrenFeatureParserRuleCall_4_3_1_0());
+							newCompositeNode(grammarAccess.getAlternativeAccess().getChildrenFeatureParserRuleCall_6_3_1_0());
 						}
-						lv_children_10_0=ruleFeature
+						lv_children_12_0=ruleFeature
 						{
 							if ($current==null) {
 								$current = createModelElementForParent(grammarAccess.getAlternativeRule());
@@ -669,16 +779,16 @@ ruleAlternative returns [EObject current=null]
 							add(
 								$current,
 								"children",
-								lv_children_10_0,
+								lv_children_12_0,
 								"eu.coresense.variability.FeatureModel.Feature");
 							afterParserOrEnumRuleCall();
 						}
 					)
 				)
 			)*
-			otherlv_11='}'
+			otherlv_13='}'
 			{
-				newLeafNode(otherlv_11, grammarAccess.getAlternativeAccess().getRightCurlyBracketKeyword_4_4());
+				newLeafNode(otherlv_13, grammarAccess.getAlternativeAccess().getRightCurlyBracketKeyword_6_4());
 			}
 		)?
 	)
@@ -775,21 +885,44 @@ ruleOrGroup returns [EObject current=null]
 				}
 			)
 		)
+		otherlv_6='id'
+		{
+			newLeafNode(otherlv_6, grammarAccess.getOrGroupAccess().getIdKeyword_4());
+		}
 		(
-			otherlv_6='children'
+			(
+				{
+					newCompositeNode(grammarAccess.getOrGroupAccess().getIdEStringParserRuleCall_5_0());
+				}
+				lv_id_7_0=ruleEString
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getOrGroupRule());
+					}
+					set(
+						$current,
+						"id",
+						lv_id_7_0,
+						"eu.coresense.variability.FeatureModel.EString");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
+		(
+			otherlv_8='children'
 			{
-				newLeafNode(otherlv_6, grammarAccess.getOrGroupAccess().getChildrenKeyword_4_0());
+				newLeafNode(otherlv_8, grammarAccess.getOrGroupAccess().getChildrenKeyword_6_0());
 			}
-			otherlv_7='{'
+			otherlv_9='{'
 			{
-				newLeafNode(otherlv_7, grammarAccess.getOrGroupAccess().getLeftCurlyBracketKeyword_4_1());
+				newLeafNode(otherlv_9, grammarAccess.getOrGroupAccess().getLeftCurlyBracketKeyword_6_1());
 			}
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getOrGroupAccess().getChildrenFeatureParserRuleCall_4_2_0());
+						newCompositeNode(grammarAccess.getOrGroupAccess().getChildrenFeatureParserRuleCall_6_2_0());
 					}
-					lv_children_8_0=ruleFeature
+					lv_children_10_0=ruleFeature
 					{
 						if ($current==null) {
 							$current = createModelElementForParent(grammarAccess.getOrGroupRule());
@@ -797,23 +930,23 @@ ruleOrGroup returns [EObject current=null]
 						add(
 							$current,
 							"children",
-							lv_children_8_0,
+							lv_children_10_0,
 							"eu.coresense.variability.FeatureModel.Feature");
 						afterParserOrEnumRuleCall();
 					}
 				)
 			)
 			(
-				otherlv_9=','
+				otherlv_11=','
 				{
-					newLeafNode(otherlv_9, grammarAccess.getOrGroupAccess().getCommaKeyword_4_3_0());
+					newLeafNode(otherlv_11, grammarAccess.getOrGroupAccess().getCommaKeyword_6_3_0());
 				}
 				(
 					(
 						{
-							newCompositeNode(grammarAccess.getOrGroupAccess().getChildrenFeatureParserRuleCall_4_3_1_0());
+							newCompositeNode(grammarAccess.getOrGroupAccess().getChildrenFeatureParserRuleCall_6_3_1_0());
 						}
-						lv_children_10_0=ruleFeature
+						lv_children_12_0=ruleFeature
 						{
 							if ($current==null) {
 								$current = createModelElementForParent(grammarAccess.getOrGroupRule());
@@ -821,23 +954,23 @@ ruleOrGroup returns [EObject current=null]
 							add(
 								$current,
 								"children",
-								lv_children_10_0,
+								lv_children_12_0,
 								"eu.coresense.variability.FeatureModel.Feature");
 							afterParserOrEnumRuleCall();
 						}
 					)
 				)
 			)*
-			otherlv_11='}'
+			otherlv_13='}'
 			{
-				newLeafNode(otherlv_11, grammarAccess.getOrGroupAccess().getRightCurlyBracketKeyword_4_4());
+				newLeafNode(otherlv_13, grammarAccess.getOrGroupAccess().getRightCurlyBracketKeyword_6_4());
 			}
 		)?
 	)
 ;
 
-// Rule CrossTreeConstraintType
-ruleCrossTreeConstraintType returns [Enumerator current=null]
+// Rule TermType
+ruleTermType returns [Enumerator current=null]
 @init {
 	enterRule();
 }
@@ -846,18 +979,66 @@ ruleCrossTreeConstraintType returns [Enumerator current=null]
 }:
 	(
 		(
-			enumLiteral_0='REQUIRES'
+			enumLiteral_0='not'
 			{
-				$current = grammarAccess.getCrossTreeConstraintTypeAccess().getREQUIRESEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
-				newLeafNode(enumLiteral_0, grammarAccess.getCrossTreeConstraintTypeAccess().getREQUIRESEnumLiteralDeclaration_0());
+				$current = grammarAccess.getTermTypeAccess().getNotEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
+				newLeafNode(enumLiteral_0, grammarAccess.getTermTypeAccess().getNotEnumLiteralDeclaration_0());
 			}
 		)
 		    |
 		(
-			enumLiteral_1='EXCLUDES'
+			enumLiteral_1='equiv'
 			{
-				$current = grammarAccess.getCrossTreeConstraintTypeAccess().getEXCLUDESEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
-				newLeafNode(enumLiteral_1, grammarAccess.getCrossTreeConstraintTypeAccess().getEXCLUDESEnumLiteralDeclaration_1());
+				$current = grammarAccess.getTermTypeAccess().getEquivEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
+				newLeafNode(enumLiteral_1, grammarAccess.getTermTypeAccess().getEquivEnumLiteralDeclaration_1());
+			}
+		)
+		    |
+		(
+			enumLiteral_2='excludes'
+			{
+				$current = grammarAccess.getTermTypeAccess().getExcludesEnumLiteralDeclaration_2().getEnumLiteral().getInstance();
+				newLeafNode(enumLiteral_2, grammarAccess.getTermTypeAccess().getExcludesEnumLiteralDeclaration_2());
+			}
+		)
+		    |
+		(
+			enumLiteral_3='implies'
+			{
+				$current = grammarAccess.getTermTypeAccess().getImpliesEnumLiteralDeclaration_3().getEnumLiteral().getInstance();
+				newLeafNode(enumLiteral_3, grammarAccess.getTermTypeAccess().getImpliesEnumLiteralDeclaration_3());
+			}
+		)
+		    |
+		(
+			enumLiteral_4='and'
+			{
+				$current = grammarAccess.getTermTypeAccess().getAndEnumLiteralDeclaration_4().getEnumLiteral().getInstance();
+				newLeafNode(enumLiteral_4, grammarAccess.getTermTypeAccess().getAndEnumLiteralDeclaration_4());
+			}
+		)
+		    |
+		(
+			enumLiteral_5='or'
+			{
+				$current = grammarAccess.getTermTypeAccess().getOrEnumLiteralDeclaration_5().getEnumLiteral().getInstance();
+				newLeafNode(enumLiteral_5, grammarAccess.getTermTypeAccess().getOrEnumLiteralDeclaration_5());
+			}
+		)
+		    |
+		(
+			enumLiteral_6='xor'
+			{
+				$current = grammarAccess.getTermTypeAccess().getXorEnumLiteralDeclaration_6().getEnumLiteral().getInstance();
+				newLeafNode(enumLiteral_6, grammarAccess.getTermTypeAccess().getXorEnumLiteralDeclaration_6());
+			}
+		)
+		    |
+		(
+			enumLiteral_7='feature'
+			{
+				$current = grammarAccess.getTermTypeAccess().getFeatureEnumLiteralDeclaration_7().getEnumLiteral().getInstance();
+				newLeafNode(enumLiteral_7, grammarAccess.getTermTypeAccess().getFeatureEnumLiteralDeclaration_7());
 			}
 		)
 	)

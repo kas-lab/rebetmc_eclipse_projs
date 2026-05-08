@@ -15,3 +15,8 @@
 
 .DS_Store
 Thumbs.db
+
+**/*.java._trace
+**/*._trace
+**/.settings/org.eclipse.m2e.core.prefs
+

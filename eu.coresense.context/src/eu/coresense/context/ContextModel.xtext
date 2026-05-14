@@ -22,11 +22,11 @@ ContextVar:
 	'}';
 
 DoCache:
-	{DoCache} do=CONTEXT_BOOLEAN
+	{DoCache} do=BOOLEAN
 ;
 
 DoProxy:
-	{DoProxy} do=CONTEXT_BOOLEAN
+	{DoProxy} do=BOOLEAN
 ;
 
 DataSource:
@@ -57,16 +57,4 @@ QualifiedActionServerRef:
 
 Import:
 	'import' importURI=STRING ';'
-;
-
-
-//terminal DIGIT: '0'..'9';
-//
-//terminal BINARY: ('0b'|'0B')('0'|'1')+;
-//
-//terminal DOUBLE returns ecore::EDouble: (DIGIT* | ('-' DIGIT*) ) (('.' DECINT*) | (('.' DIGIT*)? ('E'|'e') ('-'|'+')? DIGIT*));  // Use terminal to avoid 'e' turning into a keyword
-//terminal DECINT: '0' | ('1'..'9' DIGIT*) | ('-''0'..'9' DIGIT*) ;
-
-terminal CONTEXT_BOOLEAN returns ecore::EBoolean:
-    'true' | 'false'
 ;

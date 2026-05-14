@@ -16,110 +16,110 @@ import org.eclipse.emf.ecore.EFactory;
 public interface ContextModelFactory extends EFactory
 {
   /**
-	 * The singleton instance of the factory.
-	 * <!-- begin-user-doc -->
+   * The singleton instance of the factory.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   ContextModelFactory eINSTANCE = eu.coresense.context.contextModel.impl.ContextModelFactoryImpl.init();
 
   /**
-	 * Returns a new object of class '<em>Context Model</em>'.
-	 * <!-- begin-user-doc -->
+   * Returns a new object of class '<em>Context Model</em>'.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Context Model</em>'.
-	 * @generated
-	 */
+   * @return a new object of class '<em>Context Model</em>'.
+   * @generated
+   */
   ContextModel createContextModel();
 
   /**
-	 * Returns a new object of class '<em>Context Var</em>'.
-	 * <!-- begin-user-doc -->
+   * Returns a new object of class '<em>Context Var</em>'.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Context Var</em>'.
-	 * @generated
-	 */
+   * @return a new object of class '<em>Context Var</em>'.
+   * @generated
+   */
   ContextVar createContextVar();
 
   /**
-	 * Returns a new object of class '<em>Do Cache</em>'.
-	 * <!-- begin-user-doc -->
+   * Returns a new object of class '<em>Do Cache</em>'.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Do Cache</em>'.
-	 * @generated
-	 */
+   * @return a new object of class '<em>Do Cache</em>'.
+   * @generated
+   */
   DoCache createDoCache();
 
   /**
-	 * Returns a new object of class '<em>Do Proxy</em>'.
-	 * <!-- begin-user-doc -->
+   * Returns a new object of class '<em>Do Proxy</em>'.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Do Proxy</em>'.
-	 * @generated
-	 */
+   * @return a new object of class '<em>Do Proxy</em>'.
+   * @generated
+   */
   DoProxy createDoProxy();
 
   /**
-	 * Returns a new object of class '<em>Data Source</em>'.
-	 * <!-- begin-user-doc -->
+   * Returns a new object of class '<em>Data Source</em>'.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Data Source</em>'.
-	 * @generated
-	 */
+   * @return a new object of class '<em>Data Source</em>'.
+   * @generated
+   */
   DataSource createDataSource();
 
   /**
-	 * Returns a new object of class '<em>Qualified Ref</em>'.
-	 * <!-- begin-user-doc -->
+   * Returns a new object of class '<em>Qualified Ref</em>'.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Qualified Ref</em>'.
-	 * @generated
-	 */
+   * @return a new object of class '<em>Qualified Ref</em>'.
+   * @generated
+   */
   QualifiedRef createQualifiedRef();
 
   /**
-	 * Returns a new object of class '<em>Qualified Publisher Ref</em>'.
-	 * <!-- begin-user-doc -->
+   * Returns a new object of class '<em>Qualified Publisher Ref</em>'.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Qualified Publisher Ref</em>'.
-	 * @generated
-	 */
+   * @return a new object of class '<em>Qualified Publisher Ref</em>'.
+   * @generated
+   */
   QualifiedPublisherRef createQualifiedPublisherRef();
 
   /**
-	 * Returns a new object of class '<em>Qualified Service Server Ref</em>'.
-	 * <!-- begin-user-doc -->
+   * Returns a new object of class '<em>Qualified Service Server Ref</em>'.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Qualified Service Server Ref</em>'.
-	 * @generated
-	 */
+   * @return a new object of class '<em>Qualified Service Server Ref</em>'.
+   * @generated
+   */
   QualifiedServiceServerRef createQualifiedServiceServerRef();
 
   /**
-	 * Returns a new object of class '<em>Qualified Action Server Ref</em>'.
-	 * <!-- begin-user-doc -->
+   * Returns a new object of class '<em>Qualified Action Server Ref</em>'.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Qualified Action Server Ref</em>'.
-	 * @generated
-	 */
+   * @return a new object of class '<em>Qualified Action Server Ref</em>'.
+   * @generated
+   */
   QualifiedActionServerRef createQualifiedActionServerRef();
 
   /**
-	 * Returns a new object of class '<em>Import</em>'.
-	 * <!-- begin-user-doc -->
+   * Returns a new object of class '<em>Import</em>'.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Import</em>'.
-	 * @generated
-	 */
+   * @return a new object of class '<em>Import</em>'.
+   * @generated
+   */
   Import createImport();
 
   /**
-	 * Returns the package supported by this factory.
-	 * <!-- begin-user-doc -->
+   * Returns the package supported by this factory.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @return the package supported by this factory.
-	 * @generated
-	 */
+   * @return the package supported by this factory.
+   * @generated
+   */
   ContextModelPackage getContextModelPackage();
 
 } //ContextModelFactory

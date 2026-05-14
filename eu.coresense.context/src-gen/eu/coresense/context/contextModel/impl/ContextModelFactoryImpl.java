@@ -22,201 +22,205 @@ import org.eclipse.emf.ecore.plugin.EcorePlugin;
 public class ContextModelFactoryImpl extends EFactoryImpl implements ContextModelFactory
 {
   /**
-	 * Creates the default factory implementation.
-	 * <!-- begin-user-doc -->
+   * Creates the default factory implementation.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   public static ContextModelFactory init()
   {
-		try {
-			ContextModelFactory theContextModelFactory = (ContextModelFactory)EPackage.Registry.INSTANCE.getEFactory(ContextModelPackage.eNS_URI);
-			if (theContextModelFactory != null) {
-				return theContextModelFactory;
-			}
-		}
-		catch (Exception exception) {
-			EcorePlugin.INSTANCE.log(exception);
-		}
-		return new ContextModelFactoryImpl();
-	}
+    try
+    {
+      ContextModelFactory theContextModelFactory = (ContextModelFactory)EPackage.Registry.INSTANCE.getEFactory(ContextModelPackage.eNS_URI);
+      if (theContextModelFactory != null)
+      {
+        return theContextModelFactory;
+      }
+    }
+    catch (Exception exception)
+    {
+      EcorePlugin.INSTANCE.log(exception);
+    }
+    return new ContextModelFactoryImpl();
+  }
 
   /**
-	 * Creates an instance of the factory.
-	 * <!-- begin-user-doc -->
+   * Creates an instance of the factory.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   public ContextModelFactoryImpl()
   {
-		super();
-	}
+    super();
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public EObject create(EClass eClass)
   {
-		switch (eClass.getClassifierID()) {
-			case ContextModelPackage.CONTEXT_MODEL: return createContextModel();
-			case ContextModelPackage.CONTEXT_VAR: return createContextVar();
-			case ContextModelPackage.DO_CACHE: return createDoCache();
-			case ContextModelPackage.DO_PROXY: return createDoProxy();
-			case ContextModelPackage.DATA_SOURCE: return createDataSource();
-			case ContextModelPackage.QUALIFIED_REF: return createQualifiedRef();
-			case ContextModelPackage.QUALIFIED_PUBLISHER_REF: return createQualifiedPublisherRef();
-			case ContextModelPackage.QUALIFIED_SERVICE_SERVER_REF: return createQualifiedServiceServerRef();
-			case ContextModelPackage.QUALIFIED_ACTION_SERVER_REF: return createQualifiedActionServerRef();
-			case ContextModelPackage.IMPORT: return createImport();
-			default:
-				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
-		}
-	}
+    switch (eClass.getClassifierID())
+    {
+      case ContextModelPackage.CONTEXT_MODEL: return createContextModel();
+      case ContextModelPackage.CONTEXT_VAR: return createContextVar();
+      case ContextModelPackage.DO_CACHE: return createDoCache();
+      case ContextModelPackage.DO_PROXY: return createDoProxy();
+      case ContextModelPackage.DATA_SOURCE: return createDataSource();
+      case ContextModelPackage.QUALIFIED_REF: return createQualifiedRef();
+      case ContextModelPackage.QUALIFIED_PUBLISHER_REF: return createQualifiedPublisherRef();
+      case ContextModelPackage.QUALIFIED_SERVICE_SERVER_REF: return createQualifiedServiceServerRef();
+      case ContextModelPackage.QUALIFIED_ACTION_SERVER_REF: return createQualifiedActionServerRef();
+      case ContextModelPackage.IMPORT: return createImport();
+      default:
+        throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
+    }
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public ContextModel createContextModel()
   {
-		ContextModelImpl contextModel = new ContextModelImpl();
-		return contextModel;
-	}
+    ContextModelImpl contextModel = new ContextModelImpl();
+    return contextModel;
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public ContextVar createContextVar()
   {
-		ContextVarImpl contextVar = new ContextVarImpl();
-		return contextVar;
-	}
+    ContextVarImpl contextVar = new ContextVarImpl();
+    return contextVar;
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public DoCache createDoCache()
   {
-		DoCacheImpl doCache = new DoCacheImpl();
-		return doCache;
-	}
+    DoCacheImpl doCache = new DoCacheImpl();
+    return doCache;
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public DoProxy createDoProxy()
   {
-		DoProxyImpl doProxy = new DoProxyImpl();
-		return doProxy;
-	}
+    DoProxyImpl doProxy = new DoProxyImpl();
+    return doProxy;
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public DataSource createDataSource()
   {
-		DataSourceImpl dataSource = new DataSourceImpl();
-		return dataSource;
-	}
+    DataSourceImpl dataSource = new DataSourceImpl();
+    return dataSource;
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public QualifiedRef createQualifiedRef()
   {
-		QualifiedRefImpl qualifiedRef = new QualifiedRefImpl();
-		return qualifiedRef;
-	}
+    QualifiedRefImpl qualifiedRef = new QualifiedRefImpl();
+    return qualifiedRef;
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public QualifiedPublisherRef createQualifiedPublisherRef()
   {
-		QualifiedPublisherRefImpl qualifiedPublisherRef = new QualifiedPublisherRefImpl();
-		return qualifiedPublisherRef;
-	}
+    QualifiedPublisherRefImpl qualifiedPublisherRef = new QualifiedPublisherRefImpl();
+    return qualifiedPublisherRef;
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public QualifiedServiceServerRef createQualifiedServiceServerRef()
   {
-		QualifiedServiceServerRefImpl qualifiedServiceServerRef = new QualifiedServiceServerRefImpl();
-		return qualifiedServiceServerRef;
-	}
+    QualifiedServiceServerRefImpl qualifiedServiceServerRef = new QualifiedServiceServerRefImpl();
+    return qualifiedServiceServerRef;
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public QualifiedActionServerRef createQualifiedActionServerRef()
   {
-		QualifiedActionServerRefImpl qualifiedActionServerRef = new QualifiedActionServerRefImpl();
-		return qualifiedActionServerRef;
-	}
+    QualifiedActionServerRefImpl qualifiedActionServerRef = new QualifiedActionServerRefImpl();
+    return qualifiedActionServerRef;
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public Import createImport()
   {
-		ImportImpl import_ = new ImportImpl();
-		return import_;
-	}
+    ImportImpl import_ = new ImportImpl();
+    return import_;
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public ContextModelPackage getContextModelPackage()
   {
-		return (ContextModelPackage)getEPackage();
-	}
+    return (ContextModelPackage)getEPackage();
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @deprecated
-	 * @generated
-	 */
+   * @deprecated
+   * @generated
+   */
   @Deprecated
   public static ContextModelPackage getPackage()
   {
-		return ContextModelPackage.eINSTANCE;
-	}
+    return ContextModelPackage.eINSTANCE;
+  }
 
 } //ContextModelFactoryImpl

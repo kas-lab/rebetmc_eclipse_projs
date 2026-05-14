@@ -27,27 +27,27 @@ import org.eclipse.emf.ecore.EObject;
 public interface ContextModel extends EObject
 {
   /**
-	 * Returns the value of the '<em><b>Imports</b></em>' containment reference list.
-	 * The list contents are of type {@link eu.coresense.context.contextModel.Import}.
-	 * <!-- begin-user-doc -->
+   * Returns the value of the '<em><b>Imports</b></em>' containment reference list.
+   * The list contents are of type {@link eu.coresense.context.contextModel.Import}.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @return the value of the '<em>Imports</em>' containment reference list.
-	 * @see eu.coresense.context.contextModel.ContextModelPackage#getContextModel_Imports()
-	 * @model containment="true"
-	 * @generated
-	 */
+   * @return the value of the '<em>Imports</em>' containment reference list.
+   * @see eu.coresense.context.contextModel.ContextModelPackage#getContextModel_Imports()
+   * @model containment="true"
+   * @generated
+   */
   EList<Import> getImports();
 
   /**
-	 * Returns the value of the '<em><b>Context variables</b></em>' containment reference list.
-	 * The list contents are of type {@link eu.coresense.context.contextModel.ContextVar}.
-	 * <!-- begin-user-doc -->
+   * Returns the value of the '<em><b>Context variables</b></em>' containment reference list.
+   * The list contents are of type {@link eu.coresense.context.contextModel.ContextVar}.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @return the value of the '<em>Context variables</em>' containment reference list.
-	 * @see eu.coresense.context.contextModel.ContextModelPackage#getContextModel_Context_variables()
-	 * @model containment="true"
-	 * @generated
-	 */
+   * @return the value of the '<em>Context variables</em>' containment reference list.
+   * @see eu.coresense.context.contextModel.ContextModelPackage#getContextModel_Context_variables()
+   * @model containment="true"
+   * @generated
+   */
   EList<ContextVar> getContext_variables();
 
 } // ContextModel

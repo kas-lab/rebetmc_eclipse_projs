@@ -24,25 +24,25 @@ import org.eclipse.emf.ecore.EObject;
 public interface DataSource extends EObject
 {
   /**
-	 * Returns the value of the '<em><b>Ref</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
+   * Returns the value of the '<em><b>Ref</b></em>' containment reference.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @return the value of the '<em>Ref</em>' containment reference.
-	 * @see #setRef(QualifiedRef)
-	 * @see eu.coresense.context.contextModel.ContextModelPackage#getDataSource_Ref()
-	 * @model containment="true"
-	 * @generated
-	 */
+   * @return the value of the '<em>Ref</em>' containment reference.
+   * @see #setRef(QualifiedRef)
+   * @see eu.coresense.context.contextModel.ContextModelPackage#getDataSource_Ref()
+   * @model containment="true"
+   * @generated
+   */
   QualifiedRef getRef();
 
   /**
-	 * Sets the value of the '{@link eu.coresense.context.contextModel.DataSource#getRef <em>Ref</em>}' containment reference.
-	 * <!-- begin-user-doc -->
+   * Sets the value of the '{@link eu.coresense.context.contextModel.DataSource#getRef <em>Ref</em>}' containment reference.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Ref</em>' containment reference.
-	 * @see #getRef()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Ref</em>' containment reference.
+   * @see #getRef()
+   * @generated
+   */
   void setRef(QualifiedRef value);
 
 } // DataSource

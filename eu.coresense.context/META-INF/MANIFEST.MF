@@ -9,11 +9,12 @@ Bundle-ActivationPolicy: lazy
 Require-Bundle: org.eclipse.xtext,
  org.eclipse.xtext.xbase,
  org.eclipse.equinox.common;bundle-version="3.19.0",
- de.fraunhofer.ipa.ros;bundle-version="3.1.0.rc1";visibility:=reexport,
  org.eclipse.emf.ecore;visibility:=reexport,
  org.eclipse.xtext.xbase.lib;bundle-version="2.38.0",
  org.eclipse.emf.common,
  org.antlr.runtime;bundle-version="[3.2.0,3.2.1)",
+ de.fraunhofer.ipa.ros;bundle-version="3.1.0.rc1";visibility:=reexport,
+ de.fraunhofer.ipa.ros.xtext;bundle-version="3.1.0.rc1",
  de.fraunhofer.ipa.rossystem;bundle-version="3.1.0.rc1";visibility:=reexport,
  eu.coresense.common;bundle-version="0.1.0";visibility:=reexport
 Bundle-RequiredExecutionEnvironment: JavaSE-21
@@ -27,5 +28,6 @@ Export-Package: eu.coresense.context.contextModel.util,
  eu.coresense.context.contextModel.impl,
  eu.coresense.context.validation,
  eu.coresense.context.scoping,
- eu.coresense.context.generator
+ eu.coresense.context.generator,
+ eu.coresense.context.parser.antlr.lexer
 Import-Package: org.apache.log4j

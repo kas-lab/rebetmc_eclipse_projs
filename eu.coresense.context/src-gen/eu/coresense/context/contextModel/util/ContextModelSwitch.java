@@ -26,293 +26,305 @@ import org.eclipse.emf.ecore.util.Switch;
 public class ContextModelSwitch<T> extends Switch<T>
 {
   /**
-	 * The cached model package
-	 * <!-- begin-user-doc -->
+   * The cached model package
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   protected static ContextModelPackage modelPackage;
 
   /**
-	 * Creates an instance of the switch.
-	 * <!-- begin-user-doc -->
+   * Creates an instance of the switch.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   public ContextModelSwitch()
   {
-		if (modelPackage == null) {
-			modelPackage = ContextModelPackage.eINSTANCE;
-		}
-	}
+    if (modelPackage == null)
+    {
+      modelPackage = ContextModelPackage.eINSTANCE;
+    }
+  }
 
   /**
-	 * Checks whether this is a switch for the given package.
-	 * <!-- begin-user-doc -->
+   * Checks whether this is a switch for the given package.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @param ePackage the package in question.
-	 * @return whether this is a switch for the given package.
-	 * @generated
-	 */
+   * @param ePackage the package in question.
+   * @return whether this is a switch for the given package.
+   * @generated
+   */
   @Override
   protected boolean isSwitchFor(EPackage ePackage)
   {
-		return ePackage == modelPackage;
-	}
+    return ePackage == modelPackage;
+  }
 
   /**
-	 * Calls <code>caseXXX</code> for each class of the model until one returns a non null result; it yields that result.
-	 * <!-- begin-user-doc -->
+   * Calls <code>caseXXX</code> for each class of the model until one returns a non null result; it yields that result.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @return the first non-null result returned by a <code>caseXXX</code> call.
-	 * @generated
-	 */
+   * @return the first non-null result returned by a <code>caseXXX</code> call.
+   * @generated
+   */
   @Override
   protected T doSwitch(int classifierID, EObject theEObject)
   {
-		switch (classifierID) {
-			case ContextModelPackage.CONTEXT_MODEL: {
-				ContextModel contextModel = (ContextModel)theEObject;
-				T result = caseContextModel(contextModel);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case ContextModelPackage.CONTEXT_VAR: {
-				ContextVar contextVar = (ContextVar)theEObject;
-				T result = caseContextVar(contextVar);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case ContextModelPackage.DO_CACHE: {
-				DoCache doCache = (DoCache)theEObject;
-				T result = caseDoCache(doCache);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case ContextModelPackage.DO_PROXY: {
-				DoProxy doProxy = (DoProxy)theEObject;
-				T result = caseDoProxy(doProxy);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case ContextModelPackage.DATA_SOURCE: {
-				DataSource dataSource = (DataSource)theEObject;
-				T result = caseDataSource(dataSource);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case ContextModelPackage.QUALIFIED_REF: {
-				QualifiedRef qualifiedRef = (QualifiedRef)theEObject;
-				T result = caseQualifiedRef(qualifiedRef);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case ContextModelPackage.QUALIFIED_PUBLISHER_REF: {
-				QualifiedPublisherRef qualifiedPublisherRef = (QualifiedPublisherRef)theEObject;
-				T result = caseQualifiedPublisherRef(qualifiedPublisherRef);
-				if (result == null) result = caseQualifiedRef(qualifiedPublisherRef);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case ContextModelPackage.QUALIFIED_SERVICE_SERVER_REF: {
-				QualifiedServiceServerRef qualifiedServiceServerRef = (QualifiedServiceServerRef)theEObject;
-				T result = caseQualifiedServiceServerRef(qualifiedServiceServerRef);
-				if (result == null) result = caseQualifiedRef(qualifiedServiceServerRef);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case ContextModelPackage.QUALIFIED_ACTION_SERVER_REF: {
-				QualifiedActionServerRef qualifiedActionServerRef = (QualifiedActionServerRef)theEObject;
-				T result = caseQualifiedActionServerRef(qualifiedActionServerRef);
-				if (result == null) result = caseQualifiedRef(qualifiedActionServerRef);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case ContextModelPackage.IMPORT: {
-				Import import_ = (Import)theEObject;
-				T result = caseImport(import_);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			default: return defaultCase(theEObject);
-		}
-	}
+    switch (classifierID)
+    {
+      case ContextModelPackage.CONTEXT_MODEL:
+      {
+        ContextModel contextModel = (ContextModel)theEObject;
+        T result = caseContextModel(contextModel);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case ContextModelPackage.CONTEXT_VAR:
+      {
+        ContextVar contextVar = (ContextVar)theEObject;
+        T result = caseContextVar(contextVar);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case ContextModelPackage.DO_CACHE:
+      {
+        DoCache doCache = (DoCache)theEObject;
+        T result = caseDoCache(doCache);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case ContextModelPackage.DO_PROXY:
+      {
+        DoProxy doProxy = (DoProxy)theEObject;
+        T result = caseDoProxy(doProxy);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case ContextModelPackage.DATA_SOURCE:
+      {
+        DataSource dataSource = (DataSource)theEObject;
+        T result = caseDataSource(dataSource);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case ContextModelPackage.QUALIFIED_REF:
+      {
+        QualifiedRef qualifiedRef = (QualifiedRef)theEObject;
+        T result = caseQualifiedRef(qualifiedRef);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case ContextModelPackage.QUALIFIED_PUBLISHER_REF:
+      {
+        QualifiedPublisherRef qualifiedPublisherRef = (QualifiedPublisherRef)theEObject;
+        T result = caseQualifiedPublisherRef(qualifiedPublisherRef);
+        if (result == null) result = caseQualifiedRef(qualifiedPublisherRef);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case ContextModelPackage.QUALIFIED_SERVICE_SERVER_REF:
+      {
+        QualifiedServiceServerRef qualifiedServiceServerRef = (QualifiedServiceServerRef)theEObject;
+        T result = caseQualifiedServiceServerRef(qualifiedServiceServerRef);
+        if (result == null) result = caseQualifiedRef(qualifiedServiceServerRef);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case ContextModelPackage.QUALIFIED_ACTION_SERVER_REF:
+      {
+        QualifiedActionServerRef qualifiedActionServerRef = (QualifiedActionServerRef)theEObject;
+        T result = caseQualifiedActionServerRef(qualifiedActionServerRef);
+        if (result == null) result = caseQualifiedRef(qualifiedActionServerRef);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case ContextModelPackage.IMPORT:
+      {
+        Import import_ = (Import)theEObject;
+        T result = caseImport(import_);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      default: return defaultCase(theEObject);
+    }
+  }
 
   /**
-	 * Returns the result of interpreting the object as an instance of '<em>Context Model</em>'.
-	 * <!-- begin-user-doc -->
+   * Returns the result of interpreting the object as an instance of '<em>Context Model</em>'.
+   * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Context Model</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Context Model</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
   public T caseContextModel(ContextModel object)
   {
-		return null;
-	}
+    return null;
+  }
 
   /**
-	 * Returns the result of interpreting the object as an instance of '<em>Context Var</em>'.
-	 * <!-- begin-user-doc -->
+   * Returns the result of interpreting the object as an instance of '<em>Context Var</em>'.
+   * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Context Var</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Context Var</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
   public T caseContextVar(ContextVar object)
   {
-		return null;
-	}
+    return null;
+  }
 
   /**
-	 * Returns the result of interpreting the object as an instance of '<em>Do Cache</em>'.
-	 * <!-- begin-user-doc -->
+   * Returns the result of interpreting the object as an instance of '<em>Do Cache</em>'.
+   * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Do Cache</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Do Cache</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
   public T caseDoCache(DoCache object)
   {
-		return null;
-	}
+    return null;
+  }
 
   /**
-	 * Returns the result of interpreting the object as an instance of '<em>Do Proxy</em>'.
-	 * <!-- begin-user-doc -->
+   * Returns the result of interpreting the object as an instance of '<em>Do Proxy</em>'.
+   * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Do Proxy</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Do Proxy</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
   public T caseDoProxy(DoProxy object)
   {
-		return null;
-	}
+    return null;
+  }
 
   /**
-	 * Returns the result of interpreting the object as an instance of '<em>Data Source</em>'.
-	 * <!-- begin-user-doc -->
+   * Returns the result of interpreting the object as an instance of '<em>Data Source</em>'.
+   * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Data Source</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Data Source</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
   public T caseDataSource(DataSource object)
   {
-		return null;
-	}
+    return null;
+  }
 
   /**
-	 * Returns the result of interpreting the object as an instance of '<em>Qualified Ref</em>'.
-	 * <!-- begin-user-doc -->
+   * Returns the result of interpreting the object as an instance of '<em>Qualified Ref</em>'.
+   * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Qualified Ref</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Qualified Ref</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
   public T caseQualifiedRef(QualifiedRef object)
   {
-		return null;
-	}
+    return null;
+  }
 
   /**
-	 * Returns the result of interpreting the object as an instance of '<em>Qualified Publisher Ref</em>'.
-	 * <!-- begin-user-doc -->
+   * Returns the result of interpreting the object as an instance of '<em>Qualified Publisher Ref</em>'.
+   * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Qualified Publisher Ref</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Qualified Publisher Ref</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
   public T caseQualifiedPublisherRef(QualifiedPublisherRef object)
   {
-		return null;
-	}
+    return null;
+  }
 
   /**
-	 * Returns the result of interpreting the object as an instance of '<em>Qualified Service Server Ref</em>'.
-	 * <!-- begin-user-doc -->
+   * Returns the result of interpreting the object as an instance of '<em>Qualified Service Server Ref</em>'.
+   * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Qualified Service Server Ref</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Qualified Service Server Ref</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
   public T caseQualifiedServiceServerRef(QualifiedServiceServerRef object)
   {
-		return null;
-	}
+    return null;
+  }
 
   /**
-	 * Returns the result of interpreting the object as an instance of '<em>Qualified Action Server Ref</em>'.
-	 * <!-- begin-user-doc -->
+   * Returns the result of interpreting the object as an instance of '<em>Qualified Action Server Ref</em>'.
+   * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Qualified Action Server Ref</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Qualified Action Server Ref</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
   public T caseQualifiedActionServerRef(QualifiedActionServerRef object)
   {
-		return null;
-	}
+    return null;
+  }
 
   /**
-	 * Returns the result of interpreting the object as an instance of '<em>Import</em>'.
-	 * <!-- begin-user-doc -->
+   * Returns the result of interpreting the object as an instance of '<em>Import</em>'.
+   * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Import</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Import</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
   public T caseImport(Import object)
   {
-		return null;
-	}
+    return null;
+  }
 
   /**
-	 * Returns the result of interpreting the object as an instance of '<em>EObject</em>'.
-	 * <!-- begin-user-doc -->
+   * Returns the result of interpreting the object as an instance of '<em>EObject</em>'.
+   * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch, but this is the last case anyway.
    * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>EObject</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject)
-	 * @generated
-	 */
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>EObject</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject)
+   * @generated
+   */
   @Override
   public T defaultCase(EObject object)
   {
-		return null;
-	}
+    return null;
+  }
 
 } //ContextModelSwitch

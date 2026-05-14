@@ -5,11 +5,11 @@ package eu.coresense.context;
 
 import com.google.inject.Guice;
 import com.google.inject.Injector;
+import de.fraunhofer.ipa.ros.BasicsStandaloneSetup;
 import eu.coresense.context.contextModel.ContextModelPackage;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.xtext.ISetup;
-import org.eclipse.xtext.common.TerminalsStandaloneSetup;
 import org.eclipse.xtext.resource.IResourceFactory;
 import org.eclipse.xtext.resource.IResourceServiceProvider;
 
@@ -18,7 +18,7 @@ public class ContextModelStandaloneSetupGenerated implements ISetup {
 
 	@Override
 	public Injector createInjectorAndDoEMFRegistration() {
-		TerminalsStandaloneSetup.doSetup();
+		BasicsStandaloneSetup.doSetup();
 
 		Injector injector = createInjector();
 		register(injector);

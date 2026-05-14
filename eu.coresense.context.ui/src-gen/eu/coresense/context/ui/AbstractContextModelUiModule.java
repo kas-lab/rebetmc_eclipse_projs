@@ -8,7 +8,7 @@ import com.google.inject.Provider;
 import com.google.inject.name.Names;
 import eu.coresense.context.ide.contentassist.antlr.ContextModelParser;
 import eu.coresense.context.ide.contentassist.antlr.PartialContextModelContentAssistParser;
-import eu.coresense.context.ide.contentassist.antlr.internal.InternalContextModelLexer;
+import eu.coresense.context.ide.contentassist.antlr.lexer.InternalContextModelLexer;
 import eu.coresense.context.ui.contentassist.ContextModelProposalProvider;
 import eu.coresense.context.ui.labeling.ContextModelDescriptionLabelProvider;
 import eu.coresense.context.ui.labeling.ContextModelLabelProvider;
@@ -30,6 +30,8 @@ import org.eclipse.xtext.builder.nature.NatureAddingEditorCallback;
 import org.eclipse.xtext.builder.preferences.BuilderPreferenceAccess;
 import org.eclipse.xtext.generator.IContextualOutputConfigurationProvider;
 import org.eclipse.xtext.ide.LexerIdeBindings;
+import org.eclipse.xtext.ide.editor.contentassist.CompletionPrefixProvider;
+import org.eclipse.xtext.ide.editor.contentassist.IndentationAwareCompletionPrefixProvider;
 import org.eclipse.xtext.ide.editor.contentassist.antlr.IContentAssistParser;
 import org.eclipse.xtext.ide.editor.contentassist.antlr.internal.Lexer;
 import org.eclipse.xtext.ide.editor.partialEditing.IPartialEditingContentAssistParser;
@@ -110,7 +112,7 @@ public abstract class AbstractContextModelUiModule extends DefaultUiModule {
 	public void configureHighlightingLexer(Binder binder) {
 		binder.bind(org.eclipse.xtext.parser.antlr.Lexer.class)
 			.annotatedWith(Names.named(LexerIdeBindings.HIGHLIGHTING))
-			.to(eu.coresense.context.parser.antlr.internal.InternalContextModelLexer.class);
+			.to(eu.coresense.context.parser.antlr.lexer.InternalContextModelLexer.class);
 	}
 	
 	// contributed by org.eclipse.xtext.xtext.generator.parser.antlr.XtextAntlrGeneratorFragment2
@@ -133,6 +135,11 @@ public abstract class AbstractContextModelUiModule extends DefaultUiModule {
 	// contributed by org.eclipse.xtext.xtext.generator.parser.antlr.XtextAntlrGeneratorFragment2
 	public void configureContentAssistLexerProvider(Binder binder) {
 		binder.bind(InternalContextModelLexer.class).toProvider(LexerProvider.create(InternalContextModelLexer.class));
+	}
+	
+	// contributed by org.eclipse.xtext.xtext.generator.parser.antlr.XtextAntlrGeneratorFragment2
+	public Class<? extends CompletionPrefixProvider> bindCompletionPrefixProvider() {
+		return IndentationAwareCompletionPrefixProvider.class;
 	}
 	
 	// contributed by org.eclipse.xtext.xtext.generator.validation.ValidatorFragment2

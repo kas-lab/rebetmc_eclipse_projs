@@ -31,179 +31,179 @@ import org.eclipse.emf.ecore.EObject;
 public interface ContextVar extends EObject
 {
   /**
-	 * Returns the value of the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
+   * Returns the value of the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @return the value of the '<em>Name</em>' attribute.
-	 * @see #setName(String)
-	 * @see eu.coresense.context.contextModel.ContextModelPackage#getContextVar_Name()
-	 * @model
-	 * @generated
-	 */
+   * @return the value of the '<em>Name</em>' attribute.
+   * @see #setName(String)
+   * @see eu.coresense.context.contextModel.ContextModelPackage#getContextVar_Name()
+   * @model
+   * @generated
+   */
   String getName();
 
   /**
-	 * Sets the value of the '{@link eu.coresense.context.contextModel.ContextVar#getName <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * Sets the value of the '{@link eu.coresense.context.contextModel.ContextVar#getName <em>Name</em>}' attribute.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Name</em>' attribute.
-	 * @see #getName()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Name</em>' attribute.
+   * @see #getName()
+   * @generated
+   */
   void setName(String value);
 
   /**
-	 * Returns the value of the '<em><b>Source</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
+   * Returns the value of the '<em><b>Source</b></em>' containment reference.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @return the value of the '<em>Source</em>' containment reference.
-	 * @see #setSource(DataSource)
-	 * @see eu.coresense.context.contextModel.ContextModelPackage#getContextVar_Source()
-	 * @model containment="true"
-	 * @generated
-	 */
+   * @return the value of the '<em>Source</em>' containment reference.
+   * @see #setSource(DataSource)
+   * @see eu.coresense.context.contextModel.ContextModelPackage#getContextVar_Source()
+   * @model containment="true"
+   * @generated
+   */
   DataSource getSource();
 
   /**
-	 * Sets the value of the '{@link eu.coresense.context.contextModel.ContextVar#getSource <em>Source</em>}' containment reference.
-	 * <!-- begin-user-doc -->
+   * Sets the value of the '{@link eu.coresense.context.contextModel.ContextVar#getSource <em>Source</em>}' containment reference.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Source</em>' containment reference.
-	 * @see #getSource()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Source</em>' containment reference.
+   * @see #getSource()
+   * @generated
+   */
   void setSource(DataSource value);
 
   /**
-	 * Returns the value of the '<em><b>Do Cache</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
+   * Returns the value of the '<em><b>Do Cache</b></em>' containment reference.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @return the value of the '<em>Do Cache</em>' containment reference.
-	 * @see #setDoCache(DoCache)
-	 * @see eu.coresense.context.contextModel.ContextModelPackage#getContextVar_DoCache()
-	 * @model containment="true"
-	 * @generated
-	 */
+   * @return the value of the '<em>Do Cache</em>' containment reference.
+   * @see #setDoCache(DoCache)
+   * @see eu.coresense.context.contextModel.ContextModelPackage#getContextVar_DoCache()
+   * @model containment="true"
+   * @generated
+   */
   DoCache getDoCache();
 
   /**
-	 * Sets the value of the '{@link eu.coresense.context.contextModel.ContextVar#getDoCache <em>Do Cache</em>}' containment reference.
-	 * <!-- begin-user-doc -->
+   * Sets the value of the '{@link eu.coresense.context.contextModel.ContextVar#getDoCache <em>Do Cache</em>}' containment reference.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Do Cache</em>' containment reference.
-	 * @see #getDoCache()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Do Cache</em>' containment reference.
+   * @see #getDoCache()
+   * @generated
+   */
   void setDoCache(DoCache value);
 
   /**
-	 * Returns the value of the '<em><b>Length</b></em>' attribute.
-	 * <!-- begin-user-doc -->
+   * Returns the value of the '<em><b>Length</b></em>' attribute.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @return the value of the '<em>Length</em>' attribute.
-	 * @see #setLength(int)
-	 * @see eu.coresense.context.contextModel.ContextModelPackage#getContextVar_Length()
-	 * @model
-	 * @generated
-	 */
+   * @return the value of the '<em>Length</em>' attribute.
+   * @see #setLength(int)
+   * @see eu.coresense.context.contextModel.ContextModelPackage#getContextVar_Length()
+   * @model
+   * @generated
+   */
   int getLength();
 
   /**
-	 * Sets the value of the '{@link eu.coresense.context.contextModel.ContextVar#getLength <em>Length</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * Sets the value of the '{@link eu.coresense.context.contextModel.ContextVar#getLength <em>Length</em>}' attribute.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Length</em>' attribute.
-	 * @see #getLength()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Length</em>' attribute.
+   * @see #getLength()
+   * @generated
+   */
   void setLength(int value);
 
   /**
-	 * Returns the value of the '<em><b>Period</b></em>' attribute.
-	 * <!-- begin-user-doc -->
+   * Returns the value of the '<em><b>Period</b></em>' attribute.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @return the value of the '<em>Period</em>' attribute.
-	 * @see #setPeriod(int)
-	 * @see eu.coresense.context.contextModel.ContextModelPackage#getContextVar_Period()
-	 * @model
-	 * @generated
-	 */
+   * @return the value of the '<em>Period</em>' attribute.
+   * @see #setPeriod(int)
+   * @see eu.coresense.context.contextModel.ContextModelPackage#getContextVar_Period()
+   * @model
+   * @generated
+   */
   int getPeriod();
 
   /**
-	 * Sets the value of the '{@link eu.coresense.context.contextModel.ContextVar#getPeriod <em>Period</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * Sets the value of the '{@link eu.coresense.context.contextModel.ContextVar#getPeriod <em>Period</em>}' attribute.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Period</em>' attribute.
-	 * @see #getPeriod()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Period</em>' attribute.
+   * @see #getPeriod()
+   * @generated
+   */
   void setPeriod(int value);
 
   /**
-	 * Returns the value of the '<em><b>Do Proxy</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
+   * Returns the value of the '<em><b>Do Proxy</b></em>' containment reference.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @return the value of the '<em>Do Proxy</em>' containment reference.
-	 * @see #setDoProxy(DoProxy)
-	 * @see eu.coresense.context.contextModel.ContextModelPackage#getContextVar_DoProxy()
-	 * @model containment="true"
-	 * @generated
-	 */
+   * @return the value of the '<em>Do Proxy</em>' containment reference.
+   * @see #setDoProxy(DoProxy)
+   * @see eu.coresense.context.contextModel.ContextModelPackage#getContextVar_DoProxy()
+   * @model containment="true"
+   * @generated
+   */
   DoProxy getDoProxy();
 
   /**
-	 * Sets the value of the '{@link eu.coresense.context.contextModel.ContextVar#getDoProxy <em>Do Proxy</em>}' containment reference.
-	 * <!-- begin-user-doc -->
+   * Sets the value of the '{@link eu.coresense.context.contextModel.ContextVar#getDoProxy <em>Do Proxy</em>}' containment reference.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Do Proxy</em>' containment reference.
-	 * @see #getDoProxy()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Do Proxy</em>' containment reference.
+   * @see #getDoProxy()
+   * @generated
+   */
   void setDoProxy(DoProxy value);
 
   /**
-	 * Returns the value of the '<em><b>Function Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
+   * Returns the value of the '<em><b>Function Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @return the value of the '<em>Function Name</em>' attribute.
-	 * @see #setFunctionName(String)
-	 * @see eu.coresense.context.contextModel.ContextModelPackage#getContextVar_FunctionName()
-	 * @model
-	 * @generated
-	 */
+   * @return the value of the '<em>Function Name</em>' attribute.
+   * @see #setFunctionName(String)
+   * @see eu.coresense.context.contextModel.ContextModelPackage#getContextVar_FunctionName()
+   * @model
+   * @generated
+   */
   String getFunctionName();
 
   /**
-	 * Sets the value of the '{@link eu.coresense.context.contextModel.ContextVar#getFunctionName <em>Function Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * Sets the value of the '{@link eu.coresense.context.contextModel.ContextVar#getFunctionName <em>Function Name</em>}' attribute.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Function Name</em>' attribute.
-	 * @see #getFunctionName()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Function Name</em>' attribute.
+   * @see #getFunctionName()
+   * @generated
+   */
   void setFunctionName(String value);
 
   /**
-	 * Returns the value of the '<em><b>Function Library</b></em>' attribute.
-	 * <!-- begin-user-doc -->
+   * Returns the value of the '<em><b>Function Library</b></em>' attribute.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @return the value of the '<em>Function Library</em>' attribute.
-	 * @see #setFunctionLibrary(String)
-	 * @see eu.coresense.context.contextModel.ContextModelPackage#getContextVar_FunctionLibrary()
-	 * @model
-	 * @generated
-	 */
+   * @return the value of the '<em>Function Library</em>' attribute.
+   * @see #setFunctionLibrary(String)
+   * @see eu.coresense.context.contextModel.ContextModelPackage#getContextVar_FunctionLibrary()
+   * @model
+   * @generated
+   */
   String getFunctionLibrary();
 
   /**
-	 * Sets the value of the '{@link eu.coresense.context.contextModel.ContextVar#getFunctionLibrary <em>Function Library</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * Sets the value of the '{@link eu.coresense.context.contextModel.ContextVar#getFunctionLibrary <em>Function Library</em>}' attribute.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Function Library</em>' attribute.
-	 * @see #getFunctionLibrary()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Function Library</em>' attribute.
+   * @see #getFunctionLibrary()
+   * @generated
+   */
   void setFunctionLibrary(String value);
 
 } // ContextVar

@@ -325,9 +325,33 @@ ruleContextVar returns [EObject current=null]
 				)
 			)
 		)?
-		otherlv_19=RightCurlyBracket
+		(
+			otherlv_19=Function_args
+			{
+				newLeafNode(otherlv_19, grammarAccess.getContextVarAccess().getFunction_argsKeyword_12_0());
+			}
+			(
+				(
+					lv_functionArgs_20_0=RULE_STRING
+					{
+						newLeafNode(lv_functionArgs_20_0, grammarAccess.getContextVarAccess().getFunctionArgsSTRINGTerminalRuleCall_12_1_0());
+					}
+					{
+						if ($current==null) {
+							$current = createModelElement(grammarAccess.getContextVarRule());
+						}
+						setWithLastConsumed(
+							$current,
+							"functionArgs",
+							lv_functionArgs_20_0,
+							"org.eclipse.xtext.common.Terminals.STRING");
+					}
+				)
+			)
+		)?
+		otherlv_21=RightCurlyBracket
 		{
-			newLeafNode(otherlv_19, grammarAccess.getContextVarAccess().getRightCurlyBracketKeyword_12());
+			newLeafNode(otherlv_21, grammarAccess.getContextVarAccess().getRightCurlyBracketKeyword_13());
 		}
 	)
 ;

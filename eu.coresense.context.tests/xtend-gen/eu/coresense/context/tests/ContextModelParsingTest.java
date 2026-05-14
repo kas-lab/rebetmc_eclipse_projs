@@ -39,8 +39,7 @@ public class ContextModelParsingTest {
       String _join = IterableExtensions.join(errors, ", ");
       _builder_1.append(_join);
       Assertions.assertTrue(_isEmpty, _builder_1.toString());
-      int _size = result.getImports().size();
-      Assertions.assertEquals(1, _size);
+      Assertions.assertEquals(1, result.getImports().size());
     } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }

@@ -49,6 +49,7 @@ public class ContextModelParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getContextVarAccess().getGroup_7(), "rule__ContextVar__Group_7__0");
 			builder.put(grammarAccess.getContextVarAccess().getGroup_8(), "rule__ContextVar__Group_8__0");
 			builder.put(grammarAccess.getContextVarAccess().getGroup_11(), "rule__ContextVar__Group_11__0");
+			builder.put(grammarAccess.getContextVarAccess().getGroup_12(), "rule__ContextVar__Group_12__0");
 			builder.put(grammarAccess.getDoCacheAccess().getGroup(), "rule__DoCache__Group__0");
 			builder.put(grammarAccess.getDoProxyAccess().getGroup(), "rule__DoProxy__Group__0");
 			builder.put(grammarAccess.getDataSourceAccess().getGroup(), "rule__DataSource__Group__0");
@@ -140,6 +141,7 @@ public class ContextModelParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getContextVarAccess().getDoProxyAssignment_8_1(), "rule__ContextVar__DoProxyAssignment_8_1");
 			builder.put(grammarAccess.getContextVarAccess().getFunctionNameAssignment_10(), "rule__ContextVar__FunctionNameAssignment_10");
 			builder.put(grammarAccess.getContextVarAccess().getFunctionLibraryAssignment_11_1(), "rule__ContextVar__FunctionLibraryAssignment_11_1");
+			builder.put(grammarAccess.getContextVarAccess().getFunctionArgsAssignment_12_1(), "rule__ContextVar__FunctionArgsAssignment_12_1");
 			builder.put(grammarAccess.getDoCacheAccess().getDoAssignment_1(), "rule__DoCache__DoAssignment_1");
 			builder.put(grammarAccess.getDoProxyAccess().getDoAssignment_1(), "rule__DoProxy__DoAssignment_1");
 			builder.put(grammarAccess.getDataSourceAccess().getRefAssignment_1_1(), "rule__DataSource__RefAssignment_1_1");

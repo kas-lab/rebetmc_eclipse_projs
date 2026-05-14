@@ -177,13 +177,22 @@ public interface ContextModelPackage extends EPackage
   int CONTEXT_VAR__FUNCTION_LIBRARY = 7;
 
   /**
+   * The feature id for the '<em><b>Function Args</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CONTEXT_VAR__FUNCTION_ARGS = 8;
+
+  /**
    * The number of structural features of the '<em>Context Var</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int CONTEXT_VAR_FEATURE_COUNT = 8;
+  int CONTEXT_VAR_FEATURE_COUNT = 9;
 
   /**
    * The meta object id for the '{@link eu.coresense.context.contextModel.impl.DoCacheImpl <em>Do Cache</em>}' class.
@@ -586,6 +595,17 @@ public interface ContextModelPackage extends EPackage
   EAttribute getContextVar_FunctionLibrary();
 
   /**
+   * Returns the meta object for the attribute '{@link eu.coresense.context.contextModel.ContextVar#getFunctionArgs <em>Function Args</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Function Args</em>'.
+   * @see eu.coresense.context.contextModel.ContextVar#getFunctionArgs()
+   * @see #getContextVar()
+   * @generated
+   */
+  EAttribute getContextVar_FunctionArgs();
+
+  /**
    * Returns the meta object for class '{@link eu.coresense.context.contextModel.DoCache <em>Do Cache</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -897,6 +917,14 @@ public interface ContextModelPackage extends EPackage
      * @generated
      */
     EAttribute CONTEXT_VAR__FUNCTION_LIBRARY = eINSTANCE.getContextVar_FunctionLibrary();
+
+    /**
+     * The meta object literal for the '<em><b>Function Args</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute CONTEXT_VAR__FUNCTION_ARGS = eINSTANCE.getContextVar_FunctionArgs();
 
     /**
      * The meta object literal for the '{@link eu.coresense.context.contextModel.impl.DoCacheImpl <em>Do Cache</em>}' class.

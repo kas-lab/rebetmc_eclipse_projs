@@ -342,7 +342,8 @@ public class ContextModelSemanticSequencer extends BasicsSemanticSequencer {
 	 *         period=INT? 
 	 *         doProxy=DoProxy? 
 	 *         functionName=STRING 
-	 *         functionLibrary=STRING?
+	 *         functionLibrary=STRING? 
+	 *         functionArgs=STRING?
 	 *     )
 	 * </pre>
 	 */

@@ -309,6 +309,17 @@ public class ContextModelPackageImpl extends EPackageImpl implements ContextMode
    * @generated
    */
   @Override
+  public EAttribute getContextVar_FunctionArgs()
+  {
+    return (EAttribute)contextVarEClass.getEStructuralFeatures().get(8);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public EClass getDoCache()
   {
     return doCacheEClass;
@@ -545,6 +556,7 @@ public class ContextModelPackageImpl extends EPackageImpl implements ContextMode
     createEReference(contextVarEClass, CONTEXT_VAR__DO_PROXY);
     createEAttribute(contextVarEClass, CONTEXT_VAR__FUNCTION_NAME);
     createEAttribute(contextVarEClass, CONTEXT_VAR__FUNCTION_LIBRARY);
+    createEAttribute(contextVarEClass, CONTEXT_VAR__FUNCTION_ARGS);
 
     doCacheEClass = createEClass(DO_CACHE);
     createEAttribute(doCacheEClass, DO_CACHE__DO);
@@ -623,6 +635,7 @@ public class ContextModelPackageImpl extends EPackageImpl implements ContextMode
     initEReference(getContextVar_DoProxy(), this.getDoProxy(), null, "doProxy", null, 0, 1, ContextVar.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getContextVar_FunctionName(), ecorePackage.getEString(), "functionName", null, 0, 1, ContextVar.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getContextVar_FunctionLibrary(), ecorePackage.getEString(), "functionLibrary", null, 0, 1, ContextVar.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getContextVar_FunctionArgs(), ecorePackage.getEString(), "functionArgs", null, 0, 1, ContextVar.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(doCacheEClass, DoCache.class, "DoCache", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getDoCache_Do(), ecorePackage.getEBoolean(), "do", null, 0, 1, DoCache.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

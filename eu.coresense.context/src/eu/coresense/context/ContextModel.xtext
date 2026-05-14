@@ -19,6 +19,7 @@ ContextVar:
 		('proxy' doProxy=DoProxy)?
 		'function_name' functionName=STRING
 		('function_lib' functionLibrary=STRING)?
+		('function_args' functionArgs=STRING)?
 	'}';
 
 DoCache:

@@ -22,11 +22,15 @@ ContextVar:
 	'}';
 
 DoCache:
-	{DoCache} do=BOOLEAN
+	{DoCache} do=ContextBoolean
 ;
 
 DoProxy:
-	{DoProxy} do=BOOLEAN
+	{DoProxy} do=ContextBoolean
+;
+
+ContextBoolean returns ecore::EBoolean:
+	BOOLEAN
 ;
 
 DataSource:

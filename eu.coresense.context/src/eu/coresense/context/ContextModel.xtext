@@ -1,4 +1,4 @@
-grammar eu.coresense.context.ContextModel with org.eclipse.xtext.common.Terminals
+grammar eu.coresense.context.ContextModel with de.fraunhofer.ipa.ros.Basics
 
 generate contextModel "http://www.coresense.eu/context/ContextModel"
 import "http://www.ipa.fraunhofer.de/ros" as ros
@@ -22,11 +22,11 @@ ContextVar:
 	'}';
 
 DoCache:
-	{DoCache} do=BOOLEAN
+	{DoCache} do=CONTEXT_BOOLEAN
 ;
 
 DoProxy:
-	{DoProxy} do=BOOLEAN
+	{DoProxy} do=CONTEXT_BOOLEAN
 ;
 
 DataSource:
@@ -44,15 +44,15 @@ QualifiedRef:
 	QualifiedPublisherRef | QualifiedServiceServerRef | QualifiedActionServerRef
 ;
 QualifiedPublisherRef:
-    'publisher:' node=[ros::Node] '.' publisher=[ros::Publisher]
+    'publisher:' node=[ros::Node|RosNames] '.' publisher=[ros::Publisher|RosNames]
 ;
 
 QualifiedServiceServerRef:
-    'service:' node=[ros::Node] '.' serviceServer=[ros::ServiceServer] 'request_kwargs' kwargs=KeyWordArguments
+    'service:' node=[ros::Node|RosNames] '.' serviceServer=[ros::ServiceServer|RosNames] 'request_kwargs' kwargs=KeyWordArguments
 ;
 
 QualifiedActionServerRef:
-    'action:' node=[ros::Node] '.' actionServer=[ros::ActionServer] 'goal_kwargs' kwargs=KeyWordArguments
+    'action:' node=[ros::Node|RosNames] '.' actionServer=[ros::ActionServer|RosNames] 'goal_kwargs' kwargs=KeyWordArguments
 ;
 
 Import:
@@ -60,13 +60,13 @@ Import:
 ;
 
 
-terminal DIGIT: '0'..'9';
+//terminal DIGIT: '0'..'9';
+//
+//terminal BINARY: ('0b'|'0B')('0'|'1')+;
+//
+//terminal DOUBLE returns ecore::EDouble: (DIGIT* | ('-' DIGIT*) ) (('.' DECINT*) | (('.' DIGIT*)? ('E'|'e') ('-'|'+')? DIGIT*));  // Use terminal to avoid 'e' turning into a keyword
+//terminal DECINT: '0' | ('1'..'9' DIGIT*) | ('-''0'..'9' DIGIT*) ;
 
-terminal BINARY: ('0b'|'0B')('0'|'1')+;
-
-terminal DOUBLE returns ecore::EDouble: (DIGIT* | ('-' DIGIT*) ) (('.' DECINT*) | (('.' DIGIT*)? ('E'|'e') ('-'|'+')? DIGIT*));  // Use terminal to avoid 'e' turning into a keyword
-terminal DECINT: '0' | ('1'..'9' DIGIT*) | ('-''0'..'9' DIGIT*) ;
-
-terminal BOOLEAN returns ecore::EBoolean:
+terminal CONTEXT_BOOLEAN returns ecore::EBoolean:
     'true' | 'false'
 ;

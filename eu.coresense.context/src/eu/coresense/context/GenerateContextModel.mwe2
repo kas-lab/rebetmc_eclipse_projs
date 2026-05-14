@@ -1,11 +1,17 @@
 module eu.coresense.context.GenerateContextModel
 
+import org.eclipse.emf.mwe.utils.*
 import org.eclipse.xtext.xtext.generator.*
 import org.eclipse.xtext.xtext.generator.model.project.*
 
 var rootPath = ".."
 
 Workflow {
+	bean = StandaloneSetup {
+		platformUri = rootPath
+		scanClassPath = true
+	}
+
 	
 	component = XtextGenerator {
 		configuration = {
@@ -33,6 +39,7 @@ Workflow {
 		language = StandardLanguage {
 			name = "eu.coresense.context.ContextModel"
 			fileExtensions = "context"
+			referencedResource = "platform:/resource/de.fraunhofer.ipa.ros.xtext/src/de/fraunhofer/ipa/ros/Basics.xtext"
 			referencedResource = "platform:/resource/de.fraunhofer.ipa.ros/model/ros.genmodel"
 			referencedResource = "platform:/resource/de.fraunhofer.ipa.rossystem/model/rossystem.genmodel"
 

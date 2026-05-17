@@ -36,7 +36,8 @@ import ros.Artifact;
 import ros.Publisher;
 
 
-
+//This class is not currently bound as the active IScopeProvider.
+// See ContextModelRuntimeModule for the active binding.
 /**
  * This class contains custom scoping description.
  * 

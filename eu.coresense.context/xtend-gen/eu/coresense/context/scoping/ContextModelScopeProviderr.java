@@ -29,6 +29,10 @@ import system.Component;
 import system.RosNode;
 import system.SubSystem;
 
+/**
+ * Custom active scope provider for this DSL.
+ * Bound in ContextModelRuntimeModule instead of the default ContextModelScopeProvider.
+ */
 @SuppressWarnings("all")
 public class ContextModelScopeProviderr extends AbstractContextModelScopeProvider {
   @Override
@@ -45,7 +49,7 @@ public class ContextModelScopeProviderr extends AbstractContextModelScopeProvide
         final Node node = qref.getNode();
         if (((node != null) && (node.getActionserver().size() != 0))) {
           final Function<EObject, QualifiedName> _function = (EObject e) -> {
-            return QualifiedName.create(ContextModelScopeProviderr.escape(((ActionServer) e).getName()));
+            return QualifiedName.create(((ActionServer) e).getName());
           };
           return Scopes.<EObject>scopeFor(
             node.getActionserver(), _function, 
@@ -59,7 +63,7 @@ public class ContextModelScopeProviderr extends AbstractContextModelScopeProvide
         final Node node_1 = qref_1.getNode();
         if (((node_1 != null) && (node_1.getServiceserver().size() != 0))) {
           final Function<EObject, QualifiedName> _function_1 = (EObject e) -> {
-            return QualifiedName.create(ContextModelScopeProviderr.escape(((ServiceServer) e).getName()));
+            return QualifiedName.create(((ServiceServer) e).getName());
           };
           return Scopes.<EObject>scopeFor(
             node_1.getServiceserver(), _function_1, 
@@ -85,7 +89,7 @@ public class ContextModelScopeProviderr extends AbstractContextModelScopeProvide
     }
     final EList<Publisher> publishers = context.getNode().getPublisher();
     final Function<EObject, QualifiedName> _function = (EObject e) -> {
-      return QualifiedName.create(ContextModelScopeProviderr.escape(((Publisher) e).getName()));
+      return QualifiedName.create(((Publisher) e).getName());
     };
     return Scopes.<EObject>scopeFor(publishers, _function, 
       IScope.NULLSCOPE);
@@ -153,26 +157,5 @@ public class ContextModelScopeProviderr extends AbstractContextModelScopeProvide
         this.collectRecursively(((SubSystem)comp).getSystem(), result);
       }
     }
-  }
-
-  public static String escape(final String name) {
-    String _xblockexpression = null;
-    {
-      String noSlash = name.replace("/", "_slash_");
-      _xblockexpression = noSlash.replace("~", "_tilde_");
-    }
-    return _xblockexpression;
-  }
-
-  /**
-   * Unescape `_slash_` back to `/`
-   */
-  public static String unescape(final String name) {
-    String _xblockexpression = null;
-    {
-      String withSlash = name.replace("_slash_", "/");
-      _xblockexpression = withSlash.replace("_tilde_", "~");
-    }
-    return _xblockexpression;
   }
 }

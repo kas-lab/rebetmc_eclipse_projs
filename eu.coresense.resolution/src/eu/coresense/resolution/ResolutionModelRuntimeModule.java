@@ -19,6 +19,10 @@ public class ResolutionModelRuntimeModule extends AbstractResolutionModelRuntime
 		return ImportUriGlobalScopeProvider.class;
 	}
 	
+	// @generated NOT
+    // Handwritten binding: use the Xtend scope provider with custom ROS/ReBetMC scoping rules.
+	// Note: ResolutionModelScopeProviderr is intentionally bound here.
+    // The default generated binding would use ResolutionModelScopeProvider.
     @Override
     public Class<? extends IScopeProvider> bindIScopeProvider() {
         // Bind the Xtend scope provider

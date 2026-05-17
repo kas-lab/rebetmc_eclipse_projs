@@ -353,7 +353,7 @@ public class ResolutionModelSemanticSequencer extends BasicsSemanticSequencer {
 	 *     SetLifecycle returns SetLifecycle
 	 *
 	 * Constraint:
-	 *     (node=[RosNode|ID] state=LifecycleState)
+	 *     (node=[RosNode|RosNames] state=LifecycleState)
 	 * </pre>
 	 */
 	protected void sequence_SetLifecycle(ISerializationContext context, SetLifecycle semanticObject) {
@@ -364,7 +364,7 @@ public class ResolutionModelSemanticSequencer extends BasicsSemanticSequencer {
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ResolutionModelPackage.Literals.SET_LIFECYCLE__STATE));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getSetLifecycleAccess().getNodeRosNodeIDTerminalRuleCall_2_0_1(), semanticObject.eGet(ResolutionModelPackage.Literals.RECONFIGURATION__NODE, false));
+		feeder.accept(grammarAccess.getSetLifecycleAccess().getNodeRosNodeRosNamesParserRuleCall_2_0_1(), semanticObject.eGet(ResolutionModelPackage.Literals.RECONFIGURATION__NODE, false));
 		feeder.accept(grammarAccess.getSetLifecycleAccess().getStateLifecycleStateEnumRuleCall_4_0(), semanticObject.getState());
 		feeder.finish();
 	}
@@ -377,7 +377,7 @@ public class ResolutionModelSemanticSequencer extends BasicsSemanticSequencer {
 	 *     SetParam returns SetParam
 	 *
 	 * Constraint:
-	 *     (node=[RosNode|ID] param=[Parameter|ID] value=ParameterValue)
+	 *     (node=[RosNode|RosNames] param=[Parameter|ID] value=ParameterValue)
 	 * </pre>
 	 */
 	protected void sequence_SetParam(ISerializationContext context, SetParam semanticObject) {
@@ -390,7 +390,7 @@ public class ResolutionModelSemanticSequencer extends BasicsSemanticSequencer {
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ResolutionModelPackage.Literals.SET_PARAM__VALUE));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getSetParamAccess().getNodeRosNodeIDTerminalRuleCall_2_0_1(), semanticObject.eGet(ResolutionModelPackage.Literals.RECONFIGURATION__NODE, false));
+		feeder.accept(grammarAccess.getSetParamAccess().getNodeRosNodeRosNamesParserRuleCall_2_0_1(), semanticObject.eGet(ResolutionModelPackage.Literals.RECONFIGURATION__NODE, false));
 		feeder.accept(grammarAccess.getSetParamAccess().getParamParameterIDTerminalRuleCall_4_0_1(), semanticObject.eGet(ResolutionModelPackage.Literals.SET_PARAM__PARAM, false));
 		feeder.accept(grammarAccess.getSetParamAccess().getValueParameterValueParserRuleCall_6_0(), semanticObject.getValue());
 		feeder.finish();

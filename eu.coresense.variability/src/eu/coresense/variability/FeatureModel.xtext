@@ -24,8 +24,8 @@ BasicConstraint returns BasicConstraintsFMmetamodel::BasicConstraint:
 	'BasicConstraint'
 	'{'
 		'type' type=CrossTreeConstraintType
-		'rightFeature' rightFeature=[BasicFMmetamodel::Feature|EString]
 		'leftFeature' leftFeature=[BasicFMmetamodel::Feature|EString]
+		'rightFeature' rightFeature=[BasicFMmetamodel::Feature|EString]
 	'}';
 
 Feature returns BasicFMmetamodel::Feature:

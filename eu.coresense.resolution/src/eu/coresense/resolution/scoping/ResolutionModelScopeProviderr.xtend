@@ -16,6 +16,10 @@ import org.eclipse.xtext.scoping.IScope
 import eu.coresense.resolution.resolutionModel.SetParam
 import org.eclipse.xtext.naming.QualifiedName
 
+/**
+   * Custom active scope provider for this DSL.
+   * Bound in ResolutionModelRuntimeModule instead of the default ResolutionModelScopeProvider.
+*/
 class ResolutionModelScopeProviderr  extends AbstractResolutionModelScopeProvider {
 	
 	override getScope(EObject context, EReference reference) {
@@ -55,11 +59,11 @@ class ResolutionModelScopeProviderr  extends AbstractResolutionModelScopeProvide
 	        }
 
 //	        return Scopes.scopeFor(allNodes);
-         return Scopes.scopeFor(
-            		allNodes, 
-		            [EObject e | QualifiedName.create(escape((e as system.RosNode).name))],
-		            IScope.NULLSCOPE
-		        )
+	        return Scopes.scopeFor(
+	            allNodes,
+	            [EObject e | QualifiedName.create((e as system.RosNode).name)],
+	            IScope.NULLSCOPE
+	        )
 	    }
 	    if (reference == ResolutionModelPackage.Literals.SET_PARAM__PARAM) {
 	        val model = EcoreUtil2.getContainerOfType(context, ResolutionModel);
@@ -141,16 +145,4 @@ def void collectRecursively(system.System system, List<system.System> result) {
 	        }
 	    }
 	}
-	
-	def static String escape(String name) {
-        var noSlash = name.replace("/", "_slash_")
-        noSlash.replace("~","_tilde_")
-    }
-
-    /** Unescape `_slash_` back to `/` */
-    def static String unescape(String name) {
-        var withSlash = name.replace("_slash_", "/")
-        withSlash.replace("_tilde_","~")
-    }
-	
 }

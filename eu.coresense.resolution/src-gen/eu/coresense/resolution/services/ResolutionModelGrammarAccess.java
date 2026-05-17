@@ -233,7 +233,7 @@ public class ResolutionModelGrammarAccess extends AbstractElementFinder.Abstract
 		private final Keyword cLeftParenthesisKeyword_1 = (Keyword)cGroup.eContents().get(1);
 		private final Assignment cNodeAssignment_2 = (Assignment)cGroup.eContents().get(2);
 		private final CrossReference cNodeRosNodeCrossReference_2_0 = (CrossReference)cNodeAssignment_2.eContents().get(0);
-		private final RuleCall cNodeRosNodeIDTerminalRuleCall_2_0_1 = (RuleCall)cNodeRosNodeCrossReference_2_0.eContents().get(1);
+		private final RuleCall cNodeRosNodeRosNamesParserRuleCall_2_0_1 = (RuleCall)cNodeRosNodeCrossReference_2_0.eContents().get(1);
 		private final Keyword cCommaKeyword_3 = (Keyword)cGroup.eContents().get(3);
 		private final Assignment cParamAssignment_4 = (Assignment)cGroup.eContents().get(4);
 		private final CrossReference cParamParameterCrossReference_4_0 = (CrossReference)cParamAssignment_4.eContents().get(0);
@@ -245,7 +245,7 @@ public class ResolutionModelGrammarAccess extends AbstractElementFinder.Abstract
 		
 		//SetParam:
 		//    'SetParameter' '('
-		//        node=[rossys::RosNode] ','
+		//        node=[rossys::RosNode|RosNames] ','
 		//        param=[ros::Parameter] ','
 		//        value=ParameterValue
 		//    ')'
@@ -253,7 +253,7 @@ public class ResolutionModelGrammarAccess extends AbstractElementFinder.Abstract
 		@Override public ParserRule getRule() { return rule; }
 		
 		//'SetParameter' '('
-		//    node=[rossys::RosNode] ','
+		//    node=[rossys::RosNode|RosNames] ','
 		//    param=[ros::Parameter] ','
 		//    value=ParameterValue
 		//')'
@@ -265,14 +265,14 @@ public class ResolutionModelGrammarAccess extends AbstractElementFinder.Abstract
 		//'('
 		public Keyword getLeftParenthesisKeyword_1() { return cLeftParenthesisKeyword_1; }
 		
-		//node=[rossys::RosNode]
+		//node=[rossys::RosNode|RosNames]
 		public Assignment getNodeAssignment_2() { return cNodeAssignment_2; }
 		
-		//[rossys::RosNode]
+		//[rossys::RosNode|RosNames]
 		public CrossReference getNodeRosNodeCrossReference_2_0() { return cNodeRosNodeCrossReference_2_0; }
 		
-		//ID
-		public RuleCall getNodeRosNodeIDTerminalRuleCall_2_0_1() { return cNodeRosNodeIDTerminalRuleCall_2_0_1; }
+		//RosNames
+		public RuleCall getNodeRosNodeRosNamesParserRuleCall_2_0_1() { return cNodeRosNodeRosNamesParserRuleCall_2_0_1; }
 		
 		//','
 		public Keyword getCommaKeyword_3() { return cCommaKeyword_3; }
@@ -305,18 +305,18 @@ public class ResolutionModelGrammarAccess extends AbstractElementFinder.Abstract
 		private final Keyword cLeftParenthesisKeyword_1 = (Keyword)cGroup.eContents().get(1);
 		private final Assignment cNodeAssignment_2 = (Assignment)cGroup.eContents().get(2);
 		private final CrossReference cNodeRosNodeCrossReference_2_0 = (CrossReference)cNodeAssignment_2.eContents().get(0);
-		private final RuleCall cNodeRosNodeIDTerminalRuleCall_2_0_1 = (RuleCall)cNodeRosNodeCrossReference_2_0.eContents().get(1);
+		private final RuleCall cNodeRosNodeRosNamesParserRuleCall_2_0_1 = (RuleCall)cNodeRosNodeCrossReference_2_0.eContents().get(1);
 		private final Keyword cCommaKeyword_3 = (Keyword)cGroup.eContents().get(3);
 		private final Assignment cStateAssignment_4 = (Assignment)cGroup.eContents().get(4);
 		private final RuleCall cStateLifecycleStateEnumRuleCall_4_0 = (RuleCall)cStateAssignment_4.eContents().get(0);
 		private final Keyword cRightParenthesisKeyword_5 = (Keyword)cGroup.eContents().get(5);
 		
 		//SetLifecycle:
-		//    'SetLifecycleState' '(' node=[rossys::RosNode] ',' state=LifecycleState ')'
+		//    'SetLifecycleState' '(' node=[rossys::RosNode|RosNames] ',' state=LifecycleState ')'
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'SetLifecycleState' '(' node=[rossys::RosNode] ',' state=LifecycleState ')'
+		//'SetLifecycleState' '(' node=[rossys::RosNode|RosNames] ',' state=LifecycleState ')'
 		public Group getGroup() { return cGroup; }
 		
 		//'SetLifecycleState'
@@ -325,14 +325,14 @@ public class ResolutionModelGrammarAccess extends AbstractElementFinder.Abstract
 		//'('
 		public Keyword getLeftParenthesisKeyword_1() { return cLeftParenthesisKeyword_1; }
 		
-		//node=[rossys::RosNode]
+		//node=[rossys::RosNode|RosNames]
 		public Assignment getNodeAssignment_2() { return cNodeAssignment_2; }
 		
-		//[rossys::RosNode]
+		//[rossys::RosNode|RosNames]
 		public CrossReference getNodeRosNodeCrossReference_2_0() { return cNodeRosNodeCrossReference_2_0; }
 		
-		//ID
-		public RuleCall getNodeRosNodeIDTerminalRuleCall_2_0_1() { return cNodeRosNodeIDTerminalRuleCall_2_0_1; }
+		//RosNames
+		public RuleCall getNodeRosNodeRosNamesParserRuleCall_2_0_1() { return cNodeRosNodeRosNamesParserRuleCall_2_0_1; }
 		
 		//','
 		public Keyword getCommaKeyword_3() { return cCommaKeyword_3; }
@@ -503,7 +503,7 @@ public class ResolutionModelGrammarAccess extends AbstractElementFinder.Abstract
 	
 	//SetParam:
 	//    'SetParameter' '('
-	//        node=[rossys::RosNode] ','
+	//        node=[rossys::RosNode|RosNames] ','
 	//        param=[ros::Parameter] ','
 	//        value=ParameterValue
 	//    ')'
@@ -517,7 +517,7 @@ public class ResolutionModelGrammarAccess extends AbstractElementFinder.Abstract
 	}
 	
 	//SetLifecycle:
-	//    'SetLifecycleState' '(' node=[rossys::RosNode] ',' state=LifecycleState ')'
+	//    'SetLifecycleState' '(' node=[rossys::RosNode|RosNames] ',' state=LifecycleState ')'
 	//;
 	public SetLifecycleElements getSetLifecycleAccess() {
 		return pSetLifecycle;
@@ -1446,7 +1446,7 @@ public class ResolutionModelGrammarAccess extends AbstractElementFinder.Abstract
 		return getArraySpecRefAccess().getRule();
 	}
 	
-	//KEYWORD: 'goal' | 'message' | 'result' | 'feedback' | 'name' | 'value' | 'service' | 'type' | 'action' | 'duration' | 'time'  ;
+	//KEYWORD: 'goal' | 'message' | 'result' | 'feedback' | 'name' | 'value' | 'service' | 'type' | 'action' | 'duration' | 'time' | 'node'  ;
 	public BasicsGrammarAccess.KEYWORDElements getKEYWORDAccess() {
 		return gaBasics.getKEYWORDAccess();
 	}

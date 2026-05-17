@@ -16,74 +16,74 @@ import org.eclipse.emf.ecore.EFactory;
 public interface ResolutionModelFactory extends EFactory
 {
   /**
-	 * The singleton instance of the factory.
-	 * <!-- begin-user-doc -->
+   * The singleton instance of the factory.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   ResolutionModelFactory eINSTANCE = eu.coresense.resolution.resolutionModel.impl.ResolutionModelFactoryImpl.init();
 
   /**
-	 * Returns a new object of class '<em>Resolution Model</em>'.
-	 * <!-- begin-user-doc -->
+   * Returns a new object of class '<em>Resolution Model</em>'.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Resolution Model</em>'.
-	 * @generated
-	 */
+   * @return a new object of class '<em>Resolution Model</em>'.
+   * @generated
+   */
   ResolutionModel createResolutionModel();
 
   /**
-	 * Returns a new object of class '<em>Resolution</em>'.
-	 * <!-- begin-user-doc -->
+   * Returns a new object of class '<em>Resolution</em>'.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Resolution</em>'.
-	 * @generated
-	 */
+   * @return a new object of class '<em>Resolution</em>'.
+   * @generated
+   */
   Resolution createResolution();
 
   /**
-	 * Returns a new object of class '<em>Import</em>'.
-	 * <!-- begin-user-doc -->
+   * Returns a new object of class '<em>Import</em>'.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Import</em>'.
-	 * @generated
-	 */
+   * @return a new object of class '<em>Import</em>'.
+   * @generated
+   */
   Import createImport();
 
   /**
-	 * Returns a new object of class '<em>Reconfiguration</em>'.
-	 * <!-- begin-user-doc -->
+   * Returns a new object of class '<em>Reconfiguration</em>'.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Reconfiguration</em>'.
-	 * @generated
-	 */
+   * @return a new object of class '<em>Reconfiguration</em>'.
+   * @generated
+   */
   Reconfiguration createReconfiguration();
 
   /**
-	 * Returns a new object of class '<em>Set Param</em>'.
-	 * <!-- begin-user-doc -->
+   * Returns a new object of class '<em>Set Param</em>'.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Set Param</em>'.
-	 * @generated
-	 */
+   * @return a new object of class '<em>Set Param</em>'.
+   * @generated
+   */
   SetParam createSetParam();
 
   /**
-	 * Returns a new object of class '<em>Set Lifecycle</em>'.
-	 * <!-- begin-user-doc -->
+   * Returns a new object of class '<em>Set Lifecycle</em>'.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Set Lifecycle</em>'.
-	 * @generated
-	 */
+   * @return a new object of class '<em>Set Lifecycle</em>'.
+   * @generated
+   */
   SetLifecycle createSetLifecycle();
 
   /**
-	 * Returns the package supported by this factory.
-	 * <!-- begin-user-doc -->
+   * Returns the package supported by this factory.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @return the package supported by this factory.
-	 * @generated
-	 */
+   * @return the package supported by this factory.
+   * @generated
+   */
   ResolutionModelPackage getResolutionModelPackage();
 
 } //ResolutionModelFactory

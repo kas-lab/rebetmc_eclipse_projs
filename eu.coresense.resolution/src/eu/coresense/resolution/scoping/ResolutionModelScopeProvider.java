@@ -26,6 +26,8 @@ import ros.Node;
 import uma.caosd.rhea.BasicFMmetamodel.Feature;
 import uma.caosd.rhea.BasicFMmetamodel.FeatureModel;
 
+//This class is not currently bound as the active IScopeProvider.
+// See ResolutionModelRuntimeModule for the active binding.
 /**
  * This class contains custom scoping description.
  * 

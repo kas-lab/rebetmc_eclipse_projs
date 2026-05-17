@@ -10,6 +10,10 @@ import eu.coresense.context.scoping.ContextModelScopeProviderr; // import your X
  */
 public class ContextModelRuntimeModule extends AbstractContextModelRuntimeModule {
 	
+	// @generated NOT
+    // Handwritten binding: use the Xtend scope provider with custom ROS/ReBetMC scoping rules.
+	// Note: ContextModelScopeProviderr is intentionally bound here.
+	// The default generated binding would use ContextModelScopeProvider.
     @Override
     public Class<? extends IScopeProvider> bindIScopeProvider() {
         // Bind the Xtend scope provider

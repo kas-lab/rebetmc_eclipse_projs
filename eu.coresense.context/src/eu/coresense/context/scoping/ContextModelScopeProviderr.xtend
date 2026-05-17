@@ -21,6 +21,10 @@ import eu.coresense.context.contextModel.QualifiedServiceServerRef
 import ros.ServiceServer
 import ros.ActionServer
 
+/**
+   * Custom active scope provider for this DSL.
+   * Bound in ContextModelRuntimeModule instead of the default ContextModelScopeProvider.
+*/
 class ContextModelScopeProviderr extends AbstractContextModelScopeProvider {
 
 	override getScope(EObject context, EReference reference) {
@@ -33,12 +37,10 @@ class ContextModelScopeProviderr extends AbstractContextModelScopeProvider {
 	        val node = qref.node;
 	  
 	        if (node !== null && node.getActionserver().size() != 0) {
-	        	
-
 	            // scope over all features in the model
 	           	return Scopes.scopeFor(
 		            node.getActionserver(),
-		            [EObject e | QualifiedName.create(escape((e as ActionServer).name))],
+		            [EObject e | QualifiedName.create((e as ActionServer).name)],
 		            IScope.NULLSCOPE
 		        )
 	        }
@@ -52,7 +54,7 @@ class ContextModelScopeProviderr extends AbstractContextModelScopeProvider {
 	            // scope over all features in the model
 	            return Scopes.scopeFor(
 		            node.getServiceserver(), 
-		            [EObject e | QualifiedName.create(escape((e as ServiceServer).name))],
+		            [EObject e | QualifiedName.create((e as ServiceServer).name)],
 		            IScope.NULLSCOPE
 		        )
 	        }
@@ -74,10 +76,10 @@ class ContextModelScopeProviderr extends AbstractContextModelScopeProvider {
 
         val publishers = context.node.publisher
 
-        // Scopes.scopeFor with lambda keeps '/' literal
+        // Scope entries must match exact ROS names, including '/' and '~'.
         return Scopes.scopeFor(
             publishers, 
-            [EObject e | QualifiedName.create(escape((e as Publisher).name))],
+            [EObject e | QualifiedName.create((e as Publisher).name)],
             IScope.NULLSCOPE
         )
     }
@@ -144,16 +146,4 @@ class ContextModelScopeProviderr extends AbstractContextModelScopeProvider {
 	        }
 	    }
 	}
-	
-	def static String escape(String name) {
-        var noSlash = name.replace("/", "_slash_")
-        noSlash.replace("~","_tilde_")
-    }
-
-    /** Unescape `_slash_` back to `/` */
-    def static String unescape(String name) {
-        var withSlash = name.replace("_slash_", "/")
-        withSlash.replace("_tilde_","~")
-    }
-	
 }

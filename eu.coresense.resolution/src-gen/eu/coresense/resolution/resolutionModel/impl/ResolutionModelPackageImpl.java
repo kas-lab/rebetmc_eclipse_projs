@@ -38,474 +38,474 @@ import uma.caosd.rhea.BasicFMmetamodel.BasicFMmetamodelPackage;
 public class ResolutionModelPackageImpl extends EPackageImpl implements ResolutionModelPackage
 {
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   private EClass resolutionModelEClass = null;
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   private EClass resolutionEClass = null;
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   private EClass importEClass = null;
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   private EClass reconfigurationEClass = null;
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   private EClass setParamEClass = null;
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   private EClass setLifecycleEClass = null;
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   private EEnum lifecycleStateEEnum = null;
 
   /**
-	 * Creates an instance of the model <b>Package</b>, registered with
-	 * {@link org.eclipse.emf.ecore.EPackage.Registry EPackage.Registry} by the package
-	 * package URI value.
-	 * <p>Note: the correct way to create the package is via the static
-	 * factory method {@link #init init()}, which also performs
-	 * initialization of the package, or returns the registered package,
-	 * if one already exists.
-	 * <!-- begin-user-doc -->
+   * Creates an instance of the model <b>Package</b>, registered with
+   * {@link org.eclipse.emf.ecore.EPackage.Registry EPackage.Registry} by the package
+   * package URI value.
+   * <p>Note: the correct way to create the package is via the static
+   * factory method {@link #init init()}, which also performs
+   * initialization of the package, or returns the registered package,
+   * if one already exists.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @see org.eclipse.emf.ecore.EPackage.Registry
-	 * @see eu.coresense.resolution.resolutionModel.ResolutionModelPackage#eNS_URI
-	 * @see #init()
-	 * @generated
-	 */
+   * @see org.eclipse.emf.ecore.EPackage.Registry
+   * @see eu.coresense.resolution.resolutionModel.ResolutionModelPackage#eNS_URI
+   * @see #init()
+   * @generated
+   */
   private ResolutionModelPackageImpl()
   {
-		super(eNS_URI, ResolutionModelFactory.eINSTANCE);
-	}
+    super(eNS_URI, ResolutionModelFactory.eINSTANCE);
+  }
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   private static boolean isInited = false;
 
   /**
-	 * Creates, registers, and initializes the <b>Package</b> for this model, and for any others upon which it depends.
-	 *
-	 * <p>This method is used to initialize {@link ResolutionModelPackage#eINSTANCE} when that field is accessed.
-	 * Clients should not invoke it directly. Instead, they should simply access that field to obtain the package.
-	 * <!-- begin-user-doc -->
+   * Creates, registers, and initializes the <b>Package</b> for this model, and for any others upon which it depends.
+   *
+   * <p>This method is used to initialize {@link ResolutionModelPackage#eINSTANCE} when that field is accessed.
+   * Clients should not invoke it directly. Instead, they should simply access that field to obtain the package.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @see #eNS_URI
-	 * @see #createPackageContents()
-	 * @see #initializePackageContents()
-	 * @generated
-	 */
+   * @see #eNS_URI
+   * @see #createPackageContents()
+   * @see #initializePackageContents()
+   * @generated
+   */
   public static ResolutionModelPackage init()
   {
-		if (isInited) return (ResolutionModelPackage)EPackage.Registry.INSTANCE.getEPackage(ResolutionModelPackage.eNS_URI);
+    if (isInited) return (ResolutionModelPackage)EPackage.Registry.INSTANCE.getEPackage(ResolutionModelPackage.eNS_URI);
 
-		// Obtain or create and register package
-		Object registeredResolutionModelPackage = EPackage.Registry.INSTANCE.get(eNS_URI);
-		ResolutionModelPackageImpl theResolutionModelPackage = registeredResolutionModelPackage instanceof ResolutionModelPackageImpl ? (ResolutionModelPackageImpl)registeredResolutionModelPackage : new ResolutionModelPackageImpl();
+    // Obtain or create and register package
+    Object registeredResolutionModelPackage = EPackage.Registry.INSTANCE.get(eNS_URI);
+    ResolutionModelPackageImpl theResolutionModelPackage = registeredResolutionModelPackage instanceof ResolutionModelPackageImpl ? (ResolutionModelPackageImpl)registeredResolutionModelPackage : new ResolutionModelPackageImpl();
 
-		isInited = true;
+    isInited = true;
 
-		// Initialize simple dependencies
-		RosPackage.eINSTANCE.eClass();
-		RossystemPackage.eINSTANCE.eClass();
-		BasicFMmetamodelPackage.eINSTANCE.eClass();
-		PrimitivesPackage.eINSTANCE.eClass();
+    // Initialize simple dependencies
+    RosPackage.eINSTANCE.eClass();
+    RossystemPackage.eINSTANCE.eClass();
+    BasicFMmetamodelPackage.eINSTANCE.eClass();
+    PrimitivesPackage.eINSTANCE.eClass();
 
-		// Create package meta-data objects
-		theResolutionModelPackage.createPackageContents();
+    // Create package meta-data objects
+    theResolutionModelPackage.createPackageContents();
 
-		// Initialize created meta-data
-		theResolutionModelPackage.initializePackageContents();
+    // Initialize created meta-data
+    theResolutionModelPackage.initializePackageContents();
 
-		// Mark meta-data to indicate it can't be changed
-		theResolutionModelPackage.freeze();
+    // Mark meta-data to indicate it can't be changed
+    theResolutionModelPackage.freeze();
 
-		// Update the registry and return the package
-		EPackage.Registry.INSTANCE.put(ResolutionModelPackage.eNS_URI, theResolutionModelPackage);
-		return theResolutionModelPackage;
-	}
+    // Update the registry and return the package
+    EPackage.Registry.INSTANCE.put(ResolutionModelPackage.eNS_URI, theResolutionModelPackage);
+    return theResolutionModelPackage;
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public EClass getResolutionModel()
   {
-		return resolutionModelEClass;
-	}
+    return resolutionModelEClass;
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public EAttribute getResolutionModel_Name()
   {
-		return (EAttribute)resolutionModelEClass.getEStructuralFeatures().get(0);
-	}
+    return (EAttribute)resolutionModelEClass.getEStructuralFeatures().get(0);
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public EReference getResolutionModel_Imports()
   {
-		return (EReference)resolutionModelEClass.getEStructuralFeatures().get(1);
-	}
+    return (EReference)resolutionModelEClass.getEStructuralFeatures().get(1);
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public EReference getResolutionModel_FeatureModel()
   {
-		return (EReference)resolutionModelEClass.getEStructuralFeatures().get(2);
-	}
+    return (EReference)resolutionModelEClass.getEStructuralFeatures().get(2);
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public EReference getResolutionModel_Rossystem()
   {
-		return (EReference)resolutionModelEClass.getEStructuralFeatures().get(3);
-	}
+    return (EReference)resolutionModelEClass.getEStructuralFeatures().get(3);
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public EReference getResolutionModel_Resolutions()
   {
-		return (EReference)resolutionModelEClass.getEStructuralFeatures().get(4);
-	}
+    return (EReference)resolutionModelEClass.getEStructuralFeatures().get(4);
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public EClass getResolution()
   {
-		return resolutionEClass;
-	}
+    return resolutionEClass;
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public EReference getResolution_Feature()
   {
-		return (EReference)resolutionEClass.getEStructuralFeatures().get(0);
-	}
+    return (EReference)resolutionEClass.getEStructuralFeatures().get(0);
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public EReference getResolution_Selection_actions()
   {
-		return (EReference)resolutionEClass.getEStructuralFeatures().get(1);
-	}
+    return (EReference)resolutionEClass.getEStructuralFeatures().get(1);
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public EReference getResolution_Deselection_actions()
   {
-		return (EReference)resolutionEClass.getEStructuralFeatures().get(2);
-	}
+    return (EReference)resolutionEClass.getEStructuralFeatures().get(2);
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public EClass getImport()
   {
-		return importEClass;
-	}
+    return importEClass;
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public EAttribute getImport_ImportURI()
   {
-		return (EAttribute)importEClass.getEStructuralFeatures().get(0);
-	}
+    return (EAttribute)importEClass.getEStructuralFeatures().get(0);
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public EClass getReconfiguration()
   {
-		return reconfigurationEClass;
-	}
+    return reconfigurationEClass;
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public EReference getReconfiguration_Node()
   {
-		return (EReference)reconfigurationEClass.getEStructuralFeatures().get(0);
-	}
+    return (EReference)reconfigurationEClass.getEStructuralFeatures().get(0);
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public EClass getSetParam()
   {
-		return setParamEClass;
-	}
+    return setParamEClass;
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public EReference getSetParam_Param()
   {
-		return (EReference)setParamEClass.getEStructuralFeatures().get(0);
-	}
+    return (EReference)setParamEClass.getEStructuralFeatures().get(0);
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public EReference getSetParam_Value()
   {
-		return (EReference)setParamEClass.getEStructuralFeatures().get(1);
-	}
+    return (EReference)setParamEClass.getEStructuralFeatures().get(1);
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public EClass getSetLifecycle()
   {
-		return setLifecycleEClass;
-	}
+    return setLifecycleEClass;
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public EAttribute getSetLifecycle_State()
   {
-		return (EAttribute)setLifecycleEClass.getEStructuralFeatures().get(0);
-	}
+    return (EAttribute)setLifecycleEClass.getEStructuralFeatures().get(0);
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public EEnum getLifecycleState()
   {
-		return lifecycleStateEEnum;
-	}
+    return lifecycleStateEEnum;
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public ResolutionModelFactory getResolutionModelFactory()
   {
-		return (ResolutionModelFactory)getEFactoryInstance();
-	}
+    return (ResolutionModelFactory)getEFactoryInstance();
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   private boolean isCreated = false;
 
   /**
-	 * Creates the meta-model objects for the package.  This method is
-	 * guarded to have no affect on any invocation but its first.
-	 * <!-- begin-user-doc -->
+   * Creates the meta-model objects for the package.  This method is
+   * guarded to have no affect on any invocation but its first.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   public void createPackageContents()
   {
-		if (isCreated) return;
-		isCreated = true;
+    if (isCreated) return;
+    isCreated = true;
 
-		// Create classes and their features
-		resolutionModelEClass = createEClass(RESOLUTION_MODEL);
-		createEAttribute(resolutionModelEClass, RESOLUTION_MODEL__NAME);
-		createEReference(resolutionModelEClass, RESOLUTION_MODEL__IMPORTS);
-		createEReference(resolutionModelEClass, RESOLUTION_MODEL__FEATURE_MODEL);
-		createEReference(resolutionModelEClass, RESOLUTION_MODEL__ROSSYSTEM);
-		createEReference(resolutionModelEClass, RESOLUTION_MODEL__RESOLUTIONS);
+    // Create classes and their features
+    resolutionModelEClass = createEClass(RESOLUTION_MODEL);
+    createEAttribute(resolutionModelEClass, RESOLUTION_MODEL__NAME);
+    createEReference(resolutionModelEClass, RESOLUTION_MODEL__IMPORTS);
+    createEReference(resolutionModelEClass, RESOLUTION_MODEL__FEATURE_MODEL);
+    createEReference(resolutionModelEClass, RESOLUTION_MODEL__ROSSYSTEM);
+    createEReference(resolutionModelEClass, RESOLUTION_MODEL__RESOLUTIONS);
 
-		resolutionEClass = createEClass(RESOLUTION);
-		createEReference(resolutionEClass, RESOLUTION__FEATURE);
-		createEReference(resolutionEClass, RESOLUTION__SELECTION_ACTIONS);
-		createEReference(resolutionEClass, RESOLUTION__DESELECTION_ACTIONS);
+    resolutionEClass = createEClass(RESOLUTION);
+    createEReference(resolutionEClass, RESOLUTION__FEATURE);
+    createEReference(resolutionEClass, RESOLUTION__SELECTION_ACTIONS);
+    createEReference(resolutionEClass, RESOLUTION__DESELECTION_ACTIONS);
 
-		importEClass = createEClass(IMPORT);
-		createEAttribute(importEClass, IMPORT__IMPORT_URI);
+    importEClass = createEClass(IMPORT);
+    createEAttribute(importEClass, IMPORT__IMPORT_URI);
 
-		reconfigurationEClass = createEClass(RECONFIGURATION);
-		createEReference(reconfigurationEClass, RECONFIGURATION__NODE);
+    reconfigurationEClass = createEClass(RECONFIGURATION);
+    createEReference(reconfigurationEClass, RECONFIGURATION__NODE);
 
-		setParamEClass = createEClass(SET_PARAM);
-		createEReference(setParamEClass, SET_PARAM__PARAM);
-		createEReference(setParamEClass, SET_PARAM__VALUE);
+    setParamEClass = createEClass(SET_PARAM);
+    createEReference(setParamEClass, SET_PARAM__PARAM);
+    createEReference(setParamEClass, SET_PARAM__VALUE);
 
-		setLifecycleEClass = createEClass(SET_LIFECYCLE);
-		createEAttribute(setLifecycleEClass, SET_LIFECYCLE__STATE);
+    setLifecycleEClass = createEClass(SET_LIFECYCLE);
+    createEAttribute(setLifecycleEClass, SET_LIFECYCLE__STATE);
 
-		// Create enums
-		lifecycleStateEEnum = createEEnum(LIFECYCLE_STATE);
-	}
+    // Create enums
+    lifecycleStateEEnum = createEEnum(LIFECYCLE_STATE);
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   private boolean isInitialized = false;
 
   /**
-	 * Complete the initialization of the package and its meta-model.  This
-	 * method is guarded to have no affect on any invocation but its first.
-	 * <!-- begin-user-doc -->
+   * Complete the initialization of the package and its meta-model.  This
+   * method is guarded to have no affect on any invocation but its first.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   public void initializePackageContents()
   {
-		if (isInitialized) return;
-		isInitialized = true;
+    if (isInitialized) return;
+    isInitialized = true;
 
-		// Initialize package
-		setName(eNAME);
-		setNsPrefix(eNS_PREFIX);
-		setNsURI(eNS_URI);
+    // Initialize package
+    setName(eNAME);
+    setNsPrefix(eNS_PREFIX);
+    setNsURI(eNS_URI);
 
-		// Obtain other dependent packages
-		BasicFMmetamodelPackage theBasicFMmetamodelPackage = (BasicFMmetamodelPackage)EPackage.Registry.INSTANCE.getEPackage(BasicFMmetamodelPackage.eNS_URI);
-		RossystemPackage theRossystemPackage = (RossystemPackage)EPackage.Registry.INSTANCE.getEPackage(RossystemPackage.eNS_URI);
-		RosPackage theRosPackage = (RosPackage)EPackage.Registry.INSTANCE.getEPackage(RosPackage.eNS_URI);
+    // Obtain other dependent packages
+    BasicFMmetamodelPackage theBasicFMmetamodelPackage = (BasicFMmetamodelPackage)EPackage.Registry.INSTANCE.getEPackage(BasicFMmetamodelPackage.eNS_URI);
+    RossystemPackage theRossystemPackage = (RossystemPackage)EPackage.Registry.INSTANCE.getEPackage(RossystemPackage.eNS_URI);
+    RosPackage theRosPackage = (RosPackage)EPackage.Registry.INSTANCE.getEPackage(RosPackage.eNS_URI);
 
-		// Create type parameters
+    // Create type parameters
 
-		// Set bounds for type parameters
+    // Set bounds for type parameters
 
-		// Add supertypes to classes
-		setParamEClass.getESuperTypes().add(this.getReconfiguration());
-		setLifecycleEClass.getESuperTypes().add(this.getReconfiguration());
+    // Add supertypes to classes
+    setParamEClass.getESuperTypes().add(this.getReconfiguration());
+    setLifecycleEClass.getESuperTypes().add(this.getReconfiguration());
 
-		// Initialize classes and features; add operations and parameters
-		initEClass(resolutionModelEClass, ResolutionModel.class, "ResolutionModel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getResolutionModel_Name(), ecorePackage.getEString(), "name", null, 0, 1, ResolutionModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getResolutionModel_Imports(), this.getImport(), null, "imports", null, 0, -1, ResolutionModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getResolutionModel_FeatureModel(), theBasicFMmetamodelPackage.getFeatureModel(), null, "featureModel", null, 0, 1, ResolutionModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getResolutionModel_Rossystem(), theRossystemPackage.getSystem(), null, "rossystem", null, 0, 1, ResolutionModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getResolutionModel_Resolutions(), this.getResolution(), null, "resolutions", null, 0, -1, ResolutionModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    // Initialize classes and features; add operations and parameters
+    initEClass(resolutionModelEClass, ResolutionModel.class, "ResolutionModel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getResolutionModel_Name(), ecorePackage.getEString(), "name", null, 0, 1, ResolutionModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getResolutionModel_Imports(), this.getImport(), null, "imports", null, 0, -1, ResolutionModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getResolutionModel_FeatureModel(), theBasicFMmetamodelPackage.getFeatureModel(), null, "featureModel", null, 0, 1, ResolutionModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getResolutionModel_Rossystem(), theRossystemPackage.getSystem(), null, "rossystem", null, 0, 1, ResolutionModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getResolutionModel_Resolutions(), this.getResolution(), null, "resolutions", null, 0, -1, ResolutionModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(resolutionEClass, Resolution.class, "Resolution", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getResolution_Feature(), theBasicFMmetamodelPackage.getFeature(), null, "feature", null, 0, 1, Resolution.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getResolution_Selection_actions(), this.getReconfiguration(), null, "selection_actions", null, 0, -1, Resolution.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getResolution_Deselection_actions(), this.getReconfiguration(), null, "deselection_actions", null, 0, -1, Resolution.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(resolutionEClass, Resolution.class, "Resolution", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getResolution_Feature(), theBasicFMmetamodelPackage.getFeature(), null, "feature", null, 0, 1, Resolution.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getResolution_Selection_actions(), this.getReconfiguration(), null, "selection_actions", null, 0, -1, Resolution.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getResolution_Deselection_actions(), this.getReconfiguration(), null, "deselection_actions", null, 0, -1, Resolution.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(importEClass, Import.class, "Import", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getImport_ImportURI(), ecorePackage.getEString(), "importURI", null, 0, 1, Import.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(importEClass, Import.class, "Import", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getImport_ImportURI(), ecorePackage.getEString(), "importURI", null, 0, 1, Import.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(reconfigurationEClass, Reconfiguration.class, "Reconfiguration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getReconfiguration_Node(), theRossystemPackage.getRosNode(), null, "node", null, 0, 1, Reconfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(reconfigurationEClass, Reconfiguration.class, "Reconfiguration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getReconfiguration_Node(), theRossystemPackage.getRosNode(), null, "node", null, 0, 1, Reconfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(setParamEClass, SetParam.class, "SetParam", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getSetParam_Param(), theRosPackage.getParameter(), null, "param", null, 0, 1, SetParam.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getSetParam_Value(), theRosPackage.getParameterValue(), null, "value", null, 0, 1, SetParam.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(setParamEClass, SetParam.class, "SetParam", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getSetParam_Param(), theRosPackage.getParameter(), null, "param", null, 0, 1, SetParam.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getSetParam_Value(), theRosPackage.getParameterValue(), null, "value", null, 0, 1, SetParam.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(setLifecycleEClass, SetLifecycle.class, "SetLifecycle", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getSetLifecycle_State(), this.getLifecycleState(), "state", null, 0, 1, SetLifecycle.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(setLifecycleEClass, SetLifecycle.class, "SetLifecycle", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getSetLifecycle_State(), this.getLifecycleState(), "state", null, 0, 1, SetLifecycle.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		// Initialize enums and add enum literals
-		initEEnum(lifecycleStateEEnum, LifecycleState.class, "LifecycleState");
-		addEEnumLiteral(lifecycleStateEEnum, LifecycleState.UNCONFIGURED);
-		addEEnumLiteral(lifecycleStateEEnum, LifecycleState.INACTIVE);
-		addEEnumLiteral(lifecycleStateEEnum, LifecycleState.ACTIVE);
-		addEEnumLiteral(lifecycleStateEEnum, LifecycleState.FINALIZED);
+    // Initialize enums and add enum literals
+    initEEnum(lifecycleStateEEnum, LifecycleState.class, "LifecycleState");
+    addEEnumLiteral(lifecycleStateEEnum, LifecycleState.UNCONFIGURED);
+    addEEnumLiteral(lifecycleStateEEnum, LifecycleState.INACTIVE);
+    addEEnumLiteral(lifecycleStateEEnum, LifecycleState.ACTIVE);
+    addEEnumLiteral(lifecycleStateEEnum, LifecycleState.FINALIZED);
 
-		// Create resource
-		createResource(eNS_URI);
-	}
+    // Create resource
+    createResource(eNS_URI);
+  }
 
 } //ResolutionModelPackageImpl

@@ -1670,6 +1670,7 @@ class TQLGenerator extends AbstractGenerator {
 			
 			(measure: $«contextvarName», source: $«_namer.uniqueName(contextVariable.source, _namer.uniqueName(nodeFromRef(ref)))») isa measurement_interface,
 				    «IF contextVariable.functionLibrary !== null»has measurement_function_lib '«contextVariable.functionLibrary»',«ENDIF»
+				    «IF contextVariable.functionArgs !== null»has measurement_function_args '«contextVariable.functionArgs»',«ENDIF»
 				    «IF contextVariable.period != 0»has measurement_period «contextVariable.period»,«ENDIF»
 				    «IF ref instanceof QualifiedServiceServerRef»
 				    	 «IF ref.kwargs !== null || ref.kwargs!== ""»has service_request_kwargs '«ref.kwargs»',«ENDIF»

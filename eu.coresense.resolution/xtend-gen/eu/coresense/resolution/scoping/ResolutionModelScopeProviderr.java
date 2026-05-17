@@ -26,6 +26,10 @@ import system.SubSystem;
 import uma.caosd.rhea.BasicFMmetamodel.Feature;
 import uma.caosd.rhea.BasicFMmetamodel.FeatureModel;
 
+/**
+ * Custom active scope provider for this DSL.
+ * Bound in ResolutionModelRuntimeModule instead of the default ResolutionModelScopeProvider.
+ */
 @SuppressWarnings("all")
 public class ResolutionModelScopeProviderr extends AbstractResolutionModelScopeProvider {
   @Override
@@ -67,7 +71,7 @@ public class ResolutionModelScopeProviderr extends AbstractResolutionModelScopeP
         }
       }
       final Function<EObject, QualifiedName> _function = (EObject e) -> {
-        return QualifiedName.create(ResolutionModelScopeProviderr.escape(((RosNode) e).getName()));
+        return QualifiedName.create(((RosNode) e).getName());
       };
       return Scopes.<EObject>scopeFor(allNodes, _function, 
         IScope.NULLSCOPE);
@@ -159,26 +163,5 @@ public class ResolutionModelScopeProviderr extends AbstractResolutionModelScopeP
         this.collectRecursively(((SubSystem)comp).getSystem(), result);
       }
     }
-  }
-
-  public static String escape(final String name) {
-    String _xblockexpression = null;
-    {
-      String noSlash = name.replace("/", "_slash_");
-      _xblockexpression = noSlash.replace("~", "_tilde_");
-    }
-    return _xblockexpression;
-  }
-
-  /**
-   * Unescape `_slash_` back to `/`
-   */
-  public static String unescape(final String name) {
-    String _xblockexpression = null;
-    {
-      String withSlash = name.replace("_slash_", "/");
-      _xblockexpression = withSlash.replace("_tilde_", "~");
-    }
-    return _xblockexpression;
   }
 }

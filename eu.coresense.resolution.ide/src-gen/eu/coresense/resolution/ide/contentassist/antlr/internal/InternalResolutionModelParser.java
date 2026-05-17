@@ -5814,22 +5814,99 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
     // $ANTLR end "ruleEString"
 
 
+    // $ANTLR start "entryRuleRosNames"
+    // InternalResolutionModelParser.g:1960:1: entryRuleRosNames : ruleRosNames EOF ;
+    public final void entryRuleRosNames() throws RecognitionException {
+        try {
+            // InternalResolutionModelParser.g:1961:1: ( ruleRosNames EOF )
+            // InternalResolutionModelParser.g:1962:1: ruleRosNames EOF
+            {
+             before(grammarAccess.getRosNamesRule()); 
+            pushFollow(FOLLOW_1);
+            ruleRosNames();
+
+            state._fsp--;
+
+             after(grammarAccess.getRosNamesRule()); 
+            match(input,EOF,FOLLOW_2); 
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+        }
+        return ;
+    }
+    // $ANTLR end "entryRuleRosNames"
+
+
+    // $ANTLR start "ruleRosNames"
+    // InternalResolutionModelParser.g:1969:1: ruleRosNames : ( ( rule__RosNames__Alternatives ) ) ;
+    public final void ruleRosNames() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalResolutionModelParser.g:1973:2: ( ( ( rule__RosNames__Alternatives ) ) )
+            // InternalResolutionModelParser.g:1974:2: ( ( rule__RosNames__Alternatives ) )
+            {
+            // InternalResolutionModelParser.g:1974:2: ( ( rule__RosNames__Alternatives ) )
+            // InternalResolutionModelParser.g:1975:3: ( rule__RosNames__Alternatives )
+            {
+             before(grammarAccess.getRosNamesAccess().getAlternatives()); 
+            // InternalResolutionModelParser.g:1976:3: ( rule__RosNames__Alternatives )
+            // InternalResolutionModelParser.g:1976:4: rule__RosNames__Alternatives
+            {
+            pushFollow(FOLLOW_2);
+            rule__RosNames__Alternatives();
+
+            state._fsp--;
+
+
+            }
+
+             after(grammarAccess.getRosNamesAccess().getAlternatives()); 
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "ruleRosNames"
+
+
     // $ANTLR start "ruleLifecycleState"
-    // InternalResolutionModelParser.g:1960:1: ruleLifecycleState : ( ( rule__LifecycleState__Alternatives ) ) ;
+    // InternalResolutionModelParser.g:1985:1: ruleLifecycleState : ( ( rule__LifecycleState__Alternatives ) ) ;
     public final void ruleLifecycleState() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:1964:1: ( ( ( rule__LifecycleState__Alternatives ) ) )
-            // InternalResolutionModelParser.g:1965:2: ( ( rule__LifecycleState__Alternatives ) )
+            // InternalResolutionModelParser.g:1989:1: ( ( ( rule__LifecycleState__Alternatives ) ) )
+            // InternalResolutionModelParser.g:1990:2: ( ( rule__LifecycleState__Alternatives ) )
             {
-            // InternalResolutionModelParser.g:1965:2: ( ( rule__LifecycleState__Alternatives ) )
-            // InternalResolutionModelParser.g:1966:3: ( rule__LifecycleState__Alternatives )
+            // InternalResolutionModelParser.g:1990:2: ( ( rule__LifecycleState__Alternatives ) )
+            // InternalResolutionModelParser.g:1991:3: ( rule__LifecycleState__Alternatives )
             {
              before(grammarAccess.getLifecycleStateAccess().getAlternatives()); 
-            // InternalResolutionModelParser.g:1967:3: ( rule__LifecycleState__Alternatives )
-            // InternalResolutionModelParser.g:1967:4: rule__LifecycleState__Alternatives
+            // InternalResolutionModelParser.g:1992:3: ( rule__LifecycleState__Alternatives )
+            // InternalResolutionModelParser.g:1992:4: rule__LifecycleState__Alternatives
             {
             pushFollow(FOLLOW_2);
             rule__LifecycleState__Alternatives();
@@ -5862,13 +5939,13 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__Reconfiguration__Alternatives"
-    // InternalResolutionModelParser.g:1975:1: rule__Reconfiguration__Alternatives : ( ( ruleSetParam ) | ( ruleSetLifecycle ) );
+    // InternalResolutionModelParser.g:2000:1: rule__Reconfiguration__Alternatives : ( ( ruleSetParam ) | ( ruleSetLifecycle ) );
     public final void rule__Reconfiguration__Alternatives() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:1979:1: ( ( ruleSetParam ) | ( ruleSetLifecycle ) )
+            // InternalResolutionModelParser.g:2004:1: ( ( ruleSetParam ) | ( ruleSetLifecycle ) )
             int alt1=2;
             int LA1_0 = input.LA(1);
 
@@ -5886,10 +5963,10 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
             }
             switch (alt1) {
                 case 1 :
-                    // InternalResolutionModelParser.g:1980:2: ( ruleSetParam )
+                    // InternalResolutionModelParser.g:2005:2: ( ruleSetParam )
                     {
-                    // InternalResolutionModelParser.g:1980:2: ( ruleSetParam )
-                    // InternalResolutionModelParser.g:1981:3: ruleSetParam
+                    // InternalResolutionModelParser.g:2005:2: ( ruleSetParam )
+                    // InternalResolutionModelParser.g:2006:3: ruleSetParam
                     {
                      before(grammarAccess.getReconfigurationAccess().getSetParamParserRuleCall_0()); 
                     pushFollow(FOLLOW_2);
@@ -5905,10 +5982,10 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
                     }
                     break;
                 case 2 :
-                    // InternalResolutionModelParser.g:1986:2: ( ruleSetLifecycle )
+                    // InternalResolutionModelParser.g:2011:2: ( ruleSetLifecycle )
                     {
-                    // InternalResolutionModelParser.g:1986:2: ( ruleSetLifecycle )
-                    // InternalResolutionModelParser.g:1987:3: ruleSetLifecycle
+                    // InternalResolutionModelParser.g:2011:2: ( ruleSetLifecycle )
+                    // InternalResolutionModelParser.g:2012:3: ruleSetLifecycle
                     {
                      before(grammarAccess.getReconfigurationAccess().getSetLifecycleParserRuleCall_1()); 
                     pushFollow(FOLLOW_2);
@@ -5941,13 +6018,13 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__Namespace__Alternatives"
-    // InternalResolutionModelParser.g:1996:1: rule__Namespace__Alternatives : ( ( ruleGlobalNamespace ) | ( ruleRelativeNamespace_Impl ) | ( rulePrivateNamespace ) );
+    // InternalResolutionModelParser.g:2021:1: rule__Namespace__Alternatives : ( ( ruleGlobalNamespace ) | ( ruleRelativeNamespace_Impl ) | ( rulePrivateNamespace ) );
     public final void rule__Namespace__Alternatives() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:2000:1: ( ( ruleGlobalNamespace ) | ( ruleRelativeNamespace_Impl ) | ( rulePrivateNamespace ) )
+            // InternalResolutionModelParser.g:2025:1: ( ( ruleGlobalNamespace ) | ( ruleRelativeNamespace_Impl ) | ( rulePrivateNamespace ) )
             int alt2=3;
             switch ( input.LA(1) ) {
             case GlobalNamespace:
@@ -5974,10 +6051,10 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
             switch (alt2) {
                 case 1 :
-                    // InternalResolutionModelParser.g:2001:2: ( ruleGlobalNamespace )
+                    // InternalResolutionModelParser.g:2026:2: ( ruleGlobalNamespace )
                     {
-                    // InternalResolutionModelParser.g:2001:2: ( ruleGlobalNamespace )
-                    // InternalResolutionModelParser.g:2002:3: ruleGlobalNamespace
+                    // InternalResolutionModelParser.g:2026:2: ( ruleGlobalNamespace )
+                    // InternalResolutionModelParser.g:2027:3: ruleGlobalNamespace
                     {
                      before(grammarAccess.getNamespaceAccess().getGlobalNamespaceParserRuleCall_0()); 
                     pushFollow(FOLLOW_2);
@@ -5993,10 +6070,10 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
                     }
                     break;
                 case 2 :
-                    // InternalResolutionModelParser.g:2007:2: ( ruleRelativeNamespace_Impl )
+                    // InternalResolutionModelParser.g:2032:2: ( ruleRelativeNamespace_Impl )
                     {
-                    // InternalResolutionModelParser.g:2007:2: ( ruleRelativeNamespace_Impl )
-                    // InternalResolutionModelParser.g:2008:3: ruleRelativeNamespace_Impl
+                    // InternalResolutionModelParser.g:2032:2: ( ruleRelativeNamespace_Impl )
+                    // InternalResolutionModelParser.g:2033:3: ruleRelativeNamespace_Impl
                     {
                      before(grammarAccess.getNamespaceAccess().getRelativeNamespace_ImplParserRuleCall_1()); 
                     pushFollow(FOLLOW_2);
@@ -6012,10 +6089,10 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
                     }
                     break;
                 case 3 :
-                    // InternalResolutionModelParser.g:2013:2: ( rulePrivateNamespace )
+                    // InternalResolutionModelParser.g:2038:2: ( rulePrivateNamespace )
                     {
-                    // InternalResolutionModelParser.g:2013:2: ( rulePrivateNamespace )
-                    // InternalResolutionModelParser.g:2014:3: rulePrivateNamespace
+                    // InternalResolutionModelParser.g:2038:2: ( rulePrivateNamespace )
+                    // InternalResolutionModelParser.g:2039:3: rulePrivateNamespace
                     {
                      before(grammarAccess.getNamespaceAccess().getPrivateNamespaceParserRuleCall_2()); 
                     pushFollow(FOLLOW_2);
@@ -6048,13 +6125,13 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ParameterType__Alternatives"
-    // InternalResolutionModelParser.g:2023:1: rule__ParameterType__Alternatives : ( ( ruleParameterListType ) | ( ruleParameterStructType ) | ( ruleParameterIntegerType ) | ( ruleParameterStringType ) | ( ruleParameterDoubleType ) | ( ruleParameterBooleanType ) | ( ruleParameterBase64Type ) | ( ruleParameterArrayType ) );
+    // InternalResolutionModelParser.g:2048:1: rule__ParameterType__Alternatives : ( ( ruleParameterListType ) | ( ruleParameterStructType ) | ( ruleParameterIntegerType ) | ( ruleParameterStringType ) | ( ruleParameterDoubleType ) | ( ruleParameterBooleanType ) | ( ruleParameterBase64Type ) | ( ruleParameterArrayType ) );
     public final void rule__ParameterType__Alternatives() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:2027:1: ( ( ruleParameterListType ) | ( ruleParameterStructType ) | ( ruleParameterIntegerType ) | ( ruleParameterStringType ) | ( ruleParameterDoubleType ) | ( ruleParameterBooleanType ) | ( ruleParameterBase64Type ) | ( ruleParameterArrayType ) )
+            // InternalResolutionModelParser.g:2052:1: ( ( ruleParameterListType ) | ( ruleParameterStructType ) | ( ruleParameterIntegerType ) | ( ruleParameterStringType ) | ( ruleParameterDoubleType ) | ( ruleParameterBooleanType ) | ( ruleParameterBase64Type ) | ( ruleParameterArrayType ) )
             int alt3=8;
             switch ( input.LA(1) ) {
             case List:
@@ -6106,10 +6183,10 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
             switch (alt3) {
                 case 1 :
-                    // InternalResolutionModelParser.g:2028:2: ( ruleParameterListType )
+                    // InternalResolutionModelParser.g:2053:2: ( ruleParameterListType )
                     {
-                    // InternalResolutionModelParser.g:2028:2: ( ruleParameterListType )
-                    // InternalResolutionModelParser.g:2029:3: ruleParameterListType
+                    // InternalResolutionModelParser.g:2053:2: ( ruleParameterListType )
+                    // InternalResolutionModelParser.g:2054:3: ruleParameterListType
                     {
                      before(grammarAccess.getParameterTypeAccess().getParameterListTypeParserRuleCall_0()); 
                     pushFollow(FOLLOW_2);
@@ -6125,10 +6202,10 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
                     }
                     break;
                 case 2 :
-                    // InternalResolutionModelParser.g:2034:2: ( ruleParameterStructType )
+                    // InternalResolutionModelParser.g:2059:2: ( ruleParameterStructType )
                     {
-                    // InternalResolutionModelParser.g:2034:2: ( ruleParameterStructType )
-                    // InternalResolutionModelParser.g:2035:3: ruleParameterStructType
+                    // InternalResolutionModelParser.g:2059:2: ( ruleParameterStructType )
+                    // InternalResolutionModelParser.g:2060:3: ruleParameterStructType
                     {
                      before(grammarAccess.getParameterTypeAccess().getParameterStructTypeParserRuleCall_1()); 
                     pushFollow(FOLLOW_2);
@@ -6144,10 +6221,10 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
                     }
                     break;
                 case 3 :
-                    // InternalResolutionModelParser.g:2040:2: ( ruleParameterIntegerType )
+                    // InternalResolutionModelParser.g:2065:2: ( ruleParameterIntegerType )
                     {
-                    // InternalResolutionModelParser.g:2040:2: ( ruleParameterIntegerType )
-                    // InternalResolutionModelParser.g:2041:3: ruleParameterIntegerType
+                    // InternalResolutionModelParser.g:2065:2: ( ruleParameterIntegerType )
+                    // InternalResolutionModelParser.g:2066:3: ruleParameterIntegerType
                     {
                      before(grammarAccess.getParameterTypeAccess().getParameterIntegerTypeParserRuleCall_2()); 
                     pushFollow(FOLLOW_2);
@@ -6163,10 +6240,10 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
                     }
                     break;
                 case 4 :
-                    // InternalResolutionModelParser.g:2046:2: ( ruleParameterStringType )
+                    // InternalResolutionModelParser.g:2071:2: ( ruleParameterStringType )
                     {
-                    // InternalResolutionModelParser.g:2046:2: ( ruleParameterStringType )
-                    // InternalResolutionModelParser.g:2047:3: ruleParameterStringType
+                    // InternalResolutionModelParser.g:2071:2: ( ruleParameterStringType )
+                    // InternalResolutionModelParser.g:2072:3: ruleParameterStringType
                     {
                      before(grammarAccess.getParameterTypeAccess().getParameterStringTypeParserRuleCall_3()); 
                     pushFollow(FOLLOW_2);
@@ -6182,10 +6259,10 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
                     }
                     break;
                 case 5 :
-                    // InternalResolutionModelParser.g:2052:2: ( ruleParameterDoubleType )
+                    // InternalResolutionModelParser.g:2077:2: ( ruleParameterDoubleType )
                     {
-                    // InternalResolutionModelParser.g:2052:2: ( ruleParameterDoubleType )
-                    // InternalResolutionModelParser.g:2053:3: ruleParameterDoubleType
+                    // InternalResolutionModelParser.g:2077:2: ( ruleParameterDoubleType )
+                    // InternalResolutionModelParser.g:2078:3: ruleParameterDoubleType
                     {
                      before(grammarAccess.getParameterTypeAccess().getParameterDoubleTypeParserRuleCall_4()); 
                     pushFollow(FOLLOW_2);
@@ -6201,10 +6278,10 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
                     }
                     break;
                 case 6 :
-                    // InternalResolutionModelParser.g:2058:2: ( ruleParameterBooleanType )
+                    // InternalResolutionModelParser.g:2083:2: ( ruleParameterBooleanType )
                     {
-                    // InternalResolutionModelParser.g:2058:2: ( ruleParameterBooleanType )
-                    // InternalResolutionModelParser.g:2059:3: ruleParameterBooleanType
+                    // InternalResolutionModelParser.g:2083:2: ( ruleParameterBooleanType )
+                    // InternalResolutionModelParser.g:2084:3: ruleParameterBooleanType
                     {
                      before(grammarAccess.getParameterTypeAccess().getParameterBooleanTypeParserRuleCall_5()); 
                     pushFollow(FOLLOW_2);
@@ -6220,10 +6297,10 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
                     }
                     break;
                 case 7 :
-                    // InternalResolutionModelParser.g:2064:2: ( ruleParameterBase64Type )
+                    // InternalResolutionModelParser.g:2089:2: ( ruleParameterBase64Type )
                     {
-                    // InternalResolutionModelParser.g:2064:2: ( ruleParameterBase64Type )
-                    // InternalResolutionModelParser.g:2065:3: ruleParameterBase64Type
+                    // InternalResolutionModelParser.g:2089:2: ( ruleParameterBase64Type )
+                    // InternalResolutionModelParser.g:2090:3: ruleParameterBase64Type
                     {
                      before(grammarAccess.getParameterTypeAccess().getParameterBase64TypeParserRuleCall_6()); 
                     pushFollow(FOLLOW_2);
@@ -6239,10 +6316,10 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
                     }
                     break;
                 case 8 :
-                    // InternalResolutionModelParser.g:2070:2: ( ruleParameterArrayType )
+                    // InternalResolutionModelParser.g:2095:2: ( ruleParameterArrayType )
                     {
-                    // InternalResolutionModelParser.g:2070:2: ( ruleParameterArrayType )
-                    // InternalResolutionModelParser.g:2071:3: ruleParameterArrayType
+                    // InternalResolutionModelParser.g:2095:2: ( ruleParameterArrayType )
+                    // InternalResolutionModelParser.g:2096:3: ruleParameterArrayType
                     {
                      before(grammarAccess.getParameterTypeAccess().getParameterArrayTypeParserRuleCall_7()); 
                     pushFollow(FOLLOW_2);
@@ -6275,21 +6352,21 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ParameterValue__Alternatives"
-    // InternalResolutionModelParser.g:2080:1: rule__ParameterValue__Alternatives : ( ( ruleParameterString ) | ( ruleParameterBase64 ) | ( ruleParameterInteger ) | ( ruleParameterDouble ) | ( ruleParameterBoolean ) | ( ruleParameterList ) | ( ruleParameterStruct ) );
+    // InternalResolutionModelParser.g:2105:1: rule__ParameterValue__Alternatives : ( ( ruleParameterString ) | ( ruleParameterBase64 ) | ( ruleParameterInteger ) | ( ruleParameterDouble ) | ( ruleParameterBoolean ) | ( ruleParameterList ) | ( ruleParameterStruct ) );
     public final void rule__ParameterValue__Alternatives() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:2084:1: ( ( ruleParameterString ) | ( ruleParameterBase64 ) | ( ruleParameterInteger ) | ( ruleParameterDouble ) | ( ruleParameterBoolean ) | ( ruleParameterList ) | ( ruleParameterStruct ) )
+            // InternalResolutionModelParser.g:2109:1: ( ( ruleParameterString ) | ( ruleParameterBase64 ) | ( ruleParameterInteger ) | ( ruleParameterDouble ) | ( ruleParameterBoolean ) | ( ruleParameterList ) | ( ruleParameterStruct ) )
             int alt4=7;
             alt4 = dfa4.predict(input);
             switch (alt4) {
                 case 1 :
-                    // InternalResolutionModelParser.g:2085:2: ( ruleParameterString )
+                    // InternalResolutionModelParser.g:2110:2: ( ruleParameterString )
                     {
-                    // InternalResolutionModelParser.g:2085:2: ( ruleParameterString )
-                    // InternalResolutionModelParser.g:2086:3: ruleParameterString
+                    // InternalResolutionModelParser.g:2110:2: ( ruleParameterString )
+                    // InternalResolutionModelParser.g:2111:3: ruleParameterString
                     {
                      before(grammarAccess.getParameterValueAccess().getParameterStringParserRuleCall_0()); 
                     pushFollow(FOLLOW_2);
@@ -6305,10 +6382,10 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
                     }
                     break;
                 case 2 :
-                    // InternalResolutionModelParser.g:2091:2: ( ruleParameterBase64 )
+                    // InternalResolutionModelParser.g:2116:2: ( ruleParameterBase64 )
                     {
-                    // InternalResolutionModelParser.g:2091:2: ( ruleParameterBase64 )
-                    // InternalResolutionModelParser.g:2092:3: ruleParameterBase64
+                    // InternalResolutionModelParser.g:2116:2: ( ruleParameterBase64 )
+                    // InternalResolutionModelParser.g:2117:3: ruleParameterBase64
                     {
                      before(grammarAccess.getParameterValueAccess().getParameterBase64ParserRuleCall_1()); 
                     pushFollow(FOLLOW_2);
@@ -6324,10 +6401,10 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
                     }
                     break;
                 case 3 :
-                    // InternalResolutionModelParser.g:2097:2: ( ruleParameterInteger )
+                    // InternalResolutionModelParser.g:2122:2: ( ruleParameterInteger )
                     {
-                    // InternalResolutionModelParser.g:2097:2: ( ruleParameterInteger )
-                    // InternalResolutionModelParser.g:2098:3: ruleParameterInteger
+                    // InternalResolutionModelParser.g:2122:2: ( ruleParameterInteger )
+                    // InternalResolutionModelParser.g:2123:3: ruleParameterInteger
                     {
                      before(grammarAccess.getParameterValueAccess().getParameterIntegerParserRuleCall_2()); 
                     pushFollow(FOLLOW_2);
@@ -6343,10 +6420,10 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
                     }
                     break;
                 case 4 :
-                    // InternalResolutionModelParser.g:2103:2: ( ruleParameterDouble )
+                    // InternalResolutionModelParser.g:2128:2: ( ruleParameterDouble )
                     {
-                    // InternalResolutionModelParser.g:2103:2: ( ruleParameterDouble )
-                    // InternalResolutionModelParser.g:2104:3: ruleParameterDouble
+                    // InternalResolutionModelParser.g:2128:2: ( ruleParameterDouble )
+                    // InternalResolutionModelParser.g:2129:3: ruleParameterDouble
                     {
                      before(grammarAccess.getParameterValueAccess().getParameterDoubleParserRuleCall_3()); 
                     pushFollow(FOLLOW_2);
@@ -6362,10 +6439,10 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
                     }
                     break;
                 case 5 :
-                    // InternalResolutionModelParser.g:2109:2: ( ruleParameterBoolean )
+                    // InternalResolutionModelParser.g:2134:2: ( ruleParameterBoolean )
                     {
-                    // InternalResolutionModelParser.g:2109:2: ( ruleParameterBoolean )
-                    // InternalResolutionModelParser.g:2110:3: ruleParameterBoolean
+                    // InternalResolutionModelParser.g:2134:2: ( ruleParameterBoolean )
+                    // InternalResolutionModelParser.g:2135:3: ruleParameterBoolean
                     {
                      before(grammarAccess.getParameterValueAccess().getParameterBooleanParserRuleCall_4()); 
                     pushFollow(FOLLOW_2);
@@ -6381,10 +6458,10 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
                     }
                     break;
                 case 6 :
-                    // InternalResolutionModelParser.g:2115:2: ( ruleParameterList )
+                    // InternalResolutionModelParser.g:2140:2: ( ruleParameterList )
                     {
-                    // InternalResolutionModelParser.g:2115:2: ( ruleParameterList )
-                    // InternalResolutionModelParser.g:2116:3: ruleParameterList
+                    // InternalResolutionModelParser.g:2140:2: ( ruleParameterList )
+                    // InternalResolutionModelParser.g:2141:3: ruleParameterList
                     {
                      before(grammarAccess.getParameterValueAccess().getParameterListParserRuleCall_5()); 
                     pushFollow(FOLLOW_2);
@@ -6400,10 +6477,10 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
                     }
                     break;
                 case 7 :
-                    // InternalResolutionModelParser.g:2121:2: ( ruleParameterStruct )
+                    // InternalResolutionModelParser.g:2146:2: ( ruleParameterStruct )
                     {
-                    // InternalResolutionModelParser.g:2121:2: ( ruleParameterStruct )
-                    // InternalResolutionModelParser.g:2122:3: ruleParameterStruct
+                    // InternalResolutionModelParser.g:2146:2: ( ruleParameterStruct )
+                    // InternalResolutionModelParser.g:2147:3: ruleParameterStruct
                     {
                      before(grammarAccess.getParameterValueAccess().getParameterStructParserRuleCall_6()); 
                     pushFollow(FOLLOW_2);
@@ -6436,21 +6513,21 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__AbstractType__Alternatives"
-    // InternalResolutionModelParser.g:2131:1: rule__AbstractType__Alternatives : ( ( rulebool ) | ( ruleint8 ) | ( ruleuint8 ) | ( ruleint16 ) | ( ruleuint16 ) | ( ruleint32 ) | ( ruleuint32 ) | ( ruleint64 ) | ( ruleuint64 ) | ( rulefloat32 ) | ( rulefloat64 ) | ( rulestring0 ) | ( rulebyte ) | ( ruletime ) | ( ruleduration ) | ( ruleHeader ) | ( ruleboolArray ) | ( ruleint8Array ) | ( ruleuint8Array ) | ( ruleint16Array ) | ( ruleuint16Array ) | ( ruleint32Array ) | ( ruleuint32Array ) | ( ruleint64Array ) | ( ruleuint64Array ) | ( rulefloat32Array ) | ( rulefloat64Array ) | ( rulestring0Array ) | ( rulebyteArray ) | ( ruleSpecBaseRef ) | ( ruleArraySpecRef ) | ( rulechar ) | ( rulecharArray ) );
+    // InternalResolutionModelParser.g:2156:1: rule__AbstractType__Alternatives : ( ( rulebool ) | ( ruleint8 ) | ( ruleuint8 ) | ( ruleint16 ) | ( ruleuint16 ) | ( ruleint32 ) | ( ruleuint32 ) | ( ruleint64 ) | ( ruleuint64 ) | ( rulefloat32 ) | ( rulefloat64 ) | ( rulestring0 ) | ( rulebyte ) | ( ruletime ) | ( ruleduration ) | ( ruleHeader ) | ( ruleboolArray ) | ( ruleint8Array ) | ( ruleuint8Array ) | ( ruleint16Array ) | ( ruleuint16Array ) | ( ruleint32Array ) | ( ruleuint32Array ) | ( ruleint64Array ) | ( ruleuint64Array ) | ( rulefloat32Array ) | ( rulefloat64Array ) | ( rulestring0Array ) | ( rulebyteArray ) | ( ruleSpecBaseRef ) | ( ruleArraySpecRef ) | ( rulechar ) | ( rulecharArray ) );
     public final void rule__AbstractType__Alternatives() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:2135:1: ( ( rulebool ) | ( ruleint8 ) | ( ruleuint8 ) | ( ruleint16 ) | ( ruleuint16 ) | ( ruleint32 ) | ( ruleuint32 ) | ( ruleint64 ) | ( ruleuint64 ) | ( rulefloat32 ) | ( rulefloat64 ) | ( rulestring0 ) | ( rulebyte ) | ( ruletime ) | ( ruleduration ) | ( ruleHeader ) | ( ruleboolArray ) | ( ruleint8Array ) | ( ruleuint8Array ) | ( ruleint16Array ) | ( ruleuint16Array ) | ( ruleint32Array ) | ( ruleuint32Array ) | ( ruleint64Array ) | ( ruleuint64Array ) | ( rulefloat32Array ) | ( rulefloat64Array ) | ( rulestring0Array ) | ( rulebyteArray ) | ( ruleSpecBaseRef ) | ( ruleArraySpecRef ) | ( rulechar ) | ( rulecharArray ) )
+            // InternalResolutionModelParser.g:2160:1: ( ( rulebool ) | ( ruleint8 ) | ( ruleuint8 ) | ( ruleint16 ) | ( ruleuint16 ) | ( ruleint32 ) | ( ruleuint32 ) | ( ruleint64 ) | ( ruleuint64 ) | ( rulefloat32 ) | ( rulefloat64 ) | ( rulestring0 ) | ( rulebyte ) | ( ruletime ) | ( ruleduration ) | ( ruleHeader ) | ( ruleboolArray ) | ( ruleint8Array ) | ( ruleuint8Array ) | ( ruleint16Array ) | ( ruleuint16Array ) | ( ruleint32Array ) | ( ruleuint32Array ) | ( ruleint64Array ) | ( ruleuint64Array ) | ( rulefloat32Array ) | ( rulefloat64Array ) | ( rulestring0Array ) | ( rulebyteArray ) | ( ruleSpecBaseRef ) | ( ruleArraySpecRef ) | ( rulechar ) | ( rulecharArray ) )
             int alt5=33;
             alt5 = dfa5.predict(input);
             switch (alt5) {
                 case 1 :
-                    // InternalResolutionModelParser.g:2136:2: ( rulebool )
+                    // InternalResolutionModelParser.g:2161:2: ( rulebool )
                     {
-                    // InternalResolutionModelParser.g:2136:2: ( rulebool )
-                    // InternalResolutionModelParser.g:2137:3: rulebool
+                    // InternalResolutionModelParser.g:2161:2: ( rulebool )
+                    // InternalResolutionModelParser.g:2162:3: rulebool
                     {
                      before(grammarAccess.getAbstractTypeAccess().getBoolParserRuleCall_0()); 
                     pushFollow(FOLLOW_2);
@@ -6466,10 +6543,10 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
                     }
                     break;
                 case 2 :
-                    // InternalResolutionModelParser.g:2142:2: ( ruleint8 )
+                    // InternalResolutionModelParser.g:2167:2: ( ruleint8 )
                     {
-                    // InternalResolutionModelParser.g:2142:2: ( ruleint8 )
-                    // InternalResolutionModelParser.g:2143:3: ruleint8
+                    // InternalResolutionModelParser.g:2167:2: ( ruleint8 )
+                    // InternalResolutionModelParser.g:2168:3: ruleint8
                     {
                      before(grammarAccess.getAbstractTypeAccess().getInt8ParserRuleCall_1()); 
                     pushFollow(FOLLOW_2);
@@ -6485,10 +6562,10 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
                     }
                     break;
                 case 3 :
-                    // InternalResolutionModelParser.g:2148:2: ( ruleuint8 )
+                    // InternalResolutionModelParser.g:2173:2: ( ruleuint8 )
                     {
-                    // InternalResolutionModelParser.g:2148:2: ( ruleuint8 )
-                    // InternalResolutionModelParser.g:2149:3: ruleuint8
+                    // InternalResolutionModelParser.g:2173:2: ( ruleuint8 )
+                    // InternalResolutionModelParser.g:2174:3: ruleuint8
                     {
                      before(grammarAccess.getAbstractTypeAccess().getUint8ParserRuleCall_2()); 
                     pushFollow(FOLLOW_2);
@@ -6504,10 +6581,10 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
                     }
                     break;
                 case 4 :
-                    // InternalResolutionModelParser.g:2154:2: ( ruleint16 )
+                    // InternalResolutionModelParser.g:2179:2: ( ruleint16 )
                     {
-                    // InternalResolutionModelParser.g:2154:2: ( ruleint16 )
-                    // InternalResolutionModelParser.g:2155:3: ruleint16
+                    // InternalResolutionModelParser.g:2179:2: ( ruleint16 )
+                    // InternalResolutionModelParser.g:2180:3: ruleint16
                     {
                      before(grammarAccess.getAbstractTypeAccess().getInt16ParserRuleCall_3()); 
                     pushFollow(FOLLOW_2);
@@ -6523,10 +6600,10 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
                     }
                     break;
                 case 5 :
-                    // InternalResolutionModelParser.g:2160:2: ( ruleuint16 )
+                    // InternalResolutionModelParser.g:2185:2: ( ruleuint16 )
                     {
-                    // InternalResolutionModelParser.g:2160:2: ( ruleuint16 )
-                    // InternalResolutionModelParser.g:2161:3: ruleuint16
+                    // InternalResolutionModelParser.g:2185:2: ( ruleuint16 )
+                    // InternalResolutionModelParser.g:2186:3: ruleuint16
                     {
                      before(grammarAccess.getAbstractTypeAccess().getUint16ParserRuleCall_4()); 
                     pushFollow(FOLLOW_2);
@@ -6542,10 +6619,10 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
                     }
                     break;
                 case 6 :
-                    // InternalResolutionModelParser.g:2166:2: ( ruleint32 )
+                    // InternalResolutionModelParser.g:2191:2: ( ruleint32 )
                     {
-                    // InternalResolutionModelParser.g:2166:2: ( ruleint32 )
-                    // InternalResolutionModelParser.g:2167:3: ruleint32
+                    // InternalResolutionModelParser.g:2191:2: ( ruleint32 )
+                    // InternalResolutionModelParser.g:2192:3: ruleint32
                     {
                      before(grammarAccess.getAbstractTypeAccess().getInt32ParserRuleCall_5()); 
                     pushFollow(FOLLOW_2);
@@ -6561,10 +6638,10 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
                     }
                     break;
                 case 7 :
-                    // InternalResolutionModelParser.g:2172:2: ( ruleuint32 )
+                    // InternalResolutionModelParser.g:2197:2: ( ruleuint32 )
                     {
-                    // InternalResolutionModelParser.g:2172:2: ( ruleuint32 )
-                    // InternalResolutionModelParser.g:2173:3: ruleuint32
+                    // InternalResolutionModelParser.g:2197:2: ( ruleuint32 )
+                    // InternalResolutionModelParser.g:2198:3: ruleuint32
                     {
                      before(grammarAccess.getAbstractTypeAccess().getUint32ParserRuleCall_6()); 
                     pushFollow(FOLLOW_2);
@@ -6580,10 +6657,10 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
                     }
                     break;
                 case 8 :
-                    // InternalResolutionModelParser.g:2178:2: ( ruleint64 )
+                    // InternalResolutionModelParser.g:2203:2: ( ruleint64 )
                     {
-                    // InternalResolutionModelParser.g:2178:2: ( ruleint64 )
-                    // InternalResolutionModelParser.g:2179:3: ruleint64
+                    // InternalResolutionModelParser.g:2203:2: ( ruleint64 )
+                    // InternalResolutionModelParser.g:2204:3: ruleint64
                     {
                      before(grammarAccess.getAbstractTypeAccess().getInt64ParserRuleCall_7()); 
                     pushFollow(FOLLOW_2);
@@ -6599,10 +6676,10 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
                     }
                     break;
                 case 9 :
-                    // InternalResolutionModelParser.g:2184:2: ( ruleuint64 )
+                    // InternalResolutionModelParser.g:2209:2: ( ruleuint64 )
                     {
-                    // InternalResolutionModelParser.g:2184:2: ( ruleuint64 )
-                    // InternalResolutionModelParser.g:2185:3: ruleuint64
+                    // InternalResolutionModelParser.g:2209:2: ( ruleuint64 )
+                    // InternalResolutionModelParser.g:2210:3: ruleuint64
                     {
                      before(grammarAccess.getAbstractTypeAccess().getUint64ParserRuleCall_8()); 
                     pushFollow(FOLLOW_2);
@@ -6618,10 +6695,10 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
                     }
                     break;
                 case 10 :
-                    // InternalResolutionModelParser.g:2190:2: ( rulefloat32 )
+                    // InternalResolutionModelParser.g:2215:2: ( rulefloat32 )
                     {
-                    // InternalResolutionModelParser.g:2190:2: ( rulefloat32 )
-                    // InternalResolutionModelParser.g:2191:3: rulefloat32
+                    // InternalResolutionModelParser.g:2215:2: ( rulefloat32 )
+                    // InternalResolutionModelParser.g:2216:3: rulefloat32
                     {
                      before(grammarAccess.getAbstractTypeAccess().getFloat32ParserRuleCall_9()); 
                     pushFollow(FOLLOW_2);
@@ -6637,10 +6714,10 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
                     }
                     break;
                 case 11 :
-                    // InternalResolutionModelParser.g:2196:2: ( rulefloat64 )
+                    // InternalResolutionModelParser.g:2221:2: ( rulefloat64 )
                     {
-                    // InternalResolutionModelParser.g:2196:2: ( rulefloat64 )
-                    // InternalResolutionModelParser.g:2197:3: rulefloat64
+                    // InternalResolutionModelParser.g:2221:2: ( rulefloat64 )
+                    // InternalResolutionModelParser.g:2222:3: rulefloat64
                     {
                      before(grammarAccess.getAbstractTypeAccess().getFloat64ParserRuleCall_10()); 
                     pushFollow(FOLLOW_2);
@@ -6656,10 +6733,10 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
                     }
                     break;
                 case 12 :
-                    // InternalResolutionModelParser.g:2202:2: ( rulestring0 )
+                    // InternalResolutionModelParser.g:2227:2: ( rulestring0 )
                     {
-                    // InternalResolutionModelParser.g:2202:2: ( rulestring0 )
-                    // InternalResolutionModelParser.g:2203:3: rulestring0
+                    // InternalResolutionModelParser.g:2227:2: ( rulestring0 )
+                    // InternalResolutionModelParser.g:2228:3: rulestring0
                     {
                      before(grammarAccess.getAbstractTypeAccess().getString0ParserRuleCall_11()); 
                     pushFollow(FOLLOW_2);
@@ -6675,10 +6752,10 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
                     }
                     break;
                 case 13 :
-                    // InternalResolutionModelParser.g:2208:2: ( rulebyte )
+                    // InternalResolutionModelParser.g:2233:2: ( rulebyte )
                     {
-                    // InternalResolutionModelParser.g:2208:2: ( rulebyte )
-                    // InternalResolutionModelParser.g:2209:3: rulebyte
+                    // InternalResolutionModelParser.g:2233:2: ( rulebyte )
+                    // InternalResolutionModelParser.g:2234:3: rulebyte
                     {
                      before(grammarAccess.getAbstractTypeAccess().getByteParserRuleCall_12()); 
                     pushFollow(FOLLOW_2);
@@ -6694,10 +6771,10 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
                     }
                     break;
                 case 14 :
-                    // InternalResolutionModelParser.g:2214:2: ( ruletime )
+                    // InternalResolutionModelParser.g:2239:2: ( ruletime )
                     {
-                    // InternalResolutionModelParser.g:2214:2: ( ruletime )
-                    // InternalResolutionModelParser.g:2215:3: ruletime
+                    // InternalResolutionModelParser.g:2239:2: ( ruletime )
+                    // InternalResolutionModelParser.g:2240:3: ruletime
                     {
                      before(grammarAccess.getAbstractTypeAccess().getTimeParserRuleCall_13()); 
                     pushFollow(FOLLOW_2);
@@ -6713,10 +6790,10 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
                     }
                     break;
                 case 15 :
-                    // InternalResolutionModelParser.g:2220:2: ( ruleduration )
+                    // InternalResolutionModelParser.g:2245:2: ( ruleduration )
                     {
-                    // InternalResolutionModelParser.g:2220:2: ( ruleduration )
-                    // InternalResolutionModelParser.g:2221:3: ruleduration
+                    // InternalResolutionModelParser.g:2245:2: ( ruleduration )
+                    // InternalResolutionModelParser.g:2246:3: ruleduration
                     {
                      before(grammarAccess.getAbstractTypeAccess().getDurationParserRuleCall_14()); 
                     pushFollow(FOLLOW_2);
@@ -6732,10 +6809,10 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
                     }
                     break;
                 case 16 :
-                    // InternalResolutionModelParser.g:2226:2: ( ruleHeader )
+                    // InternalResolutionModelParser.g:2251:2: ( ruleHeader )
                     {
-                    // InternalResolutionModelParser.g:2226:2: ( ruleHeader )
-                    // InternalResolutionModelParser.g:2227:3: ruleHeader
+                    // InternalResolutionModelParser.g:2251:2: ( ruleHeader )
+                    // InternalResolutionModelParser.g:2252:3: ruleHeader
                     {
                      before(grammarAccess.getAbstractTypeAccess().getHeaderParserRuleCall_15()); 
                     pushFollow(FOLLOW_2);
@@ -6751,10 +6828,10 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
                     }
                     break;
                 case 17 :
-                    // InternalResolutionModelParser.g:2232:2: ( ruleboolArray )
+                    // InternalResolutionModelParser.g:2257:2: ( ruleboolArray )
                     {
-                    // InternalResolutionModelParser.g:2232:2: ( ruleboolArray )
-                    // InternalResolutionModelParser.g:2233:3: ruleboolArray
+                    // InternalResolutionModelParser.g:2257:2: ( ruleboolArray )
+                    // InternalResolutionModelParser.g:2258:3: ruleboolArray
                     {
                      before(grammarAccess.getAbstractTypeAccess().getBoolArrayParserRuleCall_16()); 
                     pushFollow(FOLLOW_2);
@@ -6770,10 +6847,10 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
                     }
                     break;
                 case 18 :
-                    // InternalResolutionModelParser.g:2238:2: ( ruleint8Array )
+                    // InternalResolutionModelParser.g:2263:2: ( ruleint8Array )
                     {
-                    // InternalResolutionModelParser.g:2238:2: ( ruleint8Array )
-                    // InternalResolutionModelParser.g:2239:3: ruleint8Array
+                    // InternalResolutionModelParser.g:2263:2: ( ruleint8Array )
+                    // InternalResolutionModelParser.g:2264:3: ruleint8Array
                     {
                      before(grammarAccess.getAbstractTypeAccess().getInt8ArrayParserRuleCall_17()); 
                     pushFollow(FOLLOW_2);
@@ -6789,10 +6866,10 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
                     }
                     break;
                 case 19 :
-                    // InternalResolutionModelParser.g:2244:2: ( ruleuint8Array )
+                    // InternalResolutionModelParser.g:2269:2: ( ruleuint8Array )
                     {
-                    // InternalResolutionModelParser.g:2244:2: ( ruleuint8Array )
-                    // InternalResolutionModelParser.g:2245:3: ruleuint8Array
+                    // InternalResolutionModelParser.g:2269:2: ( ruleuint8Array )
+                    // InternalResolutionModelParser.g:2270:3: ruleuint8Array
                     {
                      before(grammarAccess.getAbstractTypeAccess().getUint8ArrayParserRuleCall_18()); 
                     pushFollow(FOLLOW_2);
@@ -6808,10 +6885,10 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
                     }
                     break;
                 case 20 :
-                    // InternalResolutionModelParser.g:2250:2: ( ruleint16Array )
+                    // InternalResolutionModelParser.g:2275:2: ( ruleint16Array )
                     {
-                    // InternalResolutionModelParser.g:2250:2: ( ruleint16Array )
-                    // InternalResolutionModelParser.g:2251:3: ruleint16Array
+                    // InternalResolutionModelParser.g:2275:2: ( ruleint16Array )
+                    // InternalResolutionModelParser.g:2276:3: ruleint16Array
                     {
                      before(grammarAccess.getAbstractTypeAccess().getInt16ArrayParserRuleCall_19()); 
                     pushFollow(FOLLOW_2);
@@ -6827,10 +6904,10 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
                     }
                     break;
                 case 21 :
-                    // InternalResolutionModelParser.g:2256:2: ( ruleuint16Array )
+                    // InternalResolutionModelParser.g:2281:2: ( ruleuint16Array )
                     {
-                    // InternalResolutionModelParser.g:2256:2: ( ruleuint16Array )
-                    // InternalResolutionModelParser.g:2257:3: ruleuint16Array
+                    // InternalResolutionModelParser.g:2281:2: ( ruleuint16Array )
+                    // InternalResolutionModelParser.g:2282:3: ruleuint16Array
                     {
                      before(grammarAccess.getAbstractTypeAccess().getUint16ArrayParserRuleCall_20()); 
                     pushFollow(FOLLOW_2);
@@ -6846,10 +6923,10 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
                     }
                     break;
                 case 22 :
-                    // InternalResolutionModelParser.g:2262:2: ( ruleint32Array )
+                    // InternalResolutionModelParser.g:2287:2: ( ruleint32Array )
                     {
-                    // InternalResolutionModelParser.g:2262:2: ( ruleint32Array )
-                    // InternalResolutionModelParser.g:2263:3: ruleint32Array
+                    // InternalResolutionModelParser.g:2287:2: ( ruleint32Array )
+                    // InternalResolutionModelParser.g:2288:3: ruleint32Array
                     {
                      before(grammarAccess.getAbstractTypeAccess().getInt32ArrayParserRuleCall_21()); 
                     pushFollow(FOLLOW_2);
@@ -6865,10 +6942,10 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
                     }
                     break;
                 case 23 :
-                    // InternalResolutionModelParser.g:2268:2: ( ruleuint32Array )
+                    // InternalResolutionModelParser.g:2293:2: ( ruleuint32Array )
                     {
-                    // InternalResolutionModelParser.g:2268:2: ( ruleuint32Array )
-                    // InternalResolutionModelParser.g:2269:3: ruleuint32Array
+                    // InternalResolutionModelParser.g:2293:2: ( ruleuint32Array )
+                    // InternalResolutionModelParser.g:2294:3: ruleuint32Array
                     {
                      before(grammarAccess.getAbstractTypeAccess().getUint32ArrayParserRuleCall_22()); 
                     pushFollow(FOLLOW_2);
@@ -6884,10 +6961,10 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
                     }
                     break;
                 case 24 :
-                    // InternalResolutionModelParser.g:2274:2: ( ruleint64Array )
+                    // InternalResolutionModelParser.g:2299:2: ( ruleint64Array )
                     {
-                    // InternalResolutionModelParser.g:2274:2: ( ruleint64Array )
-                    // InternalResolutionModelParser.g:2275:3: ruleint64Array
+                    // InternalResolutionModelParser.g:2299:2: ( ruleint64Array )
+                    // InternalResolutionModelParser.g:2300:3: ruleint64Array
                     {
                      before(grammarAccess.getAbstractTypeAccess().getInt64ArrayParserRuleCall_23()); 
                     pushFollow(FOLLOW_2);
@@ -6903,10 +6980,10 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
                     }
                     break;
                 case 25 :
-                    // InternalResolutionModelParser.g:2280:2: ( ruleuint64Array )
+                    // InternalResolutionModelParser.g:2305:2: ( ruleuint64Array )
                     {
-                    // InternalResolutionModelParser.g:2280:2: ( ruleuint64Array )
-                    // InternalResolutionModelParser.g:2281:3: ruleuint64Array
+                    // InternalResolutionModelParser.g:2305:2: ( ruleuint64Array )
+                    // InternalResolutionModelParser.g:2306:3: ruleuint64Array
                     {
                      before(grammarAccess.getAbstractTypeAccess().getUint64ArrayParserRuleCall_24()); 
                     pushFollow(FOLLOW_2);
@@ -6922,10 +6999,10 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
                     }
                     break;
                 case 26 :
-                    // InternalResolutionModelParser.g:2286:2: ( rulefloat32Array )
+                    // InternalResolutionModelParser.g:2311:2: ( rulefloat32Array )
                     {
-                    // InternalResolutionModelParser.g:2286:2: ( rulefloat32Array )
-                    // InternalResolutionModelParser.g:2287:3: rulefloat32Array
+                    // InternalResolutionModelParser.g:2311:2: ( rulefloat32Array )
+                    // InternalResolutionModelParser.g:2312:3: rulefloat32Array
                     {
                      before(grammarAccess.getAbstractTypeAccess().getFloat32ArrayParserRuleCall_25()); 
                     pushFollow(FOLLOW_2);
@@ -6941,10 +7018,10 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
                     }
                     break;
                 case 27 :
-                    // InternalResolutionModelParser.g:2292:2: ( rulefloat64Array )
+                    // InternalResolutionModelParser.g:2317:2: ( rulefloat64Array )
                     {
-                    // InternalResolutionModelParser.g:2292:2: ( rulefloat64Array )
-                    // InternalResolutionModelParser.g:2293:3: rulefloat64Array
+                    // InternalResolutionModelParser.g:2317:2: ( rulefloat64Array )
+                    // InternalResolutionModelParser.g:2318:3: rulefloat64Array
                     {
                      before(grammarAccess.getAbstractTypeAccess().getFloat64ArrayParserRuleCall_26()); 
                     pushFollow(FOLLOW_2);
@@ -6960,10 +7037,10 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
                     }
                     break;
                 case 28 :
-                    // InternalResolutionModelParser.g:2298:2: ( rulestring0Array )
+                    // InternalResolutionModelParser.g:2323:2: ( rulestring0Array )
                     {
-                    // InternalResolutionModelParser.g:2298:2: ( rulestring0Array )
-                    // InternalResolutionModelParser.g:2299:3: rulestring0Array
+                    // InternalResolutionModelParser.g:2323:2: ( rulestring0Array )
+                    // InternalResolutionModelParser.g:2324:3: rulestring0Array
                     {
                      before(grammarAccess.getAbstractTypeAccess().getString0ArrayParserRuleCall_27()); 
                     pushFollow(FOLLOW_2);
@@ -6979,10 +7056,10 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
                     }
                     break;
                 case 29 :
-                    // InternalResolutionModelParser.g:2304:2: ( rulebyteArray )
+                    // InternalResolutionModelParser.g:2329:2: ( rulebyteArray )
                     {
-                    // InternalResolutionModelParser.g:2304:2: ( rulebyteArray )
-                    // InternalResolutionModelParser.g:2305:3: rulebyteArray
+                    // InternalResolutionModelParser.g:2329:2: ( rulebyteArray )
+                    // InternalResolutionModelParser.g:2330:3: rulebyteArray
                     {
                      before(grammarAccess.getAbstractTypeAccess().getByteArrayParserRuleCall_28()); 
                     pushFollow(FOLLOW_2);
@@ -6998,10 +7075,10 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
                     }
                     break;
                 case 30 :
-                    // InternalResolutionModelParser.g:2310:2: ( ruleSpecBaseRef )
+                    // InternalResolutionModelParser.g:2335:2: ( ruleSpecBaseRef )
                     {
-                    // InternalResolutionModelParser.g:2310:2: ( ruleSpecBaseRef )
-                    // InternalResolutionModelParser.g:2311:3: ruleSpecBaseRef
+                    // InternalResolutionModelParser.g:2335:2: ( ruleSpecBaseRef )
+                    // InternalResolutionModelParser.g:2336:3: ruleSpecBaseRef
                     {
                      before(grammarAccess.getAbstractTypeAccess().getSpecBaseRefParserRuleCall_29()); 
                     pushFollow(FOLLOW_2);
@@ -7017,10 +7094,10 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
                     }
                     break;
                 case 31 :
-                    // InternalResolutionModelParser.g:2316:2: ( ruleArraySpecRef )
+                    // InternalResolutionModelParser.g:2341:2: ( ruleArraySpecRef )
                     {
-                    // InternalResolutionModelParser.g:2316:2: ( ruleArraySpecRef )
-                    // InternalResolutionModelParser.g:2317:3: ruleArraySpecRef
+                    // InternalResolutionModelParser.g:2341:2: ( ruleArraySpecRef )
+                    // InternalResolutionModelParser.g:2342:3: ruleArraySpecRef
                     {
                      before(grammarAccess.getAbstractTypeAccess().getArraySpecRefParserRuleCall_30()); 
                     pushFollow(FOLLOW_2);
@@ -7036,10 +7113,10 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
                     }
                     break;
                 case 32 :
-                    // InternalResolutionModelParser.g:2322:2: ( rulechar )
+                    // InternalResolutionModelParser.g:2347:2: ( rulechar )
                     {
-                    // InternalResolutionModelParser.g:2322:2: ( rulechar )
-                    // InternalResolutionModelParser.g:2323:3: rulechar
+                    // InternalResolutionModelParser.g:2347:2: ( rulechar )
+                    // InternalResolutionModelParser.g:2348:3: rulechar
                     {
                      before(grammarAccess.getAbstractTypeAccess().getCharParserRuleCall_31()); 
                     pushFollow(FOLLOW_2);
@@ -7055,10 +7132,10 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
                     }
                     break;
                 case 33 :
-                    // InternalResolutionModelParser.g:2328:2: ( rulecharArray )
+                    // InternalResolutionModelParser.g:2353:2: ( rulecharArray )
                     {
-                    // InternalResolutionModelParser.g:2328:2: ( rulecharArray )
-                    // InternalResolutionModelParser.g:2329:3: rulecharArray
+                    // InternalResolutionModelParser.g:2353:2: ( rulecharArray )
+                    // InternalResolutionModelParser.g:2354:3: rulecharArray
                     {
                      before(grammarAccess.getAbstractTypeAccess().getCharArrayParserRuleCall_32()); 
                     pushFollow(FOLLOW_2);
@@ -7091,14 +7168,14 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__KEYWORD__Alternatives"
-    // InternalResolutionModelParser.g:2338:1: rule__KEYWORD__Alternatives : ( ( Goal ) | ( Message ) | ( Result ) | ( Feedback ) | ( Name ) | ( Value ) | ( Service ) | ( Type ) | ( Action ) | ( Duration ) | ( Time ) );
+    // InternalResolutionModelParser.g:2363:1: rule__KEYWORD__Alternatives : ( ( Goal ) | ( Message ) | ( Result ) | ( Feedback ) | ( Name ) | ( Value ) | ( Service ) | ( Type ) | ( Action ) | ( Duration ) | ( Time ) | ( Node ) );
     public final void rule__KEYWORD__Alternatives() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:2342:1: ( ( Goal ) | ( Message ) | ( Result ) | ( Feedback ) | ( Name ) | ( Value ) | ( Service ) | ( Type ) | ( Action ) | ( Duration ) | ( Time ) )
-            int alt6=11;
+            // InternalResolutionModelParser.g:2367:1: ( ( Goal ) | ( Message ) | ( Result ) | ( Feedback ) | ( Name ) | ( Value ) | ( Service ) | ( Type ) | ( Action ) | ( Duration ) | ( Time ) | ( Node ) )
+            int alt6=12;
             switch ( input.LA(1) ) {
             case Goal:
                 {
@@ -7155,6 +7232,11 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
                 alt6=11;
                 }
                 break;
+            case Node:
+                {
+                alt6=12;
+                }
+                break;
             default:
                 NoViableAltException nvae =
                     new NoViableAltException("", 6, 0, input);
@@ -7164,10 +7246,10 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
             switch (alt6) {
                 case 1 :
-                    // InternalResolutionModelParser.g:2343:2: ( Goal )
+                    // InternalResolutionModelParser.g:2368:2: ( Goal )
                     {
-                    // InternalResolutionModelParser.g:2343:2: ( Goal )
-                    // InternalResolutionModelParser.g:2344:3: Goal
+                    // InternalResolutionModelParser.g:2368:2: ( Goal )
+                    // InternalResolutionModelParser.g:2369:3: Goal
                     {
                      before(grammarAccess.getKEYWORDAccess().getGoalKeyword_0()); 
                     match(input,Goal,FOLLOW_2); 
@@ -7179,10 +7261,10 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
                     }
                     break;
                 case 2 :
-                    // InternalResolutionModelParser.g:2349:2: ( Message )
+                    // InternalResolutionModelParser.g:2374:2: ( Message )
                     {
-                    // InternalResolutionModelParser.g:2349:2: ( Message )
-                    // InternalResolutionModelParser.g:2350:3: Message
+                    // InternalResolutionModelParser.g:2374:2: ( Message )
+                    // InternalResolutionModelParser.g:2375:3: Message
                     {
                      before(grammarAccess.getKEYWORDAccess().getMessageKeyword_1()); 
                     match(input,Message,FOLLOW_2); 
@@ -7194,10 +7276,10 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
                     }
                     break;
                 case 3 :
-                    // InternalResolutionModelParser.g:2355:2: ( Result )
+                    // InternalResolutionModelParser.g:2380:2: ( Result )
                     {
-                    // InternalResolutionModelParser.g:2355:2: ( Result )
-                    // InternalResolutionModelParser.g:2356:3: Result
+                    // InternalResolutionModelParser.g:2380:2: ( Result )
+                    // InternalResolutionModelParser.g:2381:3: Result
                     {
                      before(grammarAccess.getKEYWORDAccess().getResultKeyword_2()); 
                     match(input,Result,FOLLOW_2); 
@@ -7209,10 +7291,10 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
                     }
                     break;
                 case 4 :
-                    // InternalResolutionModelParser.g:2361:2: ( Feedback )
+                    // InternalResolutionModelParser.g:2386:2: ( Feedback )
                     {
-                    // InternalResolutionModelParser.g:2361:2: ( Feedback )
-                    // InternalResolutionModelParser.g:2362:3: Feedback
+                    // InternalResolutionModelParser.g:2386:2: ( Feedback )
+                    // InternalResolutionModelParser.g:2387:3: Feedback
                     {
                      before(grammarAccess.getKEYWORDAccess().getFeedbackKeyword_3()); 
                     match(input,Feedback,FOLLOW_2); 
@@ -7224,10 +7306,10 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
                     }
                     break;
                 case 5 :
-                    // InternalResolutionModelParser.g:2367:2: ( Name )
+                    // InternalResolutionModelParser.g:2392:2: ( Name )
                     {
-                    // InternalResolutionModelParser.g:2367:2: ( Name )
-                    // InternalResolutionModelParser.g:2368:3: Name
+                    // InternalResolutionModelParser.g:2392:2: ( Name )
+                    // InternalResolutionModelParser.g:2393:3: Name
                     {
                      before(grammarAccess.getKEYWORDAccess().getNameKeyword_4()); 
                     match(input,Name,FOLLOW_2); 
@@ -7239,10 +7321,10 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
                     }
                     break;
                 case 6 :
-                    // InternalResolutionModelParser.g:2373:2: ( Value )
+                    // InternalResolutionModelParser.g:2398:2: ( Value )
                     {
-                    // InternalResolutionModelParser.g:2373:2: ( Value )
-                    // InternalResolutionModelParser.g:2374:3: Value
+                    // InternalResolutionModelParser.g:2398:2: ( Value )
+                    // InternalResolutionModelParser.g:2399:3: Value
                     {
                      before(grammarAccess.getKEYWORDAccess().getValueKeyword_5()); 
                     match(input,Value,FOLLOW_2); 
@@ -7254,10 +7336,10 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
                     }
                     break;
                 case 7 :
-                    // InternalResolutionModelParser.g:2379:2: ( Service )
+                    // InternalResolutionModelParser.g:2404:2: ( Service )
                     {
-                    // InternalResolutionModelParser.g:2379:2: ( Service )
-                    // InternalResolutionModelParser.g:2380:3: Service
+                    // InternalResolutionModelParser.g:2404:2: ( Service )
+                    // InternalResolutionModelParser.g:2405:3: Service
                     {
                      before(grammarAccess.getKEYWORDAccess().getServiceKeyword_6()); 
                     match(input,Service,FOLLOW_2); 
@@ -7269,10 +7351,10 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
                     }
                     break;
                 case 8 :
-                    // InternalResolutionModelParser.g:2385:2: ( Type )
+                    // InternalResolutionModelParser.g:2410:2: ( Type )
                     {
-                    // InternalResolutionModelParser.g:2385:2: ( Type )
-                    // InternalResolutionModelParser.g:2386:3: Type
+                    // InternalResolutionModelParser.g:2410:2: ( Type )
+                    // InternalResolutionModelParser.g:2411:3: Type
                     {
                      before(grammarAccess.getKEYWORDAccess().getTypeKeyword_7()); 
                     match(input,Type,FOLLOW_2); 
@@ -7284,10 +7366,10 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
                     }
                     break;
                 case 9 :
-                    // InternalResolutionModelParser.g:2391:2: ( Action )
+                    // InternalResolutionModelParser.g:2416:2: ( Action )
                     {
-                    // InternalResolutionModelParser.g:2391:2: ( Action )
-                    // InternalResolutionModelParser.g:2392:3: Action
+                    // InternalResolutionModelParser.g:2416:2: ( Action )
+                    // InternalResolutionModelParser.g:2417:3: Action
                     {
                      before(grammarAccess.getKEYWORDAccess().getActionKeyword_8()); 
                     match(input,Action,FOLLOW_2); 
@@ -7299,10 +7381,10 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
                     }
                     break;
                 case 10 :
-                    // InternalResolutionModelParser.g:2397:2: ( Duration )
+                    // InternalResolutionModelParser.g:2422:2: ( Duration )
                     {
-                    // InternalResolutionModelParser.g:2397:2: ( Duration )
-                    // InternalResolutionModelParser.g:2398:3: Duration
+                    // InternalResolutionModelParser.g:2422:2: ( Duration )
+                    // InternalResolutionModelParser.g:2423:3: Duration
                     {
                      before(grammarAccess.getKEYWORDAccess().getDurationKeyword_9()); 
                     match(input,Duration,FOLLOW_2); 
@@ -7314,14 +7396,29 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
                     }
                     break;
                 case 11 :
-                    // InternalResolutionModelParser.g:2403:2: ( Time )
+                    // InternalResolutionModelParser.g:2428:2: ( Time )
                     {
-                    // InternalResolutionModelParser.g:2403:2: ( Time )
-                    // InternalResolutionModelParser.g:2404:3: Time
+                    // InternalResolutionModelParser.g:2428:2: ( Time )
+                    // InternalResolutionModelParser.g:2429:3: Time
                     {
                      before(grammarAccess.getKEYWORDAccess().getTimeKeyword_10()); 
                     match(input,Time,FOLLOW_2); 
                      after(grammarAccess.getKEYWORDAccess().getTimeKeyword_10()); 
+
+                    }
+
+
+                    }
+                    break;
+                case 12 :
+                    // InternalResolutionModelParser.g:2434:2: ( Node )
+                    {
+                    // InternalResolutionModelParser.g:2434:2: ( Node )
+                    // InternalResolutionModelParser.g:2435:3: Node
+                    {
+                     before(grammarAccess.getKEYWORDAccess().getNodeKeyword_11()); 
+                    match(input,Node,FOLLOW_2); 
+                     after(grammarAccess.getKEYWORDAccess().getNodeKeyword_11()); 
 
                     }
 
@@ -7346,13 +7443,13 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__EString__Alternatives"
-    // InternalResolutionModelParser.g:2413:1: rule__EString__Alternatives : ( ( RULE_STRING ) | ( RULE_ID ) );
+    // InternalResolutionModelParser.g:2444:1: rule__EString__Alternatives : ( ( RULE_STRING ) | ( RULE_ID ) );
     public final void rule__EString__Alternatives() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:2417:1: ( ( RULE_STRING ) | ( RULE_ID ) )
+            // InternalResolutionModelParser.g:2448:1: ( ( RULE_STRING ) | ( RULE_ID ) )
             int alt7=2;
             int LA7_0 = input.LA(1);
 
@@ -7370,10 +7467,10 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
             }
             switch (alt7) {
                 case 1 :
-                    // InternalResolutionModelParser.g:2418:2: ( RULE_STRING )
+                    // InternalResolutionModelParser.g:2449:2: ( RULE_STRING )
                     {
-                    // InternalResolutionModelParser.g:2418:2: ( RULE_STRING )
-                    // InternalResolutionModelParser.g:2419:3: RULE_STRING
+                    // InternalResolutionModelParser.g:2449:2: ( RULE_STRING )
+                    // InternalResolutionModelParser.g:2450:3: RULE_STRING
                     {
                      before(grammarAccess.getEStringAccess().getSTRINGTerminalRuleCall_0()); 
                     match(input,RULE_STRING,FOLLOW_2); 
@@ -7385,10 +7482,10 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
                     }
                     break;
                 case 2 :
-                    // InternalResolutionModelParser.g:2424:2: ( RULE_ID )
+                    // InternalResolutionModelParser.g:2455:2: ( RULE_ID )
                     {
-                    // InternalResolutionModelParser.g:2424:2: ( RULE_ID )
-                    // InternalResolutionModelParser.g:2425:3: RULE_ID
+                    // InternalResolutionModelParser.g:2455:2: ( RULE_ID )
+                    // InternalResolutionModelParser.g:2456:3: RULE_ID
                     {
                      before(grammarAccess.getEStringAccess().getIDTerminalRuleCall_1()); 
                     match(input,RULE_ID,FOLLOW_2); 
@@ -7416,34 +7513,29 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
     // $ANTLR end "rule__EString__Alternatives"
 
 
-    // $ANTLR start "rule__LifecycleState__Alternatives"
-    // InternalResolutionModelParser.g:2434:1: rule__LifecycleState__Alternatives : ( ( ( UNCONFIGURED ) ) | ( ( INACTIVE ) ) | ( ( ACTIVE ) ) | ( ( FINALIZED ) ) );
-    public final void rule__LifecycleState__Alternatives() throws RecognitionException {
+    // $ANTLR start "rule__RosNames__Alternatives"
+    // InternalResolutionModelParser.g:2465:1: rule__RosNames__Alternatives : ( ( RULE_ROS_CONVENTION_A ) | ( RULE_ID ) | ( Node ) );
+    public final void rule__RosNames__Alternatives() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:2438:1: ( ( ( UNCONFIGURED ) ) | ( ( INACTIVE ) ) | ( ( ACTIVE ) ) | ( ( FINALIZED ) ) )
-            int alt8=4;
+            // InternalResolutionModelParser.g:2469:1: ( ( RULE_ROS_CONVENTION_A ) | ( RULE_ID ) | ( Node ) )
+            int alt8=3;
             switch ( input.LA(1) ) {
-            case UNCONFIGURED:
+            case RULE_ROS_CONVENTION_A:
                 {
                 alt8=1;
                 }
                 break;
-            case INACTIVE:
+            case RULE_ID:
                 {
                 alt8=2;
                 }
                 break;
-            case ACTIVE:
+            case Node:
                 {
                 alt8=3;
-                }
-                break;
-            case FINALIZED:
-                {
-                alt8=4;
                 }
                 break;
             default:
@@ -7455,14 +7547,114 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
             switch (alt8) {
                 case 1 :
-                    // InternalResolutionModelParser.g:2439:2: ( ( UNCONFIGURED ) )
+                    // InternalResolutionModelParser.g:2470:2: ( RULE_ROS_CONVENTION_A )
                     {
-                    // InternalResolutionModelParser.g:2439:2: ( ( UNCONFIGURED ) )
-                    // InternalResolutionModelParser.g:2440:3: ( UNCONFIGURED )
+                    // InternalResolutionModelParser.g:2470:2: ( RULE_ROS_CONVENTION_A )
+                    // InternalResolutionModelParser.g:2471:3: RULE_ROS_CONVENTION_A
+                    {
+                     before(grammarAccess.getRosNamesAccess().getROS_CONVENTION_ATerminalRuleCall_0()); 
+                    match(input,RULE_ROS_CONVENTION_A,FOLLOW_2); 
+                     after(grammarAccess.getRosNamesAccess().getROS_CONVENTION_ATerminalRuleCall_0()); 
+
+                    }
+
+
+                    }
+                    break;
+                case 2 :
+                    // InternalResolutionModelParser.g:2476:2: ( RULE_ID )
+                    {
+                    // InternalResolutionModelParser.g:2476:2: ( RULE_ID )
+                    // InternalResolutionModelParser.g:2477:3: RULE_ID
+                    {
+                     before(grammarAccess.getRosNamesAccess().getIDTerminalRuleCall_1()); 
+                    match(input,RULE_ID,FOLLOW_2); 
+                     after(grammarAccess.getRosNamesAccess().getIDTerminalRuleCall_1()); 
+
+                    }
+
+
+                    }
+                    break;
+                case 3 :
+                    // InternalResolutionModelParser.g:2482:2: ( Node )
+                    {
+                    // InternalResolutionModelParser.g:2482:2: ( Node )
+                    // InternalResolutionModelParser.g:2483:3: Node
+                    {
+                     before(grammarAccess.getRosNamesAccess().getNodeKeyword_2()); 
+                    match(input,Node,FOLLOW_2); 
+                     after(grammarAccess.getRosNamesAccess().getNodeKeyword_2()); 
+
+                    }
+
+
+                    }
+                    break;
+
+            }
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__RosNames__Alternatives"
+
+
+    // $ANTLR start "rule__LifecycleState__Alternatives"
+    // InternalResolutionModelParser.g:2492:1: rule__LifecycleState__Alternatives : ( ( ( UNCONFIGURED ) ) | ( ( INACTIVE ) ) | ( ( ACTIVE ) ) | ( ( FINALIZED ) ) );
+    public final void rule__LifecycleState__Alternatives() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalResolutionModelParser.g:2496:1: ( ( ( UNCONFIGURED ) ) | ( ( INACTIVE ) ) | ( ( ACTIVE ) ) | ( ( FINALIZED ) ) )
+            int alt9=4;
+            switch ( input.LA(1) ) {
+            case UNCONFIGURED:
+                {
+                alt9=1;
+                }
+                break;
+            case INACTIVE:
+                {
+                alt9=2;
+                }
+                break;
+            case ACTIVE:
+                {
+                alt9=3;
+                }
+                break;
+            case FINALIZED:
+                {
+                alt9=4;
+                }
+                break;
+            default:
+                NoViableAltException nvae =
+                    new NoViableAltException("", 9, 0, input);
+
+                throw nvae;
+            }
+
+            switch (alt9) {
+                case 1 :
+                    // InternalResolutionModelParser.g:2497:2: ( ( UNCONFIGURED ) )
+                    {
+                    // InternalResolutionModelParser.g:2497:2: ( ( UNCONFIGURED ) )
+                    // InternalResolutionModelParser.g:2498:3: ( UNCONFIGURED )
                     {
                      before(grammarAccess.getLifecycleStateAccess().getUNCONFIGUREDEnumLiteralDeclaration_0()); 
-                    // InternalResolutionModelParser.g:2441:3: ( UNCONFIGURED )
-                    // InternalResolutionModelParser.g:2441:4: UNCONFIGURED
+                    // InternalResolutionModelParser.g:2499:3: ( UNCONFIGURED )
+                    // InternalResolutionModelParser.g:2499:4: UNCONFIGURED
                     {
                     match(input,UNCONFIGURED,FOLLOW_2); 
 
@@ -7476,14 +7668,14 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
                     }
                     break;
                 case 2 :
-                    // InternalResolutionModelParser.g:2445:2: ( ( INACTIVE ) )
+                    // InternalResolutionModelParser.g:2503:2: ( ( INACTIVE ) )
                     {
-                    // InternalResolutionModelParser.g:2445:2: ( ( INACTIVE ) )
-                    // InternalResolutionModelParser.g:2446:3: ( INACTIVE )
+                    // InternalResolutionModelParser.g:2503:2: ( ( INACTIVE ) )
+                    // InternalResolutionModelParser.g:2504:3: ( INACTIVE )
                     {
                      before(grammarAccess.getLifecycleStateAccess().getINACTIVEEnumLiteralDeclaration_1()); 
-                    // InternalResolutionModelParser.g:2447:3: ( INACTIVE )
-                    // InternalResolutionModelParser.g:2447:4: INACTIVE
+                    // InternalResolutionModelParser.g:2505:3: ( INACTIVE )
+                    // InternalResolutionModelParser.g:2505:4: INACTIVE
                     {
                     match(input,INACTIVE,FOLLOW_2); 
 
@@ -7497,14 +7689,14 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
                     }
                     break;
                 case 3 :
-                    // InternalResolutionModelParser.g:2451:2: ( ( ACTIVE ) )
+                    // InternalResolutionModelParser.g:2509:2: ( ( ACTIVE ) )
                     {
-                    // InternalResolutionModelParser.g:2451:2: ( ( ACTIVE ) )
-                    // InternalResolutionModelParser.g:2452:3: ( ACTIVE )
+                    // InternalResolutionModelParser.g:2509:2: ( ( ACTIVE ) )
+                    // InternalResolutionModelParser.g:2510:3: ( ACTIVE )
                     {
                      before(grammarAccess.getLifecycleStateAccess().getACTIVEEnumLiteralDeclaration_2()); 
-                    // InternalResolutionModelParser.g:2453:3: ( ACTIVE )
-                    // InternalResolutionModelParser.g:2453:4: ACTIVE
+                    // InternalResolutionModelParser.g:2511:3: ( ACTIVE )
+                    // InternalResolutionModelParser.g:2511:4: ACTIVE
                     {
                     match(input,ACTIVE,FOLLOW_2); 
 
@@ -7518,14 +7710,14 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
                     }
                     break;
                 case 4 :
-                    // InternalResolutionModelParser.g:2457:2: ( ( FINALIZED ) )
+                    // InternalResolutionModelParser.g:2515:2: ( ( FINALIZED ) )
                     {
-                    // InternalResolutionModelParser.g:2457:2: ( ( FINALIZED ) )
-                    // InternalResolutionModelParser.g:2458:3: ( FINALIZED )
+                    // InternalResolutionModelParser.g:2515:2: ( ( FINALIZED ) )
+                    // InternalResolutionModelParser.g:2516:3: ( FINALIZED )
                     {
                      before(grammarAccess.getLifecycleStateAccess().getFINALIZEDEnumLiteralDeclaration_3()); 
-                    // InternalResolutionModelParser.g:2459:3: ( FINALIZED )
-                    // InternalResolutionModelParser.g:2459:4: FINALIZED
+                    // InternalResolutionModelParser.g:2517:3: ( FINALIZED )
+                    // InternalResolutionModelParser.g:2517:4: FINALIZED
                     {
                     match(input,FINALIZED,FOLLOW_2); 
 
@@ -7556,14 +7748,14 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ResolutionModel__Group__0"
-    // InternalResolutionModelParser.g:2467:1: rule__ResolutionModel__Group__0 : rule__ResolutionModel__Group__0__Impl rule__ResolutionModel__Group__1 ;
+    // InternalResolutionModelParser.g:2525:1: rule__ResolutionModel__Group__0 : rule__ResolutionModel__Group__0__Impl rule__ResolutionModel__Group__1 ;
     public final void rule__ResolutionModel__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:2471:1: ( rule__ResolutionModel__Group__0__Impl rule__ResolutionModel__Group__1 )
-            // InternalResolutionModelParser.g:2472:2: rule__ResolutionModel__Group__0__Impl rule__ResolutionModel__Group__1
+            // InternalResolutionModelParser.g:2529:1: ( rule__ResolutionModel__Group__0__Impl rule__ResolutionModel__Group__1 )
+            // InternalResolutionModelParser.g:2530:2: rule__ResolutionModel__Group__0__Impl rule__ResolutionModel__Group__1
             {
             pushFollow(FOLLOW_3);
             rule__ResolutionModel__Group__0__Impl();
@@ -7594,17 +7786,17 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ResolutionModel__Group__0__Impl"
-    // InternalResolutionModelParser.g:2479:1: rule__ResolutionModel__Group__0__Impl : ( Name ) ;
+    // InternalResolutionModelParser.g:2537:1: rule__ResolutionModel__Group__0__Impl : ( Name ) ;
     public final void rule__ResolutionModel__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:2483:1: ( ( Name ) )
-            // InternalResolutionModelParser.g:2484:1: ( Name )
+            // InternalResolutionModelParser.g:2541:1: ( ( Name ) )
+            // InternalResolutionModelParser.g:2542:1: ( Name )
             {
-            // InternalResolutionModelParser.g:2484:1: ( Name )
-            // InternalResolutionModelParser.g:2485:2: Name
+            // InternalResolutionModelParser.g:2542:1: ( Name )
+            // InternalResolutionModelParser.g:2543:2: Name
             {
              before(grammarAccess.getResolutionModelAccess().getNameKeyword_0()); 
             match(input,Name,FOLLOW_2); 
@@ -7631,14 +7823,14 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ResolutionModel__Group__1"
-    // InternalResolutionModelParser.g:2494:1: rule__ResolutionModel__Group__1 : rule__ResolutionModel__Group__1__Impl rule__ResolutionModel__Group__2 ;
+    // InternalResolutionModelParser.g:2552:1: rule__ResolutionModel__Group__1 : rule__ResolutionModel__Group__1__Impl rule__ResolutionModel__Group__2 ;
     public final void rule__ResolutionModel__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:2498:1: ( rule__ResolutionModel__Group__1__Impl rule__ResolutionModel__Group__2 )
-            // InternalResolutionModelParser.g:2499:2: rule__ResolutionModel__Group__1__Impl rule__ResolutionModel__Group__2
+            // InternalResolutionModelParser.g:2556:1: ( rule__ResolutionModel__Group__1__Impl rule__ResolutionModel__Group__2 )
+            // InternalResolutionModelParser.g:2557:2: rule__ResolutionModel__Group__1__Impl rule__ResolutionModel__Group__2
             {
             pushFollow(FOLLOW_4);
             rule__ResolutionModel__Group__1__Impl();
@@ -7669,21 +7861,21 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ResolutionModel__Group__1__Impl"
-    // InternalResolutionModelParser.g:2506:1: rule__ResolutionModel__Group__1__Impl : ( ( rule__ResolutionModel__NameAssignment_1 ) ) ;
+    // InternalResolutionModelParser.g:2564:1: rule__ResolutionModel__Group__1__Impl : ( ( rule__ResolutionModel__NameAssignment_1 ) ) ;
     public final void rule__ResolutionModel__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:2510:1: ( ( ( rule__ResolutionModel__NameAssignment_1 ) ) )
-            // InternalResolutionModelParser.g:2511:1: ( ( rule__ResolutionModel__NameAssignment_1 ) )
+            // InternalResolutionModelParser.g:2568:1: ( ( ( rule__ResolutionModel__NameAssignment_1 ) ) )
+            // InternalResolutionModelParser.g:2569:1: ( ( rule__ResolutionModel__NameAssignment_1 ) )
             {
-            // InternalResolutionModelParser.g:2511:1: ( ( rule__ResolutionModel__NameAssignment_1 ) )
-            // InternalResolutionModelParser.g:2512:2: ( rule__ResolutionModel__NameAssignment_1 )
+            // InternalResolutionModelParser.g:2569:1: ( ( rule__ResolutionModel__NameAssignment_1 ) )
+            // InternalResolutionModelParser.g:2570:2: ( rule__ResolutionModel__NameAssignment_1 )
             {
              before(grammarAccess.getResolutionModelAccess().getNameAssignment_1()); 
-            // InternalResolutionModelParser.g:2513:2: ( rule__ResolutionModel__NameAssignment_1 )
-            // InternalResolutionModelParser.g:2513:3: rule__ResolutionModel__NameAssignment_1
+            // InternalResolutionModelParser.g:2571:2: ( rule__ResolutionModel__NameAssignment_1 )
+            // InternalResolutionModelParser.g:2571:3: rule__ResolutionModel__NameAssignment_1
             {
             pushFollow(FOLLOW_2);
             rule__ResolutionModel__NameAssignment_1();
@@ -7716,14 +7908,14 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ResolutionModel__Group__2"
-    // InternalResolutionModelParser.g:2521:1: rule__ResolutionModel__Group__2 : rule__ResolutionModel__Group__2__Impl rule__ResolutionModel__Group__3 ;
+    // InternalResolutionModelParser.g:2579:1: rule__ResolutionModel__Group__2 : rule__ResolutionModel__Group__2__Impl rule__ResolutionModel__Group__3 ;
     public final void rule__ResolutionModel__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:2525:1: ( rule__ResolutionModel__Group__2__Impl rule__ResolutionModel__Group__3 )
-            // InternalResolutionModelParser.g:2526:2: rule__ResolutionModel__Group__2__Impl rule__ResolutionModel__Group__3
+            // InternalResolutionModelParser.g:2583:1: ( rule__ResolutionModel__Group__2__Impl rule__ResolutionModel__Group__3 )
+            // InternalResolutionModelParser.g:2584:2: rule__ResolutionModel__Group__2__Impl rule__ResolutionModel__Group__3
             {
             pushFollow(FOLLOW_5);
             rule__ResolutionModel__Group__2__Impl();
@@ -7754,17 +7946,17 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ResolutionModel__Group__2__Impl"
-    // InternalResolutionModelParser.g:2533:1: rule__ResolutionModel__Group__2__Impl : ( Semicolon ) ;
+    // InternalResolutionModelParser.g:2591:1: rule__ResolutionModel__Group__2__Impl : ( Semicolon ) ;
     public final void rule__ResolutionModel__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:2537:1: ( ( Semicolon ) )
-            // InternalResolutionModelParser.g:2538:1: ( Semicolon )
+            // InternalResolutionModelParser.g:2595:1: ( ( Semicolon ) )
+            // InternalResolutionModelParser.g:2596:1: ( Semicolon )
             {
-            // InternalResolutionModelParser.g:2538:1: ( Semicolon )
-            // InternalResolutionModelParser.g:2539:2: Semicolon
+            // InternalResolutionModelParser.g:2596:1: ( Semicolon )
+            // InternalResolutionModelParser.g:2597:2: Semicolon
             {
              before(grammarAccess.getResolutionModelAccess().getSemicolonKeyword_2()); 
             match(input,Semicolon,FOLLOW_2); 
@@ -7791,14 +7983,14 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ResolutionModel__Group__3"
-    // InternalResolutionModelParser.g:2548:1: rule__ResolutionModel__Group__3 : rule__ResolutionModel__Group__3__Impl rule__ResolutionModel__Group__4 ;
+    // InternalResolutionModelParser.g:2606:1: rule__ResolutionModel__Group__3 : rule__ResolutionModel__Group__3__Impl rule__ResolutionModel__Group__4 ;
     public final void rule__ResolutionModel__Group__3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:2552:1: ( rule__ResolutionModel__Group__3__Impl rule__ResolutionModel__Group__4 )
-            // InternalResolutionModelParser.g:2553:2: rule__ResolutionModel__Group__3__Impl rule__ResolutionModel__Group__4
+            // InternalResolutionModelParser.g:2610:1: ( rule__ResolutionModel__Group__3__Impl rule__ResolutionModel__Group__4 )
+            // InternalResolutionModelParser.g:2611:2: rule__ResolutionModel__Group__3__Impl rule__ResolutionModel__Group__4
             {
             pushFollow(FOLLOW_5);
             rule__ResolutionModel__Group__3__Impl();
@@ -7829,33 +8021,33 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ResolutionModel__Group__3__Impl"
-    // InternalResolutionModelParser.g:2560:1: rule__ResolutionModel__Group__3__Impl : ( ( rule__ResolutionModel__ImportsAssignment_3 )* ) ;
+    // InternalResolutionModelParser.g:2618:1: rule__ResolutionModel__Group__3__Impl : ( ( rule__ResolutionModel__ImportsAssignment_3 )* ) ;
     public final void rule__ResolutionModel__Group__3__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:2564:1: ( ( ( rule__ResolutionModel__ImportsAssignment_3 )* ) )
-            // InternalResolutionModelParser.g:2565:1: ( ( rule__ResolutionModel__ImportsAssignment_3 )* )
+            // InternalResolutionModelParser.g:2622:1: ( ( ( rule__ResolutionModel__ImportsAssignment_3 )* ) )
+            // InternalResolutionModelParser.g:2623:1: ( ( rule__ResolutionModel__ImportsAssignment_3 )* )
             {
-            // InternalResolutionModelParser.g:2565:1: ( ( rule__ResolutionModel__ImportsAssignment_3 )* )
-            // InternalResolutionModelParser.g:2566:2: ( rule__ResolutionModel__ImportsAssignment_3 )*
+            // InternalResolutionModelParser.g:2623:1: ( ( rule__ResolutionModel__ImportsAssignment_3 )* )
+            // InternalResolutionModelParser.g:2624:2: ( rule__ResolutionModel__ImportsAssignment_3 )*
             {
              before(grammarAccess.getResolutionModelAccess().getImportsAssignment_3()); 
-            // InternalResolutionModelParser.g:2567:2: ( rule__ResolutionModel__ImportsAssignment_3 )*
-            loop9:
+            // InternalResolutionModelParser.g:2625:2: ( rule__ResolutionModel__ImportsAssignment_3 )*
+            loop10:
             do {
-                int alt9=2;
-                int LA9_0 = input.LA(1);
+                int alt10=2;
+                int LA10_0 = input.LA(1);
 
-                if ( (LA9_0==Import) ) {
-                    alt9=1;
+                if ( (LA10_0==Import) ) {
+                    alt10=1;
                 }
 
 
-                switch (alt9) {
+                switch (alt10) {
             	case 1 :
-            	    // InternalResolutionModelParser.g:2567:3: rule__ResolutionModel__ImportsAssignment_3
+            	    // InternalResolutionModelParser.g:2625:3: rule__ResolutionModel__ImportsAssignment_3
             	    {
             	    pushFollow(FOLLOW_6);
             	    rule__ResolutionModel__ImportsAssignment_3();
@@ -7867,7 +8059,7 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
             	    break;
 
             	default :
-            	    break loop9;
+            	    break loop10;
                 }
             } while (true);
 
@@ -7894,14 +8086,14 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ResolutionModel__Group__4"
-    // InternalResolutionModelParser.g:2575:1: rule__ResolutionModel__Group__4 : rule__ResolutionModel__Group__4__Impl rule__ResolutionModel__Group__5 ;
+    // InternalResolutionModelParser.g:2633:1: rule__ResolutionModel__Group__4 : rule__ResolutionModel__Group__4__Impl rule__ResolutionModel__Group__5 ;
     public final void rule__ResolutionModel__Group__4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:2579:1: ( rule__ResolutionModel__Group__4__Impl rule__ResolutionModel__Group__5 )
-            // InternalResolutionModelParser.g:2580:2: rule__ResolutionModel__Group__4__Impl rule__ResolutionModel__Group__5
+            // InternalResolutionModelParser.g:2637:1: ( rule__ResolutionModel__Group__4__Impl rule__ResolutionModel__Group__5 )
+            // InternalResolutionModelParser.g:2638:2: rule__ResolutionModel__Group__4__Impl rule__ResolutionModel__Group__5
             {
             pushFollow(FOLLOW_3);
             rule__ResolutionModel__Group__4__Impl();
@@ -7932,17 +8124,17 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ResolutionModel__Group__4__Impl"
-    // InternalResolutionModelParser.g:2587:1: rule__ResolutionModel__Group__4__Impl : ( Variability_model ) ;
+    // InternalResolutionModelParser.g:2645:1: rule__ResolutionModel__Group__4__Impl : ( Variability_model ) ;
     public final void rule__ResolutionModel__Group__4__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:2591:1: ( ( Variability_model ) )
-            // InternalResolutionModelParser.g:2592:1: ( Variability_model )
+            // InternalResolutionModelParser.g:2649:1: ( ( Variability_model ) )
+            // InternalResolutionModelParser.g:2650:1: ( Variability_model )
             {
-            // InternalResolutionModelParser.g:2592:1: ( Variability_model )
-            // InternalResolutionModelParser.g:2593:2: Variability_model
+            // InternalResolutionModelParser.g:2650:1: ( Variability_model )
+            // InternalResolutionModelParser.g:2651:2: Variability_model
             {
              before(grammarAccess.getResolutionModelAccess().getVariability_modelKeyword_4()); 
             match(input,Variability_model,FOLLOW_2); 
@@ -7969,14 +8161,14 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ResolutionModel__Group__5"
-    // InternalResolutionModelParser.g:2602:1: rule__ResolutionModel__Group__5 : rule__ResolutionModel__Group__5__Impl rule__ResolutionModel__Group__6 ;
+    // InternalResolutionModelParser.g:2660:1: rule__ResolutionModel__Group__5 : rule__ResolutionModel__Group__5__Impl rule__ResolutionModel__Group__6 ;
     public final void rule__ResolutionModel__Group__5() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:2606:1: ( rule__ResolutionModel__Group__5__Impl rule__ResolutionModel__Group__6 )
-            // InternalResolutionModelParser.g:2607:2: rule__ResolutionModel__Group__5__Impl rule__ResolutionModel__Group__6
+            // InternalResolutionModelParser.g:2664:1: ( rule__ResolutionModel__Group__5__Impl rule__ResolutionModel__Group__6 )
+            // InternalResolutionModelParser.g:2665:2: rule__ResolutionModel__Group__5__Impl rule__ResolutionModel__Group__6
             {
             pushFollow(FOLLOW_4);
             rule__ResolutionModel__Group__5__Impl();
@@ -8007,21 +8199,21 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ResolutionModel__Group__5__Impl"
-    // InternalResolutionModelParser.g:2614:1: rule__ResolutionModel__Group__5__Impl : ( ( rule__ResolutionModel__FeatureModelAssignment_5 ) ) ;
+    // InternalResolutionModelParser.g:2672:1: rule__ResolutionModel__Group__5__Impl : ( ( rule__ResolutionModel__FeatureModelAssignment_5 ) ) ;
     public final void rule__ResolutionModel__Group__5__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:2618:1: ( ( ( rule__ResolutionModel__FeatureModelAssignment_5 ) ) )
-            // InternalResolutionModelParser.g:2619:1: ( ( rule__ResolutionModel__FeatureModelAssignment_5 ) )
+            // InternalResolutionModelParser.g:2676:1: ( ( ( rule__ResolutionModel__FeatureModelAssignment_5 ) ) )
+            // InternalResolutionModelParser.g:2677:1: ( ( rule__ResolutionModel__FeatureModelAssignment_5 ) )
             {
-            // InternalResolutionModelParser.g:2619:1: ( ( rule__ResolutionModel__FeatureModelAssignment_5 ) )
-            // InternalResolutionModelParser.g:2620:2: ( rule__ResolutionModel__FeatureModelAssignment_5 )
+            // InternalResolutionModelParser.g:2677:1: ( ( rule__ResolutionModel__FeatureModelAssignment_5 ) )
+            // InternalResolutionModelParser.g:2678:2: ( rule__ResolutionModel__FeatureModelAssignment_5 )
             {
              before(grammarAccess.getResolutionModelAccess().getFeatureModelAssignment_5()); 
-            // InternalResolutionModelParser.g:2621:2: ( rule__ResolutionModel__FeatureModelAssignment_5 )
-            // InternalResolutionModelParser.g:2621:3: rule__ResolutionModel__FeatureModelAssignment_5
+            // InternalResolutionModelParser.g:2679:2: ( rule__ResolutionModel__FeatureModelAssignment_5 )
+            // InternalResolutionModelParser.g:2679:3: rule__ResolutionModel__FeatureModelAssignment_5
             {
             pushFollow(FOLLOW_2);
             rule__ResolutionModel__FeatureModelAssignment_5();
@@ -8054,14 +8246,14 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ResolutionModel__Group__6"
-    // InternalResolutionModelParser.g:2629:1: rule__ResolutionModel__Group__6 : rule__ResolutionModel__Group__6__Impl rule__ResolutionModel__Group__7 ;
+    // InternalResolutionModelParser.g:2687:1: rule__ResolutionModel__Group__6 : rule__ResolutionModel__Group__6__Impl rule__ResolutionModel__Group__7 ;
     public final void rule__ResolutionModel__Group__6() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:2633:1: ( rule__ResolutionModel__Group__6__Impl rule__ResolutionModel__Group__7 )
-            // InternalResolutionModelParser.g:2634:2: rule__ResolutionModel__Group__6__Impl rule__ResolutionModel__Group__7
+            // InternalResolutionModelParser.g:2691:1: ( rule__ResolutionModel__Group__6__Impl rule__ResolutionModel__Group__7 )
+            // InternalResolutionModelParser.g:2692:2: rule__ResolutionModel__Group__6__Impl rule__ResolutionModel__Group__7
             {
             pushFollow(FOLLOW_7);
             rule__ResolutionModel__Group__6__Impl();
@@ -8092,17 +8284,17 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ResolutionModel__Group__6__Impl"
-    // InternalResolutionModelParser.g:2641:1: rule__ResolutionModel__Group__6__Impl : ( Semicolon ) ;
+    // InternalResolutionModelParser.g:2699:1: rule__ResolutionModel__Group__6__Impl : ( Semicolon ) ;
     public final void rule__ResolutionModel__Group__6__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:2645:1: ( ( Semicolon ) )
-            // InternalResolutionModelParser.g:2646:1: ( Semicolon )
+            // InternalResolutionModelParser.g:2703:1: ( ( Semicolon ) )
+            // InternalResolutionModelParser.g:2704:1: ( Semicolon )
             {
-            // InternalResolutionModelParser.g:2646:1: ( Semicolon )
-            // InternalResolutionModelParser.g:2647:2: Semicolon
+            // InternalResolutionModelParser.g:2704:1: ( Semicolon )
+            // InternalResolutionModelParser.g:2705:2: Semicolon
             {
              before(grammarAccess.getResolutionModelAccess().getSemicolonKeyword_6()); 
             match(input,Semicolon,FOLLOW_2); 
@@ -8129,14 +8321,14 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ResolutionModel__Group__7"
-    // InternalResolutionModelParser.g:2656:1: rule__ResolutionModel__Group__7 : rule__ResolutionModel__Group__7__Impl rule__ResolutionModel__Group__8 ;
+    // InternalResolutionModelParser.g:2714:1: rule__ResolutionModel__Group__7 : rule__ResolutionModel__Group__7__Impl rule__ResolutionModel__Group__8 ;
     public final void rule__ResolutionModel__Group__7() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:2660:1: ( rule__ResolutionModel__Group__7__Impl rule__ResolutionModel__Group__8 )
-            // InternalResolutionModelParser.g:2661:2: rule__ResolutionModel__Group__7__Impl rule__ResolutionModel__Group__8
+            // InternalResolutionModelParser.g:2718:1: ( rule__ResolutionModel__Group__7__Impl rule__ResolutionModel__Group__8 )
+            // InternalResolutionModelParser.g:2719:2: rule__ResolutionModel__Group__7__Impl rule__ResolutionModel__Group__8
             {
             pushFollow(FOLLOW_3);
             rule__ResolutionModel__Group__7__Impl();
@@ -8167,17 +8359,17 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ResolutionModel__Group__7__Impl"
-    // InternalResolutionModelParser.g:2668:1: rule__ResolutionModel__Group__7__Impl : ( Ros_system ) ;
+    // InternalResolutionModelParser.g:2726:1: rule__ResolutionModel__Group__7__Impl : ( Ros_system ) ;
     public final void rule__ResolutionModel__Group__7__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:2672:1: ( ( Ros_system ) )
-            // InternalResolutionModelParser.g:2673:1: ( Ros_system )
+            // InternalResolutionModelParser.g:2730:1: ( ( Ros_system ) )
+            // InternalResolutionModelParser.g:2731:1: ( Ros_system )
             {
-            // InternalResolutionModelParser.g:2673:1: ( Ros_system )
-            // InternalResolutionModelParser.g:2674:2: Ros_system
+            // InternalResolutionModelParser.g:2731:1: ( Ros_system )
+            // InternalResolutionModelParser.g:2732:2: Ros_system
             {
              before(grammarAccess.getResolutionModelAccess().getRos_systemKeyword_7()); 
             match(input,Ros_system,FOLLOW_2); 
@@ -8204,14 +8396,14 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ResolutionModel__Group__8"
-    // InternalResolutionModelParser.g:2683:1: rule__ResolutionModel__Group__8 : rule__ResolutionModel__Group__8__Impl rule__ResolutionModel__Group__9 ;
+    // InternalResolutionModelParser.g:2741:1: rule__ResolutionModel__Group__8 : rule__ResolutionModel__Group__8__Impl rule__ResolutionModel__Group__9 ;
     public final void rule__ResolutionModel__Group__8() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:2687:1: ( rule__ResolutionModel__Group__8__Impl rule__ResolutionModel__Group__9 )
-            // InternalResolutionModelParser.g:2688:2: rule__ResolutionModel__Group__8__Impl rule__ResolutionModel__Group__9
+            // InternalResolutionModelParser.g:2745:1: ( rule__ResolutionModel__Group__8__Impl rule__ResolutionModel__Group__9 )
+            // InternalResolutionModelParser.g:2746:2: rule__ResolutionModel__Group__8__Impl rule__ResolutionModel__Group__9
             {
             pushFollow(FOLLOW_4);
             rule__ResolutionModel__Group__8__Impl();
@@ -8242,21 +8434,21 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ResolutionModel__Group__8__Impl"
-    // InternalResolutionModelParser.g:2695:1: rule__ResolutionModel__Group__8__Impl : ( ( rule__ResolutionModel__RossystemAssignment_8 ) ) ;
+    // InternalResolutionModelParser.g:2753:1: rule__ResolutionModel__Group__8__Impl : ( ( rule__ResolutionModel__RossystemAssignment_8 ) ) ;
     public final void rule__ResolutionModel__Group__8__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:2699:1: ( ( ( rule__ResolutionModel__RossystemAssignment_8 ) ) )
-            // InternalResolutionModelParser.g:2700:1: ( ( rule__ResolutionModel__RossystemAssignment_8 ) )
+            // InternalResolutionModelParser.g:2757:1: ( ( ( rule__ResolutionModel__RossystemAssignment_8 ) ) )
+            // InternalResolutionModelParser.g:2758:1: ( ( rule__ResolutionModel__RossystemAssignment_8 ) )
             {
-            // InternalResolutionModelParser.g:2700:1: ( ( rule__ResolutionModel__RossystemAssignment_8 ) )
-            // InternalResolutionModelParser.g:2701:2: ( rule__ResolutionModel__RossystemAssignment_8 )
+            // InternalResolutionModelParser.g:2758:1: ( ( rule__ResolutionModel__RossystemAssignment_8 ) )
+            // InternalResolutionModelParser.g:2759:2: ( rule__ResolutionModel__RossystemAssignment_8 )
             {
              before(grammarAccess.getResolutionModelAccess().getRossystemAssignment_8()); 
-            // InternalResolutionModelParser.g:2702:2: ( rule__ResolutionModel__RossystemAssignment_8 )
-            // InternalResolutionModelParser.g:2702:3: rule__ResolutionModel__RossystemAssignment_8
+            // InternalResolutionModelParser.g:2760:2: ( rule__ResolutionModel__RossystemAssignment_8 )
+            // InternalResolutionModelParser.g:2760:3: rule__ResolutionModel__RossystemAssignment_8
             {
             pushFollow(FOLLOW_2);
             rule__ResolutionModel__RossystemAssignment_8();
@@ -8289,14 +8481,14 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ResolutionModel__Group__9"
-    // InternalResolutionModelParser.g:2710:1: rule__ResolutionModel__Group__9 : rule__ResolutionModel__Group__9__Impl rule__ResolutionModel__Group__10 ;
+    // InternalResolutionModelParser.g:2768:1: rule__ResolutionModel__Group__9 : rule__ResolutionModel__Group__9__Impl rule__ResolutionModel__Group__10 ;
     public final void rule__ResolutionModel__Group__9() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:2714:1: ( rule__ResolutionModel__Group__9__Impl rule__ResolutionModel__Group__10 )
-            // InternalResolutionModelParser.g:2715:2: rule__ResolutionModel__Group__9__Impl rule__ResolutionModel__Group__10
+            // InternalResolutionModelParser.g:2772:1: ( rule__ResolutionModel__Group__9__Impl rule__ResolutionModel__Group__10 )
+            // InternalResolutionModelParser.g:2773:2: rule__ResolutionModel__Group__9__Impl rule__ResolutionModel__Group__10
             {
             pushFollow(FOLLOW_8);
             rule__ResolutionModel__Group__9__Impl();
@@ -8327,17 +8519,17 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ResolutionModel__Group__9__Impl"
-    // InternalResolutionModelParser.g:2722:1: rule__ResolutionModel__Group__9__Impl : ( Semicolon ) ;
+    // InternalResolutionModelParser.g:2780:1: rule__ResolutionModel__Group__9__Impl : ( Semicolon ) ;
     public final void rule__ResolutionModel__Group__9__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:2726:1: ( ( Semicolon ) )
-            // InternalResolutionModelParser.g:2727:1: ( Semicolon )
+            // InternalResolutionModelParser.g:2784:1: ( ( Semicolon ) )
+            // InternalResolutionModelParser.g:2785:1: ( Semicolon )
             {
-            // InternalResolutionModelParser.g:2727:1: ( Semicolon )
-            // InternalResolutionModelParser.g:2728:2: Semicolon
+            // InternalResolutionModelParser.g:2785:1: ( Semicolon )
+            // InternalResolutionModelParser.g:2786:2: Semicolon
             {
              before(grammarAccess.getResolutionModelAccess().getSemicolonKeyword_9()); 
             match(input,Semicolon,FOLLOW_2); 
@@ -8364,14 +8556,14 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ResolutionModel__Group__10"
-    // InternalResolutionModelParser.g:2737:1: rule__ResolutionModel__Group__10 : rule__ResolutionModel__Group__10__Impl rule__ResolutionModel__Group__11 ;
+    // InternalResolutionModelParser.g:2795:1: rule__ResolutionModel__Group__10 : rule__ResolutionModel__Group__10__Impl rule__ResolutionModel__Group__11 ;
     public final void rule__ResolutionModel__Group__10() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:2741:1: ( rule__ResolutionModel__Group__10__Impl rule__ResolutionModel__Group__11 )
-            // InternalResolutionModelParser.g:2742:2: rule__ResolutionModel__Group__10__Impl rule__ResolutionModel__Group__11
+            // InternalResolutionModelParser.g:2799:1: ( rule__ResolutionModel__Group__10__Impl rule__ResolutionModel__Group__11 )
+            // InternalResolutionModelParser.g:2800:2: rule__ResolutionModel__Group__10__Impl rule__ResolutionModel__Group__11
             {
             pushFollow(FOLLOW_3);
             rule__ResolutionModel__Group__10__Impl();
@@ -8402,17 +8594,17 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ResolutionModel__Group__10__Impl"
-    // InternalResolutionModelParser.g:2749:1: rule__ResolutionModel__Group__10__Impl : ( Resolutions ) ;
+    // InternalResolutionModelParser.g:2807:1: rule__ResolutionModel__Group__10__Impl : ( Resolutions ) ;
     public final void rule__ResolutionModel__Group__10__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:2753:1: ( ( Resolutions ) )
-            // InternalResolutionModelParser.g:2754:1: ( Resolutions )
+            // InternalResolutionModelParser.g:2811:1: ( ( Resolutions ) )
+            // InternalResolutionModelParser.g:2812:1: ( Resolutions )
             {
-            // InternalResolutionModelParser.g:2754:1: ( Resolutions )
-            // InternalResolutionModelParser.g:2755:2: Resolutions
+            // InternalResolutionModelParser.g:2812:1: ( Resolutions )
+            // InternalResolutionModelParser.g:2813:2: Resolutions
             {
              before(grammarAccess.getResolutionModelAccess().getResolutionsKeyword_10()); 
             match(input,Resolutions,FOLLOW_2); 
@@ -8439,14 +8631,14 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ResolutionModel__Group__11"
-    // InternalResolutionModelParser.g:2764:1: rule__ResolutionModel__Group__11 : rule__ResolutionModel__Group__11__Impl ;
+    // InternalResolutionModelParser.g:2822:1: rule__ResolutionModel__Group__11 : rule__ResolutionModel__Group__11__Impl ;
     public final void rule__ResolutionModel__Group__11() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:2768:1: ( rule__ResolutionModel__Group__11__Impl )
-            // InternalResolutionModelParser.g:2769:2: rule__ResolutionModel__Group__11__Impl
+            // InternalResolutionModelParser.g:2826:1: ( rule__ResolutionModel__Group__11__Impl )
+            // InternalResolutionModelParser.g:2827:2: rule__ResolutionModel__Group__11__Impl
             {
             pushFollow(FOLLOW_2);
             rule__ResolutionModel__Group__11__Impl();
@@ -8472,33 +8664,33 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ResolutionModel__Group__11__Impl"
-    // InternalResolutionModelParser.g:2775:1: rule__ResolutionModel__Group__11__Impl : ( ( rule__ResolutionModel__ResolutionsAssignment_11 )* ) ;
+    // InternalResolutionModelParser.g:2833:1: rule__ResolutionModel__Group__11__Impl : ( ( rule__ResolutionModel__ResolutionsAssignment_11 )* ) ;
     public final void rule__ResolutionModel__Group__11__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:2779:1: ( ( ( rule__ResolutionModel__ResolutionsAssignment_11 )* ) )
-            // InternalResolutionModelParser.g:2780:1: ( ( rule__ResolutionModel__ResolutionsAssignment_11 )* )
+            // InternalResolutionModelParser.g:2837:1: ( ( ( rule__ResolutionModel__ResolutionsAssignment_11 )* ) )
+            // InternalResolutionModelParser.g:2838:1: ( ( rule__ResolutionModel__ResolutionsAssignment_11 )* )
             {
-            // InternalResolutionModelParser.g:2780:1: ( ( rule__ResolutionModel__ResolutionsAssignment_11 )* )
-            // InternalResolutionModelParser.g:2781:2: ( rule__ResolutionModel__ResolutionsAssignment_11 )*
+            // InternalResolutionModelParser.g:2838:1: ( ( rule__ResolutionModel__ResolutionsAssignment_11 )* )
+            // InternalResolutionModelParser.g:2839:2: ( rule__ResolutionModel__ResolutionsAssignment_11 )*
             {
              before(grammarAccess.getResolutionModelAccess().getResolutionsAssignment_11()); 
-            // InternalResolutionModelParser.g:2782:2: ( rule__ResolutionModel__ResolutionsAssignment_11 )*
-            loop10:
+            // InternalResolutionModelParser.g:2840:2: ( rule__ResolutionModel__ResolutionsAssignment_11 )*
+            loop11:
             do {
-                int alt10=2;
-                int LA10_0 = input.LA(1);
+                int alt11=2;
+                int LA11_0 = input.LA(1);
 
-                if ( (LA10_0==RULE_ID) ) {
-                    alt10=1;
+                if ( (LA11_0==RULE_ID) ) {
+                    alt11=1;
                 }
 
 
-                switch (alt10) {
+                switch (alt11) {
             	case 1 :
-            	    // InternalResolutionModelParser.g:2782:3: rule__ResolutionModel__ResolutionsAssignment_11
+            	    // InternalResolutionModelParser.g:2840:3: rule__ResolutionModel__ResolutionsAssignment_11
             	    {
             	    pushFollow(FOLLOW_9);
             	    rule__ResolutionModel__ResolutionsAssignment_11();
@@ -8510,7 +8702,7 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
             	    break;
 
             	default :
-            	    break loop10;
+            	    break loop11;
                 }
             } while (true);
 
@@ -8537,14 +8729,14 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__Resolution__Group__0"
-    // InternalResolutionModelParser.g:2791:1: rule__Resolution__Group__0 : rule__Resolution__Group__0__Impl rule__Resolution__Group__1 ;
+    // InternalResolutionModelParser.g:2849:1: rule__Resolution__Group__0 : rule__Resolution__Group__0__Impl rule__Resolution__Group__1 ;
     public final void rule__Resolution__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:2795:1: ( rule__Resolution__Group__0__Impl rule__Resolution__Group__1 )
-            // InternalResolutionModelParser.g:2796:2: rule__Resolution__Group__0__Impl rule__Resolution__Group__1
+            // InternalResolutionModelParser.g:2853:1: ( rule__Resolution__Group__0__Impl rule__Resolution__Group__1 )
+            // InternalResolutionModelParser.g:2854:2: rule__Resolution__Group__0__Impl rule__Resolution__Group__1
             {
             pushFollow(FOLLOW_3);
             rule__Resolution__Group__0__Impl();
@@ -8575,21 +8767,21 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__Resolution__Group__0__Impl"
-    // InternalResolutionModelParser.g:2803:1: rule__Resolution__Group__0__Impl : ( () ) ;
+    // InternalResolutionModelParser.g:2861:1: rule__Resolution__Group__0__Impl : ( () ) ;
     public final void rule__Resolution__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:2807:1: ( ( () ) )
-            // InternalResolutionModelParser.g:2808:1: ( () )
+            // InternalResolutionModelParser.g:2865:1: ( ( () ) )
+            // InternalResolutionModelParser.g:2866:1: ( () )
             {
-            // InternalResolutionModelParser.g:2808:1: ( () )
-            // InternalResolutionModelParser.g:2809:2: ()
+            // InternalResolutionModelParser.g:2866:1: ( () )
+            // InternalResolutionModelParser.g:2867:2: ()
             {
              before(grammarAccess.getResolutionAccess().getResolutionAction_0()); 
-            // InternalResolutionModelParser.g:2810:2: ()
-            // InternalResolutionModelParser.g:2810:3: 
+            // InternalResolutionModelParser.g:2868:2: ()
+            // InternalResolutionModelParser.g:2868:3: 
             {
             }
 
@@ -8612,14 +8804,14 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__Resolution__Group__1"
-    // InternalResolutionModelParser.g:2818:1: rule__Resolution__Group__1 : rule__Resolution__Group__1__Impl rule__Resolution__Group__2 ;
+    // InternalResolutionModelParser.g:2876:1: rule__Resolution__Group__1 : rule__Resolution__Group__1__Impl rule__Resolution__Group__2 ;
     public final void rule__Resolution__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:2822:1: ( rule__Resolution__Group__1__Impl rule__Resolution__Group__2 )
-            // InternalResolutionModelParser.g:2823:2: rule__Resolution__Group__1__Impl rule__Resolution__Group__2
+            // InternalResolutionModelParser.g:2880:1: ( rule__Resolution__Group__1__Impl rule__Resolution__Group__2 )
+            // InternalResolutionModelParser.g:2881:2: rule__Resolution__Group__1__Impl rule__Resolution__Group__2
             {
             pushFollow(FOLLOW_10);
             rule__Resolution__Group__1__Impl();
@@ -8650,21 +8842,21 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__Resolution__Group__1__Impl"
-    // InternalResolutionModelParser.g:2830:1: rule__Resolution__Group__1__Impl : ( ( rule__Resolution__FeatureAssignment_1 ) ) ;
+    // InternalResolutionModelParser.g:2888:1: rule__Resolution__Group__1__Impl : ( ( rule__Resolution__FeatureAssignment_1 ) ) ;
     public final void rule__Resolution__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:2834:1: ( ( ( rule__Resolution__FeatureAssignment_1 ) ) )
-            // InternalResolutionModelParser.g:2835:1: ( ( rule__Resolution__FeatureAssignment_1 ) )
+            // InternalResolutionModelParser.g:2892:1: ( ( ( rule__Resolution__FeatureAssignment_1 ) ) )
+            // InternalResolutionModelParser.g:2893:1: ( ( rule__Resolution__FeatureAssignment_1 ) )
             {
-            // InternalResolutionModelParser.g:2835:1: ( ( rule__Resolution__FeatureAssignment_1 ) )
-            // InternalResolutionModelParser.g:2836:2: ( rule__Resolution__FeatureAssignment_1 )
+            // InternalResolutionModelParser.g:2893:1: ( ( rule__Resolution__FeatureAssignment_1 ) )
+            // InternalResolutionModelParser.g:2894:2: ( rule__Resolution__FeatureAssignment_1 )
             {
              before(grammarAccess.getResolutionAccess().getFeatureAssignment_1()); 
-            // InternalResolutionModelParser.g:2837:2: ( rule__Resolution__FeatureAssignment_1 )
-            // InternalResolutionModelParser.g:2837:3: rule__Resolution__FeatureAssignment_1
+            // InternalResolutionModelParser.g:2895:2: ( rule__Resolution__FeatureAssignment_1 )
+            // InternalResolutionModelParser.g:2895:3: rule__Resolution__FeatureAssignment_1
             {
             pushFollow(FOLLOW_2);
             rule__Resolution__FeatureAssignment_1();
@@ -8697,14 +8889,14 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__Resolution__Group__2"
-    // InternalResolutionModelParser.g:2845:1: rule__Resolution__Group__2 : rule__Resolution__Group__2__Impl rule__Resolution__Group__3 ;
+    // InternalResolutionModelParser.g:2903:1: rule__Resolution__Group__2 : rule__Resolution__Group__2__Impl rule__Resolution__Group__3 ;
     public final void rule__Resolution__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:2849:1: ( rule__Resolution__Group__2__Impl rule__Resolution__Group__3 )
-            // InternalResolutionModelParser.g:2850:2: rule__Resolution__Group__2__Impl rule__Resolution__Group__3
+            // InternalResolutionModelParser.g:2907:1: ( rule__Resolution__Group__2__Impl rule__Resolution__Group__3 )
+            // InternalResolutionModelParser.g:2908:2: rule__Resolution__Group__2__Impl rule__Resolution__Group__3
             {
             pushFollow(FOLLOW_11);
             rule__Resolution__Group__2__Impl();
@@ -8735,17 +8927,17 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__Resolution__Group__2__Impl"
-    // InternalResolutionModelParser.g:2857:1: rule__Resolution__Group__2__Impl : ( Colon ) ;
+    // InternalResolutionModelParser.g:2915:1: rule__Resolution__Group__2__Impl : ( Colon ) ;
     public final void rule__Resolution__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:2861:1: ( ( Colon ) )
-            // InternalResolutionModelParser.g:2862:1: ( Colon )
+            // InternalResolutionModelParser.g:2919:1: ( ( Colon ) )
+            // InternalResolutionModelParser.g:2920:1: ( Colon )
             {
-            // InternalResolutionModelParser.g:2862:1: ( Colon )
-            // InternalResolutionModelParser.g:2863:2: Colon
+            // InternalResolutionModelParser.g:2920:1: ( Colon )
+            // InternalResolutionModelParser.g:2921:2: Colon
             {
              before(grammarAccess.getResolutionAccess().getColonKeyword_2()); 
             match(input,Colon,FOLLOW_2); 
@@ -8772,14 +8964,14 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__Resolution__Group__3"
-    // InternalResolutionModelParser.g:2872:1: rule__Resolution__Group__3 : rule__Resolution__Group__3__Impl rule__Resolution__Group__4 ;
+    // InternalResolutionModelParser.g:2930:1: rule__Resolution__Group__3 : rule__Resolution__Group__3__Impl rule__Resolution__Group__4 ;
     public final void rule__Resolution__Group__3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:2876:1: ( rule__Resolution__Group__3__Impl rule__Resolution__Group__4 )
-            // InternalResolutionModelParser.g:2877:2: rule__Resolution__Group__3__Impl rule__Resolution__Group__4
+            // InternalResolutionModelParser.g:2934:1: ( rule__Resolution__Group__3__Impl rule__Resolution__Group__4 )
+            // InternalResolutionModelParser.g:2935:2: rule__Resolution__Group__3__Impl rule__Resolution__Group__4
             {
             pushFollow(FOLLOW_12);
             rule__Resolution__Group__3__Impl();
@@ -8810,17 +9002,17 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__Resolution__Group__3__Impl"
-    // InternalResolutionModelParser.g:2884:1: rule__Resolution__Group__3__Impl : ( Select ) ;
+    // InternalResolutionModelParser.g:2942:1: rule__Resolution__Group__3__Impl : ( Select ) ;
     public final void rule__Resolution__Group__3__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:2888:1: ( ( Select ) )
-            // InternalResolutionModelParser.g:2889:1: ( Select )
+            // InternalResolutionModelParser.g:2946:1: ( ( Select ) )
+            // InternalResolutionModelParser.g:2947:1: ( Select )
             {
-            // InternalResolutionModelParser.g:2889:1: ( Select )
-            // InternalResolutionModelParser.g:2890:2: Select
+            // InternalResolutionModelParser.g:2947:1: ( Select )
+            // InternalResolutionModelParser.g:2948:2: Select
             {
              before(grammarAccess.getResolutionAccess().getSelectKeyword_3()); 
             match(input,Select,FOLLOW_2); 
@@ -8847,14 +9039,14 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__Resolution__Group__4"
-    // InternalResolutionModelParser.g:2899:1: rule__Resolution__Group__4 : rule__Resolution__Group__4__Impl rule__Resolution__Group__5 ;
+    // InternalResolutionModelParser.g:2957:1: rule__Resolution__Group__4 : rule__Resolution__Group__4__Impl rule__Resolution__Group__5 ;
     public final void rule__Resolution__Group__4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:2903:1: ( rule__Resolution__Group__4__Impl rule__Resolution__Group__5 )
-            // InternalResolutionModelParser.g:2904:2: rule__Resolution__Group__4__Impl rule__Resolution__Group__5
+            // InternalResolutionModelParser.g:2961:1: ( rule__Resolution__Group__4__Impl rule__Resolution__Group__5 )
+            // InternalResolutionModelParser.g:2962:2: rule__Resolution__Group__4__Impl rule__Resolution__Group__5
             {
             pushFollow(FOLLOW_12);
             rule__Resolution__Group__4__Impl();
@@ -8885,33 +9077,33 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__Resolution__Group__4__Impl"
-    // InternalResolutionModelParser.g:2911:1: rule__Resolution__Group__4__Impl : ( ( rule__Resolution__Selection_actionsAssignment_4 )* ) ;
+    // InternalResolutionModelParser.g:2969:1: rule__Resolution__Group__4__Impl : ( ( rule__Resolution__Selection_actionsAssignment_4 )* ) ;
     public final void rule__Resolution__Group__4__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:2915:1: ( ( ( rule__Resolution__Selection_actionsAssignment_4 )* ) )
-            // InternalResolutionModelParser.g:2916:1: ( ( rule__Resolution__Selection_actionsAssignment_4 )* )
+            // InternalResolutionModelParser.g:2973:1: ( ( ( rule__Resolution__Selection_actionsAssignment_4 )* ) )
+            // InternalResolutionModelParser.g:2974:1: ( ( rule__Resolution__Selection_actionsAssignment_4 )* )
             {
-            // InternalResolutionModelParser.g:2916:1: ( ( rule__Resolution__Selection_actionsAssignment_4 )* )
-            // InternalResolutionModelParser.g:2917:2: ( rule__Resolution__Selection_actionsAssignment_4 )*
+            // InternalResolutionModelParser.g:2974:1: ( ( rule__Resolution__Selection_actionsAssignment_4 )* )
+            // InternalResolutionModelParser.g:2975:2: ( rule__Resolution__Selection_actionsAssignment_4 )*
             {
              before(grammarAccess.getResolutionAccess().getSelection_actionsAssignment_4()); 
-            // InternalResolutionModelParser.g:2918:2: ( rule__Resolution__Selection_actionsAssignment_4 )*
-            loop11:
+            // InternalResolutionModelParser.g:2976:2: ( rule__Resolution__Selection_actionsAssignment_4 )*
+            loop12:
             do {
-                int alt11=2;
-                int LA11_0 = input.LA(1);
+                int alt12=2;
+                int LA12_0 = input.LA(1);
 
-                if ( (LA11_0==SetLifecycleState||LA11_0==SetParameter) ) {
-                    alt11=1;
+                if ( (LA12_0==SetLifecycleState||LA12_0==SetParameter) ) {
+                    alt12=1;
                 }
 
 
-                switch (alt11) {
+                switch (alt12) {
             	case 1 :
-            	    // InternalResolutionModelParser.g:2918:3: rule__Resolution__Selection_actionsAssignment_4
+            	    // InternalResolutionModelParser.g:2976:3: rule__Resolution__Selection_actionsAssignment_4
             	    {
             	    pushFollow(FOLLOW_13);
             	    rule__Resolution__Selection_actionsAssignment_4();
@@ -8923,7 +9115,7 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
             	    break;
 
             	default :
-            	    break loop11;
+            	    break loop12;
                 }
             } while (true);
 
@@ -8950,14 +9142,14 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__Resolution__Group__5"
-    // InternalResolutionModelParser.g:2926:1: rule__Resolution__Group__5 : rule__Resolution__Group__5__Impl rule__Resolution__Group__6 ;
+    // InternalResolutionModelParser.g:2984:1: rule__Resolution__Group__5 : rule__Resolution__Group__5__Impl rule__Resolution__Group__6 ;
     public final void rule__Resolution__Group__5() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:2930:1: ( rule__Resolution__Group__5__Impl rule__Resolution__Group__6 )
-            // InternalResolutionModelParser.g:2931:2: rule__Resolution__Group__5__Impl rule__Resolution__Group__6
+            // InternalResolutionModelParser.g:2988:1: ( rule__Resolution__Group__5__Impl rule__Resolution__Group__6 )
+            // InternalResolutionModelParser.g:2989:2: rule__Resolution__Group__5__Impl rule__Resolution__Group__6
             {
             pushFollow(FOLLOW_14);
             rule__Resolution__Group__5__Impl();
@@ -8988,17 +9180,17 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__Resolution__Group__5__Impl"
-    // InternalResolutionModelParser.g:2938:1: rule__Resolution__Group__5__Impl : ( Deselect ) ;
+    // InternalResolutionModelParser.g:2996:1: rule__Resolution__Group__5__Impl : ( Deselect ) ;
     public final void rule__Resolution__Group__5__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:2942:1: ( ( Deselect ) )
-            // InternalResolutionModelParser.g:2943:1: ( Deselect )
+            // InternalResolutionModelParser.g:3000:1: ( ( Deselect ) )
+            // InternalResolutionModelParser.g:3001:1: ( Deselect )
             {
-            // InternalResolutionModelParser.g:2943:1: ( Deselect )
-            // InternalResolutionModelParser.g:2944:2: Deselect
+            // InternalResolutionModelParser.g:3001:1: ( Deselect )
+            // InternalResolutionModelParser.g:3002:2: Deselect
             {
              before(grammarAccess.getResolutionAccess().getDeselectKeyword_5()); 
             match(input,Deselect,FOLLOW_2); 
@@ -9025,14 +9217,14 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__Resolution__Group__6"
-    // InternalResolutionModelParser.g:2953:1: rule__Resolution__Group__6 : rule__Resolution__Group__6__Impl ;
+    // InternalResolutionModelParser.g:3011:1: rule__Resolution__Group__6 : rule__Resolution__Group__6__Impl ;
     public final void rule__Resolution__Group__6() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:2957:1: ( rule__Resolution__Group__6__Impl )
-            // InternalResolutionModelParser.g:2958:2: rule__Resolution__Group__6__Impl
+            // InternalResolutionModelParser.g:3015:1: ( rule__Resolution__Group__6__Impl )
+            // InternalResolutionModelParser.g:3016:2: rule__Resolution__Group__6__Impl
             {
             pushFollow(FOLLOW_2);
             rule__Resolution__Group__6__Impl();
@@ -9058,33 +9250,33 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__Resolution__Group__6__Impl"
-    // InternalResolutionModelParser.g:2964:1: rule__Resolution__Group__6__Impl : ( ( rule__Resolution__Deselection_actionsAssignment_6 )* ) ;
+    // InternalResolutionModelParser.g:3022:1: rule__Resolution__Group__6__Impl : ( ( rule__Resolution__Deselection_actionsAssignment_6 )* ) ;
     public final void rule__Resolution__Group__6__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:2968:1: ( ( ( rule__Resolution__Deselection_actionsAssignment_6 )* ) )
-            // InternalResolutionModelParser.g:2969:1: ( ( rule__Resolution__Deselection_actionsAssignment_6 )* )
+            // InternalResolutionModelParser.g:3026:1: ( ( ( rule__Resolution__Deselection_actionsAssignment_6 )* ) )
+            // InternalResolutionModelParser.g:3027:1: ( ( rule__Resolution__Deselection_actionsAssignment_6 )* )
             {
-            // InternalResolutionModelParser.g:2969:1: ( ( rule__Resolution__Deselection_actionsAssignment_6 )* )
-            // InternalResolutionModelParser.g:2970:2: ( rule__Resolution__Deselection_actionsAssignment_6 )*
+            // InternalResolutionModelParser.g:3027:1: ( ( rule__Resolution__Deselection_actionsAssignment_6 )* )
+            // InternalResolutionModelParser.g:3028:2: ( rule__Resolution__Deselection_actionsAssignment_6 )*
             {
              before(grammarAccess.getResolutionAccess().getDeselection_actionsAssignment_6()); 
-            // InternalResolutionModelParser.g:2971:2: ( rule__Resolution__Deselection_actionsAssignment_6 )*
-            loop12:
+            // InternalResolutionModelParser.g:3029:2: ( rule__Resolution__Deselection_actionsAssignment_6 )*
+            loop13:
             do {
-                int alt12=2;
-                int LA12_0 = input.LA(1);
+                int alt13=2;
+                int LA13_0 = input.LA(1);
 
-                if ( (LA12_0==SetLifecycleState||LA12_0==SetParameter) ) {
-                    alt12=1;
+                if ( (LA13_0==SetLifecycleState||LA13_0==SetParameter) ) {
+                    alt13=1;
                 }
 
 
-                switch (alt12) {
+                switch (alt13) {
             	case 1 :
-            	    // InternalResolutionModelParser.g:2971:3: rule__Resolution__Deselection_actionsAssignment_6
+            	    // InternalResolutionModelParser.g:3029:3: rule__Resolution__Deselection_actionsAssignment_6
             	    {
             	    pushFollow(FOLLOW_13);
             	    rule__Resolution__Deselection_actionsAssignment_6();
@@ -9096,7 +9288,7 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
             	    break;
 
             	default :
-            	    break loop12;
+            	    break loop13;
                 }
             } while (true);
 
@@ -9123,14 +9315,14 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__Import__Group__0"
-    // InternalResolutionModelParser.g:2980:1: rule__Import__Group__0 : rule__Import__Group__0__Impl rule__Import__Group__1 ;
+    // InternalResolutionModelParser.g:3038:1: rule__Import__Group__0 : rule__Import__Group__0__Impl rule__Import__Group__1 ;
     public final void rule__Import__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:2984:1: ( rule__Import__Group__0__Impl rule__Import__Group__1 )
-            // InternalResolutionModelParser.g:2985:2: rule__Import__Group__0__Impl rule__Import__Group__1
+            // InternalResolutionModelParser.g:3042:1: ( rule__Import__Group__0__Impl rule__Import__Group__1 )
+            // InternalResolutionModelParser.g:3043:2: rule__Import__Group__0__Impl rule__Import__Group__1
             {
             pushFollow(FOLLOW_15);
             rule__Import__Group__0__Impl();
@@ -9161,17 +9353,17 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__Import__Group__0__Impl"
-    // InternalResolutionModelParser.g:2992:1: rule__Import__Group__0__Impl : ( Import ) ;
+    // InternalResolutionModelParser.g:3050:1: rule__Import__Group__0__Impl : ( Import ) ;
     public final void rule__Import__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:2996:1: ( ( Import ) )
-            // InternalResolutionModelParser.g:2997:1: ( Import )
+            // InternalResolutionModelParser.g:3054:1: ( ( Import ) )
+            // InternalResolutionModelParser.g:3055:1: ( Import )
             {
-            // InternalResolutionModelParser.g:2997:1: ( Import )
-            // InternalResolutionModelParser.g:2998:2: Import
+            // InternalResolutionModelParser.g:3055:1: ( Import )
+            // InternalResolutionModelParser.g:3056:2: Import
             {
              before(grammarAccess.getImportAccess().getImportKeyword_0()); 
             match(input,Import,FOLLOW_2); 
@@ -9198,14 +9390,14 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__Import__Group__1"
-    // InternalResolutionModelParser.g:3007:1: rule__Import__Group__1 : rule__Import__Group__1__Impl rule__Import__Group__2 ;
+    // InternalResolutionModelParser.g:3065:1: rule__Import__Group__1 : rule__Import__Group__1__Impl rule__Import__Group__2 ;
     public final void rule__Import__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:3011:1: ( rule__Import__Group__1__Impl rule__Import__Group__2 )
-            // InternalResolutionModelParser.g:3012:2: rule__Import__Group__1__Impl rule__Import__Group__2
+            // InternalResolutionModelParser.g:3069:1: ( rule__Import__Group__1__Impl rule__Import__Group__2 )
+            // InternalResolutionModelParser.g:3070:2: rule__Import__Group__1__Impl rule__Import__Group__2
             {
             pushFollow(FOLLOW_4);
             rule__Import__Group__1__Impl();
@@ -9236,21 +9428,21 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__Import__Group__1__Impl"
-    // InternalResolutionModelParser.g:3019:1: rule__Import__Group__1__Impl : ( ( rule__Import__ImportURIAssignment_1 ) ) ;
+    // InternalResolutionModelParser.g:3077:1: rule__Import__Group__1__Impl : ( ( rule__Import__ImportURIAssignment_1 ) ) ;
     public final void rule__Import__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:3023:1: ( ( ( rule__Import__ImportURIAssignment_1 ) ) )
-            // InternalResolutionModelParser.g:3024:1: ( ( rule__Import__ImportURIAssignment_1 ) )
+            // InternalResolutionModelParser.g:3081:1: ( ( ( rule__Import__ImportURIAssignment_1 ) ) )
+            // InternalResolutionModelParser.g:3082:1: ( ( rule__Import__ImportURIAssignment_1 ) )
             {
-            // InternalResolutionModelParser.g:3024:1: ( ( rule__Import__ImportURIAssignment_1 ) )
-            // InternalResolutionModelParser.g:3025:2: ( rule__Import__ImportURIAssignment_1 )
+            // InternalResolutionModelParser.g:3082:1: ( ( rule__Import__ImportURIAssignment_1 ) )
+            // InternalResolutionModelParser.g:3083:2: ( rule__Import__ImportURIAssignment_1 )
             {
              before(grammarAccess.getImportAccess().getImportURIAssignment_1()); 
-            // InternalResolutionModelParser.g:3026:2: ( rule__Import__ImportURIAssignment_1 )
-            // InternalResolutionModelParser.g:3026:3: rule__Import__ImportURIAssignment_1
+            // InternalResolutionModelParser.g:3084:2: ( rule__Import__ImportURIAssignment_1 )
+            // InternalResolutionModelParser.g:3084:3: rule__Import__ImportURIAssignment_1
             {
             pushFollow(FOLLOW_2);
             rule__Import__ImportURIAssignment_1();
@@ -9283,14 +9475,14 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__Import__Group__2"
-    // InternalResolutionModelParser.g:3034:1: rule__Import__Group__2 : rule__Import__Group__2__Impl ;
+    // InternalResolutionModelParser.g:3092:1: rule__Import__Group__2 : rule__Import__Group__2__Impl ;
     public final void rule__Import__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:3038:1: ( rule__Import__Group__2__Impl )
-            // InternalResolutionModelParser.g:3039:2: rule__Import__Group__2__Impl
+            // InternalResolutionModelParser.g:3096:1: ( rule__Import__Group__2__Impl )
+            // InternalResolutionModelParser.g:3097:2: rule__Import__Group__2__Impl
             {
             pushFollow(FOLLOW_2);
             rule__Import__Group__2__Impl();
@@ -9316,17 +9508,17 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__Import__Group__2__Impl"
-    // InternalResolutionModelParser.g:3045:1: rule__Import__Group__2__Impl : ( Semicolon ) ;
+    // InternalResolutionModelParser.g:3103:1: rule__Import__Group__2__Impl : ( Semicolon ) ;
     public final void rule__Import__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:3049:1: ( ( Semicolon ) )
-            // InternalResolutionModelParser.g:3050:1: ( Semicolon )
+            // InternalResolutionModelParser.g:3107:1: ( ( Semicolon ) )
+            // InternalResolutionModelParser.g:3108:1: ( Semicolon )
             {
-            // InternalResolutionModelParser.g:3050:1: ( Semicolon )
-            // InternalResolutionModelParser.g:3051:2: Semicolon
+            // InternalResolutionModelParser.g:3108:1: ( Semicolon )
+            // InternalResolutionModelParser.g:3109:2: Semicolon
             {
              before(grammarAccess.getImportAccess().getSemicolonKeyword_2()); 
             match(input,Semicolon,FOLLOW_2); 
@@ -9353,14 +9545,14 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__SetParam__Group__0"
-    // InternalResolutionModelParser.g:3061:1: rule__SetParam__Group__0 : rule__SetParam__Group__0__Impl rule__SetParam__Group__1 ;
+    // InternalResolutionModelParser.g:3119:1: rule__SetParam__Group__0 : rule__SetParam__Group__0__Impl rule__SetParam__Group__1 ;
     public final void rule__SetParam__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:3065:1: ( rule__SetParam__Group__0__Impl rule__SetParam__Group__1 )
-            // InternalResolutionModelParser.g:3066:2: rule__SetParam__Group__0__Impl rule__SetParam__Group__1
+            // InternalResolutionModelParser.g:3123:1: ( rule__SetParam__Group__0__Impl rule__SetParam__Group__1 )
+            // InternalResolutionModelParser.g:3124:2: rule__SetParam__Group__0__Impl rule__SetParam__Group__1
             {
             pushFollow(FOLLOW_16);
             rule__SetParam__Group__0__Impl();
@@ -9391,17 +9583,17 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__SetParam__Group__0__Impl"
-    // InternalResolutionModelParser.g:3073:1: rule__SetParam__Group__0__Impl : ( SetParameter ) ;
+    // InternalResolutionModelParser.g:3131:1: rule__SetParam__Group__0__Impl : ( SetParameter ) ;
     public final void rule__SetParam__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:3077:1: ( ( SetParameter ) )
-            // InternalResolutionModelParser.g:3078:1: ( SetParameter )
+            // InternalResolutionModelParser.g:3135:1: ( ( SetParameter ) )
+            // InternalResolutionModelParser.g:3136:1: ( SetParameter )
             {
-            // InternalResolutionModelParser.g:3078:1: ( SetParameter )
-            // InternalResolutionModelParser.g:3079:2: SetParameter
+            // InternalResolutionModelParser.g:3136:1: ( SetParameter )
+            // InternalResolutionModelParser.g:3137:2: SetParameter
             {
              before(grammarAccess.getSetParamAccess().getSetParameterKeyword_0()); 
             match(input,SetParameter,FOLLOW_2); 
@@ -9428,16 +9620,16 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__SetParam__Group__1"
-    // InternalResolutionModelParser.g:3088:1: rule__SetParam__Group__1 : rule__SetParam__Group__1__Impl rule__SetParam__Group__2 ;
+    // InternalResolutionModelParser.g:3146:1: rule__SetParam__Group__1 : rule__SetParam__Group__1__Impl rule__SetParam__Group__2 ;
     public final void rule__SetParam__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:3092:1: ( rule__SetParam__Group__1__Impl rule__SetParam__Group__2 )
-            // InternalResolutionModelParser.g:3093:2: rule__SetParam__Group__1__Impl rule__SetParam__Group__2
+            // InternalResolutionModelParser.g:3150:1: ( rule__SetParam__Group__1__Impl rule__SetParam__Group__2 )
+            // InternalResolutionModelParser.g:3151:2: rule__SetParam__Group__1__Impl rule__SetParam__Group__2
             {
-            pushFollow(FOLLOW_3);
+            pushFollow(FOLLOW_17);
             rule__SetParam__Group__1__Impl();
 
             state._fsp--;
@@ -9466,17 +9658,17 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__SetParam__Group__1__Impl"
-    // InternalResolutionModelParser.g:3100:1: rule__SetParam__Group__1__Impl : ( LeftParenthesis ) ;
+    // InternalResolutionModelParser.g:3158:1: rule__SetParam__Group__1__Impl : ( LeftParenthesis ) ;
     public final void rule__SetParam__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:3104:1: ( ( LeftParenthesis ) )
-            // InternalResolutionModelParser.g:3105:1: ( LeftParenthesis )
+            // InternalResolutionModelParser.g:3162:1: ( ( LeftParenthesis ) )
+            // InternalResolutionModelParser.g:3163:1: ( LeftParenthesis )
             {
-            // InternalResolutionModelParser.g:3105:1: ( LeftParenthesis )
-            // InternalResolutionModelParser.g:3106:2: LeftParenthesis
+            // InternalResolutionModelParser.g:3163:1: ( LeftParenthesis )
+            // InternalResolutionModelParser.g:3164:2: LeftParenthesis
             {
              before(grammarAccess.getSetParamAccess().getLeftParenthesisKeyword_1()); 
             match(input,LeftParenthesis,FOLLOW_2); 
@@ -9503,16 +9695,16 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__SetParam__Group__2"
-    // InternalResolutionModelParser.g:3115:1: rule__SetParam__Group__2 : rule__SetParam__Group__2__Impl rule__SetParam__Group__3 ;
+    // InternalResolutionModelParser.g:3173:1: rule__SetParam__Group__2 : rule__SetParam__Group__2__Impl rule__SetParam__Group__3 ;
     public final void rule__SetParam__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:3119:1: ( rule__SetParam__Group__2__Impl rule__SetParam__Group__3 )
-            // InternalResolutionModelParser.g:3120:2: rule__SetParam__Group__2__Impl rule__SetParam__Group__3
+            // InternalResolutionModelParser.g:3177:1: ( rule__SetParam__Group__2__Impl rule__SetParam__Group__3 )
+            // InternalResolutionModelParser.g:3178:2: rule__SetParam__Group__2__Impl rule__SetParam__Group__3
             {
-            pushFollow(FOLLOW_17);
+            pushFollow(FOLLOW_18);
             rule__SetParam__Group__2__Impl();
 
             state._fsp--;
@@ -9541,21 +9733,21 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__SetParam__Group__2__Impl"
-    // InternalResolutionModelParser.g:3127:1: rule__SetParam__Group__2__Impl : ( ( rule__SetParam__NodeAssignment_2 ) ) ;
+    // InternalResolutionModelParser.g:3185:1: rule__SetParam__Group__2__Impl : ( ( rule__SetParam__NodeAssignment_2 ) ) ;
     public final void rule__SetParam__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:3131:1: ( ( ( rule__SetParam__NodeAssignment_2 ) ) )
-            // InternalResolutionModelParser.g:3132:1: ( ( rule__SetParam__NodeAssignment_2 ) )
+            // InternalResolutionModelParser.g:3189:1: ( ( ( rule__SetParam__NodeAssignment_2 ) ) )
+            // InternalResolutionModelParser.g:3190:1: ( ( rule__SetParam__NodeAssignment_2 ) )
             {
-            // InternalResolutionModelParser.g:3132:1: ( ( rule__SetParam__NodeAssignment_2 ) )
-            // InternalResolutionModelParser.g:3133:2: ( rule__SetParam__NodeAssignment_2 )
+            // InternalResolutionModelParser.g:3190:1: ( ( rule__SetParam__NodeAssignment_2 ) )
+            // InternalResolutionModelParser.g:3191:2: ( rule__SetParam__NodeAssignment_2 )
             {
              before(grammarAccess.getSetParamAccess().getNodeAssignment_2()); 
-            // InternalResolutionModelParser.g:3134:2: ( rule__SetParam__NodeAssignment_2 )
-            // InternalResolutionModelParser.g:3134:3: rule__SetParam__NodeAssignment_2
+            // InternalResolutionModelParser.g:3192:2: ( rule__SetParam__NodeAssignment_2 )
+            // InternalResolutionModelParser.g:3192:3: rule__SetParam__NodeAssignment_2
             {
             pushFollow(FOLLOW_2);
             rule__SetParam__NodeAssignment_2();
@@ -9588,14 +9780,14 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__SetParam__Group__3"
-    // InternalResolutionModelParser.g:3142:1: rule__SetParam__Group__3 : rule__SetParam__Group__3__Impl rule__SetParam__Group__4 ;
+    // InternalResolutionModelParser.g:3200:1: rule__SetParam__Group__3 : rule__SetParam__Group__3__Impl rule__SetParam__Group__4 ;
     public final void rule__SetParam__Group__3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:3146:1: ( rule__SetParam__Group__3__Impl rule__SetParam__Group__4 )
-            // InternalResolutionModelParser.g:3147:2: rule__SetParam__Group__3__Impl rule__SetParam__Group__4
+            // InternalResolutionModelParser.g:3204:1: ( rule__SetParam__Group__3__Impl rule__SetParam__Group__4 )
+            // InternalResolutionModelParser.g:3205:2: rule__SetParam__Group__3__Impl rule__SetParam__Group__4
             {
             pushFollow(FOLLOW_3);
             rule__SetParam__Group__3__Impl();
@@ -9626,17 +9818,17 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__SetParam__Group__3__Impl"
-    // InternalResolutionModelParser.g:3154:1: rule__SetParam__Group__3__Impl : ( Comma ) ;
+    // InternalResolutionModelParser.g:3212:1: rule__SetParam__Group__3__Impl : ( Comma ) ;
     public final void rule__SetParam__Group__3__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:3158:1: ( ( Comma ) )
-            // InternalResolutionModelParser.g:3159:1: ( Comma )
+            // InternalResolutionModelParser.g:3216:1: ( ( Comma ) )
+            // InternalResolutionModelParser.g:3217:1: ( Comma )
             {
-            // InternalResolutionModelParser.g:3159:1: ( Comma )
-            // InternalResolutionModelParser.g:3160:2: Comma
+            // InternalResolutionModelParser.g:3217:1: ( Comma )
+            // InternalResolutionModelParser.g:3218:2: Comma
             {
              before(grammarAccess.getSetParamAccess().getCommaKeyword_3()); 
             match(input,Comma,FOLLOW_2); 
@@ -9663,16 +9855,16 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__SetParam__Group__4"
-    // InternalResolutionModelParser.g:3169:1: rule__SetParam__Group__4 : rule__SetParam__Group__4__Impl rule__SetParam__Group__5 ;
+    // InternalResolutionModelParser.g:3227:1: rule__SetParam__Group__4 : rule__SetParam__Group__4__Impl rule__SetParam__Group__5 ;
     public final void rule__SetParam__Group__4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:3173:1: ( rule__SetParam__Group__4__Impl rule__SetParam__Group__5 )
-            // InternalResolutionModelParser.g:3174:2: rule__SetParam__Group__4__Impl rule__SetParam__Group__5
+            // InternalResolutionModelParser.g:3231:1: ( rule__SetParam__Group__4__Impl rule__SetParam__Group__5 )
+            // InternalResolutionModelParser.g:3232:2: rule__SetParam__Group__4__Impl rule__SetParam__Group__5
             {
-            pushFollow(FOLLOW_17);
+            pushFollow(FOLLOW_18);
             rule__SetParam__Group__4__Impl();
 
             state._fsp--;
@@ -9701,21 +9893,21 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__SetParam__Group__4__Impl"
-    // InternalResolutionModelParser.g:3181:1: rule__SetParam__Group__4__Impl : ( ( rule__SetParam__ParamAssignment_4 ) ) ;
+    // InternalResolutionModelParser.g:3239:1: rule__SetParam__Group__4__Impl : ( ( rule__SetParam__ParamAssignment_4 ) ) ;
     public final void rule__SetParam__Group__4__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:3185:1: ( ( ( rule__SetParam__ParamAssignment_4 ) ) )
-            // InternalResolutionModelParser.g:3186:1: ( ( rule__SetParam__ParamAssignment_4 ) )
+            // InternalResolutionModelParser.g:3243:1: ( ( ( rule__SetParam__ParamAssignment_4 ) ) )
+            // InternalResolutionModelParser.g:3244:1: ( ( rule__SetParam__ParamAssignment_4 ) )
             {
-            // InternalResolutionModelParser.g:3186:1: ( ( rule__SetParam__ParamAssignment_4 ) )
-            // InternalResolutionModelParser.g:3187:2: ( rule__SetParam__ParamAssignment_4 )
+            // InternalResolutionModelParser.g:3244:1: ( ( rule__SetParam__ParamAssignment_4 ) )
+            // InternalResolutionModelParser.g:3245:2: ( rule__SetParam__ParamAssignment_4 )
             {
              before(grammarAccess.getSetParamAccess().getParamAssignment_4()); 
-            // InternalResolutionModelParser.g:3188:2: ( rule__SetParam__ParamAssignment_4 )
-            // InternalResolutionModelParser.g:3188:3: rule__SetParam__ParamAssignment_4
+            // InternalResolutionModelParser.g:3246:2: ( rule__SetParam__ParamAssignment_4 )
+            // InternalResolutionModelParser.g:3246:3: rule__SetParam__ParamAssignment_4
             {
             pushFollow(FOLLOW_2);
             rule__SetParam__ParamAssignment_4();
@@ -9748,16 +9940,16 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__SetParam__Group__5"
-    // InternalResolutionModelParser.g:3196:1: rule__SetParam__Group__5 : rule__SetParam__Group__5__Impl rule__SetParam__Group__6 ;
+    // InternalResolutionModelParser.g:3254:1: rule__SetParam__Group__5 : rule__SetParam__Group__5__Impl rule__SetParam__Group__6 ;
     public final void rule__SetParam__Group__5() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:3200:1: ( rule__SetParam__Group__5__Impl rule__SetParam__Group__6 )
-            // InternalResolutionModelParser.g:3201:2: rule__SetParam__Group__5__Impl rule__SetParam__Group__6
+            // InternalResolutionModelParser.g:3258:1: ( rule__SetParam__Group__5__Impl rule__SetParam__Group__6 )
+            // InternalResolutionModelParser.g:3259:2: rule__SetParam__Group__5__Impl rule__SetParam__Group__6
             {
-            pushFollow(FOLLOW_18);
+            pushFollow(FOLLOW_19);
             rule__SetParam__Group__5__Impl();
 
             state._fsp--;
@@ -9786,17 +9978,17 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__SetParam__Group__5__Impl"
-    // InternalResolutionModelParser.g:3208:1: rule__SetParam__Group__5__Impl : ( Comma ) ;
+    // InternalResolutionModelParser.g:3266:1: rule__SetParam__Group__5__Impl : ( Comma ) ;
     public final void rule__SetParam__Group__5__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:3212:1: ( ( Comma ) )
-            // InternalResolutionModelParser.g:3213:1: ( Comma )
+            // InternalResolutionModelParser.g:3270:1: ( ( Comma ) )
+            // InternalResolutionModelParser.g:3271:1: ( Comma )
             {
-            // InternalResolutionModelParser.g:3213:1: ( Comma )
-            // InternalResolutionModelParser.g:3214:2: Comma
+            // InternalResolutionModelParser.g:3271:1: ( Comma )
+            // InternalResolutionModelParser.g:3272:2: Comma
             {
              before(grammarAccess.getSetParamAccess().getCommaKeyword_5()); 
             match(input,Comma,FOLLOW_2); 
@@ -9823,16 +10015,16 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__SetParam__Group__6"
-    // InternalResolutionModelParser.g:3223:1: rule__SetParam__Group__6 : rule__SetParam__Group__6__Impl rule__SetParam__Group__7 ;
+    // InternalResolutionModelParser.g:3281:1: rule__SetParam__Group__6 : rule__SetParam__Group__6__Impl rule__SetParam__Group__7 ;
     public final void rule__SetParam__Group__6() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:3227:1: ( rule__SetParam__Group__6__Impl rule__SetParam__Group__7 )
-            // InternalResolutionModelParser.g:3228:2: rule__SetParam__Group__6__Impl rule__SetParam__Group__7
+            // InternalResolutionModelParser.g:3285:1: ( rule__SetParam__Group__6__Impl rule__SetParam__Group__7 )
+            // InternalResolutionModelParser.g:3286:2: rule__SetParam__Group__6__Impl rule__SetParam__Group__7
             {
-            pushFollow(FOLLOW_19);
+            pushFollow(FOLLOW_20);
             rule__SetParam__Group__6__Impl();
 
             state._fsp--;
@@ -9861,21 +10053,21 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__SetParam__Group__6__Impl"
-    // InternalResolutionModelParser.g:3235:1: rule__SetParam__Group__6__Impl : ( ( rule__SetParam__ValueAssignment_6 ) ) ;
+    // InternalResolutionModelParser.g:3293:1: rule__SetParam__Group__6__Impl : ( ( rule__SetParam__ValueAssignment_6 ) ) ;
     public final void rule__SetParam__Group__6__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:3239:1: ( ( ( rule__SetParam__ValueAssignment_6 ) ) )
-            // InternalResolutionModelParser.g:3240:1: ( ( rule__SetParam__ValueAssignment_6 ) )
+            // InternalResolutionModelParser.g:3297:1: ( ( ( rule__SetParam__ValueAssignment_6 ) ) )
+            // InternalResolutionModelParser.g:3298:1: ( ( rule__SetParam__ValueAssignment_6 ) )
             {
-            // InternalResolutionModelParser.g:3240:1: ( ( rule__SetParam__ValueAssignment_6 ) )
-            // InternalResolutionModelParser.g:3241:2: ( rule__SetParam__ValueAssignment_6 )
+            // InternalResolutionModelParser.g:3298:1: ( ( rule__SetParam__ValueAssignment_6 ) )
+            // InternalResolutionModelParser.g:3299:2: ( rule__SetParam__ValueAssignment_6 )
             {
              before(grammarAccess.getSetParamAccess().getValueAssignment_6()); 
-            // InternalResolutionModelParser.g:3242:2: ( rule__SetParam__ValueAssignment_6 )
-            // InternalResolutionModelParser.g:3242:3: rule__SetParam__ValueAssignment_6
+            // InternalResolutionModelParser.g:3300:2: ( rule__SetParam__ValueAssignment_6 )
+            // InternalResolutionModelParser.g:3300:3: rule__SetParam__ValueAssignment_6
             {
             pushFollow(FOLLOW_2);
             rule__SetParam__ValueAssignment_6();
@@ -9908,14 +10100,14 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__SetParam__Group__7"
-    // InternalResolutionModelParser.g:3250:1: rule__SetParam__Group__7 : rule__SetParam__Group__7__Impl ;
+    // InternalResolutionModelParser.g:3308:1: rule__SetParam__Group__7 : rule__SetParam__Group__7__Impl ;
     public final void rule__SetParam__Group__7() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:3254:1: ( rule__SetParam__Group__7__Impl )
-            // InternalResolutionModelParser.g:3255:2: rule__SetParam__Group__7__Impl
+            // InternalResolutionModelParser.g:3312:1: ( rule__SetParam__Group__7__Impl )
+            // InternalResolutionModelParser.g:3313:2: rule__SetParam__Group__7__Impl
             {
             pushFollow(FOLLOW_2);
             rule__SetParam__Group__7__Impl();
@@ -9941,17 +10133,17 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__SetParam__Group__7__Impl"
-    // InternalResolutionModelParser.g:3261:1: rule__SetParam__Group__7__Impl : ( RightParenthesis ) ;
+    // InternalResolutionModelParser.g:3319:1: rule__SetParam__Group__7__Impl : ( RightParenthesis ) ;
     public final void rule__SetParam__Group__7__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:3265:1: ( ( RightParenthesis ) )
-            // InternalResolutionModelParser.g:3266:1: ( RightParenthesis )
+            // InternalResolutionModelParser.g:3323:1: ( ( RightParenthesis ) )
+            // InternalResolutionModelParser.g:3324:1: ( RightParenthesis )
             {
-            // InternalResolutionModelParser.g:3266:1: ( RightParenthesis )
-            // InternalResolutionModelParser.g:3267:2: RightParenthesis
+            // InternalResolutionModelParser.g:3324:1: ( RightParenthesis )
+            // InternalResolutionModelParser.g:3325:2: RightParenthesis
             {
              before(grammarAccess.getSetParamAccess().getRightParenthesisKeyword_7()); 
             match(input,RightParenthesis,FOLLOW_2); 
@@ -9978,14 +10170,14 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__SetLifecycle__Group__0"
-    // InternalResolutionModelParser.g:3277:1: rule__SetLifecycle__Group__0 : rule__SetLifecycle__Group__0__Impl rule__SetLifecycle__Group__1 ;
+    // InternalResolutionModelParser.g:3335:1: rule__SetLifecycle__Group__0 : rule__SetLifecycle__Group__0__Impl rule__SetLifecycle__Group__1 ;
     public final void rule__SetLifecycle__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:3281:1: ( rule__SetLifecycle__Group__0__Impl rule__SetLifecycle__Group__1 )
-            // InternalResolutionModelParser.g:3282:2: rule__SetLifecycle__Group__0__Impl rule__SetLifecycle__Group__1
+            // InternalResolutionModelParser.g:3339:1: ( rule__SetLifecycle__Group__0__Impl rule__SetLifecycle__Group__1 )
+            // InternalResolutionModelParser.g:3340:2: rule__SetLifecycle__Group__0__Impl rule__SetLifecycle__Group__1
             {
             pushFollow(FOLLOW_16);
             rule__SetLifecycle__Group__0__Impl();
@@ -10016,17 +10208,17 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__SetLifecycle__Group__0__Impl"
-    // InternalResolutionModelParser.g:3289:1: rule__SetLifecycle__Group__0__Impl : ( SetLifecycleState ) ;
+    // InternalResolutionModelParser.g:3347:1: rule__SetLifecycle__Group__0__Impl : ( SetLifecycleState ) ;
     public final void rule__SetLifecycle__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:3293:1: ( ( SetLifecycleState ) )
-            // InternalResolutionModelParser.g:3294:1: ( SetLifecycleState )
+            // InternalResolutionModelParser.g:3351:1: ( ( SetLifecycleState ) )
+            // InternalResolutionModelParser.g:3352:1: ( SetLifecycleState )
             {
-            // InternalResolutionModelParser.g:3294:1: ( SetLifecycleState )
-            // InternalResolutionModelParser.g:3295:2: SetLifecycleState
+            // InternalResolutionModelParser.g:3352:1: ( SetLifecycleState )
+            // InternalResolutionModelParser.g:3353:2: SetLifecycleState
             {
              before(grammarAccess.getSetLifecycleAccess().getSetLifecycleStateKeyword_0()); 
             match(input,SetLifecycleState,FOLLOW_2); 
@@ -10053,16 +10245,16 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__SetLifecycle__Group__1"
-    // InternalResolutionModelParser.g:3304:1: rule__SetLifecycle__Group__1 : rule__SetLifecycle__Group__1__Impl rule__SetLifecycle__Group__2 ;
+    // InternalResolutionModelParser.g:3362:1: rule__SetLifecycle__Group__1 : rule__SetLifecycle__Group__1__Impl rule__SetLifecycle__Group__2 ;
     public final void rule__SetLifecycle__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:3308:1: ( rule__SetLifecycle__Group__1__Impl rule__SetLifecycle__Group__2 )
-            // InternalResolutionModelParser.g:3309:2: rule__SetLifecycle__Group__1__Impl rule__SetLifecycle__Group__2
+            // InternalResolutionModelParser.g:3366:1: ( rule__SetLifecycle__Group__1__Impl rule__SetLifecycle__Group__2 )
+            // InternalResolutionModelParser.g:3367:2: rule__SetLifecycle__Group__1__Impl rule__SetLifecycle__Group__2
             {
-            pushFollow(FOLLOW_3);
+            pushFollow(FOLLOW_17);
             rule__SetLifecycle__Group__1__Impl();
 
             state._fsp--;
@@ -10091,17 +10283,17 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__SetLifecycle__Group__1__Impl"
-    // InternalResolutionModelParser.g:3316:1: rule__SetLifecycle__Group__1__Impl : ( LeftParenthesis ) ;
+    // InternalResolutionModelParser.g:3374:1: rule__SetLifecycle__Group__1__Impl : ( LeftParenthesis ) ;
     public final void rule__SetLifecycle__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:3320:1: ( ( LeftParenthesis ) )
-            // InternalResolutionModelParser.g:3321:1: ( LeftParenthesis )
+            // InternalResolutionModelParser.g:3378:1: ( ( LeftParenthesis ) )
+            // InternalResolutionModelParser.g:3379:1: ( LeftParenthesis )
             {
-            // InternalResolutionModelParser.g:3321:1: ( LeftParenthesis )
-            // InternalResolutionModelParser.g:3322:2: LeftParenthesis
+            // InternalResolutionModelParser.g:3379:1: ( LeftParenthesis )
+            // InternalResolutionModelParser.g:3380:2: LeftParenthesis
             {
              before(grammarAccess.getSetLifecycleAccess().getLeftParenthesisKeyword_1()); 
             match(input,LeftParenthesis,FOLLOW_2); 
@@ -10128,16 +10320,16 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__SetLifecycle__Group__2"
-    // InternalResolutionModelParser.g:3331:1: rule__SetLifecycle__Group__2 : rule__SetLifecycle__Group__2__Impl rule__SetLifecycle__Group__3 ;
+    // InternalResolutionModelParser.g:3389:1: rule__SetLifecycle__Group__2 : rule__SetLifecycle__Group__2__Impl rule__SetLifecycle__Group__3 ;
     public final void rule__SetLifecycle__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:3335:1: ( rule__SetLifecycle__Group__2__Impl rule__SetLifecycle__Group__3 )
-            // InternalResolutionModelParser.g:3336:2: rule__SetLifecycle__Group__2__Impl rule__SetLifecycle__Group__3
+            // InternalResolutionModelParser.g:3393:1: ( rule__SetLifecycle__Group__2__Impl rule__SetLifecycle__Group__3 )
+            // InternalResolutionModelParser.g:3394:2: rule__SetLifecycle__Group__2__Impl rule__SetLifecycle__Group__3
             {
-            pushFollow(FOLLOW_17);
+            pushFollow(FOLLOW_18);
             rule__SetLifecycle__Group__2__Impl();
 
             state._fsp--;
@@ -10166,21 +10358,21 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__SetLifecycle__Group__2__Impl"
-    // InternalResolutionModelParser.g:3343:1: rule__SetLifecycle__Group__2__Impl : ( ( rule__SetLifecycle__NodeAssignment_2 ) ) ;
+    // InternalResolutionModelParser.g:3401:1: rule__SetLifecycle__Group__2__Impl : ( ( rule__SetLifecycle__NodeAssignment_2 ) ) ;
     public final void rule__SetLifecycle__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:3347:1: ( ( ( rule__SetLifecycle__NodeAssignment_2 ) ) )
-            // InternalResolutionModelParser.g:3348:1: ( ( rule__SetLifecycle__NodeAssignment_2 ) )
+            // InternalResolutionModelParser.g:3405:1: ( ( ( rule__SetLifecycle__NodeAssignment_2 ) ) )
+            // InternalResolutionModelParser.g:3406:1: ( ( rule__SetLifecycle__NodeAssignment_2 ) )
             {
-            // InternalResolutionModelParser.g:3348:1: ( ( rule__SetLifecycle__NodeAssignment_2 ) )
-            // InternalResolutionModelParser.g:3349:2: ( rule__SetLifecycle__NodeAssignment_2 )
+            // InternalResolutionModelParser.g:3406:1: ( ( rule__SetLifecycle__NodeAssignment_2 ) )
+            // InternalResolutionModelParser.g:3407:2: ( rule__SetLifecycle__NodeAssignment_2 )
             {
              before(grammarAccess.getSetLifecycleAccess().getNodeAssignment_2()); 
-            // InternalResolutionModelParser.g:3350:2: ( rule__SetLifecycle__NodeAssignment_2 )
-            // InternalResolutionModelParser.g:3350:3: rule__SetLifecycle__NodeAssignment_2
+            // InternalResolutionModelParser.g:3408:2: ( rule__SetLifecycle__NodeAssignment_2 )
+            // InternalResolutionModelParser.g:3408:3: rule__SetLifecycle__NodeAssignment_2
             {
             pushFollow(FOLLOW_2);
             rule__SetLifecycle__NodeAssignment_2();
@@ -10213,16 +10405,16 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__SetLifecycle__Group__3"
-    // InternalResolutionModelParser.g:3358:1: rule__SetLifecycle__Group__3 : rule__SetLifecycle__Group__3__Impl rule__SetLifecycle__Group__4 ;
+    // InternalResolutionModelParser.g:3416:1: rule__SetLifecycle__Group__3 : rule__SetLifecycle__Group__3__Impl rule__SetLifecycle__Group__4 ;
     public final void rule__SetLifecycle__Group__3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:3362:1: ( rule__SetLifecycle__Group__3__Impl rule__SetLifecycle__Group__4 )
-            // InternalResolutionModelParser.g:3363:2: rule__SetLifecycle__Group__3__Impl rule__SetLifecycle__Group__4
+            // InternalResolutionModelParser.g:3420:1: ( rule__SetLifecycle__Group__3__Impl rule__SetLifecycle__Group__4 )
+            // InternalResolutionModelParser.g:3421:2: rule__SetLifecycle__Group__3__Impl rule__SetLifecycle__Group__4
             {
-            pushFollow(FOLLOW_20);
+            pushFollow(FOLLOW_21);
             rule__SetLifecycle__Group__3__Impl();
 
             state._fsp--;
@@ -10251,17 +10443,17 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__SetLifecycle__Group__3__Impl"
-    // InternalResolutionModelParser.g:3370:1: rule__SetLifecycle__Group__3__Impl : ( Comma ) ;
+    // InternalResolutionModelParser.g:3428:1: rule__SetLifecycle__Group__3__Impl : ( Comma ) ;
     public final void rule__SetLifecycle__Group__3__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:3374:1: ( ( Comma ) )
-            // InternalResolutionModelParser.g:3375:1: ( Comma )
+            // InternalResolutionModelParser.g:3432:1: ( ( Comma ) )
+            // InternalResolutionModelParser.g:3433:1: ( Comma )
             {
-            // InternalResolutionModelParser.g:3375:1: ( Comma )
-            // InternalResolutionModelParser.g:3376:2: Comma
+            // InternalResolutionModelParser.g:3433:1: ( Comma )
+            // InternalResolutionModelParser.g:3434:2: Comma
             {
              before(grammarAccess.getSetLifecycleAccess().getCommaKeyword_3()); 
             match(input,Comma,FOLLOW_2); 
@@ -10288,16 +10480,16 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__SetLifecycle__Group__4"
-    // InternalResolutionModelParser.g:3385:1: rule__SetLifecycle__Group__4 : rule__SetLifecycle__Group__4__Impl rule__SetLifecycle__Group__5 ;
+    // InternalResolutionModelParser.g:3443:1: rule__SetLifecycle__Group__4 : rule__SetLifecycle__Group__4__Impl rule__SetLifecycle__Group__5 ;
     public final void rule__SetLifecycle__Group__4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:3389:1: ( rule__SetLifecycle__Group__4__Impl rule__SetLifecycle__Group__5 )
-            // InternalResolutionModelParser.g:3390:2: rule__SetLifecycle__Group__4__Impl rule__SetLifecycle__Group__5
+            // InternalResolutionModelParser.g:3447:1: ( rule__SetLifecycle__Group__4__Impl rule__SetLifecycle__Group__5 )
+            // InternalResolutionModelParser.g:3448:2: rule__SetLifecycle__Group__4__Impl rule__SetLifecycle__Group__5
             {
-            pushFollow(FOLLOW_19);
+            pushFollow(FOLLOW_20);
             rule__SetLifecycle__Group__4__Impl();
 
             state._fsp--;
@@ -10326,21 +10518,21 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__SetLifecycle__Group__4__Impl"
-    // InternalResolutionModelParser.g:3397:1: rule__SetLifecycle__Group__4__Impl : ( ( rule__SetLifecycle__StateAssignment_4 ) ) ;
+    // InternalResolutionModelParser.g:3455:1: rule__SetLifecycle__Group__4__Impl : ( ( rule__SetLifecycle__StateAssignment_4 ) ) ;
     public final void rule__SetLifecycle__Group__4__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:3401:1: ( ( ( rule__SetLifecycle__StateAssignment_4 ) ) )
-            // InternalResolutionModelParser.g:3402:1: ( ( rule__SetLifecycle__StateAssignment_4 ) )
+            // InternalResolutionModelParser.g:3459:1: ( ( ( rule__SetLifecycle__StateAssignment_4 ) ) )
+            // InternalResolutionModelParser.g:3460:1: ( ( rule__SetLifecycle__StateAssignment_4 ) )
             {
-            // InternalResolutionModelParser.g:3402:1: ( ( rule__SetLifecycle__StateAssignment_4 ) )
-            // InternalResolutionModelParser.g:3403:2: ( rule__SetLifecycle__StateAssignment_4 )
+            // InternalResolutionModelParser.g:3460:1: ( ( rule__SetLifecycle__StateAssignment_4 ) )
+            // InternalResolutionModelParser.g:3461:2: ( rule__SetLifecycle__StateAssignment_4 )
             {
              before(grammarAccess.getSetLifecycleAccess().getStateAssignment_4()); 
-            // InternalResolutionModelParser.g:3404:2: ( rule__SetLifecycle__StateAssignment_4 )
-            // InternalResolutionModelParser.g:3404:3: rule__SetLifecycle__StateAssignment_4
+            // InternalResolutionModelParser.g:3462:2: ( rule__SetLifecycle__StateAssignment_4 )
+            // InternalResolutionModelParser.g:3462:3: rule__SetLifecycle__StateAssignment_4
             {
             pushFollow(FOLLOW_2);
             rule__SetLifecycle__StateAssignment_4();
@@ -10373,14 +10565,14 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__SetLifecycle__Group__5"
-    // InternalResolutionModelParser.g:3412:1: rule__SetLifecycle__Group__5 : rule__SetLifecycle__Group__5__Impl ;
+    // InternalResolutionModelParser.g:3470:1: rule__SetLifecycle__Group__5 : rule__SetLifecycle__Group__5__Impl ;
     public final void rule__SetLifecycle__Group__5() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:3416:1: ( rule__SetLifecycle__Group__5__Impl )
-            // InternalResolutionModelParser.g:3417:2: rule__SetLifecycle__Group__5__Impl
+            // InternalResolutionModelParser.g:3474:1: ( rule__SetLifecycle__Group__5__Impl )
+            // InternalResolutionModelParser.g:3475:2: rule__SetLifecycle__Group__5__Impl
             {
             pushFollow(FOLLOW_2);
             rule__SetLifecycle__Group__5__Impl();
@@ -10406,17 +10598,17 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__SetLifecycle__Group__5__Impl"
-    // InternalResolutionModelParser.g:3423:1: rule__SetLifecycle__Group__5__Impl : ( RightParenthesis ) ;
+    // InternalResolutionModelParser.g:3481:1: rule__SetLifecycle__Group__5__Impl : ( RightParenthesis ) ;
     public final void rule__SetLifecycle__Group__5__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:3427:1: ( ( RightParenthesis ) )
-            // InternalResolutionModelParser.g:3428:1: ( RightParenthesis )
+            // InternalResolutionModelParser.g:3485:1: ( ( RightParenthesis ) )
+            // InternalResolutionModelParser.g:3486:1: ( RightParenthesis )
             {
-            // InternalResolutionModelParser.g:3428:1: ( RightParenthesis )
-            // InternalResolutionModelParser.g:3429:2: RightParenthesis
+            // InternalResolutionModelParser.g:3486:1: ( RightParenthesis )
+            // InternalResolutionModelParser.g:3487:2: RightParenthesis
             {
              before(grammarAccess.getSetLifecycleAccess().getRightParenthesisKeyword_5()); 
             match(input,RightParenthesis,FOLLOW_2); 
@@ -10443,16 +10635,16 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__GlobalNamespace__Group__0"
-    // InternalResolutionModelParser.g:3439:1: rule__GlobalNamespace__Group__0 : rule__GlobalNamespace__Group__0__Impl rule__GlobalNamespace__Group__1 ;
+    // InternalResolutionModelParser.g:3497:1: rule__GlobalNamespace__Group__0 : rule__GlobalNamespace__Group__0__Impl rule__GlobalNamespace__Group__1 ;
     public final void rule__GlobalNamespace__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:3443:1: ( rule__GlobalNamespace__Group__0__Impl rule__GlobalNamespace__Group__1 )
-            // InternalResolutionModelParser.g:3444:2: rule__GlobalNamespace__Group__0__Impl rule__GlobalNamespace__Group__1
+            // InternalResolutionModelParser.g:3501:1: ( rule__GlobalNamespace__Group__0__Impl rule__GlobalNamespace__Group__1 )
+            // InternalResolutionModelParser.g:3502:2: rule__GlobalNamespace__Group__0__Impl rule__GlobalNamespace__Group__1
             {
-            pushFollow(FOLLOW_21);
+            pushFollow(FOLLOW_22);
             rule__GlobalNamespace__Group__0__Impl();
 
             state._fsp--;
@@ -10481,21 +10673,21 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__GlobalNamespace__Group__0__Impl"
-    // InternalResolutionModelParser.g:3451:1: rule__GlobalNamespace__Group__0__Impl : ( () ) ;
+    // InternalResolutionModelParser.g:3509:1: rule__GlobalNamespace__Group__0__Impl : ( () ) ;
     public final void rule__GlobalNamespace__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:3455:1: ( ( () ) )
-            // InternalResolutionModelParser.g:3456:1: ( () )
+            // InternalResolutionModelParser.g:3513:1: ( ( () ) )
+            // InternalResolutionModelParser.g:3514:1: ( () )
             {
-            // InternalResolutionModelParser.g:3456:1: ( () )
-            // InternalResolutionModelParser.g:3457:2: ()
+            // InternalResolutionModelParser.g:3514:1: ( () )
+            // InternalResolutionModelParser.g:3515:2: ()
             {
              before(grammarAccess.getGlobalNamespaceAccess().getGlobalNamespaceAction_0()); 
-            // InternalResolutionModelParser.g:3458:2: ()
-            // InternalResolutionModelParser.g:3458:3: 
+            // InternalResolutionModelParser.g:3516:2: ()
+            // InternalResolutionModelParser.g:3516:3: 
             {
             }
 
@@ -10518,16 +10710,16 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__GlobalNamespace__Group__1"
-    // InternalResolutionModelParser.g:3466:1: rule__GlobalNamespace__Group__1 : rule__GlobalNamespace__Group__1__Impl rule__GlobalNamespace__Group__2 ;
+    // InternalResolutionModelParser.g:3524:1: rule__GlobalNamespace__Group__1 : rule__GlobalNamespace__Group__1__Impl rule__GlobalNamespace__Group__2 ;
     public final void rule__GlobalNamespace__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:3470:1: ( rule__GlobalNamespace__Group__1__Impl rule__GlobalNamespace__Group__2 )
-            // InternalResolutionModelParser.g:3471:2: rule__GlobalNamespace__Group__1__Impl rule__GlobalNamespace__Group__2
+            // InternalResolutionModelParser.g:3528:1: ( rule__GlobalNamespace__Group__1__Impl rule__GlobalNamespace__Group__2 )
+            // InternalResolutionModelParser.g:3529:2: rule__GlobalNamespace__Group__1__Impl rule__GlobalNamespace__Group__2
             {
-            pushFollow(FOLLOW_22);
+            pushFollow(FOLLOW_23);
             rule__GlobalNamespace__Group__1__Impl();
 
             state._fsp--;
@@ -10556,17 +10748,17 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__GlobalNamespace__Group__1__Impl"
-    // InternalResolutionModelParser.g:3478:1: rule__GlobalNamespace__Group__1__Impl : ( GlobalNamespace ) ;
+    // InternalResolutionModelParser.g:3536:1: rule__GlobalNamespace__Group__1__Impl : ( GlobalNamespace ) ;
     public final void rule__GlobalNamespace__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:3482:1: ( ( GlobalNamespace ) )
-            // InternalResolutionModelParser.g:3483:1: ( GlobalNamespace )
+            // InternalResolutionModelParser.g:3540:1: ( ( GlobalNamespace ) )
+            // InternalResolutionModelParser.g:3541:1: ( GlobalNamespace )
             {
-            // InternalResolutionModelParser.g:3483:1: ( GlobalNamespace )
-            // InternalResolutionModelParser.g:3484:2: GlobalNamespace
+            // InternalResolutionModelParser.g:3541:1: ( GlobalNamespace )
+            // InternalResolutionModelParser.g:3542:2: GlobalNamespace
             {
              before(grammarAccess.getGlobalNamespaceAccess().getGlobalNamespaceKeyword_1()); 
             match(input,GlobalNamespace,FOLLOW_2); 
@@ -10593,14 +10785,14 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__GlobalNamespace__Group__2"
-    // InternalResolutionModelParser.g:3493:1: rule__GlobalNamespace__Group__2 : rule__GlobalNamespace__Group__2__Impl ;
+    // InternalResolutionModelParser.g:3551:1: rule__GlobalNamespace__Group__2 : rule__GlobalNamespace__Group__2__Impl ;
     public final void rule__GlobalNamespace__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:3497:1: ( rule__GlobalNamespace__Group__2__Impl )
-            // InternalResolutionModelParser.g:3498:2: rule__GlobalNamespace__Group__2__Impl
+            // InternalResolutionModelParser.g:3555:1: ( rule__GlobalNamespace__Group__2__Impl )
+            // InternalResolutionModelParser.g:3556:2: rule__GlobalNamespace__Group__2__Impl
             {
             pushFollow(FOLLOW_2);
             rule__GlobalNamespace__Group__2__Impl();
@@ -10626,29 +10818,29 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__GlobalNamespace__Group__2__Impl"
-    // InternalResolutionModelParser.g:3504:1: rule__GlobalNamespace__Group__2__Impl : ( ( rule__GlobalNamespace__Group_2__0 )? ) ;
+    // InternalResolutionModelParser.g:3562:1: rule__GlobalNamespace__Group__2__Impl : ( ( rule__GlobalNamespace__Group_2__0 )? ) ;
     public final void rule__GlobalNamespace__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:3508:1: ( ( ( rule__GlobalNamespace__Group_2__0 )? ) )
-            // InternalResolutionModelParser.g:3509:1: ( ( rule__GlobalNamespace__Group_2__0 )? )
+            // InternalResolutionModelParser.g:3566:1: ( ( ( rule__GlobalNamespace__Group_2__0 )? ) )
+            // InternalResolutionModelParser.g:3567:1: ( ( rule__GlobalNamespace__Group_2__0 )? )
             {
-            // InternalResolutionModelParser.g:3509:1: ( ( rule__GlobalNamespace__Group_2__0 )? )
-            // InternalResolutionModelParser.g:3510:2: ( rule__GlobalNamespace__Group_2__0 )?
+            // InternalResolutionModelParser.g:3567:1: ( ( rule__GlobalNamespace__Group_2__0 )? )
+            // InternalResolutionModelParser.g:3568:2: ( rule__GlobalNamespace__Group_2__0 )?
             {
              before(grammarAccess.getGlobalNamespaceAccess().getGroup_2()); 
-            // InternalResolutionModelParser.g:3511:2: ( rule__GlobalNamespace__Group_2__0 )?
-            int alt13=2;
-            int LA13_0 = input.LA(1);
+            // InternalResolutionModelParser.g:3569:2: ( rule__GlobalNamespace__Group_2__0 )?
+            int alt14=2;
+            int LA14_0 = input.LA(1);
 
-            if ( (LA13_0==LeftSquareBracket) ) {
-                alt13=1;
+            if ( (LA14_0==LeftSquareBracket) ) {
+                alt14=1;
             }
-            switch (alt13) {
+            switch (alt14) {
                 case 1 :
-                    // InternalResolutionModelParser.g:3511:3: rule__GlobalNamespace__Group_2__0
+                    // InternalResolutionModelParser.g:3569:3: rule__GlobalNamespace__Group_2__0
                     {
                     pushFollow(FOLLOW_2);
                     rule__GlobalNamespace__Group_2__0();
@@ -10684,16 +10876,16 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__GlobalNamespace__Group_2__0"
-    // InternalResolutionModelParser.g:3520:1: rule__GlobalNamespace__Group_2__0 : rule__GlobalNamespace__Group_2__0__Impl rule__GlobalNamespace__Group_2__1 ;
+    // InternalResolutionModelParser.g:3578:1: rule__GlobalNamespace__Group_2__0 : rule__GlobalNamespace__Group_2__0__Impl rule__GlobalNamespace__Group_2__1 ;
     public final void rule__GlobalNamespace__Group_2__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:3524:1: ( rule__GlobalNamespace__Group_2__0__Impl rule__GlobalNamespace__Group_2__1 )
-            // InternalResolutionModelParser.g:3525:2: rule__GlobalNamespace__Group_2__0__Impl rule__GlobalNamespace__Group_2__1
+            // InternalResolutionModelParser.g:3582:1: ( rule__GlobalNamespace__Group_2__0__Impl rule__GlobalNamespace__Group_2__1 )
+            // InternalResolutionModelParser.g:3583:2: rule__GlobalNamespace__Group_2__0__Impl rule__GlobalNamespace__Group_2__1
             {
-            pushFollow(FOLLOW_23);
+            pushFollow(FOLLOW_24);
             rule__GlobalNamespace__Group_2__0__Impl();
 
             state._fsp--;
@@ -10722,17 +10914,17 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__GlobalNamespace__Group_2__0__Impl"
-    // InternalResolutionModelParser.g:3532:1: rule__GlobalNamespace__Group_2__0__Impl : ( LeftSquareBracket ) ;
+    // InternalResolutionModelParser.g:3590:1: rule__GlobalNamespace__Group_2__0__Impl : ( LeftSquareBracket ) ;
     public final void rule__GlobalNamespace__Group_2__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:3536:1: ( ( LeftSquareBracket ) )
-            // InternalResolutionModelParser.g:3537:1: ( LeftSquareBracket )
+            // InternalResolutionModelParser.g:3594:1: ( ( LeftSquareBracket ) )
+            // InternalResolutionModelParser.g:3595:1: ( LeftSquareBracket )
             {
-            // InternalResolutionModelParser.g:3537:1: ( LeftSquareBracket )
-            // InternalResolutionModelParser.g:3538:2: LeftSquareBracket
+            // InternalResolutionModelParser.g:3595:1: ( LeftSquareBracket )
+            // InternalResolutionModelParser.g:3596:2: LeftSquareBracket
             {
              before(grammarAccess.getGlobalNamespaceAccess().getLeftSquareBracketKeyword_2_0()); 
             match(input,LeftSquareBracket,FOLLOW_2); 
@@ -10759,16 +10951,16 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__GlobalNamespace__Group_2__1"
-    // InternalResolutionModelParser.g:3547:1: rule__GlobalNamespace__Group_2__1 : rule__GlobalNamespace__Group_2__1__Impl rule__GlobalNamespace__Group_2__2 ;
+    // InternalResolutionModelParser.g:3605:1: rule__GlobalNamespace__Group_2__1 : rule__GlobalNamespace__Group_2__1__Impl rule__GlobalNamespace__Group_2__2 ;
     public final void rule__GlobalNamespace__Group_2__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:3551:1: ( rule__GlobalNamespace__Group_2__1__Impl rule__GlobalNamespace__Group_2__2 )
-            // InternalResolutionModelParser.g:3552:2: rule__GlobalNamespace__Group_2__1__Impl rule__GlobalNamespace__Group_2__2
+            // InternalResolutionModelParser.g:3609:1: ( rule__GlobalNamespace__Group_2__1__Impl rule__GlobalNamespace__Group_2__2 )
+            // InternalResolutionModelParser.g:3610:2: rule__GlobalNamespace__Group_2__1__Impl rule__GlobalNamespace__Group_2__2
             {
-            pushFollow(FOLLOW_24);
+            pushFollow(FOLLOW_25);
             rule__GlobalNamespace__Group_2__1__Impl();
 
             state._fsp--;
@@ -10797,21 +10989,21 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__GlobalNamespace__Group_2__1__Impl"
-    // InternalResolutionModelParser.g:3559:1: rule__GlobalNamespace__Group_2__1__Impl : ( ( rule__GlobalNamespace__PartsAssignment_2_1 ) ) ;
+    // InternalResolutionModelParser.g:3617:1: rule__GlobalNamespace__Group_2__1__Impl : ( ( rule__GlobalNamespace__PartsAssignment_2_1 ) ) ;
     public final void rule__GlobalNamespace__Group_2__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:3563:1: ( ( ( rule__GlobalNamespace__PartsAssignment_2_1 ) ) )
-            // InternalResolutionModelParser.g:3564:1: ( ( rule__GlobalNamespace__PartsAssignment_2_1 ) )
+            // InternalResolutionModelParser.g:3621:1: ( ( ( rule__GlobalNamespace__PartsAssignment_2_1 ) ) )
+            // InternalResolutionModelParser.g:3622:1: ( ( rule__GlobalNamespace__PartsAssignment_2_1 ) )
             {
-            // InternalResolutionModelParser.g:3564:1: ( ( rule__GlobalNamespace__PartsAssignment_2_1 ) )
-            // InternalResolutionModelParser.g:3565:2: ( rule__GlobalNamespace__PartsAssignment_2_1 )
+            // InternalResolutionModelParser.g:3622:1: ( ( rule__GlobalNamespace__PartsAssignment_2_1 ) )
+            // InternalResolutionModelParser.g:3623:2: ( rule__GlobalNamespace__PartsAssignment_2_1 )
             {
              before(grammarAccess.getGlobalNamespaceAccess().getPartsAssignment_2_1()); 
-            // InternalResolutionModelParser.g:3566:2: ( rule__GlobalNamespace__PartsAssignment_2_1 )
-            // InternalResolutionModelParser.g:3566:3: rule__GlobalNamespace__PartsAssignment_2_1
+            // InternalResolutionModelParser.g:3624:2: ( rule__GlobalNamespace__PartsAssignment_2_1 )
+            // InternalResolutionModelParser.g:3624:3: rule__GlobalNamespace__PartsAssignment_2_1
             {
             pushFollow(FOLLOW_2);
             rule__GlobalNamespace__PartsAssignment_2_1();
@@ -10844,16 +11036,16 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__GlobalNamespace__Group_2__2"
-    // InternalResolutionModelParser.g:3574:1: rule__GlobalNamespace__Group_2__2 : rule__GlobalNamespace__Group_2__2__Impl rule__GlobalNamespace__Group_2__3 ;
+    // InternalResolutionModelParser.g:3632:1: rule__GlobalNamespace__Group_2__2 : rule__GlobalNamespace__Group_2__2__Impl rule__GlobalNamespace__Group_2__3 ;
     public final void rule__GlobalNamespace__Group_2__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:3578:1: ( rule__GlobalNamespace__Group_2__2__Impl rule__GlobalNamespace__Group_2__3 )
-            // InternalResolutionModelParser.g:3579:2: rule__GlobalNamespace__Group_2__2__Impl rule__GlobalNamespace__Group_2__3
+            // InternalResolutionModelParser.g:3636:1: ( rule__GlobalNamespace__Group_2__2__Impl rule__GlobalNamespace__Group_2__3 )
+            // InternalResolutionModelParser.g:3637:2: rule__GlobalNamespace__Group_2__2__Impl rule__GlobalNamespace__Group_2__3
             {
-            pushFollow(FOLLOW_24);
+            pushFollow(FOLLOW_25);
             rule__GlobalNamespace__Group_2__2__Impl();
 
             state._fsp--;
@@ -10882,35 +11074,35 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__GlobalNamespace__Group_2__2__Impl"
-    // InternalResolutionModelParser.g:3586:1: rule__GlobalNamespace__Group_2__2__Impl : ( ( rule__GlobalNamespace__Group_2_2__0 )* ) ;
+    // InternalResolutionModelParser.g:3644:1: rule__GlobalNamespace__Group_2__2__Impl : ( ( rule__GlobalNamespace__Group_2_2__0 )* ) ;
     public final void rule__GlobalNamespace__Group_2__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:3590:1: ( ( ( rule__GlobalNamespace__Group_2_2__0 )* ) )
-            // InternalResolutionModelParser.g:3591:1: ( ( rule__GlobalNamespace__Group_2_2__0 )* )
+            // InternalResolutionModelParser.g:3648:1: ( ( ( rule__GlobalNamespace__Group_2_2__0 )* ) )
+            // InternalResolutionModelParser.g:3649:1: ( ( rule__GlobalNamespace__Group_2_2__0 )* )
             {
-            // InternalResolutionModelParser.g:3591:1: ( ( rule__GlobalNamespace__Group_2_2__0 )* )
-            // InternalResolutionModelParser.g:3592:2: ( rule__GlobalNamespace__Group_2_2__0 )*
+            // InternalResolutionModelParser.g:3649:1: ( ( rule__GlobalNamespace__Group_2_2__0 )* )
+            // InternalResolutionModelParser.g:3650:2: ( rule__GlobalNamespace__Group_2_2__0 )*
             {
              before(grammarAccess.getGlobalNamespaceAccess().getGroup_2_2()); 
-            // InternalResolutionModelParser.g:3593:2: ( rule__GlobalNamespace__Group_2_2__0 )*
-            loop14:
+            // InternalResolutionModelParser.g:3651:2: ( rule__GlobalNamespace__Group_2_2__0 )*
+            loop15:
             do {
-                int alt14=2;
-                int LA14_0 = input.LA(1);
+                int alt15=2;
+                int LA15_0 = input.LA(1);
 
-                if ( (LA14_0==Comma) ) {
-                    alt14=1;
+                if ( (LA15_0==Comma) ) {
+                    alt15=1;
                 }
 
 
-                switch (alt14) {
+                switch (alt15) {
             	case 1 :
-            	    // InternalResolutionModelParser.g:3593:3: rule__GlobalNamespace__Group_2_2__0
+            	    // InternalResolutionModelParser.g:3651:3: rule__GlobalNamespace__Group_2_2__0
             	    {
-            	    pushFollow(FOLLOW_25);
+            	    pushFollow(FOLLOW_26);
             	    rule__GlobalNamespace__Group_2_2__0();
 
             	    state._fsp--;
@@ -10920,7 +11112,7 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
             	    break;
 
             	default :
-            	    break loop14;
+            	    break loop15;
                 }
             } while (true);
 
@@ -10947,14 +11139,14 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__GlobalNamespace__Group_2__3"
-    // InternalResolutionModelParser.g:3601:1: rule__GlobalNamespace__Group_2__3 : rule__GlobalNamespace__Group_2__3__Impl ;
+    // InternalResolutionModelParser.g:3659:1: rule__GlobalNamespace__Group_2__3 : rule__GlobalNamespace__Group_2__3__Impl ;
     public final void rule__GlobalNamespace__Group_2__3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:3605:1: ( rule__GlobalNamespace__Group_2__3__Impl )
-            // InternalResolutionModelParser.g:3606:2: rule__GlobalNamespace__Group_2__3__Impl
+            // InternalResolutionModelParser.g:3663:1: ( rule__GlobalNamespace__Group_2__3__Impl )
+            // InternalResolutionModelParser.g:3664:2: rule__GlobalNamespace__Group_2__3__Impl
             {
             pushFollow(FOLLOW_2);
             rule__GlobalNamespace__Group_2__3__Impl();
@@ -10980,17 +11172,17 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__GlobalNamespace__Group_2__3__Impl"
-    // InternalResolutionModelParser.g:3612:1: rule__GlobalNamespace__Group_2__3__Impl : ( RightSquareBracket ) ;
+    // InternalResolutionModelParser.g:3670:1: rule__GlobalNamespace__Group_2__3__Impl : ( RightSquareBracket ) ;
     public final void rule__GlobalNamespace__Group_2__3__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:3616:1: ( ( RightSquareBracket ) )
-            // InternalResolutionModelParser.g:3617:1: ( RightSquareBracket )
+            // InternalResolutionModelParser.g:3674:1: ( ( RightSquareBracket ) )
+            // InternalResolutionModelParser.g:3675:1: ( RightSquareBracket )
             {
-            // InternalResolutionModelParser.g:3617:1: ( RightSquareBracket )
-            // InternalResolutionModelParser.g:3618:2: RightSquareBracket
+            // InternalResolutionModelParser.g:3675:1: ( RightSquareBracket )
+            // InternalResolutionModelParser.g:3676:2: RightSquareBracket
             {
              before(grammarAccess.getGlobalNamespaceAccess().getRightSquareBracketKeyword_2_3()); 
             match(input,RightSquareBracket,FOLLOW_2); 
@@ -11017,16 +11209,16 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__GlobalNamespace__Group_2_2__0"
-    // InternalResolutionModelParser.g:3628:1: rule__GlobalNamespace__Group_2_2__0 : rule__GlobalNamespace__Group_2_2__0__Impl rule__GlobalNamespace__Group_2_2__1 ;
+    // InternalResolutionModelParser.g:3686:1: rule__GlobalNamespace__Group_2_2__0 : rule__GlobalNamespace__Group_2_2__0__Impl rule__GlobalNamespace__Group_2_2__1 ;
     public final void rule__GlobalNamespace__Group_2_2__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:3632:1: ( rule__GlobalNamespace__Group_2_2__0__Impl rule__GlobalNamespace__Group_2_2__1 )
-            // InternalResolutionModelParser.g:3633:2: rule__GlobalNamespace__Group_2_2__0__Impl rule__GlobalNamespace__Group_2_2__1
+            // InternalResolutionModelParser.g:3690:1: ( rule__GlobalNamespace__Group_2_2__0__Impl rule__GlobalNamespace__Group_2_2__1 )
+            // InternalResolutionModelParser.g:3691:2: rule__GlobalNamespace__Group_2_2__0__Impl rule__GlobalNamespace__Group_2_2__1
             {
-            pushFollow(FOLLOW_23);
+            pushFollow(FOLLOW_24);
             rule__GlobalNamespace__Group_2_2__0__Impl();
 
             state._fsp--;
@@ -11055,17 +11247,17 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__GlobalNamespace__Group_2_2__0__Impl"
-    // InternalResolutionModelParser.g:3640:1: rule__GlobalNamespace__Group_2_2__0__Impl : ( Comma ) ;
+    // InternalResolutionModelParser.g:3698:1: rule__GlobalNamespace__Group_2_2__0__Impl : ( Comma ) ;
     public final void rule__GlobalNamespace__Group_2_2__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:3644:1: ( ( Comma ) )
-            // InternalResolutionModelParser.g:3645:1: ( Comma )
+            // InternalResolutionModelParser.g:3702:1: ( ( Comma ) )
+            // InternalResolutionModelParser.g:3703:1: ( Comma )
             {
-            // InternalResolutionModelParser.g:3645:1: ( Comma )
-            // InternalResolutionModelParser.g:3646:2: Comma
+            // InternalResolutionModelParser.g:3703:1: ( Comma )
+            // InternalResolutionModelParser.g:3704:2: Comma
             {
              before(grammarAccess.getGlobalNamespaceAccess().getCommaKeyword_2_2_0()); 
             match(input,Comma,FOLLOW_2); 
@@ -11092,14 +11284,14 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__GlobalNamespace__Group_2_2__1"
-    // InternalResolutionModelParser.g:3655:1: rule__GlobalNamespace__Group_2_2__1 : rule__GlobalNamespace__Group_2_2__1__Impl ;
+    // InternalResolutionModelParser.g:3713:1: rule__GlobalNamespace__Group_2_2__1 : rule__GlobalNamespace__Group_2_2__1__Impl ;
     public final void rule__GlobalNamespace__Group_2_2__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:3659:1: ( rule__GlobalNamespace__Group_2_2__1__Impl )
-            // InternalResolutionModelParser.g:3660:2: rule__GlobalNamespace__Group_2_2__1__Impl
+            // InternalResolutionModelParser.g:3717:1: ( rule__GlobalNamespace__Group_2_2__1__Impl )
+            // InternalResolutionModelParser.g:3718:2: rule__GlobalNamespace__Group_2_2__1__Impl
             {
             pushFollow(FOLLOW_2);
             rule__GlobalNamespace__Group_2_2__1__Impl();
@@ -11125,21 +11317,21 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__GlobalNamespace__Group_2_2__1__Impl"
-    // InternalResolutionModelParser.g:3666:1: rule__GlobalNamespace__Group_2_2__1__Impl : ( ( rule__GlobalNamespace__PartsAssignment_2_2_1 ) ) ;
+    // InternalResolutionModelParser.g:3724:1: rule__GlobalNamespace__Group_2_2__1__Impl : ( ( rule__GlobalNamespace__PartsAssignment_2_2_1 ) ) ;
     public final void rule__GlobalNamespace__Group_2_2__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:3670:1: ( ( ( rule__GlobalNamespace__PartsAssignment_2_2_1 ) ) )
-            // InternalResolutionModelParser.g:3671:1: ( ( rule__GlobalNamespace__PartsAssignment_2_2_1 ) )
+            // InternalResolutionModelParser.g:3728:1: ( ( ( rule__GlobalNamespace__PartsAssignment_2_2_1 ) ) )
+            // InternalResolutionModelParser.g:3729:1: ( ( rule__GlobalNamespace__PartsAssignment_2_2_1 ) )
             {
-            // InternalResolutionModelParser.g:3671:1: ( ( rule__GlobalNamespace__PartsAssignment_2_2_1 ) )
-            // InternalResolutionModelParser.g:3672:2: ( rule__GlobalNamespace__PartsAssignment_2_2_1 )
+            // InternalResolutionModelParser.g:3729:1: ( ( rule__GlobalNamespace__PartsAssignment_2_2_1 ) )
+            // InternalResolutionModelParser.g:3730:2: ( rule__GlobalNamespace__PartsAssignment_2_2_1 )
             {
              before(grammarAccess.getGlobalNamespaceAccess().getPartsAssignment_2_2_1()); 
-            // InternalResolutionModelParser.g:3673:2: ( rule__GlobalNamespace__PartsAssignment_2_2_1 )
-            // InternalResolutionModelParser.g:3673:3: rule__GlobalNamespace__PartsAssignment_2_2_1
+            // InternalResolutionModelParser.g:3731:2: ( rule__GlobalNamespace__PartsAssignment_2_2_1 )
+            // InternalResolutionModelParser.g:3731:3: rule__GlobalNamespace__PartsAssignment_2_2_1
             {
             pushFollow(FOLLOW_2);
             rule__GlobalNamespace__PartsAssignment_2_2_1();
@@ -11172,16 +11364,16 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__RelativeNamespace_Impl__Group__0"
-    // InternalResolutionModelParser.g:3682:1: rule__RelativeNamespace_Impl__Group__0 : rule__RelativeNamespace_Impl__Group__0__Impl rule__RelativeNamespace_Impl__Group__1 ;
+    // InternalResolutionModelParser.g:3740:1: rule__RelativeNamespace_Impl__Group__0 : rule__RelativeNamespace_Impl__Group__0__Impl rule__RelativeNamespace_Impl__Group__1 ;
     public final void rule__RelativeNamespace_Impl__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:3686:1: ( rule__RelativeNamespace_Impl__Group__0__Impl rule__RelativeNamespace_Impl__Group__1 )
-            // InternalResolutionModelParser.g:3687:2: rule__RelativeNamespace_Impl__Group__0__Impl rule__RelativeNamespace_Impl__Group__1
+            // InternalResolutionModelParser.g:3744:1: ( rule__RelativeNamespace_Impl__Group__0__Impl rule__RelativeNamespace_Impl__Group__1 )
+            // InternalResolutionModelParser.g:3745:2: rule__RelativeNamespace_Impl__Group__0__Impl rule__RelativeNamespace_Impl__Group__1
             {
-            pushFollow(FOLLOW_26);
+            pushFollow(FOLLOW_27);
             rule__RelativeNamespace_Impl__Group__0__Impl();
 
             state._fsp--;
@@ -11210,21 +11402,21 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__RelativeNamespace_Impl__Group__0__Impl"
-    // InternalResolutionModelParser.g:3694:1: rule__RelativeNamespace_Impl__Group__0__Impl : ( () ) ;
+    // InternalResolutionModelParser.g:3752:1: rule__RelativeNamespace_Impl__Group__0__Impl : ( () ) ;
     public final void rule__RelativeNamespace_Impl__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:3698:1: ( ( () ) )
-            // InternalResolutionModelParser.g:3699:1: ( () )
+            // InternalResolutionModelParser.g:3756:1: ( ( () ) )
+            // InternalResolutionModelParser.g:3757:1: ( () )
             {
-            // InternalResolutionModelParser.g:3699:1: ( () )
-            // InternalResolutionModelParser.g:3700:2: ()
+            // InternalResolutionModelParser.g:3757:1: ( () )
+            // InternalResolutionModelParser.g:3758:2: ()
             {
              before(grammarAccess.getRelativeNamespace_ImplAccess().getRelativeNamespaceAction_0()); 
-            // InternalResolutionModelParser.g:3701:2: ()
-            // InternalResolutionModelParser.g:3701:3: 
+            // InternalResolutionModelParser.g:3759:2: ()
+            // InternalResolutionModelParser.g:3759:3: 
             {
             }
 
@@ -11247,16 +11439,16 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__RelativeNamespace_Impl__Group__1"
-    // InternalResolutionModelParser.g:3709:1: rule__RelativeNamespace_Impl__Group__1 : rule__RelativeNamespace_Impl__Group__1__Impl rule__RelativeNamespace_Impl__Group__2 ;
+    // InternalResolutionModelParser.g:3767:1: rule__RelativeNamespace_Impl__Group__1 : rule__RelativeNamespace_Impl__Group__1__Impl rule__RelativeNamespace_Impl__Group__2 ;
     public final void rule__RelativeNamespace_Impl__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:3713:1: ( rule__RelativeNamespace_Impl__Group__1__Impl rule__RelativeNamespace_Impl__Group__2 )
-            // InternalResolutionModelParser.g:3714:2: rule__RelativeNamespace_Impl__Group__1__Impl rule__RelativeNamespace_Impl__Group__2
+            // InternalResolutionModelParser.g:3771:1: ( rule__RelativeNamespace_Impl__Group__1__Impl rule__RelativeNamespace_Impl__Group__2 )
+            // InternalResolutionModelParser.g:3772:2: rule__RelativeNamespace_Impl__Group__1__Impl rule__RelativeNamespace_Impl__Group__2
             {
-            pushFollow(FOLLOW_22);
+            pushFollow(FOLLOW_23);
             rule__RelativeNamespace_Impl__Group__1__Impl();
 
             state._fsp--;
@@ -11285,17 +11477,17 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__RelativeNamespace_Impl__Group__1__Impl"
-    // InternalResolutionModelParser.g:3721:1: rule__RelativeNamespace_Impl__Group__1__Impl : ( RelativeNamespace ) ;
+    // InternalResolutionModelParser.g:3779:1: rule__RelativeNamespace_Impl__Group__1__Impl : ( RelativeNamespace ) ;
     public final void rule__RelativeNamespace_Impl__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:3725:1: ( ( RelativeNamespace ) )
-            // InternalResolutionModelParser.g:3726:1: ( RelativeNamespace )
+            // InternalResolutionModelParser.g:3783:1: ( ( RelativeNamespace ) )
+            // InternalResolutionModelParser.g:3784:1: ( RelativeNamespace )
             {
-            // InternalResolutionModelParser.g:3726:1: ( RelativeNamespace )
-            // InternalResolutionModelParser.g:3727:2: RelativeNamespace
+            // InternalResolutionModelParser.g:3784:1: ( RelativeNamespace )
+            // InternalResolutionModelParser.g:3785:2: RelativeNamespace
             {
              before(grammarAccess.getRelativeNamespace_ImplAccess().getRelativeNamespaceKeyword_1()); 
             match(input,RelativeNamespace,FOLLOW_2); 
@@ -11322,14 +11514,14 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__RelativeNamespace_Impl__Group__2"
-    // InternalResolutionModelParser.g:3736:1: rule__RelativeNamespace_Impl__Group__2 : rule__RelativeNamespace_Impl__Group__2__Impl ;
+    // InternalResolutionModelParser.g:3794:1: rule__RelativeNamespace_Impl__Group__2 : rule__RelativeNamespace_Impl__Group__2__Impl ;
     public final void rule__RelativeNamespace_Impl__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:3740:1: ( rule__RelativeNamespace_Impl__Group__2__Impl )
-            // InternalResolutionModelParser.g:3741:2: rule__RelativeNamespace_Impl__Group__2__Impl
+            // InternalResolutionModelParser.g:3798:1: ( rule__RelativeNamespace_Impl__Group__2__Impl )
+            // InternalResolutionModelParser.g:3799:2: rule__RelativeNamespace_Impl__Group__2__Impl
             {
             pushFollow(FOLLOW_2);
             rule__RelativeNamespace_Impl__Group__2__Impl();
@@ -11355,29 +11547,29 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__RelativeNamespace_Impl__Group__2__Impl"
-    // InternalResolutionModelParser.g:3747:1: rule__RelativeNamespace_Impl__Group__2__Impl : ( ( rule__RelativeNamespace_Impl__Group_2__0 )? ) ;
+    // InternalResolutionModelParser.g:3805:1: rule__RelativeNamespace_Impl__Group__2__Impl : ( ( rule__RelativeNamespace_Impl__Group_2__0 )? ) ;
     public final void rule__RelativeNamespace_Impl__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:3751:1: ( ( ( rule__RelativeNamespace_Impl__Group_2__0 )? ) )
-            // InternalResolutionModelParser.g:3752:1: ( ( rule__RelativeNamespace_Impl__Group_2__0 )? )
+            // InternalResolutionModelParser.g:3809:1: ( ( ( rule__RelativeNamespace_Impl__Group_2__0 )? ) )
+            // InternalResolutionModelParser.g:3810:1: ( ( rule__RelativeNamespace_Impl__Group_2__0 )? )
             {
-            // InternalResolutionModelParser.g:3752:1: ( ( rule__RelativeNamespace_Impl__Group_2__0 )? )
-            // InternalResolutionModelParser.g:3753:2: ( rule__RelativeNamespace_Impl__Group_2__0 )?
+            // InternalResolutionModelParser.g:3810:1: ( ( rule__RelativeNamespace_Impl__Group_2__0 )? )
+            // InternalResolutionModelParser.g:3811:2: ( rule__RelativeNamespace_Impl__Group_2__0 )?
             {
              before(grammarAccess.getRelativeNamespace_ImplAccess().getGroup_2()); 
-            // InternalResolutionModelParser.g:3754:2: ( rule__RelativeNamespace_Impl__Group_2__0 )?
-            int alt15=2;
-            int LA15_0 = input.LA(1);
+            // InternalResolutionModelParser.g:3812:2: ( rule__RelativeNamespace_Impl__Group_2__0 )?
+            int alt16=2;
+            int LA16_0 = input.LA(1);
 
-            if ( (LA15_0==LeftSquareBracket) ) {
-                alt15=1;
+            if ( (LA16_0==LeftSquareBracket) ) {
+                alt16=1;
             }
-            switch (alt15) {
+            switch (alt16) {
                 case 1 :
-                    // InternalResolutionModelParser.g:3754:3: rule__RelativeNamespace_Impl__Group_2__0
+                    // InternalResolutionModelParser.g:3812:3: rule__RelativeNamespace_Impl__Group_2__0
                     {
                     pushFollow(FOLLOW_2);
                     rule__RelativeNamespace_Impl__Group_2__0();
@@ -11413,16 +11605,16 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__RelativeNamespace_Impl__Group_2__0"
-    // InternalResolutionModelParser.g:3763:1: rule__RelativeNamespace_Impl__Group_2__0 : rule__RelativeNamespace_Impl__Group_2__0__Impl rule__RelativeNamespace_Impl__Group_2__1 ;
+    // InternalResolutionModelParser.g:3821:1: rule__RelativeNamespace_Impl__Group_2__0 : rule__RelativeNamespace_Impl__Group_2__0__Impl rule__RelativeNamespace_Impl__Group_2__1 ;
     public final void rule__RelativeNamespace_Impl__Group_2__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:3767:1: ( rule__RelativeNamespace_Impl__Group_2__0__Impl rule__RelativeNamespace_Impl__Group_2__1 )
-            // InternalResolutionModelParser.g:3768:2: rule__RelativeNamespace_Impl__Group_2__0__Impl rule__RelativeNamespace_Impl__Group_2__1
+            // InternalResolutionModelParser.g:3825:1: ( rule__RelativeNamespace_Impl__Group_2__0__Impl rule__RelativeNamespace_Impl__Group_2__1 )
+            // InternalResolutionModelParser.g:3826:2: rule__RelativeNamespace_Impl__Group_2__0__Impl rule__RelativeNamespace_Impl__Group_2__1
             {
-            pushFollow(FOLLOW_23);
+            pushFollow(FOLLOW_24);
             rule__RelativeNamespace_Impl__Group_2__0__Impl();
 
             state._fsp--;
@@ -11451,17 +11643,17 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__RelativeNamespace_Impl__Group_2__0__Impl"
-    // InternalResolutionModelParser.g:3775:1: rule__RelativeNamespace_Impl__Group_2__0__Impl : ( LeftSquareBracket ) ;
+    // InternalResolutionModelParser.g:3833:1: rule__RelativeNamespace_Impl__Group_2__0__Impl : ( LeftSquareBracket ) ;
     public final void rule__RelativeNamespace_Impl__Group_2__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:3779:1: ( ( LeftSquareBracket ) )
-            // InternalResolutionModelParser.g:3780:1: ( LeftSquareBracket )
+            // InternalResolutionModelParser.g:3837:1: ( ( LeftSquareBracket ) )
+            // InternalResolutionModelParser.g:3838:1: ( LeftSquareBracket )
             {
-            // InternalResolutionModelParser.g:3780:1: ( LeftSquareBracket )
-            // InternalResolutionModelParser.g:3781:2: LeftSquareBracket
+            // InternalResolutionModelParser.g:3838:1: ( LeftSquareBracket )
+            // InternalResolutionModelParser.g:3839:2: LeftSquareBracket
             {
              before(grammarAccess.getRelativeNamespace_ImplAccess().getLeftSquareBracketKeyword_2_0()); 
             match(input,LeftSquareBracket,FOLLOW_2); 
@@ -11488,16 +11680,16 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__RelativeNamespace_Impl__Group_2__1"
-    // InternalResolutionModelParser.g:3790:1: rule__RelativeNamespace_Impl__Group_2__1 : rule__RelativeNamespace_Impl__Group_2__1__Impl rule__RelativeNamespace_Impl__Group_2__2 ;
+    // InternalResolutionModelParser.g:3848:1: rule__RelativeNamespace_Impl__Group_2__1 : rule__RelativeNamespace_Impl__Group_2__1__Impl rule__RelativeNamespace_Impl__Group_2__2 ;
     public final void rule__RelativeNamespace_Impl__Group_2__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:3794:1: ( rule__RelativeNamespace_Impl__Group_2__1__Impl rule__RelativeNamespace_Impl__Group_2__2 )
-            // InternalResolutionModelParser.g:3795:2: rule__RelativeNamespace_Impl__Group_2__1__Impl rule__RelativeNamespace_Impl__Group_2__2
+            // InternalResolutionModelParser.g:3852:1: ( rule__RelativeNamespace_Impl__Group_2__1__Impl rule__RelativeNamespace_Impl__Group_2__2 )
+            // InternalResolutionModelParser.g:3853:2: rule__RelativeNamespace_Impl__Group_2__1__Impl rule__RelativeNamespace_Impl__Group_2__2
             {
-            pushFollow(FOLLOW_24);
+            pushFollow(FOLLOW_25);
             rule__RelativeNamespace_Impl__Group_2__1__Impl();
 
             state._fsp--;
@@ -11526,21 +11718,21 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__RelativeNamespace_Impl__Group_2__1__Impl"
-    // InternalResolutionModelParser.g:3802:1: rule__RelativeNamespace_Impl__Group_2__1__Impl : ( ( rule__RelativeNamespace_Impl__PartsAssignment_2_1 ) ) ;
+    // InternalResolutionModelParser.g:3860:1: rule__RelativeNamespace_Impl__Group_2__1__Impl : ( ( rule__RelativeNamespace_Impl__PartsAssignment_2_1 ) ) ;
     public final void rule__RelativeNamespace_Impl__Group_2__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:3806:1: ( ( ( rule__RelativeNamespace_Impl__PartsAssignment_2_1 ) ) )
-            // InternalResolutionModelParser.g:3807:1: ( ( rule__RelativeNamespace_Impl__PartsAssignment_2_1 ) )
+            // InternalResolutionModelParser.g:3864:1: ( ( ( rule__RelativeNamespace_Impl__PartsAssignment_2_1 ) ) )
+            // InternalResolutionModelParser.g:3865:1: ( ( rule__RelativeNamespace_Impl__PartsAssignment_2_1 ) )
             {
-            // InternalResolutionModelParser.g:3807:1: ( ( rule__RelativeNamespace_Impl__PartsAssignment_2_1 ) )
-            // InternalResolutionModelParser.g:3808:2: ( rule__RelativeNamespace_Impl__PartsAssignment_2_1 )
+            // InternalResolutionModelParser.g:3865:1: ( ( rule__RelativeNamespace_Impl__PartsAssignment_2_1 ) )
+            // InternalResolutionModelParser.g:3866:2: ( rule__RelativeNamespace_Impl__PartsAssignment_2_1 )
             {
              before(grammarAccess.getRelativeNamespace_ImplAccess().getPartsAssignment_2_1()); 
-            // InternalResolutionModelParser.g:3809:2: ( rule__RelativeNamespace_Impl__PartsAssignment_2_1 )
-            // InternalResolutionModelParser.g:3809:3: rule__RelativeNamespace_Impl__PartsAssignment_2_1
+            // InternalResolutionModelParser.g:3867:2: ( rule__RelativeNamespace_Impl__PartsAssignment_2_1 )
+            // InternalResolutionModelParser.g:3867:3: rule__RelativeNamespace_Impl__PartsAssignment_2_1
             {
             pushFollow(FOLLOW_2);
             rule__RelativeNamespace_Impl__PartsAssignment_2_1();
@@ -11573,16 +11765,16 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__RelativeNamespace_Impl__Group_2__2"
-    // InternalResolutionModelParser.g:3817:1: rule__RelativeNamespace_Impl__Group_2__2 : rule__RelativeNamespace_Impl__Group_2__2__Impl rule__RelativeNamespace_Impl__Group_2__3 ;
+    // InternalResolutionModelParser.g:3875:1: rule__RelativeNamespace_Impl__Group_2__2 : rule__RelativeNamespace_Impl__Group_2__2__Impl rule__RelativeNamespace_Impl__Group_2__3 ;
     public final void rule__RelativeNamespace_Impl__Group_2__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:3821:1: ( rule__RelativeNamespace_Impl__Group_2__2__Impl rule__RelativeNamespace_Impl__Group_2__3 )
-            // InternalResolutionModelParser.g:3822:2: rule__RelativeNamespace_Impl__Group_2__2__Impl rule__RelativeNamespace_Impl__Group_2__3
+            // InternalResolutionModelParser.g:3879:1: ( rule__RelativeNamespace_Impl__Group_2__2__Impl rule__RelativeNamespace_Impl__Group_2__3 )
+            // InternalResolutionModelParser.g:3880:2: rule__RelativeNamespace_Impl__Group_2__2__Impl rule__RelativeNamespace_Impl__Group_2__3
             {
-            pushFollow(FOLLOW_24);
+            pushFollow(FOLLOW_25);
             rule__RelativeNamespace_Impl__Group_2__2__Impl();
 
             state._fsp--;
@@ -11611,35 +11803,35 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__RelativeNamespace_Impl__Group_2__2__Impl"
-    // InternalResolutionModelParser.g:3829:1: rule__RelativeNamespace_Impl__Group_2__2__Impl : ( ( rule__RelativeNamespace_Impl__Group_2_2__0 )* ) ;
+    // InternalResolutionModelParser.g:3887:1: rule__RelativeNamespace_Impl__Group_2__2__Impl : ( ( rule__RelativeNamespace_Impl__Group_2_2__0 )* ) ;
     public final void rule__RelativeNamespace_Impl__Group_2__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:3833:1: ( ( ( rule__RelativeNamespace_Impl__Group_2_2__0 )* ) )
-            // InternalResolutionModelParser.g:3834:1: ( ( rule__RelativeNamespace_Impl__Group_2_2__0 )* )
+            // InternalResolutionModelParser.g:3891:1: ( ( ( rule__RelativeNamespace_Impl__Group_2_2__0 )* ) )
+            // InternalResolutionModelParser.g:3892:1: ( ( rule__RelativeNamespace_Impl__Group_2_2__0 )* )
             {
-            // InternalResolutionModelParser.g:3834:1: ( ( rule__RelativeNamespace_Impl__Group_2_2__0 )* )
-            // InternalResolutionModelParser.g:3835:2: ( rule__RelativeNamespace_Impl__Group_2_2__0 )*
+            // InternalResolutionModelParser.g:3892:1: ( ( rule__RelativeNamespace_Impl__Group_2_2__0 )* )
+            // InternalResolutionModelParser.g:3893:2: ( rule__RelativeNamespace_Impl__Group_2_2__0 )*
             {
              before(grammarAccess.getRelativeNamespace_ImplAccess().getGroup_2_2()); 
-            // InternalResolutionModelParser.g:3836:2: ( rule__RelativeNamespace_Impl__Group_2_2__0 )*
-            loop16:
+            // InternalResolutionModelParser.g:3894:2: ( rule__RelativeNamespace_Impl__Group_2_2__0 )*
+            loop17:
             do {
-                int alt16=2;
-                int LA16_0 = input.LA(1);
+                int alt17=2;
+                int LA17_0 = input.LA(1);
 
-                if ( (LA16_0==Comma) ) {
-                    alt16=1;
+                if ( (LA17_0==Comma) ) {
+                    alt17=1;
                 }
 
 
-                switch (alt16) {
+                switch (alt17) {
             	case 1 :
-            	    // InternalResolutionModelParser.g:3836:3: rule__RelativeNamespace_Impl__Group_2_2__0
+            	    // InternalResolutionModelParser.g:3894:3: rule__RelativeNamespace_Impl__Group_2_2__0
             	    {
-            	    pushFollow(FOLLOW_25);
+            	    pushFollow(FOLLOW_26);
             	    rule__RelativeNamespace_Impl__Group_2_2__0();
 
             	    state._fsp--;
@@ -11649,7 +11841,7 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
             	    break;
 
             	default :
-            	    break loop16;
+            	    break loop17;
                 }
             } while (true);
 
@@ -11676,14 +11868,14 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__RelativeNamespace_Impl__Group_2__3"
-    // InternalResolutionModelParser.g:3844:1: rule__RelativeNamespace_Impl__Group_2__3 : rule__RelativeNamespace_Impl__Group_2__3__Impl ;
+    // InternalResolutionModelParser.g:3902:1: rule__RelativeNamespace_Impl__Group_2__3 : rule__RelativeNamespace_Impl__Group_2__3__Impl ;
     public final void rule__RelativeNamespace_Impl__Group_2__3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:3848:1: ( rule__RelativeNamespace_Impl__Group_2__3__Impl )
-            // InternalResolutionModelParser.g:3849:2: rule__RelativeNamespace_Impl__Group_2__3__Impl
+            // InternalResolutionModelParser.g:3906:1: ( rule__RelativeNamespace_Impl__Group_2__3__Impl )
+            // InternalResolutionModelParser.g:3907:2: rule__RelativeNamespace_Impl__Group_2__3__Impl
             {
             pushFollow(FOLLOW_2);
             rule__RelativeNamespace_Impl__Group_2__3__Impl();
@@ -11709,17 +11901,17 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__RelativeNamespace_Impl__Group_2__3__Impl"
-    // InternalResolutionModelParser.g:3855:1: rule__RelativeNamespace_Impl__Group_2__3__Impl : ( RightSquareBracket ) ;
+    // InternalResolutionModelParser.g:3913:1: rule__RelativeNamespace_Impl__Group_2__3__Impl : ( RightSquareBracket ) ;
     public final void rule__RelativeNamespace_Impl__Group_2__3__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:3859:1: ( ( RightSquareBracket ) )
-            // InternalResolutionModelParser.g:3860:1: ( RightSquareBracket )
+            // InternalResolutionModelParser.g:3917:1: ( ( RightSquareBracket ) )
+            // InternalResolutionModelParser.g:3918:1: ( RightSquareBracket )
             {
-            // InternalResolutionModelParser.g:3860:1: ( RightSquareBracket )
-            // InternalResolutionModelParser.g:3861:2: RightSquareBracket
+            // InternalResolutionModelParser.g:3918:1: ( RightSquareBracket )
+            // InternalResolutionModelParser.g:3919:2: RightSquareBracket
             {
              before(grammarAccess.getRelativeNamespace_ImplAccess().getRightSquareBracketKeyword_2_3()); 
             match(input,RightSquareBracket,FOLLOW_2); 
@@ -11746,16 +11938,16 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__RelativeNamespace_Impl__Group_2_2__0"
-    // InternalResolutionModelParser.g:3871:1: rule__RelativeNamespace_Impl__Group_2_2__0 : rule__RelativeNamespace_Impl__Group_2_2__0__Impl rule__RelativeNamespace_Impl__Group_2_2__1 ;
+    // InternalResolutionModelParser.g:3929:1: rule__RelativeNamespace_Impl__Group_2_2__0 : rule__RelativeNamespace_Impl__Group_2_2__0__Impl rule__RelativeNamespace_Impl__Group_2_2__1 ;
     public final void rule__RelativeNamespace_Impl__Group_2_2__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:3875:1: ( rule__RelativeNamespace_Impl__Group_2_2__0__Impl rule__RelativeNamespace_Impl__Group_2_2__1 )
-            // InternalResolutionModelParser.g:3876:2: rule__RelativeNamespace_Impl__Group_2_2__0__Impl rule__RelativeNamespace_Impl__Group_2_2__1
+            // InternalResolutionModelParser.g:3933:1: ( rule__RelativeNamespace_Impl__Group_2_2__0__Impl rule__RelativeNamespace_Impl__Group_2_2__1 )
+            // InternalResolutionModelParser.g:3934:2: rule__RelativeNamespace_Impl__Group_2_2__0__Impl rule__RelativeNamespace_Impl__Group_2_2__1
             {
-            pushFollow(FOLLOW_23);
+            pushFollow(FOLLOW_24);
             rule__RelativeNamespace_Impl__Group_2_2__0__Impl();
 
             state._fsp--;
@@ -11784,17 +11976,17 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__RelativeNamespace_Impl__Group_2_2__0__Impl"
-    // InternalResolutionModelParser.g:3883:1: rule__RelativeNamespace_Impl__Group_2_2__0__Impl : ( Comma ) ;
+    // InternalResolutionModelParser.g:3941:1: rule__RelativeNamespace_Impl__Group_2_2__0__Impl : ( Comma ) ;
     public final void rule__RelativeNamespace_Impl__Group_2_2__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:3887:1: ( ( Comma ) )
-            // InternalResolutionModelParser.g:3888:1: ( Comma )
+            // InternalResolutionModelParser.g:3945:1: ( ( Comma ) )
+            // InternalResolutionModelParser.g:3946:1: ( Comma )
             {
-            // InternalResolutionModelParser.g:3888:1: ( Comma )
-            // InternalResolutionModelParser.g:3889:2: Comma
+            // InternalResolutionModelParser.g:3946:1: ( Comma )
+            // InternalResolutionModelParser.g:3947:2: Comma
             {
              before(grammarAccess.getRelativeNamespace_ImplAccess().getCommaKeyword_2_2_0()); 
             match(input,Comma,FOLLOW_2); 
@@ -11821,14 +12013,14 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__RelativeNamespace_Impl__Group_2_2__1"
-    // InternalResolutionModelParser.g:3898:1: rule__RelativeNamespace_Impl__Group_2_2__1 : rule__RelativeNamespace_Impl__Group_2_2__1__Impl ;
+    // InternalResolutionModelParser.g:3956:1: rule__RelativeNamespace_Impl__Group_2_2__1 : rule__RelativeNamespace_Impl__Group_2_2__1__Impl ;
     public final void rule__RelativeNamespace_Impl__Group_2_2__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:3902:1: ( rule__RelativeNamespace_Impl__Group_2_2__1__Impl )
-            // InternalResolutionModelParser.g:3903:2: rule__RelativeNamespace_Impl__Group_2_2__1__Impl
+            // InternalResolutionModelParser.g:3960:1: ( rule__RelativeNamespace_Impl__Group_2_2__1__Impl )
+            // InternalResolutionModelParser.g:3961:2: rule__RelativeNamespace_Impl__Group_2_2__1__Impl
             {
             pushFollow(FOLLOW_2);
             rule__RelativeNamespace_Impl__Group_2_2__1__Impl();
@@ -11854,21 +12046,21 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__RelativeNamespace_Impl__Group_2_2__1__Impl"
-    // InternalResolutionModelParser.g:3909:1: rule__RelativeNamespace_Impl__Group_2_2__1__Impl : ( ( rule__RelativeNamespace_Impl__PartsAssignment_2_2_1 ) ) ;
+    // InternalResolutionModelParser.g:3967:1: rule__RelativeNamespace_Impl__Group_2_2__1__Impl : ( ( rule__RelativeNamespace_Impl__PartsAssignment_2_2_1 ) ) ;
     public final void rule__RelativeNamespace_Impl__Group_2_2__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:3913:1: ( ( ( rule__RelativeNamespace_Impl__PartsAssignment_2_2_1 ) ) )
-            // InternalResolutionModelParser.g:3914:1: ( ( rule__RelativeNamespace_Impl__PartsAssignment_2_2_1 ) )
+            // InternalResolutionModelParser.g:3971:1: ( ( ( rule__RelativeNamespace_Impl__PartsAssignment_2_2_1 ) ) )
+            // InternalResolutionModelParser.g:3972:1: ( ( rule__RelativeNamespace_Impl__PartsAssignment_2_2_1 ) )
             {
-            // InternalResolutionModelParser.g:3914:1: ( ( rule__RelativeNamespace_Impl__PartsAssignment_2_2_1 ) )
-            // InternalResolutionModelParser.g:3915:2: ( rule__RelativeNamespace_Impl__PartsAssignment_2_2_1 )
+            // InternalResolutionModelParser.g:3972:1: ( ( rule__RelativeNamespace_Impl__PartsAssignment_2_2_1 ) )
+            // InternalResolutionModelParser.g:3973:2: ( rule__RelativeNamespace_Impl__PartsAssignment_2_2_1 )
             {
              before(grammarAccess.getRelativeNamespace_ImplAccess().getPartsAssignment_2_2_1()); 
-            // InternalResolutionModelParser.g:3916:2: ( rule__RelativeNamespace_Impl__PartsAssignment_2_2_1 )
-            // InternalResolutionModelParser.g:3916:3: rule__RelativeNamespace_Impl__PartsAssignment_2_2_1
+            // InternalResolutionModelParser.g:3974:2: ( rule__RelativeNamespace_Impl__PartsAssignment_2_2_1 )
+            // InternalResolutionModelParser.g:3974:3: rule__RelativeNamespace_Impl__PartsAssignment_2_2_1
             {
             pushFollow(FOLLOW_2);
             rule__RelativeNamespace_Impl__PartsAssignment_2_2_1();
@@ -11901,16 +12093,16 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__PrivateNamespace__Group__0"
-    // InternalResolutionModelParser.g:3925:1: rule__PrivateNamespace__Group__0 : rule__PrivateNamespace__Group__0__Impl rule__PrivateNamespace__Group__1 ;
+    // InternalResolutionModelParser.g:3983:1: rule__PrivateNamespace__Group__0 : rule__PrivateNamespace__Group__0__Impl rule__PrivateNamespace__Group__1 ;
     public final void rule__PrivateNamespace__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:3929:1: ( rule__PrivateNamespace__Group__0__Impl rule__PrivateNamespace__Group__1 )
-            // InternalResolutionModelParser.g:3930:2: rule__PrivateNamespace__Group__0__Impl rule__PrivateNamespace__Group__1
+            // InternalResolutionModelParser.g:3987:1: ( rule__PrivateNamespace__Group__0__Impl rule__PrivateNamespace__Group__1 )
+            // InternalResolutionModelParser.g:3988:2: rule__PrivateNamespace__Group__0__Impl rule__PrivateNamespace__Group__1
             {
-            pushFollow(FOLLOW_27);
+            pushFollow(FOLLOW_28);
             rule__PrivateNamespace__Group__0__Impl();
 
             state._fsp--;
@@ -11939,21 +12131,21 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__PrivateNamespace__Group__0__Impl"
-    // InternalResolutionModelParser.g:3937:1: rule__PrivateNamespace__Group__0__Impl : ( () ) ;
+    // InternalResolutionModelParser.g:3995:1: rule__PrivateNamespace__Group__0__Impl : ( () ) ;
     public final void rule__PrivateNamespace__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:3941:1: ( ( () ) )
-            // InternalResolutionModelParser.g:3942:1: ( () )
+            // InternalResolutionModelParser.g:3999:1: ( ( () ) )
+            // InternalResolutionModelParser.g:4000:1: ( () )
             {
-            // InternalResolutionModelParser.g:3942:1: ( () )
-            // InternalResolutionModelParser.g:3943:2: ()
+            // InternalResolutionModelParser.g:4000:1: ( () )
+            // InternalResolutionModelParser.g:4001:2: ()
             {
              before(grammarAccess.getPrivateNamespaceAccess().getPrivateNamespaceAction_0()); 
-            // InternalResolutionModelParser.g:3944:2: ()
-            // InternalResolutionModelParser.g:3944:3: 
+            // InternalResolutionModelParser.g:4002:2: ()
+            // InternalResolutionModelParser.g:4002:3: 
             {
             }
 
@@ -11976,16 +12168,16 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__PrivateNamespace__Group__1"
-    // InternalResolutionModelParser.g:3952:1: rule__PrivateNamespace__Group__1 : rule__PrivateNamespace__Group__1__Impl rule__PrivateNamespace__Group__2 ;
+    // InternalResolutionModelParser.g:4010:1: rule__PrivateNamespace__Group__1 : rule__PrivateNamespace__Group__1__Impl rule__PrivateNamespace__Group__2 ;
     public final void rule__PrivateNamespace__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:3956:1: ( rule__PrivateNamespace__Group__1__Impl rule__PrivateNamespace__Group__2 )
-            // InternalResolutionModelParser.g:3957:2: rule__PrivateNamespace__Group__1__Impl rule__PrivateNamespace__Group__2
+            // InternalResolutionModelParser.g:4014:1: ( rule__PrivateNamespace__Group__1__Impl rule__PrivateNamespace__Group__2 )
+            // InternalResolutionModelParser.g:4015:2: rule__PrivateNamespace__Group__1__Impl rule__PrivateNamespace__Group__2
             {
-            pushFollow(FOLLOW_22);
+            pushFollow(FOLLOW_23);
             rule__PrivateNamespace__Group__1__Impl();
 
             state._fsp--;
@@ -12014,17 +12206,17 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__PrivateNamespace__Group__1__Impl"
-    // InternalResolutionModelParser.g:3964:1: rule__PrivateNamespace__Group__1__Impl : ( PrivateNamespace ) ;
+    // InternalResolutionModelParser.g:4022:1: rule__PrivateNamespace__Group__1__Impl : ( PrivateNamespace ) ;
     public final void rule__PrivateNamespace__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:3968:1: ( ( PrivateNamespace ) )
-            // InternalResolutionModelParser.g:3969:1: ( PrivateNamespace )
+            // InternalResolutionModelParser.g:4026:1: ( ( PrivateNamespace ) )
+            // InternalResolutionModelParser.g:4027:1: ( PrivateNamespace )
             {
-            // InternalResolutionModelParser.g:3969:1: ( PrivateNamespace )
-            // InternalResolutionModelParser.g:3970:2: PrivateNamespace
+            // InternalResolutionModelParser.g:4027:1: ( PrivateNamespace )
+            // InternalResolutionModelParser.g:4028:2: PrivateNamespace
             {
              before(grammarAccess.getPrivateNamespaceAccess().getPrivateNamespaceKeyword_1()); 
             match(input,PrivateNamespace,FOLLOW_2); 
@@ -12051,14 +12243,14 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__PrivateNamespace__Group__2"
-    // InternalResolutionModelParser.g:3979:1: rule__PrivateNamespace__Group__2 : rule__PrivateNamespace__Group__2__Impl ;
+    // InternalResolutionModelParser.g:4037:1: rule__PrivateNamespace__Group__2 : rule__PrivateNamespace__Group__2__Impl ;
     public final void rule__PrivateNamespace__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:3983:1: ( rule__PrivateNamespace__Group__2__Impl )
-            // InternalResolutionModelParser.g:3984:2: rule__PrivateNamespace__Group__2__Impl
+            // InternalResolutionModelParser.g:4041:1: ( rule__PrivateNamespace__Group__2__Impl )
+            // InternalResolutionModelParser.g:4042:2: rule__PrivateNamespace__Group__2__Impl
             {
             pushFollow(FOLLOW_2);
             rule__PrivateNamespace__Group__2__Impl();
@@ -12084,29 +12276,29 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__PrivateNamespace__Group__2__Impl"
-    // InternalResolutionModelParser.g:3990:1: rule__PrivateNamespace__Group__2__Impl : ( ( rule__PrivateNamespace__Group_2__0 )? ) ;
+    // InternalResolutionModelParser.g:4048:1: rule__PrivateNamespace__Group__2__Impl : ( ( rule__PrivateNamespace__Group_2__0 )? ) ;
     public final void rule__PrivateNamespace__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:3994:1: ( ( ( rule__PrivateNamespace__Group_2__0 )? ) )
-            // InternalResolutionModelParser.g:3995:1: ( ( rule__PrivateNamespace__Group_2__0 )? )
+            // InternalResolutionModelParser.g:4052:1: ( ( ( rule__PrivateNamespace__Group_2__0 )? ) )
+            // InternalResolutionModelParser.g:4053:1: ( ( rule__PrivateNamespace__Group_2__0 )? )
             {
-            // InternalResolutionModelParser.g:3995:1: ( ( rule__PrivateNamespace__Group_2__0 )? )
-            // InternalResolutionModelParser.g:3996:2: ( rule__PrivateNamespace__Group_2__0 )?
+            // InternalResolutionModelParser.g:4053:1: ( ( rule__PrivateNamespace__Group_2__0 )? )
+            // InternalResolutionModelParser.g:4054:2: ( rule__PrivateNamespace__Group_2__0 )?
             {
              before(grammarAccess.getPrivateNamespaceAccess().getGroup_2()); 
-            // InternalResolutionModelParser.g:3997:2: ( rule__PrivateNamespace__Group_2__0 )?
-            int alt17=2;
-            int LA17_0 = input.LA(1);
+            // InternalResolutionModelParser.g:4055:2: ( rule__PrivateNamespace__Group_2__0 )?
+            int alt18=2;
+            int LA18_0 = input.LA(1);
 
-            if ( (LA17_0==LeftSquareBracket) ) {
-                alt17=1;
+            if ( (LA18_0==LeftSquareBracket) ) {
+                alt18=1;
             }
-            switch (alt17) {
+            switch (alt18) {
                 case 1 :
-                    // InternalResolutionModelParser.g:3997:3: rule__PrivateNamespace__Group_2__0
+                    // InternalResolutionModelParser.g:4055:3: rule__PrivateNamespace__Group_2__0
                     {
                     pushFollow(FOLLOW_2);
                     rule__PrivateNamespace__Group_2__0();
@@ -12142,16 +12334,16 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__PrivateNamespace__Group_2__0"
-    // InternalResolutionModelParser.g:4006:1: rule__PrivateNamespace__Group_2__0 : rule__PrivateNamespace__Group_2__0__Impl rule__PrivateNamespace__Group_2__1 ;
+    // InternalResolutionModelParser.g:4064:1: rule__PrivateNamespace__Group_2__0 : rule__PrivateNamespace__Group_2__0__Impl rule__PrivateNamespace__Group_2__1 ;
     public final void rule__PrivateNamespace__Group_2__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:4010:1: ( rule__PrivateNamespace__Group_2__0__Impl rule__PrivateNamespace__Group_2__1 )
-            // InternalResolutionModelParser.g:4011:2: rule__PrivateNamespace__Group_2__0__Impl rule__PrivateNamespace__Group_2__1
+            // InternalResolutionModelParser.g:4068:1: ( rule__PrivateNamespace__Group_2__0__Impl rule__PrivateNamespace__Group_2__1 )
+            // InternalResolutionModelParser.g:4069:2: rule__PrivateNamespace__Group_2__0__Impl rule__PrivateNamespace__Group_2__1
             {
-            pushFollow(FOLLOW_23);
+            pushFollow(FOLLOW_24);
             rule__PrivateNamespace__Group_2__0__Impl();
 
             state._fsp--;
@@ -12180,17 +12372,17 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__PrivateNamespace__Group_2__0__Impl"
-    // InternalResolutionModelParser.g:4018:1: rule__PrivateNamespace__Group_2__0__Impl : ( LeftSquareBracket ) ;
+    // InternalResolutionModelParser.g:4076:1: rule__PrivateNamespace__Group_2__0__Impl : ( LeftSquareBracket ) ;
     public final void rule__PrivateNamespace__Group_2__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:4022:1: ( ( LeftSquareBracket ) )
-            // InternalResolutionModelParser.g:4023:1: ( LeftSquareBracket )
+            // InternalResolutionModelParser.g:4080:1: ( ( LeftSquareBracket ) )
+            // InternalResolutionModelParser.g:4081:1: ( LeftSquareBracket )
             {
-            // InternalResolutionModelParser.g:4023:1: ( LeftSquareBracket )
-            // InternalResolutionModelParser.g:4024:2: LeftSquareBracket
+            // InternalResolutionModelParser.g:4081:1: ( LeftSquareBracket )
+            // InternalResolutionModelParser.g:4082:2: LeftSquareBracket
             {
              before(grammarAccess.getPrivateNamespaceAccess().getLeftSquareBracketKeyword_2_0()); 
             match(input,LeftSquareBracket,FOLLOW_2); 
@@ -12217,16 +12409,16 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__PrivateNamespace__Group_2__1"
-    // InternalResolutionModelParser.g:4033:1: rule__PrivateNamespace__Group_2__1 : rule__PrivateNamespace__Group_2__1__Impl rule__PrivateNamespace__Group_2__2 ;
+    // InternalResolutionModelParser.g:4091:1: rule__PrivateNamespace__Group_2__1 : rule__PrivateNamespace__Group_2__1__Impl rule__PrivateNamespace__Group_2__2 ;
     public final void rule__PrivateNamespace__Group_2__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:4037:1: ( rule__PrivateNamespace__Group_2__1__Impl rule__PrivateNamespace__Group_2__2 )
-            // InternalResolutionModelParser.g:4038:2: rule__PrivateNamespace__Group_2__1__Impl rule__PrivateNamespace__Group_2__2
+            // InternalResolutionModelParser.g:4095:1: ( rule__PrivateNamespace__Group_2__1__Impl rule__PrivateNamespace__Group_2__2 )
+            // InternalResolutionModelParser.g:4096:2: rule__PrivateNamespace__Group_2__1__Impl rule__PrivateNamespace__Group_2__2
             {
-            pushFollow(FOLLOW_24);
+            pushFollow(FOLLOW_25);
             rule__PrivateNamespace__Group_2__1__Impl();
 
             state._fsp--;
@@ -12255,21 +12447,21 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__PrivateNamespace__Group_2__1__Impl"
-    // InternalResolutionModelParser.g:4045:1: rule__PrivateNamespace__Group_2__1__Impl : ( ( rule__PrivateNamespace__PartsAssignment_2_1 ) ) ;
+    // InternalResolutionModelParser.g:4103:1: rule__PrivateNamespace__Group_2__1__Impl : ( ( rule__PrivateNamespace__PartsAssignment_2_1 ) ) ;
     public final void rule__PrivateNamespace__Group_2__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:4049:1: ( ( ( rule__PrivateNamespace__PartsAssignment_2_1 ) ) )
-            // InternalResolutionModelParser.g:4050:1: ( ( rule__PrivateNamespace__PartsAssignment_2_1 ) )
+            // InternalResolutionModelParser.g:4107:1: ( ( ( rule__PrivateNamespace__PartsAssignment_2_1 ) ) )
+            // InternalResolutionModelParser.g:4108:1: ( ( rule__PrivateNamespace__PartsAssignment_2_1 ) )
             {
-            // InternalResolutionModelParser.g:4050:1: ( ( rule__PrivateNamespace__PartsAssignment_2_1 ) )
-            // InternalResolutionModelParser.g:4051:2: ( rule__PrivateNamespace__PartsAssignment_2_1 )
+            // InternalResolutionModelParser.g:4108:1: ( ( rule__PrivateNamespace__PartsAssignment_2_1 ) )
+            // InternalResolutionModelParser.g:4109:2: ( rule__PrivateNamespace__PartsAssignment_2_1 )
             {
              before(grammarAccess.getPrivateNamespaceAccess().getPartsAssignment_2_1()); 
-            // InternalResolutionModelParser.g:4052:2: ( rule__PrivateNamespace__PartsAssignment_2_1 )
-            // InternalResolutionModelParser.g:4052:3: rule__PrivateNamespace__PartsAssignment_2_1
+            // InternalResolutionModelParser.g:4110:2: ( rule__PrivateNamespace__PartsAssignment_2_1 )
+            // InternalResolutionModelParser.g:4110:3: rule__PrivateNamespace__PartsAssignment_2_1
             {
             pushFollow(FOLLOW_2);
             rule__PrivateNamespace__PartsAssignment_2_1();
@@ -12302,16 +12494,16 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__PrivateNamespace__Group_2__2"
-    // InternalResolutionModelParser.g:4060:1: rule__PrivateNamespace__Group_2__2 : rule__PrivateNamespace__Group_2__2__Impl rule__PrivateNamespace__Group_2__3 ;
+    // InternalResolutionModelParser.g:4118:1: rule__PrivateNamespace__Group_2__2 : rule__PrivateNamespace__Group_2__2__Impl rule__PrivateNamespace__Group_2__3 ;
     public final void rule__PrivateNamespace__Group_2__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:4064:1: ( rule__PrivateNamespace__Group_2__2__Impl rule__PrivateNamespace__Group_2__3 )
-            // InternalResolutionModelParser.g:4065:2: rule__PrivateNamespace__Group_2__2__Impl rule__PrivateNamespace__Group_2__3
+            // InternalResolutionModelParser.g:4122:1: ( rule__PrivateNamespace__Group_2__2__Impl rule__PrivateNamespace__Group_2__3 )
+            // InternalResolutionModelParser.g:4123:2: rule__PrivateNamespace__Group_2__2__Impl rule__PrivateNamespace__Group_2__3
             {
-            pushFollow(FOLLOW_24);
+            pushFollow(FOLLOW_25);
             rule__PrivateNamespace__Group_2__2__Impl();
 
             state._fsp--;
@@ -12340,35 +12532,35 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__PrivateNamespace__Group_2__2__Impl"
-    // InternalResolutionModelParser.g:4072:1: rule__PrivateNamespace__Group_2__2__Impl : ( ( rule__PrivateNamespace__Group_2_2__0 )* ) ;
+    // InternalResolutionModelParser.g:4130:1: rule__PrivateNamespace__Group_2__2__Impl : ( ( rule__PrivateNamespace__Group_2_2__0 )* ) ;
     public final void rule__PrivateNamespace__Group_2__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:4076:1: ( ( ( rule__PrivateNamespace__Group_2_2__0 )* ) )
-            // InternalResolutionModelParser.g:4077:1: ( ( rule__PrivateNamespace__Group_2_2__0 )* )
+            // InternalResolutionModelParser.g:4134:1: ( ( ( rule__PrivateNamespace__Group_2_2__0 )* ) )
+            // InternalResolutionModelParser.g:4135:1: ( ( rule__PrivateNamespace__Group_2_2__0 )* )
             {
-            // InternalResolutionModelParser.g:4077:1: ( ( rule__PrivateNamespace__Group_2_2__0 )* )
-            // InternalResolutionModelParser.g:4078:2: ( rule__PrivateNamespace__Group_2_2__0 )*
+            // InternalResolutionModelParser.g:4135:1: ( ( rule__PrivateNamespace__Group_2_2__0 )* )
+            // InternalResolutionModelParser.g:4136:2: ( rule__PrivateNamespace__Group_2_2__0 )*
             {
              before(grammarAccess.getPrivateNamespaceAccess().getGroup_2_2()); 
-            // InternalResolutionModelParser.g:4079:2: ( rule__PrivateNamespace__Group_2_2__0 )*
-            loop18:
+            // InternalResolutionModelParser.g:4137:2: ( rule__PrivateNamespace__Group_2_2__0 )*
+            loop19:
             do {
-                int alt18=2;
-                int LA18_0 = input.LA(1);
+                int alt19=2;
+                int LA19_0 = input.LA(1);
 
-                if ( (LA18_0==Comma) ) {
-                    alt18=1;
+                if ( (LA19_0==Comma) ) {
+                    alt19=1;
                 }
 
 
-                switch (alt18) {
+                switch (alt19) {
             	case 1 :
-            	    // InternalResolutionModelParser.g:4079:3: rule__PrivateNamespace__Group_2_2__0
+            	    // InternalResolutionModelParser.g:4137:3: rule__PrivateNamespace__Group_2_2__0
             	    {
-            	    pushFollow(FOLLOW_25);
+            	    pushFollow(FOLLOW_26);
             	    rule__PrivateNamespace__Group_2_2__0();
 
             	    state._fsp--;
@@ -12378,7 +12570,7 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
             	    break;
 
             	default :
-            	    break loop18;
+            	    break loop19;
                 }
             } while (true);
 
@@ -12405,14 +12597,14 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__PrivateNamespace__Group_2__3"
-    // InternalResolutionModelParser.g:4087:1: rule__PrivateNamespace__Group_2__3 : rule__PrivateNamespace__Group_2__3__Impl ;
+    // InternalResolutionModelParser.g:4145:1: rule__PrivateNamespace__Group_2__3 : rule__PrivateNamespace__Group_2__3__Impl ;
     public final void rule__PrivateNamespace__Group_2__3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:4091:1: ( rule__PrivateNamespace__Group_2__3__Impl )
-            // InternalResolutionModelParser.g:4092:2: rule__PrivateNamespace__Group_2__3__Impl
+            // InternalResolutionModelParser.g:4149:1: ( rule__PrivateNamespace__Group_2__3__Impl )
+            // InternalResolutionModelParser.g:4150:2: rule__PrivateNamespace__Group_2__3__Impl
             {
             pushFollow(FOLLOW_2);
             rule__PrivateNamespace__Group_2__3__Impl();
@@ -12438,17 +12630,17 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__PrivateNamespace__Group_2__3__Impl"
-    // InternalResolutionModelParser.g:4098:1: rule__PrivateNamespace__Group_2__3__Impl : ( RightSquareBracket ) ;
+    // InternalResolutionModelParser.g:4156:1: rule__PrivateNamespace__Group_2__3__Impl : ( RightSquareBracket ) ;
     public final void rule__PrivateNamespace__Group_2__3__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:4102:1: ( ( RightSquareBracket ) )
-            // InternalResolutionModelParser.g:4103:1: ( RightSquareBracket )
+            // InternalResolutionModelParser.g:4160:1: ( ( RightSquareBracket ) )
+            // InternalResolutionModelParser.g:4161:1: ( RightSquareBracket )
             {
-            // InternalResolutionModelParser.g:4103:1: ( RightSquareBracket )
-            // InternalResolutionModelParser.g:4104:2: RightSquareBracket
+            // InternalResolutionModelParser.g:4161:1: ( RightSquareBracket )
+            // InternalResolutionModelParser.g:4162:2: RightSquareBracket
             {
              before(grammarAccess.getPrivateNamespaceAccess().getRightSquareBracketKeyword_2_3()); 
             match(input,RightSquareBracket,FOLLOW_2); 
@@ -12475,16 +12667,16 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__PrivateNamespace__Group_2_2__0"
-    // InternalResolutionModelParser.g:4114:1: rule__PrivateNamespace__Group_2_2__0 : rule__PrivateNamespace__Group_2_2__0__Impl rule__PrivateNamespace__Group_2_2__1 ;
+    // InternalResolutionModelParser.g:4172:1: rule__PrivateNamespace__Group_2_2__0 : rule__PrivateNamespace__Group_2_2__0__Impl rule__PrivateNamespace__Group_2_2__1 ;
     public final void rule__PrivateNamespace__Group_2_2__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:4118:1: ( rule__PrivateNamespace__Group_2_2__0__Impl rule__PrivateNamespace__Group_2_2__1 )
-            // InternalResolutionModelParser.g:4119:2: rule__PrivateNamespace__Group_2_2__0__Impl rule__PrivateNamespace__Group_2_2__1
+            // InternalResolutionModelParser.g:4176:1: ( rule__PrivateNamespace__Group_2_2__0__Impl rule__PrivateNamespace__Group_2_2__1 )
+            // InternalResolutionModelParser.g:4177:2: rule__PrivateNamespace__Group_2_2__0__Impl rule__PrivateNamespace__Group_2_2__1
             {
-            pushFollow(FOLLOW_23);
+            pushFollow(FOLLOW_24);
             rule__PrivateNamespace__Group_2_2__0__Impl();
 
             state._fsp--;
@@ -12513,17 +12705,17 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__PrivateNamespace__Group_2_2__0__Impl"
-    // InternalResolutionModelParser.g:4126:1: rule__PrivateNamespace__Group_2_2__0__Impl : ( Comma ) ;
+    // InternalResolutionModelParser.g:4184:1: rule__PrivateNamespace__Group_2_2__0__Impl : ( Comma ) ;
     public final void rule__PrivateNamespace__Group_2_2__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:4130:1: ( ( Comma ) )
-            // InternalResolutionModelParser.g:4131:1: ( Comma )
+            // InternalResolutionModelParser.g:4188:1: ( ( Comma ) )
+            // InternalResolutionModelParser.g:4189:1: ( Comma )
             {
-            // InternalResolutionModelParser.g:4131:1: ( Comma )
-            // InternalResolutionModelParser.g:4132:2: Comma
+            // InternalResolutionModelParser.g:4189:1: ( Comma )
+            // InternalResolutionModelParser.g:4190:2: Comma
             {
              before(grammarAccess.getPrivateNamespaceAccess().getCommaKeyword_2_2_0()); 
             match(input,Comma,FOLLOW_2); 
@@ -12550,14 +12742,14 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__PrivateNamespace__Group_2_2__1"
-    // InternalResolutionModelParser.g:4141:1: rule__PrivateNamespace__Group_2_2__1 : rule__PrivateNamespace__Group_2_2__1__Impl ;
+    // InternalResolutionModelParser.g:4199:1: rule__PrivateNamespace__Group_2_2__1 : rule__PrivateNamespace__Group_2_2__1__Impl ;
     public final void rule__PrivateNamespace__Group_2_2__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:4145:1: ( rule__PrivateNamespace__Group_2_2__1__Impl )
-            // InternalResolutionModelParser.g:4146:2: rule__PrivateNamespace__Group_2_2__1__Impl
+            // InternalResolutionModelParser.g:4203:1: ( rule__PrivateNamespace__Group_2_2__1__Impl )
+            // InternalResolutionModelParser.g:4204:2: rule__PrivateNamespace__Group_2_2__1__Impl
             {
             pushFollow(FOLLOW_2);
             rule__PrivateNamespace__Group_2_2__1__Impl();
@@ -12583,21 +12775,21 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__PrivateNamespace__Group_2_2__1__Impl"
-    // InternalResolutionModelParser.g:4152:1: rule__PrivateNamespace__Group_2_2__1__Impl : ( ( rule__PrivateNamespace__PartsAssignment_2_2_1 ) ) ;
+    // InternalResolutionModelParser.g:4210:1: rule__PrivateNamespace__Group_2_2__1__Impl : ( ( rule__PrivateNamespace__PartsAssignment_2_2_1 ) ) ;
     public final void rule__PrivateNamespace__Group_2_2__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:4156:1: ( ( ( rule__PrivateNamespace__PartsAssignment_2_2_1 ) ) )
-            // InternalResolutionModelParser.g:4157:1: ( ( rule__PrivateNamespace__PartsAssignment_2_2_1 ) )
+            // InternalResolutionModelParser.g:4214:1: ( ( ( rule__PrivateNamespace__PartsAssignment_2_2_1 ) ) )
+            // InternalResolutionModelParser.g:4215:1: ( ( rule__PrivateNamespace__PartsAssignment_2_2_1 ) )
             {
-            // InternalResolutionModelParser.g:4157:1: ( ( rule__PrivateNamespace__PartsAssignment_2_2_1 ) )
-            // InternalResolutionModelParser.g:4158:2: ( rule__PrivateNamespace__PartsAssignment_2_2_1 )
+            // InternalResolutionModelParser.g:4215:1: ( ( rule__PrivateNamespace__PartsAssignment_2_2_1 ) )
+            // InternalResolutionModelParser.g:4216:2: ( rule__PrivateNamespace__PartsAssignment_2_2_1 )
             {
              before(grammarAccess.getPrivateNamespaceAccess().getPartsAssignment_2_2_1()); 
-            // InternalResolutionModelParser.g:4159:2: ( rule__PrivateNamespace__PartsAssignment_2_2_1 )
-            // InternalResolutionModelParser.g:4159:3: rule__PrivateNamespace__PartsAssignment_2_2_1
+            // InternalResolutionModelParser.g:4217:2: ( rule__PrivateNamespace__PartsAssignment_2_2_1 )
+            // InternalResolutionModelParser.g:4217:3: rule__PrivateNamespace__PartsAssignment_2_2_1
             {
             pushFollow(FOLLOW_2);
             rule__PrivateNamespace__PartsAssignment_2_2_1();
@@ -12630,16 +12822,16 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ParameterListType__Group__0"
-    // InternalResolutionModelParser.g:4168:1: rule__ParameterListType__Group__0 : rule__ParameterListType__Group__0__Impl rule__ParameterListType__Group__1 ;
+    // InternalResolutionModelParser.g:4226:1: rule__ParameterListType__Group__0 : rule__ParameterListType__Group__0__Impl rule__ParameterListType__Group__1 ;
     public final void rule__ParameterListType__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:4172:1: ( rule__ParameterListType__Group__0__Impl rule__ParameterListType__Group__1 )
-            // InternalResolutionModelParser.g:4173:2: rule__ParameterListType__Group__0__Impl rule__ParameterListType__Group__1
+            // InternalResolutionModelParser.g:4230:1: ( rule__ParameterListType__Group__0__Impl rule__ParameterListType__Group__1 )
+            // InternalResolutionModelParser.g:4231:2: rule__ParameterListType__Group__0__Impl rule__ParameterListType__Group__1
             {
-            pushFollow(FOLLOW_28);
+            pushFollow(FOLLOW_29);
             rule__ParameterListType__Group__0__Impl();
 
             state._fsp--;
@@ -12668,21 +12860,21 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ParameterListType__Group__0__Impl"
-    // InternalResolutionModelParser.g:4180:1: rule__ParameterListType__Group__0__Impl : ( () ) ;
+    // InternalResolutionModelParser.g:4238:1: rule__ParameterListType__Group__0__Impl : ( () ) ;
     public final void rule__ParameterListType__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:4184:1: ( ( () ) )
-            // InternalResolutionModelParser.g:4185:1: ( () )
+            // InternalResolutionModelParser.g:4242:1: ( ( () ) )
+            // InternalResolutionModelParser.g:4243:1: ( () )
             {
-            // InternalResolutionModelParser.g:4185:1: ( () )
-            // InternalResolutionModelParser.g:4186:2: ()
+            // InternalResolutionModelParser.g:4243:1: ( () )
+            // InternalResolutionModelParser.g:4244:2: ()
             {
              before(grammarAccess.getParameterListTypeAccess().getParameterListTypeAction_0()); 
-            // InternalResolutionModelParser.g:4187:2: ()
-            // InternalResolutionModelParser.g:4187:3: 
+            // InternalResolutionModelParser.g:4245:2: ()
+            // InternalResolutionModelParser.g:4245:3: 
             {
             }
 
@@ -12705,16 +12897,16 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ParameterListType__Group__1"
-    // InternalResolutionModelParser.g:4195:1: rule__ParameterListType__Group__1 : rule__ParameterListType__Group__1__Impl rule__ParameterListType__Group__2 ;
+    // InternalResolutionModelParser.g:4253:1: rule__ParameterListType__Group__1 : rule__ParameterListType__Group__1__Impl rule__ParameterListType__Group__2 ;
     public final void rule__ParameterListType__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:4199:1: ( rule__ParameterListType__Group__1__Impl rule__ParameterListType__Group__2 )
-            // InternalResolutionModelParser.g:4200:2: rule__ParameterListType__Group__1__Impl rule__ParameterListType__Group__2
+            // InternalResolutionModelParser.g:4257:1: ( rule__ParameterListType__Group__1__Impl rule__ParameterListType__Group__2 )
+            // InternalResolutionModelParser.g:4258:2: rule__ParameterListType__Group__1__Impl rule__ParameterListType__Group__2
             {
-            pushFollow(FOLLOW_22);
+            pushFollow(FOLLOW_23);
             rule__ParameterListType__Group__1__Impl();
 
             state._fsp--;
@@ -12743,17 +12935,17 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ParameterListType__Group__1__Impl"
-    // InternalResolutionModelParser.g:4207:1: rule__ParameterListType__Group__1__Impl : ( List ) ;
+    // InternalResolutionModelParser.g:4265:1: rule__ParameterListType__Group__1__Impl : ( List ) ;
     public final void rule__ParameterListType__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:4211:1: ( ( List ) )
-            // InternalResolutionModelParser.g:4212:1: ( List )
+            // InternalResolutionModelParser.g:4269:1: ( ( List ) )
+            // InternalResolutionModelParser.g:4270:1: ( List )
             {
-            // InternalResolutionModelParser.g:4212:1: ( List )
-            // InternalResolutionModelParser.g:4213:2: List
+            // InternalResolutionModelParser.g:4270:1: ( List )
+            // InternalResolutionModelParser.g:4271:2: List
             {
              before(grammarAccess.getParameterListTypeAccess().getListKeyword_1()); 
             match(input,List,FOLLOW_2); 
@@ -12780,16 +12972,16 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ParameterListType__Group__2"
-    // InternalResolutionModelParser.g:4222:1: rule__ParameterListType__Group__2 : rule__ParameterListType__Group__2__Impl rule__ParameterListType__Group__3 ;
+    // InternalResolutionModelParser.g:4280:1: rule__ParameterListType__Group__2 : rule__ParameterListType__Group__2__Impl rule__ParameterListType__Group__3 ;
     public final void rule__ParameterListType__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:4226:1: ( rule__ParameterListType__Group__2__Impl rule__ParameterListType__Group__3 )
-            // InternalResolutionModelParser.g:4227:2: rule__ParameterListType__Group__2__Impl rule__ParameterListType__Group__3
+            // InternalResolutionModelParser.g:4284:1: ( rule__ParameterListType__Group__2__Impl rule__ParameterListType__Group__3 )
+            // InternalResolutionModelParser.g:4285:2: rule__ParameterListType__Group__2__Impl rule__ParameterListType__Group__3
             {
-            pushFollow(FOLLOW_29);
+            pushFollow(FOLLOW_30);
             rule__ParameterListType__Group__2__Impl();
 
             state._fsp--;
@@ -12818,17 +13010,17 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ParameterListType__Group__2__Impl"
-    // InternalResolutionModelParser.g:4234:1: rule__ParameterListType__Group__2__Impl : ( LeftSquareBracket ) ;
+    // InternalResolutionModelParser.g:4292:1: rule__ParameterListType__Group__2__Impl : ( LeftSquareBracket ) ;
     public final void rule__ParameterListType__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:4238:1: ( ( LeftSquareBracket ) )
-            // InternalResolutionModelParser.g:4239:1: ( LeftSquareBracket )
+            // InternalResolutionModelParser.g:4296:1: ( ( LeftSquareBracket ) )
+            // InternalResolutionModelParser.g:4297:1: ( LeftSquareBracket )
             {
-            // InternalResolutionModelParser.g:4239:1: ( LeftSquareBracket )
-            // InternalResolutionModelParser.g:4240:2: LeftSquareBracket
+            // InternalResolutionModelParser.g:4297:1: ( LeftSquareBracket )
+            // InternalResolutionModelParser.g:4298:2: LeftSquareBracket
             {
              before(grammarAccess.getParameterListTypeAccess().getLeftSquareBracketKeyword_2()); 
             match(input,LeftSquareBracket,FOLLOW_2); 
@@ -12855,16 +13047,16 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ParameterListType__Group__3"
-    // InternalResolutionModelParser.g:4249:1: rule__ParameterListType__Group__3 : rule__ParameterListType__Group__3__Impl rule__ParameterListType__Group__4 ;
+    // InternalResolutionModelParser.g:4307:1: rule__ParameterListType__Group__3 : rule__ParameterListType__Group__3__Impl rule__ParameterListType__Group__4 ;
     public final void rule__ParameterListType__Group__3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:4253:1: ( rule__ParameterListType__Group__3__Impl rule__ParameterListType__Group__4 )
-            // InternalResolutionModelParser.g:4254:2: rule__ParameterListType__Group__3__Impl rule__ParameterListType__Group__4
+            // InternalResolutionModelParser.g:4311:1: ( rule__ParameterListType__Group__3__Impl rule__ParameterListType__Group__4 )
+            // InternalResolutionModelParser.g:4312:2: rule__ParameterListType__Group__3__Impl rule__ParameterListType__Group__4
             {
-            pushFollow(FOLLOW_24);
+            pushFollow(FOLLOW_25);
             rule__ParameterListType__Group__3__Impl();
 
             state._fsp--;
@@ -12893,21 +13085,21 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ParameterListType__Group__3__Impl"
-    // InternalResolutionModelParser.g:4261:1: rule__ParameterListType__Group__3__Impl : ( ( rule__ParameterListType__SequenceAssignment_3 ) ) ;
+    // InternalResolutionModelParser.g:4319:1: rule__ParameterListType__Group__3__Impl : ( ( rule__ParameterListType__SequenceAssignment_3 ) ) ;
     public final void rule__ParameterListType__Group__3__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:4265:1: ( ( ( rule__ParameterListType__SequenceAssignment_3 ) ) )
-            // InternalResolutionModelParser.g:4266:1: ( ( rule__ParameterListType__SequenceAssignment_3 ) )
+            // InternalResolutionModelParser.g:4323:1: ( ( ( rule__ParameterListType__SequenceAssignment_3 ) ) )
+            // InternalResolutionModelParser.g:4324:1: ( ( rule__ParameterListType__SequenceAssignment_3 ) )
             {
-            // InternalResolutionModelParser.g:4266:1: ( ( rule__ParameterListType__SequenceAssignment_3 ) )
-            // InternalResolutionModelParser.g:4267:2: ( rule__ParameterListType__SequenceAssignment_3 )
+            // InternalResolutionModelParser.g:4324:1: ( ( rule__ParameterListType__SequenceAssignment_3 ) )
+            // InternalResolutionModelParser.g:4325:2: ( rule__ParameterListType__SequenceAssignment_3 )
             {
              before(grammarAccess.getParameterListTypeAccess().getSequenceAssignment_3()); 
-            // InternalResolutionModelParser.g:4268:2: ( rule__ParameterListType__SequenceAssignment_3 )
-            // InternalResolutionModelParser.g:4268:3: rule__ParameterListType__SequenceAssignment_3
+            // InternalResolutionModelParser.g:4326:2: ( rule__ParameterListType__SequenceAssignment_3 )
+            // InternalResolutionModelParser.g:4326:3: rule__ParameterListType__SequenceAssignment_3
             {
             pushFollow(FOLLOW_2);
             rule__ParameterListType__SequenceAssignment_3();
@@ -12940,16 +13132,16 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ParameterListType__Group__4"
-    // InternalResolutionModelParser.g:4276:1: rule__ParameterListType__Group__4 : rule__ParameterListType__Group__4__Impl rule__ParameterListType__Group__5 ;
+    // InternalResolutionModelParser.g:4334:1: rule__ParameterListType__Group__4 : rule__ParameterListType__Group__4__Impl rule__ParameterListType__Group__5 ;
     public final void rule__ParameterListType__Group__4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:4280:1: ( rule__ParameterListType__Group__4__Impl rule__ParameterListType__Group__5 )
-            // InternalResolutionModelParser.g:4281:2: rule__ParameterListType__Group__4__Impl rule__ParameterListType__Group__5
+            // InternalResolutionModelParser.g:4338:1: ( rule__ParameterListType__Group__4__Impl rule__ParameterListType__Group__5 )
+            // InternalResolutionModelParser.g:4339:2: rule__ParameterListType__Group__4__Impl rule__ParameterListType__Group__5
             {
-            pushFollow(FOLLOW_24);
+            pushFollow(FOLLOW_25);
             rule__ParameterListType__Group__4__Impl();
 
             state._fsp--;
@@ -12978,35 +13170,35 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ParameterListType__Group__4__Impl"
-    // InternalResolutionModelParser.g:4288:1: rule__ParameterListType__Group__4__Impl : ( ( rule__ParameterListType__Group_4__0 )* ) ;
+    // InternalResolutionModelParser.g:4346:1: rule__ParameterListType__Group__4__Impl : ( ( rule__ParameterListType__Group_4__0 )* ) ;
     public final void rule__ParameterListType__Group__4__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:4292:1: ( ( ( rule__ParameterListType__Group_4__0 )* ) )
-            // InternalResolutionModelParser.g:4293:1: ( ( rule__ParameterListType__Group_4__0 )* )
+            // InternalResolutionModelParser.g:4350:1: ( ( ( rule__ParameterListType__Group_4__0 )* ) )
+            // InternalResolutionModelParser.g:4351:1: ( ( rule__ParameterListType__Group_4__0 )* )
             {
-            // InternalResolutionModelParser.g:4293:1: ( ( rule__ParameterListType__Group_4__0 )* )
-            // InternalResolutionModelParser.g:4294:2: ( rule__ParameterListType__Group_4__0 )*
+            // InternalResolutionModelParser.g:4351:1: ( ( rule__ParameterListType__Group_4__0 )* )
+            // InternalResolutionModelParser.g:4352:2: ( rule__ParameterListType__Group_4__0 )*
             {
              before(grammarAccess.getParameterListTypeAccess().getGroup_4()); 
-            // InternalResolutionModelParser.g:4295:2: ( rule__ParameterListType__Group_4__0 )*
-            loop19:
+            // InternalResolutionModelParser.g:4353:2: ( rule__ParameterListType__Group_4__0 )*
+            loop20:
             do {
-                int alt19=2;
-                int LA19_0 = input.LA(1);
+                int alt20=2;
+                int LA20_0 = input.LA(1);
 
-                if ( (LA19_0==Comma) ) {
-                    alt19=1;
+                if ( (LA20_0==Comma) ) {
+                    alt20=1;
                 }
 
 
-                switch (alt19) {
+                switch (alt20) {
             	case 1 :
-            	    // InternalResolutionModelParser.g:4295:3: rule__ParameterListType__Group_4__0
+            	    // InternalResolutionModelParser.g:4353:3: rule__ParameterListType__Group_4__0
             	    {
-            	    pushFollow(FOLLOW_25);
+            	    pushFollow(FOLLOW_26);
             	    rule__ParameterListType__Group_4__0();
 
             	    state._fsp--;
@@ -13016,7 +13208,7 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
             	    break;
 
             	default :
-            	    break loop19;
+            	    break loop20;
                 }
             } while (true);
 
@@ -13043,14 +13235,14 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ParameterListType__Group__5"
-    // InternalResolutionModelParser.g:4303:1: rule__ParameterListType__Group__5 : rule__ParameterListType__Group__5__Impl ;
+    // InternalResolutionModelParser.g:4361:1: rule__ParameterListType__Group__5 : rule__ParameterListType__Group__5__Impl ;
     public final void rule__ParameterListType__Group__5() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:4307:1: ( rule__ParameterListType__Group__5__Impl )
-            // InternalResolutionModelParser.g:4308:2: rule__ParameterListType__Group__5__Impl
+            // InternalResolutionModelParser.g:4365:1: ( rule__ParameterListType__Group__5__Impl )
+            // InternalResolutionModelParser.g:4366:2: rule__ParameterListType__Group__5__Impl
             {
             pushFollow(FOLLOW_2);
             rule__ParameterListType__Group__5__Impl();
@@ -13076,17 +13268,17 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ParameterListType__Group__5__Impl"
-    // InternalResolutionModelParser.g:4314:1: rule__ParameterListType__Group__5__Impl : ( RightSquareBracket ) ;
+    // InternalResolutionModelParser.g:4372:1: rule__ParameterListType__Group__5__Impl : ( RightSquareBracket ) ;
     public final void rule__ParameterListType__Group__5__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:4318:1: ( ( RightSquareBracket ) )
-            // InternalResolutionModelParser.g:4319:1: ( RightSquareBracket )
+            // InternalResolutionModelParser.g:4376:1: ( ( RightSquareBracket ) )
+            // InternalResolutionModelParser.g:4377:1: ( RightSquareBracket )
             {
-            // InternalResolutionModelParser.g:4319:1: ( RightSquareBracket )
-            // InternalResolutionModelParser.g:4320:2: RightSquareBracket
+            // InternalResolutionModelParser.g:4377:1: ( RightSquareBracket )
+            // InternalResolutionModelParser.g:4378:2: RightSquareBracket
             {
              before(grammarAccess.getParameterListTypeAccess().getRightSquareBracketKeyword_5()); 
             match(input,RightSquareBracket,FOLLOW_2); 
@@ -13113,16 +13305,16 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ParameterListType__Group_4__0"
-    // InternalResolutionModelParser.g:4330:1: rule__ParameterListType__Group_4__0 : rule__ParameterListType__Group_4__0__Impl rule__ParameterListType__Group_4__1 ;
+    // InternalResolutionModelParser.g:4388:1: rule__ParameterListType__Group_4__0 : rule__ParameterListType__Group_4__0__Impl rule__ParameterListType__Group_4__1 ;
     public final void rule__ParameterListType__Group_4__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:4334:1: ( rule__ParameterListType__Group_4__0__Impl rule__ParameterListType__Group_4__1 )
-            // InternalResolutionModelParser.g:4335:2: rule__ParameterListType__Group_4__0__Impl rule__ParameterListType__Group_4__1
+            // InternalResolutionModelParser.g:4392:1: ( rule__ParameterListType__Group_4__0__Impl rule__ParameterListType__Group_4__1 )
+            // InternalResolutionModelParser.g:4393:2: rule__ParameterListType__Group_4__0__Impl rule__ParameterListType__Group_4__1
             {
-            pushFollow(FOLLOW_29);
+            pushFollow(FOLLOW_30);
             rule__ParameterListType__Group_4__0__Impl();
 
             state._fsp--;
@@ -13151,17 +13343,17 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ParameterListType__Group_4__0__Impl"
-    // InternalResolutionModelParser.g:4342:1: rule__ParameterListType__Group_4__0__Impl : ( Comma ) ;
+    // InternalResolutionModelParser.g:4400:1: rule__ParameterListType__Group_4__0__Impl : ( Comma ) ;
     public final void rule__ParameterListType__Group_4__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:4346:1: ( ( Comma ) )
-            // InternalResolutionModelParser.g:4347:1: ( Comma )
+            // InternalResolutionModelParser.g:4404:1: ( ( Comma ) )
+            // InternalResolutionModelParser.g:4405:1: ( Comma )
             {
-            // InternalResolutionModelParser.g:4347:1: ( Comma )
-            // InternalResolutionModelParser.g:4348:2: Comma
+            // InternalResolutionModelParser.g:4405:1: ( Comma )
+            // InternalResolutionModelParser.g:4406:2: Comma
             {
              before(grammarAccess.getParameterListTypeAccess().getCommaKeyword_4_0()); 
             match(input,Comma,FOLLOW_2); 
@@ -13188,14 +13380,14 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ParameterListType__Group_4__1"
-    // InternalResolutionModelParser.g:4357:1: rule__ParameterListType__Group_4__1 : rule__ParameterListType__Group_4__1__Impl ;
+    // InternalResolutionModelParser.g:4415:1: rule__ParameterListType__Group_4__1 : rule__ParameterListType__Group_4__1__Impl ;
     public final void rule__ParameterListType__Group_4__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:4361:1: ( rule__ParameterListType__Group_4__1__Impl )
-            // InternalResolutionModelParser.g:4362:2: rule__ParameterListType__Group_4__1__Impl
+            // InternalResolutionModelParser.g:4419:1: ( rule__ParameterListType__Group_4__1__Impl )
+            // InternalResolutionModelParser.g:4420:2: rule__ParameterListType__Group_4__1__Impl
             {
             pushFollow(FOLLOW_2);
             rule__ParameterListType__Group_4__1__Impl();
@@ -13221,21 +13413,21 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ParameterListType__Group_4__1__Impl"
-    // InternalResolutionModelParser.g:4368:1: rule__ParameterListType__Group_4__1__Impl : ( ( rule__ParameterListType__SequenceAssignment_4_1 ) ) ;
+    // InternalResolutionModelParser.g:4426:1: rule__ParameterListType__Group_4__1__Impl : ( ( rule__ParameterListType__SequenceAssignment_4_1 ) ) ;
     public final void rule__ParameterListType__Group_4__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:4372:1: ( ( ( rule__ParameterListType__SequenceAssignment_4_1 ) ) )
-            // InternalResolutionModelParser.g:4373:1: ( ( rule__ParameterListType__SequenceAssignment_4_1 ) )
+            // InternalResolutionModelParser.g:4430:1: ( ( ( rule__ParameterListType__SequenceAssignment_4_1 ) ) )
+            // InternalResolutionModelParser.g:4431:1: ( ( rule__ParameterListType__SequenceAssignment_4_1 ) )
             {
-            // InternalResolutionModelParser.g:4373:1: ( ( rule__ParameterListType__SequenceAssignment_4_1 ) )
-            // InternalResolutionModelParser.g:4374:2: ( rule__ParameterListType__SequenceAssignment_4_1 )
+            // InternalResolutionModelParser.g:4431:1: ( ( rule__ParameterListType__SequenceAssignment_4_1 ) )
+            // InternalResolutionModelParser.g:4432:2: ( rule__ParameterListType__SequenceAssignment_4_1 )
             {
              before(grammarAccess.getParameterListTypeAccess().getSequenceAssignment_4_1()); 
-            // InternalResolutionModelParser.g:4375:2: ( rule__ParameterListType__SequenceAssignment_4_1 )
-            // InternalResolutionModelParser.g:4375:3: rule__ParameterListType__SequenceAssignment_4_1
+            // InternalResolutionModelParser.g:4433:2: ( rule__ParameterListType__SequenceAssignment_4_1 )
+            // InternalResolutionModelParser.g:4433:3: rule__ParameterListType__SequenceAssignment_4_1
             {
             pushFollow(FOLLOW_2);
             rule__ParameterListType__SequenceAssignment_4_1();
@@ -13268,16 +13460,16 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ParameterStructType__Group__0"
-    // InternalResolutionModelParser.g:4384:1: rule__ParameterStructType__Group__0 : rule__ParameterStructType__Group__0__Impl rule__ParameterStructType__Group__1 ;
+    // InternalResolutionModelParser.g:4442:1: rule__ParameterStructType__Group__0 : rule__ParameterStructType__Group__0__Impl rule__ParameterStructType__Group__1 ;
     public final void rule__ParameterStructType__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:4388:1: ( rule__ParameterStructType__Group__0__Impl rule__ParameterStructType__Group__1 )
-            // InternalResolutionModelParser.g:4389:2: rule__ParameterStructType__Group__0__Impl rule__ParameterStructType__Group__1
+            // InternalResolutionModelParser.g:4446:1: ( rule__ParameterStructType__Group__0__Impl rule__ParameterStructType__Group__1 )
+            // InternalResolutionModelParser.g:4447:2: rule__ParameterStructType__Group__0__Impl rule__ParameterStructType__Group__1
             {
-            pushFollow(FOLLOW_30);
+            pushFollow(FOLLOW_31);
             rule__ParameterStructType__Group__0__Impl();
 
             state._fsp--;
@@ -13306,21 +13498,21 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ParameterStructType__Group__0__Impl"
-    // InternalResolutionModelParser.g:4396:1: rule__ParameterStructType__Group__0__Impl : ( () ) ;
+    // InternalResolutionModelParser.g:4454:1: rule__ParameterStructType__Group__0__Impl : ( () ) ;
     public final void rule__ParameterStructType__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:4400:1: ( ( () ) )
-            // InternalResolutionModelParser.g:4401:1: ( () )
+            // InternalResolutionModelParser.g:4458:1: ( ( () ) )
+            // InternalResolutionModelParser.g:4459:1: ( () )
             {
-            // InternalResolutionModelParser.g:4401:1: ( () )
-            // InternalResolutionModelParser.g:4402:2: ()
+            // InternalResolutionModelParser.g:4459:1: ( () )
+            // InternalResolutionModelParser.g:4460:2: ()
             {
              before(grammarAccess.getParameterStructTypeAccess().getParameterStructTypeAction_0()); 
-            // InternalResolutionModelParser.g:4403:2: ()
-            // InternalResolutionModelParser.g:4403:3: 
+            // InternalResolutionModelParser.g:4461:2: ()
+            // InternalResolutionModelParser.g:4461:3: 
             {
             }
 
@@ -13343,16 +13535,16 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ParameterStructType__Group__1"
-    // InternalResolutionModelParser.g:4411:1: rule__ParameterStructType__Group__1 : rule__ParameterStructType__Group__1__Impl rule__ParameterStructType__Group__2 ;
+    // InternalResolutionModelParser.g:4469:1: rule__ParameterStructType__Group__1 : rule__ParameterStructType__Group__1__Impl rule__ParameterStructType__Group__2 ;
     public final void rule__ParameterStructType__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:4415:1: ( rule__ParameterStructType__Group__1__Impl rule__ParameterStructType__Group__2 )
-            // InternalResolutionModelParser.g:4416:2: rule__ParameterStructType__Group__1__Impl rule__ParameterStructType__Group__2
+            // InternalResolutionModelParser.g:4473:1: ( rule__ParameterStructType__Group__1__Impl rule__ParameterStructType__Group__2 )
+            // InternalResolutionModelParser.g:4474:2: rule__ParameterStructType__Group__1__Impl rule__ParameterStructType__Group__2
             {
-            pushFollow(FOLLOW_22);
+            pushFollow(FOLLOW_23);
             rule__ParameterStructType__Group__1__Impl();
 
             state._fsp--;
@@ -13381,17 +13573,17 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ParameterStructType__Group__1__Impl"
-    // InternalResolutionModelParser.g:4423:1: rule__ParameterStructType__Group__1__Impl : ( Struct ) ;
+    // InternalResolutionModelParser.g:4481:1: rule__ParameterStructType__Group__1__Impl : ( Struct ) ;
     public final void rule__ParameterStructType__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:4427:1: ( ( Struct ) )
-            // InternalResolutionModelParser.g:4428:1: ( Struct )
+            // InternalResolutionModelParser.g:4485:1: ( ( Struct ) )
+            // InternalResolutionModelParser.g:4486:1: ( Struct )
             {
-            // InternalResolutionModelParser.g:4428:1: ( Struct )
-            // InternalResolutionModelParser.g:4429:2: Struct
+            // InternalResolutionModelParser.g:4486:1: ( Struct )
+            // InternalResolutionModelParser.g:4487:2: Struct
             {
              before(grammarAccess.getParameterStructTypeAccess().getStructKeyword_1()); 
             match(input,Struct,FOLLOW_2); 
@@ -13418,16 +13610,16 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ParameterStructType__Group__2"
-    // InternalResolutionModelParser.g:4438:1: rule__ParameterStructType__Group__2 : rule__ParameterStructType__Group__2__Impl rule__ParameterStructType__Group__3 ;
+    // InternalResolutionModelParser.g:4496:1: rule__ParameterStructType__Group__2 : rule__ParameterStructType__Group__2__Impl rule__ParameterStructType__Group__3 ;
     public final void rule__ParameterStructType__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:4442:1: ( rule__ParameterStructType__Group__2__Impl rule__ParameterStructType__Group__3 )
-            // InternalResolutionModelParser.g:4443:2: rule__ParameterStructType__Group__2__Impl rule__ParameterStructType__Group__3
+            // InternalResolutionModelParser.g:4500:1: ( rule__ParameterStructType__Group__2__Impl rule__ParameterStructType__Group__3 )
+            // InternalResolutionModelParser.g:4501:2: rule__ParameterStructType__Group__2__Impl rule__ParameterStructType__Group__3
             {
-            pushFollow(FOLLOW_31);
+            pushFollow(FOLLOW_32);
             rule__ParameterStructType__Group__2__Impl();
 
             state._fsp--;
@@ -13456,17 +13648,17 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ParameterStructType__Group__2__Impl"
-    // InternalResolutionModelParser.g:4450:1: rule__ParameterStructType__Group__2__Impl : ( LeftSquareBracket ) ;
+    // InternalResolutionModelParser.g:4508:1: rule__ParameterStructType__Group__2__Impl : ( LeftSquareBracket ) ;
     public final void rule__ParameterStructType__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:4454:1: ( ( LeftSquareBracket ) )
-            // InternalResolutionModelParser.g:4455:1: ( LeftSquareBracket )
+            // InternalResolutionModelParser.g:4512:1: ( ( LeftSquareBracket ) )
+            // InternalResolutionModelParser.g:4513:1: ( LeftSquareBracket )
             {
-            // InternalResolutionModelParser.g:4455:1: ( LeftSquareBracket )
-            // InternalResolutionModelParser.g:4456:2: LeftSquareBracket
+            // InternalResolutionModelParser.g:4513:1: ( LeftSquareBracket )
+            // InternalResolutionModelParser.g:4514:2: LeftSquareBracket
             {
              before(grammarAccess.getParameterStructTypeAccess().getLeftSquareBracketKeyword_2()); 
             match(input,LeftSquareBracket,FOLLOW_2); 
@@ -13493,16 +13685,16 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ParameterStructType__Group__3"
-    // InternalResolutionModelParser.g:4465:1: rule__ParameterStructType__Group__3 : rule__ParameterStructType__Group__3__Impl rule__ParameterStructType__Group__4 ;
+    // InternalResolutionModelParser.g:4523:1: rule__ParameterStructType__Group__3 : rule__ParameterStructType__Group__3__Impl rule__ParameterStructType__Group__4 ;
     public final void rule__ParameterStructType__Group__3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:4469:1: ( rule__ParameterStructType__Group__3__Impl rule__ParameterStructType__Group__4 )
-            // InternalResolutionModelParser.g:4470:2: rule__ParameterStructType__Group__3__Impl rule__ParameterStructType__Group__4
+            // InternalResolutionModelParser.g:4527:1: ( rule__ParameterStructType__Group__3__Impl rule__ParameterStructType__Group__4 )
+            // InternalResolutionModelParser.g:4528:2: rule__ParameterStructType__Group__3__Impl rule__ParameterStructType__Group__4
             {
-            pushFollow(FOLLOW_24);
+            pushFollow(FOLLOW_25);
             rule__ParameterStructType__Group__3__Impl();
 
             state._fsp--;
@@ -13531,21 +13723,21 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ParameterStructType__Group__3__Impl"
-    // InternalResolutionModelParser.g:4477:1: rule__ParameterStructType__Group__3__Impl : ( ( rule__ParameterStructType__ParameterstructypetmemberAssignment_3 ) ) ;
+    // InternalResolutionModelParser.g:4535:1: rule__ParameterStructType__Group__3__Impl : ( ( rule__ParameterStructType__ParameterstructypetmemberAssignment_3 ) ) ;
     public final void rule__ParameterStructType__Group__3__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:4481:1: ( ( ( rule__ParameterStructType__ParameterstructypetmemberAssignment_3 ) ) )
-            // InternalResolutionModelParser.g:4482:1: ( ( rule__ParameterStructType__ParameterstructypetmemberAssignment_3 ) )
+            // InternalResolutionModelParser.g:4539:1: ( ( ( rule__ParameterStructType__ParameterstructypetmemberAssignment_3 ) ) )
+            // InternalResolutionModelParser.g:4540:1: ( ( rule__ParameterStructType__ParameterstructypetmemberAssignment_3 ) )
             {
-            // InternalResolutionModelParser.g:4482:1: ( ( rule__ParameterStructType__ParameterstructypetmemberAssignment_3 ) )
-            // InternalResolutionModelParser.g:4483:2: ( rule__ParameterStructType__ParameterstructypetmemberAssignment_3 )
+            // InternalResolutionModelParser.g:4540:1: ( ( rule__ParameterStructType__ParameterstructypetmemberAssignment_3 ) )
+            // InternalResolutionModelParser.g:4541:2: ( rule__ParameterStructType__ParameterstructypetmemberAssignment_3 )
             {
              before(grammarAccess.getParameterStructTypeAccess().getParameterstructypetmemberAssignment_3()); 
-            // InternalResolutionModelParser.g:4484:2: ( rule__ParameterStructType__ParameterstructypetmemberAssignment_3 )
-            // InternalResolutionModelParser.g:4484:3: rule__ParameterStructType__ParameterstructypetmemberAssignment_3
+            // InternalResolutionModelParser.g:4542:2: ( rule__ParameterStructType__ParameterstructypetmemberAssignment_3 )
+            // InternalResolutionModelParser.g:4542:3: rule__ParameterStructType__ParameterstructypetmemberAssignment_3
             {
             pushFollow(FOLLOW_2);
             rule__ParameterStructType__ParameterstructypetmemberAssignment_3();
@@ -13578,16 +13770,16 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ParameterStructType__Group__4"
-    // InternalResolutionModelParser.g:4492:1: rule__ParameterStructType__Group__4 : rule__ParameterStructType__Group__4__Impl rule__ParameterStructType__Group__5 ;
+    // InternalResolutionModelParser.g:4550:1: rule__ParameterStructType__Group__4 : rule__ParameterStructType__Group__4__Impl rule__ParameterStructType__Group__5 ;
     public final void rule__ParameterStructType__Group__4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:4496:1: ( rule__ParameterStructType__Group__4__Impl rule__ParameterStructType__Group__5 )
-            // InternalResolutionModelParser.g:4497:2: rule__ParameterStructType__Group__4__Impl rule__ParameterStructType__Group__5
+            // InternalResolutionModelParser.g:4554:1: ( rule__ParameterStructType__Group__4__Impl rule__ParameterStructType__Group__5 )
+            // InternalResolutionModelParser.g:4555:2: rule__ParameterStructType__Group__4__Impl rule__ParameterStructType__Group__5
             {
-            pushFollow(FOLLOW_24);
+            pushFollow(FOLLOW_25);
             rule__ParameterStructType__Group__4__Impl();
 
             state._fsp--;
@@ -13616,35 +13808,35 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ParameterStructType__Group__4__Impl"
-    // InternalResolutionModelParser.g:4504:1: rule__ParameterStructType__Group__4__Impl : ( ( rule__ParameterStructType__Group_4__0 )* ) ;
+    // InternalResolutionModelParser.g:4562:1: rule__ParameterStructType__Group__4__Impl : ( ( rule__ParameterStructType__Group_4__0 )* ) ;
     public final void rule__ParameterStructType__Group__4__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:4508:1: ( ( ( rule__ParameterStructType__Group_4__0 )* ) )
-            // InternalResolutionModelParser.g:4509:1: ( ( rule__ParameterStructType__Group_4__0 )* )
+            // InternalResolutionModelParser.g:4566:1: ( ( ( rule__ParameterStructType__Group_4__0 )* ) )
+            // InternalResolutionModelParser.g:4567:1: ( ( rule__ParameterStructType__Group_4__0 )* )
             {
-            // InternalResolutionModelParser.g:4509:1: ( ( rule__ParameterStructType__Group_4__0 )* )
-            // InternalResolutionModelParser.g:4510:2: ( rule__ParameterStructType__Group_4__0 )*
+            // InternalResolutionModelParser.g:4567:1: ( ( rule__ParameterStructType__Group_4__0 )* )
+            // InternalResolutionModelParser.g:4568:2: ( rule__ParameterStructType__Group_4__0 )*
             {
              before(grammarAccess.getParameterStructTypeAccess().getGroup_4()); 
-            // InternalResolutionModelParser.g:4511:2: ( rule__ParameterStructType__Group_4__0 )*
-            loop20:
+            // InternalResolutionModelParser.g:4569:2: ( rule__ParameterStructType__Group_4__0 )*
+            loop21:
             do {
-                int alt20=2;
-                int LA20_0 = input.LA(1);
+                int alt21=2;
+                int LA21_0 = input.LA(1);
 
-                if ( (LA20_0==Comma) ) {
-                    alt20=1;
+                if ( (LA21_0==Comma) ) {
+                    alt21=1;
                 }
 
 
-                switch (alt20) {
+                switch (alt21) {
             	case 1 :
-            	    // InternalResolutionModelParser.g:4511:3: rule__ParameterStructType__Group_4__0
+            	    // InternalResolutionModelParser.g:4569:3: rule__ParameterStructType__Group_4__0
             	    {
-            	    pushFollow(FOLLOW_25);
+            	    pushFollow(FOLLOW_26);
             	    rule__ParameterStructType__Group_4__0();
 
             	    state._fsp--;
@@ -13654,7 +13846,7 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
             	    break;
 
             	default :
-            	    break loop20;
+            	    break loop21;
                 }
             } while (true);
 
@@ -13681,14 +13873,14 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ParameterStructType__Group__5"
-    // InternalResolutionModelParser.g:4519:1: rule__ParameterStructType__Group__5 : rule__ParameterStructType__Group__5__Impl ;
+    // InternalResolutionModelParser.g:4577:1: rule__ParameterStructType__Group__5 : rule__ParameterStructType__Group__5__Impl ;
     public final void rule__ParameterStructType__Group__5() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:4523:1: ( rule__ParameterStructType__Group__5__Impl )
-            // InternalResolutionModelParser.g:4524:2: rule__ParameterStructType__Group__5__Impl
+            // InternalResolutionModelParser.g:4581:1: ( rule__ParameterStructType__Group__5__Impl )
+            // InternalResolutionModelParser.g:4582:2: rule__ParameterStructType__Group__5__Impl
             {
             pushFollow(FOLLOW_2);
             rule__ParameterStructType__Group__5__Impl();
@@ -13714,17 +13906,17 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ParameterStructType__Group__5__Impl"
-    // InternalResolutionModelParser.g:4530:1: rule__ParameterStructType__Group__5__Impl : ( RightSquareBracket ) ;
+    // InternalResolutionModelParser.g:4588:1: rule__ParameterStructType__Group__5__Impl : ( RightSquareBracket ) ;
     public final void rule__ParameterStructType__Group__5__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:4534:1: ( ( RightSquareBracket ) )
-            // InternalResolutionModelParser.g:4535:1: ( RightSquareBracket )
+            // InternalResolutionModelParser.g:4592:1: ( ( RightSquareBracket ) )
+            // InternalResolutionModelParser.g:4593:1: ( RightSquareBracket )
             {
-            // InternalResolutionModelParser.g:4535:1: ( RightSquareBracket )
-            // InternalResolutionModelParser.g:4536:2: RightSquareBracket
+            // InternalResolutionModelParser.g:4593:1: ( RightSquareBracket )
+            // InternalResolutionModelParser.g:4594:2: RightSquareBracket
             {
              before(grammarAccess.getParameterStructTypeAccess().getRightSquareBracketKeyword_5()); 
             match(input,RightSquareBracket,FOLLOW_2); 
@@ -13751,16 +13943,16 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ParameterStructType__Group_4__0"
-    // InternalResolutionModelParser.g:4546:1: rule__ParameterStructType__Group_4__0 : rule__ParameterStructType__Group_4__0__Impl rule__ParameterStructType__Group_4__1 ;
+    // InternalResolutionModelParser.g:4604:1: rule__ParameterStructType__Group_4__0 : rule__ParameterStructType__Group_4__0__Impl rule__ParameterStructType__Group_4__1 ;
     public final void rule__ParameterStructType__Group_4__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:4550:1: ( rule__ParameterStructType__Group_4__0__Impl rule__ParameterStructType__Group_4__1 )
-            // InternalResolutionModelParser.g:4551:2: rule__ParameterStructType__Group_4__0__Impl rule__ParameterStructType__Group_4__1
+            // InternalResolutionModelParser.g:4608:1: ( rule__ParameterStructType__Group_4__0__Impl rule__ParameterStructType__Group_4__1 )
+            // InternalResolutionModelParser.g:4609:2: rule__ParameterStructType__Group_4__0__Impl rule__ParameterStructType__Group_4__1
             {
-            pushFollow(FOLLOW_31);
+            pushFollow(FOLLOW_32);
             rule__ParameterStructType__Group_4__0__Impl();
 
             state._fsp--;
@@ -13789,17 +13981,17 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ParameterStructType__Group_4__0__Impl"
-    // InternalResolutionModelParser.g:4558:1: rule__ParameterStructType__Group_4__0__Impl : ( Comma ) ;
+    // InternalResolutionModelParser.g:4616:1: rule__ParameterStructType__Group_4__0__Impl : ( Comma ) ;
     public final void rule__ParameterStructType__Group_4__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:4562:1: ( ( Comma ) )
-            // InternalResolutionModelParser.g:4563:1: ( Comma )
+            // InternalResolutionModelParser.g:4620:1: ( ( Comma ) )
+            // InternalResolutionModelParser.g:4621:1: ( Comma )
             {
-            // InternalResolutionModelParser.g:4563:1: ( Comma )
-            // InternalResolutionModelParser.g:4564:2: Comma
+            // InternalResolutionModelParser.g:4621:1: ( Comma )
+            // InternalResolutionModelParser.g:4622:2: Comma
             {
              before(grammarAccess.getParameterStructTypeAccess().getCommaKeyword_4_0()); 
             match(input,Comma,FOLLOW_2); 
@@ -13826,14 +14018,14 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ParameterStructType__Group_4__1"
-    // InternalResolutionModelParser.g:4573:1: rule__ParameterStructType__Group_4__1 : rule__ParameterStructType__Group_4__1__Impl ;
+    // InternalResolutionModelParser.g:4631:1: rule__ParameterStructType__Group_4__1 : rule__ParameterStructType__Group_4__1__Impl ;
     public final void rule__ParameterStructType__Group_4__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:4577:1: ( rule__ParameterStructType__Group_4__1__Impl )
-            // InternalResolutionModelParser.g:4578:2: rule__ParameterStructType__Group_4__1__Impl
+            // InternalResolutionModelParser.g:4635:1: ( rule__ParameterStructType__Group_4__1__Impl )
+            // InternalResolutionModelParser.g:4636:2: rule__ParameterStructType__Group_4__1__Impl
             {
             pushFollow(FOLLOW_2);
             rule__ParameterStructType__Group_4__1__Impl();
@@ -13859,21 +14051,21 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ParameterStructType__Group_4__1__Impl"
-    // InternalResolutionModelParser.g:4584:1: rule__ParameterStructType__Group_4__1__Impl : ( ( rule__ParameterStructType__ParameterstructypetmemberAssignment_4_1 ) ) ;
+    // InternalResolutionModelParser.g:4642:1: rule__ParameterStructType__Group_4__1__Impl : ( ( rule__ParameterStructType__ParameterstructypetmemberAssignment_4_1 ) ) ;
     public final void rule__ParameterStructType__Group_4__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:4588:1: ( ( ( rule__ParameterStructType__ParameterstructypetmemberAssignment_4_1 ) ) )
-            // InternalResolutionModelParser.g:4589:1: ( ( rule__ParameterStructType__ParameterstructypetmemberAssignment_4_1 ) )
+            // InternalResolutionModelParser.g:4646:1: ( ( ( rule__ParameterStructType__ParameterstructypetmemberAssignment_4_1 ) ) )
+            // InternalResolutionModelParser.g:4647:1: ( ( rule__ParameterStructType__ParameterstructypetmemberAssignment_4_1 ) )
             {
-            // InternalResolutionModelParser.g:4589:1: ( ( rule__ParameterStructType__ParameterstructypetmemberAssignment_4_1 ) )
-            // InternalResolutionModelParser.g:4590:2: ( rule__ParameterStructType__ParameterstructypetmemberAssignment_4_1 )
+            // InternalResolutionModelParser.g:4647:1: ( ( rule__ParameterStructType__ParameterstructypetmemberAssignment_4_1 ) )
+            // InternalResolutionModelParser.g:4648:2: ( rule__ParameterStructType__ParameterstructypetmemberAssignment_4_1 )
             {
              before(grammarAccess.getParameterStructTypeAccess().getParameterstructypetmemberAssignment_4_1()); 
-            // InternalResolutionModelParser.g:4591:2: ( rule__ParameterStructType__ParameterstructypetmemberAssignment_4_1 )
-            // InternalResolutionModelParser.g:4591:3: rule__ParameterStructType__ParameterstructypetmemberAssignment_4_1
+            // InternalResolutionModelParser.g:4649:2: ( rule__ParameterStructType__ParameterstructypetmemberAssignment_4_1 )
+            // InternalResolutionModelParser.g:4649:3: rule__ParameterStructType__ParameterstructypetmemberAssignment_4_1
             {
             pushFollow(FOLLOW_2);
             rule__ParameterStructType__ParameterstructypetmemberAssignment_4_1();
@@ -13906,16 +14098,16 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ParameterIntegerType__Group__0"
-    // InternalResolutionModelParser.g:4600:1: rule__ParameterIntegerType__Group__0 : rule__ParameterIntegerType__Group__0__Impl rule__ParameterIntegerType__Group__1 ;
+    // InternalResolutionModelParser.g:4658:1: rule__ParameterIntegerType__Group__0 : rule__ParameterIntegerType__Group__0__Impl rule__ParameterIntegerType__Group__1 ;
     public final void rule__ParameterIntegerType__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:4604:1: ( rule__ParameterIntegerType__Group__0__Impl rule__ParameterIntegerType__Group__1 )
-            // InternalResolutionModelParser.g:4605:2: rule__ParameterIntegerType__Group__0__Impl rule__ParameterIntegerType__Group__1
+            // InternalResolutionModelParser.g:4662:1: ( rule__ParameterIntegerType__Group__0__Impl rule__ParameterIntegerType__Group__1 )
+            // InternalResolutionModelParser.g:4663:2: rule__ParameterIntegerType__Group__0__Impl rule__ParameterIntegerType__Group__1
             {
-            pushFollow(FOLLOW_32);
+            pushFollow(FOLLOW_33);
             rule__ParameterIntegerType__Group__0__Impl();
 
             state._fsp--;
@@ -13944,21 +14136,21 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ParameterIntegerType__Group__0__Impl"
-    // InternalResolutionModelParser.g:4612:1: rule__ParameterIntegerType__Group__0__Impl : ( () ) ;
+    // InternalResolutionModelParser.g:4670:1: rule__ParameterIntegerType__Group__0__Impl : ( () ) ;
     public final void rule__ParameterIntegerType__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:4616:1: ( ( () ) )
-            // InternalResolutionModelParser.g:4617:1: ( () )
+            // InternalResolutionModelParser.g:4674:1: ( ( () ) )
+            // InternalResolutionModelParser.g:4675:1: ( () )
             {
-            // InternalResolutionModelParser.g:4617:1: ( () )
-            // InternalResolutionModelParser.g:4618:2: ()
+            // InternalResolutionModelParser.g:4675:1: ( () )
+            // InternalResolutionModelParser.g:4676:2: ()
             {
              before(grammarAccess.getParameterIntegerTypeAccess().getParameterIntegerTypeAction_0()); 
-            // InternalResolutionModelParser.g:4619:2: ()
-            // InternalResolutionModelParser.g:4619:3: 
+            // InternalResolutionModelParser.g:4677:2: ()
+            // InternalResolutionModelParser.g:4677:3: 
             {
             }
 
@@ -13981,16 +14173,16 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ParameterIntegerType__Group__1"
-    // InternalResolutionModelParser.g:4627:1: rule__ParameterIntegerType__Group__1 : rule__ParameterIntegerType__Group__1__Impl rule__ParameterIntegerType__Group__2 ;
+    // InternalResolutionModelParser.g:4685:1: rule__ParameterIntegerType__Group__1 : rule__ParameterIntegerType__Group__1__Impl rule__ParameterIntegerType__Group__2 ;
     public final void rule__ParameterIntegerType__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:4631:1: ( rule__ParameterIntegerType__Group__1__Impl rule__ParameterIntegerType__Group__2 )
-            // InternalResolutionModelParser.g:4632:2: rule__ParameterIntegerType__Group__1__Impl rule__ParameterIntegerType__Group__2
+            // InternalResolutionModelParser.g:4689:1: ( rule__ParameterIntegerType__Group__1__Impl rule__ParameterIntegerType__Group__2 )
+            // InternalResolutionModelParser.g:4690:2: rule__ParameterIntegerType__Group__1__Impl rule__ParameterIntegerType__Group__2
             {
-            pushFollow(FOLLOW_33);
+            pushFollow(FOLLOW_34);
             rule__ParameterIntegerType__Group__1__Impl();
 
             state._fsp--;
@@ -14019,17 +14211,17 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ParameterIntegerType__Group__1__Impl"
-    // InternalResolutionModelParser.g:4639:1: rule__ParameterIntegerType__Group__1__Impl : ( Integer ) ;
+    // InternalResolutionModelParser.g:4697:1: rule__ParameterIntegerType__Group__1__Impl : ( Integer ) ;
     public final void rule__ParameterIntegerType__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:4643:1: ( ( Integer ) )
-            // InternalResolutionModelParser.g:4644:1: ( Integer )
+            // InternalResolutionModelParser.g:4701:1: ( ( Integer ) )
+            // InternalResolutionModelParser.g:4702:1: ( Integer )
             {
-            // InternalResolutionModelParser.g:4644:1: ( Integer )
-            // InternalResolutionModelParser.g:4645:2: Integer
+            // InternalResolutionModelParser.g:4702:1: ( Integer )
+            // InternalResolutionModelParser.g:4703:2: Integer
             {
              before(grammarAccess.getParameterIntegerTypeAccess().getIntegerKeyword_1()); 
             match(input,Integer,FOLLOW_2); 
@@ -14056,14 +14248,14 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ParameterIntegerType__Group__2"
-    // InternalResolutionModelParser.g:4654:1: rule__ParameterIntegerType__Group__2 : rule__ParameterIntegerType__Group__2__Impl ;
+    // InternalResolutionModelParser.g:4712:1: rule__ParameterIntegerType__Group__2 : rule__ParameterIntegerType__Group__2__Impl ;
     public final void rule__ParameterIntegerType__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:4658:1: ( rule__ParameterIntegerType__Group__2__Impl )
-            // InternalResolutionModelParser.g:4659:2: rule__ParameterIntegerType__Group__2__Impl
+            // InternalResolutionModelParser.g:4716:1: ( rule__ParameterIntegerType__Group__2__Impl )
+            // InternalResolutionModelParser.g:4717:2: rule__ParameterIntegerType__Group__2__Impl
             {
             pushFollow(FOLLOW_2);
             rule__ParameterIntegerType__Group__2__Impl();
@@ -14089,29 +14281,29 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ParameterIntegerType__Group__2__Impl"
-    // InternalResolutionModelParser.g:4665:1: rule__ParameterIntegerType__Group__2__Impl : ( ( rule__ParameterIntegerType__Group_2__0 )? ) ;
+    // InternalResolutionModelParser.g:4723:1: rule__ParameterIntegerType__Group__2__Impl : ( ( rule__ParameterIntegerType__Group_2__0 )? ) ;
     public final void rule__ParameterIntegerType__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:4669:1: ( ( ( rule__ParameterIntegerType__Group_2__0 )? ) )
-            // InternalResolutionModelParser.g:4670:1: ( ( rule__ParameterIntegerType__Group_2__0 )? )
+            // InternalResolutionModelParser.g:4727:1: ( ( ( rule__ParameterIntegerType__Group_2__0 )? ) )
+            // InternalResolutionModelParser.g:4728:1: ( ( rule__ParameterIntegerType__Group_2__0 )? )
             {
-            // InternalResolutionModelParser.g:4670:1: ( ( rule__ParameterIntegerType__Group_2__0 )? )
-            // InternalResolutionModelParser.g:4671:2: ( rule__ParameterIntegerType__Group_2__0 )?
+            // InternalResolutionModelParser.g:4728:1: ( ( rule__ParameterIntegerType__Group_2__0 )? )
+            // InternalResolutionModelParser.g:4729:2: ( rule__ParameterIntegerType__Group_2__0 )?
             {
              before(grammarAccess.getParameterIntegerTypeAccess().getGroup_2()); 
-            // InternalResolutionModelParser.g:4672:2: ( rule__ParameterIntegerType__Group_2__0 )?
-            int alt21=2;
-            int LA21_0 = input.LA(1);
+            // InternalResolutionModelParser.g:4730:2: ( rule__ParameterIntegerType__Group_2__0 )?
+            int alt22=2;
+            int LA22_0 = input.LA(1);
 
-            if ( (LA21_0==Default) ) {
-                alt21=1;
+            if ( (LA22_0==Default) ) {
+                alt22=1;
             }
-            switch (alt21) {
+            switch (alt22) {
                 case 1 :
-                    // InternalResolutionModelParser.g:4672:3: rule__ParameterIntegerType__Group_2__0
+                    // InternalResolutionModelParser.g:4730:3: rule__ParameterIntegerType__Group_2__0
                     {
                     pushFollow(FOLLOW_2);
                     rule__ParameterIntegerType__Group_2__0();
@@ -14147,16 +14339,16 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ParameterIntegerType__Group_2__0"
-    // InternalResolutionModelParser.g:4681:1: rule__ParameterIntegerType__Group_2__0 : rule__ParameterIntegerType__Group_2__0__Impl rule__ParameterIntegerType__Group_2__1 ;
+    // InternalResolutionModelParser.g:4739:1: rule__ParameterIntegerType__Group_2__0 : rule__ParameterIntegerType__Group_2__0__Impl rule__ParameterIntegerType__Group_2__1 ;
     public final void rule__ParameterIntegerType__Group_2__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:4685:1: ( rule__ParameterIntegerType__Group_2__0__Impl rule__ParameterIntegerType__Group_2__1 )
-            // InternalResolutionModelParser.g:4686:2: rule__ParameterIntegerType__Group_2__0__Impl rule__ParameterIntegerType__Group_2__1
+            // InternalResolutionModelParser.g:4743:1: ( rule__ParameterIntegerType__Group_2__0__Impl rule__ParameterIntegerType__Group_2__1 )
+            // InternalResolutionModelParser.g:4744:2: rule__ParameterIntegerType__Group_2__0__Impl rule__ParameterIntegerType__Group_2__1
             {
-            pushFollow(FOLLOW_34);
+            pushFollow(FOLLOW_35);
             rule__ParameterIntegerType__Group_2__0__Impl();
 
             state._fsp--;
@@ -14185,17 +14377,17 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ParameterIntegerType__Group_2__0__Impl"
-    // InternalResolutionModelParser.g:4693:1: rule__ParameterIntegerType__Group_2__0__Impl : ( Default ) ;
+    // InternalResolutionModelParser.g:4751:1: rule__ParameterIntegerType__Group_2__0__Impl : ( Default ) ;
     public final void rule__ParameterIntegerType__Group_2__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:4697:1: ( ( Default ) )
-            // InternalResolutionModelParser.g:4698:1: ( Default )
+            // InternalResolutionModelParser.g:4755:1: ( ( Default ) )
+            // InternalResolutionModelParser.g:4756:1: ( Default )
             {
-            // InternalResolutionModelParser.g:4698:1: ( Default )
-            // InternalResolutionModelParser.g:4699:2: Default
+            // InternalResolutionModelParser.g:4756:1: ( Default )
+            // InternalResolutionModelParser.g:4757:2: Default
             {
              before(grammarAccess.getParameterIntegerTypeAccess().getDefaultKeyword_2_0()); 
             match(input,Default,FOLLOW_2); 
@@ -14222,14 +14414,14 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ParameterIntegerType__Group_2__1"
-    // InternalResolutionModelParser.g:4708:1: rule__ParameterIntegerType__Group_2__1 : rule__ParameterIntegerType__Group_2__1__Impl ;
+    // InternalResolutionModelParser.g:4766:1: rule__ParameterIntegerType__Group_2__1 : rule__ParameterIntegerType__Group_2__1__Impl ;
     public final void rule__ParameterIntegerType__Group_2__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:4712:1: ( rule__ParameterIntegerType__Group_2__1__Impl )
-            // InternalResolutionModelParser.g:4713:2: rule__ParameterIntegerType__Group_2__1__Impl
+            // InternalResolutionModelParser.g:4770:1: ( rule__ParameterIntegerType__Group_2__1__Impl )
+            // InternalResolutionModelParser.g:4771:2: rule__ParameterIntegerType__Group_2__1__Impl
             {
             pushFollow(FOLLOW_2);
             rule__ParameterIntegerType__Group_2__1__Impl();
@@ -14255,21 +14447,21 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ParameterIntegerType__Group_2__1__Impl"
-    // InternalResolutionModelParser.g:4719:1: rule__ParameterIntegerType__Group_2__1__Impl : ( ( rule__ParameterIntegerType__DefaultAssignment_2_1 ) ) ;
+    // InternalResolutionModelParser.g:4777:1: rule__ParameterIntegerType__Group_2__1__Impl : ( ( rule__ParameterIntegerType__DefaultAssignment_2_1 ) ) ;
     public final void rule__ParameterIntegerType__Group_2__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:4723:1: ( ( ( rule__ParameterIntegerType__DefaultAssignment_2_1 ) ) )
-            // InternalResolutionModelParser.g:4724:1: ( ( rule__ParameterIntegerType__DefaultAssignment_2_1 ) )
+            // InternalResolutionModelParser.g:4781:1: ( ( ( rule__ParameterIntegerType__DefaultAssignment_2_1 ) ) )
+            // InternalResolutionModelParser.g:4782:1: ( ( rule__ParameterIntegerType__DefaultAssignment_2_1 ) )
             {
-            // InternalResolutionModelParser.g:4724:1: ( ( rule__ParameterIntegerType__DefaultAssignment_2_1 ) )
-            // InternalResolutionModelParser.g:4725:2: ( rule__ParameterIntegerType__DefaultAssignment_2_1 )
+            // InternalResolutionModelParser.g:4782:1: ( ( rule__ParameterIntegerType__DefaultAssignment_2_1 ) )
+            // InternalResolutionModelParser.g:4783:2: ( rule__ParameterIntegerType__DefaultAssignment_2_1 )
             {
              before(grammarAccess.getParameterIntegerTypeAccess().getDefaultAssignment_2_1()); 
-            // InternalResolutionModelParser.g:4726:2: ( rule__ParameterIntegerType__DefaultAssignment_2_1 )
-            // InternalResolutionModelParser.g:4726:3: rule__ParameterIntegerType__DefaultAssignment_2_1
+            // InternalResolutionModelParser.g:4784:2: ( rule__ParameterIntegerType__DefaultAssignment_2_1 )
+            // InternalResolutionModelParser.g:4784:3: rule__ParameterIntegerType__DefaultAssignment_2_1
             {
             pushFollow(FOLLOW_2);
             rule__ParameterIntegerType__DefaultAssignment_2_1();
@@ -14302,16 +14494,16 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ParameterStringType__Group__0"
-    // InternalResolutionModelParser.g:4735:1: rule__ParameterStringType__Group__0 : rule__ParameterStringType__Group__0__Impl rule__ParameterStringType__Group__1 ;
+    // InternalResolutionModelParser.g:4793:1: rule__ParameterStringType__Group__0 : rule__ParameterStringType__Group__0__Impl rule__ParameterStringType__Group__1 ;
     public final void rule__ParameterStringType__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:4739:1: ( rule__ParameterStringType__Group__0__Impl rule__ParameterStringType__Group__1 )
-            // InternalResolutionModelParser.g:4740:2: rule__ParameterStringType__Group__0__Impl rule__ParameterStringType__Group__1
+            // InternalResolutionModelParser.g:4797:1: ( rule__ParameterStringType__Group__0__Impl rule__ParameterStringType__Group__1 )
+            // InternalResolutionModelParser.g:4798:2: rule__ParameterStringType__Group__0__Impl rule__ParameterStringType__Group__1
             {
-            pushFollow(FOLLOW_35);
+            pushFollow(FOLLOW_36);
             rule__ParameterStringType__Group__0__Impl();
 
             state._fsp--;
@@ -14340,21 +14532,21 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ParameterStringType__Group__0__Impl"
-    // InternalResolutionModelParser.g:4747:1: rule__ParameterStringType__Group__0__Impl : ( () ) ;
+    // InternalResolutionModelParser.g:4805:1: rule__ParameterStringType__Group__0__Impl : ( () ) ;
     public final void rule__ParameterStringType__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:4751:1: ( ( () ) )
-            // InternalResolutionModelParser.g:4752:1: ( () )
+            // InternalResolutionModelParser.g:4809:1: ( ( () ) )
+            // InternalResolutionModelParser.g:4810:1: ( () )
             {
-            // InternalResolutionModelParser.g:4752:1: ( () )
-            // InternalResolutionModelParser.g:4753:2: ()
+            // InternalResolutionModelParser.g:4810:1: ( () )
+            // InternalResolutionModelParser.g:4811:2: ()
             {
              before(grammarAccess.getParameterStringTypeAccess().getParameterStringTypeAction_0()); 
-            // InternalResolutionModelParser.g:4754:2: ()
-            // InternalResolutionModelParser.g:4754:3: 
+            // InternalResolutionModelParser.g:4812:2: ()
+            // InternalResolutionModelParser.g:4812:3: 
             {
             }
 
@@ -14377,16 +14569,16 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ParameterStringType__Group__1"
-    // InternalResolutionModelParser.g:4762:1: rule__ParameterStringType__Group__1 : rule__ParameterStringType__Group__1__Impl rule__ParameterStringType__Group__2 ;
+    // InternalResolutionModelParser.g:4820:1: rule__ParameterStringType__Group__1 : rule__ParameterStringType__Group__1__Impl rule__ParameterStringType__Group__2 ;
     public final void rule__ParameterStringType__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:4766:1: ( rule__ParameterStringType__Group__1__Impl rule__ParameterStringType__Group__2 )
-            // InternalResolutionModelParser.g:4767:2: rule__ParameterStringType__Group__1__Impl rule__ParameterStringType__Group__2
+            // InternalResolutionModelParser.g:4824:1: ( rule__ParameterStringType__Group__1__Impl rule__ParameterStringType__Group__2 )
+            // InternalResolutionModelParser.g:4825:2: rule__ParameterStringType__Group__1__Impl rule__ParameterStringType__Group__2
             {
-            pushFollow(FOLLOW_33);
+            pushFollow(FOLLOW_34);
             rule__ParameterStringType__Group__1__Impl();
 
             state._fsp--;
@@ -14415,17 +14607,17 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ParameterStringType__Group__1__Impl"
-    // InternalResolutionModelParser.g:4774:1: rule__ParameterStringType__Group__1__Impl : ( String ) ;
+    // InternalResolutionModelParser.g:4832:1: rule__ParameterStringType__Group__1__Impl : ( String ) ;
     public final void rule__ParameterStringType__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:4778:1: ( ( String ) )
-            // InternalResolutionModelParser.g:4779:1: ( String )
+            // InternalResolutionModelParser.g:4836:1: ( ( String ) )
+            // InternalResolutionModelParser.g:4837:1: ( String )
             {
-            // InternalResolutionModelParser.g:4779:1: ( String )
-            // InternalResolutionModelParser.g:4780:2: String
+            // InternalResolutionModelParser.g:4837:1: ( String )
+            // InternalResolutionModelParser.g:4838:2: String
             {
              before(grammarAccess.getParameterStringTypeAccess().getStringKeyword_1()); 
             match(input,String,FOLLOW_2); 
@@ -14452,14 +14644,14 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ParameterStringType__Group__2"
-    // InternalResolutionModelParser.g:4789:1: rule__ParameterStringType__Group__2 : rule__ParameterStringType__Group__2__Impl ;
+    // InternalResolutionModelParser.g:4847:1: rule__ParameterStringType__Group__2 : rule__ParameterStringType__Group__2__Impl ;
     public final void rule__ParameterStringType__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:4793:1: ( rule__ParameterStringType__Group__2__Impl )
-            // InternalResolutionModelParser.g:4794:2: rule__ParameterStringType__Group__2__Impl
+            // InternalResolutionModelParser.g:4851:1: ( rule__ParameterStringType__Group__2__Impl )
+            // InternalResolutionModelParser.g:4852:2: rule__ParameterStringType__Group__2__Impl
             {
             pushFollow(FOLLOW_2);
             rule__ParameterStringType__Group__2__Impl();
@@ -14485,29 +14677,29 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ParameterStringType__Group__2__Impl"
-    // InternalResolutionModelParser.g:4800:1: rule__ParameterStringType__Group__2__Impl : ( ( rule__ParameterStringType__Group_2__0 )? ) ;
+    // InternalResolutionModelParser.g:4858:1: rule__ParameterStringType__Group__2__Impl : ( ( rule__ParameterStringType__Group_2__0 )? ) ;
     public final void rule__ParameterStringType__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:4804:1: ( ( ( rule__ParameterStringType__Group_2__0 )? ) )
-            // InternalResolutionModelParser.g:4805:1: ( ( rule__ParameterStringType__Group_2__0 )? )
+            // InternalResolutionModelParser.g:4862:1: ( ( ( rule__ParameterStringType__Group_2__0 )? ) )
+            // InternalResolutionModelParser.g:4863:1: ( ( rule__ParameterStringType__Group_2__0 )? )
             {
-            // InternalResolutionModelParser.g:4805:1: ( ( rule__ParameterStringType__Group_2__0 )? )
-            // InternalResolutionModelParser.g:4806:2: ( rule__ParameterStringType__Group_2__0 )?
+            // InternalResolutionModelParser.g:4863:1: ( ( rule__ParameterStringType__Group_2__0 )? )
+            // InternalResolutionModelParser.g:4864:2: ( rule__ParameterStringType__Group_2__0 )?
             {
              before(grammarAccess.getParameterStringTypeAccess().getGroup_2()); 
-            // InternalResolutionModelParser.g:4807:2: ( rule__ParameterStringType__Group_2__0 )?
-            int alt22=2;
-            int LA22_0 = input.LA(1);
+            // InternalResolutionModelParser.g:4865:2: ( rule__ParameterStringType__Group_2__0 )?
+            int alt23=2;
+            int LA23_0 = input.LA(1);
 
-            if ( (LA22_0==Default) ) {
-                alt22=1;
+            if ( (LA23_0==Default) ) {
+                alt23=1;
             }
-            switch (alt22) {
+            switch (alt23) {
                 case 1 :
-                    // InternalResolutionModelParser.g:4807:3: rule__ParameterStringType__Group_2__0
+                    // InternalResolutionModelParser.g:4865:3: rule__ParameterStringType__Group_2__0
                     {
                     pushFollow(FOLLOW_2);
                     rule__ParameterStringType__Group_2__0();
@@ -14543,16 +14735,16 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ParameterStringType__Group_2__0"
-    // InternalResolutionModelParser.g:4816:1: rule__ParameterStringType__Group_2__0 : rule__ParameterStringType__Group_2__0__Impl rule__ParameterStringType__Group_2__1 ;
+    // InternalResolutionModelParser.g:4874:1: rule__ParameterStringType__Group_2__0 : rule__ParameterStringType__Group_2__0__Impl rule__ParameterStringType__Group_2__1 ;
     public final void rule__ParameterStringType__Group_2__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:4820:1: ( rule__ParameterStringType__Group_2__0__Impl rule__ParameterStringType__Group_2__1 )
-            // InternalResolutionModelParser.g:4821:2: rule__ParameterStringType__Group_2__0__Impl rule__ParameterStringType__Group_2__1
+            // InternalResolutionModelParser.g:4878:1: ( rule__ParameterStringType__Group_2__0__Impl rule__ParameterStringType__Group_2__1 )
+            // InternalResolutionModelParser.g:4879:2: rule__ParameterStringType__Group_2__0__Impl rule__ParameterStringType__Group_2__1
             {
-            pushFollow(FOLLOW_31);
+            pushFollow(FOLLOW_32);
             rule__ParameterStringType__Group_2__0__Impl();
 
             state._fsp--;
@@ -14581,17 +14773,17 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ParameterStringType__Group_2__0__Impl"
-    // InternalResolutionModelParser.g:4828:1: rule__ParameterStringType__Group_2__0__Impl : ( Default ) ;
+    // InternalResolutionModelParser.g:4886:1: rule__ParameterStringType__Group_2__0__Impl : ( Default ) ;
     public final void rule__ParameterStringType__Group_2__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:4832:1: ( ( Default ) )
-            // InternalResolutionModelParser.g:4833:1: ( Default )
+            // InternalResolutionModelParser.g:4890:1: ( ( Default ) )
+            // InternalResolutionModelParser.g:4891:1: ( Default )
             {
-            // InternalResolutionModelParser.g:4833:1: ( Default )
-            // InternalResolutionModelParser.g:4834:2: Default
+            // InternalResolutionModelParser.g:4891:1: ( Default )
+            // InternalResolutionModelParser.g:4892:2: Default
             {
              before(grammarAccess.getParameterStringTypeAccess().getDefaultKeyword_2_0()); 
             match(input,Default,FOLLOW_2); 
@@ -14618,14 +14810,14 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ParameterStringType__Group_2__1"
-    // InternalResolutionModelParser.g:4843:1: rule__ParameterStringType__Group_2__1 : rule__ParameterStringType__Group_2__1__Impl ;
+    // InternalResolutionModelParser.g:4901:1: rule__ParameterStringType__Group_2__1 : rule__ParameterStringType__Group_2__1__Impl ;
     public final void rule__ParameterStringType__Group_2__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:4847:1: ( rule__ParameterStringType__Group_2__1__Impl )
-            // InternalResolutionModelParser.g:4848:2: rule__ParameterStringType__Group_2__1__Impl
+            // InternalResolutionModelParser.g:4905:1: ( rule__ParameterStringType__Group_2__1__Impl )
+            // InternalResolutionModelParser.g:4906:2: rule__ParameterStringType__Group_2__1__Impl
             {
             pushFollow(FOLLOW_2);
             rule__ParameterStringType__Group_2__1__Impl();
@@ -14651,21 +14843,21 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ParameterStringType__Group_2__1__Impl"
-    // InternalResolutionModelParser.g:4854:1: rule__ParameterStringType__Group_2__1__Impl : ( ( rule__ParameterStringType__DefaultAssignment_2_1 ) ) ;
+    // InternalResolutionModelParser.g:4912:1: rule__ParameterStringType__Group_2__1__Impl : ( ( rule__ParameterStringType__DefaultAssignment_2_1 ) ) ;
     public final void rule__ParameterStringType__Group_2__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:4858:1: ( ( ( rule__ParameterStringType__DefaultAssignment_2_1 ) ) )
-            // InternalResolutionModelParser.g:4859:1: ( ( rule__ParameterStringType__DefaultAssignment_2_1 ) )
+            // InternalResolutionModelParser.g:4916:1: ( ( ( rule__ParameterStringType__DefaultAssignment_2_1 ) ) )
+            // InternalResolutionModelParser.g:4917:1: ( ( rule__ParameterStringType__DefaultAssignment_2_1 ) )
             {
-            // InternalResolutionModelParser.g:4859:1: ( ( rule__ParameterStringType__DefaultAssignment_2_1 ) )
-            // InternalResolutionModelParser.g:4860:2: ( rule__ParameterStringType__DefaultAssignment_2_1 )
+            // InternalResolutionModelParser.g:4917:1: ( ( rule__ParameterStringType__DefaultAssignment_2_1 ) )
+            // InternalResolutionModelParser.g:4918:2: ( rule__ParameterStringType__DefaultAssignment_2_1 )
             {
              before(grammarAccess.getParameterStringTypeAccess().getDefaultAssignment_2_1()); 
-            // InternalResolutionModelParser.g:4861:2: ( rule__ParameterStringType__DefaultAssignment_2_1 )
-            // InternalResolutionModelParser.g:4861:3: rule__ParameterStringType__DefaultAssignment_2_1
+            // InternalResolutionModelParser.g:4919:2: ( rule__ParameterStringType__DefaultAssignment_2_1 )
+            // InternalResolutionModelParser.g:4919:3: rule__ParameterStringType__DefaultAssignment_2_1
             {
             pushFollow(FOLLOW_2);
             rule__ParameterStringType__DefaultAssignment_2_1();
@@ -14698,16 +14890,16 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ParameterDoubleType__Group__0"
-    // InternalResolutionModelParser.g:4870:1: rule__ParameterDoubleType__Group__0 : rule__ParameterDoubleType__Group__0__Impl rule__ParameterDoubleType__Group__1 ;
+    // InternalResolutionModelParser.g:4928:1: rule__ParameterDoubleType__Group__0 : rule__ParameterDoubleType__Group__0__Impl rule__ParameterDoubleType__Group__1 ;
     public final void rule__ParameterDoubleType__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:4874:1: ( rule__ParameterDoubleType__Group__0__Impl rule__ParameterDoubleType__Group__1 )
-            // InternalResolutionModelParser.g:4875:2: rule__ParameterDoubleType__Group__0__Impl rule__ParameterDoubleType__Group__1
+            // InternalResolutionModelParser.g:4932:1: ( rule__ParameterDoubleType__Group__0__Impl rule__ParameterDoubleType__Group__1 )
+            // InternalResolutionModelParser.g:4933:2: rule__ParameterDoubleType__Group__0__Impl rule__ParameterDoubleType__Group__1
             {
-            pushFollow(FOLLOW_36);
+            pushFollow(FOLLOW_37);
             rule__ParameterDoubleType__Group__0__Impl();
 
             state._fsp--;
@@ -14736,21 +14928,21 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ParameterDoubleType__Group__0__Impl"
-    // InternalResolutionModelParser.g:4882:1: rule__ParameterDoubleType__Group__0__Impl : ( () ) ;
+    // InternalResolutionModelParser.g:4940:1: rule__ParameterDoubleType__Group__0__Impl : ( () ) ;
     public final void rule__ParameterDoubleType__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:4886:1: ( ( () ) )
-            // InternalResolutionModelParser.g:4887:1: ( () )
+            // InternalResolutionModelParser.g:4944:1: ( ( () ) )
+            // InternalResolutionModelParser.g:4945:1: ( () )
             {
-            // InternalResolutionModelParser.g:4887:1: ( () )
-            // InternalResolutionModelParser.g:4888:2: ()
+            // InternalResolutionModelParser.g:4945:1: ( () )
+            // InternalResolutionModelParser.g:4946:2: ()
             {
              before(grammarAccess.getParameterDoubleTypeAccess().getParameterDoubleTypeAction_0()); 
-            // InternalResolutionModelParser.g:4889:2: ()
-            // InternalResolutionModelParser.g:4889:3: 
+            // InternalResolutionModelParser.g:4947:2: ()
+            // InternalResolutionModelParser.g:4947:3: 
             {
             }
 
@@ -14773,16 +14965,16 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ParameterDoubleType__Group__1"
-    // InternalResolutionModelParser.g:4897:1: rule__ParameterDoubleType__Group__1 : rule__ParameterDoubleType__Group__1__Impl rule__ParameterDoubleType__Group__2 ;
+    // InternalResolutionModelParser.g:4955:1: rule__ParameterDoubleType__Group__1 : rule__ParameterDoubleType__Group__1__Impl rule__ParameterDoubleType__Group__2 ;
     public final void rule__ParameterDoubleType__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:4901:1: ( rule__ParameterDoubleType__Group__1__Impl rule__ParameterDoubleType__Group__2 )
-            // InternalResolutionModelParser.g:4902:2: rule__ParameterDoubleType__Group__1__Impl rule__ParameterDoubleType__Group__2
+            // InternalResolutionModelParser.g:4959:1: ( rule__ParameterDoubleType__Group__1__Impl rule__ParameterDoubleType__Group__2 )
+            // InternalResolutionModelParser.g:4960:2: rule__ParameterDoubleType__Group__1__Impl rule__ParameterDoubleType__Group__2
             {
-            pushFollow(FOLLOW_33);
+            pushFollow(FOLLOW_34);
             rule__ParameterDoubleType__Group__1__Impl();
 
             state._fsp--;
@@ -14811,17 +15003,17 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ParameterDoubleType__Group__1__Impl"
-    // InternalResolutionModelParser.g:4909:1: rule__ParameterDoubleType__Group__1__Impl : ( Double ) ;
+    // InternalResolutionModelParser.g:4967:1: rule__ParameterDoubleType__Group__1__Impl : ( Double ) ;
     public final void rule__ParameterDoubleType__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:4913:1: ( ( Double ) )
-            // InternalResolutionModelParser.g:4914:1: ( Double )
+            // InternalResolutionModelParser.g:4971:1: ( ( Double ) )
+            // InternalResolutionModelParser.g:4972:1: ( Double )
             {
-            // InternalResolutionModelParser.g:4914:1: ( Double )
-            // InternalResolutionModelParser.g:4915:2: Double
+            // InternalResolutionModelParser.g:4972:1: ( Double )
+            // InternalResolutionModelParser.g:4973:2: Double
             {
              before(grammarAccess.getParameterDoubleTypeAccess().getDoubleKeyword_1()); 
             match(input,Double,FOLLOW_2); 
@@ -14848,14 +15040,14 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ParameterDoubleType__Group__2"
-    // InternalResolutionModelParser.g:4924:1: rule__ParameterDoubleType__Group__2 : rule__ParameterDoubleType__Group__2__Impl ;
+    // InternalResolutionModelParser.g:4982:1: rule__ParameterDoubleType__Group__2 : rule__ParameterDoubleType__Group__2__Impl ;
     public final void rule__ParameterDoubleType__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:4928:1: ( rule__ParameterDoubleType__Group__2__Impl )
-            // InternalResolutionModelParser.g:4929:2: rule__ParameterDoubleType__Group__2__Impl
+            // InternalResolutionModelParser.g:4986:1: ( rule__ParameterDoubleType__Group__2__Impl )
+            // InternalResolutionModelParser.g:4987:2: rule__ParameterDoubleType__Group__2__Impl
             {
             pushFollow(FOLLOW_2);
             rule__ParameterDoubleType__Group__2__Impl();
@@ -14881,29 +15073,29 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ParameterDoubleType__Group__2__Impl"
-    // InternalResolutionModelParser.g:4935:1: rule__ParameterDoubleType__Group__2__Impl : ( ( rule__ParameterDoubleType__Group_2__0 )? ) ;
+    // InternalResolutionModelParser.g:4993:1: rule__ParameterDoubleType__Group__2__Impl : ( ( rule__ParameterDoubleType__Group_2__0 )? ) ;
     public final void rule__ParameterDoubleType__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:4939:1: ( ( ( rule__ParameterDoubleType__Group_2__0 )? ) )
-            // InternalResolutionModelParser.g:4940:1: ( ( rule__ParameterDoubleType__Group_2__0 )? )
+            // InternalResolutionModelParser.g:4997:1: ( ( ( rule__ParameterDoubleType__Group_2__0 )? ) )
+            // InternalResolutionModelParser.g:4998:1: ( ( rule__ParameterDoubleType__Group_2__0 )? )
             {
-            // InternalResolutionModelParser.g:4940:1: ( ( rule__ParameterDoubleType__Group_2__0 )? )
-            // InternalResolutionModelParser.g:4941:2: ( rule__ParameterDoubleType__Group_2__0 )?
+            // InternalResolutionModelParser.g:4998:1: ( ( rule__ParameterDoubleType__Group_2__0 )? )
+            // InternalResolutionModelParser.g:4999:2: ( rule__ParameterDoubleType__Group_2__0 )?
             {
              before(grammarAccess.getParameterDoubleTypeAccess().getGroup_2()); 
-            // InternalResolutionModelParser.g:4942:2: ( rule__ParameterDoubleType__Group_2__0 )?
-            int alt23=2;
-            int LA23_0 = input.LA(1);
+            // InternalResolutionModelParser.g:5000:2: ( rule__ParameterDoubleType__Group_2__0 )?
+            int alt24=2;
+            int LA24_0 = input.LA(1);
 
-            if ( (LA23_0==Default) ) {
-                alt23=1;
+            if ( (LA24_0==Default) ) {
+                alt24=1;
             }
-            switch (alt23) {
+            switch (alt24) {
                 case 1 :
-                    // InternalResolutionModelParser.g:4942:3: rule__ParameterDoubleType__Group_2__0
+                    // InternalResolutionModelParser.g:5000:3: rule__ParameterDoubleType__Group_2__0
                     {
                     pushFollow(FOLLOW_2);
                     rule__ParameterDoubleType__Group_2__0();
@@ -14939,16 +15131,16 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ParameterDoubleType__Group_2__0"
-    // InternalResolutionModelParser.g:4951:1: rule__ParameterDoubleType__Group_2__0 : rule__ParameterDoubleType__Group_2__0__Impl rule__ParameterDoubleType__Group_2__1 ;
+    // InternalResolutionModelParser.g:5009:1: rule__ParameterDoubleType__Group_2__0 : rule__ParameterDoubleType__Group_2__0__Impl rule__ParameterDoubleType__Group_2__1 ;
     public final void rule__ParameterDoubleType__Group_2__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:4955:1: ( rule__ParameterDoubleType__Group_2__0__Impl rule__ParameterDoubleType__Group_2__1 )
-            // InternalResolutionModelParser.g:4956:2: rule__ParameterDoubleType__Group_2__0__Impl rule__ParameterDoubleType__Group_2__1
+            // InternalResolutionModelParser.g:5013:1: ( rule__ParameterDoubleType__Group_2__0__Impl rule__ParameterDoubleType__Group_2__1 )
+            // InternalResolutionModelParser.g:5014:2: rule__ParameterDoubleType__Group_2__0__Impl rule__ParameterDoubleType__Group_2__1
             {
-            pushFollow(FOLLOW_37);
+            pushFollow(FOLLOW_38);
             rule__ParameterDoubleType__Group_2__0__Impl();
 
             state._fsp--;
@@ -14977,17 +15169,17 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ParameterDoubleType__Group_2__0__Impl"
-    // InternalResolutionModelParser.g:4963:1: rule__ParameterDoubleType__Group_2__0__Impl : ( Default ) ;
+    // InternalResolutionModelParser.g:5021:1: rule__ParameterDoubleType__Group_2__0__Impl : ( Default ) ;
     public final void rule__ParameterDoubleType__Group_2__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:4967:1: ( ( Default ) )
-            // InternalResolutionModelParser.g:4968:1: ( Default )
+            // InternalResolutionModelParser.g:5025:1: ( ( Default ) )
+            // InternalResolutionModelParser.g:5026:1: ( Default )
             {
-            // InternalResolutionModelParser.g:4968:1: ( Default )
-            // InternalResolutionModelParser.g:4969:2: Default
+            // InternalResolutionModelParser.g:5026:1: ( Default )
+            // InternalResolutionModelParser.g:5027:2: Default
             {
              before(grammarAccess.getParameterDoubleTypeAccess().getDefaultKeyword_2_0()); 
             match(input,Default,FOLLOW_2); 
@@ -15014,14 +15206,14 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ParameterDoubleType__Group_2__1"
-    // InternalResolutionModelParser.g:4978:1: rule__ParameterDoubleType__Group_2__1 : rule__ParameterDoubleType__Group_2__1__Impl ;
+    // InternalResolutionModelParser.g:5036:1: rule__ParameterDoubleType__Group_2__1 : rule__ParameterDoubleType__Group_2__1__Impl ;
     public final void rule__ParameterDoubleType__Group_2__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:4982:1: ( rule__ParameterDoubleType__Group_2__1__Impl )
-            // InternalResolutionModelParser.g:4983:2: rule__ParameterDoubleType__Group_2__1__Impl
+            // InternalResolutionModelParser.g:5040:1: ( rule__ParameterDoubleType__Group_2__1__Impl )
+            // InternalResolutionModelParser.g:5041:2: rule__ParameterDoubleType__Group_2__1__Impl
             {
             pushFollow(FOLLOW_2);
             rule__ParameterDoubleType__Group_2__1__Impl();
@@ -15047,21 +15239,21 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ParameterDoubleType__Group_2__1__Impl"
-    // InternalResolutionModelParser.g:4989:1: rule__ParameterDoubleType__Group_2__1__Impl : ( ( rule__ParameterDoubleType__DefaultAssignment_2_1 ) ) ;
+    // InternalResolutionModelParser.g:5047:1: rule__ParameterDoubleType__Group_2__1__Impl : ( ( rule__ParameterDoubleType__DefaultAssignment_2_1 ) ) ;
     public final void rule__ParameterDoubleType__Group_2__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:4993:1: ( ( ( rule__ParameterDoubleType__DefaultAssignment_2_1 ) ) )
-            // InternalResolutionModelParser.g:4994:1: ( ( rule__ParameterDoubleType__DefaultAssignment_2_1 ) )
+            // InternalResolutionModelParser.g:5051:1: ( ( ( rule__ParameterDoubleType__DefaultAssignment_2_1 ) ) )
+            // InternalResolutionModelParser.g:5052:1: ( ( rule__ParameterDoubleType__DefaultAssignment_2_1 ) )
             {
-            // InternalResolutionModelParser.g:4994:1: ( ( rule__ParameterDoubleType__DefaultAssignment_2_1 ) )
-            // InternalResolutionModelParser.g:4995:2: ( rule__ParameterDoubleType__DefaultAssignment_2_1 )
+            // InternalResolutionModelParser.g:5052:1: ( ( rule__ParameterDoubleType__DefaultAssignment_2_1 ) )
+            // InternalResolutionModelParser.g:5053:2: ( rule__ParameterDoubleType__DefaultAssignment_2_1 )
             {
              before(grammarAccess.getParameterDoubleTypeAccess().getDefaultAssignment_2_1()); 
-            // InternalResolutionModelParser.g:4996:2: ( rule__ParameterDoubleType__DefaultAssignment_2_1 )
-            // InternalResolutionModelParser.g:4996:3: rule__ParameterDoubleType__DefaultAssignment_2_1
+            // InternalResolutionModelParser.g:5054:2: ( rule__ParameterDoubleType__DefaultAssignment_2_1 )
+            // InternalResolutionModelParser.g:5054:3: rule__ParameterDoubleType__DefaultAssignment_2_1
             {
             pushFollow(FOLLOW_2);
             rule__ParameterDoubleType__DefaultAssignment_2_1();
@@ -15094,16 +15286,16 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ParameterBooleanType__Group__0"
-    // InternalResolutionModelParser.g:5005:1: rule__ParameterBooleanType__Group__0 : rule__ParameterBooleanType__Group__0__Impl rule__ParameterBooleanType__Group__1 ;
+    // InternalResolutionModelParser.g:5063:1: rule__ParameterBooleanType__Group__0 : rule__ParameterBooleanType__Group__0__Impl rule__ParameterBooleanType__Group__1 ;
     public final void rule__ParameterBooleanType__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:5009:1: ( rule__ParameterBooleanType__Group__0__Impl rule__ParameterBooleanType__Group__1 )
-            // InternalResolutionModelParser.g:5010:2: rule__ParameterBooleanType__Group__0__Impl rule__ParameterBooleanType__Group__1
+            // InternalResolutionModelParser.g:5067:1: ( rule__ParameterBooleanType__Group__0__Impl rule__ParameterBooleanType__Group__1 )
+            // InternalResolutionModelParser.g:5068:2: rule__ParameterBooleanType__Group__0__Impl rule__ParameterBooleanType__Group__1
             {
-            pushFollow(FOLLOW_38);
+            pushFollow(FOLLOW_39);
             rule__ParameterBooleanType__Group__0__Impl();
 
             state._fsp--;
@@ -15132,21 +15324,21 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ParameterBooleanType__Group__0__Impl"
-    // InternalResolutionModelParser.g:5017:1: rule__ParameterBooleanType__Group__0__Impl : ( () ) ;
+    // InternalResolutionModelParser.g:5075:1: rule__ParameterBooleanType__Group__0__Impl : ( () ) ;
     public final void rule__ParameterBooleanType__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:5021:1: ( ( () ) )
-            // InternalResolutionModelParser.g:5022:1: ( () )
+            // InternalResolutionModelParser.g:5079:1: ( ( () ) )
+            // InternalResolutionModelParser.g:5080:1: ( () )
             {
-            // InternalResolutionModelParser.g:5022:1: ( () )
-            // InternalResolutionModelParser.g:5023:2: ()
+            // InternalResolutionModelParser.g:5080:1: ( () )
+            // InternalResolutionModelParser.g:5081:2: ()
             {
              before(grammarAccess.getParameterBooleanTypeAccess().getParameterBooleanTypeAction_0()); 
-            // InternalResolutionModelParser.g:5024:2: ()
-            // InternalResolutionModelParser.g:5024:3: 
+            // InternalResolutionModelParser.g:5082:2: ()
+            // InternalResolutionModelParser.g:5082:3: 
             {
             }
 
@@ -15169,16 +15361,16 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ParameterBooleanType__Group__1"
-    // InternalResolutionModelParser.g:5032:1: rule__ParameterBooleanType__Group__1 : rule__ParameterBooleanType__Group__1__Impl rule__ParameterBooleanType__Group__2 ;
+    // InternalResolutionModelParser.g:5090:1: rule__ParameterBooleanType__Group__1 : rule__ParameterBooleanType__Group__1__Impl rule__ParameterBooleanType__Group__2 ;
     public final void rule__ParameterBooleanType__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:5036:1: ( rule__ParameterBooleanType__Group__1__Impl rule__ParameterBooleanType__Group__2 )
-            // InternalResolutionModelParser.g:5037:2: rule__ParameterBooleanType__Group__1__Impl rule__ParameterBooleanType__Group__2
+            // InternalResolutionModelParser.g:5094:1: ( rule__ParameterBooleanType__Group__1__Impl rule__ParameterBooleanType__Group__2 )
+            // InternalResolutionModelParser.g:5095:2: rule__ParameterBooleanType__Group__1__Impl rule__ParameterBooleanType__Group__2
             {
-            pushFollow(FOLLOW_33);
+            pushFollow(FOLLOW_34);
             rule__ParameterBooleanType__Group__1__Impl();
 
             state._fsp--;
@@ -15207,17 +15399,17 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ParameterBooleanType__Group__1__Impl"
-    // InternalResolutionModelParser.g:5044:1: rule__ParameterBooleanType__Group__1__Impl : ( Boolean ) ;
+    // InternalResolutionModelParser.g:5102:1: rule__ParameterBooleanType__Group__1__Impl : ( Boolean ) ;
     public final void rule__ParameterBooleanType__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:5048:1: ( ( Boolean ) )
-            // InternalResolutionModelParser.g:5049:1: ( Boolean )
+            // InternalResolutionModelParser.g:5106:1: ( ( Boolean ) )
+            // InternalResolutionModelParser.g:5107:1: ( Boolean )
             {
-            // InternalResolutionModelParser.g:5049:1: ( Boolean )
-            // InternalResolutionModelParser.g:5050:2: Boolean
+            // InternalResolutionModelParser.g:5107:1: ( Boolean )
+            // InternalResolutionModelParser.g:5108:2: Boolean
             {
              before(grammarAccess.getParameterBooleanTypeAccess().getBooleanKeyword_1()); 
             match(input,Boolean,FOLLOW_2); 
@@ -15244,14 +15436,14 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ParameterBooleanType__Group__2"
-    // InternalResolutionModelParser.g:5059:1: rule__ParameterBooleanType__Group__2 : rule__ParameterBooleanType__Group__2__Impl ;
+    // InternalResolutionModelParser.g:5117:1: rule__ParameterBooleanType__Group__2 : rule__ParameterBooleanType__Group__2__Impl ;
     public final void rule__ParameterBooleanType__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:5063:1: ( rule__ParameterBooleanType__Group__2__Impl )
-            // InternalResolutionModelParser.g:5064:2: rule__ParameterBooleanType__Group__2__Impl
+            // InternalResolutionModelParser.g:5121:1: ( rule__ParameterBooleanType__Group__2__Impl )
+            // InternalResolutionModelParser.g:5122:2: rule__ParameterBooleanType__Group__2__Impl
             {
             pushFollow(FOLLOW_2);
             rule__ParameterBooleanType__Group__2__Impl();
@@ -15277,29 +15469,29 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ParameterBooleanType__Group__2__Impl"
-    // InternalResolutionModelParser.g:5070:1: rule__ParameterBooleanType__Group__2__Impl : ( ( rule__ParameterBooleanType__Group_2__0 )? ) ;
+    // InternalResolutionModelParser.g:5128:1: rule__ParameterBooleanType__Group__2__Impl : ( ( rule__ParameterBooleanType__Group_2__0 )? ) ;
     public final void rule__ParameterBooleanType__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:5074:1: ( ( ( rule__ParameterBooleanType__Group_2__0 )? ) )
-            // InternalResolutionModelParser.g:5075:1: ( ( rule__ParameterBooleanType__Group_2__0 )? )
+            // InternalResolutionModelParser.g:5132:1: ( ( ( rule__ParameterBooleanType__Group_2__0 )? ) )
+            // InternalResolutionModelParser.g:5133:1: ( ( rule__ParameterBooleanType__Group_2__0 )? )
             {
-            // InternalResolutionModelParser.g:5075:1: ( ( rule__ParameterBooleanType__Group_2__0 )? )
-            // InternalResolutionModelParser.g:5076:2: ( rule__ParameterBooleanType__Group_2__0 )?
+            // InternalResolutionModelParser.g:5133:1: ( ( rule__ParameterBooleanType__Group_2__0 )? )
+            // InternalResolutionModelParser.g:5134:2: ( rule__ParameterBooleanType__Group_2__0 )?
             {
              before(grammarAccess.getParameterBooleanTypeAccess().getGroup_2()); 
-            // InternalResolutionModelParser.g:5077:2: ( rule__ParameterBooleanType__Group_2__0 )?
-            int alt24=2;
-            int LA24_0 = input.LA(1);
+            // InternalResolutionModelParser.g:5135:2: ( rule__ParameterBooleanType__Group_2__0 )?
+            int alt25=2;
+            int LA25_0 = input.LA(1);
 
-            if ( (LA24_0==Default) ) {
-                alt24=1;
+            if ( (LA25_0==Default) ) {
+                alt25=1;
             }
-            switch (alt24) {
+            switch (alt25) {
                 case 1 :
-                    // InternalResolutionModelParser.g:5077:3: rule__ParameterBooleanType__Group_2__0
+                    // InternalResolutionModelParser.g:5135:3: rule__ParameterBooleanType__Group_2__0
                     {
                     pushFollow(FOLLOW_2);
                     rule__ParameterBooleanType__Group_2__0();
@@ -15335,16 +15527,16 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ParameterBooleanType__Group_2__0"
-    // InternalResolutionModelParser.g:5086:1: rule__ParameterBooleanType__Group_2__0 : rule__ParameterBooleanType__Group_2__0__Impl rule__ParameterBooleanType__Group_2__1 ;
+    // InternalResolutionModelParser.g:5144:1: rule__ParameterBooleanType__Group_2__0 : rule__ParameterBooleanType__Group_2__0__Impl rule__ParameterBooleanType__Group_2__1 ;
     public final void rule__ParameterBooleanType__Group_2__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:5090:1: ( rule__ParameterBooleanType__Group_2__0__Impl rule__ParameterBooleanType__Group_2__1 )
-            // InternalResolutionModelParser.g:5091:2: rule__ParameterBooleanType__Group_2__0__Impl rule__ParameterBooleanType__Group_2__1
+            // InternalResolutionModelParser.g:5148:1: ( rule__ParameterBooleanType__Group_2__0__Impl rule__ParameterBooleanType__Group_2__1 )
+            // InternalResolutionModelParser.g:5149:2: rule__ParameterBooleanType__Group_2__0__Impl rule__ParameterBooleanType__Group_2__1
             {
-            pushFollow(FOLLOW_39);
+            pushFollow(FOLLOW_40);
             rule__ParameterBooleanType__Group_2__0__Impl();
 
             state._fsp--;
@@ -15373,17 +15565,17 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ParameterBooleanType__Group_2__0__Impl"
-    // InternalResolutionModelParser.g:5098:1: rule__ParameterBooleanType__Group_2__0__Impl : ( Default ) ;
+    // InternalResolutionModelParser.g:5156:1: rule__ParameterBooleanType__Group_2__0__Impl : ( Default ) ;
     public final void rule__ParameterBooleanType__Group_2__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:5102:1: ( ( Default ) )
-            // InternalResolutionModelParser.g:5103:1: ( Default )
+            // InternalResolutionModelParser.g:5160:1: ( ( Default ) )
+            // InternalResolutionModelParser.g:5161:1: ( Default )
             {
-            // InternalResolutionModelParser.g:5103:1: ( Default )
-            // InternalResolutionModelParser.g:5104:2: Default
+            // InternalResolutionModelParser.g:5161:1: ( Default )
+            // InternalResolutionModelParser.g:5162:2: Default
             {
              before(grammarAccess.getParameterBooleanTypeAccess().getDefaultKeyword_2_0()); 
             match(input,Default,FOLLOW_2); 
@@ -15410,14 +15602,14 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ParameterBooleanType__Group_2__1"
-    // InternalResolutionModelParser.g:5113:1: rule__ParameterBooleanType__Group_2__1 : rule__ParameterBooleanType__Group_2__1__Impl ;
+    // InternalResolutionModelParser.g:5171:1: rule__ParameterBooleanType__Group_2__1 : rule__ParameterBooleanType__Group_2__1__Impl ;
     public final void rule__ParameterBooleanType__Group_2__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:5117:1: ( rule__ParameterBooleanType__Group_2__1__Impl )
-            // InternalResolutionModelParser.g:5118:2: rule__ParameterBooleanType__Group_2__1__Impl
+            // InternalResolutionModelParser.g:5175:1: ( rule__ParameterBooleanType__Group_2__1__Impl )
+            // InternalResolutionModelParser.g:5176:2: rule__ParameterBooleanType__Group_2__1__Impl
             {
             pushFollow(FOLLOW_2);
             rule__ParameterBooleanType__Group_2__1__Impl();
@@ -15443,21 +15635,21 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ParameterBooleanType__Group_2__1__Impl"
-    // InternalResolutionModelParser.g:5124:1: rule__ParameterBooleanType__Group_2__1__Impl : ( ( rule__ParameterBooleanType__DefaultAssignment_2_1 ) ) ;
+    // InternalResolutionModelParser.g:5182:1: rule__ParameterBooleanType__Group_2__1__Impl : ( ( rule__ParameterBooleanType__DefaultAssignment_2_1 ) ) ;
     public final void rule__ParameterBooleanType__Group_2__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:5128:1: ( ( ( rule__ParameterBooleanType__DefaultAssignment_2_1 ) ) )
-            // InternalResolutionModelParser.g:5129:1: ( ( rule__ParameterBooleanType__DefaultAssignment_2_1 ) )
+            // InternalResolutionModelParser.g:5186:1: ( ( ( rule__ParameterBooleanType__DefaultAssignment_2_1 ) ) )
+            // InternalResolutionModelParser.g:5187:1: ( ( rule__ParameterBooleanType__DefaultAssignment_2_1 ) )
             {
-            // InternalResolutionModelParser.g:5129:1: ( ( rule__ParameterBooleanType__DefaultAssignment_2_1 ) )
-            // InternalResolutionModelParser.g:5130:2: ( rule__ParameterBooleanType__DefaultAssignment_2_1 )
+            // InternalResolutionModelParser.g:5187:1: ( ( rule__ParameterBooleanType__DefaultAssignment_2_1 ) )
+            // InternalResolutionModelParser.g:5188:2: ( rule__ParameterBooleanType__DefaultAssignment_2_1 )
             {
              before(grammarAccess.getParameterBooleanTypeAccess().getDefaultAssignment_2_1()); 
-            // InternalResolutionModelParser.g:5131:2: ( rule__ParameterBooleanType__DefaultAssignment_2_1 )
-            // InternalResolutionModelParser.g:5131:3: rule__ParameterBooleanType__DefaultAssignment_2_1
+            // InternalResolutionModelParser.g:5189:2: ( rule__ParameterBooleanType__DefaultAssignment_2_1 )
+            // InternalResolutionModelParser.g:5189:3: rule__ParameterBooleanType__DefaultAssignment_2_1
             {
             pushFollow(FOLLOW_2);
             rule__ParameterBooleanType__DefaultAssignment_2_1();
@@ -15490,16 +15682,16 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ParameterBase64Type__Group__0"
-    // InternalResolutionModelParser.g:5140:1: rule__ParameterBase64Type__Group__0 : rule__ParameterBase64Type__Group__0__Impl rule__ParameterBase64Type__Group__1 ;
+    // InternalResolutionModelParser.g:5198:1: rule__ParameterBase64Type__Group__0 : rule__ParameterBase64Type__Group__0__Impl rule__ParameterBase64Type__Group__1 ;
     public final void rule__ParameterBase64Type__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:5144:1: ( rule__ParameterBase64Type__Group__0__Impl rule__ParameterBase64Type__Group__1 )
-            // InternalResolutionModelParser.g:5145:2: rule__ParameterBase64Type__Group__0__Impl rule__ParameterBase64Type__Group__1
+            // InternalResolutionModelParser.g:5202:1: ( rule__ParameterBase64Type__Group__0__Impl rule__ParameterBase64Type__Group__1 )
+            // InternalResolutionModelParser.g:5203:2: rule__ParameterBase64Type__Group__0__Impl rule__ParameterBase64Type__Group__1
             {
-            pushFollow(FOLLOW_40);
+            pushFollow(FOLLOW_41);
             rule__ParameterBase64Type__Group__0__Impl();
 
             state._fsp--;
@@ -15528,21 +15720,21 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ParameterBase64Type__Group__0__Impl"
-    // InternalResolutionModelParser.g:5152:1: rule__ParameterBase64Type__Group__0__Impl : ( () ) ;
+    // InternalResolutionModelParser.g:5210:1: rule__ParameterBase64Type__Group__0__Impl : ( () ) ;
     public final void rule__ParameterBase64Type__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:5156:1: ( ( () ) )
-            // InternalResolutionModelParser.g:5157:1: ( () )
+            // InternalResolutionModelParser.g:5214:1: ( ( () ) )
+            // InternalResolutionModelParser.g:5215:1: ( () )
             {
-            // InternalResolutionModelParser.g:5157:1: ( () )
-            // InternalResolutionModelParser.g:5158:2: ()
+            // InternalResolutionModelParser.g:5215:1: ( () )
+            // InternalResolutionModelParser.g:5216:2: ()
             {
              before(grammarAccess.getParameterBase64TypeAccess().getParameterBase64TypeAction_0()); 
-            // InternalResolutionModelParser.g:5159:2: ()
-            // InternalResolutionModelParser.g:5159:3: 
+            // InternalResolutionModelParser.g:5217:2: ()
+            // InternalResolutionModelParser.g:5217:3: 
             {
             }
 
@@ -15565,16 +15757,16 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ParameterBase64Type__Group__1"
-    // InternalResolutionModelParser.g:5167:1: rule__ParameterBase64Type__Group__1 : rule__ParameterBase64Type__Group__1__Impl rule__ParameterBase64Type__Group__2 ;
+    // InternalResolutionModelParser.g:5225:1: rule__ParameterBase64Type__Group__1 : rule__ParameterBase64Type__Group__1__Impl rule__ParameterBase64Type__Group__2 ;
     public final void rule__ParameterBase64Type__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:5171:1: ( rule__ParameterBase64Type__Group__1__Impl rule__ParameterBase64Type__Group__2 )
-            // InternalResolutionModelParser.g:5172:2: rule__ParameterBase64Type__Group__1__Impl rule__ParameterBase64Type__Group__2
+            // InternalResolutionModelParser.g:5229:1: ( rule__ParameterBase64Type__Group__1__Impl rule__ParameterBase64Type__Group__2 )
+            // InternalResolutionModelParser.g:5230:2: rule__ParameterBase64Type__Group__1__Impl rule__ParameterBase64Type__Group__2
             {
-            pushFollow(FOLLOW_33);
+            pushFollow(FOLLOW_34);
             rule__ParameterBase64Type__Group__1__Impl();
 
             state._fsp--;
@@ -15603,17 +15795,17 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ParameterBase64Type__Group__1__Impl"
-    // InternalResolutionModelParser.g:5179:1: rule__ParameterBase64Type__Group__1__Impl : ( Base64 ) ;
+    // InternalResolutionModelParser.g:5237:1: rule__ParameterBase64Type__Group__1__Impl : ( Base64 ) ;
     public final void rule__ParameterBase64Type__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:5183:1: ( ( Base64 ) )
-            // InternalResolutionModelParser.g:5184:1: ( Base64 )
+            // InternalResolutionModelParser.g:5241:1: ( ( Base64 ) )
+            // InternalResolutionModelParser.g:5242:1: ( Base64 )
             {
-            // InternalResolutionModelParser.g:5184:1: ( Base64 )
-            // InternalResolutionModelParser.g:5185:2: Base64
+            // InternalResolutionModelParser.g:5242:1: ( Base64 )
+            // InternalResolutionModelParser.g:5243:2: Base64
             {
              before(grammarAccess.getParameterBase64TypeAccess().getBase64Keyword_1()); 
             match(input,Base64,FOLLOW_2); 
@@ -15640,14 +15832,14 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ParameterBase64Type__Group__2"
-    // InternalResolutionModelParser.g:5194:1: rule__ParameterBase64Type__Group__2 : rule__ParameterBase64Type__Group__2__Impl ;
+    // InternalResolutionModelParser.g:5252:1: rule__ParameterBase64Type__Group__2 : rule__ParameterBase64Type__Group__2__Impl ;
     public final void rule__ParameterBase64Type__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:5198:1: ( rule__ParameterBase64Type__Group__2__Impl )
-            // InternalResolutionModelParser.g:5199:2: rule__ParameterBase64Type__Group__2__Impl
+            // InternalResolutionModelParser.g:5256:1: ( rule__ParameterBase64Type__Group__2__Impl )
+            // InternalResolutionModelParser.g:5257:2: rule__ParameterBase64Type__Group__2__Impl
             {
             pushFollow(FOLLOW_2);
             rule__ParameterBase64Type__Group__2__Impl();
@@ -15673,29 +15865,29 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ParameterBase64Type__Group__2__Impl"
-    // InternalResolutionModelParser.g:5205:1: rule__ParameterBase64Type__Group__2__Impl : ( ( rule__ParameterBase64Type__Group_2__0 )? ) ;
+    // InternalResolutionModelParser.g:5263:1: rule__ParameterBase64Type__Group__2__Impl : ( ( rule__ParameterBase64Type__Group_2__0 )? ) ;
     public final void rule__ParameterBase64Type__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:5209:1: ( ( ( rule__ParameterBase64Type__Group_2__0 )? ) )
-            // InternalResolutionModelParser.g:5210:1: ( ( rule__ParameterBase64Type__Group_2__0 )? )
+            // InternalResolutionModelParser.g:5267:1: ( ( ( rule__ParameterBase64Type__Group_2__0 )? ) )
+            // InternalResolutionModelParser.g:5268:1: ( ( rule__ParameterBase64Type__Group_2__0 )? )
             {
-            // InternalResolutionModelParser.g:5210:1: ( ( rule__ParameterBase64Type__Group_2__0 )? )
-            // InternalResolutionModelParser.g:5211:2: ( rule__ParameterBase64Type__Group_2__0 )?
+            // InternalResolutionModelParser.g:5268:1: ( ( rule__ParameterBase64Type__Group_2__0 )? )
+            // InternalResolutionModelParser.g:5269:2: ( rule__ParameterBase64Type__Group_2__0 )?
             {
              before(grammarAccess.getParameterBase64TypeAccess().getGroup_2()); 
-            // InternalResolutionModelParser.g:5212:2: ( rule__ParameterBase64Type__Group_2__0 )?
-            int alt25=2;
-            int LA25_0 = input.LA(1);
+            // InternalResolutionModelParser.g:5270:2: ( rule__ParameterBase64Type__Group_2__0 )?
+            int alt26=2;
+            int LA26_0 = input.LA(1);
 
-            if ( (LA25_0==Default) ) {
-                alt25=1;
+            if ( (LA26_0==Default) ) {
+                alt26=1;
             }
-            switch (alt25) {
+            switch (alt26) {
                 case 1 :
-                    // InternalResolutionModelParser.g:5212:3: rule__ParameterBase64Type__Group_2__0
+                    // InternalResolutionModelParser.g:5270:3: rule__ParameterBase64Type__Group_2__0
                     {
                     pushFollow(FOLLOW_2);
                     rule__ParameterBase64Type__Group_2__0();
@@ -15731,16 +15923,16 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ParameterBase64Type__Group_2__0"
-    // InternalResolutionModelParser.g:5221:1: rule__ParameterBase64Type__Group_2__0 : rule__ParameterBase64Type__Group_2__0__Impl rule__ParameterBase64Type__Group_2__1 ;
+    // InternalResolutionModelParser.g:5279:1: rule__ParameterBase64Type__Group_2__0 : rule__ParameterBase64Type__Group_2__0__Impl rule__ParameterBase64Type__Group_2__1 ;
     public final void rule__ParameterBase64Type__Group_2__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:5225:1: ( rule__ParameterBase64Type__Group_2__0__Impl rule__ParameterBase64Type__Group_2__1 )
-            // InternalResolutionModelParser.g:5226:2: rule__ParameterBase64Type__Group_2__0__Impl rule__ParameterBase64Type__Group_2__1
+            // InternalResolutionModelParser.g:5283:1: ( rule__ParameterBase64Type__Group_2__0__Impl rule__ParameterBase64Type__Group_2__1 )
+            // InternalResolutionModelParser.g:5284:2: rule__ParameterBase64Type__Group_2__0__Impl rule__ParameterBase64Type__Group_2__1
             {
-            pushFollow(FOLLOW_41);
+            pushFollow(FOLLOW_42);
             rule__ParameterBase64Type__Group_2__0__Impl();
 
             state._fsp--;
@@ -15769,17 +15961,17 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ParameterBase64Type__Group_2__0__Impl"
-    // InternalResolutionModelParser.g:5233:1: rule__ParameterBase64Type__Group_2__0__Impl : ( Default ) ;
+    // InternalResolutionModelParser.g:5291:1: rule__ParameterBase64Type__Group_2__0__Impl : ( Default ) ;
     public final void rule__ParameterBase64Type__Group_2__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:5237:1: ( ( Default ) )
-            // InternalResolutionModelParser.g:5238:1: ( Default )
+            // InternalResolutionModelParser.g:5295:1: ( ( Default ) )
+            // InternalResolutionModelParser.g:5296:1: ( Default )
             {
-            // InternalResolutionModelParser.g:5238:1: ( Default )
-            // InternalResolutionModelParser.g:5239:2: Default
+            // InternalResolutionModelParser.g:5296:1: ( Default )
+            // InternalResolutionModelParser.g:5297:2: Default
             {
              before(grammarAccess.getParameterBase64TypeAccess().getDefaultKeyword_2_0()); 
             match(input,Default,FOLLOW_2); 
@@ -15806,14 +15998,14 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ParameterBase64Type__Group_2__1"
-    // InternalResolutionModelParser.g:5248:1: rule__ParameterBase64Type__Group_2__1 : rule__ParameterBase64Type__Group_2__1__Impl ;
+    // InternalResolutionModelParser.g:5306:1: rule__ParameterBase64Type__Group_2__1 : rule__ParameterBase64Type__Group_2__1__Impl ;
     public final void rule__ParameterBase64Type__Group_2__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:5252:1: ( rule__ParameterBase64Type__Group_2__1__Impl )
-            // InternalResolutionModelParser.g:5253:2: rule__ParameterBase64Type__Group_2__1__Impl
+            // InternalResolutionModelParser.g:5310:1: ( rule__ParameterBase64Type__Group_2__1__Impl )
+            // InternalResolutionModelParser.g:5311:2: rule__ParameterBase64Type__Group_2__1__Impl
             {
             pushFollow(FOLLOW_2);
             rule__ParameterBase64Type__Group_2__1__Impl();
@@ -15839,21 +16031,21 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ParameterBase64Type__Group_2__1__Impl"
-    // InternalResolutionModelParser.g:5259:1: rule__ParameterBase64Type__Group_2__1__Impl : ( ( rule__ParameterBase64Type__DefaultAssignment_2_1 ) ) ;
+    // InternalResolutionModelParser.g:5317:1: rule__ParameterBase64Type__Group_2__1__Impl : ( ( rule__ParameterBase64Type__DefaultAssignment_2_1 ) ) ;
     public final void rule__ParameterBase64Type__Group_2__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:5263:1: ( ( ( rule__ParameterBase64Type__DefaultAssignment_2_1 ) ) )
-            // InternalResolutionModelParser.g:5264:1: ( ( rule__ParameterBase64Type__DefaultAssignment_2_1 ) )
+            // InternalResolutionModelParser.g:5321:1: ( ( ( rule__ParameterBase64Type__DefaultAssignment_2_1 ) ) )
+            // InternalResolutionModelParser.g:5322:1: ( ( rule__ParameterBase64Type__DefaultAssignment_2_1 ) )
             {
-            // InternalResolutionModelParser.g:5264:1: ( ( rule__ParameterBase64Type__DefaultAssignment_2_1 ) )
-            // InternalResolutionModelParser.g:5265:2: ( rule__ParameterBase64Type__DefaultAssignment_2_1 )
+            // InternalResolutionModelParser.g:5322:1: ( ( rule__ParameterBase64Type__DefaultAssignment_2_1 ) )
+            // InternalResolutionModelParser.g:5323:2: ( rule__ParameterBase64Type__DefaultAssignment_2_1 )
             {
              before(grammarAccess.getParameterBase64TypeAccess().getDefaultAssignment_2_1()); 
-            // InternalResolutionModelParser.g:5266:2: ( rule__ParameterBase64Type__DefaultAssignment_2_1 )
-            // InternalResolutionModelParser.g:5266:3: rule__ParameterBase64Type__DefaultAssignment_2_1
+            // InternalResolutionModelParser.g:5324:2: ( rule__ParameterBase64Type__DefaultAssignment_2_1 )
+            // InternalResolutionModelParser.g:5324:3: rule__ParameterBase64Type__DefaultAssignment_2_1
             {
             pushFollow(FOLLOW_2);
             rule__ParameterBase64Type__DefaultAssignment_2_1();
@@ -15886,16 +16078,16 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ParameterArrayType__Group__0"
-    // InternalResolutionModelParser.g:5275:1: rule__ParameterArrayType__Group__0 : rule__ParameterArrayType__Group__0__Impl rule__ParameterArrayType__Group__1 ;
+    // InternalResolutionModelParser.g:5333:1: rule__ParameterArrayType__Group__0 : rule__ParameterArrayType__Group__0__Impl rule__ParameterArrayType__Group__1 ;
     public final void rule__ParameterArrayType__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:5279:1: ( rule__ParameterArrayType__Group__0__Impl rule__ParameterArrayType__Group__1 )
-            // InternalResolutionModelParser.g:5280:2: rule__ParameterArrayType__Group__0__Impl rule__ParameterArrayType__Group__1
+            // InternalResolutionModelParser.g:5337:1: ( rule__ParameterArrayType__Group__0__Impl rule__ParameterArrayType__Group__1 )
+            // InternalResolutionModelParser.g:5338:2: rule__ParameterArrayType__Group__0__Impl rule__ParameterArrayType__Group__1
             {
-            pushFollow(FOLLOW_22);
+            pushFollow(FOLLOW_23);
             rule__ParameterArrayType__Group__0__Impl();
 
             state._fsp--;
@@ -15924,17 +16116,17 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ParameterArrayType__Group__0__Impl"
-    // InternalResolutionModelParser.g:5287:1: rule__ParameterArrayType__Group__0__Impl : ( Array ) ;
+    // InternalResolutionModelParser.g:5345:1: rule__ParameterArrayType__Group__0__Impl : ( Array ) ;
     public final void rule__ParameterArrayType__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:5291:1: ( ( Array ) )
-            // InternalResolutionModelParser.g:5292:1: ( Array )
+            // InternalResolutionModelParser.g:5349:1: ( ( Array ) )
+            // InternalResolutionModelParser.g:5350:1: ( Array )
             {
-            // InternalResolutionModelParser.g:5292:1: ( Array )
-            // InternalResolutionModelParser.g:5293:2: Array
+            // InternalResolutionModelParser.g:5350:1: ( Array )
+            // InternalResolutionModelParser.g:5351:2: Array
             {
              before(grammarAccess.getParameterArrayTypeAccess().getArrayKeyword_0()); 
             match(input,Array,FOLLOW_2); 
@@ -15961,16 +16153,16 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ParameterArrayType__Group__1"
-    // InternalResolutionModelParser.g:5302:1: rule__ParameterArrayType__Group__1 : rule__ParameterArrayType__Group__1__Impl rule__ParameterArrayType__Group__2 ;
+    // InternalResolutionModelParser.g:5360:1: rule__ParameterArrayType__Group__1 : rule__ParameterArrayType__Group__1__Impl rule__ParameterArrayType__Group__2 ;
     public final void rule__ParameterArrayType__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:5306:1: ( rule__ParameterArrayType__Group__1__Impl rule__ParameterArrayType__Group__2 )
-            // InternalResolutionModelParser.g:5307:2: rule__ParameterArrayType__Group__1__Impl rule__ParameterArrayType__Group__2
+            // InternalResolutionModelParser.g:5364:1: ( rule__ParameterArrayType__Group__1__Impl rule__ParameterArrayType__Group__2 )
+            // InternalResolutionModelParser.g:5365:2: rule__ParameterArrayType__Group__1__Impl rule__ParameterArrayType__Group__2
             {
-            pushFollow(FOLLOW_29);
+            pushFollow(FOLLOW_30);
             rule__ParameterArrayType__Group__1__Impl();
 
             state._fsp--;
@@ -15999,17 +16191,17 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ParameterArrayType__Group__1__Impl"
-    // InternalResolutionModelParser.g:5314:1: rule__ParameterArrayType__Group__1__Impl : ( LeftSquareBracket ) ;
+    // InternalResolutionModelParser.g:5372:1: rule__ParameterArrayType__Group__1__Impl : ( LeftSquareBracket ) ;
     public final void rule__ParameterArrayType__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:5318:1: ( ( LeftSquareBracket ) )
-            // InternalResolutionModelParser.g:5319:1: ( LeftSquareBracket )
+            // InternalResolutionModelParser.g:5376:1: ( ( LeftSquareBracket ) )
+            // InternalResolutionModelParser.g:5377:1: ( LeftSquareBracket )
             {
-            // InternalResolutionModelParser.g:5319:1: ( LeftSquareBracket )
-            // InternalResolutionModelParser.g:5320:2: LeftSquareBracket
+            // InternalResolutionModelParser.g:5377:1: ( LeftSquareBracket )
+            // InternalResolutionModelParser.g:5378:2: LeftSquareBracket
             {
              before(grammarAccess.getParameterArrayTypeAccess().getLeftSquareBracketKeyword_1()); 
             match(input,LeftSquareBracket,FOLLOW_2); 
@@ -16036,16 +16228,16 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ParameterArrayType__Group__2"
-    // InternalResolutionModelParser.g:5329:1: rule__ParameterArrayType__Group__2 : rule__ParameterArrayType__Group__2__Impl rule__ParameterArrayType__Group__3 ;
+    // InternalResolutionModelParser.g:5387:1: rule__ParameterArrayType__Group__2 : rule__ParameterArrayType__Group__2__Impl rule__ParameterArrayType__Group__3 ;
     public final void rule__ParameterArrayType__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:5333:1: ( rule__ParameterArrayType__Group__2__Impl rule__ParameterArrayType__Group__3 )
-            // InternalResolutionModelParser.g:5334:2: rule__ParameterArrayType__Group__2__Impl rule__ParameterArrayType__Group__3
+            // InternalResolutionModelParser.g:5391:1: ( rule__ParameterArrayType__Group__2__Impl rule__ParameterArrayType__Group__3 )
+            // InternalResolutionModelParser.g:5392:2: rule__ParameterArrayType__Group__2__Impl rule__ParameterArrayType__Group__3
             {
-            pushFollow(FOLLOW_42);
+            pushFollow(FOLLOW_43);
             rule__ParameterArrayType__Group__2__Impl();
 
             state._fsp--;
@@ -16074,21 +16266,21 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ParameterArrayType__Group__2__Impl"
-    // InternalResolutionModelParser.g:5341:1: rule__ParameterArrayType__Group__2__Impl : ( ( rule__ParameterArrayType__TypeAssignment_2 ) ) ;
+    // InternalResolutionModelParser.g:5399:1: rule__ParameterArrayType__Group__2__Impl : ( ( rule__ParameterArrayType__TypeAssignment_2 ) ) ;
     public final void rule__ParameterArrayType__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:5345:1: ( ( ( rule__ParameterArrayType__TypeAssignment_2 ) ) )
-            // InternalResolutionModelParser.g:5346:1: ( ( rule__ParameterArrayType__TypeAssignment_2 ) )
+            // InternalResolutionModelParser.g:5403:1: ( ( ( rule__ParameterArrayType__TypeAssignment_2 ) ) )
+            // InternalResolutionModelParser.g:5404:1: ( ( rule__ParameterArrayType__TypeAssignment_2 ) )
             {
-            // InternalResolutionModelParser.g:5346:1: ( ( rule__ParameterArrayType__TypeAssignment_2 ) )
-            // InternalResolutionModelParser.g:5347:2: ( rule__ParameterArrayType__TypeAssignment_2 )
+            // InternalResolutionModelParser.g:5404:1: ( ( rule__ParameterArrayType__TypeAssignment_2 ) )
+            // InternalResolutionModelParser.g:5405:2: ( rule__ParameterArrayType__TypeAssignment_2 )
             {
              before(grammarAccess.getParameterArrayTypeAccess().getTypeAssignment_2()); 
-            // InternalResolutionModelParser.g:5348:2: ( rule__ParameterArrayType__TypeAssignment_2 )
-            // InternalResolutionModelParser.g:5348:3: rule__ParameterArrayType__TypeAssignment_2
+            // InternalResolutionModelParser.g:5406:2: ( rule__ParameterArrayType__TypeAssignment_2 )
+            // InternalResolutionModelParser.g:5406:3: rule__ParameterArrayType__TypeAssignment_2
             {
             pushFollow(FOLLOW_2);
             rule__ParameterArrayType__TypeAssignment_2();
@@ -16121,16 +16313,16 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ParameterArrayType__Group__3"
-    // InternalResolutionModelParser.g:5356:1: rule__ParameterArrayType__Group__3 : rule__ParameterArrayType__Group__3__Impl rule__ParameterArrayType__Group__4 ;
+    // InternalResolutionModelParser.g:5414:1: rule__ParameterArrayType__Group__3 : rule__ParameterArrayType__Group__3__Impl rule__ParameterArrayType__Group__4 ;
     public final void rule__ParameterArrayType__Group__3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:5360:1: ( rule__ParameterArrayType__Group__3__Impl rule__ParameterArrayType__Group__4 )
-            // InternalResolutionModelParser.g:5361:2: rule__ParameterArrayType__Group__3__Impl rule__ParameterArrayType__Group__4
+            // InternalResolutionModelParser.g:5418:1: ( rule__ParameterArrayType__Group__3__Impl rule__ParameterArrayType__Group__4 )
+            // InternalResolutionModelParser.g:5419:2: rule__ParameterArrayType__Group__3__Impl rule__ParameterArrayType__Group__4
             {
-            pushFollow(FOLLOW_33);
+            pushFollow(FOLLOW_34);
             rule__ParameterArrayType__Group__3__Impl();
 
             state._fsp--;
@@ -16159,17 +16351,17 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ParameterArrayType__Group__3__Impl"
-    // InternalResolutionModelParser.g:5368:1: rule__ParameterArrayType__Group__3__Impl : ( RightSquareBracket ) ;
+    // InternalResolutionModelParser.g:5426:1: rule__ParameterArrayType__Group__3__Impl : ( RightSquareBracket ) ;
     public final void rule__ParameterArrayType__Group__3__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:5372:1: ( ( RightSquareBracket ) )
-            // InternalResolutionModelParser.g:5373:1: ( RightSquareBracket )
+            // InternalResolutionModelParser.g:5430:1: ( ( RightSquareBracket ) )
+            // InternalResolutionModelParser.g:5431:1: ( RightSquareBracket )
             {
-            // InternalResolutionModelParser.g:5373:1: ( RightSquareBracket )
-            // InternalResolutionModelParser.g:5374:2: RightSquareBracket
+            // InternalResolutionModelParser.g:5431:1: ( RightSquareBracket )
+            // InternalResolutionModelParser.g:5432:2: RightSquareBracket
             {
              before(grammarAccess.getParameterArrayTypeAccess().getRightSquareBracketKeyword_3()); 
             match(input,RightSquareBracket,FOLLOW_2); 
@@ -16196,14 +16388,14 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ParameterArrayType__Group__4"
-    // InternalResolutionModelParser.g:5383:1: rule__ParameterArrayType__Group__4 : rule__ParameterArrayType__Group__4__Impl ;
+    // InternalResolutionModelParser.g:5441:1: rule__ParameterArrayType__Group__4 : rule__ParameterArrayType__Group__4__Impl ;
     public final void rule__ParameterArrayType__Group__4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:5387:1: ( rule__ParameterArrayType__Group__4__Impl )
-            // InternalResolutionModelParser.g:5388:2: rule__ParameterArrayType__Group__4__Impl
+            // InternalResolutionModelParser.g:5445:1: ( rule__ParameterArrayType__Group__4__Impl )
+            // InternalResolutionModelParser.g:5446:2: rule__ParameterArrayType__Group__4__Impl
             {
             pushFollow(FOLLOW_2);
             rule__ParameterArrayType__Group__4__Impl();
@@ -16229,29 +16421,29 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ParameterArrayType__Group__4__Impl"
-    // InternalResolutionModelParser.g:5394:1: rule__ParameterArrayType__Group__4__Impl : ( ( rule__ParameterArrayType__Group_4__0 )? ) ;
+    // InternalResolutionModelParser.g:5452:1: rule__ParameterArrayType__Group__4__Impl : ( ( rule__ParameterArrayType__Group_4__0 )? ) ;
     public final void rule__ParameterArrayType__Group__4__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:5398:1: ( ( ( rule__ParameterArrayType__Group_4__0 )? ) )
-            // InternalResolutionModelParser.g:5399:1: ( ( rule__ParameterArrayType__Group_4__0 )? )
+            // InternalResolutionModelParser.g:5456:1: ( ( ( rule__ParameterArrayType__Group_4__0 )? ) )
+            // InternalResolutionModelParser.g:5457:1: ( ( rule__ParameterArrayType__Group_4__0 )? )
             {
-            // InternalResolutionModelParser.g:5399:1: ( ( rule__ParameterArrayType__Group_4__0 )? )
-            // InternalResolutionModelParser.g:5400:2: ( rule__ParameterArrayType__Group_4__0 )?
+            // InternalResolutionModelParser.g:5457:1: ( ( rule__ParameterArrayType__Group_4__0 )? )
+            // InternalResolutionModelParser.g:5458:2: ( rule__ParameterArrayType__Group_4__0 )?
             {
              before(grammarAccess.getParameterArrayTypeAccess().getGroup_4()); 
-            // InternalResolutionModelParser.g:5401:2: ( rule__ParameterArrayType__Group_4__0 )?
-            int alt26=2;
-            int LA26_0 = input.LA(1);
+            // InternalResolutionModelParser.g:5459:2: ( rule__ParameterArrayType__Group_4__0 )?
+            int alt27=2;
+            int LA27_0 = input.LA(1);
 
-            if ( (LA26_0==Default) ) {
-                alt26=1;
+            if ( (LA27_0==Default) ) {
+                alt27=1;
             }
-            switch (alt26) {
+            switch (alt27) {
                 case 1 :
-                    // InternalResolutionModelParser.g:5401:3: rule__ParameterArrayType__Group_4__0
+                    // InternalResolutionModelParser.g:5459:3: rule__ParameterArrayType__Group_4__0
                     {
                     pushFollow(FOLLOW_2);
                     rule__ParameterArrayType__Group_4__0();
@@ -16287,16 +16479,16 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ParameterArrayType__Group_4__0"
-    // InternalResolutionModelParser.g:5410:1: rule__ParameterArrayType__Group_4__0 : rule__ParameterArrayType__Group_4__0__Impl rule__ParameterArrayType__Group_4__1 ;
+    // InternalResolutionModelParser.g:5468:1: rule__ParameterArrayType__Group_4__0 : rule__ParameterArrayType__Group_4__0__Impl rule__ParameterArrayType__Group_4__1 ;
     public final void rule__ParameterArrayType__Group_4__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:5414:1: ( rule__ParameterArrayType__Group_4__0__Impl rule__ParameterArrayType__Group_4__1 )
-            // InternalResolutionModelParser.g:5415:2: rule__ParameterArrayType__Group_4__0__Impl rule__ParameterArrayType__Group_4__1
+            // InternalResolutionModelParser.g:5472:1: ( rule__ParameterArrayType__Group_4__0__Impl rule__ParameterArrayType__Group_4__1 )
+            // InternalResolutionModelParser.g:5473:2: rule__ParameterArrayType__Group_4__0__Impl rule__ParameterArrayType__Group_4__1
             {
-            pushFollow(FOLLOW_22);
+            pushFollow(FOLLOW_23);
             rule__ParameterArrayType__Group_4__0__Impl();
 
             state._fsp--;
@@ -16325,17 +16517,17 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ParameterArrayType__Group_4__0__Impl"
-    // InternalResolutionModelParser.g:5422:1: rule__ParameterArrayType__Group_4__0__Impl : ( Default ) ;
+    // InternalResolutionModelParser.g:5480:1: rule__ParameterArrayType__Group_4__0__Impl : ( Default ) ;
     public final void rule__ParameterArrayType__Group_4__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:5426:1: ( ( Default ) )
-            // InternalResolutionModelParser.g:5427:1: ( Default )
+            // InternalResolutionModelParser.g:5484:1: ( ( Default ) )
+            // InternalResolutionModelParser.g:5485:1: ( Default )
             {
-            // InternalResolutionModelParser.g:5427:1: ( Default )
-            // InternalResolutionModelParser.g:5428:2: Default
+            // InternalResolutionModelParser.g:5485:1: ( Default )
+            // InternalResolutionModelParser.g:5486:2: Default
             {
              before(grammarAccess.getParameterArrayTypeAccess().getDefaultKeyword_4_0()); 
             match(input,Default,FOLLOW_2); 
@@ -16362,14 +16554,14 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ParameterArrayType__Group_4__1"
-    // InternalResolutionModelParser.g:5437:1: rule__ParameterArrayType__Group_4__1 : rule__ParameterArrayType__Group_4__1__Impl ;
+    // InternalResolutionModelParser.g:5495:1: rule__ParameterArrayType__Group_4__1 : rule__ParameterArrayType__Group_4__1__Impl ;
     public final void rule__ParameterArrayType__Group_4__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:5441:1: ( rule__ParameterArrayType__Group_4__1__Impl )
-            // InternalResolutionModelParser.g:5442:2: rule__ParameterArrayType__Group_4__1__Impl
+            // InternalResolutionModelParser.g:5499:1: ( rule__ParameterArrayType__Group_4__1__Impl )
+            // InternalResolutionModelParser.g:5500:2: rule__ParameterArrayType__Group_4__1__Impl
             {
             pushFollow(FOLLOW_2);
             rule__ParameterArrayType__Group_4__1__Impl();
@@ -16395,21 +16587,21 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ParameterArrayType__Group_4__1__Impl"
-    // InternalResolutionModelParser.g:5448:1: rule__ParameterArrayType__Group_4__1__Impl : ( ( rule__ParameterArrayType__DefaultAssignment_4_1 ) ) ;
+    // InternalResolutionModelParser.g:5506:1: rule__ParameterArrayType__Group_4__1__Impl : ( ( rule__ParameterArrayType__DefaultAssignment_4_1 ) ) ;
     public final void rule__ParameterArrayType__Group_4__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:5452:1: ( ( ( rule__ParameterArrayType__DefaultAssignment_4_1 ) ) )
-            // InternalResolutionModelParser.g:5453:1: ( ( rule__ParameterArrayType__DefaultAssignment_4_1 ) )
+            // InternalResolutionModelParser.g:5510:1: ( ( ( rule__ParameterArrayType__DefaultAssignment_4_1 ) ) )
+            // InternalResolutionModelParser.g:5511:1: ( ( rule__ParameterArrayType__DefaultAssignment_4_1 ) )
             {
-            // InternalResolutionModelParser.g:5453:1: ( ( rule__ParameterArrayType__DefaultAssignment_4_1 ) )
-            // InternalResolutionModelParser.g:5454:2: ( rule__ParameterArrayType__DefaultAssignment_4_1 )
+            // InternalResolutionModelParser.g:5511:1: ( ( rule__ParameterArrayType__DefaultAssignment_4_1 ) )
+            // InternalResolutionModelParser.g:5512:2: ( rule__ParameterArrayType__DefaultAssignment_4_1 )
             {
              before(grammarAccess.getParameterArrayTypeAccess().getDefaultAssignment_4_1()); 
-            // InternalResolutionModelParser.g:5455:2: ( rule__ParameterArrayType__DefaultAssignment_4_1 )
-            // InternalResolutionModelParser.g:5455:3: rule__ParameterArrayType__DefaultAssignment_4_1
+            // InternalResolutionModelParser.g:5513:2: ( rule__ParameterArrayType__DefaultAssignment_4_1 )
+            // InternalResolutionModelParser.g:5513:3: rule__ParameterArrayType__DefaultAssignment_4_1
             {
             pushFollow(FOLLOW_2);
             rule__ParameterArrayType__DefaultAssignment_4_1();
@@ -16442,16 +16634,16 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ParameterList__Group__0"
-    // InternalResolutionModelParser.g:5464:1: rule__ParameterList__Group__0 : rule__ParameterList__Group__0__Impl rule__ParameterList__Group__1 ;
+    // InternalResolutionModelParser.g:5522:1: rule__ParameterList__Group__0 : rule__ParameterList__Group__0__Impl rule__ParameterList__Group__1 ;
     public final void rule__ParameterList__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:5468:1: ( rule__ParameterList__Group__0__Impl rule__ParameterList__Group__1 )
-            // InternalResolutionModelParser.g:5469:2: rule__ParameterList__Group__0__Impl rule__ParameterList__Group__1
+            // InternalResolutionModelParser.g:5526:1: ( rule__ParameterList__Group__0__Impl rule__ParameterList__Group__1 )
+            // InternalResolutionModelParser.g:5527:2: rule__ParameterList__Group__0__Impl rule__ParameterList__Group__1
             {
-            pushFollow(FOLLOW_22);
+            pushFollow(FOLLOW_23);
             rule__ParameterList__Group__0__Impl();
 
             state._fsp--;
@@ -16480,21 +16672,21 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ParameterList__Group__0__Impl"
-    // InternalResolutionModelParser.g:5476:1: rule__ParameterList__Group__0__Impl : ( () ) ;
+    // InternalResolutionModelParser.g:5534:1: rule__ParameterList__Group__0__Impl : ( () ) ;
     public final void rule__ParameterList__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:5480:1: ( ( () ) )
-            // InternalResolutionModelParser.g:5481:1: ( () )
+            // InternalResolutionModelParser.g:5538:1: ( ( () ) )
+            // InternalResolutionModelParser.g:5539:1: ( () )
             {
-            // InternalResolutionModelParser.g:5481:1: ( () )
-            // InternalResolutionModelParser.g:5482:2: ()
+            // InternalResolutionModelParser.g:5539:1: ( () )
+            // InternalResolutionModelParser.g:5540:2: ()
             {
              before(grammarAccess.getParameterListAccess().getParameterSequenceAction_0()); 
-            // InternalResolutionModelParser.g:5483:2: ()
-            // InternalResolutionModelParser.g:5483:3: 
+            // InternalResolutionModelParser.g:5541:2: ()
+            // InternalResolutionModelParser.g:5541:3: 
             {
             }
 
@@ -16517,16 +16709,16 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ParameterList__Group__1"
-    // InternalResolutionModelParser.g:5491:1: rule__ParameterList__Group__1 : rule__ParameterList__Group__1__Impl rule__ParameterList__Group__2 ;
+    // InternalResolutionModelParser.g:5549:1: rule__ParameterList__Group__1 : rule__ParameterList__Group__1__Impl rule__ParameterList__Group__2 ;
     public final void rule__ParameterList__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:5495:1: ( rule__ParameterList__Group__1__Impl rule__ParameterList__Group__2 )
-            // InternalResolutionModelParser.g:5496:2: rule__ParameterList__Group__1__Impl rule__ParameterList__Group__2
+            // InternalResolutionModelParser.g:5553:1: ( rule__ParameterList__Group__1__Impl rule__ParameterList__Group__2 )
+            // InternalResolutionModelParser.g:5554:2: rule__ParameterList__Group__1__Impl rule__ParameterList__Group__2
             {
-            pushFollow(FOLLOW_18);
+            pushFollow(FOLLOW_19);
             rule__ParameterList__Group__1__Impl();
 
             state._fsp--;
@@ -16555,17 +16747,17 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ParameterList__Group__1__Impl"
-    // InternalResolutionModelParser.g:5503:1: rule__ParameterList__Group__1__Impl : ( LeftSquareBracket ) ;
+    // InternalResolutionModelParser.g:5561:1: rule__ParameterList__Group__1__Impl : ( LeftSquareBracket ) ;
     public final void rule__ParameterList__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:5507:1: ( ( LeftSquareBracket ) )
-            // InternalResolutionModelParser.g:5508:1: ( LeftSquareBracket )
+            // InternalResolutionModelParser.g:5565:1: ( ( LeftSquareBracket ) )
+            // InternalResolutionModelParser.g:5566:1: ( LeftSquareBracket )
             {
-            // InternalResolutionModelParser.g:5508:1: ( LeftSquareBracket )
-            // InternalResolutionModelParser.g:5509:2: LeftSquareBracket
+            // InternalResolutionModelParser.g:5566:1: ( LeftSquareBracket )
+            // InternalResolutionModelParser.g:5567:2: LeftSquareBracket
             {
              before(grammarAccess.getParameterListAccess().getLeftSquareBracketKeyword_1()); 
             match(input,LeftSquareBracket,FOLLOW_2); 
@@ -16592,16 +16784,16 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ParameterList__Group__2"
-    // InternalResolutionModelParser.g:5518:1: rule__ParameterList__Group__2 : rule__ParameterList__Group__2__Impl rule__ParameterList__Group__3 ;
+    // InternalResolutionModelParser.g:5576:1: rule__ParameterList__Group__2 : rule__ParameterList__Group__2__Impl rule__ParameterList__Group__3 ;
     public final void rule__ParameterList__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:5522:1: ( rule__ParameterList__Group__2__Impl rule__ParameterList__Group__3 )
-            // InternalResolutionModelParser.g:5523:2: rule__ParameterList__Group__2__Impl rule__ParameterList__Group__3
+            // InternalResolutionModelParser.g:5580:1: ( rule__ParameterList__Group__2__Impl rule__ParameterList__Group__3 )
+            // InternalResolutionModelParser.g:5581:2: rule__ParameterList__Group__2__Impl rule__ParameterList__Group__3
             {
-            pushFollow(FOLLOW_24);
+            pushFollow(FOLLOW_25);
             rule__ParameterList__Group__2__Impl();
 
             state._fsp--;
@@ -16630,21 +16822,21 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ParameterList__Group__2__Impl"
-    // InternalResolutionModelParser.g:5530:1: rule__ParameterList__Group__2__Impl : ( ( rule__ParameterList__ValueAssignment_2 ) ) ;
+    // InternalResolutionModelParser.g:5588:1: rule__ParameterList__Group__2__Impl : ( ( rule__ParameterList__ValueAssignment_2 ) ) ;
     public final void rule__ParameterList__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:5534:1: ( ( ( rule__ParameterList__ValueAssignment_2 ) ) )
-            // InternalResolutionModelParser.g:5535:1: ( ( rule__ParameterList__ValueAssignment_2 ) )
+            // InternalResolutionModelParser.g:5592:1: ( ( ( rule__ParameterList__ValueAssignment_2 ) ) )
+            // InternalResolutionModelParser.g:5593:1: ( ( rule__ParameterList__ValueAssignment_2 ) )
             {
-            // InternalResolutionModelParser.g:5535:1: ( ( rule__ParameterList__ValueAssignment_2 ) )
-            // InternalResolutionModelParser.g:5536:2: ( rule__ParameterList__ValueAssignment_2 )
+            // InternalResolutionModelParser.g:5593:1: ( ( rule__ParameterList__ValueAssignment_2 ) )
+            // InternalResolutionModelParser.g:5594:2: ( rule__ParameterList__ValueAssignment_2 )
             {
              before(grammarAccess.getParameterListAccess().getValueAssignment_2()); 
-            // InternalResolutionModelParser.g:5537:2: ( rule__ParameterList__ValueAssignment_2 )
-            // InternalResolutionModelParser.g:5537:3: rule__ParameterList__ValueAssignment_2
+            // InternalResolutionModelParser.g:5595:2: ( rule__ParameterList__ValueAssignment_2 )
+            // InternalResolutionModelParser.g:5595:3: rule__ParameterList__ValueAssignment_2
             {
             pushFollow(FOLLOW_2);
             rule__ParameterList__ValueAssignment_2();
@@ -16677,16 +16869,16 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ParameterList__Group__3"
-    // InternalResolutionModelParser.g:5545:1: rule__ParameterList__Group__3 : rule__ParameterList__Group__3__Impl rule__ParameterList__Group__4 ;
+    // InternalResolutionModelParser.g:5603:1: rule__ParameterList__Group__3 : rule__ParameterList__Group__3__Impl rule__ParameterList__Group__4 ;
     public final void rule__ParameterList__Group__3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:5549:1: ( rule__ParameterList__Group__3__Impl rule__ParameterList__Group__4 )
-            // InternalResolutionModelParser.g:5550:2: rule__ParameterList__Group__3__Impl rule__ParameterList__Group__4
+            // InternalResolutionModelParser.g:5607:1: ( rule__ParameterList__Group__3__Impl rule__ParameterList__Group__4 )
+            // InternalResolutionModelParser.g:5608:2: rule__ParameterList__Group__3__Impl rule__ParameterList__Group__4
             {
-            pushFollow(FOLLOW_24);
+            pushFollow(FOLLOW_25);
             rule__ParameterList__Group__3__Impl();
 
             state._fsp--;
@@ -16715,35 +16907,35 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ParameterList__Group__3__Impl"
-    // InternalResolutionModelParser.g:5557:1: rule__ParameterList__Group__3__Impl : ( ( rule__ParameterList__Group_3__0 )* ) ;
+    // InternalResolutionModelParser.g:5615:1: rule__ParameterList__Group__3__Impl : ( ( rule__ParameterList__Group_3__0 )* ) ;
     public final void rule__ParameterList__Group__3__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:5561:1: ( ( ( rule__ParameterList__Group_3__0 )* ) )
-            // InternalResolutionModelParser.g:5562:1: ( ( rule__ParameterList__Group_3__0 )* )
+            // InternalResolutionModelParser.g:5619:1: ( ( ( rule__ParameterList__Group_3__0 )* ) )
+            // InternalResolutionModelParser.g:5620:1: ( ( rule__ParameterList__Group_3__0 )* )
             {
-            // InternalResolutionModelParser.g:5562:1: ( ( rule__ParameterList__Group_3__0 )* )
-            // InternalResolutionModelParser.g:5563:2: ( rule__ParameterList__Group_3__0 )*
+            // InternalResolutionModelParser.g:5620:1: ( ( rule__ParameterList__Group_3__0 )* )
+            // InternalResolutionModelParser.g:5621:2: ( rule__ParameterList__Group_3__0 )*
             {
              before(grammarAccess.getParameterListAccess().getGroup_3()); 
-            // InternalResolutionModelParser.g:5564:2: ( rule__ParameterList__Group_3__0 )*
-            loop27:
+            // InternalResolutionModelParser.g:5622:2: ( rule__ParameterList__Group_3__0 )*
+            loop28:
             do {
-                int alt27=2;
-                int LA27_0 = input.LA(1);
+                int alt28=2;
+                int LA28_0 = input.LA(1);
 
-                if ( (LA27_0==Comma) ) {
-                    alt27=1;
+                if ( (LA28_0==Comma) ) {
+                    alt28=1;
                 }
 
 
-                switch (alt27) {
+                switch (alt28) {
             	case 1 :
-            	    // InternalResolutionModelParser.g:5564:3: rule__ParameterList__Group_3__0
+            	    // InternalResolutionModelParser.g:5622:3: rule__ParameterList__Group_3__0
             	    {
-            	    pushFollow(FOLLOW_25);
+            	    pushFollow(FOLLOW_26);
             	    rule__ParameterList__Group_3__0();
 
             	    state._fsp--;
@@ -16753,7 +16945,7 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
             	    break;
 
             	default :
-            	    break loop27;
+            	    break loop28;
                 }
             } while (true);
 
@@ -16780,14 +16972,14 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ParameterList__Group__4"
-    // InternalResolutionModelParser.g:5572:1: rule__ParameterList__Group__4 : rule__ParameterList__Group__4__Impl ;
+    // InternalResolutionModelParser.g:5630:1: rule__ParameterList__Group__4 : rule__ParameterList__Group__4__Impl ;
     public final void rule__ParameterList__Group__4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:5576:1: ( rule__ParameterList__Group__4__Impl )
-            // InternalResolutionModelParser.g:5577:2: rule__ParameterList__Group__4__Impl
+            // InternalResolutionModelParser.g:5634:1: ( rule__ParameterList__Group__4__Impl )
+            // InternalResolutionModelParser.g:5635:2: rule__ParameterList__Group__4__Impl
             {
             pushFollow(FOLLOW_2);
             rule__ParameterList__Group__4__Impl();
@@ -16813,17 +17005,17 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ParameterList__Group__4__Impl"
-    // InternalResolutionModelParser.g:5583:1: rule__ParameterList__Group__4__Impl : ( RightSquareBracket ) ;
+    // InternalResolutionModelParser.g:5641:1: rule__ParameterList__Group__4__Impl : ( RightSquareBracket ) ;
     public final void rule__ParameterList__Group__4__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:5587:1: ( ( RightSquareBracket ) )
-            // InternalResolutionModelParser.g:5588:1: ( RightSquareBracket )
+            // InternalResolutionModelParser.g:5645:1: ( ( RightSquareBracket ) )
+            // InternalResolutionModelParser.g:5646:1: ( RightSquareBracket )
             {
-            // InternalResolutionModelParser.g:5588:1: ( RightSquareBracket )
-            // InternalResolutionModelParser.g:5589:2: RightSquareBracket
+            // InternalResolutionModelParser.g:5646:1: ( RightSquareBracket )
+            // InternalResolutionModelParser.g:5647:2: RightSquareBracket
             {
              before(grammarAccess.getParameterListAccess().getRightSquareBracketKeyword_4()); 
             match(input,RightSquareBracket,FOLLOW_2); 
@@ -16850,16 +17042,16 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ParameterList__Group_3__0"
-    // InternalResolutionModelParser.g:5599:1: rule__ParameterList__Group_3__0 : rule__ParameterList__Group_3__0__Impl rule__ParameterList__Group_3__1 ;
+    // InternalResolutionModelParser.g:5657:1: rule__ParameterList__Group_3__0 : rule__ParameterList__Group_3__0__Impl rule__ParameterList__Group_3__1 ;
     public final void rule__ParameterList__Group_3__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:5603:1: ( rule__ParameterList__Group_3__0__Impl rule__ParameterList__Group_3__1 )
-            // InternalResolutionModelParser.g:5604:2: rule__ParameterList__Group_3__0__Impl rule__ParameterList__Group_3__1
+            // InternalResolutionModelParser.g:5661:1: ( rule__ParameterList__Group_3__0__Impl rule__ParameterList__Group_3__1 )
+            // InternalResolutionModelParser.g:5662:2: rule__ParameterList__Group_3__0__Impl rule__ParameterList__Group_3__1
             {
-            pushFollow(FOLLOW_18);
+            pushFollow(FOLLOW_19);
             rule__ParameterList__Group_3__0__Impl();
 
             state._fsp--;
@@ -16888,17 +17080,17 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ParameterList__Group_3__0__Impl"
-    // InternalResolutionModelParser.g:5611:1: rule__ParameterList__Group_3__0__Impl : ( Comma ) ;
+    // InternalResolutionModelParser.g:5669:1: rule__ParameterList__Group_3__0__Impl : ( Comma ) ;
     public final void rule__ParameterList__Group_3__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:5615:1: ( ( Comma ) )
-            // InternalResolutionModelParser.g:5616:1: ( Comma )
+            // InternalResolutionModelParser.g:5673:1: ( ( Comma ) )
+            // InternalResolutionModelParser.g:5674:1: ( Comma )
             {
-            // InternalResolutionModelParser.g:5616:1: ( Comma )
-            // InternalResolutionModelParser.g:5617:2: Comma
+            // InternalResolutionModelParser.g:5674:1: ( Comma )
+            // InternalResolutionModelParser.g:5675:2: Comma
             {
              before(grammarAccess.getParameterListAccess().getCommaKeyword_3_0()); 
             match(input,Comma,FOLLOW_2); 
@@ -16925,14 +17117,14 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ParameterList__Group_3__1"
-    // InternalResolutionModelParser.g:5626:1: rule__ParameterList__Group_3__1 : rule__ParameterList__Group_3__1__Impl ;
+    // InternalResolutionModelParser.g:5684:1: rule__ParameterList__Group_3__1 : rule__ParameterList__Group_3__1__Impl ;
     public final void rule__ParameterList__Group_3__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:5630:1: ( rule__ParameterList__Group_3__1__Impl )
-            // InternalResolutionModelParser.g:5631:2: rule__ParameterList__Group_3__1__Impl
+            // InternalResolutionModelParser.g:5688:1: ( rule__ParameterList__Group_3__1__Impl )
+            // InternalResolutionModelParser.g:5689:2: rule__ParameterList__Group_3__1__Impl
             {
             pushFollow(FOLLOW_2);
             rule__ParameterList__Group_3__1__Impl();
@@ -16958,21 +17150,21 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ParameterList__Group_3__1__Impl"
-    // InternalResolutionModelParser.g:5637:1: rule__ParameterList__Group_3__1__Impl : ( ( rule__ParameterList__ValueAssignment_3_1 ) ) ;
+    // InternalResolutionModelParser.g:5695:1: rule__ParameterList__Group_3__1__Impl : ( ( rule__ParameterList__ValueAssignment_3_1 ) ) ;
     public final void rule__ParameterList__Group_3__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:5641:1: ( ( ( rule__ParameterList__ValueAssignment_3_1 ) ) )
-            // InternalResolutionModelParser.g:5642:1: ( ( rule__ParameterList__ValueAssignment_3_1 ) )
+            // InternalResolutionModelParser.g:5699:1: ( ( ( rule__ParameterList__ValueAssignment_3_1 ) ) )
+            // InternalResolutionModelParser.g:5700:1: ( ( rule__ParameterList__ValueAssignment_3_1 ) )
             {
-            // InternalResolutionModelParser.g:5642:1: ( ( rule__ParameterList__ValueAssignment_3_1 ) )
-            // InternalResolutionModelParser.g:5643:2: ( rule__ParameterList__ValueAssignment_3_1 )
+            // InternalResolutionModelParser.g:5700:1: ( ( rule__ParameterList__ValueAssignment_3_1 ) )
+            // InternalResolutionModelParser.g:5701:2: ( rule__ParameterList__ValueAssignment_3_1 )
             {
              before(grammarAccess.getParameterListAccess().getValueAssignment_3_1()); 
-            // InternalResolutionModelParser.g:5644:2: ( rule__ParameterList__ValueAssignment_3_1 )
-            // InternalResolutionModelParser.g:5644:3: rule__ParameterList__ValueAssignment_3_1
+            // InternalResolutionModelParser.g:5702:2: ( rule__ParameterList__ValueAssignment_3_1 )
+            // InternalResolutionModelParser.g:5702:3: rule__ParameterList__ValueAssignment_3_1
             {
             pushFollow(FOLLOW_2);
             rule__ParameterList__ValueAssignment_3_1();
@@ -17005,16 +17197,16 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ParameterAny__Group__0"
-    // InternalResolutionModelParser.g:5653:1: rule__ParameterAny__Group__0 : rule__ParameterAny__Group__0__Impl rule__ParameterAny__Group__1 ;
+    // InternalResolutionModelParser.g:5711:1: rule__ParameterAny__Group__0 : rule__ParameterAny__Group__0__Impl rule__ParameterAny__Group__1 ;
     public final void rule__ParameterAny__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:5657:1: ( rule__ParameterAny__Group__0__Impl rule__ParameterAny__Group__1 )
-            // InternalResolutionModelParser.g:5658:2: rule__ParameterAny__Group__0__Impl rule__ParameterAny__Group__1
+            // InternalResolutionModelParser.g:5715:1: ( rule__ParameterAny__Group__0__Impl rule__ParameterAny__Group__1 )
+            // InternalResolutionModelParser.g:5716:2: rule__ParameterAny__Group__0__Impl rule__ParameterAny__Group__1
             {
-            pushFollow(FOLLOW_43);
+            pushFollow(FOLLOW_44);
             rule__ParameterAny__Group__0__Impl();
 
             state._fsp--;
@@ -17043,21 +17235,21 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ParameterAny__Group__0__Impl"
-    // InternalResolutionModelParser.g:5665:1: rule__ParameterAny__Group__0__Impl : ( () ) ;
+    // InternalResolutionModelParser.g:5723:1: rule__ParameterAny__Group__0__Impl : ( () ) ;
     public final void rule__ParameterAny__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:5669:1: ( ( () ) )
-            // InternalResolutionModelParser.g:5670:1: ( () )
+            // InternalResolutionModelParser.g:5727:1: ( ( () ) )
+            // InternalResolutionModelParser.g:5728:1: ( () )
             {
-            // InternalResolutionModelParser.g:5670:1: ( () )
-            // InternalResolutionModelParser.g:5671:2: ()
+            // InternalResolutionModelParser.g:5728:1: ( () )
+            // InternalResolutionModelParser.g:5729:2: ()
             {
              before(grammarAccess.getParameterAnyAccess().getParameterAnyAction_0()); 
-            // InternalResolutionModelParser.g:5672:2: ()
-            // InternalResolutionModelParser.g:5672:3: 
+            // InternalResolutionModelParser.g:5730:2: ()
+            // InternalResolutionModelParser.g:5730:3: 
             {
             }
 
@@ -17080,16 +17272,16 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ParameterAny__Group__1"
-    // InternalResolutionModelParser.g:5680:1: rule__ParameterAny__Group__1 : rule__ParameterAny__Group__1__Impl rule__ParameterAny__Group__2 ;
+    // InternalResolutionModelParser.g:5738:1: rule__ParameterAny__Group__1 : rule__ParameterAny__Group__1__Impl rule__ParameterAny__Group__2 ;
     public final void rule__ParameterAny__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:5684:1: ( rule__ParameterAny__Group__1__Impl rule__ParameterAny__Group__2 )
-            // InternalResolutionModelParser.g:5685:2: rule__ParameterAny__Group__1__Impl rule__ParameterAny__Group__2
+            // InternalResolutionModelParser.g:5742:1: ( rule__ParameterAny__Group__1__Impl rule__ParameterAny__Group__2 )
+            // InternalResolutionModelParser.g:5743:2: rule__ParameterAny__Group__1__Impl rule__ParameterAny__Group__2
             {
-            pushFollow(FOLLOW_44);
+            pushFollow(FOLLOW_45);
             rule__ParameterAny__Group__1__Impl();
 
             state._fsp--;
@@ -17118,17 +17310,17 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ParameterAny__Group__1__Impl"
-    // InternalResolutionModelParser.g:5692:1: rule__ParameterAny__Group__1__Impl : ( ParameterAny ) ;
+    // InternalResolutionModelParser.g:5750:1: rule__ParameterAny__Group__1__Impl : ( ParameterAny ) ;
     public final void rule__ParameterAny__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:5696:1: ( ( ParameterAny ) )
-            // InternalResolutionModelParser.g:5697:1: ( ParameterAny )
+            // InternalResolutionModelParser.g:5754:1: ( ( ParameterAny ) )
+            // InternalResolutionModelParser.g:5755:1: ( ParameterAny )
             {
-            // InternalResolutionModelParser.g:5697:1: ( ParameterAny )
-            // InternalResolutionModelParser.g:5698:2: ParameterAny
+            // InternalResolutionModelParser.g:5755:1: ( ParameterAny )
+            // InternalResolutionModelParser.g:5756:2: ParameterAny
             {
              before(grammarAccess.getParameterAnyAccess().getParameterAnyKeyword_1()); 
             match(input,ParameterAny,FOLLOW_2); 
@@ -17155,14 +17347,14 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ParameterAny__Group__2"
-    // InternalResolutionModelParser.g:5707:1: rule__ParameterAny__Group__2 : rule__ParameterAny__Group__2__Impl ;
+    // InternalResolutionModelParser.g:5765:1: rule__ParameterAny__Group__2 : rule__ParameterAny__Group__2__Impl ;
     public final void rule__ParameterAny__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:5711:1: ( rule__ParameterAny__Group__2__Impl )
-            // InternalResolutionModelParser.g:5712:2: rule__ParameterAny__Group__2__Impl
+            // InternalResolutionModelParser.g:5769:1: ( rule__ParameterAny__Group__2__Impl )
+            // InternalResolutionModelParser.g:5770:2: rule__ParameterAny__Group__2__Impl
             {
             pushFollow(FOLLOW_2);
             rule__ParameterAny__Group__2__Impl();
@@ -17188,29 +17380,29 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ParameterAny__Group__2__Impl"
-    // InternalResolutionModelParser.g:5718:1: rule__ParameterAny__Group__2__Impl : ( ( rule__ParameterAny__Group_2__0 )? ) ;
+    // InternalResolutionModelParser.g:5776:1: rule__ParameterAny__Group__2__Impl : ( ( rule__ParameterAny__Group_2__0 )? ) ;
     public final void rule__ParameterAny__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:5722:1: ( ( ( rule__ParameterAny__Group_2__0 )? ) )
-            // InternalResolutionModelParser.g:5723:1: ( ( rule__ParameterAny__Group_2__0 )? )
+            // InternalResolutionModelParser.g:5780:1: ( ( ( rule__ParameterAny__Group_2__0 )? ) )
+            // InternalResolutionModelParser.g:5781:1: ( ( rule__ParameterAny__Group_2__0 )? )
             {
-            // InternalResolutionModelParser.g:5723:1: ( ( rule__ParameterAny__Group_2__0 )? )
-            // InternalResolutionModelParser.g:5724:2: ( rule__ParameterAny__Group_2__0 )?
+            // InternalResolutionModelParser.g:5781:1: ( ( rule__ParameterAny__Group_2__0 )? )
+            // InternalResolutionModelParser.g:5782:2: ( rule__ParameterAny__Group_2__0 )?
             {
              before(grammarAccess.getParameterAnyAccess().getGroup_2()); 
-            // InternalResolutionModelParser.g:5725:2: ( rule__ParameterAny__Group_2__0 )?
-            int alt28=2;
-            int LA28_0 = input.LA(1);
+            // InternalResolutionModelParser.g:5783:2: ( rule__ParameterAny__Group_2__0 )?
+            int alt29=2;
+            int LA29_0 = input.LA(1);
 
-            if ( (LA28_0==Value) ) {
-                alt28=1;
+            if ( (LA29_0==Value) ) {
+                alt29=1;
             }
-            switch (alt28) {
+            switch (alt29) {
                 case 1 :
-                    // InternalResolutionModelParser.g:5725:3: rule__ParameterAny__Group_2__0
+                    // InternalResolutionModelParser.g:5783:3: rule__ParameterAny__Group_2__0
                     {
                     pushFollow(FOLLOW_2);
                     rule__ParameterAny__Group_2__0();
@@ -17246,16 +17438,16 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ParameterAny__Group_2__0"
-    // InternalResolutionModelParser.g:5734:1: rule__ParameterAny__Group_2__0 : rule__ParameterAny__Group_2__0__Impl rule__ParameterAny__Group_2__1 ;
+    // InternalResolutionModelParser.g:5792:1: rule__ParameterAny__Group_2__0 : rule__ParameterAny__Group_2__0__Impl rule__ParameterAny__Group_2__1 ;
     public final void rule__ParameterAny__Group_2__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:5738:1: ( rule__ParameterAny__Group_2__0__Impl rule__ParameterAny__Group_2__1 )
-            // InternalResolutionModelParser.g:5739:2: rule__ParameterAny__Group_2__0__Impl rule__ParameterAny__Group_2__1
+            // InternalResolutionModelParser.g:5796:1: ( rule__ParameterAny__Group_2__0__Impl rule__ParameterAny__Group_2__1 )
+            // InternalResolutionModelParser.g:5797:2: rule__ParameterAny__Group_2__0__Impl rule__ParameterAny__Group_2__1
             {
-            pushFollow(FOLLOW_31);
+            pushFollow(FOLLOW_32);
             rule__ParameterAny__Group_2__0__Impl();
 
             state._fsp--;
@@ -17284,17 +17476,17 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ParameterAny__Group_2__0__Impl"
-    // InternalResolutionModelParser.g:5746:1: rule__ParameterAny__Group_2__0__Impl : ( Value ) ;
+    // InternalResolutionModelParser.g:5804:1: rule__ParameterAny__Group_2__0__Impl : ( Value ) ;
     public final void rule__ParameterAny__Group_2__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:5750:1: ( ( Value ) )
-            // InternalResolutionModelParser.g:5751:1: ( Value )
+            // InternalResolutionModelParser.g:5808:1: ( ( Value ) )
+            // InternalResolutionModelParser.g:5809:1: ( Value )
             {
-            // InternalResolutionModelParser.g:5751:1: ( Value )
-            // InternalResolutionModelParser.g:5752:2: Value
+            // InternalResolutionModelParser.g:5809:1: ( Value )
+            // InternalResolutionModelParser.g:5810:2: Value
             {
              before(grammarAccess.getParameterAnyAccess().getValueKeyword_2_0()); 
             match(input,Value,FOLLOW_2); 
@@ -17321,14 +17513,14 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ParameterAny__Group_2__1"
-    // InternalResolutionModelParser.g:5761:1: rule__ParameterAny__Group_2__1 : rule__ParameterAny__Group_2__1__Impl ;
+    // InternalResolutionModelParser.g:5819:1: rule__ParameterAny__Group_2__1 : rule__ParameterAny__Group_2__1__Impl ;
     public final void rule__ParameterAny__Group_2__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:5765:1: ( rule__ParameterAny__Group_2__1__Impl )
-            // InternalResolutionModelParser.g:5766:2: rule__ParameterAny__Group_2__1__Impl
+            // InternalResolutionModelParser.g:5823:1: ( rule__ParameterAny__Group_2__1__Impl )
+            // InternalResolutionModelParser.g:5824:2: rule__ParameterAny__Group_2__1__Impl
             {
             pushFollow(FOLLOW_2);
             rule__ParameterAny__Group_2__1__Impl();
@@ -17354,21 +17546,21 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ParameterAny__Group_2__1__Impl"
-    // InternalResolutionModelParser.g:5772:1: rule__ParameterAny__Group_2__1__Impl : ( ( rule__ParameterAny__ValueAssignment_2_1 ) ) ;
+    // InternalResolutionModelParser.g:5830:1: rule__ParameterAny__Group_2__1__Impl : ( ( rule__ParameterAny__ValueAssignment_2_1 ) ) ;
     public final void rule__ParameterAny__Group_2__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:5776:1: ( ( ( rule__ParameterAny__ValueAssignment_2_1 ) ) )
-            // InternalResolutionModelParser.g:5777:1: ( ( rule__ParameterAny__ValueAssignment_2_1 ) )
+            // InternalResolutionModelParser.g:5834:1: ( ( ( rule__ParameterAny__ValueAssignment_2_1 ) ) )
+            // InternalResolutionModelParser.g:5835:1: ( ( rule__ParameterAny__ValueAssignment_2_1 ) )
             {
-            // InternalResolutionModelParser.g:5777:1: ( ( rule__ParameterAny__ValueAssignment_2_1 ) )
-            // InternalResolutionModelParser.g:5778:2: ( rule__ParameterAny__ValueAssignment_2_1 )
+            // InternalResolutionModelParser.g:5835:1: ( ( rule__ParameterAny__ValueAssignment_2_1 ) )
+            // InternalResolutionModelParser.g:5836:2: ( rule__ParameterAny__ValueAssignment_2_1 )
             {
              before(grammarAccess.getParameterAnyAccess().getValueAssignment_2_1()); 
-            // InternalResolutionModelParser.g:5779:2: ( rule__ParameterAny__ValueAssignment_2_1 )
-            // InternalResolutionModelParser.g:5779:3: rule__ParameterAny__ValueAssignment_2_1
+            // InternalResolutionModelParser.g:5837:2: ( rule__ParameterAny__ValueAssignment_2_1 )
+            // InternalResolutionModelParser.g:5837:3: rule__ParameterAny__ValueAssignment_2_1
             {
             pushFollow(FOLLOW_2);
             rule__ParameterAny__ValueAssignment_2_1();
@@ -17401,16 +17593,16 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ParameterStruct__Group__0"
-    // InternalResolutionModelParser.g:5788:1: rule__ParameterStruct__Group__0 : rule__ParameterStruct__Group__0__Impl rule__ParameterStruct__Group__1 ;
+    // InternalResolutionModelParser.g:5846:1: rule__ParameterStruct__Group__0 : rule__ParameterStruct__Group__0__Impl rule__ParameterStruct__Group__1 ;
     public final void rule__ParameterStruct__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:5792:1: ( rule__ParameterStruct__Group__0__Impl rule__ParameterStruct__Group__1 )
-            // InternalResolutionModelParser.g:5793:2: rule__ParameterStruct__Group__0__Impl rule__ParameterStruct__Group__1
+            // InternalResolutionModelParser.g:5850:1: ( rule__ParameterStruct__Group__0__Impl rule__ParameterStruct__Group__1 )
+            // InternalResolutionModelParser.g:5851:2: rule__ParameterStruct__Group__0__Impl rule__ParameterStruct__Group__1
             {
-            pushFollow(FOLLOW_18);
+            pushFollow(FOLLOW_19);
             rule__ParameterStruct__Group__0__Impl();
 
             state._fsp--;
@@ -17439,21 +17631,21 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ParameterStruct__Group__0__Impl"
-    // InternalResolutionModelParser.g:5800:1: rule__ParameterStruct__Group__0__Impl : ( () ) ;
+    // InternalResolutionModelParser.g:5858:1: rule__ParameterStruct__Group__0__Impl : ( () ) ;
     public final void rule__ParameterStruct__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:5804:1: ( ( () ) )
-            // InternalResolutionModelParser.g:5805:1: ( () )
+            // InternalResolutionModelParser.g:5862:1: ( ( () ) )
+            // InternalResolutionModelParser.g:5863:1: ( () )
             {
-            // InternalResolutionModelParser.g:5805:1: ( () )
-            // InternalResolutionModelParser.g:5806:2: ()
+            // InternalResolutionModelParser.g:5863:1: ( () )
+            // InternalResolutionModelParser.g:5864:2: ()
             {
              before(grammarAccess.getParameterStructAccess().getParameterStructAction_0()); 
-            // InternalResolutionModelParser.g:5807:2: ()
-            // InternalResolutionModelParser.g:5807:3: 
+            // InternalResolutionModelParser.g:5865:2: ()
+            // InternalResolutionModelParser.g:5865:3: 
             {
             }
 
@@ -17476,14 +17668,14 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ParameterStruct__Group__1"
-    // InternalResolutionModelParser.g:5815:1: rule__ParameterStruct__Group__1 : rule__ParameterStruct__Group__1__Impl ;
+    // InternalResolutionModelParser.g:5873:1: rule__ParameterStruct__Group__1 : rule__ParameterStruct__Group__1__Impl ;
     public final void rule__ParameterStruct__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:5819:1: ( rule__ParameterStruct__Group__1__Impl )
-            // InternalResolutionModelParser.g:5820:2: rule__ParameterStruct__Group__1__Impl
+            // InternalResolutionModelParser.g:5877:1: ( rule__ParameterStruct__Group__1__Impl )
+            // InternalResolutionModelParser.g:5878:2: rule__ParameterStruct__Group__1__Impl
             {
             pushFollow(FOLLOW_2);
             rule__ParameterStruct__Group__1__Impl();
@@ -17509,29 +17701,29 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ParameterStruct__Group__1__Impl"
-    // InternalResolutionModelParser.g:5826:1: rule__ParameterStruct__Group__1__Impl : ( ( rule__ParameterStruct__Group_1__0 )? ) ;
+    // InternalResolutionModelParser.g:5884:1: rule__ParameterStruct__Group__1__Impl : ( ( rule__ParameterStruct__Group_1__0 )? ) ;
     public final void rule__ParameterStruct__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:5830:1: ( ( ( rule__ParameterStruct__Group_1__0 )? ) )
-            // InternalResolutionModelParser.g:5831:1: ( ( rule__ParameterStruct__Group_1__0 )? )
+            // InternalResolutionModelParser.g:5888:1: ( ( ( rule__ParameterStruct__Group_1__0 )? ) )
+            // InternalResolutionModelParser.g:5889:1: ( ( rule__ParameterStruct__Group_1__0 )? )
             {
-            // InternalResolutionModelParser.g:5831:1: ( ( rule__ParameterStruct__Group_1__0 )? )
-            // InternalResolutionModelParser.g:5832:2: ( rule__ParameterStruct__Group_1__0 )?
+            // InternalResolutionModelParser.g:5889:1: ( ( rule__ParameterStruct__Group_1__0 )? )
+            // InternalResolutionModelParser.g:5890:2: ( rule__ParameterStruct__Group_1__0 )?
             {
              before(grammarAccess.getParameterStructAccess().getGroup_1()); 
-            // InternalResolutionModelParser.g:5833:2: ( rule__ParameterStruct__Group_1__0 )?
-            int alt29=2;
-            int LA29_0 = input.LA(1);
+            // InternalResolutionModelParser.g:5891:2: ( rule__ParameterStruct__Group_1__0 )?
+            int alt30=2;
+            int LA30_0 = input.LA(1);
 
-            if ( (LA29_0==LeftSquareBracket) ) {
-                alt29=1;
+            if ( (LA30_0==LeftSquareBracket) ) {
+                alt30=1;
             }
-            switch (alt29) {
+            switch (alt30) {
                 case 1 :
-                    // InternalResolutionModelParser.g:5833:3: rule__ParameterStruct__Group_1__0
+                    // InternalResolutionModelParser.g:5891:3: rule__ParameterStruct__Group_1__0
                     {
                     pushFollow(FOLLOW_2);
                     rule__ParameterStruct__Group_1__0();
@@ -17567,16 +17759,16 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ParameterStruct__Group_1__0"
-    // InternalResolutionModelParser.g:5842:1: rule__ParameterStruct__Group_1__0 : rule__ParameterStruct__Group_1__0__Impl rule__ParameterStruct__Group_1__1 ;
+    // InternalResolutionModelParser.g:5900:1: rule__ParameterStruct__Group_1__0 : rule__ParameterStruct__Group_1__0__Impl rule__ParameterStruct__Group_1__1 ;
     public final void rule__ParameterStruct__Group_1__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:5846:1: ( rule__ParameterStruct__Group_1__0__Impl rule__ParameterStruct__Group_1__1 )
-            // InternalResolutionModelParser.g:5847:2: rule__ParameterStruct__Group_1__0__Impl rule__ParameterStruct__Group_1__1
+            // InternalResolutionModelParser.g:5904:1: ( rule__ParameterStruct__Group_1__0__Impl rule__ParameterStruct__Group_1__1 )
+            // InternalResolutionModelParser.g:5905:2: rule__ParameterStruct__Group_1__0__Impl rule__ParameterStruct__Group_1__1
             {
-            pushFollow(FOLLOW_45);
+            pushFollow(FOLLOW_46);
             rule__ParameterStruct__Group_1__0__Impl();
 
             state._fsp--;
@@ -17605,17 +17797,17 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ParameterStruct__Group_1__0__Impl"
-    // InternalResolutionModelParser.g:5854:1: rule__ParameterStruct__Group_1__0__Impl : ( LeftSquareBracket ) ;
+    // InternalResolutionModelParser.g:5912:1: rule__ParameterStruct__Group_1__0__Impl : ( LeftSquareBracket ) ;
     public final void rule__ParameterStruct__Group_1__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:5858:1: ( ( LeftSquareBracket ) )
-            // InternalResolutionModelParser.g:5859:1: ( LeftSquareBracket )
+            // InternalResolutionModelParser.g:5916:1: ( ( LeftSquareBracket ) )
+            // InternalResolutionModelParser.g:5917:1: ( LeftSquareBracket )
             {
-            // InternalResolutionModelParser.g:5859:1: ( LeftSquareBracket )
-            // InternalResolutionModelParser.g:5860:2: LeftSquareBracket
+            // InternalResolutionModelParser.g:5917:1: ( LeftSquareBracket )
+            // InternalResolutionModelParser.g:5918:2: LeftSquareBracket
             {
              before(grammarAccess.getParameterStructAccess().getLeftSquareBracketKeyword_1_0()); 
             match(input,LeftSquareBracket,FOLLOW_2); 
@@ -17642,16 +17834,16 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ParameterStruct__Group_1__1"
-    // InternalResolutionModelParser.g:5869:1: rule__ParameterStruct__Group_1__1 : rule__ParameterStruct__Group_1__1__Impl rule__ParameterStruct__Group_1__2 ;
+    // InternalResolutionModelParser.g:5927:1: rule__ParameterStruct__Group_1__1 : rule__ParameterStruct__Group_1__1__Impl rule__ParameterStruct__Group_1__2 ;
     public final void rule__ParameterStruct__Group_1__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:5873:1: ( rule__ParameterStruct__Group_1__1__Impl rule__ParameterStruct__Group_1__2 )
-            // InternalResolutionModelParser.g:5874:2: rule__ParameterStruct__Group_1__1__Impl rule__ParameterStruct__Group_1__2
+            // InternalResolutionModelParser.g:5931:1: ( rule__ParameterStruct__Group_1__1__Impl rule__ParameterStruct__Group_1__2 )
+            // InternalResolutionModelParser.g:5932:2: rule__ParameterStruct__Group_1__1__Impl rule__ParameterStruct__Group_1__2
             {
-            pushFollow(FOLLOW_46);
+            pushFollow(FOLLOW_47);
             rule__ParameterStruct__Group_1__1__Impl();
 
             state._fsp--;
@@ -17680,17 +17872,17 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ParameterStruct__Group_1__1__Impl"
-    // InternalResolutionModelParser.g:5881:1: rule__ParameterStruct__Group_1__1__Impl : ( RULE_BEGIN ) ;
+    // InternalResolutionModelParser.g:5939:1: rule__ParameterStruct__Group_1__1__Impl : ( RULE_BEGIN ) ;
     public final void rule__ParameterStruct__Group_1__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:5885:1: ( ( RULE_BEGIN ) )
-            // InternalResolutionModelParser.g:5886:1: ( RULE_BEGIN )
+            // InternalResolutionModelParser.g:5943:1: ( ( RULE_BEGIN ) )
+            // InternalResolutionModelParser.g:5944:1: ( RULE_BEGIN )
             {
-            // InternalResolutionModelParser.g:5886:1: ( RULE_BEGIN )
-            // InternalResolutionModelParser.g:5887:2: RULE_BEGIN
+            // InternalResolutionModelParser.g:5944:1: ( RULE_BEGIN )
+            // InternalResolutionModelParser.g:5945:2: RULE_BEGIN
             {
              before(grammarAccess.getParameterStructAccess().getBEGINTerminalRuleCall_1_1()); 
             match(input,RULE_BEGIN,FOLLOW_2); 
@@ -17717,16 +17909,16 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ParameterStruct__Group_1__2"
-    // InternalResolutionModelParser.g:5896:1: rule__ParameterStruct__Group_1__2 : rule__ParameterStruct__Group_1__2__Impl rule__ParameterStruct__Group_1__3 ;
+    // InternalResolutionModelParser.g:5954:1: rule__ParameterStruct__Group_1__2 : rule__ParameterStruct__Group_1__2__Impl rule__ParameterStruct__Group_1__3 ;
     public final void rule__ParameterStruct__Group_1__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:5900:1: ( rule__ParameterStruct__Group_1__2__Impl rule__ParameterStruct__Group_1__3 )
-            // InternalResolutionModelParser.g:5901:2: rule__ParameterStruct__Group_1__2__Impl rule__ParameterStruct__Group_1__3
+            // InternalResolutionModelParser.g:5958:1: ( rule__ParameterStruct__Group_1__2__Impl rule__ParameterStruct__Group_1__3 )
+            // InternalResolutionModelParser.g:5959:2: rule__ParameterStruct__Group_1__2__Impl rule__ParameterStruct__Group_1__3
             {
-            pushFollow(FOLLOW_46);
+            pushFollow(FOLLOW_47);
             rule__ParameterStruct__Group_1__2__Impl();
 
             state._fsp--;
@@ -17755,35 +17947,35 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ParameterStruct__Group_1__2__Impl"
-    // InternalResolutionModelParser.g:5908:1: rule__ParameterStruct__Group_1__2__Impl : ( ( rule__ParameterStruct__ValueAssignment_1_2 )* ) ;
+    // InternalResolutionModelParser.g:5966:1: rule__ParameterStruct__Group_1__2__Impl : ( ( rule__ParameterStruct__ValueAssignment_1_2 )* ) ;
     public final void rule__ParameterStruct__Group_1__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:5912:1: ( ( ( rule__ParameterStruct__ValueAssignment_1_2 )* ) )
-            // InternalResolutionModelParser.g:5913:1: ( ( rule__ParameterStruct__ValueAssignment_1_2 )* )
+            // InternalResolutionModelParser.g:5970:1: ( ( ( rule__ParameterStruct__ValueAssignment_1_2 )* ) )
+            // InternalResolutionModelParser.g:5971:1: ( ( rule__ParameterStruct__ValueAssignment_1_2 )* )
             {
-            // InternalResolutionModelParser.g:5913:1: ( ( rule__ParameterStruct__ValueAssignment_1_2 )* )
-            // InternalResolutionModelParser.g:5914:2: ( rule__ParameterStruct__ValueAssignment_1_2 )*
+            // InternalResolutionModelParser.g:5971:1: ( ( rule__ParameterStruct__ValueAssignment_1_2 )* )
+            // InternalResolutionModelParser.g:5972:2: ( rule__ParameterStruct__ValueAssignment_1_2 )*
             {
              before(grammarAccess.getParameterStructAccess().getValueAssignment_1_2()); 
-            // InternalResolutionModelParser.g:5915:2: ( rule__ParameterStruct__ValueAssignment_1_2 )*
-            loop30:
+            // InternalResolutionModelParser.g:5973:2: ( rule__ParameterStruct__ValueAssignment_1_2 )*
+            loop31:
             do {
-                int alt30=2;
-                int LA30_0 = input.LA(1);
+                int alt31=2;
+                int LA31_0 = input.LA(1);
 
-                if ( ((LA30_0>=RULE_ID && LA30_0<=RULE_STRING)) ) {
-                    alt30=1;
+                if ( ((LA31_0>=RULE_ID && LA31_0<=RULE_STRING)) ) {
+                    alt31=1;
                 }
 
 
-                switch (alt30) {
+                switch (alt31) {
             	case 1 :
-            	    // InternalResolutionModelParser.g:5915:3: rule__ParameterStruct__ValueAssignment_1_2
+            	    // InternalResolutionModelParser.g:5973:3: rule__ParameterStruct__ValueAssignment_1_2
             	    {
-            	    pushFollow(FOLLOW_47);
+            	    pushFollow(FOLLOW_48);
             	    rule__ParameterStruct__ValueAssignment_1_2();
 
             	    state._fsp--;
@@ -17793,7 +17985,7 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
             	    break;
 
             	default :
-            	    break loop30;
+            	    break loop31;
                 }
             } while (true);
 
@@ -17820,16 +18012,16 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ParameterStruct__Group_1__3"
-    // InternalResolutionModelParser.g:5923:1: rule__ParameterStruct__Group_1__3 : rule__ParameterStruct__Group_1__3__Impl rule__ParameterStruct__Group_1__4 ;
+    // InternalResolutionModelParser.g:5981:1: rule__ParameterStruct__Group_1__3 : rule__ParameterStruct__Group_1__3__Impl rule__ParameterStruct__Group_1__4 ;
     public final void rule__ParameterStruct__Group_1__3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:5927:1: ( rule__ParameterStruct__Group_1__3__Impl rule__ParameterStruct__Group_1__4 )
-            // InternalResolutionModelParser.g:5928:2: rule__ParameterStruct__Group_1__3__Impl rule__ParameterStruct__Group_1__4
+            // InternalResolutionModelParser.g:5985:1: ( rule__ParameterStruct__Group_1__3__Impl rule__ParameterStruct__Group_1__4 )
+            // InternalResolutionModelParser.g:5986:2: rule__ParameterStruct__Group_1__3__Impl rule__ParameterStruct__Group_1__4
             {
-            pushFollow(FOLLOW_48);
+            pushFollow(FOLLOW_49);
             rule__ParameterStruct__Group_1__3__Impl();
 
             state._fsp--;
@@ -17858,17 +18050,17 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ParameterStruct__Group_1__3__Impl"
-    // InternalResolutionModelParser.g:5935:1: rule__ParameterStruct__Group_1__3__Impl : ( RightSquareBracket ) ;
+    // InternalResolutionModelParser.g:5993:1: rule__ParameterStruct__Group_1__3__Impl : ( RightSquareBracket ) ;
     public final void rule__ParameterStruct__Group_1__3__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:5939:1: ( ( RightSquareBracket ) )
-            // InternalResolutionModelParser.g:5940:1: ( RightSquareBracket )
+            // InternalResolutionModelParser.g:5997:1: ( ( RightSquareBracket ) )
+            // InternalResolutionModelParser.g:5998:1: ( RightSquareBracket )
             {
-            // InternalResolutionModelParser.g:5940:1: ( RightSquareBracket )
-            // InternalResolutionModelParser.g:5941:2: RightSquareBracket
+            // InternalResolutionModelParser.g:5998:1: ( RightSquareBracket )
+            // InternalResolutionModelParser.g:5999:2: RightSquareBracket
             {
              before(grammarAccess.getParameterStructAccess().getRightSquareBracketKeyword_1_3()); 
             match(input,RightSquareBracket,FOLLOW_2); 
@@ -17895,14 +18087,14 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ParameterStruct__Group_1__4"
-    // InternalResolutionModelParser.g:5950:1: rule__ParameterStruct__Group_1__4 : rule__ParameterStruct__Group_1__4__Impl ;
+    // InternalResolutionModelParser.g:6008:1: rule__ParameterStruct__Group_1__4 : rule__ParameterStruct__Group_1__4__Impl ;
     public final void rule__ParameterStruct__Group_1__4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:5954:1: ( rule__ParameterStruct__Group_1__4__Impl )
-            // InternalResolutionModelParser.g:5955:2: rule__ParameterStruct__Group_1__4__Impl
+            // InternalResolutionModelParser.g:6012:1: ( rule__ParameterStruct__Group_1__4__Impl )
+            // InternalResolutionModelParser.g:6013:2: rule__ParameterStruct__Group_1__4__Impl
             {
             pushFollow(FOLLOW_2);
             rule__ParameterStruct__Group_1__4__Impl();
@@ -17928,17 +18120,17 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ParameterStruct__Group_1__4__Impl"
-    // InternalResolutionModelParser.g:5961:1: rule__ParameterStruct__Group_1__4__Impl : ( RULE_END ) ;
+    // InternalResolutionModelParser.g:6019:1: rule__ParameterStruct__Group_1__4__Impl : ( RULE_END ) ;
     public final void rule__ParameterStruct__Group_1__4__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:5965:1: ( ( RULE_END ) )
-            // InternalResolutionModelParser.g:5966:1: ( RULE_END )
+            // InternalResolutionModelParser.g:6023:1: ( ( RULE_END ) )
+            // InternalResolutionModelParser.g:6024:1: ( RULE_END )
             {
-            // InternalResolutionModelParser.g:5966:1: ( RULE_END )
-            // InternalResolutionModelParser.g:5967:2: RULE_END
+            // InternalResolutionModelParser.g:6024:1: ( RULE_END )
+            // InternalResolutionModelParser.g:6025:2: RULE_END
             {
              before(grammarAccess.getParameterStructAccess().getENDTerminalRuleCall_1_4()); 
             match(input,RULE_END,FOLLOW_2); 
@@ -17965,14 +18157,14 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ParameterStructMember__Group__0"
-    // InternalResolutionModelParser.g:5977:1: rule__ParameterStructMember__Group__0 : rule__ParameterStructMember__Group__0__Impl rule__ParameterStructMember__Group__1 ;
+    // InternalResolutionModelParser.g:6035:1: rule__ParameterStructMember__Group__0 : rule__ParameterStructMember__Group__0__Impl rule__ParameterStructMember__Group__1 ;
     public final void rule__ParameterStructMember__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:5981:1: ( rule__ParameterStructMember__Group__0__Impl rule__ParameterStructMember__Group__1 )
-            // InternalResolutionModelParser.g:5982:2: rule__ParameterStructMember__Group__0__Impl rule__ParameterStructMember__Group__1
+            // InternalResolutionModelParser.g:6039:1: ( rule__ParameterStructMember__Group__0__Impl rule__ParameterStructMember__Group__1 )
+            // InternalResolutionModelParser.g:6040:2: rule__ParameterStructMember__Group__0__Impl rule__ParameterStructMember__Group__1
             {
             pushFollow(FOLLOW_10);
             rule__ParameterStructMember__Group__0__Impl();
@@ -18003,21 +18195,21 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ParameterStructMember__Group__0__Impl"
-    // InternalResolutionModelParser.g:5989:1: rule__ParameterStructMember__Group__0__Impl : ( ( rule__ParameterStructMember__NameAssignment_0 ) ) ;
+    // InternalResolutionModelParser.g:6047:1: rule__ParameterStructMember__Group__0__Impl : ( ( rule__ParameterStructMember__NameAssignment_0 ) ) ;
     public final void rule__ParameterStructMember__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:5993:1: ( ( ( rule__ParameterStructMember__NameAssignment_0 ) ) )
-            // InternalResolutionModelParser.g:5994:1: ( ( rule__ParameterStructMember__NameAssignment_0 ) )
+            // InternalResolutionModelParser.g:6051:1: ( ( ( rule__ParameterStructMember__NameAssignment_0 ) ) )
+            // InternalResolutionModelParser.g:6052:1: ( ( rule__ParameterStructMember__NameAssignment_0 ) )
             {
-            // InternalResolutionModelParser.g:5994:1: ( ( rule__ParameterStructMember__NameAssignment_0 ) )
-            // InternalResolutionModelParser.g:5995:2: ( rule__ParameterStructMember__NameAssignment_0 )
+            // InternalResolutionModelParser.g:6052:1: ( ( rule__ParameterStructMember__NameAssignment_0 ) )
+            // InternalResolutionModelParser.g:6053:2: ( rule__ParameterStructMember__NameAssignment_0 )
             {
              before(grammarAccess.getParameterStructMemberAccess().getNameAssignment_0()); 
-            // InternalResolutionModelParser.g:5996:2: ( rule__ParameterStructMember__NameAssignment_0 )
-            // InternalResolutionModelParser.g:5996:3: rule__ParameterStructMember__NameAssignment_0
+            // InternalResolutionModelParser.g:6054:2: ( rule__ParameterStructMember__NameAssignment_0 )
+            // InternalResolutionModelParser.g:6054:3: rule__ParameterStructMember__NameAssignment_0
             {
             pushFollow(FOLLOW_2);
             rule__ParameterStructMember__NameAssignment_0();
@@ -18050,16 +18242,16 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ParameterStructMember__Group__1"
-    // InternalResolutionModelParser.g:6004:1: rule__ParameterStructMember__Group__1 : rule__ParameterStructMember__Group__1__Impl rule__ParameterStructMember__Group__2 ;
+    // InternalResolutionModelParser.g:6062:1: rule__ParameterStructMember__Group__1 : rule__ParameterStructMember__Group__1__Impl rule__ParameterStructMember__Group__2 ;
     public final void rule__ParameterStructMember__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:6008:1: ( rule__ParameterStructMember__Group__1__Impl rule__ParameterStructMember__Group__2 )
-            // InternalResolutionModelParser.g:6009:2: rule__ParameterStructMember__Group__1__Impl rule__ParameterStructMember__Group__2
+            // InternalResolutionModelParser.g:6066:1: ( rule__ParameterStructMember__Group__1__Impl rule__ParameterStructMember__Group__2 )
+            // InternalResolutionModelParser.g:6067:2: rule__ParameterStructMember__Group__1__Impl rule__ParameterStructMember__Group__2
             {
-            pushFollow(FOLLOW_18);
+            pushFollow(FOLLOW_19);
             rule__ParameterStructMember__Group__1__Impl();
 
             state._fsp--;
@@ -18088,17 +18280,17 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ParameterStructMember__Group__1__Impl"
-    // InternalResolutionModelParser.g:6016:1: rule__ParameterStructMember__Group__1__Impl : ( Colon ) ;
+    // InternalResolutionModelParser.g:6074:1: rule__ParameterStructMember__Group__1__Impl : ( Colon ) ;
     public final void rule__ParameterStructMember__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:6020:1: ( ( Colon ) )
-            // InternalResolutionModelParser.g:6021:1: ( Colon )
+            // InternalResolutionModelParser.g:6078:1: ( ( Colon ) )
+            // InternalResolutionModelParser.g:6079:1: ( Colon )
             {
-            // InternalResolutionModelParser.g:6021:1: ( Colon )
-            // InternalResolutionModelParser.g:6022:2: Colon
+            // InternalResolutionModelParser.g:6079:1: ( Colon )
+            // InternalResolutionModelParser.g:6080:2: Colon
             {
              before(grammarAccess.getParameterStructMemberAccess().getColonKeyword_1()); 
             match(input,Colon,FOLLOW_2); 
@@ -18125,14 +18317,14 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ParameterStructMember__Group__2"
-    // InternalResolutionModelParser.g:6031:1: rule__ParameterStructMember__Group__2 : rule__ParameterStructMember__Group__2__Impl ;
+    // InternalResolutionModelParser.g:6089:1: rule__ParameterStructMember__Group__2 : rule__ParameterStructMember__Group__2__Impl ;
     public final void rule__ParameterStructMember__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:6035:1: ( rule__ParameterStructMember__Group__2__Impl )
-            // InternalResolutionModelParser.g:6036:2: rule__ParameterStructMember__Group__2__Impl
+            // InternalResolutionModelParser.g:6093:1: ( rule__ParameterStructMember__Group__2__Impl )
+            // InternalResolutionModelParser.g:6094:2: rule__ParameterStructMember__Group__2__Impl
             {
             pushFollow(FOLLOW_2);
             rule__ParameterStructMember__Group__2__Impl();
@@ -18158,21 +18350,21 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ParameterStructMember__Group__2__Impl"
-    // InternalResolutionModelParser.g:6042:1: rule__ParameterStructMember__Group__2__Impl : ( ( rule__ParameterStructMember__ValueAssignment_2 ) ) ;
+    // InternalResolutionModelParser.g:6100:1: rule__ParameterStructMember__Group__2__Impl : ( ( rule__ParameterStructMember__ValueAssignment_2 ) ) ;
     public final void rule__ParameterStructMember__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:6046:1: ( ( ( rule__ParameterStructMember__ValueAssignment_2 ) ) )
-            // InternalResolutionModelParser.g:6047:1: ( ( rule__ParameterStructMember__ValueAssignment_2 ) )
+            // InternalResolutionModelParser.g:6104:1: ( ( ( rule__ParameterStructMember__ValueAssignment_2 ) ) )
+            // InternalResolutionModelParser.g:6105:1: ( ( rule__ParameterStructMember__ValueAssignment_2 ) )
             {
-            // InternalResolutionModelParser.g:6047:1: ( ( rule__ParameterStructMember__ValueAssignment_2 ) )
-            // InternalResolutionModelParser.g:6048:2: ( rule__ParameterStructMember__ValueAssignment_2 )
+            // InternalResolutionModelParser.g:6105:1: ( ( rule__ParameterStructMember__ValueAssignment_2 ) )
+            // InternalResolutionModelParser.g:6106:2: ( rule__ParameterStructMember__ValueAssignment_2 )
             {
              before(grammarAccess.getParameterStructMemberAccess().getValueAssignment_2()); 
-            // InternalResolutionModelParser.g:6049:2: ( rule__ParameterStructMember__ValueAssignment_2 )
-            // InternalResolutionModelParser.g:6049:3: rule__ParameterStructMember__ValueAssignment_2
+            // InternalResolutionModelParser.g:6107:2: ( rule__ParameterStructMember__ValueAssignment_2 )
+            // InternalResolutionModelParser.g:6107:3: rule__ParameterStructMember__ValueAssignment_2
             {
             pushFollow(FOLLOW_2);
             rule__ParameterStructMember__ValueAssignment_2();
@@ -18205,16 +18397,16 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ParameterStructTypeMember__Group__0"
-    // InternalResolutionModelParser.g:6058:1: rule__ParameterStructTypeMember__Group__0 : rule__ParameterStructTypeMember__Group__0__Impl rule__ParameterStructTypeMember__Group__1 ;
+    // InternalResolutionModelParser.g:6116:1: rule__ParameterStructTypeMember__Group__0 : rule__ParameterStructTypeMember__Group__0__Impl rule__ParameterStructTypeMember__Group__1 ;
     public final void rule__ParameterStructTypeMember__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:6062:1: ( rule__ParameterStructTypeMember__Group__0__Impl rule__ParameterStructTypeMember__Group__1 )
-            // InternalResolutionModelParser.g:6063:2: rule__ParameterStructTypeMember__Group__0__Impl rule__ParameterStructTypeMember__Group__1
+            // InternalResolutionModelParser.g:6120:1: ( rule__ParameterStructTypeMember__Group__0__Impl rule__ParameterStructTypeMember__Group__1 )
+            // InternalResolutionModelParser.g:6121:2: rule__ParameterStructTypeMember__Group__0__Impl rule__ParameterStructTypeMember__Group__1
             {
-            pushFollow(FOLLOW_29);
+            pushFollow(FOLLOW_30);
             rule__ParameterStructTypeMember__Group__0__Impl();
 
             state._fsp--;
@@ -18243,21 +18435,21 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ParameterStructTypeMember__Group__0__Impl"
-    // InternalResolutionModelParser.g:6070:1: rule__ParameterStructTypeMember__Group__0__Impl : ( ( rule__ParameterStructTypeMember__NameAssignment_0 ) ) ;
+    // InternalResolutionModelParser.g:6128:1: rule__ParameterStructTypeMember__Group__0__Impl : ( ( rule__ParameterStructTypeMember__NameAssignment_0 ) ) ;
     public final void rule__ParameterStructTypeMember__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:6074:1: ( ( ( rule__ParameterStructTypeMember__NameAssignment_0 ) ) )
-            // InternalResolutionModelParser.g:6075:1: ( ( rule__ParameterStructTypeMember__NameAssignment_0 ) )
+            // InternalResolutionModelParser.g:6132:1: ( ( ( rule__ParameterStructTypeMember__NameAssignment_0 ) ) )
+            // InternalResolutionModelParser.g:6133:1: ( ( rule__ParameterStructTypeMember__NameAssignment_0 ) )
             {
-            // InternalResolutionModelParser.g:6075:1: ( ( rule__ParameterStructTypeMember__NameAssignment_0 ) )
-            // InternalResolutionModelParser.g:6076:2: ( rule__ParameterStructTypeMember__NameAssignment_0 )
+            // InternalResolutionModelParser.g:6133:1: ( ( rule__ParameterStructTypeMember__NameAssignment_0 ) )
+            // InternalResolutionModelParser.g:6134:2: ( rule__ParameterStructTypeMember__NameAssignment_0 )
             {
              before(grammarAccess.getParameterStructTypeMemberAccess().getNameAssignment_0()); 
-            // InternalResolutionModelParser.g:6077:2: ( rule__ParameterStructTypeMember__NameAssignment_0 )
-            // InternalResolutionModelParser.g:6077:3: rule__ParameterStructTypeMember__NameAssignment_0
+            // InternalResolutionModelParser.g:6135:2: ( rule__ParameterStructTypeMember__NameAssignment_0 )
+            // InternalResolutionModelParser.g:6135:3: rule__ParameterStructTypeMember__NameAssignment_0
             {
             pushFollow(FOLLOW_2);
             rule__ParameterStructTypeMember__NameAssignment_0();
@@ -18290,14 +18482,14 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ParameterStructTypeMember__Group__1"
-    // InternalResolutionModelParser.g:6085:1: rule__ParameterStructTypeMember__Group__1 : rule__ParameterStructTypeMember__Group__1__Impl ;
+    // InternalResolutionModelParser.g:6143:1: rule__ParameterStructTypeMember__Group__1 : rule__ParameterStructTypeMember__Group__1__Impl ;
     public final void rule__ParameterStructTypeMember__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:6089:1: ( rule__ParameterStructTypeMember__Group__1__Impl )
-            // InternalResolutionModelParser.g:6090:2: rule__ParameterStructTypeMember__Group__1__Impl
+            // InternalResolutionModelParser.g:6147:1: ( rule__ParameterStructTypeMember__Group__1__Impl )
+            // InternalResolutionModelParser.g:6148:2: rule__ParameterStructTypeMember__Group__1__Impl
             {
             pushFollow(FOLLOW_2);
             rule__ParameterStructTypeMember__Group__1__Impl();
@@ -18323,21 +18515,21 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ParameterStructTypeMember__Group__1__Impl"
-    // InternalResolutionModelParser.g:6096:1: rule__ParameterStructTypeMember__Group__1__Impl : ( ( rule__ParameterStructTypeMember__TypeAssignment_1 ) ) ;
+    // InternalResolutionModelParser.g:6154:1: rule__ParameterStructTypeMember__Group__1__Impl : ( ( rule__ParameterStructTypeMember__TypeAssignment_1 ) ) ;
     public final void rule__ParameterStructTypeMember__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:6100:1: ( ( ( rule__ParameterStructTypeMember__TypeAssignment_1 ) ) )
-            // InternalResolutionModelParser.g:6101:1: ( ( rule__ParameterStructTypeMember__TypeAssignment_1 ) )
+            // InternalResolutionModelParser.g:6158:1: ( ( ( rule__ParameterStructTypeMember__TypeAssignment_1 ) ) )
+            // InternalResolutionModelParser.g:6159:1: ( ( rule__ParameterStructTypeMember__TypeAssignment_1 ) )
             {
-            // InternalResolutionModelParser.g:6101:1: ( ( rule__ParameterStructTypeMember__TypeAssignment_1 ) )
-            // InternalResolutionModelParser.g:6102:2: ( rule__ParameterStructTypeMember__TypeAssignment_1 )
+            // InternalResolutionModelParser.g:6159:1: ( ( rule__ParameterStructTypeMember__TypeAssignment_1 ) )
+            // InternalResolutionModelParser.g:6160:2: ( rule__ParameterStructTypeMember__TypeAssignment_1 )
             {
              before(grammarAccess.getParameterStructTypeMemberAccess().getTypeAssignment_1()); 
-            // InternalResolutionModelParser.g:6103:2: ( rule__ParameterStructTypeMember__TypeAssignment_1 )
-            // InternalResolutionModelParser.g:6103:3: rule__ParameterStructTypeMember__TypeAssignment_1
+            // InternalResolutionModelParser.g:6161:2: ( rule__ParameterStructTypeMember__TypeAssignment_1 )
+            // InternalResolutionModelParser.g:6161:3: rule__ParameterStructTypeMember__TypeAssignment_1
             {
             pushFollow(FOLLOW_2);
             rule__ParameterStructTypeMember__TypeAssignment_1();
@@ -18370,16 +18562,16 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__Bool__Group__0"
-    // InternalResolutionModelParser.g:6112:1: rule__Bool__Group__0 : rule__Bool__Group__0__Impl rule__Bool__Group__1 ;
+    // InternalResolutionModelParser.g:6170:1: rule__Bool__Group__0 : rule__Bool__Group__0__Impl rule__Bool__Group__1 ;
     public final void rule__Bool__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:6116:1: ( rule__Bool__Group__0__Impl rule__Bool__Group__1 )
-            // InternalResolutionModelParser.g:6117:2: rule__Bool__Group__0__Impl rule__Bool__Group__1
+            // InternalResolutionModelParser.g:6174:1: ( rule__Bool__Group__0__Impl rule__Bool__Group__1 )
+            // InternalResolutionModelParser.g:6175:2: rule__Bool__Group__0__Impl rule__Bool__Group__1
             {
-            pushFollow(FOLLOW_49);
+            pushFollow(FOLLOW_50);
             rule__Bool__Group__0__Impl();
 
             state._fsp--;
@@ -18408,21 +18600,21 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__Bool__Group__0__Impl"
-    // InternalResolutionModelParser.g:6124:1: rule__Bool__Group__0__Impl : ( () ) ;
+    // InternalResolutionModelParser.g:6182:1: rule__Bool__Group__0__Impl : ( () ) ;
     public final void rule__Bool__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:6128:1: ( ( () ) )
-            // InternalResolutionModelParser.g:6129:1: ( () )
+            // InternalResolutionModelParser.g:6186:1: ( ( () ) )
+            // InternalResolutionModelParser.g:6187:1: ( () )
             {
-            // InternalResolutionModelParser.g:6129:1: ( () )
-            // InternalResolutionModelParser.g:6130:2: ()
+            // InternalResolutionModelParser.g:6187:1: ( () )
+            // InternalResolutionModelParser.g:6188:2: ()
             {
              before(grammarAccess.getBoolAccess().getBoolAction_0()); 
-            // InternalResolutionModelParser.g:6131:2: ()
-            // InternalResolutionModelParser.g:6131:3: 
+            // InternalResolutionModelParser.g:6189:2: ()
+            // InternalResolutionModelParser.g:6189:3: 
             {
             }
 
@@ -18445,14 +18637,14 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__Bool__Group__1"
-    // InternalResolutionModelParser.g:6139:1: rule__Bool__Group__1 : rule__Bool__Group__1__Impl ;
+    // InternalResolutionModelParser.g:6197:1: rule__Bool__Group__1 : rule__Bool__Group__1__Impl ;
     public final void rule__Bool__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:6143:1: ( rule__Bool__Group__1__Impl )
-            // InternalResolutionModelParser.g:6144:2: rule__Bool__Group__1__Impl
+            // InternalResolutionModelParser.g:6201:1: ( rule__Bool__Group__1__Impl )
+            // InternalResolutionModelParser.g:6202:2: rule__Bool__Group__1__Impl
             {
             pushFollow(FOLLOW_2);
             rule__Bool__Group__1__Impl();
@@ -18478,17 +18670,17 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__Bool__Group__1__Impl"
-    // InternalResolutionModelParser.g:6150:1: rule__Bool__Group__1__Impl : ( Bool ) ;
+    // InternalResolutionModelParser.g:6208:1: rule__Bool__Group__1__Impl : ( Bool ) ;
     public final void rule__Bool__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:6154:1: ( ( Bool ) )
-            // InternalResolutionModelParser.g:6155:1: ( Bool )
+            // InternalResolutionModelParser.g:6212:1: ( ( Bool ) )
+            // InternalResolutionModelParser.g:6213:1: ( Bool )
             {
-            // InternalResolutionModelParser.g:6155:1: ( Bool )
-            // InternalResolutionModelParser.g:6156:2: Bool
+            // InternalResolutionModelParser.g:6213:1: ( Bool )
+            // InternalResolutionModelParser.g:6214:2: Bool
             {
              before(grammarAccess.getBoolAccess().getBoolKeyword_1()); 
             match(input,Bool,FOLLOW_2); 
@@ -18515,16 +18707,16 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__Int8__Group__0"
-    // InternalResolutionModelParser.g:6166:1: rule__Int8__Group__0 : rule__Int8__Group__0__Impl rule__Int8__Group__1 ;
+    // InternalResolutionModelParser.g:6224:1: rule__Int8__Group__0 : rule__Int8__Group__0__Impl rule__Int8__Group__1 ;
     public final void rule__Int8__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:6170:1: ( rule__Int8__Group__0__Impl rule__Int8__Group__1 )
-            // InternalResolutionModelParser.g:6171:2: rule__Int8__Group__0__Impl rule__Int8__Group__1
+            // InternalResolutionModelParser.g:6228:1: ( rule__Int8__Group__0__Impl rule__Int8__Group__1 )
+            // InternalResolutionModelParser.g:6229:2: rule__Int8__Group__0__Impl rule__Int8__Group__1
             {
-            pushFollow(FOLLOW_50);
+            pushFollow(FOLLOW_51);
             rule__Int8__Group__0__Impl();
 
             state._fsp--;
@@ -18553,21 +18745,21 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__Int8__Group__0__Impl"
-    // InternalResolutionModelParser.g:6178:1: rule__Int8__Group__0__Impl : ( () ) ;
+    // InternalResolutionModelParser.g:6236:1: rule__Int8__Group__0__Impl : ( () ) ;
     public final void rule__Int8__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:6182:1: ( ( () ) )
-            // InternalResolutionModelParser.g:6183:1: ( () )
+            // InternalResolutionModelParser.g:6240:1: ( ( () ) )
+            // InternalResolutionModelParser.g:6241:1: ( () )
             {
-            // InternalResolutionModelParser.g:6183:1: ( () )
-            // InternalResolutionModelParser.g:6184:2: ()
+            // InternalResolutionModelParser.g:6241:1: ( () )
+            // InternalResolutionModelParser.g:6242:2: ()
             {
              before(grammarAccess.getInt8Access().getInt8Action_0()); 
-            // InternalResolutionModelParser.g:6185:2: ()
-            // InternalResolutionModelParser.g:6185:3: 
+            // InternalResolutionModelParser.g:6243:2: ()
+            // InternalResolutionModelParser.g:6243:3: 
             {
             }
 
@@ -18590,14 +18782,14 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__Int8__Group__1"
-    // InternalResolutionModelParser.g:6193:1: rule__Int8__Group__1 : rule__Int8__Group__1__Impl ;
+    // InternalResolutionModelParser.g:6251:1: rule__Int8__Group__1 : rule__Int8__Group__1__Impl ;
     public final void rule__Int8__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:6197:1: ( rule__Int8__Group__1__Impl )
-            // InternalResolutionModelParser.g:6198:2: rule__Int8__Group__1__Impl
+            // InternalResolutionModelParser.g:6255:1: ( rule__Int8__Group__1__Impl )
+            // InternalResolutionModelParser.g:6256:2: rule__Int8__Group__1__Impl
             {
             pushFollow(FOLLOW_2);
             rule__Int8__Group__1__Impl();
@@ -18623,17 +18815,17 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__Int8__Group__1__Impl"
-    // InternalResolutionModelParser.g:6204:1: rule__Int8__Group__1__Impl : ( Int8 ) ;
+    // InternalResolutionModelParser.g:6262:1: rule__Int8__Group__1__Impl : ( Int8 ) ;
     public final void rule__Int8__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:6208:1: ( ( Int8 ) )
-            // InternalResolutionModelParser.g:6209:1: ( Int8 )
+            // InternalResolutionModelParser.g:6266:1: ( ( Int8 ) )
+            // InternalResolutionModelParser.g:6267:1: ( Int8 )
             {
-            // InternalResolutionModelParser.g:6209:1: ( Int8 )
-            // InternalResolutionModelParser.g:6210:2: Int8
+            // InternalResolutionModelParser.g:6267:1: ( Int8 )
+            // InternalResolutionModelParser.g:6268:2: Int8
             {
              before(grammarAccess.getInt8Access().getInt8Keyword_1()); 
             match(input,Int8,FOLLOW_2); 
@@ -18660,16 +18852,16 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__Uint8__Group__0"
-    // InternalResolutionModelParser.g:6220:1: rule__Uint8__Group__0 : rule__Uint8__Group__0__Impl rule__Uint8__Group__1 ;
+    // InternalResolutionModelParser.g:6278:1: rule__Uint8__Group__0 : rule__Uint8__Group__0__Impl rule__Uint8__Group__1 ;
     public final void rule__Uint8__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:6224:1: ( rule__Uint8__Group__0__Impl rule__Uint8__Group__1 )
-            // InternalResolutionModelParser.g:6225:2: rule__Uint8__Group__0__Impl rule__Uint8__Group__1
+            // InternalResolutionModelParser.g:6282:1: ( rule__Uint8__Group__0__Impl rule__Uint8__Group__1 )
+            // InternalResolutionModelParser.g:6283:2: rule__Uint8__Group__0__Impl rule__Uint8__Group__1
             {
-            pushFollow(FOLLOW_51);
+            pushFollow(FOLLOW_52);
             rule__Uint8__Group__0__Impl();
 
             state._fsp--;
@@ -18698,21 +18890,21 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__Uint8__Group__0__Impl"
-    // InternalResolutionModelParser.g:6232:1: rule__Uint8__Group__0__Impl : ( () ) ;
+    // InternalResolutionModelParser.g:6290:1: rule__Uint8__Group__0__Impl : ( () ) ;
     public final void rule__Uint8__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:6236:1: ( ( () ) )
-            // InternalResolutionModelParser.g:6237:1: ( () )
+            // InternalResolutionModelParser.g:6294:1: ( ( () ) )
+            // InternalResolutionModelParser.g:6295:1: ( () )
             {
-            // InternalResolutionModelParser.g:6237:1: ( () )
-            // InternalResolutionModelParser.g:6238:2: ()
+            // InternalResolutionModelParser.g:6295:1: ( () )
+            // InternalResolutionModelParser.g:6296:2: ()
             {
              before(grammarAccess.getUint8Access().getUint8Action_0()); 
-            // InternalResolutionModelParser.g:6239:2: ()
-            // InternalResolutionModelParser.g:6239:3: 
+            // InternalResolutionModelParser.g:6297:2: ()
+            // InternalResolutionModelParser.g:6297:3: 
             {
             }
 
@@ -18735,14 +18927,14 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__Uint8__Group__1"
-    // InternalResolutionModelParser.g:6247:1: rule__Uint8__Group__1 : rule__Uint8__Group__1__Impl ;
+    // InternalResolutionModelParser.g:6305:1: rule__Uint8__Group__1 : rule__Uint8__Group__1__Impl ;
     public final void rule__Uint8__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:6251:1: ( rule__Uint8__Group__1__Impl )
-            // InternalResolutionModelParser.g:6252:2: rule__Uint8__Group__1__Impl
+            // InternalResolutionModelParser.g:6309:1: ( rule__Uint8__Group__1__Impl )
+            // InternalResolutionModelParser.g:6310:2: rule__Uint8__Group__1__Impl
             {
             pushFollow(FOLLOW_2);
             rule__Uint8__Group__1__Impl();
@@ -18768,17 +18960,17 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__Uint8__Group__1__Impl"
-    // InternalResolutionModelParser.g:6258:1: rule__Uint8__Group__1__Impl : ( Uint8 ) ;
+    // InternalResolutionModelParser.g:6316:1: rule__Uint8__Group__1__Impl : ( Uint8 ) ;
     public final void rule__Uint8__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:6262:1: ( ( Uint8 ) )
-            // InternalResolutionModelParser.g:6263:1: ( Uint8 )
+            // InternalResolutionModelParser.g:6320:1: ( ( Uint8 ) )
+            // InternalResolutionModelParser.g:6321:1: ( Uint8 )
             {
-            // InternalResolutionModelParser.g:6263:1: ( Uint8 )
-            // InternalResolutionModelParser.g:6264:2: Uint8
+            // InternalResolutionModelParser.g:6321:1: ( Uint8 )
+            // InternalResolutionModelParser.g:6322:2: Uint8
             {
              before(grammarAccess.getUint8Access().getUint8Keyword_1()); 
             match(input,Uint8,FOLLOW_2); 
@@ -18805,16 +18997,16 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__Int16__Group__0"
-    // InternalResolutionModelParser.g:6274:1: rule__Int16__Group__0 : rule__Int16__Group__0__Impl rule__Int16__Group__1 ;
+    // InternalResolutionModelParser.g:6332:1: rule__Int16__Group__0 : rule__Int16__Group__0__Impl rule__Int16__Group__1 ;
     public final void rule__Int16__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:6278:1: ( rule__Int16__Group__0__Impl rule__Int16__Group__1 )
-            // InternalResolutionModelParser.g:6279:2: rule__Int16__Group__0__Impl rule__Int16__Group__1
+            // InternalResolutionModelParser.g:6336:1: ( rule__Int16__Group__0__Impl rule__Int16__Group__1 )
+            // InternalResolutionModelParser.g:6337:2: rule__Int16__Group__0__Impl rule__Int16__Group__1
             {
-            pushFollow(FOLLOW_52);
+            pushFollow(FOLLOW_53);
             rule__Int16__Group__0__Impl();
 
             state._fsp--;
@@ -18843,21 +19035,21 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__Int16__Group__0__Impl"
-    // InternalResolutionModelParser.g:6286:1: rule__Int16__Group__0__Impl : ( () ) ;
+    // InternalResolutionModelParser.g:6344:1: rule__Int16__Group__0__Impl : ( () ) ;
     public final void rule__Int16__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:6290:1: ( ( () ) )
-            // InternalResolutionModelParser.g:6291:1: ( () )
+            // InternalResolutionModelParser.g:6348:1: ( ( () ) )
+            // InternalResolutionModelParser.g:6349:1: ( () )
             {
-            // InternalResolutionModelParser.g:6291:1: ( () )
-            // InternalResolutionModelParser.g:6292:2: ()
+            // InternalResolutionModelParser.g:6349:1: ( () )
+            // InternalResolutionModelParser.g:6350:2: ()
             {
              before(grammarAccess.getInt16Access().getInt16Action_0()); 
-            // InternalResolutionModelParser.g:6293:2: ()
-            // InternalResolutionModelParser.g:6293:3: 
+            // InternalResolutionModelParser.g:6351:2: ()
+            // InternalResolutionModelParser.g:6351:3: 
             {
             }
 
@@ -18880,14 +19072,14 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__Int16__Group__1"
-    // InternalResolutionModelParser.g:6301:1: rule__Int16__Group__1 : rule__Int16__Group__1__Impl ;
+    // InternalResolutionModelParser.g:6359:1: rule__Int16__Group__1 : rule__Int16__Group__1__Impl ;
     public final void rule__Int16__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:6305:1: ( rule__Int16__Group__1__Impl )
-            // InternalResolutionModelParser.g:6306:2: rule__Int16__Group__1__Impl
+            // InternalResolutionModelParser.g:6363:1: ( rule__Int16__Group__1__Impl )
+            // InternalResolutionModelParser.g:6364:2: rule__Int16__Group__1__Impl
             {
             pushFollow(FOLLOW_2);
             rule__Int16__Group__1__Impl();
@@ -18913,17 +19105,17 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__Int16__Group__1__Impl"
-    // InternalResolutionModelParser.g:6312:1: rule__Int16__Group__1__Impl : ( Int16 ) ;
+    // InternalResolutionModelParser.g:6370:1: rule__Int16__Group__1__Impl : ( Int16 ) ;
     public final void rule__Int16__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:6316:1: ( ( Int16 ) )
-            // InternalResolutionModelParser.g:6317:1: ( Int16 )
+            // InternalResolutionModelParser.g:6374:1: ( ( Int16 ) )
+            // InternalResolutionModelParser.g:6375:1: ( Int16 )
             {
-            // InternalResolutionModelParser.g:6317:1: ( Int16 )
-            // InternalResolutionModelParser.g:6318:2: Int16
+            // InternalResolutionModelParser.g:6375:1: ( Int16 )
+            // InternalResolutionModelParser.g:6376:2: Int16
             {
              before(grammarAccess.getInt16Access().getInt16Keyword_1()); 
             match(input,Int16,FOLLOW_2); 
@@ -18950,16 +19142,16 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__Uint16__Group__0"
-    // InternalResolutionModelParser.g:6328:1: rule__Uint16__Group__0 : rule__Uint16__Group__0__Impl rule__Uint16__Group__1 ;
+    // InternalResolutionModelParser.g:6386:1: rule__Uint16__Group__0 : rule__Uint16__Group__0__Impl rule__Uint16__Group__1 ;
     public final void rule__Uint16__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:6332:1: ( rule__Uint16__Group__0__Impl rule__Uint16__Group__1 )
-            // InternalResolutionModelParser.g:6333:2: rule__Uint16__Group__0__Impl rule__Uint16__Group__1
+            // InternalResolutionModelParser.g:6390:1: ( rule__Uint16__Group__0__Impl rule__Uint16__Group__1 )
+            // InternalResolutionModelParser.g:6391:2: rule__Uint16__Group__0__Impl rule__Uint16__Group__1
             {
-            pushFollow(FOLLOW_53);
+            pushFollow(FOLLOW_54);
             rule__Uint16__Group__0__Impl();
 
             state._fsp--;
@@ -18988,21 +19180,21 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__Uint16__Group__0__Impl"
-    // InternalResolutionModelParser.g:6340:1: rule__Uint16__Group__0__Impl : ( () ) ;
+    // InternalResolutionModelParser.g:6398:1: rule__Uint16__Group__0__Impl : ( () ) ;
     public final void rule__Uint16__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:6344:1: ( ( () ) )
-            // InternalResolutionModelParser.g:6345:1: ( () )
+            // InternalResolutionModelParser.g:6402:1: ( ( () ) )
+            // InternalResolutionModelParser.g:6403:1: ( () )
             {
-            // InternalResolutionModelParser.g:6345:1: ( () )
-            // InternalResolutionModelParser.g:6346:2: ()
+            // InternalResolutionModelParser.g:6403:1: ( () )
+            // InternalResolutionModelParser.g:6404:2: ()
             {
              before(grammarAccess.getUint16Access().getUint16Action_0()); 
-            // InternalResolutionModelParser.g:6347:2: ()
-            // InternalResolutionModelParser.g:6347:3: 
+            // InternalResolutionModelParser.g:6405:2: ()
+            // InternalResolutionModelParser.g:6405:3: 
             {
             }
 
@@ -19025,14 +19217,14 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__Uint16__Group__1"
-    // InternalResolutionModelParser.g:6355:1: rule__Uint16__Group__1 : rule__Uint16__Group__1__Impl ;
+    // InternalResolutionModelParser.g:6413:1: rule__Uint16__Group__1 : rule__Uint16__Group__1__Impl ;
     public final void rule__Uint16__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:6359:1: ( rule__Uint16__Group__1__Impl )
-            // InternalResolutionModelParser.g:6360:2: rule__Uint16__Group__1__Impl
+            // InternalResolutionModelParser.g:6417:1: ( rule__Uint16__Group__1__Impl )
+            // InternalResolutionModelParser.g:6418:2: rule__Uint16__Group__1__Impl
             {
             pushFollow(FOLLOW_2);
             rule__Uint16__Group__1__Impl();
@@ -19058,17 +19250,17 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__Uint16__Group__1__Impl"
-    // InternalResolutionModelParser.g:6366:1: rule__Uint16__Group__1__Impl : ( Uint16 ) ;
+    // InternalResolutionModelParser.g:6424:1: rule__Uint16__Group__1__Impl : ( Uint16 ) ;
     public final void rule__Uint16__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:6370:1: ( ( Uint16 ) )
-            // InternalResolutionModelParser.g:6371:1: ( Uint16 )
+            // InternalResolutionModelParser.g:6428:1: ( ( Uint16 ) )
+            // InternalResolutionModelParser.g:6429:1: ( Uint16 )
             {
-            // InternalResolutionModelParser.g:6371:1: ( Uint16 )
-            // InternalResolutionModelParser.g:6372:2: Uint16
+            // InternalResolutionModelParser.g:6429:1: ( Uint16 )
+            // InternalResolutionModelParser.g:6430:2: Uint16
             {
              before(grammarAccess.getUint16Access().getUint16Keyword_1()); 
             match(input,Uint16,FOLLOW_2); 
@@ -19095,16 +19287,16 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__Int32__Group__0"
-    // InternalResolutionModelParser.g:6382:1: rule__Int32__Group__0 : rule__Int32__Group__0__Impl rule__Int32__Group__1 ;
+    // InternalResolutionModelParser.g:6440:1: rule__Int32__Group__0 : rule__Int32__Group__0__Impl rule__Int32__Group__1 ;
     public final void rule__Int32__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:6386:1: ( rule__Int32__Group__0__Impl rule__Int32__Group__1 )
-            // InternalResolutionModelParser.g:6387:2: rule__Int32__Group__0__Impl rule__Int32__Group__1
+            // InternalResolutionModelParser.g:6444:1: ( rule__Int32__Group__0__Impl rule__Int32__Group__1 )
+            // InternalResolutionModelParser.g:6445:2: rule__Int32__Group__0__Impl rule__Int32__Group__1
             {
-            pushFollow(FOLLOW_54);
+            pushFollow(FOLLOW_55);
             rule__Int32__Group__0__Impl();
 
             state._fsp--;
@@ -19133,21 +19325,21 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__Int32__Group__0__Impl"
-    // InternalResolutionModelParser.g:6394:1: rule__Int32__Group__0__Impl : ( () ) ;
+    // InternalResolutionModelParser.g:6452:1: rule__Int32__Group__0__Impl : ( () ) ;
     public final void rule__Int32__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:6398:1: ( ( () ) )
-            // InternalResolutionModelParser.g:6399:1: ( () )
+            // InternalResolutionModelParser.g:6456:1: ( ( () ) )
+            // InternalResolutionModelParser.g:6457:1: ( () )
             {
-            // InternalResolutionModelParser.g:6399:1: ( () )
-            // InternalResolutionModelParser.g:6400:2: ()
+            // InternalResolutionModelParser.g:6457:1: ( () )
+            // InternalResolutionModelParser.g:6458:2: ()
             {
              before(grammarAccess.getInt32Access().getInt32Action_0()); 
-            // InternalResolutionModelParser.g:6401:2: ()
-            // InternalResolutionModelParser.g:6401:3: 
+            // InternalResolutionModelParser.g:6459:2: ()
+            // InternalResolutionModelParser.g:6459:3: 
             {
             }
 
@@ -19170,14 +19362,14 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__Int32__Group__1"
-    // InternalResolutionModelParser.g:6409:1: rule__Int32__Group__1 : rule__Int32__Group__1__Impl ;
+    // InternalResolutionModelParser.g:6467:1: rule__Int32__Group__1 : rule__Int32__Group__1__Impl ;
     public final void rule__Int32__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:6413:1: ( rule__Int32__Group__1__Impl )
-            // InternalResolutionModelParser.g:6414:2: rule__Int32__Group__1__Impl
+            // InternalResolutionModelParser.g:6471:1: ( rule__Int32__Group__1__Impl )
+            // InternalResolutionModelParser.g:6472:2: rule__Int32__Group__1__Impl
             {
             pushFollow(FOLLOW_2);
             rule__Int32__Group__1__Impl();
@@ -19203,17 +19395,17 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__Int32__Group__1__Impl"
-    // InternalResolutionModelParser.g:6420:1: rule__Int32__Group__1__Impl : ( Int32 ) ;
+    // InternalResolutionModelParser.g:6478:1: rule__Int32__Group__1__Impl : ( Int32 ) ;
     public final void rule__Int32__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:6424:1: ( ( Int32 ) )
-            // InternalResolutionModelParser.g:6425:1: ( Int32 )
+            // InternalResolutionModelParser.g:6482:1: ( ( Int32 ) )
+            // InternalResolutionModelParser.g:6483:1: ( Int32 )
             {
-            // InternalResolutionModelParser.g:6425:1: ( Int32 )
-            // InternalResolutionModelParser.g:6426:2: Int32
+            // InternalResolutionModelParser.g:6483:1: ( Int32 )
+            // InternalResolutionModelParser.g:6484:2: Int32
             {
              before(grammarAccess.getInt32Access().getInt32Keyword_1()); 
             match(input,Int32,FOLLOW_2); 
@@ -19240,16 +19432,16 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__Uint32__Group__0"
-    // InternalResolutionModelParser.g:6436:1: rule__Uint32__Group__0 : rule__Uint32__Group__0__Impl rule__Uint32__Group__1 ;
+    // InternalResolutionModelParser.g:6494:1: rule__Uint32__Group__0 : rule__Uint32__Group__0__Impl rule__Uint32__Group__1 ;
     public final void rule__Uint32__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:6440:1: ( rule__Uint32__Group__0__Impl rule__Uint32__Group__1 )
-            // InternalResolutionModelParser.g:6441:2: rule__Uint32__Group__0__Impl rule__Uint32__Group__1
+            // InternalResolutionModelParser.g:6498:1: ( rule__Uint32__Group__0__Impl rule__Uint32__Group__1 )
+            // InternalResolutionModelParser.g:6499:2: rule__Uint32__Group__0__Impl rule__Uint32__Group__1
             {
-            pushFollow(FOLLOW_55);
+            pushFollow(FOLLOW_56);
             rule__Uint32__Group__0__Impl();
 
             state._fsp--;
@@ -19278,21 +19470,21 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__Uint32__Group__0__Impl"
-    // InternalResolutionModelParser.g:6448:1: rule__Uint32__Group__0__Impl : ( () ) ;
+    // InternalResolutionModelParser.g:6506:1: rule__Uint32__Group__0__Impl : ( () ) ;
     public final void rule__Uint32__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:6452:1: ( ( () ) )
-            // InternalResolutionModelParser.g:6453:1: ( () )
+            // InternalResolutionModelParser.g:6510:1: ( ( () ) )
+            // InternalResolutionModelParser.g:6511:1: ( () )
             {
-            // InternalResolutionModelParser.g:6453:1: ( () )
-            // InternalResolutionModelParser.g:6454:2: ()
+            // InternalResolutionModelParser.g:6511:1: ( () )
+            // InternalResolutionModelParser.g:6512:2: ()
             {
              before(grammarAccess.getUint32Access().getUint32Action_0()); 
-            // InternalResolutionModelParser.g:6455:2: ()
-            // InternalResolutionModelParser.g:6455:3: 
+            // InternalResolutionModelParser.g:6513:2: ()
+            // InternalResolutionModelParser.g:6513:3: 
             {
             }
 
@@ -19315,14 +19507,14 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__Uint32__Group__1"
-    // InternalResolutionModelParser.g:6463:1: rule__Uint32__Group__1 : rule__Uint32__Group__1__Impl ;
+    // InternalResolutionModelParser.g:6521:1: rule__Uint32__Group__1 : rule__Uint32__Group__1__Impl ;
     public final void rule__Uint32__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:6467:1: ( rule__Uint32__Group__1__Impl )
-            // InternalResolutionModelParser.g:6468:2: rule__Uint32__Group__1__Impl
+            // InternalResolutionModelParser.g:6525:1: ( rule__Uint32__Group__1__Impl )
+            // InternalResolutionModelParser.g:6526:2: rule__Uint32__Group__1__Impl
             {
             pushFollow(FOLLOW_2);
             rule__Uint32__Group__1__Impl();
@@ -19348,17 +19540,17 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__Uint32__Group__1__Impl"
-    // InternalResolutionModelParser.g:6474:1: rule__Uint32__Group__1__Impl : ( Uint32 ) ;
+    // InternalResolutionModelParser.g:6532:1: rule__Uint32__Group__1__Impl : ( Uint32 ) ;
     public final void rule__Uint32__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:6478:1: ( ( Uint32 ) )
-            // InternalResolutionModelParser.g:6479:1: ( Uint32 )
+            // InternalResolutionModelParser.g:6536:1: ( ( Uint32 ) )
+            // InternalResolutionModelParser.g:6537:1: ( Uint32 )
             {
-            // InternalResolutionModelParser.g:6479:1: ( Uint32 )
-            // InternalResolutionModelParser.g:6480:2: Uint32
+            // InternalResolutionModelParser.g:6537:1: ( Uint32 )
+            // InternalResolutionModelParser.g:6538:2: Uint32
             {
              before(grammarAccess.getUint32Access().getUint32Keyword_1()); 
             match(input,Uint32,FOLLOW_2); 
@@ -19385,16 +19577,16 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__Int64__Group__0"
-    // InternalResolutionModelParser.g:6490:1: rule__Int64__Group__0 : rule__Int64__Group__0__Impl rule__Int64__Group__1 ;
+    // InternalResolutionModelParser.g:6548:1: rule__Int64__Group__0 : rule__Int64__Group__0__Impl rule__Int64__Group__1 ;
     public final void rule__Int64__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:6494:1: ( rule__Int64__Group__0__Impl rule__Int64__Group__1 )
-            // InternalResolutionModelParser.g:6495:2: rule__Int64__Group__0__Impl rule__Int64__Group__1
+            // InternalResolutionModelParser.g:6552:1: ( rule__Int64__Group__0__Impl rule__Int64__Group__1 )
+            // InternalResolutionModelParser.g:6553:2: rule__Int64__Group__0__Impl rule__Int64__Group__1
             {
-            pushFollow(FOLLOW_56);
+            pushFollow(FOLLOW_57);
             rule__Int64__Group__0__Impl();
 
             state._fsp--;
@@ -19423,21 +19615,21 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__Int64__Group__0__Impl"
-    // InternalResolutionModelParser.g:6502:1: rule__Int64__Group__0__Impl : ( () ) ;
+    // InternalResolutionModelParser.g:6560:1: rule__Int64__Group__0__Impl : ( () ) ;
     public final void rule__Int64__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:6506:1: ( ( () ) )
-            // InternalResolutionModelParser.g:6507:1: ( () )
+            // InternalResolutionModelParser.g:6564:1: ( ( () ) )
+            // InternalResolutionModelParser.g:6565:1: ( () )
             {
-            // InternalResolutionModelParser.g:6507:1: ( () )
-            // InternalResolutionModelParser.g:6508:2: ()
+            // InternalResolutionModelParser.g:6565:1: ( () )
+            // InternalResolutionModelParser.g:6566:2: ()
             {
              before(grammarAccess.getInt64Access().getInt64Action_0()); 
-            // InternalResolutionModelParser.g:6509:2: ()
-            // InternalResolutionModelParser.g:6509:3: 
+            // InternalResolutionModelParser.g:6567:2: ()
+            // InternalResolutionModelParser.g:6567:3: 
             {
             }
 
@@ -19460,14 +19652,14 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__Int64__Group__1"
-    // InternalResolutionModelParser.g:6517:1: rule__Int64__Group__1 : rule__Int64__Group__1__Impl ;
+    // InternalResolutionModelParser.g:6575:1: rule__Int64__Group__1 : rule__Int64__Group__1__Impl ;
     public final void rule__Int64__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:6521:1: ( rule__Int64__Group__1__Impl )
-            // InternalResolutionModelParser.g:6522:2: rule__Int64__Group__1__Impl
+            // InternalResolutionModelParser.g:6579:1: ( rule__Int64__Group__1__Impl )
+            // InternalResolutionModelParser.g:6580:2: rule__Int64__Group__1__Impl
             {
             pushFollow(FOLLOW_2);
             rule__Int64__Group__1__Impl();
@@ -19493,17 +19685,17 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__Int64__Group__1__Impl"
-    // InternalResolutionModelParser.g:6528:1: rule__Int64__Group__1__Impl : ( Int64 ) ;
+    // InternalResolutionModelParser.g:6586:1: rule__Int64__Group__1__Impl : ( Int64 ) ;
     public final void rule__Int64__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:6532:1: ( ( Int64 ) )
-            // InternalResolutionModelParser.g:6533:1: ( Int64 )
+            // InternalResolutionModelParser.g:6590:1: ( ( Int64 ) )
+            // InternalResolutionModelParser.g:6591:1: ( Int64 )
             {
-            // InternalResolutionModelParser.g:6533:1: ( Int64 )
-            // InternalResolutionModelParser.g:6534:2: Int64
+            // InternalResolutionModelParser.g:6591:1: ( Int64 )
+            // InternalResolutionModelParser.g:6592:2: Int64
             {
              before(grammarAccess.getInt64Access().getInt64Keyword_1()); 
             match(input,Int64,FOLLOW_2); 
@@ -19530,16 +19722,16 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__Uint64__Group__0"
-    // InternalResolutionModelParser.g:6544:1: rule__Uint64__Group__0 : rule__Uint64__Group__0__Impl rule__Uint64__Group__1 ;
+    // InternalResolutionModelParser.g:6602:1: rule__Uint64__Group__0 : rule__Uint64__Group__0__Impl rule__Uint64__Group__1 ;
     public final void rule__Uint64__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:6548:1: ( rule__Uint64__Group__0__Impl rule__Uint64__Group__1 )
-            // InternalResolutionModelParser.g:6549:2: rule__Uint64__Group__0__Impl rule__Uint64__Group__1
+            // InternalResolutionModelParser.g:6606:1: ( rule__Uint64__Group__0__Impl rule__Uint64__Group__1 )
+            // InternalResolutionModelParser.g:6607:2: rule__Uint64__Group__0__Impl rule__Uint64__Group__1
             {
-            pushFollow(FOLLOW_57);
+            pushFollow(FOLLOW_58);
             rule__Uint64__Group__0__Impl();
 
             state._fsp--;
@@ -19568,21 +19760,21 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__Uint64__Group__0__Impl"
-    // InternalResolutionModelParser.g:6556:1: rule__Uint64__Group__0__Impl : ( () ) ;
+    // InternalResolutionModelParser.g:6614:1: rule__Uint64__Group__0__Impl : ( () ) ;
     public final void rule__Uint64__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:6560:1: ( ( () ) )
-            // InternalResolutionModelParser.g:6561:1: ( () )
+            // InternalResolutionModelParser.g:6618:1: ( ( () ) )
+            // InternalResolutionModelParser.g:6619:1: ( () )
             {
-            // InternalResolutionModelParser.g:6561:1: ( () )
-            // InternalResolutionModelParser.g:6562:2: ()
+            // InternalResolutionModelParser.g:6619:1: ( () )
+            // InternalResolutionModelParser.g:6620:2: ()
             {
              before(grammarAccess.getUint64Access().getUint64Action_0()); 
-            // InternalResolutionModelParser.g:6563:2: ()
-            // InternalResolutionModelParser.g:6563:3: 
+            // InternalResolutionModelParser.g:6621:2: ()
+            // InternalResolutionModelParser.g:6621:3: 
             {
             }
 
@@ -19605,14 +19797,14 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__Uint64__Group__1"
-    // InternalResolutionModelParser.g:6571:1: rule__Uint64__Group__1 : rule__Uint64__Group__1__Impl ;
+    // InternalResolutionModelParser.g:6629:1: rule__Uint64__Group__1 : rule__Uint64__Group__1__Impl ;
     public final void rule__Uint64__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:6575:1: ( rule__Uint64__Group__1__Impl )
-            // InternalResolutionModelParser.g:6576:2: rule__Uint64__Group__1__Impl
+            // InternalResolutionModelParser.g:6633:1: ( rule__Uint64__Group__1__Impl )
+            // InternalResolutionModelParser.g:6634:2: rule__Uint64__Group__1__Impl
             {
             pushFollow(FOLLOW_2);
             rule__Uint64__Group__1__Impl();
@@ -19638,17 +19830,17 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__Uint64__Group__1__Impl"
-    // InternalResolutionModelParser.g:6582:1: rule__Uint64__Group__1__Impl : ( Uint64 ) ;
+    // InternalResolutionModelParser.g:6640:1: rule__Uint64__Group__1__Impl : ( Uint64 ) ;
     public final void rule__Uint64__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:6586:1: ( ( Uint64 ) )
-            // InternalResolutionModelParser.g:6587:1: ( Uint64 )
+            // InternalResolutionModelParser.g:6644:1: ( ( Uint64 ) )
+            // InternalResolutionModelParser.g:6645:1: ( Uint64 )
             {
-            // InternalResolutionModelParser.g:6587:1: ( Uint64 )
-            // InternalResolutionModelParser.g:6588:2: Uint64
+            // InternalResolutionModelParser.g:6645:1: ( Uint64 )
+            // InternalResolutionModelParser.g:6646:2: Uint64
             {
              before(grammarAccess.getUint64Access().getUint64Keyword_1()); 
             match(input,Uint64,FOLLOW_2); 
@@ -19675,16 +19867,16 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__Float32__Group__0"
-    // InternalResolutionModelParser.g:6598:1: rule__Float32__Group__0 : rule__Float32__Group__0__Impl rule__Float32__Group__1 ;
+    // InternalResolutionModelParser.g:6656:1: rule__Float32__Group__0 : rule__Float32__Group__0__Impl rule__Float32__Group__1 ;
     public final void rule__Float32__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:6602:1: ( rule__Float32__Group__0__Impl rule__Float32__Group__1 )
-            // InternalResolutionModelParser.g:6603:2: rule__Float32__Group__0__Impl rule__Float32__Group__1
+            // InternalResolutionModelParser.g:6660:1: ( rule__Float32__Group__0__Impl rule__Float32__Group__1 )
+            // InternalResolutionModelParser.g:6661:2: rule__Float32__Group__0__Impl rule__Float32__Group__1
             {
-            pushFollow(FOLLOW_58);
+            pushFollow(FOLLOW_59);
             rule__Float32__Group__0__Impl();
 
             state._fsp--;
@@ -19713,21 +19905,21 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__Float32__Group__0__Impl"
-    // InternalResolutionModelParser.g:6610:1: rule__Float32__Group__0__Impl : ( () ) ;
+    // InternalResolutionModelParser.g:6668:1: rule__Float32__Group__0__Impl : ( () ) ;
     public final void rule__Float32__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:6614:1: ( ( () ) )
-            // InternalResolutionModelParser.g:6615:1: ( () )
+            // InternalResolutionModelParser.g:6672:1: ( ( () ) )
+            // InternalResolutionModelParser.g:6673:1: ( () )
             {
-            // InternalResolutionModelParser.g:6615:1: ( () )
-            // InternalResolutionModelParser.g:6616:2: ()
+            // InternalResolutionModelParser.g:6673:1: ( () )
+            // InternalResolutionModelParser.g:6674:2: ()
             {
              before(grammarAccess.getFloat32Access().getFloat32Action_0()); 
-            // InternalResolutionModelParser.g:6617:2: ()
-            // InternalResolutionModelParser.g:6617:3: 
+            // InternalResolutionModelParser.g:6675:2: ()
+            // InternalResolutionModelParser.g:6675:3: 
             {
             }
 
@@ -19750,14 +19942,14 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__Float32__Group__1"
-    // InternalResolutionModelParser.g:6625:1: rule__Float32__Group__1 : rule__Float32__Group__1__Impl ;
+    // InternalResolutionModelParser.g:6683:1: rule__Float32__Group__1 : rule__Float32__Group__1__Impl ;
     public final void rule__Float32__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:6629:1: ( rule__Float32__Group__1__Impl )
-            // InternalResolutionModelParser.g:6630:2: rule__Float32__Group__1__Impl
+            // InternalResolutionModelParser.g:6687:1: ( rule__Float32__Group__1__Impl )
+            // InternalResolutionModelParser.g:6688:2: rule__Float32__Group__1__Impl
             {
             pushFollow(FOLLOW_2);
             rule__Float32__Group__1__Impl();
@@ -19783,17 +19975,17 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__Float32__Group__1__Impl"
-    // InternalResolutionModelParser.g:6636:1: rule__Float32__Group__1__Impl : ( Float32 ) ;
+    // InternalResolutionModelParser.g:6694:1: rule__Float32__Group__1__Impl : ( Float32 ) ;
     public final void rule__Float32__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:6640:1: ( ( Float32 ) )
-            // InternalResolutionModelParser.g:6641:1: ( Float32 )
+            // InternalResolutionModelParser.g:6698:1: ( ( Float32 ) )
+            // InternalResolutionModelParser.g:6699:1: ( Float32 )
             {
-            // InternalResolutionModelParser.g:6641:1: ( Float32 )
-            // InternalResolutionModelParser.g:6642:2: Float32
+            // InternalResolutionModelParser.g:6699:1: ( Float32 )
+            // InternalResolutionModelParser.g:6700:2: Float32
             {
              before(grammarAccess.getFloat32Access().getFloat32Keyword_1()); 
             match(input,Float32,FOLLOW_2); 
@@ -19820,16 +20012,16 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__Float64__Group__0"
-    // InternalResolutionModelParser.g:6652:1: rule__Float64__Group__0 : rule__Float64__Group__0__Impl rule__Float64__Group__1 ;
+    // InternalResolutionModelParser.g:6710:1: rule__Float64__Group__0 : rule__Float64__Group__0__Impl rule__Float64__Group__1 ;
     public final void rule__Float64__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:6656:1: ( rule__Float64__Group__0__Impl rule__Float64__Group__1 )
-            // InternalResolutionModelParser.g:6657:2: rule__Float64__Group__0__Impl rule__Float64__Group__1
+            // InternalResolutionModelParser.g:6714:1: ( rule__Float64__Group__0__Impl rule__Float64__Group__1 )
+            // InternalResolutionModelParser.g:6715:2: rule__Float64__Group__0__Impl rule__Float64__Group__1
             {
-            pushFollow(FOLLOW_59);
+            pushFollow(FOLLOW_60);
             rule__Float64__Group__0__Impl();
 
             state._fsp--;
@@ -19858,21 +20050,21 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__Float64__Group__0__Impl"
-    // InternalResolutionModelParser.g:6664:1: rule__Float64__Group__0__Impl : ( () ) ;
+    // InternalResolutionModelParser.g:6722:1: rule__Float64__Group__0__Impl : ( () ) ;
     public final void rule__Float64__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:6668:1: ( ( () ) )
-            // InternalResolutionModelParser.g:6669:1: ( () )
+            // InternalResolutionModelParser.g:6726:1: ( ( () ) )
+            // InternalResolutionModelParser.g:6727:1: ( () )
             {
-            // InternalResolutionModelParser.g:6669:1: ( () )
-            // InternalResolutionModelParser.g:6670:2: ()
+            // InternalResolutionModelParser.g:6727:1: ( () )
+            // InternalResolutionModelParser.g:6728:2: ()
             {
              before(grammarAccess.getFloat64Access().getFloat64Action_0()); 
-            // InternalResolutionModelParser.g:6671:2: ()
-            // InternalResolutionModelParser.g:6671:3: 
+            // InternalResolutionModelParser.g:6729:2: ()
+            // InternalResolutionModelParser.g:6729:3: 
             {
             }
 
@@ -19895,14 +20087,14 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__Float64__Group__1"
-    // InternalResolutionModelParser.g:6679:1: rule__Float64__Group__1 : rule__Float64__Group__1__Impl ;
+    // InternalResolutionModelParser.g:6737:1: rule__Float64__Group__1 : rule__Float64__Group__1__Impl ;
     public final void rule__Float64__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:6683:1: ( rule__Float64__Group__1__Impl )
-            // InternalResolutionModelParser.g:6684:2: rule__Float64__Group__1__Impl
+            // InternalResolutionModelParser.g:6741:1: ( rule__Float64__Group__1__Impl )
+            // InternalResolutionModelParser.g:6742:2: rule__Float64__Group__1__Impl
             {
             pushFollow(FOLLOW_2);
             rule__Float64__Group__1__Impl();
@@ -19928,17 +20120,17 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__Float64__Group__1__Impl"
-    // InternalResolutionModelParser.g:6690:1: rule__Float64__Group__1__Impl : ( Float64 ) ;
+    // InternalResolutionModelParser.g:6748:1: rule__Float64__Group__1__Impl : ( Float64 ) ;
     public final void rule__Float64__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:6694:1: ( ( Float64 ) )
-            // InternalResolutionModelParser.g:6695:1: ( Float64 )
+            // InternalResolutionModelParser.g:6752:1: ( ( Float64 ) )
+            // InternalResolutionModelParser.g:6753:1: ( Float64 )
             {
-            // InternalResolutionModelParser.g:6695:1: ( Float64 )
-            // InternalResolutionModelParser.g:6696:2: Float64
+            // InternalResolutionModelParser.g:6753:1: ( Float64 )
+            // InternalResolutionModelParser.g:6754:2: Float64
             {
              before(grammarAccess.getFloat64Access().getFloat64Keyword_1()); 
             match(input,Float64,FOLLOW_2); 
@@ -19965,16 +20157,16 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__String0__Group__0"
-    // InternalResolutionModelParser.g:6706:1: rule__String0__Group__0 : rule__String0__Group__0__Impl rule__String0__Group__1 ;
+    // InternalResolutionModelParser.g:6764:1: rule__String0__Group__0 : rule__String0__Group__0__Impl rule__String0__Group__1 ;
     public final void rule__String0__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:6710:1: ( rule__String0__Group__0__Impl rule__String0__Group__1 )
-            // InternalResolutionModelParser.g:6711:2: rule__String0__Group__0__Impl rule__String0__Group__1
+            // InternalResolutionModelParser.g:6768:1: ( rule__String0__Group__0__Impl rule__String0__Group__1 )
+            // InternalResolutionModelParser.g:6769:2: rule__String0__Group__0__Impl rule__String0__Group__1
             {
-            pushFollow(FOLLOW_60);
+            pushFollow(FOLLOW_61);
             rule__String0__Group__0__Impl();
 
             state._fsp--;
@@ -20003,21 +20195,21 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__String0__Group__0__Impl"
-    // InternalResolutionModelParser.g:6718:1: rule__String0__Group__0__Impl : ( () ) ;
+    // InternalResolutionModelParser.g:6776:1: rule__String0__Group__0__Impl : ( () ) ;
     public final void rule__String0__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:6722:1: ( ( () ) )
-            // InternalResolutionModelParser.g:6723:1: ( () )
+            // InternalResolutionModelParser.g:6780:1: ( ( () ) )
+            // InternalResolutionModelParser.g:6781:1: ( () )
             {
-            // InternalResolutionModelParser.g:6723:1: ( () )
-            // InternalResolutionModelParser.g:6724:2: ()
+            // InternalResolutionModelParser.g:6781:1: ( () )
+            // InternalResolutionModelParser.g:6782:2: ()
             {
              before(grammarAccess.getString0Access().getStringAction_0()); 
-            // InternalResolutionModelParser.g:6725:2: ()
-            // InternalResolutionModelParser.g:6725:3: 
+            // InternalResolutionModelParser.g:6783:2: ()
+            // InternalResolutionModelParser.g:6783:3: 
             {
             }
 
@@ -20040,14 +20232,14 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__String0__Group__1"
-    // InternalResolutionModelParser.g:6733:1: rule__String0__Group__1 : rule__String0__Group__1__Impl ;
+    // InternalResolutionModelParser.g:6791:1: rule__String0__Group__1 : rule__String0__Group__1__Impl ;
     public final void rule__String0__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:6737:1: ( rule__String0__Group__1__Impl )
-            // InternalResolutionModelParser.g:6738:2: rule__String0__Group__1__Impl
+            // InternalResolutionModelParser.g:6795:1: ( rule__String0__Group__1__Impl )
+            // InternalResolutionModelParser.g:6796:2: rule__String0__Group__1__Impl
             {
             pushFollow(FOLLOW_2);
             rule__String0__Group__1__Impl();
@@ -20073,17 +20265,17 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__String0__Group__1__Impl"
-    // InternalResolutionModelParser.g:6744:1: rule__String0__Group__1__Impl : ( String_1 ) ;
+    // InternalResolutionModelParser.g:6802:1: rule__String0__Group__1__Impl : ( String_1 ) ;
     public final void rule__String0__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:6748:1: ( ( String_1 ) )
-            // InternalResolutionModelParser.g:6749:1: ( String_1 )
+            // InternalResolutionModelParser.g:6806:1: ( ( String_1 ) )
+            // InternalResolutionModelParser.g:6807:1: ( String_1 )
             {
-            // InternalResolutionModelParser.g:6749:1: ( String_1 )
-            // InternalResolutionModelParser.g:6750:2: String_1
+            // InternalResolutionModelParser.g:6807:1: ( String_1 )
+            // InternalResolutionModelParser.g:6808:2: String_1
             {
              before(grammarAccess.getString0Access().getStringKeyword_1()); 
             match(input,String_1,FOLLOW_2); 
@@ -20110,16 +20302,16 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__Char__Group__0"
-    // InternalResolutionModelParser.g:6760:1: rule__Char__Group__0 : rule__Char__Group__0__Impl rule__Char__Group__1 ;
+    // InternalResolutionModelParser.g:6818:1: rule__Char__Group__0 : rule__Char__Group__0__Impl rule__Char__Group__1 ;
     public final void rule__Char__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:6764:1: ( rule__Char__Group__0__Impl rule__Char__Group__1 )
-            // InternalResolutionModelParser.g:6765:2: rule__Char__Group__0__Impl rule__Char__Group__1
+            // InternalResolutionModelParser.g:6822:1: ( rule__Char__Group__0__Impl rule__Char__Group__1 )
+            // InternalResolutionModelParser.g:6823:2: rule__Char__Group__0__Impl rule__Char__Group__1
             {
-            pushFollow(FOLLOW_61);
+            pushFollow(FOLLOW_62);
             rule__Char__Group__0__Impl();
 
             state._fsp--;
@@ -20148,21 +20340,21 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__Char__Group__0__Impl"
-    // InternalResolutionModelParser.g:6772:1: rule__Char__Group__0__Impl : ( () ) ;
+    // InternalResolutionModelParser.g:6830:1: rule__Char__Group__0__Impl : ( () ) ;
     public final void rule__Char__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:6776:1: ( ( () ) )
-            // InternalResolutionModelParser.g:6777:1: ( () )
+            // InternalResolutionModelParser.g:6834:1: ( ( () ) )
+            // InternalResolutionModelParser.g:6835:1: ( () )
             {
-            // InternalResolutionModelParser.g:6777:1: ( () )
-            // InternalResolutionModelParser.g:6778:2: ()
+            // InternalResolutionModelParser.g:6835:1: ( () )
+            // InternalResolutionModelParser.g:6836:2: ()
             {
              before(grammarAccess.getCharAccess().getChar0Action_0()); 
-            // InternalResolutionModelParser.g:6779:2: ()
-            // InternalResolutionModelParser.g:6779:3: 
+            // InternalResolutionModelParser.g:6837:2: ()
+            // InternalResolutionModelParser.g:6837:3: 
             {
             }
 
@@ -20185,14 +20377,14 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__Char__Group__1"
-    // InternalResolutionModelParser.g:6787:1: rule__Char__Group__1 : rule__Char__Group__1__Impl ;
+    // InternalResolutionModelParser.g:6845:1: rule__Char__Group__1 : rule__Char__Group__1__Impl ;
     public final void rule__Char__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:6791:1: ( rule__Char__Group__1__Impl )
-            // InternalResolutionModelParser.g:6792:2: rule__Char__Group__1__Impl
+            // InternalResolutionModelParser.g:6849:1: ( rule__Char__Group__1__Impl )
+            // InternalResolutionModelParser.g:6850:2: rule__Char__Group__1__Impl
             {
             pushFollow(FOLLOW_2);
             rule__Char__Group__1__Impl();
@@ -20218,17 +20410,17 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__Char__Group__1__Impl"
-    // InternalResolutionModelParser.g:6798:1: rule__Char__Group__1__Impl : ( Char ) ;
+    // InternalResolutionModelParser.g:6856:1: rule__Char__Group__1__Impl : ( Char ) ;
     public final void rule__Char__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:6802:1: ( ( Char ) )
-            // InternalResolutionModelParser.g:6803:1: ( Char )
+            // InternalResolutionModelParser.g:6860:1: ( ( Char ) )
+            // InternalResolutionModelParser.g:6861:1: ( Char )
             {
-            // InternalResolutionModelParser.g:6803:1: ( Char )
-            // InternalResolutionModelParser.g:6804:2: Char
+            // InternalResolutionModelParser.g:6861:1: ( Char )
+            // InternalResolutionModelParser.g:6862:2: Char
             {
              before(grammarAccess.getCharAccess().getCharKeyword_1()); 
             match(input,Char,FOLLOW_2); 
@@ -20255,16 +20447,16 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__Byte__Group__0"
-    // InternalResolutionModelParser.g:6814:1: rule__Byte__Group__0 : rule__Byte__Group__0__Impl rule__Byte__Group__1 ;
+    // InternalResolutionModelParser.g:6872:1: rule__Byte__Group__0 : rule__Byte__Group__0__Impl rule__Byte__Group__1 ;
     public final void rule__Byte__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:6818:1: ( rule__Byte__Group__0__Impl rule__Byte__Group__1 )
-            // InternalResolutionModelParser.g:6819:2: rule__Byte__Group__0__Impl rule__Byte__Group__1
+            // InternalResolutionModelParser.g:6876:1: ( rule__Byte__Group__0__Impl rule__Byte__Group__1 )
+            // InternalResolutionModelParser.g:6877:2: rule__Byte__Group__0__Impl rule__Byte__Group__1
             {
-            pushFollow(FOLLOW_62);
+            pushFollow(FOLLOW_63);
             rule__Byte__Group__0__Impl();
 
             state._fsp--;
@@ -20293,21 +20485,21 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__Byte__Group__0__Impl"
-    // InternalResolutionModelParser.g:6826:1: rule__Byte__Group__0__Impl : ( () ) ;
+    // InternalResolutionModelParser.g:6884:1: rule__Byte__Group__0__Impl : ( () ) ;
     public final void rule__Byte__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:6830:1: ( ( () ) )
-            // InternalResolutionModelParser.g:6831:1: ( () )
+            // InternalResolutionModelParser.g:6888:1: ( ( () ) )
+            // InternalResolutionModelParser.g:6889:1: ( () )
             {
-            // InternalResolutionModelParser.g:6831:1: ( () )
-            // InternalResolutionModelParser.g:6832:2: ()
+            // InternalResolutionModelParser.g:6889:1: ( () )
+            // InternalResolutionModelParser.g:6890:2: ()
             {
              before(grammarAccess.getByteAccess().getByteAction_0()); 
-            // InternalResolutionModelParser.g:6833:2: ()
-            // InternalResolutionModelParser.g:6833:3: 
+            // InternalResolutionModelParser.g:6891:2: ()
+            // InternalResolutionModelParser.g:6891:3: 
             {
             }
 
@@ -20330,14 +20522,14 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__Byte__Group__1"
-    // InternalResolutionModelParser.g:6841:1: rule__Byte__Group__1 : rule__Byte__Group__1__Impl ;
+    // InternalResolutionModelParser.g:6899:1: rule__Byte__Group__1 : rule__Byte__Group__1__Impl ;
     public final void rule__Byte__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:6845:1: ( rule__Byte__Group__1__Impl )
-            // InternalResolutionModelParser.g:6846:2: rule__Byte__Group__1__Impl
+            // InternalResolutionModelParser.g:6903:1: ( rule__Byte__Group__1__Impl )
+            // InternalResolutionModelParser.g:6904:2: rule__Byte__Group__1__Impl
             {
             pushFollow(FOLLOW_2);
             rule__Byte__Group__1__Impl();
@@ -20363,17 +20555,17 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__Byte__Group__1__Impl"
-    // InternalResolutionModelParser.g:6852:1: rule__Byte__Group__1__Impl : ( Byte ) ;
+    // InternalResolutionModelParser.g:6910:1: rule__Byte__Group__1__Impl : ( Byte ) ;
     public final void rule__Byte__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:6856:1: ( ( Byte ) )
-            // InternalResolutionModelParser.g:6857:1: ( Byte )
+            // InternalResolutionModelParser.g:6914:1: ( ( Byte ) )
+            // InternalResolutionModelParser.g:6915:1: ( Byte )
             {
-            // InternalResolutionModelParser.g:6857:1: ( Byte )
-            // InternalResolutionModelParser.g:6858:2: Byte
+            // InternalResolutionModelParser.g:6915:1: ( Byte )
+            // InternalResolutionModelParser.g:6916:2: Byte
             {
              before(grammarAccess.getByteAccess().getByteKeyword_1()); 
             match(input,Byte,FOLLOW_2); 
@@ -20400,16 +20592,16 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__Time__Group__0"
-    // InternalResolutionModelParser.g:6868:1: rule__Time__Group__0 : rule__Time__Group__0__Impl rule__Time__Group__1 ;
+    // InternalResolutionModelParser.g:6926:1: rule__Time__Group__0 : rule__Time__Group__0__Impl rule__Time__Group__1 ;
     public final void rule__Time__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:6872:1: ( rule__Time__Group__0__Impl rule__Time__Group__1 )
-            // InternalResolutionModelParser.g:6873:2: rule__Time__Group__0__Impl rule__Time__Group__1
+            // InternalResolutionModelParser.g:6930:1: ( rule__Time__Group__0__Impl rule__Time__Group__1 )
+            // InternalResolutionModelParser.g:6931:2: rule__Time__Group__0__Impl rule__Time__Group__1
             {
-            pushFollow(FOLLOW_63);
+            pushFollow(FOLLOW_64);
             rule__Time__Group__0__Impl();
 
             state._fsp--;
@@ -20438,21 +20630,21 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__Time__Group__0__Impl"
-    // InternalResolutionModelParser.g:6880:1: rule__Time__Group__0__Impl : ( () ) ;
+    // InternalResolutionModelParser.g:6938:1: rule__Time__Group__0__Impl : ( () ) ;
     public final void rule__Time__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:6884:1: ( ( () ) )
-            // InternalResolutionModelParser.g:6885:1: ( () )
+            // InternalResolutionModelParser.g:6942:1: ( ( () ) )
+            // InternalResolutionModelParser.g:6943:1: ( () )
             {
-            // InternalResolutionModelParser.g:6885:1: ( () )
-            // InternalResolutionModelParser.g:6886:2: ()
+            // InternalResolutionModelParser.g:6943:1: ( () )
+            // InternalResolutionModelParser.g:6944:2: ()
             {
              before(grammarAccess.getTimeAccess().getTimeAction_0()); 
-            // InternalResolutionModelParser.g:6887:2: ()
-            // InternalResolutionModelParser.g:6887:3: 
+            // InternalResolutionModelParser.g:6945:2: ()
+            // InternalResolutionModelParser.g:6945:3: 
             {
             }
 
@@ -20475,14 +20667,14 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__Time__Group__1"
-    // InternalResolutionModelParser.g:6895:1: rule__Time__Group__1 : rule__Time__Group__1__Impl ;
+    // InternalResolutionModelParser.g:6953:1: rule__Time__Group__1 : rule__Time__Group__1__Impl ;
     public final void rule__Time__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:6899:1: ( rule__Time__Group__1__Impl )
-            // InternalResolutionModelParser.g:6900:2: rule__Time__Group__1__Impl
+            // InternalResolutionModelParser.g:6957:1: ( rule__Time__Group__1__Impl )
+            // InternalResolutionModelParser.g:6958:2: rule__Time__Group__1__Impl
             {
             pushFollow(FOLLOW_2);
             rule__Time__Group__1__Impl();
@@ -20508,17 +20700,17 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__Time__Group__1__Impl"
-    // InternalResolutionModelParser.g:6906:1: rule__Time__Group__1__Impl : ( Time ) ;
+    // InternalResolutionModelParser.g:6964:1: rule__Time__Group__1__Impl : ( Time ) ;
     public final void rule__Time__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:6910:1: ( ( Time ) )
-            // InternalResolutionModelParser.g:6911:1: ( Time )
+            // InternalResolutionModelParser.g:6968:1: ( ( Time ) )
+            // InternalResolutionModelParser.g:6969:1: ( Time )
             {
-            // InternalResolutionModelParser.g:6911:1: ( Time )
-            // InternalResolutionModelParser.g:6912:2: Time
+            // InternalResolutionModelParser.g:6969:1: ( Time )
+            // InternalResolutionModelParser.g:6970:2: Time
             {
              before(grammarAccess.getTimeAccess().getTimeKeyword_1()); 
             match(input,Time,FOLLOW_2); 
@@ -20545,16 +20737,16 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__Duration__Group__0"
-    // InternalResolutionModelParser.g:6922:1: rule__Duration__Group__0 : rule__Duration__Group__0__Impl rule__Duration__Group__1 ;
+    // InternalResolutionModelParser.g:6980:1: rule__Duration__Group__0 : rule__Duration__Group__0__Impl rule__Duration__Group__1 ;
     public final void rule__Duration__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:6926:1: ( rule__Duration__Group__0__Impl rule__Duration__Group__1 )
-            // InternalResolutionModelParser.g:6927:2: rule__Duration__Group__0__Impl rule__Duration__Group__1
+            // InternalResolutionModelParser.g:6984:1: ( rule__Duration__Group__0__Impl rule__Duration__Group__1 )
+            // InternalResolutionModelParser.g:6985:2: rule__Duration__Group__0__Impl rule__Duration__Group__1
             {
-            pushFollow(FOLLOW_64);
+            pushFollow(FOLLOW_65);
             rule__Duration__Group__0__Impl();
 
             state._fsp--;
@@ -20583,21 +20775,21 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__Duration__Group__0__Impl"
-    // InternalResolutionModelParser.g:6934:1: rule__Duration__Group__0__Impl : ( () ) ;
+    // InternalResolutionModelParser.g:6992:1: rule__Duration__Group__0__Impl : ( () ) ;
     public final void rule__Duration__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:6938:1: ( ( () ) )
-            // InternalResolutionModelParser.g:6939:1: ( () )
+            // InternalResolutionModelParser.g:6996:1: ( ( () ) )
+            // InternalResolutionModelParser.g:6997:1: ( () )
             {
-            // InternalResolutionModelParser.g:6939:1: ( () )
-            // InternalResolutionModelParser.g:6940:2: ()
+            // InternalResolutionModelParser.g:6997:1: ( () )
+            // InternalResolutionModelParser.g:6998:2: ()
             {
              before(grammarAccess.getDurationAccess().getDurationAction_0()); 
-            // InternalResolutionModelParser.g:6941:2: ()
-            // InternalResolutionModelParser.g:6941:3: 
+            // InternalResolutionModelParser.g:6999:2: ()
+            // InternalResolutionModelParser.g:6999:3: 
             {
             }
 
@@ -20620,14 +20812,14 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__Duration__Group__1"
-    // InternalResolutionModelParser.g:6949:1: rule__Duration__Group__1 : rule__Duration__Group__1__Impl ;
+    // InternalResolutionModelParser.g:7007:1: rule__Duration__Group__1 : rule__Duration__Group__1__Impl ;
     public final void rule__Duration__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:6953:1: ( rule__Duration__Group__1__Impl )
-            // InternalResolutionModelParser.g:6954:2: rule__Duration__Group__1__Impl
+            // InternalResolutionModelParser.g:7011:1: ( rule__Duration__Group__1__Impl )
+            // InternalResolutionModelParser.g:7012:2: rule__Duration__Group__1__Impl
             {
             pushFollow(FOLLOW_2);
             rule__Duration__Group__1__Impl();
@@ -20653,17 +20845,17 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__Duration__Group__1__Impl"
-    // InternalResolutionModelParser.g:6960:1: rule__Duration__Group__1__Impl : ( Duration ) ;
+    // InternalResolutionModelParser.g:7018:1: rule__Duration__Group__1__Impl : ( Duration ) ;
     public final void rule__Duration__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:6964:1: ( ( Duration ) )
-            // InternalResolutionModelParser.g:6965:1: ( Duration )
+            // InternalResolutionModelParser.g:7022:1: ( ( Duration ) )
+            // InternalResolutionModelParser.g:7023:1: ( Duration )
             {
-            // InternalResolutionModelParser.g:6965:1: ( Duration )
-            // InternalResolutionModelParser.g:6966:2: Duration
+            // InternalResolutionModelParser.g:7023:1: ( Duration )
+            // InternalResolutionModelParser.g:7024:2: Duration
             {
              before(grammarAccess.getDurationAccess().getDurationKeyword_1()); 
             match(input,Duration,FOLLOW_2); 
@@ -20690,16 +20882,16 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__BoolArray__Group__0"
-    // InternalResolutionModelParser.g:6976:1: rule__BoolArray__Group__0 : rule__BoolArray__Group__0__Impl rule__BoolArray__Group__1 ;
+    // InternalResolutionModelParser.g:7034:1: rule__BoolArray__Group__0 : rule__BoolArray__Group__0__Impl rule__BoolArray__Group__1 ;
     public final void rule__BoolArray__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:6980:1: ( rule__BoolArray__Group__0__Impl rule__BoolArray__Group__1 )
-            // InternalResolutionModelParser.g:6981:2: rule__BoolArray__Group__0__Impl rule__BoolArray__Group__1
+            // InternalResolutionModelParser.g:7038:1: ( rule__BoolArray__Group__0__Impl rule__BoolArray__Group__1 )
+            // InternalResolutionModelParser.g:7039:2: rule__BoolArray__Group__0__Impl rule__BoolArray__Group__1
             {
-            pushFollow(FOLLOW_65);
+            pushFollow(FOLLOW_66);
             rule__BoolArray__Group__0__Impl();
 
             state._fsp--;
@@ -20728,21 +20920,21 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__BoolArray__Group__0__Impl"
-    // InternalResolutionModelParser.g:6988:1: rule__BoolArray__Group__0__Impl : ( () ) ;
+    // InternalResolutionModelParser.g:7046:1: rule__BoolArray__Group__0__Impl : ( () ) ;
     public final void rule__BoolArray__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:6992:1: ( ( () ) )
-            // InternalResolutionModelParser.g:6993:1: ( () )
+            // InternalResolutionModelParser.g:7050:1: ( ( () ) )
+            // InternalResolutionModelParser.g:7051:1: ( () )
             {
-            // InternalResolutionModelParser.g:6993:1: ( () )
-            // InternalResolutionModelParser.g:6994:2: ()
+            // InternalResolutionModelParser.g:7051:1: ( () )
+            // InternalResolutionModelParser.g:7052:2: ()
             {
              before(grammarAccess.getBoolArrayAccess().getBoolArrayAction_0()); 
-            // InternalResolutionModelParser.g:6995:2: ()
-            // InternalResolutionModelParser.g:6995:3: 
+            // InternalResolutionModelParser.g:7053:2: ()
+            // InternalResolutionModelParser.g:7053:3: 
             {
             }
 
@@ -20765,14 +20957,14 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__BoolArray__Group__1"
-    // InternalResolutionModelParser.g:7003:1: rule__BoolArray__Group__1 : rule__BoolArray__Group__1__Impl ;
+    // InternalResolutionModelParser.g:7061:1: rule__BoolArray__Group__1 : rule__BoolArray__Group__1__Impl ;
     public final void rule__BoolArray__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:7007:1: ( rule__BoolArray__Group__1__Impl )
-            // InternalResolutionModelParser.g:7008:2: rule__BoolArray__Group__1__Impl
+            // InternalResolutionModelParser.g:7065:1: ( rule__BoolArray__Group__1__Impl )
+            // InternalResolutionModelParser.g:7066:2: rule__BoolArray__Group__1__Impl
             {
             pushFollow(FOLLOW_2);
             rule__BoolArray__Group__1__Impl();
@@ -20798,17 +20990,17 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__BoolArray__Group__1__Impl"
-    // InternalResolutionModelParser.g:7014:1: rule__BoolArray__Group__1__Impl : ( Bool_1 ) ;
+    // InternalResolutionModelParser.g:7072:1: rule__BoolArray__Group__1__Impl : ( Bool_1 ) ;
     public final void rule__BoolArray__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:7018:1: ( ( Bool_1 ) )
-            // InternalResolutionModelParser.g:7019:1: ( Bool_1 )
+            // InternalResolutionModelParser.g:7076:1: ( ( Bool_1 ) )
+            // InternalResolutionModelParser.g:7077:1: ( Bool_1 )
             {
-            // InternalResolutionModelParser.g:7019:1: ( Bool_1 )
-            // InternalResolutionModelParser.g:7020:2: Bool_1
+            // InternalResolutionModelParser.g:7077:1: ( Bool_1 )
+            // InternalResolutionModelParser.g:7078:2: Bool_1
             {
              before(grammarAccess.getBoolArrayAccess().getBoolKeyword_1()); 
             match(input,Bool_1,FOLLOW_2); 
@@ -20835,16 +21027,16 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__Int8Array__Group__0"
-    // InternalResolutionModelParser.g:7030:1: rule__Int8Array__Group__0 : rule__Int8Array__Group__0__Impl rule__Int8Array__Group__1 ;
+    // InternalResolutionModelParser.g:7088:1: rule__Int8Array__Group__0 : rule__Int8Array__Group__0__Impl rule__Int8Array__Group__1 ;
     public final void rule__Int8Array__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:7034:1: ( rule__Int8Array__Group__0__Impl rule__Int8Array__Group__1 )
-            // InternalResolutionModelParser.g:7035:2: rule__Int8Array__Group__0__Impl rule__Int8Array__Group__1
+            // InternalResolutionModelParser.g:7092:1: ( rule__Int8Array__Group__0__Impl rule__Int8Array__Group__1 )
+            // InternalResolutionModelParser.g:7093:2: rule__Int8Array__Group__0__Impl rule__Int8Array__Group__1
             {
-            pushFollow(FOLLOW_66);
+            pushFollow(FOLLOW_67);
             rule__Int8Array__Group__0__Impl();
 
             state._fsp--;
@@ -20873,21 +21065,21 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__Int8Array__Group__0__Impl"
-    // InternalResolutionModelParser.g:7042:1: rule__Int8Array__Group__0__Impl : ( () ) ;
+    // InternalResolutionModelParser.g:7100:1: rule__Int8Array__Group__0__Impl : ( () ) ;
     public final void rule__Int8Array__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:7046:1: ( ( () ) )
-            // InternalResolutionModelParser.g:7047:1: ( () )
+            // InternalResolutionModelParser.g:7104:1: ( ( () ) )
+            // InternalResolutionModelParser.g:7105:1: ( () )
             {
-            // InternalResolutionModelParser.g:7047:1: ( () )
-            // InternalResolutionModelParser.g:7048:2: ()
+            // InternalResolutionModelParser.g:7105:1: ( () )
+            // InternalResolutionModelParser.g:7106:2: ()
             {
              before(grammarAccess.getInt8ArrayAccess().getInt8ArrayAction_0()); 
-            // InternalResolutionModelParser.g:7049:2: ()
-            // InternalResolutionModelParser.g:7049:3: 
+            // InternalResolutionModelParser.g:7107:2: ()
+            // InternalResolutionModelParser.g:7107:3: 
             {
             }
 
@@ -20910,14 +21102,14 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__Int8Array__Group__1"
-    // InternalResolutionModelParser.g:7057:1: rule__Int8Array__Group__1 : rule__Int8Array__Group__1__Impl ;
+    // InternalResolutionModelParser.g:7115:1: rule__Int8Array__Group__1 : rule__Int8Array__Group__1__Impl ;
     public final void rule__Int8Array__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:7061:1: ( rule__Int8Array__Group__1__Impl )
-            // InternalResolutionModelParser.g:7062:2: rule__Int8Array__Group__1__Impl
+            // InternalResolutionModelParser.g:7119:1: ( rule__Int8Array__Group__1__Impl )
+            // InternalResolutionModelParser.g:7120:2: rule__Int8Array__Group__1__Impl
             {
             pushFollow(FOLLOW_2);
             rule__Int8Array__Group__1__Impl();
@@ -20943,17 +21135,17 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__Int8Array__Group__1__Impl"
-    // InternalResolutionModelParser.g:7068:1: rule__Int8Array__Group__1__Impl : ( Int8_1 ) ;
+    // InternalResolutionModelParser.g:7126:1: rule__Int8Array__Group__1__Impl : ( Int8_1 ) ;
     public final void rule__Int8Array__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:7072:1: ( ( Int8_1 ) )
-            // InternalResolutionModelParser.g:7073:1: ( Int8_1 )
+            // InternalResolutionModelParser.g:7130:1: ( ( Int8_1 ) )
+            // InternalResolutionModelParser.g:7131:1: ( Int8_1 )
             {
-            // InternalResolutionModelParser.g:7073:1: ( Int8_1 )
-            // InternalResolutionModelParser.g:7074:2: Int8_1
+            // InternalResolutionModelParser.g:7131:1: ( Int8_1 )
+            // InternalResolutionModelParser.g:7132:2: Int8_1
             {
              before(grammarAccess.getInt8ArrayAccess().getInt8Keyword_1()); 
             match(input,Int8_1,FOLLOW_2); 
@@ -20980,16 +21172,16 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__Uint8Array__Group__0"
-    // InternalResolutionModelParser.g:7084:1: rule__Uint8Array__Group__0 : rule__Uint8Array__Group__0__Impl rule__Uint8Array__Group__1 ;
+    // InternalResolutionModelParser.g:7142:1: rule__Uint8Array__Group__0 : rule__Uint8Array__Group__0__Impl rule__Uint8Array__Group__1 ;
     public final void rule__Uint8Array__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:7088:1: ( rule__Uint8Array__Group__0__Impl rule__Uint8Array__Group__1 )
-            // InternalResolutionModelParser.g:7089:2: rule__Uint8Array__Group__0__Impl rule__Uint8Array__Group__1
+            // InternalResolutionModelParser.g:7146:1: ( rule__Uint8Array__Group__0__Impl rule__Uint8Array__Group__1 )
+            // InternalResolutionModelParser.g:7147:2: rule__Uint8Array__Group__0__Impl rule__Uint8Array__Group__1
             {
-            pushFollow(FOLLOW_67);
+            pushFollow(FOLLOW_68);
             rule__Uint8Array__Group__0__Impl();
 
             state._fsp--;
@@ -21018,21 +21210,21 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__Uint8Array__Group__0__Impl"
-    // InternalResolutionModelParser.g:7096:1: rule__Uint8Array__Group__0__Impl : ( () ) ;
+    // InternalResolutionModelParser.g:7154:1: rule__Uint8Array__Group__0__Impl : ( () ) ;
     public final void rule__Uint8Array__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:7100:1: ( ( () ) )
-            // InternalResolutionModelParser.g:7101:1: ( () )
+            // InternalResolutionModelParser.g:7158:1: ( ( () ) )
+            // InternalResolutionModelParser.g:7159:1: ( () )
             {
-            // InternalResolutionModelParser.g:7101:1: ( () )
-            // InternalResolutionModelParser.g:7102:2: ()
+            // InternalResolutionModelParser.g:7159:1: ( () )
+            // InternalResolutionModelParser.g:7160:2: ()
             {
              before(grammarAccess.getUint8ArrayAccess().getUint8ArrayAction_0()); 
-            // InternalResolutionModelParser.g:7103:2: ()
-            // InternalResolutionModelParser.g:7103:3: 
+            // InternalResolutionModelParser.g:7161:2: ()
+            // InternalResolutionModelParser.g:7161:3: 
             {
             }
 
@@ -21055,14 +21247,14 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__Uint8Array__Group__1"
-    // InternalResolutionModelParser.g:7111:1: rule__Uint8Array__Group__1 : rule__Uint8Array__Group__1__Impl ;
+    // InternalResolutionModelParser.g:7169:1: rule__Uint8Array__Group__1 : rule__Uint8Array__Group__1__Impl ;
     public final void rule__Uint8Array__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:7115:1: ( rule__Uint8Array__Group__1__Impl )
-            // InternalResolutionModelParser.g:7116:2: rule__Uint8Array__Group__1__Impl
+            // InternalResolutionModelParser.g:7173:1: ( rule__Uint8Array__Group__1__Impl )
+            // InternalResolutionModelParser.g:7174:2: rule__Uint8Array__Group__1__Impl
             {
             pushFollow(FOLLOW_2);
             rule__Uint8Array__Group__1__Impl();
@@ -21088,17 +21280,17 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__Uint8Array__Group__1__Impl"
-    // InternalResolutionModelParser.g:7122:1: rule__Uint8Array__Group__1__Impl : ( Uint8_1 ) ;
+    // InternalResolutionModelParser.g:7180:1: rule__Uint8Array__Group__1__Impl : ( Uint8_1 ) ;
     public final void rule__Uint8Array__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:7126:1: ( ( Uint8_1 ) )
-            // InternalResolutionModelParser.g:7127:1: ( Uint8_1 )
+            // InternalResolutionModelParser.g:7184:1: ( ( Uint8_1 ) )
+            // InternalResolutionModelParser.g:7185:1: ( Uint8_1 )
             {
-            // InternalResolutionModelParser.g:7127:1: ( Uint8_1 )
-            // InternalResolutionModelParser.g:7128:2: Uint8_1
+            // InternalResolutionModelParser.g:7185:1: ( Uint8_1 )
+            // InternalResolutionModelParser.g:7186:2: Uint8_1
             {
              before(grammarAccess.getUint8ArrayAccess().getUint8Keyword_1()); 
             match(input,Uint8_1,FOLLOW_2); 
@@ -21125,16 +21317,16 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__Int16Array__Group__0"
-    // InternalResolutionModelParser.g:7138:1: rule__Int16Array__Group__0 : rule__Int16Array__Group__0__Impl rule__Int16Array__Group__1 ;
+    // InternalResolutionModelParser.g:7196:1: rule__Int16Array__Group__0 : rule__Int16Array__Group__0__Impl rule__Int16Array__Group__1 ;
     public final void rule__Int16Array__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:7142:1: ( rule__Int16Array__Group__0__Impl rule__Int16Array__Group__1 )
-            // InternalResolutionModelParser.g:7143:2: rule__Int16Array__Group__0__Impl rule__Int16Array__Group__1
+            // InternalResolutionModelParser.g:7200:1: ( rule__Int16Array__Group__0__Impl rule__Int16Array__Group__1 )
+            // InternalResolutionModelParser.g:7201:2: rule__Int16Array__Group__0__Impl rule__Int16Array__Group__1
             {
-            pushFollow(FOLLOW_68);
+            pushFollow(FOLLOW_69);
             rule__Int16Array__Group__0__Impl();
 
             state._fsp--;
@@ -21163,21 +21355,21 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__Int16Array__Group__0__Impl"
-    // InternalResolutionModelParser.g:7150:1: rule__Int16Array__Group__0__Impl : ( () ) ;
+    // InternalResolutionModelParser.g:7208:1: rule__Int16Array__Group__0__Impl : ( () ) ;
     public final void rule__Int16Array__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:7154:1: ( ( () ) )
-            // InternalResolutionModelParser.g:7155:1: ( () )
+            // InternalResolutionModelParser.g:7212:1: ( ( () ) )
+            // InternalResolutionModelParser.g:7213:1: ( () )
             {
-            // InternalResolutionModelParser.g:7155:1: ( () )
-            // InternalResolutionModelParser.g:7156:2: ()
+            // InternalResolutionModelParser.g:7213:1: ( () )
+            // InternalResolutionModelParser.g:7214:2: ()
             {
              before(grammarAccess.getInt16ArrayAccess().getInt16ArrayAction_0()); 
-            // InternalResolutionModelParser.g:7157:2: ()
-            // InternalResolutionModelParser.g:7157:3: 
+            // InternalResolutionModelParser.g:7215:2: ()
+            // InternalResolutionModelParser.g:7215:3: 
             {
             }
 
@@ -21200,14 +21392,14 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__Int16Array__Group__1"
-    // InternalResolutionModelParser.g:7165:1: rule__Int16Array__Group__1 : rule__Int16Array__Group__1__Impl ;
+    // InternalResolutionModelParser.g:7223:1: rule__Int16Array__Group__1 : rule__Int16Array__Group__1__Impl ;
     public final void rule__Int16Array__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:7169:1: ( rule__Int16Array__Group__1__Impl )
-            // InternalResolutionModelParser.g:7170:2: rule__Int16Array__Group__1__Impl
+            // InternalResolutionModelParser.g:7227:1: ( rule__Int16Array__Group__1__Impl )
+            // InternalResolutionModelParser.g:7228:2: rule__Int16Array__Group__1__Impl
             {
             pushFollow(FOLLOW_2);
             rule__Int16Array__Group__1__Impl();
@@ -21233,17 +21425,17 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__Int16Array__Group__1__Impl"
-    // InternalResolutionModelParser.g:7176:1: rule__Int16Array__Group__1__Impl : ( Int16_1 ) ;
+    // InternalResolutionModelParser.g:7234:1: rule__Int16Array__Group__1__Impl : ( Int16_1 ) ;
     public final void rule__Int16Array__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:7180:1: ( ( Int16_1 ) )
-            // InternalResolutionModelParser.g:7181:1: ( Int16_1 )
+            // InternalResolutionModelParser.g:7238:1: ( ( Int16_1 ) )
+            // InternalResolutionModelParser.g:7239:1: ( Int16_1 )
             {
-            // InternalResolutionModelParser.g:7181:1: ( Int16_1 )
-            // InternalResolutionModelParser.g:7182:2: Int16_1
+            // InternalResolutionModelParser.g:7239:1: ( Int16_1 )
+            // InternalResolutionModelParser.g:7240:2: Int16_1
             {
              before(grammarAccess.getInt16ArrayAccess().getInt16Keyword_1()); 
             match(input,Int16_1,FOLLOW_2); 
@@ -21270,16 +21462,16 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__Uint16Array__Group__0"
-    // InternalResolutionModelParser.g:7192:1: rule__Uint16Array__Group__0 : rule__Uint16Array__Group__0__Impl rule__Uint16Array__Group__1 ;
+    // InternalResolutionModelParser.g:7250:1: rule__Uint16Array__Group__0 : rule__Uint16Array__Group__0__Impl rule__Uint16Array__Group__1 ;
     public final void rule__Uint16Array__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:7196:1: ( rule__Uint16Array__Group__0__Impl rule__Uint16Array__Group__1 )
-            // InternalResolutionModelParser.g:7197:2: rule__Uint16Array__Group__0__Impl rule__Uint16Array__Group__1
+            // InternalResolutionModelParser.g:7254:1: ( rule__Uint16Array__Group__0__Impl rule__Uint16Array__Group__1 )
+            // InternalResolutionModelParser.g:7255:2: rule__Uint16Array__Group__0__Impl rule__Uint16Array__Group__1
             {
-            pushFollow(FOLLOW_69);
+            pushFollow(FOLLOW_70);
             rule__Uint16Array__Group__0__Impl();
 
             state._fsp--;
@@ -21308,21 +21500,21 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__Uint16Array__Group__0__Impl"
-    // InternalResolutionModelParser.g:7204:1: rule__Uint16Array__Group__0__Impl : ( () ) ;
+    // InternalResolutionModelParser.g:7262:1: rule__Uint16Array__Group__0__Impl : ( () ) ;
     public final void rule__Uint16Array__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:7208:1: ( ( () ) )
-            // InternalResolutionModelParser.g:7209:1: ( () )
+            // InternalResolutionModelParser.g:7266:1: ( ( () ) )
+            // InternalResolutionModelParser.g:7267:1: ( () )
             {
-            // InternalResolutionModelParser.g:7209:1: ( () )
-            // InternalResolutionModelParser.g:7210:2: ()
+            // InternalResolutionModelParser.g:7267:1: ( () )
+            // InternalResolutionModelParser.g:7268:2: ()
             {
              before(grammarAccess.getUint16ArrayAccess().getUint16ArrayAction_0()); 
-            // InternalResolutionModelParser.g:7211:2: ()
-            // InternalResolutionModelParser.g:7211:3: 
+            // InternalResolutionModelParser.g:7269:2: ()
+            // InternalResolutionModelParser.g:7269:3: 
             {
             }
 
@@ -21345,14 +21537,14 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__Uint16Array__Group__1"
-    // InternalResolutionModelParser.g:7219:1: rule__Uint16Array__Group__1 : rule__Uint16Array__Group__1__Impl ;
+    // InternalResolutionModelParser.g:7277:1: rule__Uint16Array__Group__1 : rule__Uint16Array__Group__1__Impl ;
     public final void rule__Uint16Array__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:7223:1: ( rule__Uint16Array__Group__1__Impl )
-            // InternalResolutionModelParser.g:7224:2: rule__Uint16Array__Group__1__Impl
+            // InternalResolutionModelParser.g:7281:1: ( rule__Uint16Array__Group__1__Impl )
+            // InternalResolutionModelParser.g:7282:2: rule__Uint16Array__Group__1__Impl
             {
             pushFollow(FOLLOW_2);
             rule__Uint16Array__Group__1__Impl();
@@ -21378,17 +21570,17 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__Uint16Array__Group__1__Impl"
-    // InternalResolutionModelParser.g:7230:1: rule__Uint16Array__Group__1__Impl : ( Uint16_1 ) ;
+    // InternalResolutionModelParser.g:7288:1: rule__Uint16Array__Group__1__Impl : ( Uint16_1 ) ;
     public final void rule__Uint16Array__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:7234:1: ( ( Uint16_1 ) )
-            // InternalResolutionModelParser.g:7235:1: ( Uint16_1 )
+            // InternalResolutionModelParser.g:7292:1: ( ( Uint16_1 ) )
+            // InternalResolutionModelParser.g:7293:1: ( Uint16_1 )
             {
-            // InternalResolutionModelParser.g:7235:1: ( Uint16_1 )
-            // InternalResolutionModelParser.g:7236:2: Uint16_1
+            // InternalResolutionModelParser.g:7293:1: ( Uint16_1 )
+            // InternalResolutionModelParser.g:7294:2: Uint16_1
             {
              before(grammarAccess.getUint16ArrayAccess().getUint16Keyword_1()); 
             match(input,Uint16_1,FOLLOW_2); 
@@ -21415,16 +21607,16 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__Int32Array__Group__0"
-    // InternalResolutionModelParser.g:7246:1: rule__Int32Array__Group__0 : rule__Int32Array__Group__0__Impl rule__Int32Array__Group__1 ;
+    // InternalResolutionModelParser.g:7304:1: rule__Int32Array__Group__0 : rule__Int32Array__Group__0__Impl rule__Int32Array__Group__1 ;
     public final void rule__Int32Array__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:7250:1: ( rule__Int32Array__Group__0__Impl rule__Int32Array__Group__1 )
-            // InternalResolutionModelParser.g:7251:2: rule__Int32Array__Group__0__Impl rule__Int32Array__Group__1
+            // InternalResolutionModelParser.g:7308:1: ( rule__Int32Array__Group__0__Impl rule__Int32Array__Group__1 )
+            // InternalResolutionModelParser.g:7309:2: rule__Int32Array__Group__0__Impl rule__Int32Array__Group__1
             {
-            pushFollow(FOLLOW_70);
+            pushFollow(FOLLOW_71);
             rule__Int32Array__Group__0__Impl();
 
             state._fsp--;
@@ -21453,21 +21645,21 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__Int32Array__Group__0__Impl"
-    // InternalResolutionModelParser.g:7258:1: rule__Int32Array__Group__0__Impl : ( () ) ;
+    // InternalResolutionModelParser.g:7316:1: rule__Int32Array__Group__0__Impl : ( () ) ;
     public final void rule__Int32Array__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:7262:1: ( ( () ) )
-            // InternalResolutionModelParser.g:7263:1: ( () )
+            // InternalResolutionModelParser.g:7320:1: ( ( () ) )
+            // InternalResolutionModelParser.g:7321:1: ( () )
             {
-            // InternalResolutionModelParser.g:7263:1: ( () )
-            // InternalResolutionModelParser.g:7264:2: ()
+            // InternalResolutionModelParser.g:7321:1: ( () )
+            // InternalResolutionModelParser.g:7322:2: ()
             {
              before(grammarAccess.getInt32ArrayAccess().getInt32ArrayAction_0()); 
-            // InternalResolutionModelParser.g:7265:2: ()
-            // InternalResolutionModelParser.g:7265:3: 
+            // InternalResolutionModelParser.g:7323:2: ()
+            // InternalResolutionModelParser.g:7323:3: 
             {
             }
 
@@ -21490,14 +21682,14 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__Int32Array__Group__1"
-    // InternalResolutionModelParser.g:7273:1: rule__Int32Array__Group__1 : rule__Int32Array__Group__1__Impl ;
+    // InternalResolutionModelParser.g:7331:1: rule__Int32Array__Group__1 : rule__Int32Array__Group__1__Impl ;
     public final void rule__Int32Array__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:7277:1: ( rule__Int32Array__Group__1__Impl )
-            // InternalResolutionModelParser.g:7278:2: rule__Int32Array__Group__1__Impl
+            // InternalResolutionModelParser.g:7335:1: ( rule__Int32Array__Group__1__Impl )
+            // InternalResolutionModelParser.g:7336:2: rule__Int32Array__Group__1__Impl
             {
             pushFollow(FOLLOW_2);
             rule__Int32Array__Group__1__Impl();
@@ -21523,17 +21715,17 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__Int32Array__Group__1__Impl"
-    // InternalResolutionModelParser.g:7284:1: rule__Int32Array__Group__1__Impl : ( Int32_1 ) ;
+    // InternalResolutionModelParser.g:7342:1: rule__Int32Array__Group__1__Impl : ( Int32_1 ) ;
     public final void rule__Int32Array__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:7288:1: ( ( Int32_1 ) )
-            // InternalResolutionModelParser.g:7289:1: ( Int32_1 )
+            // InternalResolutionModelParser.g:7346:1: ( ( Int32_1 ) )
+            // InternalResolutionModelParser.g:7347:1: ( Int32_1 )
             {
-            // InternalResolutionModelParser.g:7289:1: ( Int32_1 )
-            // InternalResolutionModelParser.g:7290:2: Int32_1
+            // InternalResolutionModelParser.g:7347:1: ( Int32_1 )
+            // InternalResolutionModelParser.g:7348:2: Int32_1
             {
              before(grammarAccess.getInt32ArrayAccess().getInt32Keyword_1()); 
             match(input,Int32_1,FOLLOW_2); 
@@ -21560,16 +21752,16 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__Uint32Array__Group__0"
-    // InternalResolutionModelParser.g:7300:1: rule__Uint32Array__Group__0 : rule__Uint32Array__Group__0__Impl rule__Uint32Array__Group__1 ;
+    // InternalResolutionModelParser.g:7358:1: rule__Uint32Array__Group__0 : rule__Uint32Array__Group__0__Impl rule__Uint32Array__Group__1 ;
     public final void rule__Uint32Array__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:7304:1: ( rule__Uint32Array__Group__0__Impl rule__Uint32Array__Group__1 )
-            // InternalResolutionModelParser.g:7305:2: rule__Uint32Array__Group__0__Impl rule__Uint32Array__Group__1
+            // InternalResolutionModelParser.g:7362:1: ( rule__Uint32Array__Group__0__Impl rule__Uint32Array__Group__1 )
+            // InternalResolutionModelParser.g:7363:2: rule__Uint32Array__Group__0__Impl rule__Uint32Array__Group__1
             {
-            pushFollow(FOLLOW_71);
+            pushFollow(FOLLOW_72);
             rule__Uint32Array__Group__0__Impl();
 
             state._fsp--;
@@ -21598,21 +21790,21 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__Uint32Array__Group__0__Impl"
-    // InternalResolutionModelParser.g:7312:1: rule__Uint32Array__Group__0__Impl : ( () ) ;
+    // InternalResolutionModelParser.g:7370:1: rule__Uint32Array__Group__0__Impl : ( () ) ;
     public final void rule__Uint32Array__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:7316:1: ( ( () ) )
-            // InternalResolutionModelParser.g:7317:1: ( () )
+            // InternalResolutionModelParser.g:7374:1: ( ( () ) )
+            // InternalResolutionModelParser.g:7375:1: ( () )
             {
-            // InternalResolutionModelParser.g:7317:1: ( () )
-            // InternalResolutionModelParser.g:7318:2: ()
+            // InternalResolutionModelParser.g:7375:1: ( () )
+            // InternalResolutionModelParser.g:7376:2: ()
             {
              before(grammarAccess.getUint32ArrayAccess().getUint32ArrayAction_0()); 
-            // InternalResolutionModelParser.g:7319:2: ()
-            // InternalResolutionModelParser.g:7319:3: 
+            // InternalResolutionModelParser.g:7377:2: ()
+            // InternalResolutionModelParser.g:7377:3: 
             {
             }
 
@@ -21635,14 +21827,14 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__Uint32Array__Group__1"
-    // InternalResolutionModelParser.g:7327:1: rule__Uint32Array__Group__1 : rule__Uint32Array__Group__1__Impl ;
+    // InternalResolutionModelParser.g:7385:1: rule__Uint32Array__Group__1 : rule__Uint32Array__Group__1__Impl ;
     public final void rule__Uint32Array__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:7331:1: ( rule__Uint32Array__Group__1__Impl )
-            // InternalResolutionModelParser.g:7332:2: rule__Uint32Array__Group__1__Impl
+            // InternalResolutionModelParser.g:7389:1: ( rule__Uint32Array__Group__1__Impl )
+            // InternalResolutionModelParser.g:7390:2: rule__Uint32Array__Group__1__Impl
             {
             pushFollow(FOLLOW_2);
             rule__Uint32Array__Group__1__Impl();
@@ -21668,17 +21860,17 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__Uint32Array__Group__1__Impl"
-    // InternalResolutionModelParser.g:7338:1: rule__Uint32Array__Group__1__Impl : ( Uint32_1 ) ;
+    // InternalResolutionModelParser.g:7396:1: rule__Uint32Array__Group__1__Impl : ( Uint32_1 ) ;
     public final void rule__Uint32Array__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:7342:1: ( ( Uint32_1 ) )
-            // InternalResolutionModelParser.g:7343:1: ( Uint32_1 )
+            // InternalResolutionModelParser.g:7400:1: ( ( Uint32_1 ) )
+            // InternalResolutionModelParser.g:7401:1: ( Uint32_1 )
             {
-            // InternalResolutionModelParser.g:7343:1: ( Uint32_1 )
-            // InternalResolutionModelParser.g:7344:2: Uint32_1
+            // InternalResolutionModelParser.g:7401:1: ( Uint32_1 )
+            // InternalResolutionModelParser.g:7402:2: Uint32_1
             {
              before(grammarAccess.getUint32ArrayAccess().getUint32Keyword_1()); 
             match(input,Uint32_1,FOLLOW_2); 
@@ -21705,16 +21897,16 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__Int64Array__Group__0"
-    // InternalResolutionModelParser.g:7354:1: rule__Int64Array__Group__0 : rule__Int64Array__Group__0__Impl rule__Int64Array__Group__1 ;
+    // InternalResolutionModelParser.g:7412:1: rule__Int64Array__Group__0 : rule__Int64Array__Group__0__Impl rule__Int64Array__Group__1 ;
     public final void rule__Int64Array__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:7358:1: ( rule__Int64Array__Group__0__Impl rule__Int64Array__Group__1 )
-            // InternalResolutionModelParser.g:7359:2: rule__Int64Array__Group__0__Impl rule__Int64Array__Group__1
+            // InternalResolutionModelParser.g:7416:1: ( rule__Int64Array__Group__0__Impl rule__Int64Array__Group__1 )
+            // InternalResolutionModelParser.g:7417:2: rule__Int64Array__Group__0__Impl rule__Int64Array__Group__1
             {
-            pushFollow(FOLLOW_72);
+            pushFollow(FOLLOW_73);
             rule__Int64Array__Group__0__Impl();
 
             state._fsp--;
@@ -21743,21 +21935,21 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__Int64Array__Group__0__Impl"
-    // InternalResolutionModelParser.g:7366:1: rule__Int64Array__Group__0__Impl : ( () ) ;
+    // InternalResolutionModelParser.g:7424:1: rule__Int64Array__Group__0__Impl : ( () ) ;
     public final void rule__Int64Array__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:7370:1: ( ( () ) )
-            // InternalResolutionModelParser.g:7371:1: ( () )
+            // InternalResolutionModelParser.g:7428:1: ( ( () ) )
+            // InternalResolutionModelParser.g:7429:1: ( () )
             {
-            // InternalResolutionModelParser.g:7371:1: ( () )
-            // InternalResolutionModelParser.g:7372:2: ()
+            // InternalResolutionModelParser.g:7429:1: ( () )
+            // InternalResolutionModelParser.g:7430:2: ()
             {
              before(grammarAccess.getInt64ArrayAccess().getInt64ArrayAction_0()); 
-            // InternalResolutionModelParser.g:7373:2: ()
-            // InternalResolutionModelParser.g:7373:3: 
+            // InternalResolutionModelParser.g:7431:2: ()
+            // InternalResolutionModelParser.g:7431:3: 
             {
             }
 
@@ -21780,14 +21972,14 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__Int64Array__Group__1"
-    // InternalResolutionModelParser.g:7381:1: rule__Int64Array__Group__1 : rule__Int64Array__Group__1__Impl ;
+    // InternalResolutionModelParser.g:7439:1: rule__Int64Array__Group__1 : rule__Int64Array__Group__1__Impl ;
     public final void rule__Int64Array__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:7385:1: ( rule__Int64Array__Group__1__Impl )
-            // InternalResolutionModelParser.g:7386:2: rule__Int64Array__Group__1__Impl
+            // InternalResolutionModelParser.g:7443:1: ( rule__Int64Array__Group__1__Impl )
+            // InternalResolutionModelParser.g:7444:2: rule__Int64Array__Group__1__Impl
             {
             pushFollow(FOLLOW_2);
             rule__Int64Array__Group__1__Impl();
@@ -21813,17 +22005,17 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__Int64Array__Group__1__Impl"
-    // InternalResolutionModelParser.g:7392:1: rule__Int64Array__Group__1__Impl : ( Int64_1 ) ;
+    // InternalResolutionModelParser.g:7450:1: rule__Int64Array__Group__1__Impl : ( Int64_1 ) ;
     public final void rule__Int64Array__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:7396:1: ( ( Int64_1 ) )
-            // InternalResolutionModelParser.g:7397:1: ( Int64_1 )
+            // InternalResolutionModelParser.g:7454:1: ( ( Int64_1 ) )
+            // InternalResolutionModelParser.g:7455:1: ( Int64_1 )
             {
-            // InternalResolutionModelParser.g:7397:1: ( Int64_1 )
-            // InternalResolutionModelParser.g:7398:2: Int64_1
+            // InternalResolutionModelParser.g:7455:1: ( Int64_1 )
+            // InternalResolutionModelParser.g:7456:2: Int64_1
             {
              before(grammarAccess.getInt64ArrayAccess().getInt64Keyword_1()); 
             match(input,Int64_1,FOLLOW_2); 
@@ -21850,16 +22042,16 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__Uint64Array__Group__0"
-    // InternalResolutionModelParser.g:7408:1: rule__Uint64Array__Group__0 : rule__Uint64Array__Group__0__Impl rule__Uint64Array__Group__1 ;
+    // InternalResolutionModelParser.g:7466:1: rule__Uint64Array__Group__0 : rule__Uint64Array__Group__0__Impl rule__Uint64Array__Group__1 ;
     public final void rule__Uint64Array__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:7412:1: ( rule__Uint64Array__Group__0__Impl rule__Uint64Array__Group__1 )
-            // InternalResolutionModelParser.g:7413:2: rule__Uint64Array__Group__0__Impl rule__Uint64Array__Group__1
+            // InternalResolutionModelParser.g:7470:1: ( rule__Uint64Array__Group__0__Impl rule__Uint64Array__Group__1 )
+            // InternalResolutionModelParser.g:7471:2: rule__Uint64Array__Group__0__Impl rule__Uint64Array__Group__1
             {
-            pushFollow(FOLLOW_73);
+            pushFollow(FOLLOW_74);
             rule__Uint64Array__Group__0__Impl();
 
             state._fsp--;
@@ -21888,21 +22080,21 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__Uint64Array__Group__0__Impl"
-    // InternalResolutionModelParser.g:7420:1: rule__Uint64Array__Group__0__Impl : ( () ) ;
+    // InternalResolutionModelParser.g:7478:1: rule__Uint64Array__Group__0__Impl : ( () ) ;
     public final void rule__Uint64Array__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:7424:1: ( ( () ) )
-            // InternalResolutionModelParser.g:7425:1: ( () )
+            // InternalResolutionModelParser.g:7482:1: ( ( () ) )
+            // InternalResolutionModelParser.g:7483:1: ( () )
             {
-            // InternalResolutionModelParser.g:7425:1: ( () )
-            // InternalResolutionModelParser.g:7426:2: ()
+            // InternalResolutionModelParser.g:7483:1: ( () )
+            // InternalResolutionModelParser.g:7484:2: ()
             {
              before(grammarAccess.getUint64ArrayAccess().getUint64ArrayAction_0()); 
-            // InternalResolutionModelParser.g:7427:2: ()
-            // InternalResolutionModelParser.g:7427:3: 
+            // InternalResolutionModelParser.g:7485:2: ()
+            // InternalResolutionModelParser.g:7485:3: 
             {
             }
 
@@ -21925,14 +22117,14 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__Uint64Array__Group__1"
-    // InternalResolutionModelParser.g:7435:1: rule__Uint64Array__Group__1 : rule__Uint64Array__Group__1__Impl ;
+    // InternalResolutionModelParser.g:7493:1: rule__Uint64Array__Group__1 : rule__Uint64Array__Group__1__Impl ;
     public final void rule__Uint64Array__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:7439:1: ( rule__Uint64Array__Group__1__Impl )
-            // InternalResolutionModelParser.g:7440:2: rule__Uint64Array__Group__1__Impl
+            // InternalResolutionModelParser.g:7497:1: ( rule__Uint64Array__Group__1__Impl )
+            // InternalResolutionModelParser.g:7498:2: rule__Uint64Array__Group__1__Impl
             {
             pushFollow(FOLLOW_2);
             rule__Uint64Array__Group__1__Impl();
@@ -21958,17 +22150,17 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__Uint64Array__Group__1__Impl"
-    // InternalResolutionModelParser.g:7446:1: rule__Uint64Array__Group__1__Impl : ( Uint64_1 ) ;
+    // InternalResolutionModelParser.g:7504:1: rule__Uint64Array__Group__1__Impl : ( Uint64_1 ) ;
     public final void rule__Uint64Array__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:7450:1: ( ( Uint64_1 ) )
-            // InternalResolutionModelParser.g:7451:1: ( Uint64_1 )
+            // InternalResolutionModelParser.g:7508:1: ( ( Uint64_1 ) )
+            // InternalResolutionModelParser.g:7509:1: ( Uint64_1 )
             {
-            // InternalResolutionModelParser.g:7451:1: ( Uint64_1 )
-            // InternalResolutionModelParser.g:7452:2: Uint64_1
+            // InternalResolutionModelParser.g:7509:1: ( Uint64_1 )
+            // InternalResolutionModelParser.g:7510:2: Uint64_1
             {
              before(grammarAccess.getUint64ArrayAccess().getUint64Keyword_1()); 
             match(input,Uint64_1,FOLLOW_2); 
@@ -21995,16 +22187,16 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__Float32Array__Group__0"
-    // InternalResolutionModelParser.g:7462:1: rule__Float32Array__Group__0 : rule__Float32Array__Group__0__Impl rule__Float32Array__Group__1 ;
+    // InternalResolutionModelParser.g:7520:1: rule__Float32Array__Group__0 : rule__Float32Array__Group__0__Impl rule__Float32Array__Group__1 ;
     public final void rule__Float32Array__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:7466:1: ( rule__Float32Array__Group__0__Impl rule__Float32Array__Group__1 )
-            // InternalResolutionModelParser.g:7467:2: rule__Float32Array__Group__0__Impl rule__Float32Array__Group__1
+            // InternalResolutionModelParser.g:7524:1: ( rule__Float32Array__Group__0__Impl rule__Float32Array__Group__1 )
+            // InternalResolutionModelParser.g:7525:2: rule__Float32Array__Group__0__Impl rule__Float32Array__Group__1
             {
-            pushFollow(FOLLOW_74);
+            pushFollow(FOLLOW_75);
             rule__Float32Array__Group__0__Impl();
 
             state._fsp--;
@@ -22033,21 +22225,21 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__Float32Array__Group__0__Impl"
-    // InternalResolutionModelParser.g:7474:1: rule__Float32Array__Group__0__Impl : ( () ) ;
+    // InternalResolutionModelParser.g:7532:1: rule__Float32Array__Group__0__Impl : ( () ) ;
     public final void rule__Float32Array__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:7478:1: ( ( () ) )
-            // InternalResolutionModelParser.g:7479:1: ( () )
+            // InternalResolutionModelParser.g:7536:1: ( ( () ) )
+            // InternalResolutionModelParser.g:7537:1: ( () )
             {
-            // InternalResolutionModelParser.g:7479:1: ( () )
-            // InternalResolutionModelParser.g:7480:2: ()
+            // InternalResolutionModelParser.g:7537:1: ( () )
+            // InternalResolutionModelParser.g:7538:2: ()
             {
              before(grammarAccess.getFloat32ArrayAccess().getFloat32ArrayAction_0()); 
-            // InternalResolutionModelParser.g:7481:2: ()
-            // InternalResolutionModelParser.g:7481:3: 
+            // InternalResolutionModelParser.g:7539:2: ()
+            // InternalResolutionModelParser.g:7539:3: 
             {
             }
 
@@ -22070,14 +22262,14 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__Float32Array__Group__1"
-    // InternalResolutionModelParser.g:7489:1: rule__Float32Array__Group__1 : rule__Float32Array__Group__1__Impl ;
+    // InternalResolutionModelParser.g:7547:1: rule__Float32Array__Group__1 : rule__Float32Array__Group__1__Impl ;
     public final void rule__Float32Array__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:7493:1: ( rule__Float32Array__Group__1__Impl )
-            // InternalResolutionModelParser.g:7494:2: rule__Float32Array__Group__1__Impl
+            // InternalResolutionModelParser.g:7551:1: ( rule__Float32Array__Group__1__Impl )
+            // InternalResolutionModelParser.g:7552:2: rule__Float32Array__Group__1__Impl
             {
             pushFollow(FOLLOW_2);
             rule__Float32Array__Group__1__Impl();
@@ -22103,17 +22295,17 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__Float32Array__Group__1__Impl"
-    // InternalResolutionModelParser.g:7500:1: rule__Float32Array__Group__1__Impl : ( Float32_1 ) ;
+    // InternalResolutionModelParser.g:7558:1: rule__Float32Array__Group__1__Impl : ( Float32_1 ) ;
     public final void rule__Float32Array__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:7504:1: ( ( Float32_1 ) )
-            // InternalResolutionModelParser.g:7505:1: ( Float32_1 )
+            // InternalResolutionModelParser.g:7562:1: ( ( Float32_1 ) )
+            // InternalResolutionModelParser.g:7563:1: ( Float32_1 )
             {
-            // InternalResolutionModelParser.g:7505:1: ( Float32_1 )
-            // InternalResolutionModelParser.g:7506:2: Float32_1
+            // InternalResolutionModelParser.g:7563:1: ( Float32_1 )
+            // InternalResolutionModelParser.g:7564:2: Float32_1
             {
              before(grammarAccess.getFloat32ArrayAccess().getFloat32Keyword_1()); 
             match(input,Float32_1,FOLLOW_2); 
@@ -22140,16 +22332,16 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__Float64Array__Group__0"
-    // InternalResolutionModelParser.g:7516:1: rule__Float64Array__Group__0 : rule__Float64Array__Group__0__Impl rule__Float64Array__Group__1 ;
+    // InternalResolutionModelParser.g:7574:1: rule__Float64Array__Group__0 : rule__Float64Array__Group__0__Impl rule__Float64Array__Group__1 ;
     public final void rule__Float64Array__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:7520:1: ( rule__Float64Array__Group__0__Impl rule__Float64Array__Group__1 )
-            // InternalResolutionModelParser.g:7521:2: rule__Float64Array__Group__0__Impl rule__Float64Array__Group__1
+            // InternalResolutionModelParser.g:7578:1: ( rule__Float64Array__Group__0__Impl rule__Float64Array__Group__1 )
+            // InternalResolutionModelParser.g:7579:2: rule__Float64Array__Group__0__Impl rule__Float64Array__Group__1
             {
-            pushFollow(FOLLOW_75);
+            pushFollow(FOLLOW_76);
             rule__Float64Array__Group__0__Impl();
 
             state._fsp--;
@@ -22178,21 +22370,21 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__Float64Array__Group__0__Impl"
-    // InternalResolutionModelParser.g:7528:1: rule__Float64Array__Group__0__Impl : ( () ) ;
+    // InternalResolutionModelParser.g:7586:1: rule__Float64Array__Group__0__Impl : ( () ) ;
     public final void rule__Float64Array__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:7532:1: ( ( () ) )
-            // InternalResolutionModelParser.g:7533:1: ( () )
+            // InternalResolutionModelParser.g:7590:1: ( ( () ) )
+            // InternalResolutionModelParser.g:7591:1: ( () )
             {
-            // InternalResolutionModelParser.g:7533:1: ( () )
-            // InternalResolutionModelParser.g:7534:2: ()
+            // InternalResolutionModelParser.g:7591:1: ( () )
+            // InternalResolutionModelParser.g:7592:2: ()
             {
              before(grammarAccess.getFloat64ArrayAccess().getFloat64ArrayAction_0()); 
-            // InternalResolutionModelParser.g:7535:2: ()
-            // InternalResolutionModelParser.g:7535:3: 
+            // InternalResolutionModelParser.g:7593:2: ()
+            // InternalResolutionModelParser.g:7593:3: 
             {
             }
 
@@ -22215,14 +22407,14 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__Float64Array__Group__1"
-    // InternalResolutionModelParser.g:7543:1: rule__Float64Array__Group__1 : rule__Float64Array__Group__1__Impl ;
+    // InternalResolutionModelParser.g:7601:1: rule__Float64Array__Group__1 : rule__Float64Array__Group__1__Impl ;
     public final void rule__Float64Array__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:7547:1: ( rule__Float64Array__Group__1__Impl )
-            // InternalResolutionModelParser.g:7548:2: rule__Float64Array__Group__1__Impl
+            // InternalResolutionModelParser.g:7605:1: ( rule__Float64Array__Group__1__Impl )
+            // InternalResolutionModelParser.g:7606:2: rule__Float64Array__Group__1__Impl
             {
             pushFollow(FOLLOW_2);
             rule__Float64Array__Group__1__Impl();
@@ -22248,17 +22440,17 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__Float64Array__Group__1__Impl"
-    // InternalResolutionModelParser.g:7554:1: rule__Float64Array__Group__1__Impl : ( Float64_1 ) ;
+    // InternalResolutionModelParser.g:7612:1: rule__Float64Array__Group__1__Impl : ( Float64_1 ) ;
     public final void rule__Float64Array__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:7558:1: ( ( Float64_1 ) )
-            // InternalResolutionModelParser.g:7559:1: ( Float64_1 )
+            // InternalResolutionModelParser.g:7616:1: ( ( Float64_1 ) )
+            // InternalResolutionModelParser.g:7617:1: ( Float64_1 )
             {
-            // InternalResolutionModelParser.g:7559:1: ( Float64_1 )
-            // InternalResolutionModelParser.g:7560:2: Float64_1
+            // InternalResolutionModelParser.g:7617:1: ( Float64_1 )
+            // InternalResolutionModelParser.g:7618:2: Float64_1
             {
              before(grammarAccess.getFloat64ArrayAccess().getFloat64Keyword_1()); 
             match(input,Float64_1,FOLLOW_2); 
@@ -22285,16 +22477,16 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__String0Array__Group__0"
-    // InternalResolutionModelParser.g:7570:1: rule__String0Array__Group__0 : rule__String0Array__Group__0__Impl rule__String0Array__Group__1 ;
+    // InternalResolutionModelParser.g:7628:1: rule__String0Array__Group__0 : rule__String0Array__Group__0__Impl rule__String0Array__Group__1 ;
     public final void rule__String0Array__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:7574:1: ( rule__String0Array__Group__0__Impl rule__String0Array__Group__1 )
-            // InternalResolutionModelParser.g:7575:2: rule__String0Array__Group__0__Impl rule__String0Array__Group__1
+            // InternalResolutionModelParser.g:7632:1: ( rule__String0Array__Group__0__Impl rule__String0Array__Group__1 )
+            // InternalResolutionModelParser.g:7633:2: rule__String0Array__Group__0__Impl rule__String0Array__Group__1
             {
-            pushFollow(FOLLOW_76);
+            pushFollow(FOLLOW_77);
             rule__String0Array__Group__0__Impl();
 
             state._fsp--;
@@ -22323,21 +22515,21 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__String0Array__Group__0__Impl"
-    // InternalResolutionModelParser.g:7582:1: rule__String0Array__Group__0__Impl : ( () ) ;
+    // InternalResolutionModelParser.g:7640:1: rule__String0Array__Group__0__Impl : ( () ) ;
     public final void rule__String0Array__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:7586:1: ( ( () ) )
-            // InternalResolutionModelParser.g:7587:1: ( () )
+            // InternalResolutionModelParser.g:7644:1: ( ( () ) )
+            // InternalResolutionModelParser.g:7645:1: ( () )
             {
-            // InternalResolutionModelParser.g:7587:1: ( () )
-            // InternalResolutionModelParser.g:7588:2: ()
+            // InternalResolutionModelParser.g:7645:1: ( () )
+            // InternalResolutionModelParser.g:7646:2: ()
             {
              before(grammarAccess.getString0ArrayAccess().getStringArrayAction_0()); 
-            // InternalResolutionModelParser.g:7589:2: ()
-            // InternalResolutionModelParser.g:7589:3: 
+            // InternalResolutionModelParser.g:7647:2: ()
+            // InternalResolutionModelParser.g:7647:3: 
             {
             }
 
@@ -22360,14 +22552,14 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__String0Array__Group__1"
-    // InternalResolutionModelParser.g:7597:1: rule__String0Array__Group__1 : rule__String0Array__Group__1__Impl ;
+    // InternalResolutionModelParser.g:7655:1: rule__String0Array__Group__1 : rule__String0Array__Group__1__Impl ;
     public final void rule__String0Array__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:7601:1: ( rule__String0Array__Group__1__Impl )
-            // InternalResolutionModelParser.g:7602:2: rule__String0Array__Group__1__Impl
+            // InternalResolutionModelParser.g:7659:1: ( rule__String0Array__Group__1__Impl )
+            // InternalResolutionModelParser.g:7660:2: rule__String0Array__Group__1__Impl
             {
             pushFollow(FOLLOW_2);
             rule__String0Array__Group__1__Impl();
@@ -22393,17 +22585,17 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__String0Array__Group__1__Impl"
-    // InternalResolutionModelParser.g:7608:1: rule__String0Array__Group__1__Impl : ( String_2 ) ;
+    // InternalResolutionModelParser.g:7666:1: rule__String0Array__Group__1__Impl : ( String_2 ) ;
     public final void rule__String0Array__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:7612:1: ( ( String_2 ) )
-            // InternalResolutionModelParser.g:7613:1: ( String_2 )
+            // InternalResolutionModelParser.g:7670:1: ( ( String_2 ) )
+            // InternalResolutionModelParser.g:7671:1: ( String_2 )
             {
-            // InternalResolutionModelParser.g:7613:1: ( String_2 )
-            // InternalResolutionModelParser.g:7614:2: String_2
+            // InternalResolutionModelParser.g:7671:1: ( String_2 )
+            // InternalResolutionModelParser.g:7672:2: String_2
             {
              before(grammarAccess.getString0ArrayAccess().getStringKeyword_1()); 
             match(input,String_2,FOLLOW_2); 
@@ -22430,16 +22622,16 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ByteArray__Group__0"
-    // InternalResolutionModelParser.g:7624:1: rule__ByteArray__Group__0 : rule__ByteArray__Group__0__Impl rule__ByteArray__Group__1 ;
+    // InternalResolutionModelParser.g:7682:1: rule__ByteArray__Group__0 : rule__ByteArray__Group__0__Impl rule__ByteArray__Group__1 ;
     public final void rule__ByteArray__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:7628:1: ( rule__ByteArray__Group__0__Impl rule__ByteArray__Group__1 )
-            // InternalResolutionModelParser.g:7629:2: rule__ByteArray__Group__0__Impl rule__ByteArray__Group__1
+            // InternalResolutionModelParser.g:7686:1: ( rule__ByteArray__Group__0__Impl rule__ByteArray__Group__1 )
+            // InternalResolutionModelParser.g:7687:2: rule__ByteArray__Group__0__Impl rule__ByteArray__Group__1
             {
-            pushFollow(FOLLOW_77);
+            pushFollow(FOLLOW_78);
             rule__ByteArray__Group__0__Impl();
 
             state._fsp--;
@@ -22468,21 +22660,21 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ByteArray__Group__0__Impl"
-    // InternalResolutionModelParser.g:7636:1: rule__ByteArray__Group__0__Impl : ( () ) ;
+    // InternalResolutionModelParser.g:7694:1: rule__ByteArray__Group__0__Impl : ( () ) ;
     public final void rule__ByteArray__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:7640:1: ( ( () ) )
-            // InternalResolutionModelParser.g:7641:1: ( () )
+            // InternalResolutionModelParser.g:7698:1: ( ( () ) )
+            // InternalResolutionModelParser.g:7699:1: ( () )
             {
-            // InternalResolutionModelParser.g:7641:1: ( () )
-            // InternalResolutionModelParser.g:7642:2: ()
+            // InternalResolutionModelParser.g:7699:1: ( () )
+            // InternalResolutionModelParser.g:7700:2: ()
             {
              before(grammarAccess.getByteArrayAccess().getByteArrayAction_0()); 
-            // InternalResolutionModelParser.g:7643:2: ()
-            // InternalResolutionModelParser.g:7643:3: 
+            // InternalResolutionModelParser.g:7701:2: ()
+            // InternalResolutionModelParser.g:7701:3: 
             {
             }
 
@@ -22505,14 +22697,14 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ByteArray__Group__1"
-    // InternalResolutionModelParser.g:7651:1: rule__ByteArray__Group__1 : rule__ByteArray__Group__1__Impl ;
+    // InternalResolutionModelParser.g:7709:1: rule__ByteArray__Group__1 : rule__ByteArray__Group__1__Impl ;
     public final void rule__ByteArray__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:7655:1: ( rule__ByteArray__Group__1__Impl )
-            // InternalResolutionModelParser.g:7656:2: rule__ByteArray__Group__1__Impl
+            // InternalResolutionModelParser.g:7713:1: ( rule__ByteArray__Group__1__Impl )
+            // InternalResolutionModelParser.g:7714:2: rule__ByteArray__Group__1__Impl
             {
             pushFollow(FOLLOW_2);
             rule__ByteArray__Group__1__Impl();
@@ -22538,17 +22730,17 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ByteArray__Group__1__Impl"
-    // InternalResolutionModelParser.g:7662:1: rule__ByteArray__Group__1__Impl : ( Byte_1 ) ;
+    // InternalResolutionModelParser.g:7720:1: rule__ByteArray__Group__1__Impl : ( Byte_1 ) ;
     public final void rule__ByteArray__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:7666:1: ( ( Byte_1 ) )
-            // InternalResolutionModelParser.g:7667:1: ( Byte_1 )
+            // InternalResolutionModelParser.g:7724:1: ( ( Byte_1 ) )
+            // InternalResolutionModelParser.g:7725:1: ( Byte_1 )
             {
-            // InternalResolutionModelParser.g:7667:1: ( Byte_1 )
-            // InternalResolutionModelParser.g:7668:2: Byte_1
+            // InternalResolutionModelParser.g:7725:1: ( Byte_1 )
+            // InternalResolutionModelParser.g:7726:2: Byte_1
             {
              before(grammarAccess.getByteArrayAccess().getByteKeyword_1()); 
             match(input,Byte_1,FOLLOW_2); 
@@ -22575,16 +22767,16 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__CharArray__Group__0"
-    // InternalResolutionModelParser.g:7678:1: rule__CharArray__Group__0 : rule__CharArray__Group__0__Impl rule__CharArray__Group__1 ;
+    // InternalResolutionModelParser.g:7736:1: rule__CharArray__Group__0 : rule__CharArray__Group__0__Impl rule__CharArray__Group__1 ;
     public final void rule__CharArray__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:7682:1: ( rule__CharArray__Group__0__Impl rule__CharArray__Group__1 )
-            // InternalResolutionModelParser.g:7683:2: rule__CharArray__Group__0__Impl rule__CharArray__Group__1
+            // InternalResolutionModelParser.g:7740:1: ( rule__CharArray__Group__0__Impl rule__CharArray__Group__1 )
+            // InternalResolutionModelParser.g:7741:2: rule__CharArray__Group__0__Impl rule__CharArray__Group__1
             {
-            pushFollow(FOLLOW_78);
+            pushFollow(FOLLOW_79);
             rule__CharArray__Group__0__Impl();
 
             state._fsp--;
@@ -22613,21 +22805,21 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__CharArray__Group__0__Impl"
-    // InternalResolutionModelParser.g:7690:1: rule__CharArray__Group__0__Impl : ( () ) ;
+    // InternalResolutionModelParser.g:7748:1: rule__CharArray__Group__0__Impl : ( () ) ;
     public final void rule__CharArray__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:7694:1: ( ( () ) )
-            // InternalResolutionModelParser.g:7695:1: ( () )
+            // InternalResolutionModelParser.g:7752:1: ( ( () ) )
+            // InternalResolutionModelParser.g:7753:1: ( () )
             {
-            // InternalResolutionModelParser.g:7695:1: ( () )
-            // InternalResolutionModelParser.g:7696:2: ()
+            // InternalResolutionModelParser.g:7753:1: ( () )
+            // InternalResolutionModelParser.g:7754:2: ()
             {
              before(grammarAccess.getCharArrayAccess().getCharArrayAction_0()); 
-            // InternalResolutionModelParser.g:7697:2: ()
-            // InternalResolutionModelParser.g:7697:3: 
+            // InternalResolutionModelParser.g:7755:2: ()
+            // InternalResolutionModelParser.g:7755:3: 
             {
             }
 
@@ -22650,14 +22842,14 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__CharArray__Group__1"
-    // InternalResolutionModelParser.g:7705:1: rule__CharArray__Group__1 : rule__CharArray__Group__1__Impl ;
+    // InternalResolutionModelParser.g:7763:1: rule__CharArray__Group__1 : rule__CharArray__Group__1__Impl ;
     public final void rule__CharArray__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:7709:1: ( rule__CharArray__Group__1__Impl )
-            // InternalResolutionModelParser.g:7710:2: rule__CharArray__Group__1__Impl
+            // InternalResolutionModelParser.g:7767:1: ( rule__CharArray__Group__1__Impl )
+            // InternalResolutionModelParser.g:7768:2: rule__CharArray__Group__1__Impl
             {
             pushFollow(FOLLOW_2);
             rule__CharArray__Group__1__Impl();
@@ -22683,17 +22875,17 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__CharArray__Group__1__Impl"
-    // InternalResolutionModelParser.g:7716:1: rule__CharArray__Group__1__Impl : ( Char_1 ) ;
+    // InternalResolutionModelParser.g:7774:1: rule__CharArray__Group__1__Impl : ( Char_1 ) ;
     public final void rule__CharArray__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:7720:1: ( ( Char_1 ) )
-            // InternalResolutionModelParser.g:7721:1: ( Char_1 )
+            // InternalResolutionModelParser.g:7778:1: ( ( Char_1 ) )
+            // InternalResolutionModelParser.g:7779:1: ( Char_1 )
             {
-            // InternalResolutionModelParser.g:7721:1: ( Char_1 )
-            // InternalResolutionModelParser.g:7722:2: Char_1
+            // InternalResolutionModelParser.g:7779:1: ( Char_1 )
+            // InternalResolutionModelParser.g:7780:2: Char_1
             {
              before(grammarAccess.getCharArrayAccess().getCharKeyword_1()); 
             match(input,Char_1,FOLLOW_2); 
@@ -22720,16 +22912,16 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__Header__Group__0"
-    // InternalResolutionModelParser.g:7732:1: rule__Header__Group__0 : rule__Header__Group__0__Impl rule__Header__Group__1 ;
+    // InternalResolutionModelParser.g:7790:1: rule__Header__Group__0 : rule__Header__Group__0__Impl rule__Header__Group__1 ;
     public final void rule__Header__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:7736:1: ( rule__Header__Group__0__Impl rule__Header__Group__1 )
-            // InternalResolutionModelParser.g:7737:2: rule__Header__Group__0__Impl rule__Header__Group__1
+            // InternalResolutionModelParser.g:7794:1: ( rule__Header__Group__0__Impl rule__Header__Group__1 )
+            // InternalResolutionModelParser.g:7795:2: rule__Header__Group__0__Impl rule__Header__Group__1
             {
-            pushFollow(FOLLOW_79);
+            pushFollow(FOLLOW_80);
             rule__Header__Group__0__Impl();
 
             state._fsp--;
@@ -22758,21 +22950,21 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__Header__Group__0__Impl"
-    // InternalResolutionModelParser.g:7744:1: rule__Header__Group__0__Impl : ( () ) ;
+    // InternalResolutionModelParser.g:7802:1: rule__Header__Group__0__Impl : ( () ) ;
     public final void rule__Header__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:7748:1: ( ( () ) )
-            // InternalResolutionModelParser.g:7749:1: ( () )
+            // InternalResolutionModelParser.g:7806:1: ( ( () ) )
+            // InternalResolutionModelParser.g:7807:1: ( () )
             {
-            // InternalResolutionModelParser.g:7749:1: ( () )
-            // InternalResolutionModelParser.g:7750:2: ()
+            // InternalResolutionModelParser.g:7807:1: ( () )
+            // InternalResolutionModelParser.g:7808:2: ()
             {
              before(grammarAccess.getHeaderAccess().getHeaderAction_0()); 
-            // InternalResolutionModelParser.g:7751:2: ()
-            // InternalResolutionModelParser.g:7751:3: 
+            // InternalResolutionModelParser.g:7809:2: ()
+            // InternalResolutionModelParser.g:7809:3: 
             {
             }
 
@@ -22795,14 +22987,14 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__Header__Group__1"
-    // InternalResolutionModelParser.g:7759:1: rule__Header__Group__1 : rule__Header__Group__1__Impl ;
+    // InternalResolutionModelParser.g:7817:1: rule__Header__Group__1 : rule__Header__Group__1__Impl ;
     public final void rule__Header__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:7763:1: ( rule__Header__Group__1__Impl )
-            // InternalResolutionModelParser.g:7764:2: rule__Header__Group__1__Impl
+            // InternalResolutionModelParser.g:7821:1: ( rule__Header__Group__1__Impl )
+            // InternalResolutionModelParser.g:7822:2: rule__Header__Group__1__Impl
             {
             pushFollow(FOLLOW_2);
             rule__Header__Group__1__Impl();
@@ -22828,17 +23020,17 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__Header__Group__1__Impl"
-    // InternalResolutionModelParser.g:7770:1: rule__Header__Group__1__Impl : ( Header ) ;
+    // InternalResolutionModelParser.g:7828:1: rule__Header__Group__1__Impl : ( Header ) ;
     public final void rule__Header__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:7774:1: ( ( Header ) )
-            // InternalResolutionModelParser.g:7775:1: ( Header )
+            // InternalResolutionModelParser.g:7832:1: ( ( Header ) )
+            // InternalResolutionModelParser.g:7833:1: ( Header )
             {
-            // InternalResolutionModelParser.g:7775:1: ( Header )
-            // InternalResolutionModelParser.g:7776:2: Header
+            // InternalResolutionModelParser.g:7833:1: ( Header )
+            // InternalResolutionModelParser.g:7834:2: Header
             {
              before(grammarAccess.getHeaderAccess().getHeaderKeyword_1()); 
             match(input,Header,FOLLOW_2); 
@@ -22865,16 +23057,16 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ArraySpecRef__Group__0"
-    // InternalResolutionModelParser.g:7786:1: rule__ArraySpecRef__Group__0 : rule__ArraySpecRef__Group__0__Impl rule__ArraySpecRef__Group__1 ;
+    // InternalResolutionModelParser.g:7844:1: rule__ArraySpecRef__Group__0 : rule__ArraySpecRef__Group__0__Impl rule__ArraySpecRef__Group__1 ;
     public final void rule__ArraySpecRef__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:7790:1: ( rule__ArraySpecRef__Group__0__Impl rule__ArraySpecRef__Group__1 )
-            // InternalResolutionModelParser.g:7791:2: rule__ArraySpecRef__Group__0__Impl rule__ArraySpecRef__Group__1
+            // InternalResolutionModelParser.g:7848:1: ( rule__ArraySpecRef__Group__0__Impl rule__ArraySpecRef__Group__1 )
+            // InternalResolutionModelParser.g:7849:2: rule__ArraySpecRef__Group__0__Impl rule__ArraySpecRef__Group__1
             {
-            pushFollow(FOLLOW_80);
+            pushFollow(FOLLOW_81);
             rule__ArraySpecRef__Group__0__Impl();
 
             state._fsp--;
@@ -22903,21 +23095,21 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ArraySpecRef__Group__0__Impl"
-    // InternalResolutionModelParser.g:7798:1: rule__ArraySpecRef__Group__0__Impl : ( ( rule__ArraySpecRef__ReferenceAssignment_0 ) ) ;
+    // InternalResolutionModelParser.g:7856:1: rule__ArraySpecRef__Group__0__Impl : ( ( rule__ArraySpecRef__ReferenceAssignment_0 ) ) ;
     public final void rule__ArraySpecRef__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:7802:1: ( ( ( rule__ArraySpecRef__ReferenceAssignment_0 ) ) )
-            // InternalResolutionModelParser.g:7803:1: ( ( rule__ArraySpecRef__ReferenceAssignment_0 ) )
+            // InternalResolutionModelParser.g:7860:1: ( ( ( rule__ArraySpecRef__ReferenceAssignment_0 ) ) )
+            // InternalResolutionModelParser.g:7861:1: ( ( rule__ArraySpecRef__ReferenceAssignment_0 ) )
             {
-            // InternalResolutionModelParser.g:7803:1: ( ( rule__ArraySpecRef__ReferenceAssignment_0 ) )
-            // InternalResolutionModelParser.g:7804:2: ( rule__ArraySpecRef__ReferenceAssignment_0 )
+            // InternalResolutionModelParser.g:7861:1: ( ( rule__ArraySpecRef__ReferenceAssignment_0 ) )
+            // InternalResolutionModelParser.g:7862:2: ( rule__ArraySpecRef__ReferenceAssignment_0 )
             {
              before(grammarAccess.getArraySpecRefAccess().getReferenceAssignment_0()); 
-            // InternalResolutionModelParser.g:7805:2: ( rule__ArraySpecRef__ReferenceAssignment_0 )
-            // InternalResolutionModelParser.g:7805:3: rule__ArraySpecRef__ReferenceAssignment_0
+            // InternalResolutionModelParser.g:7863:2: ( rule__ArraySpecRef__ReferenceAssignment_0 )
+            // InternalResolutionModelParser.g:7863:3: rule__ArraySpecRef__ReferenceAssignment_0
             {
             pushFollow(FOLLOW_2);
             rule__ArraySpecRef__ReferenceAssignment_0();
@@ -22950,14 +23142,14 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ArraySpecRef__Group__1"
-    // InternalResolutionModelParser.g:7813:1: rule__ArraySpecRef__Group__1 : rule__ArraySpecRef__Group__1__Impl ;
+    // InternalResolutionModelParser.g:7871:1: rule__ArraySpecRef__Group__1 : rule__ArraySpecRef__Group__1__Impl ;
     public final void rule__ArraySpecRef__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:7817:1: ( rule__ArraySpecRef__Group__1__Impl )
-            // InternalResolutionModelParser.g:7818:2: rule__ArraySpecRef__Group__1__Impl
+            // InternalResolutionModelParser.g:7875:1: ( rule__ArraySpecRef__Group__1__Impl )
+            // InternalResolutionModelParser.g:7876:2: rule__ArraySpecRef__Group__1__Impl
             {
             pushFollow(FOLLOW_2);
             rule__ArraySpecRef__Group__1__Impl();
@@ -22983,17 +23175,17 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ArraySpecRef__Group__1__Impl"
-    // InternalResolutionModelParser.g:7824:1: rule__ArraySpecRef__Group__1__Impl : ( LeftSquareBracketRightSquareBracket ) ;
+    // InternalResolutionModelParser.g:7882:1: rule__ArraySpecRef__Group__1__Impl : ( LeftSquareBracketRightSquareBracket ) ;
     public final void rule__ArraySpecRef__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:7828:1: ( ( LeftSquareBracketRightSquareBracket ) )
-            // InternalResolutionModelParser.g:7829:1: ( LeftSquareBracketRightSquareBracket )
+            // InternalResolutionModelParser.g:7886:1: ( ( LeftSquareBracketRightSquareBracket ) )
+            // InternalResolutionModelParser.g:7887:1: ( LeftSquareBracketRightSquareBracket )
             {
-            // InternalResolutionModelParser.g:7829:1: ( LeftSquareBracketRightSquareBracket )
-            // InternalResolutionModelParser.g:7830:2: LeftSquareBracketRightSquareBracket
+            // InternalResolutionModelParser.g:7887:1: ( LeftSquareBracketRightSquareBracket )
+            // InternalResolutionModelParser.g:7888:2: LeftSquareBracketRightSquareBracket
             {
              before(grammarAccess.getArraySpecRefAccess().getLeftSquareBracketRightSquareBracketKeyword_1()); 
             match(input,LeftSquareBracketRightSquareBracket,FOLLOW_2); 
@@ -23020,17 +23212,17 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ResolutionModel__NameAssignment_1"
-    // InternalResolutionModelParser.g:7840:1: rule__ResolutionModel__NameAssignment_1 : ( RULE_ID ) ;
+    // InternalResolutionModelParser.g:7898:1: rule__ResolutionModel__NameAssignment_1 : ( RULE_ID ) ;
     public final void rule__ResolutionModel__NameAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:7844:1: ( ( RULE_ID ) )
-            // InternalResolutionModelParser.g:7845:2: ( RULE_ID )
+            // InternalResolutionModelParser.g:7902:1: ( ( RULE_ID ) )
+            // InternalResolutionModelParser.g:7903:2: ( RULE_ID )
             {
-            // InternalResolutionModelParser.g:7845:2: ( RULE_ID )
-            // InternalResolutionModelParser.g:7846:3: RULE_ID
+            // InternalResolutionModelParser.g:7903:2: ( RULE_ID )
+            // InternalResolutionModelParser.g:7904:3: RULE_ID
             {
              before(grammarAccess.getResolutionModelAccess().getNameIDTerminalRuleCall_1_0()); 
             match(input,RULE_ID,FOLLOW_2); 
@@ -23057,17 +23249,17 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ResolutionModel__ImportsAssignment_3"
-    // InternalResolutionModelParser.g:7855:1: rule__ResolutionModel__ImportsAssignment_3 : ( ruleImport ) ;
+    // InternalResolutionModelParser.g:7913:1: rule__ResolutionModel__ImportsAssignment_3 : ( ruleImport ) ;
     public final void rule__ResolutionModel__ImportsAssignment_3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:7859:1: ( ( ruleImport ) )
-            // InternalResolutionModelParser.g:7860:2: ( ruleImport )
+            // InternalResolutionModelParser.g:7917:1: ( ( ruleImport ) )
+            // InternalResolutionModelParser.g:7918:2: ( ruleImport )
             {
-            // InternalResolutionModelParser.g:7860:2: ( ruleImport )
-            // InternalResolutionModelParser.g:7861:3: ruleImport
+            // InternalResolutionModelParser.g:7918:2: ( ruleImport )
+            // InternalResolutionModelParser.g:7919:3: ruleImport
             {
              before(grammarAccess.getResolutionModelAccess().getImportsImportParserRuleCall_3_0()); 
             pushFollow(FOLLOW_2);
@@ -23098,21 +23290,21 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ResolutionModel__FeatureModelAssignment_5"
-    // InternalResolutionModelParser.g:7870:1: rule__ResolutionModel__FeatureModelAssignment_5 : ( ( RULE_ID ) ) ;
+    // InternalResolutionModelParser.g:7928:1: rule__ResolutionModel__FeatureModelAssignment_5 : ( ( RULE_ID ) ) ;
     public final void rule__ResolutionModel__FeatureModelAssignment_5() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:7874:1: ( ( ( RULE_ID ) ) )
-            // InternalResolutionModelParser.g:7875:2: ( ( RULE_ID ) )
+            // InternalResolutionModelParser.g:7932:1: ( ( ( RULE_ID ) ) )
+            // InternalResolutionModelParser.g:7933:2: ( ( RULE_ID ) )
             {
-            // InternalResolutionModelParser.g:7875:2: ( ( RULE_ID ) )
-            // InternalResolutionModelParser.g:7876:3: ( RULE_ID )
+            // InternalResolutionModelParser.g:7933:2: ( ( RULE_ID ) )
+            // InternalResolutionModelParser.g:7934:3: ( RULE_ID )
             {
              before(grammarAccess.getResolutionModelAccess().getFeatureModelFeatureModelCrossReference_5_0()); 
-            // InternalResolutionModelParser.g:7877:3: ( RULE_ID )
-            // InternalResolutionModelParser.g:7878:4: RULE_ID
+            // InternalResolutionModelParser.g:7935:3: ( RULE_ID )
+            // InternalResolutionModelParser.g:7936:4: RULE_ID
             {
              before(grammarAccess.getResolutionModelAccess().getFeatureModelFeatureModelIDTerminalRuleCall_5_0_1()); 
             match(input,RULE_ID,FOLLOW_2); 
@@ -23143,21 +23335,21 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ResolutionModel__RossystemAssignment_8"
-    // InternalResolutionModelParser.g:7889:1: rule__ResolutionModel__RossystemAssignment_8 : ( ( RULE_ID ) ) ;
+    // InternalResolutionModelParser.g:7947:1: rule__ResolutionModel__RossystemAssignment_8 : ( ( RULE_ID ) ) ;
     public final void rule__ResolutionModel__RossystemAssignment_8() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:7893:1: ( ( ( RULE_ID ) ) )
-            // InternalResolutionModelParser.g:7894:2: ( ( RULE_ID ) )
+            // InternalResolutionModelParser.g:7951:1: ( ( ( RULE_ID ) ) )
+            // InternalResolutionModelParser.g:7952:2: ( ( RULE_ID ) )
             {
-            // InternalResolutionModelParser.g:7894:2: ( ( RULE_ID ) )
-            // InternalResolutionModelParser.g:7895:3: ( RULE_ID )
+            // InternalResolutionModelParser.g:7952:2: ( ( RULE_ID ) )
+            // InternalResolutionModelParser.g:7953:3: ( RULE_ID )
             {
              before(grammarAccess.getResolutionModelAccess().getRossystemSystemCrossReference_8_0()); 
-            // InternalResolutionModelParser.g:7896:3: ( RULE_ID )
-            // InternalResolutionModelParser.g:7897:4: RULE_ID
+            // InternalResolutionModelParser.g:7954:3: ( RULE_ID )
+            // InternalResolutionModelParser.g:7955:4: RULE_ID
             {
              before(grammarAccess.getResolutionModelAccess().getRossystemSystemIDTerminalRuleCall_8_0_1()); 
             match(input,RULE_ID,FOLLOW_2); 
@@ -23188,17 +23380,17 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ResolutionModel__ResolutionsAssignment_11"
-    // InternalResolutionModelParser.g:7908:1: rule__ResolutionModel__ResolutionsAssignment_11 : ( ruleResolution ) ;
+    // InternalResolutionModelParser.g:7966:1: rule__ResolutionModel__ResolutionsAssignment_11 : ( ruleResolution ) ;
     public final void rule__ResolutionModel__ResolutionsAssignment_11() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:7912:1: ( ( ruleResolution ) )
-            // InternalResolutionModelParser.g:7913:2: ( ruleResolution )
+            // InternalResolutionModelParser.g:7970:1: ( ( ruleResolution ) )
+            // InternalResolutionModelParser.g:7971:2: ( ruleResolution )
             {
-            // InternalResolutionModelParser.g:7913:2: ( ruleResolution )
-            // InternalResolutionModelParser.g:7914:3: ruleResolution
+            // InternalResolutionModelParser.g:7971:2: ( ruleResolution )
+            // InternalResolutionModelParser.g:7972:3: ruleResolution
             {
              before(grammarAccess.getResolutionModelAccess().getResolutionsResolutionParserRuleCall_11_0()); 
             pushFollow(FOLLOW_2);
@@ -23229,21 +23421,21 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__Resolution__FeatureAssignment_1"
-    // InternalResolutionModelParser.g:7923:1: rule__Resolution__FeatureAssignment_1 : ( ( RULE_ID ) ) ;
+    // InternalResolutionModelParser.g:7981:1: rule__Resolution__FeatureAssignment_1 : ( ( RULE_ID ) ) ;
     public final void rule__Resolution__FeatureAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:7927:1: ( ( ( RULE_ID ) ) )
-            // InternalResolutionModelParser.g:7928:2: ( ( RULE_ID ) )
+            // InternalResolutionModelParser.g:7985:1: ( ( ( RULE_ID ) ) )
+            // InternalResolutionModelParser.g:7986:2: ( ( RULE_ID ) )
             {
-            // InternalResolutionModelParser.g:7928:2: ( ( RULE_ID ) )
-            // InternalResolutionModelParser.g:7929:3: ( RULE_ID )
+            // InternalResolutionModelParser.g:7986:2: ( ( RULE_ID ) )
+            // InternalResolutionModelParser.g:7987:3: ( RULE_ID )
             {
              before(grammarAccess.getResolutionAccess().getFeatureFeatureCrossReference_1_0()); 
-            // InternalResolutionModelParser.g:7930:3: ( RULE_ID )
-            // InternalResolutionModelParser.g:7931:4: RULE_ID
+            // InternalResolutionModelParser.g:7988:3: ( RULE_ID )
+            // InternalResolutionModelParser.g:7989:4: RULE_ID
             {
              before(grammarAccess.getResolutionAccess().getFeatureFeatureIDTerminalRuleCall_1_0_1()); 
             match(input,RULE_ID,FOLLOW_2); 
@@ -23274,17 +23466,17 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__Resolution__Selection_actionsAssignment_4"
-    // InternalResolutionModelParser.g:7942:1: rule__Resolution__Selection_actionsAssignment_4 : ( ruleReconfiguration ) ;
+    // InternalResolutionModelParser.g:8000:1: rule__Resolution__Selection_actionsAssignment_4 : ( ruleReconfiguration ) ;
     public final void rule__Resolution__Selection_actionsAssignment_4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:7946:1: ( ( ruleReconfiguration ) )
-            // InternalResolutionModelParser.g:7947:2: ( ruleReconfiguration )
+            // InternalResolutionModelParser.g:8004:1: ( ( ruleReconfiguration ) )
+            // InternalResolutionModelParser.g:8005:2: ( ruleReconfiguration )
             {
-            // InternalResolutionModelParser.g:7947:2: ( ruleReconfiguration )
-            // InternalResolutionModelParser.g:7948:3: ruleReconfiguration
+            // InternalResolutionModelParser.g:8005:2: ( ruleReconfiguration )
+            // InternalResolutionModelParser.g:8006:3: ruleReconfiguration
             {
              before(grammarAccess.getResolutionAccess().getSelection_actionsReconfigurationParserRuleCall_4_0()); 
             pushFollow(FOLLOW_2);
@@ -23315,17 +23507,17 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__Resolution__Deselection_actionsAssignment_6"
-    // InternalResolutionModelParser.g:7957:1: rule__Resolution__Deselection_actionsAssignment_6 : ( ruleReconfiguration ) ;
+    // InternalResolutionModelParser.g:8015:1: rule__Resolution__Deselection_actionsAssignment_6 : ( ruleReconfiguration ) ;
     public final void rule__Resolution__Deselection_actionsAssignment_6() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:7961:1: ( ( ruleReconfiguration ) )
-            // InternalResolutionModelParser.g:7962:2: ( ruleReconfiguration )
+            // InternalResolutionModelParser.g:8019:1: ( ( ruleReconfiguration ) )
+            // InternalResolutionModelParser.g:8020:2: ( ruleReconfiguration )
             {
-            // InternalResolutionModelParser.g:7962:2: ( ruleReconfiguration )
-            // InternalResolutionModelParser.g:7963:3: ruleReconfiguration
+            // InternalResolutionModelParser.g:8020:2: ( ruleReconfiguration )
+            // InternalResolutionModelParser.g:8021:3: ruleReconfiguration
             {
              before(grammarAccess.getResolutionAccess().getDeselection_actionsReconfigurationParserRuleCall_6_0()); 
             pushFollow(FOLLOW_2);
@@ -23356,17 +23548,17 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__Import__ImportURIAssignment_1"
-    // InternalResolutionModelParser.g:7972:1: rule__Import__ImportURIAssignment_1 : ( RULE_STRING ) ;
+    // InternalResolutionModelParser.g:8030:1: rule__Import__ImportURIAssignment_1 : ( RULE_STRING ) ;
     public final void rule__Import__ImportURIAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:7976:1: ( ( RULE_STRING ) )
-            // InternalResolutionModelParser.g:7977:2: ( RULE_STRING )
+            // InternalResolutionModelParser.g:8034:1: ( ( RULE_STRING ) )
+            // InternalResolutionModelParser.g:8035:2: ( RULE_STRING )
             {
-            // InternalResolutionModelParser.g:7977:2: ( RULE_STRING )
-            // InternalResolutionModelParser.g:7978:3: RULE_STRING
+            // InternalResolutionModelParser.g:8035:2: ( RULE_STRING )
+            // InternalResolutionModelParser.g:8036:3: RULE_STRING
             {
              before(grammarAccess.getImportAccess().getImportURISTRINGTerminalRuleCall_1_0()); 
             match(input,RULE_STRING,FOLLOW_2); 
@@ -23393,25 +23585,29 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__SetParam__NodeAssignment_2"
-    // InternalResolutionModelParser.g:7987:1: rule__SetParam__NodeAssignment_2 : ( ( RULE_ID ) ) ;
+    // InternalResolutionModelParser.g:8045:1: rule__SetParam__NodeAssignment_2 : ( ( ruleRosNames ) ) ;
     public final void rule__SetParam__NodeAssignment_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:7991:1: ( ( ( RULE_ID ) ) )
-            // InternalResolutionModelParser.g:7992:2: ( ( RULE_ID ) )
+            // InternalResolutionModelParser.g:8049:1: ( ( ( ruleRosNames ) ) )
+            // InternalResolutionModelParser.g:8050:2: ( ( ruleRosNames ) )
             {
-            // InternalResolutionModelParser.g:7992:2: ( ( RULE_ID ) )
-            // InternalResolutionModelParser.g:7993:3: ( RULE_ID )
+            // InternalResolutionModelParser.g:8050:2: ( ( ruleRosNames ) )
+            // InternalResolutionModelParser.g:8051:3: ( ruleRosNames )
             {
              before(grammarAccess.getSetParamAccess().getNodeRosNodeCrossReference_2_0()); 
-            // InternalResolutionModelParser.g:7994:3: ( RULE_ID )
-            // InternalResolutionModelParser.g:7995:4: RULE_ID
+            // InternalResolutionModelParser.g:8052:3: ( ruleRosNames )
+            // InternalResolutionModelParser.g:8053:4: ruleRosNames
             {
-             before(grammarAccess.getSetParamAccess().getNodeRosNodeIDTerminalRuleCall_2_0_1()); 
-            match(input,RULE_ID,FOLLOW_2); 
-             after(grammarAccess.getSetParamAccess().getNodeRosNodeIDTerminalRuleCall_2_0_1()); 
+             before(grammarAccess.getSetParamAccess().getNodeRosNodeRosNamesParserRuleCall_2_0_1()); 
+            pushFollow(FOLLOW_2);
+            ruleRosNames();
+
+            state._fsp--;
+
+             after(grammarAccess.getSetParamAccess().getNodeRosNodeRosNamesParserRuleCall_2_0_1()); 
 
             }
 
@@ -23438,21 +23634,21 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__SetParam__ParamAssignment_4"
-    // InternalResolutionModelParser.g:8006:1: rule__SetParam__ParamAssignment_4 : ( ( RULE_ID ) ) ;
+    // InternalResolutionModelParser.g:8064:1: rule__SetParam__ParamAssignment_4 : ( ( RULE_ID ) ) ;
     public final void rule__SetParam__ParamAssignment_4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:8010:1: ( ( ( RULE_ID ) ) )
-            // InternalResolutionModelParser.g:8011:2: ( ( RULE_ID ) )
+            // InternalResolutionModelParser.g:8068:1: ( ( ( RULE_ID ) ) )
+            // InternalResolutionModelParser.g:8069:2: ( ( RULE_ID ) )
             {
-            // InternalResolutionModelParser.g:8011:2: ( ( RULE_ID ) )
-            // InternalResolutionModelParser.g:8012:3: ( RULE_ID )
+            // InternalResolutionModelParser.g:8069:2: ( ( RULE_ID ) )
+            // InternalResolutionModelParser.g:8070:3: ( RULE_ID )
             {
              before(grammarAccess.getSetParamAccess().getParamParameterCrossReference_4_0()); 
-            // InternalResolutionModelParser.g:8013:3: ( RULE_ID )
-            // InternalResolutionModelParser.g:8014:4: RULE_ID
+            // InternalResolutionModelParser.g:8071:3: ( RULE_ID )
+            // InternalResolutionModelParser.g:8072:4: RULE_ID
             {
              before(grammarAccess.getSetParamAccess().getParamParameterIDTerminalRuleCall_4_0_1()); 
             match(input,RULE_ID,FOLLOW_2); 
@@ -23483,17 +23679,17 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__SetParam__ValueAssignment_6"
-    // InternalResolutionModelParser.g:8025:1: rule__SetParam__ValueAssignment_6 : ( ruleParameterValue ) ;
+    // InternalResolutionModelParser.g:8083:1: rule__SetParam__ValueAssignment_6 : ( ruleParameterValue ) ;
     public final void rule__SetParam__ValueAssignment_6() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:8029:1: ( ( ruleParameterValue ) )
-            // InternalResolutionModelParser.g:8030:2: ( ruleParameterValue )
+            // InternalResolutionModelParser.g:8087:1: ( ( ruleParameterValue ) )
+            // InternalResolutionModelParser.g:8088:2: ( ruleParameterValue )
             {
-            // InternalResolutionModelParser.g:8030:2: ( ruleParameterValue )
-            // InternalResolutionModelParser.g:8031:3: ruleParameterValue
+            // InternalResolutionModelParser.g:8088:2: ( ruleParameterValue )
+            // InternalResolutionModelParser.g:8089:3: ruleParameterValue
             {
              before(grammarAccess.getSetParamAccess().getValueParameterValueParserRuleCall_6_0()); 
             pushFollow(FOLLOW_2);
@@ -23524,25 +23720,29 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__SetLifecycle__NodeAssignment_2"
-    // InternalResolutionModelParser.g:8040:1: rule__SetLifecycle__NodeAssignment_2 : ( ( RULE_ID ) ) ;
+    // InternalResolutionModelParser.g:8098:1: rule__SetLifecycle__NodeAssignment_2 : ( ( ruleRosNames ) ) ;
     public final void rule__SetLifecycle__NodeAssignment_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:8044:1: ( ( ( RULE_ID ) ) )
-            // InternalResolutionModelParser.g:8045:2: ( ( RULE_ID ) )
+            // InternalResolutionModelParser.g:8102:1: ( ( ( ruleRosNames ) ) )
+            // InternalResolutionModelParser.g:8103:2: ( ( ruleRosNames ) )
             {
-            // InternalResolutionModelParser.g:8045:2: ( ( RULE_ID ) )
-            // InternalResolutionModelParser.g:8046:3: ( RULE_ID )
+            // InternalResolutionModelParser.g:8103:2: ( ( ruleRosNames ) )
+            // InternalResolutionModelParser.g:8104:3: ( ruleRosNames )
             {
              before(grammarAccess.getSetLifecycleAccess().getNodeRosNodeCrossReference_2_0()); 
-            // InternalResolutionModelParser.g:8047:3: ( RULE_ID )
-            // InternalResolutionModelParser.g:8048:4: RULE_ID
+            // InternalResolutionModelParser.g:8105:3: ( ruleRosNames )
+            // InternalResolutionModelParser.g:8106:4: ruleRosNames
             {
-             before(grammarAccess.getSetLifecycleAccess().getNodeRosNodeIDTerminalRuleCall_2_0_1()); 
-            match(input,RULE_ID,FOLLOW_2); 
-             after(grammarAccess.getSetLifecycleAccess().getNodeRosNodeIDTerminalRuleCall_2_0_1()); 
+             before(grammarAccess.getSetLifecycleAccess().getNodeRosNodeRosNamesParserRuleCall_2_0_1()); 
+            pushFollow(FOLLOW_2);
+            ruleRosNames();
+
+            state._fsp--;
+
+             after(grammarAccess.getSetLifecycleAccess().getNodeRosNodeRosNamesParserRuleCall_2_0_1()); 
 
             }
 
@@ -23569,17 +23769,17 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__SetLifecycle__StateAssignment_4"
-    // InternalResolutionModelParser.g:8059:1: rule__SetLifecycle__StateAssignment_4 : ( ruleLifecycleState ) ;
+    // InternalResolutionModelParser.g:8117:1: rule__SetLifecycle__StateAssignment_4 : ( ruleLifecycleState ) ;
     public final void rule__SetLifecycle__StateAssignment_4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:8063:1: ( ( ruleLifecycleState ) )
-            // InternalResolutionModelParser.g:8064:2: ( ruleLifecycleState )
+            // InternalResolutionModelParser.g:8121:1: ( ( ruleLifecycleState ) )
+            // InternalResolutionModelParser.g:8122:2: ( ruleLifecycleState )
             {
-            // InternalResolutionModelParser.g:8064:2: ( ruleLifecycleState )
-            // InternalResolutionModelParser.g:8065:3: ruleLifecycleState
+            // InternalResolutionModelParser.g:8122:2: ( ruleLifecycleState )
+            // InternalResolutionModelParser.g:8123:3: ruleLifecycleState
             {
              before(grammarAccess.getSetLifecycleAccess().getStateLifecycleStateEnumRuleCall_4_0()); 
             pushFollow(FOLLOW_2);
@@ -23610,17 +23810,17 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__GlobalNamespace__PartsAssignment_2_1"
-    // InternalResolutionModelParser.g:8074:1: rule__GlobalNamespace__PartsAssignment_2_1 : ( ruleGraphName ) ;
+    // InternalResolutionModelParser.g:8132:1: rule__GlobalNamespace__PartsAssignment_2_1 : ( ruleGraphName ) ;
     public final void rule__GlobalNamespace__PartsAssignment_2_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:8078:1: ( ( ruleGraphName ) )
-            // InternalResolutionModelParser.g:8079:2: ( ruleGraphName )
+            // InternalResolutionModelParser.g:8136:1: ( ( ruleGraphName ) )
+            // InternalResolutionModelParser.g:8137:2: ( ruleGraphName )
             {
-            // InternalResolutionModelParser.g:8079:2: ( ruleGraphName )
-            // InternalResolutionModelParser.g:8080:3: ruleGraphName
+            // InternalResolutionModelParser.g:8137:2: ( ruleGraphName )
+            // InternalResolutionModelParser.g:8138:3: ruleGraphName
             {
              before(grammarAccess.getGlobalNamespaceAccess().getPartsGraphNameParserRuleCall_2_1_0()); 
             pushFollow(FOLLOW_2);
@@ -23651,17 +23851,17 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__GlobalNamespace__PartsAssignment_2_2_1"
-    // InternalResolutionModelParser.g:8089:1: rule__GlobalNamespace__PartsAssignment_2_2_1 : ( ruleGraphName ) ;
+    // InternalResolutionModelParser.g:8147:1: rule__GlobalNamespace__PartsAssignment_2_2_1 : ( ruleGraphName ) ;
     public final void rule__GlobalNamespace__PartsAssignment_2_2_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:8093:1: ( ( ruleGraphName ) )
-            // InternalResolutionModelParser.g:8094:2: ( ruleGraphName )
+            // InternalResolutionModelParser.g:8151:1: ( ( ruleGraphName ) )
+            // InternalResolutionModelParser.g:8152:2: ( ruleGraphName )
             {
-            // InternalResolutionModelParser.g:8094:2: ( ruleGraphName )
-            // InternalResolutionModelParser.g:8095:3: ruleGraphName
+            // InternalResolutionModelParser.g:8152:2: ( ruleGraphName )
+            // InternalResolutionModelParser.g:8153:3: ruleGraphName
             {
              before(grammarAccess.getGlobalNamespaceAccess().getPartsGraphNameParserRuleCall_2_2_1_0()); 
             pushFollow(FOLLOW_2);
@@ -23692,17 +23892,17 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__RelativeNamespace_Impl__PartsAssignment_2_1"
-    // InternalResolutionModelParser.g:8104:1: rule__RelativeNamespace_Impl__PartsAssignment_2_1 : ( ruleGraphName ) ;
+    // InternalResolutionModelParser.g:8162:1: rule__RelativeNamespace_Impl__PartsAssignment_2_1 : ( ruleGraphName ) ;
     public final void rule__RelativeNamespace_Impl__PartsAssignment_2_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:8108:1: ( ( ruleGraphName ) )
-            // InternalResolutionModelParser.g:8109:2: ( ruleGraphName )
+            // InternalResolutionModelParser.g:8166:1: ( ( ruleGraphName ) )
+            // InternalResolutionModelParser.g:8167:2: ( ruleGraphName )
             {
-            // InternalResolutionModelParser.g:8109:2: ( ruleGraphName )
-            // InternalResolutionModelParser.g:8110:3: ruleGraphName
+            // InternalResolutionModelParser.g:8167:2: ( ruleGraphName )
+            // InternalResolutionModelParser.g:8168:3: ruleGraphName
             {
              before(grammarAccess.getRelativeNamespace_ImplAccess().getPartsGraphNameParserRuleCall_2_1_0()); 
             pushFollow(FOLLOW_2);
@@ -23733,17 +23933,17 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__RelativeNamespace_Impl__PartsAssignment_2_2_1"
-    // InternalResolutionModelParser.g:8119:1: rule__RelativeNamespace_Impl__PartsAssignment_2_2_1 : ( ruleGraphName ) ;
+    // InternalResolutionModelParser.g:8177:1: rule__RelativeNamespace_Impl__PartsAssignment_2_2_1 : ( ruleGraphName ) ;
     public final void rule__RelativeNamespace_Impl__PartsAssignment_2_2_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:8123:1: ( ( ruleGraphName ) )
-            // InternalResolutionModelParser.g:8124:2: ( ruleGraphName )
+            // InternalResolutionModelParser.g:8181:1: ( ( ruleGraphName ) )
+            // InternalResolutionModelParser.g:8182:2: ( ruleGraphName )
             {
-            // InternalResolutionModelParser.g:8124:2: ( ruleGraphName )
-            // InternalResolutionModelParser.g:8125:3: ruleGraphName
+            // InternalResolutionModelParser.g:8182:2: ( ruleGraphName )
+            // InternalResolutionModelParser.g:8183:3: ruleGraphName
             {
              before(grammarAccess.getRelativeNamespace_ImplAccess().getPartsGraphNameParserRuleCall_2_2_1_0()); 
             pushFollow(FOLLOW_2);
@@ -23774,17 +23974,17 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__PrivateNamespace__PartsAssignment_2_1"
-    // InternalResolutionModelParser.g:8134:1: rule__PrivateNamespace__PartsAssignment_2_1 : ( ruleGraphName ) ;
+    // InternalResolutionModelParser.g:8192:1: rule__PrivateNamespace__PartsAssignment_2_1 : ( ruleGraphName ) ;
     public final void rule__PrivateNamespace__PartsAssignment_2_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:8138:1: ( ( ruleGraphName ) )
-            // InternalResolutionModelParser.g:8139:2: ( ruleGraphName )
+            // InternalResolutionModelParser.g:8196:1: ( ( ruleGraphName ) )
+            // InternalResolutionModelParser.g:8197:2: ( ruleGraphName )
             {
-            // InternalResolutionModelParser.g:8139:2: ( ruleGraphName )
-            // InternalResolutionModelParser.g:8140:3: ruleGraphName
+            // InternalResolutionModelParser.g:8197:2: ( ruleGraphName )
+            // InternalResolutionModelParser.g:8198:3: ruleGraphName
             {
              before(grammarAccess.getPrivateNamespaceAccess().getPartsGraphNameParserRuleCall_2_1_0()); 
             pushFollow(FOLLOW_2);
@@ -23815,17 +24015,17 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__PrivateNamespace__PartsAssignment_2_2_1"
-    // InternalResolutionModelParser.g:8149:1: rule__PrivateNamespace__PartsAssignment_2_2_1 : ( ruleGraphName ) ;
+    // InternalResolutionModelParser.g:8207:1: rule__PrivateNamespace__PartsAssignment_2_2_1 : ( ruleGraphName ) ;
     public final void rule__PrivateNamespace__PartsAssignment_2_2_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:8153:1: ( ( ruleGraphName ) )
-            // InternalResolutionModelParser.g:8154:2: ( ruleGraphName )
+            // InternalResolutionModelParser.g:8211:1: ( ( ruleGraphName ) )
+            // InternalResolutionModelParser.g:8212:2: ( ruleGraphName )
             {
-            // InternalResolutionModelParser.g:8154:2: ( ruleGraphName )
-            // InternalResolutionModelParser.g:8155:3: ruleGraphName
+            // InternalResolutionModelParser.g:8212:2: ( ruleGraphName )
+            // InternalResolutionModelParser.g:8213:3: ruleGraphName
             {
              before(grammarAccess.getPrivateNamespaceAccess().getPartsGraphNameParserRuleCall_2_2_1_0()); 
             pushFollow(FOLLOW_2);
@@ -23856,17 +24056,17 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ParameterListType__SequenceAssignment_3"
-    // InternalResolutionModelParser.g:8164:1: rule__ParameterListType__SequenceAssignment_3 : ( ruleParameterType ) ;
+    // InternalResolutionModelParser.g:8222:1: rule__ParameterListType__SequenceAssignment_3 : ( ruleParameterType ) ;
     public final void rule__ParameterListType__SequenceAssignment_3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:8168:1: ( ( ruleParameterType ) )
-            // InternalResolutionModelParser.g:8169:2: ( ruleParameterType )
+            // InternalResolutionModelParser.g:8226:1: ( ( ruleParameterType ) )
+            // InternalResolutionModelParser.g:8227:2: ( ruleParameterType )
             {
-            // InternalResolutionModelParser.g:8169:2: ( ruleParameterType )
-            // InternalResolutionModelParser.g:8170:3: ruleParameterType
+            // InternalResolutionModelParser.g:8227:2: ( ruleParameterType )
+            // InternalResolutionModelParser.g:8228:3: ruleParameterType
             {
              before(grammarAccess.getParameterListTypeAccess().getSequenceParameterTypeParserRuleCall_3_0()); 
             pushFollow(FOLLOW_2);
@@ -23897,17 +24097,17 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ParameterListType__SequenceAssignment_4_1"
-    // InternalResolutionModelParser.g:8179:1: rule__ParameterListType__SequenceAssignment_4_1 : ( ruleParameterType ) ;
+    // InternalResolutionModelParser.g:8237:1: rule__ParameterListType__SequenceAssignment_4_1 : ( ruleParameterType ) ;
     public final void rule__ParameterListType__SequenceAssignment_4_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:8183:1: ( ( ruleParameterType ) )
-            // InternalResolutionModelParser.g:8184:2: ( ruleParameterType )
+            // InternalResolutionModelParser.g:8241:1: ( ( ruleParameterType ) )
+            // InternalResolutionModelParser.g:8242:2: ( ruleParameterType )
             {
-            // InternalResolutionModelParser.g:8184:2: ( ruleParameterType )
-            // InternalResolutionModelParser.g:8185:3: ruleParameterType
+            // InternalResolutionModelParser.g:8242:2: ( ruleParameterType )
+            // InternalResolutionModelParser.g:8243:3: ruleParameterType
             {
              before(grammarAccess.getParameterListTypeAccess().getSequenceParameterTypeParserRuleCall_4_1_0()); 
             pushFollow(FOLLOW_2);
@@ -23938,17 +24138,17 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ParameterStructType__ParameterstructypetmemberAssignment_3"
-    // InternalResolutionModelParser.g:8194:1: rule__ParameterStructType__ParameterstructypetmemberAssignment_3 : ( ruleParameterStructTypeMember ) ;
+    // InternalResolutionModelParser.g:8252:1: rule__ParameterStructType__ParameterstructypetmemberAssignment_3 : ( ruleParameterStructTypeMember ) ;
     public final void rule__ParameterStructType__ParameterstructypetmemberAssignment_3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:8198:1: ( ( ruleParameterStructTypeMember ) )
-            // InternalResolutionModelParser.g:8199:2: ( ruleParameterStructTypeMember )
+            // InternalResolutionModelParser.g:8256:1: ( ( ruleParameterStructTypeMember ) )
+            // InternalResolutionModelParser.g:8257:2: ( ruleParameterStructTypeMember )
             {
-            // InternalResolutionModelParser.g:8199:2: ( ruleParameterStructTypeMember )
-            // InternalResolutionModelParser.g:8200:3: ruleParameterStructTypeMember
+            // InternalResolutionModelParser.g:8257:2: ( ruleParameterStructTypeMember )
+            // InternalResolutionModelParser.g:8258:3: ruleParameterStructTypeMember
             {
              before(grammarAccess.getParameterStructTypeAccess().getParameterstructypetmemberParameterStructTypeMemberParserRuleCall_3_0()); 
             pushFollow(FOLLOW_2);
@@ -23979,17 +24179,17 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ParameterStructType__ParameterstructypetmemberAssignment_4_1"
-    // InternalResolutionModelParser.g:8209:1: rule__ParameterStructType__ParameterstructypetmemberAssignment_4_1 : ( ruleParameterStructTypeMember ) ;
+    // InternalResolutionModelParser.g:8267:1: rule__ParameterStructType__ParameterstructypetmemberAssignment_4_1 : ( ruleParameterStructTypeMember ) ;
     public final void rule__ParameterStructType__ParameterstructypetmemberAssignment_4_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:8213:1: ( ( ruleParameterStructTypeMember ) )
-            // InternalResolutionModelParser.g:8214:2: ( ruleParameterStructTypeMember )
+            // InternalResolutionModelParser.g:8271:1: ( ( ruleParameterStructTypeMember ) )
+            // InternalResolutionModelParser.g:8272:2: ( ruleParameterStructTypeMember )
             {
-            // InternalResolutionModelParser.g:8214:2: ( ruleParameterStructTypeMember )
-            // InternalResolutionModelParser.g:8215:3: ruleParameterStructTypeMember
+            // InternalResolutionModelParser.g:8272:2: ( ruleParameterStructTypeMember )
+            // InternalResolutionModelParser.g:8273:3: ruleParameterStructTypeMember
             {
              before(grammarAccess.getParameterStructTypeAccess().getParameterstructypetmemberParameterStructTypeMemberParserRuleCall_4_1_0()); 
             pushFollow(FOLLOW_2);
@@ -24020,17 +24220,17 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ParameterIntegerType__DefaultAssignment_2_1"
-    // InternalResolutionModelParser.g:8224:1: rule__ParameterIntegerType__DefaultAssignment_2_1 : ( ruleParameterInteger ) ;
+    // InternalResolutionModelParser.g:8282:1: rule__ParameterIntegerType__DefaultAssignment_2_1 : ( ruleParameterInteger ) ;
     public final void rule__ParameterIntegerType__DefaultAssignment_2_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:8228:1: ( ( ruleParameterInteger ) )
-            // InternalResolutionModelParser.g:8229:2: ( ruleParameterInteger )
+            // InternalResolutionModelParser.g:8286:1: ( ( ruleParameterInteger ) )
+            // InternalResolutionModelParser.g:8287:2: ( ruleParameterInteger )
             {
-            // InternalResolutionModelParser.g:8229:2: ( ruleParameterInteger )
-            // InternalResolutionModelParser.g:8230:3: ruleParameterInteger
+            // InternalResolutionModelParser.g:8287:2: ( ruleParameterInteger )
+            // InternalResolutionModelParser.g:8288:3: ruleParameterInteger
             {
              before(grammarAccess.getParameterIntegerTypeAccess().getDefaultParameterIntegerParserRuleCall_2_1_0()); 
             pushFollow(FOLLOW_2);
@@ -24061,17 +24261,17 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ParameterStringType__DefaultAssignment_2_1"
-    // InternalResolutionModelParser.g:8239:1: rule__ParameterStringType__DefaultAssignment_2_1 : ( ruleParameterString ) ;
+    // InternalResolutionModelParser.g:8297:1: rule__ParameterStringType__DefaultAssignment_2_1 : ( ruleParameterString ) ;
     public final void rule__ParameterStringType__DefaultAssignment_2_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:8243:1: ( ( ruleParameterString ) )
-            // InternalResolutionModelParser.g:8244:2: ( ruleParameterString )
+            // InternalResolutionModelParser.g:8301:1: ( ( ruleParameterString ) )
+            // InternalResolutionModelParser.g:8302:2: ( ruleParameterString )
             {
-            // InternalResolutionModelParser.g:8244:2: ( ruleParameterString )
-            // InternalResolutionModelParser.g:8245:3: ruleParameterString
+            // InternalResolutionModelParser.g:8302:2: ( ruleParameterString )
+            // InternalResolutionModelParser.g:8303:3: ruleParameterString
             {
              before(grammarAccess.getParameterStringTypeAccess().getDefaultParameterStringParserRuleCall_2_1_0()); 
             pushFollow(FOLLOW_2);
@@ -24102,17 +24302,17 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ParameterDoubleType__DefaultAssignment_2_1"
-    // InternalResolutionModelParser.g:8254:1: rule__ParameterDoubleType__DefaultAssignment_2_1 : ( ruleParameterDouble ) ;
+    // InternalResolutionModelParser.g:8312:1: rule__ParameterDoubleType__DefaultAssignment_2_1 : ( ruleParameterDouble ) ;
     public final void rule__ParameterDoubleType__DefaultAssignment_2_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:8258:1: ( ( ruleParameterDouble ) )
-            // InternalResolutionModelParser.g:8259:2: ( ruleParameterDouble )
+            // InternalResolutionModelParser.g:8316:1: ( ( ruleParameterDouble ) )
+            // InternalResolutionModelParser.g:8317:2: ( ruleParameterDouble )
             {
-            // InternalResolutionModelParser.g:8259:2: ( ruleParameterDouble )
-            // InternalResolutionModelParser.g:8260:3: ruleParameterDouble
+            // InternalResolutionModelParser.g:8317:2: ( ruleParameterDouble )
+            // InternalResolutionModelParser.g:8318:3: ruleParameterDouble
             {
              before(grammarAccess.getParameterDoubleTypeAccess().getDefaultParameterDoubleParserRuleCall_2_1_0()); 
             pushFollow(FOLLOW_2);
@@ -24143,17 +24343,17 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ParameterBooleanType__DefaultAssignment_2_1"
-    // InternalResolutionModelParser.g:8269:1: rule__ParameterBooleanType__DefaultAssignment_2_1 : ( ruleParameterBoolean ) ;
+    // InternalResolutionModelParser.g:8327:1: rule__ParameterBooleanType__DefaultAssignment_2_1 : ( ruleParameterBoolean ) ;
     public final void rule__ParameterBooleanType__DefaultAssignment_2_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:8273:1: ( ( ruleParameterBoolean ) )
-            // InternalResolutionModelParser.g:8274:2: ( ruleParameterBoolean )
+            // InternalResolutionModelParser.g:8331:1: ( ( ruleParameterBoolean ) )
+            // InternalResolutionModelParser.g:8332:2: ( ruleParameterBoolean )
             {
-            // InternalResolutionModelParser.g:8274:2: ( ruleParameterBoolean )
-            // InternalResolutionModelParser.g:8275:3: ruleParameterBoolean
+            // InternalResolutionModelParser.g:8332:2: ( ruleParameterBoolean )
+            // InternalResolutionModelParser.g:8333:3: ruleParameterBoolean
             {
              before(grammarAccess.getParameterBooleanTypeAccess().getDefaultParameterBooleanParserRuleCall_2_1_0()); 
             pushFollow(FOLLOW_2);
@@ -24184,17 +24384,17 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ParameterBase64Type__DefaultAssignment_2_1"
-    // InternalResolutionModelParser.g:8284:1: rule__ParameterBase64Type__DefaultAssignment_2_1 : ( ruleParameterBase64 ) ;
+    // InternalResolutionModelParser.g:8342:1: rule__ParameterBase64Type__DefaultAssignment_2_1 : ( ruleParameterBase64 ) ;
     public final void rule__ParameterBase64Type__DefaultAssignment_2_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:8288:1: ( ( ruleParameterBase64 ) )
-            // InternalResolutionModelParser.g:8289:2: ( ruleParameterBase64 )
+            // InternalResolutionModelParser.g:8346:1: ( ( ruleParameterBase64 ) )
+            // InternalResolutionModelParser.g:8347:2: ( ruleParameterBase64 )
             {
-            // InternalResolutionModelParser.g:8289:2: ( ruleParameterBase64 )
-            // InternalResolutionModelParser.g:8290:3: ruleParameterBase64
+            // InternalResolutionModelParser.g:8347:2: ( ruleParameterBase64 )
+            // InternalResolutionModelParser.g:8348:3: ruleParameterBase64
             {
              before(grammarAccess.getParameterBase64TypeAccess().getDefaultParameterBase64ParserRuleCall_2_1_0()); 
             pushFollow(FOLLOW_2);
@@ -24225,17 +24425,17 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ParameterArrayType__TypeAssignment_2"
-    // InternalResolutionModelParser.g:8299:1: rule__ParameterArrayType__TypeAssignment_2 : ( ruleParameterType ) ;
+    // InternalResolutionModelParser.g:8357:1: rule__ParameterArrayType__TypeAssignment_2 : ( ruleParameterType ) ;
     public final void rule__ParameterArrayType__TypeAssignment_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:8303:1: ( ( ruleParameterType ) )
-            // InternalResolutionModelParser.g:8304:2: ( ruleParameterType )
+            // InternalResolutionModelParser.g:8361:1: ( ( ruleParameterType ) )
+            // InternalResolutionModelParser.g:8362:2: ( ruleParameterType )
             {
-            // InternalResolutionModelParser.g:8304:2: ( ruleParameterType )
-            // InternalResolutionModelParser.g:8305:3: ruleParameterType
+            // InternalResolutionModelParser.g:8362:2: ( ruleParameterType )
+            // InternalResolutionModelParser.g:8363:3: ruleParameterType
             {
              before(grammarAccess.getParameterArrayTypeAccess().getTypeParameterTypeParserRuleCall_2_0()); 
             pushFollow(FOLLOW_2);
@@ -24266,17 +24466,17 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ParameterArrayType__DefaultAssignment_4_1"
-    // InternalResolutionModelParser.g:8314:1: rule__ParameterArrayType__DefaultAssignment_4_1 : ( ruleParameterList ) ;
+    // InternalResolutionModelParser.g:8372:1: rule__ParameterArrayType__DefaultAssignment_4_1 : ( ruleParameterList ) ;
     public final void rule__ParameterArrayType__DefaultAssignment_4_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:8318:1: ( ( ruleParameterList ) )
-            // InternalResolutionModelParser.g:8319:2: ( ruleParameterList )
+            // InternalResolutionModelParser.g:8376:1: ( ( ruleParameterList ) )
+            // InternalResolutionModelParser.g:8377:2: ( ruleParameterList )
             {
-            // InternalResolutionModelParser.g:8319:2: ( ruleParameterList )
-            // InternalResolutionModelParser.g:8320:3: ruleParameterList
+            // InternalResolutionModelParser.g:8377:2: ( ruleParameterList )
+            // InternalResolutionModelParser.g:8378:3: ruleParameterList
             {
              before(grammarAccess.getParameterArrayTypeAccess().getDefaultParameterListParserRuleCall_4_1_0()); 
             pushFollow(FOLLOW_2);
@@ -24307,17 +24507,17 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ParameterList__ValueAssignment_2"
-    // InternalResolutionModelParser.g:8329:1: rule__ParameterList__ValueAssignment_2 : ( ruleParameterValue ) ;
+    // InternalResolutionModelParser.g:8387:1: rule__ParameterList__ValueAssignment_2 : ( ruleParameterValue ) ;
     public final void rule__ParameterList__ValueAssignment_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:8333:1: ( ( ruleParameterValue ) )
-            // InternalResolutionModelParser.g:8334:2: ( ruleParameterValue )
+            // InternalResolutionModelParser.g:8391:1: ( ( ruleParameterValue ) )
+            // InternalResolutionModelParser.g:8392:2: ( ruleParameterValue )
             {
-            // InternalResolutionModelParser.g:8334:2: ( ruleParameterValue )
-            // InternalResolutionModelParser.g:8335:3: ruleParameterValue
+            // InternalResolutionModelParser.g:8392:2: ( ruleParameterValue )
+            // InternalResolutionModelParser.g:8393:3: ruleParameterValue
             {
              before(grammarAccess.getParameterListAccess().getValueParameterValueParserRuleCall_2_0()); 
             pushFollow(FOLLOW_2);
@@ -24348,17 +24548,17 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ParameterList__ValueAssignment_3_1"
-    // InternalResolutionModelParser.g:8344:1: rule__ParameterList__ValueAssignment_3_1 : ( ruleParameterValue ) ;
+    // InternalResolutionModelParser.g:8402:1: rule__ParameterList__ValueAssignment_3_1 : ( ruleParameterValue ) ;
     public final void rule__ParameterList__ValueAssignment_3_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:8348:1: ( ( ruleParameterValue ) )
-            // InternalResolutionModelParser.g:8349:2: ( ruleParameterValue )
+            // InternalResolutionModelParser.g:8406:1: ( ( ruleParameterValue ) )
+            // InternalResolutionModelParser.g:8407:2: ( ruleParameterValue )
             {
-            // InternalResolutionModelParser.g:8349:2: ( ruleParameterValue )
-            // InternalResolutionModelParser.g:8350:3: ruleParameterValue
+            // InternalResolutionModelParser.g:8407:2: ( ruleParameterValue )
+            // InternalResolutionModelParser.g:8408:3: ruleParameterValue
             {
              before(grammarAccess.getParameterListAccess().getValueParameterValueParserRuleCall_3_1_0()); 
             pushFollow(FOLLOW_2);
@@ -24389,17 +24589,17 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ParameterAny__ValueAssignment_2_1"
-    // InternalResolutionModelParser.g:8359:1: rule__ParameterAny__ValueAssignment_2_1 : ( ruleEString ) ;
+    // InternalResolutionModelParser.g:8417:1: rule__ParameterAny__ValueAssignment_2_1 : ( ruleEString ) ;
     public final void rule__ParameterAny__ValueAssignment_2_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:8363:1: ( ( ruleEString ) )
-            // InternalResolutionModelParser.g:8364:2: ( ruleEString )
+            // InternalResolutionModelParser.g:8421:1: ( ( ruleEString ) )
+            // InternalResolutionModelParser.g:8422:2: ( ruleEString )
             {
-            // InternalResolutionModelParser.g:8364:2: ( ruleEString )
-            // InternalResolutionModelParser.g:8365:3: ruleEString
+            // InternalResolutionModelParser.g:8422:2: ( ruleEString )
+            // InternalResolutionModelParser.g:8423:3: ruleEString
             {
              before(grammarAccess.getParameterAnyAccess().getValueEStringParserRuleCall_2_1_0()); 
             pushFollow(FOLLOW_2);
@@ -24430,17 +24630,17 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ParameterString__ValueAssignment"
-    // InternalResolutionModelParser.g:8374:1: rule__ParameterString__ValueAssignment : ( ruleEString ) ;
+    // InternalResolutionModelParser.g:8432:1: rule__ParameterString__ValueAssignment : ( ruleEString ) ;
     public final void rule__ParameterString__ValueAssignment() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:8378:1: ( ( ruleEString ) )
-            // InternalResolutionModelParser.g:8379:2: ( ruleEString )
+            // InternalResolutionModelParser.g:8436:1: ( ( ruleEString ) )
+            // InternalResolutionModelParser.g:8437:2: ( ruleEString )
             {
-            // InternalResolutionModelParser.g:8379:2: ( ruleEString )
-            // InternalResolutionModelParser.g:8380:3: ruleEString
+            // InternalResolutionModelParser.g:8437:2: ( ruleEString )
+            // InternalResolutionModelParser.g:8438:3: ruleEString
             {
              before(grammarAccess.getParameterStringAccess().getValueEStringParserRuleCall_0()); 
             pushFollow(FOLLOW_2);
@@ -24471,17 +24671,17 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ParameterBase64__ValueAssignment"
-    // InternalResolutionModelParser.g:8389:1: rule__ParameterBase64__ValueAssignment : ( ruleBase64Binary ) ;
+    // InternalResolutionModelParser.g:8447:1: rule__ParameterBase64__ValueAssignment : ( ruleBase64Binary ) ;
     public final void rule__ParameterBase64__ValueAssignment() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:8393:1: ( ( ruleBase64Binary ) )
-            // InternalResolutionModelParser.g:8394:2: ( ruleBase64Binary )
+            // InternalResolutionModelParser.g:8451:1: ( ( ruleBase64Binary ) )
+            // InternalResolutionModelParser.g:8452:2: ( ruleBase64Binary )
             {
-            // InternalResolutionModelParser.g:8394:2: ( ruleBase64Binary )
-            // InternalResolutionModelParser.g:8395:3: ruleBase64Binary
+            // InternalResolutionModelParser.g:8452:2: ( ruleBase64Binary )
+            // InternalResolutionModelParser.g:8453:3: ruleBase64Binary
             {
              before(grammarAccess.getParameterBase64Access().getValueBase64BinaryParserRuleCall_0()); 
             pushFollow(FOLLOW_2);
@@ -24512,17 +24712,17 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ParameterInteger__ValueAssignment"
-    // InternalResolutionModelParser.g:8404:1: rule__ParameterInteger__ValueAssignment : ( ruleInteger0 ) ;
+    // InternalResolutionModelParser.g:8462:1: rule__ParameterInteger__ValueAssignment : ( ruleInteger0 ) ;
     public final void rule__ParameterInteger__ValueAssignment() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:8408:1: ( ( ruleInteger0 ) )
-            // InternalResolutionModelParser.g:8409:2: ( ruleInteger0 )
+            // InternalResolutionModelParser.g:8466:1: ( ( ruleInteger0 ) )
+            // InternalResolutionModelParser.g:8467:2: ( ruleInteger0 )
             {
-            // InternalResolutionModelParser.g:8409:2: ( ruleInteger0 )
-            // InternalResolutionModelParser.g:8410:3: ruleInteger0
+            // InternalResolutionModelParser.g:8467:2: ( ruleInteger0 )
+            // InternalResolutionModelParser.g:8468:3: ruleInteger0
             {
              before(grammarAccess.getParameterIntegerAccess().getValueInteger0ParserRuleCall_0()); 
             pushFollow(FOLLOW_2);
@@ -24553,17 +24753,17 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ParameterDouble__ValueAssignment"
-    // InternalResolutionModelParser.g:8419:1: rule__ParameterDouble__ValueAssignment : ( ruleDouble0 ) ;
+    // InternalResolutionModelParser.g:8477:1: rule__ParameterDouble__ValueAssignment : ( ruleDouble0 ) ;
     public final void rule__ParameterDouble__ValueAssignment() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:8423:1: ( ( ruleDouble0 ) )
-            // InternalResolutionModelParser.g:8424:2: ( ruleDouble0 )
+            // InternalResolutionModelParser.g:8481:1: ( ( ruleDouble0 ) )
+            // InternalResolutionModelParser.g:8482:2: ( ruleDouble0 )
             {
-            // InternalResolutionModelParser.g:8424:2: ( ruleDouble0 )
-            // InternalResolutionModelParser.g:8425:3: ruleDouble0
+            // InternalResolutionModelParser.g:8482:2: ( ruleDouble0 )
+            // InternalResolutionModelParser.g:8483:3: ruleDouble0
             {
              before(grammarAccess.getParameterDoubleAccess().getValueDouble0ParserRuleCall_0()); 
             pushFollow(FOLLOW_2);
@@ -24594,17 +24794,17 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ParameterBoolean__ValueAssignment"
-    // InternalResolutionModelParser.g:8434:1: rule__ParameterBoolean__ValueAssignment : ( ruleboolean0 ) ;
+    // InternalResolutionModelParser.g:8492:1: rule__ParameterBoolean__ValueAssignment : ( ruleboolean0 ) ;
     public final void rule__ParameterBoolean__ValueAssignment() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:8438:1: ( ( ruleboolean0 ) )
-            // InternalResolutionModelParser.g:8439:2: ( ruleboolean0 )
+            // InternalResolutionModelParser.g:8496:1: ( ( ruleboolean0 ) )
+            // InternalResolutionModelParser.g:8497:2: ( ruleboolean0 )
             {
-            // InternalResolutionModelParser.g:8439:2: ( ruleboolean0 )
-            // InternalResolutionModelParser.g:8440:3: ruleboolean0
+            // InternalResolutionModelParser.g:8497:2: ( ruleboolean0 )
+            // InternalResolutionModelParser.g:8498:3: ruleboolean0
             {
              before(grammarAccess.getParameterBooleanAccess().getValueBoolean0ParserRuleCall_0()); 
             pushFollow(FOLLOW_2);
@@ -24635,17 +24835,17 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ParameterStruct__ValueAssignment_1_2"
-    // InternalResolutionModelParser.g:8449:1: rule__ParameterStruct__ValueAssignment_1_2 : ( ruleParameterStructMember ) ;
+    // InternalResolutionModelParser.g:8507:1: rule__ParameterStruct__ValueAssignment_1_2 : ( ruleParameterStructMember ) ;
     public final void rule__ParameterStruct__ValueAssignment_1_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:8453:1: ( ( ruleParameterStructMember ) )
-            // InternalResolutionModelParser.g:8454:2: ( ruleParameterStructMember )
+            // InternalResolutionModelParser.g:8511:1: ( ( ruleParameterStructMember ) )
+            // InternalResolutionModelParser.g:8512:2: ( ruleParameterStructMember )
             {
-            // InternalResolutionModelParser.g:8454:2: ( ruleParameterStructMember )
-            // InternalResolutionModelParser.g:8455:3: ruleParameterStructMember
+            // InternalResolutionModelParser.g:8512:2: ( ruleParameterStructMember )
+            // InternalResolutionModelParser.g:8513:3: ruleParameterStructMember
             {
              before(grammarAccess.getParameterStructAccess().getValueParameterStructMemberParserRuleCall_1_2_0()); 
             pushFollow(FOLLOW_2);
@@ -24676,17 +24876,17 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ParameterDate__ValueAssignment"
-    // InternalResolutionModelParser.g:8464:1: rule__ParameterDate__ValueAssignment : ( ruleDateTime0 ) ;
+    // InternalResolutionModelParser.g:8522:1: rule__ParameterDate__ValueAssignment : ( ruleDateTime0 ) ;
     public final void rule__ParameterDate__ValueAssignment() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:8468:1: ( ( ruleDateTime0 ) )
-            // InternalResolutionModelParser.g:8469:2: ( ruleDateTime0 )
+            // InternalResolutionModelParser.g:8526:1: ( ( ruleDateTime0 ) )
+            // InternalResolutionModelParser.g:8527:2: ( ruleDateTime0 )
             {
-            // InternalResolutionModelParser.g:8469:2: ( ruleDateTime0 )
-            // InternalResolutionModelParser.g:8470:3: ruleDateTime0
+            // InternalResolutionModelParser.g:8527:2: ( ruleDateTime0 )
+            // InternalResolutionModelParser.g:8528:3: ruleDateTime0
             {
              before(grammarAccess.getParameterDateAccess().getValueDateTime0ParserRuleCall_0()); 
             pushFollow(FOLLOW_2);
@@ -24717,17 +24917,17 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ParameterStructMember__NameAssignment_0"
-    // InternalResolutionModelParser.g:8479:1: rule__ParameterStructMember__NameAssignment_0 : ( ruleEString ) ;
+    // InternalResolutionModelParser.g:8537:1: rule__ParameterStructMember__NameAssignment_0 : ( ruleEString ) ;
     public final void rule__ParameterStructMember__NameAssignment_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:8483:1: ( ( ruleEString ) )
-            // InternalResolutionModelParser.g:8484:2: ( ruleEString )
+            // InternalResolutionModelParser.g:8541:1: ( ( ruleEString ) )
+            // InternalResolutionModelParser.g:8542:2: ( ruleEString )
             {
-            // InternalResolutionModelParser.g:8484:2: ( ruleEString )
-            // InternalResolutionModelParser.g:8485:3: ruleEString
+            // InternalResolutionModelParser.g:8542:2: ( ruleEString )
+            // InternalResolutionModelParser.g:8543:3: ruleEString
             {
              before(grammarAccess.getParameterStructMemberAccess().getNameEStringParserRuleCall_0_0()); 
             pushFollow(FOLLOW_2);
@@ -24758,17 +24958,17 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ParameterStructMember__ValueAssignment_2"
-    // InternalResolutionModelParser.g:8494:1: rule__ParameterStructMember__ValueAssignment_2 : ( ruleParameterValue ) ;
+    // InternalResolutionModelParser.g:8552:1: rule__ParameterStructMember__ValueAssignment_2 : ( ruleParameterValue ) ;
     public final void rule__ParameterStructMember__ValueAssignment_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:8498:1: ( ( ruleParameterValue ) )
-            // InternalResolutionModelParser.g:8499:2: ( ruleParameterValue )
+            // InternalResolutionModelParser.g:8556:1: ( ( ruleParameterValue ) )
+            // InternalResolutionModelParser.g:8557:2: ( ruleParameterValue )
             {
-            // InternalResolutionModelParser.g:8499:2: ( ruleParameterValue )
-            // InternalResolutionModelParser.g:8500:3: ruleParameterValue
+            // InternalResolutionModelParser.g:8557:2: ( ruleParameterValue )
+            // InternalResolutionModelParser.g:8558:3: ruleParameterValue
             {
              before(grammarAccess.getParameterStructMemberAccess().getValueParameterValueParserRuleCall_2_0()); 
             pushFollow(FOLLOW_2);
@@ -24799,17 +24999,17 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ParameterStructTypeMember__NameAssignment_0"
-    // InternalResolutionModelParser.g:8509:1: rule__ParameterStructTypeMember__NameAssignment_0 : ( ruleEString ) ;
+    // InternalResolutionModelParser.g:8567:1: rule__ParameterStructTypeMember__NameAssignment_0 : ( ruleEString ) ;
     public final void rule__ParameterStructTypeMember__NameAssignment_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:8513:1: ( ( ruleEString ) )
-            // InternalResolutionModelParser.g:8514:2: ( ruleEString )
+            // InternalResolutionModelParser.g:8571:1: ( ( ruleEString ) )
+            // InternalResolutionModelParser.g:8572:2: ( ruleEString )
             {
-            // InternalResolutionModelParser.g:8514:2: ( ruleEString )
-            // InternalResolutionModelParser.g:8515:3: ruleEString
+            // InternalResolutionModelParser.g:8572:2: ( ruleEString )
+            // InternalResolutionModelParser.g:8573:3: ruleEString
             {
              before(grammarAccess.getParameterStructTypeMemberAccess().getNameEStringParserRuleCall_0_0()); 
             pushFollow(FOLLOW_2);
@@ -24840,17 +25040,17 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ParameterStructTypeMember__TypeAssignment_1"
-    // InternalResolutionModelParser.g:8524:1: rule__ParameterStructTypeMember__TypeAssignment_1 : ( ruleParameterType ) ;
+    // InternalResolutionModelParser.g:8582:1: rule__ParameterStructTypeMember__TypeAssignment_1 : ( ruleParameterType ) ;
     public final void rule__ParameterStructTypeMember__TypeAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:8528:1: ( ( ruleParameterType ) )
-            // InternalResolutionModelParser.g:8529:2: ( ruleParameterType )
+            // InternalResolutionModelParser.g:8586:1: ( ( ruleParameterType ) )
+            // InternalResolutionModelParser.g:8587:2: ( ruleParameterType )
             {
-            // InternalResolutionModelParser.g:8529:2: ( ruleParameterType )
-            // InternalResolutionModelParser.g:8530:3: ruleParameterType
+            // InternalResolutionModelParser.g:8587:2: ( ruleParameterType )
+            // InternalResolutionModelParser.g:8588:3: ruleParameterType
             {
              before(grammarAccess.getParameterStructTypeMemberAccess().getTypeParameterTypeParserRuleCall_1_0()); 
             pushFollow(FOLLOW_2);
@@ -24881,21 +25081,21 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__SpecBaseRef__ReferenceAssignment"
-    // InternalResolutionModelParser.g:8539:1: rule__SpecBaseRef__ReferenceAssignment : ( ( ruleEString ) ) ;
+    // InternalResolutionModelParser.g:8597:1: rule__SpecBaseRef__ReferenceAssignment : ( ( ruleEString ) ) ;
     public final void rule__SpecBaseRef__ReferenceAssignment() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:8543:1: ( ( ( ruleEString ) ) )
-            // InternalResolutionModelParser.g:8544:2: ( ( ruleEString ) )
+            // InternalResolutionModelParser.g:8601:1: ( ( ( ruleEString ) ) )
+            // InternalResolutionModelParser.g:8602:2: ( ( ruleEString ) )
             {
-            // InternalResolutionModelParser.g:8544:2: ( ( ruleEString ) )
-            // InternalResolutionModelParser.g:8545:3: ( ruleEString )
+            // InternalResolutionModelParser.g:8602:2: ( ( ruleEString ) )
+            // InternalResolutionModelParser.g:8603:3: ( ruleEString )
             {
              before(grammarAccess.getSpecBaseRefAccess().getReferenceTopicSpecCrossReference_0()); 
-            // InternalResolutionModelParser.g:8546:3: ( ruleEString )
-            // InternalResolutionModelParser.g:8547:4: ruleEString
+            // InternalResolutionModelParser.g:8604:3: ( ruleEString )
+            // InternalResolutionModelParser.g:8605:4: ruleEString
             {
              before(grammarAccess.getSpecBaseRefAccess().getReferenceTopicSpecEStringParserRuleCall_0_1()); 
             pushFollow(FOLLOW_2);
@@ -24930,21 +25130,21 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ArraySpecRef__ReferenceAssignment_0"
-    // InternalResolutionModelParser.g:8558:1: rule__ArraySpecRef__ReferenceAssignment_0 : ( ( ruleEString ) ) ;
+    // InternalResolutionModelParser.g:8616:1: rule__ArraySpecRef__ReferenceAssignment_0 : ( ( ruleEString ) ) ;
     public final void rule__ArraySpecRef__ReferenceAssignment_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:8562:1: ( ( ( ruleEString ) ) )
-            // InternalResolutionModelParser.g:8563:2: ( ( ruleEString ) )
+            // InternalResolutionModelParser.g:8620:1: ( ( ( ruleEString ) ) )
+            // InternalResolutionModelParser.g:8621:2: ( ( ruleEString ) )
             {
-            // InternalResolutionModelParser.g:8563:2: ( ( ruleEString ) )
-            // InternalResolutionModelParser.g:8564:3: ( ruleEString )
+            // InternalResolutionModelParser.g:8621:2: ( ( ruleEString ) )
+            // InternalResolutionModelParser.g:8622:3: ( ruleEString )
             {
              before(grammarAccess.getArraySpecRefAccess().getReferenceTopicSpecCrossReference_0_0()); 
-            // InternalResolutionModelParser.g:8565:3: ( ruleEString )
-            // InternalResolutionModelParser.g:8566:4: ruleEString
+            // InternalResolutionModelParser.g:8623:3: ( ruleEString )
+            // InternalResolutionModelParser.g:8624:4: ruleEString
             {
              before(grammarAccess.getArraySpecRefAccess().getReferenceTopicSpecEStringParserRuleCall_0_0_1()); 
             pushFollow(FOLLOW_2);
@@ -25024,7 +25224,7 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
             this.transition = dfa_7;
         }
         public String getDescription() {
-            return "2080:1: rule__ParameterValue__Alternatives : ( ( ruleParameterString ) | ( ruleParameterBase64 ) | ( ruleParameterInteger ) | ( ruleParameterDouble ) | ( ruleParameterBoolean ) | ( ruleParameterList ) | ( ruleParameterStruct ) );";
+            return "2105:1: rule__ParameterValue__Alternatives : ( ( ruleParameterString ) | ( ruleParameterBase64 ) | ( ruleParameterInteger ) | ( ruleParameterDouble ) | ( ruleParameterBoolean ) | ( ruleParameterList ) | ( ruleParameterStruct ) );";
         }
     }
     static final String dfa_8s = "\44\uffff";
@@ -25094,7 +25294,7 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
             this.transition = dfa_14;
         }
         public String getDescription() {
-            return "2131:1: rule__AbstractType__Alternatives : ( ( rulebool ) | ( ruleint8 ) | ( ruleuint8 ) | ( ruleint16 ) | ( ruleuint16 ) | ( ruleint32 ) | ( ruleuint32 ) | ( ruleint64 ) | ( ruleuint64 ) | ( rulefloat32 ) | ( rulefloat64 ) | ( rulestring0 ) | ( rulebyte ) | ( ruletime ) | ( ruleduration ) | ( ruleHeader ) | ( ruleboolArray ) | ( ruleint8Array ) | ( ruleuint8Array ) | ( ruleint16Array ) | ( ruleuint16Array ) | ( ruleint32Array ) | ( ruleuint32Array ) | ( ruleint64Array ) | ( ruleuint64Array ) | ( rulefloat32Array ) | ( rulefloat64Array ) | ( rulestring0Array ) | ( rulebyteArray ) | ( ruleSpecBaseRef ) | ( ruleArraySpecRef ) | ( rulechar ) | ( rulecharArray ) );";
+            return "2156:1: rule__AbstractType__Alternatives : ( ( rulebool ) | ( ruleint8 ) | ( ruleuint8 ) | ( ruleint16 ) | ( ruleuint16 ) | ( ruleint32 ) | ( ruleuint32 ) | ( ruleint64 ) | ( ruleuint64 ) | ( rulefloat32 ) | ( rulefloat64 ) | ( rulestring0 ) | ( rulebyte ) | ( ruletime ) | ( ruleduration ) | ( ruleHeader ) | ( ruleboolArray ) | ( ruleint8Array ) | ( ruleuint8Array ) | ( ruleint16Array ) | ( ruleuint16Array ) | ( ruleint32Array ) | ( ruleuint32Array ) | ( ruleint64Array ) | ( ruleuint64Array ) | ( rulefloat32Array ) | ( rulefloat64Array ) | ( rulestring0Array ) | ( rulebyteArray ) | ( ruleSpecBaseRef ) | ( ruleArraySpecRef ) | ( rulechar ) | ( rulecharArray ) );";
         }
     }
  
@@ -25115,69 +25315,70 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
     public static final BitSet FOLLOW_14 = new BitSet(new long[]{0x0000000000000420L});
     public static final BitSet FOLLOW_15 = new BitSet(new long[]{0x0000000000000000L,0x0000000200000000L});
     public static final BitSet FOLLOW_16 = new BitSet(new long[]{0x0000000000000000L,0x0000000000002000L});
-    public static final BitSet FOLLOW_17 = new BitSet(new long[]{0x0000000000000000L,0x0000000000008000L});
-    public static final BitSet FOLLOW_18 = new BitSet(new long[]{0x0000000000000000L,0x0000000303C40000L});
-    public static final BitSet FOLLOW_19 = new BitSet(new long[]{0x0000000000000000L,0x0000000000004000L});
-    public static final BitSet FOLLOW_20 = new BitSet(new long[]{0x0000004000084800L});
-    public static final BitSet FOLLOW_21 = new BitSet(new long[]{0x0000000000000100L});
-    public static final BitSet FOLLOW_22 = new BitSet(new long[]{0x0000000000000000L,0x0000000000040000L});
-    public static final BitSet FOLLOW_23 = new BitSet(new long[]{0x0000000000008000L});
-    public static final BitSet FOLLOW_24 = new BitSet(new long[]{0x0000000000000000L,0x0000000000088000L});
-    public static final BitSet FOLLOW_25 = new BitSet(new long[]{0x0000000000000002L,0x0000000000008000L});
-    public static final BitSet FOLLOW_26 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_27 = new BitSet(new long[]{0x0000000000000080L});
-    public static final BitSet FOLLOW_28 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000001L});
-    public static final BitSet FOLLOW_29 = new BitSet(new long[]{0x01000D8018000000L,0x0000000000000001L});
-    public static final BitSet FOLLOW_30 = new BitSet(new long[]{0x0000080000000000L});
-    public static final BitSet FOLLOW_31 = new BitSet(new long[]{0x0000000000000000L,0x0000000300000000L});
-    public static final BitSet FOLLOW_32 = new BitSet(new long[]{0x0000000010000000L});
-    public static final BitSet FOLLOW_33 = new BitSet(new long[]{0x0000000000100000L});
-    public static final BitSet FOLLOW_34 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L});
-    public static final BitSet FOLLOW_35 = new BitSet(new long[]{0x0000040000000000L});
-    public static final BitSet FOLLOW_36 = new BitSet(new long[]{0x0000010000000000L});
-    public static final BitSet FOLLOW_37 = new BitSet(new long[]{0x0000000000000000L,0x0000000002000000L});
-    public static final BitSet FOLLOW_38 = new BitSet(new long[]{0x0000000008000000L});
-    public static final BitSet FOLLOW_39 = new BitSet(new long[]{0x0000000000000000L,0x0000000000800000L});
-    public static final BitSet FOLLOW_40 = new BitSet(new long[]{0x0000008000000000L});
-    public static final BitSet FOLLOW_41 = new BitSet(new long[]{0x0000000000000000L,0x0000000000400000L});
-    public static final BitSet FOLLOW_42 = new BitSet(new long[]{0x0000000000000000L,0x0000000000080000L});
-    public static final BitSet FOLLOW_43 = new BitSet(new long[]{0x0000000000000200L});
-    public static final BitSet FOLLOW_44 = new BitSet(new long[]{0x4000000000000000L});
-    public static final BitSet FOLLOW_45 = new BitSet(new long[]{0x0000000000000000L,0x0000001000000000L});
-    public static final BitSet FOLLOW_46 = new BitSet(new long[]{0x0000000000000000L,0x0000000300080000L});
-    public static final BitSet FOLLOW_47 = new BitSet(new long[]{0x0000000000000002L,0x0000000300000000L});
-    public static final BitSet FOLLOW_48 = new BitSet(new long[]{0x0000000000000000L,0x0000002000000000L});
-    public static final BitSet FOLLOW_49 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000002L});
-    public static final BitSet FOLLOW_50 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000020L});
-    public static final BitSet FOLLOW_51 = new BitSet(new long[]{0x2000000000000000L});
-    public static final BitSet FOLLOW_52 = new BitSet(new long[]{0x0200000000000000L});
-    public static final BitSet FOLLOW_53 = new BitSet(new long[]{0x0010000000000000L});
-    public static final BitSet FOLLOW_54 = new BitSet(new long[]{0x0400000000000000L});
-    public static final BitSet FOLLOW_55 = new BitSet(new long[]{0x0020000000000000L});
-    public static final BitSet FOLLOW_56 = new BitSet(new long[]{0x0800000000000000L});
-    public static final BitSet FOLLOW_57 = new BitSet(new long[]{0x0040000000000000L});
-    public static final BitSet FOLLOW_58 = new BitSet(new long[]{0x0000000020000000L});
-    public static final BitSet FOLLOW_59 = new BitSet(new long[]{0x0000000040000000L});
-    public static final BitSet FOLLOW_60 = new BitSet(new long[]{0x0008000000000000L});
-    public static final BitSet FOLLOW_61 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000008L});
-    public static final BitSet FOLLOW_62 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000004L});
-    public static final BitSet FOLLOW_63 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000100L});
-    public static final BitSet FOLLOW_64 = new BitSet(new long[]{0x0000000000200000L});
-    public static final BitSet FOLLOW_65 = new BitSet(new long[]{0x0000200000000000L});
-    public static final BitSet FOLLOW_66 = new BitSet(new long[]{0x0002000000000000L});
-    public static final BitSet FOLLOW_67 = new BitSet(new long[]{0x0000002000000000L});
-    public static final BitSet FOLLOW_68 = new BitSet(new long[]{0x0000000080000000L});
-    public static final BitSet FOLLOW_69 = new BitSet(new long[]{0x0000000001000000L});
-    public static final BitSet FOLLOW_70 = new BitSet(new long[]{0x0000000100000000L});
-    public static final BitSet FOLLOW_71 = new BitSet(new long[]{0x0000000002000000L});
-    public static final BitSet FOLLOW_72 = new BitSet(new long[]{0x0000000200000000L});
-    public static final BitSet FOLLOW_73 = new BitSet(new long[]{0x0000000004000000L});
-    public static final BitSet FOLLOW_74 = new BitSet(new long[]{0x0000000000020000L});
-    public static final BitSet FOLLOW_75 = new BitSet(new long[]{0x0000000000040000L});
-    public static final BitSet FOLLOW_76 = new BitSet(new long[]{0x0000000000800000L});
-    public static final BitSet FOLLOW_77 = new BitSet(new long[]{0x0000400000000000L});
-    public static final BitSet FOLLOW_78 = new BitSet(new long[]{0x0000800000000000L});
-    public static final BitSet FOLLOW_79 = new BitSet(new long[]{0x0000020000000000L});
-    public static final BitSet FOLLOW_80 = new BitSet(new long[]{0x0000000000000000L,0x0000000000001000L});
+    public static final BitSet FOLLOW_17 = new BitSet(new long[]{0x0000000000000000L,0x0000008100000080L});
+    public static final BitSet FOLLOW_18 = new BitSet(new long[]{0x0000000000000000L,0x0000000000008000L});
+    public static final BitSet FOLLOW_19 = new BitSet(new long[]{0x0000000000000000L,0x0000000303C40000L});
+    public static final BitSet FOLLOW_20 = new BitSet(new long[]{0x0000000000000000L,0x0000000000004000L});
+    public static final BitSet FOLLOW_21 = new BitSet(new long[]{0x0000004000084800L});
+    public static final BitSet FOLLOW_22 = new BitSet(new long[]{0x0000000000000100L});
+    public static final BitSet FOLLOW_23 = new BitSet(new long[]{0x0000000000000000L,0x0000000000040000L});
+    public static final BitSet FOLLOW_24 = new BitSet(new long[]{0x0000000000008000L});
+    public static final BitSet FOLLOW_25 = new BitSet(new long[]{0x0000000000000000L,0x0000000000088000L});
+    public static final BitSet FOLLOW_26 = new BitSet(new long[]{0x0000000000000002L,0x0000000000008000L});
+    public static final BitSet FOLLOW_27 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_28 = new BitSet(new long[]{0x0000000000000080L});
+    public static final BitSet FOLLOW_29 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000001L});
+    public static final BitSet FOLLOW_30 = new BitSet(new long[]{0x01000D8018000000L,0x0000000000000001L});
+    public static final BitSet FOLLOW_31 = new BitSet(new long[]{0x0000080000000000L});
+    public static final BitSet FOLLOW_32 = new BitSet(new long[]{0x0000000000000000L,0x0000000300000000L});
+    public static final BitSet FOLLOW_33 = new BitSet(new long[]{0x0000000010000000L});
+    public static final BitSet FOLLOW_34 = new BitSet(new long[]{0x0000000000100000L});
+    public static final BitSet FOLLOW_35 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L});
+    public static final BitSet FOLLOW_36 = new BitSet(new long[]{0x0000040000000000L});
+    public static final BitSet FOLLOW_37 = new BitSet(new long[]{0x0000010000000000L});
+    public static final BitSet FOLLOW_38 = new BitSet(new long[]{0x0000000000000000L,0x0000000002000000L});
+    public static final BitSet FOLLOW_39 = new BitSet(new long[]{0x0000000008000000L});
+    public static final BitSet FOLLOW_40 = new BitSet(new long[]{0x0000000000000000L,0x0000000000800000L});
+    public static final BitSet FOLLOW_41 = new BitSet(new long[]{0x0000008000000000L});
+    public static final BitSet FOLLOW_42 = new BitSet(new long[]{0x0000000000000000L,0x0000000000400000L});
+    public static final BitSet FOLLOW_43 = new BitSet(new long[]{0x0000000000000000L,0x0000000000080000L});
+    public static final BitSet FOLLOW_44 = new BitSet(new long[]{0x0000000000000200L});
+    public static final BitSet FOLLOW_45 = new BitSet(new long[]{0x4000000000000000L});
+    public static final BitSet FOLLOW_46 = new BitSet(new long[]{0x0000000000000000L,0x0000001000000000L});
+    public static final BitSet FOLLOW_47 = new BitSet(new long[]{0x0000000000000000L,0x0000000300080000L});
+    public static final BitSet FOLLOW_48 = new BitSet(new long[]{0x0000000000000002L,0x0000000300000000L});
+    public static final BitSet FOLLOW_49 = new BitSet(new long[]{0x0000000000000000L,0x0000002000000000L});
+    public static final BitSet FOLLOW_50 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000002L});
+    public static final BitSet FOLLOW_51 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000020L});
+    public static final BitSet FOLLOW_52 = new BitSet(new long[]{0x2000000000000000L});
+    public static final BitSet FOLLOW_53 = new BitSet(new long[]{0x0200000000000000L});
+    public static final BitSet FOLLOW_54 = new BitSet(new long[]{0x0010000000000000L});
+    public static final BitSet FOLLOW_55 = new BitSet(new long[]{0x0400000000000000L});
+    public static final BitSet FOLLOW_56 = new BitSet(new long[]{0x0020000000000000L});
+    public static final BitSet FOLLOW_57 = new BitSet(new long[]{0x0800000000000000L});
+    public static final BitSet FOLLOW_58 = new BitSet(new long[]{0x0040000000000000L});
+    public static final BitSet FOLLOW_59 = new BitSet(new long[]{0x0000000020000000L});
+    public static final BitSet FOLLOW_60 = new BitSet(new long[]{0x0000000040000000L});
+    public static final BitSet FOLLOW_61 = new BitSet(new long[]{0x0008000000000000L});
+    public static final BitSet FOLLOW_62 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000008L});
+    public static final BitSet FOLLOW_63 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000004L});
+    public static final BitSet FOLLOW_64 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000100L});
+    public static final BitSet FOLLOW_65 = new BitSet(new long[]{0x0000000000200000L});
+    public static final BitSet FOLLOW_66 = new BitSet(new long[]{0x0000200000000000L});
+    public static final BitSet FOLLOW_67 = new BitSet(new long[]{0x0002000000000000L});
+    public static final BitSet FOLLOW_68 = new BitSet(new long[]{0x0000002000000000L});
+    public static final BitSet FOLLOW_69 = new BitSet(new long[]{0x0000000080000000L});
+    public static final BitSet FOLLOW_70 = new BitSet(new long[]{0x0000000001000000L});
+    public static final BitSet FOLLOW_71 = new BitSet(new long[]{0x0000000100000000L});
+    public static final BitSet FOLLOW_72 = new BitSet(new long[]{0x0000000002000000L});
+    public static final BitSet FOLLOW_73 = new BitSet(new long[]{0x0000000200000000L});
+    public static final BitSet FOLLOW_74 = new BitSet(new long[]{0x0000000004000000L});
+    public static final BitSet FOLLOW_75 = new BitSet(new long[]{0x0000000000020000L});
+    public static final BitSet FOLLOW_76 = new BitSet(new long[]{0x0000000000040000L});
+    public static final BitSet FOLLOW_77 = new BitSet(new long[]{0x0000000000800000L});
+    public static final BitSet FOLLOW_78 = new BitSet(new long[]{0x0000400000000000L});
+    public static final BitSet FOLLOW_79 = new BitSet(new long[]{0x0000800000000000L});
+    public static final BitSet FOLLOW_80 = new BitSet(new long[]{0x0000020000000000L});
+    public static final BitSet FOLLOW_81 = new BitSet(new long[]{0x0000000000000000L,0x0000000000001000L});
 
 }

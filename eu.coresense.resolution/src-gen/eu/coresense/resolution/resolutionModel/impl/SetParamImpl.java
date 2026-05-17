@@ -34,223 +34,232 @@ import ros.ParameterValue;
 public class SetParamImpl extends ReconfigurationImpl implements SetParam
 {
   /**
-	 * The cached value of the '{@link #getParam() <em>Param</em>}' reference.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getParam() <em>Param</em>}' reference.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @see #getParam()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getParam()
+   * @generated
+   * @ordered
+   */
   protected Parameter param;
 
   /**
-	 * The cached value of the '{@link #getValue() <em>Value</em>}' containment reference.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getValue() <em>Value</em>}' containment reference.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @see #getValue()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getValue()
+   * @generated
+   * @ordered
+   */
   protected ParameterValue value;
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   protected SetParamImpl()
   {
-		super();
-	}
+    super();
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   protected EClass eStaticClass()
   {
-		return ResolutionModelPackage.Literals.SET_PARAM;
-	}
+    return ResolutionModelPackage.Literals.SET_PARAM;
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public Parameter getParam()
   {
-		if (param != null && param.eIsProxy()) {
-			InternalEObject oldParam = (InternalEObject)param;
-			param = (Parameter)eResolveProxy(oldParam);
-			if (param != oldParam) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ResolutionModelPackage.SET_PARAM__PARAM, oldParam, param));
-			}
-		}
-		return param;
-	}
+    if (param != null && param.eIsProxy())
+    {
+      InternalEObject oldParam = (InternalEObject)param;
+      param = (Parameter)eResolveProxy(oldParam);
+      if (param != oldParam)
+      {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, ResolutionModelPackage.SET_PARAM__PARAM, oldParam, param));
+      }
+    }
+    return param;
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   public Parameter basicGetParam()
   {
-		return param;
-	}
+    return param;
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public void setParam(Parameter newParam)
   {
-		Parameter oldParam = param;
-		param = newParam;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ResolutionModelPackage.SET_PARAM__PARAM, oldParam, param));
-	}
+    Parameter oldParam = param;
+    param = newParam;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, ResolutionModelPackage.SET_PARAM__PARAM, oldParam, param));
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public ParameterValue getValue()
   {
-		return value;
-	}
+    return value;
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   public NotificationChain basicSetValue(ParameterValue newValue, NotificationChain msgs)
   {
-		ParameterValue oldValue = value;
-		value = newValue;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ResolutionModelPackage.SET_PARAM__VALUE, oldValue, newValue);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
+    ParameterValue oldValue = value;
+    value = newValue;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ResolutionModelPackage.SET_PARAM__VALUE, oldValue, newValue);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public void setValue(ParameterValue newValue)
   {
-		if (newValue != value) {
-			NotificationChain msgs = null;
-			if (value != null)
-				msgs = ((InternalEObject)value).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ResolutionModelPackage.SET_PARAM__VALUE, null, msgs);
-			if (newValue != null)
-				msgs = ((InternalEObject)newValue).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ResolutionModelPackage.SET_PARAM__VALUE, null, msgs);
-			msgs = basicSetValue(newValue, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ResolutionModelPackage.SET_PARAM__VALUE, newValue, newValue));
-	}
+    if (newValue != value)
+    {
+      NotificationChain msgs = null;
+      if (value != null)
+        msgs = ((InternalEObject)value).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ResolutionModelPackage.SET_PARAM__VALUE, null, msgs);
+      if (newValue != null)
+        msgs = ((InternalEObject)newValue).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ResolutionModelPackage.SET_PARAM__VALUE, null, msgs);
+      msgs = basicSetValue(newValue, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, ResolutionModelPackage.SET_PARAM__VALUE, newValue, newValue));
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
   {
-		switch (featureID) {
-			case ResolutionModelPackage.SET_PARAM__VALUE:
-				return basicSetValue(null, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
-	}
+    switch (featureID)
+    {
+      case ResolutionModelPackage.SET_PARAM__VALUE:
+        return basicSetValue(null, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public Object eGet(int featureID, boolean resolve, boolean coreType)
   {
-		switch (featureID) {
-			case ResolutionModelPackage.SET_PARAM__PARAM:
-				if (resolve) return getParam();
-				return basicGetParam();
-			case ResolutionModelPackage.SET_PARAM__VALUE:
-				return getValue();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    switch (featureID)
+    {
+      case ResolutionModelPackage.SET_PARAM__PARAM:
+        if (resolve) return getParam();
+        return basicGetParam();
+      case ResolutionModelPackage.SET_PARAM__VALUE:
+        return getValue();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public void eSet(int featureID, Object newValue)
   {
-		switch (featureID) {
-			case ResolutionModelPackage.SET_PARAM__PARAM:
-				setParam((Parameter)newValue);
-				return;
-			case ResolutionModelPackage.SET_PARAM__VALUE:
-				setValue((ParameterValue)newValue);
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
+    switch (featureID)
+    {
+      case ResolutionModelPackage.SET_PARAM__PARAM:
+        setParam((Parameter)newValue);
+        return;
+      case ResolutionModelPackage.SET_PARAM__VALUE:
+        setValue((ParameterValue)newValue);
+        return;
+    }
+    super.eSet(featureID, newValue);
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public void eUnset(int featureID)
   {
-		switch (featureID) {
-			case ResolutionModelPackage.SET_PARAM__PARAM:
-				setParam((Parameter)null);
-				return;
-			case ResolutionModelPackage.SET_PARAM__VALUE:
-				setValue((ParameterValue)null);
-				return;
-		}
-		super.eUnset(featureID);
-	}
+    switch (featureID)
+    {
+      case ResolutionModelPackage.SET_PARAM__PARAM:
+        setParam((Parameter)null);
+        return;
+      case ResolutionModelPackage.SET_PARAM__VALUE:
+        setValue((ParameterValue)null);
+        return;
+    }
+    super.eUnset(featureID);
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public boolean eIsSet(int featureID)
   {
-		switch (featureID) {
-			case ResolutionModelPackage.SET_PARAM__PARAM:
-				return param != null;
-			case ResolutionModelPackage.SET_PARAM__VALUE:
-				return value != null;
-		}
-		return super.eIsSet(featureID);
-	}
+    switch (featureID)
+    {
+      case ResolutionModelPackage.SET_PARAM__PARAM:
+        return param != null;
+      case ResolutionModelPackage.SET_PARAM__VALUE:
+        return value != null;
+    }
+    return super.eIsSet(featureID);
+  }
 
 } //SetParamImpl

@@ -26,25 +26,25 @@ import system.RosNode;
 public interface Reconfiguration extends EObject
 {
   /**
-	 * Returns the value of the '<em><b>Node</b></em>' reference.
-	 * <!-- begin-user-doc -->
+   * Returns the value of the '<em><b>Node</b></em>' reference.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @return the value of the '<em>Node</em>' reference.
-	 * @see #setNode(RosNode)
-	 * @see eu.coresense.resolution.resolutionModel.ResolutionModelPackage#getReconfiguration_Node()
-	 * @model
-	 * @generated
-	 */
+   * @return the value of the '<em>Node</em>' reference.
+   * @see #setNode(RosNode)
+   * @see eu.coresense.resolution.resolutionModel.ResolutionModelPackage#getReconfiguration_Node()
+   * @model
+   * @generated
+   */
   RosNode getNode();
 
   /**
-	 * Sets the value of the '{@link eu.coresense.resolution.resolutionModel.Reconfiguration#getNode <em>Node</em>}' reference.
-	 * <!-- begin-user-doc -->
+   * Sets the value of the '{@link eu.coresense.resolution.resolutionModel.Reconfiguration#getNode <em>Node</em>}' reference.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Node</em>' reference.
-	 * @see #getNode()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Node</em>' reference.
+   * @see #getNode()
+   * @generated
+   */
   void setNode(RosNode value);
 
 } // Reconfiguration

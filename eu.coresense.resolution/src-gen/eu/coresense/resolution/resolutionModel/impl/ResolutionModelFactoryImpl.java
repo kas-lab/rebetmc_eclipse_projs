@@ -23,203 +23,209 @@ import org.eclipse.emf.ecore.plugin.EcorePlugin;
 public class ResolutionModelFactoryImpl extends EFactoryImpl implements ResolutionModelFactory
 {
   /**
-	 * Creates the default factory implementation.
-	 * <!-- begin-user-doc -->
+   * Creates the default factory implementation.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   public static ResolutionModelFactory init()
   {
-		try {
-			ResolutionModelFactory theResolutionModelFactory = (ResolutionModelFactory)EPackage.Registry.INSTANCE.getEFactory(ResolutionModelPackage.eNS_URI);
-			if (theResolutionModelFactory != null) {
-				return theResolutionModelFactory;
-			}
-		}
-		catch (Exception exception) {
-			EcorePlugin.INSTANCE.log(exception);
-		}
-		return new ResolutionModelFactoryImpl();
-	}
+    try
+    {
+      ResolutionModelFactory theResolutionModelFactory = (ResolutionModelFactory)EPackage.Registry.INSTANCE.getEFactory(ResolutionModelPackage.eNS_URI);
+      if (theResolutionModelFactory != null)
+      {
+        return theResolutionModelFactory;
+      }
+    }
+    catch (Exception exception)
+    {
+      EcorePlugin.INSTANCE.log(exception);
+    }
+    return new ResolutionModelFactoryImpl();
+  }
 
   /**
-	 * Creates an instance of the factory.
-	 * <!-- begin-user-doc -->
+   * Creates an instance of the factory.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   public ResolutionModelFactoryImpl()
   {
-		super();
-	}
+    super();
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public EObject create(EClass eClass)
   {
-		switch (eClass.getClassifierID()) {
-			case ResolutionModelPackage.RESOLUTION_MODEL: return createResolutionModel();
-			case ResolutionModelPackage.RESOLUTION: return createResolution();
-			case ResolutionModelPackage.IMPORT: return createImport();
-			case ResolutionModelPackage.RECONFIGURATION: return createReconfiguration();
-			case ResolutionModelPackage.SET_PARAM: return createSetParam();
-			case ResolutionModelPackage.SET_LIFECYCLE: return createSetLifecycle();
-			default:
-				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
-		}
-	}
+    switch (eClass.getClassifierID())
+    {
+      case ResolutionModelPackage.RESOLUTION_MODEL: return createResolutionModel();
+      case ResolutionModelPackage.RESOLUTION: return createResolution();
+      case ResolutionModelPackage.IMPORT: return createImport();
+      case ResolutionModelPackage.RECONFIGURATION: return createReconfiguration();
+      case ResolutionModelPackage.SET_PARAM: return createSetParam();
+      case ResolutionModelPackage.SET_LIFECYCLE: return createSetLifecycle();
+      default:
+        throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
+    }
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public Object createFromString(EDataType eDataType, String initialValue)
   {
-		switch (eDataType.getClassifierID()) {
-			case ResolutionModelPackage.LIFECYCLE_STATE:
-				return createLifecycleStateFromString(eDataType, initialValue);
-			default:
-				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
-		}
-	}
+    switch (eDataType.getClassifierID())
+    {
+      case ResolutionModelPackage.LIFECYCLE_STATE:
+        return createLifecycleStateFromString(eDataType, initialValue);
+      default:
+        throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
+    }
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public String convertToString(EDataType eDataType, Object instanceValue)
   {
-		switch (eDataType.getClassifierID()) {
-			case ResolutionModelPackage.LIFECYCLE_STATE:
-				return convertLifecycleStateToString(eDataType, instanceValue);
-			default:
-				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
-		}
-	}
+    switch (eDataType.getClassifierID())
+    {
+      case ResolutionModelPackage.LIFECYCLE_STATE:
+        return convertLifecycleStateToString(eDataType, instanceValue);
+      default:
+        throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
+    }
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public ResolutionModel createResolutionModel()
   {
-		ResolutionModelImpl resolutionModel = new ResolutionModelImpl();
-		return resolutionModel;
-	}
+    ResolutionModelImpl resolutionModel = new ResolutionModelImpl();
+    return resolutionModel;
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public Resolution createResolution()
   {
-		ResolutionImpl resolution = new ResolutionImpl();
-		return resolution;
-	}
+    ResolutionImpl resolution = new ResolutionImpl();
+    return resolution;
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public Import createImport()
   {
-		ImportImpl import_ = new ImportImpl();
-		return import_;
-	}
+    ImportImpl import_ = new ImportImpl();
+    return import_;
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public Reconfiguration createReconfiguration()
   {
-		ReconfigurationImpl reconfiguration = new ReconfigurationImpl();
-		return reconfiguration;
-	}
+    ReconfigurationImpl reconfiguration = new ReconfigurationImpl();
+    return reconfiguration;
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public SetParam createSetParam()
   {
-		SetParamImpl setParam = new SetParamImpl();
-		return setParam;
-	}
+    SetParamImpl setParam = new SetParamImpl();
+    return setParam;
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public SetLifecycle createSetLifecycle()
   {
-		SetLifecycleImpl setLifecycle = new SetLifecycleImpl();
-		return setLifecycle;
-	}
+    SetLifecycleImpl setLifecycle = new SetLifecycleImpl();
+    return setLifecycle;
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   public LifecycleState createLifecycleStateFromString(EDataType eDataType, String initialValue)
   {
-		LifecycleState result = LifecycleState.get(initialValue);
-		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
-		return result;
-	}
+    LifecycleState result = LifecycleState.get(initialValue);
+    if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+    return result;
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   public String convertLifecycleStateToString(EDataType eDataType, Object instanceValue)
   {
-		return instanceValue == null ? null : instanceValue.toString();
-	}
+    return instanceValue == null ? null : instanceValue.toString();
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public ResolutionModelPackage getResolutionModelPackage()
   {
-		return (ResolutionModelPackage)getEPackage();
-	}
+    return (ResolutionModelPackage)getEPackage();
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @deprecated
-	 * @generated
-	 */
+   * @deprecated
+   * @generated
+   */
   @Deprecated
   public static ResolutionModelPackage getPackage()
   {
-		return ResolutionModelPackage.eINSTANCE;
-	}
+    return ResolutionModelPackage.eINSTANCE;
+  }
 
 } //ResolutionModelFactoryImpl

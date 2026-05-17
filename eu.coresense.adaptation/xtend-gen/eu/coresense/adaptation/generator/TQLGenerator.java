@@ -2608,6 +2608,18 @@ public class TQLGenerator extends AbstractGenerator {
         _builder.newLineIfNotEmpty();
         _builder.append("\t    ");
         {
+          String _functionArgs = contextVariable.getFunctionArgs();
+          boolean _tripleNotEquals_1 = (_functionArgs != null);
+          if (_tripleNotEquals_1) {
+            _builder.append("has measurement_function_args \'");
+            String _functionArgs_1 = contextVariable.getFunctionArgs();
+            _builder.append(_functionArgs_1, "\t    ");
+            _builder.append("\',");
+          }
+        }
+        _builder.newLineIfNotEmpty();
+        _builder.append("\t    ");
+        {
           int _period = contextVariable.getPeriod();
           boolean _notEquals = (_period != 0);
           if (_notEquals) {
@@ -2635,8 +2647,8 @@ public class TQLGenerator extends AbstractGenerator {
         _builder.append("\t    ");
         {
           DoProxy _doProxy = contextVariable.getDoProxy();
-          boolean _tripleNotEquals_1 = (_doProxy != null);
-          if (_tripleNotEquals_1) {
+          boolean _tripleNotEquals_2 = (_doProxy != null);
+          if (_tripleNotEquals_2) {
             _builder.append("has measurement_proxy ");
             boolean _isDo = contextVariable.getDoProxy().isDo();
             _builder.append(_isDo, "\t    ");

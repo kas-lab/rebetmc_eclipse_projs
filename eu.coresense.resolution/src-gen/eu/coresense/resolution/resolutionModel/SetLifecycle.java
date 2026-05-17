@@ -23,28 +23,28 @@ package eu.coresense.resolution.resolutionModel;
 public interface SetLifecycle extends Reconfiguration
 {
   /**
-	 * Returns the value of the '<em><b>State</b></em>' attribute.
-	 * The literals are from the enumeration {@link eu.coresense.resolution.resolutionModel.LifecycleState}.
-	 * <!-- begin-user-doc -->
+   * Returns the value of the '<em><b>State</b></em>' attribute.
+   * The literals are from the enumeration {@link eu.coresense.resolution.resolutionModel.LifecycleState}.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @return the value of the '<em>State</em>' attribute.
-	 * @see eu.coresense.resolution.resolutionModel.LifecycleState
-	 * @see #setState(LifecycleState)
-	 * @see eu.coresense.resolution.resolutionModel.ResolutionModelPackage#getSetLifecycle_State()
-	 * @model
-	 * @generated
-	 */
+   * @return the value of the '<em>State</em>' attribute.
+   * @see eu.coresense.resolution.resolutionModel.LifecycleState
+   * @see #setState(LifecycleState)
+   * @see eu.coresense.resolution.resolutionModel.ResolutionModelPackage#getSetLifecycle_State()
+   * @model
+   * @generated
+   */
   LifecycleState getState();
 
   /**
-	 * Sets the value of the '{@link eu.coresense.resolution.resolutionModel.SetLifecycle#getState <em>State</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * Sets the value of the '{@link eu.coresense.resolution.resolutionModel.SetLifecycle#getState <em>State</em>}' attribute.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>State</em>' attribute.
-	 * @see eu.coresense.resolution.resolutionModel.LifecycleState
-	 * @see #getState()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>State</em>' attribute.
+   * @see eu.coresense.resolution.resolutionModel.LifecycleState
+   * @see #getState()
+   * @generated
+   */
   void setState(LifecycleState value);
 
 } // SetLifecycle

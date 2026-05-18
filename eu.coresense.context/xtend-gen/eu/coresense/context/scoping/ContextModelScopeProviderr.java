@@ -2,6 +2,7 @@ package eu.coresense.context.scoping;
 
 import com.google.common.base.Function;
 import eu.coresense.common.Import;
+import eu.coresense.common.Utilities;
 import eu.coresense.context.contextModel.ContextModel;
 import eu.coresense.context.contextModel.ContextModelPackage;
 import eu.coresense.context.contextModel.QualifiedActionServerRef;
@@ -45,7 +46,7 @@ public class ContextModelScopeProviderr extends AbstractContextModelScopeProvide
         final Node node = qref.getNode();
         if (((node != null) && (node.getActionserver().size() != 0))) {
           final Function<EObject, QualifiedName> _function = (EObject e) -> {
-            return QualifiedName.create(ContextModelScopeProviderr.escape(((ActionServer) e).getName()));
+            return QualifiedName.create(Utilities.escape(((ActionServer) e).getName()));
           };
           return Scopes.<EObject>scopeFor(
             node.getActionserver(), _function, 
@@ -59,7 +60,7 @@ public class ContextModelScopeProviderr extends AbstractContextModelScopeProvide
         final Node node_1 = qref_1.getNode();
         if (((node_1 != null) && (node_1.getServiceserver().size() != 0))) {
           final Function<EObject, QualifiedName> _function_1 = (EObject e) -> {
-            return QualifiedName.create(ContextModelScopeProviderr.escape(((ServiceServer) e).getName()));
+            return QualifiedName.create(Utilities.escape(((ServiceServer) e).getName()));
           };
           return Scopes.<EObject>scopeFor(
             node_1.getServiceserver(), _function_1, 
@@ -70,7 +71,12 @@ public class ContextModelScopeProviderr extends AbstractContextModelScopeProvide
       boolean _equals_3 = Objects.equals(reference, ContextModelPackage.Literals.QUALIFIED_REF__NODE);
       if (_equals_3) {
         final ContextModel model = EcoreUtil2.<ContextModel>getContainerOfType(context, ContextModel.class);
-        return Scopes.scopeFor(this.allNodes(model, context));
+        final Function<EObject, QualifiedName> _function_2 = (EObject e) -> {
+          return QualifiedName.create(Utilities.escape(((Node) e).getName()));
+        };
+        return Scopes.<EObject>scopeFor(
+          this.allNodes(model, context), _function_2, 
+          IScope.NULLSCOPE);
       }
       _xblockexpression = super.getScope(context, reference);
     }
@@ -85,7 +91,7 @@ public class ContextModelScopeProviderr extends AbstractContextModelScopeProvide
     }
     final EList<Publisher> publishers = context.getNode().getPublisher();
     final Function<EObject, QualifiedName> _function = (EObject e) -> {
-      return QualifiedName.create(ContextModelScopeProviderr.escape(((Publisher) e).getName()));
+      return QualifiedName.create(Utilities.escape(((Publisher) e).getName()));
     };
     return Scopes.<EObject>scopeFor(publishers, _function, 
       IScope.NULLSCOPE);
@@ -153,26 +159,5 @@ public class ContextModelScopeProviderr extends AbstractContextModelScopeProvide
         this.collectRecursively(((SubSystem)comp).getSystem(), result);
       }
     }
-  }
-
-  public static String escape(final String name) {
-    String _xblockexpression = null;
-    {
-      String noSlash = name.replace("/", "_slash_");
-      _xblockexpression = noSlash.replace("~", "_tilde_");
-    }
-    return _xblockexpression;
-  }
-
-  /**
-   * Unescape `_slash_` back to `/`
-   */
-  public static String unescape(final String name) {
-    String _xblockexpression = null;
-    {
-      String withSlash = name.replace("_slash_", "/");
-      _xblockexpression = withSlash.replace("_tilde_", "~");
-    }
-    return _xblockexpression;
   }
 }

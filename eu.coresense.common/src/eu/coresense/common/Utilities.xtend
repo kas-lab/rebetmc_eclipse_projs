@@ -77,4 +77,18 @@ class Utilities {
 		return entities;	
 		
 	}
+	
+	def static String escape(String name) {
+        var noSlash = name.replace("/", "_slash_")
+        var noTildenoSlash = noSlash.replace("~","_tilde_")
+        noTildenoSlash.replace(".","_dot_")
+    }
+
+    /** Unescape `_slash_` back to `/` */
+    def static String unescape(String name) {
+        var withSlash = name.replace("_slash_", "/")
+        var withTildewithSlash = withSlash.replace("_tilde_","~")
+        withTildewithSlash.replace("_dot_",".")
+        
+    }
 }

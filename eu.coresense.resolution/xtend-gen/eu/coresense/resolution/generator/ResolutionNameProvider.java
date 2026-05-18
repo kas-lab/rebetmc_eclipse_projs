@@ -2,6 +2,7 @@ package eu.coresense.resolution.generator;
 
 import eu.coresense.common.INameProvider;
 import eu.coresense.common.NamingContext;
+import eu.coresense.common.Utilities;
 import eu.coresense.resolution.resolutionModel.Reconfiguration;
 import eu.coresense.resolution.resolutionModel.Resolution;
 import eu.coresense.resolution.resolutionModel.SetLifecycle;
@@ -31,8 +32,8 @@ public class ResolutionNameProvider implements INameProvider {
     if (!_matched) {
       if (obj instanceof SetParam) {
         _matched=true;
-        String _lowerCase = ((SetParam)obj).getParam().getName().toLowerCase();
-        String _plus = ("sp_" + _lowerCase);
+        String _escape = Utilities.escape(((SetParam)obj).getParam().getName().toLowerCase());
+        String _plus = ("sp_" + _escape);
         _switchResult = ctx.makeUnique(_plus);
       }
     }

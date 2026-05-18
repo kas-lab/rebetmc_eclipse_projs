@@ -9,8 +9,6 @@ import eu.coresense.adaptation.tactics.AtomicRule
 import eu.coresense.adaptation.tactics.Condition
 import eu.coresense.adaptation.tactics.ConditionAction
 import eu.coresense.adaptation.tactics.LogicalOperator
-import eu.coresense.adaptation.tactics.RuleBody
-import eu.coresense.adaptation.tactics.RuleSet
 import eu.coresense.adaptation.tactics.TacticsModel
 import eu.coresense.resolution.resolutionModel.Reconfiguration
 import eu.coresense.resolution.resolutionModel.Resolution
@@ -33,11 +31,6 @@ import ros.ParameterInteger
 import ros.ParameterSequence
 import ros.ParameterString
 import ros.ParameterValue
-import system.Component
-import system.RosNode
-import system.RosPublisherReference
-import system.RosSubscriberReference
-import system.SubSystem
 import system.System
 import uma.caosd.rhea.BasicFMmetamodel.Alternative
 import uma.caosd.rhea.BasicFMmetamodel.Feature
@@ -54,16 +47,11 @@ import eu.coresense.common.DecimalLiteral
 import eu.coresense.common.StringLiteral
 import eu.coresense.common.BooleanLiteral
 import eu.coresense.context.generator.ContextModelGenerator
-import eu.coresense.context.contextModel.DataSource
-import eu.coresense.context.contextModel.QualifiedPublisherRef
-import eu.coresense.context.contextModel.QualifiedServiceServerRef
-import eu.coresense.context.contextModel.QualifiedActionServerRef
 import eu.coresense.adaptation.tactics.MeasurementCondition
 import eu.coresense.adaptation.tactics.FeatureCondition
 import eu.coresense.common.MathOperator
 import eu.coresense.common.Utilities
 import eu.coresense.common.INameProvider
-import org.eclipse.emf.ecore.EObject
 import eu.coresense.common.NamingContext
 import eu.coresense.common.NameProvider
 import eu.coresense.context.generator.ContextNameProvider
@@ -74,14 +62,21 @@ import eu.coresense.adaptation.tactics.MeasurementMeasurementCondition
 import eu.coresense.adaptation.tactics.Effect
 import eu.coresense.adaptation.tactics.RelativeEffect
 import java.util.Set
-import eu.coresense.adaptation.tactics.QualifiedFeatureRef
-import java.util.stream.Stream
-import java.util.ArrayList
 import java.util.HashMap
 import java.math.BigDecimal
 import java.util.Map.Entry
 import java.util.LinkedHashSet
 import eu.coresense.common.ArchitectureTQLGenerator
+import system.RosNode
+import de.ovgu.featureide.fm.core.io.manager.FeatureModelManager
+import de.ovgu.featureide.fm.core.configuration.ConfigurationAnalyzer
+import de.ovgu.featureide.fm.core.analysis.cnf.formula.FeatureModelFormula
+import de.ovgu.featureide.fm.core.configuration.Configuration
+import de.ovgu.featureide.fm.core.init.LibraryManager
+import de.ovgu.featureide.fm.core.init.FMCoreLibrary
+import java.nio.file.Files
+import java.io.FileWriter
+import eu.coresense.variability.generator.FeatureModelGenerator
 
 /**
  * Generates code from your model files on save.
@@ -166,8 +161,7 @@ class TQLGenerator extends AbstractGenerator {
 	val Set<String> definedFeaturePropositions = newHashSet
 	public var HashMap<Pair<String, String>,String> escapes = newHashMap
 //	var List<ContextVar> contextKeys = newArrayList
-		
-	var int numRules = 0
+	public var Set<String> ruleNames = newHashSet	
 	
 	
     
@@ -785,7 +779,7 @@ class TQLGenerator extends AbstractGenerator {
 			infDecimal = NEG_INF_DBL_VAR
 		}
 		
-		switch obj : otherLiteral
+		switch otherLiteral
 		{
 			IntLiteral: return infInt
 			DecimalLiteral: return infDecimal
@@ -938,7 +932,7 @@ class TQLGenerator extends AbstractGenerator {
     }
 	private def compile(TacticsModel t, Boolean doStates)
 	{
-		numRules = 0
+		ruleNames = newHashSet
 //		println(generateFetchApplicableTactics(t.resolutionModel, "one", "two"))
 //		println(generateUpdateInEffect(newArrayList('MoveQuickly')))
 		val tacticName = t.name
@@ -958,11 +952,12 @@ class TQLGenerator extends AbstractGenerator {
 		
 		val Map<Feature, Set<Boolean>> featureSelections = newHashMap
 		var Map<ContextVar, Set<LiteralWrapper>> thresholds = newHashMap
+		val Map<ContextVar, Set<Boolean>> booleanVars = newHashMap
 		if(doStates)
 		{
 			
 	        for (rule : t.adaptationRules) {
-	        	registerComparisonsFromRule(rule,thresholds, featureSelections)
+	        	registerComparisonsFromRule(rule,thresholds, featureSelections,booleanVars)
 	        }
 	        
 	        infinityLiteralsTQL = infinityLiterals()
@@ -973,71 +968,122 @@ class TQLGenerator extends AbstractGenerator {
 	        val bounds = createBounds(thresholds)
 	        val contextKeys = bounds.keySet.toList
 	        val values = bounds.values.toList
+
 	       	val product = Utilities.getCartesianProduct(values)
 			allStates = newArrayList
-			val List<List<Boolean>> featureSelectionsToPairs = newArrayList
 			
-			for (featureSelectionEntry : featureSelections.values)
-			{
-				featureSelectionsToPairs.add(featureSelectionEntry.toList)
-			}
+			
+			LibraryManager.registerLibrary(FMCoreLibrary.getInstance())
+      		
+      		val generator = new FeatureModelGenerator()
+
+        	val fm_xml = generator.generateXml(resolutionModels.get(0).featureModel)
+
+	        val path = Files.createTempFile("featuremodel", ".xml")
+	        val fw = new FileWriter(path.toFile(), true)
+	        fw.write(fm_xml)
+	        fw.close()
+	        val featureModel = FeatureModelManager.load(path)
 	
-			val newCombos = Utilities.getCartesianProduct(featureSelectionsToPairs)
-	
-			val newnewCombos = newArrayList
-			val coveredFeatures = newArrayList
-			for (feat : featureSelections.keySet)
+	        val formula = new FeatureModelFormula(featureModel)
+	        val configuration = new Configuration(formula)
+	        val configurationAnalyzer = new ConfigurationAnalyzer(formula, configuration)
+	        val allConfigurations = configurationAnalyzer.getSolutions(100000)
+
+			val Set<List<Boolean>> featureSelectionsToPairs = newHashSet
+			
+			val relevantFeatures = featureSelections.keySet()
+			for (featureList: allConfigurations)
 			{
-				if(coveredFeatures.indexOf(feat) == -1)
+				val List<Boolean> selectedOrNot = newArrayList
+				for (relevantFeature : relevantFeatures)
 				{
-					val parent = feat.parent
-					if(parent instanceof Alternative)
+					selectedOrNot.add(featureList.contains(relevantFeature.name))
+				}
+				featureSelectionsToPairs.add(selectedOrNot)
+				
+			}
+//			for (featureSelectionEntry : featureSelections.values)
+//			{
+//				featureSelectionsToPairs.add(featureSelectionEntry.toList)
+//			}
+//	
+//			val featureSelectionCombinations = Utilities.getCartesianProduct(featureSelectionsToPairs)
+//	
+//			val newnewCombos = newArrayList
+//			val coveredFeatures = newArrayList
+//			for (feat : featureSelections.keySet)
+//			{
+//				println("Checking feature " + feat.name)
+//				if(coveredFeatures.indexOf(feat) == -1)
+//				{
+//					println("it was not covered")
+//					val parent = feat.parent
+//					if(parent instanceof Alternative)
+//					{
+//						println("Got alternative " + parent.name)
+//						coveredFeatures.addAll(parent.children)
+//						val valuationIndices = newArrayList
+//						for(altChild : parent.children)
+//						{
+//							val index = featureSelections.keySet.toList.indexOf(altChild)
+//							if(index >= 0)
+//							{
+//								valuationIndices.add(index)	
+//							}
+//						}
+//						
+//						for (newCombination : featureSelectionCombinations)
+//						{
+//							val relevantSlice = newArrayList
+//							for(valuationIndex : valuationIndices)
+//							{
+//								relevantSlice.add(newCombination.get(valuationIndex))
+//							} 
+//							//Since it is an alternative, only one child can be true at a time
+//							 if(!parent.mandatory && relevantSlice.filter[it].size <= 1)
+//							 {
+//							 	newnewCombos.add(newCombination)
+//							 }
+//							 //If the parent is mandatory, at least one child must be true at all times
+//							 else if(parent.mandatory && relevantSlice.filter[it].size == 1)
+//							 {
+//							 	newnewCombos.add(newCombination)
+//							 }
+//							
+//						}
+//							
+//					}
+//					
+//				}
+//			}
+			val booleanPreconditions = newArrayList
+			for (x : booleanVars.keySet)
+			{
+				contextKeys.add(x)
+				booleanPreconditions.add(booleanVars.get(x).toList)
+			}
+			
+			val booleanPreconditionsCombinations = Utilities.getCartesianProduct(booleanPreconditions)
+			
+			val featureKeys = featureSelections.keySet.toList
+//			println("size of newnewCombos " + newnewCombos.size())
+//			println("a combo's length " + newnewCombos.get(0).size())
+//			println("a combo  looks like " + newnewCombos.get(0))
+			for (featurevaluationCombo : featureSelectionsToPairs)
+			{
+				
+				for (contextBooleanPrecondition : booleanPreconditionsCombinations)
+				{
+					for (contextBoundPrecondition : product)
 					{
-						coveredFeatures.addAll(parent.children)
-						val valuationIndices = newArrayList
-						for(altChild : parent.children)
-						{
-							val index = featureSelections.keySet.toList.indexOf(altChild)
-							if(index >= 0)
-							{
-								valuationIndices.add(index)	
-							}
-						}
-						
-						for (newCombo : newCombos)
-						{
-							val relevantSlice = newArrayList
-							for(valuationIndex : valuationIndices)
-							{
-								relevantSlice.add(newCombo.get(valuationIndex))
-							} 
-							//Since it is an alternative, only one child can be true at a time
-							 if(!parent.mandatory && relevantSlice.filter[it].size <= 1)
-							 {
-							 	newnewCombos.add(newCombo)
-							 }
-							 //If the parent is mandatory, at least one child must be true at all times
-							 else if(parent.mandatory && relevantSlice.filter[it].size == 1)
-							 {
-							 	newnewCombos.add(newCombo)
-							 }
-							
-						}
-							
+						allStates.add(new State(contextBoundPrecondition, contextBooleanPrecondition, featurevaluationCombo, contextKeys, featureKeys))
 					}
 					
 				}
 			}
-			
-			for (featurevaluationCombo : newnewCombos)
-			{
-					for (contextPrecondition : product)
-					{
-						allStates.add(new State(contextPrecondition, featurevaluationCombo, contextKeys))
-					}
-			}
 						
-			val featureKeys =featureSelections.keySet.toList
+			
 	//        println(featureKeys)
 	//		println(contextKeys)
 	//
@@ -1046,7 +1092,7 @@ class TQLGenerator extends AbstractGenerator {
 	        for (state : allStates)
 	        {
 	        	for (rule : t.adaptationRules) {
-	        		if(checkAgainstBounds(rule, contextKeys, featureKeys, state))
+	        		if(checkAgainstBounds(rule, featureKeys, state))
 	        		{
 	        			state.addRule(rule.name)
 	        		}
@@ -1096,8 +1142,11 @@ class TQLGenerator extends AbstractGenerator {
 	        	state.TQLName = state_name
 	        }
 
+	       	for (state : allStates)
+	        {
+	        	println(state.describe())
+	        }
 	        println(stateCount + " states were produced, " + ruleCount + " of which have a rule attached and " + escapes.keySet.size + " have escaped defined")
-	        
         }
         
         val contextGenerator = new ContextModelGenerator(_namer)
@@ -1445,6 +1494,7 @@ class TQLGenerator extends AbstractGenerator {
 
 		if(the_value instanceof ParameterSequence)
 		{
+			// The ERROR below will only make its way into the TQL if the corresponding architecture entity is not generated prior.
 			if(isMatch.key) { return "" -> _namer.uniqueName(isMatch.value.value as ParameterSequence,"ERRORINParamValueToValueEntity1") }
 			val result = newArrayList
 			val parseq_name = _namer.uniqueName(the_value, parent_name)
@@ -1466,6 +1516,7 @@ class TQLGenerator extends AbstractGenerator {
 		} 
 		else
 		{
+			// The ERROR below will only make its way into the TQL if the corresponding architecture entity is not generated prior.
 			if(isMatch.key) { return "" -> _namer.uniqueName(isMatch.value.value,"ERRORINParamValueToValueEntity2") }
 			val name = _namer.uniqueName(the_value, parent_name)
 			val single = describeParameter(name, reconfig.value)
@@ -1482,22 +1533,7 @@ class TQLGenerator extends AbstractGenerator {
 		val rosnode_name = _namer.uniqueName(reconfig.node.from)
 		if(reconfig instanceof SetParam)
 		{
-//			println("C")
-//			println(reconfig )
-//			println("D")
 			val param_val = reconfig.value
-//			println("E")
-//			println(param_val )
-//			println("F")
-//			println("FF")
-//			println(reconfig.param)
-//			println(reconfig.param.value)
-//			println("EE")
-//			val yyy = reconfig.param.value as ParameterSequence
-//			println("G")
-//			println(yyy)
-//			println("H")
-//			println("compilereconf" + yyy.value.get(0) + "\n")
 			val value_and_names = ParamValueToValueEntity(reconfig, _namer.uniqueName(reconfig), reconfig.node)
 			val x = value_and_names.key
 			val name = value_and_names.value
@@ -1584,20 +1620,36 @@ class TQLGenerator extends AbstractGenerator {
 		
 	}
 	
-	private def recordMeasurementConditionOnlyLiteral(MeasurementThresholdCondition mes_cond, Map<ContextVar, Set<LiteralWrapper>> comps)
+	private def recordMeasurementConditionOnlyLiteral(MeasurementThresholdCondition mes_cond, Map<ContextVar, Set<LiteralWrapper>> comps, Map<ContextVar, Set<Boolean>> booleanVars)
 	{
 		for (element : flattenAgain(mes_cond)) {
-			if(comps.get(element.measurement) !== null)
+			if(element.thresholdValue instanceof BooleanLiteral)
 			{
-				comps.get(element.measurement) += new LiteralWrapper(element.thresholdValue)
-				
+				if(booleanVars.get(element.measurement) !== null)
+				{
+				}
+				else
+				{
+					var Set<Boolean> newList =  new HashSet<Boolean>()
+					newList.add(true)
+					newList.add(false)
+	
+					booleanVars.put(element.measurement,newList)
+				}
 			}
-			else
-			{
-				var Set<LiteralWrapper> newList =  new HashSet<LiteralWrapper>()
-				newList.add(new LiteralWrapper(element.thresholdValue))
-
-				comps.put(element.measurement,newList)
+			else{
+				if(comps.get(element.measurement) !== null)
+				{
+					comps.get(element.measurement) += new LiteralWrapper(element.thresholdValue)
+				}
+				else
+				{
+					var Set<LiteralWrapper> newList =  new HashSet<LiteralWrapper>()
+					newList.add(new LiteralWrapper(element.thresholdValue))
+	
+					comps.put(element.measurement,newList)
+				}
+			
 			}
 			
 		}
@@ -1625,7 +1677,7 @@ class TQLGenerator extends AbstractGenerator {
 		return null
 	}
 	
-	private def registerComparisonsFromRule(AdaptationRule adap_rule, Map<ContextVar, Set<LiteralWrapper>> thresholds, Map<Feature, Set<Boolean>> featureSelections)
+	private def registerComparisonsFromRule(AdaptationRule adap_rule, Map<ContextVar, Set<LiteralWrapper>> thresholds, Map<Feature, Set<Boolean>> featureSelections, Map<ContextVar, Set<Boolean>> booleanVars)
 	{
 		if(adap_rule instanceof AtomicRule)
 		{
@@ -1637,7 +1689,7 @@ class TQLGenerator extends AbstractGenerator {
 				{
 					if(ruleBody.contextGuard.contextCondition instanceof MeasurementThresholdCondition)
 					{
-						recordMeasurementConditionOnlyLiteral(ruleBody.contextGuard.contextCondition as MeasurementThresholdCondition, thresholds)	
+						recordMeasurementConditionOnlyLiteral(ruleBody.contextGuard.contextCondition as MeasurementThresholdCondition, thresholds, booleanVars)	
 					}
 				}
 				if(ruleBody.featureGuard !== null)
@@ -1662,10 +1714,10 @@ class TQLGenerator extends AbstractGenerator {
 
 
 			
-	private def checkAgainstBounds(AdaptationRule adap_rule, List<ContextVar> contextKeys, List<Feature> featureKeys, State state)
+	private def checkAgainstBounds(AdaptationRule adap_rule, List<Feature> featureKeys, State state)
 	{
-		val contextPrecondition = state.contextPrecondition
 		val featureValuation = state.featurePrecondition
+
 		if(adap_rule instanceof AtomicRule)
 		{
 			val ruleBody = adap_rule.ruleBody
@@ -1701,113 +1753,120 @@ class TQLGenerator extends AbstractGenerator {
 				}
 				if(ruleBody.contextGuard !== null)
 				{
-					val contextCondition = ruleBody.contextGuard.contextCondition
-					val cnfForm = toCNF(contextCondition)
-					if(cnfForm instanceof And) 
-					{
-					
-						var flattenedAnds = flattenAnds(cnfForm)
-			        	var handled = newArrayList
-			        	for (element : flattenedAnds) {
-			        		if(element instanceof Or)
-			        		{
-			        			val listORs = newArrayList
-			        			flattenORs(element, listORs)
-			        			
-			        			for (varr : listORs) {
-			        				val condition = varr.condition
-			        				if(condition instanceof MeasurementThresholdCondition)
-						        	{
-//						        		val in = contextKeys.indexOf(condition.measurement)
-//						        		println("Index " + in)
-	//					        		condition.measurement.name + condition.operator + Utilities.valueOfLiteral(condition.thresholdValue)
-						        	}
-						        	else if(condition instanceof MeasurementMeasurementCondition)
-						        	{
-						        		throw new Exception("Not Implemented Yet")
-						        	}
-			        			}
-			        			
-			        		}
-			        		if(element instanceof Var)
-			        		{
-			        			handled.add(new Pair(_namer.uniqueName(element.condition), inequality(element.condition)))
-			        		}
-			        		else if(element instanceof And)
-			        		{
-			        			throw new Exception("did not expect an AND from flattend ANDs")
-			        		}
-			        	}
-					
-					}
-					if(cnfForm instanceof Or)
-					{
-//						println("got an OR from ToCNF")
-//						println(cnfForm)
-						val listORs = newArrayList
-			        	flattenORs(cnfForm, listORs)
-	        			for (varr : listORs) {
-	        				val condition = varr.condition
-	        				if(condition instanceof MeasurementThresholdCondition)
-				        	{				        		
-				        		val bound = state.getBoundsOn(condition.measurement)
-				        		val closedLowerBound = bound.key  
-				        		val openUpperBound = bound.value
-				        		// [closedLowerBound, openUpperbound) 
-				        		switch(condition.operator)
-				        		{
-						    		case MathOperator.GREATER: {
-						    			//The lower bound is not infinitely low, and exceeds or equals what is required to be greater than.
-						    			if(closedLowerBound !== null && closedLowerBound >= new LiteralWrapper(condition.thresholdValue))
-						    			{
-//						    				println(adap_rule.name + " approved by " + condition.measurement.name + " " + bound.toString())
-						    				return true
-						    			}
-						    		}
-						    		case MathOperator.GREQ: {
-						    			if(closedLowerBound !== null && closedLowerBound >= new LiteralWrapper(condition.thresholdValue))
-						    			{
-//						    				println(adap_rule.name + " approved by " + condition.measurement.name + " " + bound.toString())
-						    				return true
-						    			}
-						    		}
-						    		case MathOperator.LESS: {
-						    			//The upper bound is not infinitely high, and is less than or equal than what is required to be lower than. 
-						    			if(openUpperBound !== null && openUpperBound <= new LiteralWrapper(condition.thresholdValue))
-						    			{
-//						    				println(adap_rule.name + " approved by " + condition.measurement.name + " " + bound.toString())
-						    				return true
-						    			}
-						    		}
-						    		case MathOperator.LEQ: {
-						    			if(openUpperBound !== null && openUpperBound <= new LiteralWrapper(condition.thresholdValue))
-						    			{
-//						    				println(adap_rule.name + " approved by " + condition.measurement.name + " " + bound.toString())
-						    				return true
-						    			}
-						    		}
-						    		case MathOperator.EQUAL: {
-						    			//TODO
-						    			return false
-						    		}
-						    		case MathOperator.DIFFERENT: {
-						    			//TODO
-						    			return false
-						    		}
-				        		}
-				        	}
-				        	else if(condition instanceof MeasurementMeasurementCondition)
-				        	{
-				        		throw new Exception("Not Implemented Yet")
-				        	}
-	        			}
-	        			return false
-					}
+					val ruleContectCondition = ruleBody.contextGuard.contextCondition
+					val ruleCNF = toCNF(ruleContectCondition)
+					return checkExpression(ruleCNF, state)
 					
 				}
 			}
 			
 		}
+	}
+	
+	private def boolean checkExpression(Expr ruleCNF, State state)
+	{
+		switch ruleCNF 
+		{
+			And: {
+				var flattenedAnds = flattenAnds(ruleCNF)
+				
+				return flattenedAnds.forall[expr | checkExpression(expr, state)]
+	        	
+			}
+			Or: {
+				val listORs = newArrayList
+	        	flattenORs(ruleCNF, listORs)
+	        	
+	        	return listORs.exists[varr | varAgainstBounds(varr, state)]
+    			
+				}
+			Var: {
+				return varAgainstBounds(ruleCNF, state)
+			}
+			default:
+				throw new Exception("Unexpected situation CheckAgainstBounds")
+		
+		}
+	}
+	
+	def boolean varAgainstBounds(Var ruleConditionCNF, State state)
+	{
+		val condition = ruleConditionCNF.condition
+		if(condition instanceof MeasurementThresholdCondition)
+    	{
+    		if(state.BoundorBoolPrecondition(condition.measurement))				        		
+    		{
+    			val bound = state.getBoundsOn(condition.measurement)
+	    		val closedLowerBound = bound.key  
+	    		val openUpperBound = bound.value
+	    		// [closedLowerBound, openUpperbound) 
+	    		switch(condition.operator)
+	    		{
+		    		case MathOperator.GREATER: {
+		    			//The lower bound is not infinitely low, and exceeds or equals what is required to be greater than.
+		    			if(closedLowerBound !== null && closedLowerBound >= new LiteralWrapper(condition.thresholdValue))
+		    			{
+	//						    				println(adap_rule.name + " approved by " + condition.measurement.name + " " + bound.toString())
+		    				return true
+		    			}
+		    		}
+		    		case MathOperator.GREQ: {
+		    			if(closedLowerBound !== null && closedLowerBound >= new LiteralWrapper(condition.thresholdValue))
+		    			{
+	//						    				println(adap_rule.name + " approved by " + condition.measurement.name + " " + bound.toString())
+		    				return true
+		    			}
+		    		}
+		    		case MathOperator.LESS: {
+		    			
+		    			//The upper bound is not infinitely high, and is less than or equal than what is required to be lower than. 
+		    			if(openUpperBound !== null && openUpperBound <= new LiteralWrapper(condition.thresholdValue))
+		    			{
+	//						    				println(adap_rule.name + " approved by " + condition.measurement.name + " " + bound.toString())
+		    				return true
+		    			}
+		    		}
+		    		case MathOperator.LEQ: {
+		    			if(openUpperBound !== null && openUpperBound <= new LiteralWrapper(condition.thresholdValue))
+		    			{
+	//						    				println(adap_rule.name + " approved by " + condition.measurement.name + " " + bound.toString())
+		    				return true
+		    			}
+		    		}
+		    		case MathOperator.EQUAL: {
+		    			//TODO
+		    			return false
+		    		}
+		    		case MathOperator.DIFFERENT: {
+		    			//TODO
+		    			return false
+		    		}
+	    		}
+    		
+    		}
+    		else
+    		{
+    			val bool = state.getBoolOn(condition.measurement)
+    			switch (condition.operator)
+    			{
+    				case MathOperator.EQUAL: {
+		    			return bool == (condition.thresholdValue as BooleanLiteral).value
+		    		}
+		    		case MathOperator.DIFFERENT: {
+		    			return bool != (condition.thresholdValue as BooleanLiteral).value
+		    		}
+					default: {
+						throw new Exception("Invalid operator for what should be boolean contextVar")
+					}
+    				
+    			}
+    		}
+    	}
+    	else if(condition instanceof MeasurementMeasurementCondition)
+    	{
+    		throw new Exception("Not Implemented Yet")
+    	}
+		return false
 	}
 		
 	def boolean operator_lessThan(Literal literal, Literal literal2)
@@ -1823,7 +1882,7 @@ class TQLGenerator extends AbstractGenerator {
 	
 	private def compileRule(AdaptationRule c, String lc_tacticName, boolean doingStates)
 	{
-		numRules++
+		ruleNames.add(c.name)
 	if (c instanceof AtomicRule)
 	{
 		val ruleName = c.name
@@ -2352,18 +2411,32 @@ class State {
 	val public List<Boolean> featurePrecondition
 	var public String TQLName = "UnnamedState"
 	val public List<String> associatedRulesTQLNames
-	val Map<ContextVar, Pair<LiteralWrapper, LiteralWrapper>> boundMap
+	val Map<ContextVar, Pair<LiteralWrapper, LiteralWrapper>> boundPreconditionMap
+	val Map<ContextVar, Boolean> boolPreconditionMap
+	var List<Feature> featureKeys
+	
+	
 	val Map<ContextVar, LiteralWrapper> medianBounds
 	
-	new(List<Pair<LiteralWrapper, LiteralWrapper>> contextPrecondition, List<Boolean> featurePrecondition,List<ContextVar> contextKeys) {
-		boundMap = newHashMap
+	new(List<Pair<LiteralWrapper, LiteralWrapper>> contextPrecondition, List<Boolean> booleanContextPreconditions, List<Boolean> featurePrecondition,List<ContextVar> contextKeys, List<Feature> featureKeys) {
+		boundPreconditionMap = newHashMap
 		medianBounds = newHashMap
 		associatedRulesTQLNames = newArrayList
+		boolPreconditionMap = newHashMap
+		this.featureKeys = featureKeys
 		for (contextKeyIndPair : contextKeys.indexed) {
 			val contextKey = contextKeyIndPair.value
+			if(contextKeyIndPair.key >= contextPrecondition.size())
+			{
+				val boolval = booleanContextPreconditions.get(contextKeyIndPair.key-contextPrecondition.size())
+				boolPreconditionMap.put(contextKey,boolval)
+			}
+			else
+			{
 			val bound = contextPrecondition.get(contextKeyIndPair.key)
-			boundMap.put(contextKey,bound)
+			boundPreconditionMap.put(contextKey,bound)
 			medianBounds.put(contextKey,bound.medianBound)
+			}
 		}
         this.featurePrecondition = featurePrecondition
     }
@@ -2384,7 +2457,7 @@ class State {
     }
     def getContextBoundPairs()
     {
-    	return boundMap.entrySet
+    	return boundPreconditionMap.entrySet
     }
     
     def List<Entry<ContextVar, LiteralWrapper>> getMedians()
@@ -2394,17 +2467,33 @@ class State {
     
     def List<ContextVar> getContextKeys()
     {
-    	return boundMap.keySet.toList
+    	return boundPreconditionMap.keySet.toList
     }
     
     def List<Pair<LiteralWrapper, LiteralWrapper>> getContextPrecondition()
     {
-    	return boundMap.values.toList
+    	return boundPreconditionMap.values.toList
+    }
+    
+    def Boolean BoundorBoolPrecondition(ContextVar contextVar)
+    {
+    	val isBound = this.boundPreconditionMap.containsKey(contextVar)
+    	val isBool = this.boolPreconditionMap.containsKey(contextVar)
+    	if(!isBound && !isBool)
+    	{
+    		throw new Exception("ContextVar not defined for state")
+    	}
+    	return isBound //If it is false then it implies that it is a bool.
     }
     
     def Pair<LiteralWrapper, LiteralWrapper> getBoundsOn(ContextVar contextVar)
     {
-    	return this.boundMap.get(contextVar)
+    	return this.boundPreconditionMap.get(contextVar)
+    }
+    
+    def Boolean getBoolOn(ContextVar contextVar)
+    {
+    	return this.boolPreconditionMap.get(contextVar)
     }
     
     private def LiteralWrapper medianBound(Pair<LiteralWrapper, LiteralWrapper> bound)
@@ -2435,6 +2524,34 @@ class State {
 		«ENDFOR»
 		----->
 		'''
+	}
+	
+	def describe()
+	{
+		'''
+		<----- State: «TQLName» General Information
+		Preconditions are
+		<BOOLEAN>
+		«FOR element : boolPreconditionMap.entrySet SEPARATOR "; "»
+			«element.key.name» : «element.value»
+		«ENDFOR»
+		</BOOLEAN>
+		<FEATURE>
+		«FOR element : featurePrecondition.indexed SEPARATOR "; "»
+			«featureKeys.get(element.key).name» : «IF element.value»Selected«ELSE»notSelected«ENDIF»
+		«ENDFOR»
+		</FEATURE>
+		Has «associatedRulesTQLNames.size()» rules attached.
+		«IF !associatedRulesTQLNames.empty»
+			Rules are:
+				«FOR rule : associatedRulesTQLNames SEPARATOR ", "»
+					«rule»
+				«ENDFOR»
+		«ENDIF»
+		----->
+		«describeMedianBounds»
+		'''
+		
 	}
 }
 

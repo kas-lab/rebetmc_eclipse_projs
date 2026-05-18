@@ -2,6 +2,7 @@ package eu.coresense.resolution.generator
 
 import eu.coresense.common.INameProvider
 import eu.coresense.common.NamingContext
+import eu.coresense.common.Utilities
 import eu.coresense.resolution.resolutionModel.Resolution
 import eu.coresense.resolution.resolutionModel.SetParam
 import eu.coresense.resolution.resolutionModel.SetLifecycle
@@ -19,7 +20,7 @@ class ResolutionNameProvider implements INameProvider {
     override computeName(Object obj, NamingContext ctx, String... args) {
         switch obj {
             Resolution: ctx.makeUnique(obj.featureRef.feature.name.toLowerCase() + "_resolution")
-            SetParam: ctx.makeUnique("sp_" + obj.param.name.toLowerCase())
+            SetParam: ctx.makeUnique("sp_" + Utilities.escape(obj.param.name.toLowerCase()))
             SetLifecycle: {
             	val nodeName = if (args.length > 0) args.get(0) else "noNodeNameGiven"
             	ctx.makeUnique("slc_" + nodeName.toLowerCase() + "_" + obj.state.toString().toLowerCase())

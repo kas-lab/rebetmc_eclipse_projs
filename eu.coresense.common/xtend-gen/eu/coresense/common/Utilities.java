@@ -75,4 +75,27 @@ public class Utilities {
     }
     return entities;
   }
+
+  public static String escape(final String name) {
+    String _xblockexpression = null;
+    {
+      String noSlash = name.replace("/", "_slash_");
+      String noTildenoSlash = noSlash.replace("~", "_tilde_");
+      _xblockexpression = noTildenoSlash.replace(".", "_dot_");
+    }
+    return _xblockexpression;
+  }
+
+  /**
+   * Unescape `_slash_` back to `/`
+   */
+  public static String unescape(final String name) {
+    String _xblockexpression = null;
+    {
+      String withSlash = name.replace("_slash_", "/");
+      String withTildewithSlash = withSlash.replace("_tilde_", "~");
+      _xblockexpression = withTildewithSlash.replace("_dot_", ".");
+    }
+    return _xblockexpression;
+  }
 }

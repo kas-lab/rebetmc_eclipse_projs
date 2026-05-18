@@ -8,6 +8,8 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import java.util.Iterator;
 
 import org.eclipse.xtext.validation.Check;
+
+import eu.coresense.resolution.resolutionModel.Resolution;
 import eu.coresense.resolution.resolutionModel.ResolutionModelPackage;
 import eu.coresense.resolution.resolutionModel.SetLifecycle;
 import eu.coresense.resolution.resolutionModel.SetParam;
@@ -36,6 +38,14 @@ public class ResolutionModelValidator extends AbstractResolutionModelValidator {
 //					INVALID_NAME);
 //		}
 //	}
+	
+	@Check
+	public void checkNonEmpty(Resolution resolution) {
+	    if (resolution.getSelection_actions().isEmpty() && resolution.getDeselection_actions().isEmpty())
+	    {
+	    	error("Please do not leave empty resolutions",ResolutionModelPackage.Literals.RESOLUTION__FEATURE_REF);
+	    }
+	}
 	
 	@Check
 	public void checkParameterValueMatchesType(SetParam param) {

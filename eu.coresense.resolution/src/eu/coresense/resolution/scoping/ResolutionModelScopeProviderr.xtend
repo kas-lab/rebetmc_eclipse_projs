@@ -17,6 +17,7 @@ import eu.coresense.resolution.resolutionModel.SetParam
 import org.eclipse.xtext.naming.QualifiedName
 import eu.coresense.resolution.resolutionModel.FeatureReference
 import ros.Parameter
+import eu.coresense.common.Utilities
 
 class ResolutionModelScopeProviderr  extends AbstractResolutionModelScopeProvider {
 	
@@ -63,7 +64,7 @@ class ResolutionModelScopeProviderr  extends AbstractResolutionModelScopeProvide
 //	        return Scopes.scopeFor(allNodes);
          return Scopes.scopeFor(
             		allNodes, 
-		            [EObject e | QualifiedName.create(escape((e as system.RosNode).name))],
+		            [EObject e | QualifiedName.create(Utilities.escape((e as system.RosNode).name))],
 		            IScope.NULLSCOPE
 		        )
 	    }
@@ -88,7 +89,7 @@ class ResolutionModelScopeProviderr  extends AbstractResolutionModelScopeProvide
 //	        return Scopes.scopeFor(allParams);
          return Scopes.scopeFor(
             		allParams, 
-		            [EObject e | QualifiedName.create(escape((e as Parameter).name))],
+		            [EObject e | QualifiedName.create(Utilities.escape((e as Parameter).name))],
 		            IScope.NULLSCOPE
 		        )
 	    }
@@ -152,19 +153,5 @@ def void collectRecursively(system.System system, List<system.System> result) {
 	        }
 	    }
 	}
-	
-	def static String escape(String name) {
-        var noSlash = name.replace("/", "_slash_")
-        var noTildenoSlash = noSlash.replace("~","_tilde_")
-        noTildenoSlash.replace(".","_dot_")
-    }
-
-    /** Unescape `_slash_` back to `/` */
-    def static String unescape(String name) {
-        var withSlash = name.replace("_slash_", "/")
-        var withTildewithSlash = withSlash.replace("_tilde_","~")
-        withTildewithSlash.replace("_dot_",".")
-        
-    }
 	
 }

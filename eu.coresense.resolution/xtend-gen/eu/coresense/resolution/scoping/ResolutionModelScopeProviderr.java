@@ -1,6 +1,7 @@
 package eu.coresense.resolution.scoping;
 
 import com.google.common.base.Function;
+import eu.coresense.common.Utilities;
 import eu.coresense.resolution.resolutionModel.FeatureReference;
 import eu.coresense.resolution.resolutionModel.Import;
 import eu.coresense.resolution.resolutionModel.ResolutionModel;
@@ -79,7 +80,7 @@ public class ResolutionModelScopeProviderr extends AbstractResolutionModelScopeP
         }
       }
       final Function<EObject, QualifiedName> _function_1 = (EObject e) -> {
-        return QualifiedName.create(ResolutionModelScopeProviderr.escape(((RosNode) e).getName()));
+        return QualifiedName.create(Utilities.escape(((RosNode) e).getName()));
       };
       return Scopes.<EObject>scopeFor(allNodes, _function_1, 
         IScope.NULLSCOPE);
@@ -106,7 +107,7 @@ public class ResolutionModelScopeProviderr extends AbstractResolutionModelScopeP
         }
       }
       final Function<EObject, QualifiedName> _function_2 = (EObject e) -> {
-        return QualifiedName.create(ResolutionModelScopeProviderr.escape(((Parameter) e).getName()));
+        return QualifiedName.create(Utilities.escape(((Parameter) e).getName()));
       };
       return Scopes.<EObject>scopeFor(allParams, _function_2, 
         IScope.NULLSCOPE);
@@ -175,28 +176,5 @@ public class ResolutionModelScopeProviderr extends AbstractResolutionModelScopeP
         this.collectRecursively(((SubSystem)comp).getSystem(), result);
       }
     }
-  }
-
-  public static String escape(final String name) {
-    String _xblockexpression = null;
-    {
-      String noSlash = name.replace("/", "_slash_");
-      String noTildenoSlash = noSlash.replace("~", "_tilde_");
-      _xblockexpression = noTildenoSlash.replace(".", "_dot_");
-    }
-    return _xblockexpression;
-  }
-
-  /**
-   * Unescape `_slash_` back to `/`
-   */
-  public static String unescape(final String name) {
-    String _xblockexpression = null;
-    {
-      String withSlash = name.replace("_slash_", "/");
-      String withTildewithSlash = withSlash.replace("_tilde_", "~");
-      _xblockexpression = withTildewithSlash.replace("_dot_", ".");
-    }
-    return _xblockexpression;
   }
 }

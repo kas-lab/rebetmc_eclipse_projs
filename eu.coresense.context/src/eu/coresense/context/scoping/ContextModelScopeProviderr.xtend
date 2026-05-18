@@ -20,6 +20,8 @@ import eu.coresense.context.contextModel.QualifiedServiceServerRef
 import ros.ServiceServer
 import ros.ActionServer
 import eu.coresense.common.Import
+import eu.coresense.common.Utilities
+
 
 class ContextModelScopeProviderr extends AbstractContextModelScopeProvider {
 
@@ -38,7 +40,7 @@ class ContextModelScopeProviderr extends AbstractContextModelScopeProvider {
 	            // scope over all features in the model
 	           	return Scopes.scopeFor(
 		            node.getActionserver(),
-		            [EObject e | QualifiedName.create(escape((e as ActionServer).name))],
+		            [EObject e | QualifiedName.create(Utilities.escape((e as ActionServer).name))],
 		            IScope.NULLSCOPE
 		        )
 	        }
@@ -52,7 +54,7 @@ class ContextModelScopeProviderr extends AbstractContextModelScopeProvider {
 	            // scope over all features in the model
 	            return Scopes.scopeFor(
 		            node.getServiceserver(), 
-		            [EObject e | QualifiedName.create(escape((e as ServiceServer).name))],
+		            [EObject e | QualifiedName.create(Utilities.escape((e as ServiceServer).name))],
 		            IScope.NULLSCOPE
 		        )
 	        }
@@ -64,41 +66,45 @@ class ContextModelScopeProviderr extends AbstractContextModelScopeProvider {
 	    {
 	    	val model = EcoreUtil2.getContainerOfType(context, ContextModel);
 
-	    	return Scopes.scopeFor(allNodes(model,context));
+	    	return Scopes.scopeFor(
+	    		allNodes(model,context),
+	    		[EObject e | QualifiedName.create(Utilities.escape((e as ros.Node).name))],
+	    		IScope.NULLSCOPE
+	    	);
 	    }
-        super.getScope(context, reference)
-    }
+         super.getScope(context, reference)
+     }
 
-    def IScope scope_QualifiedPublisherRef_publisher(QualifiedPublisherRef context, EReference ref) {
-        if (context.node === null) return IScope.NULLSCOPE
+     def IScope scope_QualifiedPublisherRef_publisher(QualifiedPublisherRef context, EReference ref) {
+         if (context.node === null) return IScope.NULLSCOPE
 
-        val publishers = context.node.publisher
+         val publishers = context.node.publisher
 
-        // Scopes.scopeFor with lambda keeps '/' literal
-        return Scopes.scopeFor(
-            publishers, 
-            [EObject e | QualifiedName.create(escape((e as Publisher).name))],
-            IScope.NULLSCOPE
-        )
-    }
-    
-    def List<ros.Node> allNodes(ContextModel model, EObject context) {
-    	
-    	val sys_defs = collectAllSystems(model, context.eResource());
-    	
-    	val allNodes = new ArrayList<ros.Node>();
-    	for (system.System sys_def : sys_defs)
-    	{
-    		for(system.Component comp : sys_def.getComponents())
-    		{
-    			if(comp instanceof system.RosNode)
-    			{
-    				val node = comp as system.RosNode;
-    				allNodes.add(node.getFrom());
-    			}
-    		}
-    	}
-    	return allNodes;
+         // Scopes.scopeFor with lambda keeps '/' literal
+         return Scopes.scopeFor(
+             publishers, 
+             [EObject e | QualifiedName.create(Utilities.escape((e as Publisher).name))],
+             IScope.NULLSCOPE
+         )
+     }
+     
+     def List<ros.Node> allNodes(ContextModel model, EObject context) {
+     	
+     	val sys_defs = collectAllSystems(model, context.eResource());
+     	
+     	val allNodes = new ArrayList<ros.Node>();
+     	for (system.System sys_def : sys_defs)
+     	{
+     		for(system.Component comp : sys_def.getComponents())
+     		{
+     			if(comp instanceof system.RosNode)
+     			{
+     				val node = comp as system.RosNode;
+     				allNodes.add(node.getFrom());
+     			}
+     		}
+     	}
+     	return allNodes;
 	}
 	
 	def List<system.System> collectAllSystems(ContextModel model, Resource currentResource) {
@@ -143,17 +149,5 @@ class ContextModelScopeProviderr extends AbstractContextModelScopeProvider {
 	            collectRecursively(comp.getSystem(), result);
 	        }
 	    }
-	}
-	
-	def static String escape(String name) {
-        var noSlash = name.replace("/", "_slash_")
-        noSlash.replace("~","_tilde_")
-    }
-
-    /** Unescape `_slash_` back to `/` */
-    def static String unescape(String name) {
-        var withSlash = name.replace("_slash_", "/")
-        withSlash.replace("_tilde_","~")
-    }
-	
+	}	
 }

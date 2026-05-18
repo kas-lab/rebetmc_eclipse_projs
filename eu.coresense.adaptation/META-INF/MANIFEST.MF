@@ -6,7 +6,8 @@ Bundle-Vendor: My Company
 Bundle-Version: 1.0.0.qualifier
 Bundle-SymbolicName: eu.coresense.adaptation; singleton:=true
 Bundle-ActivationPolicy: lazy
-Require-Bundle: org.eclipse.xtext,
+Require-Bundle: eu.coresense.common;bundle-version="0.1.0",
+ org.eclipse.xtext,
  org.eclipse.xtext.xbase,
  org.eclipse.equinox.common;bundle-version="3.19.0",
  org.eclipse.emf.ecore,
@@ -20,7 +21,7 @@ Require-Bundle: org.eclipse.xtext,
  eu.coresense.variability;bundle-version="1.0.0",
  eu.coresense.context;bundle-version="1.0.0",
  eu.coresense.requirements;bundle-version="1.0.0",
- eu.coresense.common;bundle-version="0.1.0"
+ featureidewrapper;bundle-version="1.0.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-21
 Export-Package: eu.coresense.adaptation.parser.antlr.internal,
  eu.coresense.adaptation.validation,

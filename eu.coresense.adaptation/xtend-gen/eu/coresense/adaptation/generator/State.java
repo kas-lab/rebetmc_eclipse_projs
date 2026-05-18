@@ -12,6 +12,7 @@ import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.Pair;
+import uma.caosd.rhea.BasicFMmetamodel.Feature;
 
 @SuppressWarnings("all")
 public class State {
@@ -21,21 +22,38 @@ public class State {
 
   public final List<String> associatedRulesTQLNames;
 
-  private final Map<ContextVar, Pair<LiteralWrapper, LiteralWrapper>> boundMap;
+  private final Map<ContextVar, Pair<LiteralWrapper, LiteralWrapper>> boundPreconditionMap;
+
+  private final Map<ContextVar, Boolean> boolPreconditionMap;
+
+  private List<Feature> featureKeys;
 
   private final Map<ContextVar, LiteralWrapper> medianBounds;
 
-  public State(final List<Pair<LiteralWrapper, LiteralWrapper>> contextPrecondition, final List<Boolean> featurePrecondition, final List<ContextVar> contextKeys) {
-    this.boundMap = CollectionLiterals.<ContextVar, Pair<LiteralWrapper, LiteralWrapper>>newHashMap();
+  public State(final List<Pair<LiteralWrapper, LiteralWrapper>> contextPrecondition, final List<Boolean> booleanContextPreconditions, final List<Boolean> featurePrecondition, final List<ContextVar> contextKeys, final List<Feature> featureKeys) {
+    this.boundPreconditionMap = CollectionLiterals.<ContextVar, Pair<LiteralWrapper, LiteralWrapper>>newHashMap();
     this.medianBounds = CollectionLiterals.<ContextVar, LiteralWrapper>newHashMap();
     this.associatedRulesTQLNames = CollectionLiterals.<String>newArrayList();
+    this.boolPreconditionMap = CollectionLiterals.<ContextVar, Boolean>newHashMap();
+    this.featureKeys = featureKeys;
     Iterable<Pair<Integer, ContextVar>> _indexed = IterableExtensions.<ContextVar>indexed(contextKeys);
     for (final Pair<Integer, ContextVar> contextKeyIndPair : _indexed) {
       {
         final ContextVar contextKey = contextKeyIndPair.getValue();
-        final Pair<LiteralWrapper, LiteralWrapper> bound = contextPrecondition.get((contextKeyIndPair.getKey()).intValue());
-        this.boundMap.put(contextKey, bound);
-        this.medianBounds.put(contextKey, this.medianBound(bound));
+        Integer _key = contextKeyIndPair.getKey();
+        int _size = contextPrecondition.size();
+        boolean _greaterEqualsThan = ((_key).intValue() >= _size);
+        if (_greaterEqualsThan) {
+          Integer _key_1 = contextKeyIndPair.getKey();
+          int _size_1 = contextPrecondition.size();
+          int _minus = ((_key_1).intValue() - _size_1);
+          final Boolean boolval = booleanContextPreconditions.get(_minus);
+          this.boolPreconditionMap.put(contextKey, boolval);
+        } else {
+          final Pair<LiteralWrapper, LiteralWrapper> bound = contextPrecondition.get((contextKeyIndPair.getKey()).intValue());
+          this.boundPreconditionMap.put(contextKey, bound);
+          this.medianBounds.put(contextKey, this.medianBound(bound));
+        }
       }
     }
     this.featurePrecondition = featurePrecondition;
@@ -55,7 +73,7 @@ public class State {
   }
 
   public Set<Map.Entry<ContextVar, Pair<LiteralWrapper, LiteralWrapper>>> getContextBoundPairs() {
-    return this.boundMap.entrySet();
+    return this.boundPreconditionMap.entrySet();
   }
 
   public List<Map.Entry<ContextVar, LiteralWrapper>> getMedians() {
@@ -63,15 +81,32 @@ public class State {
   }
 
   public List<ContextVar> getContextKeys() {
-    return IterableExtensions.<ContextVar>toList(this.boundMap.keySet());
+    return IterableExtensions.<ContextVar>toList(this.boundPreconditionMap.keySet());
   }
 
   public List<Pair<LiteralWrapper, LiteralWrapper>> getContextPrecondition() {
-    return IterableExtensions.<Pair<LiteralWrapper, LiteralWrapper>>toList(this.boundMap.values());
+    return IterableExtensions.<Pair<LiteralWrapper, LiteralWrapper>>toList(this.boundPreconditionMap.values());
+  }
+
+  public Boolean BoundorBoolPrecondition(final ContextVar contextVar) {
+    try {
+      final boolean isBound = this.boundPreconditionMap.containsKey(contextVar);
+      final boolean isBool = this.boolPreconditionMap.containsKey(contextVar);
+      if (((!isBound) && (!isBool))) {
+        throw new Exception("ContextVar not defined for state");
+      }
+      return Boolean.valueOf(isBound);
+    } catch (Throwable _e) {
+      throw Exceptions.sneakyThrow(_e);
+    }
   }
 
   public Pair<LiteralWrapper, LiteralWrapper> getBoundsOn(final ContextVar contextVar) {
-    return this.boundMap.get(contextVar);
+    return this.boundPreconditionMap.get(contextVar);
+  }
+
+  public Boolean getBoolOn(final ContextVar contextVar) {
+    return this.boolPreconditionMap.get(contextVar);
   }
 
   private LiteralWrapper medianBound(final Pair<LiteralWrapper, LiteralWrapper> bound) {
@@ -116,6 +151,96 @@ public class State {
     }
     _builder.append("----->");
     _builder.newLine();
+    return _builder;
+  }
+
+  public CharSequence describe() {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("<----- State: ");
+    _builder.append(this.TQLName);
+    _builder.append(" General Information");
+    _builder.newLineIfNotEmpty();
+    _builder.append("Preconditions are");
+    _builder.newLine();
+    _builder.append("<BOOLEAN>");
+    _builder.newLine();
+    {
+      Set<Map.Entry<ContextVar, Boolean>> _entrySet = this.boolPreconditionMap.entrySet();
+      boolean _hasElements = false;
+      for(final Map.Entry<ContextVar, Boolean> element : _entrySet) {
+        if (!_hasElements) {
+          _hasElements = true;
+        } else {
+          _builder.appendImmediate("; ", "");
+        }
+        String _name = element.getKey().getName();
+        _builder.append(_name);
+        _builder.append(" : ");
+        Boolean _value = element.getValue();
+        _builder.append(_value);
+        _builder.newLineIfNotEmpty();
+      }
+    }
+    _builder.append("</BOOLEAN>");
+    _builder.newLine();
+    _builder.append("<FEATURE>");
+    _builder.newLine();
+    {
+      Iterable<Pair<Integer, Boolean>> _indexed = IterableExtensions.<Boolean>indexed(this.featurePrecondition);
+      boolean _hasElements_1 = false;
+      for(final Pair<Integer, Boolean> element_1 : _indexed) {
+        if (!_hasElements_1) {
+          _hasElements_1 = true;
+        } else {
+          _builder.appendImmediate("; ", "");
+        }
+        String _name_1 = this.featureKeys.get((element_1.getKey()).intValue()).getName();
+        _builder.append(_name_1);
+        _builder.append(" : ");
+        {
+          Boolean _value_1 = element_1.getValue();
+          if ((_value_1).booleanValue()) {
+            _builder.append("Selected");
+          } else {
+            _builder.append("notSelected");
+          }
+        }
+        _builder.newLineIfNotEmpty();
+      }
+    }
+    _builder.append("</FEATURE>");
+    _builder.newLine();
+    _builder.append("Has ");
+    int _size = this.associatedRulesTQLNames.size();
+    _builder.append(_size);
+    _builder.append(" rules attached.");
+    _builder.newLineIfNotEmpty();
+    {
+      boolean _isEmpty = this.associatedRulesTQLNames.isEmpty();
+      boolean _not = (!_isEmpty);
+      if (_not) {
+        _builder.append("Rules are:");
+        _builder.newLine();
+        {
+          boolean _hasElements_2 = false;
+          for(final String rule : this.associatedRulesTQLNames) {
+            if (!_hasElements_2) {
+              _hasElements_2 = true;
+            } else {
+              _builder.appendImmediate(", ", "\t");
+            }
+            _builder.append("\t");
+            _builder.append(rule, "\t");
+            _builder.newLineIfNotEmpty();
+          }
+        }
+      }
+    }
+    _builder.append("----->");
+    _builder.newLine();
+    CharSequence _describeMedianBounds = this.describeMedianBounds();
+    _builder.append(_describeMedianBounds);
+    _builder.newLineIfNotEmpty();
     return _builder;
   }
 }

@@ -6,6 +6,13 @@ package eu.coresense.adaptation.generator;
 import com.google.common.collect.Iterables;
 import com.google.common.primitives.Booleans;
 import com.google.inject.Inject;
+import de.ovgu.featureide.fm.core.analysis.cnf.formula.FeatureModelFormula;
+import de.ovgu.featureide.fm.core.base.IFeatureModel;
+import de.ovgu.featureide.fm.core.configuration.Configuration;
+import de.ovgu.featureide.fm.core.configuration.ConfigurationAnalyzer;
+import de.ovgu.featureide.fm.core.init.FMCoreLibrary;
+import de.ovgu.featureide.fm.core.init.LibraryManager;
+import de.ovgu.featureide.fm.core.io.manager.FeatureModelManager;
 import eu.coresense.adaptation.tactics.AdaptationRule;
 import eu.coresense.adaptation.tactics.AtomicActionDeselectFeature;
 import eu.coresense.adaptation.tactics.AtomicActionSelectFeature;
@@ -46,11 +53,15 @@ import eu.coresense.resolution.resolutionModel.Resolution;
 import eu.coresense.resolution.resolutionModel.ResolutionModel;
 import eu.coresense.resolution.resolutionModel.SetLifecycle;
 import eu.coresense.resolution.resolutionModel.SetParam;
+import eu.coresense.variability.generator.FeatureModelGenerator;
+import java.io.File;
+import java.io.FileWriter;
 import java.math.BigDecimal;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -158,7 +169,7 @@ public class TQLGenerator extends AbstractGenerator {
 
   public HashMap<Pair<String, String>, String> escapes = CollectionLiterals.<Pair<String, String>, String>newHashMap();
 
-  private int numRules = 0;
+  public Set<String> ruleNames = CollectionLiterals.<String>newHashSet();
 
   @Override
   public void doGenerate(final Resource resource, final IFileSystemAccess2 fsa, final IGeneratorContext context) {
@@ -1063,26 +1074,25 @@ public class TQLGenerator extends AbstractGenerator {
         infInt = TQLGenerator.NEG_INF_INT_VAR;
         infDecimal = TQLGenerator.NEG_INF_DBL_VAR;
       }
-      final Literal obj = otherLiteral;
       boolean _matched = false;
-      if (obj instanceof IntLiteral) {
+      if (otherLiteral instanceof IntLiteral) {
         _matched=true;
         return infInt;
       }
       if (!_matched) {
-        if (obj instanceof DecimalLiteral) {
+        if (otherLiteral instanceof DecimalLiteral) {
           _matched=true;
           return infDecimal;
         }
       }
       if (!_matched) {
-        if (obj instanceof StringLiteral) {
+        if (otherLiteral instanceof StringLiteral) {
           _matched=true;
           throw new Exception("Requested infinityLiteral for String");
         }
       }
       if (!_matched) {
-        if (obj instanceof BooleanLiteral) {
+        if (otherLiteral instanceof BooleanLiteral) {
           _matched=true;
           throw new Exception("Requested infinityLiteral for Boolean");
         }
@@ -1285,324 +1295,319 @@ public class TQLGenerator extends AbstractGenerator {
   }
 
   private String compile(final TacticsModel t, final Boolean doStates) {
-    this.numRules = 0;
-    final String tacticName = t.getName();
-    final String lc_tacticName = t.getName().toLowerCase();
-    final List<ResolutionModel> resolutionModels = this.getResolutionModel(t, this.globalResource);
-    final List<ContextModel> contextModels = this.getContextModel(t, this.globalResource);
-    String infinityLiteralsTQL = "";
-    String thresholdLiteralsTQL = "";
-    ArrayList<String> stateTQLs = CollectionLiterals.<String>newArrayList();
-    final Map<Feature, Set<Boolean>> featureSelections = CollectionLiterals.<Feature, Set<Boolean>>newHashMap();
-    Map<ContextVar, Set<LiteralWrapper>> thresholds = CollectionLiterals.<ContextVar, Set<LiteralWrapper>>newHashMap();
-    if ((doStates).booleanValue()) {
-      EList<AdaptationRule> _adaptationRules = t.getAdaptationRules();
-      for (final AdaptationRule rule : _adaptationRules) {
-        this.registerComparisonsFromRule(rule, thresholds, featureSelections);
-      }
-      infinityLiteralsTQL = this.infinityLiterals();
-      Pair<String, Map<ContextVar, Set<LiteralWrapper>>> somePair = this.thresholdLiterals(thresholds);
-      thresholdLiteralsTQL = somePair.getKey();
-      thresholds = somePair.getValue();
-      final Map<ContextVar, List<Pair<LiteralWrapper, LiteralWrapper>>> bounds = this.createBounds(thresholds);
-      final List<ContextVar> contextKeys = IterableExtensions.<ContextVar>toList(bounds.keySet());
-      final List<List<Pair<LiteralWrapper, LiteralWrapper>>> values = IterableExtensions.<List<Pair<LiteralWrapper, LiteralWrapper>>>toList(bounds.values());
-      final List<List<Pair<LiteralWrapper, LiteralWrapper>>> product = Utilities.<Pair<LiteralWrapper, LiteralWrapper>>getCartesianProduct(values);
-      this.allStates = CollectionLiterals.<State>newArrayList();
-      final List<List<Boolean>> featureSelectionsToPairs = CollectionLiterals.<List<Boolean>>newArrayList();
-      Collection<Set<Boolean>> _values = featureSelections.values();
-      for (final Set<Boolean> featureSelectionEntry : _values) {
-        featureSelectionsToPairs.add(IterableExtensions.<Boolean>toList(featureSelectionEntry));
-      }
-      final List<List<Boolean>> newCombos = Utilities.<Boolean>getCartesianProduct(featureSelectionsToPairs);
-      final ArrayList<List<Boolean>> newnewCombos = CollectionLiterals.<List<Boolean>>newArrayList();
-      final ArrayList<Feature> coveredFeatures = CollectionLiterals.<Feature>newArrayList();
-      Set<Feature> _keySet = featureSelections.keySet();
-      for (final Feature feat : _keySet) {
-        int _indexOf = coveredFeatures.indexOf(feat);
-        boolean _equals = (_indexOf == (-1));
-        if (_equals) {
-          final Feature parent = feat.getParent();
-          if ((parent instanceof Alternative)) {
-            coveredFeatures.addAll(((Alternative)parent).getChildren());
-            final ArrayList<Integer> valuationIndices = CollectionLiterals.<Integer>newArrayList();
-            EList<Feature> _children = ((Alternative)parent).getChildren();
-            for (final Feature altChild : _children) {
-              {
-                final int index = IterableExtensions.<Feature>toList(featureSelections.keySet()).indexOf(altChild);
-                if ((index >= 0)) {
-                  valuationIndices.add(Integer.valueOf(index));
-                }
-              }
+    try {
+      this.ruleNames = CollectionLiterals.<String>newHashSet();
+      final String tacticName = t.getName();
+      final String lc_tacticName = t.getName().toLowerCase();
+      final List<ResolutionModel> resolutionModels = this.getResolutionModel(t, this.globalResource);
+      final List<ContextModel> contextModels = this.getContextModel(t, this.globalResource);
+      String infinityLiteralsTQL = "";
+      String thresholdLiteralsTQL = "";
+      ArrayList<String> stateTQLs = CollectionLiterals.<String>newArrayList();
+      final Map<Feature, Set<Boolean>> featureSelections = CollectionLiterals.<Feature, Set<Boolean>>newHashMap();
+      Map<ContextVar, Set<LiteralWrapper>> thresholds = CollectionLiterals.<ContextVar, Set<LiteralWrapper>>newHashMap();
+      final Map<ContextVar, Set<Boolean>> booleanVars = CollectionLiterals.<ContextVar, Set<Boolean>>newHashMap();
+      if ((doStates).booleanValue()) {
+        EList<AdaptationRule> _adaptationRules = t.getAdaptationRules();
+        for (final AdaptationRule rule : _adaptationRules) {
+          this.registerComparisonsFromRule(rule, thresholds, featureSelections, booleanVars);
+        }
+        infinityLiteralsTQL = this.infinityLiterals();
+        Pair<String, Map<ContextVar, Set<LiteralWrapper>>> somePair = this.thresholdLiterals(thresholds);
+        thresholdLiteralsTQL = somePair.getKey();
+        thresholds = somePair.getValue();
+        final Map<ContextVar, List<Pair<LiteralWrapper, LiteralWrapper>>> bounds = this.createBounds(thresholds);
+        final List<ContextVar> contextKeys = IterableExtensions.<ContextVar>toList(bounds.keySet());
+        final List<List<Pair<LiteralWrapper, LiteralWrapper>>> values = IterableExtensions.<List<Pair<LiteralWrapper, LiteralWrapper>>>toList(bounds.values());
+        final List<List<Pair<LiteralWrapper, LiteralWrapper>>> product = Utilities.<Pair<LiteralWrapper, LiteralWrapper>>getCartesianProduct(values);
+        this.allStates = CollectionLiterals.<State>newArrayList();
+        LibraryManager.registerLibrary(FMCoreLibrary.getInstance());
+        final FeatureModelGenerator generator = new FeatureModelGenerator();
+        final String fm_xml = generator.generateXml(resolutionModels.get(0).getFeatureModel());
+        final Path path = Files.createTempFile("featuremodel", ".xml");
+        File _file = path.toFile();
+        final FileWriter fw = new FileWriter(_file, true);
+        fw.write(fm_xml);
+        fw.close();
+        final IFeatureModel featureModel = FeatureModelManager.load(path);
+        final FeatureModelFormula formula = new FeatureModelFormula(featureModel);
+        final Configuration configuration = new Configuration(formula);
+        final ConfigurationAnalyzer configurationAnalyzer = new ConfigurationAnalyzer(formula, configuration);
+        final List<List<String>> allConfigurations = configurationAnalyzer.getSolutions(100000);
+        final Set<List<Boolean>> featureSelectionsToPairs = CollectionLiterals.<List<Boolean>>newHashSet();
+        final Set<Feature> relevantFeatures = featureSelections.keySet();
+        for (final List<String> featureList : allConfigurations) {
+          {
+            final List<Boolean> selectedOrNot = CollectionLiterals.<Boolean>newArrayList();
+            for (final Feature relevantFeature : relevantFeatures) {
+              selectedOrNot.add(Boolean.valueOf(featureList.contains(relevantFeature.getName())));
             }
-            for (final List<Boolean> newCombo : newCombos) {
-              {
-                final ArrayList<Boolean> relevantSlice = CollectionLiterals.<Boolean>newArrayList();
-                for (final Integer valuationIndex : valuationIndices) {
-                  relevantSlice.add(newCombo.get((valuationIndex).intValue()));
-                }
-                if (((!((Alternative)parent).isMandatory()) && (IterableExtensions.size(IterableExtensions.<Boolean>filter(relevantSlice, ((Function1<Boolean, Boolean>) (Boolean it) -> {
-                  return it;
-                }))) <= 1))) {
-                  newnewCombos.add(newCombo);
-                } else {
-                  if ((((Alternative)parent).isMandatory() && (IterableExtensions.size(IterableExtensions.<Boolean>filter(relevantSlice, ((Function1<Boolean, Boolean>) (Boolean it) -> {
-                    return it;
-                  }))) == 1))) {
-                    newnewCombos.add(newCombo);
-                  }
-                }
-              }
+            featureSelectionsToPairs.add(selectedOrNot);
+          }
+        }
+        final ArrayList<List<Boolean>> booleanPreconditions = CollectionLiterals.<List<Boolean>>newArrayList();
+        Set<ContextVar> _keySet = booleanVars.keySet();
+        for (final ContextVar x : _keySet) {
+          {
+            contextKeys.add(x);
+            booleanPreconditions.add(IterableExtensions.<Boolean>toList(booleanVars.get(x)));
+          }
+        }
+        final List<List<Boolean>> booleanPreconditionsCombinations = Utilities.<Boolean>getCartesianProduct(booleanPreconditions);
+        final List<Feature> featureKeys = IterableExtensions.<Feature>toList(featureSelections.keySet());
+        for (final List<Boolean> featurevaluationCombo : featureSelectionsToPairs) {
+          for (final List<Boolean> contextBooleanPrecondition : booleanPreconditionsCombinations) {
+            for (final List<Pair<LiteralWrapper, LiteralWrapper>> contextBoundPrecondition : product) {
+              State _state = new State(contextBoundPrecondition, contextBooleanPrecondition, featurevaluationCombo, contextKeys, featureKeys);
+              this.allStates.add(_state);
             }
           }
         }
-      }
-      for (final List<Boolean> featurevaluationCombo : newnewCombos) {
-        for (final List<Pair<LiteralWrapper, LiteralWrapper>> contextPrecondition : product) {
-          State _state = new State(contextPrecondition, featurevaluationCombo, contextKeys);
-          this.allStates.add(_state);
-        }
-      }
-      final List<Feature> featureKeys = IterableExtensions.<Feature>toList(featureSelections.keySet());
-      int ruleCount = 0;
-      int stateCount = 0;
-      for (final State state : this.allStates) {
-        {
-          EList<AdaptationRule> _adaptationRules_1 = t.getAdaptationRules();
-          for (final AdaptationRule rule_1 : _adaptationRules_1) {
-            boolean _checkAgainstBounds = this.checkAgainstBounds(rule_1, contextKeys, featureKeys, state);
-            if (_checkAgainstBounds) {
-              state.addRule(rule_1.getName());
+        int ruleCount = 0;
+        int stateCount = 0;
+        for (final State state : this.allStates) {
+          {
+            EList<AdaptationRule> _adaptationRules_1 = t.getAdaptationRules();
+            for (final AdaptationRule rule_1 : _adaptationRules_1) {
+              boolean _checkAgainstBounds = this.checkAgainstBounds(rule_1, featureKeys, state);
+              if (_checkAgainstBounds) {
+                state.addRule(rule_1.getName());
+              }
             }
-          }
-          final And expr = this.expressionFromState(contextKeys, featureKeys, state, "");
-          final Expr state_inCNF = this.toCNF(expr);
-          final Pair<String, String> antecedent = this.createAntecedent(state_inCNF);
-          boolean _hasRules = state.hasRules();
-          if (_hasRules) {
-            int _ruleCount = ruleCount;
-            ruleCount = (_ruleCount + 1);
-          }
-          int _stateCount = stateCount;
-          stateCount = (_stateCount + 1);
-          String _key = antecedent.getKey();
-          final String state_name = ("state_" + _key);
-          final ArrayList<String> medianNames = CollectionLiterals.<String>newArrayList();
-          String median_statement = "";
-          List<Map.Entry<ContextVar, LiteralWrapper>> _medians = state.getMedians();
-          for (final Map.Entry<ContextVar, LiteralWrapper> median_entry : _medians) {
+            final And expr = this.expressionFromState(contextKeys, featureKeys, state, "");
+            final Expr state_inCNF = this.toCNF(expr);
+            final Pair<String, String> antecedent = this.createAntecedent(state_inCNF);
+            boolean _hasRules = state.hasRules();
+            if (_hasRules) {
+              int _ruleCount = ruleCount;
+              ruleCount = (_ruleCount + 1);
+            }
+            int _stateCount = stateCount;
+            stateCount = (_stateCount + 1);
+            String _key = antecedent.getKey();
+            final String state_name = ("state_" + _key);
+            final ArrayList<String> medianNames = CollectionLiterals.<String>newArrayList();
+            String median_statement = "";
+            List<Map.Entry<ContextVar, LiteralWrapper>> _medians = state.getMedians();
+            for (final Map.Entry<ContextVar, LiteralWrapper> median_entry : _medians) {
+              {
+                String _name = median_entry.getKey().getName();
+                final String median_name = ((state_name + "_median_") + _name);
+                medianNames.add(median_name);
+                String _median_statement = median_statement;
+                StringConcatenation _builder = new StringConcatenation();
+                _builder.append("$");
+                _builder.append(median_name);
+                _builder.append(" (measure: $");
+                String _uniqueName = this._namer.uniqueName(median_entry.getKey());
+                _builder.append(_uniqueName);
+                _builder.append(") isa MedianValuation,");
+                _builder.newLineIfNotEmpty();
+                _builder.append("    ");
+                _builder.append("has median_bound_value ");
+                String _string = median_entry.getValue().toString();
+                _builder.append(_string, "    ");
+                _builder.append(";");
+                _builder.newLineIfNotEmpty();
+                _builder.append("    ");
+                _builder.newLine();
+                median_statement = (_median_statement + _builder);
+              }
+            }
+            StringConcatenation _builder = new StringConcatenation();
+            _builder.append("$");
+            _builder.append(state_name);
+            _builder.append("( ");
+            _builder.newLineIfNotEmpty();
             {
-              String _name = median_entry.getKey().getName();
-              final String median_name = ((state_name + "_median_") + _name);
-              medianNames.add(median_name);
-              String _median_statement = median_statement;
-              StringConcatenation _builder = new StringConcatenation();
-              _builder.append("$");
-              _builder.append(median_name);
-              _builder.append(" (measure: $");
-              String _uniqueName = this._namer.uniqueName(median_entry.getKey());
-              _builder.append(_uniqueName);
-              _builder.append(") isa MedianValuation,");
+              boolean _hasElements = false;
+              for(final String rule_name : state.associatedRulesTQLNames) {
+                if (!_hasElements) {
+                  _hasElements = true;
+                } else {
+                  _builder.appendImmediate(", ", "");
+                }
+                _builder.append("rule: $tactic_rule_");
+                String _lowerCase = rule_name.toLowerCase();
+                _builder.append(_lowerCase);
+              }
+            }
+            {
+              boolean _hasRules_1 = state.hasRules();
+              if (_hasRules_1) {
+                _builder.append(",");
+              }
+            }
+            _builder.newLineIfNotEmpty();
+            {
+              boolean _hasElements_1 = false;
+              for(final String median_name : medianNames) {
+                if (!_hasElements_1) {
+                  _hasElements_1 = true;
+                } else {
+                  _builder.appendImmediate(", ", "");
+                }
+                _builder.append("median_valuation: $");
+                _builder.append(median_name);
+              }
+            }
+            _builder.append(",");
+            _builder.newLineIfNotEmpty();
+            _builder.append("antecedent: $");
+            String _key_1 = antecedent.getKey();
+            _builder.append(_key_1);
+            _builder.append(") isa state, has state_name \"");
+            _builder.append(state_name);
+            _builder.append("\";");
+            _builder.newLineIfNotEmpty();
+            final String state_statement = _builder.toString();
+            String _value = antecedent.getValue();
+            String _plus = (_value + median_statement);
+            String _plus_1 = (_plus + state_statement);
+            stateTQLs.add(_plus_1);
+            state.TQLName = state_name;
+          }
+        }
+        for (final State state_1 : this.allStates) {
+          InputOutput.<CharSequence>println(state_1.describe());
+        }
+        String _plus = (Integer.valueOf(stateCount) + " states were produced, ");
+        String _plus_1 = (_plus + Integer.valueOf(ruleCount));
+        String _plus_2 = (_plus_1 + " of which have a rule attached and ");
+        int _size = this.escapes.keySet().size();
+        String _plus_3 = (_plus_2 + Integer.valueOf(_size));
+        String _plus_4 = (_plus_3 + " have escaped defined");
+        InputOutput.<String>println(_plus_4);
+      }
+      final ContextModelGenerator contextGenerator = new ContextModelGenerator(this._namer);
+      this.escapes = CollectionLiterals.<Pair<String, String>, String>newHashMap();
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append(infinityLiteralsTQL);
+      _builder.newLineIfNotEmpty();
+      _builder.append(thresholdLiteralsTQL);
+      _builder.newLineIfNotEmpty();
+      _builder.append("$ta_");
+      _builder.append(lc_tacticName);
+      _builder.append(" isa Tactic, has tactic_name \"");
+      _builder.append(tacticName);
+      _builder.append("\";");
+      _builder.newLineIfNotEmpty();
+      {
+        for(final ResolutionModel resolutionModel : resolutionModels) {
+          StringBuilder _registerFeatures = this.registerFeatures(resolutionModel.getFeatureModel().getRoot());
+          _builder.append(_registerFeatures);
+          _builder.append("\t");
+          _builder.newLineIfNotEmpty();
+        }
+      }
+      {
+        for(final ContextModel contextModel : contextModels) {
+          CharSequence _registerMeasurements = contextGenerator.registerMeasurements(contextModel);
+          _builder.append(_registerMeasurements);
+          _builder.newLineIfNotEmpty();
+        }
+      }
+      {
+        EList<AdaptationRule> _adaptationRules_1 = t.getAdaptationRules();
+        for(final AdaptationRule rule_1 : _adaptationRules_1) {
+          CharSequence _compileRule = this.compileRule(rule_1, lc_tacticName, (doStates).booleanValue());
+          _builder.append(_compileRule);
+          _builder.newLineIfNotEmpty();
+        }
+      }
+      {
+        if ((doStates).booleanValue()) {
+          {
+            for(final String stateTQL : stateTQLs) {
+              _builder.append(stateTQL);
               _builder.newLineIfNotEmpty();
-              _builder.append("    ");
-              _builder.append("has median_bound_value ");
-              String _string = median_entry.getValue().toString();
-              _builder.append(_string, "    ");
-              _builder.append(";");
-              _builder.newLineIfNotEmpty();
-              _builder.append("    ");
-              _builder.newLine();
-              median_statement = (_median_statement + _builder);
             }
           }
-          StringConcatenation _builder = new StringConcatenation();
-          _builder.append("$");
-          _builder.append(state_name);
-          _builder.append("( ");
+        }
+      }
+      _builder.newLine();
+      {
+        for(final ResolutionModel resolutionModel_1 : resolutionModels) {
+          CharSequence _compileResolution = this.compileResolution(resolutionModel_1);
+          _builder.append(_compileResolution);
+          _builder.append("\t\t\t\t");
+          _builder.newLineIfNotEmpty();
+          _builder.append("$res_");
+          String _name = resolutionModel_1.getName();
+          _builder.append(_name);
+          _builder.append(" (tactic: $ta_");
+          _builder.append(lc_tacticName);
+          _builder.append(",");
           _builder.newLineIfNotEmpty();
           {
+            EList<Resolution> _resolutions = resolutionModel_1.getResolutions();
             boolean _hasElements = false;
-            for(final String rule_name : state.associatedRulesTQLNames) {
+            for(final Resolution resolution : _resolutions) {
               if (!_hasElements) {
                 _hasElements = true;
               } else {
                 _builder.appendImmediate(", ", "");
               }
-              _builder.append("rule: $tactic_rule_");
-              String _lowerCase = rule_name.toLowerCase();
-              _builder.append(_lowerCase);
-            }
-          }
-          {
-            boolean _hasRules_1 = state.hasRules();
-            if (_hasRules_1) {
-              _builder.append(",");
-            }
-          }
-          _builder.newLineIfNotEmpty();
-          {
-            boolean _hasElements_1 = false;
-            for(final String median_name : medianNames) {
-              if (!_hasElements_1) {
-                _hasElements_1 = true;
-              } else {
-                _builder.appendImmediate(", ", "");
-              }
-              _builder.append("median_valuation: $");
-              _builder.append(median_name);
-            }
-          }
-          _builder.append(",");
-          _builder.newLineIfNotEmpty();
-          _builder.append("antecedent: $");
-          String _key_1 = antecedent.getKey();
-          _builder.append(_key_1);
-          _builder.append(") isa state, has state_name \"");
-          _builder.append(state_name);
-          _builder.append("\";");
-          _builder.newLineIfNotEmpty();
-          final String state_statement = _builder.toString();
-          String _value = antecedent.getValue();
-          String _plus = (_value + median_statement);
-          String _plus_1 = (_plus + state_statement);
-          stateTQLs.add(_plus_1);
-          state.TQLName = state_name;
-        }
-      }
-      String _plus = (Integer.valueOf(stateCount) + " states were produced, ");
-      String _plus_1 = (_plus + Integer.valueOf(ruleCount));
-      String _plus_2 = (_plus_1 + " of which have a rule attached and ");
-      int _size = this.escapes.keySet().size();
-      String _plus_3 = (_plus_2 + Integer.valueOf(_size));
-      String _plus_4 = (_plus_3 + " have escaped defined");
-      InputOutput.<String>println(_plus_4);
-    }
-    final ContextModelGenerator contextGenerator = new ContextModelGenerator(this._namer);
-    this.escapes = CollectionLiterals.<Pair<String, String>, String>newHashMap();
-    StringConcatenation _builder = new StringConcatenation();
-    _builder.append(infinityLiteralsTQL);
-    _builder.newLineIfNotEmpty();
-    _builder.append(thresholdLiteralsTQL);
-    _builder.newLineIfNotEmpty();
-    _builder.append("$ta_");
-    _builder.append(lc_tacticName);
-    _builder.append(" isa Tactic, has tactic_name \"");
-    _builder.append(tacticName);
-    _builder.append("\";");
-    _builder.newLineIfNotEmpty();
-    {
-      for(final ResolutionModel resolutionModel : resolutionModels) {
-        StringBuilder _registerFeatures = this.registerFeatures(resolutionModel.getFeatureModel().getRoot());
-        _builder.append(_registerFeatures);
-        _builder.append("\t");
-        _builder.newLineIfNotEmpty();
-      }
-    }
-    {
-      for(final ContextModel contextModel : contextModels) {
-        CharSequence _registerMeasurements = contextGenerator.registerMeasurements(contextModel);
-        _builder.append(_registerMeasurements);
-        _builder.newLineIfNotEmpty();
-      }
-    }
-    {
-      EList<AdaptationRule> _adaptationRules_1 = t.getAdaptationRules();
-      for(final AdaptationRule rule_1 : _adaptationRules_1) {
-        CharSequence _compileRule = this.compileRule(rule_1, lc_tacticName, (doStates).booleanValue());
-        _builder.append(_compileRule);
-        _builder.newLineIfNotEmpty();
-      }
-    }
-    {
-      if ((doStates).booleanValue()) {
-        {
-          for(final String stateTQL : stateTQLs) {
-            _builder.append(stateTQL);
-            _builder.newLineIfNotEmpty();
-          }
-        }
-      }
-    }
-    _builder.newLine();
-    {
-      for(final ResolutionModel resolutionModel_1 : resolutionModels) {
-        CharSequence _compileResolution = this.compileResolution(resolutionModel_1);
-        _builder.append(_compileResolution);
-        _builder.append("\t\t\t\t");
-        _builder.newLineIfNotEmpty();
-        _builder.append("$res_");
-        String _name = resolutionModel_1.getName();
-        _builder.append(_name);
-        _builder.append(" (tactic: $ta_");
-        _builder.append(lc_tacticName);
-        _builder.append(",");
-        _builder.newLineIfNotEmpty();
-        {
-          EList<Resolution> _resolutions = resolutionModel_1.getResolutions();
-          boolean _hasElements = false;
-          for(final Resolution resolution : _resolutions) {
-            if (!_hasElements) {
-              _hasElements = true;
-            } else {
-              _builder.appendImmediate(", ", "");
-            }
-            {
-              if (((!resolution.getSelection_actions().isEmpty()) && (!resolution.getDeselection_actions().isEmpty()))) {
-                _builder.append("variant_resolution:$");
-                String _uniqueName = this._namer.uniqueName(resolution);
-                _builder.append(_uniqueName);
-                _builder.append("_act, variant_resolution:$");
-                String _uniqueName_1 = this._namer.uniqueName(resolution);
-                _builder.append(_uniqueName_1);
-                _builder.append("_deact");
-                _builder.newLineIfNotEmpty();
-              } else {
-                {
-                  boolean _isEmpty = resolution.getSelection_actions().isEmpty();
-                  boolean _not = (!_isEmpty);
-                  if (_not) {
-                    _builder.append("variant_resolution:$");
-                    String _uniqueName_2 = this._namer.uniqueName(resolution);
-                    _builder.append(_uniqueName_2);
-                    _builder.append("_act");
-                    _builder.newLineIfNotEmpty();
-                  } else {
-                    {
-                      boolean _isEmpty_1 = resolution.getDeselection_actions().isEmpty();
-                      boolean _not_1 = (!_isEmpty_1);
-                      if (_not_1) {
-                        _builder.append("variant_resolution:$");
-                        String _uniqueName_3 = this._namer.uniqueName(resolution);
-                        _builder.append(_uniqueName_3);
-                        _builder.append("_deact");
-                        _builder.newLineIfNotEmpty();
+              {
+                if (((!resolution.getSelection_actions().isEmpty()) && (!resolution.getDeselection_actions().isEmpty()))) {
+                  _builder.append("variant_resolution:$");
+                  String _uniqueName = this._namer.uniqueName(resolution);
+                  _builder.append(_uniqueName);
+                  _builder.append("_act, variant_resolution:$");
+                  String _uniqueName_1 = this._namer.uniqueName(resolution);
+                  _builder.append(_uniqueName_1);
+                  _builder.append("_deact");
+                  _builder.newLineIfNotEmpty();
+                } else {
+                  {
+                    boolean _isEmpty = resolution.getSelection_actions().isEmpty();
+                    boolean _not = (!_isEmpty);
+                    if (_not) {
+                      _builder.append("variant_resolution:$");
+                      String _uniqueName_2 = this._namer.uniqueName(resolution);
+                      _builder.append(_uniqueName_2);
+                      _builder.append("_act");
+                      _builder.newLineIfNotEmpty();
+                    } else {
+                      {
+                        boolean _isEmpty_1 = resolution.getDeselection_actions().isEmpty();
+                        boolean _not_1 = (!_isEmpty_1);
+                        if (_not_1) {
+                          _builder.append("variant_resolution:$");
+                          String _uniqueName_3 = this._namer.uniqueName(resolution);
+                          _builder.append(_uniqueName_3);
+                          _builder.append("_deact");
+                          _builder.newLineIfNotEmpty();
+                        }
                       }
                     }
                   }
                 }
               }
+              _builder.append(" ");
             }
-            _builder.append(" ");
           }
+          _builder.append(") ");
+          _builder.newLineIfNotEmpty();
+          _builder.append(" ");
+          _builder.append("isa resolution_model, ");
+          _builder.newLine();
+          _builder.append("    ");
+          _builder.append("has resolution_model_name \"");
+          String _name_1 = resolutionModel_1.getName();
+          _builder.append(_name_1, "    ");
+          _builder.append("\", has ros_system \"");
+          String _name_2 = resolutionModel_1.getRossystem().getName();
+          _builder.append(_name_2, "    ");
+          _builder.append("\";");
+          _builder.newLineIfNotEmpty();
         }
-        _builder.append(") ");
-        _builder.newLineIfNotEmpty();
-        _builder.append(" ");
-        _builder.append("isa resolution_model, ");
-        _builder.newLine();
-        _builder.append("    ");
-        _builder.append("has resolution_model_name \"");
-        String _name_1 = resolutionModel_1.getName();
-        _builder.append(_name_1, "    ");
-        _builder.append("\", has ros_system \"");
-        String _name_2 = resolutionModel_1.getRossystem().getName();
-        _builder.append(_name_2, "    ");
-        _builder.append("\";");
-        _builder.newLineIfNotEmpty();
       }
+      final String x_1 = _builder.toString();
+      return x_1;
+    } catch (Throwable _e) {
+      throw Exceptions.sneakyThrow(_e);
     }
-    final String x = _builder.toString();
-    return x;
   }
 
   public Map<ContextVar, List<Pair<LiteralWrapper, LiteralWrapper>>> createBounds(final Map<ContextVar, Set<LiteralWrapper>> thresholds) {
@@ -2359,22 +2364,35 @@ public class TQLGenerator extends AbstractGenerator {
     }
   }
 
-  private void recordMeasurementConditionOnlyLiteral(final MeasurementThresholdCondition mes_cond, final Map<ContextVar, Set<LiteralWrapper>> comps) {
+  private void recordMeasurementConditionOnlyLiteral(final MeasurementThresholdCondition mes_cond, final Map<ContextVar, Set<LiteralWrapper>> comps, final Map<ContextVar, Set<Boolean>> booleanVars) {
     List<MeasurementThresholdCondition> _flattenAgain = this.flattenAgain(mes_cond);
     for (final MeasurementThresholdCondition element : _flattenAgain) {
-      Set<LiteralWrapper> _get = comps.get(element.getMeasurement());
-      boolean _tripleNotEquals = (_get != null);
-      if (_tripleNotEquals) {
-        Set<LiteralWrapper> _get_1 = comps.get(element.getMeasurement());
-        Literal _thresholdValue = element.getThresholdValue();
-        LiteralWrapper _literalWrapper = new LiteralWrapper(_thresholdValue);
-        _get_1.add(_literalWrapper);
+      Literal _thresholdValue = element.getThresholdValue();
+      if ((_thresholdValue instanceof BooleanLiteral)) {
+        Set<Boolean> _get = booleanVars.get(element.getMeasurement());
+        boolean _tripleNotEquals = (_get != null);
+        if (_tripleNotEquals) {
+        } else {
+          Set<Boolean> newList = new HashSet<Boolean>();
+          newList.add(Boolean.valueOf(true));
+          newList.add(Boolean.valueOf(false));
+          booleanVars.put(element.getMeasurement(), newList);
+        }
       } else {
-        Set<LiteralWrapper> newList = new HashSet<LiteralWrapper>();
-        Literal _thresholdValue_1 = element.getThresholdValue();
-        LiteralWrapper _literalWrapper_1 = new LiteralWrapper(_thresholdValue_1);
-        newList.add(_literalWrapper_1);
-        comps.put(element.getMeasurement(), newList);
+        Set<LiteralWrapper> _get_1 = comps.get(element.getMeasurement());
+        boolean _tripleNotEquals_1 = (_get_1 != null);
+        if (_tripleNotEquals_1) {
+          Set<LiteralWrapper> _get_2 = comps.get(element.getMeasurement());
+          Literal _thresholdValue_1 = element.getThresholdValue();
+          LiteralWrapper _literalWrapper = new LiteralWrapper(_thresholdValue_1);
+          _get_2.add(_literalWrapper);
+        } else {
+          Set<LiteralWrapper> newList_1 = new HashSet<LiteralWrapper>();
+          Literal _thresholdValue_2 = element.getThresholdValue();
+          LiteralWrapper _literalWrapper_1 = new LiteralWrapper(_thresholdValue_2);
+          newList_1.add(_literalWrapper_1);
+          comps.put(element.getMeasurement(), newList_1);
+        }
       }
     }
   }
@@ -2396,7 +2414,7 @@ public class TQLGenerator extends AbstractGenerator {
     return null;
   }
 
-  private void registerComparisonsFromRule(final AdaptationRule adap_rule, final Map<ContextVar, Set<LiteralWrapper>> thresholds, final Map<Feature, Set<Boolean>> featureSelections) {
+  private void registerComparisonsFromRule(final AdaptationRule adap_rule, final Map<ContextVar, Set<LiteralWrapper>> thresholds, final Map<Feature, Set<Boolean>> featureSelections, final Map<ContextVar, Set<Boolean>> booleanVars) {
     if ((adap_rule instanceof AtomicRule)) {
       final RuleBody ruleBody = ((AtomicRule)adap_rule).getRuleBody();
       if ((ruleBody instanceof ConditionAction)) {
@@ -2406,7 +2424,7 @@ public class TQLGenerator extends AbstractGenerator {
           MeasurementCondition _contextCondition = ((ConditionAction)ruleBody).getContextGuard().getContextCondition();
           if ((_contextCondition instanceof MeasurementThresholdCondition)) {
             MeasurementCondition _contextCondition_1 = ((ConditionAction)ruleBody).getContextGuard().getContextCondition();
-            this.recordMeasurementConditionOnlyLiteral(((MeasurementThresholdCondition) _contextCondition_1), thresholds);
+            this.recordMeasurementConditionOnlyLiteral(((MeasurementThresholdCondition) _contextCondition_1), thresholds, booleanVars);
           }
         }
         FeatureGuard _featureGuard = ((ConditionAction)ruleBody).getFeatureGuard();
@@ -2434,127 +2452,145 @@ public class TQLGenerator extends AbstractGenerator {
     return x;
   }
 
-  private boolean checkAgainstBounds(final AdaptationRule adap_rule, final List<ContextVar> contextKeys, final List<Feature> featureKeys, final State state) {
+  private boolean checkAgainstBounds(final AdaptationRule adap_rule, final List<Feature> featureKeys, final State state) {
+    final List<Boolean> featureValuation = state.featurePrecondition;
+    if ((adap_rule instanceof AtomicRule)) {
+      final RuleBody ruleBody = ((AtomicRule)adap_rule).getRuleBody();
+      if ((ruleBody instanceof ConditionAction)) {
+        FeatureGuard _featureGuard = ((ConditionAction)ruleBody).getFeatureGuard();
+        boolean _tripleNotEquals = (_featureGuard != null);
+        if (_tripleNotEquals) {
+          final FeatureCondition featureCondition = ((ConditionAction)ruleBody).getFeatureGuard().getFeatureCondition();
+          final List<FeatureCondition> isFeatures = this.flattenAgain(featureCondition);
+          for (final FeatureCondition isFeature : isFeatures) {
+            {
+              final Feature featureInQuestion = isFeature.getVariant().getFeature();
+              final int featureIndex = featureKeys.indexOf(featureInQuestion);
+              if (((isFeature.getNot() == null) || (!Objects.equals(isFeature.getNot(), "!")))) {
+                Boolean _get = featureValuation.get(featureIndex);
+                boolean _notEquals = ((_get).booleanValue() != true);
+                if (_notEquals) {
+                  return false;
+                }
+              } else {
+                Boolean _get_1 = featureValuation.get(featureIndex);
+                boolean _equals = ((_get_1).booleanValue() == true);
+                if (_equals) {
+                  return false;
+                }
+              }
+            }
+          }
+        }
+        ContextGuard _contextGuard = ((ConditionAction)ruleBody).getContextGuard();
+        boolean _tripleNotEquals_1 = (_contextGuard != null);
+        if (_tripleNotEquals_1) {
+          final MeasurementCondition ruleContectCondition = ((ConditionAction)ruleBody).getContextGuard().getContextCondition();
+          final Expr ruleCNF = this.toCNF(ruleContectCondition);
+          return this.checkExpression(ruleCNF, state);
+        }
+      }
+    }
+    return false;
+  }
+
+  private boolean checkExpression(final Expr ruleCNF, final State state) {
     try {
-      final List<Pair<LiteralWrapper, LiteralWrapper>> contextPrecondition = state.getContextPrecondition();
-      final List<Boolean> featureValuation = state.featurePrecondition;
-      if ((adap_rule instanceof AtomicRule)) {
-        final RuleBody ruleBody = ((AtomicRule)adap_rule).getRuleBody();
-        if ((ruleBody instanceof ConditionAction)) {
-          FeatureGuard _featureGuard = ((ConditionAction)ruleBody).getFeatureGuard();
-          boolean _tripleNotEquals = (_featureGuard != null);
-          if (_tripleNotEquals) {
-            final FeatureCondition featureCondition = ((ConditionAction)ruleBody).getFeatureGuard().getFeatureCondition();
-            final List<FeatureCondition> isFeatures = this.flattenAgain(featureCondition);
-            for (final FeatureCondition isFeature : isFeatures) {
-              {
-                final Feature featureInQuestion = isFeature.getVariant().getFeature();
-                final int featureIndex = featureKeys.indexOf(featureInQuestion);
-                if (((isFeature.getNot() == null) || (!Objects.equals(isFeature.getNot(), "!")))) {
-                  Boolean _get = featureValuation.get(featureIndex);
-                  boolean _notEquals = ((_get).booleanValue() != true);
-                  if (_notEquals) {
-                    return false;
-                  }
-                } else {
-                  Boolean _get_1 = featureValuation.get(featureIndex);
-                  boolean _equals = ((_get_1).booleanValue() == true);
-                  if (_equals) {
-                    return false;
-                  }
+      boolean _matched = false;
+      if (ruleCNF instanceof And) {
+        _matched=true;
+        List<Expr> flattenedAnds = this.flattenAnds(ruleCNF);
+        final Function1<Expr, Boolean> _function = (Expr expr) -> {
+          return Boolean.valueOf(this.checkExpression(expr, state));
+        };
+        return IterableExtensions.<Expr>forall(flattenedAnds, _function);
+      }
+      if (!_matched) {
+        if (ruleCNF instanceof Or) {
+          _matched=true;
+          final ArrayList<Var> listORs = CollectionLiterals.<Var>newArrayList();
+          this.flattenORs(ruleCNF, listORs);
+          final Function1<Var, Boolean> _function = (Var varr) -> {
+            return Boolean.valueOf(this.varAgainstBounds(varr, state));
+          };
+          return IterableExtensions.<Var>exists(listORs, _function);
+        }
+      }
+      if (!_matched) {
+        if (ruleCNF instanceof Var) {
+          _matched=true;
+          return this.varAgainstBounds(((Var)ruleCNF), state);
+        }
+      }
+      throw new Exception("Unexpected situation CheckAgainstBounds");
+    } catch (Throwable _e) {
+      throw Exceptions.sneakyThrow(_e);
+    }
+  }
+
+  public boolean varAgainstBounds(final Var ruleConditionCNF, final State state) {
+    try {
+      final Condition condition = ruleConditionCNF.condition;
+      if ((condition instanceof MeasurementThresholdCondition)) {
+        Boolean _BoundorBoolPrecondition = state.BoundorBoolPrecondition(((MeasurementThresholdCondition)condition).getMeasurement());
+        if ((_BoundorBoolPrecondition).booleanValue()) {
+          final Pair<LiteralWrapper, LiteralWrapper> bound = state.getBoundsOn(((MeasurementThresholdCondition)condition).getMeasurement());
+          final LiteralWrapper closedLowerBound = bound.getKey();
+          final LiteralWrapper openUpperBound = bound.getValue();
+          MathOperator _operator = ((MeasurementThresholdCondition)condition).getOperator();
+          if (_operator != null) {
+            switch (_operator) {
+              case GREATER:
+                if (((closedLowerBound != null) && (closedLowerBound.compareTo(new LiteralWrapper(((MeasurementThresholdCondition)condition).getThresholdValue())) >= 0))) {
+                  return true;
                 }
-              }
+                break;
+              case GREQ:
+                if (((closedLowerBound != null) && (closedLowerBound.compareTo(new LiteralWrapper(((MeasurementThresholdCondition)condition).getThresholdValue())) >= 0))) {
+                  return true;
+                }
+                break;
+              case LESS:
+                if (((openUpperBound != null) && (openUpperBound.compareTo(new LiteralWrapper(((MeasurementThresholdCondition)condition).getThresholdValue())) <= 0))) {
+                  return true;
+                }
+                break;
+              case LEQ:
+                if (((openUpperBound != null) && (openUpperBound.compareTo(new LiteralWrapper(((MeasurementThresholdCondition)condition).getThresholdValue())) <= 0))) {
+                  return true;
+                }
+                break;
+              case EQUAL:
+                return false;
+              case DIFFERENT:
+                return false;
+              default:
+                break;
             }
           }
-          ContextGuard _contextGuard = ((ConditionAction)ruleBody).getContextGuard();
-          boolean _tripleNotEquals_1 = (_contextGuard != null);
-          if (_tripleNotEquals_1) {
-            final MeasurementCondition contextCondition = ((ConditionAction)ruleBody).getContextGuard().getContextCondition();
-            final Expr cnfForm = this.toCNF(contextCondition);
-            if ((cnfForm instanceof And)) {
-              List<Expr> flattenedAnds = this.flattenAnds(cnfForm);
-              ArrayList<Pair<String, CharSequence>> handled = CollectionLiterals.<Pair<String, CharSequence>>newArrayList();
-              for (final Expr element : flattenedAnds) {
-                {
-                  if ((element instanceof Or)) {
-                    final ArrayList<Var> listORs = CollectionLiterals.<Var>newArrayList();
-                    this.flattenORs(element, listORs);
-                    for (final Var varr : listORs) {
-                      {
-                        final Condition condition = varr.condition;
-                        if ((condition instanceof MeasurementThresholdCondition)) {
-                        } else {
-                          if ((condition instanceof MeasurementMeasurementCondition)) {
-                            throw new Exception("Not Implemented Yet");
-                          }
-                        }
-                      }
-                    }
-                  }
-                  if ((element instanceof Var)) {
-                    String _uniqueName = this._namer.uniqueName(((Var)element).condition);
-                    CharSequence _inequality = this.inequality(((Var)element).condition);
-                    Pair<String, CharSequence> _pair = new Pair<String, CharSequence>(_uniqueName, _inequality);
-                    handled.add(_pair);
-                  } else {
-                    if ((element instanceof And)) {
-                      throw new Exception("did not expect an AND from flattend ANDs");
-                    }
-                  }
-                }
-              }
+        } else {
+          final Boolean bool = state.getBoolOn(((MeasurementThresholdCondition)condition).getMeasurement());
+          MathOperator _operator_1 = ((MeasurementThresholdCondition)condition).getOperator();
+          if (_operator_1 != null) {
+            switch (_operator_1) {
+              case EQUAL:
+                Literal _thresholdValue = ((MeasurementThresholdCondition)condition).getThresholdValue();
+                boolean _isValue = ((BooleanLiteral) _thresholdValue).isValue();
+                return ((bool).booleanValue() == _isValue);
+              case DIFFERENT:
+                Literal _thresholdValue_1 = ((MeasurementThresholdCondition)condition).getThresholdValue();
+                boolean _isValue_1 = ((BooleanLiteral) _thresholdValue_1).isValue();
+                return ((bool).booleanValue() != _isValue_1);
+              default:
+                throw new Exception("Invalid operator for what should be boolean contextVar");
             }
-            if ((cnfForm instanceof Or)) {
-              final ArrayList<Var> listORs = CollectionLiterals.<Var>newArrayList();
-              this.flattenORs(cnfForm, listORs);
-              for (final Var varr : listORs) {
-                {
-                  final Condition condition = varr.condition;
-                  if ((condition instanceof MeasurementThresholdCondition)) {
-                    final Pair<LiteralWrapper, LiteralWrapper> bound = state.getBoundsOn(((MeasurementThresholdCondition)condition).getMeasurement());
-                    final LiteralWrapper closedLowerBound = bound.getKey();
-                    final LiteralWrapper openUpperBound = bound.getValue();
-                    MathOperator _operator = ((MeasurementThresholdCondition)condition).getOperator();
-                    if (_operator != null) {
-                      switch (_operator) {
-                        case GREATER:
-                          if (((closedLowerBound != null) && (closedLowerBound.compareTo(new LiteralWrapper(((MeasurementThresholdCondition)condition).getThresholdValue())) >= 0))) {
-                            return true;
-                          }
-                          break;
-                        case GREQ:
-                          if (((closedLowerBound != null) && (closedLowerBound.compareTo(new LiteralWrapper(((MeasurementThresholdCondition)condition).getThresholdValue())) >= 0))) {
-                            return true;
-                          }
-                          break;
-                        case LESS:
-                          if (((openUpperBound != null) && (openUpperBound.compareTo(new LiteralWrapper(((MeasurementThresholdCondition)condition).getThresholdValue())) <= 0))) {
-                            return true;
-                          }
-                          break;
-                        case LEQ:
-                          if (((openUpperBound != null) && (openUpperBound.compareTo(new LiteralWrapper(((MeasurementThresholdCondition)condition).getThresholdValue())) <= 0))) {
-                            return true;
-                          }
-                          break;
-                        case EQUAL:
-                          return false;
-                        case DIFFERENT:
-                          return false;
-                        default:
-                          break;
-                      }
-                    }
-                  } else {
-                    if ((condition instanceof MeasurementMeasurementCondition)) {
-                      throw new Exception("Not Implemented Yet");
-                    }
-                  }
-                }
-              }
-              return false;
-            }
+          } else {
+            throw new Exception("Invalid operator for what should be boolean contextVar");
           }
+        }
+      } else {
+        if ((condition instanceof MeasurementMeasurementCondition)) {
+          throw new Exception("Not Implemented Yet");
         }
       }
       return false;
@@ -2606,7 +2642,7 @@ public class TQLGenerator extends AbstractGenerator {
   private CharSequence compileRule(final AdaptationRule c, final String lc_tacticName, final boolean doingStates) {
     CharSequence _xblockexpression = null;
     {
-      this.numRules++;
+      this.ruleNames.add(c.getName());
       CharSequence _xifexpression = null;
       if ((c instanceof AtomicRule)) {
         CharSequence _xblockexpression_1 = null;

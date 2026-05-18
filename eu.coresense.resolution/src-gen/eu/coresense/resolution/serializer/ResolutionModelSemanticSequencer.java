@@ -5,6 +5,7 @@ package eu.coresense.resolution.serializer;
 
 import com.google.inject.Inject;
 import de.fraunhofer.ipa.ros.serializer.BasicsSemanticSequencer;
+import eu.coresense.resolution.resolutionModel.FeatureReference;
 import eu.coresense.resolution.resolutionModel.Import;
 import eu.coresense.resolution.resolutionModel.Resolution;
 import eu.coresense.resolution.resolutionModel.ResolutionModel;
@@ -194,6 +195,9 @@ public class ResolutionModelSemanticSequencer extends BasicsSemanticSequencer {
 			}
 		else if (epackage == ResolutionModelPackage.eINSTANCE)
 			switch (semanticObject.eClass().getClassifierID()) {
+			case ResolutionModelPackage.FEATURE_REFERENCE:
+				sequence_FeatureReference(context, (FeatureReference) semanticObject); 
+				return; 
 			case ResolutionModelPackage.IMPORT:
 				sequence_Import(context, (Import) semanticObject); 
 				return; 
@@ -301,6 +305,29 @@ public class ResolutionModelSemanticSequencer extends BasicsSemanticSequencer {
 	/**
 	 * <pre>
 	 * Contexts:
+	 *     FeatureReference returns FeatureReference
+	 *
+	 * Constraint:
+	 *     (parent=[Feature|ID] feature=[Feature|ID])
+	 * </pre>
+	 */
+	protected void sequence_FeatureReference(ISerializationContext context, FeatureReference semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, ResolutionModelPackage.Literals.FEATURE_REFERENCE__PARENT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ResolutionModelPackage.Literals.FEATURE_REFERENCE__PARENT));
+			if (transientValues.isValueTransient(semanticObject, ResolutionModelPackage.Literals.FEATURE_REFERENCE__FEATURE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ResolutionModelPackage.Literals.FEATURE_REFERENCE__FEATURE));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getFeatureReferenceAccess().getParentFeatureIDTerminalRuleCall_0_0_1(), semanticObject.eGet(ResolutionModelPackage.Literals.FEATURE_REFERENCE__PARENT, false));
+		feeder.accept(grammarAccess.getFeatureReferenceAccess().getFeatureFeatureIDTerminalRuleCall_2_0_1(), semanticObject.eGet(ResolutionModelPackage.Literals.FEATURE_REFERENCE__FEATURE, false));
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
 	 *     Import returns Import
 	 *
 	 * Constraint:
@@ -338,7 +365,7 @@ public class ResolutionModelSemanticSequencer extends BasicsSemanticSequencer {
 	 *     Resolution returns Resolution
 	 *
 	 * Constraint:
-	 *     (feature=[Feature|ID] selection_actions+=Reconfiguration* deselection_actions+=Reconfiguration*)
+	 *     (featureRef=FeatureReference selection_actions+=Reconfiguration* deselection_actions+=Reconfiguration*)
 	 * </pre>
 	 */
 	protected void sequence_Resolution(ISerializationContext context, Resolution semanticObject) {

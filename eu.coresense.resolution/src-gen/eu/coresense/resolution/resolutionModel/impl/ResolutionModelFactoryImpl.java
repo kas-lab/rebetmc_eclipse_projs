@@ -68,6 +68,7 @@ public class ResolutionModelFactoryImpl extends EFactoryImpl implements Resoluti
     {
       case ResolutionModelPackage.RESOLUTION_MODEL: return createResolutionModel();
       case ResolutionModelPackage.RESOLUTION: return createResolution();
+      case ResolutionModelPackage.FEATURE_REFERENCE: return createFeatureReference();
       case ResolutionModelPackage.IMPORT: return createImport();
       case ResolutionModelPackage.RECONFIGURATION: return createReconfiguration();
       case ResolutionModelPackage.SET_PARAM: return createSetParam();
@@ -133,6 +134,18 @@ public class ResolutionModelFactoryImpl extends EFactoryImpl implements Resoluti
   {
     ResolutionImpl resolution = new ResolutionImpl();
     return resolution;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public FeatureReference createFeatureReference()
+  {
+    FeatureReferenceImpl featureReference = new FeatureReferenceImpl();
+    return featureReference;
   }
 
   /**

@@ -22,12 +22,12 @@ import java.util.ArrayList;
 @SuppressWarnings("all")
 public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RelativeNamespace", "SetLifecycleState", "Variability_model", "PrivateNamespace", "GlobalNamespace", "ParameterAny", "SetParameter", "UNCONFIGURED", "Resolutions", "Ros_system", "FINALIZED", "GraphName", "Deselect", "Float32_1", "Float64_1", "INACTIVE", "Default", "Duration", "Feedback", "String_2", "Uint16_1", "Uint32_1", "Uint64_1", "Boolean", "Integer", "Float32", "Float64", "Int16_1", "Int32_1", "Int64_1", "Message", "Select", "Service", "Uint8_1", "ACTIVE", "Base64", "Double", "Header", "String", "Struct", "Action", "Bool_1", "Byte_1", "Char_1", "Import", "Int8_1", "Result", "String_1", "Uint16", "Uint32", "Uint64", "Value_1", "Array", "Int16", "Int32", "Int64", "Type_1", "Uint8", "Value", "Date", "List", "Bool", "Byte", "Char", "Goal", "Int8", "Name", "Node", "Time", "Type", "Any", "Ns", "LeftSquareBracketRightSquareBracket", "LeftParenthesis", "RightParenthesis", "Comma", "Colon", "Semicolon", "LeftSquareBracket", "RightSquareBracket", "RULE_WS", "RULE_DIGIT", "RULE_BINARY", "RULE_BOOLEAN", "RULE_DECINT", "RULE_DOUBLE", "RULE_DAY", "RULE_MONTH", "RULE_YEAR", "RULE_HOUR", "RULE_MIN_SEC", "RULE_DATE_TIME", "RULE_ID", "RULE_STRING", "RULE_INT", "RULE_MESSAGE_ASIGMENT", "RULE_BEGIN", "RULE_END", "RULE_SL_COMMENT", "RULE_ROS_CONVENTION_A", "RULE_ROS_CONVENTION_PARAM", "RULE_ML_COMMENT", "RULE_ANY_OTHER"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RelativeNamespace", "SetLifecycleState", "Variability_model", "PrivateNamespace", "GlobalNamespace", "ParameterAny", "SetParameter", "UNCONFIGURED", "Resolutions", "Ros_system", "FINALIZED", "GraphName", "Deselect", "Float32_1", "Float64_1", "INACTIVE", "Default", "Duration", "Feedback", "String_2", "Uint16_1", "Uint32_1", "Uint64_1", "Boolean", "Integer", "Float32", "Float64", "Int16_1", "Int32_1", "Int64_1", "Message", "Select", "Service", "Uint8_1", "ACTIVE", "Base64", "Double", "Header", "String", "Struct", "Action", "Bool_1", "Byte_1", "Char_1", "Import", "Int8_1", "Result", "String_1", "Uint16", "Uint32", "Uint64", "Value_1", "Array", "Int16", "Int32", "Int64", "Type_1", "Uint8", "Value", "Date", "List", "Bool", "Byte", "Char", "Goal", "Int8", "Name", "Node", "Time", "Type", "Any", "Ns", "LeftSquareBracketRightSquareBracket", "LeftParenthesis", "RightParenthesis", "Comma", "FullStop", "Colon", "Semicolon", "LeftSquareBracket", "RightSquareBracket", "RULE_WS", "RULE_DIGIT", "RULE_BINARY", "RULE_BOOLEAN", "RULE_DECINT", "RULE_DOUBLE", "RULE_DAY", "RULE_MONTH", "RULE_YEAR", "RULE_HOUR", "RULE_MIN_SEC", "RULE_DATE_TIME", "RULE_ID", "RULE_STRING", "RULE_INT", "RULE_MESSAGE_ASIGMENT", "RULE_BEGIN", "RULE_END", "RULE_SL_COMMENT", "RULE_ROS_CONVENTION_A", "RULE_ROS_CONVENTION_PARAM", "RULE_ML_COMMENT", "RULE_ANY_OTHER"
     };
     public static final int Import=48;
     public static final int Float32_1=17;
     public static final int Node=71;
-    public static final int RULE_DATE_TIME=95;
+    public static final int RULE_DATE_TIME=96;
     public static final int Uint64_1=26;
     public static final int String=42;
     public static final int Int16=57;
@@ -38,54 +38,55 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
     public static final int Uint16=52;
     public static final int Boolean=27;
     public static final int Uint8=61;
-    public static final int RULE_ID=96;
-    public static final int RULE_DIGIT=85;
+    public static final int RULE_ID=97;
+    public static final int RULE_DIGIT=86;
     public static final int GlobalNamespace=8;
     public static final int Int16_1=31;
     public static final int Header=41;
-    public static final int RULE_INT=98;
+    public static final int RULE_INT=99;
     public static final int Byte=66;
-    public static final int RULE_ML_COMMENT=105;
-    public static final int LeftSquareBracket=82;
+    public static final int RULE_ML_COMMENT=106;
+    public static final int LeftSquareBracket=83;
     public static final int Ros_system=13;
     public static final int Base64=39;
     public static final int Comma=79;
-    public static final int RULE_MESSAGE_ASIGMENT=99;
+    public static final int RULE_MESSAGE_ASIGMENT=100;
     public static final int LeftSquareBracketRightSquareBracket=76;
     public static final int Int32=58;
     public static final int Char=67;
-    public static final int RULE_DECINT=88;
+    public static final int RULE_DECINT=89;
     public static final int Uint32=53;
-    public static final int RULE_HOUR=93;
+    public static final int FullStop=80;
+    public static final int RULE_HOUR=94;
     public static final int Int8=69;
     public static final int Default=20;
     public static final int Int8_1=49;
     public static final int Uint16_1=24;
-    public static final int Semicolon=81;
+    public static final int Semicolon=82;
     public static final int Type=73;
     public static final int Float64=30;
     public static final int INACTIVE=19;
     public static final int Int32_1=32;
     public static final int Select=35;
     public static final int Deselect=16;
-    public static final int RULE_BINARY=86;
+    public static final int RULE_BINARY=87;
     public static final int String_1=51;
     public static final int Variability_model=6;
     public static final int String_2=23;
-    public static final int RULE_DAY=90;
-    public static final int RULE_BEGIN=100;
-    public static final int RULE_BOOLEAN=87;
+    public static final int RULE_DAY=91;
+    public static final int RULE_BEGIN=101;
+    public static final int RULE_BOOLEAN=88;
     public static final int RelativeNamespace=4;
-    public static final int RULE_YEAR=92;
+    public static final int RULE_YEAR=93;
     public static final int SetParameter=10;
     public static final int Result=50;
     public static final int Name=70;
-    public static final int RULE_MIN_SEC=94;
+    public static final int RULE_MIN_SEC=95;
     public static final int SetLifecycleState=5;
     public static final int Char_1=47;
     public static final int ParameterAny=9;
     public static final int List=64;
-    public static final int RightSquareBracket=83;
+    public static final int RightSquareBracket=84;
     public static final int PrivateNamespace=7;
     public static final int GraphName=15;
     public static final int UNCONFIGURED=11;
@@ -100,34 +101,34 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
     public static final int Value=62;
     public static final int Uint64=54;
     public static final int Action=44;
-    public static final int RULE_END=101;
+    public static final int RULE_END=102;
     public static final int Message=34;
     public static final int ACTIVE=38;
     public static final int Value_1=55;
     public static final int Time=72;
-    public static final int RULE_STRING=97;
+    public static final int RULE_STRING=98;
     public static final int Bool_1=45;
     public static final int Any=74;
     public static final int Struct=43;
-    public static final int RULE_SL_COMMENT=102;
+    public static final int RULE_SL_COMMENT=103;
     public static final int Resolutions=12;
     public static final int Uint8_1=37;
-    public static final int RULE_DOUBLE=89;
+    public static final int RULE_DOUBLE=90;
     public static final int Feedback=22;
-    public static final int RULE_ROS_CONVENTION_A=103;
-    public static final int RULE_ROS_CONVENTION_PARAM=104;
-    public static final int Colon=80;
+    public static final int RULE_ROS_CONVENTION_A=104;
+    public static final int RULE_ROS_CONVENTION_PARAM=105;
+    public static final int Colon=81;
     public static final int EOF=-1;
     public static final int Ns=75;
-    public static final int RULE_WS=84;
+    public static final int RULE_WS=85;
     public static final int Int64_1=33;
     public static final int Service=36;
-    public static final int RULE_ANY_OTHER=106;
+    public static final int RULE_ANY_OTHER=107;
     public static final int Date=63;
     public static final int Integer=28;
     public static final int Array=56;
     public static final int Int64=59;
-    public static final int RULE_MONTH=91;
+    public static final int RULE_MONTH=92;
 
     // delegates
     // delegators
@@ -487,14 +488,15 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleResolution"
-    // InternalResolutionModelParser.g:194:1: ruleResolution returns [EObject current=null] : ( () ( (otherlv_1= RULE_ID ) ) otherlv_2= Colon otherlv_3= Select ( (lv_selection_actions_4_0= ruleReconfiguration ) )* otherlv_5= Deselect ( (lv_deselection_actions_6_0= ruleReconfiguration ) )* ) ;
+    // InternalResolutionModelParser.g:194:1: ruleResolution returns [EObject current=null] : ( () ( (lv_featureRef_1_0= ruleFeatureReference ) ) otherlv_2= Colon otherlv_3= Select ( (lv_selection_actions_4_0= ruleReconfiguration ) )* otherlv_5= Deselect ( (lv_deselection_actions_6_0= ruleReconfiguration ) )* ) ;
     public final EObject ruleResolution() throws RecognitionException {
         EObject current = null;
 
-        Token otherlv_1=null;
         Token otherlv_2=null;
         Token otherlv_3=null;
         Token otherlv_5=null;
+        EObject lv_featureRef_1_0 = null;
+
         EObject lv_selection_actions_4_0 = null;
 
         EObject lv_deselection_actions_6_0 = null;
@@ -504,11 +506,11 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalResolutionModelParser.g:200:2: ( ( () ( (otherlv_1= RULE_ID ) ) otherlv_2= Colon otherlv_3= Select ( (lv_selection_actions_4_0= ruleReconfiguration ) )* otherlv_5= Deselect ( (lv_deselection_actions_6_0= ruleReconfiguration ) )* ) )
-            // InternalResolutionModelParser.g:201:2: ( () ( (otherlv_1= RULE_ID ) ) otherlv_2= Colon otherlv_3= Select ( (lv_selection_actions_4_0= ruleReconfiguration ) )* otherlv_5= Deselect ( (lv_deselection_actions_6_0= ruleReconfiguration ) )* )
+            // InternalResolutionModelParser.g:200:2: ( ( () ( (lv_featureRef_1_0= ruleFeatureReference ) ) otherlv_2= Colon otherlv_3= Select ( (lv_selection_actions_4_0= ruleReconfiguration ) )* otherlv_5= Deselect ( (lv_deselection_actions_6_0= ruleReconfiguration ) )* ) )
+            // InternalResolutionModelParser.g:201:2: ( () ( (lv_featureRef_1_0= ruleFeatureReference ) ) otherlv_2= Colon otherlv_3= Select ( (lv_selection_actions_4_0= ruleReconfiguration ) )* otherlv_5= Deselect ( (lv_deselection_actions_6_0= ruleReconfiguration ) )* )
             {
-            // InternalResolutionModelParser.g:201:2: ( () ( (otherlv_1= RULE_ID ) ) otherlv_2= Colon otherlv_3= Select ( (lv_selection_actions_4_0= ruleReconfiguration ) )* otherlv_5= Deselect ( (lv_deselection_actions_6_0= ruleReconfiguration ) )* )
-            // InternalResolutionModelParser.g:202:3: () ( (otherlv_1= RULE_ID ) ) otherlv_2= Colon otherlv_3= Select ( (lv_selection_actions_4_0= ruleReconfiguration ) )* otherlv_5= Deselect ( (lv_deselection_actions_6_0= ruleReconfiguration ) )*
+            // InternalResolutionModelParser.g:201:2: ( () ( (lv_featureRef_1_0= ruleFeatureReference ) ) otherlv_2= Colon otherlv_3= Select ( (lv_selection_actions_4_0= ruleReconfiguration ) )* otherlv_5= Deselect ( (lv_deselection_actions_6_0= ruleReconfiguration ) )* )
+            // InternalResolutionModelParser.g:202:3: () ( (lv_featureRef_1_0= ruleFeatureReference ) ) otherlv_2= Colon otherlv_3= Select ( (lv_selection_actions_4_0= ruleReconfiguration ) )* otherlv_5= Deselect ( (lv_deselection_actions_6_0= ruleReconfiguration ) )*
             {
             // InternalResolutionModelParser.g:202:3: ()
             // InternalResolutionModelParser.g:203:4: 
@@ -521,20 +523,30 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalResolutionModelParser.g:209:3: ( (otherlv_1= RULE_ID ) )
-            // InternalResolutionModelParser.g:210:4: (otherlv_1= RULE_ID )
+            // InternalResolutionModelParser.g:209:3: ( (lv_featureRef_1_0= ruleFeatureReference ) )
+            // InternalResolutionModelParser.g:210:4: (lv_featureRef_1_0= ruleFeatureReference )
             {
-            // InternalResolutionModelParser.g:210:4: (otherlv_1= RULE_ID )
-            // InternalResolutionModelParser.g:211:5: otherlv_1= RULE_ID
+            // InternalResolutionModelParser.g:210:4: (lv_featureRef_1_0= ruleFeatureReference )
+            // InternalResolutionModelParser.g:211:5: lv_featureRef_1_0= ruleFeatureReference
             {
+
+            					newCompositeNode(grammarAccess.getResolutionAccess().getFeatureRefFeatureReferenceParserRuleCall_1_0());
+            				
+            pushFollow(FOLLOW_9);
+            lv_featureRef_1_0=ruleFeatureReference();
+
+            state._fsp--;
+
 
             					if (current==null) {
-            						current = createModelElement(grammarAccess.getResolutionRule());
+            						current = createModelElementForParent(grammarAccess.getResolutionRule());
             					}
-            				
-            otherlv_1=(Token)match(input,RULE_ID,FOLLOW_9); 
-
-            					newLeafNode(otherlv_1, grammarAccess.getResolutionAccess().getFeatureFeatureCrossReference_1_0());
+            					set(
+            						current,
+            						"featureRef",
+            						lv_featureRef_1_0,
+            						"eu.coresense.resolution.ResolutionModel.FeatureReference");
+            					afterParserOrEnumRuleCall();
             				
 
             }
@@ -550,7 +562,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
             			newLeafNode(otherlv_3, grammarAccess.getResolutionAccess().getSelectKeyword_3());
             		
-            // InternalResolutionModelParser.g:230:3: ( (lv_selection_actions_4_0= ruleReconfiguration ) )*
+            // InternalResolutionModelParser.g:236:3: ( (lv_selection_actions_4_0= ruleReconfiguration ) )*
             loop3:
             do {
                 int alt3=2;
@@ -563,10 +575,10 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
                 switch (alt3) {
             	case 1 :
-            	    // InternalResolutionModelParser.g:231:4: (lv_selection_actions_4_0= ruleReconfiguration )
+            	    // InternalResolutionModelParser.g:237:4: (lv_selection_actions_4_0= ruleReconfiguration )
             	    {
-            	    // InternalResolutionModelParser.g:231:4: (lv_selection_actions_4_0= ruleReconfiguration )
-            	    // InternalResolutionModelParser.g:232:5: lv_selection_actions_4_0= ruleReconfiguration
+            	    // InternalResolutionModelParser.g:237:4: (lv_selection_actions_4_0= ruleReconfiguration )
+            	    // InternalResolutionModelParser.g:238:5: lv_selection_actions_4_0= ruleReconfiguration
             	    {
 
             	    					newCompositeNode(grammarAccess.getResolutionAccess().getSelection_actionsReconfigurationParserRuleCall_4_0());
@@ -603,7 +615,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
             			newLeafNode(otherlv_5, grammarAccess.getResolutionAccess().getDeselectKeyword_5());
             		
-            // InternalResolutionModelParser.g:253:3: ( (lv_deselection_actions_6_0= ruleReconfiguration ) )*
+            // InternalResolutionModelParser.g:259:3: ( (lv_deselection_actions_6_0= ruleReconfiguration ) )*
             loop4:
             do {
                 int alt4=2;
@@ -616,10 +628,10 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
                 switch (alt4) {
             	case 1 :
-            	    // InternalResolutionModelParser.g:254:4: (lv_deselection_actions_6_0= ruleReconfiguration )
+            	    // InternalResolutionModelParser.g:260:4: (lv_deselection_actions_6_0= ruleReconfiguration )
             	    {
-            	    // InternalResolutionModelParser.g:254:4: (lv_deselection_actions_6_0= ruleReconfiguration )
-            	    // InternalResolutionModelParser.g:255:5: lv_deselection_actions_6_0= ruleReconfiguration
+            	    // InternalResolutionModelParser.g:260:4: (lv_deselection_actions_6_0= ruleReconfiguration )
+            	    // InternalResolutionModelParser.g:261:5: lv_deselection_actions_6_0= ruleReconfiguration
             	    {
 
             	    					newCompositeNode(grammarAccess.getResolutionAccess().getDeselection_actionsReconfigurationParserRuleCall_6_0());
@@ -674,8 +686,131 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
     // $ANTLR end "ruleResolution"
 
 
+    // $ANTLR start "entryRuleFeatureReference"
+    // InternalResolutionModelParser.g:282:1: entryRuleFeatureReference returns [EObject current=null] : iv_ruleFeatureReference= ruleFeatureReference EOF ;
+    public final EObject entryRuleFeatureReference() throws RecognitionException {
+        EObject current = null;
+
+        EObject iv_ruleFeatureReference = null;
+
+
+        try {
+            // InternalResolutionModelParser.g:282:57: (iv_ruleFeatureReference= ruleFeatureReference EOF )
+            // InternalResolutionModelParser.g:283:2: iv_ruleFeatureReference= ruleFeatureReference EOF
+            {
+             newCompositeNode(grammarAccess.getFeatureReferenceRule()); 
+            pushFollow(FOLLOW_1);
+            iv_ruleFeatureReference=ruleFeatureReference();
+
+            state._fsp--;
+
+             current =iv_ruleFeatureReference; 
+            match(input,EOF,FOLLOW_2); 
+
+            }
+
+        }
+
+            catch (RecognitionException re) {
+                recover(input,re);
+                appendSkippedTokens();
+            }
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "entryRuleFeatureReference"
+
+
+    // $ANTLR start "ruleFeatureReference"
+    // InternalResolutionModelParser.g:289:1: ruleFeatureReference returns [EObject current=null] : ( ( (otherlv_0= RULE_ID ) ) otherlv_1= FullStop ( (otherlv_2= RULE_ID ) ) ) ;
+    public final EObject ruleFeatureReference() throws RecognitionException {
+        EObject current = null;
+
+        Token otherlv_0=null;
+        Token otherlv_1=null;
+        Token otherlv_2=null;
+
+
+        	enterRule();
+
+        try {
+            // InternalResolutionModelParser.g:295:2: ( ( ( (otherlv_0= RULE_ID ) ) otherlv_1= FullStop ( (otherlv_2= RULE_ID ) ) ) )
+            // InternalResolutionModelParser.g:296:2: ( ( (otherlv_0= RULE_ID ) ) otherlv_1= FullStop ( (otherlv_2= RULE_ID ) ) )
+            {
+            // InternalResolutionModelParser.g:296:2: ( ( (otherlv_0= RULE_ID ) ) otherlv_1= FullStop ( (otherlv_2= RULE_ID ) ) )
+            // InternalResolutionModelParser.g:297:3: ( (otherlv_0= RULE_ID ) ) otherlv_1= FullStop ( (otherlv_2= RULE_ID ) )
+            {
+            // InternalResolutionModelParser.g:297:3: ( (otherlv_0= RULE_ID ) )
+            // InternalResolutionModelParser.g:298:4: (otherlv_0= RULE_ID )
+            {
+            // InternalResolutionModelParser.g:298:4: (otherlv_0= RULE_ID )
+            // InternalResolutionModelParser.g:299:5: otherlv_0= RULE_ID
+            {
+
+            					if (current==null) {
+            						current = createModelElement(grammarAccess.getFeatureReferenceRule());
+            					}
+            				
+            otherlv_0=(Token)match(input,RULE_ID,FOLLOW_13); 
+
+            					newLeafNode(otherlv_0, grammarAccess.getFeatureReferenceAccess().getParentFeatureCrossReference_0_0());
+            				
+
+            }
+
+
+            }
+
+            otherlv_1=(Token)match(input,FullStop,FOLLOW_3); 
+
+            			newLeafNode(otherlv_1, grammarAccess.getFeatureReferenceAccess().getFullStopKeyword_1());
+            		
+            // InternalResolutionModelParser.g:314:3: ( (otherlv_2= RULE_ID ) )
+            // InternalResolutionModelParser.g:315:4: (otherlv_2= RULE_ID )
+            {
+            // InternalResolutionModelParser.g:315:4: (otherlv_2= RULE_ID )
+            // InternalResolutionModelParser.g:316:5: otherlv_2= RULE_ID
+            {
+
+            					if (current==null) {
+            						current = createModelElement(grammarAccess.getFeatureReferenceRule());
+            					}
+            				
+            otherlv_2=(Token)match(input,RULE_ID,FOLLOW_2); 
+
+            					newLeafNode(otherlv_2, grammarAccess.getFeatureReferenceAccess().getFeatureFeatureCrossReference_2_0());
+            				
+
+            }
+
+
+            }
+
+
+            }
+
+
+            }
+
+
+            	leaveRule();
+
+        }
+
+            catch (RecognitionException re) {
+                recover(input,re);
+                appendSkippedTokens();
+            }
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "ruleFeatureReference"
+
+
     // $ANTLR start "entryRuleImport"
-    // InternalResolutionModelParser.g:276:1: entryRuleImport returns [EObject current=null] : iv_ruleImport= ruleImport EOF ;
+    // InternalResolutionModelParser.g:331:1: entryRuleImport returns [EObject current=null] : iv_ruleImport= ruleImport EOF ;
     public final EObject entryRuleImport() throws RecognitionException {
         EObject current = null;
 
@@ -683,8 +818,8 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalResolutionModelParser.g:276:47: (iv_ruleImport= ruleImport EOF )
-            // InternalResolutionModelParser.g:277:2: iv_ruleImport= ruleImport EOF
+            // InternalResolutionModelParser.g:331:47: (iv_ruleImport= ruleImport EOF )
+            // InternalResolutionModelParser.g:332:2: iv_ruleImport= ruleImport EOF
             {
              newCompositeNode(grammarAccess.getImportRule()); 
             pushFollow(FOLLOW_1);
@@ -711,7 +846,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleImport"
-    // InternalResolutionModelParser.g:283:1: ruleImport returns [EObject current=null] : (otherlv_0= Import ( (lv_importURI_1_0= RULE_STRING ) ) otherlv_2= Semicolon ) ;
+    // InternalResolutionModelParser.g:338:1: ruleImport returns [EObject current=null] : (otherlv_0= Import ( (lv_importURI_1_0= RULE_STRING ) ) otherlv_2= Semicolon ) ;
     public final EObject ruleImport() throws RecognitionException {
         EObject current = null;
 
@@ -723,21 +858,21 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalResolutionModelParser.g:289:2: ( (otherlv_0= Import ( (lv_importURI_1_0= RULE_STRING ) ) otherlv_2= Semicolon ) )
-            // InternalResolutionModelParser.g:290:2: (otherlv_0= Import ( (lv_importURI_1_0= RULE_STRING ) ) otherlv_2= Semicolon )
+            // InternalResolutionModelParser.g:344:2: ( (otherlv_0= Import ( (lv_importURI_1_0= RULE_STRING ) ) otherlv_2= Semicolon ) )
+            // InternalResolutionModelParser.g:345:2: (otherlv_0= Import ( (lv_importURI_1_0= RULE_STRING ) ) otherlv_2= Semicolon )
             {
-            // InternalResolutionModelParser.g:290:2: (otherlv_0= Import ( (lv_importURI_1_0= RULE_STRING ) ) otherlv_2= Semicolon )
-            // InternalResolutionModelParser.g:291:3: otherlv_0= Import ( (lv_importURI_1_0= RULE_STRING ) ) otherlv_2= Semicolon
+            // InternalResolutionModelParser.g:345:2: (otherlv_0= Import ( (lv_importURI_1_0= RULE_STRING ) ) otherlv_2= Semicolon )
+            // InternalResolutionModelParser.g:346:3: otherlv_0= Import ( (lv_importURI_1_0= RULE_STRING ) ) otherlv_2= Semicolon
             {
-            otherlv_0=(Token)match(input,Import,FOLLOW_13); 
+            otherlv_0=(Token)match(input,Import,FOLLOW_14); 
 
             			newLeafNode(otherlv_0, grammarAccess.getImportAccess().getImportKeyword_0());
             		
-            // InternalResolutionModelParser.g:295:3: ( (lv_importURI_1_0= RULE_STRING ) )
-            // InternalResolutionModelParser.g:296:4: (lv_importURI_1_0= RULE_STRING )
+            // InternalResolutionModelParser.g:350:3: ( (lv_importURI_1_0= RULE_STRING ) )
+            // InternalResolutionModelParser.g:351:4: (lv_importURI_1_0= RULE_STRING )
             {
-            // InternalResolutionModelParser.g:296:4: (lv_importURI_1_0= RULE_STRING )
-            // InternalResolutionModelParser.g:297:5: lv_importURI_1_0= RULE_STRING
+            // InternalResolutionModelParser.g:351:4: (lv_importURI_1_0= RULE_STRING )
+            // InternalResolutionModelParser.g:352:5: lv_importURI_1_0= RULE_STRING
             {
             lv_importURI_1_0=(Token)match(input,RULE_STRING,FOLLOW_4); 
 
@@ -786,7 +921,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleReconfiguration"
-    // InternalResolutionModelParser.g:321:1: entryRuleReconfiguration returns [EObject current=null] : iv_ruleReconfiguration= ruleReconfiguration EOF ;
+    // InternalResolutionModelParser.g:376:1: entryRuleReconfiguration returns [EObject current=null] : iv_ruleReconfiguration= ruleReconfiguration EOF ;
     public final EObject entryRuleReconfiguration() throws RecognitionException {
         EObject current = null;
 
@@ -794,8 +929,8 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalResolutionModelParser.g:321:56: (iv_ruleReconfiguration= ruleReconfiguration EOF )
-            // InternalResolutionModelParser.g:322:2: iv_ruleReconfiguration= ruleReconfiguration EOF
+            // InternalResolutionModelParser.g:376:56: (iv_ruleReconfiguration= ruleReconfiguration EOF )
+            // InternalResolutionModelParser.g:377:2: iv_ruleReconfiguration= ruleReconfiguration EOF
             {
              newCompositeNode(grammarAccess.getReconfigurationRule()); 
             pushFollow(FOLLOW_1);
@@ -822,7 +957,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleReconfiguration"
-    // InternalResolutionModelParser.g:328:1: ruleReconfiguration returns [EObject current=null] : (this_SetParam_0= ruleSetParam | this_SetLifecycle_1= ruleSetLifecycle ) ;
+    // InternalResolutionModelParser.g:383:1: ruleReconfiguration returns [EObject current=null] : (this_SetParam_0= ruleSetParam | this_SetLifecycle_1= ruleSetLifecycle ) ;
     public final EObject ruleReconfiguration() throws RecognitionException {
         EObject current = null;
 
@@ -835,10 +970,10 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalResolutionModelParser.g:334:2: ( (this_SetParam_0= ruleSetParam | this_SetLifecycle_1= ruleSetLifecycle ) )
-            // InternalResolutionModelParser.g:335:2: (this_SetParam_0= ruleSetParam | this_SetLifecycle_1= ruleSetLifecycle )
+            // InternalResolutionModelParser.g:389:2: ( (this_SetParam_0= ruleSetParam | this_SetLifecycle_1= ruleSetLifecycle ) )
+            // InternalResolutionModelParser.g:390:2: (this_SetParam_0= ruleSetParam | this_SetLifecycle_1= ruleSetLifecycle )
             {
-            // InternalResolutionModelParser.g:335:2: (this_SetParam_0= ruleSetParam | this_SetLifecycle_1= ruleSetLifecycle )
+            // InternalResolutionModelParser.g:390:2: (this_SetParam_0= ruleSetParam | this_SetLifecycle_1= ruleSetLifecycle )
             int alt5=2;
             int LA5_0 = input.LA(1);
 
@@ -856,7 +991,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
             }
             switch (alt5) {
                 case 1 :
-                    // InternalResolutionModelParser.g:336:3: this_SetParam_0= ruleSetParam
+                    // InternalResolutionModelParser.g:391:3: this_SetParam_0= ruleSetParam
                     {
 
                     			newCompositeNode(grammarAccess.getReconfigurationAccess().getSetParamParserRuleCall_0());
@@ -874,7 +1009,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // InternalResolutionModelParser.g:345:3: this_SetLifecycle_1= ruleSetLifecycle
+                    // InternalResolutionModelParser.g:400:3: this_SetLifecycle_1= ruleSetLifecycle
                     {
 
                     			newCompositeNode(grammarAccess.getReconfigurationAccess().getSetLifecycleParserRuleCall_1());
@@ -914,7 +1049,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleSetParam"
-    // InternalResolutionModelParser.g:357:1: entryRuleSetParam returns [EObject current=null] : iv_ruleSetParam= ruleSetParam EOF ;
+    // InternalResolutionModelParser.g:412:1: entryRuleSetParam returns [EObject current=null] : iv_ruleSetParam= ruleSetParam EOF ;
     public final EObject entryRuleSetParam() throws RecognitionException {
         EObject current = null;
 
@@ -922,8 +1057,8 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalResolutionModelParser.g:357:49: (iv_ruleSetParam= ruleSetParam EOF )
-            // InternalResolutionModelParser.g:358:2: iv_ruleSetParam= ruleSetParam EOF
+            // InternalResolutionModelParser.g:412:49: (iv_ruleSetParam= ruleSetParam EOF )
+            // InternalResolutionModelParser.g:413:2: iv_ruleSetParam= ruleSetParam EOF
             {
              newCompositeNode(grammarAccess.getSetParamRule()); 
             pushFollow(FOLLOW_1);
@@ -950,7 +1085,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleSetParam"
-    // InternalResolutionModelParser.g:364:1: ruleSetParam returns [EObject current=null] : (otherlv_0= SetParameter otherlv_1= LeftParenthesis ( (otherlv_2= RULE_ID ) ) otherlv_3= Comma ( (otherlv_4= RULE_ID ) ) otherlv_5= Comma ( (lv_value_6_0= ruleParameterValue ) ) otherlv_7= RightParenthesis ) ;
+    // InternalResolutionModelParser.g:419:1: ruleSetParam returns [EObject current=null] : (otherlv_0= SetParameter otherlv_1= LeftParenthesis ( (otherlv_2= RULE_ID ) ) otherlv_3= Comma ( (otherlv_4= RULE_ID ) ) otherlv_5= Comma ( (lv_value_6_0= ruleParameterValue ) ) otherlv_7= RightParenthesis ) ;
     public final EObject ruleSetParam() throws RecognitionException {
         EObject current = null;
 
@@ -968,13 +1103,13 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalResolutionModelParser.g:370:2: ( (otherlv_0= SetParameter otherlv_1= LeftParenthesis ( (otherlv_2= RULE_ID ) ) otherlv_3= Comma ( (otherlv_4= RULE_ID ) ) otherlv_5= Comma ( (lv_value_6_0= ruleParameterValue ) ) otherlv_7= RightParenthesis ) )
-            // InternalResolutionModelParser.g:371:2: (otherlv_0= SetParameter otherlv_1= LeftParenthesis ( (otherlv_2= RULE_ID ) ) otherlv_3= Comma ( (otherlv_4= RULE_ID ) ) otherlv_5= Comma ( (lv_value_6_0= ruleParameterValue ) ) otherlv_7= RightParenthesis )
+            // InternalResolutionModelParser.g:425:2: ( (otherlv_0= SetParameter otherlv_1= LeftParenthesis ( (otherlv_2= RULE_ID ) ) otherlv_3= Comma ( (otherlv_4= RULE_ID ) ) otherlv_5= Comma ( (lv_value_6_0= ruleParameterValue ) ) otherlv_7= RightParenthesis ) )
+            // InternalResolutionModelParser.g:426:2: (otherlv_0= SetParameter otherlv_1= LeftParenthesis ( (otherlv_2= RULE_ID ) ) otherlv_3= Comma ( (otherlv_4= RULE_ID ) ) otherlv_5= Comma ( (lv_value_6_0= ruleParameterValue ) ) otherlv_7= RightParenthesis )
             {
-            // InternalResolutionModelParser.g:371:2: (otherlv_0= SetParameter otherlv_1= LeftParenthesis ( (otherlv_2= RULE_ID ) ) otherlv_3= Comma ( (otherlv_4= RULE_ID ) ) otherlv_5= Comma ( (lv_value_6_0= ruleParameterValue ) ) otherlv_7= RightParenthesis )
-            // InternalResolutionModelParser.g:372:3: otherlv_0= SetParameter otherlv_1= LeftParenthesis ( (otherlv_2= RULE_ID ) ) otherlv_3= Comma ( (otherlv_4= RULE_ID ) ) otherlv_5= Comma ( (lv_value_6_0= ruleParameterValue ) ) otherlv_7= RightParenthesis
+            // InternalResolutionModelParser.g:426:2: (otherlv_0= SetParameter otherlv_1= LeftParenthesis ( (otherlv_2= RULE_ID ) ) otherlv_3= Comma ( (otherlv_4= RULE_ID ) ) otherlv_5= Comma ( (lv_value_6_0= ruleParameterValue ) ) otherlv_7= RightParenthesis )
+            // InternalResolutionModelParser.g:427:3: otherlv_0= SetParameter otherlv_1= LeftParenthesis ( (otherlv_2= RULE_ID ) ) otherlv_3= Comma ( (otherlv_4= RULE_ID ) ) otherlv_5= Comma ( (lv_value_6_0= ruleParameterValue ) ) otherlv_7= RightParenthesis
             {
-            otherlv_0=(Token)match(input,SetParameter,FOLLOW_14); 
+            otherlv_0=(Token)match(input,SetParameter,FOLLOW_15); 
 
             			newLeafNode(otherlv_0, grammarAccess.getSetParamAccess().getSetParameterKeyword_0());
             		
@@ -982,18 +1117,18 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
             			newLeafNode(otherlv_1, grammarAccess.getSetParamAccess().getLeftParenthesisKeyword_1());
             		
-            // InternalResolutionModelParser.g:380:3: ( (otherlv_2= RULE_ID ) )
-            // InternalResolutionModelParser.g:381:4: (otherlv_2= RULE_ID )
+            // InternalResolutionModelParser.g:435:3: ( (otherlv_2= RULE_ID ) )
+            // InternalResolutionModelParser.g:436:4: (otherlv_2= RULE_ID )
             {
-            // InternalResolutionModelParser.g:381:4: (otherlv_2= RULE_ID )
-            // InternalResolutionModelParser.g:382:5: otherlv_2= RULE_ID
+            // InternalResolutionModelParser.g:436:4: (otherlv_2= RULE_ID )
+            // InternalResolutionModelParser.g:437:5: otherlv_2= RULE_ID
             {
 
             					if (current==null) {
             						current = createModelElement(grammarAccess.getSetParamRule());
             					}
             				
-            otherlv_2=(Token)match(input,RULE_ID,FOLLOW_15); 
+            otherlv_2=(Token)match(input,RULE_ID,FOLLOW_16); 
 
             					newLeafNode(otherlv_2, grammarAccess.getSetParamAccess().getNodeRosNodeCrossReference_2_0());
             				
@@ -1007,18 +1142,18 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
             			newLeafNode(otherlv_3, grammarAccess.getSetParamAccess().getCommaKeyword_3());
             		
-            // InternalResolutionModelParser.g:397:3: ( (otherlv_4= RULE_ID ) )
-            // InternalResolutionModelParser.g:398:4: (otherlv_4= RULE_ID )
+            // InternalResolutionModelParser.g:452:3: ( (otherlv_4= RULE_ID ) )
+            // InternalResolutionModelParser.g:453:4: (otherlv_4= RULE_ID )
             {
-            // InternalResolutionModelParser.g:398:4: (otherlv_4= RULE_ID )
-            // InternalResolutionModelParser.g:399:5: otherlv_4= RULE_ID
+            // InternalResolutionModelParser.g:453:4: (otherlv_4= RULE_ID )
+            // InternalResolutionModelParser.g:454:5: otherlv_4= RULE_ID
             {
 
             					if (current==null) {
             						current = createModelElement(grammarAccess.getSetParamRule());
             					}
             				
-            otherlv_4=(Token)match(input,RULE_ID,FOLLOW_15); 
+            otherlv_4=(Token)match(input,RULE_ID,FOLLOW_16); 
 
             					newLeafNode(otherlv_4, grammarAccess.getSetParamAccess().getParamParameterCrossReference_4_0());
             				
@@ -1028,20 +1163,20 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_5=(Token)match(input,Comma,FOLLOW_16); 
+            otherlv_5=(Token)match(input,Comma,FOLLOW_17); 
 
             			newLeafNode(otherlv_5, grammarAccess.getSetParamAccess().getCommaKeyword_5());
             		
-            // InternalResolutionModelParser.g:414:3: ( (lv_value_6_0= ruleParameterValue ) )
-            // InternalResolutionModelParser.g:415:4: (lv_value_6_0= ruleParameterValue )
+            // InternalResolutionModelParser.g:469:3: ( (lv_value_6_0= ruleParameterValue ) )
+            // InternalResolutionModelParser.g:470:4: (lv_value_6_0= ruleParameterValue )
             {
-            // InternalResolutionModelParser.g:415:4: (lv_value_6_0= ruleParameterValue )
-            // InternalResolutionModelParser.g:416:5: lv_value_6_0= ruleParameterValue
+            // InternalResolutionModelParser.g:470:4: (lv_value_6_0= ruleParameterValue )
+            // InternalResolutionModelParser.g:471:5: lv_value_6_0= ruleParameterValue
             {
 
             					newCompositeNode(grammarAccess.getSetParamAccess().getValueParameterValueParserRuleCall_6_0());
             				
-            pushFollow(FOLLOW_17);
+            pushFollow(FOLLOW_18);
             lv_value_6_0=ruleParameterValue();
 
             state._fsp--;
@@ -1090,7 +1225,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleSetLifecycle"
-    // InternalResolutionModelParser.g:441:1: entryRuleSetLifecycle returns [EObject current=null] : iv_ruleSetLifecycle= ruleSetLifecycle EOF ;
+    // InternalResolutionModelParser.g:496:1: entryRuleSetLifecycle returns [EObject current=null] : iv_ruleSetLifecycle= ruleSetLifecycle EOF ;
     public final EObject entryRuleSetLifecycle() throws RecognitionException {
         EObject current = null;
 
@@ -1098,8 +1233,8 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalResolutionModelParser.g:441:53: (iv_ruleSetLifecycle= ruleSetLifecycle EOF )
-            // InternalResolutionModelParser.g:442:2: iv_ruleSetLifecycle= ruleSetLifecycle EOF
+            // InternalResolutionModelParser.g:496:53: (iv_ruleSetLifecycle= ruleSetLifecycle EOF )
+            // InternalResolutionModelParser.g:497:2: iv_ruleSetLifecycle= ruleSetLifecycle EOF
             {
              newCompositeNode(grammarAccess.getSetLifecycleRule()); 
             pushFollow(FOLLOW_1);
@@ -1126,7 +1261,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleSetLifecycle"
-    // InternalResolutionModelParser.g:448:1: ruleSetLifecycle returns [EObject current=null] : (otherlv_0= SetLifecycleState otherlv_1= LeftParenthesis ( (otherlv_2= RULE_ID ) ) otherlv_3= Comma ( (lv_state_4_0= ruleLifecycleState ) ) otherlv_5= RightParenthesis ) ;
+    // InternalResolutionModelParser.g:503:1: ruleSetLifecycle returns [EObject current=null] : (otherlv_0= SetLifecycleState otherlv_1= LeftParenthesis ( (otherlv_2= RULE_ID ) ) otherlv_3= Comma ( (lv_state_4_0= ruleLifecycleState ) ) otherlv_5= RightParenthesis ) ;
     public final EObject ruleSetLifecycle() throws RecognitionException {
         EObject current = null;
 
@@ -1142,13 +1277,13 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalResolutionModelParser.g:454:2: ( (otherlv_0= SetLifecycleState otherlv_1= LeftParenthesis ( (otherlv_2= RULE_ID ) ) otherlv_3= Comma ( (lv_state_4_0= ruleLifecycleState ) ) otherlv_5= RightParenthesis ) )
-            // InternalResolutionModelParser.g:455:2: (otherlv_0= SetLifecycleState otherlv_1= LeftParenthesis ( (otherlv_2= RULE_ID ) ) otherlv_3= Comma ( (lv_state_4_0= ruleLifecycleState ) ) otherlv_5= RightParenthesis )
+            // InternalResolutionModelParser.g:509:2: ( (otherlv_0= SetLifecycleState otherlv_1= LeftParenthesis ( (otherlv_2= RULE_ID ) ) otherlv_3= Comma ( (lv_state_4_0= ruleLifecycleState ) ) otherlv_5= RightParenthesis ) )
+            // InternalResolutionModelParser.g:510:2: (otherlv_0= SetLifecycleState otherlv_1= LeftParenthesis ( (otherlv_2= RULE_ID ) ) otherlv_3= Comma ( (lv_state_4_0= ruleLifecycleState ) ) otherlv_5= RightParenthesis )
             {
-            // InternalResolutionModelParser.g:455:2: (otherlv_0= SetLifecycleState otherlv_1= LeftParenthesis ( (otherlv_2= RULE_ID ) ) otherlv_3= Comma ( (lv_state_4_0= ruleLifecycleState ) ) otherlv_5= RightParenthesis )
-            // InternalResolutionModelParser.g:456:3: otherlv_0= SetLifecycleState otherlv_1= LeftParenthesis ( (otherlv_2= RULE_ID ) ) otherlv_3= Comma ( (lv_state_4_0= ruleLifecycleState ) ) otherlv_5= RightParenthesis
+            // InternalResolutionModelParser.g:510:2: (otherlv_0= SetLifecycleState otherlv_1= LeftParenthesis ( (otherlv_2= RULE_ID ) ) otherlv_3= Comma ( (lv_state_4_0= ruleLifecycleState ) ) otherlv_5= RightParenthesis )
+            // InternalResolutionModelParser.g:511:3: otherlv_0= SetLifecycleState otherlv_1= LeftParenthesis ( (otherlv_2= RULE_ID ) ) otherlv_3= Comma ( (lv_state_4_0= ruleLifecycleState ) ) otherlv_5= RightParenthesis
             {
-            otherlv_0=(Token)match(input,SetLifecycleState,FOLLOW_14); 
+            otherlv_0=(Token)match(input,SetLifecycleState,FOLLOW_15); 
 
             			newLeafNode(otherlv_0, grammarAccess.getSetLifecycleAccess().getSetLifecycleStateKeyword_0());
             		
@@ -1156,18 +1291,18 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
             			newLeafNode(otherlv_1, grammarAccess.getSetLifecycleAccess().getLeftParenthesisKeyword_1());
             		
-            // InternalResolutionModelParser.g:464:3: ( (otherlv_2= RULE_ID ) )
-            // InternalResolutionModelParser.g:465:4: (otherlv_2= RULE_ID )
+            // InternalResolutionModelParser.g:519:3: ( (otherlv_2= RULE_ID ) )
+            // InternalResolutionModelParser.g:520:4: (otherlv_2= RULE_ID )
             {
-            // InternalResolutionModelParser.g:465:4: (otherlv_2= RULE_ID )
-            // InternalResolutionModelParser.g:466:5: otherlv_2= RULE_ID
+            // InternalResolutionModelParser.g:520:4: (otherlv_2= RULE_ID )
+            // InternalResolutionModelParser.g:521:5: otherlv_2= RULE_ID
             {
 
             					if (current==null) {
             						current = createModelElement(grammarAccess.getSetLifecycleRule());
             					}
             				
-            otherlv_2=(Token)match(input,RULE_ID,FOLLOW_15); 
+            otherlv_2=(Token)match(input,RULE_ID,FOLLOW_16); 
 
             					newLeafNode(otherlv_2, grammarAccess.getSetLifecycleAccess().getNodeRosNodeCrossReference_2_0());
             				
@@ -1177,20 +1312,20 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_3=(Token)match(input,Comma,FOLLOW_18); 
+            otherlv_3=(Token)match(input,Comma,FOLLOW_19); 
 
             			newLeafNode(otherlv_3, grammarAccess.getSetLifecycleAccess().getCommaKeyword_3());
             		
-            // InternalResolutionModelParser.g:481:3: ( (lv_state_4_0= ruleLifecycleState ) )
-            // InternalResolutionModelParser.g:482:4: (lv_state_4_0= ruleLifecycleState )
+            // InternalResolutionModelParser.g:536:3: ( (lv_state_4_0= ruleLifecycleState ) )
+            // InternalResolutionModelParser.g:537:4: (lv_state_4_0= ruleLifecycleState )
             {
-            // InternalResolutionModelParser.g:482:4: (lv_state_4_0= ruleLifecycleState )
-            // InternalResolutionModelParser.g:483:5: lv_state_4_0= ruleLifecycleState
+            // InternalResolutionModelParser.g:537:4: (lv_state_4_0= ruleLifecycleState )
+            // InternalResolutionModelParser.g:538:5: lv_state_4_0= ruleLifecycleState
             {
 
             					newCompositeNode(grammarAccess.getSetLifecycleAccess().getStateLifecycleStateEnumRuleCall_4_0());
             				
-            pushFollow(FOLLOW_17);
+            pushFollow(FOLLOW_18);
             lv_state_4_0=ruleLifecycleState();
 
             state._fsp--;
@@ -1239,7 +1374,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleNamespace"
-    // InternalResolutionModelParser.g:508:1: entryRuleNamespace returns [EObject current=null] : iv_ruleNamespace= ruleNamespace EOF ;
+    // InternalResolutionModelParser.g:563:1: entryRuleNamespace returns [EObject current=null] : iv_ruleNamespace= ruleNamespace EOF ;
     public final EObject entryRuleNamespace() throws RecognitionException {
         EObject current = null;
 
@@ -1247,8 +1382,8 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalResolutionModelParser.g:508:50: (iv_ruleNamespace= ruleNamespace EOF )
-            // InternalResolutionModelParser.g:509:2: iv_ruleNamespace= ruleNamespace EOF
+            // InternalResolutionModelParser.g:563:50: (iv_ruleNamespace= ruleNamespace EOF )
+            // InternalResolutionModelParser.g:564:2: iv_ruleNamespace= ruleNamespace EOF
             {
              newCompositeNode(grammarAccess.getNamespaceRule()); 
             pushFollow(FOLLOW_1);
@@ -1275,7 +1410,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleNamespace"
-    // InternalResolutionModelParser.g:515:1: ruleNamespace returns [EObject current=null] : (this_GlobalNamespace_0= ruleGlobalNamespace | this_RelativeNamespace_Impl_1= ruleRelativeNamespace_Impl | this_PrivateNamespace_2= rulePrivateNamespace ) ;
+    // InternalResolutionModelParser.g:570:1: ruleNamespace returns [EObject current=null] : (this_GlobalNamespace_0= ruleGlobalNamespace | this_RelativeNamespace_Impl_1= ruleRelativeNamespace_Impl | this_PrivateNamespace_2= rulePrivateNamespace ) ;
     public final EObject ruleNamespace() throws RecognitionException {
         EObject current = null;
 
@@ -1290,10 +1425,10 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalResolutionModelParser.g:521:2: ( (this_GlobalNamespace_0= ruleGlobalNamespace | this_RelativeNamespace_Impl_1= ruleRelativeNamespace_Impl | this_PrivateNamespace_2= rulePrivateNamespace ) )
-            // InternalResolutionModelParser.g:522:2: (this_GlobalNamespace_0= ruleGlobalNamespace | this_RelativeNamespace_Impl_1= ruleRelativeNamespace_Impl | this_PrivateNamespace_2= rulePrivateNamespace )
+            // InternalResolutionModelParser.g:576:2: ( (this_GlobalNamespace_0= ruleGlobalNamespace | this_RelativeNamespace_Impl_1= ruleRelativeNamespace_Impl | this_PrivateNamespace_2= rulePrivateNamespace ) )
+            // InternalResolutionModelParser.g:577:2: (this_GlobalNamespace_0= ruleGlobalNamespace | this_RelativeNamespace_Impl_1= ruleRelativeNamespace_Impl | this_PrivateNamespace_2= rulePrivateNamespace )
             {
-            // InternalResolutionModelParser.g:522:2: (this_GlobalNamespace_0= ruleGlobalNamespace | this_RelativeNamespace_Impl_1= ruleRelativeNamespace_Impl | this_PrivateNamespace_2= rulePrivateNamespace )
+            // InternalResolutionModelParser.g:577:2: (this_GlobalNamespace_0= ruleGlobalNamespace | this_RelativeNamespace_Impl_1= ruleRelativeNamespace_Impl | this_PrivateNamespace_2= rulePrivateNamespace )
             int alt6=3;
             switch ( input.LA(1) ) {
             case GlobalNamespace:
@@ -1320,7 +1455,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
             switch (alt6) {
                 case 1 :
-                    // InternalResolutionModelParser.g:523:3: this_GlobalNamespace_0= ruleGlobalNamespace
+                    // InternalResolutionModelParser.g:578:3: this_GlobalNamespace_0= ruleGlobalNamespace
                     {
 
                     			newCompositeNode(grammarAccess.getNamespaceAccess().getGlobalNamespaceParserRuleCall_0());
@@ -1338,7 +1473,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // InternalResolutionModelParser.g:532:3: this_RelativeNamespace_Impl_1= ruleRelativeNamespace_Impl
+                    // InternalResolutionModelParser.g:587:3: this_RelativeNamespace_Impl_1= ruleRelativeNamespace_Impl
                     {
 
                     			newCompositeNode(grammarAccess.getNamespaceAccess().getRelativeNamespace_ImplParserRuleCall_1());
@@ -1356,7 +1491,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 3 :
-                    // InternalResolutionModelParser.g:541:3: this_PrivateNamespace_2= rulePrivateNamespace
+                    // InternalResolutionModelParser.g:596:3: this_PrivateNamespace_2= rulePrivateNamespace
                     {
 
                     			newCompositeNode(grammarAccess.getNamespaceAccess().getPrivateNamespaceParserRuleCall_2());
@@ -1396,7 +1531,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleGraphName"
-    // InternalResolutionModelParser.g:553:1: entryRuleGraphName returns [String current=null] : iv_ruleGraphName= ruleGraphName EOF ;
+    // InternalResolutionModelParser.g:608:1: entryRuleGraphName returns [String current=null] : iv_ruleGraphName= ruleGraphName EOF ;
     public final String entryRuleGraphName() throws RecognitionException {
         String current = null;
 
@@ -1404,8 +1539,8 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalResolutionModelParser.g:553:49: (iv_ruleGraphName= ruleGraphName EOF )
-            // InternalResolutionModelParser.g:554:2: iv_ruleGraphName= ruleGraphName EOF
+            // InternalResolutionModelParser.g:608:49: (iv_ruleGraphName= ruleGraphName EOF )
+            // InternalResolutionModelParser.g:609:2: iv_ruleGraphName= ruleGraphName EOF
             {
              newCompositeNode(grammarAccess.getGraphNameRule()); 
             pushFollow(FOLLOW_1);
@@ -1432,7 +1567,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleGraphName"
-    // InternalResolutionModelParser.g:560:1: ruleGraphName returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : kw= GraphName ;
+    // InternalResolutionModelParser.g:615:1: ruleGraphName returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : kw= GraphName ;
     public final AntlrDatatypeRuleToken ruleGraphName() throws RecognitionException {
         AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
 
@@ -1442,8 +1577,8 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalResolutionModelParser.g:566:2: (kw= GraphName )
-            // InternalResolutionModelParser.g:567:2: kw= GraphName
+            // InternalResolutionModelParser.g:621:2: (kw= GraphName )
+            // InternalResolutionModelParser.g:622:2: kw= GraphName
             {
             kw=(Token)match(input,GraphName,FOLLOW_2); 
 
@@ -1470,7 +1605,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleGlobalNamespace"
-    // InternalResolutionModelParser.g:575:1: entryRuleGlobalNamespace returns [EObject current=null] : iv_ruleGlobalNamespace= ruleGlobalNamespace EOF ;
+    // InternalResolutionModelParser.g:630:1: entryRuleGlobalNamespace returns [EObject current=null] : iv_ruleGlobalNamespace= ruleGlobalNamespace EOF ;
     public final EObject entryRuleGlobalNamespace() throws RecognitionException {
         EObject current = null;
 
@@ -1478,8 +1613,8 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalResolutionModelParser.g:575:56: (iv_ruleGlobalNamespace= ruleGlobalNamespace EOF )
-            // InternalResolutionModelParser.g:576:2: iv_ruleGlobalNamespace= ruleGlobalNamespace EOF
+            // InternalResolutionModelParser.g:630:56: (iv_ruleGlobalNamespace= ruleGlobalNamespace EOF )
+            // InternalResolutionModelParser.g:631:2: iv_ruleGlobalNamespace= ruleGlobalNamespace EOF
             {
              newCompositeNode(grammarAccess.getGlobalNamespaceRule()); 
             pushFollow(FOLLOW_1);
@@ -1506,7 +1641,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleGlobalNamespace"
-    // InternalResolutionModelParser.g:582:1: ruleGlobalNamespace returns [EObject current=null] : ( () otherlv_1= GlobalNamespace (otherlv_2= LeftSquareBracket ( (lv_parts_3_0= ruleGraphName ) ) (otherlv_4= Comma ( (lv_parts_5_0= ruleGraphName ) ) )* otherlv_6= RightSquareBracket )? ) ;
+    // InternalResolutionModelParser.g:637:1: ruleGlobalNamespace returns [EObject current=null] : ( () otherlv_1= GlobalNamespace (otherlv_2= LeftSquareBracket ( (lv_parts_3_0= ruleGraphName ) ) (otherlv_4= Comma ( (lv_parts_5_0= ruleGraphName ) ) )* otherlv_6= RightSquareBracket )? ) ;
     public final EObject ruleGlobalNamespace() throws RecognitionException {
         EObject current = null;
 
@@ -1523,14 +1658,14 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalResolutionModelParser.g:588:2: ( ( () otherlv_1= GlobalNamespace (otherlv_2= LeftSquareBracket ( (lv_parts_3_0= ruleGraphName ) ) (otherlv_4= Comma ( (lv_parts_5_0= ruleGraphName ) ) )* otherlv_6= RightSquareBracket )? ) )
-            // InternalResolutionModelParser.g:589:2: ( () otherlv_1= GlobalNamespace (otherlv_2= LeftSquareBracket ( (lv_parts_3_0= ruleGraphName ) ) (otherlv_4= Comma ( (lv_parts_5_0= ruleGraphName ) ) )* otherlv_6= RightSquareBracket )? )
+            // InternalResolutionModelParser.g:643:2: ( ( () otherlv_1= GlobalNamespace (otherlv_2= LeftSquareBracket ( (lv_parts_3_0= ruleGraphName ) ) (otherlv_4= Comma ( (lv_parts_5_0= ruleGraphName ) ) )* otherlv_6= RightSquareBracket )? ) )
+            // InternalResolutionModelParser.g:644:2: ( () otherlv_1= GlobalNamespace (otherlv_2= LeftSquareBracket ( (lv_parts_3_0= ruleGraphName ) ) (otherlv_4= Comma ( (lv_parts_5_0= ruleGraphName ) ) )* otherlv_6= RightSquareBracket )? )
             {
-            // InternalResolutionModelParser.g:589:2: ( () otherlv_1= GlobalNamespace (otherlv_2= LeftSquareBracket ( (lv_parts_3_0= ruleGraphName ) ) (otherlv_4= Comma ( (lv_parts_5_0= ruleGraphName ) ) )* otherlv_6= RightSquareBracket )? )
-            // InternalResolutionModelParser.g:590:3: () otherlv_1= GlobalNamespace (otherlv_2= LeftSquareBracket ( (lv_parts_3_0= ruleGraphName ) ) (otherlv_4= Comma ( (lv_parts_5_0= ruleGraphName ) ) )* otherlv_6= RightSquareBracket )?
+            // InternalResolutionModelParser.g:644:2: ( () otherlv_1= GlobalNamespace (otherlv_2= LeftSquareBracket ( (lv_parts_3_0= ruleGraphName ) ) (otherlv_4= Comma ( (lv_parts_5_0= ruleGraphName ) ) )* otherlv_6= RightSquareBracket )? )
+            // InternalResolutionModelParser.g:645:3: () otherlv_1= GlobalNamespace (otherlv_2= LeftSquareBracket ( (lv_parts_3_0= ruleGraphName ) ) (otherlv_4= Comma ( (lv_parts_5_0= ruleGraphName ) ) )* otherlv_6= RightSquareBracket )?
             {
-            // InternalResolutionModelParser.g:590:3: ()
-            // InternalResolutionModelParser.g:591:4: 
+            // InternalResolutionModelParser.g:645:3: ()
+            // InternalResolutionModelParser.g:646:4: 
             {
 
             				current = forceCreateModelElement(
@@ -1540,11 +1675,11 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,GlobalNamespace,FOLLOW_19); 
+            otherlv_1=(Token)match(input,GlobalNamespace,FOLLOW_20); 
 
             			newLeafNode(otherlv_1, grammarAccess.getGlobalNamespaceAccess().getGlobalNamespaceKeyword_1());
             		
-            // InternalResolutionModelParser.g:601:3: (otherlv_2= LeftSquareBracket ( (lv_parts_3_0= ruleGraphName ) ) (otherlv_4= Comma ( (lv_parts_5_0= ruleGraphName ) ) )* otherlv_6= RightSquareBracket )?
+            // InternalResolutionModelParser.g:656:3: (otherlv_2= LeftSquareBracket ( (lv_parts_3_0= ruleGraphName ) ) (otherlv_4= Comma ( (lv_parts_5_0= ruleGraphName ) ) )* otherlv_6= RightSquareBracket )?
             int alt8=2;
             int LA8_0 = input.LA(1);
 
@@ -1553,22 +1688,22 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
             }
             switch (alt8) {
                 case 1 :
-                    // InternalResolutionModelParser.g:602:4: otherlv_2= LeftSquareBracket ( (lv_parts_3_0= ruleGraphName ) ) (otherlv_4= Comma ( (lv_parts_5_0= ruleGraphName ) ) )* otherlv_6= RightSquareBracket
+                    // InternalResolutionModelParser.g:657:4: otherlv_2= LeftSquareBracket ( (lv_parts_3_0= ruleGraphName ) ) (otherlv_4= Comma ( (lv_parts_5_0= ruleGraphName ) ) )* otherlv_6= RightSquareBracket
                     {
-                    otherlv_2=(Token)match(input,LeftSquareBracket,FOLLOW_20); 
+                    otherlv_2=(Token)match(input,LeftSquareBracket,FOLLOW_21); 
 
                     				newLeafNode(otherlv_2, grammarAccess.getGlobalNamespaceAccess().getLeftSquareBracketKeyword_2_0());
                     			
-                    // InternalResolutionModelParser.g:606:4: ( (lv_parts_3_0= ruleGraphName ) )
-                    // InternalResolutionModelParser.g:607:5: (lv_parts_3_0= ruleGraphName )
+                    // InternalResolutionModelParser.g:661:4: ( (lv_parts_3_0= ruleGraphName ) )
+                    // InternalResolutionModelParser.g:662:5: (lv_parts_3_0= ruleGraphName )
                     {
-                    // InternalResolutionModelParser.g:607:5: (lv_parts_3_0= ruleGraphName )
-                    // InternalResolutionModelParser.g:608:6: lv_parts_3_0= ruleGraphName
+                    // InternalResolutionModelParser.g:662:5: (lv_parts_3_0= ruleGraphName )
+                    // InternalResolutionModelParser.g:663:6: lv_parts_3_0= ruleGraphName
                     {
 
                     						newCompositeNode(grammarAccess.getGlobalNamespaceAccess().getPartsGraphNameParserRuleCall_2_1_0());
                     					
-                    pushFollow(FOLLOW_21);
+                    pushFollow(FOLLOW_22);
                     lv_parts_3_0=ruleGraphName();
 
                     state._fsp--;
@@ -1590,7 +1725,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // InternalResolutionModelParser.g:625:4: (otherlv_4= Comma ( (lv_parts_5_0= ruleGraphName ) ) )*
+                    // InternalResolutionModelParser.g:680:4: (otherlv_4= Comma ( (lv_parts_5_0= ruleGraphName ) ) )*
                     loop7:
                     do {
                         int alt7=2;
@@ -1603,22 +1738,22 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
                         switch (alt7) {
                     	case 1 :
-                    	    // InternalResolutionModelParser.g:626:5: otherlv_4= Comma ( (lv_parts_5_0= ruleGraphName ) )
+                    	    // InternalResolutionModelParser.g:681:5: otherlv_4= Comma ( (lv_parts_5_0= ruleGraphName ) )
                     	    {
-                    	    otherlv_4=(Token)match(input,Comma,FOLLOW_20); 
+                    	    otherlv_4=(Token)match(input,Comma,FOLLOW_21); 
 
                     	    					newLeafNode(otherlv_4, grammarAccess.getGlobalNamespaceAccess().getCommaKeyword_2_2_0());
                     	    				
-                    	    // InternalResolutionModelParser.g:630:5: ( (lv_parts_5_0= ruleGraphName ) )
-                    	    // InternalResolutionModelParser.g:631:6: (lv_parts_5_0= ruleGraphName )
+                    	    // InternalResolutionModelParser.g:685:5: ( (lv_parts_5_0= ruleGraphName ) )
+                    	    // InternalResolutionModelParser.g:686:6: (lv_parts_5_0= ruleGraphName )
                     	    {
-                    	    // InternalResolutionModelParser.g:631:6: (lv_parts_5_0= ruleGraphName )
-                    	    // InternalResolutionModelParser.g:632:7: lv_parts_5_0= ruleGraphName
+                    	    // InternalResolutionModelParser.g:686:6: (lv_parts_5_0= ruleGraphName )
+                    	    // InternalResolutionModelParser.g:687:7: lv_parts_5_0= ruleGraphName
                     	    {
 
                     	    							newCompositeNode(grammarAccess.getGlobalNamespaceAccess().getPartsGraphNameParserRuleCall_2_2_1_0());
                     	    						
-                    	    pushFollow(FOLLOW_21);
+                    	    pushFollow(FOLLOW_22);
                     	    lv_parts_5_0=ruleGraphName();
 
                     	    state._fsp--;
@@ -1682,7 +1817,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleRelativeNamespace_Impl"
-    // InternalResolutionModelParser.g:659:1: entryRuleRelativeNamespace_Impl returns [EObject current=null] : iv_ruleRelativeNamespace_Impl= ruleRelativeNamespace_Impl EOF ;
+    // InternalResolutionModelParser.g:714:1: entryRuleRelativeNamespace_Impl returns [EObject current=null] : iv_ruleRelativeNamespace_Impl= ruleRelativeNamespace_Impl EOF ;
     public final EObject entryRuleRelativeNamespace_Impl() throws RecognitionException {
         EObject current = null;
 
@@ -1690,8 +1825,8 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalResolutionModelParser.g:659:63: (iv_ruleRelativeNamespace_Impl= ruleRelativeNamespace_Impl EOF )
-            // InternalResolutionModelParser.g:660:2: iv_ruleRelativeNamespace_Impl= ruleRelativeNamespace_Impl EOF
+            // InternalResolutionModelParser.g:714:63: (iv_ruleRelativeNamespace_Impl= ruleRelativeNamespace_Impl EOF )
+            // InternalResolutionModelParser.g:715:2: iv_ruleRelativeNamespace_Impl= ruleRelativeNamespace_Impl EOF
             {
              newCompositeNode(grammarAccess.getRelativeNamespace_ImplRule()); 
             pushFollow(FOLLOW_1);
@@ -1718,7 +1853,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleRelativeNamespace_Impl"
-    // InternalResolutionModelParser.g:666:1: ruleRelativeNamespace_Impl returns [EObject current=null] : ( () otherlv_1= RelativeNamespace (otherlv_2= LeftSquareBracket ( (lv_parts_3_0= ruleGraphName ) ) (otherlv_4= Comma ( (lv_parts_5_0= ruleGraphName ) ) )* otherlv_6= RightSquareBracket )? ) ;
+    // InternalResolutionModelParser.g:721:1: ruleRelativeNamespace_Impl returns [EObject current=null] : ( () otherlv_1= RelativeNamespace (otherlv_2= LeftSquareBracket ( (lv_parts_3_0= ruleGraphName ) ) (otherlv_4= Comma ( (lv_parts_5_0= ruleGraphName ) ) )* otherlv_6= RightSquareBracket )? ) ;
     public final EObject ruleRelativeNamespace_Impl() throws RecognitionException {
         EObject current = null;
 
@@ -1735,14 +1870,14 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalResolutionModelParser.g:672:2: ( ( () otherlv_1= RelativeNamespace (otherlv_2= LeftSquareBracket ( (lv_parts_3_0= ruleGraphName ) ) (otherlv_4= Comma ( (lv_parts_5_0= ruleGraphName ) ) )* otherlv_6= RightSquareBracket )? ) )
-            // InternalResolutionModelParser.g:673:2: ( () otherlv_1= RelativeNamespace (otherlv_2= LeftSquareBracket ( (lv_parts_3_0= ruleGraphName ) ) (otherlv_4= Comma ( (lv_parts_5_0= ruleGraphName ) ) )* otherlv_6= RightSquareBracket )? )
+            // InternalResolutionModelParser.g:727:2: ( ( () otherlv_1= RelativeNamespace (otherlv_2= LeftSquareBracket ( (lv_parts_3_0= ruleGraphName ) ) (otherlv_4= Comma ( (lv_parts_5_0= ruleGraphName ) ) )* otherlv_6= RightSquareBracket )? ) )
+            // InternalResolutionModelParser.g:728:2: ( () otherlv_1= RelativeNamespace (otherlv_2= LeftSquareBracket ( (lv_parts_3_0= ruleGraphName ) ) (otherlv_4= Comma ( (lv_parts_5_0= ruleGraphName ) ) )* otherlv_6= RightSquareBracket )? )
             {
-            // InternalResolutionModelParser.g:673:2: ( () otherlv_1= RelativeNamespace (otherlv_2= LeftSquareBracket ( (lv_parts_3_0= ruleGraphName ) ) (otherlv_4= Comma ( (lv_parts_5_0= ruleGraphName ) ) )* otherlv_6= RightSquareBracket )? )
-            // InternalResolutionModelParser.g:674:3: () otherlv_1= RelativeNamespace (otherlv_2= LeftSquareBracket ( (lv_parts_3_0= ruleGraphName ) ) (otherlv_4= Comma ( (lv_parts_5_0= ruleGraphName ) ) )* otherlv_6= RightSquareBracket )?
+            // InternalResolutionModelParser.g:728:2: ( () otherlv_1= RelativeNamespace (otherlv_2= LeftSquareBracket ( (lv_parts_3_0= ruleGraphName ) ) (otherlv_4= Comma ( (lv_parts_5_0= ruleGraphName ) ) )* otherlv_6= RightSquareBracket )? )
+            // InternalResolutionModelParser.g:729:3: () otherlv_1= RelativeNamespace (otherlv_2= LeftSquareBracket ( (lv_parts_3_0= ruleGraphName ) ) (otherlv_4= Comma ( (lv_parts_5_0= ruleGraphName ) ) )* otherlv_6= RightSquareBracket )?
             {
-            // InternalResolutionModelParser.g:674:3: ()
-            // InternalResolutionModelParser.g:675:4: 
+            // InternalResolutionModelParser.g:729:3: ()
+            // InternalResolutionModelParser.g:730:4: 
             {
 
             				current = forceCreateModelElement(
@@ -1752,11 +1887,11 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,RelativeNamespace,FOLLOW_19); 
+            otherlv_1=(Token)match(input,RelativeNamespace,FOLLOW_20); 
 
             			newLeafNode(otherlv_1, grammarAccess.getRelativeNamespace_ImplAccess().getRelativeNamespaceKeyword_1());
             		
-            // InternalResolutionModelParser.g:685:3: (otherlv_2= LeftSquareBracket ( (lv_parts_3_0= ruleGraphName ) ) (otherlv_4= Comma ( (lv_parts_5_0= ruleGraphName ) ) )* otherlv_6= RightSquareBracket )?
+            // InternalResolutionModelParser.g:740:3: (otherlv_2= LeftSquareBracket ( (lv_parts_3_0= ruleGraphName ) ) (otherlv_4= Comma ( (lv_parts_5_0= ruleGraphName ) ) )* otherlv_6= RightSquareBracket )?
             int alt10=2;
             int LA10_0 = input.LA(1);
 
@@ -1765,22 +1900,22 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
             }
             switch (alt10) {
                 case 1 :
-                    // InternalResolutionModelParser.g:686:4: otherlv_2= LeftSquareBracket ( (lv_parts_3_0= ruleGraphName ) ) (otherlv_4= Comma ( (lv_parts_5_0= ruleGraphName ) ) )* otherlv_6= RightSquareBracket
+                    // InternalResolutionModelParser.g:741:4: otherlv_2= LeftSquareBracket ( (lv_parts_3_0= ruleGraphName ) ) (otherlv_4= Comma ( (lv_parts_5_0= ruleGraphName ) ) )* otherlv_6= RightSquareBracket
                     {
-                    otherlv_2=(Token)match(input,LeftSquareBracket,FOLLOW_20); 
+                    otherlv_2=(Token)match(input,LeftSquareBracket,FOLLOW_21); 
 
                     				newLeafNode(otherlv_2, grammarAccess.getRelativeNamespace_ImplAccess().getLeftSquareBracketKeyword_2_0());
                     			
-                    // InternalResolutionModelParser.g:690:4: ( (lv_parts_3_0= ruleGraphName ) )
-                    // InternalResolutionModelParser.g:691:5: (lv_parts_3_0= ruleGraphName )
+                    // InternalResolutionModelParser.g:745:4: ( (lv_parts_3_0= ruleGraphName ) )
+                    // InternalResolutionModelParser.g:746:5: (lv_parts_3_0= ruleGraphName )
                     {
-                    // InternalResolutionModelParser.g:691:5: (lv_parts_3_0= ruleGraphName )
-                    // InternalResolutionModelParser.g:692:6: lv_parts_3_0= ruleGraphName
+                    // InternalResolutionModelParser.g:746:5: (lv_parts_3_0= ruleGraphName )
+                    // InternalResolutionModelParser.g:747:6: lv_parts_3_0= ruleGraphName
                     {
 
                     						newCompositeNode(grammarAccess.getRelativeNamespace_ImplAccess().getPartsGraphNameParserRuleCall_2_1_0());
                     					
-                    pushFollow(FOLLOW_21);
+                    pushFollow(FOLLOW_22);
                     lv_parts_3_0=ruleGraphName();
 
                     state._fsp--;
@@ -1802,7 +1937,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // InternalResolutionModelParser.g:709:4: (otherlv_4= Comma ( (lv_parts_5_0= ruleGraphName ) ) )*
+                    // InternalResolutionModelParser.g:764:4: (otherlv_4= Comma ( (lv_parts_5_0= ruleGraphName ) ) )*
                     loop9:
                     do {
                         int alt9=2;
@@ -1815,22 +1950,22 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
                         switch (alt9) {
                     	case 1 :
-                    	    // InternalResolutionModelParser.g:710:5: otherlv_4= Comma ( (lv_parts_5_0= ruleGraphName ) )
+                    	    // InternalResolutionModelParser.g:765:5: otherlv_4= Comma ( (lv_parts_5_0= ruleGraphName ) )
                     	    {
-                    	    otherlv_4=(Token)match(input,Comma,FOLLOW_20); 
+                    	    otherlv_4=(Token)match(input,Comma,FOLLOW_21); 
 
                     	    					newLeafNode(otherlv_4, grammarAccess.getRelativeNamespace_ImplAccess().getCommaKeyword_2_2_0());
                     	    				
-                    	    // InternalResolutionModelParser.g:714:5: ( (lv_parts_5_0= ruleGraphName ) )
-                    	    // InternalResolutionModelParser.g:715:6: (lv_parts_5_0= ruleGraphName )
+                    	    // InternalResolutionModelParser.g:769:5: ( (lv_parts_5_0= ruleGraphName ) )
+                    	    // InternalResolutionModelParser.g:770:6: (lv_parts_5_0= ruleGraphName )
                     	    {
-                    	    // InternalResolutionModelParser.g:715:6: (lv_parts_5_0= ruleGraphName )
-                    	    // InternalResolutionModelParser.g:716:7: lv_parts_5_0= ruleGraphName
+                    	    // InternalResolutionModelParser.g:770:6: (lv_parts_5_0= ruleGraphName )
+                    	    // InternalResolutionModelParser.g:771:7: lv_parts_5_0= ruleGraphName
                     	    {
 
                     	    							newCompositeNode(grammarAccess.getRelativeNamespace_ImplAccess().getPartsGraphNameParserRuleCall_2_2_1_0());
                     	    						
-                    	    pushFollow(FOLLOW_21);
+                    	    pushFollow(FOLLOW_22);
                     	    lv_parts_5_0=ruleGraphName();
 
                     	    state._fsp--;
@@ -1894,7 +2029,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRulePrivateNamespace"
-    // InternalResolutionModelParser.g:743:1: entryRulePrivateNamespace returns [EObject current=null] : iv_rulePrivateNamespace= rulePrivateNamespace EOF ;
+    // InternalResolutionModelParser.g:798:1: entryRulePrivateNamespace returns [EObject current=null] : iv_rulePrivateNamespace= rulePrivateNamespace EOF ;
     public final EObject entryRulePrivateNamespace() throws RecognitionException {
         EObject current = null;
 
@@ -1902,8 +2037,8 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalResolutionModelParser.g:743:57: (iv_rulePrivateNamespace= rulePrivateNamespace EOF )
-            // InternalResolutionModelParser.g:744:2: iv_rulePrivateNamespace= rulePrivateNamespace EOF
+            // InternalResolutionModelParser.g:798:57: (iv_rulePrivateNamespace= rulePrivateNamespace EOF )
+            // InternalResolutionModelParser.g:799:2: iv_rulePrivateNamespace= rulePrivateNamespace EOF
             {
              newCompositeNode(grammarAccess.getPrivateNamespaceRule()); 
             pushFollow(FOLLOW_1);
@@ -1930,7 +2065,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "rulePrivateNamespace"
-    // InternalResolutionModelParser.g:750:1: rulePrivateNamespace returns [EObject current=null] : ( () otherlv_1= PrivateNamespace (otherlv_2= LeftSquareBracket ( (lv_parts_3_0= ruleGraphName ) ) (otherlv_4= Comma ( (lv_parts_5_0= ruleGraphName ) ) )* otherlv_6= RightSquareBracket )? ) ;
+    // InternalResolutionModelParser.g:805:1: rulePrivateNamespace returns [EObject current=null] : ( () otherlv_1= PrivateNamespace (otherlv_2= LeftSquareBracket ( (lv_parts_3_0= ruleGraphName ) ) (otherlv_4= Comma ( (lv_parts_5_0= ruleGraphName ) ) )* otherlv_6= RightSquareBracket )? ) ;
     public final EObject rulePrivateNamespace() throws RecognitionException {
         EObject current = null;
 
@@ -1947,14 +2082,14 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalResolutionModelParser.g:756:2: ( ( () otherlv_1= PrivateNamespace (otherlv_2= LeftSquareBracket ( (lv_parts_3_0= ruleGraphName ) ) (otherlv_4= Comma ( (lv_parts_5_0= ruleGraphName ) ) )* otherlv_6= RightSquareBracket )? ) )
-            // InternalResolutionModelParser.g:757:2: ( () otherlv_1= PrivateNamespace (otherlv_2= LeftSquareBracket ( (lv_parts_3_0= ruleGraphName ) ) (otherlv_4= Comma ( (lv_parts_5_0= ruleGraphName ) ) )* otherlv_6= RightSquareBracket )? )
+            // InternalResolutionModelParser.g:811:2: ( ( () otherlv_1= PrivateNamespace (otherlv_2= LeftSquareBracket ( (lv_parts_3_0= ruleGraphName ) ) (otherlv_4= Comma ( (lv_parts_5_0= ruleGraphName ) ) )* otherlv_6= RightSquareBracket )? ) )
+            // InternalResolutionModelParser.g:812:2: ( () otherlv_1= PrivateNamespace (otherlv_2= LeftSquareBracket ( (lv_parts_3_0= ruleGraphName ) ) (otherlv_4= Comma ( (lv_parts_5_0= ruleGraphName ) ) )* otherlv_6= RightSquareBracket )? )
             {
-            // InternalResolutionModelParser.g:757:2: ( () otherlv_1= PrivateNamespace (otherlv_2= LeftSquareBracket ( (lv_parts_3_0= ruleGraphName ) ) (otherlv_4= Comma ( (lv_parts_5_0= ruleGraphName ) ) )* otherlv_6= RightSquareBracket )? )
-            // InternalResolutionModelParser.g:758:3: () otherlv_1= PrivateNamespace (otherlv_2= LeftSquareBracket ( (lv_parts_3_0= ruleGraphName ) ) (otherlv_4= Comma ( (lv_parts_5_0= ruleGraphName ) ) )* otherlv_6= RightSquareBracket )?
+            // InternalResolutionModelParser.g:812:2: ( () otherlv_1= PrivateNamespace (otherlv_2= LeftSquareBracket ( (lv_parts_3_0= ruleGraphName ) ) (otherlv_4= Comma ( (lv_parts_5_0= ruleGraphName ) ) )* otherlv_6= RightSquareBracket )? )
+            // InternalResolutionModelParser.g:813:3: () otherlv_1= PrivateNamespace (otherlv_2= LeftSquareBracket ( (lv_parts_3_0= ruleGraphName ) ) (otherlv_4= Comma ( (lv_parts_5_0= ruleGraphName ) ) )* otherlv_6= RightSquareBracket )?
             {
-            // InternalResolutionModelParser.g:758:3: ()
-            // InternalResolutionModelParser.g:759:4: 
+            // InternalResolutionModelParser.g:813:3: ()
+            // InternalResolutionModelParser.g:814:4: 
             {
 
             				current = forceCreateModelElement(
@@ -1964,11 +2099,11 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,PrivateNamespace,FOLLOW_19); 
+            otherlv_1=(Token)match(input,PrivateNamespace,FOLLOW_20); 
 
             			newLeafNode(otherlv_1, grammarAccess.getPrivateNamespaceAccess().getPrivateNamespaceKeyword_1());
             		
-            // InternalResolutionModelParser.g:769:3: (otherlv_2= LeftSquareBracket ( (lv_parts_3_0= ruleGraphName ) ) (otherlv_4= Comma ( (lv_parts_5_0= ruleGraphName ) ) )* otherlv_6= RightSquareBracket )?
+            // InternalResolutionModelParser.g:824:3: (otherlv_2= LeftSquareBracket ( (lv_parts_3_0= ruleGraphName ) ) (otherlv_4= Comma ( (lv_parts_5_0= ruleGraphName ) ) )* otherlv_6= RightSquareBracket )?
             int alt12=2;
             int LA12_0 = input.LA(1);
 
@@ -1977,22 +2112,22 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
             }
             switch (alt12) {
                 case 1 :
-                    // InternalResolutionModelParser.g:770:4: otherlv_2= LeftSquareBracket ( (lv_parts_3_0= ruleGraphName ) ) (otherlv_4= Comma ( (lv_parts_5_0= ruleGraphName ) ) )* otherlv_6= RightSquareBracket
+                    // InternalResolutionModelParser.g:825:4: otherlv_2= LeftSquareBracket ( (lv_parts_3_0= ruleGraphName ) ) (otherlv_4= Comma ( (lv_parts_5_0= ruleGraphName ) ) )* otherlv_6= RightSquareBracket
                     {
-                    otherlv_2=(Token)match(input,LeftSquareBracket,FOLLOW_20); 
+                    otherlv_2=(Token)match(input,LeftSquareBracket,FOLLOW_21); 
 
                     				newLeafNode(otherlv_2, grammarAccess.getPrivateNamespaceAccess().getLeftSquareBracketKeyword_2_0());
                     			
-                    // InternalResolutionModelParser.g:774:4: ( (lv_parts_3_0= ruleGraphName ) )
-                    // InternalResolutionModelParser.g:775:5: (lv_parts_3_0= ruleGraphName )
+                    // InternalResolutionModelParser.g:829:4: ( (lv_parts_3_0= ruleGraphName ) )
+                    // InternalResolutionModelParser.g:830:5: (lv_parts_3_0= ruleGraphName )
                     {
-                    // InternalResolutionModelParser.g:775:5: (lv_parts_3_0= ruleGraphName )
-                    // InternalResolutionModelParser.g:776:6: lv_parts_3_0= ruleGraphName
+                    // InternalResolutionModelParser.g:830:5: (lv_parts_3_0= ruleGraphName )
+                    // InternalResolutionModelParser.g:831:6: lv_parts_3_0= ruleGraphName
                     {
 
                     						newCompositeNode(grammarAccess.getPrivateNamespaceAccess().getPartsGraphNameParserRuleCall_2_1_0());
                     					
-                    pushFollow(FOLLOW_21);
+                    pushFollow(FOLLOW_22);
                     lv_parts_3_0=ruleGraphName();
 
                     state._fsp--;
@@ -2014,7 +2149,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // InternalResolutionModelParser.g:793:4: (otherlv_4= Comma ( (lv_parts_5_0= ruleGraphName ) ) )*
+                    // InternalResolutionModelParser.g:848:4: (otherlv_4= Comma ( (lv_parts_5_0= ruleGraphName ) ) )*
                     loop11:
                     do {
                         int alt11=2;
@@ -2027,22 +2162,22 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
                         switch (alt11) {
                     	case 1 :
-                    	    // InternalResolutionModelParser.g:794:5: otherlv_4= Comma ( (lv_parts_5_0= ruleGraphName ) )
+                    	    // InternalResolutionModelParser.g:849:5: otherlv_4= Comma ( (lv_parts_5_0= ruleGraphName ) )
                     	    {
-                    	    otherlv_4=(Token)match(input,Comma,FOLLOW_20); 
+                    	    otherlv_4=(Token)match(input,Comma,FOLLOW_21); 
 
                     	    					newLeafNode(otherlv_4, grammarAccess.getPrivateNamespaceAccess().getCommaKeyword_2_2_0());
                     	    				
-                    	    // InternalResolutionModelParser.g:798:5: ( (lv_parts_5_0= ruleGraphName ) )
-                    	    // InternalResolutionModelParser.g:799:6: (lv_parts_5_0= ruleGraphName )
+                    	    // InternalResolutionModelParser.g:853:5: ( (lv_parts_5_0= ruleGraphName ) )
+                    	    // InternalResolutionModelParser.g:854:6: (lv_parts_5_0= ruleGraphName )
                     	    {
-                    	    // InternalResolutionModelParser.g:799:6: (lv_parts_5_0= ruleGraphName )
-                    	    // InternalResolutionModelParser.g:800:7: lv_parts_5_0= ruleGraphName
+                    	    // InternalResolutionModelParser.g:854:6: (lv_parts_5_0= ruleGraphName )
+                    	    // InternalResolutionModelParser.g:855:7: lv_parts_5_0= ruleGraphName
                     	    {
 
                     	    							newCompositeNode(grammarAccess.getPrivateNamespaceAccess().getPartsGraphNameParserRuleCall_2_2_1_0());
                     	    						
-                    	    pushFollow(FOLLOW_21);
+                    	    pushFollow(FOLLOW_22);
                     	    lv_parts_5_0=ruleGraphName();
 
                     	    state._fsp--;
@@ -2106,7 +2241,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleParameterType"
-    // InternalResolutionModelParser.g:827:1: entryRuleParameterType returns [EObject current=null] : iv_ruleParameterType= ruleParameterType EOF ;
+    // InternalResolutionModelParser.g:882:1: entryRuleParameterType returns [EObject current=null] : iv_ruleParameterType= ruleParameterType EOF ;
     public final EObject entryRuleParameterType() throws RecognitionException {
         EObject current = null;
 
@@ -2114,8 +2249,8 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalResolutionModelParser.g:827:54: (iv_ruleParameterType= ruleParameterType EOF )
-            // InternalResolutionModelParser.g:828:2: iv_ruleParameterType= ruleParameterType EOF
+            // InternalResolutionModelParser.g:882:54: (iv_ruleParameterType= ruleParameterType EOF )
+            // InternalResolutionModelParser.g:883:2: iv_ruleParameterType= ruleParameterType EOF
             {
              newCompositeNode(grammarAccess.getParameterTypeRule()); 
             pushFollow(FOLLOW_1);
@@ -2142,7 +2277,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleParameterType"
-    // InternalResolutionModelParser.g:834:1: ruleParameterType returns [EObject current=null] : (this_ParameterListType_0= ruleParameterListType | this_ParameterStructType_1= ruleParameterStructType | this_ParameterIntegerType_2= ruleParameterIntegerType | this_ParameterStringType_3= ruleParameterStringType | this_ParameterDoubleType_4= ruleParameterDoubleType | this_ParameterBooleanType_5= ruleParameterBooleanType | this_ParameterBase64Type_6= ruleParameterBase64Type | this_ParameterArrayType_7= ruleParameterArrayType ) ;
+    // InternalResolutionModelParser.g:889:1: ruleParameterType returns [EObject current=null] : (this_ParameterListType_0= ruleParameterListType | this_ParameterStructType_1= ruleParameterStructType | this_ParameterIntegerType_2= ruleParameterIntegerType | this_ParameterStringType_3= ruleParameterStringType | this_ParameterDoubleType_4= ruleParameterDoubleType | this_ParameterBooleanType_5= ruleParameterBooleanType | this_ParameterBase64Type_6= ruleParameterBase64Type | this_ParameterArrayType_7= ruleParameterArrayType ) ;
     public final EObject ruleParameterType() throws RecognitionException {
         EObject current = null;
 
@@ -2167,10 +2302,10 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalResolutionModelParser.g:840:2: ( (this_ParameterListType_0= ruleParameterListType | this_ParameterStructType_1= ruleParameterStructType | this_ParameterIntegerType_2= ruleParameterIntegerType | this_ParameterStringType_3= ruleParameterStringType | this_ParameterDoubleType_4= ruleParameterDoubleType | this_ParameterBooleanType_5= ruleParameterBooleanType | this_ParameterBase64Type_6= ruleParameterBase64Type | this_ParameterArrayType_7= ruleParameterArrayType ) )
-            // InternalResolutionModelParser.g:841:2: (this_ParameterListType_0= ruleParameterListType | this_ParameterStructType_1= ruleParameterStructType | this_ParameterIntegerType_2= ruleParameterIntegerType | this_ParameterStringType_3= ruleParameterStringType | this_ParameterDoubleType_4= ruleParameterDoubleType | this_ParameterBooleanType_5= ruleParameterBooleanType | this_ParameterBase64Type_6= ruleParameterBase64Type | this_ParameterArrayType_7= ruleParameterArrayType )
+            // InternalResolutionModelParser.g:895:2: ( (this_ParameterListType_0= ruleParameterListType | this_ParameterStructType_1= ruleParameterStructType | this_ParameterIntegerType_2= ruleParameterIntegerType | this_ParameterStringType_3= ruleParameterStringType | this_ParameterDoubleType_4= ruleParameterDoubleType | this_ParameterBooleanType_5= ruleParameterBooleanType | this_ParameterBase64Type_6= ruleParameterBase64Type | this_ParameterArrayType_7= ruleParameterArrayType ) )
+            // InternalResolutionModelParser.g:896:2: (this_ParameterListType_0= ruleParameterListType | this_ParameterStructType_1= ruleParameterStructType | this_ParameterIntegerType_2= ruleParameterIntegerType | this_ParameterStringType_3= ruleParameterStringType | this_ParameterDoubleType_4= ruleParameterDoubleType | this_ParameterBooleanType_5= ruleParameterBooleanType | this_ParameterBase64Type_6= ruleParameterBase64Type | this_ParameterArrayType_7= ruleParameterArrayType )
             {
-            // InternalResolutionModelParser.g:841:2: (this_ParameterListType_0= ruleParameterListType | this_ParameterStructType_1= ruleParameterStructType | this_ParameterIntegerType_2= ruleParameterIntegerType | this_ParameterStringType_3= ruleParameterStringType | this_ParameterDoubleType_4= ruleParameterDoubleType | this_ParameterBooleanType_5= ruleParameterBooleanType | this_ParameterBase64Type_6= ruleParameterBase64Type | this_ParameterArrayType_7= ruleParameterArrayType )
+            // InternalResolutionModelParser.g:896:2: (this_ParameterListType_0= ruleParameterListType | this_ParameterStructType_1= ruleParameterStructType | this_ParameterIntegerType_2= ruleParameterIntegerType | this_ParameterStringType_3= ruleParameterStringType | this_ParameterDoubleType_4= ruleParameterDoubleType | this_ParameterBooleanType_5= ruleParameterBooleanType | this_ParameterBase64Type_6= ruleParameterBase64Type | this_ParameterArrayType_7= ruleParameterArrayType )
             int alt13=8;
             switch ( input.LA(1) ) {
             case List:
@@ -2222,7 +2357,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
             switch (alt13) {
                 case 1 :
-                    // InternalResolutionModelParser.g:842:3: this_ParameterListType_0= ruleParameterListType
+                    // InternalResolutionModelParser.g:897:3: this_ParameterListType_0= ruleParameterListType
                     {
 
                     			newCompositeNode(grammarAccess.getParameterTypeAccess().getParameterListTypeParserRuleCall_0());
@@ -2240,7 +2375,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // InternalResolutionModelParser.g:851:3: this_ParameterStructType_1= ruleParameterStructType
+                    // InternalResolutionModelParser.g:906:3: this_ParameterStructType_1= ruleParameterStructType
                     {
 
                     			newCompositeNode(grammarAccess.getParameterTypeAccess().getParameterStructTypeParserRuleCall_1());
@@ -2258,7 +2393,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 3 :
-                    // InternalResolutionModelParser.g:860:3: this_ParameterIntegerType_2= ruleParameterIntegerType
+                    // InternalResolutionModelParser.g:915:3: this_ParameterIntegerType_2= ruleParameterIntegerType
                     {
 
                     			newCompositeNode(grammarAccess.getParameterTypeAccess().getParameterIntegerTypeParserRuleCall_2());
@@ -2276,7 +2411,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 4 :
-                    // InternalResolutionModelParser.g:869:3: this_ParameterStringType_3= ruleParameterStringType
+                    // InternalResolutionModelParser.g:924:3: this_ParameterStringType_3= ruleParameterStringType
                     {
 
                     			newCompositeNode(grammarAccess.getParameterTypeAccess().getParameterStringTypeParserRuleCall_3());
@@ -2294,7 +2429,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 5 :
-                    // InternalResolutionModelParser.g:878:3: this_ParameterDoubleType_4= ruleParameterDoubleType
+                    // InternalResolutionModelParser.g:933:3: this_ParameterDoubleType_4= ruleParameterDoubleType
                     {
 
                     			newCompositeNode(grammarAccess.getParameterTypeAccess().getParameterDoubleTypeParserRuleCall_4());
@@ -2312,7 +2447,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 6 :
-                    // InternalResolutionModelParser.g:887:3: this_ParameterBooleanType_5= ruleParameterBooleanType
+                    // InternalResolutionModelParser.g:942:3: this_ParameterBooleanType_5= ruleParameterBooleanType
                     {
 
                     			newCompositeNode(grammarAccess.getParameterTypeAccess().getParameterBooleanTypeParserRuleCall_5());
@@ -2330,7 +2465,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 7 :
-                    // InternalResolutionModelParser.g:896:3: this_ParameterBase64Type_6= ruleParameterBase64Type
+                    // InternalResolutionModelParser.g:951:3: this_ParameterBase64Type_6= ruleParameterBase64Type
                     {
 
                     			newCompositeNode(grammarAccess.getParameterTypeAccess().getParameterBase64TypeParserRuleCall_6());
@@ -2348,7 +2483,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 8 :
-                    // InternalResolutionModelParser.g:905:3: this_ParameterArrayType_7= ruleParameterArrayType
+                    // InternalResolutionModelParser.g:960:3: this_ParameterArrayType_7= ruleParameterArrayType
                     {
 
                     			newCompositeNode(grammarAccess.getParameterTypeAccess().getParameterArrayTypeParserRuleCall_7());
@@ -2388,7 +2523,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleParameterValue"
-    // InternalResolutionModelParser.g:917:1: entryRuleParameterValue returns [EObject current=null] : iv_ruleParameterValue= ruleParameterValue EOF ;
+    // InternalResolutionModelParser.g:972:1: entryRuleParameterValue returns [EObject current=null] : iv_ruleParameterValue= ruleParameterValue EOF ;
     public final EObject entryRuleParameterValue() throws RecognitionException {
         EObject current = null;
 
@@ -2396,8 +2531,8 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalResolutionModelParser.g:917:55: (iv_ruleParameterValue= ruleParameterValue EOF )
-            // InternalResolutionModelParser.g:918:2: iv_ruleParameterValue= ruleParameterValue EOF
+            // InternalResolutionModelParser.g:972:55: (iv_ruleParameterValue= ruleParameterValue EOF )
+            // InternalResolutionModelParser.g:973:2: iv_ruleParameterValue= ruleParameterValue EOF
             {
              newCompositeNode(grammarAccess.getParameterValueRule()); 
             pushFollow(FOLLOW_1);
@@ -2424,7 +2559,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleParameterValue"
-    // InternalResolutionModelParser.g:924:1: ruleParameterValue returns [EObject current=null] : (this_ParameterString_0= ruleParameterString | this_ParameterBase64_1= ruleParameterBase64 | this_ParameterInteger_2= ruleParameterInteger | this_ParameterDouble_3= ruleParameterDouble | this_ParameterBoolean_4= ruleParameterBoolean | this_ParameterList_5= ruleParameterList | this_ParameterStruct_6= ruleParameterStruct ) ;
+    // InternalResolutionModelParser.g:979:1: ruleParameterValue returns [EObject current=null] : (this_ParameterString_0= ruleParameterString | this_ParameterBase64_1= ruleParameterBase64 | this_ParameterInteger_2= ruleParameterInteger | this_ParameterDouble_3= ruleParameterDouble | this_ParameterBoolean_4= ruleParameterBoolean | this_ParameterList_5= ruleParameterList | this_ParameterStruct_6= ruleParameterStruct ) ;
     public final EObject ruleParameterValue() throws RecognitionException {
         EObject current = null;
 
@@ -2447,15 +2582,15 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalResolutionModelParser.g:930:2: ( (this_ParameterString_0= ruleParameterString | this_ParameterBase64_1= ruleParameterBase64 | this_ParameterInteger_2= ruleParameterInteger | this_ParameterDouble_3= ruleParameterDouble | this_ParameterBoolean_4= ruleParameterBoolean | this_ParameterList_5= ruleParameterList | this_ParameterStruct_6= ruleParameterStruct ) )
-            // InternalResolutionModelParser.g:931:2: (this_ParameterString_0= ruleParameterString | this_ParameterBase64_1= ruleParameterBase64 | this_ParameterInteger_2= ruleParameterInteger | this_ParameterDouble_3= ruleParameterDouble | this_ParameterBoolean_4= ruleParameterBoolean | this_ParameterList_5= ruleParameterList | this_ParameterStruct_6= ruleParameterStruct )
+            // InternalResolutionModelParser.g:985:2: ( (this_ParameterString_0= ruleParameterString | this_ParameterBase64_1= ruleParameterBase64 | this_ParameterInteger_2= ruleParameterInteger | this_ParameterDouble_3= ruleParameterDouble | this_ParameterBoolean_4= ruleParameterBoolean | this_ParameterList_5= ruleParameterList | this_ParameterStruct_6= ruleParameterStruct ) )
+            // InternalResolutionModelParser.g:986:2: (this_ParameterString_0= ruleParameterString | this_ParameterBase64_1= ruleParameterBase64 | this_ParameterInteger_2= ruleParameterInteger | this_ParameterDouble_3= ruleParameterDouble | this_ParameterBoolean_4= ruleParameterBoolean | this_ParameterList_5= ruleParameterList | this_ParameterStruct_6= ruleParameterStruct )
             {
-            // InternalResolutionModelParser.g:931:2: (this_ParameterString_0= ruleParameterString | this_ParameterBase64_1= ruleParameterBase64 | this_ParameterInteger_2= ruleParameterInteger | this_ParameterDouble_3= ruleParameterDouble | this_ParameterBoolean_4= ruleParameterBoolean | this_ParameterList_5= ruleParameterList | this_ParameterStruct_6= ruleParameterStruct )
+            // InternalResolutionModelParser.g:986:2: (this_ParameterString_0= ruleParameterString | this_ParameterBase64_1= ruleParameterBase64 | this_ParameterInteger_2= ruleParameterInteger | this_ParameterDouble_3= ruleParameterDouble | this_ParameterBoolean_4= ruleParameterBoolean | this_ParameterList_5= ruleParameterList | this_ParameterStruct_6= ruleParameterStruct )
             int alt14=7;
             alt14 = dfa14.predict(input);
             switch (alt14) {
                 case 1 :
-                    // InternalResolutionModelParser.g:932:3: this_ParameterString_0= ruleParameterString
+                    // InternalResolutionModelParser.g:987:3: this_ParameterString_0= ruleParameterString
                     {
 
                     			newCompositeNode(grammarAccess.getParameterValueAccess().getParameterStringParserRuleCall_0());
@@ -2473,7 +2608,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // InternalResolutionModelParser.g:941:3: this_ParameterBase64_1= ruleParameterBase64
+                    // InternalResolutionModelParser.g:996:3: this_ParameterBase64_1= ruleParameterBase64
                     {
 
                     			newCompositeNode(grammarAccess.getParameterValueAccess().getParameterBase64ParserRuleCall_1());
@@ -2491,7 +2626,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 3 :
-                    // InternalResolutionModelParser.g:950:3: this_ParameterInteger_2= ruleParameterInteger
+                    // InternalResolutionModelParser.g:1005:3: this_ParameterInteger_2= ruleParameterInteger
                     {
 
                     			newCompositeNode(grammarAccess.getParameterValueAccess().getParameterIntegerParserRuleCall_2());
@@ -2509,7 +2644,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 4 :
-                    // InternalResolutionModelParser.g:959:3: this_ParameterDouble_3= ruleParameterDouble
+                    // InternalResolutionModelParser.g:1014:3: this_ParameterDouble_3= ruleParameterDouble
                     {
 
                     			newCompositeNode(grammarAccess.getParameterValueAccess().getParameterDoubleParserRuleCall_3());
@@ -2527,7 +2662,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 5 :
-                    // InternalResolutionModelParser.g:968:3: this_ParameterBoolean_4= ruleParameterBoolean
+                    // InternalResolutionModelParser.g:1023:3: this_ParameterBoolean_4= ruleParameterBoolean
                     {
 
                     			newCompositeNode(grammarAccess.getParameterValueAccess().getParameterBooleanParserRuleCall_4());
@@ -2545,7 +2680,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 6 :
-                    // InternalResolutionModelParser.g:977:3: this_ParameterList_5= ruleParameterList
+                    // InternalResolutionModelParser.g:1032:3: this_ParameterList_5= ruleParameterList
                     {
 
                     			newCompositeNode(grammarAccess.getParameterValueAccess().getParameterListParserRuleCall_5());
@@ -2563,7 +2698,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 7 :
-                    // InternalResolutionModelParser.g:986:3: this_ParameterStruct_6= ruleParameterStruct
+                    // InternalResolutionModelParser.g:1041:3: this_ParameterStruct_6= ruleParameterStruct
                     {
 
                     			newCompositeNode(grammarAccess.getParameterValueAccess().getParameterStructParserRuleCall_6());
@@ -2603,7 +2738,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleParameterListType"
-    // InternalResolutionModelParser.g:998:1: entryRuleParameterListType returns [EObject current=null] : iv_ruleParameterListType= ruleParameterListType EOF ;
+    // InternalResolutionModelParser.g:1053:1: entryRuleParameterListType returns [EObject current=null] : iv_ruleParameterListType= ruleParameterListType EOF ;
     public final EObject entryRuleParameterListType() throws RecognitionException {
         EObject current = null;
 
@@ -2611,8 +2746,8 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalResolutionModelParser.g:998:58: (iv_ruleParameterListType= ruleParameterListType EOF )
-            // InternalResolutionModelParser.g:999:2: iv_ruleParameterListType= ruleParameterListType EOF
+            // InternalResolutionModelParser.g:1053:58: (iv_ruleParameterListType= ruleParameterListType EOF )
+            // InternalResolutionModelParser.g:1054:2: iv_ruleParameterListType= ruleParameterListType EOF
             {
              newCompositeNode(grammarAccess.getParameterListTypeRule()); 
             pushFollow(FOLLOW_1);
@@ -2639,7 +2774,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleParameterListType"
-    // InternalResolutionModelParser.g:1005:1: ruleParameterListType returns [EObject current=null] : ( () otherlv_1= List otherlv_2= LeftSquareBracket ( (lv_sequence_3_0= ruleParameterType ) ) (otherlv_4= Comma ( (lv_sequence_5_0= ruleParameterType ) ) )* otherlv_6= RightSquareBracket ) ;
+    // InternalResolutionModelParser.g:1060:1: ruleParameterListType returns [EObject current=null] : ( () otherlv_1= List otherlv_2= LeftSquareBracket ( (lv_sequence_3_0= ruleParameterType ) ) (otherlv_4= Comma ( (lv_sequence_5_0= ruleParameterType ) ) )* otherlv_6= RightSquareBracket ) ;
     public final EObject ruleParameterListType() throws RecognitionException {
         EObject current = null;
 
@@ -2656,14 +2791,14 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalResolutionModelParser.g:1011:2: ( ( () otherlv_1= List otherlv_2= LeftSquareBracket ( (lv_sequence_3_0= ruleParameterType ) ) (otherlv_4= Comma ( (lv_sequence_5_0= ruleParameterType ) ) )* otherlv_6= RightSquareBracket ) )
-            // InternalResolutionModelParser.g:1012:2: ( () otherlv_1= List otherlv_2= LeftSquareBracket ( (lv_sequence_3_0= ruleParameterType ) ) (otherlv_4= Comma ( (lv_sequence_5_0= ruleParameterType ) ) )* otherlv_6= RightSquareBracket )
+            // InternalResolutionModelParser.g:1066:2: ( ( () otherlv_1= List otherlv_2= LeftSquareBracket ( (lv_sequence_3_0= ruleParameterType ) ) (otherlv_4= Comma ( (lv_sequence_5_0= ruleParameterType ) ) )* otherlv_6= RightSquareBracket ) )
+            // InternalResolutionModelParser.g:1067:2: ( () otherlv_1= List otherlv_2= LeftSquareBracket ( (lv_sequence_3_0= ruleParameterType ) ) (otherlv_4= Comma ( (lv_sequence_5_0= ruleParameterType ) ) )* otherlv_6= RightSquareBracket )
             {
-            // InternalResolutionModelParser.g:1012:2: ( () otherlv_1= List otherlv_2= LeftSquareBracket ( (lv_sequence_3_0= ruleParameterType ) ) (otherlv_4= Comma ( (lv_sequence_5_0= ruleParameterType ) ) )* otherlv_6= RightSquareBracket )
-            // InternalResolutionModelParser.g:1013:3: () otherlv_1= List otherlv_2= LeftSquareBracket ( (lv_sequence_3_0= ruleParameterType ) ) (otherlv_4= Comma ( (lv_sequence_5_0= ruleParameterType ) ) )* otherlv_6= RightSquareBracket
+            // InternalResolutionModelParser.g:1067:2: ( () otherlv_1= List otherlv_2= LeftSquareBracket ( (lv_sequence_3_0= ruleParameterType ) ) (otherlv_4= Comma ( (lv_sequence_5_0= ruleParameterType ) ) )* otherlv_6= RightSquareBracket )
+            // InternalResolutionModelParser.g:1068:3: () otherlv_1= List otherlv_2= LeftSquareBracket ( (lv_sequence_3_0= ruleParameterType ) ) (otherlv_4= Comma ( (lv_sequence_5_0= ruleParameterType ) ) )* otherlv_6= RightSquareBracket
             {
-            // InternalResolutionModelParser.g:1013:3: ()
-            // InternalResolutionModelParser.g:1014:4: 
+            // InternalResolutionModelParser.g:1068:3: ()
+            // InternalResolutionModelParser.g:1069:4: 
             {
 
             				current = forceCreateModelElement(
@@ -2673,24 +2808,24 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,List,FOLLOW_22); 
+            otherlv_1=(Token)match(input,List,FOLLOW_23); 
 
             			newLeafNode(otherlv_1, grammarAccess.getParameterListTypeAccess().getListKeyword_1());
             		
-            otherlv_2=(Token)match(input,LeftSquareBracket,FOLLOW_23); 
+            otherlv_2=(Token)match(input,LeftSquareBracket,FOLLOW_24); 
 
             			newLeafNode(otherlv_2, grammarAccess.getParameterListTypeAccess().getLeftSquareBracketKeyword_2());
             		
-            // InternalResolutionModelParser.g:1028:3: ( (lv_sequence_3_0= ruleParameterType ) )
-            // InternalResolutionModelParser.g:1029:4: (lv_sequence_3_0= ruleParameterType )
+            // InternalResolutionModelParser.g:1083:3: ( (lv_sequence_3_0= ruleParameterType ) )
+            // InternalResolutionModelParser.g:1084:4: (lv_sequence_3_0= ruleParameterType )
             {
-            // InternalResolutionModelParser.g:1029:4: (lv_sequence_3_0= ruleParameterType )
-            // InternalResolutionModelParser.g:1030:5: lv_sequence_3_0= ruleParameterType
+            // InternalResolutionModelParser.g:1084:4: (lv_sequence_3_0= ruleParameterType )
+            // InternalResolutionModelParser.g:1085:5: lv_sequence_3_0= ruleParameterType
             {
 
             					newCompositeNode(grammarAccess.getParameterListTypeAccess().getSequenceParameterTypeParserRuleCall_3_0());
             				
-            pushFollow(FOLLOW_21);
+            pushFollow(FOLLOW_22);
             lv_sequence_3_0=ruleParameterType();
 
             state._fsp--;
@@ -2712,7 +2847,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalResolutionModelParser.g:1047:3: (otherlv_4= Comma ( (lv_sequence_5_0= ruleParameterType ) ) )*
+            // InternalResolutionModelParser.g:1102:3: (otherlv_4= Comma ( (lv_sequence_5_0= ruleParameterType ) ) )*
             loop15:
             do {
                 int alt15=2;
@@ -2725,22 +2860,22 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
                 switch (alt15) {
             	case 1 :
-            	    // InternalResolutionModelParser.g:1048:4: otherlv_4= Comma ( (lv_sequence_5_0= ruleParameterType ) )
+            	    // InternalResolutionModelParser.g:1103:4: otherlv_4= Comma ( (lv_sequence_5_0= ruleParameterType ) )
             	    {
-            	    otherlv_4=(Token)match(input,Comma,FOLLOW_23); 
+            	    otherlv_4=(Token)match(input,Comma,FOLLOW_24); 
 
             	    				newLeafNode(otherlv_4, grammarAccess.getParameterListTypeAccess().getCommaKeyword_4_0());
             	    			
-            	    // InternalResolutionModelParser.g:1052:4: ( (lv_sequence_5_0= ruleParameterType ) )
-            	    // InternalResolutionModelParser.g:1053:5: (lv_sequence_5_0= ruleParameterType )
+            	    // InternalResolutionModelParser.g:1107:4: ( (lv_sequence_5_0= ruleParameterType ) )
+            	    // InternalResolutionModelParser.g:1108:5: (lv_sequence_5_0= ruleParameterType )
             	    {
-            	    // InternalResolutionModelParser.g:1053:5: (lv_sequence_5_0= ruleParameterType )
-            	    // InternalResolutionModelParser.g:1054:6: lv_sequence_5_0= ruleParameterType
+            	    // InternalResolutionModelParser.g:1108:5: (lv_sequence_5_0= ruleParameterType )
+            	    // InternalResolutionModelParser.g:1109:6: lv_sequence_5_0= ruleParameterType
             	    {
 
             	    						newCompositeNode(grammarAccess.getParameterListTypeAccess().getSequenceParameterTypeParserRuleCall_4_1_0());
             	    					
-            	    pushFollow(FOLLOW_21);
+            	    pushFollow(FOLLOW_22);
             	    lv_sequence_5_0=ruleParameterType();
 
             	    state._fsp--;
@@ -2798,7 +2933,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleParameterStructType"
-    // InternalResolutionModelParser.g:1080:1: entryRuleParameterStructType returns [EObject current=null] : iv_ruleParameterStructType= ruleParameterStructType EOF ;
+    // InternalResolutionModelParser.g:1135:1: entryRuleParameterStructType returns [EObject current=null] : iv_ruleParameterStructType= ruleParameterStructType EOF ;
     public final EObject entryRuleParameterStructType() throws RecognitionException {
         EObject current = null;
 
@@ -2806,8 +2941,8 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalResolutionModelParser.g:1080:60: (iv_ruleParameterStructType= ruleParameterStructType EOF )
-            // InternalResolutionModelParser.g:1081:2: iv_ruleParameterStructType= ruleParameterStructType EOF
+            // InternalResolutionModelParser.g:1135:60: (iv_ruleParameterStructType= ruleParameterStructType EOF )
+            // InternalResolutionModelParser.g:1136:2: iv_ruleParameterStructType= ruleParameterStructType EOF
             {
              newCompositeNode(grammarAccess.getParameterStructTypeRule()); 
             pushFollow(FOLLOW_1);
@@ -2834,7 +2969,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleParameterStructType"
-    // InternalResolutionModelParser.g:1087:1: ruleParameterStructType returns [EObject current=null] : ( () otherlv_1= Struct otherlv_2= LeftSquareBracket ( (lv_parameterstructypetmember_3_0= ruleParameterStructTypeMember ) ) (otherlv_4= Comma ( (lv_parameterstructypetmember_5_0= ruleParameterStructTypeMember ) ) )* otherlv_6= RightSquareBracket ) ;
+    // InternalResolutionModelParser.g:1142:1: ruleParameterStructType returns [EObject current=null] : ( () otherlv_1= Struct otherlv_2= LeftSquareBracket ( (lv_parameterstructypetmember_3_0= ruleParameterStructTypeMember ) ) (otherlv_4= Comma ( (lv_parameterstructypetmember_5_0= ruleParameterStructTypeMember ) ) )* otherlv_6= RightSquareBracket ) ;
     public final EObject ruleParameterStructType() throws RecognitionException {
         EObject current = null;
 
@@ -2851,14 +2986,14 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalResolutionModelParser.g:1093:2: ( ( () otherlv_1= Struct otherlv_2= LeftSquareBracket ( (lv_parameterstructypetmember_3_0= ruleParameterStructTypeMember ) ) (otherlv_4= Comma ( (lv_parameterstructypetmember_5_0= ruleParameterStructTypeMember ) ) )* otherlv_6= RightSquareBracket ) )
-            // InternalResolutionModelParser.g:1094:2: ( () otherlv_1= Struct otherlv_2= LeftSquareBracket ( (lv_parameterstructypetmember_3_0= ruleParameterStructTypeMember ) ) (otherlv_4= Comma ( (lv_parameterstructypetmember_5_0= ruleParameterStructTypeMember ) ) )* otherlv_6= RightSquareBracket )
+            // InternalResolutionModelParser.g:1148:2: ( ( () otherlv_1= Struct otherlv_2= LeftSquareBracket ( (lv_parameterstructypetmember_3_0= ruleParameterStructTypeMember ) ) (otherlv_4= Comma ( (lv_parameterstructypetmember_5_0= ruleParameterStructTypeMember ) ) )* otherlv_6= RightSquareBracket ) )
+            // InternalResolutionModelParser.g:1149:2: ( () otherlv_1= Struct otherlv_2= LeftSquareBracket ( (lv_parameterstructypetmember_3_0= ruleParameterStructTypeMember ) ) (otherlv_4= Comma ( (lv_parameterstructypetmember_5_0= ruleParameterStructTypeMember ) ) )* otherlv_6= RightSquareBracket )
             {
-            // InternalResolutionModelParser.g:1094:2: ( () otherlv_1= Struct otherlv_2= LeftSquareBracket ( (lv_parameterstructypetmember_3_0= ruleParameterStructTypeMember ) ) (otherlv_4= Comma ( (lv_parameterstructypetmember_5_0= ruleParameterStructTypeMember ) ) )* otherlv_6= RightSquareBracket )
-            // InternalResolutionModelParser.g:1095:3: () otherlv_1= Struct otherlv_2= LeftSquareBracket ( (lv_parameterstructypetmember_3_0= ruleParameterStructTypeMember ) ) (otherlv_4= Comma ( (lv_parameterstructypetmember_5_0= ruleParameterStructTypeMember ) ) )* otherlv_6= RightSquareBracket
+            // InternalResolutionModelParser.g:1149:2: ( () otherlv_1= Struct otherlv_2= LeftSquareBracket ( (lv_parameterstructypetmember_3_0= ruleParameterStructTypeMember ) ) (otherlv_4= Comma ( (lv_parameterstructypetmember_5_0= ruleParameterStructTypeMember ) ) )* otherlv_6= RightSquareBracket )
+            // InternalResolutionModelParser.g:1150:3: () otherlv_1= Struct otherlv_2= LeftSquareBracket ( (lv_parameterstructypetmember_3_0= ruleParameterStructTypeMember ) ) (otherlv_4= Comma ( (lv_parameterstructypetmember_5_0= ruleParameterStructTypeMember ) ) )* otherlv_6= RightSquareBracket
             {
-            // InternalResolutionModelParser.g:1095:3: ()
-            // InternalResolutionModelParser.g:1096:4: 
+            // InternalResolutionModelParser.g:1150:3: ()
+            // InternalResolutionModelParser.g:1151:4: 
             {
 
             				current = forceCreateModelElement(
@@ -2868,24 +3003,24 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,Struct,FOLLOW_22); 
+            otherlv_1=(Token)match(input,Struct,FOLLOW_23); 
 
             			newLeafNode(otherlv_1, grammarAccess.getParameterStructTypeAccess().getStructKeyword_1());
             		
-            otherlv_2=(Token)match(input,LeftSquareBracket,FOLLOW_24); 
+            otherlv_2=(Token)match(input,LeftSquareBracket,FOLLOW_25); 
 
             			newLeafNode(otherlv_2, grammarAccess.getParameterStructTypeAccess().getLeftSquareBracketKeyword_2());
             		
-            // InternalResolutionModelParser.g:1110:3: ( (lv_parameterstructypetmember_3_0= ruleParameterStructTypeMember ) )
-            // InternalResolutionModelParser.g:1111:4: (lv_parameterstructypetmember_3_0= ruleParameterStructTypeMember )
+            // InternalResolutionModelParser.g:1165:3: ( (lv_parameterstructypetmember_3_0= ruleParameterStructTypeMember ) )
+            // InternalResolutionModelParser.g:1166:4: (lv_parameterstructypetmember_3_0= ruleParameterStructTypeMember )
             {
-            // InternalResolutionModelParser.g:1111:4: (lv_parameterstructypetmember_3_0= ruleParameterStructTypeMember )
-            // InternalResolutionModelParser.g:1112:5: lv_parameterstructypetmember_3_0= ruleParameterStructTypeMember
+            // InternalResolutionModelParser.g:1166:4: (lv_parameterstructypetmember_3_0= ruleParameterStructTypeMember )
+            // InternalResolutionModelParser.g:1167:5: lv_parameterstructypetmember_3_0= ruleParameterStructTypeMember
             {
 
             					newCompositeNode(grammarAccess.getParameterStructTypeAccess().getParameterstructypetmemberParameterStructTypeMemberParserRuleCall_3_0());
             				
-            pushFollow(FOLLOW_21);
+            pushFollow(FOLLOW_22);
             lv_parameterstructypetmember_3_0=ruleParameterStructTypeMember();
 
             state._fsp--;
@@ -2907,7 +3042,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalResolutionModelParser.g:1129:3: (otherlv_4= Comma ( (lv_parameterstructypetmember_5_0= ruleParameterStructTypeMember ) ) )*
+            // InternalResolutionModelParser.g:1184:3: (otherlv_4= Comma ( (lv_parameterstructypetmember_5_0= ruleParameterStructTypeMember ) ) )*
             loop16:
             do {
                 int alt16=2;
@@ -2920,22 +3055,22 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
                 switch (alt16) {
             	case 1 :
-            	    // InternalResolutionModelParser.g:1130:4: otherlv_4= Comma ( (lv_parameterstructypetmember_5_0= ruleParameterStructTypeMember ) )
+            	    // InternalResolutionModelParser.g:1185:4: otherlv_4= Comma ( (lv_parameterstructypetmember_5_0= ruleParameterStructTypeMember ) )
             	    {
-            	    otherlv_4=(Token)match(input,Comma,FOLLOW_24); 
+            	    otherlv_4=(Token)match(input,Comma,FOLLOW_25); 
 
             	    				newLeafNode(otherlv_4, grammarAccess.getParameterStructTypeAccess().getCommaKeyword_4_0());
             	    			
-            	    // InternalResolutionModelParser.g:1134:4: ( (lv_parameterstructypetmember_5_0= ruleParameterStructTypeMember ) )
-            	    // InternalResolutionModelParser.g:1135:5: (lv_parameterstructypetmember_5_0= ruleParameterStructTypeMember )
+            	    // InternalResolutionModelParser.g:1189:4: ( (lv_parameterstructypetmember_5_0= ruleParameterStructTypeMember ) )
+            	    // InternalResolutionModelParser.g:1190:5: (lv_parameterstructypetmember_5_0= ruleParameterStructTypeMember )
             	    {
-            	    // InternalResolutionModelParser.g:1135:5: (lv_parameterstructypetmember_5_0= ruleParameterStructTypeMember )
-            	    // InternalResolutionModelParser.g:1136:6: lv_parameterstructypetmember_5_0= ruleParameterStructTypeMember
+            	    // InternalResolutionModelParser.g:1190:5: (lv_parameterstructypetmember_5_0= ruleParameterStructTypeMember )
+            	    // InternalResolutionModelParser.g:1191:6: lv_parameterstructypetmember_5_0= ruleParameterStructTypeMember
             	    {
 
             	    						newCompositeNode(grammarAccess.getParameterStructTypeAccess().getParameterstructypetmemberParameterStructTypeMemberParserRuleCall_4_1_0());
             	    					
-            	    pushFollow(FOLLOW_21);
+            	    pushFollow(FOLLOW_22);
             	    lv_parameterstructypetmember_5_0=ruleParameterStructTypeMember();
 
             	    state._fsp--;
@@ -2993,7 +3128,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleParameterIntegerType"
-    // InternalResolutionModelParser.g:1162:1: entryRuleParameterIntegerType returns [EObject current=null] : iv_ruleParameterIntegerType= ruleParameterIntegerType EOF ;
+    // InternalResolutionModelParser.g:1217:1: entryRuleParameterIntegerType returns [EObject current=null] : iv_ruleParameterIntegerType= ruleParameterIntegerType EOF ;
     public final EObject entryRuleParameterIntegerType() throws RecognitionException {
         EObject current = null;
 
@@ -3001,8 +3136,8 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalResolutionModelParser.g:1162:61: (iv_ruleParameterIntegerType= ruleParameterIntegerType EOF )
-            // InternalResolutionModelParser.g:1163:2: iv_ruleParameterIntegerType= ruleParameterIntegerType EOF
+            // InternalResolutionModelParser.g:1217:61: (iv_ruleParameterIntegerType= ruleParameterIntegerType EOF )
+            // InternalResolutionModelParser.g:1218:2: iv_ruleParameterIntegerType= ruleParameterIntegerType EOF
             {
              newCompositeNode(grammarAccess.getParameterIntegerTypeRule()); 
             pushFollow(FOLLOW_1);
@@ -3029,7 +3164,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleParameterIntegerType"
-    // InternalResolutionModelParser.g:1169:1: ruleParameterIntegerType returns [EObject current=null] : ( () otherlv_1= Integer (otherlv_2= Default ( (lv_default_3_0= ruleParameterInteger ) ) )? ) ;
+    // InternalResolutionModelParser.g:1224:1: ruleParameterIntegerType returns [EObject current=null] : ( () otherlv_1= Integer (otherlv_2= Default ( (lv_default_3_0= ruleParameterInteger ) ) )? ) ;
     public final EObject ruleParameterIntegerType() throws RecognitionException {
         EObject current = null;
 
@@ -3042,14 +3177,14 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalResolutionModelParser.g:1175:2: ( ( () otherlv_1= Integer (otherlv_2= Default ( (lv_default_3_0= ruleParameterInteger ) ) )? ) )
-            // InternalResolutionModelParser.g:1176:2: ( () otherlv_1= Integer (otherlv_2= Default ( (lv_default_3_0= ruleParameterInteger ) ) )? )
+            // InternalResolutionModelParser.g:1230:2: ( ( () otherlv_1= Integer (otherlv_2= Default ( (lv_default_3_0= ruleParameterInteger ) ) )? ) )
+            // InternalResolutionModelParser.g:1231:2: ( () otherlv_1= Integer (otherlv_2= Default ( (lv_default_3_0= ruleParameterInteger ) ) )? )
             {
-            // InternalResolutionModelParser.g:1176:2: ( () otherlv_1= Integer (otherlv_2= Default ( (lv_default_3_0= ruleParameterInteger ) ) )? )
-            // InternalResolutionModelParser.g:1177:3: () otherlv_1= Integer (otherlv_2= Default ( (lv_default_3_0= ruleParameterInteger ) ) )?
+            // InternalResolutionModelParser.g:1231:2: ( () otherlv_1= Integer (otherlv_2= Default ( (lv_default_3_0= ruleParameterInteger ) ) )? )
+            // InternalResolutionModelParser.g:1232:3: () otherlv_1= Integer (otherlv_2= Default ( (lv_default_3_0= ruleParameterInteger ) ) )?
             {
-            // InternalResolutionModelParser.g:1177:3: ()
-            // InternalResolutionModelParser.g:1178:4: 
+            // InternalResolutionModelParser.g:1232:3: ()
+            // InternalResolutionModelParser.g:1233:4: 
             {
 
             				current = forceCreateModelElement(
@@ -3059,11 +3194,11 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,Integer,FOLLOW_25); 
+            otherlv_1=(Token)match(input,Integer,FOLLOW_26); 
 
             			newLeafNode(otherlv_1, grammarAccess.getParameterIntegerTypeAccess().getIntegerKeyword_1());
             		
-            // InternalResolutionModelParser.g:1188:3: (otherlv_2= Default ( (lv_default_3_0= ruleParameterInteger ) ) )?
+            // InternalResolutionModelParser.g:1243:3: (otherlv_2= Default ( (lv_default_3_0= ruleParameterInteger ) ) )?
             int alt17=2;
             int LA17_0 = input.LA(1);
 
@@ -3072,17 +3207,17 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
             }
             switch (alt17) {
                 case 1 :
-                    // InternalResolutionModelParser.g:1189:4: otherlv_2= Default ( (lv_default_3_0= ruleParameterInteger ) )
+                    // InternalResolutionModelParser.g:1244:4: otherlv_2= Default ( (lv_default_3_0= ruleParameterInteger ) )
                     {
-                    otherlv_2=(Token)match(input,Default,FOLLOW_26); 
+                    otherlv_2=(Token)match(input,Default,FOLLOW_27); 
 
                     				newLeafNode(otherlv_2, grammarAccess.getParameterIntegerTypeAccess().getDefaultKeyword_2_0());
                     			
-                    // InternalResolutionModelParser.g:1193:4: ( (lv_default_3_0= ruleParameterInteger ) )
-                    // InternalResolutionModelParser.g:1194:5: (lv_default_3_0= ruleParameterInteger )
+                    // InternalResolutionModelParser.g:1248:4: ( (lv_default_3_0= ruleParameterInteger ) )
+                    // InternalResolutionModelParser.g:1249:5: (lv_default_3_0= ruleParameterInteger )
                     {
-                    // InternalResolutionModelParser.g:1194:5: (lv_default_3_0= ruleParameterInteger )
-                    // InternalResolutionModelParser.g:1195:6: lv_default_3_0= ruleParameterInteger
+                    // InternalResolutionModelParser.g:1249:5: (lv_default_3_0= ruleParameterInteger )
+                    // InternalResolutionModelParser.g:1250:6: lv_default_3_0= ruleParameterInteger
                     {
 
                     						newCompositeNode(grammarAccess.getParameterIntegerTypeAccess().getDefaultParameterIntegerParserRuleCall_2_1_0());
@@ -3138,7 +3273,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleParameterStringType"
-    // InternalResolutionModelParser.g:1217:1: entryRuleParameterStringType returns [EObject current=null] : iv_ruleParameterStringType= ruleParameterStringType EOF ;
+    // InternalResolutionModelParser.g:1272:1: entryRuleParameterStringType returns [EObject current=null] : iv_ruleParameterStringType= ruleParameterStringType EOF ;
     public final EObject entryRuleParameterStringType() throws RecognitionException {
         EObject current = null;
 
@@ -3146,8 +3281,8 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalResolutionModelParser.g:1217:60: (iv_ruleParameterStringType= ruleParameterStringType EOF )
-            // InternalResolutionModelParser.g:1218:2: iv_ruleParameterStringType= ruleParameterStringType EOF
+            // InternalResolutionModelParser.g:1272:60: (iv_ruleParameterStringType= ruleParameterStringType EOF )
+            // InternalResolutionModelParser.g:1273:2: iv_ruleParameterStringType= ruleParameterStringType EOF
             {
              newCompositeNode(grammarAccess.getParameterStringTypeRule()); 
             pushFollow(FOLLOW_1);
@@ -3174,7 +3309,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleParameterStringType"
-    // InternalResolutionModelParser.g:1224:1: ruleParameterStringType returns [EObject current=null] : ( () otherlv_1= String (otherlv_2= Default ( (lv_default_3_0= ruleParameterString ) ) )? ) ;
+    // InternalResolutionModelParser.g:1279:1: ruleParameterStringType returns [EObject current=null] : ( () otherlv_1= String (otherlv_2= Default ( (lv_default_3_0= ruleParameterString ) ) )? ) ;
     public final EObject ruleParameterStringType() throws RecognitionException {
         EObject current = null;
 
@@ -3187,14 +3322,14 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalResolutionModelParser.g:1230:2: ( ( () otherlv_1= String (otherlv_2= Default ( (lv_default_3_0= ruleParameterString ) ) )? ) )
-            // InternalResolutionModelParser.g:1231:2: ( () otherlv_1= String (otherlv_2= Default ( (lv_default_3_0= ruleParameterString ) ) )? )
+            // InternalResolutionModelParser.g:1285:2: ( ( () otherlv_1= String (otherlv_2= Default ( (lv_default_3_0= ruleParameterString ) ) )? ) )
+            // InternalResolutionModelParser.g:1286:2: ( () otherlv_1= String (otherlv_2= Default ( (lv_default_3_0= ruleParameterString ) ) )? )
             {
-            // InternalResolutionModelParser.g:1231:2: ( () otherlv_1= String (otherlv_2= Default ( (lv_default_3_0= ruleParameterString ) ) )? )
-            // InternalResolutionModelParser.g:1232:3: () otherlv_1= String (otherlv_2= Default ( (lv_default_3_0= ruleParameterString ) ) )?
+            // InternalResolutionModelParser.g:1286:2: ( () otherlv_1= String (otherlv_2= Default ( (lv_default_3_0= ruleParameterString ) ) )? )
+            // InternalResolutionModelParser.g:1287:3: () otherlv_1= String (otherlv_2= Default ( (lv_default_3_0= ruleParameterString ) ) )?
             {
-            // InternalResolutionModelParser.g:1232:3: ()
-            // InternalResolutionModelParser.g:1233:4: 
+            // InternalResolutionModelParser.g:1287:3: ()
+            // InternalResolutionModelParser.g:1288:4: 
             {
 
             				current = forceCreateModelElement(
@@ -3204,11 +3339,11 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,String,FOLLOW_25); 
+            otherlv_1=(Token)match(input,String,FOLLOW_26); 
 
             			newLeafNode(otherlv_1, grammarAccess.getParameterStringTypeAccess().getStringKeyword_1());
             		
-            // InternalResolutionModelParser.g:1243:3: (otherlv_2= Default ( (lv_default_3_0= ruleParameterString ) ) )?
+            // InternalResolutionModelParser.g:1298:3: (otherlv_2= Default ( (lv_default_3_0= ruleParameterString ) ) )?
             int alt18=2;
             int LA18_0 = input.LA(1);
 
@@ -3217,17 +3352,17 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
             }
             switch (alt18) {
                 case 1 :
-                    // InternalResolutionModelParser.g:1244:4: otherlv_2= Default ( (lv_default_3_0= ruleParameterString ) )
+                    // InternalResolutionModelParser.g:1299:4: otherlv_2= Default ( (lv_default_3_0= ruleParameterString ) )
                     {
-                    otherlv_2=(Token)match(input,Default,FOLLOW_24); 
+                    otherlv_2=(Token)match(input,Default,FOLLOW_25); 
 
                     				newLeafNode(otherlv_2, grammarAccess.getParameterStringTypeAccess().getDefaultKeyword_2_0());
                     			
-                    // InternalResolutionModelParser.g:1248:4: ( (lv_default_3_0= ruleParameterString ) )
-                    // InternalResolutionModelParser.g:1249:5: (lv_default_3_0= ruleParameterString )
+                    // InternalResolutionModelParser.g:1303:4: ( (lv_default_3_0= ruleParameterString ) )
+                    // InternalResolutionModelParser.g:1304:5: (lv_default_3_0= ruleParameterString )
                     {
-                    // InternalResolutionModelParser.g:1249:5: (lv_default_3_0= ruleParameterString )
-                    // InternalResolutionModelParser.g:1250:6: lv_default_3_0= ruleParameterString
+                    // InternalResolutionModelParser.g:1304:5: (lv_default_3_0= ruleParameterString )
+                    // InternalResolutionModelParser.g:1305:6: lv_default_3_0= ruleParameterString
                     {
 
                     						newCompositeNode(grammarAccess.getParameterStringTypeAccess().getDefaultParameterStringParserRuleCall_2_1_0());
@@ -3283,7 +3418,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleParameterDoubleType"
-    // InternalResolutionModelParser.g:1272:1: entryRuleParameterDoubleType returns [EObject current=null] : iv_ruleParameterDoubleType= ruleParameterDoubleType EOF ;
+    // InternalResolutionModelParser.g:1327:1: entryRuleParameterDoubleType returns [EObject current=null] : iv_ruleParameterDoubleType= ruleParameterDoubleType EOF ;
     public final EObject entryRuleParameterDoubleType() throws RecognitionException {
         EObject current = null;
 
@@ -3291,8 +3426,8 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalResolutionModelParser.g:1272:60: (iv_ruleParameterDoubleType= ruleParameterDoubleType EOF )
-            // InternalResolutionModelParser.g:1273:2: iv_ruleParameterDoubleType= ruleParameterDoubleType EOF
+            // InternalResolutionModelParser.g:1327:60: (iv_ruleParameterDoubleType= ruleParameterDoubleType EOF )
+            // InternalResolutionModelParser.g:1328:2: iv_ruleParameterDoubleType= ruleParameterDoubleType EOF
             {
              newCompositeNode(grammarAccess.getParameterDoubleTypeRule()); 
             pushFollow(FOLLOW_1);
@@ -3319,7 +3454,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleParameterDoubleType"
-    // InternalResolutionModelParser.g:1279:1: ruleParameterDoubleType returns [EObject current=null] : ( () otherlv_1= Double (otherlv_2= Default ( (lv_default_3_0= ruleParameterDouble ) ) )? ) ;
+    // InternalResolutionModelParser.g:1334:1: ruleParameterDoubleType returns [EObject current=null] : ( () otherlv_1= Double (otherlv_2= Default ( (lv_default_3_0= ruleParameterDouble ) ) )? ) ;
     public final EObject ruleParameterDoubleType() throws RecognitionException {
         EObject current = null;
 
@@ -3332,14 +3467,14 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalResolutionModelParser.g:1285:2: ( ( () otherlv_1= Double (otherlv_2= Default ( (lv_default_3_0= ruleParameterDouble ) ) )? ) )
-            // InternalResolutionModelParser.g:1286:2: ( () otherlv_1= Double (otherlv_2= Default ( (lv_default_3_0= ruleParameterDouble ) ) )? )
+            // InternalResolutionModelParser.g:1340:2: ( ( () otherlv_1= Double (otherlv_2= Default ( (lv_default_3_0= ruleParameterDouble ) ) )? ) )
+            // InternalResolutionModelParser.g:1341:2: ( () otherlv_1= Double (otherlv_2= Default ( (lv_default_3_0= ruleParameterDouble ) ) )? )
             {
-            // InternalResolutionModelParser.g:1286:2: ( () otherlv_1= Double (otherlv_2= Default ( (lv_default_3_0= ruleParameterDouble ) ) )? )
-            // InternalResolutionModelParser.g:1287:3: () otherlv_1= Double (otherlv_2= Default ( (lv_default_3_0= ruleParameterDouble ) ) )?
+            // InternalResolutionModelParser.g:1341:2: ( () otherlv_1= Double (otherlv_2= Default ( (lv_default_3_0= ruleParameterDouble ) ) )? )
+            // InternalResolutionModelParser.g:1342:3: () otherlv_1= Double (otherlv_2= Default ( (lv_default_3_0= ruleParameterDouble ) ) )?
             {
-            // InternalResolutionModelParser.g:1287:3: ()
-            // InternalResolutionModelParser.g:1288:4: 
+            // InternalResolutionModelParser.g:1342:3: ()
+            // InternalResolutionModelParser.g:1343:4: 
             {
 
             				current = forceCreateModelElement(
@@ -3349,11 +3484,11 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,Double,FOLLOW_25); 
+            otherlv_1=(Token)match(input,Double,FOLLOW_26); 
 
             			newLeafNode(otherlv_1, grammarAccess.getParameterDoubleTypeAccess().getDoubleKeyword_1());
             		
-            // InternalResolutionModelParser.g:1298:3: (otherlv_2= Default ( (lv_default_3_0= ruleParameterDouble ) ) )?
+            // InternalResolutionModelParser.g:1353:3: (otherlv_2= Default ( (lv_default_3_0= ruleParameterDouble ) ) )?
             int alt19=2;
             int LA19_0 = input.LA(1);
 
@@ -3362,17 +3497,17 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
             }
             switch (alt19) {
                 case 1 :
-                    // InternalResolutionModelParser.g:1299:4: otherlv_2= Default ( (lv_default_3_0= ruleParameterDouble ) )
+                    // InternalResolutionModelParser.g:1354:4: otherlv_2= Default ( (lv_default_3_0= ruleParameterDouble ) )
                     {
-                    otherlv_2=(Token)match(input,Default,FOLLOW_27); 
+                    otherlv_2=(Token)match(input,Default,FOLLOW_28); 
 
                     				newLeafNode(otherlv_2, grammarAccess.getParameterDoubleTypeAccess().getDefaultKeyword_2_0());
                     			
-                    // InternalResolutionModelParser.g:1303:4: ( (lv_default_3_0= ruleParameterDouble ) )
-                    // InternalResolutionModelParser.g:1304:5: (lv_default_3_0= ruleParameterDouble )
+                    // InternalResolutionModelParser.g:1358:4: ( (lv_default_3_0= ruleParameterDouble ) )
+                    // InternalResolutionModelParser.g:1359:5: (lv_default_3_0= ruleParameterDouble )
                     {
-                    // InternalResolutionModelParser.g:1304:5: (lv_default_3_0= ruleParameterDouble )
-                    // InternalResolutionModelParser.g:1305:6: lv_default_3_0= ruleParameterDouble
+                    // InternalResolutionModelParser.g:1359:5: (lv_default_3_0= ruleParameterDouble )
+                    // InternalResolutionModelParser.g:1360:6: lv_default_3_0= ruleParameterDouble
                     {
 
                     						newCompositeNode(grammarAccess.getParameterDoubleTypeAccess().getDefaultParameterDoubleParserRuleCall_2_1_0());
@@ -3428,7 +3563,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleParameterBooleanType"
-    // InternalResolutionModelParser.g:1327:1: entryRuleParameterBooleanType returns [EObject current=null] : iv_ruleParameterBooleanType= ruleParameterBooleanType EOF ;
+    // InternalResolutionModelParser.g:1382:1: entryRuleParameterBooleanType returns [EObject current=null] : iv_ruleParameterBooleanType= ruleParameterBooleanType EOF ;
     public final EObject entryRuleParameterBooleanType() throws RecognitionException {
         EObject current = null;
 
@@ -3436,8 +3571,8 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalResolutionModelParser.g:1327:61: (iv_ruleParameterBooleanType= ruleParameterBooleanType EOF )
-            // InternalResolutionModelParser.g:1328:2: iv_ruleParameterBooleanType= ruleParameterBooleanType EOF
+            // InternalResolutionModelParser.g:1382:61: (iv_ruleParameterBooleanType= ruleParameterBooleanType EOF )
+            // InternalResolutionModelParser.g:1383:2: iv_ruleParameterBooleanType= ruleParameterBooleanType EOF
             {
              newCompositeNode(grammarAccess.getParameterBooleanTypeRule()); 
             pushFollow(FOLLOW_1);
@@ -3464,7 +3599,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleParameterBooleanType"
-    // InternalResolutionModelParser.g:1334:1: ruleParameterBooleanType returns [EObject current=null] : ( () otherlv_1= Boolean (otherlv_2= Default ( (lv_default_3_0= ruleParameterBoolean ) ) )? ) ;
+    // InternalResolutionModelParser.g:1389:1: ruleParameterBooleanType returns [EObject current=null] : ( () otherlv_1= Boolean (otherlv_2= Default ( (lv_default_3_0= ruleParameterBoolean ) ) )? ) ;
     public final EObject ruleParameterBooleanType() throws RecognitionException {
         EObject current = null;
 
@@ -3477,14 +3612,14 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalResolutionModelParser.g:1340:2: ( ( () otherlv_1= Boolean (otherlv_2= Default ( (lv_default_3_0= ruleParameterBoolean ) ) )? ) )
-            // InternalResolutionModelParser.g:1341:2: ( () otherlv_1= Boolean (otherlv_2= Default ( (lv_default_3_0= ruleParameterBoolean ) ) )? )
+            // InternalResolutionModelParser.g:1395:2: ( ( () otherlv_1= Boolean (otherlv_2= Default ( (lv_default_3_0= ruleParameterBoolean ) ) )? ) )
+            // InternalResolutionModelParser.g:1396:2: ( () otherlv_1= Boolean (otherlv_2= Default ( (lv_default_3_0= ruleParameterBoolean ) ) )? )
             {
-            // InternalResolutionModelParser.g:1341:2: ( () otherlv_1= Boolean (otherlv_2= Default ( (lv_default_3_0= ruleParameterBoolean ) ) )? )
-            // InternalResolutionModelParser.g:1342:3: () otherlv_1= Boolean (otherlv_2= Default ( (lv_default_3_0= ruleParameterBoolean ) ) )?
+            // InternalResolutionModelParser.g:1396:2: ( () otherlv_1= Boolean (otherlv_2= Default ( (lv_default_3_0= ruleParameterBoolean ) ) )? )
+            // InternalResolutionModelParser.g:1397:3: () otherlv_1= Boolean (otherlv_2= Default ( (lv_default_3_0= ruleParameterBoolean ) ) )?
             {
-            // InternalResolutionModelParser.g:1342:3: ()
-            // InternalResolutionModelParser.g:1343:4: 
+            // InternalResolutionModelParser.g:1397:3: ()
+            // InternalResolutionModelParser.g:1398:4: 
             {
 
             				current = forceCreateModelElement(
@@ -3494,11 +3629,11 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,Boolean,FOLLOW_25); 
+            otherlv_1=(Token)match(input,Boolean,FOLLOW_26); 
 
             			newLeafNode(otherlv_1, grammarAccess.getParameterBooleanTypeAccess().getBooleanKeyword_1());
             		
-            // InternalResolutionModelParser.g:1353:3: (otherlv_2= Default ( (lv_default_3_0= ruleParameterBoolean ) ) )?
+            // InternalResolutionModelParser.g:1408:3: (otherlv_2= Default ( (lv_default_3_0= ruleParameterBoolean ) ) )?
             int alt20=2;
             int LA20_0 = input.LA(1);
 
@@ -3507,17 +3642,17 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
             }
             switch (alt20) {
                 case 1 :
-                    // InternalResolutionModelParser.g:1354:4: otherlv_2= Default ( (lv_default_3_0= ruleParameterBoolean ) )
+                    // InternalResolutionModelParser.g:1409:4: otherlv_2= Default ( (lv_default_3_0= ruleParameterBoolean ) )
                     {
-                    otherlv_2=(Token)match(input,Default,FOLLOW_28); 
+                    otherlv_2=(Token)match(input,Default,FOLLOW_29); 
 
                     				newLeafNode(otherlv_2, grammarAccess.getParameterBooleanTypeAccess().getDefaultKeyword_2_0());
                     			
-                    // InternalResolutionModelParser.g:1358:4: ( (lv_default_3_0= ruleParameterBoolean ) )
-                    // InternalResolutionModelParser.g:1359:5: (lv_default_3_0= ruleParameterBoolean )
+                    // InternalResolutionModelParser.g:1413:4: ( (lv_default_3_0= ruleParameterBoolean ) )
+                    // InternalResolutionModelParser.g:1414:5: (lv_default_3_0= ruleParameterBoolean )
                     {
-                    // InternalResolutionModelParser.g:1359:5: (lv_default_3_0= ruleParameterBoolean )
-                    // InternalResolutionModelParser.g:1360:6: lv_default_3_0= ruleParameterBoolean
+                    // InternalResolutionModelParser.g:1414:5: (lv_default_3_0= ruleParameterBoolean )
+                    // InternalResolutionModelParser.g:1415:6: lv_default_3_0= ruleParameterBoolean
                     {
 
                     						newCompositeNode(grammarAccess.getParameterBooleanTypeAccess().getDefaultParameterBooleanParserRuleCall_2_1_0());
@@ -3573,7 +3708,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleParameterBase64Type"
-    // InternalResolutionModelParser.g:1382:1: entryRuleParameterBase64Type returns [EObject current=null] : iv_ruleParameterBase64Type= ruleParameterBase64Type EOF ;
+    // InternalResolutionModelParser.g:1437:1: entryRuleParameterBase64Type returns [EObject current=null] : iv_ruleParameterBase64Type= ruleParameterBase64Type EOF ;
     public final EObject entryRuleParameterBase64Type() throws RecognitionException {
         EObject current = null;
 
@@ -3581,8 +3716,8 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalResolutionModelParser.g:1382:60: (iv_ruleParameterBase64Type= ruleParameterBase64Type EOF )
-            // InternalResolutionModelParser.g:1383:2: iv_ruleParameterBase64Type= ruleParameterBase64Type EOF
+            // InternalResolutionModelParser.g:1437:60: (iv_ruleParameterBase64Type= ruleParameterBase64Type EOF )
+            // InternalResolutionModelParser.g:1438:2: iv_ruleParameterBase64Type= ruleParameterBase64Type EOF
             {
              newCompositeNode(grammarAccess.getParameterBase64TypeRule()); 
             pushFollow(FOLLOW_1);
@@ -3609,7 +3744,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleParameterBase64Type"
-    // InternalResolutionModelParser.g:1389:1: ruleParameterBase64Type returns [EObject current=null] : ( () otherlv_1= Base64 (otherlv_2= Default ( (lv_default_3_0= ruleParameterBase64 ) ) )? ) ;
+    // InternalResolutionModelParser.g:1444:1: ruleParameterBase64Type returns [EObject current=null] : ( () otherlv_1= Base64 (otherlv_2= Default ( (lv_default_3_0= ruleParameterBase64 ) ) )? ) ;
     public final EObject ruleParameterBase64Type() throws RecognitionException {
         EObject current = null;
 
@@ -3622,14 +3757,14 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalResolutionModelParser.g:1395:2: ( ( () otherlv_1= Base64 (otherlv_2= Default ( (lv_default_3_0= ruleParameterBase64 ) ) )? ) )
-            // InternalResolutionModelParser.g:1396:2: ( () otherlv_1= Base64 (otherlv_2= Default ( (lv_default_3_0= ruleParameterBase64 ) ) )? )
+            // InternalResolutionModelParser.g:1450:2: ( ( () otherlv_1= Base64 (otherlv_2= Default ( (lv_default_3_0= ruleParameterBase64 ) ) )? ) )
+            // InternalResolutionModelParser.g:1451:2: ( () otherlv_1= Base64 (otherlv_2= Default ( (lv_default_3_0= ruleParameterBase64 ) ) )? )
             {
-            // InternalResolutionModelParser.g:1396:2: ( () otherlv_1= Base64 (otherlv_2= Default ( (lv_default_3_0= ruleParameterBase64 ) ) )? )
-            // InternalResolutionModelParser.g:1397:3: () otherlv_1= Base64 (otherlv_2= Default ( (lv_default_3_0= ruleParameterBase64 ) ) )?
+            // InternalResolutionModelParser.g:1451:2: ( () otherlv_1= Base64 (otherlv_2= Default ( (lv_default_3_0= ruleParameterBase64 ) ) )? )
+            // InternalResolutionModelParser.g:1452:3: () otherlv_1= Base64 (otherlv_2= Default ( (lv_default_3_0= ruleParameterBase64 ) ) )?
             {
-            // InternalResolutionModelParser.g:1397:3: ()
-            // InternalResolutionModelParser.g:1398:4: 
+            // InternalResolutionModelParser.g:1452:3: ()
+            // InternalResolutionModelParser.g:1453:4: 
             {
 
             				current = forceCreateModelElement(
@@ -3639,11 +3774,11 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,Base64,FOLLOW_25); 
+            otherlv_1=(Token)match(input,Base64,FOLLOW_26); 
 
             			newLeafNode(otherlv_1, grammarAccess.getParameterBase64TypeAccess().getBase64Keyword_1());
             		
-            // InternalResolutionModelParser.g:1408:3: (otherlv_2= Default ( (lv_default_3_0= ruleParameterBase64 ) ) )?
+            // InternalResolutionModelParser.g:1463:3: (otherlv_2= Default ( (lv_default_3_0= ruleParameterBase64 ) ) )?
             int alt21=2;
             int LA21_0 = input.LA(1);
 
@@ -3652,17 +3787,17 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
             }
             switch (alt21) {
                 case 1 :
-                    // InternalResolutionModelParser.g:1409:4: otherlv_2= Default ( (lv_default_3_0= ruleParameterBase64 ) )
+                    // InternalResolutionModelParser.g:1464:4: otherlv_2= Default ( (lv_default_3_0= ruleParameterBase64 ) )
                     {
-                    otherlv_2=(Token)match(input,Default,FOLLOW_29); 
+                    otherlv_2=(Token)match(input,Default,FOLLOW_30); 
 
                     				newLeafNode(otherlv_2, grammarAccess.getParameterBase64TypeAccess().getDefaultKeyword_2_0());
                     			
-                    // InternalResolutionModelParser.g:1413:4: ( (lv_default_3_0= ruleParameterBase64 ) )
-                    // InternalResolutionModelParser.g:1414:5: (lv_default_3_0= ruleParameterBase64 )
+                    // InternalResolutionModelParser.g:1468:4: ( (lv_default_3_0= ruleParameterBase64 ) )
+                    // InternalResolutionModelParser.g:1469:5: (lv_default_3_0= ruleParameterBase64 )
                     {
-                    // InternalResolutionModelParser.g:1414:5: (lv_default_3_0= ruleParameterBase64 )
-                    // InternalResolutionModelParser.g:1415:6: lv_default_3_0= ruleParameterBase64
+                    // InternalResolutionModelParser.g:1469:5: (lv_default_3_0= ruleParameterBase64 )
+                    // InternalResolutionModelParser.g:1470:6: lv_default_3_0= ruleParameterBase64
                     {
 
                     						newCompositeNode(grammarAccess.getParameterBase64TypeAccess().getDefaultParameterBase64ParserRuleCall_2_1_0());
@@ -3718,7 +3853,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleParameterArrayType"
-    // InternalResolutionModelParser.g:1437:1: entryRuleParameterArrayType returns [EObject current=null] : iv_ruleParameterArrayType= ruleParameterArrayType EOF ;
+    // InternalResolutionModelParser.g:1492:1: entryRuleParameterArrayType returns [EObject current=null] : iv_ruleParameterArrayType= ruleParameterArrayType EOF ;
     public final EObject entryRuleParameterArrayType() throws RecognitionException {
         EObject current = null;
 
@@ -3726,8 +3861,8 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalResolutionModelParser.g:1437:59: (iv_ruleParameterArrayType= ruleParameterArrayType EOF )
-            // InternalResolutionModelParser.g:1438:2: iv_ruleParameterArrayType= ruleParameterArrayType EOF
+            // InternalResolutionModelParser.g:1492:59: (iv_ruleParameterArrayType= ruleParameterArrayType EOF )
+            // InternalResolutionModelParser.g:1493:2: iv_ruleParameterArrayType= ruleParameterArrayType EOF
             {
              newCompositeNode(grammarAccess.getParameterArrayTypeRule()); 
             pushFollow(FOLLOW_1);
@@ -3754,7 +3889,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleParameterArrayType"
-    // InternalResolutionModelParser.g:1444:1: ruleParameterArrayType returns [EObject current=null] : (otherlv_0= Array otherlv_1= LeftSquareBracket ( (lv_type_2_0= ruleParameterType ) ) otherlv_3= RightSquareBracket (otherlv_4= Default ( (lv_default_5_0= ruleParameterList ) ) )? ) ;
+    // InternalResolutionModelParser.g:1499:1: ruleParameterArrayType returns [EObject current=null] : (otherlv_0= Array otherlv_1= LeftSquareBracket ( (lv_type_2_0= ruleParameterType ) ) otherlv_3= RightSquareBracket (otherlv_4= Default ( (lv_default_5_0= ruleParameterList ) ) )? ) ;
     public final EObject ruleParameterArrayType() throws RecognitionException {
         EObject current = null;
 
@@ -3771,30 +3906,30 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalResolutionModelParser.g:1450:2: ( (otherlv_0= Array otherlv_1= LeftSquareBracket ( (lv_type_2_0= ruleParameterType ) ) otherlv_3= RightSquareBracket (otherlv_4= Default ( (lv_default_5_0= ruleParameterList ) ) )? ) )
-            // InternalResolutionModelParser.g:1451:2: (otherlv_0= Array otherlv_1= LeftSquareBracket ( (lv_type_2_0= ruleParameterType ) ) otherlv_3= RightSquareBracket (otherlv_4= Default ( (lv_default_5_0= ruleParameterList ) ) )? )
+            // InternalResolutionModelParser.g:1505:2: ( (otherlv_0= Array otherlv_1= LeftSquareBracket ( (lv_type_2_0= ruleParameterType ) ) otherlv_3= RightSquareBracket (otherlv_4= Default ( (lv_default_5_0= ruleParameterList ) ) )? ) )
+            // InternalResolutionModelParser.g:1506:2: (otherlv_0= Array otherlv_1= LeftSquareBracket ( (lv_type_2_0= ruleParameterType ) ) otherlv_3= RightSquareBracket (otherlv_4= Default ( (lv_default_5_0= ruleParameterList ) ) )? )
             {
-            // InternalResolutionModelParser.g:1451:2: (otherlv_0= Array otherlv_1= LeftSquareBracket ( (lv_type_2_0= ruleParameterType ) ) otherlv_3= RightSquareBracket (otherlv_4= Default ( (lv_default_5_0= ruleParameterList ) ) )? )
-            // InternalResolutionModelParser.g:1452:3: otherlv_0= Array otherlv_1= LeftSquareBracket ( (lv_type_2_0= ruleParameterType ) ) otherlv_3= RightSquareBracket (otherlv_4= Default ( (lv_default_5_0= ruleParameterList ) ) )?
+            // InternalResolutionModelParser.g:1506:2: (otherlv_0= Array otherlv_1= LeftSquareBracket ( (lv_type_2_0= ruleParameterType ) ) otherlv_3= RightSquareBracket (otherlv_4= Default ( (lv_default_5_0= ruleParameterList ) ) )? )
+            // InternalResolutionModelParser.g:1507:3: otherlv_0= Array otherlv_1= LeftSquareBracket ( (lv_type_2_0= ruleParameterType ) ) otherlv_3= RightSquareBracket (otherlv_4= Default ( (lv_default_5_0= ruleParameterList ) ) )?
             {
-            otherlv_0=(Token)match(input,Array,FOLLOW_22); 
+            otherlv_0=(Token)match(input,Array,FOLLOW_23); 
 
             			newLeafNode(otherlv_0, grammarAccess.getParameterArrayTypeAccess().getArrayKeyword_0());
             		
-            otherlv_1=(Token)match(input,LeftSquareBracket,FOLLOW_23); 
+            otherlv_1=(Token)match(input,LeftSquareBracket,FOLLOW_24); 
 
             			newLeafNode(otherlv_1, grammarAccess.getParameterArrayTypeAccess().getLeftSquareBracketKeyword_1());
             		
-            // InternalResolutionModelParser.g:1460:3: ( (lv_type_2_0= ruleParameterType ) )
-            // InternalResolutionModelParser.g:1461:4: (lv_type_2_0= ruleParameterType )
+            // InternalResolutionModelParser.g:1515:3: ( (lv_type_2_0= ruleParameterType ) )
+            // InternalResolutionModelParser.g:1516:4: (lv_type_2_0= ruleParameterType )
             {
-            // InternalResolutionModelParser.g:1461:4: (lv_type_2_0= ruleParameterType )
-            // InternalResolutionModelParser.g:1462:5: lv_type_2_0= ruleParameterType
+            // InternalResolutionModelParser.g:1516:4: (lv_type_2_0= ruleParameterType )
+            // InternalResolutionModelParser.g:1517:5: lv_type_2_0= ruleParameterType
             {
 
             					newCompositeNode(grammarAccess.getParameterArrayTypeAccess().getTypeParameterTypeParserRuleCall_2_0());
             				
-            pushFollow(FOLLOW_30);
+            pushFollow(FOLLOW_31);
             lv_type_2_0=ruleParameterType();
 
             state._fsp--;
@@ -3816,11 +3951,11 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_3=(Token)match(input,RightSquareBracket,FOLLOW_25); 
+            otherlv_3=(Token)match(input,RightSquareBracket,FOLLOW_26); 
 
             			newLeafNode(otherlv_3, grammarAccess.getParameterArrayTypeAccess().getRightSquareBracketKeyword_3());
             		
-            // InternalResolutionModelParser.g:1483:3: (otherlv_4= Default ( (lv_default_5_0= ruleParameterList ) ) )?
+            // InternalResolutionModelParser.g:1538:3: (otherlv_4= Default ( (lv_default_5_0= ruleParameterList ) ) )?
             int alt22=2;
             int LA22_0 = input.LA(1);
 
@@ -3829,17 +3964,17 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
             }
             switch (alt22) {
                 case 1 :
-                    // InternalResolutionModelParser.g:1484:4: otherlv_4= Default ( (lv_default_5_0= ruleParameterList ) )
+                    // InternalResolutionModelParser.g:1539:4: otherlv_4= Default ( (lv_default_5_0= ruleParameterList ) )
                     {
-                    otherlv_4=(Token)match(input,Default,FOLLOW_22); 
+                    otherlv_4=(Token)match(input,Default,FOLLOW_23); 
 
                     				newLeafNode(otherlv_4, grammarAccess.getParameterArrayTypeAccess().getDefaultKeyword_4_0());
                     			
-                    // InternalResolutionModelParser.g:1488:4: ( (lv_default_5_0= ruleParameterList ) )
-                    // InternalResolutionModelParser.g:1489:5: (lv_default_5_0= ruleParameterList )
+                    // InternalResolutionModelParser.g:1543:4: ( (lv_default_5_0= ruleParameterList ) )
+                    // InternalResolutionModelParser.g:1544:5: (lv_default_5_0= ruleParameterList )
                     {
-                    // InternalResolutionModelParser.g:1489:5: (lv_default_5_0= ruleParameterList )
-                    // InternalResolutionModelParser.g:1490:6: lv_default_5_0= ruleParameterList
+                    // InternalResolutionModelParser.g:1544:5: (lv_default_5_0= ruleParameterList )
+                    // InternalResolutionModelParser.g:1545:6: lv_default_5_0= ruleParameterList
                     {
 
                     						newCompositeNode(grammarAccess.getParameterArrayTypeAccess().getDefaultParameterListParserRuleCall_4_1_0());
@@ -3895,7 +4030,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleParameterList"
-    // InternalResolutionModelParser.g:1512:1: entryRuleParameterList returns [EObject current=null] : iv_ruleParameterList= ruleParameterList EOF ;
+    // InternalResolutionModelParser.g:1567:1: entryRuleParameterList returns [EObject current=null] : iv_ruleParameterList= ruleParameterList EOF ;
     public final EObject entryRuleParameterList() throws RecognitionException {
         EObject current = null;
 
@@ -3903,8 +4038,8 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalResolutionModelParser.g:1512:54: (iv_ruleParameterList= ruleParameterList EOF )
-            // InternalResolutionModelParser.g:1513:2: iv_ruleParameterList= ruleParameterList EOF
+            // InternalResolutionModelParser.g:1567:54: (iv_ruleParameterList= ruleParameterList EOF )
+            // InternalResolutionModelParser.g:1568:2: iv_ruleParameterList= ruleParameterList EOF
             {
              newCompositeNode(grammarAccess.getParameterListRule()); 
             pushFollow(FOLLOW_1);
@@ -3931,7 +4066,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleParameterList"
-    // InternalResolutionModelParser.g:1519:1: ruleParameterList returns [EObject current=null] : ( () otherlv_1= LeftSquareBracket ( (lv_value_2_0= ruleParameterValue ) ) (otherlv_3= Comma ( (lv_value_4_0= ruleParameterValue ) ) )* otherlv_5= RightSquareBracket ) ;
+    // InternalResolutionModelParser.g:1574:1: ruleParameterList returns [EObject current=null] : ( () otherlv_1= LeftSquareBracket ( (lv_value_2_0= ruleParameterValue ) ) (otherlv_3= Comma ( (lv_value_4_0= ruleParameterValue ) ) )* otherlv_5= RightSquareBracket ) ;
     public final EObject ruleParameterList() throws RecognitionException {
         EObject current = null;
 
@@ -3947,14 +4082,14 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalResolutionModelParser.g:1525:2: ( ( () otherlv_1= LeftSquareBracket ( (lv_value_2_0= ruleParameterValue ) ) (otherlv_3= Comma ( (lv_value_4_0= ruleParameterValue ) ) )* otherlv_5= RightSquareBracket ) )
-            // InternalResolutionModelParser.g:1526:2: ( () otherlv_1= LeftSquareBracket ( (lv_value_2_0= ruleParameterValue ) ) (otherlv_3= Comma ( (lv_value_4_0= ruleParameterValue ) ) )* otherlv_5= RightSquareBracket )
+            // InternalResolutionModelParser.g:1580:2: ( ( () otherlv_1= LeftSquareBracket ( (lv_value_2_0= ruleParameterValue ) ) (otherlv_3= Comma ( (lv_value_4_0= ruleParameterValue ) ) )* otherlv_5= RightSquareBracket ) )
+            // InternalResolutionModelParser.g:1581:2: ( () otherlv_1= LeftSquareBracket ( (lv_value_2_0= ruleParameterValue ) ) (otherlv_3= Comma ( (lv_value_4_0= ruleParameterValue ) ) )* otherlv_5= RightSquareBracket )
             {
-            // InternalResolutionModelParser.g:1526:2: ( () otherlv_1= LeftSquareBracket ( (lv_value_2_0= ruleParameterValue ) ) (otherlv_3= Comma ( (lv_value_4_0= ruleParameterValue ) ) )* otherlv_5= RightSquareBracket )
-            // InternalResolutionModelParser.g:1527:3: () otherlv_1= LeftSquareBracket ( (lv_value_2_0= ruleParameterValue ) ) (otherlv_3= Comma ( (lv_value_4_0= ruleParameterValue ) ) )* otherlv_5= RightSquareBracket
+            // InternalResolutionModelParser.g:1581:2: ( () otherlv_1= LeftSquareBracket ( (lv_value_2_0= ruleParameterValue ) ) (otherlv_3= Comma ( (lv_value_4_0= ruleParameterValue ) ) )* otherlv_5= RightSquareBracket )
+            // InternalResolutionModelParser.g:1582:3: () otherlv_1= LeftSquareBracket ( (lv_value_2_0= ruleParameterValue ) ) (otherlv_3= Comma ( (lv_value_4_0= ruleParameterValue ) ) )* otherlv_5= RightSquareBracket
             {
-            // InternalResolutionModelParser.g:1527:3: ()
-            // InternalResolutionModelParser.g:1528:4: 
+            // InternalResolutionModelParser.g:1582:3: ()
+            // InternalResolutionModelParser.g:1583:4: 
             {
 
             				current = forceCreateModelElement(
@@ -3964,20 +4099,20 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,LeftSquareBracket,FOLLOW_16); 
+            otherlv_1=(Token)match(input,LeftSquareBracket,FOLLOW_17); 
 
             			newLeafNode(otherlv_1, grammarAccess.getParameterListAccess().getLeftSquareBracketKeyword_1());
             		
-            // InternalResolutionModelParser.g:1538:3: ( (lv_value_2_0= ruleParameterValue ) )
-            // InternalResolutionModelParser.g:1539:4: (lv_value_2_0= ruleParameterValue )
+            // InternalResolutionModelParser.g:1593:3: ( (lv_value_2_0= ruleParameterValue ) )
+            // InternalResolutionModelParser.g:1594:4: (lv_value_2_0= ruleParameterValue )
             {
-            // InternalResolutionModelParser.g:1539:4: (lv_value_2_0= ruleParameterValue )
-            // InternalResolutionModelParser.g:1540:5: lv_value_2_0= ruleParameterValue
+            // InternalResolutionModelParser.g:1594:4: (lv_value_2_0= ruleParameterValue )
+            // InternalResolutionModelParser.g:1595:5: lv_value_2_0= ruleParameterValue
             {
 
             					newCompositeNode(grammarAccess.getParameterListAccess().getValueParameterValueParserRuleCall_2_0());
             				
-            pushFollow(FOLLOW_21);
+            pushFollow(FOLLOW_22);
             lv_value_2_0=ruleParameterValue();
 
             state._fsp--;
@@ -3999,7 +4134,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalResolutionModelParser.g:1557:3: (otherlv_3= Comma ( (lv_value_4_0= ruleParameterValue ) ) )*
+            // InternalResolutionModelParser.g:1612:3: (otherlv_3= Comma ( (lv_value_4_0= ruleParameterValue ) ) )*
             loop23:
             do {
                 int alt23=2;
@@ -4012,22 +4147,22 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
                 switch (alt23) {
             	case 1 :
-            	    // InternalResolutionModelParser.g:1558:4: otherlv_3= Comma ( (lv_value_4_0= ruleParameterValue ) )
+            	    // InternalResolutionModelParser.g:1613:4: otherlv_3= Comma ( (lv_value_4_0= ruleParameterValue ) )
             	    {
-            	    otherlv_3=(Token)match(input,Comma,FOLLOW_16); 
+            	    otherlv_3=(Token)match(input,Comma,FOLLOW_17); 
 
             	    				newLeafNode(otherlv_3, grammarAccess.getParameterListAccess().getCommaKeyword_3_0());
             	    			
-            	    // InternalResolutionModelParser.g:1562:4: ( (lv_value_4_0= ruleParameterValue ) )
-            	    // InternalResolutionModelParser.g:1563:5: (lv_value_4_0= ruleParameterValue )
+            	    // InternalResolutionModelParser.g:1617:4: ( (lv_value_4_0= ruleParameterValue ) )
+            	    // InternalResolutionModelParser.g:1618:5: (lv_value_4_0= ruleParameterValue )
             	    {
-            	    // InternalResolutionModelParser.g:1563:5: (lv_value_4_0= ruleParameterValue )
-            	    // InternalResolutionModelParser.g:1564:6: lv_value_4_0= ruleParameterValue
+            	    // InternalResolutionModelParser.g:1618:5: (lv_value_4_0= ruleParameterValue )
+            	    // InternalResolutionModelParser.g:1619:6: lv_value_4_0= ruleParameterValue
             	    {
 
             	    						newCompositeNode(grammarAccess.getParameterListAccess().getValueParameterValueParserRuleCall_3_1_0());
             	    					
-            	    pushFollow(FOLLOW_21);
+            	    pushFollow(FOLLOW_22);
             	    lv_value_4_0=ruleParameterValue();
 
             	    state._fsp--;
@@ -4085,7 +4220,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleParameterAny"
-    // InternalResolutionModelParser.g:1590:1: entryRuleParameterAny returns [EObject current=null] : iv_ruleParameterAny= ruleParameterAny EOF ;
+    // InternalResolutionModelParser.g:1645:1: entryRuleParameterAny returns [EObject current=null] : iv_ruleParameterAny= ruleParameterAny EOF ;
     public final EObject entryRuleParameterAny() throws RecognitionException {
         EObject current = null;
 
@@ -4093,8 +4228,8 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalResolutionModelParser.g:1590:53: (iv_ruleParameterAny= ruleParameterAny EOF )
-            // InternalResolutionModelParser.g:1591:2: iv_ruleParameterAny= ruleParameterAny EOF
+            // InternalResolutionModelParser.g:1645:53: (iv_ruleParameterAny= ruleParameterAny EOF )
+            // InternalResolutionModelParser.g:1646:2: iv_ruleParameterAny= ruleParameterAny EOF
             {
              newCompositeNode(grammarAccess.getParameterAnyRule()); 
             pushFollow(FOLLOW_1);
@@ -4121,7 +4256,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleParameterAny"
-    // InternalResolutionModelParser.g:1597:1: ruleParameterAny returns [EObject current=null] : ( () otherlv_1= ParameterAny (otherlv_2= Value ( (lv_value_3_0= ruleEString ) ) )? ) ;
+    // InternalResolutionModelParser.g:1652:1: ruleParameterAny returns [EObject current=null] : ( () otherlv_1= ParameterAny (otherlv_2= Value ( (lv_value_3_0= ruleEString ) ) )? ) ;
     public final EObject ruleParameterAny() throws RecognitionException {
         EObject current = null;
 
@@ -4134,14 +4269,14 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalResolutionModelParser.g:1603:2: ( ( () otherlv_1= ParameterAny (otherlv_2= Value ( (lv_value_3_0= ruleEString ) ) )? ) )
-            // InternalResolutionModelParser.g:1604:2: ( () otherlv_1= ParameterAny (otherlv_2= Value ( (lv_value_3_0= ruleEString ) ) )? )
+            // InternalResolutionModelParser.g:1658:2: ( ( () otherlv_1= ParameterAny (otherlv_2= Value ( (lv_value_3_0= ruleEString ) ) )? ) )
+            // InternalResolutionModelParser.g:1659:2: ( () otherlv_1= ParameterAny (otherlv_2= Value ( (lv_value_3_0= ruleEString ) ) )? )
             {
-            // InternalResolutionModelParser.g:1604:2: ( () otherlv_1= ParameterAny (otherlv_2= Value ( (lv_value_3_0= ruleEString ) ) )? )
-            // InternalResolutionModelParser.g:1605:3: () otherlv_1= ParameterAny (otherlv_2= Value ( (lv_value_3_0= ruleEString ) ) )?
+            // InternalResolutionModelParser.g:1659:2: ( () otherlv_1= ParameterAny (otherlv_2= Value ( (lv_value_3_0= ruleEString ) ) )? )
+            // InternalResolutionModelParser.g:1660:3: () otherlv_1= ParameterAny (otherlv_2= Value ( (lv_value_3_0= ruleEString ) ) )?
             {
-            // InternalResolutionModelParser.g:1605:3: ()
-            // InternalResolutionModelParser.g:1606:4: 
+            // InternalResolutionModelParser.g:1660:3: ()
+            // InternalResolutionModelParser.g:1661:4: 
             {
 
             				current = forceCreateModelElement(
@@ -4151,11 +4286,11 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,ParameterAny,FOLLOW_31); 
+            otherlv_1=(Token)match(input,ParameterAny,FOLLOW_32); 
 
             			newLeafNode(otherlv_1, grammarAccess.getParameterAnyAccess().getParameterAnyKeyword_1());
             		
-            // InternalResolutionModelParser.g:1616:3: (otherlv_2= Value ( (lv_value_3_0= ruleEString ) ) )?
+            // InternalResolutionModelParser.g:1671:3: (otherlv_2= Value ( (lv_value_3_0= ruleEString ) ) )?
             int alt24=2;
             int LA24_0 = input.LA(1);
 
@@ -4164,17 +4299,17 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
             }
             switch (alt24) {
                 case 1 :
-                    // InternalResolutionModelParser.g:1617:4: otherlv_2= Value ( (lv_value_3_0= ruleEString ) )
+                    // InternalResolutionModelParser.g:1672:4: otherlv_2= Value ( (lv_value_3_0= ruleEString ) )
                     {
-                    otherlv_2=(Token)match(input,Value,FOLLOW_24); 
+                    otherlv_2=(Token)match(input,Value,FOLLOW_25); 
 
                     				newLeafNode(otherlv_2, grammarAccess.getParameterAnyAccess().getValueKeyword_2_0());
                     			
-                    // InternalResolutionModelParser.g:1621:4: ( (lv_value_3_0= ruleEString ) )
-                    // InternalResolutionModelParser.g:1622:5: (lv_value_3_0= ruleEString )
+                    // InternalResolutionModelParser.g:1676:4: ( (lv_value_3_0= ruleEString ) )
+                    // InternalResolutionModelParser.g:1677:5: (lv_value_3_0= ruleEString )
                     {
-                    // InternalResolutionModelParser.g:1622:5: (lv_value_3_0= ruleEString )
-                    // InternalResolutionModelParser.g:1623:6: lv_value_3_0= ruleEString
+                    // InternalResolutionModelParser.g:1677:5: (lv_value_3_0= ruleEString )
+                    // InternalResolutionModelParser.g:1678:6: lv_value_3_0= ruleEString
                     {
 
                     						newCompositeNode(grammarAccess.getParameterAnyAccess().getValueEStringParserRuleCall_2_1_0());
@@ -4230,7 +4365,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleParameterString"
-    // InternalResolutionModelParser.g:1645:1: entryRuleParameterString returns [EObject current=null] : iv_ruleParameterString= ruleParameterString EOF ;
+    // InternalResolutionModelParser.g:1700:1: entryRuleParameterString returns [EObject current=null] : iv_ruleParameterString= ruleParameterString EOF ;
     public final EObject entryRuleParameterString() throws RecognitionException {
         EObject current = null;
 
@@ -4238,8 +4373,8 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalResolutionModelParser.g:1645:56: (iv_ruleParameterString= ruleParameterString EOF )
-            // InternalResolutionModelParser.g:1646:2: iv_ruleParameterString= ruleParameterString EOF
+            // InternalResolutionModelParser.g:1700:56: (iv_ruleParameterString= ruleParameterString EOF )
+            // InternalResolutionModelParser.g:1701:2: iv_ruleParameterString= ruleParameterString EOF
             {
              newCompositeNode(grammarAccess.getParameterStringRule()); 
             pushFollow(FOLLOW_1);
@@ -4266,7 +4401,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleParameterString"
-    // InternalResolutionModelParser.g:1652:1: ruleParameterString returns [EObject current=null] : ( (lv_value_0_0= ruleEString ) ) ;
+    // InternalResolutionModelParser.g:1707:1: ruleParameterString returns [EObject current=null] : ( (lv_value_0_0= ruleEString ) ) ;
     public final EObject ruleParameterString() throws RecognitionException {
         EObject current = null;
 
@@ -4277,14 +4412,14 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalResolutionModelParser.g:1658:2: ( ( (lv_value_0_0= ruleEString ) ) )
-            // InternalResolutionModelParser.g:1659:2: ( (lv_value_0_0= ruleEString ) )
+            // InternalResolutionModelParser.g:1713:2: ( ( (lv_value_0_0= ruleEString ) ) )
+            // InternalResolutionModelParser.g:1714:2: ( (lv_value_0_0= ruleEString ) )
             {
-            // InternalResolutionModelParser.g:1659:2: ( (lv_value_0_0= ruleEString ) )
-            // InternalResolutionModelParser.g:1660:3: (lv_value_0_0= ruleEString )
+            // InternalResolutionModelParser.g:1714:2: ( (lv_value_0_0= ruleEString ) )
+            // InternalResolutionModelParser.g:1715:3: (lv_value_0_0= ruleEString )
             {
-            // InternalResolutionModelParser.g:1660:3: (lv_value_0_0= ruleEString )
-            // InternalResolutionModelParser.g:1661:4: lv_value_0_0= ruleEString
+            // InternalResolutionModelParser.g:1715:3: (lv_value_0_0= ruleEString )
+            // InternalResolutionModelParser.g:1716:4: lv_value_0_0= ruleEString
             {
 
             				newCompositeNode(grammarAccess.getParameterStringAccess().getValueEStringParserRuleCall_0());
@@ -4331,7 +4466,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleParameterBase64"
-    // InternalResolutionModelParser.g:1681:1: entryRuleParameterBase64 returns [EObject current=null] : iv_ruleParameterBase64= ruleParameterBase64 EOF ;
+    // InternalResolutionModelParser.g:1736:1: entryRuleParameterBase64 returns [EObject current=null] : iv_ruleParameterBase64= ruleParameterBase64 EOF ;
     public final EObject entryRuleParameterBase64() throws RecognitionException {
         EObject current = null;
 
@@ -4339,8 +4474,8 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalResolutionModelParser.g:1681:56: (iv_ruleParameterBase64= ruleParameterBase64 EOF )
-            // InternalResolutionModelParser.g:1682:2: iv_ruleParameterBase64= ruleParameterBase64 EOF
+            // InternalResolutionModelParser.g:1736:56: (iv_ruleParameterBase64= ruleParameterBase64 EOF )
+            // InternalResolutionModelParser.g:1737:2: iv_ruleParameterBase64= ruleParameterBase64 EOF
             {
              newCompositeNode(grammarAccess.getParameterBase64Rule()); 
             pushFollow(FOLLOW_1);
@@ -4367,7 +4502,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleParameterBase64"
-    // InternalResolutionModelParser.g:1688:1: ruleParameterBase64 returns [EObject current=null] : ( (lv_value_0_0= ruleBase64Binary ) ) ;
+    // InternalResolutionModelParser.g:1743:1: ruleParameterBase64 returns [EObject current=null] : ( (lv_value_0_0= ruleBase64Binary ) ) ;
     public final EObject ruleParameterBase64() throws RecognitionException {
         EObject current = null;
 
@@ -4378,14 +4513,14 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalResolutionModelParser.g:1694:2: ( ( (lv_value_0_0= ruleBase64Binary ) ) )
-            // InternalResolutionModelParser.g:1695:2: ( (lv_value_0_0= ruleBase64Binary ) )
+            // InternalResolutionModelParser.g:1749:2: ( ( (lv_value_0_0= ruleBase64Binary ) ) )
+            // InternalResolutionModelParser.g:1750:2: ( (lv_value_0_0= ruleBase64Binary ) )
             {
-            // InternalResolutionModelParser.g:1695:2: ( (lv_value_0_0= ruleBase64Binary ) )
-            // InternalResolutionModelParser.g:1696:3: (lv_value_0_0= ruleBase64Binary )
+            // InternalResolutionModelParser.g:1750:2: ( (lv_value_0_0= ruleBase64Binary ) )
+            // InternalResolutionModelParser.g:1751:3: (lv_value_0_0= ruleBase64Binary )
             {
-            // InternalResolutionModelParser.g:1696:3: (lv_value_0_0= ruleBase64Binary )
-            // InternalResolutionModelParser.g:1697:4: lv_value_0_0= ruleBase64Binary
+            // InternalResolutionModelParser.g:1751:3: (lv_value_0_0= ruleBase64Binary )
+            // InternalResolutionModelParser.g:1752:4: lv_value_0_0= ruleBase64Binary
             {
 
             				newCompositeNode(grammarAccess.getParameterBase64Access().getValueBase64BinaryParserRuleCall_0());
@@ -4432,7 +4567,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleParameterInteger"
-    // InternalResolutionModelParser.g:1717:1: entryRuleParameterInteger returns [EObject current=null] : iv_ruleParameterInteger= ruleParameterInteger EOF ;
+    // InternalResolutionModelParser.g:1772:1: entryRuleParameterInteger returns [EObject current=null] : iv_ruleParameterInteger= ruleParameterInteger EOF ;
     public final EObject entryRuleParameterInteger() throws RecognitionException {
         EObject current = null;
 
@@ -4440,8 +4575,8 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalResolutionModelParser.g:1717:57: (iv_ruleParameterInteger= ruleParameterInteger EOF )
-            // InternalResolutionModelParser.g:1718:2: iv_ruleParameterInteger= ruleParameterInteger EOF
+            // InternalResolutionModelParser.g:1772:57: (iv_ruleParameterInteger= ruleParameterInteger EOF )
+            // InternalResolutionModelParser.g:1773:2: iv_ruleParameterInteger= ruleParameterInteger EOF
             {
              newCompositeNode(grammarAccess.getParameterIntegerRule()); 
             pushFollow(FOLLOW_1);
@@ -4468,7 +4603,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleParameterInteger"
-    // InternalResolutionModelParser.g:1724:1: ruleParameterInteger returns [EObject current=null] : ( (lv_value_0_0= ruleInteger0 ) ) ;
+    // InternalResolutionModelParser.g:1779:1: ruleParameterInteger returns [EObject current=null] : ( (lv_value_0_0= ruleInteger0 ) ) ;
     public final EObject ruleParameterInteger() throws RecognitionException {
         EObject current = null;
 
@@ -4479,14 +4614,14 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalResolutionModelParser.g:1730:2: ( ( (lv_value_0_0= ruleInteger0 ) ) )
-            // InternalResolutionModelParser.g:1731:2: ( (lv_value_0_0= ruleInteger0 ) )
+            // InternalResolutionModelParser.g:1785:2: ( ( (lv_value_0_0= ruleInteger0 ) ) )
+            // InternalResolutionModelParser.g:1786:2: ( (lv_value_0_0= ruleInteger0 ) )
             {
-            // InternalResolutionModelParser.g:1731:2: ( (lv_value_0_0= ruleInteger0 ) )
-            // InternalResolutionModelParser.g:1732:3: (lv_value_0_0= ruleInteger0 )
+            // InternalResolutionModelParser.g:1786:2: ( (lv_value_0_0= ruleInteger0 ) )
+            // InternalResolutionModelParser.g:1787:3: (lv_value_0_0= ruleInteger0 )
             {
-            // InternalResolutionModelParser.g:1732:3: (lv_value_0_0= ruleInteger0 )
-            // InternalResolutionModelParser.g:1733:4: lv_value_0_0= ruleInteger0
+            // InternalResolutionModelParser.g:1787:3: (lv_value_0_0= ruleInteger0 )
+            // InternalResolutionModelParser.g:1788:4: lv_value_0_0= ruleInteger0
             {
 
             				newCompositeNode(grammarAccess.getParameterIntegerAccess().getValueInteger0ParserRuleCall_0());
@@ -4533,7 +4668,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleParameterDouble"
-    // InternalResolutionModelParser.g:1753:1: entryRuleParameterDouble returns [EObject current=null] : iv_ruleParameterDouble= ruleParameterDouble EOF ;
+    // InternalResolutionModelParser.g:1808:1: entryRuleParameterDouble returns [EObject current=null] : iv_ruleParameterDouble= ruleParameterDouble EOF ;
     public final EObject entryRuleParameterDouble() throws RecognitionException {
         EObject current = null;
 
@@ -4541,8 +4676,8 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalResolutionModelParser.g:1753:56: (iv_ruleParameterDouble= ruleParameterDouble EOF )
-            // InternalResolutionModelParser.g:1754:2: iv_ruleParameterDouble= ruleParameterDouble EOF
+            // InternalResolutionModelParser.g:1808:56: (iv_ruleParameterDouble= ruleParameterDouble EOF )
+            // InternalResolutionModelParser.g:1809:2: iv_ruleParameterDouble= ruleParameterDouble EOF
             {
              newCompositeNode(grammarAccess.getParameterDoubleRule()); 
             pushFollow(FOLLOW_1);
@@ -4569,7 +4704,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleParameterDouble"
-    // InternalResolutionModelParser.g:1760:1: ruleParameterDouble returns [EObject current=null] : ( (lv_value_0_0= ruleDouble0 ) ) ;
+    // InternalResolutionModelParser.g:1815:1: ruleParameterDouble returns [EObject current=null] : ( (lv_value_0_0= ruleDouble0 ) ) ;
     public final EObject ruleParameterDouble() throws RecognitionException {
         EObject current = null;
 
@@ -4580,14 +4715,14 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalResolutionModelParser.g:1766:2: ( ( (lv_value_0_0= ruleDouble0 ) ) )
-            // InternalResolutionModelParser.g:1767:2: ( (lv_value_0_0= ruleDouble0 ) )
+            // InternalResolutionModelParser.g:1821:2: ( ( (lv_value_0_0= ruleDouble0 ) ) )
+            // InternalResolutionModelParser.g:1822:2: ( (lv_value_0_0= ruleDouble0 ) )
             {
-            // InternalResolutionModelParser.g:1767:2: ( (lv_value_0_0= ruleDouble0 ) )
-            // InternalResolutionModelParser.g:1768:3: (lv_value_0_0= ruleDouble0 )
+            // InternalResolutionModelParser.g:1822:2: ( (lv_value_0_0= ruleDouble0 ) )
+            // InternalResolutionModelParser.g:1823:3: (lv_value_0_0= ruleDouble0 )
             {
-            // InternalResolutionModelParser.g:1768:3: (lv_value_0_0= ruleDouble0 )
-            // InternalResolutionModelParser.g:1769:4: lv_value_0_0= ruleDouble0
+            // InternalResolutionModelParser.g:1823:3: (lv_value_0_0= ruleDouble0 )
+            // InternalResolutionModelParser.g:1824:4: lv_value_0_0= ruleDouble0
             {
 
             				newCompositeNode(grammarAccess.getParameterDoubleAccess().getValueDouble0ParserRuleCall_0());
@@ -4634,7 +4769,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleParameterBoolean"
-    // InternalResolutionModelParser.g:1789:1: entryRuleParameterBoolean returns [EObject current=null] : iv_ruleParameterBoolean= ruleParameterBoolean EOF ;
+    // InternalResolutionModelParser.g:1844:1: entryRuleParameterBoolean returns [EObject current=null] : iv_ruleParameterBoolean= ruleParameterBoolean EOF ;
     public final EObject entryRuleParameterBoolean() throws RecognitionException {
         EObject current = null;
 
@@ -4642,8 +4777,8 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalResolutionModelParser.g:1789:57: (iv_ruleParameterBoolean= ruleParameterBoolean EOF )
-            // InternalResolutionModelParser.g:1790:2: iv_ruleParameterBoolean= ruleParameterBoolean EOF
+            // InternalResolutionModelParser.g:1844:57: (iv_ruleParameterBoolean= ruleParameterBoolean EOF )
+            // InternalResolutionModelParser.g:1845:2: iv_ruleParameterBoolean= ruleParameterBoolean EOF
             {
              newCompositeNode(grammarAccess.getParameterBooleanRule()); 
             pushFollow(FOLLOW_1);
@@ -4670,7 +4805,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleParameterBoolean"
-    // InternalResolutionModelParser.g:1796:1: ruleParameterBoolean returns [EObject current=null] : ( (lv_value_0_0= ruleboolean0 ) ) ;
+    // InternalResolutionModelParser.g:1851:1: ruleParameterBoolean returns [EObject current=null] : ( (lv_value_0_0= ruleboolean0 ) ) ;
     public final EObject ruleParameterBoolean() throws RecognitionException {
         EObject current = null;
 
@@ -4681,14 +4816,14 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalResolutionModelParser.g:1802:2: ( ( (lv_value_0_0= ruleboolean0 ) ) )
-            // InternalResolutionModelParser.g:1803:2: ( (lv_value_0_0= ruleboolean0 ) )
+            // InternalResolutionModelParser.g:1857:2: ( ( (lv_value_0_0= ruleboolean0 ) ) )
+            // InternalResolutionModelParser.g:1858:2: ( (lv_value_0_0= ruleboolean0 ) )
             {
-            // InternalResolutionModelParser.g:1803:2: ( (lv_value_0_0= ruleboolean0 ) )
-            // InternalResolutionModelParser.g:1804:3: (lv_value_0_0= ruleboolean0 )
+            // InternalResolutionModelParser.g:1858:2: ( (lv_value_0_0= ruleboolean0 ) )
+            // InternalResolutionModelParser.g:1859:3: (lv_value_0_0= ruleboolean0 )
             {
-            // InternalResolutionModelParser.g:1804:3: (lv_value_0_0= ruleboolean0 )
-            // InternalResolutionModelParser.g:1805:4: lv_value_0_0= ruleboolean0
+            // InternalResolutionModelParser.g:1859:3: (lv_value_0_0= ruleboolean0 )
+            // InternalResolutionModelParser.g:1860:4: lv_value_0_0= ruleboolean0
             {
 
             				newCompositeNode(grammarAccess.getParameterBooleanAccess().getValueBoolean0ParserRuleCall_0());
@@ -4735,7 +4870,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleParameterStruct"
-    // InternalResolutionModelParser.g:1825:1: entryRuleParameterStruct returns [EObject current=null] : iv_ruleParameterStruct= ruleParameterStruct EOF ;
+    // InternalResolutionModelParser.g:1880:1: entryRuleParameterStruct returns [EObject current=null] : iv_ruleParameterStruct= ruleParameterStruct EOF ;
     public final EObject entryRuleParameterStruct() throws RecognitionException {
         EObject current = null;
 
@@ -4743,8 +4878,8 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalResolutionModelParser.g:1825:56: (iv_ruleParameterStruct= ruleParameterStruct EOF )
-            // InternalResolutionModelParser.g:1826:2: iv_ruleParameterStruct= ruleParameterStruct EOF
+            // InternalResolutionModelParser.g:1880:56: (iv_ruleParameterStruct= ruleParameterStruct EOF )
+            // InternalResolutionModelParser.g:1881:2: iv_ruleParameterStruct= ruleParameterStruct EOF
             {
              newCompositeNode(grammarAccess.getParameterStructRule()); 
             pushFollow(FOLLOW_1);
@@ -4771,7 +4906,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleParameterStruct"
-    // InternalResolutionModelParser.g:1832:1: ruleParameterStruct returns [EObject current=null] : ( () (otherlv_1= LeftSquareBracket this_BEGIN_2= RULE_BEGIN ( (lv_value_3_0= ruleParameterStructMember ) )* otherlv_4= RightSquareBracket this_END_5= RULE_END )? ) ;
+    // InternalResolutionModelParser.g:1887:1: ruleParameterStruct returns [EObject current=null] : ( () (otherlv_1= LeftSquareBracket this_BEGIN_2= RULE_BEGIN ( (lv_value_3_0= ruleParameterStructMember ) )* otherlv_4= RightSquareBracket this_END_5= RULE_END )? ) ;
     public final EObject ruleParameterStruct() throws RecognitionException {
         EObject current = null;
 
@@ -4786,14 +4921,14 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalResolutionModelParser.g:1838:2: ( ( () (otherlv_1= LeftSquareBracket this_BEGIN_2= RULE_BEGIN ( (lv_value_3_0= ruleParameterStructMember ) )* otherlv_4= RightSquareBracket this_END_5= RULE_END )? ) )
-            // InternalResolutionModelParser.g:1839:2: ( () (otherlv_1= LeftSquareBracket this_BEGIN_2= RULE_BEGIN ( (lv_value_3_0= ruleParameterStructMember ) )* otherlv_4= RightSquareBracket this_END_5= RULE_END )? )
+            // InternalResolutionModelParser.g:1893:2: ( ( () (otherlv_1= LeftSquareBracket this_BEGIN_2= RULE_BEGIN ( (lv_value_3_0= ruleParameterStructMember ) )* otherlv_4= RightSquareBracket this_END_5= RULE_END )? ) )
+            // InternalResolutionModelParser.g:1894:2: ( () (otherlv_1= LeftSquareBracket this_BEGIN_2= RULE_BEGIN ( (lv_value_3_0= ruleParameterStructMember ) )* otherlv_4= RightSquareBracket this_END_5= RULE_END )? )
             {
-            // InternalResolutionModelParser.g:1839:2: ( () (otherlv_1= LeftSquareBracket this_BEGIN_2= RULE_BEGIN ( (lv_value_3_0= ruleParameterStructMember ) )* otherlv_4= RightSquareBracket this_END_5= RULE_END )? )
-            // InternalResolutionModelParser.g:1840:3: () (otherlv_1= LeftSquareBracket this_BEGIN_2= RULE_BEGIN ( (lv_value_3_0= ruleParameterStructMember ) )* otherlv_4= RightSquareBracket this_END_5= RULE_END )?
+            // InternalResolutionModelParser.g:1894:2: ( () (otherlv_1= LeftSquareBracket this_BEGIN_2= RULE_BEGIN ( (lv_value_3_0= ruleParameterStructMember ) )* otherlv_4= RightSquareBracket this_END_5= RULE_END )? )
+            // InternalResolutionModelParser.g:1895:3: () (otherlv_1= LeftSquareBracket this_BEGIN_2= RULE_BEGIN ( (lv_value_3_0= ruleParameterStructMember ) )* otherlv_4= RightSquareBracket this_END_5= RULE_END )?
             {
-            // InternalResolutionModelParser.g:1840:3: ()
-            // InternalResolutionModelParser.g:1841:4: 
+            // InternalResolutionModelParser.g:1895:3: ()
+            // InternalResolutionModelParser.g:1896:4: 
             {
 
             				current = forceCreateModelElement(
@@ -4803,7 +4938,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalResolutionModelParser.g:1847:3: (otherlv_1= LeftSquareBracket this_BEGIN_2= RULE_BEGIN ( (lv_value_3_0= ruleParameterStructMember ) )* otherlv_4= RightSquareBracket this_END_5= RULE_END )?
+            // InternalResolutionModelParser.g:1902:3: (otherlv_1= LeftSquareBracket this_BEGIN_2= RULE_BEGIN ( (lv_value_3_0= ruleParameterStructMember ) )* otherlv_4= RightSquareBracket this_END_5= RULE_END )?
             int alt26=2;
             int LA26_0 = input.LA(1);
 
@@ -4812,17 +4947,17 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
             }
             switch (alt26) {
                 case 1 :
-                    // InternalResolutionModelParser.g:1848:4: otherlv_1= LeftSquareBracket this_BEGIN_2= RULE_BEGIN ( (lv_value_3_0= ruleParameterStructMember ) )* otherlv_4= RightSquareBracket this_END_5= RULE_END
+                    // InternalResolutionModelParser.g:1903:4: otherlv_1= LeftSquareBracket this_BEGIN_2= RULE_BEGIN ( (lv_value_3_0= ruleParameterStructMember ) )* otherlv_4= RightSquareBracket this_END_5= RULE_END
                     {
-                    otherlv_1=(Token)match(input,LeftSquareBracket,FOLLOW_32); 
+                    otherlv_1=(Token)match(input,LeftSquareBracket,FOLLOW_33); 
 
                     				newLeafNode(otherlv_1, grammarAccess.getParameterStructAccess().getLeftSquareBracketKeyword_1_0());
                     			
-                    this_BEGIN_2=(Token)match(input,RULE_BEGIN,FOLLOW_33); 
+                    this_BEGIN_2=(Token)match(input,RULE_BEGIN,FOLLOW_34); 
 
                     				newLeafNode(this_BEGIN_2, grammarAccess.getParameterStructAccess().getBEGINTerminalRuleCall_1_1());
                     			
-                    // InternalResolutionModelParser.g:1856:4: ( (lv_value_3_0= ruleParameterStructMember ) )*
+                    // InternalResolutionModelParser.g:1911:4: ( (lv_value_3_0= ruleParameterStructMember ) )*
                     loop25:
                     do {
                         int alt25=2;
@@ -4835,15 +4970,15 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
                         switch (alt25) {
                     	case 1 :
-                    	    // InternalResolutionModelParser.g:1857:5: (lv_value_3_0= ruleParameterStructMember )
+                    	    // InternalResolutionModelParser.g:1912:5: (lv_value_3_0= ruleParameterStructMember )
                     	    {
-                    	    // InternalResolutionModelParser.g:1857:5: (lv_value_3_0= ruleParameterStructMember )
-                    	    // InternalResolutionModelParser.g:1858:6: lv_value_3_0= ruleParameterStructMember
+                    	    // InternalResolutionModelParser.g:1912:5: (lv_value_3_0= ruleParameterStructMember )
+                    	    // InternalResolutionModelParser.g:1913:6: lv_value_3_0= ruleParameterStructMember
                     	    {
 
                     	    						newCompositeNode(grammarAccess.getParameterStructAccess().getValueParameterStructMemberParserRuleCall_1_2_0());
                     	    					
-                    	    pushFollow(FOLLOW_33);
+                    	    pushFollow(FOLLOW_34);
                     	    lv_value_3_0=ruleParameterStructMember();
 
                     	    state._fsp--;
@@ -4871,7 +5006,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
                         }
                     } while (true);
 
-                    otherlv_4=(Token)match(input,RightSquareBracket,FOLLOW_34); 
+                    otherlv_4=(Token)match(input,RightSquareBracket,FOLLOW_35); 
 
                     				newLeafNode(otherlv_4, grammarAccess.getParameterStructAccess().getRightSquareBracketKeyword_1_3());
                     			
@@ -4908,7 +5043,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleParameterDate"
-    // InternalResolutionModelParser.g:1888:1: entryRuleParameterDate returns [EObject current=null] : iv_ruleParameterDate= ruleParameterDate EOF ;
+    // InternalResolutionModelParser.g:1943:1: entryRuleParameterDate returns [EObject current=null] : iv_ruleParameterDate= ruleParameterDate EOF ;
     public final EObject entryRuleParameterDate() throws RecognitionException {
         EObject current = null;
 
@@ -4916,8 +5051,8 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalResolutionModelParser.g:1888:54: (iv_ruleParameterDate= ruleParameterDate EOF )
-            // InternalResolutionModelParser.g:1889:2: iv_ruleParameterDate= ruleParameterDate EOF
+            // InternalResolutionModelParser.g:1943:54: (iv_ruleParameterDate= ruleParameterDate EOF )
+            // InternalResolutionModelParser.g:1944:2: iv_ruleParameterDate= ruleParameterDate EOF
             {
              newCompositeNode(grammarAccess.getParameterDateRule()); 
             pushFollow(FOLLOW_1);
@@ -4944,7 +5079,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleParameterDate"
-    // InternalResolutionModelParser.g:1895:1: ruleParameterDate returns [EObject current=null] : ( (lv_value_0_0= ruleDateTime0 ) ) ;
+    // InternalResolutionModelParser.g:1950:1: ruleParameterDate returns [EObject current=null] : ( (lv_value_0_0= ruleDateTime0 ) ) ;
     public final EObject ruleParameterDate() throws RecognitionException {
         EObject current = null;
 
@@ -4955,14 +5090,14 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalResolutionModelParser.g:1901:2: ( ( (lv_value_0_0= ruleDateTime0 ) ) )
-            // InternalResolutionModelParser.g:1902:2: ( (lv_value_0_0= ruleDateTime0 ) )
+            // InternalResolutionModelParser.g:1956:2: ( ( (lv_value_0_0= ruleDateTime0 ) ) )
+            // InternalResolutionModelParser.g:1957:2: ( (lv_value_0_0= ruleDateTime0 ) )
             {
-            // InternalResolutionModelParser.g:1902:2: ( (lv_value_0_0= ruleDateTime0 ) )
-            // InternalResolutionModelParser.g:1903:3: (lv_value_0_0= ruleDateTime0 )
+            // InternalResolutionModelParser.g:1957:2: ( (lv_value_0_0= ruleDateTime0 ) )
+            // InternalResolutionModelParser.g:1958:3: (lv_value_0_0= ruleDateTime0 )
             {
-            // InternalResolutionModelParser.g:1903:3: (lv_value_0_0= ruleDateTime0 )
-            // InternalResolutionModelParser.g:1904:4: lv_value_0_0= ruleDateTime0
+            // InternalResolutionModelParser.g:1958:3: (lv_value_0_0= ruleDateTime0 )
+            // InternalResolutionModelParser.g:1959:4: lv_value_0_0= ruleDateTime0
             {
 
             				newCompositeNode(grammarAccess.getParameterDateAccess().getValueDateTime0ParserRuleCall_0());
@@ -5009,7 +5144,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleParameterStructMember"
-    // InternalResolutionModelParser.g:1924:1: entryRuleParameterStructMember returns [EObject current=null] : iv_ruleParameterStructMember= ruleParameterStructMember EOF ;
+    // InternalResolutionModelParser.g:1979:1: entryRuleParameterStructMember returns [EObject current=null] : iv_ruleParameterStructMember= ruleParameterStructMember EOF ;
     public final EObject entryRuleParameterStructMember() throws RecognitionException {
         EObject current = null;
 
@@ -5017,8 +5152,8 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalResolutionModelParser.g:1924:62: (iv_ruleParameterStructMember= ruleParameterStructMember EOF )
-            // InternalResolutionModelParser.g:1925:2: iv_ruleParameterStructMember= ruleParameterStructMember EOF
+            // InternalResolutionModelParser.g:1979:62: (iv_ruleParameterStructMember= ruleParameterStructMember EOF )
+            // InternalResolutionModelParser.g:1980:2: iv_ruleParameterStructMember= ruleParameterStructMember EOF
             {
              newCompositeNode(grammarAccess.getParameterStructMemberRule()); 
             pushFollow(FOLLOW_1);
@@ -5045,7 +5180,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleParameterStructMember"
-    // InternalResolutionModelParser.g:1931:1: ruleParameterStructMember returns [EObject current=null] : ( ( (lv_name_0_0= ruleEString ) ) otherlv_1= Colon ( (lv_value_2_0= ruleParameterValue ) ) ) ;
+    // InternalResolutionModelParser.g:1986:1: ruleParameterStructMember returns [EObject current=null] : ( ( (lv_name_0_0= ruleEString ) ) otherlv_1= Colon ( (lv_value_2_0= ruleParameterValue ) ) ) ;
     public final EObject ruleParameterStructMember() throws RecognitionException {
         EObject current = null;
 
@@ -5059,17 +5194,17 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalResolutionModelParser.g:1937:2: ( ( ( (lv_name_0_0= ruleEString ) ) otherlv_1= Colon ( (lv_value_2_0= ruleParameterValue ) ) ) )
-            // InternalResolutionModelParser.g:1938:2: ( ( (lv_name_0_0= ruleEString ) ) otherlv_1= Colon ( (lv_value_2_0= ruleParameterValue ) ) )
+            // InternalResolutionModelParser.g:1992:2: ( ( ( (lv_name_0_0= ruleEString ) ) otherlv_1= Colon ( (lv_value_2_0= ruleParameterValue ) ) ) )
+            // InternalResolutionModelParser.g:1993:2: ( ( (lv_name_0_0= ruleEString ) ) otherlv_1= Colon ( (lv_value_2_0= ruleParameterValue ) ) )
             {
-            // InternalResolutionModelParser.g:1938:2: ( ( (lv_name_0_0= ruleEString ) ) otherlv_1= Colon ( (lv_value_2_0= ruleParameterValue ) ) )
-            // InternalResolutionModelParser.g:1939:3: ( (lv_name_0_0= ruleEString ) ) otherlv_1= Colon ( (lv_value_2_0= ruleParameterValue ) )
+            // InternalResolutionModelParser.g:1993:2: ( ( (lv_name_0_0= ruleEString ) ) otherlv_1= Colon ( (lv_value_2_0= ruleParameterValue ) ) )
+            // InternalResolutionModelParser.g:1994:3: ( (lv_name_0_0= ruleEString ) ) otherlv_1= Colon ( (lv_value_2_0= ruleParameterValue ) )
             {
-            // InternalResolutionModelParser.g:1939:3: ( (lv_name_0_0= ruleEString ) )
-            // InternalResolutionModelParser.g:1940:4: (lv_name_0_0= ruleEString )
+            // InternalResolutionModelParser.g:1994:3: ( (lv_name_0_0= ruleEString ) )
+            // InternalResolutionModelParser.g:1995:4: (lv_name_0_0= ruleEString )
             {
-            // InternalResolutionModelParser.g:1940:4: (lv_name_0_0= ruleEString )
-            // InternalResolutionModelParser.g:1941:5: lv_name_0_0= ruleEString
+            // InternalResolutionModelParser.g:1995:4: (lv_name_0_0= ruleEString )
+            // InternalResolutionModelParser.g:1996:5: lv_name_0_0= ruleEString
             {
 
             					newCompositeNode(grammarAccess.getParameterStructMemberAccess().getNameEStringParserRuleCall_0_0());
@@ -5096,15 +5231,15 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,Colon,FOLLOW_16); 
+            otherlv_1=(Token)match(input,Colon,FOLLOW_17); 
 
             			newLeafNode(otherlv_1, grammarAccess.getParameterStructMemberAccess().getColonKeyword_1());
             		
-            // InternalResolutionModelParser.g:1962:3: ( (lv_value_2_0= ruleParameterValue ) )
-            // InternalResolutionModelParser.g:1963:4: (lv_value_2_0= ruleParameterValue )
+            // InternalResolutionModelParser.g:2017:3: ( (lv_value_2_0= ruleParameterValue ) )
+            // InternalResolutionModelParser.g:2018:4: (lv_value_2_0= ruleParameterValue )
             {
-            // InternalResolutionModelParser.g:1963:4: (lv_value_2_0= ruleParameterValue )
-            // InternalResolutionModelParser.g:1964:5: lv_value_2_0= ruleParameterValue
+            // InternalResolutionModelParser.g:2018:4: (lv_value_2_0= ruleParameterValue )
+            // InternalResolutionModelParser.g:2019:5: lv_value_2_0= ruleParameterValue
             {
 
             					newCompositeNode(grammarAccess.getParameterStructMemberAccess().getValueParameterValueParserRuleCall_2_0());
@@ -5154,7 +5289,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleParameterStructTypeMember"
-    // InternalResolutionModelParser.g:1985:1: entryRuleParameterStructTypeMember returns [EObject current=null] : iv_ruleParameterStructTypeMember= ruleParameterStructTypeMember EOF ;
+    // InternalResolutionModelParser.g:2040:1: entryRuleParameterStructTypeMember returns [EObject current=null] : iv_ruleParameterStructTypeMember= ruleParameterStructTypeMember EOF ;
     public final EObject entryRuleParameterStructTypeMember() throws RecognitionException {
         EObject current = null;
 
@@ -5162,8 +5297,8 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalResolutionModelParser.g:1985:66: (iv_ruleParameterStructTypeMember= ruleParameterStructTypeMember EOF )
-            // InternalResolutionModelParser.g:1986:2: iv_ruleParameterStructTypeMember= ruleParameterStructTypeMember EOF
+            // InternalResolutionModelParser.g:2040:66: (iv_ruleParameterStructTypeMember= ruleParameterStructTypeMember EOF )
+            // InternalResolutionModelParser.g:2041:2: iv_ruleParameterStructTypeMember= ruleParameterStructTypeMember EOF
             {
              newCompositeNode(grammarAccess.getParameterStructTypeMemberRule()); 
             pushFollow(FOLLOW_1);
@@ -5190,7 +5325,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleParameterStructTypeMember"
-    // InternalResolutionModelParser.g:1992:1: ruleParameterStructTypeMember returns [EObject current=null] : ( ( (lv_name_0_0= ruleEString ) ) ( (lv_type_1_0= ruleParameterType ) ) ) ;
+    // InternalResolutionModelParser.g:2047:1: ruleParameterStructTypeMember returns [EObject current=null] : ( ( (lv_name_0_0= ruleEString ) ) ( (lv_type_1_0= ruleParameterType ) ) ) ;
     public final EObject ruleParameterStructTypeMember() throws RecognitionException {
         EObject current = null;
 
@@ -5203,22 +5338,22 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalResolutionModelParser.g:1998:2: ( ( ( (lv_name_0_0= ruleEString ) ) ( (lv_type_1_0= ruleParameterType ) ) ) )
-            // InternalResolutionModelParser.g:1999:2: ( ( (lv_name_0_0= ruleEString ) ) ( (lv_type_1_0= ruleParameterType ) ) )
+            // InternalResolutionModelParser.g:2053:2: ( ( ( (lv_name_0_0= ruleEString ) ) ( (lv_type_1_0= ruleParameterType ) ) ) )
+            // InternalResolutionModelParser.g:2054:2: ( ( (lv_name_0_0= ruleEString ) ) ( (lv_type_1_0= ruleParameterType ) ) )
             {
-            // InternalResolutionModelParser.g:1999:2: ( ( (lv_name_0_0= ruleEString ) ) ( (lv_type_1_0= ruleParameterType ) ) )
-            // InternalResolutionModelParser.g:2000:3: ( (lv_name_0_0= ruleEString ) ) ( (lv_type_1_0= ruleParameterType ) )
+            // InternalResolutionModelParser.g:2054:2: ( ( (lv_name_0_0= ruleEString ) ) ( (lv_type_1_0= ruleParameterType ) ) )
+            // InternalResolutionModelParser.g:2055:3: ( (lv_name_0_0= ruleEString ) ) ( (lv_type_1_0= ruleParameterType ) )
             {
-            // InternalResolutionModelParser.g:2000:3: ( (lv_name_0_0= ruleEString ) )
-            // InternalResolutionModelParser.g:2001:4: (lv_name_0_0= ruleEString )
+            // InternalResolutionModelParser.g:2055:3: ( (lv_name_0_0= ruleEString ) )
+            // InternalResolutionModelParser.g:2056:4: (lv_name_0_0= ruleEString )
             {
-            // InternalResolutionModelParser.g:2001:4: (lv_name_0_0= ruleEString )
-            // InternalResolutionModelParser.g:2002:5: lv_name_0_0= ruleEString
+            // InternalResolutionModelParser.g:2056:4: (lv_name_0_0= ruleEString )
+            // InternalResolutionModelParser.g:2057:5: lv_name_0_0= ruleEString
             {
 
             					newCompositeNode(grammarAccess.getParameterStructTypeMemberAccess().getNameEStringParserRuleCall_0_0());
             				
-            pushFollow(FOLLOW_23);
+            pushFollow(FOLLOW_24);
             lv_name_0_0=ruleEString();
 
             state._fsp--;
@@ -5240,11 +5375,11 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalResolutionModelParser.g:2019:3: ( (lv_type_1_0= ruleParameterType ) )
-            // InternalResolutionModelParser.g:2020:4: (lv_type_1_0= ruleParameterType )
+            // InternalResolutionModelParser.g:2074:3: ( (lv_type_1_0= ruleParameterType ) )
+            // InternalResolutionModelParser.g:2075:4: (lv_type_1_0= ruleParameterType )
             {
-            // InternalResolutionModelParser.g:2020:4: (lv_type_1_0= ruleParameterType )
-            // InternalResolutionModelParser.g:2021:5: lv_type_1_0= ruleParameterType
+            // InternalResolutionModelParser.g:2075:4: (lv_type_1_0= ruleParameterType )
+            // InternalResolutionModelParser.g:2076:5: lv_type_1_0= ruleParameterType
             {
 
             					newCompositeNode(grammarAccess.getParameterStructTypeMemberAccess().getTypeParameterTypeParserRuleCall_1_0());
@@ -5294,7 +5429,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleBase64Binary"
-    // InternalResolutionModelParser.g:2042:1: entryRuleBase64Binary returns [String current=null] : iv_ruleBase64Binary= ruleBase64Binary EOF ;
+    // InternalResolutionModelParser.g:2097:1: entryRuleBase64Binary returns [String current=null] : iv_ruleBase64Binary= ruleBase64Binary EOF ;
     public final String entryRuleBase64Binary() throws RecognitionException {
         String current = null;
 
@@ -5302,8 +5437,8 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalResolutionModelParser.g:2042:52: (iv_ruleBase64Binary= ruleBase64Binary EOF )
-            // InternalResolutionModelParser.g:2043:2: iv_ruleBase64Binary= ruleBase64Binary EOF
+            // InternalResolutionModelParser.g:2097:52: (iv_ruleBase64Binary= ruleBase64Binary EOF )
+            // InternalResolutionModelParser.g:2098:2: iv_ruleBase64Binary= ruleBase64Binary EOF
             {
              newCompositeNode(grammarAccess.getBase64BinaryRule()); 
             pushFollow(FOLLOW_1);
@@ -5330,7 +5465,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleBase64Binary"
-    // InternalResolutionModelParser.g:2049:1: ruleBase64Binary returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : this_BINARY_0= RULE_BINARY ;
+    // InternalResolutionModelParser.g:2104:1: ruleBase64Binary returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : this_BINARY_0= RULE_BINARY ;
     public final AntlrDatatypeRuleToken ruleBase64Binary() throws RecognitionException {
         AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
 
@@ -5340,8 +5475,8 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalResolutionModelParser.g:2055:2: (this_BINARY_0= RULE_BINARY )
-            // InternalResolutionModelParser.g:2056:2: this_BINARY_0= RULE_BINARY
+            // InternalResolutionModelParser.g:2110:2: (this_BINARY_0= RULE_BINARY )
+            // InternalResolutionModelParser.g:2111:2: this_BINARY_0= RULE_BINARY
             {
             this_BINARY_0=(Token)match(input,RULE_BINARY,FOLLOW_2); 
 
@@ -5370,7 +5505,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleboolean0"
-    // InternalResolutionModelParser.g:2066:1: entryRuleboolean0 returns [String current=null] : iv_ruleboolean0= ruleboolean0 EOF ;
+    // InternalResolutionModelParser.g:2121:1: entryRuleboolean0 returns [String current=null] : iv_ruleboolean0= ruleboolean0 EOF ;
     public final String entryRuleboolean0() throws RecognitionException {
         String current = null;
 
@@ -5378,8 +5513,8 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalResolutionModelParser.g:2066:48: (iv_ruleboolean0= ruleboolean0 EOF )
-            // InternalResolutionModelParser.g:2067:2: iv_ruleboolean0= ruleboolean0 EOF
+            // InternalResolutionModelParser.g:2121:48: (iv_ruleboolean0= ruleboolean0 EOF )
+            // InternalResolutionModelParser.g:2122:2: iv_ruleboolean0= ruleboolean0 EOF
             {
              newCompositeNode(grammarAccess.getBoolean0Rule()); 
             pushFollow(FOLLOW_1);
@@ -5406,7 +5541,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleboolean0"
-    // InternalResolutionModelParser.g:2073:1: ruleboolean0 returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : this_BOOLEAN_0= RULE_BOOLEAN ;
+    // InternalResolutionModelParser.g:2128:1: ruleboolean0 returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : this_BOOLEAN_0= RULE_BOOLEAN ;
     public final AntlrDatatypeRuleToken ruleboolean0() throws RecognitionException {
         AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
 
@@ -5416,8 +5551,8 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalResolutionModelParser.g:2079:2: (this_BOOLEAN_0= RULE_BOOLEAN )
-            // InternalResolutionModelParser.g:2080:2: this_BOOLEAN_0= RULE_BOOLEAN
+            // InternalResolutionModelParser.g:2134:2: (this_BOOLEAN_0= RULE_BOOLEAN )
+            // InternalResolutionModelParser.g:2135:2: this_BOOLEAN_0= RULE_BOOLEAN
             {
             this_BOOLEAN_0=(Token)match(input,RULE_BOOLEAN,FOLLOW_2); 
 
@@ -5446,7 +5581,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleDouble0"
-    // InternalResolutionModelParser.g:2090:1: entryRuleDouble0 returns [String current=null] : iv_ruleDouble0= ruleDouble0 EOF ;
+    // InternalResolutionModelParser.g:2145:1: entryRuleDouble0 returns [String current=null] : iv_ruleDouble0= ruleDouble0 EOF ;
     public final String entryRuleDouble0() throws RecognitionException {
         String current = null;
 
@@ -5454,8 +5589,8 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalResolutionModelParser.g:2090:47: (iv_ruleDouble0= ruleDouble0 EOF )
-            // InternalResolutionModelParser.g:2091:2: iv_ruleDouble0= ruleDouble0 EOF
+            // InternalResolutionModelParser.g:2145:47: (iv_ruleDouble0= ruleDouble0 EOF )
+            // InternalResolutionModelParser.g:2146:2: iv_ruleDouble0= ruleDouble0 EOF
             {
              newCompositeNode(grammarAccess.getDouble0Rule()); 
             pushFollow(FOLLOW_1);
@@ -5482,7 +5617,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleDouble0"
-    // InternalResolutionModelParser.g:2097:1: ruleDouble0 returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : this_DOUBLE_0= RULE_DOUBLE ;
+    // InternalResolutionModelParser.g:2152:1: ruleDouble0 returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : this_DOUBLE_0= RULE_DOUBLE ;
     public final AntlrDatatypeRuleToken ruleDouble0() throws RecognitionException {
         AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
 
@@ -5492,8 +5627,8 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalResolutionModelParser.g:2103:2: (this_DOUBLE_0= RULE_DOUBLE )
-            // InternalResolutionModelParser.g:2104:2: this_DOUBLE_0= RULE_DOUBLE
+            // InternalResolutionModelParser.g:2158:2: (this_DOUBLE_0= RULE_DOUBLE )
+            // InternalResolutionModelParser.g:2159:2: this_DOUBLE_0= RULE_DOUBLE
             {
             this_DOUBLE_0=(Token)match(input,RULE_DOUBLE,FOLLOW_2); 
 
@@ -5522,7 +5657,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleInteger0"
-    // InternalResolutionModelParser.g:2114:1: entryRuleInteger0 returns [String current=null] : iv_ruleInteger0= ruleInteger0 EOF ;
+    // InternalResolutionModelParser.g:2169:1: entryRuleInteger0 returns [String current=null] : iv_ruleInteger0= ruleInteger0 EOF ;
     public final String entryRuleInteger0() throws RecognitionException {
         String current = null;
 
@@ -5530,8 +5665,8 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalResolutionModelParser.g:2114:48: (iv_ruleInteger0= ruleInteger0 EOF )
-            // InternalResolutionModelParser.g:2115:2: iv_ruleInteger0= ruleInteger0 EOF
+            // InternalResolutionModelParser.g:2169:48: (iv_ruleInteger0= ruleInteger0 EOF )
+            // InternalResolutionModelParser.g:2170:2: iv_ruleInteger0= ruleInteger0 EOF
             {
              newCompositeNode(grammarAccess.getInteger0Rule()); 
             pushFollow(FOLLOW_1);
@@ -5558,7 +5693,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleInteger0"
-    // InternalResolutionModelParser.g:2121:1: ruleInteger0 returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : this_DECINT_0= RULE_DECINT ;
+    // InternalResolutionModelParser.g:2176:1: ruleInteger0 returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : this_DECINT_0= RULE_DECINT ;
     public final AntlrDatatypeRuleToken ruleInteger0() throws RecognitionException {
         AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
 
@@ -5568,8 +5703,8 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalResolutionModelParser.g:2127:2: (this_DECINT_0= RULE_DECINT )
-            // InternalResolutionModelParser.g:2128:2: this_DECINT_0= RULE_DECINT
+            // InternalResolutionModelParser.g:2182:2: (this_DECINT_0= RULE_DECINT )
+            // InternalResolutionModelParser.g:2183:2: this_DECINT_0= RULE_DECINT
             {
             this_DECINT_0=(Token)match(input,RULE_DECINT,FOLLOW_2); 
 
@@ -5598,7 +5733,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleDateTime0"
-    // InternalResolutionModelParser.g:2138:1: entryRuleDateTime0 returns [String current=null] : iv_ruleDateTime0= ruleDateTime0 EOF ;
+    // InternalResolutionModelParser.g:2193:1: entryRuleDateTime0 returns [String current=null] : iv_ruleDateTime0= ruleDateTime0 EOF ;
     public final String entryRuleDateTime0() throws RecognitionException {
         String current = null;
 
@@ -5606,8 +5741,8 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalResolutionModelParser.g:2138:49: (iv_ruleDateTime0= ruleDateTime0 EOF )
-            // InternalResolutionModelParser.g:2139:2: iv_ruleDateTime0= ruleDateTime0 EOF
+            // InternalResolutionModelParser.g:2193:49: (iv_ruleDateTime0= ruleDateTime0 EOF )
+            // InternalResolutionModelParser.g:2194:2: iv_ruleDateTime0= ruleDateTime0 EOF
             {
              newCompositeNode(grammarAccess.getDateTime0Rule()); 
             pushFollow(FOLLOW_1);
@@ -5634,7 +5769,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleDateTime0"
-    // InternalResolutionModelParser.g:2145:1: ruleDateTime0 returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : this_DATE_TIME_0= RULE_DATE_TIME ;
+    // InternalResolutionModelParser.g:2200:1: ruleDateTime0 returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : this_DATE_TIME_0= RULE_DATE_TIME ;
     public final AntlrDatatypeRuleToken ruleDateTime0() throws RecognitionException {
         AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
 
@@ -5644,8 +5779,8 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalResolutionModelParser.g:2151:2: (this_DATE_TIME_0= RULE_DATE_TIME )
-            // InternalResolutionModelParser.g:2152:2: this_DATE_TIME_0= RULE_DATE_TIME
+            // InternalResolutionModelParser.g:2206:2: (this_DATE_TIME_0= RULE_DATE_TIME )
+            // InternalResolutionModelParser.g:2207:2: this_DATE_TIME_0= RULE_DATE_TIME
             {
             this_DATE_TIME_0=(Token)match(input,RULE_DATE_TIME,FOLLOW_2); 
 
@@ -5674,7 +5809,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleAbstractType"
-    // InternalResolutionModelParser.g:2162:1: entryRuleAbstractType returns [EObject current=null] : iv_ruleAbstractType= ruleAbstractType EOF ;
+    // InternalResolutionModelParser.g:2217:1: entryRuleAbstractType returns [EObject current=null] : iv_ruleAbstractType= ruleAbstractType EOF ;
     public final EObject entryRuleAbstractType() throws RecognitionException {
         EObject current = null;
 
@@ -5682,8 +5817,8 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalResolutionModelParser.g:2162:53: (iv_ruleAbstractType= ruleAbstractType EOF )
-            // InternalResolutionModelParser.g:2163:2: iv_ruleAbstractType= ruleAbstractType EOF
+            // InternalResolutionModelParser.g:2217:53: (iv_ruleAbstractType= ruleAbstractType EOF )
+            // InternalResolutionModelParser.g:2218:2: iv_ruleAbstractType= ruleAbstractType EOF
             {
              newCompositeNode(grammarAccess.getAbstractTypeRule()); 
             pushFollow(FOLLOW_1);
@@ -5710,7 +5845,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleAbstractType"
-    // InternalResolutionModelParser.g:2169:1: ruleAbstractType returns [EObject current=null] : (this_bool_0= rulebool | this_int8_1= ruleint8 | this_uint8_2= ruleuint8 | this_int16_3= ruleint16 | this_uint16_4= ruleuint16 | this_int32_5= ruleint32 | this_uint32_6= ruleuint32 | this_int64_7= ruleint64 | this_uint64_8= ruleuint64 | this_float32_9= rulefloat32 | this_float64_10= rulefloat64 | this_string0_11= rulestring0 | this_byte_12= rulebyte | this_time_13= ruletime | this_duration_14= ruleduration | this_Header_15= ruleHeader | this_boolArray_16= ruleboolArray | this_int8Array_17= ruleint8Array | this_uint8Array_18= ruleuint8Array | this_int16Array_19= ruleint16Array | this_uint16Array_20= ruleuint16Array | this_int32Array_21= ruleint32Array | this_uint32Array_22= ruleuint32Array | this_int64Array_23= ruleint64Array | this_uint64Array_24= ruleuint64Array | this_float32Array_25= rulefloat32Array | this_float64Array_26= rulefloat64Array | this_string0Array_27= rulestring0Array | this_byteArray_28= rulebyteArray | this_SpecBaseRef_29= ruleSpecBaseRef | this_ArraySpecRef_30= ruleArraySpecRef | this_char_31= rulechar | this_charArray_32= rulecharArray ) ;
+    // InternalResolutionModelParser.g:2224:1: ruleAbstractType returns [EObject current=null] : (this_bool_0= rulebool | this_int8_1= ruleint8 | this_uint8_2= ruleuint8 | this_int16_3= ruleint16 | this_uint16_4= ruleuint16 | this_int32_5= ruleint32 | this_uint32_6= ruleuint32 | this_int64_7= ruleint64 | this_uint64_8= ruleuint64 | this_float32_9= rulefloat32 | this_float64_10= rulefloat64 | this_string0_11= rulestring0 | this_byte_12= rulebyte | this_time_13= ruletime | this_duration_14= ruleduration | this_Header_15= ruleHeader | this_boolArray_16= ruleboolArray | this_int8Array_17= ruleint8Array | this_uint8Array_18= ruleuint8Array | this_int16Array_19= ruleint16Array | this_uint16Array_20= ruleuint16Array | this_int32Array_21= ruleint32Array | this_uint32Array_22= ruleuint32Array | this_int64Array_23= ruleint64Array | this_uint64Array_24= ruleuint64Array | this_float32Array_25= rulefloat32Array | this_float64Array_26= rulefloat64Array | this_string0Array_27= rulestring0Array | this_byteArray_28= rulebyteArray | this_SpecBaseRef_29= ruleSpecBaseRef | this_ArraySpecRef_30= ruleArraySpecRef | this_char_31= rulechar | this_charArray_32= rulecharArray ) ;
     public final EObject ruleAbstractType() throws RecognitionException {
         EObject current = null;
 
@@ -5785,15 +5920,15 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalResolutionModelParser.g:2175:2: ( (this_bool_0= rulebool | this_int8_1= ruleint8 | this_uint8_2= ruleuint8 | this_int16_3= ruleint16 | this_uint16_4= ruleuint16 | this_int32_5= ruleint32 | this_uint32_6= ruleuint32 | this_int64_7= ruleint64 | this_uint64_8= ruleuint64 | this_float32_9= rulefloat32 | this_float64_10= rulefloat64 | this_string0_11= rulestring0 | this_byte_12= rulebyte | this_time_13= ruletime | this_duration_14= ruleduration | this_Header_15= ruleHeader | this_boolArray_16= ruleboolArray | this_int8Array_17= ruleint8Array | this_uint8Array_18= ruleuint8Array | this_int16Array_19= ruleint16Array | this_uint16Array_20= ruleuint16Array | this_int32Array_21= ruleint32Array | this_uint32Array_22= ruleuint32Array | this_int64Array_23= ruleint64Array | this_uint64Array_24= ruleuint64Array | this_float32Array_25= rulefloat32Array | this_float64Array_26= rulefloat64Array | this_string0Array_27= rulestring0Array | this_byteArray_28= rulebyteArray | this_SpecBaseRef_29= ruleSpecBaseRef | this_ArraySpecRef_30= ruleArraySpecRef | this_char_31= rulechar | this_charArray_32= rulecharArray ) )
-            // InternalResolutionModelParser.g:2176:2: (this_bool_0= rulebool | this_int8_1= ruleint8 | this_uint8_2= ruleuint8 | this_int16_3= ruleint16 | this_uint16_4= ruleuint16 | this_int32_5= ruleint32 | this_uint32_6= ruleuint32 | this_int64_7= ruleint64 | this_uint64_8= ruleuint64 | this_float32_9= rulefloat32 | this_float64_10= rulefloat64 | this_string0_11= rulestring0 | this_byte_12= rulebyte | this_time_13= ruletime | this_duration_14= ruleduration | this_Header_15= ruleHeader | this_boolArray_16= ruleboolArray | this_int8Array_17= ruleint8Array | this_uint8Array_18= ruleuint8Array | this_int16Array_19= ruleint16Array | this_uint16Array_20= ruleuint16Array | this_int32Array_21= ruleint32Array | this_uint32Array_22= ruleuint32Array | this_int64Array_23= ruleint64Array | this_uint64Array_24= ruleuint64Array | this_float32Array_25= rulefloat32Array | this_float64Array_26= rulefloat64Array | this_string0Array_27= rulestring0Array | this_byteArray_28= rulebyteArray | this_SpecBaseRef_29= ruleSpecBaseRef | this_ArraySpecRef_30= ruleArraySpecRef | this_char_31= rulechar | this_charArray_32= rulecharArray )
+            // InternalResolutionModelParser.g:2230:2: ( (this_bool_0= rulebool | this_int8_1= ruleint8 | this_uint8_2= ruleuint8 | this_int16_3= ruleint16 | this_uint16_4= ruleuint16 | this_int32_5= ruleint32 | this_uint32_6= ruleuint32 | this_int64_7= ruleint64 | this_uint64_8= ruleuint64 | this_float32_9= rulefloat32 | this_float64_10= rulefloat64 | this_string0_11= rulestring0 | this_byte_12= rulebyte | this_time_13= ruletime | this_duration_14= ruleduration | this_Header_15= ruleHeader | this_boolArray_16= ruleboolArray | this_int8Array_17= ruleint8Array | this_uint8Array_18= ruleuint8Array | this_int16Array_19= ruleint16Array | this_uint16Array_20= ruleuint16Array | this_int32Array_21= ruleint32Array | this_uint32Array_22= ruleuint32Array | this_int64Array_23= ruleint64Array | this_uint64Array_24= ruleuint64Array | this_float32Array_25= rulefloat32Array | this_float64Array_26= rulefloat64Array | this_string0Array_27= rulestring0Array | this_byteArray_28= rulebyteArray | this_SpecBaseRef_29= ruleSpecBaseRef | this_ArraySpecRef_30= ruleArraySpecRef | this_char_31= rulechar | this_charArray_32= rulecharArray ) )
+            // InternalResolutionModelParser.g:2231:2: (this_bool_0= rulebool | this_int8_1= ruleint8 | this_uint8_2= ruleuint8 | this_int16_3= ruleint16 | this_uint16_4= ruleuint16 | this_int32_5= ruleint32 | this_uint32_6= ruleuint32 | this_int64_7= ruleint64 | this_uint64_8= ruleuint64 | this_float32_9= rulefloat32 | this_float64_10= rulefloat64 | this_string0_11= rulestring0 | this_byte_12= rulebyte | this_time_13= ruletime | this_duration_14= ruleduration | this_Header_15= ruleHeader | this_boolArray_16= ruleboolArray | this_int8Array_17= ruleint8Array | this_uint8Array_18= ruleuint8Array | this_int16Array_19= ruleint16Array | this_uint16Array_20= ruleuint16Array | this_int32Array_21= ruleint32Array | this_uint32Array_22= ruleuint32Array | this_int64Array_23= ruleint64Array | this_uint64Array_24= ruleuint64Array | this_float32Array_25= rulefloat32Array | this_float64Array_26= rulefloat64Array | this_string0Array_27= rulestring0Array | this_byteArray_28= rulebyteArray | this_SpecBaseRef_29= ruleSpecBaseRef | this_ArraySpecRef_30= ruleArraySpecRef | this_char_31= rulechar | this_charArray_32= rulecharArray )
             {
-            // InternalResolutionModelParser.g:2176:2: (this_bool_0= rulebool | this_int8_1= ruleint8 | this_uint8_2= ruleuint8 | this_int16_3= ruleint16 | this_uint16_4= ruleuint16 | this_int32_5= ruleint32 | this_uint32_6= ruleuint32 | this_int64_7= ruleint64 | this_uint64_8= ruleuint64 | this_float32_9= rulefloat32 | this_float64_10= rulefloat64 | this_string0_11= rulestring0 | this_byte_12= rulebyte | this_time_13= ruletime | this_duration_14= ruleduration | this_Header_15= ruleHeader | this_boolArray_16= ruleboolArray | this_int8Array_17= ruleint8Array | this_uint8Array_18= ruleuint8Array | this_int16Array_19= ruleint16Array | this_uint16Array_20= ruleuint16Array | this_int32Array_21= ruleint32Array | this_uint32Array_22= ruleuint32Array | this_int64Array_23= ruleint64Array | this_uint64Array_24= ruleuint64Array | this_float32Array_25= rulefloat32Array | this_float64Array_26= rulefloat64Array | this_string0Array_27= rulestring0Array | this_byteArray_28= rulebyteArray | this_SpecBaseRef_29= ruleSpecBaseRef | this_ArraySpecRef_30= ruleArraySpecRef | this_char_31= rulechar | this_charArray_32= rulecharArray )
+            // InternalResolutionModelParser.g:2231:2: (this_bool_0= rulebool | this_int8_1= ruleint8 | this_uint8_2= ruleuint8 | this_int16_3= ruleint16 | this_uint16_4= ruleuint16 | this_int32_5= ruleint32 | this_uint32_6= ruleuint32 | this_int64_7= ruleint64 | this_uint64_8= ruleuint64 | this_float32_9= rulefloat32 | this_float64_10= rulefloat64 | this_string0_11= rulestring0 | this_byte_12= rulebyte | this_time_13= ruletime | this_duration_14= ruleduration | this_Header_15= ruleHeader | this_boolArray_16= ruleboolArray | this_int8Array_17= ruleint8Array | this_uint8Array_18= ruleuint8Array | this_int16Array_19= ruleint16Array | this_uint16Array_20= ruleuint16Array | this_int32Array_21= ruleint32Array | this_uint32Array_22= ruleuint32Array | this_int64Array_23= ruleint64Array | this_uint64Array_24= ruleuint64Array | this_float32Array_25= rulefloat32Array | this_float64Array_26= rulefloat64Array | this_string0Array_27= rulestring0Array | this_byteArray_28= rulebyteArray | this_SpecBaseRef_29= ruleSpecBaseRef | this_ArraySpecRef_30= ruleArraySpecRef | this_char_31= rulechar | this_charArray_32= rulecharArray )
             int alt27=33;
             alt27 = dfa27.predict(input);
             switch (alt27) {
                 case 1 :
-                    // InternalResolutionModelParser.g:2177:3: this_bool_0= rulebool
+                    // InternalResolutionModelParser.g:2232:3: this_bool_0= rulebool
                     {
 
                     			newCompositeNode(grammarAccess.getAbstractTypeAccess().getBoolParserRuleCall_0());
@@ -5811,7 +5946,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // InternalResolutionModelParser.g:2186:3: this_int8_1= ruleint8
+                    // InternalResolutionModelParser.g:2241:3: this_int8_1= ruleint8
                     {
 
                     			newCompositeNode(grammarAccess.getAbstractTypeAccess().getInt8ParserRuleCall_1());
@@ -5829,7 +5964,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 3 :
-                    // InternalResolutionModelParser.g:2195:3: this_uint8_2= ruleuint8
+                    // InternalResolutionModelParser.g:2250:3: this_uint8_2= ruleuint8
                     {
 
                     			newCompositeNode(grammarAccess.getAbstractTypeAccess().getUint8ParserRuleCall_2());
@@ -5847,7 +5982,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 4 :
-                    // InternalResolutionModelParser.g:2204:3: this_int16_3= ruleint16
+                    // InternalResolutionModelParser.g:2259:3: this_int16_3= ruleint16
                     {
 
                     			newCompositeNode(grammarAccess.getAbstractTypeAccess().getInt16ParserRuleCall_3());
@@ -5865,7 +6000,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 5 :
-                    // InternalResolutionModelParser.g:2213:3: this_uint16_4= ruleuint16
+                    // InternalResolutionModelParser.g:2268:3: this_uint16_4= ruleuint16
                     {
 
                     			newCompositeNode(grammarAccess.getAbstractTypeAccess().getUint16ParserRuleCall_4());
@@ -5883,7 +6018,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 6 :
-                    // InternalResolutionModelParser.g:2222:3: this_int32_5= ruleint32
+                    // InternalResolutionModelParser.g:2277:3: this_int32_5= ruleint32
                     {
 
                     			newCompositeNode(grammarAccess.getAbstractTypeAccess().getInt32ParserRuleCall_5());
@@ -5901,7 +6036,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 7 :
-                    // InternalResolutionModelParser.g:2231:3: this_uint32_6= ruleuint32
+                    // InternalResolutionModelParser.g:2286:3: this_uint32_6= ruleuint32
                     {
 
                     			newCompositeNode(grammarAccess.getAbstractTypeAccess().getUint32ParserRuleCall_6());
@@ -5919,7 +6054,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 8 :
-                    // InternalResolutionModelParser.g:2240:3: this_int64_7= ruleint64
+                    // InternalResolutionModelParser.g:2295:3: this_int64_7= ruleint64
                     {
 
                     			newCompositeNode(grammarAccess.getAbstractTypeAccess().getInt64ParserRuleCall_7());
@@ -5937,7 +6072,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 9 :
-                    // InternalResolutionModelParser.g:2249:3: this_uint64_8= ruleuint64
+                    // InternalResolutionModelParser.g:2304:3: this_uint64_8= ruleuint64
                     {
 
                     			newCompositeNode(grammarAccess.getAbstractTypeAccess().getUint64ParserRuleCall_8());
@@ -5955,7 +6090,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 10 :
-                    // InternalResolutionModelParser.g:2258:3: this_float32_9= rulefloat32
+                    // InternalResolutionModelParser.g:2313:3: this_float32_9= rulefloat32
                     {
 
                     			newCompositeNode(grammarAccess.getAbstractTypeAccess().getFloat32ParserRuleCall_9());
@@ -5973,7 +6108,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 11 :
-                    // InternalResolutionModelParser.g:2267:3: this_float64_10= rulefloat64
+                    // InternalResolutionModelParser.g:2322:3: this_float64_10= rulefloat64
                     {
 
                     			newCompositeNode(grammarAccess.getAbstractTypeAccess().getFloat64ParserRuleCall_10());
@@ -5991,7 +6126,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 12 :
-                    // InternalResolutionModelParser.g:2276:3: this_string0_11= rulestring0
+                    // InternalResolutionModelParser.g:2331:3: this_string0_11= rulestring0
                     {
 
                     			newCompositeNode(grammarAccess.getAbstractTypeAccess().getString0ParserRuleCall_11());
@@ -6009,7 +6144,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 13 :
-                    // InternalResolutionModelParser.g:2285:3: this_byte_12= rulebyte
+                    // InternalResolutionModelParser.g:2340:3: this_byte_12= rulebyte
                     {
 
                     			newCompositeNode(grammarAccess.getAbstractTypeAccess().getByteParserRuleCall_12());
@@ -6027,7 +6162,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 14 :
-                    // InternalResolutionModelParser.g:2294:3: this_time_13= ruletime
+                    // InternalResolutionModelParser.g:2349:3: this_time_13= ruletime
                     {
 
                     			newCompositeNode(grammarAccess.getAbstractTypeAccess().getTimeParserRuleCall_13());
@@ -6045,7 +6180,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 15 :
-                    // InternalResolutionModelParser.g:2303:3: this_duration_14= ruleduration
+                    // InternalResolutionModelParser.g:2358:3: this_duration_14= ruleduration
                     {
 
                     			newCompositeNode(grammarAccess.getAbstractTypeAccess().getDurationParserRuleCall_14());
@@ -6063,7 +6198,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 16 :
-                    // InternalResolutionModelParser.g:2312:3: this_Header_15= ruleHeader
+                    // InternalResolutionModelParser.g:2367:3: this_Header_15= ruleHeader
                     {
 
                     			newCompositeNode(grammarAccess.getAbstractTypeAccess().getHeaderParserRuleCall_15());
@@ -6081,7 +6216,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 17 :
-                    // InternalResolutionModelParser.g:2321:3: this_boolArray_16= ruleboolArray
+                    // InternalResolutionModelParser.g:2376:3: this_boolArray_16= ruleboolArray
                     {
 
                     			newCompositeNode(grammarAccess.getAbstractTypeAccess().getBoolArrayParserRuleCall_16());
@@ -6099,7 +6234,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 18 :
-                    // InternalResolutionModelParser.g:2330:3: this_int8Array_17= ruleint8Array
+                    // InternalResolutionModelParser.g:2385:3: this_int8Array_17= ruleint8Array
                     {
 
                     			newCompositeNode(grammarAccess.getAbstractTypeAccess().getInt8ArrayParserRuleCall_17());
@@ -6117,7 +6252,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 19 :
-                    // InternalResolutionModelParser.g:2339:3: this_uint8Array_18= ruleuint8Array
+                    // InternalResolutionModelParser.g:2394:3: this_uint8Array_18= ruleuint8Array
                     {
 
                     			newCompositeNode(grammarAccess.getAbstractTypeAccess().getUint8ArrayParserRuleCall_18());
@@ -6135,7 +6270,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 20 :
-                    // InternalResolutionModelParser.g:2348:3: this_int16Array_19= ruleint16Array
+                    // InternalResolutionModelParser.g:2403:3: this_int16Array_19= ruleint16Array
                     {
 
                     			newCompositeNode(grammarAccess.getAbstractTypeAccess().getInt16ArrayParserRuleCall_19());
@@ -6153,7 +6288,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 21 :
-                    // InternalResolutionModelParser.g:2357:3: this_uint16Array_20= ruleuint16Array
+                    // InternalResolutionModelParser.g:2412:3: this_uint16Array_20= ruleuint16Array
                     {
 
                     			newCompositeNode(grammarAccess.getAbstractTypeAccess().getUint16ArrayParserRuleCall_20());
@@ -6171,7 +6306,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 22 :
-                    // InternalResolutionModelParser.g:2366:3: this_int32Array_21= ruleint32Array
+                    // InternalResolutionModelParser.g:2421:3: this_int32Array_21= ruleint32Array
                     {
 
                     			newCompositeNode(grammarAccess.getAbstractTypeAccess().getInt32ArrayParserRuleCall_21());
@@ -6189,7 +6324,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 23 :
-                    // InternalResolutionModelParser.g:2375:3: this_uint32Array_22= ruleuint32Array
+                    // InternalResolutionModelParser.g:2430:3: this_uint32Array_22= ruleuint32Array
                     {
 
                     			newCompositeNode(grammarAccess.getAbstractTypeAccess().getUint32ArrayParserRuleCall_22());
@@ -6207,7 +6342,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 24 :
-                    // InternalResolutionModelParser.g:2384:3: this_int64Array_23= ruleint64Array
+                    // InternalResolutionModelParser.g:2439:3: this_int64Array_23= ruleint64Array
                     {
 
                     			newCompositeNode(grammarAccess.getAbstractTypeAccess().getInt64ArrayParserRuleCall_23());
@@ -6225,7 +6360,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 25 :
-                    // InternalResolutionModelParser.g:2393:3: this_uint64Array_24= ruleuint64Array
+                    // InternalResolutionModelParser.g:2448:3: this_uint64Array_24= ruleuint64Array
                     {
 
                     			newCompositeNode(grammarAccess.getAbstractTypeAccess().getUint64ArrayParserRuleCall_24());
@@ -6243,7 +6378,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 26 :
-                    // InternalResolutionModelParser.g:2402:3: this_float32Array_25= rulefloat32Array
+                    // InternalResolutionModelParser.g:2457:3: this_float32Array_25= rulefloat32Array
                     {
 
                     			newCompositeNode(grammarAccess.getAbstractTypeAccess().getFloat32ArrayParserRuleCall_25());
@@ -6261,7 +6396,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 27 :
-                    // InternalResolutionModelParser.g:2411:3: this_float64Array_26= rulefloat64Array
+                    // InternalResolutionModelParser.g:2466:3: this_float64Array_26= rulefloat64Array
                     {
 
                     			newCompositeNode(grammarAccess.getAbstractTypeAccess().getFloat64ArrayParserRuleCall_26());
@@ -6279,7 +6414,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 28 :
-                    // InternalResolutionModelParser.g:2420:3: this_string0Array_27= rulestring0Array
+                    // InternalResolutionModelParser.g:2475:3: this_string0Array_27= rulestring0Array
                     {
 
                     			newCompositeNode(grammarAccess.getAbstractTypeAccess().getString0ArrayParserRuleCall_27());
@@ -6297,7 +6432,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 29 :
-                    // InternalResolutionModelParser.g:2429:3: this_byteArray_28= rulebyteArray
+                    // InternalResolutionModelParser.g:2484:3: this_byteArray_28= rulebyteArray
                     {
 
                     			newCompositeNode(grammarAccess.getAbstractTypeAccess().getByteArrayParserRuleCall_28());
@@ -6315,7 +6450,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 30 :
-                    // InternalResolutionModelParser.g:2438:3: this_SpecBaseRef_29= ruleSpecBaseRef
+                    // InternalResolutionModelParser.g:2493:3: this_SpecBaseRef_29= ruleSpecBaseRef
                     {
 
                     			newCompositeNode(grammarAccess.getAbstractTypeAccess().getSpecBaseRefParserRuleCall_29());
@@ -6333,7 +6468,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 31 :
-                    // InternalResolutionModelParser.g:2447:3: this_ArraySpecRef_30= ruleArraySpecRef
+                    // InternalResolutionModelParser.g:2502:3: this_ArraySpecRef_30= ruleArraySpecRef
                     {
 
                     			newCompositeNode(grammarAccess.getAbstractTypeAccess().getArraySpecRefParserRuleCall_30());
@@ -6351,7 +6486,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 32 :
-                    // InternalResolutionModelParser.g:2456:3: this_char_31= rulechar
+                    // InternalResolutionModelParser.g:2511:3: this_char_31= rulechar
                     {
 
                     			newCompositeNode(grammarAccess.getAbstractTypeAccess().getCharParserRuleCall_31());
@@ -6369,7 +6504,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 33 :
-                    // InternalResolutionModelParser.g:2465:3: this_charArray_32= rulecharArray
+                    // InternalResolutionModelParser.g:2520:3: this_charArray_32= rulecharArray
                     {
 
                     			newCompositeNode(grammarAccess.getAbstractTypeAccess().getCharArrayParserRuleCall_32());
@@ -6409,7 +6544,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRulebool"
-    // InternalResolutionModelParser.g:2477:1: entryRulebool returns [EObject current=null] : iv_rulebool= rulebool EOF ;
+    // InternalResolutionModelParser.g:2532:1: entryRulebool returns [EObject current=null] : iv_rulebool= rulebool EOF ;
     public final EObject entryRulebool() throws RecognitionException {
         EObject current = null;
 
@@ -6417,8 +6552,8 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalResolutionModelParser.g:2477:45: (iv_rulebool= rulebool EOF )
-            // InternalResolutionModelParser.g:2478:2: iv_rulebool= rulebool EOF
+            // InternalResolutionModelParser.g:2532:45: (iv_rulebool= rulebool EOF )
+            // InternalResolutionModelParser.g:2533:2: iv_rulebool= rulebool EOF
             {
              newCompositeNode(grammarAccess.getBoolRule()); 
             pushFollow(FOLLOW_1);
@@ -6445,7 +6580,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "rulebool"
-    // InternalResolutionModelParser.g:2484:1: rulebool returns [EObject current=null] : ( () otherlv_1= Bool ) ;
+    // InternalResolutionModelParser.g:2539:1: rulebool returns [EObject current=null] : ( () otherlv_1= Bool ) ;
     public final EObject rulebool() throws RecognitionException {
         EObject current = null;
 
@@ -6455,14 +6590,14 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalResolutionModelParser.g:2490:2: ( ( () otherlv_1= Bool ) )
-            // InternalResolutionModelParser.g:2491:2: ( () otherlv_1= Bool )
+            // InternalResolutionModelParser.g:2545:2: ( ( () otherlv_1= Bool ) )
+            // InternalResolutionModelParser.g:2546:2: ( () otherlv_1= Bool )
             {
-            // InternalResolutionModelParser.g:2491:2: ( () otherlv_1= Bool )
-            // InternalResolutionModelParser.g:2492:3: () otherlv_1= Bool
+            // InternalResolutionModelParser.g:2546:2: ( () otherlv_1= Bool )
+            // InternalResolutionModelParser.g:2547:3: () otherlv_1= Bool
             {
-            // InternalResolutionModelParser.g:2492:3: ()
-            // InternalResolutionModelParser.g:2493:4: 
+            // InternalResolutionModelParser.g:2547:3: ()
+            // InternalResolutionModelParser.g:2548:4: 
             {
 
             				current = forceCreateModelElement(
@@ -6499,7 +6634,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleint8"
-    // InternalResolutionModelParser.g:2507:1: entryRuleint8 returns [EObject current=null] : iv_ruleint8= ruleint8 EOF ;
+    // InternalResolutionModelParser.g:2562:1: entryRuleint8 returns [EObject current=null] : iv_ruleint8= ruleint8 EOF ;
     public final EObject entryRuleint8() throws RecognitionException {
         EObject current = null;
 
@@ -6507,8 +6642,8 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalResolutionModelParser.g:2507:45: (iv_ruleint8= ruleint8 EOF )
-            // InternalResolutionModelParser.g:2508:2: iv_ruleint8= ruleint8 EOF
+            // InternalResolutionModelParser.g:2562:45: (iv_ruleint8= ruleint8 EOF )
+            // InternalResolutionModelParser.g:2563:2: iv_ruleint8= ruleint8 EOF
             {
              newCompositeNode(grammarAccess.getInt8Rule()); 
             pushFollow(FOLLOW_1);
@@ -6535,7 +6670,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleint8"
-    // InternalResolutionModelParser.g:2514:1: ruleint8 returns [EObject current=null] : ( () otherlv_1= Int8 ) ;
+    // InternalResolutionModelParser.g:2569:1: ruleint8 returns [EObject current=null] : ( () otherlv_1= Int8 ) ;
     public final EObject ruleint8() throws RecognitionException {
         EObject current = null;
 
@@ -6545,14 +6680,14 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalResolutionModelParser.g:2520:2: ( ( () otherlv_1= Int8 ) )
-            // InternalResolutionModelParser.g:2521:2: ( () otherlv_1= Int8 )
+            // InternalResolutionModelParser.g:2575:2: ( ( () otherlv_1= Int8 ) )
+            // InternalResolutionModelParser.g:2576:2: ( () otherlv_1= Int8 )
             {
-            // InternalResolutionModelParser.g:2521:2: ( () otherlv_1= Int8 )
-            // InternalResolutionModelParser.g:2522:3: () otherlv_1= Int8
+            // InternalResolutionModelParser.g:2576:2: ( () otherlv_1= Int8 )
+            // InternalResolutionModelParser.g:2577:3: () otherlv_1= Int8
             {
-            // InternalResolutionModelParser.g:2522:3: ()
-            // InternalResolutionModelParser.g:2523:4: 
+            // InternalResolutionModelParser.g:2577:3: ()
+            // InternalResolutionModelParser.g:2578:4: 
             {
 
             				current = forceCreateModelElement(
@@ -6589,7 +6724,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleuint8"
-    // InternalResolutionModelParser.g:2537:1: entryRuleuint8 returns [EObject current=null] : iv_ruleuint8= ruleuint8 EOF ;
+    // InternalResolutionModelParser.g:2592:1: entryRuleuint8 returns [EObject current=null] : iv_ruleuint8= ruleuint8 EOF ;
     public final EObject entryRuleuint8() throws RecognitionException {
         EObject current = null;
 
@@ -6597,8 +6732,8 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalResolutionModelParser.g:2537:46: (iv_ruleuint8= ruleuint8 EOF )
-            // InternalResolutionModelParser.g:2538:2: iv_ruleuint8= ruleuint8 EOF
+            // InternalResolutionModelParser.g:2592:46: (iv_ruleuint8= ruleuint8 EOF )
+            // InternalResolutionModelParser.g:2593:2: iv_ruleuint8= ruleuint8 EOF
             {
              newCompositeNode(grammarAccess.getUint8Rule()); 
             pushFollow(FOLLOW_1);
@@ -6625,7 +6760,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleuint8"
-    // InternalResolutionModelParser.g:2544:1: ruleuint8 returns [EObject current=null] : ( () otherlv_1= Uint8 ) ;
+    // InternalResolutionModelParser.g:2599:1: ruleuint8 returns [EObject current=null] : ( () otherlv_1= Uint8 ) ;
     public final EObject ruleuint8() throws RecognitionException {
         EObject current = null;
 
@@ -6635,14 +6770,14 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalResolutionModelParser.g:2550:2: ( ( () otherlv_1= Uint8 ) )
-            // InternalResolutionModelParser.g:2551:2: ( () otherlv_1= Uint8 )
+            // InternalResolutionModelParser.g:2605:2: ( ( () otherlv_1= Uint8 ) )
+            // InternalResolutionModelParser.g:2606:2: ( () otherlv_1= Uint8 )
             {
-            // InternalResolutionModelParser.g:2551:2: ( () otherlv_1= Uint8 )
-            // InternalResolutionModelParser.g:2552:3: () otherlv_1= Uint8
+            // InternalResolutionModelParser.g:2606:2: ( () otherlv_1= Uint8 )
+            // InternalResolutionModelParser.g:2607:3: () otherlv_1= Uint8
             {
-            // InternalResolutionModelParser.g:2552:3: ()
-            // InternalResolutionModelParser.g:2553:4: 
+            // InternalResolutionModelParser.g:2607:3: ()
+            // InternalResolutionModelParser.g:2608:4: 
             {
 
             				current = forceCreateModelElement(
@@ -6679,7 +6814,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleint16"
-    // InternalResolutionModelParser.g:2567:1: entryRuleint16 returns [EObject current=null] : iv_ruleint16= ruleint16 EOF ;
+    // InternalResolutionModelParser.g:2622:1: entryRuleint16 returns [EObject current=null] : iv_ruleint16= ruleint16 EOF ;
     public final EObject entryRuleint16() throws RecognitionException {
         EObject current = null;
 
@@ -6687,8 +6822,8 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalResolutionModelParser.g:2567:46: (iv_ruleint16= ruleint16 EOF )
-            // InternalResolutionModelParser.g:2568:2: iv_ruleint16= ruleint16 EOF
+            // InternalResolutionModelParser.g:2622:46: (iv_ruleint16= ruleint16 EOF )
+            // InternalResolutionModelParser.g:2623:2: iv_ruleint16= ruleint16 EOF
             {
              newCompositeNode(grammarAccess.getInt16Rule()); 
             pushFollow(FOLLOW_1);
@@ -6715,7 +6850,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleint16"
-    // InternalResolutionModelParser.g:2574:1: ruleint16 returns [EObject current=null] : ( () otherlv_1= Int16 ) ;
+    // InternalResolutionModelParser.g:2629:1: ruleint16 returns [EObject current=null] : ( () otherlv_1= Int16 ) ;
     public final EObject ruleint16() throws RecognitionException {
         EObject current = null;
 
@@ -6725,14 +6860,14 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalResolutionModelParser.g:2580:2: ( ( () otherlv_1= Int16 ) )
-            // InternalResolutionModelParser.g:2581:2: ( () otherlv_1= Int16 )
+            // InternalResolutionModelParser.g:2635:2: ( ( () otherlv_1= Int16 ) )
+            // InternalResolutionModelParser.g:2636:2: ( () otherlv_1= Int16 )
             {
-            // InternalResolutionModelParser.g:2581:2: ( () otherlv_1= Int16 )
-            // InternalResolutionModelParser.g:2582:3: () otherlv_1= Int16
+            // InternalResolutionModelParser.g:2636:2: ( () otherlv_1= Int16 )
+            // InternalResolutionModelParser.g:2637:3: () otherlv_1= Int16
             {
-            // InternalResolutionModelParser.g:2582:3: ()
-            // InternalResolutionModelParser.g:2583:4: 
+            // InternalResolutionModelParser.g:2637:3: ()
+            // InternalResolutionModelParser.g:2638:4: 
             {
 
             				current = forceCreateModelElement(
@@ -6769,7 +6904,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleuint16"
-    // InternalResolutionModelParser.g:2597:1: entryRuleuint16 returns [EObject current=null] : iv_ruleuint16= ruleuint16 EOF ;
+    // InternalResolutionModelParser.g:2652:1: entryRuleuint16 returns [EObject current=null] : iv_ruleuint16= ruleuint16 EOF ;
     public final EObject entryRuleuint16() throws RecognitionException {
         EObject current = null;
 
@@ -6777,8 +6912,8 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalResolutionModelParser.g:2597:47: (iv_ruleuint16= ruleuint16 EOF )
-            // InternalResolutionModelParser.g:2598:2: iv_ruleuint16= ruleuint16 EOF
+            // InternalResolutionModelParser.g:2652:47: (iv_ruleuint16= ruleuint16 EOF )
+            // InternalResolutionModelParser.g:2653:2: iv_ruleuint16= ruleuint16 EOF
             {
              newCompositeNode(grammarAccess.getUint16Rule()); 
             pushFollow(FOLLOW_1);
@@ -6805,7 +6940,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleuint16"
-    // InternalResolutionModelParser.g:2604:1: ruleuint16 returns [EObject current=null] : ( () otherlv_1= Uint16 ) ;
+    // InternalResolutionModelParser.g:2659:1: ruleuint16 returns [EObject current=null] : ( () otherlv_1= Uint16 ) ;
     public final EObject ruleuint16() throws RecognitionException {
         EObject current = null;
 
@@ -6815,14 +6950,14 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalResolutionModelParser.g:2610:2: ( ( () otherlv_1= Uint16 ) )
-            // InternalResolutionModelParser.g:2611:2: ( () otherlv_1= Uint16 )
+            // InternalResolutionModelParser.g:2665:2: ( ( () otherlv_1= Uint16 ) )
+            // InternalResolutionModelParser.g:2666:2: ( () otherlv_1= Uint16 )
             {
-            // InternalResolutionModelParser.g:2611:2: ( () otherlv_1= Uint16 )
-            // InternalResolutionModelParser.g:2612:3: () otherlv_1= Uint16
+            // InternalResolutionModelParser.g:2666:2: ( () otherlv_1= Uint16 )
+            // InternalResolutionModelParser.g:2667:3: () otherlv_1= Uint16
             {
-            // InternalResolutionModelParser.g:2612:3: ()
-            // InternalResolutionModelParser.g:2613:4: 
+            // InternalResolutionModelParser.g:2667:3: ()
+            // InternalResolutionModelParser.g:2668:4: 
             {
 
             				current = forceCreateModelElement(
@@ -6859,7 +6994,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleint32"
-    // InternalResolutionModelParser.g:2627:1: entryRuleint32 returns [EObject current=null] : iv_ruleint32= ruleint32 EOF ;
+    // InternalResolutionModelParser.g:2682:1: entryRuleint32 returns [EObject current=null] : iv_ruleint32= ruleint32 EOF ;
     public final EObject entryRuleint32() throws RecognitionException {
         EObject current = null;
 
@@ -6867,8 +7002,8 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalResolutionModelParser.g:2627:46: (iv_ruleint32= ruleint32 EOF )
-            // InternalResolutionModelParser.g:2628:2: iv_ruleint32= ruleint32 EOF
+            // InternalResolutionModelParser.g:2682:46: (iv_ruleint32= ruleint32 EOF )
+            // InternalResolutionModelParser.g:2683:2: iv_ruleint32= ruleint32 EOF
             {
              newCompositeNode(grammarAccess.getInt32Rule()); 
             pushFollow(FOLLOW_1);
@@ -6895,7 +7030,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleint32"
-    // InternalResolutionModelParser.g:2634:1: ruleint32 returns [EObject current=null] : ( () otherlv_1= Int32 ) ;
+    // InternalResolutionModelParser.g:2689:1: ruleint32 returns [EObject current=null] : ( () otherlv_1= Int32 ) ;
     public final EObject ruleint32() throws RecognitionException {
         EObject current = null;
 
@@ -6905,14 +7040,14 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalResolutionModelParser.g:2640:2: ( ( () otherlv_1= Int32 ) )
-            // InternalResolutionModelParser.g:2641:2: ( () otherlv_1= Int32 )
+            // InternalResolutionModelParser.g:2695:2: ( ( () otherlv_1= Int32 ) )
+            // InternalResolutionModelParser.g:2696:2: ( () otherlv_1= Int32 )
             {
-            // InternalResolutionModelParser.g:2641:2: ( () otherlv_1= Int32 )
-            // InternalResolutionModelParser.g:2642:3: () otherlv_1= Int32
+            // InternalResolutionModelParser.g:2696:2: ( () otherlv_1= Int32 )
+            // InternalResolutionModelParser.g:2697:3: () otherlv_1= Int32
             {
-            // InternalResolutionModelParser.g:2642:3: ()
-            // InternalResolutionModelParser.g:2643:4: 
+            // InternalResolutionModelParser.g:2697:3: ()
+            // InternalResolutionModelParser.g:2698:4: 
             {
 
             				current = forceCreateModelElement(
@@ -6949,7 +7084,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleuint32"
-    // InternalResolutionModelParser.g:2657:1: entryRuleuint32 returns [EObject current=null] : iv_ruleuint32= ruleuint32 EOF ;
+    // InternalResolutionModelParser.g:2712:1: entryRuleuint32 returns [EObject current=null] : iv_ruleuint32= ruleuint32 EOF ;
     public final EObject entryRuleuint32() throws RecognitionException {
         EObject current = null;
 
@@ -6957,8 +7092,8 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalResolutionModelParser.g:2657:47: (iv_ruleuint32= ruleuint32 EOF )
-            // InternalResolutionModelParser.g:2658:2: iv_ruleuint32= ruleuint32 EOF
+            // InternalResolutionModelParser.g:2712:47: (iv_ruleuint32= ruleuint32 EOF )
+            // InternalResolutionModelParser.g:2713:2: iv_ruleuint32= ruleuint32 EOF
             {
              newCompositeNode(grammarAccess.getUint32Rule()); 
             pushFollow(FOLLOW_1);
@@ -6985,7 +7120,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleuint32"
-    // InternalResolutionModelParser.g:2664:1: ruleuint32 returns [EObject current=null] : ( () otherlv_1= Uint32 ) ;
+    // InternalResolutionModelParser.g:2719:1: ruleuint32 returns [EObject current=null] : ( () otherlv_1= Uint32 ) ;
     public final EObject ruleuint32() throws RecognitionException {
         EObject current = null;
 
@@ -6995,14 +7130,14 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalResolutionModelParser.g:2670:2: ( ( () otherlv_1= Uint32 ) )
-            // InternalResolutionModelParser.g:2671:2: ( () otherlv_1= Uint32 )
+            // InternalResolutionModelParser.g:2725:2: ( ( () otherlv_1= Uint32 ) )
+            // InternalResolutionModelParser.g:2726:2: ( () otherlv_1= Uint32 )
             {
-            // InternalResolutionModelParser.g:2671:2: ( () otherlv_1= Uint32 )
-            // InternalResolutionModelParser.g:2672:3: () otherlv_1= Uint32
+            // InternalResolutionModelParser.g:2726:2: ( () otherlv_1= Uint32 )
+            // InternalResolutionModelParser.g:2727:3: () otherlv_1= Uint32
             {
-            // InternalResolutionModelParser.g:2672:3: ()
-            // InternalResolutionModelParser.g:2673:4: 
+            // InternalResolutionModelParser.g:2727:3: ()
+            // InternalResolutionModelParser.g:2728:4: 
             {
 
             				current = forceCreateModelElement(
@@ -7039,7 +7174,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleint64"
-    // InternalResolutionModelParser.g:2687:1: entryRuleint64 returns [EObject current=null] : iv_ruleint64= ruleint64 EOF ;
+    // InternalResolutionModelParser.g:2742:1: entryRuleint64 returns [EObject current=null] : iv_ruleint64= ruleint64 EOF ;
     public final EObject entryRuleint64() throws RecognitionException {
         EObject current = null;
 
@@ -7047,8 +7182,8 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalResolutionModelParser.g:2687:46: (iv_ruleint64= ruleint64 EOF )
-            // InternalResolutionModelParser.g:2688:2: iv_ruleint64= ruleint64 EOF
+            // InternalResolutionModelParser.g:2742:46: (iv_ruleint64= ruleint64 EOF )
+            // InternalResolutionModelParser.g:2743:2: iv_ruleint64= ruleint64 EOF
             {
              newCompositeNode(grammarAccess.getInt64Rule()); 
             pushFollow(FOLLOW_1);
@@ -7075,7 +7210,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleint64"
-    // InternalResolutionModelParser.g:2694:1: ruleint64 returns [EObject current=null] : ( () otherlv_1= Int64 ) ;
+    // InternalResolutionModelParser.g:2749:1: ruleint64 returns [EObject current=null] : ( () otherlv_1= Int64 ) ;
     public final EObject ruleint64() throws RecognitionException {
         EObject current = null;
 
@@ -7085,14 +7220,14 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalResolutionModelParser.g:2700:2: ( ( () otherlv_1= Int64 ) )
-            // InternalResolutionModelParser.g:2701:2: ( () otherlv_1= Int64 )
+            // InternalResolutionModelParser.g:2755:2: ( ( () otherlv_1= Int64 ) )
+            // InternalResolutionModelParser.g:2756:2: ( () otherlv_1= Int64 )
             {
-            // InternalResolutionModelParser.g:2701:2: ( () otherlv_1= Int64 )
-            // InternalResolutionModelParser.g:2702:3: () otherlv_1= Int64
+            // InternalResolutionModelParser.g:2756:2: ( () otherlv_1= Int64 )
+            // InternalResolutionModelParser.g:2757:3: () otherlv_1= Int64
             {
-            // InternalResolutionModelParser.g:2702:3: ()
-            // InternalResolutionModelParser.g:2703:4: 
+            // InternalResolutionModelParser.g:2757:3: ()
+            // InternalResolutionModelParser.g:2758:4: 
             {
 
             				current = forceCreateModelElement(
@@ -7129,7 +7264,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleuint64"
-    // InternalResolutionModelParser.g:2717:1: entryRuleuint64 returns [EObject current=null] : iv_ruleuint64= ruleuint64 EOF ;
+    // InternalResolutionModelParser.g:2772:1: entryRuleuint64 returns [EObject current=null] : iv_ruleuint64= ruleuint64 EOF ;
     public final EObject entryRuleuint64() throws RecognitionException {
         EObject current = null;
 
@@ -7137,8 +7272,8 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalResolutionModelParser.g:2717:47: (iv_ruleuint64= ruleuint64 EOF )
-            // InternalResolutionModelParser.g:2718:2: iv_ruleuint64= ruleuint64 EOF
+            // InternalResolutionModelParser.g:2772:47: (iv_ruleuint64= ruleuint64 EOF )
+            // InternalResolutionModelParser.g:2773:2: iv_ruleuint64= ruleuint64 EOF
             {
              newCompositeNode(grammarAccess.getUint64Rule()); 
             pushFollow(FOLLOW_1);
@@ -7165,7 +7300,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleuint64"
-    // InternalResolutionModelParser.g:2724:1: ruleuint64 returns [EObject current=null] : ( () otherlv_1= Uint64 ) ;
+    // InternalResolutionModelParser.g:2779:1: ruleuint64 returns [EObject current=null] : ( () otherlv_1= Uint64 ) ;
     public final EObject ruleuint64() throws RecognitionException {
         EObject current = null;
 
@@ -7175,14 +7310,14 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalResolutionModelParser.g:2730:2: ( ( () otherlv_1= Uint64 ) )
-            // InternalResolutionModelParser.g:2731:2: ( () otherlv_1= Uint64 )
+            // InternalResolutionModelParser.g:2785:2: ( ( () otherlv_1= Uint64 ) )
+            // InternalResolutionModelParser.g:2786:2: ( () otherlv_1= Uint64 )
             {
-            // InternalResolutionModelParser.g:2731:2: ( () otherlv_1= Uint64 )
-            // InternalResolutionModelParser.g:2732:3: () otherlv_1= Uint64
+            // InternalResolutionModelParser.g:2786:2: ( () otherlv_1= Uint64 )
+            // InternalResolutionModelParser.g:2787:3: () otherlv_1= Uint64
             {
-            // InternalResolutionModelParser.g:2732:3: ()
-            // InternalResolutionModelParser.g:2733:4: 
+            // InternalResolutionModelParser.g:2787:3: ()
+            // InternalResolutionModelParser.g:2788:4: 
             {
 
             				current = forceCreateModelElement(
@@ -7219,7 +7354,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRulefloat32"
-    // InternalResolutionModelParser.g:2747:1: entryRulefloat32 returns [EObject current=null] : iv_rulefloat32= rulefloat32 EOF ;
+    // InternalResolutionModelParser.g:2802:1: entryRulefloat32 returns [EObject current=null] : iv_rulefloat32= rulefloat32 EOF ;
     public final EObject entryRulefloat32() throws RecognitionException {
         EObject current = null;
 
@@ -7227,8 +7362,8 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalResolutionModelParser.g:2747:48: (iv_rulefloat32= rulefloat32 EOF )
-            // InternalResolutionModelParser.g:2748:2: iv_rulefloat32= rulefloat32 EOF
+            // InternalResolutionModelParser.g:2802:48: (iv_rulefloat32= rulefloat32 EOF )
+            // InternalResolutionModelParser.g:2803:2: iv_rulefloat32= rulefloat32 EOF
             {
              newCompositeNode(grammarAccess.getFloat32Rule()); 
             pushFollow(FOLLOW_1);
@@ -7255,7 +7390,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "rulefloat32"
-    // InternalResolutionModelParser.g:2754:1: rulefloat32 returns [EObject current=null] : ( () otherlv_1= Float32 ) ;
+    // InternalResolutionModelParser.g:2809:1: rulefloat32 returns [EObject current=null] : ( () otherlv_1= Float32 ) ;
     public final EObject rulefloat32() throws RecognitionException {
         EObject current = null;
 
@@ -7265,14 +7400,14 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalResolutionModelParser.g:2760:2: ( ( () otherlv_1= Float32 ) )
-            // InternalResolutionModelParser.g:2761:2: ( () otherlv_1= Float32 )
+            // InternalResolutionModelParser.g:2815:2: ( ( () otherlv_1= Float32 ) )
+            // InternalResolutionModelParser.g:2816:2: ( () otherlv_1= Float32 )
             {
-            // InternalResolutionModelParser.g:2761:2: ( () otherlv_1= Float32 )
-            // InternalResolutionModelParser.g:2762:3: () otherlv_1= Float32
+            // InternalResolutionModelParser.g:2816:2: ( () otherlv_1= Float32 )
+            // InternalResolutionModelParser.g:2817:3: () otherlv_1= Float32
             {
-            // InternalResolutionModelParser.g:2762:3: ()
-            // InternalResolutionModelParser.g:2763:4: 
+            // InternalResolutionModelParser.g:2817:3: ()
+            // InternalResolutionModelParser.g:2818:4: 
             {
 
             				current = forceCreateModelElement(
@@ -7309,7 +7444,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRulefloat64"
-    // InternalResolutionModelParser.g:2777:1: entryRulefloat64 returns [EObject current=null] : iv_rulefloat64= rulefloat64 EOF ;
+    // InternalResolutionModelParser.g:2832:1: entryRulefloat64 returns [EObject current=null] : iv_rulefloat64= rulefloat64 EOF ;
     public final EObject entryRulefloat64() throws RecognitionException {
         EObject current = null;
 
@@ -7317,8 +7452,8 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalResolutionModelParser.g:2777:48: (iv_rulefloat64= rulefloat64 EOF )
-            // InternalResolutionModelParser.g:2778:2: iv_rulefloat64= rulefloat64 EOF
+            // InternalResolutionModelParser.g:2832:48: (iv_rulefloat64= rulefloat64 EOF )
+            // InternalResolutionModelParser.g:2833:2: iv_rulefloat64= rulefloat64 EOF
             {
              newCompositeNode(grammarAccess.getFloat64Rule()); 
             pushFollow(FOLLOW_1);
@@ -7345,7 +7480,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "rulefloat64"
-    // InternalResolutionModelParser.g:2784:1: rulefloat64 returns [EObject current=null] : ( () otherlv_1= Float64 ) ;
+    // InternalResolutionModelParser.g:2839:1: rulefloat64 returns [EObject current=null] : ( () otherlv_1= Float64 ) ;
     public final EObject rulefloat64() throws RecognitionException {
         EObject current = null;
 
@@ -7355,14 +7490,14 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalResolutionModelParser.g:2790:2: ( ( () otherlv_1= Float64 ) )
-            // InternalResolutionModelParser.g:2791:2: ( () otherlv_1= Float64 )
+            // InternalResolutionModelParser.g:2845:2: ( ( () otherlv_1= Float64 ) )
+            // InternalResolutionModelParser.g:2846:2: ( () otherlv_1= Float64 )
             {
-            // InternalResolutionModelParser.g:2791:2: ( () otherlv_1= Float64 )
-            // InternalResolutionModelParser.g:2792:3: () otherlv_1= Float64
+            // InternalResolutionModelParser.g:2846:2: ( () otherlv_1= Float64 )
+            // InternalResolutionModelParser.g:2847:3: () otherlv_1= Float64
             {
-            // InternalResolutionModelParser.g:2792:3: ()
-            // InternalResolutionModelParser.g:2793:4: 
+            // InternalResolutionModelParser.g:2847:3: ()
+            // InternalResolutionModelParser.g:2848:4: 
             {
 
             				current = forceCreateModelElement(
@@ -7399,7 +7534,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRulestring0"
-    // InternalResolutionModelParser.g:2807:1: entryRulestring0 returns [EObject current=null] : iv_rulestring0= rulestring0 EOF ;
+    // InternalResolutionModelParser.g:2862:1: entryRulestring0 returns [EObject current=null] : iv_rulestring0= rulestring0 EOF ;
     public final EObject entryRulestring0() throws RecognitionException {
         EObject current = null;
 
@@ -7407,8 +7542,8 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalResolutionModelParser.g:2807:48: (iv_rulestring0= rulestring0 EOF )
-            // InternalResolutionModelParser.g:2808:2: iv_rulestring0= rulestring0 EOF
+            // InternalResolutionModelParser.g:2862:48: (iv_rulestring0= rulestring0 EOF )
+            // InternalResolutionModelParser.g:2863:2: iv_rulestring0= rulestring0 EOF
             {
              newCompositeNode(grammarAccess.getString0Rule()); 
             pushFollow(FOLLOW_1);
@@ -7435,7 +7570,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "rulestring0"
-    // InternalResolutionModelParser.g:2814:1: rulestring0 returns [EObject current=null] : ( () otherlv_1= String_1 ) ;
+    // InternalResolutionModelParser.g:2869:1: rulestring0 returns [EObject current=null] : ( () otherlv_1= String_1 ) ;
     public final EObject rulestring0() throws RecognitionException {
         EObject current = null;
 
@@ -7445,14 +7580,14 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalResolutionModelParser.g:2820:2: ( ( () otherlv_1= String_1 ) )
-            // InternalResolutionModelParser.g:2821:2: ( () otherlv_1= String_1 )
+            // InternalResolutionModelParser.g:2875:2: ( ( () otherlv_1= String_1 ) )
+            // InternalResolutionModelParser.g:2876:2: ( () otherlv_1= String_1 )
             {
-            // InternalResolutionModelParser.g:2821:2: ( () otherlv_1= String_1 )
-            // InternalResolutionModelParser.g:2822:3: () otherlv_1= String_1
+            // InternalResolutionModelParser.g:2876:2: ( () otherlv_1= String_1 )
+            // InternalResolutionModelParser.g:2877:3: () otherlv_1= String_1
             {
-            // InternalResolutionModelParser.g:2822:3: ()
-            // InternalResolutionModelParser.g:2823:4: 
+            // InternalResolutionModelParser.g:2877:3: ()
+            // InternalResolutionModelParser.g:2878:4: 
             {
 
             				current = forceCreateModelElement(
@@ -7489,7 +7624,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRulechar"
-    // InternalResolutionModelParser.g:2837:1: entryRulechar returns [EObject current=null] : iv_rulechar= rulechar EOF ;
+    // InternalResolutionModelParser.g:2892:1: entryRulechar returns [EObject current=null] : iv_rulechar= rulechar EOF ;
     public final EObject entryRulechar() throws RecognitionException {
         EObject current = null;
 
@@ -7497,8 +7632,8 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalResolutionModelParser.g:2837:45: (iv_rulechar= rulechar EOF )
-            // InternalResolutionModelParser.g:2838:2: iv_rulechar= rulechar EOF
+            // InternalResolutionModelParser.g:2892:45: (iv_rulechar= rulechar EOF )
+            // InternalResolutionModelParser.g:2893:2: iv_rulechar= rulechar EOF
             {
              newCompositeNode(grammarAccess.getCharRule()); 
             pushFollow(FOLLOW_1);
@@ -7525,7 +7660,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "rulechar"
-    // InternalResolutionModelParser.g:2844:1: rulechar returns [EObject current=null] : ( () otherlv_1= Char ) ;
+    // InternalResolutionModelParser.g:2899:1: rulechar returns [EObject current=null] : ( () otherlv_1= Char ) ;
     public final EObject rulechar() throws RecognitionException {
         EObject current = null;
 
@@ -7535,14 +7670,14 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalResolutionModelParser.g:2850:2: ( ( () otherlv_1= Char ) )
-            // InternalResolutionModelParser.g:2851:2: ( () otherlv_1= Char )
+            // InternalResolutionModelParser.g:2905:2: ( ( () otherlv_1= Char ) )
+            // InternalResolutionModelParser.g:2906:2: ( () otherlv_1= Char )
             {
-            // InternalResolutionModelParser.g:2851:2: ( () otherlv_1= Char )
-            // InternalResolutionModelParser.g:2852:3: () otherlv_1= Char
+            // InternalResolutionModelParser.g:2906:2: ( () otherlv_1= Char )
+            // InternalResolutionModelParser.g:2907:3: () otherlv_1= Char
             {
-            // InternalResolutionModelParser.g:2852:3: ()
-            // InternalResolutionModelParser.g:2853:4: 
+            // InternalResolutionModelParser.g:2907:3: ()
+            // InternalResolutionModelParser.g:2908:4: 
             {
 
             				current = forceCreateModelElement(
@@ -7579,7 +7714,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRulebyte"
-    // InternalResolutionModelParser.g:2867:1: entryRulebyte returns [EObject current=null] : iv_rulebyte= rulebyte EOF ;
+    // InternalResolutionModelParser.g:2922:1: entryRulebyte returns [EObject current=null] : iv_rulebyte= rulebyte EOF ;
     public final EObject entryRulebyte() throws RecognitionException {
         EObject current = null;
 
@@ -7587,8 +7722,8 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalResolutionModelParser.g:2867:45: (iv_rulebyte= rulebyte EOF )
-            // InternalResolutionModelParser.g:2868:2: iv_rulebyte= rulebyte EOF
+            // InternalResolutionModelParser.g:2922:45: (iv_rulebyte= rulebyte EOF )
+            // InternalResolutionModelParser.g:2923:2: iv_rulebyte= rulebyte EOF
             {
              newCompositeNode(grammarAccess.getByteRule()); 
             pushFollow(FOLLOW_1);
@@ -7615,7 +7750,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "rulebyte"
-    // InternalResolutionModelParser.g:2874:1: rulebyte returns [EObject current=null] : ( () otherlv_1= Byte ) ;
+    // InternalResolutionModelParser.g:2929:1: rulebyte returns [EObject current=null] : ( () otherlv_1= Byte ) ;
     public final EObject rulebyte() throws RecognitionException {
         EObject current = null;
 
@@ -7625,14 +7760,14 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalResolutionModelParser.g:2880:2: ( ( () otherlv_1= Byte ) )
-            // InternalResolutionModelParser.g:2881:2: ( () otherlv_1= Byte )
+            // InternalResolutionModelParser.g:2935:2: ( ( () otherlv_1= Byte ) )
+            // InternalResolutionModelParser.g:2936:2: ( () otherlv_1= Byte )
             {
-            // InternalResolutionModelParser.g:2881:2: ( () otherlv_1= Byte )
-            // InternalResolutionModelParser.g:2882:3: () otherlv_1= Byte
+            // InternalResolutionModelParser.g:2936:2: ( () otherlv_1= Byte )
+            // InternalResolutionModelParser.g:2937:3: () otherlv_1= Byte
             {
-            // InternalResolutionModelParser.g:2882:3: ()
-            // InternalResolutionModelParser.g:2883:4: 
+            // InternalResolutionModelParser.g:2937:3: ()
+            // InternalResolutionModelParser.g:2938:4: 
             {
 
             				current = forceCreateModelElement(
@@ -7669,7 +7804,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuletime"
-    // InternalResolutionModelParser.g:2897:1: entryRuletime returns [EObject current=null] : iv_ruletime= ruletime EOF ;
+    // InternalResolutionModelParser.g:2952:1: entryRuletime returns [EObject current=null] : iv_ruletime= ruletime EOF ;
     public final EObject entryRuletime() throws RecognitionException {
         EObject current = null;
 
@@ -7677,8 +7812,8 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalResolutionModelParser.g:2897:45: (iv_ruletime= ruletime EOF )
-            // InternalResolutionModelParser.g:2898:2: iv_ruletime= ruletime EOF
+            // InternalResolutionModelParser.g:2952:45: (iv_ruletime= ruletime EOF )
+            // InternalResolutionModelParser.g:2953:2: iv_ruletime= ruletime EOF
             {
              newCompositeNode(grammarAccess.getTimeRule()); 
             pushFollow(FOLLOW_1);
@@ -7705,7 +7840,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruletime"
-    // InternalResolutionModelParser.g:2904:1: ruletime returns [EObject current=null] : ( () otherlv_1= Time ) ;
+    // InternalResolutionModelParser.g:2959:1: ruletime returns [EObject current=null] : ( () otherlv_1= Time ) ;
     public final EObject ruletime() throws RecognitionException {
         EObject current = null;
 
@@ -7715,14 +7850,14 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalResolutionModelParser.g:2910:2: ( ( () otherlv_1= Time ) )
-            // InternalResolutionModelParser.g:2911:2: ( () otherlv_1= Time )
+            // InternalResolutionModelParser.g:2965:2: ( ( () otherlv_1= Time ) )
+            // InternalResolutionModelParser.g:2966:2: ( () otherlv_1= Time )
             {
-            // InternalResolutionModelParser.g:2911:2: ( () otherlv_1= Time )
-            // InternalResolutionModelParser.g:2912:3: () otherlv_1= Time
+            // InternalResolutionModelParser.g:2966:2: ( () otherlv_1= Time )
+            // InternalResolutionModelParser.g:2967:3: () otherlv_1= Time
             {
-            // InternalResolutionModelParser.g:2912:3: ()
-            // InternalResolutionModelParser.g:2913:4: 
+            // InternalResolutionModelParser.g:2967:3: ()
+            // InternalResolutionModelParser.g:2968:4: 
             {
 
             				current = forceCreateModelElement(
@@ -7759,7 +7894,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleduration"
-    // InternalResolutionModelParser.g:2927:1: entryRuleduration returns [EObject current=null] : iv_ruleduration= ruleduration EOF ;
+    // InternalResolutionModelParser.g:2982:1: entryRuleduration returns [EObject current=null] : iv_ruleduration= ruleduration EOF ;
     public final EObject entryRuleduration() throws RecognitionException {
         EObject current = null;
 
@@ -7767,8 +7902,8 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalResolutionModelParser.g:2927:49: (iv_ruleduration= ruleduration EOF )
-            // InternalResolutionModelParser.g:2928:2: iv_ruleduration= ruleduration EOF
+            // InternalResolutionModelParser.g:2982:49: (iv_ruleduration= ruleduration EOF )
+            // InternalResolutionModelParser.g:2983:2: iv_ruleduration= ruleduration EOF
             {
              newCompositeNode(grammarAccess.getDurationRule()); 
             pushFollow(FOLLOW_1);
@@ -7795,7 +7930,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleduration"
-    // InternalResolutionModelParser.g:2934:1: ruleduration returns [EObject current=null] : ( () otherlv_1= Duration ) ;
+    // InternalResolutionModelParser.g:2989:1: ruleduration returns [EObject current=null] : ( () otherlv_1= Duration ) ;
     public final EObject ruleduration() throws RecognitionException {
         EObject current = null;
 
@@ -7805,14 +7940,14 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalResolutionModelParser.g:2940:2: ( ( () otherlv_1= Duration ) )
-            // InternalResolutionModelParser.g:2941:2: ( () otherlv_1= Duration )
+            // InternalResolutionModelParser.g:2995:2: ( ( () otherlv_1= Duration ) )
+            // InternalResolutionModelParser.g:2996:2: ( () otherlv_1= Duration )
             {
-            // InternalResolutionModelParser.g:2941:2: ( () otherlv_1= Duration )
-            // InternalResolutionModelParser.g:2942:3: () otherlv_1= Duration
+            // InternalResolutionModelParser.g:2996:2: ( () otherlv_1= Duration )
+            // InternalResolutionModelParser.g:2997:3: () otherlv_1= Duration
             {
-            // InternalResolutionModelParser.g:2942:3: ()
-            // InternalResolutionModelParser.g:2943:4: 
+            // InternalResolutionModelParser.g:2997:3: ()
+            // InternalResolutionModelParser.g:2998:4: 
             {
 
             				current = forceCreateModelElement(
@@ -7849,7 +7984,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleboolArray"
-    // InternalResolutionModelParser.g:2957:1: entryRuleboolArray returns [EObject current=null] : iv_ruleboolArray= ruleboolArray EOF ;
+    // InternalResolutionModelParser.g:3012:1: entryRuleboolArray returns [EObject current=null] : iv_ruleboolArray= ruleboolArray EOF ;
     public final EObject entryRuleboolArray() throws RecognitionException {
         EObject current = null;
 
@@ -7857,8 +7992,8 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalResolutionModelParser.g:2957:50: (iv_ruleboolArray= ruleboolArray EOF )
-            // InternalResolutionModelParser.g:2958:2: iv_ruleboolArray= ruleboolArray EOF
+            // InternalResolutionModelParser.g:3012:50: (iv_ruleboolArray= ruleboolArray EOF )
+            // InternalResolutionModelParser.g:3013:2: iv_ruleboolArray= ruleboolArray EOF
             {
              newCompositeNode(grammarAccess.getBoolArrayRule()); 
             pushFollow(FOLLOW_1);
@@ -7885,7 +8020,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleboolArray"
-    // InternalResolutionModelParser.g:2964:1: ruleboolArray returns [EObject current=null] : ( () otherlv_1= Bool_1 ) ;
+    // InternalResolutionModelParser.g:3019:1: ruleboolArray returns [EObject current=null] : ( () otherlv_1= Bool_1 ) ;
     public final EObject ruleboolArray() throws RecognitionException {
         EObject current = null;
 
@@ -7895,14 +8030,14 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalResolutionModelParser.g:2970:2: ( ( () otherlv_1= Bool_1 ) )
-            // InternalResolutionModelParser.g:2971:2: ( () otherlv_1= Bool_1 )
+            // InternalResolutionModelParser.g:3025:2: ( ( () otherlv_1= Bool_1 ) )
+            // InternalResolutionModelParser.g:3026:2: ( () otherlv_1= Bool_1 )
             {
-            // InternalResolutionModelParser.g:2971:2: ( () otherlv_1= Bool_1 )
-            // InternalResolutionModelParser.g:2972:3: () otherlv_1= Bool_1
+            // InternalResolutionModelParser.g:3026:2: ( () otherlv_1= Bool_1 )
+            // InternalResolutionModelParser.g:3027:3: () otherlv_1= Bool_1
             {
-            // InternalResolutionModelParser.g:2972:3: ()
-            // InternalResolutionModelParser.g:2973:4: 
+            // InternalResolutionModelParser.g:3027:3: ()
+            // InternalResolutionModelParser.g:3028:4: 
             {
 
             				current = forceCreateModelElement(
@@ -7939,7 +8074,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleint8Array"
-    // InternalResolutionModelParser.g:2987:1: entryRuleint8Array returns [EObject current=null] : iv_ruleint8Array= ruleint8Array EOF ;
+    // InternalResolutionModelParser.g:3042:1: entryRuleint8Array returns [EObject current=null] : iv_ruleint8Array= ruleint8Array EOF ;
     public final EObject entryRuleint8Array() throws RecognitionException {
         EObject current = null;
 
@@ -7947,8 +8082,8 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalResolutionModelParser.g:2987:50: (iv_ruleint8Array= ruleint8Array EOF )
-            // InternalResolutionModelParser.g:2988:2: iv_ruleint8Array= ruleint8Array EOF
+            // InternalResolutionModelParser.g:3042:50: (iv_ruleint8Array= ruleint8Array EOF )
+            // InternalResolutionModelParser.g:3043:2: iv_ruleint8Array= ruleint8Array EOF
             {
              newCompositeNode(grammarAccess.getInt8ArrayRule()); 
             pushFollow(FOLLOW_1);
@@ -7975,7 +8110,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleint8Array"
-    // InternalResolutionModelParser.g:2994:1: ruleint8Array returns [EObject current=null] : ( () otherlv_1= Int8_1 ) ;
+    // InternalResolutionModelParser.g:3049:1: ruleint8Array returns [EObject current=null] : ( () otherlv_1= Int8_1 ) ;
     public final EObject ruleint8Array() throws RecognitionException {
         EObject current = null;
 
@@ -7985,14 +8120,14 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalResolutionModelParser.g:3000:2: ( ( () otherlv_1= Int8_1 ) )
-            // InternalResolutionModelParser.g:3001:2: ( () otherlv_1= Int8_1 )
+            // InternalResolutionModelParser.g:3055:2: ( ( () otherlv_1= Int8_1 ) )
+            // InternalResolutionModelParser.g:3056:2: ( () otherlv_1= Int8_1 )
             {
-            // InternalResolutionModelParser.g:3001:2: ( () otherlv_1= Int8_1 )
-            // InternalResolutionModelParser.g:3002:3: () otherlv_1= Int8_1
+            // InternalResolutionModelParser.g:3056:2: ( () otherlv_1= Int8_1 )
+            // InternalResolutionModelParser.g:3057:3: () otherlv_1= Int8_1
             {
-            // InternalResolutionModelParser.g:3002:3: ()
-            // InternalResolutionModelParser.g:3003:4: 
+            // InternalResolutionModelParser.g:3057:3: ()
+            // InternalResolutionModelParser.g:3058:4: 
             {
 
             				current = forceCreateModelElement(
@@ -8029,7 +8164,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleuint8Array"
-    // InternalResolutionModelParser.g:3017:1: entryRuleuint8Array returns [EObject current=null] : iv_ruleuint8Array= ruleuint8Array EOF ;
+    // InternalResolutionModelParser.g:3072:1: entryRuleuint8Array returns [EObject current=null] : iv_ruleuint8Array= ruleuint8Array EOF ;
     public final EObject entryRuleuint8Array() throws RecognitionException {
         EObject current = null;
 
@@ -8037,8 +8172,8 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalResolutionModelParser.g:3017:51: (iv_ruleuint8Array= ruleuint8Array EOF )
-            // InternalResolutionModelParser.g:3018:2: iv_ruleuint8Array= ruleuint8Array EOF
+            // InternalResolutionModelParser.g:3072:51: (iv_ruleuint8Array= ruleuint8Array EOF )
+            // InternalResolutionModelParser.g:3073:2: iv_ruleuint8Array= ruleuint8Array EOF
             {
              newCompositeNode(grammarAccess.getUint8ArrayRule()); 
             pushFollow(FOLLOW_1);
@@ -8065,7 +8200,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleuint8Array"
-    // InternalResolutionModelParser.g:3024:1: ruleuint8Array returns [EObject current=null] : ( () otherlv_1= Uint8_1 ) ;
+    // InternalResolutionModelParser.g:3079:1: ruleuint8Array returns [EObject current=null] : ( () otherlv_1= Uint8_1 ) ;
     public final EObject ruleuint8Array() throws RecognitionException {
         EObject current = null;
 
@@ -8075,14 +8210,14 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalResolutionModelParser.g:3030:2: ( ( () otherlv_1= Uint8_1 ) )
-            // InternalResolutionModelParser.g:3031:2: ( () otherlv_1= Uint8_1 )
+            // InternalResolutionModelParser.g:3085:2: ( ( () otherlv_1= Uint8_1 ) )
+            // InternalResolutionModelParser.g:3086:2: ( () otherlv_1= Uint8_1 )
             {
-            // InternalResolutionModelParser.g:3031:2: ( () otherlv_1= Uint8_1 )
-            // InternalResolutionModelParser.g:3032:3: () otherlv_1= Uint8_1
+            // InternalResolutionModelParser.g:3086:2: ( () otherlv_1= Uint8_1 )
+            // InternalResolutionModelParser.g:3087:3: () otherlv_1= Uint8_1
             {
-            // InternalResolutionModelParser.g:3032:3: ()
-            // InternalResolutionModelParser.g:3033:4: 
+            // InternalResolutionModelParser.g:3087:3: ()
+            // InternalResolutionModelParser.g:3088:4: 
             {
 
             				current = forceCreateModelElement(
@@ -8119,7 +8254,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleint16Array"
-    // InternalResolutionModelParser.g:3047:1: entryRuleint16Array returns [EObject current=null] : iv_ruleint16Array= ruleint16Array EOF ;
+    // InternalResolutionModelParser.g:3102:1: entryRuleint16Array returns [EObject current=null] : iv_ruleint16Array= ruleint16Array EOF ;
     public final EObject entryRuleint16Array() throws RecognitionException {
         EObject current = null;
 
@@ -8127,8 +8262,8 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalResolutionModelParser.g:3047:51: (iv_ruleint16Array= ruleint16Array EOF )
-            // InternalResolutionModelParser.g:3048:2: iv_ruleint16Array= ruleint16Array EOF
+            // InternalResolutionModelParser.g:3102:51: (iv_ruleint16Array= ruleint16Array EOF )
+            // InternalResolutionModelParser.g:3103:2: iv_ruleint16Array= ruleint16Array EOF
             {
              newCompositeNode(grammarAccess.getInt16ArrayRule()); 
             pushFollow(FOLLOW_1);
@@ -8155,7 +8290,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleint16Array"
-    // InternalResolutionModelParser.g:3054:1: ruleint16Array returns [EObject current=null] : ( () otherlv_1= Int16_1 ) ;
+    // InternalResolutionModelParser.g:3109:1: ruleint16Array returns [EObject current=null] : ( () otherlv_1= Int16_1 ) ;
     public final EObject ruleint16Array() throws RecognitionException {
         EObject current = null;
 
@@ -8165,14 +8300,14 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalResolutionModelParser.g:3060:2: ( ( () otherlv_1= Int16_1 ) )
-            // InternalResolutionModelParser.g:3061:2: ( () otherlv_1= Int16_1 )
+            // InternalResolutionModelParser.g:3115:2: ( ( () otherlv_1= Int16_1 ) )
+            // InternalResolutionModelParser.g:3116:2: ( () otherlv_1= Int16_1 )
             {
-            // InternalResolutionModelParser.g:3061:2: ( () otherlv_1= Int16_1 )
-            // InternalResolutionModelParser.g:3062:3: () otherlv_1= Int16_1
+            // InternalResolutionModelParser.g:3116:2: ( () otherlv_1= Int16_1 )
+            // InternalResolutionModelParser.g:3117:3: () otherlv_1= Int16_1
             {
-            // InternalResolutionModelParser.g:3062:3: ()
-            // InternalResolutionModelParser.g:3063:4: 
+            // InternalResolutionModelParser.g:3117:3: ()
+            // InternalResolutionModelParser.g:3118:4: 
             {
 
             				current = forceCreateModelElement(
@@ -8209,7 +8344,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleuint16Array"
-    // InternalResolutionModelParser.g:3077:1: entryRuleuint16Array returns [EObject current=null] : iv_ruleuint16Array= ruleuint16Array EOF ;
+    // InternalResolutionModelParser.g:3132:1: entryRuleuint16Array returns [EObject current=null] : iv_ruleuint16Array= ruleuint16Array EOF ;
     public final EObject entryRuleuint16Array() throws RecognitionException {
         EObject current = null;
 
@@ -8217,8 +8352,8 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalResolutionModelParser.g:3077:52: (iv_ruleuint16Array= ruleuint16Array EOF )
-            // InternalResolutionModelParser.g:3078:2: iv_ruleuint16Array= ruleuint16Array EOF
+            // InternalResolutionModelParser.g:3132:52: (iv_ruleuint16Array= ruleuint16Array EOF )
+            // InternalResolutionModelParser.g:3133:2: iv_ruleuint16Array= ruleuint16Array EOF
             {
              newCompositeNode(grammarAccess.getUint16ArrayRule()); 
             pushFollow(FOLLOW_1);
@@ -8245,7 +8380,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleuint16Array"
-    // InternalResolutionModelParser.g:3084:1: ruleuint16Array returns [EObject current=null] : ( () otherlv_1= Uint16_1 ) ;
+    // InternalResolutionModelParser.g:3139:1: ruleuint16Array returns [EObject current=null] : ( () otherlv_1= Uint16_1 ) ;
     public final EObject ruleuint16Array() throws RecognitionException {
         EObject current = null;
 
@@ -8255,14 +8390,14 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalResolutionModelParser.g:3090:2: ( ( () otherlv_1= Uint16_1 ) )
-            // InternalResolutionModelParser.g:3091:2: ( () otherlv_1= Uint16_1 )
+            // InternalResolutionModelParser.g:3145:2: ( ( () otherlv_1= Uint16_1 ) )
+            // InternalResolutionModelParser.g:3146:2: ( () otherlv_1= Uint16_1 )
             {
-            // InternalResolutionModelParser.g:3091:2: ( () otherlv_1= Uint16_1 )
-            // InternalResolutionModelParser.g:3092:3: () otherlv_1= Uint16_1
+            // InternalResolutionModelParser.g:3146:2: ( () otherlv_1= Uint16_1 )
+            // InternalResolutionModelParser.g:3147:3: () otherlv_1= Uint16_1
             {
-            // InternalResolutionModelParser.g:3092:3: ()
-            // InternalResolutionModelParser.g:3093:4: 
+            // InternalResolutionModelParser.g:3147:3: ()
+            // InternalResolutionModelParser.g:3148:4: 
             {
 
             				current = forceCreateModelElement(
@@ -8299,7 +8434,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleint32Array"
-    // InternalResolutionModelParser.g:3107:1: entryRuleint32Array returns [EObject current=null] : iv_ruleint32Array= ruleint32Array EOF ;
+    // InternalResolutionModelParser.g:3162:1: entryRuleint32Array returns [EObject current=null] : iv_ruleint32Array= ruleint32Array EOF ;
     public final EObject entryRuleint32Array() throws RecognitionException {
         EObject current = null;
 
@@ -8307,8 +8442,8 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalResolutionModelParser.g:3107:51: (iv_ruleint32Array= ruleint32Array EOF )
-            // InternalResolutionModelParser.g:3108:2: iv_ruleint32Array= ruleint32Array EOF
+            // InternalResolutionModelParser.g:3162:51: (iv_ruleint32Array= ruleint32Array EOF )
+            // InternalResolutionModelParser.g:3163:2: iv_ruleint32Array= ruleint32Array EOF
             {
              newCompositeNode(grammarAccess.getInt32ArrayRule()); 
             pushFollow(FOLLOW_1);
@@ -8335,7 +8470,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleint32Array"
-    // InternalResolutionModelParser.g:3114:1: ruleint32Array returns [EObject current=null] : ( () otherlv_1= Int32_1 ) ;
+    // InternalResolutionModelParser.g:3169:1: ruleint32Array returns [EObject current=null] : ( () otherlv_1= Int32_1 ) ;
     public final EObject ruleint32Array() throws RecognitionException {
         EObject current = null;
 
@@ -8345,14 +8480,14 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalResolutionModelParser.g:3120:2: ( ( () otherlv_1= Int32_1 ) )
-            // InternalResolutionModelParser.g:3121:2: ( () otherlv_1= Int32_1 )
+            // InternalResolutionModelParser.g:3175:2: ( ( () otherlv_1= Int32_1 ) )
+            // InternalResolutionModelParser.g:3176:2: ( () otherlv_1= Int32_1 )
             {
-            // InternalResolutionModelParser.g:3121:2: ( () otherlv_1= Int32_1 )
-            // InternalResolutionModelParser.g:3122:3: () otherlv_1= Int32_1
+            // InternalResolutionModelParser.g:3176:2: ( () otherlv_1= Int32_1 )
+            // InternalResolutionModelParser.g:3177:3: () otherlv_1= Int32_1
             {
-            // InternalResolutionModelParser.g:3122:3: ()
-            // InternalResolutionModelParser.g:3123:4: 
+            // InternalResolutionModelParser.g:3177:3: ()
+            // InternalResolutionModelParser.g:3178:4: 
             {
 
             				current = forceCreateModelElement(
@@ -8389,7 +8524,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleuint32Array"
-    // InternalResolutionModelParser.g:3137:1: entryRuleuint32Array returns [EObject current=null] : iv_ruleuint32Array= ruleuint32Array EOF ;
+    // InternalResolutionModelParser.g:3192:1: entryRuleuint32Array returns [EObject current=null] : iv_ruleuint32Array= ruleuint32Array EOF ;
     public final EObject entryRuleuint32Array() throws RecognitionException {
         EObject current = null;
 
@@ -8397,8 +8532,8 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalResolutionModelParser.g:3137:52: (iv_ruleuint32Array= ruleuint32Array EOF )
-            // InternalResolutionModelParser.g:3138:2: iv_ruleuint32Array= ruleuint32Array EOF
+            // InternalResolutionModelParser.g:3192:52: (iv_ruleuint32Array= ruleuint32Array EOF )
+            // InternalResolutionModelParser.g:3193:2: iv_ruleuint32Array= ruleuint32Array EOF
             {
              newCompositeNode(grammarAccess.getUint32ArrayRule()); 
             pushFollow(FOLLOW_1);
@@ -8425,7 +8560,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleuint32Array"
-    // InternalResolutionModelParser.g:3144:1: ruleuint32Array returns [EObject current=null] : ( () otherlv_1= Uint32_1 ) ;
+    // InternalResolutionModelParser.g:3199:1: ruleuint32Array returns [EObject current=null] : ( () otherlv_1= Uint32_1 ) ;
     public final EObject ruleuint32Array() throws RecognitionException {
         EObject current = null;
 
@@ -8435,14 +8570,14 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalResolutionModelParser.g:3150:2: ( ( () otherlv_1= Uint32_1 ) )
-            // InternalResolutionModelParser.g:3151:2: ( () otherlv_1= Uint32_1 )
+            // InternalResolutionModelParser.g:3205:2: ( ( () otherlv_1= Uint32_1 ) )
+            // InternalResolutionModelParser.g:3206:2: ( () otherlv_1= Uint32_1 )
             {
-            // InternalResolutionModelParser.g:3151:2: ( () otherlv_1= Uint32_1 )
-            // InternalResolutionModelParser.g:3152:3: () otherlv_1= Uint32_1
+            // InternalResolutionModelParser.g:3206:2: ( () otherlv_1= Uint32_1 )
+            // InternalResolutionModelParser.g:3207:3: () otherlv_1= Uint32_1
             {
-            // InternalResolutionModelParser.g:3152:3: ()
-            // InternalResolutionModelParser.g:3153:4: 
+            // InternalResolutionModelParser.g:3207:3: ()
+            // InternalResolutionModelParser.g:3208:4: 
             {
 
             				current = forceCreateModelElement(
@@ -8479,7 +8614,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleint64Array"
-    // InternalResolutionModelParser.g:3167:1: entryRuleint64Array returns [EObject current=null] : iv_ruleint64Array= ruleint64Array EOF ;
+    // InternalResolutionModelParser.g:3222:1: entryRuleint64Array returns [EObject current=null] : iv_ruleint64Array= ruleint64Array EOF ;
     public final EObject entryRuleint64Array() throws RecognitionException {
         EObject current = null;
 
@@ -8487,8 +8622,8 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalResolutionModelParser.g:3167:51: (iv_ruleint64Array= ruleint64Array EOF )
-            // InternalResolutionModelParser.g:3168:2: iv_ruleint64Array= ruleint64Array EOF
+            // InternalResolutionModelParser.g:3222:51: (iv_ruleint64Array= ruleint64Array EOF )
+            // InternalResolutionModelParser.g:3223:2: iv_ruleint64Array= ruleint64Array EOF
             {
              newCompositeNode(grammarAccess.getInt64ArrayRule()); 
             pushFollow(FOLLOW_1);
@@ -8515,7 +8650,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleint64Array"
-    // InternalResolutionModelParser.g:3174:1: ruleint64Array returns [EObject current=null] : ( () otherlv_1= Int64_1 ) ;
+    // InternalResolutionModelParser.g:3229:1: ruleint64Array returns [EObject current=null] : ( () otherlv_1= Int64_1 ) ;
     public final EObject ruleint64Array() throws RecognitionException {
         EObject current = null;
 
@@ -8525,14 +8660,14 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalResolutionModelParser.g:3180:2: ( ( () otherlv_1= Int64_1 ) )
-            // InternalResolutionModelParser.g:3181:2: ( () otherlv_1= Int64_1 )
+            // InternalResolutionModelParser.g:3235:2: ( ( () otherlv_1= Int64_1 ) )
+            // InternalResolutionModelParser.g:3236:2: ( () otherlv_1= Int64_1 )
             {
-            // InternalResolutionModelParser.g:3181:2: ( () otherlv_1= Int64_1 )
-            // InternalResolutionModelParser.g:3182:3: () otherlv_1= Int64_1
+            // InternalResolutionModelParser.g:3236:2: ( () otherlv_1= Int64_1 )
+            // InternalResolutionModelParser.g:3237:3: () otherlv_1= Int64_1
             {
-            // InternalResolutionModelParser.g:3182:3: ()
-            // InternalResolutionModelParser.g:3183:4: 
+            // InternalResolutionModelParser.g:3237:3: ()
+            // InternalResolutionModelParser.g:3238:4: 
             {
 
             				current = forceCreateModelElement(
@@ -8569,7 +8704,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleuint64Array"
-    // InternalResolutionModelParser.g:3197:1: entryRuleuint64Array returns [EObject current=null] : iv_ruleuint64Array= ruleuint64Array EOF ;
+    // InternalResolutionModelParser.g:3252:1: entryRuleuint64Array returns [EObject current=null] : iv_ruleuint64Array= ruleuint64Array EOF ;
     public final EObject entryRuleuint64Array() throws RecognitionException {
         EObject current = null;
 
@@ -8577,8 +8712,8 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalResolutionModelParser.g:3197:52: (iv_ruleuint64Array= ruleuint64Array EOF )
-            // InternalResolutionModelParser.g:3198:2: iv_ruleuint64Array= ruleuint64Array EOF
+            // InternalResolutionModelParser.g:3252:52: (iv_ruleuint64Array= ruleuint64Array EOF )
+            // InternalResolutionModelParser.g:3253:2: iv_ruleuint64Array= ruleuint64Array EOF
             {
              newCompositeNode(grammarAccess.getUint64ArrayRule()); 
             pushFollow(FOLLOW_1);
@@ -8605,7 +8740,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleuint64Array"
-    // InternalResolutionModelParser.g:3204:1: ruleuint64Array returns [EObject current=null] : ( () otherlv_1= Uint64_1 ) ;
+    // InternalResolutionModelParser.g:3259:1: ruleuint64Array returns [EObject current=null] : ( () otherlv_1= Uint64_1 ) ;
     public final EObject ruleuint64Array() throws RecognitionException {
         EObject current = null;
 
@@ -8615,14 +8750,14 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalResolutionModelParser.g:3210:2: ( ( () otherlv_1= Uint64_1 ) )
-            // InternalResolutionModelParser.g:3211:2: ( () otherlv_1= Uint64_1 )
+            // InternalResolutionModelParser.g:3265:2: ( ( () otherlv_1= Uint64_1 ) )
+            // InternalResolutionModelParser.g:3266:2: ( () otherlv_1= Uint64_1 )
             {
-            // InternalResolutionModelParser.g:3211:2: ( () otherlv_1= Uint64_1 )
-            // InternalResolutionModelParser.g:3212:3: () otherlv_1= Uint64_1
+            // InternalResolutionModelParser.g:3266:2: ( () otherlv_1= Uint64_1 )
+            // InternalResolutionModelParser.g:3267:3: () otherlv_1= Uint64_1
             {
-            // InternalResolutionModelParser.g:3212:3: ()
-            // InternalResolutionModelParser.g:3213:4: 
+            // InternalResolutionModelParser.g:3267:3: ()
+            // InternalResolutionModelParser.g:3268:4: 
             {
 
             				current = forceCreateModelElement(
@@ -8659,7 +8794,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRulefloat32Array"
-    // InternalResolutionModelParser.g:3227:1: entryRulefloat32Array returns [EObject current=null] : iv_rulefloat32Array= rulefloat32Array EOF ;
+    // InternalResolutionModelParser.g:3282:1: entryRulefloat32Array returns [EObject current=null] : iv_rulefloat32Array= rulefloat32Array EOF ;
     public final EObject entryRulefloat32Array() throws RecognitionException {
         EObject current = null;
 
@@ -8667,8 +8802,8 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalResolutionModelParser.g:3227:53: (iv_rulefloat32Array= rulefloat32Array EOF )
-            // InternalResolutionModelParser.g:3228:2: iv_rulefloat32Array= rulefloat32Array EOF
+            // InternalResolutionModelParser.g:3282:53: (iv_rulefloat32Array= rulefloat32Array EOF )
+            // InternalResolutionModelParser.g:3283:2: iv_rulefloat32Array= rulefloat32Array EOF
             {
              newCompositeNode(grammarAccess.getFloat32ArrayRule()); 
             pushFollow(FOLLOW_1);
@@ -8695,7 +8830,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "rulefloat32Array"
-    // InternalResolutionModelParser.g:3234:1: rulefloat32Array returns [EObject current=null] : ( () otherlv_1= Float32_1 ) ;
+    // InternalResolutionModelParser.g:3289:1: rulefloat32Array returns [EObject current=null] : ( () otherlv_1= Float32_1 ) ;
     public final EObject rulefloat32Array() throws RecognitionException {
         EObject current = null;
 
@@ -8705,14 +8840,14 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalResolutionModelParser.g:3240:2: ( ( () otherlv_1= Float32_1 ) )
-            // InternalResolutionModelParser.g:3241:2: ( () otherlv_1= Float32_1 )
+            // InternalResolutionModelParser.g:3295:2: ( ( () otherlv_1= Float32_1 ) )
+            // InternalResolutionModelParser.g:3296:2: ( () otherlv_1= Float32_1 )
             {
-            // InternalResolutionModelParser.g:3241:2: ( () otherlv_1= Float32_1 )
-            // InternalResolutionModelParser.g:3242:3: () otherlv_1= Float32_1
+            // InternalResolutionModelParser.g:3296:2: ( () otherlv_1= Float32_1 )
+            // InternalResolutionModelParser.g:3297:3: () otherlv_1= Float32_1
             {
-            // InternalResolutionModelParser.g:3242:3: ()
-            // InternalResolutionModelParser.g:3243:4: 
+            // InternalResolutionModelParser.g:3297:3: ()
+            // InternalResolutionModelParser.g:3298:4: 
             {
 
             				current = forceCreateModelElement(
@@ -8749,7 +8884,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRulefloat64Array"
-    // InternalResolutionModelParser.g:3257:1: entryRulefloat64Array returns [EObject current=null] : iv_rulefloat64Array= rulefloat64Array EOF ;
+    // InternalResolutionModelParser.g:3312:1: entryRulefloat64Array returns [EObject current=null] : iv_rulefloat64Array= rulefloat64Array EOF ;
     public final EObject entryRulefloat64Array() throws RecognitionException {
         EObject current = null;
 
@@ -8757,8 +8892,8 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalResolutionModelParser.g:3257:53: (iv_rulefloat64Array= rulefloat64Array EOF )
-            // InternalResolutionModelParser.g:3258:2: iv_rulefloat64Array= rulefloat64Array EOF
+            // InternalResolutionModelParser.g:3312:53: (iv_rulefloat64Array= rulefloat64Array EOF )
+            // InternalResolutionModelParser.g:3313:2: iv_rulefloat64Array= rulefloat64Array EOF
             {
              newCompositeNode(grammarAccess.getFloat64ArrayRule()); 
             pushFollow(FOLLOW_1);
@@ -8785,7 +8920,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "rulefloat64Array"
-    // InternalResolutionModelParser.g:3264:1: rulefloat64Array returns [EObject current=null] : ( () otherlv_1= Float64_1 ) ;
+    // InternalResolutionModelParser.g:3319:1: rulefloat64Array returns [EObject current=null] : ( () otherlv_1= Float64_1 ) ;
     public final EObject rulefloat64Array() throws RecognitionException {
         EObject current = null;
 
@@ -8795,14 +8930,14 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalResolutionModelParser.g:3270:2: ( ( () otherlv_1= Float64_1 ) )
-            // InternalResolutionModelParser.g:3271:2: ( () otherlv_1= Float64_1 )
+            // InternalResolutionModelParser.g:3325:2: ( ( () otherlv_1= Float64_1 ) )
+            // InternalResolutionModelParser.g:3326:2: ( () otherlv_1= Float64_1 )
             {
-            // InternalResolutionModelParser.g:3271:2: ( () otherlv_1= Float64_1 )
-            // InternalResolutionModelParser.g:3272:3: () otherlv_1= Float64_1
+            // InternalResolutionModelParser.g:3326:2: ( () otherlv_1= Float64_1 )
+            // InternalResolutionModelParser.g:3327:3: () otherlv_1= Float64_1
             {
-            // InternalResolutionModelParser.g:3272:3: ()
-            // InternalResolutionModelParser.g:3273:4: 
+            // InternalResolutionModelParser.g:3327:3: ()
+            // InternalResolutionModelParser.g:3328:4: 
             {
 
             				current = forceCreateModelElement(
@@ -8839,7 +8974,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRulestring0Array"
-    // InternalResolutionModelParser.g:3287:1: entryRulestring0Array returns [EObject current=null] : iv_rulestring0Array= rulestring0Array EOF ;
+    // InternalResolutionModelParser.g:3342:1: entryRulestring0Array returns [EObject current=null] : iv_rulestring0Array= rulestring0Array EOF ;
     public final EObject entryRulestring0Array() throws RecognitionException {
         EObject current = null;
 
@@ -8847,8 +8982,8 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalResolutionModelParser.g:3287:53: (iv_rulestring0Array= rulestring0Array EOF )
-            // InternalResolutionModelParser.g:3288:2: iv_rulestring0Array= rulestring0Array EOF
+            // InternalResolutionModelParser.g:3342:53: (iv_rulestring0Array= rulestring0Array EOF )
+            // InternalResolutionModelParser.g:3343:2: iv_rulestring0Array= rulestring0Array EOF
             {
              newCompositeNode(grammarAccess.getString0ArrayRule()); 
             pushFollow(FOLLOW_1);
@@ -8875,7 +9010,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "rulestring0Array"
-    // InternalResolutionModelParser.g:3294:1: rulestring0Array returns [EObject current=null] : ( () otherlv_1= String_2 ) ;
+    // InternalResolutionModelParser.g:3349:1: rulestring0Array returns [EObject current=null] : ( () otherlv_1= String_2 ) ;
     public final EObject rulestring0Array() throws RecognitionException {
         EObject current = null;
 
@@ -8885,14 +9020,14 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalResolutionModelParser.g:3300:2: ( ( () otherlv_1= String_2 ) )
-            // InternalResolutionModelParser.g:3301:2: ( () otherlv_1= String_2 )
+            // InternalResolutionModelParser.g:3355:2: ( ( () otherlv_1= String_2 ) )
+            // InternalResolutionModelParser.g:3356:2: ( () otherlv_1= String_2 )
             {
-            // InternalResolutionModelParser.g:3301:2: ( () otherlv_1= String_2 )
-            // InternalResolutionModelParser.g:3302:3: () otherlv_1= String_2
+            // InternalResolutionModelParser.g:3356:2: ( () otherlv_1= String_2 )
+            // InternalResolutionModelParser.g:3357:3: () otherlv_1= String_2
             {
-            // InternalResolutionModelParser.g:3302:3: ()
-            // InternalResolutionModelParser.g:3303:4: 
+            // InternalResolutionModelParser.g:3357:3: ()
+            // InternalResolutionModelParser.g:3358:4: 
             {
 
             				current = forceCreateModelElement(
@@ -8929,7 +9064,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRulebyteArray"
-    // InternalResolutionModelParser.g:3317:1: entryRulebyteArray returns [EObject current=null] : iv_rulebyteArray= rulebyteArray EOF ;
+    // InternalResolutionModelParser.g:3372:1: entryRulebyteArray returns [EObject current=null] : iv_rulebyteArray= rulebyteArray EOF ;
     public final EObject entryRulebyteArray() throws RecognitionException {
         EObject current = null;
 
@@ -8937,8 +9072,8 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalResolutionModelParser.g:3317:50: (iv_rulebyteArray= rulebyteArray EOF )
-            // InternalResolutionModelParser.g:3318:2: iv_rulebyteArray= rulebyteArray EOF
+            // InternalResolutionModelParser.g:3372:50: (iv_rulebyteArray= rulebyteArray EOF )
+            // InternalResolutionModelParser.g:3373:2: iv_rulebyteArray= rulebyteArray EOF
             {
              newCompositeNode(grammarAccess.getByteArrayRule()); 
             pushFollow(FOLLOW_1);
@@ -8965,7 +9100,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "rulebyteArray"
-    // InternalResolutionModelParser.g:3324:1: rulebyteArray returns [EObject current=null] : ( () otherlv_1= Byte_1 ) ;
+    // InternalResolutionModelParser.g:3379:1: rulebyteArray returns [EObject current=null] : ( () otherlv_1= Byte_1 ) ;
     public final EObject rulebyteArray() throws RecognitionException {
         EObject current = null;
 
@@ -8975,14 +9110,14 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalResolutionModelParser.g:3330:2: ( ( () otherlv_1= Byte_1 ) )
-            // InternalResolutionModelParser.g:3331:2: ( () otherlv_1= Byte_1 )
+            // InternalResolutionModelParser.g:3385:2: ( ( () otherlv_1= Byte_1 ) )
+            // InternalResolutionModelParser.g:3386:2: ( () otherlv_1= Byte_1 )
             {
-            // InternalResolutionModelParser.g:3331:2: ( () otherlv_1= Byte_1 )
-            // InternalResolutionModelParser.g:3332:3: () otherlv_1= Byte_1
+            // InternalResolutionModelParser.g:3386:2: ( () otherlv_1= Byte_1 )
+            // InternalResolutionModelParser.g:3387:3: () otherlv_1= Byte_1
             {
-            // InternalResolutionModelParser.g:3332:3: ()
-            // InternalResolutionModelParser.g:3333:4: 
+            // InternalResolutionModelParser.g:3387:3: ()
+            // InternalResolutionModelParser.g:3388:4: 
             {
 
             				current = forceCreateModelElement(
@@ -9019,7 +9154,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRulecharArray"
-    // InternalResolutionModelParser.g:3347:1: entryRulecharArray returns [EObject current=null] : iv_rulecharArray= rulecharArray EOF ;
+    // InternalResolutionModelParser.g:3402:1: entryRulecharArray returns [EObject current=null] : iv_rulecharArray= rulecharArray EOF ;
     public final EObject entryRulecharArray() throws RecognitionException {
         EObject current = null;
 
@@ -9027,8 +9162,8 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalResolutionModelParser.g:3347:50: (iv_rulecharArray= rulecharArray EOF )
-            // InternalResolutionModelParser.g:3348:2: iv_rulecharArray= rulecharArray EOF
+            // InternalResolutionModelParser.g:3402:50: (iv_rulecharArray= rulecharArray EOF )
+            // InternalResolutionModelParser.g:3403:2: iv_rulecharArray= rulecharArray EOF
             {
              newCompositeNode(grammarAccess.getCharArrayRule()); 
             pushFollow(FOLLOW_1);
@@ -9055,7 +9190,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "rulecharArray"
-    // InternalResolutionModelParser.g:3354:1: rulecharArray returns [EObject current=null] : ( () otherlv_1= Char_1 ) ;
+    // InternalResolutionModelParser.g:3409:1: rulecharArray returns [EObject current=null] : ( () otherlv_1= Char_1 ) ;
     public final EObject rulecharArray() throws RecognitionException {
         EObject current = null;
 
@@ -9065,14 +9200,14 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalResolutionModelParser.g:3360:2: ( ( () otherlv_1= Char_1 ) )
-            // InternalResolutionModelParser.g:3361:2: ( () otherlv_1= Char_1 )
+            // InternalResolutionModelParser.g:3415:2: ( ( () otherlv_1= Char_1 ) )
+            // InternalResolutionModelParser.g:3416:2: ( () otherlv_1= Char_1 )
             {
-            // InternalResolutionModelParser.g:3361:2: ( () otherlv_1= Char_1 )
-            // InternalResolutionModelParser.g:3362:3: () otherlv_1= Char_1
+            // InternalResolutionModelParser.g:3416:2: ( () otherlv_1= Char_1 )
+            // InternalResolutionModelParser.g:3417:3: () otherlv_1= Char_1
             {
-            // InternalResolutionModelParser.g:3362:3: ()
-            // InternalResolutionModelParser.g:3363:4: 
+            // InternalResolutionModelParser.g:3417:3: ()
+            // InternalResolutionModelParser.g:3418:4: 
             {
 
             				current = forceCreateModelElement(
@@ -9109,7 +9244,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleHeader"
-    // InternalResolutionModelParser.g:3377:1: entryRuleHeader returns [EObject current=null] : iv_ruleHeader= ruleHeader EOF ;
+    // InternalResolutionModelParser.g:3432:1: entryRuleHeader returns [EObject current=null] : iv_ruleHeader= ruleHeader EOF ;
     public final EObject entryRuleHeader() throws RecognitionException {
         EObject current = null;
 
@@ -9117,8 +9252,8 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalResolutionModelParser.g:3377:47: (iv_ruleHeader= ruleHeader EOF )
-            // InternalResolutionModelParser.g:3378:2: iv_ruleHeader= ruleHeader EOF
+            // InternalResolutionModelParser.g:3432:47: (iv_ruleHeader= ruleHeader EOF )
+            // InternalResolutionModelParser.g:3433:2: iv_ruleHeader= ruleHeader EOF
             {
              newCompositeNode(grammarAccess.getHeaderRule()); 
             pushFollow(FOLLOW_1);
@@ -9145,7 +9280,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleHeader"
-    // InternalResolutionModelParser.g:3384:1: ruleHeader returns [EObject current=null] : ( () otherlv_1= Header ) ;
+    // InternalResolutionModelParser.g:3439:1: ruleHeader returns [EObject current=null] : ( () otherlv_1= Header ) ;
     public final EObject ruleHeader() throws RecognitionException {
         EObject current = null;
 
@@ -9155,14 +9290,14 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalResolutionModelParser.g:3390:2: ( ( () otherlv_1= Header ) )
-            // InternalResolutionModelParser.g:3391:2: ( () otherlv_1= Header )
+            // InternalResolutionModelParser.g:3445:2: ( ( () otherlv_1= Header ) )
+            // InternalResolutionModelParser.g:3446:2: ( () otherlv_1= Header )
             {
-            // InternalResolutionModelParser.g:3391:2: ( () otherlv_1= Header )
-            // InternalResolutionModelParser.g:3392:3: () otherlv_1= Header
+            // InternalResolutionModelParser.g:3446:2: ( () otherlv_1= Header )
+            // InternalResolutionModelParser.g:3447:3: () otherlv_1= Header
             {
-            // InternalResolutionModelParser.g:3392:3: ()
-            // InternalResolutionModelParser.g:3393:4: 
+            // InternalResolutionModelParser.g:3447:3: ()
+            // InternalResolutionModelParser.g:3448:4: 
             {
 
             				current = forceCreateModelElement(
@@ -9199,7 +9334,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleSpecBaseRef"
-    // InternalResolutionModelParser.g:3407:1: entryRuleSpecBaseRef returns [EObject current=null] : iv_ruleSpecBaseRef= ruleSpecBaseRef EOF ;
+    // InternalResolutionModelParser.g:3462:1: entryRuleSpecBaseRef returns [EObject current=null] : iv_ruleSpecBaseRef= ruleSpecBaseRef EOF ;
     public final EObject entryRuleSpecBaseRef() throws RecognitionException {
         EObject current = null;
 
@@ -9207,8 +9342,8 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalResolutionModelParser.g:3407:52: (iv_ruleSpecBaseRef= ruleSpecBaseRef EOF )
-            // InternalResolutionModelParser.g:3408:2: iv_ruleSpecBaseRef= ruleSpecBaseRef EOF
+            // InternalResolutionModelParser.g:3462:52: (iv_ruleSpecBaseRef= ruleSpecBaseRef EOF )
+            // InternalResolutionModelParser.g:3463:2: iv_ruleSpecBaseRef= ruleSpecBaseRef EOF
             {
              newCompositeNode(grammarAccess.getSpecBaseRefRule()); 
             pushFollow(FOLLOW_1);
@@ -9235,7 +9370,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleSpecBaseRef"
-    // InternalResolutionModelParser.g:3414:1: ruleSpecBaseRef returns [EObject current=null] : ( ( ruleEString ) ) ;
+    // InternalResolutionModelParser.g:3469:1: ruleSpecBaseRef returns [EObject current=null] : ( ( ruleEString ) ) ;
     public final EObject ruleSpecBaseRef() throws RecognitionException {
         EObject current = null;
 
@@ -9243,14 +9378,14 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalResolutionModelParser.g:3420:2: ( ( ( ruleEString ) ) )
-            // InternalResolutionModelParser.g:3421:2: ( ( ruleEString ) )
+            // InternalResolutionModelParser.g:3475:2: ( ( ( ruleEString ) ) )
+            // InternalResolutionModelParser.g:3476:2: ( ( ruleEString ) )
             {
-            // InternalResolutionModelParser.g:3421:2: ( ( ruleEString ) )
-            // InternalResolutionModelParser.g:3422:3: ( ruleEString )
+            // InternalResolutionModelParser.g:3476:2: ( ( ruleEString ) )
+            // InternalResolutionModelParser.g:3477:3: ( ruleEString )
             {
-            // InternalResolutionModelParser.g:3422:3: ( ruleEString )
-            // InternalResolutionModelParser.g:3423:4: ruleEString
+            // InternalResolutionModelParser.g:3477:3: ( ruleEString )
+            // InternalResolutionModelParser.g:3478:4: ruleEString
             {
 
             				if (current==null) {
@@ -9294,7 +9429,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleArraySpecRef"
-    // InternalResolutionModelParser.g:3440:1: entryRuleArraySpecRef returns [EObject current=null] : iv_ruleArraySpecRef= ruleArraySpecRef EOF ;
+    // InternalResolutionModelParser.g:3495:1: entryRuleArraySpecRef returns [EObject current=null] : iv_ruleArraySpecRef= ruleArraySpecRef EOF ;
     public final EObject entryRuleArraySpecRef() throws RecognitionException {
         EObject current = null;
 
@@ -9302,8 +9437,8 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalResolutionModelParser.g:3440:53: (iv_ruleArraySpecRef= ruleArraySpecRef EOF )
-            // InternalResolutionModelParser.g:3441:2: iv_ruleArraySpecRef= ruleArraySpecRef EOF
+            // InternalResolutionModelParser.g:3495:53: (iv_ruleArraySpecRef= ruleArraySpecRef EOF )
+            // InternalResolutionModelParser.g:3496:2: iv_ruleArraySpecRef= ruleArraySpecRef EOF
             {
              newCompositeNode(grammarAccess.getArraySpecRefRule()); 
             pushFollow(FOLLOW_1);
@@ -9330,7 +9465,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleArraySpecRef"
-    // InternalResolutionModelParser.g:3447:1: ruleArraySpecRef returns [EObject current=null] : ( ( ( ruleEString ) ) otherlv_1= LeftSquareBracketRightSquareBracket ) ;
+    // InternalResolutionModelParser.g:3502:1: ruleArraySpecRef returns [EObject current=null] : ( ( ( ruleEString ) ) otherlv_1= LeftSquareBracketRightSquareBracket ) ;
     public final EObject ruleArraySpecRef() throws RecognitionException {
         EObject current = null;
 
@@ -9340,17 +9475,17 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalResolutionModelParser.g:3453:2: ( ( ( ( ruleEString ) ) otherlv_1= LeftSquareBracketRightSquareBracket ) )
-            // InternalResolutionModelParser.g:3454:2: ( ( ( ruleEString ) ) otherlv_1= LeftSquareBracketRightSquareBracket )
+            // InternalResolutionModelParser.g:3508:2: ( ( ( ( ruleEString ) ) otherlv_1= LeftSquareBracketRightSquareBracket ) )
+            // InternalResolutionModelParser.g:3509:2: ( ( ( ruleEString ) ) otherlv_1= LeftSquareBracketRightSquareBracket )
             {
-            // InternalResolutionModelParser.g:3454:2: ( ( ( ruleEString ) ) otherlv_1= LeftSquareBracketRightSquareBracket )
-            // InternalResolutionModelParser.g:3455:3: ( ( ruleEString ) ) otherlv_1= LeftSquareBracketRightSquareBracket
+            // InternalResolutionModelParser.g:3509:2: ( ( ( ruleEString ) ) otherlv_1= LeftSquareBracketRightSquareBracket )
+            // InternalResolutionModelParser.g:3510:3: ( ( ruleEString ) ) otherlv_1= LeftSquareBracketRightSquareBracket
             {
-            // InternalResolutionModelParser.g:3455:3: ( ( ruleEString ) )
-            // InternalResolutionModelParser.g:3456:4: ( ruleEString )
+            // InternalResolutionModelParser.g:3510:3: ( ( ruleEString ) )
+            // InternalResolutionModelParser.g:3511:4: ( ruleEString )
             {
-            // InternalResolutionModelParser.g:3456:4: ( ruleEString )
-            // InternalResolutionModelParser.g:3457:5: ruleEString
+            // InternalResolutionModelParser.g:3511:4: ( ruleEString )
+            // InternalResolutionModelParser.g:3512:5: ruleEString
             {
 
             					if (current==null) {
@@ -9360,7 +9495,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
             					newCompositeNode(grammarAccess.getArraySpecRefAccess().getReferenceTopicSpecCrossReference_0_0());
             				
-            pushFollow(FOLLOW_35);
+            pushFollow(FOLLOW_36);
             ruleEString();
 
             state._fsp--;
@@ -9401,7 +9536,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleKEYWORD"
-    // InternalResolutionModelParser.g:3479:1: entryRuleKEYWORD returns [String current=null] : iv_ruleKEYWORD= ruleKEYWORD EOF ;
+    // InternalResolutionModelParser.g:3534:1: entryRuleKEYWORD returns [String current=null] : iv_ruleKEYWORD= ruleKEYWORD EOF ;
     public final String entryRuleKEYWORD() throws RecognitionException {
         String current = null;
 
@@ -9409,8 +9544,8 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalResolutionModelParser.g:3479:47: (iv_ruleKEYWORD= ruleKEYWORD EOF )
-            // InternalResolutionModelParser.g:3480:2: iv_ruleKEYWORD= ruleKEYWORD EOF
+            // InternalResolutionModelParser.g:3534:47: (iv_ruleKEYWORD= ruleKEYWORD EOF )
+            // InternalResolutionModelParser.g:3535:2: iv_ruleKEYWORD= ruleKEYWORD EOF
             {
              newCompositeNode(grammarAccess.getKEYWORDRule()); 
             pushFollow(FOLLOW_1);
@@ -9437,7 +9572,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleKEYWORD"
-    // InternalResolutionModelParser.g:3486:1: ruleKEYWORD returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (kw= Goal | kw= Message | kw= Result | kw= Feedback | kw= Name | kw= Value | kw= Service | kw= Type | kw= Action | kw= Duration | kw= Time ) ;
+    // InternalResolutionModelParser.g:3541:1: ruleKEYWORD returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (kw= Goal | kw= Message | kw= Result | kw= Feedback | kw= Name | kw= Value | kw= Service | kw= Type | kw= Action | kw= Duration | kw= Time ) ;
     public final AntlrDatatypeRuleToken ruleKEYWORD() throws RecognitionException {
         AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
 
@@ -9447,10 +9582,10 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalResolutionModelParser.g:3492:2: ( (kw= Goal | kw= Message | kw= Result | kw= Feedback | kw= Name | kw= Value | kw= Service | kw= Type | kw= Action | kw= Duration | kw= Time ) )
-            // InternalResolutionModelParser.g:3493:2: (kw= Goal | kw= Message | kw= Result | kw= Feedback | kw= Name | kw= Value | kw= Service | kw= Type | kw= Action | kw= Duration | kw= Time )
+            // InternalResolutionModelParser.g:3547:2: ( (kw= Goal | kw= Message | kw= Result | kw= Feedback | kw= Name | kw= Value | kw= Service | kw= Type | kw= Action | kw= Duration | kw= Time ) )
+            // InternalResolutionModelParser.g:3548:2: (kw= Goal | kw= Message | kw= Result | kw= Feedback | kw= Name | kw= Value | kw= Service | kw= Type | kw= Action | kw= Duration | kw= Time )
             {
-            // InternalResolutionModelParser.g:3493:2: (kw= Goal | kw= Message | kw= Result | kw= Feedback | kw= Name | kw= Value | kw= Service | kw= Type | kw= Action | kw= Duration | kw= Time )
+            // InternalResolutionModelParser.g:3548:2: (kw= Goal | kw= Message | kw= Result | kw= Feedback | kw= Name | kw= Value | kw= Service | kw= Type | kw= Action | kw= Duration | kw= Time )
             int alt28=11;
             switch ( input.LA(1) ) {
             case Goal:
@@ -9517,7 +9652,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
             switch (alt28) {
                 case 1 :
-                    // InternalResolutionModelParser.g:3494:3: kw= Goal
+                    // InternalResolutionModelParser.g:3549:3: kw= Goal
                     {
                     kw=(Token)match(input,Goal,FOLLOW_2); 
 
@@ -9528,7 +9663,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // InternalResolutionModelParser.g:3500:3: kw= Message
+                    // InternalResolutionModelParser.g:3555:3: kw= Message
                     {
                     kw=(Token)match(input,Message,FOLLOW_2); 
 
@@ -9539,7 +9674,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 3 :
-                    // InternalResolutionModelParser.g:3506:3: kw= Result
+                    // InternalResolutionModelParser.g:3561:3: kw= Result
                     {
                     kw=(Token)match(input,Result,FOLLOW_2); 
 
@@ -9550,7 +9685,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 4 :
-                    // InternalResolutionModelParser.g:3512:3: kw= Feedback
+                    // InternalResolutionModelParser.g:3567:3: kw= Feedback
                     {
                     kw=(Token)match(input,Feedback,FOLLOW_2); 
 
@@ -9561,7 +9696,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 5 :
-                    // InternalResolutionModelParser.g:3518:3: kw= Name
+                    // InternalResolutionModelParser.g:3573:3: kw= Name
                     {
                     kw=(Token)match(input,Name,FOLLOW_2); 
 
@@ -9572,7 +9707,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 6 :
-                    // InternalResolutionModelParser.g:3524:3: kw= Value
+                    // InternalResolutionModelParser.g:3579:3: kw= Value
                     {
                     kw=(Token)match(input,Value,FOLLOW_2); 
 
@@ -9583,7 +9718,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 7 :
-                    // InternalResolutionModelParser.g:3530:3: kw= Service
+                    // InternalResolutionModelParser.g:3585:3: kw= Service
                     {
                     kw=(Token)match(input,Service,FOLLOW_2); 
 
@@ -9594,7 +9729,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 8 :
-                    // InternalResolutionModelParser.g:3536:3: kw= Type
+                    // InternalResolutionModelParser.g:3591:3: kw= Type
                     {
                     kw=(Token)match(input,Type,FOLLOW_2); 
 
@@ -9605,7 +9740,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 9 :
-                    // InternalResolutionModelParser.g:3542:3: kw= Action
+                    // InternalResolutionModelParser.g:3597:3: kw= Action
                     {
                     kw=(Token)match(input,Action,FOLLOW_2); 
 
@@ -9616,7 +9751,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 10 :
-                    // InternalResolutionModelParser.g:3548:3: kw= Duration
+                    // InternalResolutionModelParser.g:3603:3: kw= Duration
                     {
                     kw=(Token)match(input,Duration,FOLLOW_2); 
 
@@ -9627,7 +9762,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 11 :
-                    // InternalResolutionModelParser.g:3554:3: kw= Time
+                    // InternalResolutionModelParser.g:3609:3: kw= Time
                     {
                     kw=(Token)match(input,Time,FOLLOW_2); 
 
@@ -9660,7 +9795,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleEString"
-    // InternalResolutionModelParser.g:3563:1: entryRuleEString returns [String current=null] : iv_ruleEString= ruleEString EOF ;
+    // InternalResolutionModelParser.g:3618:1: entryRuleEString returns [String current=null] : iv_ruleEString= ruleEString EOF ;
     public final String entryRuleEString() throws RecognitionException {
         String current = null;
 
@@ -9668,8 +9803,8 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalResolutionModelParser.g:3563:47: (iv_ruleEString= ruleEString EOF )
-            // InternalResolutionModelParser.g:3564:2: iv_ruleEString= ruleEString EOF
+            // InternalResolutionModelParser.g:3618:47: (iv_ruleEString= ruleEString EOF )
+            // InternalResolutionModelParser.g:3619:2: iv_ruleEString= ruleEString EOF
             {
              newCompositeNode(grammarAccess.getEStringRule()); 
             pushFollow(FOLLOW_1);
@@ -9696,7 +9831,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleEString"
-    // InternalResolutionModelParser.g:3570:1: ruleEString returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (this_STRING_0= RULE_STRING | this_ID_1= RULE_ID ) ;
+    // InternalResolutionModelParser.g:3625:1: ruleEString returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (this_STRING_0= RULE_STRING | this_ID_1= RULE_ID ) ;
     public final AntlrDatatypeRuleToken ruleEString() throws RecognitionException {
         AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
 
@@ -9707,10 +9842,10 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalResolutionModelParser.g:3576:2: ( (this_STRING_0= RULE_STRING | this_ID_1= RULE_ID ) )
-            // InternalResolutionModelParser.g:3577:2: (this_STRING_0= RULE_STRING | this_ID_1= RULE_ID )
+            // InternalResolutionModelParser.g:3631:2: ( (this_STRING_0= RULE_STRING | this_ID_1= RULE_ID ) )
+            // InternalResolutionModelParser.g:3632:2: (this_STRING_0= RULE_STRING | this_ID_1= RULE_ID )
             {
-            // InternalResolutionModelParser.g:3577:2: (this_STRING_0= RULE_STRING | this_ID_1= RULE_ID )
+            // InternalResolutionModelParser.g:3632:2: (this_STRING_0= RULE_STRING | this_ID_1= RULE_ID )
             int alt29=2;
             int LA29_0 = input.LA(1);
 
@@ -9728,7 +9863,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
             }
             switch (alt29) {
                 case 1 :
-                    // InternalResolutionModelParser.g:3578:3: this_STRING_0= RULE_STRING
+                    // InternalResolutionModelParser.g:3633:3: this_STRING_0= RULE_STRING
                     {
                     this_STRING_0=(Token)match(input,RULE_STRING,FOLLOW_2); 
 
@@ -9741,7 +9876,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // InternalResolutionModelParser.g:3586:3: this_ID_1= RULE_ID
+                    // InternalResolutionModelParser.g:3641:3: this_ID_1= RULE_ID
                     {
                     this_ID_1=(Token)match(input,RULE_ID,FOLLOW_2); 
 
@@ -9776,7 +9911,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleLifecycleState"
-    // InternalResolutionModelParser.g:3597:1: ruleLifecycleState returns [Enumerator current=null] : ( (enumLiteral_0= UNCONFIGURED ) | (enumLiteral_1= INACTIVE ) | (enumLiteral_2= ACTIVE ) | (enumLiteral_3= FINALIZED ) ) ;
+    // InternalResolutionModelParser.g:3652:1: ruleLifecycleState returns [Enumerator current=null] : ( (enumLiteral_0= UNCONFIGURED ) | (enumLiteral_1= INACTIVE ) | (enumLiteral_2= ACTIVE ) | (enumLiteral_3= FINALIZED ) ) ;
     public final Enumerator ruleLifecycleState() throws RecognitionException {
         Enumerator current = null;
 
@@ -9789,10 +9924,10 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalResolutionModelParser.g:3603:2: ( ( (enumLiteral_0= UNCONFIGURED ) | (enumLiteral_1= INACTIVE ) | (enumLiteral_2= ACTIVE ) | (enumLiteral_3= FINALIZED ) ) )
-            // InternalResolutionModelParser.g:3604:2: ( (enumLiteral_0= UNCONFIGURED ) | (enumLiteral_1= INACTIVE ) | (enumLiteral_2= ACTIVE ) | (enumLiteral_3= FINALIZED ) )
+            // InternalResolutionModelParser.g:3658:2: ( ( (enumLiteral_0= UNCONFIGURED ) | (enumLiteral_1= INACTIVE ) | (enumLiteral_2= ACTIVE ) | (enumLiteral_3= FINALIZED ) ) )
+            // InternalResolutionModelParser.g:3659:2: ( (enumLiteral_0= UNCONFIGURED ) | (enumLiteral_1= INACTIVE ) | (enumLiteral_2= ACTIVE ) | (enumLiteral_3= FINALIZED ) )
             {
-            // InternalResolutionModelParser.g:3604:2: ( (enumLiteral_0= UNCONFIGURED ) | (enumLiteral_1= INACTIVE ) | (enumLiteral_2= ACTIVE ) | (enumLiteral_3= FINALIZED ) )
+            // InternalResolutionModelParser.g:3659:2: ( (enumLiteral_0= UNCONFIGURED ) | (enumLiteral_1= INACTIVE ) | (enumLiteral_2= ACTIVE ) | (enumLiteral_3= FINALIZED ) )
             int alt30=4;
             switch ( input.LA(1) ) {
             case UNCONFIGURED:
@@ -9824,10 +9959,10 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
             switch (alt30) {
                 case 1 :
-                    // InternalResolutionModelParser.g:3605:3: (enumLiteral_0= UNCONFIGURED )
+                    // InternalResolutionModelParser.g:3660:3: (enumLiteral_0= UNCONFIGURED )
                     {
-                    // InternalResolutionModelParser.g:3605:3: (enumLiteral_0= UNCONFIGURED )
-                    // InternalResolutionModelParser.g:3606:4: enumLiteral_0= UNCONFIGURED
+                    // InternalResolutionModelParser.g:3660:3: (enumLiteral_0= UNCONFIGURED )
+                    // InternalResolutionModelParser.g:3661:4: enumLiteral_0= UNCONFIGURED
                     {
                     enumLiteral_0=(Token)match(input,UNCONFIGURED,FOLLOW_2); 
 
@@ -9841,10 +9976,10 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // InternalResolutionModelParser.g:3613:3: (enumLiteral_1= INACTIVE )
+                    // InternalResolutionModelParser.g:3668:3: (enumLiteral_1= INACTIVE )
                     {
-                    // InternalResolutionModelParser.g:3613:3: (enumLiteral_1= INACTIVE )
-                    // InternalResolutionModelParser.g:3614:4: enumLiteral_1= INACTIVE
+                    // InternalResolutionModelParser.g:3668:3: (enumLiteral_1= INACTIVE )
+                    // InternalResolutionModelParser.g:3669:4: enumLiteral_1= INACTIVE
                     {
                     enumLiteral_1=(Token)match(input,INACTIVE,FOLLOW_2); 
 
@@ -9858,10 +9993,10 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 3 :
-                    // InternalResolutionModelParser.g:3621:3: (enumLiteral_2= ACTIVE )
+                    // InternalResolutionModelParser.g:3676:3: (enumLiteral_2= ACTIVE )
                     {
-                    // InternalResolutionModelParser.g:3621:3: (enumLiteral_2= ACTIVE )
-                    // InternalResolutionModelParser.g:3622:4: enumLiteral_2= ACTIVE
+                    // InternalResolutionModelParser.g:3676:3: (enumLiteral_2= ACTIVE )
+                    // InternalResolutionModelParser.g:3677:4: enumLiteral_2= ACTIVE
                     {
                     enumLiteral_2=(Token)match(input,ACTIVE,FOLLOW_2); 
 
@@ -9875,10 +10010,10 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 4 :
-                    // InternalResolutionModelParser.g:3629:3: (enumLiteral_3= FINALIZED )
+                    // InternalResolutionModelParser.g:3684:3: (enumLiteral_3= FINALIZED )
                     {
-                    // InternalResolutionModelParser.g:3629:3: (enumLiteral_3= FINALIZED )
-                    // InternalResolutionModelParser.g:3630:4: enumLiteral_3= FINALIZED
+                    // InternalResolutionModelParser.g:3684:3: (enumLiteral_3= FINALIZED )
+                    // InternalResolutionModelParser.g:3685:4: enumLiteral_3= FINALIZED
                     {
                     enumLiteral_3=(Token)match(input,FINALIZED,FOLLOW_2); 
 
@@ -9920,18 +10055,18 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
     static final String dfa_1s = "\13\uffff";
     static final String dfa_2s = "\1\10\2\11\10\uffff";
     static final String dfa_3s = "\3\116\4\uffff\1\117\3\uffff";
-    static final String dfa_4s = "\3\141\4\uffff\1\144\3\uffff";
+    static final String dfa_4s = "\3\142\4\uffff\1\145\3\uffff";
     static final String dfa_5s = "\3\uffff\1\2\1\3\1\4\1\5\1\uffff\1\7\1\1\1\6";
     static final String dfa_6s = "\13\uffff}>";
     static final String[] dfa_7s = {
-            "\2\10\2\uffff\1\7\1\10\2\uffff\1\3\1\6\1\4\1\5\6\uffff\1\2\1\1",
-            "\2\11\1\10\2\uffff\1\11\14\uffff\2\11",
-            "\2\11\1\10\2\uffff\1\11\14\uffff\2\11",
+            "\2\10\3\uffff\1\7\1\10\2\uffff\1\3\1\6\1\4\1\5\6\uffff\1\2\1\1",
+            "\2\11\1\uffff\1\10\2\uffff\1\11\14\uffff\2\11",
+            "\2\11\1\uffff\1\10\2\uffff\1\11\14\uffff\2\11",
             "",
             "",
             "",
             "",
-            "\1\12\2\uffff\2\12\2\uffff\4\12\6\uffff\2\12\2\uffff\1\10",
+            "\1\12\3\uffff\2\12\2\uffff\4\12\6\uffff\2\12\2\uffff\1\10",
             "",
             "",
             ""
@@ -9959,17 +10094,17 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
             this.transition = dfa_7;
         }
         public String getDescription() {
-            return "931:2: (this_ParameterString_0= ruleParameterString | this_ParameterBase64_1= ruleParameterBase64 | this_ParameterInteger_2= ruleParameterInteger | this_ParameterDouble_3= ruleParameterDouble | this_ParameterBoolean_4= ruleParameterBoolean | this_ParameterList_5= ruleParameterList | this_ParameterStruct_6= ruleParameterStruct )";
+            return "986:2: (this_ParameterString_0= ruleParameterString | this_ParameterBase64_1= ruleParameterBase64 | this_ParameterInteger_2= ruleParameterInteger | this_ParameterDouble_3= ruleParameterDouble | this_ParameterBoolean_4= ruleParameterBoolean | this_ParameterList_5= ruleParameterList | this_ParameterStruct_6= ruleParameterStruct )";
         }
     }
     static final String dfa_8s = "\44\uffff";
     static final String dfa_9s = "\36\uffff\2\43\4\uffff";
     static final String dfa_10s = "\1\21\35\uffff\2\114\4\uffff";
-    static final String dfa_11s = "\1\141\35\uffff\2\114\4\uffff";
+    static final String dfa_11s = "\1\142\35\uffff\2\114\4\uffff";
     static final String dfa_12s = "\1\uffff\1\1\1\2\1\3\1\4\1\5\1\6\1\7\1\10\1\11\1\12\1\13\1\14\1\15\1\16\1\17\1\20\1\21\1\22\1\23\1\24\1\25\1\26\1\27\1\30\1\31\1\32\1\33\1\34\1\35\2\uffff\1\40\1\41\1\37\1\36";
     static final String dfa_13s = "\44\uffff}>";
     static final String[] dfa_14s = {
-            "\1\32\1\33\2\uffff\1\17\1\uffff\1\34\1\25\1\27\1\31\2\uffff\1\12\1\13\1\24\1\26\1\30\3\uffff\1\23\3\uffff\1\20\3\uffff\1\21\1\35\1\41\1\uffff\1\22\1\uffff\1\14\1\5\1\7\1\11\2\uffff\1\4\1\6\1\10\1\uffff\1\3\3\uffff\1\1\1\15\1\40\1\uffff\1\2\2\uffff\1\16\27\uffff\1\37\1\36",
+            "\1\32\1\33\2\uffff\1\17\1\uffff\1\34\1\25\1\27\1\31\2\uffff\1\12\1\13\1\24\1\26\1\30\3\uffff\1\23\3\uffff\1\20\3\uffff\1\21\1\35\1\41\1\uffff\1\22\1\uffff\1\14\1\5\1\7\1\11\2\uffff\1\4\1\6\1\10\1\uffff\1\3\3\uffff\1\1\1\15\1\40\1\uffff\1\2\2\uffff\1\16\30\uffff\1\37\1\36",
             "",
             "",
             "",
@@ -10029,45 +10164,46 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
             this.transition = dfa_14;
         }
         public String getDescription() {
-            return "2176:2: (this_bool_0= rulebool | this_int8_1= ruleint8 | this_uint8_2= ruleuint8 | this_int16_3= ruleint16 | this_uint16_4= ruleuint16 | this_int32_5= ruleint32 | this_uint32_6= ruleuint32 | this_int64_7= ruleint64 | this_uint64_8= ruleuint64 | this_float32_9= rulefloat32 | this_float64_10= rulefloat64 | this_string0_11= rulestring0 | this_byte_12= rulebyte | this_time_13= ruletime | this_duration_14= ruleduration | this_Header_15= ruleHeader | this_boolArray_16= ruleboolArray | this_int8Array_17= ruleint8Array | this_uint8Array_18= ruleuint8Array | this_int16Array_19= ruleint16Array | this_uint16Array_20= ruleuint16Array | this_int32Array_21= ruleint32Array | this_uint32Array_22= ruleuint32Array | this_int64Array_23= ruleint64Array | this_uint64Array_24= ruleuint64Array | this_float32Array_25= rulefloat32Array | this_float64Array_26= rulefloat64Array | this_string0Array_27= rulestring0Array | this_byteArray_28= rulebyteArray | this_SpecBaseRef_29= ruleSpecBaseRef | this_ArraySpecRef_30= ruleArraySpecRef | this_char_31= rulechar | this_charArray_32= rulecharArray )";
+            return "2231:2: (this_bool_0= rulebool | this_int8_1= ruleint8 | this_uint8_2= ruleuint8 | this_int16_3= ruleint16 | this_uint16_4= ruleuint16 | this_int32_5= ruleint32 | this_uint32_6= ruleuint32 | this_int64_7= ruleint64 | this_uint64_8= ruleuint64 | this_float32_9= rulefloat32 | this_float64_10= rulefloat64 | this_string0_11= rulestring0 | this_byte_12= rulebyte | this_time_13= ruletime | this_duration_14= ruleduration | this_Header_15= ruleHeader | this_boolArray_16= ruleboolArray | this_int8Array_17= ruleint8Array | this_uint8Array_18= ruleuint8Array | this_int16Array_19= ruleint16Array | this_uint16Array_20= ruleuint16Array | this_int32Array_21= ruleint32Array | this_uint32Array_22= ruleuint32Array | this_int64Array_23= ruleint64Array | this_uint64Array_24= ruleuint64Array | this_float32Array_25= rulefloat32Array | this_float64Array_26= rulefloat64Array | this_string0Array_27= rulestring0Array | this_byteArray_28= rulebyteArray | this_SpecBaseRef_29= ruleSpecBaseRef | this_ArraySpecRef_30= ruleArraySpecRef | this_char_31= rulechar | this_charArray_32= rulecharArray )";
         }
     }
  
 
     public static final BitSet FOLLOW_1 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_2 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_3 = new BitSet(new long[]{0x0000000000000000L,0x0000000100000000L});
-    public static final BitSet FOLLOW_4 = new BitSet(new long[]{0x0000000000000000L,0x0000000000020000L});
+    public static final BitSet FOLLOW_3 = new BitSet(new long[]{0x0000000000000000L,0x0000000200000000L});
+    public static final BitSet FOLLOW_4 = new BitSet(new long[]{0x0000000000000000L,0x0000000000040000L});
     public static final BitSet FOLLOW_5 = new BitSet(new long[]{0x0001000000000040L});
     public static final BitSet FOLLOW_6 = new BitSet(new long[]{0x0000000000002000L});
     public static final BitSet FOLLOW_7 = new BitSet(new long[]{0x0000000000001000L});
-    public static final BitSet FOLLOW_8 = new BitSet(new long[]{0x0000000000000002L,0x0000000100000000L});
-    public static final BitSet FOLLOW_9 = new BitSet(new long[]{0x0000000000000000L,0x0000000000010000L});
+    public static final BitSet FOLLOW_8 = new BitSet(new long[]{0x0000000000000002L,0x0000000200000000L});
+    public static final BitSet FOLLOW_9 = new BitSet(new long[]{0x0000000000000000L,0x0000000000020000L});
     public static final BitSet FOLLOW_10 = new BitSet(new long[]{0x0000000800000000L});
     public static final BitSet FOLLOW_11 = new BitSet(new long[]{0x0000000000010420L});
     public static final BitSet FOLLOW_12 = new BitSet(new long[]{0x0000000000000422L});
-    public static final BitSet FOLLOW_13 = new BitSet(new long[]{0x0000000000000000L,0x0000000200000000L});
-    public static final BitSet FOLLOW_14 = new BitSet(new long[]{0x0000000000000000L,0x0000000000002000L});
-    public static final BitSet FOLLOW_15 = new BitSet(new long[]{0x0000000000000000L,0x0000000000008000L});
-    public static final BitSet FOLLOW_16 = new BitSet(new long[]{0x0000000000000000L,0x0000000303C40000L});
-    public static final BitSet FOLLOW_17 = new BitSet(new long[]{0x0000000000000000L,0x0000000000004000L});
-    public static final BitSet FOLLOW_18 = new BitSet(new long[]{0x0000004000084800L});
-    public static final BitSet FOLLOW_19 = new BitSet(new long[]{0x0000000000000002L,0x0000000000040000L});
-    public static final BitSet FOLLOW_20 = new BitSet(new long[]{0x0000000000008000L});
-    public static final BitSet FOLLOW_21 = new BitSet(new long[]{0x0000000000000000L,0x0000000000088000L});
-    public static final BitSet FOLLOW_22 = new BitSet(new long[]{0x0000000000000000L,0x0000000000040000L});
-    public static final BitSet FOLLOW_23 = new BitSet(new long[]{0x01000D8018000000L,0x0000000000000001L});
-    public static final BitSet FOLLOW_24 = new BitSet(new long[]{0x0000000000000000L,0x0000000300000000L});
-    public static final BitSet FOLLOW_25 = new BitSet(new long[]{0x0000000000100002L});
-    public static final BitSet FOLLOW_26 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L});
+    public static final BitSet FOLLOW_13 = new BitSet(new long[]{0x0000000000000000L,0x0000000000010000L});
+    public static final BitSet FOLLOW_14 = new BitSet(new long[]{0x0000000000000000L,0x0000000400000000L});
+    public static final BitSet FOLLOW_15 = new BitSet(new long[]{0x0000000000000000L,0x0000000000002000L});
+    public static final BitSet FOLLOW_16 = new BitSet(new long[]{0x0000000000000000L,0x0000000000008000L});
+    public static final BitSet FOLLOW_17 = new BitSet(new long[]{0x0000000000000000L,0x0000000607880000L});
+    public static final BitSet FOLLOW_18 = new BitSet(new long[]{0x0000000000000000L,0x0000000000004000L});
+    public static final BitSet FOLLOW_19 = new BitSet(new long[]{0x0000004000084800L});
+    public static final BitSet FOLLOW_20 = new BitSet(new long[]{0x0000000000000002L,0x0000000000080000L});
+    public static final BitSet FOLLOW_21 = new BitSet(new long[]{0x0000000000008000L});
+    public static final BitSet FOLLOW_22 = new BitSet(new long[]{0x0000000000000000L,0x0000000000108000L});
+    public static final BitSet FOLLOW_23 = new BitSet(new long[]{0x0000000000000000L,0x0000000000080000L});
+    public static final BitSet FOLLOW_24 = new BitSet(new long[]{0x01000D8018000000L,0x0000000000000001L});
+    public static final BitSet FOLLOW_25 = new BitSet(new long[]{0x0000000000000000L,0x0000000600000000L});
+    public static final BitSet FOLLOW_26 = new BitSet(new long[]{0x0000000000100002L});
     public static final BitSet FOLLOW_27 = new BitSet(new long[]{0x0000000000000000L,0x0000000002000000L});
-    public static final BitSet FOLLOW_28 = new BitSet(new long[]{0x0000000000000000L,0x0000000000800000L});
-    public static final BitSet FOLLOW_29 = new BitSet(new long[]{0x0000000000000000L,0x0000000000400000L});
-    public static final BitSet FOLLOW_30 = new BitSet(new long[]{0x0000000000000000L,0x0000000000080000L});
-    public static final BitSet FOLLOW_31 = new BitSet(new long[]{0x4000000000000002L});
-    public static final BitSet FOLLOW_32 = new BitSet(new long[]{0x0000000000000000L,0x0000001000000000L});
-    public static final BitSet FOLLOW_33 = new BitSet(new long[]{0x0000000000000000L,0x0000000300080000L});
-    public static final BitSet FOLLOW_34 = new BitSet(new long[]{0x0000000000000000L,0x0000002000000000L});
-    public static final BitSet FOLLOW_35 = new BitSet(new long[]{0x0000000000000000L,0x0000000000001000L});
+    public static final BitSet FOLLOW_28 = new BitSet(new long[]{0x0000000000000000L,0x0000000004000000L});
+    public static final BitSet FOLLOW_29 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L});
+    public static final BitSet FOLLOW_30 = new BitSet(new long[]{0x0000000000000000L,0x0000000000800000L});
+    public static final BitSet FOLLOW_31 = new BitSet(new long[]{0x0000000000000000L,0x0000000000100000L});
+    public static final BitSet FOLLOW_32 = new BitSet(new long[]{0x4000000000000002L});
+    public static final BitSet FOLLOW_33 = new BitSet(new long[]{0x0000000000000000L,0x0000002000000000L});
+    public static final BitSet FOLLOW_34 = new BitSet(new long[]{0x0000000000000000L,0x0000000600100000L});
+    public static final BitSet FOLLOW_35 = new BitSet(new long[]{0x0000000000000000L,0x0000004000000000L});
+    public static final BitSet FOLLOW_36 = new BitSet(new long[]{0x0000000000000000L,0x0000000000001000L});
 
 }

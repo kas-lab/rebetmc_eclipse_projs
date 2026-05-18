@@ -18,6 +18,7 @@ import eu.coresense.requirements.requirementsModel.Before;
 import eu.coresense.requirements.requirementsModel.BooleanStatement;
 import eu.coresense.requirements.requirementsModel.Condition;
 import eu.coresense.requirements.requirementsModel.Eventually;
+import eu.coresense.requirements.requirementsModel.FuzzyTriangular;
 import eu.coresense.requirements.requirementsModel.In;
 import eu.coresense.requirements.requirementsModel.May;
 import eu.coresense.requirements.requirementsModel.MayAlternative;
@@ -99,6 +100,9 @@ public class RequirementsModelSemanticSequencer extends AbstractDelegatingSemant
 				return; 
 			case RequirementsModelPackage.EVENTUALLY:
 				sequence_Eventually(context, (Eventually) semanticObject); 
+				return; 
+			case RequirementsModelPackage.FUZZY_TRIANGULAR:
+				sequence_FuzzyTriangular(context, (FuzzyTriangular) semanticObject); 
 				return; 
 			case RequirementsModelPackage.IN:
 				sequence_In(context, (In) semanticObject); 
@@ -248,7 +252,7 @@ public class RequirementsModelSemanticSequencer extends AbstractDelegatingSemant
 	 *     AsCloseLit returns AsCloseLit
 	 *
 	 * Constraint:
-	 *     (quantity=Literal comparator=Quantifiable)
+	 *     (quantity=Literal comparator=Quantifiable membershipFunction=MembershipFunction)
 	 * </pre>
 	 */
 	protected void sequence_AsCloseLit(ISerializationContext context, AsCloseLit semanticObject) {
@@ -257,10 +261,13 @@ public class RequirementsModelSemanticSequencer extends AbstractDelegatingSemant
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, RequirementsModelPackage.Literals.AS_CLOSE_LIT__QUANTITY));
 			if (transientValues.isValueTransient(semanticObject, RequirementsModelPackage.Literals.AS_CLOSE_LIT__COMPARATOR) == ValueTransient.YES)
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, RequirementsModelPackage.Literals.AS_CLOSE_LIT__COMPARATOR));
+			if (transientValues.isValueTransient(semanticObject, RequirementsModelPackage.Literals.AS_CLOSE_LIT__MEMBERSHIP_FUNCTION) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, RequirementsModelPackage.Literals.AS_CLOSE_LIT__MEMBERSHIP_FUNCTION));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getAsCloseLitAccess().getQuantityLiteralParserRuleCall_6_0(), semanticObject.getQuantity());
 		feeder.accept(grammarAccess.getAsCloseLitAccess().getComparatorQuantifiableParserRuleCall_8_0(), semanticObject.getComparator());
+		feeder.accept(grammarAccess.getAsCloseLitAccess().getMembershipFunctionMembershipFunctionParserRuleCall_10_0(), semanticObject.getMembershipFunction());
 		feeder.finish();
 	}
 	
@@ -384,6 +391,33 @@ public class RequirementsModelSemanticSequencer extends AbstractDelegatingSemant
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getEventuallyAccess().getExpressionExpressionParserRuleCall_2_0(), semanticObject.getExpression());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
+	 *     MembershipFunction returns FuzzyTriangular
+	 *     FuzzyTriangular returns FuzzyTriangular
+	 *
+	 * Constraint:
+	 *     (a=DECIMAL b=DECIMAL c=DECIMAL)
+	 * </pre>
+	 */
+	protected void sequence_FuzzyTriangular(ISerializationContext context, FuzzyTriangular semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, RequirementsModelPackage.Literals.FUZZY_TRIANGULAR__A) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, RequirementsModelPackage.Literals.FUZZY_TRIANGULAR__A));
+			if (transientValues.isValueTransient(semanticObject, RequirementsModelPackage.Literals.FUZZY_TRIANGULAR__B) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, RequirementsModelPackage.Literals.FUZZY_TRIANGULAR__B));
+			if (transientValues.isValueTransient(semanticObject, RequirementsModelPackage.Literals.FUZZY_TRIANGULAR__C) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, RequirementsModelPackage.Literals.FUZZY_TRIANGULAR__C));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getFuzzyTriangularAccess().getADECIMALTerminalRuleCall_2_0(), semanticObject.getA());
+		feeder.accept(grammarAccess.getFuzzyTriangularAccess().getBDECIMALTerminalRuleCall_4_0(), semanticObject.getB());
+		feeder.accept(grammarAccess.getFuzzyTriangularAccess().getCDECIMALTerminalRuleCall_6_0(), semanticObject.getC());
 		feeder.finish();
 	}
 	

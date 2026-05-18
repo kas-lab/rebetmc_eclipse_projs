@@ -13,6 +13,8 @@ import eu.coresense.requirements.requirementsModel.AsCloseLit;
 import eu.coresense.requirements.requirementsModel.BooleanStatement;
 import eu.coresense.requirements.requirementsModel.CompoundExpression;
 import eu.coresense.requirements.requirementsModel.Expression;
+import eu.coresense.requirements.requirementsModel.FuzzyTriangular;
+import eu.coresense.requirements.requirementsModel.MembershipFunction;
 import eu.coresense.requirements.requirementsModel.Negation;
 import eu.coresense.requirements.requirementsModel.Or;
 import eu.coresense.requirements.requirementsModel.Proposition;
@@ -30,6 +32,7 @@ import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.generator.AbstractGenerator;
 import org.eclipse.xtext.generator.IFileSystemAccess2;
 import org.eclipse.xtext.generator.IGeneratorContext;
+import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.eclipse.xtext.xbase.lib.Extension;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.IteratorExtensions;
@@ -147,6 +150,43 @@ public class RequirementsModelGenerator extends AbstractGenerator {
     return ((Pair<String, String>)_switchResult);
   }
 
+  public Pair<String, String> generateInsert(final MembershipFunction membershipFunction, final String parentName) {
+    try {
+      boolean _matched = false;
+      if (membershipFunction instanceof FuzzyTriangular) {
+        _matched=true;
+        final String name = (parentName + "_fztri_set");
+        StringConcatenation _builder = new StringConcatenation();
+        _builder.append("$");
+        _builder.append(name);
+        _builder.append(" isa FuzzyTriangular,");
+        _builder.newLineIfNotEmpty();
+        _builder.append("\t");
+        _builder.append("has a ");
+        String _string = ((FuzzyTriangular)membershipFunction).getA().toString();
+        _builder.append(_string, "\t");
+        _builder.append(",");
+        _builder.newLineIfNotEmpty();
+        _builder.append("\t");
+        _builder.append("has b ");
+        String _string_1 = ((FuzzyTriangular)membershipFunction).getB().toString();
+        _builder.append(_string_1, "\t");
+        _builder.append(",");
+        _builder.newLineIfNotEmpty();
+        _builder.append("\t");
+        _builder.append("has c ");
+        String _string_2 = ((FuzzyTriangular)membershipFunction).getC().toString();
+        _builder.append(_string_2, "\t");
+        _builder.append(";");
+        _builder.newLineIfNotEmpty();
+        return Pair.<String, String>of(name, _builder.toString());
+      }
+      throw new Exception("Not yet implemented membership function");
+    } catch (Throwable _e) {
+      throw Exceptions.sneakyThrow(_e);
+    }
+  }
+
   public Pair<String, String> generateInsert(final Expression expression, final Requirement parentRequirement) {
     Pair<String, String> _switchResult = null;
     boolean _matched = false;
@@ -155,29 +195,19 @@ public class RequirementsModelGenerator extends AbstractGenerator {
       String _lowerCase = parentRequirement.getName().toLowerCase();
       final String name = (_lowerCase + "_as_close");
       final Pair<String, String> innerStatement = this.generateInsert(((AsCloseLit)expression).getComparator(), null);
+      final Pair<String, String> membershipStatement = this.generateInsert(((AsCloseLit)expression).getMembershipFunction(), name);
       String _value = innerStatement.getValue();
+      String _value_1 = membershipStatement.getValue();
+      String _plus = (_value + _value_1);
       StringConcatenation _builder = new StringConcatenation();
       _builder.append("$");
       _builder.append(name);
-      _builder.append("_set isa FuzzyTriangular,");
-      _builder.newLineIfNotEmpty();
-      _builder.append("\t");
-      _builder.append("has a -0.5,");
-      _builder.newLine();
-      _builder.append("\t");
-      _builder.append("has b 0.0,");
-      _builder.newLine();
-      _builder.append("\t");
-      _builder.append("has c 0.5;");
-      _builder.newLine();
-      _builder.newLine();
-      _builder.append("$");
-      _builder.append(name);
       _builder.append(" (fuzzy_set: $");
-      _builder.append(name);
-      _builder.append("_set, term: $");
-      String _key = innerStatement.getKey();
+      String _key = membershipStatement.getKey();
       _builder.append(_key);
+      _builder.append(", term: $");
+      String _key_1 = innerStatement.getKey();
+      _builder.append(_key_1);
       _builder.append(") isa as_close_as_possible_expression,");
       _builder.newLineIfNotEmpty();
       _builder.append("\t");
@@ -186,8 +216,8 @@ public class RequirementsModelGenerator extends AbstractGenerator {
       _builder.append(_valueOfLiteral, "\t");
       _builder.append(";");
       _builder.newLineIfNotEmpty();
-      String _plus = (_value + _builder);
-      return Pair.<String, String>of(name, _plus);
+      String _plus_1 = (_plus + _builder);
+      return Pair.<String, String>of(name, _plus_1);
     }
     if (!_matched) {
       if (expression instanceof CompoundExpression) {
@@ -218,7 +248,13 @@ public class RequirementsModelGenerator extends AbstractGenerator {
     if (!_matched) {
       if (expression instanceof Negation) {
         _matched=true;
-        final Pair<String, String> innerStatement = this.generateInsert(((Negation)expression).getExpression(), parentRequirement);
+        final Expression innerExpression = ((Negation)expression).getExpression();
+        Pair<String, String> innerStatement = new Pair<String, String>("", "");
+        if ((innerExpression instanceof Quantifiable)) {
+          innerStatement = this.propExp(((Quantifiable)innerExpression));
+        } else {
+          innerStatement = this.generateInsert(((Negation)expression).getExpression(), parentRequirement);
+        }
         String _key = innerStatement.getKey();
         final String negatedName = (_key + "_neg");
         String _value = innerStatement.getValue();
@@ -233,6 +269,14 @@ public class RequirementsModelGenerator extends AbstractGenerator {
         _builder.newLineIfNotEmpty();
         String _plus_1 = (_plus + _builder);
         return Pair.<String, String>of(negatedName, _plus_1);
+      }
+    }
+    if (!_matched) {
+      if (expression instanceof Quantifiable) {
+        _matched=true;
+        final String contextVarName = this._namer.uniqueName(((Quantifiable)expression).getContextVariable());
+        StringConcatenation _builder = new StringConcatenation();
+        return Pair.<String, String>of(contextVarName, _builder.toString());
       }
     }
     return _switchResult;
@@ -294,6 +338,20 @@ public class RequirementsModelGenerator extends AbstractGenerator {
       }
     }
     return _builder.toString();
+  }
+
+  public Pair<String, String> propExp(final Quantifiable quantifiable) {
+    final String contextVarName = this._namer.uniqueName(quantifiable.getContextVariable());
+    final String propExpName = (contextVarName + "_prop_exp");
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("$");
+    _builder.append(propExpName);
+    _builder.append(" (atom: $");
+    String _uniqueName = this._namer.uniqueName(quantifiable.getContextVariable());
+    _builder.append(_uniqueName);
+    _builder.append(") isa propositional_expression;");
+    _builder.newLineIfNotEmpty();
+    return Pair.<String, String>of(propExpName, _builder.toString());
   }
 
   public String generateInsertQuery(final RequirementsModel reqModel, final String systemName) {

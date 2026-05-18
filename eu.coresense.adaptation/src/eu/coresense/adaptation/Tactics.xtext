@@ -14,7 +14,7 @@ TacticsModel:
 	(adaptationRules+=AdaptationRule*)
 ;
 
-Import:
+Import returns common::Import:
 	'import' importURI=STRING ';'
 ;
 

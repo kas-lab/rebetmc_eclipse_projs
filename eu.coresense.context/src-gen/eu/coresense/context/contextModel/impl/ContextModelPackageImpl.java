@@ -3,6 +3,8 @@
  */
 package eu.coresense.context.contextModel.impl;
 
+import eu.coresense.common.CommonPackage;
+
 import eu.coresense.context.contextModel.ContextModel;
 import eu.coresense.context.contextModel.ContextModelFactory;
 import eu.coresense.context.contextModel.ContextModelPackage;
@@ -10,7 +12,6 @@ import eu.coresense.context.contextModel.ContextVar;
 import eu.coresense.context.contextModel.DataSource;
 import eu.coresense.context.contextModel.DoCache;
 import eu.coresense.context.contextModel.DoProxy;
-import eu.coresense.context.contextModel.Import;
 import eu.coresense.context.contextModel.QualifiedActionServerRef;
 import eu.coresense.context.contextModel.QualifiedPublisherRef;
 import eu.coresense.context.contextModel.QualifiedRef;
@@ -99,13 +100,6 @@ public class ContextModelPackageImpl extends EPackageImpl implements ContextMode
   private EClass qualifiedActionServerRefEClass = null;
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass importEClass = null;
-
-  /**
    * Creates an instance of the model <b>Package</b>, registered with
    * {@link org.eclipse.emf.ecore.EPackage.Registry EPackage.Registry} by the package
    * package URI value.
@@ -155,6 +149,7 @@ public class ContextModelPackageImpl extends EPackageImpl implements ContextMode
 
     // Initialize simple dependencies
     RosPackage.eINSTANCE.eClass();
+    CommonPackage.eINSTANCE.eClass();
     PrimitivesPackage.eINSTANCE.eClass();
 
     // Create package meta-data objects
@@ -485,28 +480,6 @@ public class ContextModelPackageImpl extends EPackageImpl implements ContextMode
    * @generated
    */
   @Override
-  public EClass getImport()
-  {
-    return importEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EAttribute getImport_ImportURI()
-  {
-    return (EAttribute)importEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
   public ContextModelFactory getContextModelFactory()
   {
     return (ContextModelFactory)getEFactoryInstance();
@@ -568,9 +541,6 @@ public class ContextModelPackageImpl extends EPackageImpl implements ContextMode
     qualifiedActionServerRefEClass = createEClass(QUALIFIED_ACTION_SERVER_REF);
     createEReference(qualifiedActionServerRefEClass, QUALIFIED_ACTION_SERVER_REF__ACTION_SERVER);
     createEAttribute(qualifiedActionServerRefEClass, QUALIFIED_ACTION_SERVER_REF__KWARGS);
-
-    importEClass = createEClass(IMPORT);
-    createEAttribute(importEClass, IMPORT__IMPORT_URI);
   }
 
   /**
@@ -598,6 +568,7 @@ public class ContextModelPackageImpl extends EPackageImpl implements ContextMode
     setNsURI(eNS_URI);
 
     // Obtain other dependent packages
+    CommonPackage theCommonPackage = (CommonPackage)EPackage.Registry.INSTANCE.getEPackage(CommonPackage.eNS_URI);
     RosPackage theRosPackage = (RosPackage)EPackage.Registry.INSTANCE.getEPackage(RosPackage.eNS_URI);
 
     // Create type parameters
@@ -611,7 +582,7 @@ public class ContextModelPackageImpl extends EPackageImpl implements ContextMode
 
     // Initialize classes and features; add operations and parameters
     initEClass(contextModelEClass, ContextModel.class, "ContextModel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getContextModel_Imports(), this.getImport(), null, "imports", null, 0, -1, ContextModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getContextModel_Imports(), theCommonPackage.getImport(), null, "imports", null, 0, -1, ContextModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getContextModel_Context_variables(), this.getContextVar(), null, "context_variables", null, 0, -1, ContextModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(contextVarEClass, ContextVar.class, "ContextVar", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -646,9 +617,6 @@ public class ContextModelPackageImpl extends EPackageImpl implements ContextMode
     initEClass(qualifiedActionServerRefEClass, QualifiedActionServerRef.class, "QualifiedActionServerRef", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getQualifiedActionServerRef_ActionServer(), theRosPackage.getActionServer(), null, "actionServer", null, 0, 1, QualifiedActionServerRef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getQualifiedActionServerRef_Kwargs(), ecorePackage.getEString(), "kwargs", null, 0, 1, QualifiedActionServerRef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(importEClass, Import.class, "Import", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getImport_ImportURI(), ecorePackage.getEString(), "importURI", null, 0, 1, Import.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     // Create resource
     createResource(eNS_URI);

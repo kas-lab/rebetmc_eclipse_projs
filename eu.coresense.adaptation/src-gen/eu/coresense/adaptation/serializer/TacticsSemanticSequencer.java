@@ -15,7 +15,6 @@ import eu.coresense.adaptation.tactics.ContextGuard;
 import eu.coresense.adaptation.tactics.EffectBlock;
 import eu.coresense.adaptation.tactics.FeatureCondition;
 import eu.coresense.adaptation.tactics.FeatureGuard;
-import eu.coresense.adaptation.tactics.Import;
 import eu.coresense.adaptation.tactics.MeasurementMeasurementCondition;
 import eu.coresense.adaptation.tactics.MeasurementThresholdCondition;
 import eu.coresense.adaptation.tactics.PureAction;
@@ -27,6 +26,7 @@ import eu.coresense.adaptation.tactics.TacticsPackage;
 import eu.coresense.common.BooleanLiteral;
 import eu.coresense.common.CommonPackage;
 import eu.coresense.common.DecimalLiteral;
+import eu.coresense.common.Import;
 import eu.coresense.common.IntLiteral;
 import eu.coresense.common.StringLiteral;
 import java.util.Set;
@@ -59,6 +59,9 @@ public class TacticsSemanticSequencer extends AbstractDelegatingSemanticSequence
 				return; 
 			case CommonPackage.DECIMAL_LITERAL:
 				sequence_DecimalLiteral(context, (DecimalLiteral) semanticObject); 
+				return; 
+			case CommonPackage.IMPORT:
+				sequence_Import(context, (Import) semanticObject); 
 				return; 
 			case CommonPackage.INT_LITERAL:
 				sequence_IntLiteral(context, (IntLiteral) semanticObject); 
@@ -105,9 +108,6 @@ public class TacticsSemanticSequencer extends AbstractDelegatingSemanticSequence
 				return; 
 			case TacticsPackage.FEATURE_GUARD:
 				sequence_FeatureGuard(context, (FeatureGuard) semanticObject); 
-				return; 
-			case TacticsPackage.IMPORT:
-				sequence_Import(context, (Import) semanticObject); 
 				return; 
 			case TacticsPackage.MEASUREMENT_MEASUREMENT_CONDITION:
 				sequence_MeasurementMeasurementCondition(context, (MeasurementMeasurementCondition) semanticObject); 
@@ -408,8 +408,8 @@ public class TacticsSemanticSequencer extends AbstractDelegatingSemanticSequence
 	 */
 	protected void sequence_Import(ISerializationContext context, Import semanticObject) {
 		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, TacticsPackage.Literals.IMPORT__IMPORT_URI) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, TacticsPackage.Literals.IMPORT__IMPORT_URI));
+			if (transientValues.isValueTransient(semanticObject, CommonPackage.Literals.IMPORT__IMPORT_URI) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, CommonPackage.Literals.IMPORT__IMPORT_URI));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getImportAccess().getImportURISTRINGTerminalRuleCall_1_0(), semanticObject.getImportURI());

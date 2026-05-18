@@ -15,20 +15,26 @@ import org.eclipse.xtext.scoping.Scopes
 import org.eclipse.xtext.scoping.IScope
 import eu.coresense.resolution.resolutionModel.SetParam
 import org.eclipse.xtext.naming.QualifiedName
+import eu.coresense.resolution.resolutionModel.FeatureReference
+import ros.Parameter
 
 class ResolutionModelScopeProviderr  extends AbstractResolutionModelScopeProvider {
 	
 	override getScope(EObject context, EReference reference) {
-	    if (reference == ResolutionModelPackage.Literals.RESOLUTION__FEATURE) {
+	    if (reference == ResolutionModelPackage.Literals.FEATURE_REFERENCE__PARENT) {
 	    	val model = EcoreUtil2.getContainerOfType(context, ResolutionModel);
 	        if (model !== null && model.getFeatureModel() !== null) {
 	            val featureModel = model.getFeatureModel();
 	            val root = featureModel.getRoot();
 	            //Gather all the leaves, you have access to getChildren() and isLeaf()
 	            val optFeatures = new ArrayList;
-	            collectOptionalFeatures(root, optFeatures);
+	            collectParents(root, optFeatures);
 	            return Scopes.scopeFor(optFeatures);
 	        }
+	    }
+	   	if (reference == ResolutionModelPackage.Literals.FEATURE_REFERENCE__FEATURE) {
+	    	val fRef = context as FeatureReference;
+	    	return Scopes.scopeFor(fRef.parent.children.filter[element | !element.mandatory])
 	    }
 	    if (reference == ResolutionModelPackage.Literals.RESOLUTION_MODEL__ROSSYSTEM) {
 	        var currentResource = context.eResource();
@@ -79,20 +85,25 @@ class ResolutionModelScopeProviderr  extends AbstractResolutionModelScopeProvide
 	            }
 	        }
 
-	        return Scopes.scopeFor(allParams);
+//	        return Scopes.scopeFor(allParams);
+         return Scopes.scopeFor(
+            		allParams, 
+		            [EObject e | QualifiedName.create(escape((e as Parameter).name))],
+		            IScope.NULLSCOPE
+		        )
 	    }
 	    return super.getScope(context, reference);
 	}	
 
 
-def void collectOptionalFeatures(Feature feature, List<Feature> optFeatures) {
+def void collectParents(Feature feature, List<Feature> parentFeatures) {
     if(feature !== null)
     {
-		if (!feature.isMandatory()) {
-			optFeatures.add(feature);
+		if (feature.getChildren().size() > 0) {
+			parentFeatures.add(feature);
 	    } 
         for (Feature child : feature.getChildren()) {
-        	collectOptionalFeatures(child, optFeatures);
+        	collectParents(child, parentFeatures);
 	    }
     }
 }
@@ -144,13 +155,16 @@ def void collectRecursively(system.System system, List<system.System> result) {
 	
 	def static String escape(String name) {
         var noSlash = name.replace("/", "_slash_")
-        noSlash.replace("~","_tilde_")
+        var noTildenoSlash = noSlash.replace("~","_tilde_")
+        noTildenoSlash.replace(".","_dot_")
     }
 
     /** Unescape `_slash_` back to `/` */
     def static String unescape(String name) {
         var withSlash = name.replace("_slash_", "/")
-        withSlash.replace("_tilde_","~")
+        var withTildewithSlash = withSlash.replace("_tilde_","~")
+        withTildewithSlash.replace("_dot_",".")
+        
     }
 	
 }

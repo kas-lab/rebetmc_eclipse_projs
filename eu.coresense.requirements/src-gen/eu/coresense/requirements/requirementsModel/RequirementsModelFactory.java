@@ -204,6 +204,24 @@ public interface RequirementsModelFactory extends EFactory
   AsCloseLit createAsCloseLit();
 
   /**
+   * Returns a new object of class '<em>Membership Function</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Membership Function</em>'.
+   * @generated
+   */
+  MembershipFunction createMembershipFunction();
+
+  /**
+   * Returns a new object of class '<em>Fuzzy Triangular</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Fuzzy Triangular</em>'.
+   * @generated
+   */
+  FuzzyTriangular createFuzzyTriangular();
+
+  /**
    * Returns a new object of class '<em>Quantifiable</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

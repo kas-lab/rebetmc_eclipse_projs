@@ -6,6 +6,7 @@ package eu.coresense.variability.services;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import java.util.List;
+import org.eclipse.xtext.Action;
 import org.eclipse.xtext.Alternatives;
 import org.eclipse.xtext.Assignment;
 import org.eclipse.xtext.CrossReference;
@@ -75,19 +76,19 @@ public class FeatureModelGrammarAccess extends AbstractElementFinder.AbstractGra
 		private final Keyword cCrossTreeConstraintsKeyword_4 = (Keyword)cGroup.eContents().get(4);
 		private final Keyword cLeftCurlyBracketKeyword_5 = (Keyword)cGroup.eContents().get(5);
 		private final Assignment cCrossTreeConstraintsAssignment_6 = (Assignment)cGroup.eContents().get(6);
-		private final RuleCall cCrossTreeConstraintsBasicConstraintParserRuleCall_6_0 = (RuleCall)cCrossTreeConstraintsAssignment_6.eContents().get(0);
+		private final RuleCall cCrossTreeConstraintsAdvancedConstraintParserRuleCall_6_0 = (RuleCall)cCrossTreeConstraintsAssignment_6.eContents().get(0);
 		private final Keyword cRightCurlyBracketKeyword_7 = (Keyword)cGroup.eContents().get(7);
 		
 		//FeatureModel returns BasicFMmetamodel::FeatureModel:
 		//    'name' name=EString
 		//    'root' root=Feature
-		//    'crossTreeConstraints' '{' crossTreeConstraints+=BasicConstraint* '}'
+		//    'crossTreeConstraints' '{' crossTreeConstraints+=AdvancedConstraint* '}'
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
 		//'name' name=EString
 		//'root' root=Feature
-		//'crossTreeConstraints' '{' crossTreeConstraints+=BasicConstraint* '}'
+		//'crossTreeConstraints' '{' crossTreeConstraints+=AdvancedConstraint* '}'
 		public Group getGroup() { return cGroup; }
 		
 		//'name'
@@ -114,91 +115,29 @@ public class FeatureModelGrammarAccess extends AbstractElementFinder.AbstractGra
 		//'{'
 		public Keyword getLeftCurlyBracketKeyword_5() { return cLeftCurlyBracketKeyword_5; }
 		
-		//crossTreeConstraints+=BasicConstraint*
+		//crossTreeConstraints+=AdvancedConstraint*
 		public Assignment getCrossTreeConstraintsAssignment_6() { return cCrossTreeConstraintsAssignment_6; }
 		
-		//BasicConstraint
-		public RuleCall getCrossTreeConstraintsBasicConstraintParserRuleCall_6_0() { return cCrossTreeConstraintsBasicConstraintParserRuleCall_6_0; }
+		//AdvancedConstraint
+		public RuleCall getCrossTreeConstraintsAdvancedConstraintParserRuleCall_6_0() { return cCrossTreeConstraintsAdvancedConstraintParserRuleCall_6_0; }
 		
 		//'}'
 		public Keyword getRightCurlyBracketKeyword_7() { return cRightCurlyBracketKeyword_7; }
 	}
-	public class BasicConstraintElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "eu.coresense.variability.FeatureModel.BasicConstraint");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cBasicConstraintKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Keyword cLeftCurlyBracketKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Keyword cTypeKeyword_2 = (Keyword)cGroup.eContents().get(2);
-		private final Assignment cTypeAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final RuleCall cTypeCrossTreeConstraintTypeEnumRuleCall_3_0 = (RuleCall)cTypeAssignment_3.eContents().get(0);
-		private final Keyword cRightFeatureKeyword_4 = (Keyword)cGroup.eContents().get(4);
-		private final Assignment cRightFeatureAssignment_5 = (Assignment)cGroup.eContents().get(5);
-		private final CrossReference cRightFeatureFeatureCrossReference_5_0 = (CrossReference)cRightFeatureAssignment_5.eContents().get(0);
-		private final RuleCall cRightFeatureFeatureEStringParserRuleCall_5_0_1 = (RuleCall)cRightFeatureFeatureCrossReference_5_0.eContents().get(1);
-		private final Keyword cLeftFeatureKeyword_6 = (Keyword)cGroup.eContents().get(6);
-		private final Assignment cLeftFeatureAssignment_7 = (Assignment)cGroup.eContents().get(7);
-		private final CrossReference cLeftFeatureFeatureCrossReference_7_0 = (CrossReference)cLeftFeatureAssignment_7.eContents().get(0);
-		private final RuleCall cLeftFeatureFeatureEStringParserRuleCall_7_0_1 = (RuleCall)cLeftFeatureFeatureCrossReference_7_0.eContents().get(1);
-		private final Keyword cRightCurlyBracketKeyword_8 = (Keyword)cGroup.eContents().get(8);
+	public class AdvancedConstraintElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "eu.coresense.variability.FeatureModel.AdvancedConstraint");
+		private final Assignment cTermAssignment = (Assignment)rule.eContents().get(1);
+		private final RuleCall cTermTermParserRuleCall_0 = (RuleCall)cTermAssignment.eContents().get(0);
 		
-		//BasicConstraint returns BasicConstraint:
-		//    'BasicConstraint'
-		//    '{'
-		//        'type' type=CrossTreeConstraintType
-		//        'rightFeature' rightFeature=[BasicFMmetamodel::Feature|EString]
-		//        'leftFeature' leftFeature=[BasicFMmetamodel::Feature|EString]
-		//    '}';
+		//AdvancedConstraint returns AdvancedConstraint:
+		//    term=Term;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'BasicConstraint'
-		//'{'
-		//    'type' type=CrossTreeConstraintType
-		//    'rightFeature' rightFeature=[BasicFMmetamodel::Feature|EString]
-		//    'leftFeature' leftFeature=[BasicFMmetamodel::Feature|EString]
-		//'}'
-		public Group getGroup() { return cGroup; }
+		//term=Term
+		public Assignment getTermAssignment() { return cTermAssignment; }
 		
-		//'BasicConstraint'
-		public Keyword getBasicConstraintKeyword_0() { return cBasicConstraintKeyword_0; }
-		
-		//'{'
-		public Keyword getLeftCurlyBracketKeyword_1() { return cLeftCurlyBracketKeyword_1; }
-		
-		//'type'
-		public Keyword getTypeKeyword_2() { return cTypeKeyword_2; }
-		
-		//type=CrossTreeConstraintType
-		public Assignment getTypeAssignment_3() { return cTypeAssignment_3; }
-		
-		//CrossTreeConstraintType
-		public RuleCall getTypeCrossTreeConstraintTypeEnumRuleCall_3_0() { return cTypeCrossTreeConstraintTypeEnumRuleCall_3_0; }
-		
-		//'rightFeature'
-		public Keyword getRightFeatureKeyword_4() { return cRightFeatureKeyword_4; }
-		
-		//rightFeature=[BasicFMmetamodel::Feature|EString]
-		public Assignment getRightFeatureAssignment_5() { return cRightFeatureAssignment_5; }
-		
-		//[BasicFMmetamodel::Feature|EString]
-		public CrossReference getRightFeatureFeatureCrossReference_5_0() { return cRightFeatureFeatureCrossReference_5_0; }
-		
-		//EString
-		public RuleCall getRightFeatureFeatureEStringParserRuleCall_5_0_1() { return cRightFeatureFeatureEStringParserRuleCall_5_0_1; }
-		
-		//'leftFeature'
-		public Keyword getLeftFeatureKeyword_6() { return cLeftFeatureKeyword_6; }
-		
-		//leftFeature=[BasicFMmetamodel::Feature|EString]
-		public Assignment getLeftFeatureAssignment_7() { return cLeftFeatureAssignment_7; }
-		
-		//[BasicFMmetamodel::Feature|EString]
-		public CrossReference getLeftFeatureFeatureCrossReference_7_0() { return cLeftFeatureFeatureCrossReference_7_0; }
-		
-		//EString
-		public RuleCall getLeftFeatureFeatureEStringParserRuleCall_7_0_1() { return cLeftFeatureFeatureEStringParserRuleCall_7_0_1; }
-		
-		//'}'
-		public Keyword getRightCurlyBracketKeyword_8() { return cRightCurlyBracketKeyword_8; }
+		//Term
+		public RuleCall getTermTermParserRuleCall_0() { return cTermTermParserRuleCall_0; }
 	}
 	public class FeatureElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "eu.coresense.variability.FeatureModel.Feature");
@@ -223,6 +162,85 @@ public class FeatureModelGrammarAccess extends AbstractElementFinder.AbstractGra
 		//OrGroup
 		public RuleCall getOrGroupParserRuleCall_2() { return cOrGroupParserRuleCall_2; }
 	}
+	public class TermElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "eu.coresense.variability.FeatureModel.Term");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cTermAction_0 = (Action)cGroup.eContents().get(0);
+		private final Assignment cFeatureAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final CrossReference cFeatureFeatureCrossReference_1_0 = (CrossReference)cFeatureAssignment_1.eContents().get(0);
+		private final RuleCall cFeatureFeatureEStringParserRuleCall_1_0_1 = (RuleCall)cFeatureFeatureCrossReference_1_0.eContents().get(1);
+		private final Assignment cTypeAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cTypeTermTypeEnumRuleCall_2_0 = (RuleCall)cTypeAssignment_2.eContents().get(0);
+		private final Assignment cOperandsAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cOperandsSecondTermParserRuleCall_3_0 = (RuleCall)cOperandsAssignment_3.eContents().get(0);
+		
+		//Term returns Term:
+		//    {Term}
+		//        (feature=[BasicFMmetamodel::Feature|EString])
+		//        (type=TermType)
+		//        (operands+=secondTerm);
+		@Override public ParserRule getRule() { return rule; }
+		
+		//{Term}
+		//    (feature=[BasicFMmetamodel::Feature|EString])
+		//    (type=TermType)
+		//    (operands+=secondTerm)
+		public Group getGroup() { return cGroup; }
+		
+		//{Term}
+		public Action getTermAction_0() { return cTermAction_0; }
+		
+		//(feature=[BasicFMmetamodel::Feature|EString])
+		public Assignment getFeatureAssignment_1() { return cFeatureAssignment_1; }
+		
+		//[BasicFMmetamodel::Feature|EString]
+		public CrossReference getFeatureFeatureCrossReference_1_0() { return cFeatureFeatureCrossReference_1_0; }
+		
+		//EString
+		public RuleCall getFeatureFeatureEStringParserRuleCall_1_0_1() { return cFeatureFeatureEStringParserRuleCall_1_0_1; }
+		
+		//(type=TermType)
+		public Assignment getTypeAssignment_2() { return cTypeAssignment_2; }
+		
+		//TermType
+		public RuleCall getTypeTermTypeEnumRuleCall_2_0() { return cTypeTermTypeEnumRuleCall_2_0; }
+		
+		//(operands+=secondTerm)
+		public Assignment getOperandsAssignment_3() { return cOperandsAssignment_3; }
+		
+		//secondTerm
+		public RuleCall getOperandsSecondTermParserRuleCall_3_0() { return cOperandsSecondTermParserRuleCall_3_0; }
+	}
+	public class SecondTermElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "eu.coresense.variability.FeatureModel.secondTerm");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cTermAction_0 = (Action)cGroup.eContents().get(0);
+		private final Assignment cFeatureAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final CrossReference cFeatureFeatureCrossReference_1_0 = (CrossReference)cFeatureAssignment_1.eContents().get(0);
+		private final RuleCall cFeatureFeatureEStringParserRuleCall_1_0_1 = (RuleCall)cFeatureFeatureCrossReference_1_0.eContents().get(1);
+		
+		//secondTerm returns Term:
+		//    {Term}
+		//    (feature=[BasicFMmetamodel::Feature|EString])
+		//;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//{Term}
+		//(feature=[BasicFMmetamodel::Feature|EString])
+		public Group getGroup() { return cGroup; }
+		
+		//{Term}
+		public Action getTermAction_0() { return cTermAction_0; }
+		
+		//(feature=[BasicFMmetamodel::Feature|EString])
+		public Assignment getFeatureAssignment_1() { return cFeatureAssignment_1; }
+		
+		//[BasicFMmetamodel::Feature|EString]
+		public CrossReference getFeatureFeatureCrossReference_1_0() { return cFeatureFeatureCrossReference_1_0; }
+		
+		//EString
+		public RuleCall getFeatureFeatureEStringParserRuleCall_1_0_1() { return cFeatureFeatureEStringParserRuleCall_1_0_1; }
+	}
 	public class Feature_ImplElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "eu.coresense.variability.FeatureModel.Feature_Impl");
 		private final Group cGroup = (Group)rule.eContents().get(1);
@@ -237,29 +255,32 @@ public class FeatureModelGrammarAccess extends AbstractElementFinder.AbstractGra
 		private final Keyword cFeatureKeyword_2 = (Keyword)cGroup.eContents().get(2);
 		private final Assignment cNameAssignment_3 = (Assignment)cGroup.eContents().get(3);
 		private final RuleCall cNameEStringParserRuleCall_3_0 = (RuleCall)cNameAssignment_3.eContents().get(0);
-		private final Group cGroup_4 = (Group)cGroup.eContents().get(4);
-		private final Keyword cChildrenKeyword_4_0 = (Keyword)cGroup_4.eContents().get(0);
-		private final Keyword cLeftCurlyBracketKeyword_4_1 = (Keyword)cGroup_4.eContents().get(1);
-		private final Assignment cChildrenAssignment_4_2 = (Assignment)cGroup_4.eContents().get(2);
-		private final RuleCall cChildrenFeatureParserRuleCall_4_2_0 = (RuleCall)cChildrenAssignment_4_2.eContents().get(0);
-		private final Group cGroup_4_3 = (Group)cGroup_4.eContents().get(3);
-		private final Keyword cCommaKeyword_4_3_0 = (Keyword)cGroup_4_3.eContents().get(0);
-		private final Assignment cChildrenAssignment_4_3_1 = (Assignment)cGroup_4_3.eContents().get(1);
-		private final RuleCall cChildrenFeatureParserRuleCall_4_3_1_0 = (RuleCall)cChildrenAssignment_4_3_1.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_4_4 = (Keyword)cGroup_4.eContents().get(4);
+		private final Keyword cIdKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		private final Assignment cIdAssignment_5 = (Assignment)cGroup.eContents().get(5);
+		private final RuleCall cIdEStringParserRuleCall_5_0 = (RuleCall)cIdAssignment_5.eContents().get(0);
+		private final Group cGroup_6 = (Group)cGroup.eContents().get(6);
+		private final Keyword cChildrenKeyword_6_0 = (Keyword)cGroup_6.eContents().get(0);
+		private final Keyword cLeftCurlyBracketKeyword_6_1 = (Keyword)cGroup_6.eContents().get(1);
+		private final Assignment cChildrenAssignment_6_2 = (Assignment)cGroup_6.eContents().get(2);
+		private final RuleCall cChildrenFeatureParserRuleCall_6_2_0 = (RuleCall)cChildrenAssignment_6_2.eContents().get(0);
+		private final Group cGroup_6_3 = (Group)cGroup_6.eContents().get(3);
+		private final Keyword cCommaKeyword_6_3_0 = (Keyword)cGroup_6_3.eContents().get(0);
+		private final Assignment cChildrenAssignment_6_3_1 = (Assignment)cGroup_6_3.eContents().get(1);
+		private final RuleCall cChildrenFeatureParserRuleCall_6_3_1_0 = (RuleCall)cChildrenAssignment_6_3_1.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_6_4 = (Keyword)cGroup_6.eContents().get(4);
 		
 		//Feature_Impl returns BasicFMmetamodel::Feature:
 		//    ('mandatory'? => mandatory?='mandatory')?
 		//    ('selected'? => selected?='selected')?
 		//    'Feature'
-		//    name=EString
+		//    name=EString 'id' id=EString
 		//        ('children' '{' children+=Feature ( "," children+=Feature)* '}' )?;
 		@Override public ParserRule getRule() { return rule; }
 		
 		//('mandatory'? => mandatory?='mandatory')?
 		//('selected'? => selected?='selected')?
 		//'Feature'
-		//name=EString
+		//name=EString 'id' id=EString
 		//    ('children' '{' children+=Feature ( "," children+=Feature)* '}' )?
 		public Group getGroup() { return cGroup; }
 		
@@ -296,35 +317,44 @@ public class FeatureModelGrammarAccess extends AbstractElementFinder.AbstractGra
 		//EString
 		public RuleCall getNameEStringParserRuleCall_3_0() { return cNameEStringParserRuleCall_3_0; }
 		
+		//'id'
+		public Keyword getIdKeyword_4() { return cIdKeyword_4; }
+		
+		//id=EString
+		public Assignment getIdAssignment_5() { return cIdAssignment_5; }
+		
+		//EString
+		public RuleCall getIdEStringParserRuleCall_5_0() { return cIdEStringParserRuleCall_5_0; }
+		
 		//('children' '{' children+=Feature ( "," children+=Feature)* '}' )?
-		public Group getGroup_4() { return cGroup_4; }
+		public Group getGroup_6() { return cGroup_6; }
 		
 		//'children'
-		public Keyword getChildrenKeyword_4_0() { return cChildrenKeyword_4_0; }
+		public Keyword getChildrenKeyword_6_0() { return cChildrenKeyword_6_0; }
 		
 		//'{'
-		public Keyword getLeftCurlyBracketKeyword_4_1() { return cLeftCurlyBracketKeyword_4_1; }
+		public Keyword getLeftCurlyBracketKeyword_6_1() { return cLeftCurlyBracketKeyword_6_1; }
 		
 		//children+=Feature
-		public Assignment getChildrenAssignment_4_2() { return cChildrenAssignment_4_2; }
+		public Assignment getChildrenAssignment_6_2() { return cChildrenAssignment_6_2; }
 		
 		//Feature
-		public RuleCall getChildrenFeatureParserRuleCall_4_2_0() { return cChildrenFeatureParserRuleCall_4_2_0; }
+		public RuleCall getChildrenFeatureParserRuleCall_6_2_0() { return cChildrenFeatureParserRuleCall_6_2_0; }
 		
 		//( "," children+=Feature)*
-		public Group getGroup_4_3() { return cGroup_4_3; }
+		public Group getGroup_6_3() { return cGroup_6_3; }
 		
 		//","
-		public Keyword getCommaKeyword_4_3_0() { return cCommaKeyword_4_3_0; }
+		public Keyword getCommaKeyword_6_3_0() { return cCommaKeyword_6_3_0; }
 		
 		//children+=Feature
-		public Assignment getChildrenAssignment_4_3_1() { return cChildrenAssignment_4_3_1; }
+		public Assignment getChildrenAssignment_6_3_1() { return cChildrenAssignment_6_3_1; }
 		
 		//Feature
-		public RuleCall getChildrenFeatureParserRuleCall_4_3_1_0() { return cChildrenFeatureParserRuleCall_4_3_1_0; }
+		public RuleCall getChildrenFeatureParserRuleCall_6_3_1_0() { return cChildrenFeatureParserRuleCall_6_3_1_0; }
 		
 		//'}'
-		public Keyword getRightCurlyBracketKeyword_4_4() { return cRightCurlyBracketKeyword_4_4; }
+		public Keyword getRightCurlyBracketKeyword_6_4() { return cRightCurlyBracketKeyword_6_4; }
 	}
 	public class EStringElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "eu.coresense.variability.FeatureModel.EString");
@@ -378,29 +408,32 @@ public class FeatureModelGrammarAccess extends AbstractElementFinder.AbstractGra
 		private final Keyword cAlternativeKeyword_2 = (Keyword)cGroup.eContents().get(2);
 		private final Assignment cNameAssignment_3 = (Assignment)cGroup.eContents().get(3);
 		private final RuleCall cNameEStringParserRuleCall_3_0 = (RuleCall)cNameAssignment_3.eContents().get(0);
-		private final Group cGroup_4 = (Group)cGroup.eContents().get(4);
-		private final Keyword cChildrenKeyword_4_0 = (Keyword)cGroup_4.eContents().get(0);
-		private final Keyword cLeftCurlyBracketKeyword_4_1 = (Keyword)cGroup_4.eContents().get(1);
-		private final Assignment cChildrenAssignment_4_2 = (Assignment)cGroup_4.eContents().get(2);
-		private final RuleCall cChildrenFeatureParserRuleCall_4_2_0 = (RuleCall)cChildrenAssignment_4_2.eContents().get(0);
-		private final Group cGroup_4_3 = (Group)cGroup_4.eContents().get(3);
-		private final Keyword cCommaKeyword_4_3_0 = (Keyword)cGroup_4_3.eContents().get(0);
-		private final Assignment cChildrenAssignment_4_3_1 = (Assignment)cGroup_4_3.eContents().get(1);
-		private final RuleCall cChildrenFeatureParserRuleCall_4_3_1_0 = (RuleCall)cChildrenAssignment_4_3_1.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_4_4 = (Keyword)cGroup_4.eContents().get(4);
+		private final Keyword cIdKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		private final Assignment cIdAssignment_5 = (Assignment)cGroup.eContents().get(5);
+		private final RuleCall cIdEStringParserRuleCall_5_0 = (RuleCall)cIdAssignment_5.eContents().get(0);
+		private final Group cGroup_6 = (Group)cGroup.eContents().get(6);
+		private final Keyword cChildrenKeyword_6_0 = (Keyword)cGroup_6.eContents().get(0);
+		private final Keyword cLeftCurlyBracketKeyword_6_1 = (Keyword)cGroup_6.eContents().get(1);
+		private final Assignment cChildrenAssignment_6_2 = (Assignment)cGroup_6.eContents().get(2);
+		private final RuleCall cChildrenFeatureParserRuleCall_6_2_0 = (RuleCall)cChildrenAssignment_6_2.eContents().get(0);
+		private final Group cGroup_6_3 = (Group)cGroup_6.eContents().get(3);
+		private final Keyword cCommaKeyword_6_3_0 = (Keyword)cGroup_6_3.eContents().get(0);
+		private final Assignment cChildrenAssignment_6_3_1 = (Assignment)cGroup_6_3.eContents().get(1);
+		private final RuleCall cChildrenFeatureParserRuleCall_6_3_1_0 = (RuleCall)cChildrenAssignment_6_3_1.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_6_4 = (Keyword)cGroup_6.eContents().get(4);
 		
 		//Alternative returns BasicFMmetamodel::Alternative:
 		//    ('mandatory'? => mandatory?='mandatory')?
 		//    ('selected'? => selected?='selected')?
 		//    'Alternative'
-		//    name=EString
+		//    name=EString 'id' id=EString
 		//        ('children' '{' children+=Feature ( "," children+=Feature)* '}' )?;
 		@Override public ParserRule getRule() { return rule; }
 		
 		//('mandatory'? => mandatory?='mandatory')?
 		//('selected'? => selected?='selected')?
 		//'Alternative'
-		//name=EString
+		//name=EString 'id' id=EString
 		//    ('children' '{' children+=Feature ( "," children+=Feature)* '}' )?
 		public Group getGroup() { return cGroup; }
 		
@@ -437,35 +470,44 @@ public class FeatureModelGrammarAccess extends AbstractElementFinder.AbstractGra
 		//EString
 		public RuleCall getNameEStringParserRuleCall_3_0() { return cNameEStringParserRuleCall_3_0; }
 		
+		//'id'
+		public Keyword getIdKeyword_4() { return cIdKeyword_4; }
+		
+		//id=EString
+		public Assignment getIdAssignment_5() { return cIdAssignment_5; }
+		
+		//EString
+		public RuleCall getIdEStringParserRuleCall_5_0() { return cIdEStringParserRuleCall_5_0; }
+		
 		//('children' '{' children+=Feature ( "," children+=Feature)* '}' )?
-		public Group getGroup_4() { return cGroup_4; }
+		public Group getGroup_6() { return cGroup_6; }
 		
 		//'children'
-		public Keyword getChildrenKeyword_4_0() { return cChildrenKeyword_4_0; }
+		public Keyword getChildrenKeyword_6_0() { return cChildrenKeyword_6_0; }
 		
 		//'{'
-		public Keyword getLeftCurlyBracketKeyword_4_1() { return cLeftCurlyBracketKeyword_4_1; }
+		public Keyword getLeftCurlyBracketKeyword_6_1() { return cLeftCurlyBracketKeyword_6_1; }
 		
 		//children+=Feature
-		public Assignment getChildrenAssignment_4_2() { return cChildrenAssignment_4_2; }
+		public Assignment getChildrenAssignment_6_2() { return cChildrenAssignment_6_2; }
 		
 		//Feature
-		public RuleCall getChildrenFeatureParserRuleCall_4_2_0() { return cChildrenFeatureParserRuleCall_4_2_0; }
+		public RuleCall getChildrenFeatureParserRuleCall_6_2_0() { return cChildrenFeatureParserRuleCall_6_2_0; }
 		
 		//( "," children+=Feature)*
-		public Group getGroup_4_3() { return cGroup_4_3; }
+		public Group getGroup_6_3() { return cGroup_6_3; }
 		
 		//","
-		public Keyword getCommaKeyword_4_3_0() { return cCommaKeyword_4_3_0; }
+		public Keyword getCommaKeyword_6_3_0() { return cCommaKeyword_6_3_0; }
 		
 		//children+=Feature
-		public Assignment getChildrenAssignment_4_3_1() { return cChildrenAssignment_4_3_1; }
+		public Assignment getChildrenAssignment_6_3_1() { return cChildrenAssignment_6_3_1; }
 		
 		//Feature
-		public RuleCall getChildrenFeatureParserRuleCall_4_3_1_0() { return cChildrenFeatureParserRuleCall_4_3_1_0; }
+		public RuleCall getChildrenFeatureParserRuleCall_6_3_1_0() { return cChildrenFeatureParserRuleCall_6_3_1_0; }
 		
 		//'}'
-		public Keyword getRightCurlyBracketKeyword_4_4() { return cRightCurlyBracketKeyword_4_4; }
+		public Keyword getRightCurlyBracketKeyword_6_4() { return cRightCurlyBracketKeyword_6_4; }
 	}
 	public class OrGroupElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "eu.coresense.variability.FeatureModel.OrGroup");
@@ -481,29 +523,32 @@ public class FeatureModelGrammarAccess extends AbstractElementFinder.AbstractGra
 		private final Keyword cOrGroupKeyword_2 = (Keyword)cGroup.eContents().get(2);
 		private final Assignment cNameAssignment_3 = (Assignment)cGroup.eContents().get(3);
 		private final RuleCall cNameEStringParserRuleCall_3_0 = (RuleCall)cNameAssignment_3.eContents().get(0);
-		private final Group cGroup_4 = (Group)cGroup.eContents().get(4);
-		private final Keyword cChildrenKeyword_4_0 = (Keyword)cGroup_4.eContents().get(0);
-		private final Keyword cLeftCurlyBracketKeyword_4_1 = (Keyword)cGroup_4.eContents().get(1);
-		private final Assignment cChildrenAssignment_4_2 = (Assignment)cGroup_4.eContents().get(2);
-		private final RuleCall cChildrenFeatureParserRuleCall_4_2_0 = (RuleCall)cChildrenAssignment_4_2.eContents().get(0);
-		private final Group cGroup_4_3 = (Group)cGroup_4.eContents().get(3);
-		private final Keyword cCommaKeyword_4_3_0 = (Keyword)cGroup_4_3.eContents().get(0);
-		private final Assignment cChildrenAssignment_4_3_1 = (Assignment)cGroup_4_3.eContents().get(1);
-		private final RuleCall cChildrenFeatureParserRuleCall_4_3_1_0 = (RuleCall)cChildrenAssignment_4_3_1.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_4_4 = (Keyword)cGroup_4.eContents().get(4);
+		private final Keyword cIdKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		private final Assignment cIdAssignment_5 = (Assignment)cGroup.eContents().get(5);
+		private final RuleCall cIdEStringParserRuleCall_5_0 = (RuleCall)cIdAssignment_5.eContents().get(0);
+		private final Group cGroup_6 = (Group)cGroup.eContents().get(6);
+		private final Keyword cChildrenKeyword_6_0 = (Keyword)cGroup_6.eContents().get(0);
+		private final Keyword cLeftCurlyBracketKeyword_6_1 = (Keyword)cGroup_6.eContents().get(1);
+		private final Assignment cChildrenAssignment_6_2 = (Assignment)cGroup_6.eContents().get(2);
+		private final RuleCall cChildrenFeatureParserRuleCall_6_2_0 = (RuleCall)cChildrenAssignment_6_2.eContents().get(0);
+		private final Group cGroup_6_3 = (Group)cGroup_6.eContents().get(3);
+		private final Keyword cCommaKeyword_6_3_0 = (Keyword)cGroup_6_3.eContents().get(0);
+		private final Assignment cChildrenAssignment_6_3_1 = (Assignment)cGroup_6_3.eContents().get(1);
+		private final RuleCall cChildrenFeatureParserRuleCall_6_3_1_0 = (RuleCall)cChildrenAssignment_6_3_1.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_6_4 = (Keyword)cGroup_6.eContents().get(4);
 		
 		//OrGroup returns BasicFMmetamodel::OrGroup:
 		//    ('mandatory'? => mandatory?='mandatory')?
 		//    ('selected'? => selected?='selected')?
 		//    'OrGroup'
-		//    name=EString
+		//    name=EString 'id' id=EString
 		//        ('children' '{' children+=Feature ( "," children+=Feature)* '}' )?;
 		@Override public ParserRule getRule() { return rule; }
 		
 		//('mandatory'? => mandatory?='mandatory')?
 		//('selected'? => selected?='selected')?
 		//'OrGroup'
-		//name=EString
+		//name=EString 'id' id=EString
 		//    ('children' '{' children+=Feature ( "," children+=Feature)* '}' )?
 		public Group getGroup() { return cGroup; }
 		
@@ -540,70 +585,129 @@ public class FeatureModelGrammarAccess extends AbstractElementFinder.AbstractGra
 		//EString
 		public RuleCall getNameEStringParserRuleCall_3_0() { return cNameEStringParserRuleCall_3_0; }
 		
+		//'id'
+		public Keyword getIdKeyword_4() { return cIdKeyword_4; }
+		
+		//id=EString
+		public Assignment getIdAssignment_5() { return cIdAssignment_5; }
+		
+		//EString
+		public RuleCall getIdEStringParserRuleCall_5_0() { return cIdEStringParserRuleCall_5_0; }
+		
 		//('children' '{' children+=Feature ( "," children+=Feature)* '}' )?
-		public Group getGroup_4() { return cGroup_4; }
+		public Group getGroup_6() { return cGroup_6; }
 		
 		//'children'
-		public Keyword getChildrenKeyword_4_0() { return cChildrenKeyword_4_0; }
+		public Keyword getChildrenKeyword_6_0() { return cChildrenKeyword_6_0; }
 		
 		//'{'
-		public Keyword getLeftCurlyBracketKeyword_4_1() { return cLeftCurlyBracketKeyword_4_1; }
+		public Keyword getLeftCurlyBracketKeyword_6_1() { return cLeftCurlyBracketKeyword_6_1; }
 		
 		//children+=Feature
-		public Assignment getChildrenAssignment_4_2() { return cChildrenAssignment_4_2; }
+		public Assignment getChildrenAssignment_6_2() { return cChildrenAssignment_6_2; }
 		
 		//Feature
-		public RuleCall getChildrenFeatureParserRuleCall_4_2_0() { return cChildrenFeatureParserRuleCall_4_2_0; }
+		public RuleCall getChildrenFeatureParserRuleCall_6_2_0() { return cChildrenFeatureParserRuleCall_6_2_0; }
 		
 		//( "," children+=Feature)*
-		public Group getGroup_4_3() { return cGroup_4_3; }
+		public Group getGroup_6_3() { return cGroup_6_3; }
 		
 		//","
-		public Keyword getCommaKeyword_4_3_0() { return cCommaKeyword_4_3_0; }
+		public Keyword getCommaKeyword_6_3_0() { return cCommaKeyword_6_3_0; }
 		
 		//children+=Feature
-		public Assignment getChildrenAssignment_4_3_1() { return cChildrenAssignment_4_3_1; }
+		public Assignment getChildrenAssignment_6_3_1() { return cChildrenAssignment_6_3_1; }
 		
 		//Feature
-		public RuleCall getChildrenFeatureParserRuleCall_4_3_1_0() { return cChildrenFeatureParserRuleCall_4_3_1_0; }
+		public RuleCall getChildrenFeatureParserRuleCall_6_3_1_0() { return cChildrenFeatureParserRuleCall_6_3_1_0; }
 		
 		//'}'
-		public Keyword getRightCurlyBracketKeyword_4_4() { return cRightCurlyBracketKeyword_4_4; }
+		public Keyword getRightCurlyBracketKeyword_6_4() { return cRightCurlyBracketKeyword_6_4; }
 	}
 	
-	public class CrossTreeConstraintTypeElements extends AbstractElementFinder.AbstractEnumRuleElementFinder {
-		private final EnumRule rule = (EnumRule) GrammarUtil.findRuleForName(getGrammar(), "eu.coresense.variability.FeatureModel.CrossTreeConstraintType");
+	public class TermTypeElements extends AbstractElementFinder.AbstractEnumRuleElementFinder {
+		private final EnumRule rule = (EnumRule) GrammarUtil.findRuleForName(getGrammar(), "eu.coresense.variability.FeatureModel.TermType");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final EnumLiteralDeclaration cREQUIRESEnumLiteralDeclaration_0 = (EnumLiteralDeclaration)cAlternatives.eContents().get(0);
-		private final Keyword cREQUIRESREQUIRESKeyword_0_0 = (Keyword)cREQUIRESEnumLiteralDeclaration_0.eContents().get(0);
-		private final EnumLiteralDeclaration cEXCLUDESEnumLiteralDeclaration_1 = (EnumLiteralDeclaration)cAlternatives.eContents().get(1);
-		private final Keyword cEXCLUDESEXCLUDESKeyword_1_0 = (Keyword)cEXCLUDESEnumLiteralDeclaration_1.eContents().get(0);
+		private final EnumLiteralDeclaration cNotEnumLiteralDeclaration_0 = (EnumLiteralDeclaration)cAlternatives.eContents().get(0);
+		private final Keyword cNotNotKeyword_0_0 = (Keyword)cNotEnumLiteralDeclaration_0.eContents().get(0);
+		private final EnumLiteralDeclaration cEquivEnumLiteralDeclaration_1 = (EnumLiteralDeclaration)cAlternatives.eContents().get(1);
+		private final Keyword cEquivEquivKeyword_1_0 = (Keyword)cEquivEnumLiteralDeclaration_1.eContents().get(0);
+		private final EnumLiteralDeclaration cExcludesEnumLiteralDeclaration_2 = (EnumLiteralDeclaration)cAlternatives.eContents().get(2);
+		private final Keyword cExcludesExcludesKeyword_2_0 = (Keyword)cExcludesEnumLiteralDeclaration_2.eContents().get(0);
+		private final EnumLiteralDeclaration cImpliesEnumLiteralDeclaration_3 = (EnumLiteralDeclaration)cAlternatives.eContents().get(3);
+		private final Keyword cImpliesImpliesKeyword_3_0 = (Keyword)cImpliesEnumLiteralDeclaration_3.eContents().get(0);
+		private final EnumLiteralDeclaration cAndEnumLiteralDeclaration_4 = (EnumLiteralDeclaration)cAlternatives.eContents().get(4);
+		private final Keyword cAndAndKeyword_4_0 = (Keyword)cAndEnumLiteralDeclaration_4.eContents().get(0);
+		private final EnumLiteralDeclaration cOrEnumLiteralDeclaration_5 = (EnumLiteralDeclaration)cAlternatives.eContents().get(5);
+		private final Keyword cOrOrKeyword_5_0 = (Keyword)cOrEnumLiteralDeclaration_5.eContents().get(0);
+		private final EnumLiteralDeclaration cXorEnumLiteralDeclaration_6 = (EnumLiteralDeclaration)cAlternatives.eContents().get(6);
+		private final Keyword cXorXorKeyword_6_0 = (Keyword)cXorEnumLiteralDeclaration_6.eContents().get(0);
+		private final EnumLiteralDeclaration cFeatureEnumLiteralDeclaration_7 = (EnumLiteralDeclaration)cAlternatives.eContents().get(7);
+		private final Keyword cFeatureFeatureKeyword_7_0 = (Keyword)cFeatureEnumLiteralDeclaration_7.eContents().get(0);
 		
-		//enum CrossTreeConstraintType returns CrossTreeConstraintType:
-		//                REQUIRES = 'REQUIRES' | EXCLUDES = 'EXCLUDES';
+		//enum TermType returns TermType:
+		//                not = 'not' | equiv = 'equiv' | excludes = 'excludes' | implies = 'implies' | and = 'and' | or = 'or' | xor = 'xor' | feature = 'feature';
 		public EnumRule getRule() { return rule; }
 		
-		//REQUIRES = 'REQUIRES' | EXCLUDES = 'EXCLUDES'
+		//not = 'not' | equiv = 'equiv' | excludes = 'excludes' | implies = 'implies' | and = 'and' | or = 'or' | xor = 'xor' | feature = 'feature'
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
-		//REQUIRES = 'REQUIRES'
-		public EnumLiteralDeclaration getREQUIRESEnumLiteralDeclaration_0() { return cREQUIRESEnumLiteralDeclaration_0; }
+		//not = 'not'
+		public EnumLiteralDeclaration getNotEnumLiteralDeclaration_0() { return cNotEnumLiteralDeclaration_0; }
 		
-		//'REQUIRES'
-		public Keyword getREQUIRESREQUIRESKeyword_0_0() { return cREQUIRESREQUIRESKeyword_0_0; }
+		//'not'
+		public Keyword getNotNotKeyword_0_0() { return cNotNotKeyword_0_0; }
 		
-		//EXCLUDES = 'EXCLUDES'
-		public EnumLiteralDeclaration getEXCLUDESEnumLiteralDeclaration_1() { return cEXCLUDESEnumLiteralDeclaration_1; }
+		//equiv = 'equiv'
+		public EnumLiteralDeclaration getEquivEnumLiteralDeclaration_1() { return cEquivEnumLiteralDeclaration_1; }
 		
-		//'EXCLUDES'
-		public Keyword getEXCLUDESEXCLUDESKeyword_1_0() { return cEXCLUDESEXCLUDESKeyword_1_0; }
+		//'equiv'
+		public Keyword getEquivEquivKeyword_1_0() { return cEquivEquivKeyword_1_0; }
+		
+		//excludes = 'excludes'
+		public EnumLiteralDeclaration getExcludesEnumLiteralDeclaration_2() { return cExcludesEnumLiteralDeclaration_2; }
+		
+		//'excludes'
+		public Keyword getExcludesExcludesKeyword_2_0() { return cExcludesExcludesKeyword_2_0; }
+		
+		//implies = 'implies'
+		public EnumLiteralDeclaration getImpliesEnumLiteralDeclaration_3() { return cImpliesEnumLiteralDeclaration_3; }
+		
+		//'implies'
+		public Keyword getImpliesImpliesKeyword_3_0() { return cImpliesImpliesKeyword_3_0; }
+		
+		//and = 'and'
+		public EnumLiteralDeclaration getAndEnumLiteralDeclaration_4() { return cAndEnumLiteralDeclaration_4; }
+		
+		//'and'
+		public Keyword getAndAndKeyword_4_0() { return cAndAndKeyword_4_0; }
+		
+		//or = 'or'
+		public EnumLiteralDeclaration getOrEnumLiteralDeclaration_5() { return cOrEnumLiteralDeclaration_5; }
+		
+		//'or'
+		public Keyword getOrOrKeyword_5_0() { return cOrOrKeyword_5_0; }
+		
+		//xor = 'xor'
+		public EnumLiteralDeclaration getXorEnumLiteralDeclaration_6() { return cXorEnumLiteralDeclaration_6; }
+		
+		//'xor'
+		public Keyword getXorXorKeyword_6_0() { return cXorXorKeyword_6_0; }
+		
+		//feature = 'feature'
+		public EnumLiteralDeclaration getFeatureEnumLiteralDeclaration_7() { return cFeatureEnumLiteralDeclaration_7; }
+		
+		//'feature'
+		public Keyword getFeatureFeatureKeyword_7_0() { return cFeatureFeatureKeyword_7_0; }
 	}
 	
 	private final ModelElements pModel;
 	private final FeatureModelElements pFeatureModel;
-	private final BasicConstraintElements pBasicConstraint;
+	private final AdvancedConstraintElements pAdvancedConstraint;
 	private final FeatureElements pFeature;
-	private final CrossTreeConstraintTypeElements eCrossTreeConstraintType;
+	private final TermElements pTerm;
+	private final SecondTermElements pSecondTerm;
+	private final TermTypeElements eTermType;
 	private final Feature_ImplElements pFeature_Impl;
 	private final EStringElements pEString;
 	private final EBooleanElements pEBoolean;
@@ -621,9 +725,11 @@ public class FeatureModelGrammarAccess extends AbstractElementFinder.AbstractGra
 		this.gaTerminals = gaTerminals;
 		this.pModel = new ModelElements();
 		this.pFeatureModel = new FeatureModelElements();
-		this.pBasicConstraint = new BasicConstraintElements();
+		this.pAdvancedConstraint = new AdvancedConstraintElements();
 		this.pFeature = new FeatureElements();
-		this.eCrossTreeConstraintType = new CrossTreeConstraintTypeElements();
+		this.pTerm = new TermElements();
+		this.pSecondTerm = new SecondTermElements();
+		this.eTermType = new TermTypeElements();
 		this.pFeature_Impl = new Feature_ImplElements();
 		this.pEString = new EStringElements();
 		this.pEBoolean = new EBooleanElements();
@@ -675,7 +781,7 @@ public class FeatureModelGrammarAccess extends AbstractElementFinder.AbstractGra
 	//FeatureModel returns BasicFMmetamodel::FeatureModel:
 	//    'name' name=EString
 	//    'root' root=Feature
-	//    'crossTreeConstraints' '{' crossTreeConstraints+=BasicConstraint* '}'
+	//    'crossTreeConstraints' '{' crossTreeConstraints+=AdvancedConstraint* '}'
 	//;
 	public FeatureModelElements getFeatureModelAccess() {
 		return pFeatureModel;
@@ -685,19 +791,14 @@ public class FeatureModelGrammarAccess extends AbstractElementFinder.AbstractGra
 		return getFeatureModelAccess().getRule();
 	}
 	
-	//BasicConstraint returns BasicConstraint:
-	//    'BasicConstraint'
-	//    '{'
-	//        'type' type=CrossTreeConstraintType
-	//        'rightFeature' rightFeature=[BasicFMmetamodel::Feature|EString]
-	//        'leftFeature' leftFeature=[BasicFMmetamodel::Feature|EString]
-	//    '}';
-	public BasicConstraintElements getBasicConstraintAccess() {
-		return pBasicConstraint;
+	//AdvancedConstraint returns AdvancedConstraint:
+	//    term=Term;
+	public AdvancedConstraintElements getAdvancedConstraintAccess() {
+		return pAdvancedConstraint;
 	}
 	
-	public ParserRule getBasicConstraintRule() {
-		return getBasicConstraintAccess().getRule();
+	public ParserRule getAdvancedConstraintRule() {
+		return getAdvancedConstraintAccess().getRule();
 	}
 	
 	//Feature returns BasicFMmetamodel::Feature:
@@ -710,21 +811,46 @@ public class FeatureModelGrammarAccess extends AbstractElementFinder.AbstractGra
 		return getFeatureAccess().getRule();
 	}
 	
-	//enum CrossTreeConstraintType returns CrossTreeConstraintType:
-	//                REQUIRES = 'REQUIRES' | EXCLUDES = 'EXCLUDES';
-	public CrossTreeConstraintTypeElements getCrossTreeConstraintTypeAccess() {
-		return eCrossTreeConstraintType;
+	//Term returns Term:
+	//    {Term}
+	//        (feature=[BasicFMmetamodel::Feature|EString])
+	//        (type=TermType)
+	//        (operands+=secondTerm);
+	public TermElements getTermAccess() {
+		return pTerm;
 	}
 	
-	public EnumRule getCrossTreeConstraintTypeRule() {
-		return getCrossTreeConstraintTypeAccess().getRule();
+	public ParserRule getTermRule() {
+		return getTermAccess().getRule();
+	}
+	
+	//secondTerm returns Term:
+	//    {Term}
+	//    (feature=[BasicFMmetamodel::Feature|EString])
+	//;
+	public SecondTermElements getSecondTermAccess() {
+		return pSecondTerm;
+	}
+	
+	public ParserRule getSecondTermRule() {
+		return getSecondTermAccess().getRule();
+	}
+	
+	//enum TermType returns TermType:
+	//                not = 'not' | equiv = 'equiv' | excludes = 'excludes' | implies = 'implies' | and = 'and' | or = 'or' | xor = 'xor' | feature = 'feature';
+	public TermTypeElements getTermTypeAccess() {
+		return eTermType;
+	}
+	
+	public EnumRule getTermTypeRule() {
+		return getTermTypeAccess().getRule();
 	}
 	
 	//Feature_Impl returns BasicFMmetamodel::Feature:
 	//    ('mandatory'? => mandatory?='mandatory')?
 	//    ('selected'? => selected?='selected')?
 	//    'Feature'
-	//    name=EString
+	//    name=EString 'id' id=EString
 	//        ('children' '{' children+=Feature ( "," children+=Feature)* '}' )?;
 	public Feature_ImplElements getFeature_ImplAccess() {
 		return pFeature_Impl;
@@ -758,7 +884,7 @@ public class FeatureModelGrammarAccess extends AbstractElementFinder.AbstractGra
 	//    ('mandatory'? => mandatory?='mandatory')?
 	//    ('selected'? => selected?='selected')?
 	//    'Alternative'
-	//    name=EString
+	//    name=EString 'id' id=EString
 	//        ('children' '{' children+=Feature ( "," children+=Feature)* '}' )?;
 	public AlternativeElements getAlternativeAccess() {
 		return pAlternative;
@@ -772,7 +898,7 @@ public class FeatureModelGrammarAccess extends AbstractElementFinder.AbstractGra
 	//    ('mandatory'? => mandatory?='mandatory')?
 	//    ('selected'? => selected?='selected')?
 	//    'OrGroup'
-	//    name=EString
+	//    name=EString 'id' id=EString
 	//        ('children' '{' children+=Feature ( "," children+=Feature)* '}' )?;
 	public OrGroupElements getOrGroupAccess() {
 		return pOrGroup;

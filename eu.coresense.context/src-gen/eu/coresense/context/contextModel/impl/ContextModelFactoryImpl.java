@@ -74,7 +74,6 @@ public class ContextModelFactoryImpl extends EFactoryImpl implements ContextMode
       case ContextModelPackage.QUALIFIED_PUBLISHER_REF: return createQualifiedPublisherRef();
       case ContextModelPackage.QUALIFIED_SERVICE_SERVER_REF: return createQualifiedServiceServerRef();
       case ContextModelPackage.QUALIFIED_ACTION_SERVER_REF: return createQualifiedActionServerRef();
-      case ContextModelPackage.IMPORT: return createImport();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -186,18 +185,6 @@ public class ContextModelFactoryImpl extends EFactoryImpl implements ContextMode
   {
     QualifiedActionServerRefImpl qualifiedActionServerRef = new QualifiedActionServerRefImpl();
     return qualifiedActionServerRef;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public Import createImport()
-  {
-    ImportImpl import_ = new ImportImpl();
-    return import_;
   }
 
   /**

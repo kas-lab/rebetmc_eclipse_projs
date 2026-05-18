@@ -14,7 +14,11 @@ ResolutionModel:
 	'resolutions' resolutions+=Resolution*;
 	
 Resolution:
-	{Resolution} feature=[BasicFMmetamodel::Feature] ':' 'select:' selection_actions+=Reconfiguration* 'deselect:' deselection_actions+=Reconfiguration*
+	{Resolution} featureRef=FeatureReference ':' 'select:' selection_actions+=Reconfiguration* 'deselect:' deselection_actions+=Reconfiguration*
+;
+
+FeatureReference:
+	(parent=[BasicFMmetamodel::Feature]) '.' feature=[BasicFMmetamodel::Feature]
 ;
 
 Import:

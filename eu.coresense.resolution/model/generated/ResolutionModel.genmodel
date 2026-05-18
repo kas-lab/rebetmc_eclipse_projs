@@ -20,9 +20,13 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ResolutionModel.ecore#//ResolutionModel/resolutions"/>
     </genClasses>
     <genClasses ecoreClass="ResolutionModel.ecore#//Resolution">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ResolutionModel.ecore#//Resolution/feature"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ResolutionModel.ecore#//Resolution/featureRef"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ResolutionModel.ecore#//Resolution/selection_actions"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ResolutionModel.ecore#//Resolution/deselection_actions"/>
+    </genClasses>
+    <genClasses ecoreClass="ResolutionModel.ecore#//FeatureReference">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ResolutionModel.ecore#//FeatureReference/parent"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ResolutionModel.ecore#//FeatureReference/feature"/>
     </genClasses>
     <genClasses ecoreClass="ResolutionModel.ecore#//Import">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ResolutionModel.ecore#//Import/importURI"/>

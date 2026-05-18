@@ -2,7 +2,11 @@ package eu.coresense.common;
 
 import java.util.ArrayList;
 import java.util.List;
+import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
+import org.eclipse.xtext.xbase.lib.InputOutput;
 
 @SuppressWarnings("all")
 public class Utilities {
@@ -46,5 +50,29 @@ public class Utilities {
         current.remove(_minus);
       }
     }
+  }
+
+  public static <T extends Object> List<T> deriveFromImports(final Resource resource, final String fileSuffix, final List<Import> imports, final Class<T> clas) {
+    final List<T> entities = CollectionLiterals.<T>newArrayList();
+    for (final Import imp : imports) {
+      boolean _endsWith = imp.getImportURI().endsWith(fileSuffix);
+      if (_endsWith) {
+        URI uri = URI.createURI(imp.getImportURI());
+        boolean _isRelative = uri.isRelative();
+        if (_isRelative) {
+          uri = uri.resolve(resource.getURI());
+        }
+        final Resource imported = resource.getResourceSet().getResource(uri, true);
+        if (((imported == null) || imported.getContents().isEmpty())) {
+          InputOutput.<String>println("ResolutionModel import fail");
+        }
+        final EObject root = imported.getContents().get(0);
+        boolean _isInstance = clas.isInstance(root);
+        if (_isInstance) {
+          entities.add(clas.cast(root));
+        }
+      }
+    }
+    return entities;
   }
 }

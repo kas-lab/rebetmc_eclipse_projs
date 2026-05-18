@@ -4,9 +4,10 @@
 package eu.coresense.adaptation.tactics.impl;
 
 import eu.coresense.adaptation.tactics.AdaptationRule;
-import eu.coresense.adaptation.tactics.Import;
 import eu.coresense.adaptation.tactics.TacticsModel;
 import eu.coresense.adaptation.tactics.TacticsPackage;
+
+import eu.coresense.common.Import;
 
 import java.util.Collection;
 

@@ -9,7 +9,10 @@ Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-21
 Export-Package: eu.coresense.common,
- eu.coresense.common.impl;uses:="org.eclipse.emf.ecore,org.eclipse.emf.ecore.impl,eu.coresense.common",
+ eu.coresense.common.impl;
+  uses:="org.eclipse.emf.ecore,
+   org.eclipse.emf.ecore.impl,
+   eu.coresense.common",
  eu.coresense.common.util;
   uses:="org.eclipse.emf.ecore,
    org.eclipse.emf.common.notify,
@@ -22,5 +25,7 @@ Require-Bundle: org.eclipse.emf.ecore;visibility:=reexport,
  org.eclipse.xtext.xbase.lib,
  org.eclipse.xtend.lib,
  org.eclipse.xtend.lib.macro,
- de.fraunhofer.ipa.ros;bundle-version="3.0.0"
+ de.fraunhofer.ipa.ros;bundle-version="3.0.0",
+ de.fraunhofer.ipa.rossystem;bundle-version="3.0.0",
+ org.eclipse.xtext;bundle-version="2.38.0"
 Bundle-ActivationPolicy: lazy

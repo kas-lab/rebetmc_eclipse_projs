@@ -106,6 +106,14 @@
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="comparator" eType="#//Quantifiable"
         containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="membershipFunction" eType="#//MembershipFunction"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MembershipFunction"/>
+  <eClassifiers xsi:type="ecore:EClass" name="FuzzyTriangular" eSuperTypes="#//MembershipFunction">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="a" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBigDecimal"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="b" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBigDecimal"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="c" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBigDecimal"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Quantifiable" eSuperTypes="#//Statement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="contextVariable" eType="ecore:EClass platform:/resource/eu.coresense.context/model/generated/ContextModel.ecore#//ContextVar"/>

@@ -745,13 +745,87 @@ public interface RequirementsModelPackage extends EPackage
   int AS_CLOSE_LIT__COMPARATOR = EXPRESSION_FEATURE_COUNT + 1;
 
   /**
+   * The feature id for the '<em><b>Membership Function</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int AS_CLOSE_LIT__MEMBERSHIP_FUNCTION = EXPRESSION_FEATURE_COUNT + 2;
+
+  /**
    * The number of structural features of the '<em>As Close Lit</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int AS_CLOSE_LIT_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 2;
+  int AS_CLOSE_LIT_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 3;
+
+  /**
+   * The meta object id for the '{@link eu.coresense.requirements.requirementsModel.impl.MembershipFunctionImpl <em>Membership Function</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see eu.coresense.requirements.requirementsModel.impl.MembershipFunctionImpl
+   * @see eu.coresense.requirements.requirementsModel.impl.RequirementsModelPackageImpl#getMembershipFunction()
+   * @generated
+   */
+  int MEMBERSHIP_FUNCTION = 20;
+
+  /**
+   * The number of structural features of the '<em>Membership Function</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MEMBERSHIP_FUNCTION_FEATURE_COUNT = 0;
+
+  /**
+   * The meta object id for the '{@link eu.coresense.requirements.requirementsModel.impl.FuzzyTriangularImpl <em>Fuzzy Triangular</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see eu.coresense.requirements.requirementsModel.impl.FuzzyTriangularImpl
+   * @see eu.coresense.requirements.requirementsModel.impl.RequirementsModelPackageImpl#getFuzzyTriangular()
+   * @generated
+   */
+  int FUZZY_TRIANGULAR = 21;
+
+  /**
+   * The feature id for the '<em><b>A</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FUZZY_TRIANGULAR__A = MEMBERSHIP_FUNCTION_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>B</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FUZZY_TRIANGULAR__B = MEMBERSHIP_FUNCTION_FEATURE_COUNT + 1;
+
+  /**
+   * The feature id for the '<em><b>C</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FUZZY_TRIANGULAR__C = MEMBERSHIP_FUNCTION_FEATURE_COUNT + 2;
+
+  /**
+   * The number of structural features of the '<em>Fuzzy Triangular</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FUZZY_TRIANGULAR_FEATURE_COUNT = MEMBERSHIP_FUNCTION_FEATURE_COUNT + 3;
 
   /**
    * The meta object id for the '{@link eu.coresense.requirements.requirementsModel.impl.QuantifiableImpl <em>Quantifiable</em>}' class.
@@ -761,7 +835,7 @@ public interface RequirementsModelPackage extends EPackage
    * @see eu.coresense.requirements.requirementsModel.impl.RequirementsModelPackageImpl#getQuantifiable()
    * @generated
    */
-  int QUANTIFIABLE = 20;
+  int QUANTIFIABLE = 22;
 
   /**
    * The feature id for the '<em><b>Context Variable</b></em>' reference.
@@ -789,7 +863,7 @@ public interface RequirementsModelPackage extends EPackage
    * @see eu.coresense.requirements.requirementsModel.impl.RequirementsModelPackageImpl#getMay()
    * @generated
    */
-  int MAY = 21;
+  int MAY = 23;
 
   /**
    * The feature id for the '<em><b>Expression</b></em>' containment reference.
@@ -826,7 +900,7 @@ public interface RequirementsModelPackage extends EPackage
    * @see eu.coresense.requirements.requirementsModel.impl.RequirementsModelPackageImpl#getMayAlternative()
    * @generated
    */
-  int MAY_ALTERNATIVE = 22;
+  int MAY_ALTERNATIVE = 24;
 
   /**
    * The feature id for the '<em><b>Expression</b></em>' containment reference.
@@ -854,7 +928,7 @@ public interface RequirementsModelPackage extends EPackage
    * @see eu.coresense.requirements.requirementsModel.impl.RequirementsModelPackageImpl#getTimeInterval()
    * @generated
    */
-  int TIME_INTERVAL = 23;
+  int TIME_INTERVAL = 25;
 
   /**
    * The feature id for the '<em><b>After</b></em>' containment reference.
@@ -891,7 +965,7 @@ public interface RequirementsModelPackage extends EPackage
    * @see eu.coresense.requirements.requirementsModel.impl.RequirementsModelPackageImpl#getTime()
    * @generated
    */
-  int TIME = 24;
+  int TIME = 26;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -919,7 +993,7 @@ public interface RequirementsModelPackage extends EPackage
    * @see eu.coresense.requirements.requirementsModel.impl.RequirementsModelPackageImpl#getQualityAttribute()
    * @generated
    */
-  int QUALITY_ATTRIBUTE = 25;
+  int QUALITY_ATTRIBUTE = 27;
 
   /**
    * The meta object id for the '{@link eu.coresense.requirements.requirementsModel.LogicalOperator <em>Logical Operator</em>}' enum.
@@ -929,7 +1003,7 @@ public interface RequirementsModelPackage extends EPackage
    * @see eu.coresense.requirements.requirementsModel.impl.RequirementsModelPackageImpl#getLogicalOperator()
    * @generated
    */
-  int LOGICAL_OPERATOR = 26;
+  int LOGICAL_OPERATOR = 28;
 
   /**
    * The meta object id for the '{@link eu.coresense.requirements.requirementsModel.Timeliness <em>Timeliness</em>}' enum.
@@ -939,7 +1013,7 @@ public interface RequirementsModelPackage extends EPackage
    * @see eu.coresense.requirements.requirementsModel.impl.RequirementsModelPackageImpl#getTimeliness()
    * @generated
    */
-  int TIMELINESS = 27;
+  int TIMELINESS = 29;
 
 
   /**
@@ -1460,6 +1534,70 @@ public interface RequirementsModelPackage extends EPackage
    * @generated
    */
   EReference getAsCloseLit_Comparator();
+
+  /**
+   * Returns the meta object for the containment reference '{@link eu.coresense.requirements.requirementsModel.AsCloseLit#getMembershipFunction <em>Membership Function</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Membership Function</em>'.
+   * @see eu.coresense.requirements.requirementsModel.AsCloseLit#getMembershipFunction()
+   * @see #getAsCloseLit()
+   * @generated
+   */
+  EReference getAsCloseLit_MembershipFunction();
+
+  /**
+   * Returns the meta object for class '{@link eu.coresense.requirements.requirementsModel.MembershipFunction <em>Membership Function</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Membership Function</em>'.
+   * @see eu.coresense.requirements.requirementsModel.MembershipFunction
+   * @generated
+   */
+  EClass getMembershipFunction();
+
+  /**
+   * Returns the meta object for class '{@link eu.coresense.requirements.requirementsModel.FuzzyTriangular <em>Fuzzy Triangular</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Fuzzy Triangular</em>'.
+   * @see eu.coresense.requirements.requirementsModel.FuzzyTriangular
+   * @generated
+   */
+  EClass getFuzzyTriangular();
+
+  /**
+   * Returns the meta object for the attribute '{@link eu.coresense.requirements.requirementsModel.FuzzyTriangular#getA <em>A</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>A</em>'.
+   * @see eu.coresense.requirements.requirementsModel.FuzzyTriangular#getA()
+   * @see #getFuzzyTriangular()
+   * @generated
+   */
+  EAttribute getFuzzyTriangular_A();
+
+  /**
+   * Returns the meta object for the attribute '{@link eu.coresense.requirements.requirementsModel.FuzzyTriangular#getB <em>B</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>B</em>'.
+   * @see eu.coresense.requirements.requirementsModel.FuzzyTriangular#getB()
+   * @see #getFuzzyTriangular()
+   * @generated
+   */
+  EAttribute getFuzzyTriangular_B();
+
+  /**
+   * Returns the meta object for the attribute '{@link eu.coresense.requirements.requirementsModel.FuzzyTriangular#getC <em>C</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>C</em>'.
+   * @see eu.coresense.requirements.requirementsModel.FuzzyTriangular#getC()
+   * @see #getFuzzyTriangular()
+   * @generated
+   */
+  EAttribute getFuzzyTriangular_C();
 
   /**
    * Returns the meta object for class '{@link eu.coresense.requirements.requirementsModel.Quantifiable <em>Quantifiable</em>}'.
@@ -2072,6 +2210,58 @@ public interface RequirementsModelPackage extends EPackage
      * @generated
      */
     EReference AS_CLOSE_LIT__COMPARATOR = eINSTANCE.getAsCloseLit_Comparator();
+
+    /**
+     * The meta object literal for the '<em><b>Membership Function</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference AS_CLOSE_LIT__MEMBERSHIP_FUNCTION = eINSTANCE.getAsCloseLit_MembershipFunction();
+
+    /**
+     * The meta object literal for the '{@link eu.coresense.requirements.requirementsModel.impl.MembershipFunctionImpl <em>Membership Function</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see eu.coresense.requirements.requirementsModel.impl.MembershipFunctionImpl
+     * @see eu.coresense.requirements.requirementsModel.impl.RequirementsModelPackageImpl#getMembershipFunction()
+     * @generated
+     */
+    EClass MEMBERSHIP_FUNCTION = eINSTANCE.getMembershipFunction();
+
+    /**
+     * The meta object literal for the '{@link eu.coresense.requirements.requirementsModel.impl.FuzzyTriangularImpl <em>Fuzzy Triangular</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see eu.coresense.requirements.requirementsModel.impl.FuzzyTriangularImpl
+     * @see eu.coresense.requirements.requirementsModel.impl.RequirementsModelPackageImpl#getFuzzyTriangular()
+     * @generated
+     */
+    EClass FUZZY_TRIANGULAR = eINSTANCE.getFuzzyTriangular();
+
+    /**
+     * The meta object literal for the '<em><b>A</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute FUZZY_TRIANGULAR__A = eINSTANCE.getFuzzyTriangular_A();
+
+    /**
+     * The meta object literal for the '<em><b>B</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute FUZZY_TRIANGULAR__B = eINSTANCE.getFuzzyTriangular_B();
+
+    /**
+     * The meta object literal for the '<em><b>C</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute FUZZY_TRIANGULAR__C = eINSTANCE.getFuzzyTriangular_C();
 
     /**
      * The meta object literal for the '{@link eu.coresense.requirements.requirementsModel.impl.QuantifiableImpl <em>Quantifiable</em>}' class.

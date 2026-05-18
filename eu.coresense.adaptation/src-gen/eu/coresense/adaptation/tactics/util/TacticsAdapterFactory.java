@@ -81,11 +81,6 @@ public class TacticsAdapterFactory extends AdapterFactoryImpl
         return createTacticsModelAdapter();
       }
       @Override
-      public Adapter caseImport(Import object)
-      {
-        return createImportAdapter();
-      }
-      @Override
       public Adapter caseAdaptationRule(AdaptationRule object)
       {
         return createAdaptationRuleAdapter();
@@ -228,21 +223,6 @@ public class TacticsAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createTacticsModelAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link eu.coresense.adaptation.tactics.Import <em>Import</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see eu.coresense.adaptation.tactics.Import
-   * @generated
-   */
-  public Adapter createImportAdapter()
   {
     return null;
   }

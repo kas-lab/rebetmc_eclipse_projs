@@ -3,6 +3,8 @@
  */
 package eu.coresense.context.contextModel;
 
+import eu.coresense.common.Import;
+
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EObject;
@@ -28,7 +30,7 @@ public interface ContextModel extends EObject
 {
   /**
    * Returns the value of the '<em><b>Imports</b></em>' containment reference list.
-   * The list contents are of type {@link eu.coresense.context.contextModel.Import}.
+   * The list contents are of type {@link eu.coresense.common.Import}.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the value of the '<em>Imports</em>' containment reference list.

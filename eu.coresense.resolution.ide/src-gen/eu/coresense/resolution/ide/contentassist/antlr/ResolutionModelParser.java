@@ -46,6 +46,7 @@ public class ResolutionModelParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getLifecycleStateAccess().getAlternatives(), "rule__LifecycleState__Alternatives");
 			builder.put(grammarAccess.getResolutionModelAccess().getGroup(), "rule__ResolutionModel__Group__0");
 			builder.put(grammarAccess.getResolutionAccess().getGroup(), "rule__Resolution__Group__0");
+			builder.put(grammarAccess.getFeatureReferenceAccess().getGroup(), "rule__FeatureReference__Group__0");
 			builder.put(grammarAccess.getImportAccess().getGroup(), "rule__Import__Group__0");
 			builder.put(grammarAccess.getSetParamAccess().getGroup(), "rule__SetParam__Group__0");
 			builder.put(grammarAccess.getSetLifecycleAccess().getGroup(), "rule__SetLifecycle__Group__0");
@@ -127,9 +128,11 @@ public class ResolutionModelParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getResolutionModelAccess().getFeatureModelAssignment_5(), "rule__ResolutionModel__FeatureModelAssignment_5");
 			builder.put(grammarAccess.getResolutionModelAccess().getRossystemAssignment_8(), "rule__ResolutionModel__RossystemAssignment_8");
 			builder.put(grammarAccess.getResolutionModelAccess().getResolutionsAssignment_11(), "rule__ResolutionModel__ResolutionsAssignment_11");
-			builder.put(grammarAccess.getResolutionAccess().getFeatureAssignment_1(), "rule__Resolution__FeatureAssignment_1");
+			builder.put(grammarAccess.getResolutionAccess().getFeatureRefAssignment_1(), "rule__Resolution__FeatureRefAssignment_1");
 			builder.put(grammarAccess.getResolutionAccess().getSelection_actionsAssignment_4(), "rule__Resolution__Selection_actionsAssignment_4");
 			builder.put(grammarAccess.getResolutionAccess().getDeselection_actionsAssignment_6(), "rule__Resolution__Deselection_actionsAssignment_6");
+			builder.put(grammarAccess.getFeatureReferenceAccess().getParentAssignment_0(), "rule__FeatureReference__ParentAssignment_0");
+			builder.put(grammarAccess.getFeatureReferenceAccess().getFeatureAssignment_2(), "rule__FeatureReference__FeatureAssignment_2");
 			builder.put(grammarAccess.getImportAccess().getImportURIAssignment_1(), "rule__Import__ImportURIAssignment_1");
 			builder.put(grammarAccess.getSetParamAccess().getNodeAssignment_2(), "rule__SetParam__NodeAssignment_2");
 			builder.put(grammarAccess.getSetParamAccess().getParamAssignment_4(), "rule__SetParam__ParamAssignment_4");

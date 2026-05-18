@@ -53,6 +53,7 @@ import eu.coresense.common.IntLiteral
 import eu.coresense.common.DecimalLiteral
 import eu.coresense.common.StringLiteral
 import eu.coresense.common.BooleanLiteral
+import eu.coresense.context.generator.ContextModelGenerator
 import eu.coresense.context.contextModel.DataSource
 import eu.coresense.context.contextModel.QualifiedPublisherRef
 import eu.coresense.context.contextModel.QualifiedServiceServerRef
@@ -78,6 +79,9 @@ import java.util.stream.Stream
 import java.util.ArrayList
 import java.util.HashMap
 import java.math.BigDecimal
+import java.util.Map.Entry
+import java.util.LinkedHashSet
+import eu.coresense.common.ArchitectureTQLGenerator
 
 /**
  * Generates code from your model files on save.
@@ -128,7 +132,7 @@ class TacticsNameProvider implements INameProvider {
 			}
 			Alternative: ctx.makeUnique("alt_")
 			OrGroup: ctx.makeUnique("or_group_")
-			Feature: ctx.makeUnique("f_" + obj.name.toLowerCase())
+			Feature: ctx.makeUnique("f_" + obj.id.toLowerCase())
 			
         }
     }	
@@ -157,13 +161,13 @@ class TQLGenerator extends AbstractGenerator {
 	public var Resource globalResource = null
 	public val Map<Pair<String,String>, Pair<HashSet<String>, HashSet<String>>> topics = newHashMap
 	public var List<State> allStates = newArrayList
-	val Map<Feature, Set<Boolean>> featureSelections = newHashMap
-	var Map<ContextVar, Set<LiteralWrapper>> thresholds = newHashMap
-	var Map<ContextVar, List<Pair<LiteralWrapper, LiteralWrapper>>> bounds = newHashMap
+//	var Map<ContextVar, List<Pair<LiteralWrapper, LiteralWrapper>>> bounds = newHashMap
 	val Map<Pair<ContextVar, Pair<MathOperator,LiteralWrapper>>, String> definedInequalities = newHashMap
 	val Set<String> definedFeaturePropositions = newHashSet
-	var HashMap<Pair<String, String>,String> escapes = newHashMap
-	var List<ContextVar> contextKeys = newArrayList
+	public var HashMap<Pair<String, String>,String> escapes = newHashMap
+//	var List<ContextVar> contextKeys = newArrayList
+		
+	var int numRules = 0
 	
 	
     
@@ -327,18 +331,6 @@ class TQLGenerator extends AbstractGenerator {
 	    return null
 	}
 	    
-	def List<Parameter> getParameters(RosNode node)
-	{
-		val originalParameters = node.from.parameter
-		
-		for (parameter_override : node.rosparameters) {
-			val indexOverride = originalParameters.indexOf(parameter_override.from)
-			originalParameters.get(indexOverride).value = parameter_override.value
-		}
-		
-		return originalParameters
-	}
-	
 	
 	def String generateUpdateHasParamValue(String featureName)
 	{
@@ -403,108 +395,7 @@ class TQLGenerator extends AbstractGenerator {
 //		    ""
 	}
 	
-
-	def String describeNode(ros.Node node, String namespace)
-	{
-		val serviceServers = node.getServiceserver();
-	    
-	    val isLifecycle = serviceServers.exists[ server | server.service.fullname == "lifecycle_msgs/ChangeState"]
-	    
-	    val node_kind = isLifecycle ? "LifeCycleNode" : "ROSNode"
-	    val nodeName = _namer.uniqueName(node)
-		'''
-		   $«nodeName» isa «node_kind»,
-		   has node_name "«node.name»",
-		   has namespace "«namespace»";
-    	'''
-	}
-      
-    def String generateInsertQuery(RosNode node)
-    {
-    	val innerNode = node.from
-	    
-	    val nodeName = _namer.uniqueName(innerNode)
-	    '''
-    	«describeNode(innerNode, node.namespace)»
-    	«FOR parameter : node.getParameters»
-    	$«_namer.uniqueName(parameter)» isa «paramSubClass(parameter.type)»,
-    		has parameter_name "«parameter.name»";
-    	«IF parameter.value !==null»
-    	«val paramstringpair = ParamValueToValueEntity(parameter, _namer.uniqueName(parameter))»
-    	«paramstringpair.key»
-    	(node: $«nodeName»,
-    	parameter: $«_namer.uniqueName(parameter)»,
-    	parameter_value: $«paramstringpair.value»)
-    		isa has_parameter_value, has default_value true;
-    	«ENDIF»
-    	«ENDFOR»
-    	«IF !node.getParameters.empty»
-    		
-    	$«nodeName»_parameters (
-    		node: $«nodeName»,
-    		«FOR parameter : node.getParameters SEPARATOR ", "»
-    		parameter: $«_namer.uniqueName(parameter)»
-    		«ENDFOR»
-    		) isa has_parameter;
-    	«ENDIF»
-    	«FOR subscription : innerNode.subscriber»
-    		«val subName = _namer.uniqueName(subscription, nodeName)»
-    		«var topicName = getInterfaceName(subscription,node)»
-    		$«subName» isa Subscriber,
-    		has interface_name "«topicName»",
-    		has interface_type "«subscription.message.fullname»";
-    		«handleQoS(subscription.qos, subName)»
-    		
-    		(node: $«nodeName», subscriber: $«subName») isa has_topic;
-    		
-    	«ENDFOR»
-    	«FOR publication : innerNode.publisher»
-    		«val pubName = _namer.uniqueName(publication, nodeName)»
-    		«var topicName = getInterfaceName(publication,node)»
-    		$«pubName» isa Publisher,
-    		has interface_name "«topicName»",
-    		has interface_type "«publication.message.fullname»";
-    		«handleQoS(publication.qos, pubName)»
-    		
-    		(node: $«nodeName», publisher: $«pubName») isa has_topic;
-    	«ENDFOR»
-    	«FOR actionClient : innerNode.actionclient»
-    		«val acName = _namer.uniqueName(actionClient, nodeName)»
-    		«var interfaceName = getInterfaceName(actionClient,node)»
-    		$«acName» isa ActionClient,
-    		has interface_name "«interfaceName»",
-    		has interface_type "«actionClient.action.fullname»";
-    		(node: $«nodeName», client: $«acName») isa has_action;	
-    	«ENDFOR»
-    	«FOR actionServer : innerNode.actionserver»
-    		«val asName = _namer.uniqueName(actionServer, nodeName)»
-    		«var interfaceName = getInterfaceName(actionServer,node)»
-    		$«asName» isa ActionServer,
-    		has interface_name "«interfaceName»",
-    		has interface_type "«actionServer.action.fullname»";
-    		(node: $«nodeName», server: $«asName») isa has_action;	
-    	«ENDFOR»
-    	«FOR serviceClient : innerNode.serviceclient»
-    		«val acName = _namer.uniqueName(serviceClient, nodeName)»
-    		«var interfaceName = getInterfaceName(serviceClient,node)»
-    		$«acName» isa ServiceClient,
-    		has interface_name "«interfaceName»",
-    		has interface_type "«serviceClient.service.fullname»";
-    		(node: $«nodeName», client: $«acName») isa has_service;	
-    	«ENDFOR»
-    	«FOR serviceServer : innerNode.serviceserver»
-    		«val asName = _namer.uniqueName(serviceServer, nodeName)»
-    		«var interfaceName = getInterfaceName(serviceServer,node)»
-    		$«asName» isa ServiceServer,
-    		has interface_name "«interfaceName»",
-    		has interface_type "«serviceServer.service.fullname»";
-    		(node: $«nodeName», server: $«asName») isa has_service;	
-    	«ENDFOR»
-    	'''
-
-			    
-    }
-    
+          
     def String handleQoS(ros.QualityOfService qos, String interfaceName)
     {
     	if(qos !== null)
@@ -597,152 +488,7 @@ class TQLGenerator extends AbstractGenerator {
 		return interfaceName
     }
     
-  
-    
-    def String generateFetchQuery(TacticsModel model) {
-    	'''
-		  match
-		  	  $t isa Tactic, has tactic_name "«model.getName()»";
-		      (tactic:$t, consequent:$«FEATURE_VAR») isa tactic_rule, has rule_valid true;
-		  fetch
-		      variant_activation: {
-		          match
-		              $«FEATURE_VAR» (activation: $feature_activate) isa feature_adaptation;
-		              (tactic:$t, variant_resolution:$vr) isa resolution_model;
-		              $vr (resolution_action:$res_action, variant: $feature_activate) isa variant_activation;
-		          fetch
-		              set_parameter_action: {
-		                  match
-		                      $res_action (node: $«NODE_VAR», parameter: $parameter, parameter_value: $parameter_value) isa! set_nodes_parameters;
-		                  fetch
-		                      $«NODE_VAR»: node_name;
-		                      $«PARAM_VAR»: parameter_name;
-		                      «PARAM_VALUES_SUBQUERY_NAME»: {
-		                          match
-		                              $parameter_value isa! ValueArray;
-		                              $«INDEX_VAR» (array: $parameter_value, array_value: $value) isa at_index;
-		                          fetch
-		                              $«INDEX_VAR»: index;
-		                              $value: attribute;
-		                      };
-		              };
-		              set_lifecycle_action: {
-		                  match
-		                      $res_action (node: $«NODE_VAR») isa! set_lifecycle_state;
-		                  fetch
-		                      $«NODE_VAR»: node_name;
-		                      $res_action: lifecycle_state;
-		              };
-		      };
-		      variant_deactivation: {
-		          match
-		              $«FEATURE_VAR» (deactivation: $feature_deactivate) isa feature_adaptation;
-		              (tactic:$t, variant_resolution:$vr) isa resolution_model;
-		              $vr (resolution_action:$res_action, variant: $feature_deactivate) isa variant_deactivation;
-		          fetch
-		              set_parameter_action: {
-		                  match
-		                      $res_action (node: $«NODE_VAR», parameter: $parameter, parameter_value: $parameter_value) isa! set_nodes_parameters;
-		                  fetch
-		                      $«NODE_VAR»: node_name;
-		                      $parameter: parameter_name;
-		                      «PARAM_VALUES_SUBQUERY_NAME»: {
-		                          match
-		                              $parameter_value isa! ValueArray;
-		                              $«INDEX_VAR» (array: $parameter_value, array_value: $value) isa at_index;
-		                          fetch
-		                              $«INDEX_VAR»: index;
-		                              $value: attribute;
-		                      };
-		              };
-		              set_lifecycle_action: {
-		                  match
-		                      $res_action (node: $«NODE_VAR») isa! set_lifecycle_state;
-		                  fetch
-		                      $«NODE_VAR»: node_name;
-		                      $res_action: lifecycle_state;
-		              };
-		      };
-    	'''
-    }
-    
-        def String generateFetchApplicableTactics(String resolutionModelName, String interfaceName) {
-    	'''
-			match
-			  $action isa ROSInterface, has interface_name "«interfaceName»";
-			  $resolution_model isa resolution_model, has resolution_model_name "«resolutionModelName»";
-			
-			  (interface: $action, resolution_model: $resolution_model, tactic_rule: $«RULE_VAR»)
-			      isa applicable_tactics;
-			
-			  $«RULE_VAR» isa tactic_rule, has rule_valid true;
-			
-			fetch
-			  $«RULE_VAR»: rule_name;
-			
-			  set_parameter_action: {
-			    match
-			      $tactic isa Tactic;
-			      $«RULE_VAR» (tactic: $tactic);
-			
-			      (tactic: $tactic, variant_resolution: $vr) isa resolution_model;
-			      $vr isa variant_resolution;
-			
-			      $vr (resolution_action: $res_action, variant: $«FEATURE_VAR»);
-			
-			      $res_action isa set_nodes_parameters;
-			      $res_action (node: $«NODE_VAR», parameter: $«PARAM_VAR», parameter_value: $parameter_value);
-			
-			    fetch
-				  $«NODE_VAR»: node_name;
-				  $«PARAM_VAR»: parameter_name;
-				  $«FEATURE_VAR»: feature_name;
-			
-			      «PARAM_VALUES_SUBQUERY_NAME»: {
-			        match
-			          $parameter_value isa ValueArray;
-			          $«INDEX_VAR» (array: $parameter_value, array_value: $value) isa at_index;
-			
-			        fetch
-			          $«INDEX_VAR»: index;
-					  $value: attribute;
-				 };
-				 
-		};
-    	'''
-    }
-    
-    
-    
-    
-    def String generateInsertMeasurement(ContextVar contextVariable, Object measurementValue, String measurementTime)
-    {
-    	val measureName = _namer.uniqueName(contextVariable)
-    	'''
-		match
-		$«measureName» isa Measure, has measure_name "«contextVariable.name»";
-
-		insert
-		    $value isa «HasValue(measurementValue)»
-		    
-		    (measure: $«measureName», measurement_value: $value) isa measurement,
-		        has measurement_time «measurementTime»;
-    	'''	
-    }
-    
-    def dispatch String HasValue(Double v) { '''ValueDouble, has double_value «v»;'''}
-	def dispatch String HasValue(Boolean v) { '''ValueBool, has bool_value «v»;'''}
-	def dispatch String HasValue(Integer v) { '''ValueInteger, has integer_value «v»;'''}
-	def dispatch String HasValue(String v) { '''ValueString, has string_value"«v»";'''}
-	def dispatch String HasValue(Iterable<?> v) {
-	'''
-	ValueArray;"
-	«FOR element : v.indexed»
-		$elem_"«element.key» isa «HasValue(element.value)»;
-		(array: $value, array_value: $elem_"«element.key») isa at_index, has index «element.key»;
-	«ENDFOR»
-	'''}
-    
+      
     private def literalValue(Literal lit, String condition_name)
     {
     	val name = condition_name + "_val"
@@ -880,41 +626,6 @@ class TQLGenerator extends AbstractGenerator {
 //		}
 	}
     
-	
-	
-//	private def logic_op(LogicalOperator logicalOp, String lhs_name, String rhs_name)
-//	{
-//		val name = _namer.uniqueName(logicalOp, lhs_name, rhs_name)
-//		'''
-//			$«name» (expression:$«lhs_name», expression:$«rhs_name») isa «logicalOp.literal.toLowerCase»_expression;
-//		'''
-//	}
-	
-//	private def boolean isClause(Condition condition, Condition left)
-//	{
-//		if(condition.secondTerm !== null)
-//		{
-//			if (condition.logicalOp !== null && condition.logicalOp.value == LogicalOperator.OR_VALUE)
-//			{
-//        		return isClause(o.left, null) && isClause(condition.secondTerm);	
-//        	}
-//			
-//		}
-//		return true
-//	}
-	
-//	private def boolean isCNFConjunction(Condition condition, Condition left)
-//	{
-//    	if(condition.secondTerm !== null)
-//		{
-//			if (condition.logicalOp !== null && condition.logicalOp.value == LogicalOperator.AND_VALUE)
-//			{
-//        		return isCNFConjunction(condition.secondTerm);	
-//        	}
-//			
-//		}
-//		return isClause(condition)
-//	}
 
 	def boolean isClause(Expr e) {
 	    switch e {
@@ -932,162 +643,108 @@ class TQLGenerator extends AbstractGenerator {
 	        default: return isClause(e)
 	    }
 	}
-	
-//	private def Pair<String, CharSequence> buildExpression(MeasurementCondition condition) {
-//		val condName = _namer.uniqueName(condition)
-//		val ineqCode = inequality(condition)
-//	
-//		// Base case: leaf condition (no further chaining)
-//		if (condition.logicalOp === null || condition.secondTerm === null) {
-//			return new Pair(condName, ineqCode)
-//		}
-//	
-//		// Recursive case: build RHS expression
-//		val right = buildExpression(condition.secondTerm)
-//		val rightName = right.key
-//		val rightCode = right.value
-//	
-//		val logicName = _namer.uniqueName(condition.logicalOp, condName, rightName)
-//		val logicExpr = logic_op(condition.logicalOp, condName, rightName)
-//	
-//		val fullCode = '''
-//			«ineqCode»
-//			«rightCode»
-//			«logicExpr»
-//		'''
-//	
-//		return new Pair(logicName, fullCode)
-//	}
-	
-//	private def create_antecedent(Condition condition)
-//	{
-//		return buildExpression(condition)
-//	}
+
 	
 	private def gatherResolutionFeatures(ResolutionModel res_model)
 	{
 		val features = newArrayList
 		
 		for (resolution : res_model.resolutions) {
-			features.add(resolution.feature)
+			features.add(resolution.featureRef.feature)
 		}
 		
 		return features
 	}
 	
 	
-	private def void collectRecursively(System ros_sys, List<System> result) {
-    	if (ros_sys === null || result.contains(ros_sys)) return;
-    	result.add(ros_sys);
-
-	    for (Component comp : ros_sys.getComponents()) {
-	        if (comp instanceof SubSystem) {
-	            collectRecursively(comp.getSystem(), result);
-	        }
-	    }
-	}
-	
-	def List<System> collectAllSystems(ResolutionModel model) {
-    	val List<System> result = newArrayList
-        collectRecursively(model.rossystem, result)
-        return result       
-    }
-    
-    def List<RosNode> rosNodesFromSystem(System ros_system) {
-    	val node_list = newArrayList
-    	
-    	for (component : ros_system.components)
-    	{
-    		if(component instanceof RosNode)
-    		{
-    			node_list.add(component as RosNode)
-    		}
-    	}
-    	
-    	return node_list    	
-    }
-    
-    def String processSubNodes(List<RosNode> rosNodes)
+//	def List<System> collectAllSystems(ResolutionModel model) {
+//    	val List<System> result = newArrayList
+//        collectRecursively(model.rossystem, result)
+//        return result       
+//    }
+            
+    def String generateArchitectureInsertQuery(Set<System> rosSystems)
     {
-    	val Map<ros.Node, List<RosNode>> parenthood = newHashMap
-    	for (rosNode : rosNodes)
-    	{
-    		if(rosNode.parent !== null)
-    		{
-    			var children = parenthood.get(rosNode.parent)
-		        if (children === null) {
-		            children = newArrayList
-		            parenthood.put(rosNode.parent, children)
-		        }
-		        children.add(rosNode)
-    		}
-
-    	}
-    	'''
-    	«FOR family : parenthood.entrySet»
-    		(node: $«uniqueName(family.key)»,
-    		«FOR child : family.value SEPARATOR ", "» 
-    			subnode: $«uniqueName(child.from)»
-    		«ENDFOR»
-    			) isa subnode;
-    	«ENDFOR»
-    	'''
-    }
-    
-    def String generateArchitectureInsertQuery(ResolutionModel resolutionModel)
-    {
+    	val archTQLGenerator = new ArchitectureTQLGenerator(_namer)
 		'''
 		insert
 		
-		«FOR rossys : collectAllSystems(resolutionModel)»
-			«val nodesList = rosNodesFromSystem(rossys)»
-			«FOR comp : nodesList»
-				«generateInsertQuery(comp)»
-			«ENDFOR»
-			«processSubNodes(nodesList)»
-			
+		«FOR rossys : rosSystems»
+			«archTQLGenerator.generateArchitectureInsertQuery(rossys,false)»
 		«ENDFOR»
 		'''	      
-    	
     }
     
     def getResolutionModel(TacticsModel t, Resource resource)
     {
-    	val List<ResolutionModel> resolutionModels = newArrayList
-		
-		for (imp : t.imports) {
-			if(imp.importURI.endsWith('resolution'))
-			{
-				var uri = URI.createURI(imp.importURI)
-				if (uri.isRelative()) {
-					
-            		uri = uri.resolve(resource.getURI());
-        		}
-        		val imported = resource.resourceSet.getResource(uri, true);
-        		if (imported === null || imported.getContents().isEmpty()) 
-        		{
-        			println("ResolutionModel import fail")
-        		}
-        			
-        		
-        		val root = imported.getContents().get(0);
-	            if (root instanceof ResolutionModel) {
-	               	resolutionModels.add(root)
-				}
-				
-			}
-			
-		}
-		
+    	
+    	var List<ResolutionModel> resolutionModels = newArrayList
+    	resolutionModels = Utilities.deriveFromImports(resource, '.resolution',t.imports,typeof(ResolutionModel))
+//		
+//		for (imp : t.imports) {
+//			if(imp.importURI.endsWith('resolution'))
+//			{
+//				var uri = URI.createURI(imp.importURI)
+//				if (uri.isRelative()) {
+//					
+//            		uri = uri.resolve(resource.getURI());
+//        		}
+//        		val imported = resource.resourceSet.getResource(uri, true);
+//        		if (imported === null || imported.getContents().isEmpty()) 
+//        		{
+//        			println("ResolutionModel import fail")
+//        		}
+//        			
+//        		
+//        		val root = imported.getContents().get(0);
+//	            if (root instanceof ResolutionModel) {
+//	               	resolutionModels.add(root)
+//				}
+//				
+//			}
+//			
+//		}
+//		
 		return resolutionModels;	
     	
     }
      def getContextModel(TacticsModel t, Resource resource)
     {
-    	val List<ContextModel> contextModels = newArrayList
+    	var List<ContextModel> contextModels = newArrayList
+		contextModels = Utilities.deriveFromImports(resource, '.context',t.imports,typeof(ContextModel))
+//		for (imp : t.imports) {
+//			if(imp.importURI.endsWith('context'))
+//			{
+//				var uri = URI.createURI(imp.importURI)
+//				if (uri.isRelative()) {
+//					
+//            		uri = uri.resolve(resource.getURI());
+//        		}
+//        		val imported = resource.resourceSet.getResource(uri, true);
+//        		if (imported === null || imported.getContents().isEmpty()) 
+//        		{
+//        			println("ContextModel import fail")
+//        		}
+//        			
+//        		
+//        		val root = imported.getContents().get(0);
+//	            if (root instanceof ContextModel) {
+//	               	contextModels.add(root)
+//				}
+//				
+//			}
+//			
+//		}
 		
-		for (imp : t.imports) {
-			if(imp.importURI.endsWith('context'))
+		return contextModels;	 	
+    }
+    
+    def rossystemfromContextModel(ContextModel c, Resource resource)
+    {
+    	val List<System> rossystems = newArrayList
+		
+		for (imp : c.imports) {
+			if(imp.importURI.endsWith('rossystem'))
 			{
 				var uri = URI.createURI(imp.importURI)
 				if (uri.isRelative()) {
@@ -1102,43 +759,17 @@ class TQLGenerator extends AbstractGenerator {
         			
         		
         		val root = imported.getContents().get(0);
-	            if (root instanceof ContextModel) {
-	               	contextModels.add(root)
+	            if (root instanceof System) {
+	               	rossystems.add(root)
 				}
 				
 			}
 			
 		}
 		
-		return contextModels;	 	
+		return rossystems;	 	
     }
     
-//     def getContextModelNode(ContextModel c, Resource resource)
-//    {
-//		
-//		val imp = c.context_model_node.node_import
-//		if(imp.importURI.endsWith('ros2'))
-//		{
-//			var uri = URI.createURI(imp.importURI)
-//			if (uri.isRelative()) {
-//				
-//        		uri = uri.resolve(resource.getURI());
-//    		}
-//    		val imported = resource.resourceSet.getResource(uri, true);
-//    		if (imported === null || imported.getContents().isEmpty()) 
-//    		{
-//    			println("ContextModel node Import Fail")
-//    		}
-//    			
-//    		
-//    		val root = imported.getContents().get(0);
-//
-//			if (root instanceof ros.AmentPackage) {
-//				return root.getArtifact().get(0).getNode()          
-//			}
-//			
-//		} 	
-//    }
 	private def infinityLiteral(Boolean negative, Literal otherLiteral, String name)
 	{
 		if(otherLiteral === null)
@@ -1274,9 +905,9 @@ class TQLGenerator extends AbstractGenerator {
     	'''
     }
     
-    private def thresholdLiterals()
+    private def thresholdLiterals(Map<ContextVar, Set<LiteralWrapper>> thresholds)
     {
-    	val newThresholds = newHashMap
+    	var Map<ContextVar, Set<LiteralWrapper>> newThresholds = newHashMap
     	var returnText = ""
     	for (thresholdEntry : thresholds.entrySet) {
     		val newThresholdSet = newHashSet
@@ -1296,8 +927,6 @@ class TQLGenerator extends AbstractGenerator {
     			}
     			else
     			{
-    				println("HMMMMMM??????????????????????\n\n\n\n\n\n")
-    				println(wrappedLiteral.description)
     				newThresholdSet.add(wrappedLiteral)
     			}
     			i++
@@ -1305,11 +934,11 @@ class TQLGenerator extends AbstractGenerator {
     		
     		newThresholds.put(thresholdEntry.key, newThresholdSet)
     	}
-    	thresholds = newThresholds
-    	return returnText
+    	return returnText ->  newThresholds
     }
 	private def compile(TacticsModel t, Boolean doStates)
 	{
+		numRules = 0
 //		println(generateFetchApplicableTactics(t.resolutionModel, "one", "two"))
 //		println(generateUpdateInEffect(newArrayList('MoveQuickly')))
 		val tacticName = t.name
@@ -1317,6 +946,7 @@ class TQLGenerator extends AbstractGenerator {
 		
 		val List<ResolutionModel> resolutionModels = getResolutionModel(t, globalResource)
 		val List<ContextModel> contextModels = getContextModel(t, globalResource)
+		
 //		println(generateArchitectureInsertQuery(resolutionModels.get(0)))
 //		println("--------")
 //		println(resolutionModels.size)    
@@ -1324,22 +954,25 @@ class TQLGenerator extends AbstractGenerator {
 //		println(contextModels.size)
 		var infinityLiteralsTQL = ""
 		var thresholdLiteralsTQL = ""
-		val states = newArrayList
+		var stateTQLs = newArrayList
+		
+		val Map<Feature, Set<Boolean>> featureSelections = newHashMap
+		var Map<ContextVar, Set<LiteralWrapper>> thresholds = newHashMap
 		if(doStates)
 		{
 			
 	        for (rule : t.adaptationRules) {
-	        	registerComparisonsFromRule(rule)
+	        	registerComparisonsFromRule(rule,thresholds, featureSelections)
 	        }
 	        
 	        infinityLiteralsTQL = infinityLiterals()
-	        thresholdLiteralsTQL = thresholdLiterals()
-	        bounds = newHashMap
-	        createBounds()
-	        contextKeys = bounds.keySet.toList
+	        var somePair = thresholdLiterals(thresholds)
+	        thresholdLiteralsTQL = somePair.key
+	        thresholds = somePair.value
+	       	
+	        val bounds = createBounds(thresholds)
+	        val contextKeys = bounds.keySet.toList
 	        val values = bounds.values.toList
-	        println("bound vals?")
-	        println(values)
 	       	val product = Utilities.getCartesianProduct(values)
 			allStates = newArrayList
 			val List<List<Boolean>> featureSelectionsToPairs = newArrayList
@@ -1403,9 +1036,7 @@ class TQLGenerator extends AbstractGenerator {
 						allStates.add(new State(contextPrecondition, featurevaluationCombo, contextKeys))
 					}
 			}
-			
-			println("Number of States " + allStates.size())
-			
+						
 			val featureKeys =featureSelections.keySet.toList
 	//        println(featureKeys)
 	//		println(contextKeys)
@@ -1420,10 +1051,12 @@ class TQLGenerator extends AbstractGenerator {
 	        			state.addRule(rule.name)
 	        		}
 	        	}
-	        	println(state.describeMedianBounds)
+//	        	println(state.describeMedianBounds)
 	        	
 	        	val expr = expressionFromState(contextKeys,featureKeys, state,"")
 	        	val state_inCNF = toCNF(expr)
+
+	        	
 	//        	println("createAntecedent")
 	        	val antecedent = createAntecedent(state_inCNF)
 	        	if(state.hasRules)
@@ -1431,22 +1064,43 @@ class TQLGenerator extends AbstractGenerator {
 	        		ruleCount+=1
 	        	}
 	        	stateCount +=1
-	        	val name = "state_" + antecedent.key
+	        	val state_name = "state_" + antecedent.key
+	        	val medianNames = newArrayList
+	        	var median_statement = ""
+	        	
+	        	for (median_entry : state.medians)
+	        	{
+	        		val median_name = state_name + "_median_" + median_entry.key.name
+	        		medianNames.add(median_name)
+	        		
+	        		median_statement += '''
+	        	$«median_name» (measure: $«_namer.uniqueName(median_entry.key)») isa MedianValuation,
+	        	    has median_bound_value «median_entry.value.toString»;
+	        	    
+	        	'''
+	        	}
+
+
+	        	
 	        	val state_statement =
 	        	'''
-	        	$«name»( 
+	        	$«state_name»( 
 	        	«FOR rule_name : state.associatedRulesTQLNames SEPARATOR ", "»
 	        	rule: $tactic_rule_«rule_name.toLowerCase»«ENDFOR»«IF state.hasRules»,«ENDIF»
-	        	antecedent: $«antecedent.key») isa state, has state_name "«name»";
+	        	«FOR median_name : medianNames SEPARATOR ", "»
+	        	median_valuation: $«median_name»«ENDFOR»,
+	        	antecedent: $«antecedent.key») isa state, has state_name "«state_name»";
 	        	'''
 	        	
-	        	states.add(antecedent.value + state_statement)
-	        	state.TQLName = name
+	        	stateTQLs.add(antecedent.value + median_statement + state_statement)
+	        	state.TQLName = state_name
 	        }
 
-	        println(stateCount + " states were produced, " + ruleCount + " of which have a rule attached")
+	        println(stateCount + " states were produced, " + ruleCount + " of which have a rule attached and " + escapes.keySet.size + " have escaped defined")
 	        
         }
+        
+        val contextGenerator = new ContextModelGenerator(_namer)
         
 		escapes = newHashMap
 		val x ='''			
@@ -1454,18 +1108,18 @@ class TQLGenerator extends AbstractGenerator {
 			«thresholdLiteralsTQL»
 			$ta_«lc_tacticName» isa Tactic, has tactic_name "«tacticName»";
 			«FOR resolutionModel : resolutionModels»
-			«registerFeatures(gatherResolutionFeatures(resolutionModel))»	
+			«registerFeatures(resolutionModel.featureModel.root)»	
 			«ENDFOR»
 			«FOR contextModel : contextModels»
-			«registerMeasurements(contextModel)»
+			«contextGenerator.registerMeasurements(contextModel)»
 			«ENDFOR»
 «««			«registerNodes(t.resolutionModel)»
 			«FOR rule : t.adaptationRules»
 				«compileRule(rule,lc_tacticName, doStates)»
 			«ENDFOR»
 			«IF doStates»
-				«FOR state : states»
-					«state»
+				«FOR stateTQL : stateTQLs»
+					«stateTQL»
 				«ENDFOR»
 			«ENDIF»
 
@@ -1495,8 +1149,9 @@ class TQLGenerator extends AbstractGenerator {
 		return x
 	}
 	
-	def createBounds()
+	def createBounds(Map<ContextVar, Set<LiteralWrapper>> thresholds)
 	{
+		val Map<ContextVar, List<Pair<LiteralWrapper, LiteralWrapper>>> bounds = newHashMap
 		for (measurement : thresholds.keySet) {
 			var List<Pair<LiteralWrapper,LiteralWrapper>> boundPairs = newArrayList
 			val sortedThresholds = thresholds.get(measurement).toList().sort()
@@ -1515,6 +1170,7 @@ class TQLGenerator extends AbstractGenerator {
 
 			printBoundPairs(boundPairs)
 		}
+		return bounds
 	}
 	
 	def printBoundPairs(List<Pair<LiteralWrapper,LiteralWrapper>> boundPairs)
@@ -1556,165 +1212,7 @@ class TQLGenerator extends AbstractGenerator {
 				return new DerivedVar(MathOperator.DIFFERENT,c_var, lit)
 		}
 	}
-	
-//	def yeah()
-//	{
-//		
-//		val Map<ContextVar, List<Pair<MathOperator, LiteralWrapper>>> newComps = newHashMap
-//		for (measurement : thresholdComps.keySet) {
-//			println("Now looking at " + measurement.name)
-//			var List<Pair<MathOperator, LiteralWrapper>> newPairs = newArrayList
-//			var opLitPairs = thresholdComps.get(measurement)
-//			if(opLitPairs.size == 1)
-//			{
-//				var opLitPair = opLitPairs.get(0)
-//				oppositeCondition(opLitPair, measurement)			
-//			}
-//			else{
-//				println("MULTIPLE INSTANCES OF MEASURE " + measurement.name)
-//			}
-//			newComps.put(measurement, newPairs)
-//		}
-//		
-//		for (measurement : newComps.keySet) {
-//			print(measurement.name + ": ")
-//			for (opLitPair : newComps.get(measurement))
-//			{
-//				print(expressionType(opLitPair.key) + " " + Utilities.valueOfLiteral(opLitPair.value.innerLiteral) + ",")
-//			}
-//			println("")
-//		}
-//	}
-	
-	
-//	private def measurementFromRuleBody(RuleBody rule_body)
-//	{
-//		if (rule_body instanceof ConditionAction)
-//		{
-//			val cond_acc = rule_body as ConditionAction
-//			val rule_conditions = collectSecondTerms(cond_acc.condition)
-//			for (cond : rule_conditions) {
-//				uniqueMeasurements.add(cond.measurement)
-//			}
-//		}
-//	}
-	
-//	private def measurementTQLDeclaration(String measurement)
-//	{
-//		'''
-//		$t_measured_«measurement» isa Measure, has measure_name "t_measured_«measurement»";
-//		'''
-//	}
-	
-//	private def registerMeasurements(List<AdaptationRule> adap_rules)
-//	{
-//		for (rule : adap_rules) {
-//			if (rule instanceof AtomicRule)
-//			{
-//				measurementFromRuleBody(rule.ruleBody)
-//			}
-//			else if(rule instanceof RuleSet)
-//			{
-//				for (set_rule : rule.atomicRules)
-//				{
-//					measurementFromRuleBody(set_rule.ruleBody)
-//				}
-//			}
-//		}
-//		'''
-//			«FOR mes : uniqueMeasurements»
-//				«measurementTQLDeclaration(mes.name)»
-//			«ENDFOR»
-//		'''
-//	}
-
-	private def nodeFromRef(DataSource source)
-	{
-		val ref = source.ref
-		if(ref instanceof QualifiedPublisherRef)
-		{
-			return ref.node
-		}
-		if(ref instanceof QualifiedServiceServerRef)
-		{
-			return ref.node
-		}
-		if(ref instanceof QualifiedActionServerRef)
-		{
-			return ref.node
-		}
-	}
-	
-	private def registerMeasurements(ContextModel contextModel)
-	{
-//		val metaNode = getContextModelNode(contextModel,globalResource)
-//		val nodeName = _namer.uniqueName(metaNode)
-	
-		'''
-«««		«describeNode(metaNode,"")»
-«««    	«FOR publication : metaNode.publisher»
-«««		«val pubName = _namer.uniqueName(publication, nodeName)»
-«««		«var topicName = publication.name»
-«««		$«pubName» isa Publisher,
-«««		has interface_name "«topicName»",
-«««		has interface_type "«publication.message.fullname»";
-«««		«handleQoS(publication.qos, pubName)»
-«««		
-«««		(node: $«nodeName», publisher: $«pubName») isa has_topic;
-«««    	«ENDFOR»
-
-		«FOR contextVariable : contextModel.context_variables»
-			«val contextvarName = _namer.uniqueName(contextVariable)»
-			«val ref = contextVariable.source»
-			$«contextvarName» isa Measure, has measure_name "«contextVariable.name»";
-			
-			(measure: $«contextvarName», source: $«_namer.uniqueName(contextVariable.source, _namer.uniqueName(nodeFromRef(ref)))») isa measurement_interface,
-				    «IF contextVariable.functionLibrary !== null»has measurement_function_lib '«contextVariable.functionLibrary»',«ENDIF»
-				    «IF contextVariable.period != 0»has measurement_period «contextVariable.period»,«ENDIF»
-				    «IF ref instanceof QualifiedServiceServerRef»
-				    	 «IF ref.kwargs !== null || ref.kwargs!== ""»has service_request_kwargs '«ref.kwargs»',«ENDIF»
-				    «ENDIF»
-				    «IF contextVariable.doProxy !== null»has measurement_proxy «contextVariable.doProxy.^do»,«ENDIF»
-				    has measurement_function_name '«contextVariable.functionName»';
-«««				    has measurement_function_lib 'ros_monitors.laser_scan_functions',
-«««				    has measurement_function_args 'base_link';
-		«ENDFOR»
-
-		'''
-	}
-	
-
-	
-
-//	private def registerNodes(ResolutionModel res_model)
-//	{
-//		val unique_nodes = new HashSet<RosNode>()
-//		for (resolution : res_model.resolutions) {
-//			val all_reconfs = resolution.deselection_actions + resolution.selection_actions
-//			for (reconf : all_reconfs)
-//			{
-//				unique_nodes.add(reconf.node)
-//			}
-//		}
-//		'''
-//			
-//			# define ROSNodes
-//			«FOR node_name : unique_nodes»
-//				$«_namer.uniqueName(node_name)» isa ROSNode, has node_name "«node_name.name»";
-//			«ENDFOR»
-//		'''
-//	}
-//	
-//	private def void collectAllFeatures(Feature feature, List<Feature> allFeatures) {
-//	    if(feature !== null)
-//	    {
-//		    allFeatures.add(feature);
-//		   	for (Feature child : feature.getChildren()) {
-//		            collectAllFeatures(child, allFeatures);
-//		    }
-//		}
-//	}
-	
+		
 	private def registerFeatures(List<Feature> f_list)
 	{		
 		'''
@@ -1743,6 +1241,69 @@ class TQLGenerator extends AbstractGenerator {
 		'''			
 	}
 	
+	private def registerFeatures(Feature root)
+	{
+	    val visited = new LinkedHashSet<Feature>()
+	    val result = new StringBuilder()
+	    root.collectPostOrder(visited)
+	    visited.forEach[ feature |
+	        result.append(generateFeature(feature))
+	        result.append('\n')
+	    ]
+	    result		
+	}
+
+	def void collectPostOrder(Feature feature, LinkedHashSet<Feature> visited) {
+	    for (child : feature.children) {
+	        child.collectPostOrder(visited)
+	    }
+	    visited.add(feature)
+	}
+	
+	def CharSequence generateFeature(Feature feature) 
+	{
+		val result = new StringBuilder()
+		result.append('''
+		$«_namer.uniqueName(feature)» isa Feature, has feature_name "«feature.name»", has mandatory «feature.mandatory»;
+		''')
+		switch feature 
+		{
+			Alternative:
+			{
+				result.append('''
+				$«_namer.uniqueName(feature)+feature.id.toLowerCase» (parent: $«_namer.uniqueName(feature)»,
+					«FOR child_feature : feature.children SEPARATOR ", "»
+						child: $«_namer.uniqueName(child_feature)»
+					«ENDFOR»
+				) isa alternative;	
+				''')
+			}
+			OrGroup: 
+			{
+				result.append('''
+				$«_namer.uniqueName(feature)+feature.id.toLowerCase» (parent: $«_namer.uniqueName(feature)», 
+					«FOR child_feature : feature.children SEPARATOR ", "»
+						child: $«_namer.uniqueName(child_feature)»
+					«ENDFOR»
+				) isa or_group;	
+				''')
+			}
+			default:
+				if(feature.children.size > 0)
+				{
+				result.append('''
+				$«"feat_hier"+_namer.uniqueName(feature)» (parent: $«_namer.uniqueName(feature)», 
+					«FOR child_feature : feature.children SEPARATOR ", "»
+						child: $«_namer.uniqueName(child_feature)»
+					«ENDFOR»
+				) isa feature_hierarchy;	
+				''')
+				}
+			
+
+		}
+		return result
+	}
 	
 	private def compileResolution(ResolutionModel resModel)
 	{
@@ -1765,14 +1326,14 @@ class TQLGenerator extends AbstractGenerator {
 				«FOR selec_action : resolution.selection_actions SEPARATOR ", "»
 					resolution_action: $«_namer.uniqueName(selec_action)»
 				«ENDFOR»
-			, variant: $«_namer.uniqueName(resolution.feature)») isa variant_activation;
+			, variant: $«_namer.uniqueName(resolution.featureRef.feature)») isa variant_activation;
 			«ENDIF»
 			«IF !resolution.deselection_actions.empty»
 			$«_namer.uniqueName(resolution)»_deact (
 				«FOR deselec_action : resolution.deselection_actions SEPARATOR ", "»
 					resolution_action: $«_namer.uniqueName(deselec_action)»
 				«ENDFOR»
-			, variant: $«_namer.uniqueName(resolution.feature)») isa variant_deactivation;
+			, variant: $«_namer.uniqueName(resolution.featureRef.feature)») isa variant_deactivation;
 			«ENDIF»
 		'''
 	}
@@ -1835,37 +1396,17 @@ class TQLGenerator extends AbstractGenerator {
 		'''
 
 	}
-	def Pair<CharSequence, String> ParamValueToValueEntity(Parameter the_parameter, String parent_name) {
-		val the_value = the_parameter.value
-//		println("parent_name " + parent_name)
-//		println("thevalue " + the_value)
-		if(the_value instanceof ParameterSequence)
-		{
-			
-			val result = newArrayList
-			val parseq_name = _namer.uniqueName(the_value, parent_name)
-//			println(parseq_name)
-//			println(the_value.value)
-			val body = '''
-					$«parseq_name» isa ValueArray;
-					«FOR param_value : the_value.value.indexed»
-						«describeParameter(_namer.uniqueName(param_value.value, parent_name), param_value.value)»
-						$«parseq_name»_elem_«param_value.key» (array: $«parseq_name», array_value: $«_namer.uniqueName(param_value.value, parent_name)») isa at_index, has index «param_value.key»;
-					«ENDFOR»
-					
-				'''
-			// Insert end thing for the actual array :-)
-			for (param_value : the_value.value) {
-				result.add(_namer.uniqueName(param_value, parent_name))
-			}
-			return body -> parseq_name
-		} 
-		else
-		{
-			val name = _namer.uniqueName(the_value, parent_name)
-			val single = describeParameter(name, the_parameter.value)
-			return single -> name
+	
+	 def List<Parameter> getParameters(RosNode node)
+	{
+		val originalParameters = node.from.parameter
+		
+		for (parameter_override : node.rosparameters) {
+			val indexOverride = originalParameters.indexOf(parameter_override.from)
+			originalParameters.get(indexOverride).value = parameter_override.value
 		}
+		
+		return originalParameters
 	}
 	
 	def Pair<Boolean, Parameter> findMatch(RosNode parameterOwner, SetParam reconfig)
@@ -2084,7 +1625,7 @@ class TQLGenerator extends AbstractGenerator {
 		return null
 	}
 	
-	private def registerComparisonsFromRule(AdaptationRule adap_rule)
+	private def registerComparisonsFromRule(AdaptationRule adap_rule, Map<ContextVar, Set<LiteralWrapper>> thresholds, Map<Feature, Set<Boolean>> featureSelections)
 	{
 		if(adap_rule instanceof AtomicRule)
 		{
@@ -2282,6 +1823,7 @@ class TQLGenerator extends AbstractGenerator {
 	
 	private def compileRule(AdaptationRule c, String lc_tacticName, boolean doingStates)
 	{
+		numRules++
 	if (c instanceof AtomicRule)
 	{
 		val ruleName = c.name
@@ -2420,9 +1962,7 @@ class TQLGenerator extends AbstractGenerator {
 				    }
 				
 				    if (escaped !== null) {
-				        println("state Escaped!!")
 				        val nextState = findNextState(escaped, effect.measurement, state)
-				        println("next state found: " + nextState.TQLName)
 				        escapes.put(state.TQLName -> ruleName, nextState.TQLName)
 				    }
 				}				
@@ -2432,15 +1972,6 @@ class TQLGenerator extends AbstractGenerator {
 		}
 	}
 	
-//	def List<Condition> collectSecondTerms(Condition condition) {
-//    if (condition === null)
-//        return emptyList
-//    else
-//         return newArrayList => [
-//            add(condition)
-//            addAll(collectSecondTerms(condition.secondTerm))
-//        ]
-//	}
 	
 	def Expr ConditionToExpr(Condition condition)
 	{
@@ -2854,6 +2385,11 @@ class State {
     def getContextBoundPairs()
     {
     	return boundMap.entrySet
+    }
+    
+    def List<Entry<ContextVar, LiteralWrapper>> getMedians()
+    {
+    	return medianBounds.entrySet.toList
     }
     
     def List<ContextVar> getContextKeys()

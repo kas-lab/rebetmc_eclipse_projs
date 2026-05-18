@@ -3,10 +3,11 @@
  */
 package eu.coresense.context.contextModel.impl;
 
+import eu.coresense.common.Import;
+
 import eu.coresense.context.contextModel.ContextModel;
 import eu.coresense.context.contextModel.ContextModelPackage;
 import eu.coresense.context.contextModel.ContextVar;
-import eu.coresense.context.contextModel.Import;
 
 import java.util.Collection;
 

@@ -3,6 +3,7 @@
  */
 package eu.coresense.resolution.resolutionModel.impl;
 
+import eu.coresense.resolution.resolutionModel.FeatureReference;
 import eu.coresense.resolution.resolutionModel.Import;
 import eu.coresense.resolution.resolutionModel.LifecycleState;
 import eu.coresense.resolution.resolutionModel.Reconfiguration;
@@ -50,6 +51,13 @@ public class ResolutionModelPackageImpl extends EPackageImpl implements Resoluti
    * @generated
    */
   private EClass resolutionEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass featureReferenceEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -237,7 +245,7 @@ public class ResolutionModelPackageImpl extends EPackageImpl implements Resoluti
    * @generated
    */
   @Override
-  public EReference getResolution_Feature()
+  public EReference getResolution_FeatureRef()
   {
     return (EReference)resolutionEClass.getEStructuralFeatures().get(0);
   }
@@ -262,6 +270,39 @@ public class ResolutionModelPackageImpl extends EPackageImpl implements Resoluti
   public EReference getResolution_Deselection_actions()
   {
     return (EReference)resolutionEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getFeatureReference()
+  {
+    return featureReferenceEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getFeatureReference_Parent()
+  {
+    return (EReference)featureReferenceEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getFeatureReference_Feature()
+  {
+    return (EReference)featureReferenceEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -413,9 +454,13 @@ public class ResolutionModelPackageImpl extends EPackageImpl implements Resoluti
     createEReference(resolutionModelEClass, RESOLUTION_MODEL__RESOLUTIONS);
 
     resolutionEClass = createEClass(RESOLUTION);
-    createEReference(resolutionEClass, RESOLUTION__FEATURE);
+    createEReference(resolutionEClass, RESOLUTION__FEATURE_REF);
     createEReference(resolutionEClass, RESOLUTION__SELECTION_ACTIONS);
     createEReference(resolutionEClass, RESOLUTION__DESELECTION_ACTIONS);
+
+    featureReferenceEClass = createEClass(FEATURE_REFERENCE);
+    createEReference(featureReferenceEClass, FEATURE_REFERENCE__PARENT);
+    createEReference(featureReferenceEClass, FEATURE_REFERENCE__FEATURE);
 
     importEClass = createEClass(IMPORT);
     createEAttribute(importEClass, IMPORT__IMPORT_URI);
@@ -480,9 +525,13 @@ public class ResolutionModelPackageImpl extends EPackageImpl implements Resoluti
     initEReference(getResolutionModel_Resolutions(), this.getResolution(), null, "resolutions", null, 0, -1, ResolutionModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(resolutionEClass, Resolution.class, "Resolution", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getResolution_Feature(), theBasicFMmetamodelPackage.getFeature(), null, "feature", null, 0, 1, Resolution.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getResolution_FeatureRef(), this.getFeatureReference(), null, "featureRef", null, 0, 1, Resolution.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getResolution_Selection_actions(), this.getReconfiguration(), null, "selection_actions", null, 0, -1, Resolution.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getResolution_Deselection_actions(), this.getReconfiguration(), null, "deselection_actions", null, 0, -1, Resolution.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(featureReferenceEClass, FeatureReference.class, "FeatureReference", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getFeatureReference_Parent(), theBasicFMmetamodelPackage.getFeature(), null, "parent", null, 0, 1, FeatureReference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getFeatureReference_Feature(), theBasicFMmetamodelPackage.getFeature(), null, "feature", null, 0, 1, FeatureReference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(importEClass, Import.class, "Import", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getImport_ImportURI(), ecorePackage.getEString(), "importURI", null, 0, 1, Import.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

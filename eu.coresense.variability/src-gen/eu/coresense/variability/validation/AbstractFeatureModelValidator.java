@@ -15,7 +15,7 @@ public abstract class AbstractFeatureModelValidator extends AbstractDeclarativeV
 		List<EPackage> result = new ArrayList<EPackage>();
 		result.add(eu.coresense.variability.featureModel.FeatureModelPackage.eINSTANCE);
 		result.add(EPackage.Registry.INSTANCE.getEPackage("http://caosd.lcc.uma.es/BasicFMmetamodel"));
-		result.add(EPackage.Registry.INSTANCE.getEPackage("http://caosd.lcc.uma.es/BasicConstraintsFMmetamodel"));
+		result.add(EPackage.Registry.INSTANCE.getEPackage("http://caosd.lcc.uma.es/AdvancedConstraintsFMmetamodel"));
 		return result;
 	}
 }

@@ -176,6 +176,16 @@ public class RequirementsModelAdapterFactory extends AdapterFactoryImpl
         return createAsCloseLitAdapter();
       }
       @Override
+      public Adapter caseMembershipFunction(MembershipFunction object)
+      {
+        return createMembershipFunctionAdapter();
+      }
+      @Override
+      public Adapter caseFuzzyTriangular(FuzzyTriangular object)
+      {
+        return createFuzzyTriangularAdapter();
+      }
+      @Override
       public Adapter caseQuantifiable(Quantifiable object)
       {
         return createQuantifiableAdapter();
@@ -518,6 +528,36 @@ public class RequirementsModelAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createAsCloseLitAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link eu.coresense.requirements.requirementsModel.MembershipFunction <em>Membership Function</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see eu.coresense.requirements.requirementsModel.MembershipFunction
+   * @generated
+   */
+  public Adapter createMembershipFunctionAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link eu.coresense.requirements.requirementsModel.FuzzyTriangular <em>Fuzzy Triangular</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see eu.coresense.requirements.requirementsModel.FuzzyTriangular
+   * @generated
+   */
+  public Adapter createFuzzyTriangularAdapter()
   {
     return null;
   }

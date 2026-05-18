@@ -426,34 +426,6 @@ public interface ContextModelPackage extends EPackage
    */
   int QUALIFIED_ACTION_SERVER_REF_FEATURE_COUNT = QUALIFIED_REF_FEATURE_COUNT + 2;
 
-  /**
-   * The meta object id for the '{@link eu.coresense.context.contextModel.impl.ImportImpl <em>Import</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see eu.coresense.context.contextModel.impl.ImportImpl
-   * @see eu.coresense.context.contextModel.impl.ContextModelPackageImpl#getImport()
-   * @generated
-   */
-  int IMPORT = 9;
-
-  /**
-   * The feature id for the '<em><b>Import URI</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int IMPORT__IMPORT_URI = 0;
-
-  /**
-   * The number of structural features of the '<em>Import</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int IMPORT_FEATURE_COUNT = 1;
-
 
   /**
    * Returns the meta object for class '{@link eu.coresense.context.contextModel.ContextModel <em>Context Model</em>}'.
@@ -755,27 +727,6 @@ public interface ContextModelPackage extends EPackage
   EAttribute getQualifiedActionServerRef_Kwargs();
 
   /**
-   * Returns the meta object for class '{@link eu.coresense.context.contextModel.Import <em>Import</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Import</em>'.
-   * @see eu.coresense.context.contextModel.Import
-   * @generated
-   */
-  EClass getImport();
-
-  /**
-   * Returns the meta object for the attribute '{@link eu.coresense.context.contextModel.Import#getImportURI <em>Import URI</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Import URI</em>'.
-   * @see eu.coresense.context.contextModel.Import#getImportURI()
-   * @see #getImport()
-   * @generated
-   */
-  EAttribute getImport_ImportURI();
-
-  /**
    * Returns the factory that creates the instances of the model.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1039,24 +990,6 @@ public interface ContextModelPackage extends EPackage
      * @generated
      */
     EAttribute QUALIFIED_ACTION_SERVER_REF__KWARGS = eINSTANCE.getQualifiedActionServerRef_Kwargs();
-
-    /**
-     * The meta object literal for the '{@link eu.coresense.context.contextModel.impl.ImportImpl <em>Import</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see eu.coresense.context.contextModel.impl.ImportImpl
-     * @see eu.coresense.context.contextModel.impl.ContextModelPackageImpl#getImport()
-     * @generated
-     */
-    EClass IMPORT = eINSTANCE.getImport();
-
-    /**
-     * The meta object literal for the '<em><b>Import URI</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute IMPORT__IMPORT_URI = eINSTANCE.getImport_ImportURI();
 
   }
 

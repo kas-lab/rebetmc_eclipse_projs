@@ -14,6 +14,7 @@ public abstract class AbstractContextModelValidator extends AbstractDeclarativeV
 	protected List<EPackage> getEPackages() {
 		List<EPackage> result = new ArrayList<EPackage>();
 		result.add(eu.coresense.context.contextModel.ContextModelPackage.eINSTANCE);
+		result.add(EPackage.Registry.INSTANCE.getEPackage("https://coresense.eu/common"));
 		return result;
 	}
 }

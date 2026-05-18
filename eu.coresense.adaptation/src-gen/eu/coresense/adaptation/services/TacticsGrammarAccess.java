@@ -82,7 +82,7 @@ public class TacticsGrammarAccess extends AbstractElementFinder.AbstractGrammarE
 		private final RuleCall cImportURISTRINGTerminalRuleCall_1_0 = (RuleCall)cImportURIAssignment_1.eContents().get(0);
 		private final Keyword cSemicolonKeyword_2 = (Keyword)cGroup.eContents().get(2);
 		
-		//Import:
+		//Import returns common::Import:
 		//    'import' importURI=STRING ';'
 		//;
 		@Override public ParserRule getRule() { return rule; }
@@ -1269,7 +1269,7 @@ public class TacticsGrammarAccess extends AbstractElementFinder.AbstractGrammarE
 		return getTacticsModelAccess().getRule();
 	}
 	
-	//Import:
+	//Import returns common::Import:
 	//    'import' importURI=STRING ';'
 	//;
 	public ImportElements getImportAccess() {

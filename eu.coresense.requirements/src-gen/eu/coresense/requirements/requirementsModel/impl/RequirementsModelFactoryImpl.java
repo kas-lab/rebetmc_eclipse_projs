@@ -86,6 +86,8 @@ public class RequirementsModelFactoryImpl extends EFactoryImpl implements Requir
       case RequirementsModelPackage.EXPRESSION: return createExpression();
       case RequirementsModelPackage.AS_CLOSE_FREQ: return createAsCloseFreq();
       case RequirementsModelPackage.AS_CLOSE_LIT: return createAsCloseLit();
+      case RequirementsModelPackage.MEMBERSHIP_FUNCTION: return createMembershipFunction();
+      case RequirementsModelPackage.FUZZY_TRIANGULAR: return createFuzzyTriangular();
       case RequirementsModelPackage.QUANTIFIABLE: return createQuantifiable();
       case RequirementsModelPackage.MAY: return createMay();
       case RequirementsModelPackage.MAY_ALTERNATIVE: return createMayAlternative();
@@ -376,6 +378,30 @@ public class RequirementsModelFactoryImpl extends EFactoryImpl implements Requir
   {
     AsCloseLitImpl asCloseLit = new AsCloseLitImpl();
     return asCloseLit;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public MembershipFunction createMembershipFunction()
+  {
+    MembershipFunctionImpl membershipFunction = new MembershipFunctionImpl();
+    return membershipFunction;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public FuzzyTriangular createFuzzyTriangular()
+  {
+    FuzzyTriangularImpl fuzzyTriangular = new FuzzyTriangularImpl();
+    return fuzzyTriangular;
   }
 
   /**

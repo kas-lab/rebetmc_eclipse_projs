@@ -35,6 +35,7 @@ Workflow {
 			fileExtensions = "context"
 			referencedResource = "platform:/resource/de.fraunhofer.ipa.ros/model/ros.genmodel"
 			referencedResource = "platform:/resource/de.fraunhofer.ipa.rossystem/model/rossystem.genmodel"
+			referencedResource = "platform:/resource/eu.coresense.common/model/common.genmodel"
 
 			serializer = {
 				generateStub = false

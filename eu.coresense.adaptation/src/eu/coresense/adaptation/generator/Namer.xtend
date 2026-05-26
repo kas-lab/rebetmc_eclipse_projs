@@ -1,7 +1,6 @@
 package eu.coresense.adaptation.generator
 
 import java.util.Map
-import eu.coresense.adaptation.tactics.Condition
 import eu.coresense.resolution.resolutionModel.SetParam
 import eu.coresense.resolution.resolutionModel.Resolution
 import system.RosNode
@@ -12,7 +11,6 @@ import uma.caosd.rhea.BasicFMmetamodel.Alternative
 import uma.caosd.rhea.BasicFMmetamodel.OrGroup
 import eu.coresense.resolution.resolutionModel.SetLifecycle
 import eu.coresense.resolution.resolutionModel.Reconfiguration
-import eu.coresense.adaptation.tactics.LogicalOperator
 import ros.ParameterBoolean
 import ros.ParameterDouble
 import ros.ParameterString
@@ -28,14 +26,9 @@ import eu.coresense.context.contextModel.DataSource
 import eu.coresense.context.contextModel.QualifiedActionServerRef
 import eu.coresense.context.contextModel.QualifiedPublisherRef
 import eu.coresense.context.contextModel.QualifiedServiceServerRef
-import eu.coresense.adaptation.tactics.MeasurementCondition
-import eu.coresense.adaptation.tactics.FeatureCondition
 
 class Namer {
 	val Map<String, Integer> nameMap = newHashMap
-	val Map<MeasurementCondition, String> measurementConditionNames = newHashMap 
-	val Map<FeatureCondition, String> featureConditionNames = newHashMap 
-	val Map<Pair<String, String>, String> logicNames = newHashMap
 	val Map<SetParam, String> setparamNames = newHashMap
 	val Map<Resolution, String> resolutionNames = newHashMap
 	val Map<RosNode, String> rosnodeNames = newHashMap
@@ -65,44 +58,11 @@ class Namer {
 	    nameMap.put(baseName, count + 1)
 	    newName
 	}
-	
-	def uniqueName(MeasurementCondition condition) {
-	    measurementConditionNames.computeIfAbsent(condition) [
-	        makeUniqueName(condition.measurement.name.toLowerCase + "_" + condition.operator.getName().toLowerCase)
-	    ]
-	}
-	
-	def uniqueName(FeatureCondition condition) {
-	    featureConditionNames.computeIfAbsent(condition) [
-	        makeUniqueName("is_selected_" + uniqueName(condition.variant.feature))
-	    ]
-	}
-	
+
 	def uniqueName(ContextVar contextVariable) {
 	    cvNames.computeIfAbsent(contextVariable) [
 	        makeUniqueName("t_measured_" + contextVariable.name.toLowerCase)
 	    ]
-	}
-
-	def uniqueName(Condition condition)
-	{
-		switch condition {
-			MeasurementCondition : {
-				return uniqueName(condition)
-			}
-			FeatureCondition: {
-				return uniqueName(condition)
-			}
-		}
-	}
-	def uniqueName(LogicalOperator logicalOp, String lhs_name, String rhs_name)
-	{
-		val lhs_short_name = lhs_name.substring(0, Math.min(3, lhs_name.length))
-		val rhs_short_name = rhs_name.substring(0, Math.min(3, rhs_name.length))
-		val key = Pair.of(lhs_name, rhs_name)
-		    logicNames.computeIfAbsent(key) [
-        makeUniqueName(logicalOp.literal.toLowerCase + "_" + lhs_short_name + "_" + rhs_short_name)
-    ]
 	}
 	
 	def uniqueName(Reconfiguration reconf)

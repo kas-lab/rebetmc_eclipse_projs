@@ -75,18 +75,19 @@ public class TacticsFactoryImpl extends EFactoryImpl implements TacticsFactory
       case TacticsPackage.ATOMIC_ACTION: return createAtomicAction();
       case TacticsPackage.ATOMIC_SIMPLE_ACTION: return createAtomicSimpleAction();
       case TacticsPackage.RULE_BODY: return createRuleBody();
-      case TacticsPackage.PURE_ACTION: return createPureAction();
-      case TacticsPackage.CONDITION_ACTION: return createConditionAction();
-      case TacticsPackage.CONTEXT_GUARD: return createContextGuard();
-      case TacticsPackage.FEATURE_GUARD: return createFeatureGuard();
       case TacticsPackage.EFFECT_BLOCK: return createEffectBlock();
       case TacticsPackage.EFFECT: return createEffect();
       case TacticsPackage.RELATIVE_EFFECT: return createRelativeEffect();
-      case TacticsPackage.FEATURE_CONDITION: return createFeatureCondition();
-      case TacticsPackage.CONDITION: return createCondition();
-      case TacticsPackage.MEASUREMENT_CONDITION: return createMeasurementCondition();
-      case TacticsPackage.MEASUREMENT_THRESHOLD_CONDITION: return createMeasurementThresholdCondition();
-      case TacticsPackage.MEASUREMENT_MEASUREMENT_CONDITION: return createMeasurementMeasurementCondition();
+      case TacticsPackage.PURE_ACTION: return createPureAction();
+      case TacticsPackage.CONDITION_ACTION: return createConditionAction();
+      case TacticsPackage.GUARD_CNF: return createGuardCNF();
+      case TacticsPackage.GUARD_DISJUNCT: return createGuardDisjunct();
+      case TacticsPackage.GUARD_ATOM: return createGuardAtom();
+      case TacticsPackage.FEATURE_SELECTION: return createFeatureSelection();
+      case TacticsPackage.CONTEXT_COMPARISON: return createContextComparison();
+      case TacticsPackage.CONTEXT_OPERAND: return createContextOperand();
+      case TacticsPackage.CONTEXT_VARIABLE_OPERAND: return createContextVariableOperand();
+      case TacticsPackage.LITERAL_OPERAND: return createLiteralOperand();
       case TacticsPackage.ATOMIC_ACTION_SELECT_FEATURE: return createAtomicActionSelectFeature();
       case TacticsPackage.ATOMIC_ACTION_DESELECT_FEATURE: return createAtomicActionDeselectFeature();
       case TacticsPackage.QUALIFIED_FEATURE_REF: return createQualifiedFeatureRef();
@@ -243,54 +244,6 @@ public class TacticsFactoryImpl extends EFactoryImpl implements TacticsFactory
    * @generated
    */
   @Override
-  public PureAction createPureAction()
-  {
-    PureActionImpl pureAction = new PureActionImpl();
-    return pureAction;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public ConditionAction createConditionAction()
-  {
-    ConditionActionImpl conditionAction = new ConditionActionImpl();
-    return conditionAction;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public ContextGuard createContextGuard()
-  {
-    ContextGuardImpl contextGuard = new ContextGuardImpl();
-    return contextGuard;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public FeatureGuard createFeatureGuard()
-  {
-    FeatureGuardImpl featureGuard = new FeatureGuardImpl();
-    return featureGuard;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
   public EffectBlock createEffectBlock()
   {
     EffectBlockImpl effectBlock = new EffectBlockImpl();
@@ -327,10 +280,10 @@ public class TacticsFactoryImpl extends EFactoryImpl implements TacticsFactory
    * @generated
    */
   @Override
-  public FeatureCondition createFeatureCondition()
+  public PureAction createPureAction()
   {
-    FeatureConditionImpl featureCondition = new FeatureConditionImpl();
-    return featureCondition;
+    PureActionImpl pureAction = new PureActionImpl();
+    return pureAction;
   }
 
   /**
@@ -339,10 +292,10 @@ public class TacticsFactoryImpl extends EFactoryImpl implements TacticsFactory
    * @generated
    */
   @Override
-  public Condition createCondition()
+  public ConditionAction createConditionAction()
   {
-    ConditionImpl condition = new ConditionImpl();
-    return condition;
+    ConditionActionImpl conditionAction = new ConditionActionImpl();
+    return conditionAction;
   }
 
   /**
@@ -351,10 +304,10 @@ public class TacticsFactoryImpl extends EFactoryImpl implements TacticsFactory
    * @generated
    */
   @Override
-  public MeasurementCondition createMeasurementCondition()
+  public GuardCNF createGuardCNF()
   {
-    MeasurementConditionImpl measurementCondition = new MeasurementConditionImpl();
-    return measurementCondition;
+    GuardCNFImpl guardCNF = new GuardCNFImpl();
+    return guardCNF;
   }
 
   /**
@@ -363,10 +316,10 @@ public class TacticsFactoryImpl extends EFactoryImpl implements TacticsFactory
    * @generated
    */
   @Override
-  public MeasurementThresholdCondition createMeasurementThresholdCondition()
+  public GuardDisjunct createGuardDisjunct()
   {
-    MeasurementThresholdConditionImpl measurementThresholdCondition = new MeasurementThresholdConditionImpl();
-    return measurementThresholdCondition;
+    GuardDisjunctImpl guardDisjunct = new GuardDisjunctImpl();
+    return guardDisjunct;
   }
 
   /**
@@ -375,10 +328,70 @@ public class TacticsFactoryImpl extends EFactoryImpl implements TacticsFactory
    * @generated
    */
   @Override
-  public MeasurementMeasurementCondition createMeasurementMeasurementCondition()
+  public GuardAtom createGuardAtom()
   {
-    MeasurementMeasurementConditionImpl measurementMeasurementCondition = new MeasurementMeasurementConditionImpl();
-    return measurementMeasurementCondition;
+    GuardAtomImpl guardAtom = new GuardAtomImpl();
+    return guardAtom;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public FeatureSelection createFeatureSelection()
+  {
+    FeatureSelectionImpl featureSelection = new FeatureSelectionImpl();
+    return featureSelection;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public ContextComparison createContextComparison()
+  {
+    ContextComparisonImpl contextComparison = new ContextComparisonImpl();
+    return contextComparison;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public ContextOperand createContextOperand()
+  {
+    ContextOperandImpl contextOperand = new ContextOperandImpl();
+    return contextOperand;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public ContextVariableOperand createContextVariableOperand()
+  {
+    ContextVariableOperandImpl contextVariableOperand = new ContextVariableOperandImpl();
+    return contextVariableOperand;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public LiteralOperand createLiteralOperand()
+  {
+    LiteralOperandImpl literalOperand = new LiteralOperandImpl();
+    return literalOperand;
   }
 
   /**

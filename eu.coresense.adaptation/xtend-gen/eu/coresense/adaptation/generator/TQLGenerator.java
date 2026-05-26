@@ -11,18 +11,18 @@ import eu.coresense.adaptation.tactics.AtomicActionDeselectFeature;
 import eu.coresense.adaptation.tactics.AtomicActionSelectFeature;
 import eu.coresense.adaptation.tactics.AtomicRule;
 import eu.coresense.adaptation.tactics.AtomicSimpleAction;
-import eu.coresense.adaptation.tactics.Condition;
 import eu.coresense.adaptation.tactics.ConditionAction;
-import eu.coresense.adaptation.tactics.ContextGuard;
+import eu.coresense.adaptation.tactics.ContextComparison;
+import eu.coresense.adaptation.tactics.ContextOperand;
+import eu.coresense.adaptation.tactics.ContextVariableOperand;
 import eu.coresense.adaptation.tactics.Effect;
 import eu.coresense.adaptation.tactics.EffectBlock;
-import eu.coresense.adaptation.tactics.FeatureCondition;
-import eu.coresense.adaptation.tactics.FeatureGuard;
+import eu.coresense.adaptation.tactics.FeatureSelection;
+import eu.coresense.adaptation.tactics.GuardAtom;
+import eu.coresense.adaptation.tactics.GuardCNF;
+import eu.coresense.adaptation.tactics.GuardDisjunct;
 import eu.coresense.adaptation.tactics.Import;
-import eu.coresense.adaptation.tactics.LogicalOperator;
-import eu.coresense.adaptation.tactics.MeasurementCondition;
-import eu.coresense.adaptation.tactics.MeasurementMeasurementCondition;
-import eu.coresense.adaptation.tactics.MeasurementThresholdCondition;
+import eu.coresense.adaptation.tactics.LiteralOperand;
 import eu.coresense.adaptation.tactics.RelativeEffect;
 import eu.coresense.adaptation.tactics.RuleBody;
 import eu.coresense.adaptation.tactics.TacticsModel;
@@ -667,7 +667,6 @@ public class TQLGenerator extends AbstractGenerator {
         boolean _isEmpty = this.getParameters(node).isEmpty();
         boolean _not = (!_isEmpty);
         if (_not) {
-          _builder.append("\t");
           _builder.newLine();
           _builder.append("$");
           _builder.append(nodeName);
@@ -788,7 +787,7 @@ public class TQLGenerator extends AbstractGenerator {
           _builder.append(nodeName);
           _builder.append(", client: $");
           _builder.append(acName);
-          _builder.append(") isa has_action;\t");
+          _builder.append(") isa has_action;");
           _builder.newLineIfNotEmpty();
         }
       }
@@ -816,7 +815,7 @@ public class TQLGenerator extends AbstractGenerator {
           _builder.append(nodeName);
           _builder.append(", server: $");
           _builder.append(asName);
-          _builder.append(") isa has_action;\t");
+          _builder.append(") isa has_action;");
           _builder.newLineIfNotEmpty();
         }
       }
@@ -844,7 +843,7 @@ public class TQLGenerator extends AbstractGenerator {
           _builder.append(nodeName);
           _builder.append(", client: $");
           _builder.append(acName_1);
-          _builder.append(") isa has_service;\t");
+          _builder.append(") isa has_service;");
           _builder.newLineIfNotEmpty();
         }
       }
@@ -872,7 +871,7 @@ public class TQLGenerator extends AbstractGenerator {
           _builder.append(nodeName);
           _builder.append(", server: $");
           _builder.append(asName_1);
-          _builder.append(") isa has_service;\t");
+          _builder.append(") isa has_service;");
           _builder.newLineIfNotEmpty();
         }
       }
@@ -1408,7 +1407,6 @@ public class TQLGenerator extends AbstractGenerator {
     _builder.append("\t ");
     _builder.append("};");
     _builder.newLine();
-    _builder.append("\t ");
     _builder.newLine();
     _builder.append("\t\t");
     _builder.append("};");
@@ -1438,7 +1436,6 @@ public class TQLGenerator extends AbstractGenerator {
       String _HasValue = this.HasValue(measurementValue);
       _builder.append(_HasValue, "    ");
       _builder.newLineIfNotEmpty();
-      _builder.append("    ");
       _builder.newLine();
       _builder.append("    ");
       _builder.append("(measure: $");
@@ -1605,84 +1602,95 @@ public class TQLGenerator extends AbstractGenerator {
     return _switchResult;
   }
 
-  private CharSequence inequality(final Condition condition) {
-    CharSequence _xifexpression = null;
-    if ((condition instanceof MeasurementCondition)) {
-      CharSequence _xifexpression_1 = null;
-      if ((condition instanceof MeasurementThresholdCondition)) {
-        CharSequence _xblockexpression = null;
-        {
-          final ContextVar measure = ((MeasurementThresholdCondition)condition).getMeasurement();
-          final MathOperator operator = ((MeasurementThresholdCondition)condition).getOperator();
-          final String name = this._namer.uniqueName(condition);
-          final Pair<String, String> litValue = this.literalValue(((MeasurementThresholdCondition)condition).getThresholdValue(), name);
-          StringConcatenation _builder = new StringConcatenation();
-          String _value = litValue.getValue();
-          _builder.append(_value);
-          _builder.newLineIfNotEmpty();
-          _builder.append("$");
-          _builder.append(name);
-          _builder.append(" (lhs_value:$t_measured_");
-          String _name = measure.getName();
-          _builder.append(_name);
-          _builder.append(", rhs_value: $");
-          String _key = litValue.getKey();
-          _builder.append(_key);
-          _builder.append(") isa ");
-          String _expressionType = this.expressionType(operator);
-          _builder.append(_expressionType);
-          _builder.append(";");
-          _builder.newLineIfNotEmpty();
-          _xblockexpression = _builder;
-        }
-        _xifexpression_1 = _xblockexpression;
-      } else {
-        CharSequence _xifexpression_2 = null;
-        if ((condition instanceof MeasurementMeasurementCondition)) {
-          CharSequence _xblockexpression_1 = null;
-          {
-            final ContextVar lh_measure = ((MeasurementMeasurementCondition)condition).getMeasurement();
-            final ContextVar rh_measure = ((MeasurementMeasurementCondition)condition).getOtherMeasurement();
-            final MathOperator operator = ((MeasurementMeasurementCondition)condition).getOperator();
-            final String name = this._namer.uniqueName(condition);
-            StringConcatenation _builder = new StringConcatenation();
-            _builder.append("$");
-            _builder.append(name);
-            _builder.append(" (lhs_value:$t_measured_");
-            String _name = lh_measure.getName();
-            _builder.append(_name);
-            _builder.append(", rhs_value: $t_measured_");
-            String _name_1 = rh_measure.getName();
-            _builder.append(_name_1);
-            _builder.append(") isa ");
-            String _expressionType = this.expressionType(operator);
-            _builder.append(_expressionType);
-            _builder.append(";");
-            _builder.newLineIfNotEmpty();
-            _xblockexpression_1 = _builder;
-          }
-          _xifexpression_2 = _xblockexpression_1;
-        }
-        _xifexpression_1 = _xifexpression_2;
-      }
-      _xifexpression = _xifexpression_1;
-    } else {
-      CharSequence _xifexpression_3 = null;
-      if ((condition instanceof FeatureCondition)) {
-        StringConcatenation _builder = new StringConcatenation();
-        _builder.append("$");
-        String _uniqueName = this._namer.uniqueName(condition);
-        _builder.append(_uniqueName);
-        _builder.append(" (atom: $");
-        String _uniqueName_1 = this._namer.uniqueName(((FeatureCondition)condition).getVariant().getFeature());
-        _builder.append(_uniqueName_1);
-        _builder.append(") isa propositional_expression;");
-        _builder.newLineIfNotEmpty();
-        _xifexpression_3 = _builder;
-      }
-      _xifexpression = _xifexpression_3;
+  private Pair<String, CharSequence> compileAtom(final GuardAtom atom) {
+    if ((atom instanceof ContextComparison)) {
+      return this.compileContextComparison(((ContextComparison)atom));
     }
-    return _xifexpression;
+    if ((atom instanceof FeatureSelection)) {
+      return this.compileFeatureSelection(((FeatureSelection)atom));
+    }
+    Class<? extends GuardAtom> _class = atom.getClass();
+    String _plus = ("Unsupported guard atom type: " + _class);
+    throw new IllegalArgumentException(_plus);
+  }
+
+  private Pair<String, CharSequence> compileContextOperand(final ContextOperand operand, final String expressionName, final String side) {
+    if ((operand instanceof ContextVariableOperand)) {
+      String _name = ((ContextVariableOperand)operand).getVariable().getName();
+      String _plus = ("t_measured_" + _name);
+      return Pair.<String, CharSequence>of(_plus, ((CharSequence) ""));
+    }
+    if ((operand instanceof LiteralOperand)) {
+      final Pair<String, String> compiled = this.literalValue(((LiteralOperand)operand).getLiteral(), ((expressionName + "_") + side));
+      String _key = compiled.getKey();
+      String _value = compiled.getValue();
+      return Pair.<String, CharSequence>of(_key, ((CharSequence) _value));
+    }
+    Class<? extends ContextOperand> _class = operand.getClass();
+    String _plus_1 = ("Unsupported context operand type: " + _class);
+    throw new IllegalArgumentException(_plus_1);
+  }
+
+  private Pair<String, CharSequence> compileContextComparison(final ContextComparison comparison) {
+    final String name = this._namer.uniqueName(comparison);
+    final Pair<String, CharSequence> lhs = this.compileContextOperand(comparison.getLeft(), name, "lhs");
+    final Pair<String, CharSequence> rhs = this.compileContextOperand(comparison.getRight(), name, "rhs");
+    StringConcatenation _builder = new StringConcatenation();
+    CharSequence _value = lhs.getValue();
+    _builder.append(_value);
+    _builder.newLineIfNotEmpty();
+    CharSequence _value_1 = rhs.getValue();
+    _builder.append(_value_1);
+    _builder.newLineIfNotEmpty();
+    _builder.append("$");
+    _builder.append(name);
+    _builder.append(" (lhs_value: $");
+    String _key = lhs.getKey();
+    _builder.append(_key);
+    _builder.append(", rhs_value: $");
+    String _key_1 = rhs.getKey();
+    _builder.append(_key_1);
+    _builder.append(") isa ");
+    String _expressionType = this.expressionType(comparison.getOperator());
+    _builder.append(_expressionType);
+    _builder.append(", has expression_name \"");
+    _builder.append(name);
+    _builder.append("\";");
+    _builder.newLineIfNotEmpty();
+    return Pair.<String, CharSequence>of(name, _builder.toString());
+  }
+
+  private Pair<String, CharSequence> compileFeatureSelection(final FeatureSelection selection) {
+    final String baseName = this._namer.uniqueName(selection);
+    final String featureName = this._namer.uniqueName(selection.getVariant().getFeature());
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("$");
+    _builder.append(baseName);
+    _builder.append(" (atom: $");
+    _builder.append(featureName);
+    _builder.append(") isa propositional_expression, has expression_name \"");
+    _builder.append(baseName);
+    _builder.append("\";");
+    _builder.newLineIfNotEmpty();
+    final String baseExpression = _builder.toString();
+    String _not = selection.getNot();
+    boolean _tripleNotEquals = (_not != null);
+    if (_tripleNotEquals) {
+      final String notName = (baseName + "_not");
+      StringConcatenation _builder_1 = new StringConcatenation();
+      _builder_1.append(baseExpression);
+      _builder_1.newLineIfNotEmpty();
+      _builder_1.append("$");
+      _builder_1.append(notName);
+      _builder_1.append(" (expression: $");
+      _builder_1.append(baseName);
+      _builder_1.append(") isa not_expression, has expression_name \"");
+      _builder_1.append(notName);
+      _builder_1.append("\";");
+      _builder_1.newLineIfNotEmpty();
+      return Pair.<String, CharSequence>of(notName, _builder_1.toString());
+    }
+    return Pair.<String, CharSequence>of(baseName, baseExpression);
   }
 
   private Pair<String, String> inequality(final DerivedVarFeature derived) {
@@ -1751,12 +1759,6 @@ public class TQLGenerator extends AbstractGenerator {
     if (e instanceof Or) {
       _matched=true;
       return (this.isClause(((Or)e).left) && this.isClause(((Or)e).right));
-    }
-    if (!_matched) {
-      if (e instanceof Var) {
-        _matched=true;
-        return true;
-      }
     }
     if (!_matched) {
       if (e instanceof DerivedVar) {
@@ -2288,7 +2290,7 @@ public class TQLGenerator extends AbstractGenerator {
           StringConcatenation _builder = new StringConcatenation();
           _builder.append("$");
           _builder.append(name);
-          _builder.append("( ");
+          _builder.append("(");
           _builder.newLineIfNotEmpty();
           {
             boolean _hasElements = false;
@@ -2345,7 +2347,6 @@ public class TQLGenerator extends AbstractGenerator {
       for(final ResolutionModel resolutionModel : resolutionModels) {
         CharSequence _registerFeatures = this.registerFeatures(this.gatherResolutionFeatures(resolutionModel));
         _builder.append(_registerFeatures);
-        _builder.append("\t");
         _builder.newLineIfNotEmpty();
       }
     }
@@ -2379,7 +2380,6 @@ public class TQLGenerator extends AbstractGenerator {
       for(final ResolutionModel resolutionModel_1 : resolutionModels) {
         CharSequence _compileResolution = this.compileResolution(resolutionModel_1);
         _builder.append(_compileResolution);
-        _builder.append("\t\t\t\t");
         _builder.newLineIfNotEmpty();
         _builder.append("$res_");
         String _name = resolutionModel_1.getName();
@@ -2436,10 +2436,10 @@ public class TQLGenerator extends AbstractGenerator {
             _builder.append(" ");
           }
         }
-        _builder.append(") ");
+        _builder.append(")");
         _builder.newLineIfNotEmpty();
         _builder.append(" ");
-        _builder.append("isa resolution_model, ");
+        _builder.append("isa resolution_model,");
         _builder.newLine();
         _builder.append("    ");
         _builder.append("has resolution_model_name \"");
@@ -2716,7 +2716,7 @@ public class TQLGenerator extends AbstractGenerator {
                 _builder.newLineIfNotEmpty();
               }
             }
-            _builder.append(") isa alternative;\t");
+            _builder.append(") isa alternative;");
             _builder.newLine();
           }
         }
@@ -2728,7 +2728,7 @@ public class TQLGenerator extends AbstractGenerator {
             _builder.append(" (parent: $");
             String _uniqueName_5 = this._namer.uniqueName(feature_1);
             _builder.append(_uniqueName_5);
-            _builder.append(", ");
+            _builder.append(",");
             _builder.newLineIfNotEmpty();
             {
               EList<Feature> _children_1 = ((OrGroup)feature_1).getChildren();
@@ -2746,7 +2746,7 @@ public class TQLGenerator extends AbstractGenerator {
                 _builder.newLineIfNotEmpty();
               }
             }
-            _builder.append(") isa or_group;\t");
+            _builder.append(") isa or_group;");
             _builder.newLine();
           }
         }
@@ -2780,7 +2780,6 @@ public class TQLGenerator extends AbstractGenerator {
         for(final Reconfiguration acc : reconfiguration_actions) {
           CharSequence _compileReconfiguration = this.compileReconfiguration(acc);
           _builder.append(_compileReconfiguration);
-          _builder.append("\t");
           _builder.newLineIfNotEmpty();
         }
       }
@@ -2915,7 +2914,7 @@ public class TQLGenerator extends AbstractGenerator {
         _builder.append("_value \"");
         String _ParamValueToString = this.ParamValueToString(the_value);
         _builder.append(_ParamValueToString);
-        _builder.append("\";\t");
+        _builder.append("\";");
         _builder.newLineIfNotEmpty();
         _xifexpression = _builder;
       } else {
@@ -2931,7 +2930,7 @@ public class TQLGenerator extends AbstractGenerator {
         _builder_1.append("_value ");
         String _ParamValueToString_1 = this.ParamValueToString(the_value);
         _builder_1.append(_ParamValueToString_1);
-        _builder_1.append(";\t");
+        _builder_1.append(";");
         _builder_1.newLineIfNotEmpty();
         _xifexpression = _builder_1;
       }
@@ -2955,7 +2954,7 @@ public class TQLGenerator extends AbstractGenerator {
       _builder.append(" isa ");
       String _SchemaValueFromParam = this.SchemaValueFromParam(the_type);
       _builder.append(_SchemaValueFromParam);
-      _builder.append(";\t");
+      _builder.append(";");
       _builder.newLineIfNotEmpty();
       _xblockexpression = _builder;
     }
@@ -3145,11 +3144,6 @@ public class TQLGenerator extends AbstractGenerator {
     return _xblockexpression;
   }
 
-  private Expr toCNF(final Condition condition) {
-    Expr toCheck = this.ConditionToExpr(condition);
-    return this.toCNF(toCheck);
-  }
-
   private Expr toCNF(final Expr expression) {
     boolean _isCNFConjunction = this.isCNFConjunction(expression);
     boolean _not = (!_isCNFConjunction);
@@ -3159,110 +3153,99 @@ public class TQLGenerator extends AbstractGenerator {
     return expression;
   }
 
-  private void recordMeasurementCondition(final MeasurementThresholdCondition mes_cond, final Map<ContextVar, Set<Pair<MathOperator, LiteralWrapper>>> comps) {
-    try {
-      List<MeasurementThresholdCondition> _flattenAgain = this.flattenAgain(mes_cond);
-      for (final MeasurementThresholdCondition element : _flattenAgain) {
-        {
-          Literal _thresholdValue = element.getThresholdValue();
-          boolean _tripleEquals = (_thresholdValue == null);
-          if (_tripleEquals) {
-            throw new Exception("Null Threshold");
-          }
-          Set<Pair<MathOperator, LiteralWrapper>> _get = comps.get(element.getMeasurement());
-          boolean _tripleNotEquals = (_get != null);
-          if (_tripleNotEquals) {
-            Set<Pair<MathOperator, LiteralWrapper>> _get_1 = comps.get(element.getMeasurement());
-            MathOperator _operator = element.getOperator();
-            Literal _thresholdValue_1 = element.getThresholdValue();
-            LiteralWrapper _literalWrapper = new LiteralWrapper(_thresholdValue_1);
-            Pair<MathOperator, LiteralWrapper> _mappedTo = Pair.<MathOperator, LiteralWrapper>of(_operator, _literalWrapper);
-            _get_1.add(_mappedTo);
-          } else {
-            Set<Pair<MathOperator, LiteralWrapper>> newList = new HashSet<Pair<MathOperator, LiteralWrapper>>();
-            MathOperator _operator_1 = element.getOperator();
-            Literal _thresholdValue_2 = element.getThresholdValue();
-            LiteralWrapper _literalWrapper_1 = new LiteralWrapper(_thresholdValue_2);
-            Pair<MathOperator, LiteralWrapper> _mappedTo_1 = Pair.<MathOperator, LiteralWrapper>of(_operator_1, _literalWrapper_1);
-            newList.add(_mappedTo_1);
-            comps.put(element.getMeasurement(), newList);
-          }
-        }
-      }
-    } catch (Throwable _e) {
-      throw Exceptions.sneakyThrow(_e);
-    }
-  }
-
-  private void recordFeatureCondition(final FeatureCondition feat_cond, final Map<Feature, Set<Boolean>> sels) {
-    List<FeatureCondition> _flattenAgain = this.flattenAgain(feat_cond);
-    for (final FeatureCondition element : _flattenAgain) {
-      Set<Boolean> _get = sels.get(element.getVariant());
-      boolean _tripleNotEquals = (_get != null);
-      if (_tripleNotEquals) {
-      } else {
-        Set<Boolean> newList = new HashSet<Boolean>();
-        newList.add(Boolean.valueOf(true));
-        newList.add(Boolean.valueOf(false));
-        sels.put(element.getVariant().getFeature(), newList);
-      }
-    }
-  }
-
-  private void recordMeasurementConditionOnlyLiteral(final MeasurementThresholdCondition mes_cond, final Map<ContextVar, Set<LiteralWrapper>> comps) {
-    List<MeasurementThresholdCondition> _flattenAgain = this.flattenAgain(mes_cond);
-    for (final MeasurementThresholdCondition element : _flattenAgain) {
-      Set<LiteralWrapper> _get = comps.get(element.getMeasurement());
-      boolean _tripleNotEquals = (_get != null);
-      if (_tripleNotEquals) {
-        Set<LiteralWrapper> _get_1 = comps.get(element.getMeasurement());
-        Literal _thresholdValue = element.getThresholdValue();
-        LiteralWrapper _literalWrapper = new LiteralWrapper(_thresholdValue);
-        _get_1.add(_literalWrapper);
-      } else {
-        Set<LiteralWrapper> newList = new HashSet<LiteralWrapper>();
-        Literal _thresholdValue_1 = element.getThresholdValue();
-        LiteralWrapper _literalWrapper_1 = new LiteralWrapper(_thresholdValue_1);
-        newList.add(_literalWrapper_1);
-        comps.put(element.getMeasurement(), newList);
-      }
-    }
-  }
-
-  private Expr conditionCombos(final ConditionAction ruleBody) {
-    if (((ruleBody.getContextGuard() != null) && (ruleBody.getFeatureGuard() != null))) {
-      final Expr contextCNF = this.toCNF(ruleBody.getContextGuard().getContextCondition());
-      final Expr featureCNF = this.toCNF(ruleBody.getFeatureGuard().getFeatureCondition());
-      return new And(featureCNF, contextCNF);
-    } else {
-      if (((ruleBody.getContextGuard() != null) && (ruleBody.getFeatureGuard() == null))) {
-        return this.toCNF(ruleBody.getContextGuard().getContextCondition());
-      } else {
-        if (((ruleBody.getContextGuard() == null) && (ruleBody.getFeatureGuard() != null))) {
-          return this.toCNF(ruleBody.getFeatureGuard().getFeatureCondition());
-        }
-      }
+  private ContextVar contextVariableFromOperand(final ContextOperand operand) {
+    if ((operand instanceof ContextVariableOperand)) {
+      return ((ContextVariableOperand)operand).getVariable();
     }
     return null;
+  }
+
+  private Literal literalFromOperand(final ContextOperand operand) {
+    if ((operand instanceof LiteralOperand)) {
+      return ((LiteralOperand)operand).getLiteral();
+    }
+    return null;
+  }
+
+  private boolean recordContextThreshold(final ContextVar variable, final Literal literal, final Map<ContextVar, Set<LiteralWrapper>> comps) {
+    boolean _xblockexpression = false;
+    {
+      Set<LiteralWrapper> thresholdsForVariable = comps.get(variable);
+      if ((thresholdsForVariable == null)) {
+        HashSet<LiteralWrapper> _hashSet = new HashSet<LiteralWrapper>();
+        thresholdsForVariable = _hashSet;
+        comps.put(variable, thresholdsForVariable);
+      }
+      LiteralWrapper _literalWrapper = new LiteralWrapper(literal);
+      _xblockexpression = thresholdsForVariable.add(_literalWrapper);
+    }
+    return _xblockexpression;
+  }
+
+  private boolean recordContextComparisonThreshold(final ContextComparison comparison, final Map<ContextVar, Set<LiteralWrapper>> comps) {
+    boolean _xblockexpression = false;
+    {
+      final ContextVar leftVariable = this.contextVariableFromOperand(comparison.getLeft());
+      final ContextVar rightVariable = this.contextVariableFromOperand(comparison.getRight());
+      final Literal leftLiteral = this.literalFromOperand(comparison.getLeft());
+      final Literal rightLiteral = this.literalFromOperand(comparison.getRight());
+      boolean _xifexpression = false;
+      if (((leftVariable != null) && (rightLiteral != null))) {
+        _xifexpression = this.recordContextThreshold(leftVariable, rightLiteral, comps);
+      } else {
+        boolean _xifexpression_1 = false;
+        if (((leftLiteral != null) && (rightVariable != null))) {
+          _xifexpression_1 = this.recordContextThreshold(rightVariable, leftLiteral, comps);
+        }
+        _xifexpression = _xifexpression_1;
+      }
+      _xblockexpression = _xifexpression;
+    }
+    return _xblockexpression;
+  }
+
+  private Set<Boolean> recordFeatureSelection(final FeatureSelection selection, final Map<Feature, Set<Boolean>> sels) {
+    Set<Boolean> _xifexpression = null;
+    Set<Boolean> _get = sels.get(selection.getVariant().getFeature());
+    boolean _tripleEquals = (_get == null);
+    if (_tripleEquals) {
+      Set<Boolean> _xblockexpression = null;
+      {
+        final Set<Boolean> newList = new HashSet<Boolean>();
+        newList.add(Boolean.valueOf(true));
+        newList.add(Boolean.valueOf(false));
+        _xblockexpression = sels.put(selection.getVariant().getFeature(), newList);
+      }
+      _xifexpression = _xblockexpression;
+    }
+    return _xifexpression;
   }
 
   private void registerComparisonsFromRule(final AdaptationRule adap_rule) {
     if ((adap_rule instanceof AtomicRule)) {
       final RuleBody ruleBody = ((AtomicRule)adap_rule).getRuleBody();
       if ((ruleBody instanceof ConditionAction)) {
-        ContextGuard _contextGuard = ((ConditionAction)ruleBody).getContextGuard();
-        boolean _tripleNotEquals = (_contextGuard != null);
-        if (_tripleNotEquals) {
-          MeasurementCondition _contextCondition = ((ConditionAction)ruleBody).getContextGuard().getContextCondition();
-          if ((_contextCondition instanceof MeasurementThresholdCondition)) {
-            MeasurementCondition _contextCondition_1 = ((ConditionAction)ruleBody).getContextGuard().getContextCondition();
-            this.recordMeasurementConditionOnlyLiteral(((MeasurementThresholdCondition) _contextCondition_1), this.thresholds);
-          }
+        GuardCNF _guardCondition = ((ConditionAction)ruleBody).getGuardCondition();
+        boolean _tripleEquals = (_guardCondition == null);
+        if (_tripleEquals) {
+          return;
         }
-        FeatureGuard _featureGuard = ((ConditionAction)ruleBody).getFeatureGuard();
-        boolean _tripleNotEquals_1 = (_featureGuard != null);
-        if (_tripleNotEquals_1) {
-          this.recordFeatureCondition(((ConditionAction)ruleBody).getFeatureGuard().getFeatureCondition(), this.featureSelections);
+        EList<GuardDisjunct> _clauses = ((ConditionAction)ruleBody).getGuardCondition().getClauses();
+        for (final GuardDisjunct clause : _clauses) {
+          EList<GuardAtom> _terms = clause.getTerms();
+          for (final GuardAtom atom : _terms) {
+            if ((atom instanceof ContextComparison)) {
+              this.recordContextComparisonThreshold(((ContextComparison)atom), this.thresholds);
+            } else {
+              if ((atom instanceof FeatureSelection)) {
+                this.recordFeatureSelection(((FeatureSelection)atom), this.featureSelections);
+              } else {
+                Class<? extends GuardAtom> _class = atom.getClass();
+                String _plus = ("Unsupported guard atom type: " + _class);
+                throw new IllegalArgumentException(_plus);
+              }
+            }
+          }
         }
       }
     }
@@ -3285,132 +3268,159 @@ public class TQLGenerator extends AbstractGenerator {
   }
 
   private boolean checkAgainstBounds(final AdaptationRule adap_rule, final List<ContextVar> contextKeys, final List<Feature> featureKeys, final State state) {
-    try {
-      final List<Pair<LiteralWrapper, LiteralWrapper>> contextPrecondition = state.getContextPrecondition();
-      final List<Boolean> featureValuation = state.featurePrecondition;
-      if ((adap_rule instanceof AtomicRule)) {
-        final RuleBody ruleBody = ((AtomicRule)adap_rule).getRuleBody();
-        if ((ruleBody instanceof ConditionAction)) {
-          FeatureGuard _featureGuard = ((ConditionAction)ruleBody).getFeatureGuard();
-          boolean _tripleNotEquals = (_featureGuard != null);
-          if (_tripleNotEquals) {
-            final FeatureCondition featureCondition = ((ConditionAction)ruleBody).getFeatureGuard().getFeatureCondition();
-            final List<FeatureCondition> isFeatures = this.flattenAgain(featureCondition);
-            for (final FeatureCondition isFeature : isFeatures) {
-              {
-                final Feature featureInQuestion = isFeature.getVariant().getFeature();
-                final int featureIndex = featureKeys.indexOf(featureInQuestion);
-                if (((isFeature.getNot() == null) || (!Objects.equals(isFeature.getNot(), "!")))) {
-                  Boolean _get = featureValuation.get(featureIndex);
-                  boolean _notEquals = ((_get).booleanValue() != true);
-                  if (_notEquals) {
-                    return false;
-                  }
-                } else {
-                  Boolean _get_1 = featureValuation.get(featureIndex);
-                  boolean _equals = ((_get_1).booleanValue() == true);
-                  if (_equals) {
-                    return false;
-                  }
-                }
-              }
-            }
-          }
-          ContextGuard _contextGuard = ((ConditionAction)ruleBody).getContextGuard();
-          boolean _tripleNotEquals_1 = (_contextGuard != null);
-          if (_tripleNotEquals_1) {
-            final MeasurementCondition contextCondition = ((ConditionAction)ruleBody).getContextGuard().getContextCondition();
-            final Expr cnfForm = this.toCNF(contextCondition);
-            if ((cnfForm instanceof And)) {
-              List<Expr> flattenedAnds = this.flattenAnds(cnfForm);
-              ArrayList<Pair<String, CharSequence>> handled = CollectionLiterals.<Pair<String, CharSequence>>newArrayList();
-              for (final Expr element : flattenedAnds) {
-                {
-                  if ((element instanceof Or)) {
-                    final ArrayList<Var> listORs = CollectionLiterals.<Var>newArrayList();
-                    this.flattenORs(element, listORs);
-                    for (final Var varr : listORs) {
-                      {
-                        final Condition condition = varr.condition;
-                        if ((condition instanceof MeasurementThresholdCondition)) {
-                        } else {
-                          if ((condition instanceof MeasurementMeasurementCondition)) {
-                            throw new Exception("Not Implemented Yet");
-                          }
-                        }
-                      }
-                    }
-                  }
-                  if ((element instanceof Var)) {
-                    String _uniqueName = this._namer.uniqueName(((Var)element).condition);
-                    CharSequence _inequality = this.inequality(((Var)element).condition);
-                    Pair<String, CharSequence> _pair = new Pair<String, CharSequence>(_uniqueName, _inequality);
-                    handled.add(_pair);
-                  } else {
-                    if ((element instanceof And)) {
-                      throw new Exception("did not expect an AND from flattend ANDs");
-                    }
-                  }
-                }
-              }
-            }
-            if ((cnfForm instanceof Or)) {
-              final ArrayList<Var> listORs = CollectionLiterals.<Var>newArrayList();
-              this.flattenORs(cnfForm, listORs);
-              for (final Var varr : listORs) {
-                {
-                  final Condition condition = varr.condition;
-                  if ((condition instanceof MeasurementThresholdCondition)) {
-                    final Pair<LiteralWrapper, LiteralWrapper> bound = state.getBoundsOn(((MeasurementThresholdCondition)condition).getMeasurement());
-                    final LiteralWrapper closedLowerBound = bound.getKey();
-                    final LiteralWrapper openUpperBound = bound.getValue();
-                    MathOperator _operator = ((MeasurementThresholdCondition)condition).getOperator();
-                    if (_operator != null) {
-                      switch (_operator) {
-                        case GREATER:
-                          if (((closedLowerBound != null) && (closedLowerBound.compareTo(new LiteralWrapper(((MeasurementThresholdCondition)condition).getThresholdValue())) >= 0))) {
-                            return true;
-                          }
-                          break;
-                        case GREQ:
-                          if (((closedLowerBound != null) && (closedLowerBound.compareTo(new LiteralWrapper(((MeasurementThresholdCondition)condition).getThresholdValue())) >= 0))) {
-                            return true;
-                          }
-                          break;
-                        case LESS:
-                          if (((openUpperBound != null) && (openUpperBound.compareTo(new LiteralWrapper(((MeasurementThresholdCondition)condition).getThresholdValue())) <= 0))) {
-                            return true;
-                          }
-                          break;
-                        case LEQ:
-                          if (((openUpperBound != null) && (openUpperBound.compareTo(new LiteralWrapper(((MeasurementThresholdCondition)condition).getThresholdValue())) <= 0))) {
-                            return true;
-                          }
-                          break;
-                        case EQUAL:
-                          return false;
-                        case DIFFERENT:
-                          return false;
-                        default:
-                          break;
-                      }
-                    }
-                  } else {
-                    if ((condition instanceof MeasurementMeasurementCondition)) {
-                      throw new Exception("Not Implemented Yet");
-                    }
-                  }
-                }
-              }
-              return false;
-            }
-          }
-        }
+    if ((adap_rule instanceof AtomicRule)) {
+      final RuleBody ruleBody = ((AtomicRule)adap_rule).getRuleBody();
+      if ((ruleBody instanceof ConditionAction)) {
+        return this.guardSatisfied(((ConditionAction)ruleBody).getGuardCondition(), contextKeys, featureKeys, state);
       }
-      return false;
-    } catch (Throwable _e) {
-      throw Exceptions.sneakyThrow(_e);
+      return true;
     }
+    return false;
+  }
+
+  private boolean guardSatisfied(final GuardCNF cnf, final List<ContextVar> contextKeys, final List<Feature> featureKeys, final State state) {
+    if ((cnf == null)) {
+      return true;
+    }
+    final Function1<GuardDisjunct, Boolean> _function = (GuardDisjunct clause) -> {
+      final Function1<GuardAtom, Boolean> _function_1 = (GuardAtom atom) -> {
+        return Boolean.valueOf(this.atomSatisfied(atom, contextKeys, featureKeys, state));
+      };
+      return Boolean.valueOf(IterableExtensions.<GuardAtom>exists(clause.getTerms(), _function_1));
+    };
+    return IterableExtensions.<GuardDisjunct>forall(cnf.getClauses(), _function);
+  }
+
+  private boolean atomSatisfied(final GuardAtom atom, final List<ContextVar> contextKeys, final List<Feature> featureKeys, final State state) {
+    if ((atom instanceof FeatureSelection)) {
+      return this.featureSelectionSatisfied(((FeatureSelection)atom), featureKeys, state);
+    }
+    if ((atom instanceof ContextComparison)) {
+      return this.contextComparisonSatisfied(((ContextComparison)atom), state);
+    }
+    Class<? extends GuardAtom> _class = atom.getClass();
+    String _plus = ("Unsupported guard atom type: " + _class);
+    throw new IllegalArgumentException(_plus);
+  }
+
+  private boolean featureSelectionSatisfied(final FeatureSelection selection, final List<Feature> featureKeys, final State state) {
+    final int featureIndex = featureKeys.indexOf(selection.getVariant().getFeature());
+    if ((featureIndex < 0)) {
+      return false;
+    }
+    final Boolean selected = state.featurePrecondition.get(featureIndex);
+    String _not = selection.getNot();
+    boolean _tripleEquals = (_not == null);
+    if (_tripleEquals) {
+      return ((selected).booleanValue() == true);
+    }
+    return ((selected).booleanValue() != true);
+  }
+
+  private boolean contextComparisonSatisfied(final ContextComparison comparison, final State state) {
+    final ContextVar leftVariable = this.contextVariableFromOperand(comparison.getLeft());
+    final ContextVar rightVariable = this.contextVariableFromOperand(comparison.getRight());
+    final Literal leftLiteral = this.literalFromOperand(comparison.getLeft());
+    final Literal rightLiteral = this.literalFromOperand(comparison.getRight());
+    if (((leftVariable != null) && (rightLiteral != null))) {
+      MathOperator _operator = comparison.getOperator();
+      LiteralWrapper _literalWrapper = new LiteralWrapper(rightLiteral);
+      return this.contextIntervalSatisfies(leftVariable, _operator, _literalWrapper, state);
+    }
+    if (((leftLiteral != null) && (rightVariable != null))) {
+      MathOperator _flipOperator = this.flipOperator(comparison.getOperator());
+      LiteralWrapper _literalWrapper_1 = new LiteralWrapper(leftLiteral);
+      return this.contextIntervalSatisfies(rightVariable, _flipOperator, _literalWrapper_1, state);
+    }
+    if (((leftLiteral != null) && (rightLiteral != null))) {
+      LiteralWrapper _literalWrapper_2 = new LiteralWrapper(leftLiteral);
+      MathOperator _operator_1 = comparison.getOperator();
+      LiteralWrapper _literalWrapper_3 = new LiteralWrapper(rightLiteral);
+      return this.literalComparisonSatisfied(_literalWrapper_2, _operator_1, _literalWrapper_3);
+    }
+    if (((leftVariable != null) && (rightVariable != null))) {
+      throw new UnsupportedOperationException("ContextVar-to-ContextVar guard satisfaction is not supported for state bounds");
+    }
+    throw new IllegalArgumentException("Unsupported context comparison operands");
+  }
+
+  private MathOperator flipOperator(final MathOperator operator) {
+    MathOperator _switchResult = null;
+    if (operator != null) {
+      switch (operator) {
+        case GREATER:
+          _switchResult = MathOperator.LESS;
+          break;
+        case GREQ:
+          _switchResult = MathOperator.LEQ;
+          break;
+        case LESS:
+          _switchResult = MathOperator.GREATER;
+          break;
+        case LEQ:
+          _switchResult = MathOperator.GREQ;
+          break;
+        case EQUAL:
+          _switchResult = MathOperator.EQUAL;
+          break;
+        case DIFFERENT:
+          _switchResult = MathOperator.DIFFERENT;
+          break;
+        default:
+          break;
+      }
+    }
+    return _switchResult;
+  }
+
+  private boolean contextIntervalSatisfies(final ContextVar variable, final MathOperator operator, final LiteralWrapper thresholdValue, final State state) {
+    final Pair<LiteralWrapper, LiteralWrapper> bound = state.getBoundsOn(variable);
+    if ((bound == null)) {
+      return false;
+    }
+    final LiteralWrapper closedLowerBound = bound.getKey();
+    final LiteralWrapper openUpperBound = bound.getValue();
+    if (operator != null) {
+      switch (operator) {
+        case GREATER:
+          return ((closedLowerBound != null) && (closedLowerBound.compareTo(thresholdValue) >= 0));
+        case GREQ:
+          return ((closedLowerBound != null) && (closedLowerBound.compareTo(thresholdValue) >= 0));
+        case LESS:
+          return ((openUpperBound != null) && (openUpperBound.compareTo(thresholdValue) <= 0));
+        case LEQ:
+          return ((openUpperBound != null) && (openUpperBound.compareTo(thresholdValue) <= 0));
+        case EQUAL:
+          return false;
+        case DIFFERENT:
+          return false;
+        default:
+          break;
+      }
+    }
+    return false;
+  }
+
+  private boolean literalComparisonSatisfied(final LiteralWrapper left, final MathOperator operator, final LiteralWrapper right) {
+    if (operator != null) {
+      switch (operator) {
+        case GREATER:
+          return (left.compareTo(right) > 0);
+        case GREQ:
+          return (left.compareTo(right) >= 0);
+        case LESS:
+          return (left.compareTo(right) < 0);
+        case LEQ:
+          return (left.compareTo(right) <= 0);
+        case EQUAL:
+          return Objects.equals(left, right);
+        case DIFFERENT:
+          return (!Objects.equals(left, right));
+        default:
+          break;
+      }
+    }
+    return false;
   }
 
   public boolean operator_lessThan(final Literal literal, final Literal literal2) {
@@ -3465,16 +3475,20 @@ public class TQLGenerator extends AbstractGenerator {
         if ((ruleBody instanceof ConditionAction)) {
           CharSequence _xblockexpression_1 = null;
           {
-            final Expr toCheck = this.conditionCombos(((ConditionAction)ruleBody));
-            if ((toCheck == null)) {
-              InputOutput.<String>println("NO GUARDS GIVEN FOR A RULE, UNDEFINED BEHAVIOR");
+            GuardCNF _guardCondition = ((ConditionAction)ruleBody).getGuardCondition();
+            final boolean hasAntecedent = (_guardCondition != null);
+            Pair<String, String> _xifexpression_2 = null;
+            if (hasAntecedent) {
+              _xifexpression_2 = this.createAntecedent(((ConditionAction)ruleBody).getGuardCondition());
+            } else {
+              _xifexpression_2 = Pair.<String, String>of("", "");
             }
-            final Pair<String, String> pair = this.createAntecedent(toCheck);
+            final Pair<String, String> pair = _xifexpression_2;
             final String ant_name = pair.getKey();
             final String ant = pair.getValue();
             StringConcatenation _builder = new StringConcatenation();
             {
-              if ((!doingStates)) {
+              if (((!doingStates) && hasAntecedent)) {
                 _builder.append(" ");
                 _builder.append(ant);
                 _builder.append(" ");
@@ -3501,7 +3515,6 @@ public class TQLGenerator extends AbstractGenerator {
                     _builder.append("activation: $");
                     String _uniqueName = this._namer.uniqueName(((AtomicActionSelectFeature)action).getVariant().getFeature());
                     _builder.append(_uniqueName);
-                    _builder.append("\t");
                     _builder.newLineIfNotEmpty();
                   }
                 }
@@ -3510,7 +3523,6 @@ public class TQLGenerator extends AbstractGenerator {
                     _builder.append("deactivation: $");
                     String _uniqueName_1 = this._namer.uniqueName(((AtomicActionDeselectFeature)action).getVariant().getFeature());
                     _builder.append(_uniqueName_1);
-                    _builder.append("\t");
                     _builder.newLineIfNotEmpty();
                   }
                 }
@@ -3532,7 +3544,7 @@ public class TQLGenerator extends AbstractGenerator {
                 _builder.append(lc_tacticName);
                 _builder.append(", ");
                 {
-                  if ((!doingStates)) {
+                  if (((!doingStates) && hasAntecedent)) {
                     _builder.append(" antecedent:$");
                     _builder.append(ant_name);
                     _builder.append(", ");
@@ -3554,7 +3566,7 @@ public class TQLGenerator extends AbstractGenerator {
                 _builder.append(lc_tacticName);
                 _builder.append(",  ");
                 {
-                  if ((!doingStates)) {
+                  if (((!doingStates) && hasAntecedent)) {
                     _builder.append(" antecedent:$");
                     _builder.append(ant_name);
                     _builder.append(", ");
@@ -3721,58 +3733,6 @@ public class TQLGenerator extends AbstractGenerator {
     return null;
   }
 
-  public Expr ConditionToExpr(final Condition condition) {
-    Expr expr = new Var(condition);
-    final List<Pair<LogicalOperator, Condition>> ops = this.flatten(condition);
-    for (final Pair<LogicalOperator, Condition> pair : ops) {
-      {
-        final LogicalOperator op = pair.getKey();
-        final Condition next = pair.getValue();
-        final Var rightExpr = new Var(next);
-        if (op != null) {
-          switch (op) {
-            case AND:
-              And _and = new And(expr, rightExpr);
-              expr = _and;
-              break;
-            case OR:
-              Or _or = new Or(expr, rightExpr);
-              expr = _or;
-              break;
-            default:
-              break;
-          }
-        }
-      }
-    }
-    return expr;
-  }
-
-  public void flattenORs(final Expr e, final List<Var> expressionList) {
-    try {
-      boolean _matched = false;
-      if (e instanceof Or) {
-        _matched=true;
-        this.flattenORs(((Or)e).left, expressionList);
-        this.flattenORs(((Or)e).right, expressionList);
-      }
-      if (!_matched) {
-        if (e instanceof And) {
-          _matched=true;
-          throw new Exception("There shouldn\'t be an AND in the OR flattening");
-        }
-      }
-      if (!_matched) {
-        if (e instanceof Var) {
-          _matched=true;
-          expressionList.add(((Var)e));
-        }
-      }
-    } catch (Throwable _e) {
-      throw Exceptions.sneakyThrow(_e);
-    }
-  }
-
   public List<Expr> flattenAnds(final Expr e) {
     List<Expr> _switchResult = null;
     boolean _matched = false;
@@ -3792,118 +3752,209 @@ public class TQLGenerator extends AbstractGenerator {
     return _switchResult;
   }
 
-  public Pair<String, String> handleOR(final Or e) {
-    final ArrayList<Var> lissss = CollectionLiterals.<Var>newArrayList();
-    this.flattenORs(e, lissss);
-    final String name = this._namer.uniqueName(e);
-    String final_expr = "";
-    for (final Var element : lissss) {
-      String _final_expr = final_expr;
-      CharSequence _inequality = this.inequality(element.condition);
-      String _plus = (_inequality + "\n");
-      final_expr = (_final_expr + _plus);
+  public Pair<String, String> compileDisjunct(final GuardDisjunct disjunct) {
+    final Function1<GuardAtom, Pair<String, CharSequence>> _function = (GuardAtom it) -> {
+      return this.compileAtom(it);
+    };
+    final List<Pair<String, CharSequence>> compiledTerms = IterableExtensions.<Pair<String, CharSequence>>toList(ListExtensions.<GuardAtom, Pair<String, CharSequence>>map(disjunct.getTerms(), _function));
+    boolean _isEmpty = compiledTerms.isEmpty();
+    if (_isEmpty) {
+      throw new IllegalArgumentException("GuardDisjunct has no terms");
     }
-    String _final_expr_1 = final_expr;
+    int _size = compiledTerms.size();
+    boolean _equals = (_size == 1);
+    if (_equals) {
+      final Pair<String, CharSequence> term = compiledTerms.get(0);
+      String _key = term.getKey();
+      String _string = term.getValue().toString();
+      return Pair.<String, String>of(_key, _string);
+    }
+    final String name = this._namer.uniqueName(disjunct);
     StringConcatenation _builder = new StringConcatenation();
+    {
+      for(final Pair<String, CharSequence> element : compiledTerms) {
+        CharSequence _value = element.getValue();
+        _builder.append(_value);
+        _builder.newLineIfNotEmpty();
+      }
+    }
     _builder.append("$");
     _builder.append(name);
     _builder.append(" (");
     _builder.newLineIfNotEmpty();
     {
       boolean _hasElements = false;
-      for(final Var element_1 : lissss) {
+      for(final Pair<String, CharSequence> element_1 : compiledTerms) {
         if (!_hasElements) {
           _hasElements = true;
         } else {
           _builder.appendImmediate(", ", "");
         }
         _builder.append("expression:$");
-        String _uniqueName = this._namer.uniqueName(element_1.condition);
-        _builder.append(_uniqueName);
+        String _key_1 = element_1.getKey();
+        _builder.append(_key_1);
         _builder.newLineIfNotEmpty();
       }
     }
-    _builder.append(") isa or_expression;");
-    _builder.newLine();
-    final_expr = (_final_expr_1 + _builder);
-    return new Pair<String, String>(name, final_expr);
+    _builder.append(") isa or_expression, has expression_name \"");
+    _builder.append(name);
+    _builder.append("\";");
+    _builder.newLineIfNotEmpty();
+    final String x = _builder.toString();
+    String _string_1 = x.toString();
+    return Pair.<String, String>of(name, _string_1);
+  }
+
+  public Pair<String, String> createAntecedent(final GuardCNF cnf) {
+    final Function1<GuardDisjunct, Pair<String, String>> _function = (GuardDisjunct it) -> {
+      return this.compileDisjunct(it);
+    };
+    final List<Pair<String, String>> compiledClauses = IterableExtensions.<Pair<String, String>>toList(ListExtensions.<GuardDisjunct, Pair<String, String>>map(cnf.getClauses(), _function));
+    boolean _isEmpty = compiledClauses.isEmpty();
+    if (_isEmpty) {
+      throw new IllegalArgumentException("GuardCNF has no clauses");
+    }
+    int _size = compiledClauses.size();
+    boolean _equals = (_size == 1);
+    if (_equals) {
+      return compiledClauses.get(0);
+    }
+    final String name = this._namer.uniqueName(cnf);
+    StringConcatenation _builder = new StringConcatenation();
+    {
+      for(final Pair<String, String> element : compiledClauses) {
+        String _value = element.getValue();
+        _builder.append(_value);
+        _builder.newLineIfNotEmpty();
+      }
+    }
+    _builder.append("$");
+    _builder.append(name);
+    _builder.append(" (");
+    _builder.newLineIfNotEmpty();
+    {
+      boolean _hasElements = false;
+      for(final Pair<String, String> element_1 : compiledClauses) {
+        if (!_hasElements) {
+          _hasElements = true;
+        } else {
+          _builder.appendImmediate(", ", "");
+        }
+        _builder.append("expression:$");
+        String _key = element_1.getKey();
+        _builder.append(_key);
+        _builder.newLineIfNotEmpty();
+      }
+    }
+    _builder.append(") isa and_expression, has expression_name \"");
+    _builder.append(name);
+    _builder.append("\";");
+    _builder.newLineIfNotEmpty();
+    final String x = _builder.toString();
+    String _string = x.toString();
+    return Pair.<String, String>of(name, _string);
+  }
+
+  public Pair<String, String> compileDerivedStateExpression(final Expr e) {
+    boolean _matched = false;
+    if (e instanceof DerivedVar) {
+      _matched=true;
+      final Pair<String, String> compiled = this.inequality(((DerivedVar)e).measurement, ((DerivedVar)e).thresholdValue, ((DerivedVar)e).operator);
+      String _key = compiled.getKey();
+      String _string = compiled.getValue().toString();
+      return Pair.<String, String>of(_key, _string);
+    }
+    if (!_matched) {
+      if (e instanceof DerivedVarFeature) {
+        _matched=true;
+        final Pair<String, String> compiled = this.inequality(((DerivedVarFeature)e));
+        String _key = compiled.getKey();
+        String _string = compiled.getValue().toString();
+        return Pair.<String, String>of(_key, _string);
+      }
+    }
+    if (!_matched) {
+      if (e instanceof Or) {
+        _matched=true;
+        throw new UnsupportedOperationException("OR expressions are not supported in derived state antecedents");
+      }
+    }
+    if (!_matched) {
+      if (e instanceof And) {
+        _matched=true;
+        throw new IllegalArgumentException("did not expect an AND from flattened ANDs");
+      }
+    }
+    String _simpleName = e.getClass().getSimpleName();
+    String _plus = ("Unsupported derived state expression: " + _simpleName);
+    throw new IllegalArgumentException(_plus);
   }
 
   public Pair<String, String> createAntecedent(final Expr e) {
-    try {
-      boolean _matched = false;
+    boolean _matched = false;
+    if (e instanceof DerivedVar) {
+      _matched=true;
+      return this.compileDerivedStateExpression(e);
+    }
+    if (!_matched) {
+      if (e instanceof DerivedVarFeature) {
+        _matched=true;
+        return this.compileDerivedStateExpression(e);
+      }
+    }
+    if (!_matched) {
       if (e instanceof Or) {
         _matched=true;
-        return this.handleOR(((Or)e));
+        throw new UnsupportedOperationException("OR expressions are not supported in derived state antecedents");
       }
-      if (!_matched) {
-        if (e instanceof And) {
-          _matched=true;
-          List<Expr> flattenedAnds = this.flattenAnds(e);
-          ArrayList<Pair<String, ? extends CharSequence>> handled = CollectionLiterals.<Pair<String, ? extends CharSequence>>newArrayList();
-          for (final Expr element : flattenedAnds) {
-            {
-              if ((element instanceof Or)) {
-                handled.add(this.handleOR(((Or)element)));
-              }
-              if ((element instanceof Var)) {
-                String _uniqueName = this._namer.uniqueName(((Var)element).condition);
-                CharSequence _inequality = this.inequality(((Var)element).condition);
-                Pair<String, CharSequence> _pair = new Pair<String, CharSequence>(_uniqueName, _inequality);
-                handled.add(_pair);
-              }
-              if ((element instanceof DerivedVar)) {
-                handled.add(this.inequality(((DerivedVar)element).measurement, ((DerivedVar)element).thresholdValue, ((DerivedVar)element).operator));
-              }
-              if ((element instanceof DerivedVarFeature)) {
-                handled.add(this.inequality(((DerivedVarFeature)element)));
-              } else {
-                if ((element instanceof And)) {
-                  throw new Exception("did not expect an AND from flattend ANDs");
-                }
-              }
-            }
-          }
-          final String name = this._namer.uniqueName(e);
-          StringConcatenation _builder = new StringConcatenation();
-          {
-            for(final Pair<String, ? extends CharSequence> element_1 : handled) {
-              CharSequence _value = element_1.getValue();
-              _builder.append(_value);
-              _builder.append("\t");
-              _builder.newLineIfNotEmpty();
-            }
-          }
-          _builder.append("$");
-          _builder.append(name);
-          _builder.append(" (");
-          _builder.newLineIfNotEmpty();
-          {
-            boolean _hasElements = false;
-            for(final Pair<String, ? extends CharSequence> element_2 : handled) {
-              if (!_hasElements) {
-                _hasElements = true;
-              } else {
-                _builder.appendImmediate(", ", "\t\t    \t");
-              }
-              _builder.append("\t\t    \t");
-              _builder.append("expression:$");
-              String _key = element_2.getKey();
-              _builder.append(_key, "\t\t    \t");
-              _builder.newLineIfNotEmpty();
-            }
-          }
-          _builder.append("\t\t    \t");
-          _builder.append(") isa and_expression;");
-          _builder.newLine();
-          final String x = _builder.toString();
-          return new Pair<String, String>(name, x);
-        }
-      }
-      return null;
-    } catch (Throwable _e) {
-      throw Exceptions.sneakyThrow(_e);
     }
+    if (!_matched) {
+      if (e instanceof And) {
+        _matched=true;
+        List<Expr> flattenedAnds = this.flattenAnds(e);
+        final Function1<Expr, Pair<String, String>> _function = (Expr it) -> {
+          return this.compileDerivedStateExpression(it);
+        };
+        List<Pair<String, String>> handled = IterableExtensions.<Pair<String, String>>toList(ListExtensions.<Expr, Pair<String, String>>map(flattenedAnds, _function));
+        final String name = this._namer.uniqueName(e);
+        StringConcatenation _builder = new StringConcatenation();
+        {
+          for(final Pair<String, String> element : handled) {
+            String _value = element.getValue();
+            _builder.append(_value);
+            _builder.newLineIfNotEmpty();
+          }
+        }
+        _builder.append("$");
+        _builder.append(name);
+        _builder.append(" (");
+        _builder.newLineIfNotEmpty();
+        {
+          boolean _hasElements = false;
+          for(final Pair<String, String> element_1 : handled) {
+            if (!_hasElements) {
+              _hasElements = true;
+            } else {
+              _builder.appendImmediate(", ", "\t\t    \t");
+            }
+            _builder.append("\t\t    \t");
+            _builder.append("expression:$");
+            String _key = element_1.getKey();
+            _builder.append(_key, "\t\t    \t");
+            _builder.newLineIfNotEmpty();
+          }
+        }
+        _builder.append("\t\t    \t");
+        _builder.append(") isa and_expression;");
+        _builder.newLine();
+        final String x = _builder.toString();
+        String _string = x.toString();
+        return Pair.<String, String>of(name, _string);
+      }
+    }
+    String _simpleName = e.getClass().getSimpleName();
+    String _plus = ("Unsupported derived state antecedent: " + _simpleName);
+    throw new IllegalArgumentException(_plus);
   }
 
   public Expr distribute(final Expr e) {
@@ -3937,78 +3988,6 @@ public class TQLGenerator extends AbstractGenerator {
       }
     }
     return e;
-  }
-
-  public List<Pair<LogicalOperator, Condition>> flatten(final MeasurementCondition c) {
-    final ArrayList<Pair<LogicalOperator, Condition>> result = CollectionLiterals.<Pair<LogicalOperator, Condition>>newArrayList();
-    MeasurementCondition current = c;
-    while ((current.getSecondTerm() != null)) {
-      {
-        LogicalOperator _logicalOp = current.getLogicalOp();
-        MeasurementCondition _secondTerm = current.getSecondTerm();
-        Pair<LogicalOperator, Condition> _mappedTo = Pair.<LogicalOperator, Condition>of(_logicalOp, ((Condition) _secondTerm));
-        result.add(_mappedTo);
-        current = current.getSecondTerm();
-      }
-    }
-    return result;
-  }
-
-  public List<MeasurementThresholdCondition> flattenAgain(final MeasurementThresholdCondition c) {
-    final ArrayList<MeasurementThresholdCondition> result = CollectionLiterals.<MeasurementThresholdCondition>newArrayList();
-    MeasurementThresholdCondition current = c;
-    result.add(current);
-    while (((current.getSecondTerm() != null) && (current.getSecondTerm() instanceof MeasurementThresholdCondition))) {
-      {
-        MeasurementCondition _secondTerm = current.getSecondTerm();
-        result.add(((MeasurementThresholdCondition) _secondTerm));
-        MeasurementCondition _secondTerm_1 = current.getSecondTerm();
-        current = ((MeasurementThresholdCondition) _secondTerm_1);
-      }
-    }
-    return result;
-  }
-
-  public List<FeatureCondition> flattenAgain(final FeatureCondition c) {
-    final ArrayList<FeatureCondition> result = CollectionLiterals.<FeatureCondition>newArrayList();
-    FeatureCondition current = c;
-    result.add(current);
-    while (((current.getSecondTerm() != null) && (current.getSecondTerm() instanceof MeasurementThresholdCondition))) {
-      {
-        FeatureCondition _secondTerm = current.getSecondTerm();
-        result.add(((FeatureCondition) _secondTerm));
-        FeatureCondition _secondTerm_1 = current.getSecondTerm();
-        current = ((FeatureCondition) _secondTerm_1);
-      }
-    }
-    return result;
-  }
-
-  public List<Pair<LogicalOperator, Condition>> flatten(final FeatureCondition c) {
-    final ArrayList<Pair<LogicalOperator, Condition>> result = CollectionLiterals.<Pair<LogicalOperator, Condition>>newArrayList();
-    FeatureCondition current = c;
-    while ((current.getSecondTerm() != null)) {
-      {
-        LogicalOperator _logicalOp = current.getLogicalOp();
-        FeatureCondition _secondTerm = current.getSecondTerm();
-        Pair<LogicalOperator, Condition> _mappedTo = Pair.<LogicalOperator, Condition>of(_logicalOp, ((Condition) _secondTerm));
-        result.add(_mappedTo);
-        current = current.getSecondTerm();
-      }
-    }
-    return result;
-  }
-
-  public List<Pair<LogicalOperator, Condition>> flatten(final Condition c) {
-    if ((c instanceof MeasurementCondition)) {
-      return this.flatten(((MeasurementCondition)c));
-    }
-    if ((c instanceof FeatureCondition)) {
-      return this.flatten(((FeatureCondition)c));
-    } else {
-      InputOutput.<String>println("REDFLAGGG");
-      return null;
-    }
   }
 
   @XbaseGenerated

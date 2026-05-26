@@ -1,9 +1,5 @@
 package eu.coresense.adaptation.generator;
 
-import eu.coresense.adaptation.tactics.Condition;
-import eu.coresense.adaptation.tactics.FeatureCondition;
-import eu.coresense.adaptation.tactics.LogicalOperator;
-import eu.coresense.adaptation.tactics.MeasurementCondition;
 import eu.coresense.context.contextModel.ContextVar;
 import eu.coresense.context.contextModel.DataSource;
 import eu.coresense.context.contextModel.QualifiedActionServerRef;
@@ -17,7 +13,6 @@ import eu.coresense.resolution.resolutionModel.SetParam;
 import java.util.Map;
 import java.util.function.Function;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
-import org.eclipse.xtext.xbase.lib.Pair;
 import ros.ActionClient;
 import ros.ActionServer;
 import ros.Node;
@@ -47,12 +42,6 @@ import uma.caosd.rhea.BasicFMmetamodel.OrGroup;
 @SuppressWarnings("all")
 public class Namer {
   private final Map<String, Integer> nameMap = CollectionLiterals.<String, Integer>newHashMap();
-
-  private final Map<MeasurementCondition, String> measurementConditionNames = CollectionLiterals.<MeasurementCondition, String>newHashMap();
-
-  private final Map<FeatureCondition, String> featureConditionNames = CollectionLiterals.<FeatureCondition, String>newHashMap();
-
-  private final Map<Pair<String, String>, String> logicNames = CollectionLiterals.<Pair<String, String>, String>newHashMap();
 
   private final Map<SetParam, String> setparamNames = CollectionLiterals.<SetParam, String>newHashMap();
 
@@ -118,26 +107,6 @@ public class Namer {
     return _xblockexpression;
   }
 
-  public String uniqueName(final MeasurementCondition condition) {
-    final Function<MeasurementCondition, String> _function = (MeasurementCondition it) -> {
-      String _lowerCase = condition.getMeasurement().getName().toLowerCase();
-      String _plus = (_lowerCase + "_");
-      String _lowerCase_1 = condition.getOperator().getName().toLowerCase();
-      String _plus_1 = (_plus + _lowerCase_1);
-      return this.makeUniqueName(_plus_1);
-    };
-    return this.measurementConditionNames.computeIfAbsent(condition, _function);
-  }
-
-  public String uniqueName(final FeatureCondition condition) {
-    final Function<FeatureCondition, String> _function = (FeatureCondition it) -> {
-      String _uniqueName = this.uniqueName(condition.getVariant().getFeature());
-      String _plus = ("is_selected_" + _uniqueName);
-      return this.makeUniqueName(_plus);
-    };
-    return this.featureConditionNames.computeIfAbsent(condition, _function);
-  }
-
   public String uniqueName(final ContextVar contextVariable) {
     final Function<ContextVar, String> _function = (ContextVar it) -> {
       String _lowerCase = contextVariable.getName().toLowerCase();
@@ -145,40 +114,6 @@ public class Namer {
       return this.makeUniqueName(_plus);
     };
     return this.cvNames.computeIfAbsent(contextVariable, _function);
-  }
-
-  public String uniqueName(final Condition condition) {
-    boolean _matched = false;
-    if (condition instanceof MeasurementCondition) {
-      _matched=true;
-      return this.uniqueName(((MeasurementCondition)condition));
-    }
-    if (!_matched) {
-      if (condition instanceof FeatureCondition) {
-        _matched=true;
-        return this.uniqueName(((FeatureCondition)condition));
-      }
-    }
-    return null;
-  }
-
-  public String uniqueName(final LogicalOperator logicalOp, final String lhs_name, final String rhs_name) {
-    String _xblockexpression = null;
-    {
-      final String lhs_short_name = lhs_name.substring(0, Math.min(3, lhs_name.length()));
-      final String rhs_short_name = rhs_name.substring(0, Math.min(3, rhs_name.length()));
-      final Pair<String, String> key = Pair.<String, String>of(lhs_name, rhs_name);
-      final Function<Pair<String, String>, String> _function = (Pair<String, String> it) -> {
-        String _lowerCase = logicalOp.getLiteral().toLowerCase();
-        String _plus = (_lowerCase + "_");
-        String _plus_1 = (_plus + lhs_short_name);
-        String _plus_2 = (_plus_1 + "_");
-        String _plus_3 = (_plus_2 + rhs_short_name);
-        return this.makeUniqueName(_plus_3);
-      };
-      _xblockexpression = this.logicNames.computeIfAbsent(key, _function);
-    }
-    return _xblockexpression;
   }
 
   public String uniqueName(final Reconfiguration reconf) {

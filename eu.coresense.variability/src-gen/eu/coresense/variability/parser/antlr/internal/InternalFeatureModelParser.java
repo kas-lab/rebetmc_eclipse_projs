@@ -23,7 +23,7 @@ import java.util.HashMap;
 @SuppressWarnings("all")
 public class InternalFeatureModelParser extends AbstractInternalAntlrParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_STRING", "RULE_ID", "RULE_INT", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'feature_model'", "'{'", "'}'", "'name'", "'root'", "'crossTreeConstraints'", "'BasicConstraint'", "'type'", "'rightFeature'", "'leftFeature'", "'mandatory'", "'selected'", "'Feature'", "'children'", "','", "'Alternative'", "'OrGroup'", "'REQUIRES'", "'EXCLUDES'"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_STRING", "RULE_ID", "RULE_INT", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'feature_model'", "'{'", "'}'", "'name'", "'root'", "'crossTreeConstraints'", "'BasicConstraint'", "'type'", "'leftFeature'", "'rightFeature'", "'mandatory'", "'selected'", "'Feature'", "'children'", "','", "'Alternative'", "'OrGroup'", "'REQUIRES'", "'EXCLUDES'"
     };
     public static final int RULE_STRING=4;
     public static final int RULE_SL_COMMENT=8;
@@ -515,7 +515,7 @@ public class InternalFeatureModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleBasicConstraint"
-    // InternalFeatureModel.g:218:1: ruleBasicConstraint returns [EObject current=null] : (otherlv_0= 'BasicConstraint' otherlv_1= '{' otherlv_2= 'type' ( (lv_type_3_0= ruleCrossTreeConstraintType ) ) otherlv_4= 'rightFeature' ( ( ruleEString ) ) otherlv_6= 'leftFeature' ( ( ruleEString ) ) otherlv_8= '}' ) ;
+    // InternalFeatureModel.g:218:1: ruleBasicConstraint returns [EObject current=null] : (otherlv_0= 'BasicConstraint' otherlv_1= '{' otherlv_2= 'type' ( (lv_type_3_0= ruleCrossTreeConstraintType ) ) otherlv_4= 'leftFeature' ( ( ruleEString ) ) otherlv_6= 'rightFeature' ( ( ruleEString ) ) otherlv_8= '}' ) ;
     public final EObject ruleBasicConstraint() throws RecognitionException {
         EObject current = null;
 
@@ -532,11 +532,11 @@ public class InternalFeatureModelParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalFeatureModel.g:224:2: ( (otherlv_0= 'BasicConstraint' otherlv_1= '{' otherlv_2= 'type' ( (lv_type_3_0= ruleCrossTreeConstraintType ) ) otherlv_4= 'rightFeature' ( ( ruleEString ) ) otherlv_6= 'leftFeature' ( ( ruleEString ) ) otherlv_8= '}' ) )
-            // InternalFeatureModel.g:225:2: (otherlv_0= 'BasicConstraint' otherlv_1= '{' otherlv_2= 'type' ( (lv_type_3_0= ruleCrossTreeConstraintType ) ) otherlv_4= 'rightFeature' ( ( ruleEString ) ) otherlv_6= 'leftFeature' ( ( ruleEString ) ) otherlv_8= '}' )
+            // InternalFeatureModel.g:224:2: ( (otherlv_0= 'BasicConstraint' otherlv_1= '{' otherlv_2= 'type' ( (lv_type_3_0= ruleCrossTreeConstraintType ) ) otherlv_4= 'leftFeature' ( ( ruleEString ) ) otherlv_6= 'rightFeature' ( ( ruleEString ) ) otherlv_8= '}' ) )
+            // InternalFeatureModel.g:225:2: (otherlv_0= 'BasicConstraint' otherlv_1= '{' otherlv_2= 'type' ( (lv_type_3_0= ruleCrossTreeConstraintType ) ) otherlv_4= 'leftFeature' ( ( ruleEString ) ) otherlv_6= 'rightFeature' ( ( ruleEString ) ) otherlv_8= '}' )
             {
-            // InternalFeatureModel.g:225:2: (otherlv_0= 'BasicConstraint' otherlv_1= '{' otherlv_2= 'type' ( (lv_type_3_0= ruleCrossTreeConstraintType ) ) otherlv_4= 'rightFeature' ( ( ruleEString ) ) otherlv_6= 'leftFeature' ( ( ruleEString ) ) otherlv_8= '}' )
-            // InternalFeatureModel.g:226:3: otherlv_0= 'BasicConstraint' otherlv_1= '{' otherlv_2= 'type' ( (lv_type_3_0= ruleCrossTreeConstraintType ) ) otherlv_4= 'rightFeature' ( ( ruleEString ) ) otherlv_6= 'leftFeature' ( ( ruleEString ) ) otherlv_8= '}'
+            // InternalFeatureModel.g:225:2: (otherlv_0= 'BasicConstraint' otherlv_1= '{' otherlv_2= 'type' ( (lv_type_3_0= ruleCrossTreeConstraintType ) ) otherlv_4= 'leftFeature' ( ( ruleEString ) ) otherlv_6= 'rightFeature' ( ( ruleEString ) ) otherlv_8= '}' )
+            // InternalFeatureModel.g:226:3: otherlv_0= 'BasicConstraint' otherlv_1= '{' otherlv_2= 'type' ( (lv_type_3_0= ruleCrossTreeConstraintType ) ) otherlv_4= 'leftFeature' ( ( ruleEString ) ) otherlv_6= 'rightFeature' ( ( ruleEString ) ) otherlv_8= '}'
             {
             otherlv_0=(Token)match(input,17,FOLLOW_3); if (state.failed) return current;
             if ( state.backtracking==0 ) {
@@ -594,7 +594,7 @@ public class InternalFeatureModelParser extends AbstractInternalAntlrParser {
             otherlv_4=(Token)match(input,19,FOLLOW_6); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
-              			newLeafNode(otherlv_4, grammarAccess.getBasicConstraintAccess().getRightFeatureKeyword_4());
+              			newLeafNode(otherlv_4, grammarAccess.getBasicConstraintAccess().getLeftFeatureKeyword_4());
               		
             }
             // InternalFeatureModel.g:261:3: ( ( ruleEString ) )
@@ -612,7 +612,7 @@ public class InternalFeatureModelParser extends AbstractInternalAntlrParser {
             }
             if ( state.backtracking==0 ) {
 
-              					newCompositeNode(grammarAccess.getBasicConstraintAccess().getRightFeatureFeatureCrossReference_5_0());
+              					newCompositeNode(grammarAccess.getBasicConstraintAccess().getLeftFeatureFeatureCrossReference_5_0());
               				
             }
             pushFollow(FOLLOW_14);
@@ -634,7 +634,7 @@ public class InternalFeatureModelParser extends AbstractInternalAntlrParser {
             otherlv_6=(Token)match(input,20,FOLLOW_6); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
-              			newLeafNode(otherlv_6, grammarAccess.getBasicConstraintAccess().getLeftFeatureKeyword_6());
+              			newLeafNode(otherlv_6, grammarAccess.getBasicConstraintAccess().getRightFeatureKeyword_6());
               		
             }
             // InternalFeatureModel.g:281:3: ( ( ruleEString ) )
@@ -652,7 +652,7 @@ public class InternalFeatureModelParser extends AbstractInternalAntlrParser {
             }
             if ( state.backtracking==0 ) {
 
-              					newCompositeNode(grammarAccess.getBasicConstraintAccess().getLeftFeatureFeatureCrossReference_7_0());
+              					newCompositeNode(grammarAccess.getBasicConstraintAccess().getRightFeatureFeatureCrossReference_7_0());
               				
             }
             pushFollow(FOLLOW_5);

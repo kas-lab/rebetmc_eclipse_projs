@@ -254,9 +254,9 @@ ruleBasicConstraint returns [EObject current=null]
 				}
 			)
 		)
-		otherlv_4='rightFeature'
+		otherlv_4='leftFeature'
 		{
-			newLeafNode(otherlv_4, grammarAccess.getBasicConstraintAccess().getRightFeatureKeyword_4());
+			newLeafNode(otherlv_4, grammarAccess.getBasicConstraintAccess().getLeftFeatureKeyword_4());
 		}
 		(
 			(
@@ -266,7 +266,7 @@ ruleBasicConstraint returns [EObject current=null]
 					}
 				}
 				{
-					newCompositeNode(grammarAccess.getBasicConstraintAccess().getRightFeatureFeatureCrossReference_5_0());
+					newCompositeNode(grammarAccess.getBasicConstraintAccess().getLeftFeatureFeatureCrossReference_5_0());
 				}
 				ruleEString
 				{
@@ -274,9 +274,9 @@ ruleBasicConstraint returns [EObject current=null]
 				}
 			)
 		)
-		otherlv_6='leftFeature'
+		otherlv_6='rightFeature'
 		{
-			newLeafNode(otherlv_6, grammarAccess.getBasicConstraintAccess().getLeftFeatureKeyword_6());
+			newLeafNode(otherlv_6, grammarAccess.getBasicConstraintAccess().getRightFeatureKeyword_6());
 		}
 		(
 			(
@@ -286,7 +286,7 @@ ruleBasicConstraint returns [EObject current=null]
 					}
 				}
 				{
-					newCompositeNode(grammarAccess.getBasicConstraintAccess().getLeftFeatureFeatureCrossReference_7_0());
+					newCompositeNode(grammarAccess.getBasicConstraintAccess().getRightFeatureFeatureCrossReference_7_0());
 				}
 				ruleEString
 				{

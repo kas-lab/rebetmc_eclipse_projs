@@ -131,30 +131,30 @@ public class FeatureModelGrammarAccess extends AbstractElementFinder.AbstractGra
 		private final Keyword cTypeKeyword_2 = (Keyword)cGroup.eContents().get(2);
 		private final Assignment cTypeAssignment_3 = (Assignment)cGroup.eContents().get(3);
 		private final RuleCall cTypeCrossTreeConstraintTypeEnumRuleCall_3_0 = (RuleCall)cTypeAssignment_3.eContents().get(0);
-		private final Keyword cRightFeatureKeyword_4 = (Keyword)cGroup.eContents().get(4);
-		private final Assignment cRightFeatureAssignment_5 = (Assignment)cGroup.eContents().get(5);
-		private final CrossReference cRightFeatureFeatureCrossReference_5_0 = (CrossReference)cRightFeatureAssignment_5.eContents().get(0);
-		private final RuleCall cRightFeatureFeatureEStringParserRuleCall_5_0_1 = (RuleCall)cRightFeatureFeatureCrossReference_5_0.eContents().get(1);
-		private final Keyword cLeftFeatureKeyword_6 = (Keyword)cGroup.eContents().get(6);
-		private final Assignment cLeftFeatureAssignment_7 = (Assignment)cGroup.eContents().get(7);
-		private final CrossReference cLeftFeatureFeatureCrossReference_7_0 = (CrossReference)cLeftFeatureAssignment_7.eContents().get(0);
-		private final RuleCall cLeftFeatureFeatureEStringParserRuleCall_7_0_1 = (RuleCall)cLeftFeatureFeatureCrossReference_7_0.eContents().get(1);
+		private final Keyword cLeftFeatureKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		private final Assignment cLeftFeatureAssignment_5 = (Assignment)cGroup.eContents().get(5);
+		private final CrossReference cLeftFeatureFeatureCrossReference_5_0 = (CrossReference)cLeftFeatureAssignment_5.eContents().get(0);
+		private final RuleCall cLeftFeatureFeatureEStringParserRuleCall_5_0_1 = (RuleCall)cLeftFeatureFeatureCrossReference_5_0.eContents().get(1);
+		private final Keyword cRightFeatureKeyword_6 = (Keyword)cGroup.eContents().get(6);
+		private final Assignment cRightFeatureAssignment_7 = (Assignment)cGroup.eContents().get(7);
+		private final CrossReference cRightFeatureFeatureCrossReference_7_0 = (CrossReference)cRightFeatureAssignment_7.eContents().get(0);
+		private final RuleCall cRightFeatureFeatureEStringParserRuleCall_7_0_1 = (RuleCall)cRightFeatureFeatureCrossReference_7_0.eContents().get(1);
 		private final Keyword cRightCurlyBracketKeyword_8 = (Keyword)cGroup.eContents().get(8);
 		
 		//BasicConstraint returns BasicConstraintsFMmetamodel::BasicConstraint:
 		//    'BasicConstraint'
 		//    '{'
 		//        'type' type=CrossTreeConstraintType
-		//        'rightFeature' rightFeature=[BasicFMmetamodel::Feature|EString]
 		//        'leftFeature' leftFeature=[BasicFMmetamodel::Feature|EString]
+		//        'rightFeature' rightFeature=[BasicFMmetamodel::Feature|EString]
 		//    '}';
 		@Override public ParserRule getRule() { return rule; }
 		
 		//'BasicConstraint'
 		//'{'
 		//    'type' type=CrossTreeConstraintType
-		//    'rightFeature' rightFeature=[BasicFMmetamodel::Feature|EString]
 		//    'leftFeature' leftFeature=[BasicFMmetamodel::Feature|EString]
+		//    'rightFeature' rightFeature=[BasicFMmetamodel::Feature|EString]
 		//'}'
 		public Group getGroup() { return cGroup; }
 		
@@ -173,29 +173,29 @@ public class FeatureModelGrammarAccess extends AbstractElementFinder.AbstractGra
 		//CrossTreeConstraintType
 		public RuleCall getTypeCrossTreeConstraintTypeEnumRuleCall_3_0() { return cTypeCrossTreeConstraintTypeEnumRuleCall_3_0; }
 		
-		//'rightFeature'
-		public Keyword getRightFeatureKeyword_4() { return cRightFeatureKeyword_4; }
-		
-		//rightFeature=[BasicFMmetamodel::Feature|EString]
-		public Assignment getRightFeatureAssignment_5() { return cRightFeatureAssignment_5; }
-		
-		//[BasicFMmetamodel::Feature|EString]
-		public CrossReference getRightFeatureFeatureCrossReference_5_0() { return cRightFeatureFeatureCrossReference_5_0; }
-		
-		//EString
-		public RuleCall getRightFeatureFeatureEStringParserRuleCall_5_0_1() { return cRightFeatureFeatureEStringParserRuleCall_5_0_1; }
-		
 		//'leftFeature'
-		public Keyword getLeftFeatureKeyword_6() { return cLeftFeatureKeyword_6; }
+		public Keyword getLeftFeatureKeyword_4() { return cLeftFeatureKeyword_4; }
 		
 		//leftFeature=[BasicFMmetamodel::Feature|EString]
-		public Assignment getLeftFeatureAssignment_7() { return cLeftFeatureAssignment_7; }
+		public Assignment getLeftFeatureAssignment_5() { return cLeftFeatureAssignment_5; }
 		
 		//[BasicFMmetamodel::Feature|EString]
-		public CrossReference getLeftFeatureFeatureCrossReference_7_0() { return cLeftFeatureFeatureCrossReference_7_0; }
+		public CrossReference getLeftFeatureFeatureCrossReference_5_0() { return cLeftFeatureFeatureCrossReference_5_0; }
 		
 		//EString
-		public RuleCall getLeftFeatureFeatureEStringParserRuleCall_7_0_1() { return cLeftFeatureFeatureEStringParserRuleCall_7_0_1; }
+		public RuleCall getLeftFeatureFeatureEStringParserRuleCall_5_0_1() { return cLeftFeatureFeatureEStringParserRuleCall_5_0_1; }
+		
+		//'rightFeature'
+		public Keyword getRightFeatureKeyword_6() { return cRightFeatureKeyword_6; }
+		
+		//rightFeature=[BasicFMmetamodel::Feature|EString]
+		public Assignment getRightFeatureAssignment_7() { return cRightFeatureAssignment_7; }
+		
+		//[BasicFMmetamodel::Feature|EString]
+		public CrossReference getRightFeatureFeatureCrossReference_7_0() { return cRightFeatureFeatureCrossReference_7_0; }
+		
+		//EString
+		public RuleCall getRightFeatureFeatureEStringParserRuleCall_7_0_1() { return cRightFeatureFeatureEStringParserRuleCall_7_0_1; }
 		
 		//'}'
 		public Keyword getRightCurlyBracketKeyword_8() { return cRightCurlyBracketKeyword_8; }
@@ -689,8 +689,8 @@ public class FeatureModelGrammarAccess extends AbstractElementFinder.AbstractGra
 	//    'BasicConstraint'
 	//    '{'
 	//        'type' type=CrossTreeConstraintType
-	//        'rightFeature' rightFeature=[BasicFMmetamodel::Feature|EString]
 	//        'leftFeature' leftFeature=[BasicFMmetamodel::Feature|EString]
+	//        'rightFeature' rightFeature=[BasicFMmetamodel::Feature|EString]
 	//    '}';
 	public BasicConstraintElements getBasicConstraintAccess() {
 		return pBasicConstraint;

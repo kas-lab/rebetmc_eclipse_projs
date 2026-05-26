@@ -13,8 +13,7 @@ package eu.coresense.adaptation.tactics;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link eu.coresense.adaptation.tactics.ConditionAction#getContextGuard <em>Context Guard</em>}</li>
- *   <li>{@link eu.coresense.adaptation.tactics.ConditionAction#getFeatureGuard <em>Feature Guard</em>}</li>
+ *   <li>{@link eu.coresense.adaptation.tactics.ConditionAction#getGuardCondition <em>Guard Condition</em>}</li>
  * </ul>
  *
  * @see eu.coresense.adaptation.tactics.TacticsPackage#getConditionAction()
@@ -24,47 +23,25 @@ package eu.coresense.adaptation.tactics;
 public interface ConditionAction extends RuleBody
 {
   /**
-   * Returns the value of the '<em><b>Context Guard</b></em>' containment reference.
+   * Returns the value of the '<em><b>Guard Condition</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Context Guard</em>' containment reference.
-   * @see #setContextGuard(ContextGuard)
-   * @see eu.coresense.adaptation.tactics.TacticsPackage#getConditionAction_ContextGuard()
+   * @return the value of the '<em>Guard Condition</em>' containment reference.
+   * @see #setGuardCondition(GuardCNF)
+   * @see eu.coresense.adaptation.tactics.TacticsPackage#getConditionAction_GuardCondition()
    * @model containment="true"
    * @generated
    */
-  ContextGuard getContextGuard();
+  GuardCNF getGuardCondition();
 
   /**
-   * Sets the value of the '{@link eu.coresense.adaptation.tactics.ConditionAction#getContextGuard <em>Context Guard</em>}' containment reference.
+   * Sets the value of the '{@link eu.coresense.adaptation.tactics.ConditionAction#getGuardCondition <em>Guard Condition</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Context Guard</em>' containment reference.
-   * @see #getContextGuard()
+   * @param value the new value of the '<em>Guard Condition</em>' containment reference.
+   * @see #getGuardCondition()
    * @generated
    */
-  void setContextGuard(ContextGuard value);
-
-  /**
-   * Returns the value of the '<em><b>Feature Guard</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Feature Guard</em>' containment reference.
-   * @see #setFeatureGuard(FeatureGuard)
-   * @see eu.coresense.adaptation.tactics.TacticsPackage#getConditionAction_FeatureGuard()
-   * @model containment="true"
-   * @generated
-   */
-  FeatureGuard getFeatureGuard();
-
-  /**
-   * Sets the value of the '{@link eu.coresense.adaptation.tactics.ConditionAction#getFeatureGuard <em>Feature Guard</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Feature Guard</em>' containment reference.
-   * @see #getFeatureGuard()
-   * @generated
-   */
-  void setFeatureGuard(FeatureGuard value);
+  void setGuardCondition(GuardCNF value);
 
 } // ConditionAction

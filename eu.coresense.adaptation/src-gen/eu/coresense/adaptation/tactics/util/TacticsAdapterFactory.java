@@ -121,26 +121,6 @@ public class TacticsAdapterFactory extends AdapterFactoryImpl
         return createRuleBodyAdapter();
       }
       @Override
-      public Adapter casePureAction(PureAction object)
-      {
-        return createPureActionAdapter();
-      }
-      @Override
-      public Adapter caseConditionAction(ConditionAction object)
-      {
-        return createConditionActionAdapter();
-      }
-      @Override
-      public Adapter caseContextGuard(ContextGuard object)
-      {
-        return createContextGuardAdapter();
-      }
-      @Override
-      public Adapter caseFeatureGuard(FeatureGuard object)
-      {
-        return createFeatureGuardAdapter();
-      }
-      @Override
       public Adapter caseEffectBlock(EffectBlock object)
       {
         return createEffectBlockAdapter();
@@ -156,29 +136,54 @@ public class TacticsAdapterFactory extends AdapterFactoryImpl
         return createRelativeEffectAdapter();
       }
       @Override
-      public Adapter caseFeatureCondition(FeatureCondition object)
+      public Adapter casePureAction(PureAction object)
       {
-        return createFeatureConditionAdapter();
+        return createPureActionAdapter();
       }
       @Override
-      public Adapter caseCondition(Condition object)
+      public Adapter caseConditionAction(ConditionAction object)
       {
-        return createConditionAdapter();
+        return createConditionActionAdapter();
       }
       @Override
-      public Adapter caseMeasurementCondition(MeasurementCondition object)
+      public Adapter caseGuardCNF(GuardCNF object)
       {
-        return createMeasurementConditionAdapter();
+        return createGuardCNFAdapter();
       }
       @Override
-      public Adapter caseMeasurementThresholdCondition(MeasurementThresholdCondition object)
+      public Adapter caseGuardDisjunct(GuardDisjunct object)
       {
-        return createMeasurementThresholdConditionAdapter();
+        return createGuardDisjunctAdapter();
       }
       @Override
-      public Adapter caseMeasurementMeasurementCondition(MeasurementMeasurementCondition object)
+      public Adapter caseGuardAtom(GuardAtom object)
       {
-        return createMeasurementMeasurementConditionAdapter();
+        return createGuardAtomAdapter();
+      }
+      @Override
+      public Adapter caseFeatureSelection(FeatureSelection object)
+      {
+        return createFeatureSelectionAdapter();
+      }
+      @Override
+      public Adapter caseContextComparison(ContextComparison object)
+      {
+        return createContextComparisonAdapter();
+      }
+      @Override
+      public Adapter caseContextOperand(ContextOperand object)
+      {
+        return createContextOperandAdapter();
+      }
+      @Override
+      public Adapter caseContextVariableOperand(ContextVariableOperand object)
+      {
+        return createContextVariableOperandAdapter();
+      }
+      @Override
+      public Adapter caseLiteralOperand(LiteralOperand object)
+      {
+        return createLiteralOperandAdapter();
       }
       @Override
       public Adapter caseAtomicActionSelectFeature(AtomicActionSelectFeature object)
@@ -353,66 +358,6 @@ public class TacticsAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link eu.coresense.adaptation.tactics.PureAction <em>Pure Action</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see eu.coresense.adaptation.tactics.PureAction
-   * @generated
-   */
-  public Adapter createPureActionAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link eu.coresense.adaptation.tactics.ConditionAction <em>Condition Action</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see eu.coresense.adaptation.tactics.ConditionAction
-   * @generated
-   */
-  public Adapter createConditionActionAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link eu.coresense.adaptation.tactics.ContextGuard <em>Context Guard</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see eu.coresense.adaptation.tactics.ContextGuard
-   * @generated
-   */
-  public Adapter createContextGuardAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link eu.coresense.adaptation.tactics.FeatureGuard <em>Feature Guard</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see eu.coresense.adaptation.tactics.FeatureGuard
-   * @generated
-   */
-  public Adapter createFeatureGuardAdapter()
-  {
-    return null;
-  }
-
-  /**
    * Creates a new adapter for an object of class '{@link eu.coresense.adaptation.tactics.EffectBlock <em>Effect Block</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -458,76 +403,151 @@ public class TacticsAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link eu.coresense.adaptation.tactics.FeatureCondition <em>Feature Condition</em>}'.
+   * Creates a new adapter for an object of class '{@link eu.coresense.adaptation.tactics.PureAction <em>Pure Action</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see eu.coresense.adaptation.tactics.FeatureCondition
+   * @see eu.coresense.adaptation.tactics.PureAction
    * @generated
    */
-  public Adapter createFeatureConditionAdapter()
+  public Adapter createPureActionAdapter()
   {
     return null;
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link eu.coresense.adaptation.tactics.Condition <em>Condition</em>}'.
+   * Creates a new adapter for an object of class '{@link eu.coresense.adaptation.tactics.ConditionAction <em>Condition Action</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see eu.coresense.adaptation.tactics.Condition
+   * @see eu.coresense.adaptation.tactics.ConditionAction
    * @generated
    */
-  public Adapter createConditionAdapter()
+  public Adapter createConditionActionAdapter()
   {
     return null;
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link eu.coresense.adaptation.tactics.MeasurementCondition <em>Measurement Condition</em>}'.
+   * Creates a new adapter for an object of class '{@link eu.coresense.adaptation.tactics.GuardCNF <em>Guard CNF</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see eu.coresense.adaptation.tactics.MeasurementCondition
+   * @see eu.coresense.adaptation.tactics.GuardCNF
    * @generated
    */
-  public Adapter createMeasurementConditionAdapter()
+  public Adapter createGuardCNFAdapter()
   {
     return null;
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link eu.coresense.adaptation.tactics.MeasurementThresholdCondition <em>Measurement Threshold Condition</em>}'.
+   * Creates a new adapter for an object of class '{@link eu.coresense.adaptation.tactics.GuardDisjunct <em>Guard Disjunct</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see eu.coresense.adaptation.tactics.MeasurementThresholdCondition
+   * @see eu.coresense.adaptation.tactics.GuardDisjunct
    * @generated
    */
-  public Adapter createMeasurementThresholdConditionAdapter()
+  public Adapter createGuardDisjunctAdapter()
   {
     return null;
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link eu.coresense.adaptation.tactics.MeasurementMeasurementCondition <em>Measurement Measurement Condition</em>}'.
+   * Creates a new adapter for an object of class '{@link eu.coresense.adaptation.tactics.GuardAtom <em>Guard Atom</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see eu.coresense.adaptation.tactics.MeasurementMeasurementCondition
+   * @see eu.coresense.adaptation.tactics.GuardAtom
    * @generated
    */
-  public Adapter createMeasurementMeasurementConditionAdapter()
+  public Adapter createGuardAtomAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link eu.coresense.adaptation.tactics.FeatureSelection <em>Feature Selection</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see eu.coresense.adaptation.tactics.FeatureSelection
+   * @generated
+   */
+  public Adapter createFeatureSelectionAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link eu.coresense.adaptation.tactics.ContextComparison <em>Context Comparison</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see eu.coresense.adaptation.tactics.ContextComparison
+   * @generated
+   */
+  public Adapter createContextComparisonAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link eu.coresense.adaptation.tactics.ContextOperand <em>Context Operand</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see eu.coresense.adaptation.tactics.ContextOperand
+   * @generated
+   */
+  public Adapter createContextOperandAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link eu.coresense.adaptation.tactics.ContextVariableOperand <em>Context Variable Operand</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see eu.coresense.adaptation.tactics.ContextVariableOperand
+   * @generated
+   */
+  public Adapter createContextVariableOperandAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link eu.coresense.adaptation.tactics.LiteralOperand <em>Literal Operand</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see eu.coresense.adaptation.tactics.LiteralOperand
+   * @generated
+   */
+  public Adapter createLiteralOperandAdapter()
   {
     return null;
   }

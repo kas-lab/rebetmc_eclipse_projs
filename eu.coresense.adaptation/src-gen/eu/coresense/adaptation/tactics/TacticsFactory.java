@@ -105,42 +105,6 @@ public interface TacticsFactory extends EFactory
   RuleBody createRuleBody();
 
   /**
-   * Returns a new object of class '<em>Pure Action</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Pure Action</em>'.
-   * @generated
-   */
-  PureAction createPureAction();
-
-  /**
-   * Returns a new object of class '<em>Condition Action</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Condition Action</em>'.
-   * @generated
-   */
-  ConditionAction createConditionAction();
-
-  /**
-   * Returns a new object of class '<em>Context Guard</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Context Guard</em>'.
-   * @generated
-   */
-  ContextGuard createContextGuard();
-
-  /**
-   * Returns a new object of class '<em>Feature Guard</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Feature Guard</em>'.
-   * @generated
-   */
-  FeatureGuard createFeatureGuard();
-
-  /**
    * Returns a new object of class '<em>Effect Block</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -168,49 +132,94 @@ public interface TacticsFactory extends EFactory
   RelativeEffect createRelativeEffect();
 
   /**
-   * Returns a new object of class '<em>Feature Condition</em>'.
+   * Returns a new object of class '<em>Pure Action</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Feature Condition</em>'.
+   * @return a new object of class '<em>Pure Action</em>'.
    * @generated
    */
-  FeatureCondition createFeatureCondition();
+  PureAction createPureAction();
 
   /**
-   * Returns a new object of class '<em>Condition</em>'.
+   * Returns a new object of class '<em>Condition Action</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Condition</em>'.
+   * @return a new object of class '<em>Condition Action</em>'.
    * @generated
    */
-  Condition createCondition();
+  ConditionAction createConditionAction();
 
   /**
-   * Returns a new object of class '<em>Measurement Condition</em>'.
+   * Returns a new object of class '<em>Guard CNF</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Measurement Condition</em>'.
+   * @return a new object of class '<em>Guard CNF</em>'.
    * @generated
    */
-  MeasurementCondition createMeasurementCondition();
+  GuardCNF createGuardCNF();
 
   /**
-   * Returns a new object of class '<em>Measurement Threshold Condition</em>'.
+   * Returns a new object of class '<em>Guard Disjunct</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Measurement Threshold Condition</em>'.
+   * @return a new object of class '<em>Guard Disjunct</em>'.
    * @generated
    */
-  MeasurementThresholdCondition createMeasurementThresholdCondition();
+  GuardDisjunct createGuardDisjunct();
 
   /**
-   * Returns a new object of class '<em>Measurement Measurement Condition</em>'.
+   * Returns a new object of class '<em>Guard Atom</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Measurement Measurement Condition</em>'.
+   * @return a new object of class '<em>Guard Atom</em>'.
    * @generated
    */
-  MeasurementMeasurementCondition createMeasurementMeasurementCondition();
+  GuardAtom createGuardAtom();
+
+  /**
+   * Returns a new object of class '<em>Feature Selection</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Feature Selection</em>'.
+   * @generated
+   */
+  FeatureSelection createFeatureSelection();
+
+  /**
+   * Returns a new object of class '<em>Context Comparison</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Context Comparison</em>'.
+   * @generated
+   */
+  ContextComparison createContextComparison();
+
+  /**
+   * Returns a new object of class '<em>Context Operand</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Context Operand</em>'.
+   * @generated
+   */
+  ContextOperand createContextOperand();
+
+  /**
+   * Returns a new object of class '<em>Context Variable Operand</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Context Variable Operand</em>'.
+   * @generated
+   */
+  ContextVariableOperand createContextVariableOperand();
+
+  /**
+   * Returns a new object of class '<em>Literal Operand</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Literal Operand</em>'.
+   * @generated
+   */
+  LiteralOperand createLiteralOperand();
 
   /**
    * Returns a new object of class '<em>Atomic Action Select Feature</em>'.

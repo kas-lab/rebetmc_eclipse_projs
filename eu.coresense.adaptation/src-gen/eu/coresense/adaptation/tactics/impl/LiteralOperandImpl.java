@@ -3,9 +3,10 @@
  */
 package eu.coresense.adaptation.tactics.impl;
 
-import eu.coresense.adaptation.tactics.FeatureCondition;
-import eu.coresense.adaptation.tactics.FeatureGuard;
+import eu.coresense.adaptation.tactics.LiteralOperand;
 import eu.coresense.adaptation.tactics.TacticsPackage;
+
+import eu.coresense.common.Literal;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -14,39 +15,38 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Feature Guard</b></em>'.
+ * An implementation of the model object '<em><b>Literal Operand</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link eu.coresense.adaptation.tactics.impl.FeatureGuardImpl#getFeatureCondition <em>Feature Condition</em>}</li>
+ *   <li>{@link eu.coresense.adaptation.tactics.impl.LiteralOperandImpl#getLiteral <em>Literal</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class FeatureGuardImpl extends MinimalEObjectImpl.Container implements FeatureGuard
+public class LiteralOperandImpl extends ContextOperandImpl implements LiteralOperand
 {
   /**
-   * The cached value of the '{@link #getFeatureCondition() <em>Feature Condition</em>}' containment reference.
+   * The cached value of the '{@link #getLiteral() <em>Literal</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getFeatureCondition()
+   * @see #getLiteral()
    * @generated
    * @ordered
    */
-  protected FeatureCondition featureCondition;
+  protected Literal literal;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  protected FeatureGuardImpl()
+  protected LiteralOperandImpl()
   {
     super();
   }
@@ -59,7 +59,7 @@ public class FeatureGuardImpl extends MinimalEObjectImpl.Container implements Fe
   @Override
   protected EClass eStaticClass()
   {
-    return TacticsPackage.Literals.FEATURE_GUARD;
+    return TacticsPackage.Literals.LITERAL_OPERAND;
   }
 
   /**
@@ -68,9 +68,9 @@ public class FeatureGuardImpl extends MinimalEObjectImpl.Container implements Fe
    * @generated
    */
   @Override
-  public FeatureCondition getFeatureCondition()
+  public Literal getLiteral()
   {
-    return featureCondition;
+    return literal;
   }
 
   /**
@@ -78,13 +78,13 @@ public class FeatureGuardImpl extends MinimalEObjectImpl.Container implements Fe
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetFeatureCondition(FeatureCondition newFeatureCondition, NotificationChain msgs)
+  public NotificationChain basicSetLiteral(Literal newLiteral, NotificationChain msgs)
   {
-    FeatureCondition oldFeatureCondition = featureCondition;
-    featureCondition = newFeatureCondition;
+    Literal oldLiteral = literal;
+    literal = newLiteral;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, TacticsPackage.FEATURE_GUARD__FEATURE_CONDITION, oldFeatureCondition, newFeatureCondition);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, TacticsPackage.LITERAL_OPERAND__LITERAL, oldLiteral, newLiteral);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -96,20 +96,20 @@ public class FeatureGuardImpl extends MinimalEObjectImpl.Container implements Fe
    * @generated
    */
   @Override
-  public void setFeatureCondition(FeatureCondition newFeatureCondition)
+  public void setLiteral(Literal newLiteral)
   {
-    if (newFeatureCondition != featureCondition)
+    if (newLiteral != literal)
     {
       NotificationChain msgs = null;
-      if (featureCondition != null)
-        msgs = ((InternalEObject)featureCondition).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - TacticsPackage.FEATURE_GUARD__FEATURE_CONDITION, null, msgs);
-      if (newFeatureCondition != null)
-        msgs = ((InternalEObject)newFeatureCondition).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - TacticsPackage.FEATURE_GUARD__FEATURE_CONDITION, null, msgs);
-      msgs = basicSetFeatureCondition(newFeatureCondition, msgs);
+      if (literal != null)
+        msgs = ((InternalEObject)literal).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - TacticsPackage.LITERAL_OPERAND__LITERAL, null, msgs);
+      if (newLiteral != null)
+        msgs = ((InternalEObject)newLiteral).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - TacticsPackage.LITERAL_OPERAND__LITERAL, null, msgs);
+      msgs = basicSetLiteral(newLiteral, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, TacticsPackage.FEATURE_GUARD__FEATURE_CONDITION, newFeatureCondition, newFeatureCondition));
+      eNotify(new ENotificationImpl(this, Notification.SET, TacticsPackage.LITERAL_OPERAND__LITERAL, newLiteral, newLiteral));
   }
 
   /**
@@ -122,8 +122,8 @@ public class FeatureGuardImpl extends MinimalEObjectImpl.Container implements Fe
   {
     switch (featureID)
     {
-      case TacticsPackage.FEATURE_GUARD__FEATURE_CONDITION:
-        return basicSetFeatureCondition(null, msgs);
+      case TacticsPackage.LITERAL_OPERAND__LITERAL:
+        return basicSetLiteral(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -138,8 +138,8 @@ public class FeatureGuardImpl extends MinimalEObjectImpl.Container implements Fe
   {
     switch (featureID)
     {
-      case TacticsPackage.FEATURE_GUARD__FEATURE_CONDITION:
-        return getFeatureCondition();
+      case TacticsPackage.LITERAL_OPERAND__LITERAL:
+        return getLiteral();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -154,8 +154,8 @@ public class FeatureGuardImpl extends MinimalEObjectImpl.Container implements Fe
   {
     switch (featureID)
     {
-      case TacticsPackage.FEATURE_GUARD__FEATURE_CONDITION:
-        setFeatureCondition((FeatureCondition)newValue);
+      case TacticsPackage.LITERAL_OPERAND__LITERAL:
+        setLiteral((Literal)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -171,8 +171,8 @@ public class FeatureGuardImpl extends MinimalEObjectImpl.Container implements Fe
   {
     switch (featureID)
     {
-      case TacticsPackage.FEATURE_GUARD__FEATURE_CONDITION:
-        setFeatureCondition((FeatureCondition)null);
+      case TacticsPackage.LITERAL_OPERAND__LITERAL:
+        setLiteral((Literal)null);
         return;
     }
     super.eUnset(featureID);
@@ -188,10 +188,10 @@ public class FeatureGuardImpl extends MinimalEObjectImpl.Container implements Fe
   {
     switch (featureID)
     {
-      case TacticsPackage.FEATURE_GUARD__FEATURE_CONDITION:
-        return featureCondition != null;
+      case TacticsPackage.LITERAL_OPERAND__LITERAL:
+        return literal != null;
     }
     return super.eIsSet(featureID);
   }
 
-} //FeatureGuardImpl
+} //LiteralOperandImpl

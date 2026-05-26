@@ -785,9 +785,9 @@ rule__BasicConstraint__Group__4__Impl
 	}
 :
 (
-	{ before(grammarAccess.getBasicConstraintAccess().getRightFeatureKeyword_4()); }
-	'rightFeature'
-	{ after(grammarAccess.getBasicConstraintAccess().getRightFeatureKeyword_4()); }
+	{ before(grammarAccess.getBasicConstraintAccess().getLeftFeatureKeyword_4()); }
+	'leftFeature'
+	{ after(grammarAccess.getBasicConstraintAccess().getLeftFeatureKeyword_4()); }
 )
 ;
 finally {
@@ -812,9 +812,9 @@ rule__BasicConstraint__Group__5__Impl
 	}
 :
 (
-	{ before(grammarAccess.getBasicConstraintAccess().getRightFeatureAssignment_5()); }
-	(rule__BasicConstraint__RightFeatureAssignment_5)
-	{ after(grammarAccess.getBasicConstraintAccess().getRightFeatureAssignment_5()); }
+	{ before(grammarAccess.getBasicConstraintAccess().getLeftFeatureAssignment_5()); }
+	(rule__BasicConstraint__LeftFeatureAssignment_5)
+	{ after(grammarAccess.getBasicConstraintAccess().getLeftFeatureAssignment_5()); }
 )
 ;
 finally {
@@ -839,9 +839,9 @@ rule__BasicConstraint__Group__6__Impl
 	}
 :
 (
-	{ before(grammarAccess.getBasicConstraintAccess().getLeftFeatureKeyword_6()); }
-	'leftFeature'
-	{ after(grammarAccess.getBasicConstraintAccess().getLeftFeatureKeyword_6()); }
+	{ before(grammarAccess.getBasicConstraintAccess().getRightFeatureKeyword_6()); }
+	'rightFeature'
+	{ after(grammarAccess.getBasicConstraintAccess().getRightFeatureKeyword_6()); }
 )
 ;
 finally {
@@ -866,9 +866,9 @@ rule__BasicConstraint__Group__7__Impl
 	}
 :
 (
-	{ before(grammarAccess.getBasicConstraintAccess().getLeftFeatureAssignment_7()); }
-	(rule__BasicConstraint__LeftFeatureAssignment_7)
-	{ after(grammarAccess.getBasicConstraintAccess().getLeftFeatureAssignment_7()); }
+	{ before(grammarAccess.getBasicConstraintAccess().getRightFeatureAssignment_7()); }
+	(rule__BasicConstraint__RightFeatureAssignment_7)
+	{ after(grammarAccess.getBasicConstraintAccess().getRightFeatureAssignment_7()); }
 )
 ;
 finally {
@@ -2273,38 +2273,38 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__BasicConstraint__RightFeatureAssignment_5
+rule__BasicConstraint__LeftFeatureAssignment_5
 	@init {
 		int stackSize = keepStackSize();
 	}
 :
 	(
-		{ before(grammarAccess.getBasicConstraintAccess().getRightFeatureFeatureCrossReference_5_0()); }
+		{ before(grammarAccess.getBasicConstraintAccess().getLeftFeatureFeatureCrossReference_5_0()); }
 		(
-			{ before(grammarAccess.getBasicConstraintAccess().getRightFeatureFeatureEStringParserRuleCall_5_0_1()); }
+			{ before(grammarAccess.getBasicConstraintAccess().getLeftFeatureFeatureEStringParserRuleCall_5_0_1()); }
 			ruleEString
-			{ after(grammarAccess.getBasicConstraintAccess().getRightFeatureFeatureEStringParserRuleCall_5_0_1()); }
+			{ after(grammarAccess.getBasicConstraintAccess().getLeftFeatureFeatureEStringParserRuleCall_5_0_1()); }
 		)
-		{ after(grammarAccess.getBasicConstraintAccess().getRightFeatureFeatureCrossReference_5_0()); }
+		{ after(grammarAccess.getBasicConstraintAccess().getLeftFeatureFeatureCrossReference_5_0()); }
 	)
 ;
 finally {
 	restoreStackSize(stackSize);
 }
 
-rule__BasicConstraint__LeftFeatureAssignment_7
+rule__BasicConstraint__RightFeatureAssignment_7
 	@init {
 		int stackSize = keepStackSize();
 	}
 :
 	(
-		{ before(grammarAccess.getBasicConstraintAccess().getLeftFeatureFeatureCrossReference_7_0()); }
+		{ before(grammarAccess.getBasicConstraintAccess().getRightFeatureFeatureCrossReference_7_0()); }
 		(
-			{ before(grammarAccess.getBasicConstraintAccess().getLeftFeatureFeatureEStringParserRuleCall_7_0_1()); }
+			{ before(grammarAccess.getBasicConstraintAccess().getRightFeatureFeatureEStringParserRuleCall_7_0_1()); }
 			ruleEString
-			{ after(grammarAccess.getBasicConstraintAccess().getLeftFeatureFeatureEStringParserRuleCall_7_0_1()); }
+			{ after(grammarAccess.getBasicConstraintAccess().getRightFeatureFeatureEStringParserRuleCall_7_0_1()); }
 		)
-		{ after(grammarAccess.getBasicConstraintAccess().getLeftFeatureFeatureCrossReference_7_0()); }
+		{ after(grammarAccess.getBasicConstraintAccess().getRightFeatureFeatureCrossReference_7_0()); }
 	)
 ;
 finally {

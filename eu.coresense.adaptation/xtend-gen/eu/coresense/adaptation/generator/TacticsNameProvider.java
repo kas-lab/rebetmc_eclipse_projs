@@ -3,10 +3,10 @@
  */
 package eu.coresense.adaptation.generator;
 
-import eu.coresense.adaptation.tactics.Condition;
-import eu.coresense.adaptation.tactics.FeatureCondition;
-import eu.coresense.adaptation.tactics.LogicalOperator;
-import eu.coresense.adaptation.tactics.MeasurementCondition;
+import eu.coresense.adaptation.tactics.ContextComparison;
+import eu.coresense.adaptation.tactics.FeatureSelection;
+import eu.coresense.adaptation.tactics.GuardCNF;
+import eu.coresense.adaptation.tactics.GuardDisjunct;
 import eu.coresense.common.INameProvider;
 import eu.coresense.common.NamingContext;
 import system.RosNode;
@@ -23,13 +23,12 @@ import uma.caosd.rhea.BasicFMmetamodel.OrGroup;
 public class TacticsNameProvider implements INameProvider {
   @Override
   public boolean canHandle(final Object obj) {
-    return ((((((((((obj instanceof MeasurementCondition) || 
-      (obj instanceof FeatureCondition)) || 
-      (obj instanceof Condition)) || 
-      (obj instanceof LogicalOperator)) || 
+    return (((((((((obj instanceof ContextComparison) || 
+      (obj instanceof FeatureSelection)) || 
+      (obj instanceof GuardCNF)) || 
+      (obj instanceof GuardDisjunct)) || 
       (obj instanceof Expr)) || 
       (obj instanceof RosNode)) || 
-      (obj instanceof LogicalOperator)) || 
       (obj instanceof Feature)) || 
       (obj instanceof Alternative)) || 
       (obj instanceof OrGroup));
@@ -39,36 +38,28 @@ public class TacticsNameProvider implements INameProvider {
   public String computeName(final Object obj, final NamingContext ctx, final String... args) {
     String _switchResult = null;
     boolean _matched = false;
-    if (obj instanceof MeasurementCondition) {
+    if (obj instanceof ContextComparison) {
       _matched=true;
-      String _lowerCase = ((MeasurementCondition)obj).getMeasurement().getName().toLowerCase();
-      String _plus = (_lowerCase + "_");
-      String _lowerCase_1 = ((MeasurementCondition)obj).getOperator().getName().toLowerCase();
-      String _plus_1 = (_plus + _lowerCase_1);
-      _switchResult = ctx.makeUnique(_plus_1);
+      _switchResult = ctx.makeUnique("expr_");
     }
     if (!_matched) {
-      if (obj instanceof FeatureCondition) {
+      if (obj instanceof FeatureSelection) {
         _matched=true;
-        String _computeName = this.computeName(((FeatureCondition)obj).getVariant().getFeature(), ctx);
-        String _plus = ("is_selected_" + _computeName);
+        String _lowerCase = ((FeatureSelection)obj).getVariant().getFeature().getName().toLowerCase();
+        String _plus = ("is_selected_" + _lowerCase);
         _switchResult = ctx.makeUnique(_plus);
       }
     }
     if (!_matched) {
-      if (obj instanceof Condition) {
+      if (obj instanceof GuardCNF) {
         _matched=true;
-        boolean _matched_1 = false;
-        if (obj instanceof MeasurementCondition) {
-          _matched_1=true;
-          return this.computeName(obj, ctx);
-        }
-        if (!_matched_1) {
-          if (obj instanceof FeatureCondition) {
-            _matched_1=true;
-            return this.computeName(obj, ctx);
-          }
-        }
+        _switchResult = ctx.makeUnique("and_expr_");
+      }
+    }
+    if (!_matched) {
+      if (obj instanceof GuardDisjunct) {
+        _matched=true;
+        _switchResult = ctx.makeUnique("or_expr_");
       }
     }
     if (!_matched) {
@@ -83,41 +74,6 @@ public class TacticsNameProvider implements INameProvider {
         String _replace = ((RosNode)obj).getName().replace("/", "");
         String _plus = (_replace + "_node");
         _switchResult = ctx.makeUnique(_plus);
-      }
-    }
-    if (!_matched) {
-      if (obj instanceof LogicalOperator) {
-        _matched=true;
-        String _xblockexpression = null;
-        {
-          String _xifexpression = null;
-          int _length = args.length;
-          boolean _greaterThan = (_length > 1);
-          if (_greaterThan) {
-            _xifexpression = args[0];
-          } else {
-            _xifexpression = "noLHS";
-          }
-          final String LHSName = _xifexpression;
-          String _xifexpression_1 = null;
-          int _length_1 = args.length;
-          boolean _greaterThan_1 = (_length_1 > 1);
-          if (_greaterThan_1) {
-            _xifexpression_1 = args[1];
-          } else {
-            _xifexpression_1 = "noRHS";
-          }
-          final String RHSName = _xifexpression_1;
-          final String LHSShortName = LHSName.substring(0, Math.min(3, LHSName.length()));
-          final String RHSShortName = RHSName.substring(0, Math.min(3, RHSName.length()));
-          String _lowerCase = ((LogicalOperator)obj).getLiteral().toLowerCase();
-          String _plus = (_lowerCase + "_");
-          String _plus_1 = (_plus + LHSShortName);
-          String _plus_2 = (_plus_1 + "_");
-          String _plus_3 = (_plus_2 + RHSShortName);
-          _xblockexpression = ctx.makeUnique(_plus_3);
-        }
-        _switchResult = _xblockexpression;
       }
     }
     if (!_matched) {

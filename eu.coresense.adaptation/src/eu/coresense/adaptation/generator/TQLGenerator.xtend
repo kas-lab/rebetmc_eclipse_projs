@@ -4,14 +4,23 @@
 package eu.coresense.adaptation.generator
 
 import com.google.inject.Inject
+import eu.coresense.adaptation.tactics.AtomicActionSelectFeature
+import eu.coresense.adaptation.tactics.AtomicActionDeselectFeature
 import eu.coresense.adaptation.tactics.AdaptationRule
 import eu.coresense.adaptation.tactics.AtomicRule
-import eu.coresense.adaptation.tactics.Condition
 import eu.coresense.adaptation.tactics.ConditionAction
-import eu.coresense.adaptation.tactics.LogicalOperator
-import eu.coresense.adaptation.tactics.RuleBody
-import eu.coresense.adaptation.tactics.RuleSet
+import eu.coresense.adaptation.tactics.ContextComparison
+import eu.coresense.adaptation.tactics.ContextOperand
+import eu.coresense.adaptation.tactics.ContextVariableOperand
+import eu.coresense.adaptation.tactics.LiteralOperand
+import eu.coresense.adaptation.tactics.FeatureSelection
+import eu.coresense.adaptation.tactics.Effect
+import eu.coresense.adaptation.tactics.GuardAtom
+import eu.coresense.adaptation.tactics.GuardCNF
+import eu.coresense.adaptation.tactics.GuardDisjunct
+import eu.coresense.adaptation.tactics.RelativeEffect
 import eu.coresense.adaptation.tactics.TacticsModel
+
 import eu.coresense.resolution.resolutionModel.Reconfiguration
 import eu.coresense.resolution.resolutionModel.Resolution
 import eu.coresense.resolution.resolutionModel.ResolutionModel
@@ -35,8 +44,6 @@ import ros.ParameterString
 import ros.ParameterValue
 import system.Component
 import system.RosNode
-import system.RosPublisherReference
-import system.RosSubscriberReference
 import system.SubSystem
 import system.System
 import uma.caosd.rhea.BasicFMmetamodel.Alternative
@@ -46,8 +53,7 @@ import ros.InterfaceType
 import eu.coresense.context.contextModel.ContextVar
 import org.eclipse.emf.common.util.URI
 import eu.coresense.context.contextModel.ContextModel
-import eu.coresense.adaptation.tactics.AtomicActionSelectFeature
-import eu.coresense.adaptation.tactics.AtomicActionDeselectFeature
+
 import eu.coresense.common.Literal
 import eu.coresense.common.IntLiteral
 import eu.coresense.common.DecimalLiteral
@@ -57,92 +63,67 @@ import eu.coresense.context.contextModel.DataSource
 import eu.coresense.context.contextModel.QualifiedPublisherRef
 import eu.coresense.context.contextModel.QualifiedServiceServerRef
 import eu.coresense.context.contextModel.QualifiedActionServerRef
-import eu.coresense.adaptation.tactics.MeasurementCondition
-import eu.coresense.adaptation.tactics.FeatureCondition
 import eu.coresense.common.MathOperator
 import eu.coresense.common.Utilities
 import eu.coresense.common.INameProvider
-import org.eclipse.emf.ecore.EObject
 import eu.coresense.common.NamingContext
 import eu.coresense.common.NameProvider
 import eu.coresense.context.generator.ContextNameProvider
 import eu.coresense.resolution.generator.ResolutionNameProvider
 import eu.coresense.common.RosNameProvider
-import eu.coresense.adaptation.tactics.MeasurementThresholdCondition
-import eu.coresense.adaptation.tactics.MeasurementMeasurementCondition
-import eu.coresense.adaptation.tactics.Effect
-import eu.coresense.adaptation.tactics.RelativeEffect
+
 import java.util.Set
-import eu.coresense.adaptation.tactics.QualifiedFeatureRef
-import java.util.stream.Stream
-import java.util.ArrayList
 import java.util.HashMap
 import java.math.BigDecimal
 
 /**
  * Generates code from your model files on save.
- * 
+ *
  * See https://www.eclipse.org/Xtext/documentation/303_runtime_concepts.html#code-generation
  */
- 
+
 class TacticsNameProvider implements INameProvider {
     override canHandle(Object obj) {
-        return 
-        (obj instanceof MeasurementCondition || 
-        obj instanceof FeatureCondition ||
-        obj instanceof Condition || 
-        obj instanceof LogicalOperator ||
+        return
+        (obj instanceof ContextComparison ||
+        obj instanceof FeatureSelection ||
+        obj instanceof GuardCNF ||
+        obj instanceof GuardDisjunct ||
         obj instanceof Expr ||
 		obj instanceof system.RosNode ||
-		obj instanceof LogicalOperator ||
 		obj instanceof Feature ||
 		obj instanceof Alternative ||
 		obj instanceof OrGroup
 		)
-		
-        
+
+
     }
-    
+
     override computeName(Object obj, NamingContext ctx, String... args) {
         switch obj {
-            MeasurementCondition: ctx.makeUnique(obj.measurement.name.toLowerCase + "_" + obj.operator.getName().toLowerCase)
-            FeatureCondition: ctx.makeUnique("is_selected_" + computeName(obj.variant.feature,ctx))
-            Condition: {
-            	switch obj {
-					MeasurementCondition : {
-						return computeName(obj,ctx)
-					}
-					FeatureCondition: {
-						return computeName(obj,ctx)
-					}
-				}
-            }
+            ContextComparison: ctx.makeUnique("expr_")
+            FeatureSelection: ctx.makeUnique("is_selected_" + obj.variant.feature.name.toLowerCase)
+            GuardCNF: ctx.makeUnique("and_expr_")
+            GuardDisjunct: ctx.makeUnique("or_expr_")
             Expr: ctx.makeUnique("expr_")
 			system.RosNode: ctx.makeUnique(obj.name.replace("/", "") + "_node")
-			LogicalOperator: {
-				val LHSName = if (args.length > 1) args.get(0) else "noLHS"
-				val RHSName = if (args.length > 1) args.get(1) else "noRHS"
-				val LHSShortName = LHSName.substring(0, Math.min(3, LHSName.length))
-				val RHSShortName = RHSName.substring(0, Math.min(3, RHSName.length))
-				ctx.makeUnique(obj.literal.toLowerCase + "_" + LHSShortName + "_" + RHSShortName)
-			}
 			Alternative: ctx.makeUnique("alt_")
 			OrGroup: ctx.makeUnique("or_group_")
 			Feature: ctx.makeUnique("f_" + obj.name.toLowerCase())
-			
+
         }
-    }	
+    }
 }
- 
+
 class TQLGenerator extends AbstractGenerator {
     extension NameProvider _namer
-//	
+//
 	@Inject
     new(NameProvider namer) {
         this._namer = namer
-        
+
     }
-	
+
 	public static final String INDEX_VAR = "findex";
 	public static final String NODE_VAR = "rode";
 	public static final String PARAM_VAR = "parameter";
@@ -150,7 +131,7 @@ class TQLGenerator extends AbstractGenerator {
 	public static final String INF_INT_VAR = "infinity_int";
 	public static final String NEG_INF_DBL_VAR = "negative_infinity_double";
 	public static final String INF_DBL_VAR = "infinity_double";
-	
+
 	public static final String PARAM_VALUES_SUBQUERY_NAME = "param_values";
 	public static final String FEATURE_VAR = "f"
 	public static final String RULE_VAR = "tactic_rule"
@@ -164,11 +145,11 @@ class TQLGenerator extends AbstractGenerator {
 	val Set<String> definedFeaturePropositions = newHashSet
 	var HashMap<Pair<String, String>,String> escapes = newHashMap
 	var List<ContextVar> contextKeys = newArrayList
-	
-	
-    
+
+
+
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
-		
+
 //	val namer = new NameProvider()
 	//Ros Stuff before Context
 	//Feature model before tactics.
@@ -184,9 +165,9 @@ class TQLGenerator extends AbstractGenerator {
             e.compile(true))
 	}
 
-	
+
 	}
-	
+
 	def String SchemaValueFromParam(ParameterValue param_value)
 	{
 		//(boolean|boolean_array|double|double_array|long|long_array|string|string_array)
@@ -201,11 +182,11 @@ class TQLGenerator extends AbstractGenerator {
 			ParameterInteger:
 				"ValueInteger"
 			ParameterSequence:
-				"ValueArray" 
+				"ValueArray"
 			default:
 				param_value.class.toString()
 		}
-		
+
 	}
 	def String SchemaValueFromParam(ros.ParameterType param_type)
 	{
@@ -225,11 +206,11 @@ class TQLGenerator extends AbstractGenerator {
 			default:
 				param_type.class.toString()
 		}
-		
+
 	}
-	
-		
-	
+
+
+
 	def String paramSubClass (ParameterValue param_value)
 	{
 		//(boolean|boolean_array|double|double_array|long|long_array|string|string_array)
@@ -244,11 +225,11 @@ class TQLGenerator extends AbstractGenerator {
 			ParameterInteger:
 				"ParameterInteger"
 			ParameterSequence:
-				"Parameter" + SchemaValueFromParam(param_value.value.get(0)) + "Array" 
+				"Parameter" + SchemaValueFromParam(param_value.value.get(0)) + "Array"
 		}
-		
+
 	}
-	
+
 	def String paramSubClass (ros.ParameterType param_type)
 	{
 		//(boolean|boolean_array|double|double_array|long|long_array|string|string_array)
@@ -263,12 +244,12 @@ class TQLGenerator extends AbstractGenerator {
 			ros.ParameterIntegerType:
 				"ParameterInteger"
 			ros.ParameterArrayType:
-				paramSubClass(param_type.type) + "Array" 
+				paramSubClass(param_type.type) + "Array"
 		}
-		
+
 	}
-	
-	
+
+
 	def String NiceNameParamValueType(ParameterValue param_value)
 	{
 		//(boolean|boolean_array|double|double_array|long|long_array|string|string_array)
@@ -283,10 +264,10 @@ class TQLGenerator extends AbstractGenerator {
 			ParameterInteger:
 				"integer"
 		}
-		
+
 	}
-	
-	
+
+
 	def String NiceNameParamType(ros.ParameterType param_type)
 	{
 		//(boolean|boolean_array|double|double_array|long|long_array|string|string_array)
@@ -299,26 +280,26 @@ class TQLGenerator extends AbstractGenerator {
 			ros.ParameterStringType:
 				"string"
 			ros.ParameterArrayType:
-				NiceNameParamType(param_type.type) + "_array" 
+				NiceNameParamType(param_type.type) + "_array"
 		}
-		
+
 	}
-	
+
     def String generateTQL(TacticsModel model, Resource resource, Boolean doStates) {
     	globalResource = resource;
     	return compile(model, doStates).toString()
     }
-    
+
      def String generateTQL(TacticsModel model, Resource resource) {
     	return generateTQL(model, resource, false)
     }
-    
+
     def String getPackage(RosNode node) {
 	    val fromFeature = node.eClass.getEStructuralFeature("from")
 	    val crossRefNodes = NodeModelUtils.findNodesForFeature(node, fromFeature)
 	    if (crossRefNodes.empty) return null
 	    val INode crossRefNode = crossRefNodes.head
-	    
+
 	    val raw = crossRefNode.getText.trim.substring(1)
 
 	   	if (raw !== null && raw.contains(".")) {
@@ -326,20 +307,20 @@ class TQLGenerator extends AbstractGenerator {
 	    }
 	    return null
 	}
-	    
+
 	def List<Parameter> getParameters(RosNode node)
 	{
 		val originalParameters = node.from.parameter
-		
+
 		for (parameter_override : node.rosparameters) {
 			val indexOverride = originalParameters.indexOf(parameter_override.from)
 			originalParameters.get(indexOverride).value = parameter_override.value
 		}
-		
+
 		return originalParameters
 	}
-	
-	
+
+
 	def String generateUpdateHasParamValue(String featureName)
 	{
 		'''
@@ -354,8 +335,8 @@ class TQLGenerator extends AbstractGenerator {
             $hpv (node: $n, parameter: $p, parameter_value: $pv) isa has_parameter_value;
 		'''
 	}
-	
-	
+
+
 	def String generateInsertStartTime(List<system.RosNode> runningNodes, String startTime)
 	{
 		'''
@@ -369,7 +350,7 @@ class TQLGenerator extends AbstractGenerator {
 				«ENDFOR»
         '''
 	}
-	
+
 	def String generateInsertQuery(Map<Pair<String,String>, Pair<HashSet<String>, HashSet<String>>> topics)
 	{
 		//TODO: Finish
@@ -402,14 +383,14 @@ class TQLGenerator extends AbstractGenerator {
 //		}
 //		    ""
 	}
-	
+
 
 	def String describeNode(ros.Node node, String namespace)
 	{
 		val serviceServers = node.getServiceserver();
-	    
+
 	    val isLifecycle = serviceServers.exists[ server | server.service.fullname == "lifecycle_msgs/ChangeState"]
-	    
+
 	    val node_kind = isLifecycle ? "LifeCycleNode" : "ROSNode"
 	    val nodeName = _namer.uniqueName(node)
 		'''
@@ -418,11 +399,11 @@ class TQLGenerator extends AbstractGenerator {
 		   has namespace "«namespace»";
     	'''
 	}
-      
+
     def String generateInsertQuery(RosNode node)
     {
     	val innerNode = node.from
-	    
+
 	    val nodeName = _namer.uniqueName(innerNode)
 	    '''
     	«describeNode(innerNode, node.namespace)»
@@ -439,7 +420,7 @@ class TQLGenerator extends AbstractGenerator {
     	«ENDIF»
     	«ENDFOR»
     	«IF !node.getParameters.empty»
-    		
+
     	$«nodeName»_parameters (
     		node: $«nodeName»,
     		«FOR parameter : node.getParameters SEPARATOR ", "»
@@ -454,9 +435,9 @@ class TQLGenerator extends AbstractGenerator {
     		has interface_name "«topicName»",
     		has interface_type "«subscription.message.fullname»";
     		«handleQoS(subscription.qos, subName)»
-    		
+
     		(node: $«nodeName», subscriber: $«subName») isa has_topic;
-    		
+
     	«ENDFOR»
     	«FOR publication : innerNode.publisher»
     		«val pubName = _namer.uniqueName(publication, nodeName)»
@@ -465,7 +446,7 @@ class TQLGenerator extends AbstractGenerator {
     		has interface_name "«topicName»",
     		has interface_type "«publication.message.fullname»";
     		«handleQoS(publication.qos, pubName)»
-    		
+
     		(node: $«nodeName», publisher: $«pubName») isa has_topic;
     	«ENDFOR»
     	«FOR actionClient : innerNode.actionclient»
@@ -474,7 +455,7 @@ class TQLGenerator extends AbstractGenerator {
     		$«acName» isa ActionClient,
     		has interface_name "«interfaceName»",
     		has interface_type "«actionClient.action.fullname»";
-    		(node: $«nodeName», client: $«acName») isa has_action;	
+    		(node: $«nodeName», client: $«acName») isa has_action;
     	«ENDFOR»
     	«FOR actionServer : innerNode.actionserver»
     		«val asName = _namer.uniqueName(actionServer, nodeName)»
@@ -482,7 +463,7 @@ class TQLGenerator extends AbstractGenerator {
     		$«asName» isa ActionServer,
     		has interface_name "«interfaceName»",
     		has interface_type "«actionServer.action.fullname»";
-    		(node: $«nodeName», server: $«asName») isa has_action;	
+    		(node: $«nodeName», server: $«asName») isa has_action;
     	«ENDFOR»
     	«FOR serviceClient : innerNode.serviceclient»
     		«val acName = _namer.uniqueName(serviceClient, nodeName)»
@@ -490,7 +471,7 @@ class TQLGenerator extends AbstractGenerator {
     		$«acName» isa ServiceClient,
     		has interface_name "«interfaceName»",
     		has interface_type "«serviceClient.service.fullname»";
-    		(node: $«nodeName», client: $«acName») isa has_service;	
+    		(node: $«nodeName», client: $«acName») isa has_service;
     	«ENDFOR»
     	«FOR serviceServer : innerNode.serviceserver»
     		«val asName = _namer.uniqueName(serviceServer, nodeName)»
@@ -498,13 +479,13 @@ class TQLGenerator extends AbstractGenerator {
     		$«asName» isa ServiceServer,
     		has interface_name "«interfaceName»",
     		has interface_type "«serviceServer.service.fullname»";
-    		(node: $«nodeName», server: $«asName») isa has_service;	
+    		(node: $«nodeName», server: $«asName») isa has_service;
     	«ENDFOR»
     	'''
 
-			    
+
     }
-    
+
     def String handleQoS(ros.QualityOfService qos, String interfaceName)
     {
     	if(qos !== null)
@@ -522,16 +503,16 @@ class TQLGenerator extends AbstractGenerator {
 		    if (qos.leaseDuration !== null) 'has lease_duration ' + handleDuration(qos.leaseDuration) else null
 		).filterNull
     	'''
-			
+
 			$«qosName» isa QoSProfile,
     	   	«qosProps.join(",\n")»
 			;
-			
+
 			$«qosName»_rel (interface: $«interfaceName», qos: $«qosName») isa has_qos;
     	'''
     	}
     }
-    
+
     def int handleDuration(String duration_field)
     {
     	if(duration_field == 'infinite')
@@ -543,7 +524,7 @@ class TQLGenerator extends AbstractGenerator {
     		Integer.parseInt(duration_field)
     	}
     }
-    
+
     def String getInterfaceName(InterfaceType interface_, RosNode node){
 
 	    var interfaceName = interface_.name
@@ -593,12 +574,10 @@ class TQLGenerator extends AbstractGenerator {
 				}
 			}
 		}
-		
+
 		return interfaceName
     }
-    
-  
-    
+
     def String generateFetchQuery(TacticsModel model) {
     	'''
 		  match
@@ -665,56 +644,53 @@ class TQLGenerator extends AbstractGenerator {
 		      };
     	'''
     }
-    
+
         def String generateFetchApplicableTactics(String resolutionModelName, String interfaceName) {
     	'''
 			match
 			  $action isa ROSInterface, has interface_name "«interfaceName»";
 			  $resolution_model isa resolution_model, has resolution_model_name "«resolutionModelName»";
-			
+
 			  (interface: $action, resolution_model: $resolution_model, tactic_rule: $«RULE_VAR»)
 			      isa applicable_tactics;
-			
+
 			  $«RULE_VAR» isa tactic_rule, has rule_valid true;
-			
+
 			fetch
 			  $«RULE_VAR»: rule_name;
-			
+
 			  set_parameter_action: {
 			    match
 			      $tactic isa Tactic;
 			      $«RULE_VAR» (tactic: $tactic);
-			
+
 			      (tactic: $tactic, variant_resolution: $vr) isa resolution_model;
 			      $vr isa variant_resolution;
-			
+
 			      $vr (resolution_action: $res_action, variant: $«FEATURE_VAR»);
-			
+
 			      $res_action isa set_nodes_parameters;
 			      $res_action (node: $«NODE_VAR», parameter: $«PARAM_VAR», parameter_value: $parameter_value);
-			
+
 			    fetch
 				  $«NODE_VAR»: node_name;
 				  $«PARAM_VAR»: parameter_name;
 				  $«FEATURE_VAR»: feature_name;
-			
+
 			      «PARAM_VALUES_SUBQUERY_NAME»: {
 			        match
 			          $parameter_value isa ValueArray;
 			          $«INDEX_VAR» (array: $parameter_value, array_value: $value) isa at_index;
-			
+
 			        fetch
 			          $«INDEX_VAR»: index;
 					  $value: attribute;
 				 };
-				 
+
 		};
     	'''
     }
-    
-    
-    
-    
+
     def String generateInsertMeasurement(ContextVar contextVariable, Object measurementValue, String measurementTime)
     {
     	val measureName = _namer.uniqueName(contextVariable)
@@ -724,12 +700,12 @@ class TQLGenerator extends AbstractGenerator {
 
 		insert
 		    $value isa «HasValue(measurementValue)»
-		    
+
 		    (measure: $«measureName», measurement_value: $value) isa measurement,
 		        has measurement_time «measurementTime»;
-    	'''	
+    	'''
     }
-    
+
     def dispatch String HasValue(Double v) { '''ValueDouble, has double_value «v»;'''}
 	def dispatch String HasValue(Boolean v) { '''ValueBool, has bool_value «v»;'''}
 	def dispatch String HasValue(Integer v) { '''ValueInteger, has integer_value «v»;'''}
@@ -742,13 +718,13 @@ class TQLGenerator extends AbstractGenerator {
 		(array: $value, array_value: $elem_"«element.key») isa at_index, has index «element.key»;
 	«ENDFOR»
 	'''}
-    
+
     private def literalValue(Literal lit, String condition_name)
     {
     	val name = condition_name + "_val"
     	if(lit instanceof IntLiteral)
     	{
-    		
+
     		return name -> '''$«name» isa ValueInteger, has integer_value «Utilities.valueOfLiteral(lit)»;'''
     	}
     	if(lit instanceof DecimalLiteral)
@@ -763,10 +739,10 @@ class TQLGenerator extends AbstractGenerator {
     	{
     		return name -> '''$«name» isa ValueBool, has bool_value «Utilities.valueOfLiteral(lit)»;'''
     	}
-    	
+
     	throw new Exception("Strange Literal received " + lit.class)
     }
-    
+
     private def literalValue(LiteralWrapper litwrapped, String condition_name)
     {
     	if(litwrapped.isPointer)
@@ -779,7 +755,7 @@ class TQLGenerator extends AbstractGenerator {
     		return returnValue
     	}
     }
-    
+
     private def expressionType(MathOperator operator)
     {
     	switch operator {
@@ -802,124 +778,103 @@ class TQLGenerator extends AbstractGenerator {
     			"not_equal"
     		}
     	}
-    }
-    private def inequality(Condition condition)
-	{
-		if(condition instanceof MeasurementCondition)
-		{
-			if(condition instanceof MeasurementThresholdCondition)
-			{
-				val measure = condition.measurement
-				val operator = condition.operator
-				val name = _namer.uniqueName(condition)
-				val litValue = literalValue(condition.thresholdValue, name)
-		
-				'''
-					«litValue.value»
-					$«name» (lhs_value:$t_measured_«measure.name», rhs_value: $«litValue.key») isa «expressionType(operator)»;
-				'''
-			}
-			else if(condition instanceof MeasurementMeasurementCondition)
-			{
-				val lh_measure = condition.measurement
-				val rh_measure = condition.otherMeasurement
-				val operator = condition.operator
-				val name = _namer.uniqueName(condition)
-		
-				'''
-					$«name» (lhs_value:$t_measured_«lh_measure.name», rhs_value: $t_measured_«rh_measure.name») isa «expressionType(operator)»;
-				'''
-			}
+	    }
+
+	private def Pair<String, CharSequence> compileAtom(GuardAtom atom) {
+		if (atom instanceof ContextComparison) {
+			return compileContextComparison(atom)
 		}
-		else if(condition instanceof FeatureCondition)
-		{
-			'''
-			$«_namer.uniqueName(condition)» (atom: $«_namer.uniqueName(condition.variant.feature)») isa propositional_expression;
-			'''
+		if (atom instanceof FeatureSelection) {
+			return compileFeatureSelection(atom)
 		}
+
+		throw new IllegalArgumentException("Unsupported guard atom type: " + atom.class)
 	}
-	
+
+	private def Pair<String, CharSequence> compileContextOperand(
+		ContextOperand operand,
+		String expressionName,
+		String side
+		) {
+			if (operand instanceof ContextVariableOperand) {
+				return "t_measured_" + operand.variable.name -> ("" as CharSequence)
+			}
+			if (operand instanceof LiteralOperand) {
+				val compiled = literalValue(operand.literal, expressionName + "_" + side)
+				return compiled.key -> (compiled.value as CharSequence)
+			}
+
+		throw new IllegalArgumentException("Unsupported context operand type: " + operand.class)
+	}
+
+	private def Pair<String, CharSequence> compileContextComparison(ContextComparison comparison) {
+		val name = _namer.uniqueName(comparison)
+		val lhs = compileContextOperand(comparison.left, name, "lhs")
+		val rhs = compileContextOperand(comparison.right, name, "rhs")
+
+		return name -> '''
+			«lhs.value»
+			«rhs.value»
+			$«name» (lhs_value: $«lhs.key», rhs_value: $«rhs.key») isa «expressionType(comparison.operator)», has expression_name "«name»";
+		'''
+	}
+
+	private def Pair<String, CharSequence> compileFeatureSelection(FeatureSelection selection) {
+		val baseName = _namer.uniqueName(selection)
+		val featureName = _namer.uniqueName(selection.variant.feature)
+		val baseExpression = '''
+			$«baseName» (atom: $«featureName») isa propositional_expression, has expression_name "«baseName»";
+		'''
+
+		if (selection.not !== null) {
+			val notName = baseName + "_not"
+			return notName -> '''
+				«baseExpression»
+				$«notName» (expression: $«baseName») isa not_expression, has expression_name "«notName»";
+			'''
+		}
+
+		return baseName -> baseExpression
+	}
+
 	private def inequality(DerivedVarFeature derived)
 	{
 		val name = _namer.uniqueName(derived.feature) + "_is_selected_or_not"
 		val previouslyDefined = definedFeaturePropositions.contains(name)
-		
+
 		if(!previouslyDefined)
-		{ 
+		{
 			val newEntry = name -> '''$«name» (atom: $«_namer.uniqueName(derived.feature)») isa propositional_expression;'''
 			definedFeaturePropositions.add(name)
-			
+
 			return newEntry
 		}
 		return name -> "";
-		
+
 	}
-	
+
 	private def inequality(ContextVar measure, LiteralWrapper thresholdValue, MathOperator operator)
 	{
 		val previouslyDefined = definedInequalities.get(new Pair(measure, new Pair(operator, thresholdValue)))
-		
+
 		if(previouslyDefined === null)
-		{ 
+		{
 			val name = measure.name + "_" + operator.getName().toLowerCase + "_" + thresholdValue.tqlName
 			val litValue = literalValue(thresholdValue, name)
 			val newEntry = name -> '''
 				«litValue.value»
 				$«name» (lhs_value:$t_measured_«measure.name», rhs_value: $«litValue.key») isa «expressionType(operator)»;
 			'''
-			
+
 			definedInequalities.put(new Pair(measure, new Pair(operator, thresholdValue)), name)
 			return newEntry
 		}
 		return definedInequalities.get(new Pair(measure, new Pair(operator, thresholdValue))) -> ""
-//		else if(condition instanceof FeatureCondition)
-//		{
-//			'''
-//			$«_namer.uniqueName(condition)» (atom: $«_namer.uniqueName(condition.variant.feature)») isa propositional_expression;
-//			'''
-//		}
 	}
-    
-	
-	
-//	private def logic_op(LogicalOperator logicalOp, String lhs_name, String rhs_name)
-//	{
-//		val name = _namer.uniqueName(logicalOp, lhs_name, rhs_name)
-//		'''
-//			$«name» (expression:$«lhs_name», expression:$«rhs_name») isa «logicalOp.literal.toLowerCase»_expression;
-//		'''
-//	}
-	
-//	private def boolean isClause(Condition condition, Condition left)
-//	{
-//		if(condition.secondTerm !== null)
-//		{
-//			if (condition.logicalOp !== null && condition.logicalOp.value == LogicalOperator.OR_VALUE)
-//			{
-//        		return isClause(o.left, null) && isClause(condition.secondTerm);	
-//        	}
-//			
-//		}
-//		return true
-//	}
-	
-//	private def boolean isCNFConjunction(Condition condition, Condition left)
-//	{
-//    	if(condition.secondTerm !== null)
-//		{
-//			if (condition.logicalOp !== null && condition.logicalOp.value == LogicalOperator.AND_VALUE)
-//			{
-//        		return isCNFConjunction(condition.secondTerm);	
-//        	}
-//			
-//		}
-//		return isClause(condition)
-//	}
 
 	def boolean isClause(Expr e) {
 	    switch e {
 	        Or: return isClause(e.left) && isClause(e.right)
-	        Var: return true
 	        DerivedVar: return true
 	        DerivedVarFeature : return true
 	        default: return false
@@ -932,50 +887,19 @@ class TQLGenerator extends AbstractGenerator {
 	        default: return isClause(e)
 	    }
 	}
-	
-//	private def Pair<String, CharSequence> buildExpression(MeasurementCondition condition) {
-//		val condName = _namer.uniqueName(condition)
-//		val ineqCode = inequality(condition)
-//	
-//		// Base case: leaf condition (no further chaining)
-//		if (condition.logicalOp === null || condition.secondTerm === null) {
-//			return new Pair(condName, ineqCode)
-//		}
-//	
-//		// Recursive case: build RHS expression
-//		val right = buildExpression(condition.secondTerm)
-//		val rightName = right.key
-//		val rightCode = right.value
-//	
-//		val logicName = _namer.uniqueName(condition.logicalOp, condName, rightName)
-//		val logicExpr = logic_op(condition.logicalOp, condName, rightName)
-//	
-//		val fullCode = '''
-//			«ineqCode»
-//			«rightCode»
-//			«logicExpr»
-//		'''
-//	
-//		return new Pair(logicName, fullCode)
-//	}
-	
-//	private def create_antecedent(Condition condition)
-//	{
-//		return buildExpression(condition)
-//	}
-	
+
 	private def gatherResolutionFeatures(ResolutionModel res_model)
 	{
 		val features = newArrayList
-		
+
 		for (resolution : res_model.resolutions) {
 			features.add(resolution.feature)
 		}
-		
+
 		return features
 	}
-	
-	
+
+
 	private def void collectRecursively(System ros_sys, List<System> result) {
     	if (ros_sys === null || result.contains(ros_sys)) return;
     	result.add(ros_sys);
@@ -986,16 +910,16 @@ class TQLGenerator extends AbstractGenerator {
 	        }
 	    }
 	}
-	
+
 	def List<System> collectAllSystems(ResolutionModel model) {
     	val List<System> result = newArrayList
         collectRecursively(model.rossystem, result)
-        return result       
+        return result
     }
-    
+
     def List<RosNode> rosNodesFromSystem(System ros_system) {
     	val node_list = newArrayList
-    	
+
     	for (component : ros_system.components)
     	{
     		if(component instanceof RosNode)
@@ -1003,10 +927,10 @@ class TQLGenerator extends AbstractGenerator {
     			node_list.add(component as RosNode)
     		}
     	}
-    	
-    	return node_list    	
+
+    	return node_list
     }
-    
+
     def String processSubNodes(List<RosNode> rosNodes)
     {
     	val Map<ros.Node, List<RosNode>> parenthood = newHashMap
@@ -1026,118 +950,118 @@ class TQLGenerator extends AbstractGenerator {
     	'''
     	«FOR family : parenthood.entrySet»
     		(node: $«uniqueName(family.key)»,
-    		«FOR child : family.value SEPARATOR ", "» 
+    		«FOR child : family.value SEPARATOR ", "»
     			subnode: $«uniqueName(child.from)»
     		«ENDFOR»
     			) isa subnode;
     	«ENDFOR»
     	'''
     }
-    
+
     def String generateArchitectureInsertQuery(ResolutionModel resolutionModel)
     {
 		'''
 		insert
-		
+
 		«FOR rossys : collectAllSystems(resolutionModel)»
 			«val nodesList = rosNodesFromSystem(rossys)»
 			«FOR comp : nodesList»
 				«generateInsertQuery(comp)»
 			«ENDFOR»
 			«processSubNodes(nodesList)»
-			
+
 		«ENDFOR»
-		'''	      
-    	
+		'''
+
     }
-    
+
     def getResolutionModel(TacticsModel t, Resource resource)
     {
     	val List<ResolutionModel> resolutionModels = newArrayList
-		
+
 		for (imp : t.imports) {
 			if(imp.importURI.endsWith('resolution'))
 			{
 				var uri = URI.createURI(imp.importURI)
 				if (uri.isRelative()) {
-					
+
             		uri = uri.resolve(resource.getURI());
         		}
         		val imported = resource.resourceSet.getResource(uri, true);
-        		if (imported === null || imported.getContents().isEmpty()) 
+        		if (imported === null || imported.getContents().isEmpty())
         		{
         			println("ResolutionModel import fail")
         		}
-        			
-        		
+
+
         		val root = imported.getContents().get(0);
 	            if (root instanceof ResolutionModel) {
 	               	resolutionModels.add(root)
 				}
-				
+
 			}
-			
+
 		}
-		
-		return resolutionModels;	
-    	
+
+		return resolutionModels;
+
     }
      def getContextModel(TacticsModel t, Resource resource)
     {
     	val List<ContextModel> contextModels = newArrayList
-		
+
 		for (imp : t.imports) {
 			if(imp.importURI.endsWith('context'))
 			{
 				var uri = URI.createURI(imp.importURI)
 				if (uri.isRelative()) {
-					
+
             		uri = uri.resolve(resource.getURI());
         		}
         		val imported = resource.resourceSet.getResource(uri, true);
-        		if (imported === null || imported.getContents().isEmpty()) 
+        		if (imported === null || imported.getContents().isEmpty())
         		{
         			println("ContextModel import fail")
         		}
-        			
-        		
+
+
         		val root = imported.getContents().get(0);
 	            if (root instanceof ContextModel) {
 	               	contextModels.add(root)
 				}
-				
+
 			}
-			
+
 		}
-		
-		return contextModels;	 	
+
+		return contextModels;
     }
-    
+
 //     def getContextModelNode(ContextModel c, Resource resource)
 //    {
-//		
+//
 //		val imp = c.context_model_node.node_import
 //		if(imp.importURI.endsWith('ros2'))
 //		{
 //			var uri = URI.createURI(imp.importURI)
 //			if (uri.isRelative()) {
-//				
+//
 //        		uri = uri.resolve(resource.getURI());
 //    		}
 //    		val imported = resource.resourceSet.getResource(uri, true);
-//    		if (imported === null || imported.getContents().isEmpty()) 
+//    		if (imported === null || imported.getContents().isEmpty())
 //    		{
 //    			println("ContextModel node Import Fail")
 //    		}
-//    			
-//    		
+//
+//
 //    		val root = imported.getContents().get(0);
 //
 //			if (root instanceof ros.AmentPackage) {
-//				return root.getArtifact().get(0).getNode()          
+//				return root.getArtifact().get(0).getNode()
 //			}
-//			
-//		} 	
+//
+//		}
 //    }
 	private def infinityLiteral(Boolean negative, Literal otherLiteral, String name)
 	{
@@ -1147,13 +1071,13 @@ class TQLGenerator extends AbstractGenerator {
 		}
 		var infInt = INF_INT_VAR
 		var infDecimal = INF_DBL_VAR
-		
+
 		if(negative)
 		{
 			infInt = NEG_INF_INT_VAR
 			infDecimal = NEG_INF_DBL_VAR
 		}
-		
+
 		switch obj : otherLiteral
 		{
 			IntLiteral: return infInt
@@ -1162,8 +1086,8 @@ class TQLGenerator extends AbstractGenerator {
 			BooleanLiteral: throw new Exception("Requested infinityLiteral for Boolean")
 			default: throw new Exception("weird Otherliteral in infinityLiteral ")
 		}
-		
-    	
+
+
 	}
 
 	private def boundToTQL(Pair<LiteralWrapper, LiteralWrapper> lowUpBounds, String name, ContextVar contextVar)
@@ -1178,7 +1102,7 @@ class TQLGenerator extends AbstractGenerator {
 		{
 			throw new Exception("boundToTQL ERROR")
 		}
-		
+
 		if(lowerBound === null)
 		{
 			lowerBoundTQL = infinityLiteral(true,upperBound.innerLiteral,name + "_inf_val") -> ""
@@ -1186,7 +1110,7 @@ class TQLGenerator extends AbstractGenerator {
 			val pointToInf = new LiteralWrapper(lowerBoundTQL.key)
 			lowerBoundVar = new DerivedVar(MathOperator.GREQ,contextVar,pointToInf)
 			upperBoundVar = new DerivedVar(MathOperator.LESS,contextVar, upperBound)
-		} 	
+		}
 		if(upperBound === null)
 		{
 			upperBoundTQL = infinityLiteral(false,lowerBound.innerLiteral,name + "_inf_val") -> ""
@@ -1195,21 +1119,21 @@ class TQLGenerator extends AbstractGenerator {
 			val pointToInf = new LiteralWrapper(upperBoundTQL.key)
 			upperBoundVar = new DerivedVar(MathOperator.LESS,contextVar, pointToInf)
 		}
-		
+
 
 //		'''
 //		«lowerBoundTQL.value»
-//		
+//
 //		«upperBoundTQL.value»
-//		
+//
 //		$«name»_lower_bound (lhs_value:$t_measured_«contextVar.name», rhs_value: $«lowerBoundTQL.key») isa greater_than_equal;
 //		$«name»_upper_bound (lhs_value:$t_measured_«contextVar.name», rhs_value: $«upperBoundTQL.key») isa less_than;
 //		'''
 
 		return new And(lowerBoundVar, upperBoundVar)
-		
+
 	}
-	
+
 	private def And somethingRecursive(List<? extends Expr> x)
 	{
 	    if (x.size == 2) {
@@ -1228,7 +1152,7 @@ class TQLGenerator extends AbstractGenerator {
     		val name = contextVar.name + stateName + element.key.toString()
     		y.add(boundToTQL(element.value, name, contextVars.get(element.key)))
     	}
-    	
+
     	val x = newArrayList
     	for (element : featureValuation.indexed)
     	{
@@ -1239,30 +1163,30 @@ class TQLGenerator extends AbstractGenerator {
     	}
     	var Expr finalX = if (x.size == 1) x.get(0) else somethingRecursive(x)
 
-    	
+
     	var Expr finalY = if (y.size == 1) y.get(0) else somethingRecursive(y)
 
     	return new And(finalY,finalX)
-    	
-    	
+
+
 //		'''
 //			«FOR element : states.values»
 //				«element»
 //			«ENDFOR»
 //			$«stateName»_andexpr (
-//	    	«FOR element : states.keySet» 
+//	    	«FOR element : states.keySet»
 //            expression:$«element»_lower_bound,
 //            expression:$«element»_upper_bound,
 //            expression: ) isa and_expression;
 //	    	«ENDFOR»
 //		'''
     }
-    
+
     private def String infinityLiterals()
     {
     	var infInt = Integer.MAX_VALUE
 		var infDecimal = Double.MAX_VALUE
-		
+
 		var negInfInt = -infInt
 		var negInfDecimal = -infDecimal
 
@@ -1273,7 +1197,7 @@ class TQLGenerator extends AbstractGenerator {
     	$«NEG_INF_DBL_VAR» isa ValueDouble, has double_value «doubleToTQLDouble(negInfDecimal)»;
     	'''
     }
-    
+
     private def thresholdLiterals()
     {
     	val newThresholds = newHashMap
@@ -1285,7 +1209,7 @@ class TQLGenerator extends AbstractGenerator {
     			val name = thresholdEntry.key.name + "_thresh_" + i.toString
     			val x = literalValue(wrappedLiteral,name)
     			returnText += x.value
-    			returnText += "\n" 
+    			returnText += "\n"
     			if(!wrappedLiteral.isPointer)
     			{
     				if(wrappedLiteral.innerLiteral === null)
@@ -1302,7 +1226,7 @@ class TQLGenerator extends AbstractGenerator {
     			}
     			i++
     		}
-    		
+
     		newThresholds.put(thresholdEntry.key, newThresholdSet)
     	}
     	thresholds = newThresholds
@@ -1313,13 +1237,13 @@ class TQLGenerator extends AbstractGenerator {
 //		println(generateFetchApplicableTactics(t.resolutionModel, "one", "two"))
 //		println(generateUpdateInEffect(newArrayList('MoveQuickly')))
 		val tacticName = t.name
-		val lc_tacticName = t.name.toLowerCase	
-		
+		val lc_tacticName = t.name.toLowerCase
+
 		val List<ResolutionModel> resolutionModels = getResolutionModel(t, globalResource)
 		val List<ContextModel> contextModels = getContextModel(t, globalResource)
 //		println(generateArchitectureInsertQuery(resolutionModels.get(0)))
 //		println("--------")
-//		println(resolutionModels.size)    
+//		println(resolutionModels.size)
 //		println("SZIEEE")
 //		println(contextModels.size)
 		var infinityLiteralsTQL = ""
@@ -1327,11 +1251,11 @@ class TQLGenerator extends AbstractGenerator {
 		val states = newArrayList
 		if(doStates)
 		{
-			
+
 	        for (rule : t.adaptationRules) {
 	        	registerComparisonsFromRule(rule)
 	        }
-	        
+
 	        infinityLiteralsTQL = infinityLiterals()
 	        thresholdLiteralsTQL = thresholdLiterals()
 	        bounds = newHashMap
@@ -1343,14 +1267,14 @@ class TQLGenerator extends AbstractGenerator {
 	       	val product = Utilities.getCartesianProduct(values)
 			allStates = newArrayList
 			val List<List<Boolean>> featureSelectionsToPairs = newArrayList
-			
+
 			for (featureSelectionEntry : featureSelections.values)
 			{
 				featureSelectionsToPairs.add(featureSelectionEntry.toList)
 			}
-	
+
 			val newCombos = Utilities.getCartesianProduct(featureSelectionsToPairs)
-	
+
 			val newnewCombos = newArrayList
 			val coveredFeatures = newArrayList
 			for (feat : featureSelections.keySet)
@@ -1367,17 +1291,17 @@ class TQLGenerator extends AbstractGenerator {
 							val index = featureSelections.keySet.toList.indexOf(altChild)
 							if(index >= 0)
 							{
-								valuationIndices.add(index)	
+								valuationIndices.add(index)
 							}
 						}
-						
+
 						for (newCombo : newCombos)
 						{
 							val relevantSlice = newArrayList
 							for(valuationIndex : valuationIndices)
 							{
 								relevantSlice.add(newCombo.get(valuationIndex))
-							} 
+							}
 							//Since it is an alternative, only one child can be true at a time
 							 if(!parent.mandatory && relevantSlice.filter[it].size <= 1)
 							 {
@@ -1388,14 +1312,14 @@ class TQLGenerator extends AbstractGenerator {
 							 {
 							 	newnewCombos.add(newCombo)
 							 }
-							
+
 						}
-							
+
 					}
-					
+
 				}
 			}
-			
+
 			for (featurevaluationCombo : newnewCombos)
 			{
 					for (contextPrecondition : product)
@@ -1403,9 +1327,9 @@ class TQLGenerator extends AbstractGenerator {
 						allStates.add(new State(contextPrecondition, featurevaluationCombo, contextKeys))
 					}
 			}
-			
+
 			println("Number of States " + allStates.size())
-			
+
 			val featureKeys =featureSelections.keySet.toList
 	//        println(featureKeys)
 	//		println(contextKeys)
@@ -1421,7 +1345,7 @@ class TQLGenerator extends AbstractGenerator {
 	        		}
 	        	}
 	        	println(state.describeMedianBounds)
-	        	
+
 	        	val expr = expressionFromState(contextKeys,featureKeys, state,"")
 	        	val state_inCNF = toCNF(expr)
 	//        	println("createAntecedent")
@@ -1434,27 +1358,27 @@ class TQLGenerator extends AbstractGenerator {
 	        	val name = "state_" + antecedent.key
 	        	val state_statement =
 	        	'''
-	        	$«name»( 
+	        	$«name»(
 	        	«FOR rule_name : state.associatedRulesTQLNames SEPARATOR ", "»
 	        	rule: $tactic_rule_«rule_name.toLowerCase»«ENDFOR»«IF state.hasRules»,«ENDIF»
 	        	antecedent: $«antecedent.key») isa state, has state_name "«name»";
 	        	'''
-	        	
+
 	        	states.add(antecedent.value + state_statement)
 	        	state.TQLName = name
 	        }
 
 	        println(stateCount + " states were produced, " + ruleCount + " of which have a rule attached")
-	        
+
         }
-        
+
 		escapes = newHashMap
-		val x ='''			
+		val x ='''
 			«infinityLiteralsTQL»
 			«thresholdLiteralsTQL»
 			$ta_«lc_tacticName» isa Tactic, has tactic_name "«tacticName»";
 			«FOR resolutionModel : resolutionModels»
-			«registerFeatures(gatherResolutionFeatures(resolutionModel))»	
+			«registerFeatures(gatherResolutionFeatures(resolutionModel))»
 			«ENDFOR»
 			«FOR contextModel : contextModels»
 			«registerMeasurements(contextModel)»
@@ -1470,7 +1394,7 @@ class TQLGenerator extends AbstractGenerator {
 			«ENDIF»
 
 			«FOR resolutionModel : resolutionModels»
-				«compileResolution(resolutionModel)»				
+				«compileResolution(resolutionModel)»
 				$res_«resolutionModel.name» (tactic: $ta_«lc_tacticName»,
 				 «FOR resolution : resolutionModel.resolutions SEPARATOR ", "»
 				«IF !resolution.selection_actions.empty && !resolution.deselection_actions.empty»
@@ -1484,24 +1408,24 @@ class TQLGenerator extends AbstractGenerator {
 				«ENDIF»
 				«ENDIF»
 				«ENDIF»
-				 «ENDFOR») 
-				 isa resolution_model, 
+				 «ENDFOR»)
+				 isa resolution_model,
 				    has resolution_model_name "«resolutionModel.name»", has ros_system "«resolutionModel.rossystem.name»";
 			«ENDFOR»
 		'''
 //		yeah()
 //		println(generateFetchQuery(t))
-		
+
 		return x
 	}
-	
+
 	def createBounds()
 	{
 		for (measurement : thresholds.keySet) {
 			var List<Pair<LiteralWrapper,LiteralWrapper>> boundPairs = newArrayList
 			val sortedThresholds = thresholds.get(measurement).toList().sort()
 			boundPairs.add(null -> sortedThresholds.first)
-			
+
 			if(sortedThresholds.size() > 1)
 			{
 				for (indexedLiteral : sortedThresholds.indexed) {
@@ -1509,14 +1433,14 @@ class TQLGenerator extends AbstractGenerator {
 					boundPairs.add(indexedLiteral.value -> sortedThresholds.get(indexedLiteral.key + 1))
 				}
 			}
-			
+
 			boundPairs.add(sortedThresholds.last -> null)
 			bounds.put(measurement,boundPairs)
 
 			printBoundPairs(boundPairs)
 		}
 	}
-	
+
 	def printBoundPairs(List<Pair<LiteralWrapper,LiteralWrapper>> boundPairs)
 	{
 		for (element : boundPairs) {
@@ -1535,7 +1459,7 @@ class TQLGenerator extends AbstractGenerator {
 		}
 		println("")
 	}
-	
+
 	def oppositeCondition(Pair<MathOperator, LiteralWrapper> opLitPair, ContextVar c_var)
 	{
 		var op = opLitPair.key
@@ -1556,10 +1480,10 @@ class TQLGenerator extends AbstractGenerator {
 				return new DerivedVar(MathOperator.DIFFERENT,c_var, lit)
 		}
 	}
-	
+
 //	def yeah()
 //	{
-//		
+//
 //		val Map<ContextVar, List<Pair<MathOperator, LiteralWrapper>>> newComps = newHashMap
 //		for (measurement : thresholdComps.keySet) {
 //			println("Now looking at " + measurement.name)
@@ -1568,14 +1492,14 @@ class TQLGenerator extends AbstractGenerator {
 //			if(opLitPairs.size == 1)
 //			{
 //				var opLitPair = opLitPairs.get(0)
-//				oppositeCondition(opLitPair, measurement)			
+//				oppositeCondition(opLitPair, measurement)
 //			}
 //			else{
 //				println("MULTIPLE INSTANCES OF MEASURE " + measurement.name)
 //			}
 //			newComps.put(measurement, newPairs)
 //		}
-//		
+//
 //		for (measurement : newComps.keySet) {
 //			print(measurement.name + ": ")
 //			for (opLitPair : newComps.get(measurement))
@@ -1585,8 +1509,8 @@ class TQLGenerator extends AbstractGenerator {
 //			println("")
 //		}
 //	}
-	
-	
+
+
 //	private def measurementFromRuleBody(RuleBody rule_body)
 //	{
 //		if (rule_body instanceof ConditionAction)
@@ -1598,14 +1522,14 @@ class TQLGenerator extends AbstractGenerator {
 //			}
 //		}
 //	}
-	
+
 //	private def measurementTQLDeclaration(String measurement)
 //	{
 //		'''
 //		$t_measured_«measurement» isa Measure, has measure_name "t_measured_«measurement»";
 //		'''
 //	}
-	
+
 //	private def registerMeasurements(List<AdaptationRule> adap_rules)
 //	{
 //		for (rule : adap_rules) {
@@ -1644,12 +1568,12 @@ class TQLGenerator extends AbstractGenerator {
 			return ref.node
 		}
 	}
-	
+
 	private def registerMeasurements(ContextModel contextModel)
 	{
 //		val metaNode = getContextModelNode(contextModel,globalResource)
 //		val nodeName = _namer.uniqueName(metaNode)
-	
+
 		'''
 «««		«describeNode(metaNode,"")»
 «««    	«FOR publication : metaNode.publisher»
@@ -1659,7 +1583,7 @@ class TQLGenerator extends AbstractGenerator {
 «««		has interface_name "«topicName»",
 «««		has interface_type "«publication.message.fullname»";
 «««		«handleQoS(publication.qos, pubName)»
-«««		
+«««
 «««		(node: $«nodeName», publisher: $«pubName») isa has_topic;
 «««    	«ENDFOR»
 
@@ -1667,7 +1591,7 @@ class TQLGenerator extends AbstractGenerator {
 			«val contextvarName = _namer.uniqueName(contextVariable)»
 			«val ref = contextVariable.source»
 			$«contextvarName» isa Measure, has measure_name "«contextVariable.name»";
-			
+
 			(measure: $«contextvarName», source: $«_namer.uniqueName(contextVariable.source, _namer.uniqueName(nodeFromRef(ref)))») isa measurement_interface,
 				    «IF contextVariable.functionLibrary !== null»has measurement_function_lib '«contextVariable.functionLibrary»',«ENDIF»
 				    «IF contextVariable.functionArgs !== null»has measurement_function_args '«contextVariable.functionArgs»',«ENDIF»
@@ -1683,9 +1607,9 @@ class TQLGenerator extends AbstractGenerator {
 
 		'''
 	}
-	
 
-	
+
+
 
 //	private def registerNodes(ResolutionModel res_model)
 //	{
@@ -1698,14 +1622,14 @@ class TQLGenerator extends AbstractGenerator {
 //			}
 //		}
 //		'''
-//			
+//
 //			# define ROSNodes
 //			«FOR node_name : unique_nodes»
 //				$«_namer.uniqueName(node_name)» isa ROSNode, has node_name "«node_name.name»";
 //			«ENDFOR»
 //		'''
 //	}
-//	
+//
 //	private def void collectAllFeatures(Feature feature, List<Feature> allFeatures) {
 //	    if(feature !== null)
 //	    {
@@ -1715,11 +1639,11 @@ class TQLGenerator extends AbstractGenerator {
 //		    }
 //		}
 //	}
-	
+
 	private def registerFeatures(List<Feature> f_list)
-	{		
+	{
 		'''
-		
+
 		# define Feature Model
 		«FOR feature : f_list»
 			$«_namer.uniqueName(feature)» isa Feature, has feature_name "«feature.name»", has mandatory «feature.mandatory»;
@@ -1730,21 +1654,21 @@ class TQLGenerator extends AbstractGenerator {
 					«FOR child_feature : feature.children SEPARATOR ", "»
 						child: $«_namer.uniqueName(child_feature)»
 					«ENDFOR»
-				) isa alternative;	
+				) isa alternative;
 			«ENDIF»
 			«IF feature instanceof OrGroup»
-				$«_namer.uniqueName(feature)» (parent: $«_namer.uniqueName(feature)», 
+				$«_namer.uniqueName(feature)» (parent: $«_namer.uniqueName(feature)»,
 					«FOR child_feature : feature.children SEPARATOR ", "»
 						child: $«_namer.uniqueName(child_feature)»
 					«ENDFOR»
-				) isa or_group;	
+				) isa or_group;
 			«ENDIF»
 		«ENDFOR»
-		
-		'''			
+
+		'''
 	}
-	
-	
+
+
 	private def compileResolution(ResolutionModel resModel)
 	{
 	 	 '''
@@ -1753,13 +1677,13 @@ class TQLGenerator extends AbstractGenerator {
 			«ENDFOR»
 		 '''
 	}
-	
+
 	private def compileSingleResolution(Resolution resolution)
 	{
 		val reconfiguration_actions = resolution.selection_actions + resolution.deselection_actions
 		'''
 			«FOR acc : reconfiguration_actions»
-				«compileReconfiguration(acc)»	
+				«compileReconfiguration(acc)»
 			«ENDFOR»
 			«IF !resolution.selection_actions.empty»
 			$«_namer.uniqueName(resolution)»_act (
@@ -1782,27 +1706,27 @@ class TQLGenerator extends AbstractGenerator {
 	    val parts = p.value.map[ParamValueToString(it)]
     	return "[" + parts.join(", ") + "]"
 	}
-	
+
 	def dispatch String ParamValueToString(ParameterBoolean p) { p.value.toString()}
 	def dispatch String ParamValueToString(ParameterInteger p) { p.value.toString()}
 	def dispatch String ParamValueToString(ParameterDouble p) {
 		return doubleToTQLDouble(p.value)
 	}
 	def dispatch String ParamValueToString(ParameterString p) { p.value}
-	
-	
+
+
 	def dispatch String ParamValueToString(ParameterValue p) {
 	    println("Unknown parameter type: " + p.class.name)
 	    return "ValueTypeNotYetImplementedInGenerator"
 	}
-	
+
 //	def dispatch String ParamValueToEntity(ParameterSequence p) {
 //    val parts = p.value.map[ParamValueToEntity(it)]
 //	return "[" + parts.join(", ") + "]"
 //	}
-//	
-	
-	
+//
+
+
 	def doubleToTQLDouble(double d)
 	{
 		val format = new java.text.DecimalFormat("0.0############################")
@@ -1813,17 +1737,17 @@ class TQLGenerator extends AbstractGenerator {
 		val paramValNiceName = NiceNameParamValueType(the_value)
 		if(paramValNiceName == "string")
 			'''
-			$«name» isa «SchemaValueFromParam(the_value)», has «NiceNameParamValueType(the_value)»_value "«ParamValueToString(the_value)»";	
+			$«name» isa «SchemaValueFromParam(the_value)», has «NiceNameParamValueType(the_value)»_value "«ParamValueToString(the_value)»";
 			'''
 		else
 		{
 			'''
-			$«name» isa «SchemaValueFromParam(the_value)», has «NiceNameParamValueType(the_value)»_value «ParamValueToString(the_value)»;	
+			$«name» isa «SchemaValueFromParam(the_value)», has «NiceNameParamValueType(the_value)»_value «ParamValueToString(the_value)»;
 			'''
-			
+
 		}
 	}
-	
+
 	def describeParameter(String name, Parameter param) {
 		if(param.value !== null)
 		{
@@ -1832,7 +1756,7 @@ class TQLGenerator extends AbstractGenerator {
 		val the_type = param.type
 		//TODO: Consider whether I should restore the 'has' and put an empty value.
 		'''
-		$«name» isa «SchemaValueFromParam(the_type)»;	
+		$«name» isa «SchemaValueFromParam(the_type)»;
 		'''
 
 	}
@@ -1842,7 +1766,7 @@ class TQLGenerator extends AbstractGenerator {
 //		println("thevalue " + the_value)
 		if(the_value instanceof ParameterSequence)
 		{
-			
+
 			val result = newArrayList
 			val parseq_name = _namer.uniqueName(the_value, parent_name)
 //			println(parseq_name)
@@ -1853,14 +1777,14 @@ class TQLGenerator extends AbstractGenerator {
 						«describeParameter(_namer.uniqueName(param_value.value, parent_name), param_value.value)»
 						$«parseq_name»_elem_«param_value.key» (array: $«parseq_name», array_value: $«_namer.uniqueName(param_value.value, parent_name)») isa at_index, has index «param_value.key»;
 					«ENDFOR»
-					
+
 				'''
 			// Insert end thing for the actual array :-)
 			for (param_value : the_value.value) {
 				result.add(_namer.uniqueName(param_value, parent_name))
 			}
 			return body -> parseq_name
-		} 
+		}
 		else
 		{
 			val name = _namer.uniqueName(the_value, parent_name)
@@ -1868,7 +1792,7 @@ class TQLGenerator extends AbstractGenerator {
 			return single -> name
 		}
 	}
-	
+
 	def Pair<Boolean, Parameter> findMatch(RosNode parameterOwner, SetParam reconfig)
 	{
 		for (defaultParameter : getParameters(parameterOwner))
@@ -1891,11 +1815,11 @@ class TQLGenerator extends AbstractGenerator {
 				}
 				}
 			}
-			
+
 		}
 		return false -> null
 	}
-	
+
 	def Pair<CharSequence, String> ParamValueToValueEntity(SetParam reconfig, String parent_name, RosNode parameterOwner) {
 		//We need to consider whether the value in the setParam matches the default value of the RosNode in the RosSystem or .Ros2 file.
 		val the_value = reconfig.value
@@ -1916,14 +1840,14 @@ class TQLGenerator extends AbstractGenerator {
 						«describeParameter(_namer.uniqueName(param_value.value, parent_name), param_value.value)»
 						$«parseq_name»_elem_«param_value.key» (array: $«parseq_name», array_value: $«_namer.uniqueName(param_value.value, parent_name)») isa at_index, has index «param_value.key»;
 					«ENDFOR»
-					
+
 				'''
 			// Insert end thing for the actual array :-)
 			for (param_value : the_value.value) {
 				result.add(_namer.uniqueName(param_value, parent_name))
 			}
 			return body -> parseq_name
-		} 
+		}
 		else
 		{
 			if(isMatch.key) { return "" -> _namer.uniqueName(isMatch.value.value,"ERRORINParamValueToValueEntity2") }
@@ -1932,9 +1856,9 @@ class TQLGenerator extends AbstractGenerator {
 			return single -> name
 		}
 	}
-	
 
-		
+
+
 	private def compileReconfiguration(Reconfiguration reconfig)
 	{
 		val reconf_name = _namer.uniqueName(reconfig)
@@ -1964,7 +1888,7 @@ class TQLGenerator extends AbstractGenerator {
 
 			val param_type = NiceNameParamType(reconfig.param.type)
 
-			
+
 			'''
 				«x»
 				$«reconf_name» (node: $«rosnode_name», parameter: $«_namer.uniqueName(reconfig.param)», parameter_value: $«name») isa set_nodes_parameters;
@@ -1976,300 +1900,264 @@ class TQLGenerator extends AbstractGenerator {
 			'''
 				$«reconf_name» (node: $«rosnode_name») isa set_lifecycle_state, has lifecycle_state "«reconfig.state.toString.toLowerCase»";
 			'''
-			
+
 		}
 		else
 		{
 			java.lang.System.out.println("SOMETHING WRONG RECONFIG.!")
 		}
-		
-		
+
+
 	}
-	
-	private def toCNF(Condition condition)
-	{
-			var toCheck = ConditionToExpr(condition)
-			return toCNF(toCheck)
-	}
-	
+
 	private def toCNF(Expr expression)
 	{
 		if (!isCNFConjunction(expression) ){
 			return distribute(expression)
 		}
-			
+
 		return expression;
 	}
-	
-	private def recordMeasurementCondition(MeasurementThresholdCondition mes_cond, Map<ContextVar, Set<Pair<MathOperator, LiteralWrapper>>> comps)
-	{
-		for (element : flattenAgain(mes_cond)) {
-			if(element.thresholdValue === null)
-			{
-				throw new Exception("Null Threshold")
-			}
-			if(comps.get(element.measurement) !== null)
-			{
-				comps.get(element.measurement) += element.operator -> new LiteralWrapper(element.thresholdValue)
-				
-			}
-			else
-			{
-				var Set<Pair<MathOperator, LiteralWrapper>> newList =  new HashSet<Pair<MathOperator, LiteralWrapper>>()
-				newList.add(element.operator -> new LiteralWrapper(element.thresholdValue))
 
-				comps.put(element.measurement,newList)
-			}
-			
-		}
-		
-	}
-	
-	private def recordFeatureCondition(FeatureCondition feat_cond, Map<Feature, Set<Boolean>> sels)
+	private def ContextVar contextVariableFromOperand(ContextOperand operand)
 	{
-		for (element : flattenAgain(feat_cond)) {
-			if(sels.get(element.variant) !== null)
-			{
-			}
-			else
-			{
-				var Set<Boolean> newList =  new HashSet<Boolean>()
-				newList.add(true)
-				newList.add(false)
-
-				sels.put(element.variant.feature,newList)
-			}
-			
-		}
-		
-	}
-	
-	private def recordMeasurementConditionOnlyLiteral(MeasurementThresholdCondition mes_cond, Map<ContextVar, Set<LiteralWrapper>> comps)
-	{
-		for (element : flattenAgain(mes_cond)) {
-			if(comps.get(element.measurement) !== null)
-			{
-				comps.get(element.measurement) += new LiteralWrapper(element.thresholdValue)
-				
-			}
-			else
-			{
-				var Set<LiteralWrapper> newList =  new HashSet<LiteralWrapper>()
-				newList.add(new LiteralWrapper(element.thresholdValue))
-
-				comps.put(element.measurement,newList)
-			}
-			
-		}
-		
-	}
-	
-	private def conditionCombos(ConditionAction ruleBody)
-	{
-		if(ruleBody.contextGuard !== null && ruleBody.featureGuard !== null)
-		{			
-			val contextCNF = toCNF(ruleBody.contextGuard.contextCondition)
-			val featureCNF = toCNF(ruleBody.featureGuard.featureCondition)
-
-			return new And(featureCNF, contextCNF)
-		
-		}
-		else if(ruleBody.contextGuard !== null && ruleBody.featureGuard === null)
+		if(operand instanceof ContextVariableOperand)
 		{
-			return toCNF(ruleBody.contextGuard.contextCondition)			
-		}
-		else if(ruleBody.contextGuard === null && ruleBody.featureGuard !== null)
-		{
-			return toCNF(ruleBody.featureGuard.featureCondition)			
+			return operand.variable
 		}
 		return null
 	}
-	
+
+	private def Literal literalFromOperand(ContextOperand operand)
+	{
+		if(operand instanceof LiteralOperand)
+		{
+			return operand.literal
+		}
+		return null
+	}
+
+	private def recordContextThreshold(ContextVar variable, Literal literal, Map<ContextVar, Set<LiteralWrapper>> comps)
+	{
+		var thresholdsForVariable = comps.get(variable)
+		if(thresholdsForVariable === null)
+		{
+			thresholdsForVariable = new HashSet<LiteralWrapper>()
+			comps.put(variable, thresholdsForVariable)
+		}
+		thresholdsForVariable.add(new LiteralWrapper(literal))
+	}
+
+	private def recordContextComparisonThreshold(ContextComparison comparison, Map<ContextVar, Set<LiteralWrapper>> comps)
+	{
+		val leftVariable = contextVariableFromOperand(comparison.left)
+		val rightVariable = contextVariableFromOperand(comparison.right)
+		val leftLiteral = literalFromOperand(comparison.left)
+		val rightLiteral = literalFromOperand(comparison.right)
+
+		if(leftVariable !== null && rightLiteral !== null)
+		{
+			recordContextThreshold(leftVariable, rightLiteral, comps)
+		}
+		else if(leftLiteral !== null && rightVariable !== null)
+		{
+			recordContextThreshold(rightVariable, leftLiteral, comps)
+		}
+	}
+
+	private def recordFeatureSelection(FeatureSelection selection, Map<Feature, Set<Boolean>> sels)
+	{
+		if(sels.get(selection.variant.feature) === null)
+		{
+			val Set<Boolean> newList = new HashSet<Boolean>()
+			newList.add(true)
+			newList.add(false)
+			sels.put(selection.variant.feature, newList)
+		}
+	}
+
 	private def registerComparisonsFromRule(AdaptationRule adap_rule)
 	{
 		if(adap_rule instanceof AtomicRule)
 		{
 			val ruleBody = adap_rule.ruleBody
-					
+
 			if(ruleBody instanceof ConditionAction)
 			{
-				if(ruleBody.contextGuard !== null)
+				if(ruleBody.guardCondition === null)
 				{
-					if(ruleBody.contextGuard.contextCondition instanceof MeasurementThresholdCondition)
+					return
+				}
+				for (clause : ruleBody.guardCondition.clauses)
+				{
+					for (atom : clause.terms)
 					{
-						recordMeasurementConditionOnlyLiteral(ruleBody.contextGuard.contextCondition as MeasurementThresholdCondition, thresholds)	
+						if(atom instanceof ContextComparison)
+						{
+							recordContextComparisonThreshold(atom, thresholds)
+						}
+						else if(atom instanceof FeatureSelection)
+						{
+							recordFeatureSelection(atom, featureSelections)
+						}
+						else
+						{
+							throw new IllegalArgumentException("Unsupported guard atom type: " + atom.class)
+						}
 					}
 				}
-				if(ruleBody.featureGuard !== null)
-				{
-					recordFeatureCondition(ruleBody.featureGuard.featureCondition, featureSelections)
-				}
 			}
-			
+
 		}
 	}
-	
+
 	private def printFeatureNames(List<Feature> features)
 	{
 		var x = "["
 		for (element : features) {
-			x += element.name 
+			x += element.name
 			x += " "
 		}
 		x+="]"
 		return x
 	}
 
-
-			
 	private def checkAgainstBounds(AdaptationRule adap_rule, List<ContextVar> contextKeys, List<Feature> featureKeys, State state)
 	{
-		val contextPrecondition = state.contextPrecondition
-		val featureValuation = state.featurePrecondition
 		if(adap_rule instanceof AtomicRule)
 		{
 			val ruleBody = adap_rule.ruleBody
-					
 			if(ruleBody instanceof ConditionAction)
 			{
-				if(ruleBody.featureGuard !== null)
-				{
-					val featureCondition = ruleBody.featureGuard.featureCondition
-					
-					val isFeatures = flattenAgain(featureCondition)
-					
-					for (isFeature : isFeatures)
-					{
-						val featureInQuestion = isFeature.variant.feature
-						val featureIndex = featureKeys.indexOf(featureInQuestion)
-						if(isFeature.not === null || isFeature.not != "!") {
-							//Selected
-							if(featureValuation.get(featureIndex) != true)
-							{
-								return false
-							}
-						}
-						else
-						{
-							//!Selected
-							if(featureValuation.get(featureIndex) == true)
-							{
-								return false
-							}
-						}
-					}
-				}
-				if(ruleBody.contextGuard !== null)
-				{
-					val contextCondition = ruleBody.contextGuard.contextCondition
-					val cnfForm = toCNF(contextCondition)
-					if(cnfForm instanceof And) 
-					{
-					
-						var flattenedAnds = flattenAnds(cnfForm)
-			        	var handled = newArrayList
-			        	for (element : flattenedAnds) {
-			        		if(element instanceof Or)
-			        		{
-			        			val listORs = newArrayList
-			        			flattenORs(element, listORs)
-			        			
-			        			for (varr : listORs) {
-			        				val condition = varr.condition
-			        				if(condition instanceof MeasurementThresholdCondition)
-						        	{
-//						        		val in = contextKeys.indexOf(condition.measurement)
-//						        		println("Index " + in)
-	//					        		condition.measurement.name + condition.operator + Utilities.valueOfLiteral(condition.thresholdValue)
-						        	}
-						        	else if(condition instanceof MeasurementMeasurementCondition)
-						        	{
-						        		throw new Exception("Not Implemented Yet")
-						        	}
-			        			}
-			        			
-			        		}
-			        		if(element instanceof Var)
-			        		{
-			        			handled.add(new Pair(_namer.uniqueName(element.condition), inequality(element.condition)))
-			        		}
-			        		else if(element instanceof And)
-			        		{
-			        			throw new Exception("did not expect an AND from flattend ANDs")
-			        		}
-			        	}
-					
-					}
-					if(cnfForm instanceof Or)
-					{
-//						println("got an OR from ToCNF")
-//						println(cnfForm)
-						val listORs = newArrayList
-			        	flattenORs(cnfForm, listORs)
-	        			for (varr : listORs) {
-	        				val condition = varr.condition
-	        				if(condition instanceof MeasurementThresholdCondition)
-				        	{				        		
-				        		val bound = state.getBoundsOn(condition.measurement)
-				        		val closedLowerBound = bound.key  
-				        		val openUpperBound = bound.value
-				        		// [closedLowerBound, openUpperbound) 
-				        		switch(condition.operator)
-				        		{
-						    		case MathOperator.GREATER: {
-						    			//The lower bound is not infinitely low, and exceeds or equals what is required to be greater than.
-						    			if(closedLowerBound !== null && closedLowerBound >= new LiteralWrapper(condition.thresholdValue))
-						    			{
-//						    				println(adap_rule.name + " approved by " + condition.measurement.name + " " + bound.toString())
-						    				return true
-						    			}
-						    		}
-						    		case MathOperator.GREQ: {
-						    			if(closedLowerBound !== null && closedLowerBound >= new LiteralWrapper(condition.thresholdValue))
-						    			{
-//						    				println(adap_rule.name + " approved by " + condition.measurement.name + " " + bound.toString())
-						    				return true
-						    			}
-						    		}
-						    		case MathOperator.LESS: {
-						    			//The upper bound is not infinitely high, and is less than or equal than what is required to be lower than. 
-						    			if(openUpperBound !== null && openUpperBound <= new LiteralWrapper(condition.thresholdValue))
-						    			{
-//						    				println(adap_rule.name + " approved by " + condition.measurement.name + " " + bound.toString())
-						    				return true
-						    			}
-						    		}
-						    		case MathOperator.LEQ: {
-						    			if(openUpperBound !== null && openUpperBound <= new LiteralWrapper(condition.thresholdValue))
-						    			{
-//						    				println(adap_rule.name + " approved by " + condition.measurement.name + " " + bound.toString())
-						    				return true
-						    			}
-						    		}
-						    		case MathOperator.EQUAL: {
-						    			//TODO
-						    			return false
-						    		}
-						    		case MathOperator.DIFFERENT: {
-						    			//TODO
-						    			return false
-						    		}
-				        		}
-				        	}
-				        	else if(condition instanceof MeasurementMeasurementCondition)
-				        	{
-				        		throw new Exception("Not Implemented Yet")
-				        	}
-	        			}
-	        			return false
-					}
-					
-				}
+				return guardSatisfied(ruleBody.guardCondition, contextKeys, featureKeys, state)
 			}
-			
+			return true
+		}
+		return false
+	}
+
+	private def boolean guardSatisfied(GuardCNF cnf, List<ContextVar> contextKeys, List<Feature> featureKeys, State state)
+	{
+		if(cnf === null)
+		{
+			return true
+		}
+		return cnf.clauses.forall[clause |
+			clause.terms.exists[atom |
+				atomSatisfied(atom, contextKeys, featureKeys, state)
+			]
+		]
+	}
+
+	private def boolean atomSatisfied(GuardAtom atom, List<ContextVar> contextKeys, List<Feature> featureKeys, State state)
+	{
+		if(atom instanceof FeatureSelection)
+		{
+			return featureSelectionSatisfied(atom, featureKeys, state)
+		}
+		if(atom instanceof ContextComparison)
+		{
+			return contextComparisonSatisfied(atom, state)
+		}
+		throw new IllegalArgumentException("Unsupported guard atom type: " + atom.class)
+	}
+
+	private def boolean featureSelectionSatisfied(FeatureSelection selection, List<Feature> featureKeys, State state)
+	{
+		val featureIndex = featureKeys.indexOf(selection.variant.feature)
+		if(featureIndex < 0)
+		{
+			return false
+		}
+		val selected = state.featurePrecondition.get(featureIndex)
+		if(selection.not === null)
+		{
+			return selected == true
+		}
+		return selected != true
+	}
+
+	private def boolean contextComparisonSatisfied(ContextComparison comparison, State state)
+	{
+		val leftVariable = contextVariableFromOperand(comparison.left)
+		val rightVariable = contextVariableFromOperand(comparison.right)
+		val leftLiteral = literalFromOperand(comparison.left)
+		val rightLiteral = literalFromOperand(comparison.right)
+
+		if(leftVariable !== null && rightLiteral !== null)
+		{
+			return contextIntervalSatisfies(leftVariable, comparison.operator, new LiteralWrapper(rightLiteral), state)
+		}
+		if(leftLiteral !== null && rightVariable !== null)
+		{
+			return contextIntervalSatisfies(rightVariable, flipOperator(comparison.operator), new LiteralWrapper(leftLiteral), state)
+		}
+		if(leftLiteral !== null && rightLiteral !== null)
+		{
+			return literalComparisonSatisfied(new LiteralWrapper(leftLiteral), comparison.operator, new LiteralWrapper(rightLiteral))
+		}
+		if(leftVariable !== null && rightVariable !== null)
+		{
+			throw new UnsupportedOperationException("ContextVar-to-ContextVar guard satisfaction is not supported for state bounds")
+		}
+		throw new IllegalArgumentException("Unsupported context comparison operands")
+	}
+
+	private def MathOperator flipOperator(MathOperator operator)
+	{
+		switch operator {
+			case MathOperator.GREATER: MathOperator.LESS
+			case MathOperator.GREQ: MathOperator.LEQ
+			case MathOperator.LESS: MathOperator.GREATER
+			case MathOperator.LEQ: MathOperator.GREQ
+			case MathOperator.EQUAL: MathOperator.EQUAL
+			case MathOperator.DIFFERENT: MathOperator.DIFFERENT
 		}
 	}
-		
+
+	private def boolean contextIntervalSatisfies(ContextVar variable, MathOperator operator, LiteralWrapper thresholdValue, State state)
+	{
+		val bound = state.getBoundsOn(variable)
+		if(bound === null)
+		{
+			return false
+		}
+		val closedLowerBound = bound.key
+		val openUpperBound = bound.value
+		switch operator {
+			case MathOperator.GREATER:
+				return closedLowerBound !== null && closedLowerBound >= thresholdValue
+			case MathOperator.GREQ:
+				return closedLowerBound !== null && closedLowerBound >= thresholdValue
+			case MathOperator.LESS:
+				return openUpperBound !== null && openUpperBound <= thresholdValue
+			case MathOperator.LEQ:
+				return openUpperBound !== null && openUpperBound <= thresholdValue
+			case MathOperator.EQUAL:
+				return false
+			case MathOperator.DIFFERENT:
+				return false
+		}
+	}
+
+	private def boolean literalComparisonSatisfied(LiteralWrapper left, MathOperator operator, LiteralWrapper right)
+	{
+		switch operator {
+			case MathOperator.GREATER:
+				return left > right
+			case MathOperator.GREQ:
+				return left >= right
+			case MathOperator.LESS:
+				return left < right
+			case MathOperator.LEQ:
+				return left <= right
+			case MathOperator.EQUAL:
+				return left == right
+			case MathOperator.DIFFERENT:
+				return left != right
+		}
+	}
+
 	def boolean operator_lessThan(Literal literal, Literal literal2)
 	{
 		switch obj : literal {
@@ -2280,7 +2168,7 @@ class TQLGenerator extends AbstractGenerator {
             default:        false
         }
 	}
-	
+
 	private def compileRule(AdaptationRule c, String lc_tacticName, boolean doingStates)
 	{
 	if (c instanceof AtomicRule)
@@ -2288,59 +2176,52 @@ class TQLGenerator extends AbstractGenerator {
 		val ruleName = c.name
 		val lc_ruleName = c.name.toLowerCase
 		val ruleBody = c.ruleBody
-		
+
 		if(ruleBody instanceof ConditionAction)
 		{
 
-			val toCheck = conditionCombos(ruleBody)
-			if(toCheck === null)
-			{
-				println("NO GUARDS GIVEN FOR A RULE, UNDEFINED BEHAVIOR")
-			}
-			val pair = createAntecedent(toCheck)
+			val hasAntecedent = ruleBody.guardCondition !== null
+			val pair = if(hasAntecedent) createAntecedent(ruleBody.guardCondition) else "" -> ""
 			val ant_name = pair.key
 			val ant = pair.value
-//			val all_conditions = collectSecondTerms(con.condition)
-//			val mes = con.condition.measurement
-//		 	con.condition.secondTerm.measurement
 		//TODO: Below, .get(0) should of course be replaced with parsing all the actions.
 		//_namer.uniqueName(c.ruleBody.atomicAction.actions.get(0).variant.feature)
 		'''
-					«IF !doingStates» «ant» «ENDIF»
+					«IF !doingStates && hasAntecedent» «ant» «ENDIF»
 					«val someName = lc_ruleName + "fa"»
 					$«someName» (
 					«FOR action : c.ruleBody.atomicAction.actions SEPARATOR ", "»
 					«IF action instanceof AtomicActionSelectFeature»
-					activation: $«_namer.uniqueName(action.variant.feature)»	
+					activation: $«_namer.uniqueName(action.variant.feature)»
 					«ENDIF»
 					«IF action instanceof AtomicActionDeselectFeature»
-					deactivation: $«_namer.uniqueName(action.variant.feature)»	
+					deactivation: $«_namer.uniqueName(action.variant.feature)»
 					«ENDIF»
 					«ENDFOR»
 					) isa feature_adaptation;
 «««					$tactic_rule_«lc_ruleName» (tactic:$ta_«lc_tacticName», antecedent:$«ant_name», consequent:$«_namer.uniqueName(c.ruleBody.atomicAction.actions.get(0).variant.feature)» ) isa tactic_rule, has rule_name "«ruleName»";
-					
+
 					«IF ruleBody.effect !== null»
 						«EffectHandling(ruleBody.effect.someEffect, ruleName, doingStates)»
-						$tactic_rule_«lc_ruleName» (tactic:$ta_«lc_tacticName», «IF !doingStates» antecedent:$«ant_name», «ENDIF» consequent:$«someName», effect:$rel_effect_«ruleName.toLowerCase») isa tactic_rule, has rule_name "«ruleName»";
+						$tactic_rule_«lc_ruleName» (tactic:$ta_«lc_tacticName», «IF !doingStates && hasAntecedent» antecedent:$«ant_name», «ENDIF» consequent:$«someName», effect:$rel_effect_«ruleName.toLowerCase») isa tactic_rule, has rule_name "«ruleName»";
 					«ELSE»
-						$tactic_rule_«lc_ruleName» (tactic:$ta_«lc_tacticName»,  «IF !doingStates» antecedent:$«ant_name», «ENDIF» consequent:$«someName») isa tactic_rule, has rule_name "«ruleName»";
+						$tactic_rule_«lc_ruleName» (tactic:$ta_«lc_tacticName»,  «IF !doingStates && hasAntecedent» antecedent:$«ant_name», «ENDIF» consequent:$«someName») isa tactic_rule, has rule_name "«ruleName»";
 					«ENDIF»
 		'''
 
 		}
-		
-		
-		
+
+
+
 
 	}
 	}
-	
+
 	def isPositive(RelativeEffect rel_effect)
 	{
 		return (rel_effect.sign == "+")
 	}
-	
+
 	def Boolean greaterThanBound(LiteralWrapper literal, LiteralWrapper comparator)
 	{
 		if(comparator === null)
@@ -2349,7 +2230,7 @@ class TQLGenerator extends AbstractGenerator {
 		}
 		return literal > comparator
 	}
-	
+
 	def Boolean lessThanBound(LiteralWrapper literal, LiteralWrapper comparator)
 	{
 		if(comparator === null)
@@ -2358,8 +2239,8 @@ class TQLGenerator extends AbstractGenerator {
 		}
 		return literal < comparator
 	}
-	
-	
+
+
 	def findNextState(LiteralWrapper affectedValue, ContextVar contextVar, State currentState)
 	{
 		val currentFeatureState = currentState.featurePrecondition
@@ -2368,11 +2249,11 @@ class TQLGenerator extends AbstractGenerator {
 			if(currentFeatureState == nextFeatureState) //Potential state has the same feature precondition
 			{
 				val relevantInterval = potentialState.getBoundsOn(contextVar)
-				
+
 				val lowerBound = relevantInterval.key
 				val upperBound = relevantInterval.value
-				
-				if(greaterThanBound(affectedValue, lowerBound) && lessThanBound(affectedValue, upperBound)) //Potential state is satisfied by new value of affect contextVar 
+
+				if(greaterThanBound(affectedValue, lowerBound) && lessThanBound(affectedValue, upperBound)) //Potential state is satisfied by new value of affect contextVar
 				{
 					val otherContextVars = currentState.contextKeys.filter[element | element != contextVar]
 					val othersMatch = otherContextVars.forall[element | currentState.getBoundsOn(element) == potentialState.getBoundsOn(element)]
@@ -2385,8 +2266,8 @@ class TQLGenerator extends AbstractGenerator {
 		}
 		throw new Exception("No next state could be found, states do not fully cover context var values.")
 	}
-	
-	
+
+
 	def String EffectHandling(Effect effect, String ruleName, Boolean doStates)
 	{
 		if(effect instanceof RelativeEffect)
@@ -2396,7 +2277,7 @@ class TQLGenerator extends AbstractGenerator {
 			«literalValue(effect.effectValue, prefix).value»
 			$rel_effect_«ruleName.toLowerCase» (measure: $«_namer.uniqueName(effect.measurement)», effect_value:$«prefix + "_val"») isa relative_effect;
 			'''
-			
+
 			if(doStates)
 			{
 				for (state : allStates) {
@@ -2405,7 +2286,7 @@ class TQLGenerator extends AbstractGenerator {
 				    val relevantInterval = state.getBoundsOn(effect.measurement)
 				    val lowerBound = relevantInterval.key
 				    val upperBound = relevantInterval.value
-				
+
 				    val escaped = if (isPositive(effect)) {
 				        if (lowerBound === null || upperBound === null) null
 				        else {
@@ -2419,83 +2300,20 @@ class TQLGenerator extends AbstractGenerator {
 				            if (attempt < lowerBound) attempt else null
 				        }
 				    }
-				
+
 				    if (escaped !== null) {
 				        println("state Escaped!!")
 				        val nextState = findNextState(escaped, effect.measurement, state)
 				        println("next state found: " + nextState.TQLName)
 				        escapes.put(state.TQLName -> ruleName, nextState.TQLName)
 				    }
-				}				
+				}
 			}
-			
+
 			return returnString
 		}
 	}
-	
-//	def List<Condition> collectSecondTerms(Condition condition) {
-//    if (condition === null)
-//        return emptyList
-//    else
-//         return newArrayList => [
-//            add(condition)
-//            addAll(collectSecondTerms(condition.secondTerm))
-//        ]
-//	}
-	
-	def Expr ConditionToExpr(Condition condition)
-	{
-//		if(condition.secondTerm === null)
-//		{
-//			return new Var(condition)
-//		}
-//		else
-//		{
-//			if(condition.logicalOp.value == LogicalOperator.AND_VALUE)
-//			{
-//				return new And(new Var(condition), ConditionToExpr(condition.secondTerm))
-//			}
-//			if(condition.logicalOp.value == LogicalOperator.OR_VALUE)
-//			{
-//				return new Or(new Var(condition), ConditionToExpr(condition.secondTerm))
-//			}
-//		}
-	    // Base variable is the FIRST condition
-	    var Expr expr = new Var(condition)
-	
-	    // Flatten the chain of (op, nextCondition)
-	    val ops = flatten(condition)
-	
-	    // Fold left: ((A op B) op C)
-	    for (pair : ops) {
-	        val op = pair.key
-	        val next = pair.value
-	
-	        val rightExpr = new Var(next)
-	
-	        switch op {
-	            case LogicalOperator.AND:
-	                expr = new And(expr, rightExpr)
-	            case LogicalOperator.OR:
-	                expr = new Or(expr, rightExpr)
-	        }
-	    }
-	
-	    return expr
-	}
-	
-	def void flattenORs(Expr e, List<Var> expressionList)
-	{
-	    switch e {
-	        Or: {
-	            flattenORs(e.left, expressionList)
-	            flattenORs(e.right, expressionList)
-	        }
-	        And: throw new Exception("There shouldn't be an AND in the OR flattening")
-	        Var: expressionList.add(e)
-	    }
-	}
-	
+
 	def List<Expr> flattenAnds(Expr e) {
     switch e {
         And: {
@@ -2507,86 +2325,111 @@ class TQLGenerator extends AbstractGenerator {
             #[e]  // single clause
     }
 }
-	
-		
-	def Pair<String,String> handleOR(Or e)
-	{
-	    val lissss = newArrayList
-    	flattenORs(e, lissss)
-    	val name = uniqueName(e)
-    	var final_expr = ""
-    	for (element : lissss) {
-    		final_expr += inequality(element.condition) + "\n"
-    	}
-    	final_expr+= '''
-    	$«name» (
-    	«FOR element : lissss SEPARATOR ", "» 
-    	expression:$«_namer.uniqueName(element.condition)»
-    	«ENDFOR»
-    	) isa or_expression;
-    	'''
-    	
-    	return new Pair(name, final_expr)
+
+	def Pair<String, String> compileDisjunct(GuardDisjunct disjunct) {
+		val compiledTerms = disjunct.terms.map[compileAtom(it)].toList
+		if(compiledTerms.empty)
+		{
+			throw new IllegalArgumentException("GuardDisjunct has no terms")
+		}
+		if(compiledTerms.size == 1)
+		{
+			val term = compiledTerms.get(0)
+			return term.key -> term.value.toString
+		}
+
+		val name = _namer.uniqueName(disjunct)
+		val x = '''
+		«FOR element : compiledTerms»
+			«element.value»
+		«ENDFOR»
+		$«name» (
+		«FOR element : compiledTerms SEPARATOR ", "»
+		expression:$«element.key»
+		«ENDFOR»
+		) isa or_expression, has expression_name "«name»";
+		'''
+
+		return name -> x.toString
 	}
+
+	def Pair<String, String> createAntecedent(GuardCNF cnf) {
+		val compiledClauses = cnf.clauses.map[compileDisjunct(it)].toList
+		if(compiledClauses.empty)
+		{
+			throw new IllegalArgumentException("GuardCNF has no clauses")
+		}
+		if(compiledClauses.size == 1)
+		{
+			return compiledClauses.get(0)
+		}
+
+		val name = _namer.uniqueName(cnf)
+		val x = '''
+		«FOR element : compiledClauses»
+			«element.value»
+		«ENDFOR»
+		$«name» (
+		«FOR element : compiledClauses SEPARATOR ", "»
+		expression:$«element.key»
+		«ENDFOR»
+		) isa and_expression, has expression_name "«name»";
+		'''
+
+		return name -> x.toString
+	}
+
+	def Pair<String, String> compileDerivedStateExpression(Expr e) {
+		switch e {
+			DerivedVar: {
+				val compiled = inequality(e.measurement, e.thresholdValue, e.operator)
+				return compiled.key -> compiled.value.toString
+			}
+			DerivedVarFeature: {
+				val compiled = inequality(e)
+				return compiled.key -> compiled.value.toString
+			}
+			Or: throw new UnsupportedOperationException("OR expressions are not supported in derived state antecedents")
+			And: throw new IllegalArgumentException("did not expect an AND from flattened ANDs")
+			default: throw new IllegalArgumentException("Unsupported derived state expression: " + e.class.simpleName)
+		}
+	}
+
 	def Pair<String, String> createAntecedent(Expr e) {
     	switch e {
-	
-	        Or: {
-	        	return handleOR(e)
-	        }
-	
+    		DerivedVar: return compileDerivedStateExpression(e)
+    		DerivedVarFeature: return compileDerivedStateExpression(e)
+	        Or: throw new UnsupportedOperationException("OR expressions are not supported in derived state antecedents")
 	        And: {
 	        	var flattenedAnds = flattenAnds(e)
-	        	var handled = newArrayList
-	        	for (element : flattenedAnds) {
-	        		if(element instanceof Or)
-	        		{
-	        			handled.add(handleOR(element))
-	        			
-	        		}
-	        		if(element instanceof Var)
-	        		{
-	        			handled.add(new Pair(_namer.uniqueName(element.condition), inequality(element.condition)))
-	        		}
-	        		if(element instanceof DerivedVar)
-	        		{
-	        			handled.add(inequality(element.measurement,element.thresholdValue, element.operator))
-	        		}
-	        		if(element instanceof DerivedVarFeature)
-	        		{
-	        			handled.add(inequality(element))
-	        		}
-	        		else if(element instanceof And)
-	        		{
-	        			throw new Exception("did not expect an AND from flattend ANDs")
-	        		}
-	        	}
+	        	var handled = flattenedAnds.map[compileDerivedStateExpression(it)].toList
 	        	val name = uniqueName(e)
 				val x = '''
 				«FOR element : handled»
-					«element.value»	
+					«element.value»
 				«ENDFOR»
 				$«name» (
-		    	«FOR element : handled SEPARATOR ", "» 
+		    	«FOR element : handled SEPARATOR ", "»
 «««		    	«val nammee = _namer.uniqueName(e)»
 		    	expression:$«element.key»
 		    	«ENDFOR»
 		    	) isa and_expression;
 				'''
-				
-				return new Pair(name, x)
+
+				return name -> x.toString
 	    	}
+	    	default: throw new IllegalArgumentException("Unsupported derived state antecedent: " + e.class.simpleName)
 		}
 	}
-	
-	
+
+
 	def Expr distribute(Expr e) {
     	switch e {
-	
+
 	        Or: {
 	            val A = distribute(e.left)
 	            val B = distribute(e.right)
-	
+
 	            // A ∨ (B ∧ C) → (A ∨ B) ∧ (A ∨ C)
 	            if (B instanceof And) {
 	                return new And(
@@ -2594,7 +2437,7 @@ class TQLGenerator extends AbstractGenerator {
 	                    distribute(new Or(A, B.right))
 	                )
 	            }
-	
+
 	            // (A ∧ B) ∨ C → (A ∨ C) ∧ (B ∨ C)
 	            if (A instanceof And) {
 	                return new And(
@@ -2602,93 +2445,25 @@ class TQLGenerator extends AbstractGenerator {
 	                    distribute(new Or(A.right, B))
 	                )
 	            }
-	
+
 	            // Otherwise it's just OR of two non-ANDs
 	            return new Or(A, B)
 	        }
-	
+
 	        And: {
 	            // Push distribute through both sides
 	            val L = distribute(e.left)
 	            val R = distribute(e.right)
 	            return new And(L, R)
 	        }
-	
+
 	        default:
-	            // Var or unknown → unchanged
+	            // Leaf or unknown expression.
 	            return e
 	    }
 	}
-	
-	
-	def List<Pair<LogicalOperator, Condition>> flatten(MeasurementCondition c) {		
-		val result = newArrayList
-		var current = c
-		while (current.secondTerm !== null) {
-		    result += current.logicalOp -> current.secondTerm as Condition
-		    current = current.secondTerm
-		}
-		return result
-	}
-	
-	def List<MeasurementThresholdCondition> flattenAgain(MeasurementThresholdCondition c) {		
-		val result = newArrayList
-		
-		var current = c
-		result+= current
 
-		while (current.secondTerm !== null && current.secondTerm instanceof MeasurementThresholdCondition) {
-		    result += current.secondTerm as MeasurementThresholdCondition
-		    current = current.secondTerm as MeasurementThresholdCondition
-		}
-		
-		return result
-	}
-	
-	def List<FeatureCondition> flattenAgain(FeatureCondition c) {		
-		val result = newArrayList
-		
-		var current = c
-		result+= current
 
-		while (current.secondTerm !== null && current.secondTerm instanceof MeasurementThresholdCondition) {
-		    result += current.secondTerm as FeatureCondition
-		    current = current.secondTerm as FeatureCondition
-		}
-		
-		return result
-	}
-	
-	
-	def List<Pair<LogicalOperator, Condition>> flatten(FeatureCondition c) {		
-		val result = newArrayList
-		
-		var current = c
-		while (current.secondTerm !== null) {
-		    result += current.logicalOp -> current.secondTerm as Condition
-		    current = current.secondTerm
-		}
-		
-		return result
-	}
-	
-	def List<Pair<LogicalOperator, Condition>> flatten(Condition c) {
-		if(c instanceof MeasurementCondition)
-		{
-			return flatten(c)
-		}
-		if(c instanceof FeatureCondition)
-		{
-			return flatten(c)
-		}
-		else
-		{
-			println("REDFLAGGG")
-			return null
-		}
-	}	
-		
-		
 }
 
 
@@ -2700,93 +2475,40 @@ class DerivedVar extends Expr{
 	public MathOperator operator
 	public ContextVar measurement
 	public LiteralWrapper thresholdValue
-	
+
 	new(MathOperator operator, ContextVar measurement, LiteralWrapper thresholdValue) {
         this.operator = operator
         this.measurement = measurement
         this.thresholdValue = thresholdValue
     }
-	
+
 	 override toString() {
         measurement.name + operator + thresholdValue.toString()
     }
-    
+
 }
 
 class DerivedVarFeature extends Expr{
 	public Boolean not
 	public Feature feature
-	
+
 	new(Boolean not, Feature feature) {
         this.not = not
         this.feature = feature
     }
-	
+
 	 override toString() {
         if(!this.not)
     	{
-    		"isSelected(" + feature.name + ")"	
+    		"isSelected(" + feature.name + ")"
     	}
     	else
     	{
     		"!isSelected(" + feature.name + ")"
-    	
+
     	}
-    }
-    
-}
-
-class Var extends Expr {
-    public Condition condition //lone Condition
-
-    new(Condition condition) {
-        this.condition = condition
     }
 
-    override toString() {
-    	if(this.condition instanceof MeasurementCondition)
-    	{
-    		if(this.condition instanceof MeasurementThresholdCondition)
-        	{
-        		condition.measurement.name + condition.operator + Utilities.valueOfLiteral(condition.thresholdValue)
-        	}
-        	else if(this.condition instanceof MeasurementMeasurementCondition)
-        	{
-        		condition.measurement.name + condition.operator + condition.otherMeasurement.name
-        	}
-        }
-        else if(this.condition instanceof FeatureCondition)
-        {
-        	if(this.condition.not === null || this.condition.not == "")
-        	{
-        		"isSelected(" + condition.variant.model.name + "." + condition.variant.feature.name + ")"	
-        	}
-        	else
-        	{
-        		"!isSelected(" + condition.variant.model.name + "." + condition.variant.feature.name + ")"
-        	}
-        }
-    }
-    
-    def valueOfLiteral(Literal lit)
-    {
-    	if(lit instanceof IntLiteral)
-    	{
-    		return lit.value
-    	}
-    	if(lit instanceof DecimalLiteral)
-    	{
-    		return lit.value
-    	}
-    	if(lit instanceof StringLiteral)
-    	{
-    		return lit.value
-    	}
-    	if(lit instanceof BooleanLiteral)
-    	{
-    		return lit.value
-    	}
-    }
 }
 
 class And extends Expr {
@@ -2824,7 +2546,7 @@ class State {
 	val public List<String> associatedRulesTQLNames
 	val Map<ContextVar, Pair<LiteralWrapper, LiteralWrapper>> boundMap
 	val Map<ContextVar, LiteralWrapper> medianBounds
-	
+
 	new(List<Pair<LiteralWrapper, LiteralWrapper>> contextPrecondition, List<Boolean> featurePrecondition,List<ContextVar> contextKeys) {
 		boundMap = newHashMap
 		medianBounds = newHashMap
@@ -2837,17 +2559,17 @@ class State {
 		}
         this.featurePrecondition = featurePrecondition
     }
-    
+
     def Pair<String,List<String>> stateActionPair()
     {
     	TQLName -> associatedRulesTQLNames
     }
-    
+
     def hasRules()
     {
     	return associatedRulesTQLNames.size > 0
     }
-    
+
     def addRule(String ruleName)
     {
     	associatedRulesTQLNames.add(ruleName)
@@ -2856,24 +2578,24 @@ class State {
     {
     	return boundMap.entrySet
     }
-    
+
     def List<ContextVar> getContextKeys()
     {
     	return boundMap.keySet.toList
     }
-    
+
     def List<Pair<LiteralWrapper, LiteralWrapper>> getContextPrecondition()
     {
     	return boundMap.values.toList
     }
-    
+
     def Pair<LiteralWrapper, LiteralWrapper> getBoundsOn(ContextVar contextVar)
     {
     	return this.boundMap.get(contextVar)
     }
-    
+
     private def LiteralWrapper medianBound(Pair<LiteralWrapper, LiteralWrapper> bound)
-	{		
+	{
 		val lowerBound = bound.key
 		val upperBound = bound.value
 		if(lowerBound === null)
@@ -2886,11 +2608,11 @@ class State {
 		}
 		if(lowerBound !== null && upperBound !== null)
 		{
-			return  ((lowerBound + upperBound) / 2)	
+			return  ((lowerBound + upperBound) / 2)
 		}
 		throw new Exception("Could not find Median Bound? " + bound.toString())
 	}
-	
+
 	def describeMedianBounds()
 	{
 		'''
@@ -2910,7 +2632,7 @@ class LiteralWrapper implements Comparable<LiteralWrapper> {
 	val public String description
 	val public Integer intValue
 	val public BigDecimal decimalValue
-	
+
     new(Literal obj) {
         this.innerLiteral = obj
         this.pointer = false
@@ -2919,8 +2641,8 @@ class LiteralWrapper implements Comparable<LiteralWrapper> {
         this.intValue = null
         this.decimalValue = null
     }
-   
-    
+
+
     new(String pointingTo) {
     	this.innerLiteral = null
     	this.pointer = true
@@ -2929,7 +2651,7 @@ class LiteralWrapper implements Comparable<LiteralWrapper> {
     	this.intValue = null
     	this.decimalValue = null
     }
-    
+
     new(String pointingTo, Literal obj) { //You want to contain the original; literal, but it is already in existence in TQL
     	this.innerLiteral = obj
     	this.pointer = true
@@ -2938,8 +2660,8 @@ class LiteralWrapper implements Comparable<LiteralWrapper> {
     	this.intValue = null
     	this.decimalValue = null
     }
-    
-    
+
+
     new(Integer literalValue)
     {
     	this.innerLiteral = null
@@ -2949,7 +2671,7 @@ class LiteralWrapper implements Comparable<LiteralWrapper> {
     	this.pointedName = null
     	this.decimalValue = null
     }
-    
+
      new(BigDecimal literalValue)
     {
     	this.innerLiteral = null
@@ -2959,7 +2681,7 @@ class LiteralWrapper implements Comparable<LiteralWrapper> {
     	this.pointedName = null
     	this.decimalValue = literalValue
     }
-    
+
     def LiteralWrapper operator_plus(LiteralWrapper other)
     {
     	val otherInner = other.innerLiteral
@@ -2973,7 +2695,7 @@ class LiteralWrapper implements Comparable<LiteralWrapper> {
     	}
     	throw new Exception("Tried to add LiteralWrapper that were not decimal or integer literals inside")
     }
-    
+
      def LiteralWrapper operator_minus(LiteralWrapper other)
     {
     	val otherInner = other.innerLiteral
@@ -2987,7 +2709,7 @@ class LiteralWrapper implements Comparable<LiteralWrapper> {
     	}
     	throw new Exception("Tried to subtract LiteralWrapper that were not decimal or integer literals inside")
     }
-    
+
     def operator_divide(int i) {
     	if(isNaked)
     	{
@@ -3003,18 +2725,18 @@ class LiteralWrapper implements Comparable<LiteralWrapper> {
     	}
     	throw new Exception("Tried to divide LiteralWrapper that were not decimal or integer literals inside")
 	}
-    
-    
+
+
    	def isNaked()
    	{
    		return (this.description == "nakedValue")
    	}
-   	
+
    	def isRegularWrapped()
    	{
    		return (this.description == "regularWrapped")
    	}
-    
+
 
 	override hashCode() {
 		if(!this.pointer)
@@ -3032,11 +2754,11 @@ class LiteralWrapper implements Comparable<LiteralWrapper> {
 	    	pointedName.hashCode
 	    }
 	}
-	
+
 	override equals(Object other) {
 	    if (!(other instanceof LiteralWrapper)) return false
 	    val otherObj = (other as LiteralWrapper)
-	    
+
 	    if(!isPointer)
 	    {
 	    	val otherInnerLiteral = otherObj.innerLiteral
@@ -3047,25 +2769,25 @@ class LiteralWrapper implements Comparable<LiteralWrapper> {
 		        BooleanLiteral: otherInnerLiteral instanceof BooleanLiteral && obj.value == (otherInnerLiteral as BooleanLiteral).value
 		        default:        false
 		    }
-		    
+
 	    }
 	    else
 	    {
 	    	 if(isPointer != otherObj.isPointer) return false
 	    	 if(description != otherObj.description) return false
-	    	 
+
 	    	 return pointedName == otherObj.pointedName
 	    }
 	}
-	
+
 	def Literal getInnerLiteral()
-	{	
+	{
 		if(!this.pointer || this.description=="superPointer")
 		{
-			return this.innerLiteral	
+			return this.innerLiteral
 		}
 	}
-	
+
 	def getNakedValue()
 	{
 		if(isNaked())
@@ -3080,23 +2802,23 @@ class LiteralWrapper implements Comparable<LiteralWrapper> {
 			}
 		}
 	}
-	
-	
+
+
 	def Boolean isSuperPointer()
 	{
 		this.description=="superPointer"
 	}
-	
+
 	def Boolean isPointer()
 	{
 		return this.pointer
 	}
-	
+
 	def String pointedName()
 	{
 		return this.pointedName
 	}
-	
+
 	override compareTo(LiteralWrapper other) {
 		val otherObj = other.innerLiteral
 		if(otherObj !== null && innerLiteral !== null)
@@ -3113,12 +2835,12 @@ class LiteralWrapper implements Comparable<LiteralWrapper> {
         	if(this.intValue !== null && other.intValue !== null)
         	{
         		return this.intValue.compareTo(other.intValue)
-        		
+
         	}
         	if(this.decimalValue !== null && other.decimalValue !== null)
         	{
         		return this.decimalValue.compareTo(other.decimalValue)
- 
+
         	}
         }
         if(this.isNaked && !other.isNaked)
@@ -3131,7 +2853,7 @@ class LiteralWrapper implements Comparable<LiteralWrapper> {
         	{
         		return this.decimalValue.compareTo((other.innerLiteral as DecimalLiteral).value)
         	}
-        	
+
         }
         if(!this.isNaked && other.isNaked)
         {
@@ -3143,14 +2865,14 @@ class LiteralWrapper implements Comparable<LiteralWrapper> {
         	{
         		return (this.innerLiteral as DecimalLiteral).value.compareTo(other.decimalValue)
         	}
-        	
+
         }
         println("other naked? " + other.isNaked)
         println("this naked? " + this.isNaked)
         throw new Exception("weird comparison LiteralWrapper this: " + this.toString + " other: " + other.toString)
-        
+
     }
-    
+
     override toString() {
     	if(isSuperPointer() || isRegularWrapped())
 	        {switch obj : innerLiteral {
@@ -3177,16 +2899,16 @@ class LiteralWrapper implements Comparable<LiteralWrapper> {
         		{
         		return decimalValue.toString
         		}
-        		
+
         	}
         }
     }
-    
+
     def Boolean hasInnerLiteral()
     {
     	return !isPointer || isSuperPointer()
     }
-    
+
     def tqlName() {
     	if(!isPointer)
 	        {switch obj : innerLiteral {
@@ -3203,4 +2925,3 @@ class LiteralWrapper implements Comparable<LiteralWrapper> {
         }
     }
 }
-	

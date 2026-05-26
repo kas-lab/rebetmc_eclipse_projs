@@ -89,22 +89,22 @@ public class FeatureModelSemanticSequencer extends AbstractDelegatingSemanticSeq
 	 *     BasicConstraint returns BasicConstraint
 	 *
 	 * Constraint:
-	 *     (type=CrossTreeConstraintType rightFeature=[Feature|EString] leftFeature=[Feature|EString])
+	 *     (type=CrossTreeConstraintType leftFeature=[Feature|EString] rightFeature=[Feature|EString])
 	 * </pre>
 	 */
 	protected void sequence_BasicConstraint(ISerializationContext context, BasicConstraint semanticObject) {
 		if (errorAcceptor != null) {
 			if (transientValues.isValueTransient(semanticObject, BasicConstraintsFMmetamodelPackage.Literals.BASIC_CONSTRAINT__TYPE) == ValueTransient.YES)
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, BasicConstraintsFMmetamodelPackage.Literals.BASIC_CONSTRAINT__TYPE));
-			if (transientValues.isValueTransient(semanticObject, BasicConstraintsFMmetamodelPackage.Literals.BASIC_CONSTRAINT__RIGHT_FEATURE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, BasicConstraintsFMmetamodelPackage.Literals.BASIC_CONSTRAINT__RIGHT_FEATURE));
 			if (transientValues.isValueTransient(semanticObject, BasicConstraintsFMmetamodelPackage.Literals.BASIC_CONSTRAINT__LEFT_FEATURE) == ValueTransient.YES)
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, BasicConstraintsFMmetamodelPackage.Literals.BASIC_CONSTRAINT__LEFT_FEATURE));
+			if (transientValues.isValueTransient(semanticObject, BasicConstraintsFMmetamodelPackage.Literals.BASIC_CONSTRAINT__RIGHT_FEATURE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, BasicConstraintsFMmetamodelPackage.Literals.BASIC_CONSTRAINT__RIGHT_FEATURE));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getBasicConstraintAccess().getTypeCrossTreeConstraintTypeEnumRuleCall_3_0(), semanticObject.getType());
-		feeder.accept(grammarAccess.getBasicConstraintAccess().getRightFeatureFeatureEStringParserRuleCall_5_0_1(), semanticObject.eGet(BasicConstraintsFMmetamodelPackage.Literals.BASIC_CONSTRAINT__RIGHT_FEATURE, false));
-		feeder.accept(grammarAccess.getBasicConstraintAccess().getLeftFeatureFeatureEStringParserRuleCall_7_0_1(), semanticObject.eGet(BasicConstraintsFMmetamodelPackage.Literals.BASIC_CONSTRAINT__LEFT_FEATURE, false));
+		feeder.accept(grammarAccess.getBasicConstraintAccess().getLeftFeatureFeatureEStringParserRuleCall_5_0_1(), semanticObject.eGet(BasicConstraintsFMmetamodelPackage.Literals.BASIC_CONSTRAINT__LEFT_FEATURE, false));
+		feeder.accept(grammarAccess.getBasicConstraintAccess().getRightFeatureFeatureEStringParserRuleCall_7_0_1(), semanticObject.eGet(BasicConstraintsFMmetamodelPackage.Literals.BASIC_CONSTRAINT__RIGHT_FEATURE, false));
 		feeder.finish();
 	}
 	

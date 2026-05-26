@@ -48,25 +48,6 @@ RuleBody:
 	(PureAction | ConditionAction) effect=EffectBlock?
 ;
 
-PureAction:
-	atomicAction=AtomicAction
-;
-
-ConditionAction:
-    'guard' '{'
-        (
-            contextGuard=ContextGuard featureGuard=FeatureGuard?
-          | featureGuard=FeatureGuard contextGuard=ContextGuard?
-        )
-        '}'
-        atomicAction=AtomicAction;
-    
-ContextGuard:
-    'context' '(' contextCondition=MeasurementCondition ')';
-
-FeatureGuard:
-    'features' '(' featureCondition=FeatureCondition ')';
-
 EffectBlock:
 	{EffectBlock}
 	'effect' '{' someEffect=Effect'}'
@@ -80,32 +61,48 @@ RelativeEffect:
 	sign=INCDEC effectValue=Literal measurement=[contextModel::ContextVar]
 ;
 
-// Find a better name for secondTerm
-// Find a way for using parenthesis for priority between operators
-// Find a way of expressing complex conditions, with operators priorities
-FeatureCondition:
-	not=('!')? 'selected(' variant=QualifiedFeatureRef ')' 	( logicalOp=LogicalOperator secondTerm=FeatureCondition )? 
+PureAction:
+	atomicAction=AtomicAction
 ;
 
-Condition:
-	MeasurementCondition | FeatureCondition
+ConditionAction:
+    'guard' '{'
+        guardCondition=GuardCNF
+    '}'
+    atomicAction=AtomicAction
 ;
 
-
-MeasurementCondition:
-	MeasurementThresholdCondition | MeasurementMeasurementCondition
+GuardCNF:
+	clauses+=GuardDisjunct ('AND' clauses+=GuardDisjunct)*
 ;
 
-MeasurementThresholdCondition:
-	measurement=[contextModel::ContextVar]
-	operator=MathOperator thresholdValue=Literal 
-	( logicalOp=LogicalOperator secondTerm=MeasurementCondition )? 
+GuardDisjunct:
+	'(' terms+=GuardAtom ('OR' terms+=GuardAtom)+ ')' | terms+=GuardAtom
 ;
 
-MeasurementMeasurementCondition:
-	measurement=[contextModel::ContextVar]
-	operator=MathOperator otherMeasurement=[contextModel::ContextVar] 
-	( logicalOp=LogicalOperator secondTerm=MeasurementCondition )? 
+GuardAtom:
+	ContextComparison | FeatureSelection
+;
+
+FeatureSelection:
+	not=('!')? 'selected(' variant=QualifiedFeatureRef ')'
+;
+
+ContextComparison:
+    left=ContextOperand operator=MathOperator right=ContextOperand
+;
+
+ContextOperand:
+    ContextVariableOperand
+    | LiteralOperand
+;
+
+ContextVariableOperand:
+    variable=[contextModel::ContextVar]
+;
+
+LiteralOperand:
+    literal=Literal
 ;
 
 enum MathOperator returns common::MathOperator:

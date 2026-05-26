@@ -58,8 +58,8 @@ public class FeatureModelParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getFeatureModelAccess().getRootAssignment_3(), "rule__FeatureModel__RootAssignment_3");
 			builder.put(grammarAccess.getFeatureModelAccess().getCrossTreeConstraintsAssignment_6(), "rule__FeatureModel__CrossTreeConstraintsAssignment_6");
 			builder.put(grammarAccess.getBasicConstraintAccess().getTypeAssignment_3(), "rule__BasicConstraint__TypeAssignment_3");
-			builder.put(grammarAccess.getBasicConstraintAccess().getRightFeatureAssignment_5(), "rule__BasicConstraint__RightFeatureAssignment_5");
-			builder.put(grammarAccess.getBasicConstraintAccess().getLeftFeatureAssignment_7(), "rule__BasicConstraint__LeftFeatureAssignment_7");
+			builder.put(grammarAccess.getBasicConstraintAccess().getLeftFeatureAssignment_5(), "rule__BasicConstraint__LeftFeatureAssignment_5");
+			builder.put(grammarAccess.getBasicConstraintAccess().getRightFeatureAssignment_7(), "rule__BasicConstraint__RightFeatureAssignment_7");
 			builder.put(grammarAccess.getFeature_ImplAccess().getMandatoryAssignment_0_1(), "rule__Feature_Impl__MandatoryAssignment_0_1");
 			builder.put(grammarAccess.getFeature_ImplAccess().getSelectedAssignment_1_1(), "rule__Feature_Impl__SelectedAssignment_1_1");
 			builder.put(grammarAccess.getFeature_ImplAccess().getNameAssignment_3(), "rule__Feature_Impl__NameAssignment_3");

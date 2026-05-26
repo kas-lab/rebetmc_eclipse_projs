@@ -23,7 +23,7 @@ import java.util.HashMap;
 @SuppressWarnings("all")
 public class InternalFeatureModelParser extends AbstractInternalContentAssistParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_STRING", "RULE_ID", "RULE_INT", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'REQUIRES'", "'EXCLUDES'", "'feature_model'", "'{'", "'}'", "'name'", "'root'", "'crossTreeConstraints'", "'BasicConstraint'", "'type'", "'rightFeature'", "'leftFeature'", "'Feature'", "'mandatory'", "'selected'", "'children'", "','", "'Alternative'", "'OrGroup'"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_STRING", "RULE_ID", "RULE_INT", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'REQUIRES'", "'EXCLUDES'", "'feature_model'", "'{'", "'}'", "'name'", "'root'", "'crossTreeConstraints'", "'BasicConstraint'", "'type'", "'leftFeature'", "'rightFeature'", "'Feature'", "'mandatory'", "'selected'", "'children'", "','", "'Alternative'", "'OrGroup'"
     };
     public static final int RULE_STRING=4;
     public static final int RULE_SL_COMMENT=8;
@@ -2696,24 +2696,24 @@ public class InternalFeatureModelParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__BasicConstraint__Group__4__Impl"
-    // InternalFeatureModel.g:782:1: rule__BasicConstraint__Group__4__Impl : ( 'rightFeature' ) ;
+    // InternalFeatureModel.g:782:1: rule__BasicConstraint__Group__4__Impl : ( 'leftFeature' ) ;
     public final void rule__BasicConstraint__Group__4__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalFeatureModel.g:786:1: ( ( 'rightFeature' ) )
-            // InternalFeatureModel.g:787:1: ( 'rightFeature' )
+            // InternalFeatureModel.g:786:1: ( ( 'leftFeature' ) )
+            // InternalFeatureModel.g:787:1: ( 'leftFeature' )
             {
-            // InternalFeatureModel.g:787:1: ( 'rightFeature' )
-            // InternalFeatureModel.g:788:2: 'rightFeature'
+            // InternalFeatureModel.g:787:1: ( 'leftFeature' )
+            // InternalFeatureModel.g:788:2: 'leftFeature'
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getBasicConstraintAccess().getRightFeatureKeyword_4()); 
+               before(grammarAccess.getBasicConstraintAccess().getLeftFeatureKeyword_4()); 
             }
             match(input,21,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getBasicConstraintAccess().getRightFeatureKeyword_4()); 
+               after(grammarAccess.getBasicConstraintAccess().getLeftFeatureKeyword_4()); 
             }
 
             }
@@ -2775,26 +2775,26 @@ public class InternalFeatureModelParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__BasicConstraint__Group__5__Impl"
-    // InternalFeatureModel.g:809:1: rule__BasicConstraint__Group__5__Impl : ( ( rule__BasicConstraint__RightFeatureAssignment_5 ) ) ;
+    // InternalFeatureModel.g:809:1: rule__BasicConstraint__Group__5__Impl : ( ( rule__BasicConstraint__LeftFeatureAssignment_5 ) ) ;
     public final void rule__BasicConstraint__Group__5__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalFeatureModel.g:813:1: ( ( ( rule__BasicConstraint__RightFeatureAssignment_5 ) ) )
-            // InternalFeatureModel.g:814:1: ( ( rule__BasicConstraint__RightFeatureAssignment_5 ) )
+            // InternalFeatureModel.g:813:1: ( ( ( rule__BasicConstraint__LeftFeatureAssignment_5 ) ) )
+            // InternalFeatureModel.g:814:1: ( ( rule__BasicConstraint__LeftFeatureAssignment_5 ) )
             {
-            // InternalFeatureModel.g:814:1: ( ( rule__BasicConstraint__RightFeatureAssignment_5 ) )
-            // InternalFeatureModel.g:815:2: ( rule__BasicConstraint__RightFeatureAssignment_5 )
+            // InternalFeatureModel.g:814:1: ( ( rule__BasicConstraint__LeftFeatureAssignment_5 ) )
+            // InternalFeatureModel.g:815:2: ( rule__BasicConstraint__LeftFeatureAssignment_5 )
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getBasicConstraintAccess().getRightFeatureAssignment_5()); 
+               before(grammarAccess.getBasicConstraintAccess().getLeftFeatureAssignment_5()); 
             }
-            // InternalFeatureModel.g:816:2: ( rule__BasicConstraint__RightFeatureAssignment_5 )
-            // InternalFeatureModel.g:816:3: rule__BasicConstraint__RightFeatureAssignment_5
+            // InternalFeatureModel.g:816:2: ( rule__BasicConstraint__LeftFeatureAssignment_5 )
+            // InternalFeatureModel.g:816:3: rule__BasicConstraint__LeftFeatureAssignment_5
             {
             pushFollow(FOLLOW_2);
-            rule__BasicConstraint__RightFeatureAssignment_5();
+            rule__BasicConstraint__LeftFeatureAssignment_5();
 
             state._fsp--;
             if (state.failed) return ;
@@ -2802,7 +2802,7 @@ public class InternalFeatureModelParser extends AbstractInternalContentAssistPar
             }
 
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getBasicConstraintAccess().getRightFeatureAssignment_5()); 
+               after(grammarAccess.getBasicConstraintAccess().getLeftFeatureAssignment_5()); 
             }
 
             }
@@ -2864,24 +2864,24 @@ public class InternalFeatureModelParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__BasicConstraint__Group__6__Impl"
-    // InternalFeatureModel.g:836:1: rule__BasicConstraint__Group__6__Impl : ( 'leftFeature' ) ;
+    // InternalFeatureModel.g:836:1: rule__BasicConstraint__Group__6__Impl : ( 'rightFeature' ) ;
     public final void rule__BasicConstraint__Group__6__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalFeatureModel.g:840:1: ( ( 'leftFeature' ) )
-            // InternalFeatureModel.g:841:1: ( 'leftFeature' )
+            // InternalFeatureModel.g:840:1: ( ( 'rightFeature' ) )
+            // InternalFeatureModel.g:841:1: ( 'rightFeature' )
             {
-            // InternalFeatureModel.g:841:1: ( 'leftFeature' )
-            // InternalFeatureModel.g:842:2: 'leftFeature'
+            // InternalFeatureModel.g:841:1: ( 'rightFeature' )
+            // InternalFeatureModel.g:842:2: 'rightFeature'
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getBasicConstraintAccess().getLeftFeatureKeyword_6()); 
+               before(grammarAccess.getBasicConstraintAccess().getRightFeatureKeyword_6()); 
             }
             match(input,22,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getBasicConstraintAccess().getLeftFeatureKeyword_6()); 
+               after(grammarAccess.getBasicConstraintAccess().getRightFeatureKeyword_6()); 
             }
 
             }
@@ -2943,26 +2943,26 @@ public class InternalFeatureModelParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__BasicConstraint__Group__7__Impl"
-    // InternalFeatureModel.g:863:1: rule__BasicConstraint__Group__7__Impl : ( ( rule__BasicConstraint__LeftFeatureAssignment_7 ) ) ;
+    // InternalFeatureModel.g:863:1: rule__BasicConstraint__Group__7__Impl : ( ( rule__BasicConstraint__RightFeatureAssignment_7 ) ) ;
     public final void rule__BasicConstraint__Group__7__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalFeatureModel.g:867:1: ( ( ( rule__BasicConstraint__LeftFeatureAssignment_7 ) ) )
-            // InternalFeatureModel.g:868:1: ( ( rule__BasicConstraint__LeftFeatureAssignment_7 ) )
+            // InternalFeatureModel.g:867:1: ( ( ( rule__BasicConstraint__RightFeatureAssignment_7 ) ) )
+            // InternalFeatureModel.g:868:1: ( ( rule__BasicConstraint__RightFeatureAssignment_7 ) )
             {
-            // InternalFeatureModel.g:868:1: ( ( rule__BasicConstraint__LeftFeatureAssignment_7 ) )
-            // InternalFeatureModel.g:869:2: ( rule__BasicConstraint__LeftFeatureAssignment_7 )
+            // InternalFeatureModel.g:868:1: ( ( rule__BasicConstraint__RightFeatureAssignment_7 ) )
+            // InternalFeatureModel.g:869:2: ( rule__BasicConstraint__RightFeatureAssignment_7 )
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getBasicConstraintAccess().getLeftFeatureAssignment_7()); 
+               before(grammarAccess.getBasicConstraintAccess().getRightFeatureAssignment_7()); 
             }
-            // InternalFeatureModel.g:870:2: ( rule__BasicConstraint__LeftFeatureAssignment_7 )
-            // InternalFeatureModel.g:870:3: rule__BasicConstraint__LeftFeatureAssignment_7
+            // InternalFeatureModel.g:870:2: ( rule__BasicConstraint__RightFeatureAssignment_7 )
+            // InternalFeatureModel.g:870:3: rule__BasicConstraint__RightFeatureAssignment_7
             {
             pushFollow(FOLLOW_2);
-            rule__BasicConstraint__LeftFeatureAssignment_7();
+            rule__BasicConstraint__RightFeatureAssignment_7();
 
             state._fsp--;
             if (state.failed) return ;
@@ -2970,7 +2970,7 @@ public class InternalFeatureModelParser extends AbstractInternalContentAssistPar
             }
 
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getBasicConstraintAccess().getLeftFeatureAssignment_7()); 
+               after(grammarAccess.getBasicConstraintAccess().getRightFeatureAssignment_7()); 
             }
 
             }
@@ -7558,9 +7558,9 @@ public class InternalFeatureModelParser extends AbstractInternalContentAssistPar
     // $ANTLR end "rule__BasicConstraint__TypeAssignment_3"
 
 
-    // $ANTLR start "rule__BasicConstraint__RightFeatureAssignment_5"
-    // InternalFeatureModel.g:2276:1: rule__BasicConstraint__RightFeatureAssignment_5 : ( ( ruleEString ) ) ;
-    public final void rule__BasicConstraint__RightFeatureAssignment_5() throws RecognitionException {
+    // $ANTLR start "rule__BasicConstraint__LeftFeatureAssignment_5"
+    // InternalFeatureModel.g:2276:1: rule__BasicConstraint__LeftFeatureAssignment_5 : ( ( ruleEString ) ) ;
+    public final void rule__BasicConstraint__LeftFeatureAssignment_5() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
@@ -7572,13 +7572,13 @@ public class InternalFeatureModelParser extends AbstractInternalContentAssistPar
             // InternalFeatureModel.g:2282:3: ( ruleEString )
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getBasicConstraintAccess().getRightFeatureFeatureCrossReference_5_0()); 
+               before(grammarAccess.getBasicConstraintAccess().getLeftFeatureFeatureCrossReference_5_0()); 
             }
             // InternalFeatureModel.g:2283:3: ( ruleEString )
             // InternalFeatureModel.g:2284:4: ruleEString
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getBasicConstraintAccess().getRightFeatureFeatureEStringParserRuleCall_5_0_1()); 
+               before(grammarAccess.getBasicConstraintAccess().getLeftFeatureFeatureEStringParserRuleCall_5_0_1()); 
             }
             pushFollow(FOLLOW_2);
             ruleEString();
@@ -7586,13 +7586,13 @@ public class InternalFeatureModelParser extends AbstractInternalContentAssistPar
             state._fsp--;
             if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getBasicConstraintAccess().getRightFeatureFeatureEStringParserRuleCall_5_0_1()); 
+               after(grammarAccess.getBasicConstraintAccess().getLeftFeatureFeatureEStringParserRuleCall_5_0_1()); 
             }
 
             }
 
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getBasicConstraintAccess().getRightFeatureFeatureCrossReference_5_0()); 
+               after(grammarAccess.getBasicConstraintAccess().getLeftFeatureFeatureCrossReference_5_0()); 
             }
 
             }
@@ -7612,12 +7612,12 @@ public class InternalFeatureModelParser extends AbstractInternalContentAssistPar
         }
         return ;
     }
-    // $ANTLR end "rule__BasicConstraint__RightFeatureAssignment_5"
+    // $ANTLR end "rule__BasicConstraint__LeftFeatureAssignment_5"
 
 
-    // $ANTLR start "rule__BasicConstraint__LeftFeatureAssignment_7"
-    // InternalFeatureModel.g:2295:1: rule__BasicConstraint__LeftFeatureAssignment_7 : ( ( ruleEString ) ) ;
-    public final void rule__BasicConstraint__LeftFeatureAssignment_7() throws RecognitionException {
+    // $ANTLR start "rule__BasicConstraint__RightFeatureAssignment_7"
+    // InternalFeatureModel.g:2295:1: rule__BasicConstraint__RightFeatureAssignment_7 : ( ( ruleEString ) ) ;
+    public final void rule__BasicConstraint__RightFeatureAssignment_7() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
@@ -7629,13 +7629,13 @@ public class InternalFeatureModelParser extends AbstractInternalContentAssistPar
             // InternalFeatureModel.g:2301:3: ( ruleEString )
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getBasicConstraintAccess().getLeftFeatureFeatureCrossReference_7_0()); 
+               before(grammarAccess.getBasicConstraintAccess().getRightFeatureFeatureCrossReference_7_0()); 
             }
             // InternalFeatureModel.g:2302:3: ( ruleEString )
             // InternalFeatureModel.g:2303:4: ruleEString
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getBasicConstraintAccess().getLeftFeatureFeatureEStringParserRuleCall_7_0_1()); 
+               before(grammarAccess.getBasicConstraintAccess().getRightFeatureFeatureEStringParserRuleCall_7_0_1()); 
             }
             pushFollow(FOLLOW_2);
             ruleEString();
@@ -7643,13 +7643,13 @@ public class InternalFeatureModelParser extends AbstractInternalContentAssistPar
             state._fsp--;
             if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getBasicConstraintAccess().getLeftFeatureFeatureEStringParserRuleCall_7_0_1()); 
+               after(grammarAccess.getBasicConstraintAccess().getRightFeatureFeatureEStringParserRuleCall_7_0_1()); 
             }
 
             }
 
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getBasicConstraintAccess().getLeftFeatureFeatureCrossReference_7_0()); 
+               after(grammarAccess.getBasicConstraintAccess().getRightFeatureFeatureCrossReference_7_0()); 
             }
 
             }
@@ -7669,7 +7669,7 @@ public class InternalFeatureModelParser extends AbstractInternalContentAssistPar
         }
         return ;
     }
-    // $ANTLR end "rule__BasicConstraint__LeftFeatureAssignment_7"
+    // $ANTLR end "rule__BasicConstraint__RightFeatureAssignment_7"
 
 
     // $ANTLR start "rule__Feature_Impl__MandatoryAssignment_0_1"

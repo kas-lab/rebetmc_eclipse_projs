@@ -138,36 +138,6 @@ public class TacticsSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case TacticsPackage.PURE_ACTION:
-      {
-        PureAction pureAction = (PureAction)theEObject;
-        T result = casePureAction(pureAction);
-        if (result == null) result = caseRuleBody(pureAction);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case TacticsPackage.CONDITION_ACTION:
-      {
-        ConditionAction conditionAction = (ConditionAction)theEObject;
-        T result = caseConditionAction(conditionAction);
-        if (result == null) result = caseRuleBody(conditionAction);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case TacticsPackage.CONTEXT_GUARD:
-      {
-        ContextGuard contextGuard = (ContextGuard)theEObject;
-        T result = caseContextGuard(contextGuard);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case TacticsPackage.FEATURE_GUARD:
-      {
-        FeatureGuard featureGuard = (FeatureGuard)theEObject;
-        T result = caseFeatureGuard(featureGuard);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
       case TacticsPackage.EFFECT_BLOCK:
       {
         EffectBlock effectBlock = (EffectBlock)theEObject;
@@ -190,44 +160,79 @@ public class TacticsSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case TacticsPackage.FEATURE_CONDITION:
+      case TacticsPackage.PURE_ACTION:
       {
-        FeatureCondition featureCondition = (FeatureCondition)theEObject;
-        T result = caseFeatureCondition(featureCondition);
-        if (result == null) result = caseCondition(featureCondition);
+        PureAction pureAction = (PureAction)theEObject;
+        T result = casePureAction(pureAction);
+        if (result == null) result = caseRuleBody(pureAction);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case TacticsPackage.CONDITION:
+      case TacticsPackage.CONDITION_ACTION:
       {
-        Condition condition = (Condition)theEObject;
-        T result = caseCondition(condition);
+        ConditionAction conditionAction = (ConditionAction)theEObject;
+        T result = caseConditionAction(conditionAction);
+        if (result == null) result = caseRuleBody(conditionAction);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case TacticsPackage.MEASUREMENT_CONDITION:
+      case TacticsPackage.GUARD_CNF:
       {
-        MeasurementCondition measurementCondition = (MeasurementCondition)theEObject;
-        T result = caseMeasurementCondition(measurementCondition);
-        if (result == null) result = caseCondition(measurementCondition);
+        GuardCNF guardCNF = (GuardCNF)theEObject;
+        T result = caseGuardCNF(guardCNF);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case TacticsPackage.MEASUREMENT_THRESHOLD_CONDITION:
+      case TacticsPackage.GUARD_DISJUNCT:
       {
-        MeasurementThresholdCondition measurementThresholdCondition = (MeasurementThresholdCondition)theEObject;
-        T result = caseMeasurementThresholdCondition(measurementThresholdCondition);
-        if (result == null) result = caseMeasurementCondition(measurementThresholdCondition);
-        if (result == null) result = caseCondition(measurementThresholdCondition);
+        GuardDisjunct guardDisjunct = (GuardDisjunct)theEObject;
+        T result = caseGuardDisjunct(guardDisjunct);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case TacticsPackage.MEASUREMENT_MEASUREMENT_CONDITION:
+      case TacticsPackage.GUARD_ATOM:
       {
-        MeasurementMeasurementCondition measurementMeasurementCondition = (MeasurementMeasurementCondition)theEObject;
-        T result = caseMeasurementMeasurementCondition(measurementMeasurementCondition);
-        if (result == null) result = caseMeasurementCondition(measurementMeasurementCondition);
-        if (result == null) result = caseCondition(measurementMeasurementCondition);
+        GuardAtom guardAtom = (GuardAtom)theEObject;
+        T result = caseGuardAtom(guardAtom);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case TacticsPackage.FEATURE_SELECTION:
+      {
+        FeatureSelection featureSelection = (FeatureSelection)theEObject;
+        T result = caseFeatureSelection(featureSelection);
+        if (result == null) result = caseGuardAtom(featureSelection);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case TacticsPackage.CONTEXT_COMPARISON:
+      {
+        ContextComparison contextComparison = (ContextComparison)theEObject;
+        T result = caseContextComparison(contextComparison);
+        if (result == null) result = caseGuardAtom(contextComparison);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case TacticsPackage.CONTEXT_OPERAND:
+      {
+        ContextOperand contextOperand = (ContextOperand)theEObject;
+        T result = caseContextOperand(contextOperand);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case TacticsPackage.CONTEXT_VARIABLE_OPERAND:
+      {
+        ContextVariableOperand contextVariableOperand = (ContextVariableOperand)theEObject;
+        T result = caseContextVariableOperand(contextVariableOperand);
+        if (result == null) result = caseContextOperand(contextVariableOperand);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case TacticsPackage.LITERAL_OPERAND:
+      {
+        LiteralOperand literalOperand = (LiteralOperand)theEObject;
+        T result = caseLiteralOperand(literalOperand);
+        if (result == null) result = caseContextOperand(literalOperand);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -403,70 +408,6 @@ public class TacticsSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Pure Action</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Pure Action</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T casePureAction(PureAction object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Condition Action</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Condition Action</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseConditionAction(ConditionAction object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Context Guard</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Context Guard</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseContextGuard(ContextGuard object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Feature Guard</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Feature Guard</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseFeatureGuard(FeatureGuard object)
-  {
-    return null;
-  }
-
-  /**
    * Returns the result of interpreting the object as an instance of '<em>Effect Block</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -515,81 +456,161 @@ public class TacticsSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Feature Condition</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Pure Action</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Feature Condition</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Pure Action</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseFeatureCondition(FeatureCondition object)
+  public T casePureAction(PureAction object)
   {
     return null;
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Condition</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Condition Action</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Condition</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Condition Action</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseCondition(Condition object)
+  public T caseConditionAction(ConditionAction object)
   {
     return null;
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Measurement Condition</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Guard CNF</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Measurement Condition</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Guard CNF</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseMeasurementCondition(MeasurementCondition object)
+  public T caseGuardCNF(GuardCNF object)
   {
     return null;
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Measurement Threshold Condition</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Guard Disjunct</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Measurement Threshold Condition</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Guard Disjunct</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseMeasurementThresholdCondition(MeasurementThresholdCondition object)
+  public T caseGuardDisjunct(GuardDisjunct object)
   {
     return null;
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Measurement Measurement Condition</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Guard Atom</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Measurement Measurement Condition</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Guard Atom</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseMeasurementMeasurementCondition(MeasurementMeasurementCondition object)
+  public T caseGuardAtom(GuardAtom object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Feature Selection</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Feature Selection</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseFeatureSelection(FeatureSelection object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Context Comparison</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Context Comparison</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseContextComparison(ContextComparison object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Context Operand</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Context Operand</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseContextOperand(ContextOperand object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Context Variable Operand</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Context Variable Operand</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseContextVariableOperand(ContextVariableOperand object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Literal Operand</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Literal Operand</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseLiteralOperand(LiteralOperand object)
   {
     return null;
   }

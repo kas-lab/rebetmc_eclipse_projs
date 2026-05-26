@@ -8,10 +8,10 @@
 'children'=24
 'crossTreeConstraints'=16
 'feature_model'=11
-'leftFeature'=20
+'leftFeature'=19
 'mandatory'=21
 'name'=14
-'rightFeature'=19
+'rightFeature'=20
 'root'=15
 'selected'=22
 'type'=18

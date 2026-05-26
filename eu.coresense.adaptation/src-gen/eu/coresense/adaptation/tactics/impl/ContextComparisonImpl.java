@@ -3,12 +3,11 @@
  */
 package eu.coresense.adaptation.tactics.impl;
 
-import eu.coresense.adaptation.tactics.MeasurementCondition;
+import eu.coresense.adaptation.tactics.ContextComparison;
+import eu.coresense.adaptation.tactics.ContextOperand;
 import eu.coresense.adaptation.tactics.TacticsPackage;
 
 import eu.coresense.common.MathOperator;
-
-import eu.coresense.context.contextModel.ContextVar;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -20,30 +19,30 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Measurement Condition</b></em>'.
+ * An implementation of the model object '<em><b>Context Comparison</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link eu.coresense.adaptation.tactics.impl.MeasurementConditionImpl#getMeasurement <em>Measurement</em>}</li>
- *   <li>{@link eu.coresense.adaptation.tactics.impl.MeasurementConditionImpl#getOperator <em>Operator</em>}</li>
- *   <li>{@link eu.coresense.adaptation.tactics.impl.MeasurementConditionImpl#getSecondTerm <em>Second Term</em>}</li>
+ *   <li>{@link eu.coresense.adaptation.tactics.impl.ContextComparisonImpl#getLeft <em>Left</em>}</li>
+ *   <li>{@link eu.coresense.adaptation.tactics.impl.ContextComparisonImpl#getOperator <em>Operator</em>}</li>
+ *   <li>{@link eu.coresense.adaptation.tactics.impl.ContextComparisonImpl#getRight <em>Right</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class MeasurementConditionImpl extends ConditionImpl implements MeasurementCondition
+public class ContextComparisonImpl extends GuardAtomImpl implements ContextComparison
 {
   /**
-   * The cached value of the '{@link #getMeasurement() <em>Measurement</em>}' reference.
+   * The cached value of the '{@link #getLeft() <em>Left</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getMeasurement()
+   * @see #getLeft()
    * @generated
    * @ordered
    */
-  protected ContextVar measurement;
+  protected ContextOperand left;
 
   /**
    * The default value of the '{@link #getOperator() <em>Operator</em>}' attribute.
@@ -66,21 +65,21 @@ public class MeasurementConditionImpl extends ConditionImpl implements Measureme
   protected MathOperator operator = OPERATOR_EDEFAULT;
 
   /**
-   * The cached value of the '{@link #getSecondTerm() <em>Second Term</em>}' containment reference.
+   * The cached value of the '{@link #getRight() <em>Right</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getSecondTerm()
+   * @see #getRight()
    * @generated
    * @ordered
    */
-  protected MeasurementCondition secondTerm;
+  protected ContextOperand right;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  protected MeasurementConditionImpl()
+  protected ContextComparisonImpl()
   {
     super();
   }
@@ -93,7 +92,7 @@ public class MeasurementConditionImpl extends ConditionImpl implements Measureme
   @Override
   protected EClass eStaticClass()
   {
-    return TacticsPackage.Literals.MEASUREMENT_CONDITION;
+    return TacticsPackage.Literals.CONTEXT_COMPARISON;
   }
 
   /**
@@ -102,19 +101,9 @@ public class MeasurementConditionImpl extends ConditionImpl implements Measureme
    * @generated
    */
   @Override
-  public ContextVar getMeasurement()
+  public ContextOperand getLeft()
   {
-    if (measurement != null && measurement.eIsProxy())
-    {
-      InternalEObject oldMeasurement = (InternalEObject)measurement;
-      measurement = (ContextVar)eResolveProxy(oldMeasurement);
-      if (measurement != oldMeasurement)
-      {
-        if (eNotificationRequired())
-          eNotify(new ENotificationImpl(this, Notification.RESOLVE, TacticsPackage.MEASUREMENT_CONDITION__MEASUREMENT, oldMeasurement, measurement));
-      }
-    }
-    return measurement;
+    return left;
   }
 
   /**
@@ -122,23 +111,38 @@ public class MeasurementConditionImpl extends ConditionImpl implements Measureme
    * <!-- end-user-doc -->
    * @generated
    */
-  public ContextVar basicGetMeasurement()
+  public NotificationChain basicSetLeft(ContextOperand newLeft, NotificationChain msgs)
   {
-    return measurement;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public void setMeasurement(ContextVar newMeasurement)
-  {
-    ContextVar oldMeasurement = measurement;
-    measurement = newMeasurement;
+    ContextOperand oldLeft = left;
+    left = newLeft;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, TacticsPackage.MEASUREMENT_CONDITION__MEASUREMENT, oldMeasurement, measurement));
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, TacticsPackage.CONTEXT_COMPARISON__LEFT, oldLeft, newLeft);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setLeft(ContextOperand newLeft)
+  {
+    if (newLeft != left)
+    {
+      NotificationChain msgs = null;
+      if (left != null)
+        msgs = ((InternalEObject)left).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - TacticsPackage.CONTEXT_COMPARISON__LEFT, null, msgs);
+      if (newLeft != null)
+        msgs = ((InternalEObject)newLeft).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - TacticsPackage.CONTEXT_COMPARISON__LEFT, null, msgs);
+      msgs = basicSetLeft(newLeft, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, TacticsPackage.CONTEXT_COMPARISON__LEFT, newLeft, newLeft));
   }
 
   /**
@@ -163,7 +167,7 @@ public class MeasurementConditionImpl extends ConditionImpl implements Measureme
     MathOperator oldOperator = operator;
     operator = newOperator == null ? OPERATOR_EDEFAULT : newOperator;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, TacticsPackage.MEASUREMENT_CONDITION__OPERATOR, oldOperator, operator));
+      eNotify(new ENotificationImpl(this, Notification.SET, TacticsPackage.CONTEXT_COMPARISON__OPERATOR, oldOperator, operator));
   }
 
   /**
@@ -172,9 +176,9 @@ public class MeasurementConditionImpl extends ConditionImpl implements Measureme
    * @generated
    */
   @Override
-  public MeasurementCondition getSecondTerm()
+  public ContextOperand getRight()
   {
-    return secondTerm;
+    return right;
   }
 
   /**
@@ -182,13 +186,13 @@ public class MeasurementConditionImpl extends ConditionImpl implements Measureme
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetSecondTerm(MeasurementCondition newSecondTerm, NotificationChain msgs)
+  public NotificationChain basicSetRight(ContextOperand newRight, NotificationChain msgs)
   {
-    MeasurementCondition oldSecondTerm = secondTerm;
-    secondTerm = newSecondTerm;
+    ContextOperand oldRight = right;
+    right = newRight;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, TacticsPackage.MEASUREMENT_CONDITION__SECOND_TERM, oldSecondTerm, newSecondTerm);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, TacticsPackage.CONTEXT_COMPARISON__RIGHT, oldRight, newRight);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -200,20 +204,20 @@ public class MeasurementConditionImpl extends ConditionImpl implements Measureme
    * @generated
    */
   @Override
-  public void setSecondTerm(MeasurementCondition newSecondTerm)
+  public void setRight(ContextOperand newRight)
   {
-    if (newSecondTerm != secondTerm)
+    if (newRight != right)
     {
       NotificationChain msgs = null;
-      if (secondTerm != null)
-        msgs = ((InternalEObject)secondTerm).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - TacticsPackage.MEASUREMENT_CONDITION__SECOND_TERM, null, msgs);
-      if (newSecondTerm != null)
-        msgs = ((InternalEObject)newSecondTerm).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - TacticsPackage.MEASUREMENT_CONDITION__SECOND_TERM, null, msgs);
-      msgs = basicSetSecondTerm(newSecondTerm, msgs);
+      if (right != null)
+        msgs = ((InternalEObject)right).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - TacticsPackage.CONTEXT_COMPARISON__RIGHT, null, msgs);
+      if (newRight != null)
+        msgs = ((InternalEObject)newRight).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - TacticsPackage.CONTEXT_COMPARISON__RIGHT, null, msgs);
+      msgs = basicSetRight(newRight, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, TacticsPackage.MEASUREMENT_CONDITION__SECOND_TERM, newSecondTerm, newSecondTerm));
+      eNotify(new ENotificationImpl(this, Notification.SET, TacticsPackage.CONTEXT_COMPARISON__RIGHT, newRight, newRight));
   }
 
   /**
@@ -226,8 +230,10 @@ public class MeasurementConditionImpl extends ConditionImpl implements Measureme
   {
     switch (featureID)
     {
-      case TacticsPackage.MEASUREMENT_CONDITION__SECOND_TERM:
-        return basicSetSecondTerm(null, msgs);
+      case TacticsPackage.CONTEXT_COMPARISON__LEFT:
+        return basicSetLeft(null, msgs);
+      case TacticsPackage.CONTEXT_COMPARISON__RIGHT:
+        return basicSetRight(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -242,13 +248,12 @@ public class MeasurementConditionImpl extends ConditionImpl implements Measureme
   {
     switch (featureID)
     {
-      case TacticsPackage.MEASUREMENT_CONDITION__MEASUREMENT:
-        if (resolve) return getMeasurement();
-        return basicGetMeasurement();
-      case TacticsPackage.MEASUREMENT_CONDITION__OPERATOR:
+      case TacticsPackage.CONTEXT_COMPARISON__LEFT:
+        return getLeft();
+      case TacticsPackage.CONTEXT_COMPARISON__OPERATOR:
         return getOperator();
-      case TacticsPackage.MEASUREMENT_CONDITION__SECOND_TERM:
-        return getSecondTerm();
+      case TacticsPackage.CONTEXT_COMPARISON__RIGHT:
+        return getRight();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -263,14 +268,14 @@ public class MeasurementConditionImpl extends ConditionImpl implements Measureme
   {
     switch (featureID)
     {
-      case TacticsPackage.MEASUREMENT_CONDITION__MEASUREMENT:
-        setMeasurement((ContextVar)newValue);
+      case TacticsPackage.CONTEXT_COMPARISON__LEFT:
+        setLeft((ContextOperand)newValue);
         return;
-      case TacticsPackage.MEASUREMENT_CONDITION__OPERATOR:
+      case TacticsPackage.CONTEXT_COMPARISON__OPERATOR:
         setOperator((MathOperator)newValue);
         return;
-      case TacticsPackage.MEASUREMENT_CONDITION__SECOND_TERM:
-        setSecondTerm((MeasurementCondition)newValue);
+      case TacticsPackage.CONTEXT_COMPARISON__RIGHT:
+        setRight((ContextOperand)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -286,14 +291,14 @@ public class MeasurementConditionImpl extends ConditionImpl implements Measureme
   {
     switch (featureID)
     {
-      case TacticsPackage.MEASUREMENT_CONDITION__MEASUREMENT:
-        setMeasurement((ContextVar)null);
+      case TacticsPackage.CONTEXT_COMPARISON__LEFT:
+        setLeft((ContextOperand)null);
         return;
-      case TacticsPackage.MEASUREMENT_CONDITION__OPERATOR:
+      case TacticsPackage.CONTEXT_COMPARISON__OPERATOR:
         setOperator(OPERATOR_EDEFAULT);
         return;
-      case TacticsPackage.MEASUREMENT_CONDITION__SECOND_TERM:
-        setSecondTerm((MeasurementCondition)null);
+      case TacticsPackage.CONTEXT_COMPARISON__RIGHT:
+        setRight((ContextOperand)null);
         return;
     }
     super.eUnset(featureID);
@@ -309,12 +314,12 @@ public class MeasurementConditionImpl extends ConditionImpl implements Measureme
   {
     switch (featureID)
     {
-      case TacticsPackage.MEASUREMENT_CONDITION__MEASUREMENT:
-        return measurement != null;
-      case TacticsPackage.MEASUREMENT_CONDITION__OPERATOR:
+      case TacticsPackage.CONTEXT_COMPARISON__LEFT:
+        return left != null;
+      case TacticsPackage.CONTEXT_COMPARISON__OPERATOR:
         return operator != OPERATOR_EDEFAULT;
-      case TacticsPackage.MEASUREMENT_CONDITION__SECOND_TERM:
-        return secondTerm != null;
+      case TacticsPackage.CONTEXT_COMPARISON__RIGHT:
+        return right != null;
     }
     return super.eIsSet(featureID);
   }
@@ -336,4 +341,4 @@ public class MeasurementConditionImpl extends ConditionImpl implements Measureme
     return result.toString();
   }
 
-} //MeasurementConditionImpl
+} //ContextComparisonImpl

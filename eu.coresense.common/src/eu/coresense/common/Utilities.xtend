@@ -4,7 +4,7 @@ import java.util.List
 import java.util.ArrayList
 
 class Utilities {
-	def static valueOfLiteral(Literal lit)
+	def static valueOfLiteral(Object lit)
     {
     	if(lit instanceof IntLiteral)
     	{

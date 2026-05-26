@@ -6,7 +6,7 @@ import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 
 @SuppressWarnings("all")
 public class Utilities {
-  public static Object valueOfLiteral(final Literal lit) {
+  public static Object valueOfLiteral(final Object lit) {
     if ((lit instanceof IntLiteral)) {
       return Integer.valueOf(((IntLiteral)lit).getValue());
     }

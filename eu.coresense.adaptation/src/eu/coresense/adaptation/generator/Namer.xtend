@@ -198,7 +198,7 @@ class Namer {
 	def uniqueName(Resolution res)
 	{
 		resolutionNames.computeIfAbsent(res) [
-        	makeUniqueName(res.feature.name.toLowerCase() + "_resolution")
+        	makeUniqueName(res.featureRef.feature.name.toLowerCase() + "_resolution")
     ]
 	}
 	

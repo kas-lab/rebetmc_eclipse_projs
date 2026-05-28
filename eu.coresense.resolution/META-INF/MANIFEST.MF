@@ -3,7 +3,7 @@ Automatic-Module-Name: org.xtext.example.mydsl
 Bundle-ManifestVersion: 2
 Bundle-Name: eu.coresense.resolution
 Bundle-Vendor: My Company
-Bundle-Version: 1.0.0.qualifier
+Bundle-Version: 0.1.0.qualifier
 Bundle-SymbolicName: eu.coresense.resolution;singleton:=true
 Bundle-ActivationPolicy: lazy
 Require-Bundle: org.eclipse.xtext,
@@ -16,7 +16,7 @@ Require-Bundle: org.eclipse.xtext,
  de.fraunhofer.ipa.rossystem;bundle-version="3.0.0",
  de.fraunhofer.ipa.ros.xtext;bundle-version="3.0.0",
  fms.metamodel;bundle-version="1.0.0",
- eu.coresense.variability;bundle-version="1.0.0",
+ eu.coresense.variability;bundle-version="0.1.0",
  eu.coresense.common;bundle-version="0.1.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-21
 Export-Package: eu.coresense.resolution,

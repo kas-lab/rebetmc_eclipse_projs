@@ -3,7 +3,7 @@ Automatic-Module-Name: org.xtext.example.mydsl.ide
 Bundle-ManifestVersion: 2
 Bundle-Name: eu.coresense.resolution.ide
 Bundle-Vendor: My Company
-Bundle-Version: 1.0.0.qualifier
+Bundle-Version: 0.1.0.qualifier
 Bundle-SymbolicName: eu.coresense.resolution.ide;singleton:=true
 Bundle-ActivationPolicy: lazy
 Require-Bundle: org.eclipse.xtext.ide,
@@ -12,7 +12,7 @@ Require-Bundle: org.eclipse.xtext.ide,
  de.fraunhofer.ipa.ros;bundle-version="3.0.0",
  de.fraunhofer.ipa.ros.xtext;bundle-version="3.0.0",
  de.fraunhofer.ipa.ros.xtext.ui;bundle-version="3.0.0",
- eu.coresense.resolution;bundle-version="1.0.0"
+ eu.coresense.resolution;bundle-version="0.1.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-21
 Export-Package: eu.coresense.resolution.ide.contentassist.antlr,
  eu.coresense.resolution.ide.contentassist.antlr.internal,

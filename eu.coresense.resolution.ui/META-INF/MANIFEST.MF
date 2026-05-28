@@ -3,7 +3,7 @@ Automatic-Module-Name: eu.coresense.resolution.ui
 Bundle-ManifestVersion: 2
 Bundle-Name: eu.coresense.resolution.ui
 Bundle-Vendor: My Company
-Bundle-Version: 1.0.0.qualifier
+Bundle-Version: 0.1.0.qualifier
 Bundle-SymbolicName: eu.coresense.resolution.ui;singleton:=true
 Bundle-ActivationPolicy: lazy
 Require-Bundle: eu.coresense.resolution.ide,
@@ -18,7 +18,7 @@ Require-Bundle: eu.coresense.resolution.ide,
  de.fraunhofer.ipa.ros;bundle-version="3.0.0",
  de.fraunhofer.ipa.ros.xtext;bundle-version="3.0.0",
  de.fraunhofer.ipa.ros.xtext.ui,
- eu.coresense.resolution;bundle-version="1.0.0",
+ eu.coresense.resolution;bundle-version="0.1.0",
  de.fraunhofer.ipa.rossystem
 Import-Package: org.apache.log4j
 Bundle-RequiredExecutionEnvironment: JavaSE-21

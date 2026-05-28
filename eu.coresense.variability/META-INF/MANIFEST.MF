@@ -3,7 +3,7 @@ Automatic-Module-Name: eu.coresense.variability
 Bundle-ManifestVersion: 2
 Bundle-Name: eu.coresense.variability
 Bundle-Vendor: My Company
-Bundle-Version: 1.0.0.qualifier
+Bundle-Version: 0.1.0.qualifier
 Bundle-SymbolicName: eu.coresense.variability; singleton:=true
 Bundle-ActivationPolicy: lazy
 Require-Bundle: org.eclipse.xtext,

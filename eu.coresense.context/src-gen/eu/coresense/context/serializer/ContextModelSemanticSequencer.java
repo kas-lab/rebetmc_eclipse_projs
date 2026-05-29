@@ -4,6 +4,7 @@
 package eu.coresense.context.serializer;
 
 import com.google.inject.Inject;
+import de.fraunhofer.ipa.ros.serializer.BasicsSemanticSequencer;
 import eu.coresense.common.CommonPackage;
 import eu.coresense.common.Import;
 import eu.coresense.context.contextModel.ContextModel;
@@ -24,11 +25,69 @@ import org.eclipse.xtext.Parameter;
 import org.eclipse.xtext.ParserRule;
 import org.eclipse.xtext.serializer.ISerializationContext;
 import org.eclipse.xtext.serializer.acceptor.SequenceFeeder;
-import org.eclipse.xtext.serializer.sequencer.AbstractDelegatingSemanticSequencer;
 import org.eclipse.xtext.serializer.sequencer.ITransientValueService.ValueTransient;
+import primitives.ByteArray;
+import primitives.Header;
+import primitives.MessagePart;
+import primitives.PrimitivesPackage;
+import primitives.bool;
+import primitives.boolArray;
+import primitives.char0;
+import primitives.charArray;
+import primitives.duration;
+import primitives.float32;
+import primitives.float32Array;
+import primitives.float64;
+import primitives.float64Array;
+import primitives.int16;
+import primitives.int16Array;
+import primitives.int32;
+import primitives.int32Array;
+import primitives.int64;
+import primitives.int64Array;
+import primitives.int8;
+import primitives.int8Array;
+import primitives.string;
+import primitives.stringArray;
+import primitives.time;
+import primitives.uint16;
+import primitives.uint16Array;
+import primitives.uint32;
+import primitives.uint32Array;
+import primitives.uint64;
+import primitives.uint64Array;
+import primitives.uint8;
+import primitives.uint8Array;
+import ros.ArrayTopicSpecMsgRef;
+import ros.GlobalNamespace;
+import ros.ParameterAny;
+import ros.ParameterAnyType;
+import ros.ParameterArrayType;
+import ros.ParameterBase64;
+import ros.ParameterBase64Type;
+import ros.ParameterBoolean;
+import ros.ParameterBooleanType;
+import ros.ParameterDate;
+import ros.ParameterDateType;
+import ros.ParameterDouble;
+import ros.ParameterDoubleType;
+import ros.ParameterInteger;
+import ros.ParameterIntegerType;
+import ros.ParameterListType;
+import ros.ParameterSequence;
+import ros.ParameterString;
+import ros.ParameterStringType;
+import ros.ParameterStruct;
+import ros.ParameterStructMember;
+import ros.ParameterStructType;
+import ros.ParameterStructTypeMember;
+import ros.PrivateNamespace;
+import ros.RelativeNamespace;
+import ros.RosPackage;
+import ros.TopicSpecMsgRef;
 
 @SuppressWarnings("all")
-public class ContextModelSemanticSequencer extends AbstractDelegatingSemanticSequencer {
+public class ContextModelSemanticSequencer extends BasicsSemanticSequencer {
 
 	@Inject
 	private ContextModelGrammarAccess grammarAccess;
@@ -70,6 +129,189 @@ public class ContextModelSemanticSequencer extends AbstractDelegatingSemanticSeq
 				return; 
 			case ContextModelPackage.QUALIFIED_SERVICE_SERVER_REF:
 				sequence_QualifiedServiceServerRef(context, (QualifiedServiceServerRef) semanticObject); 
+				return; 
+			}
+		else if (epackage == PrimitivesPackage.eINSTANCE)
+			switch (semanticObject.eClass().getClassifierID()) {
+			case PrimitivesPackage.BYTE:
+				sequence_byte(context, (primitives.Byte) semanticObject); 
+				return; 
+			case PrimitivesPackage.BYTE_ARRAY:
+				sequence_byteArray(context, (ByteArray) semanticObject); 
+				return; 
+			case PrimitivesPackage.HEADER:
+				sequence_Header(context, (Header) semanticObject); 
+				return; 
+			case PrimitivesPackage.MESSAGE_PART:
+				sequence_MessagePart(context, (MessagePart) semanticObject); 
+				return; 
+			case PrimitivesPackage.BOOL:
+				sequence_bool(context, (bool) semanticObject); 
+				return; 
+			case PrimitivesPackage.BOOL_ARRAY:
+				sequence_boolArray(context, (boolArray) semanticObject); 
+				return; 
+			case PrimitivesPackage.CHAR0:
+				sequence_char(context, (char0) semanticObject); 
+				return; 
+			case PrimitivesPackage.CHAR_ARRAY:
+				sequence_charArray(context, (charArray) semanticObject); 
+				return; 
+			case PrimitivesPackage.DURATION:
+				sequence_duration(context, (duration) semanticObject); 
+				return; 
+			case PrimitivesPackage.FLOAT32:
+				sequence_float32(context, (float32) semanticObject); 
+				return; 
+			case PrimitivesPackage.FLOAT32_ARRAY:
+				sequence_float32Array(context, (float32Array) semanticObject); 
+				return; 
+			case PrimitivesPackage.FLOAT64:
+				sequence_float64(context, (float64) semanticObject); 
+				return; 
+			case PrimitivesPackage.FLOAT64_ARRAY:
+				sequence_float64Array(context, (float64Array) semanticObject); 
+				return; 
+			case PrimitivesPackage.INT16:
+				sequence_int16(context, (int16) semanticObject); 
+				return; 
+			case PrimitivesPackage.INT16_ARRAY:
+				sequence_int16Array(context, (int16Array) semanticObject); 
+				return; 
+			case PrimitivesPackage.INT32:
+				sequence_int32(context, (int32) semanticObject); 
+				return; 
+			case PrimitivesPackage.INT32_ARRAY:
+				sequence_int32Array(context, (int32Array) semanticObject); 
+				return; 
+			case PrimitivesPackage.INT64:
+				sequence_int64(context, (int64) semanticObject); 
+				return; 
+			case PrimitivesPackage.INT64_ARRAY:
+				sequence_int64Array(context, (int64Array) semanticObject); 
+				return; 
+			case PrimitivesPackage.INT8:
+				sequence_int8(context, (int8) semanticObject); 
+				return; 
+			case PrimitivesPackage.INT8_ARRAY:
+				sequence_int8Array(context, (int8Array) semanticObject); 
+				return; 
+			case PrimitivesPackage.STRING:
+				sequence_string0(context, (string) semanticObject); 
+				return; 
+			case PrimitivesPackage.STRING_ARRAY:
+				sequence_string0Array(context, (stringArray) semanticObject); 
+				return; 
+			case PrimitivesPackage.TIME:
+				sequence_time(context, (time) semanticObject); 
+				return; 
+			case PrimitivesPackage.UINT16:
+				sequence_uint16(context, (uint16) semanticObject); 
+				return; 
+			case PrimitivesPackage.UINT16_ARRAY:
+				sequence_uint16Array(context, (uint16Array) semanticObject); 
+				return; 
+			case PrimitivesPackage.UINT32:
+				sequence_uint32(context, (uint32) semanticObject); 
+				return; 
+			case PrimitivesPackage.UINT32_ARRAY:
+				sequence_uint32Array(context, (uint32Array) semanticObject); 
+				return; 
+			case PrimitivesPackage.UINT64:
+				sequence_uint64(context, (uint64) semanticObject); 
+				return; 
+			case PrimitivesPackage.UINT64_ARRAY:
+				sequence_uint64Array(context, (uint64Array) semanticObject); 
+				return; 
+			case PrimitivesPackage.UINT8:
+				sequence_uint8(context, (uint8) semanticObject); 
+				return; 
+			case PrimitivesPackage.UINT8_ARRAY:
+				sequence_uint8Array(context, (uint8Array) semanticObject); 
+				return; 
+			}
+		else if (epackage == RosPackage.eINSTANCE)
+			switch (semanticObject.eClass().getClassifierID()) {
+			case RosPackage.ARRAY_TOPIC_SPEC_MSG_REF:
+				sequence_ArraySpecRef(context, (ArrayTopicSpecMsgRef) semanticObject); 
+				return; 
+			case RosPackage.GLOBAL_NAMESPACE:
+				sequence_GlobalNamespace(context, (GlobalNamespace) semanticObject); 
+				return; 
+			case RosPackage.PARAMETER:
+				sequence_Parameter(context, (ros.Parameter) semanticObject); 
+				return; 
+			case RosPackage.PARAMETER_ANY:
+				sequence_ParameterAny(context, (ParameterAny) semanticObject); 
+				return; 
+			case RosPackage.PARAMETER_ANY_TYPE:
+				sequence_ParameterAnyType(context, (ParameterAnyType) semanticObject); 
+				return; 
+			case RosPackage.PARAMETER_ARRAY_TYPE:
+				sequence_ParameterArrayType(context, (ParameterArrayType) semanticObject); 
+				return; 
+			case RosPackage.PARAMETER_BASE64:
+				sequence_ParameterBase64(context, (ParameterBase64) semanticObject); 
+				return; 
+			case RosPackage.PARAMETER_BASE64_TYPE:
+				sequence_ParameterBase64Type(context, (ParameterBase64Type) semanticObject); 
+				return; 
+			case RosPackage.PARAMETER_BOOLEAN:
+				sequence_ParameterBoolean(context, (ParameterBoolean) semanticObject); 
+				return; 
+			case RosPackage.PARAMETER_BOOLEAN_TYPE:
+				sequence_ParameterBooleanType(context, (ParameterBooleanType) semanticObject); 
+				return; 
+			case RosPackage.PARAMETER_DATE:
+				sequence_ParameterDate(context, (ParameterDate) semanticObject); 
+				return; 
+			case RosPackage.PARAMETER_DATE_TYPE:
+				sequence_ParameterDateType(context, (ParameterDateType) semanticObject); 
+				return; 
+			case RosPackage.PARAMETER_DOUBLE:
+				sequence_ParameterDouble(context, (ParameterDouble) semanticObject); 
+				return; 
+			case RosPackage.PARAMETER_DOUBLE_TYPE:
+				sequence_ParameterDoubleType(context, (ParameterDoubleType) semanticObject); 
+				return; 
+			case RosPackage.PARAMETER_INTEGER:
+				sequence_ParameterInteger(context, (ParameterInteger) semanticObject); 
+				return; 
+			case RosPackage.PARAMETER_INTEGER_TYPE:
+				sequence_ParameterIntegerType(context, (ParameterIntegerType) semanticObject); 
+				return; 
+			case RosPackage.PARAMETER_LIST_TYPE:
+				sequence_ParameterListType(context, (ParameterListType) semanticObject); 
+				return; 
+			case RosPackage.PARAMETER_SEQUENCE:
+				sequence_ParameterList(context, (ParameterSequence) semanticObject); 
+				return; 
+			case RosPackage.PARAMETER_STRING:
+				sequence_ParameterString(context, (ParameterString) semanticObject); 
+				return; 
+			case RosPackage.PARAMETER_STRING_TYPE:
+				sequence_ParameterStringType(context, (ParameterStringType) semanticObject); 
+				return; 
+			case RosPackage.PARAMETER_STRUCT:
+				sequence_ParameterStruct(context, (ParameterStruct) semanticObject); 
+				return; 
+			case RosPackage.PARAMETER_STRUCT_MEMBER:
+				sequence_ParameterStructMember(context, (ParameterStructMember) semanticObject); 
+				return; 
+			case RosPackage.PARAMETER_STRUCT_TYPE:
+				sequence_ParameterStructType(context, (ParameterStructType) semanticObject); 
+				return; 
+			case RosPackage.PARAMETER_STRUCT_TYPE_MEMBER:
+				sequence_ParameterStructTypeMember(context, (ParameterStructTypeMember) semanticObject); 
+				return; 
+			case RosPackage.PRIVATE_NAMESPACE:
+				sequence_PrivateNamespace(context, (PrivateNamespace) semanticObject); 
+				return; 
+			case RosPackage.RELATIVE_NAMESPACE:
+				sequence_RelativeNamespace_Impl(context, (RelativeNamespace) semanticObject); 
+				return; 
+			case RosPackage.TOPIC_SPEC_MSG_REF:
+				sequence_SpecBaseRef(context, (TopicSpecMsgRef) semanticObject); 
 				return; 
 			}
 		if (errorAcceptor != null)
@@ -140,7 +382,7 @@ public class ContextModelSemanticSequencer extends AbstractDelegatingSemanticSeq
 	 *     DoCache returns DoCache
 	 *
 	 * Constraint:
-	 *     do=BOOLEAN
+	 *     do=ContextBoolean
 	 * </pre>
 	 */
 	protected void sequence_DoCache(ISerializationContext context, DoCache semanticObject) {
@@ -149,7 +391,7 @@ public class ContextModelSemanticSequencer extends AbstractDelegatingSemanticSeq
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ContextModelPackage.Literals.DO_CACHE__DO));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getDoCacheAccess().getDoBOOLEANTerminalRuleCall_1_0(), semanticObject.isDo());
+		feeder.accept(grammarAccess.getDoCacheAccess().getDoContextBooleanParserRuleCall_1_0(), semanticObject.isDo());
 		feeder.finish();
 	}
 	
@@ -160,7 +402,7 @@ public class ContextModelSemanticSequencer extends AbstractDelegatingSemanticSeq
 	 *     DoProxy returns DoProxy
 	 *
 	 * Constraint:
-	 *     do=BOOLEAN
+	 *     do=ContextBoolean
 	 * </pre>
 	 */
 	protected void sequence_DoProxy(ISerializationContext context, DoProxy semanticObject) {
@@ -169,7 +411,7 @@ public class ContextModelSemanticSequencer extends AbstractDelegatingSemanticSeq
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ContextModelPackage.Literals.DO_PROXY__DO));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getDoProxyAccess().getDoBOOLEANTerminalRuleCall_1_0(), semanticObject.isDo());
+		feeder.accept(grammarAccess.getDoProxyAccess().getDoContextBooleanParserRuleCall_1_0(), semanticObject.isDo());
 		feeder.finish();
 	}
 	
@@ -201,7 +443,7 @@ public class ContextModelSemanticSequencer extends AbstractDelegatingSemanticSeq
 	 *     QualifiedActionServerRef returns QualifiedActionServerRef
 	 *
 	 * Constraint:
-	 *     (node=[Node|ID] actionServer=[ActionServer|ID] kwargs=KeyWordArguments)
+	 *     (node=[Node|RosNames] actionServer=[ActionServer|RosNames] kwargs=KeyWordArguments)
 	 * </pre>
 	 */
 	protected void sequence_QualifiedActionServerRef(ISerializationContext context, QualifiedActionServerRef semanticObject) {
@@ -214,8 +456,8 @@ public class ContextModelSemanticSequencer extends AbstractDelegatingSemanticSeq
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ContextModelPackage.Literals.QUALIFIED_ACTION_SERVER_REF__KWARGS));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getQualifiedActionServerRefAccess().getNodeNodeIDTerminalRuleCall_1_0_1(), semanticObject.eGet(ContextModelPackage.Literals.QUALIFIED_REF__NODE, false));
-		feeder.accept(grammarAccess.getQualifiedActionServerRefAccess().getActionServerActionServerIDTerminalRuleCall_3_0_1(), semanticObject.eGet(ContextModelPackage.Literals.QUALIFIED_ACTION_SERVER_REF__ACTION_SERVER, false));
+		feeder.accept(grammarAccess.getQualifiedActionServerRefAccess().getNodeNodeRosNamesParserRuleCall_1_0_1(), semanticObject.eGet(ContextModelPackage.Literals.QUALIFIED_REF__NODE, false));
+		feeder.accept(grammarAccess.getQualifiedActionServerRefAccess().getActionServerActionServerRosNamesParserRuleCall_3_0_1(), semanticObject.eGet(ContextModelPackage.Literals.QUALIFIED_ACTION_SERVER_REF__ACTION_SERVER, false));
 		feeder.accept(grammarAccess.getQualifiedActionServerRefAccess().getKwargsKeyWordArgumentsParserRuleCall_5_0(), semanticObject.getKwargs());
 		feeder.finish();
 	}
@@ -228,7 +470,7 @@ public class ContextModelSemanticSequencer extends AbstractDelegatingSemanticSeq
 	 *     QualifiedPublisherRef returns QualifiedPublisherRef
 	 *
 	 * Constraint:
-	 *     (node=[Node|ID] publisher=[Publisher|ID])
+	 *     (node=[Node|RosNames] publisher=[Publisher|RosNames])
 	 * </pre>
 	 */
 	protected void sequence_QualifiedPublisherRef(ISerializationContext context, QualifiedPublisherRef semanticObject) {
@@ -239,8 +481,8 @@ public class ContextModelSemanticSequencer extends AbstractDelegatingSemanticSeq
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ContextModelPackage.Literals.QUALIFIED_PUBLISHER_REF__PUBLISHER));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getQualifiedPublisherRefAccess().getNodeNodeIDTerminalRuleCall_1_0_1(), semanticObject.eGet(ContextModelPackage.Literals.QUALIFIED_REF__NODE, false));
-		feeder.accept(grammarAccess.getQualifiedPublisherRefAccess().getPublisherPublisherIDTerminalRuleCall_3_0_1(), semanticObject.eGet(ContextModelPackage.Literals.QUALIFIED_PUBLISHER_REF__PUBLISHER, false));
+		feeder.accept(grammarAccess.getQualifiedPublisherRefAccess().getNodeNodeRosNamesParserRuleCall_1_0_1(), semanticObject.eGet(ContextModelPackage.Literals.QUALIFIED_REF__NODE, false));
+		feeder.accept(grammarAccess.getQualifiedPublisherRefAccess().getPublisherPublisherRosNamesParserRuleCall_3_0_1(), semanticObject.eGet(ContextModelPackage.Literals.QUALIFIED_PUBLISHER_REF__PUBLISHER, false));
 		feeder.finish();
 	}
 	
@@ -252,7 +494,7 @@ public class ContextModelSemanticSequencer extends AbstractDelegatingSemanticSeq
 	 *     QualifiedServiceServerRef returns QualifiedServiceServerRef
 	 *
 	 * Constraint:
-	 *     (node=[Node|ID] serviceServer=[ServiceServer|ID] kwargs=KeyWordArguments)
+	 *     (node=[Node|RosNames] serviceServer=[ServiceServer|RosNames] kwargs=KeyWordArguments)
 	 * </pre>
 	 */
 	protected void sequence_QualifiedServiceServerRef(ISerializationContext context, QualifiedServiceServerRef semanticObject) {
@@ -265,8 +507,8 @@ public class ContextModelSemanticSequencer extends AbstractDelegatingSemanticSeq
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ContextModelPackage.Literals.QUALIFIED_SERVICE_SERVER_REF__KWARGS));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getQualifiedServiceServerRefAccess().getNodeNodeIDTerminalRuleCall_1_0_1(), semanticObject.eGet(ContextModelPackage.Literals.QUALIFIED_REF__NODE, false));
-		feeder.accept(grammarAccess.getQualifiedServiceServerRefAccess().getServiceServerServiceServerIDTerminalRuleCall_3_0_1(), semanticObject.eGet(ContextModelPackage.Literals.QUALIFIED_SERVICE_SERVER_REF__SERVICE_SERVER, false));
+		feeder.accept(grammarAccess.getQualifiedServiceServerRefAccess().getNodeNodeRosNamesParserRuleCall_1_0_1(), semanticObject.eGet(ContextModelPackage.Literals.QUALIFIED_REF__NODE, false));
+		feeder.accept(grammarAccess.getQualifiedServiceServerRefAccess().getServiceServerServiceServerRosNamesParserRuleCall_3_0_1(), semanticObject.eGet(ContextModelPackage.Literals.QUALIFIED_SERVICE_SERVER_REF__SERVICE_SERVER, false));
 		feeder.accept(grammarAccess.getQualifiedServiceServerRefAccess().getKwargsKeyWordArgumentsParserRuleCall_5_0(), semanticObject.getKwargs());
 		feeder.finish();
 	}

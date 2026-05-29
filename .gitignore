@@ -9,6 +9,6 @@
 
 **/bin/
 **/test-bin/
-**/target/classes/
+**/target/
 **/xtend-gen/*
 !**/xtend-gen/.gitkeep

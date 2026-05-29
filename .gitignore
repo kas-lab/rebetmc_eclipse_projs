@@ -1,3 +1,4 @@
+.metadata
 /.vscode/
 /.project
 /COLCON_IGNORE
@@ -9,4 +10,5 @@
 **/bin/
 **/test-bin/
 **/target/classes/
-**/xtend-gen/**/*.xtendbin
+**/xtend-gen/*
+!**/xtend-gen/.gitkeep

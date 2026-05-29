@@ -21,24 +21,6 @@ import java.util.ArrayList;
 @SuppressWarnings("all")
 public class InternalContextModelParser extends AbstractInternalAntlrParser {
     public static final String[] tokenNames = new String[] {
-<<<<<<< HEAD
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_INT", "RULE_STRING", "RULE_BOOLEAN", "RULE_DIGIT", "RULE_BINARY", "RULE_DECINT", "RULE_DOUBLE", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'ContextVariable'", "'{'", "'cache?'", "'cache'", "'length'", "'s'", "'period'", "'ns'", "'proxy'", "'function_name'", "'function_lib'", "'}'", "'source:'", "'origin:'", "'publisher:'", "'.'", "'service:'", "'request_kwargs'", "'action:'", "'goal_kwargs'", "'import'", "';'"
-    };
-    public static final int RULE_BOOLEAN=7;
-    public static final int RULE_STRING=6;
-    public static final int RULE_SL_COMMENT=13;
-    public static final int T__19=19;
-    public static final int T__37=37;
-    public static final int RULE_DOUBLE=11;
-    public static final int T__16=16;
-    public static final int T__17=17;
-    public static final int T__18=18;
-    public static final int T__33=33;
-    public static final int T__34=34;
-    public static final int T__35=35;
-    public static final int T__36=36;
-    public static final int RULE_DECINT=10;
-=======
         "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RelativeNamespace", "PrivateNamespace", "ContextVariable", "GlobalNamespace", "Request_kwargs", "Function_args", "Function_name", "ParameterAny", "Function_lib", "Goal_kwargs", "Publisher", "GraphName", "Float32_1", "Float64_1", "Default", "Duration", "Feedback", "Service_1", "String_2", "Uint16_1", "Uint32_1", "Uint64_1", "Boolean", "Integer", "Action_1", "Float32", "Float64", "Int16_1", "Int32_1", "Int64_1", "Message", "Origin", "Service", "Source", "Uint8_1", "Base64", "Double", "Header", "String", "Struct", "Action", "Bool_1", "Byte_1", "Cache_1", "Char_1", "Import", "Int8_1", "Length", "Period", "Result", "String_1", "Uint16", "Uint32", "Uint64", "Value_1", "Array", "Cache", "Int16", "Int32", "Int64", "Proxy", "Type_1", "Uint8", "Value", "Date", "List", "Bool", "Byte", "Char", "Goal", "Int8", "Name", "Node", "Time", "Type", "Any", "Ns_1", "LeftSquareBracketRightSquareBracket", "Ns", "Comma", "FullStop", "Colon", "Semicolon", "LeftSquareBracket", "RightSquareBracket", "S", "LeftCurlyBracket", "RightCurlyBracket", "RULE_DIGIT", "RULE_BINARY", "RULE_BOOLEAN", "RULE_DECINT", "RULE_DOUBLE", "RULE_DAY", "RULE_MONTH", "RULE_YEAR", "RULE_HOUR", "RULE_MIN_SEC", "RULE_DATE_TIME", "RULE_ID", "RULE_STRING", "RULE_INT", "RULE_MESSAGE_ASIGMENT", "RULE_BEGIN", "RULE_END", "RULE_SL_COMMENT", "RULE_ROS_CONVENTION_A", "RULE_ROS_CONVENTION_PARAM", "RULE_ML_COMMENT", "RULE_WS", "RULE_ANY_OTHER"
     };
     public static final int Origin=35;
@@ -140,7 +122,6 @@ public class InternalContextModelParser extends AbstractInternalAntlrParser {
     public static final int Service_1=21;
     public static final int RULE_ROS_CONVENTION_PARAM=111;
     public static final int Colon=85;
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
     public static final int EOF=-1;
     public static final int Ns=82;
     public static final int RULE_WS=113;
@@ -256,11 +237,7 @@ public class InternalContextModelParser extends AbstractInternalAntlrParser {
                 int alt1=2;
                 int LA1_0 = input.LA(1);
 
-<<<<<<< HEAD
-                if ( (LA1_0==36) ) {
-=======
                 if ( (LA1_0==Import) ) {
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
                     alt1=1;
                 }
 
@@ -411,11 +388,7 @@ public class InternalContextModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleContextVar"
-<<<<<<< HEAD
-    // InternalContextModel.g:128:1: ruleContextVar returns [EObject current=null] : (otherlv_0= 'ContextVariable' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' ( (lv_source_3_0= ruleDataSource ) ) otherlv_4= 'cache?' ( (lv_doCache_5_0= ruleDoCache ) ) (otherlv_6= 'cache' otherlv_7= 'length' ( (lv_length_8_0= RULE_INT ) ) otherlv_9= 's' )? (otherlv_10= 'period' ( (lv_period_11_0= RULE_INT ) ) otherlv_12= 'ns' )? (otherlv_13= 'proxy' ( (lv_doProxy_14_0= ruleDoProxy ) ) )? otherlv_15= 'function_name' ( (lv_functionName_16_0= RULE_STRING ) ) (otherlv_17= 'function_lib' ( (lv_functionLibrary_18_0= RULE_STRING ) ) )? otherlv_19= '}' ) ;
-=======
     // InternalContextModelParser.g:121:1: ruleContextVar returns [EObject current=null] : (otherlv_0= ContextVariable ( (lv_name_1_0= RULE_ID ) ) otherlv_2= LeftCurlyBracket ( (lv_source_3_0= ruleDataSource ) ) otherlv_4= Cache_1 ( (lv_doCache_5_0= ruleDoCache ) ) (otherlv_6= Cache otherlv_7= Length ( (lv_length_8_0= RULE_INT ) ) otherlv_9= S )? (otherlv_10= Period ( (lv_period_11_0= RULE_INT ) ) otherlv_12= Ns )? (otherlv_13= Proxy ( (lv_doProxy_14_0= ruleDoProxy ) ) )? otherlv_15= Function_name ( (lv_functionName_16_0= RULE_STRING ) ) (otherlv_17= Function_lib ( (lv_functionLibrary_18_0= RULE_STRING ) ) )? (otherlv_19= Function_args ( (lv_functionArgs_20_0= RULE_STRING ) ) )? otherlv_21= RightCurlyBracket ) ;
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
     public final EObject ruleContextVar() throws RecognitionException {
         EObject current = null;
 
@@ -436,6 +409,8 @@ public class InternalContextModelParser extends AbstractInternalAntlrParser {
         Token otherlv_17=null;
         Token lv_functionLibrary_18_0=null;
         Token otherlv_19=null;
+        Token lv_functionArgs_20_0=null;
+        Token otherlv_21=null;
         EObject lv_source_3_0 = null;
 
         EObject lv_doCache_5_0 = null;
@@ -447,19 +422,11 @@ public class InternalContextModelParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-<<<<<<< HEAD
-            // InternalContextModel.g:134:2: ( (otherlv_0= 'ContextVariable' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' ( (lv_source_3_0= ruleDataSource ) ) otherlv_4= 'cache?' ( (lv_doCache_5_0= ruleDoCache ) ) (otherlv_6= 'cache' otherlv_7= 'length' ( (lv_length_8_0= RULE_INT ) ) otherlv_9= 's' )? (otherlv_10= 'period' ( (lv_period_11_0= RULE_INT ) ) otherlv_12= 'ns' )? (otherlv_13= 'proxy' ( (lv_doProxy_14_0= ruleDoProxy ) ) )? otherlv_15= 'function_name' ( (lv_functionName_16_0= RULE_STRING ) ) (otherlv_17= 'function_lib' ( (lv_functionLibrary_18_0= RULE_STRING ) ) )? otherlv_19= '}' ) )
-            // InternalContextModel.g:135:2: (otherlv_0= 'ContextVariable' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' ( (lv_source_3_0= ruleDataSource ) ) otherlv_4= 'cache?' ( (lv_doCache_5_0= ruleDoCache ) ) (otherlv_6= 'cache' otherlv_7= 'length' ( (lv_length_8_0= RULE_INT ) ) otherlv_9= 's' )? (otherlv_10= 'period' ( (lv_period_11_0= RULE_INT ) ) otherlv_12= 'ns' )? (otherlv_13= 'proxy' ( (lv_doProxy_14_0= ruleDoProxy ) ) )? otherlv_15= 'function_name' ( (lv_functionName_16_0= RULE_STRING ) ) (otherlv_17= 'function_lib' ( (lv_functionLibrary_18_0= RULE_STRING ) ) )? otherlv_19= '}' )
-            {
-            // InternalContextModel.g:135:2: (otherlv_0= 'ContextVariable' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' ( (lv_source_3_0= ruleDataSource ) ) otherlv_4= 'cache?' ( (lv_doCache_5_0= ruleDoCache ) ) (otherlv_6= 'cache' otherlv_7= 'length' ( (lv_length_8_0= RULE_INT ) ) otherlv_9= 's' )? (otherlv_10= 'period' ( (lv_period_11_0= RULE_INT ) ) otherlv_12= 'ns' )? (otherlv_13= 'proxy' ( (lv_doProxy_14_0= ruleDoProxy ) ) )? otherlv_15= 'function_name' ( (lv_functionName_16_0= RULE_STRING ) ) (otherlv_17= 'function_lib' ( (lv_functionLibrary_18_0= RULE_STRING ) ) )? otherlv_19= '}' )
-            // InternalContextModel.g:136:3: otherlv_0= 'ContextVariable' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' ( (lv_source_3_0= ruleDataSource ) ) otherlv_4= 'cache?' ( (lv_doCache_5_0= ruleDoCache ) ) (otherlv_6= 'cache' otherlv_7= 'length' ( (lv_length_8_0= RULE_INT ) ) otherlv_9= 's' )? (otherlv_10= 'period' ( (lv_period_11_0= RULE_INT ) ) otherlv_12= 'ns' )? (otherlv_13= 'proxy' ( (lv_doProxy_14_0= ruleDoProxy ) ) )? otherlv_15= 'function_name' ( (lv_functionName_16_0= RULE_STRING ) ) (otherlv_17= 'function_lib' ( (lv_functionLibrary_18_0= RULE_STRING ) ) )? otherlv_19= '}'
-=======
             // InternalContextModelParser.g:127:2: ( (otherlv_0= ContextVariable ( (lv_name_1_0= RULE_ID ) ) otherlv_2= LeftCurlyBracket ( (lv_source_3_0= ruleDataSource ) ) otherlv_4= Cache_1 ( (lv_doCache_5_0= ruleDoCache ) ) (otherlv_6= Cache otherlv_7= Length ( (lv_length_8_0= RULE_INT ) ) otherlv_9= S )? (otherlv_10= Period ( (lv_period_11_0= RULE_INT ) ) otherlv_12= Ns )? (otherlv_13= Proxy ( (lv_doProxy_14_0= ruleDoProxy ) ) )? otherlv_15= Function_name ( (lv_functionName_16_0= RULE_STRING ) ) (otherlv_17= Function_lib ( (lv_functionLibrary_18_0= RULE_STRING ) ) )? (otherlv_19= Function_args ( (lv_functionArgs_20_0= RULE_STRING ) ) )? otherlv_21= RightCurlyBracket ) )
             // InternalContextModelParser.g:128:2: (otherlv_0= ContextVariable ( (lv_name_1_0= RULE_ID ) ) otherlv_2= LeftCurlyBracket ( (lv_source_3_0= ruleDataSource ) ) otherlv_4= Cache_1 ( (lv_doCache_5_0= ruleDoCache ) ) (otherlv_6= Cache otherlv_7= Length ( (lv_length_8_0= RULE_INT ) ) otherlv_9= S )? (otherlv_10= Period ( (lv_period_11_0= RULE_INT ) ) otherlv_12= Ns )? (otherlv_13= Proxy ( (lv_doProxy_14_0= ruleDoProxy ) ) )? otherlv_15= Function_name ( (lv_functionName_16_0= RULE_STRING ) ) (otherlv_17= Function_lib ( (lv_functionLibrary_18_0= RULE_STRING ) ) )? (otherlv_19= Function_args ( (lv_functionArgs_20_0= RULE_STRING ) ) )? otherlv_21= RightCurlyBracket )
             {
             // InternalContextModelParser.g:128:2: (otherlv_0= ContextVariable ( (lv_name_1_0= RULE_ID ) ) otherlv_2= LeftCurlyBracket ( (lv_source_3_0= ruleDataSource ) ) otherlv_4= Cache_1 ( (lv_doCache_5_0= ruleDoCache ) ) (otherlv_6= Cache otherlv_7= Length ( (lv_length_8_0= RULE_INT ) ) otherlv_9= S )? (otherlv_10= Period ( (lv_period_11_0= RULE_INT ) ) otherlv_12= Ns )? (otherlv_13= Proxy ( (lv_doProxy_14_0= ruleDoProxy ) ) )? otherlv_15= Function_name ( (lv_functionName_16_0= RULE_STRING ) ) (otherlv_17= Function_lib ( (lv_functionLibrary_18_0= RULE_STRING ) ) )? (otherlv_19= Function_args ( (lv_functionArgs_20_0= RULE_STRING ) ) )? otherlv_21= RightCurlyBracket )
             // InternalContextModelParser.g:129:3: otherlv_0= ContextVariable ( (lv_name_1_0= RULE_ID ) ) otherlv_2= LeftCurlyBracket ( (lv_source_3_0= ruleDataSource ) ) otherlv_4= Cache_1 ( (lv_doCache_5_0= ruleDoCache ) ) (otherlv_6= Cache otherlv_7= Length ( (lv_length_8_0= RULE_INT ) ) otherlv_9= S )? (otherlv_10= Period ( (lv_period_11_0= RULE_INT ) ) otherlv_12= Ns )? (otherlv_13= Proxy ( (lv_doProxy_14_0= ruleDoProxy ) ) )? otherlv_15= Function_name ( (lv_functionName_16_0= RULE_STRING ) ) (otherlv_17= Function_lib ( (lv_functionLibrary_18_0= RULE_STRING ) ) )? (otherlv_19= Function_args ( (lv_functionArgs_20_0= RULE_STRING ) ) )? otherlv_21= RightCurlyBracket
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
             {
             otherlv_0=(Token)match(input,ContextVariable,FOLLOW_5); 
 
@@ -796,11 +763,6 @@ public class InternalContextModelParser extends AbstractInternalAntlrParser {
 
             }
 
-<<<<<<< HEAD
-            otherlv_19=(Token)match(input,27,FOLLOW_2); 
-
-            			newLeafNode(otherlv_19, grammarAccess.getContextVarAccess().getRightCurlyBracketKeyword_12());
-=======
             // InternalContextModelParser.g:328:3: (otherlv_19= Function_args ( (lv_functionArgs_20_0= RULE_STRING ) ) )?
             int alt7=2;
             int LA7_0 = input.LA(1);
@@ -851,7 +813,6 @@ public class InternalContextModelParser extends AbstractInternalAntlrParser {
             otherlv_21=(Token)match(input,RightCurlyBracket,FOLLOW_2); 
 
             			newLeafNode(otherlv_21, grammarAccess.getContextVarAccess().getRightCurlyBracketKeyword_13());
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
             		
 
             }
@@ -876,11 +837,7 @@ public class InternalContextModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleDoCache"
-<<<<<<< HEAD
-    // InternalContextModel.g:343:1: entryRuleDoCache returns [EObject current=null] : iv_ruleDoCache= ruleDoCache EOF ;
-=======
     // InternalContextModelParser.g:360:1: entryRuleDoCache returns [EObject current=null] : iv_ruleDoCache= ruleDoCache EOF ;
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
     public final EObject entryRuleDoCache() throws RecognitionException {
         EObject current = null;
 
@@ -888,13 +845,8 @@ public class InternalContextModelParser extends AbstractInternalAntlrParser {
 
 
         try {
-<<<<<<< HEAD
-            // InternalContextModel.g:343:48: (iv_ruleDoCache= ruleDoCache EOF )
-            // InternalContextModel.g:344:2: iv_ruleDoCache= ruleDoCache EOF
-=======
             // InternalContextModelParser.g:360:48: (iv_ruleDoCache= ruleDoCache EOF )
             // InternalContextModelParser.g:361:2: iv_ruleDoCache= ruleDoCache EOF
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
             {
              newCompositeNode(grammarAccess.getDoCacheRule()); 
             pushFollow(FOLLOW_1);
@@ -921,11 +873,7 @@ public class InternalContextModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleDoCache"
-<<<<<<< HEAD
-    // InternalContextModel.g:350:1: ruleDoCache returns [EObject current=null] : ( () ( (lv_do_1_0= RULE_BOOLEAN ) ) ) ;
-=======
     // InternalContextModelParser.g:367:1: ruleDoCache returns [EObject current=null] : ( () ( (lv_do_1_0= ruleContextBoolean ) ) ) ;
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
     public final EObject ruleDoCache() throws RecognitionException {
         EObject current = null;
 
@@ -936,16 +884,6 @@ public class InternalContextModelParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-<<<<<<< HEAD
-            // InternalContextModel.g:356:2: ( ( () ( (lv_do_1_0= RULE_BOOLEAN ) ) ) )
-            // InternalContextModel.g:357:2: ( () ( (lv_do_1_0= RULE_BOOLEAN ) ) )
-            {
-            // InternalContextModel.g:357:2: ( () ( (lv_do_1_0= RULE_BOOLEAN ) ) )
-            // InternalContextModel.g:358:3: () ( (lv_do_1_0= RULE_BOOLEAN ) )
-            {
-            // InternalContextModel.g:358:3: ()
-            // InternalContextModel.g:359:4: 
-=======
             // InternalContextModelParser.g:373:2: ( ( () ( (lv_do_1_0= ruleContextBoolean ) ) ) )
             // InternalContextModelParser.g:374:2: ( () ( (lv_do_1_0= ruleContextBoolean ) ) )
             {
@@ -954,7 +892,6 @@ public class InternalContextModelParser extends AbstractInternalAntlrParser {
             {
             // InternalContextModelParser.g:375:3: ()
             // InternalContextModelParser.g:376:4: 
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
             {
 
             				current = forceCreateModelElement(
@@ -964,19 +901,11 @@ public class InternalContextModelParser extends AbstractInternalAntlrParser {
 
             }
 
-<<<<<<< HEAD
-            // InternalContextModel.g:365:3: ( (lv_do_1_0= RULE_BOOLEAN ) )
-            // InternalContextModel.g:366:4: (lv_do_1_0= RULE_BOOLEAN )
-            {
-            // InternalContextModel.g:366:4: (lv_do_1_0= RULE_BOOLEAN )
-            // InternalContextModel.g:367:5: lv_do_1_0= RULE_BOOLEAN
-=======
             // InternalContextModelParser.g:382:3: ( (lv_do_1_0= ruleContextBoolean ) )
             // InternalContextModelParser.g:383:4: (lv_do_1_0= ruleContextBoolean )
             {
             // InternalContextModelParser.g:383:4: (lv_do_1_0= ruleContextBoolean )
             // InternalContextModelParser.g:384:5: lv_do_1_0= ruleContextBoolean
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
             {
 
             					newCompositeNode(grammarAccess.getDoCacheAccess().getDoContextBooleanParserRuleCall_1_0());
@@ -1026,11 +955,7 @@ public class InternalContextModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleDoProxy"
-<<<<<<< HEAD
-    // InternalContextModel.g:387:1: entryRuleDoProxy returns [EObject current=null] : iv_ruleDoProxy= ruleDoProxy EOF ;
-=======
     // InternalContextModelParser.g:405:1: entryRuleDoProxy returns [EObject current=null] : iv_ruleDoProxy= ruleDoProxy EOF ;
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
     public final EObject entryRuleDoProxy() throws RecognitionException {
         EObject current = null;
 
@@ -1038,13 +963,8 @@ public class InternalContextModelParser extends AbstractInternalAntlrParser {
 
 
         try {
-<<<<<<< HEAD
-            // InternalContextModel.g:387:48: (iv_ruleDoProxy= ruleDoProxy EOF )
-            // InternalContextModel.g:388:2: iv_ruleDoProxy= ruleDoProxy EOF
-=======
             // InternalContextModelParser.g:405:48: (iv_ruleDoProxy= ruleDoProxy EOF )
             // InternalContextModelParser.g:406:2: iv_ruleDoProxy= ruleDoProxy EOF
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
             {
              newCompositeNode(grammarAccess.getDoProxyRule()); 
             pushFollow(FOLLOW_1);
@@ -1071,11 +991,7 @@ public class InternalContextModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleDoProxy"
-<<<<<<< HEAD
-    // InternalContextModel.g:394:1: ruleDoProxy returns [EObject current=null] : ( () ( (lv_do_1_0= RULE_BOOLEAN ) ) ) ;
-=======
     // InternalContextModelParser.g:412:1: ruleDoProxy returns [EObject current=null] : ( () ( (lv_do_1_0= ruleContextBoolean ) ) ) ;
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
     public final EObject ruleDoProxy() throws RecognitionException {
         EObject current = null;
 
@@ -1086,16 +1002,6 @@ public class InternalContextModelParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-<<<<<<< HEAD
-            // InternalContextModel.g:400:2: ( ( () ( (lv_do_1_0= RULE_BOOLEAN ) ) ) )
-            // InternalContextModel.g:401:2: ( () ( (lv_do_1_0= RULE_BOOLEAN ) ) )
-            {
-            // InternalContextModel.g:401:2: ( () ( (lv_do_1_0= RULE_BOOLEAN ) ) )
-            // InternalContextModel.g:402:3: () ( (lv_do_1_0= RULE_BOOLEAN ) )
-            {
-            // InternalContextModel.g:402:3: ()
-            // InternalContextModel.g:403:4: 
-=======
             // InternalContextModelParser.g:418:2: ( ( () ( (lv_do_1_0= ruleContextBoolean ) ) ) )
             // InternalContextModelParser.g:419:2: ( () ( (lv_do_1_0= ruleContextBoolean ) ) )
             {
@@ -1104,7 +1010,6 @@ public class InternalContextModelParser extends AbstractInternalAntlrParser {
             {
             // InternalContextModelParser.g:420:3: ()
             // InternalContextModelParser.g:421:4: 
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
             {
 
             				current = forceCreateModelElement(
@@ -1114,19 +1019,11 @@ public class InternalContextModelParser extends AbstractInternalAntlrParser {
 
             }
 
-<<<<<<< HEAD
-            // InternalContextModel.g:409:3: ( (lv_do_1_0= RULE_BOOLEAN ) )
-            // InternalContextModel.g:410:4: (lv_do_1_0= RULE_BOOLEAN )
-            {
-            // InternalContextModel.g:410:4: (lv_do_1_0= RULE_BOOLEAN )
-            // InternalContextModel.g:411:5: lv_do_1_0= RULE_BOOLEAN
-=======
             // InternalContextModelParser.g:427:3: ( (lv_do_1_0= ruleContextBoolean ) )
             // InternalContextModelParser.g:428:4: (lv_do_1_0= ruleContextBoolean )
             {
             // InternalContextModelParser.g:428:4: (lv_do_1_0= ruleContextBoolean )
             // InternalContextModelParser.g:429:5: lv_do_1_0= ruleContextBoolean
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
             {
 
             					newCompositeNode(grammarAccess.getDoProxyAccess().getDoContextBooleanParserRuleCall_1_0());
@@ -1252,11 +1149,7 @@ public class InternalContextModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleDataSource"
-<<<<<<< HEAD
-    // InternalContextModel.g:431:1: entryRuleDataSource returns [EObject current=null] : iv_ruleDataSource= ruleDataSource EOF ;
-=======
     // InternalContextModelParser.g:474:1: entryRuleDataSource returns [EObject current=null] : iv_ruleDataSource= ruleDataSource EOF ;
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
     public final EObject entryRuleDataSource() throws RecognitionException {
         EObject current = null;
 
@@ -1264,13 +1157,8 @@ public class InternalContextModelParser extends AbstractInternalAntlrParser {
 
 
         try {
-<<<<<<< HEAD
-            // InternalContextModel.g:431:51: (iv_ruleDataSource= ruleDataSource EOF )
-            // InternalContextModel.g:432:2: iv_ruleDataSource= ruleDataSource EOF
-=======
             // InternalContextModelParser.g:474:51: (iv_ruleDataSource= ruleDataSource EOF )
             // InternalContextModelParser.g:475:2: iv_ruleDataSource= ruleDataSource EOF
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
             {
              newCompositeNode(grammarAccess.getDataSourceRule()); 
             pushFollow(FOLLOW_1);
@@ -1297,11 +1185,7 @@ public class InternalContextModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleDataSource"
-<<<<<<< HEAD
-    // InternalContextModel.g:438:1: ruleDataSource returns [EObject current=null] : (otherlv_0= 'source:' (otherlv_1= 'origin:' ( (lv_ref_2_0= ruleQualifiedRef ) ) ) ) ;
-=======
     // InternalContextModelParser.g:481:1: ruleDataSource returns [EObject current=null] : (otherlv_0= Source (otherlv_1= Origin ( (lv_ref_2_0= ruleQualifiedRef ) ) ) ) ;
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
     public final EObject ruleDataSource() throws RecognitionException {
         EObject current = null;
 
@@ -1314,30 +1198,6 @@ public class InternalContextModelParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-<<<<<<< HEAD
-            // InternalContextModel.g:444:2: ( (otherlv_0= 'source:' (otherlv_1= 'origin:' ( (lv_ref_2_0= ruleQualifiedRef ) ) ) ) )
-            // InternalContextModel.g:445:2: (otherlv_0= 'source:' (otherlv_1= 'origin:' ( (lv_ref_2_0= ruleQualifiedRef ) ) ) )
-            {
-            // InternalContextModel.g:445:2: (otherlv_0= 'source:' (otherlv_1= 'origin:' ( (lv_ref_2_0= ruleQualifiedRef ) ) ) )
-            // InternalContextModel.g:446:3: otherlv_0= 'source:' (otherlv_1= 'origin:' ( (lv_ref_2_0= ruleQualifiedRef ) ) )
-            {
-            otherlv_0=(Token)match(input,28,FOLLOW_21); 
-
-            			newLeafNode(otherlv_0, grammarAccess.getDataSourceAccess().getSourceKeyword_0());
-            		
-            // InternalContextModel.g:450:3: (otherlv_1= 'origin:' ( (lv_ref_2_0= ruleQualifiedRef ) ) )
-            // InternalContextModel.g:451:4: otherlv_1= 'origin:' ( (lv_ref_2_0= ruleQualifiedRef ) )
-            {
-            otherlv_1=(Token)match(input,29,FOLLOW_22); 
-
-            				newLeafNode(otherlv_1, grammarAccess.getDataSourceAccess().getOriginKeyword_1_0());
-            			
-            // InternalContextModel.g:455:4: ( (lv_ref_2_0= ruleQualifiedRef ) )
-            // InternalContextModel.g:456:5: (lv_ref_2_0= ruleQualifiedRef )
-            {
-            // InternalContextModel.g:456:5: (lv_ref_2_0= ruleQualifiedRef )
-            // InternalContextModel.g:457:6: lv_ref_2_0= ruleQualifiedRef
-=======
             // InternalContextModelParser.g:487:2: ( (otherlv_0= Source (otherlv_1= Origin ( (lv_ref_2_0= ruleQualifiedRef ) ) ) ) )
             // InternalContextModelParser.g:488:2: (otherlv_0= Source (otherlv_1= Origin ( (lv_ref_2_0= ruleQualifiedRef ) ) ) )
             {
@@ -1360,7 +1220,6 @@ public class InternalContextModelParser extends AbstractInternalAntlrParser {
             {
             // InternalContextModelParser.g:499:5: (lv_ref_2_0= ruleQualifiedRef )
             // InternalContextModelParser.g:500:6: lv_ref_2_0= ruleQualifiedRef
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
             {
 
             						newCompositeNode(grammarAccess.getDataSourceAccess().getRefQualifiedRefParserRuleCall_1_1_0());
@@ -1413,11 +1272,7 @@ public class InternalContextModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleKeyWordArguments"
-<<<<<<< HEAD
-    // InternalContextModel.g:479:1: entryRuleKeyWordArguments returns [String current=null] : iv_ruleKeyWordArguments= ruleKeyWordArguments EOF ;
-=======
     // InternalContextModelParser.g:522:1: entryRuleKeyWordArguments returns [String current=null] : iv_ruleKeyWordArguments= ruleKeyWordArguments EOF ;
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
     public final String entryRuleKeyWordArguments() throws RecognitionException {
         String current = null;
 
@@ -1425,13 +1280,8 @@ public class InternalContextModelParser extends AbstractInternalAntlrParser {
 
 
         try {
-<<<<<<< HEAD
-            // InternalContextModel.g:479:56: (iv_ruleKeyWordArguments= ruleKeyWordArguments EOF )
-            // InternalContextModel.g:480:2: iv_ruleKeyWordArguments= ruleKeyWordArguments EOF
-=======
             // InternalContextModelParser.g:522:56: (iv_ruleKeyWordArguments= ruleKeyWordArguments EOF )
             // InternalContextModelParser.g:523:2: iv_ruleKeyWordArguments= ruleKeyWordArguments EOF
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
             {
              newCompositeNode(grammarAccess.getKeyWordArgumentsRule()); 
             pushFollow(FOLLOW_1);
@@ -1458,11 +1308,7 @@ public class InternalContextModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleKeyWordArguments"
-<<<<<<< HEAD
-    // InternalContextModel.g:486:1: ruleKeyWordArguments returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : this_STRING_0= RULE_STRING ;
-=======
     // InternalContextModelParser.g:529:1: ruleKeyWordArguments returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : this_STRING_0= RULE_STRING ;
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
     public final AntlrDatatypeRuleToken ruleKeyWordArguments() throws RecognitionException {
         AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
 
@@ -1472,13 +1318,8 @@ public class InternalContextModelParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-<<<<<<< HEAD
-            // InternalContextModel.g:492:2: (this_STRING_0= RULE_STRING )
-            // InternalContextModel.g:493:2: this_STRING_0= RULE_STRING
-=======
             // InternalContextModelParser.g:535:2: (this_STRING_0= RULE_STRING )
             // InternalContextModelParser.g:536:2: this_STRING_0= RULE_STRING
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
             {
             this_STRING_0=(Token)match(input,RULE_STRING,FOLLOW_2); 
 
@@ -1507,11 +1348,7 @@ public class InternalContextModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleQualifiedRef"
-<<<<<<< HEAD
-    // InternalContextModel.g:503:1: entryRuleQualifiedRef returns [EObject current=null] : iv_ruleQualifiedRef= ruleQualifiedRef EOF ;
-=======
     // InternalContextModelParser.g:546:1: entryRuleQualifiedRef returns [EObject current=null] : iv_ruleQualifiedRef= ruleQualifiedRef EOF ;
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
     public final EObject entryRuleQualifiedRef() throws RecognitionException {
         EObject current = null;
 
@@ -1519,13 +1356,8 @@ public class InternalContextModelParser extends AbstractInternalAntlrParser {
 
 
         try {
-<<<<<<< HEAD
-            // InternalContextModel.g:503:53: (iv_ruleQualifiedRef= ruleQualifiedRef EOF )
-            // InternalContextModel.g:504:2: iv_ruleQualifiedRef= ruleQualifiedRef EOF
-=======
             // InternalContextModelParser.g:546:53: (iv_ruleQualifiedRef= ruleQualifiedRef EOF )
             // InternalContextModelParser.g:547:2: iv_ruleQualifiedRef= ruleQualifiedRef EOF
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
             {
              newCompositeNode(grammarAccess.getQualifiedRefRule()); 
             pushFollow(FOLLOW_1);
@@ -1552,11 +1384,7 @@ public class InternalContextModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleQualifiedRef"
-<<<<<<< HEAD
-    // InternalContextModel.g:510:1: ruleQualifiedRef returns [EObject current=null] : (this_QualifiedPublisherRef_0= ruleQualifiedPublisherRef | this_QualifiedServiceServerRef_1= ruleQualifiedServiceServerRef | this_QualifiedActionServerRef_2= ruleQualifiedActionServerRef ) ;
-=======
     // InternalContextModelParser.g:553:1: ruleQualifiedRef returns [EObject current=null] : (this_QualifiedPublisherRef_0= ruleQualifiedPublisherRef | this_QualifiedServiceServerRef_1= ruleQualifiedServiceServerRef | this_QualifiedActionServerRef_2= ruleQualifiedActionServerRef ) ;
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
     public final EObject ruleQualifiedRef() throws RecognitionException {
         EObject current = null;
 
@@ -1571,15 +1399,6 @@ public class InternalContextModelParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-<<<<<<< HEAD
-            // InternalContextModel.g:516:2: ( (this_QualifiedPublisherRef_0= ruleQualifiedPublisherRef | this_QualifiedServiceServerRef_1= ruleQualifiedServiceServerRef | this_QualifiedActionServerRef_2= ruleQualifiedActionServerRef ) )
-            // InternalContextModel.g:517:2: (this_QualifiedPublisherRef_0= ruleQualifiedPublisherRef | this_QualifiedServiceServerRef_1= ruleQualifiedServiceServerRef | this_QualifiedActionServerRef_2= ruleQualifiedActionServerRef )
-            {
-            // InternalContextModel.g:517:2: (this_QualifiedPublisherRef_0= ruleQualifiedPublisherRef | this_QualifiedServiceServerRef_1= ruleQualifiedServiceServerRef | this_QualifiedActionServerRef_2= ruleQualifiedActionServerRef )
-            int alt7=3;
-            switch ( input.LA(1) ) {
-            case 30:
-=======
             // InternalContextModelParser.g:559:2: ( (this_QualifiedPublisherRef_0= ruleQualifiedPublisherRef | this_QualifiedServiceServerRef_1= ruleQualifiedServiceServerRef | this_QualifiedActionServerRef_2= ruleQualifiedActionServerRef ) )
             // InternalContextModelParser.g:560:2: (this_QualifiedPublisherRef_0= ruleQualifiedPublisherRef | this_QualifiedServiceServerRef_1= ruleQualifiedServiceServerRef | this_QualifiedActionServerRef_2= ruleQualifiedActionServerRef )
             {
@@ -1587,43 +1406,30 @@ public class InternalContextModelParser extends AbstractInternalAntlrParser {
             int alt8=3;
             switch ( input.LA(1) ) {
             case Publisher:
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
                 {
-                alt7=1;
+                alt8=1;
                 }
                 break;
-<<<<<<< HEAD
-            case 32:
-=======
             case Service_1:
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
                 {
-                alt7=2;
+                alt8=2;
                 }
                 break;
-<<<<<<< HEAD
-            case 34:
-=======
             case Action_1:
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
                 {
-                alt7=3;
+                alt8=3;
                 }
                 break;
             default:
                 NoViableAltException nvae =
-                    new NoViableAltException("", 7, 0, input);
+                    new NoViableAltException("", 8, 0, input);
 
                 throw nvae;
             }
 
-            switch (alt7) {
+            switch (alt8) {
                 case 1 :
-<<<<<<< HEAD
-                    // InternalContextModel.g:518:3: this_QualifiedPublisherRef_0= ruleQualifiedPublisherRef
-=======
                     // InternalContextModelParser.g:561:3: this_QualifiedPublisherRef_0= ruleQualifiedPublisherRef
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
                     {
 
                     			newCompositeNode(grammarAccess.getQualifiedRefAccess().getQualifiedPublisherRefParserRuleCall_0());
@@ -1641,11 +1447,7 @@ public class InternalContextModelParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-<<<<<<< HEAD
-                    // InternalContextModel.g:527:3: this_QualifiedServiceServerRef_1= ruleQualifiedServiceServerRef
-=======
                     // InternalContextModelParser.g:570:3: this_QualifiedServiceServerRef_1= ruleQualifiedServiceServerRef
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
                     {
 
                     			newCompositeNode(grammarAccess.getQualifiedRefAccess().getQualifiedServiceServerRefParserRuleCall_1());
@@ -1663,11 +1465,7 @@ public class InternalContextModelParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 3 :
-<<<<<<< HEAD
-                    // InternalContextModel.g:536:3: this_QualifiedActionServerRef_2= ruleQualifiedActionServerRef
-=======
                     // InternalContextModelParser.g:579:3: this_QualifiedActionServerRef_2= ruleQualifiedActionServerRef
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
                     {
 
                     			newCompositeNode(grammarAccess.getQualifiedRefAccess().getQualifiedActionServerRefParserRuleCall_2());
@@ -1707,11 +1505,7 @@ public class InternalContextModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleQualifiedPublisherRef"
-<<<<<<< HEAD
-    // InternalContextModel.g:548:1: entryRuleQualifiedPublisherRef returns [EObject current=null] : iv_ruleQualifiedPublisherRef= ruleQualifiedPublisherRef EOF ;
-=======
     // InternalContextModelParser.g:591:1: entryRuleQualifiedPublisherRef returns [EObject current=null] : iv_ruleQualifiedPublisherRef= ruleQualifiedPublisherRef EOF ;
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
     public final EObject entryRuleQualifiedPublisherRef() throws RecognitionException {
         EObject current = null;
 
@@ -1719,13 +1513,8 @@ public class InternalContextModelParser extends AbstractInternalAntlrParser {
 
 
         try {
-<<<<<<< HEAD
-            // InternalContextModel.g:548:62: (iv_ruleQualifiedPublisherRef= ruleQualifiedPublisherRef EOF )
-            // InternalContextModel.g:549:2: iv_ruleQualifiedPublisherRef= ruleQualifiedPublisherRef EOF
-=======
             // InternalContextModelParser.g:591:62: (iv_ruleQualifiedPublisherRef= ruleQualifiedPublisherRef EOF )
             // InternalContextModelParser.g:592:2: iv_ruleQualifiedPublisherRef= ruleQualifiedPublisherRef EOF
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
             {
              newCompositeNode(grammarAccess.getQualifiedPublisherRefRule()); 
             pushFollow(FOLLOW_1);
@@ -1752,11 +1541,7 @@ public class InternalContextModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleQualifiedPublisherRef"
-<<<<<<< HEAD
-    // InternalContextModel.g:555:1: ruleQualifiedPublisherRef returns [EObject current=null] : (otherlv_0= 'publisher:' ( (otherlv_1= RULE_ID ) ) otherlv_2= '.' ( (otherlv_3= RULE_ID ) ) ) ;
-=======
     // InternalContextModelParser.g:598:1: ruleQualifiedPublisherRef returns [EObject current=null] : (otherlv_0= Publisher ( ( ruleRosNames ) ) otherlv_2= FullStop ( ( ruleRosNames ) ) ) ;
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
     public final EObject ruleQualifiedPublisherRef() throws RecognitionException {
         EObject current = null;
 
@@ -1767,23 +1552,6 @@ public class InternalContextModelParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-<<<<<<< HEAD
-            // InternalContextModel.g:561:2: ( (otherlv_0= 'publisher:' ( (otherlv_1= RULE_ID ) ) otherlv_2= '.' ( (otherlv_3= RULE_ID ) ) ) )
-            // InternalContextModel.g:562:2: (otherlv_0= 'publisher:' ( (otherlv_1= RULE_ID ) ) otherlv_2= '.' ( (otherlv_3= RULE_ID ) ) )
-            {
-            // InternalContextModel.g:562:2: (otherlv_0= 'publisher:' ( (otherlv_1= RULE_ID ) ) otherlv_2= '.' ( (otherlv_3= RULE_ID ) ) )
-            // InternalContextModel.g:563:3: otherlv_0= 'publisher:' ( (otherlv_1= RULE_ID ) ) otherlv_2= '.' ( (otherlv_3= RULE_ID ) )
-            {
-            otherlv_0=(Token)match(input,30,FOLLOW_5); 
-
-            			newLeafNode(otherlv_0, grammarAccess.getQualifiedPublisherRefAccess().getPublisherKeyword_0());
-            		
-            // InternalContextModel.g:567:3: ( (otherlv_1= RULE_ID ) )
-            // InternalContextModel.g:568:4: (otherlv_1= RULE_ID )
-            {
-            // InternalContextModel.g:568:4: (otherlv_1= RULE_ID )
-            // InternalContextModel.g:569:5: otherlv_1= RULE_ID
-=======
             // InternalContextModelParser.g:604:2: ( (otherlv_0= Publisher ( ( ruleRosNames ) ) otherlv_2= FullStop ( ( ruleRosNames ) ) ) )
             // InternalContextModelParser.g:605:2: (otherlv_0= Publisher ( ( ruleRosNames ) ) otherlv_2= FullStop ( ( ruleRosNames ) ) )
             {
@@ -1799,17 +1567,12 @@ public class InternalContextModelParser extends AbstractInternalAntlrParser {
             {
             // InternalContextModelParser.g:611:4: ( ruleRosNames )
             // InternalContextModelParser.g:612:5: ruleRosNames
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
             {
 
             					if (current==null) {
             						current = createModelElement(grammarAccess.getQualifiedPublisherRefRule());
             					}
             				
-<<<<<<< HEAD
-            otherlv_1=(Token)match(input,RULE_ID,FOLLOW_23); 
-=======
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
 
             					newCompositeNode(grammarAccess.getQualifiedPublisherRefAccess().getNodeNodeCrossReference_1_0());
             				
@@ -1827,17 +1590,6 @@ public class InternalContextModelParser extends AbstractInternalAntlrParser {
 
             }
 
-<<<<<<< HEAD
-            otherlv_2=(Token)match(input,31,FOLLOW_5); 
-
-            			newLeafNode(otherlv_2, grammarAccess.getQualifiedPublisherRefAccess().getFullStopKeyword_2());
-            		
-            // InternalContextModel.g:584:3: ( (otherlv_3= RULE_ID ) )
-            // InternalContextModel.g:585:4: (otherlv_3= RULE_ID )
-            {
-            // InternalContextModel.g:585:4: (otherlv_3= RULE_ID )
-            // InternalContextModel.g:586:5: otherlv_3= RULE_ID
-=======
             otherlv_2=(Token)match(input,FullStop,FOLLOW_24); 
 
             			newLeafNode(otherlv_2, grammarAccess.getQualifiedPublisherRefAccess().getFullStopKeyword_2());
@@ -1847,7 +1599,6 @@ public class InternalContextModelParser extends AbstractInternalAntlrParser {
             {
             // InternalContextModelParser.g:631:4: ( ruleRosNames )
             // InternalContextModelParser.g:632:5: ruleRosNames
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
             {
 
             					if (current==null) {
@@ -1894,11 +1645,7 @@ public class InternalContextModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleQualifiedServiceServerRef"
-<<<<<<< HEAD
-    // InternalContextModel.g:601:1: entryRuleQualifiedServiceServerRef returns [EObject current=null] : iv_ruleQualifiedServiceServerRef= ruleQualifiedServiceServerRef EOF ;
-=======
     // InternalContextModelParser.g:650:1: entryRuleQualifiedServiceServerRef returns [EObject current=null] : iv_ruleQualifiedServiceServerRef= ruleQualifiedServiceServerRef EOF ;
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
     public final EObject entryRuleQualifiedServiceServerRef() throws RecognitionException {
         EObject current = null;
 
@@ -1906,13 +1653,8 @@ public class InternalContextModelParser extends AbstractInternalAntlrParser {
 
 
         try {
-<<<<<<< HEAD
-            // InternalContextModel.g:601:66: (iv_ruleQualifiedServiceServerRef= ruleQualifiedServiceServerRef EOF )
-            // InternalContextModel.g:602:2: iv_ruleQualifiedServiceServerRef= ruleQualifiedServiceServerRef EOF
-=======
             // InternalContextModelParser.g:650:66: (iv_ruleQualifiedServiceServerRef= ruleQualifiedServiceServerRef EOF )
             // InternalContextModelParser.g:651:2: iv_ruleQualifiedServiceServerRef= ruleQualifiedServiceServerRef EOF
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
             {
              newCompositeNode(grammarAccess.getQualifiedServiceServerRefRule()); 
             pushFollow(FOLLOW_1);
@@ -1939,11 +1681,7 @@ public class InternalContextModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleQualifiedServiceServerRef"
-<<<<<<< HEAD
-    // InternalContextModel.g:608:1: ruleQualifiedServiceServerRef returns [EObject current=null] : (otherlv_0= 'service:' ( (otherlv_1= RULE_ID ) ) otherlv_2= '.' ( (otherlv_3= RULE_ID ) ) otherlv_4= 'request_kwargs' ( (lv_kwargs_5_0= ruleKeyWordArguments ) ) ) ;
-=======
     // InternalContextModelParser.g:657:1: ruleQualifiedServiceServerRef returns [EObject current=null] : (otherlv_0= Service_1 ( ( ruleRosNames ) ) otherlv_2= FullStop ( ( ruleRosNames ) ) otherlv_4= Request_kwargs ( (lv_kwargs_5_0= ruleKeyWordArguments ) ) ) ;
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
     public final EObject ruleQualifiedServiceServerRef() throws RecognitionException {
         EObject current = null;
 
@@ -1957,23 +1695,6 @@ public class InternalContextModelParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-<<<<<<< HEAD
-            // InternalContextModel.g:614:2: ( (otherlv_0= 'service:' ( (otherlv_1= RULE_ID ) ) otherlv_2= '.' ( (otherlv_3= RULE_ID ) ) otherlv_4= 'request_kwargs' ( (lv_kwargs_5_0= ruleKeyWordArguments ) ) ) )
-            // InternalContextModel.g:615:2: (otherlv_0= 'service:' ( (otherlv_1= RULE_ID ) ) otherlv_2= '.' ( (otherlv_3= RULE_ID ) ) otherlv_4= 'request_kwargs' ( (lv_kwargs_5_0= ruleKeyWordArguments ) ) )
-            {
-            // InternalContextModel.g:615:2: (otherlv_0= 'service:' ( (otherlv_1= RULE_ID ) ) otherlv_2= '.' ( (otherlv_3= RULE_ID ) ) otherlv_4= 'request_kwargs' ( (lv_kwargs_5_0= ruleKeyWordArguments ) ) )
-            // InternalContextModel.g:616:3: otherlv_0= 'service:' ( (otherlv_1= RULE_ID ) ) otherlv_2= '.' ( (otherlv_3= RULE_ID ) ) otherlv_4= 'request_kwargs' ( (lv_kwargs_5_0= ruleKeyWordArguments ) )
-            {
-            otherlv_0=(Token)match(input,32,FOLLOW_5); 
-
-            			newLeafNode(otherlv_0, grammarAccess.getQualifiedServiceServerRefAccess().getServiceKeyword_0());
-            		
-            // InternalContextModel.g:620:3: ( (otherlv_1= RULE_ID ) )
-            // InternalContextModel.g:621:4: (otherlv_1= RULE_ID )
-            {
-            // InternalContextModel.g:621:4: (otherlv_1= RULE_ID )
-            // InternalContextModel.g:622:5: otherlv_1= RULE_ID
-=======
             // InternalContextModelParser.g:663:2: ( (otherlv_0= Service_1 ( ( ruleRosNames ) ) otherlv_2= FullStop ( ( ruleRosNames ) ) otherlv_4= Request_kwargs ( (lv_kwargs_5_0= ruleKeyWordArguments ) ) ) )
             // InternalContextModelParser.g:664:2: (otherlv_0= Service_1 ( ( ruleRosNames ) ) otherlv_2= FullStop ( ( ruleRosNames ) ) otherlv_4= Request_kwargs ( (lv_kwargs_5_0= ruleKeyWordArguments ) ) )
             {
@@ -1989,17 +1710,12 @@ public class InternalContextModelParser extends AbstractInternalAntlrParser {
             {
             // InternalContextModelParser.g:670:4: ( ruleRosNames )
             // InternalContextModelParser.g:671:5: ruleRosNames
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
             {
 
             					if (current==null) {
             						current = createModelElement(grammarAccess.getQualifiedServiceServerRefRule());
             					}
             				
-<<<<<<< HEAD
-            otherlv_1=(Token)match(input,RULE_ID,FOLLOW_23); 
-=======
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
 
             					newCompositeNode(grammarAccess.getQualifiedServiceServerRefAccess().getNodeNodeCrossReference_1_0());
             				
@@ -2017,17 +1733,6 @@ public class InternalContextModelParser extends AbstractInternalAntlrParser {
 
             }
 
-<<<<<<< HEAD
-            otherlv_2=(Token)match(input,31,FOLLOW_5); 
-
-            			newLeafNode(otherlv_2, grammarAccess.getQualifiedServiceServerRefAccess().getFullStopKeyword_2());
-            		
-            // InternalContextModel.g:637:3: ( (otherlv_3= RULE_ID ) )
-            // InternalContextModel.g:638:4: (otherlv_3= RULE_ID )
-            {
-            // InternalContextModel.g:638:4: (otherlv_3= RULE_ID )
-            // InternalContextModel.g:639:5: otherlv_3= RULE_ID
-=======
             otherlv_2=(Token)match(input,FullStop,FOLLOW_24); 
 
             			newLeafNode(otherlv_2, grammarAccess.getQualifiedServiceServerRefAccess().getFullStopKeyword_2());
@@ -2037,17 +1742,12 @@ public class InternalContextModelParser extends AbstractInternalAntlrParser {
             {
             // InternalContextModelParser.g:690:4: ( ruleRosNames )
             // InternalContextModelParser.g:691:5: ruleRosNames
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
             {
 
             					if (current==null) {
             						current = createModelElement(grammarAccess.getQualifiedServiceServerRefRule());
             					}
             				
-<<<<<<< HEAD
-            otherlv_3=(Token)match(input,RULE_ID,FOLLOW_24); 
-=======
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
 
             					newCompositeNode(grammarAccess.getQualifiedServiceServerRefAccess().getServiceServerServiceServerCrossReference_3_0());
             				
@@ -2065,17 +1765,6 @@ public class InternalContextModelParser extends AbstractInternalAntlrParser {
 
             }
 
-<<<<<<< HEAD
-            otherlv_4=(Token)match(input,33,FOLLOW_18); 
-
-            			newLeafNode(otherlv_4, grammarAccess.getQualifiedServiceServerRefAccess().getRequest_kwargsKeyword_4());
-            		
-            // InternalContextModel.g:654:3: ( (lv_kwargs_5_0= ruleKeyWordArguments ) )
-            // InternalContextModel.g:655:4: (lv_kwargs_5_0= ruleKeyWordArguments )
-            {
-            // InternalContextModel.g:655:4: (lv_kwargs_5_0= ruleKeyWordArguments )
-            // InternalContextModel.g:656:5: lv_kwargs_5_0= ruleKeyWordArguments
-=======
             otherlv_4=(Token)match(input,Request_kwargs,FOLLOW_18); 
 
             			newLeafNode(otherlv_4, grammarAccess.getQualifiedServiceServerRefAccess().getRequest_kwargsKeyword_4());
@@ -2085,7 +1774,6 @@ public class InternalContextModelParser extends AbstractInternalAntlrParser {
             {
             // InternalContextModelParser.g:710:4: (lv_kwargs_5_0= ruleKeyWordArguments )
             // InternalContextModelParser.g:711:5: lv_kwargs_5_0= ruleKeyWordArguments
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
             {
 
             					newCompositeNode(grammarAccess.getQualifiedServiceServerRefAccess().getKwargsKeyWordArgumentsParserRuleCall_5_0());
@@ -2135,11 +1823,7 @@ public class InternalContextModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleQualifiedActionServerRef"
-<<<<<<< HEAD
-    // InternalContextModel.g:677:1: entryRuleQualifiedActionServerRef returns [EObject current=null] : iv_ruleQualifiedActionServerRef= ruleQualifiedActionServerRef EOF ;
-=======
     // InternalContextModelParser.g:732:1: entryRuleQualifiedActionServerRef returns [EObject current=null] : iv_ruleQualifiedActionServerRef= ruleQualifiedActionServerRef EOF ;
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
     public final EObject entryRuleQualifiedActionServerRef() throws RecognitionException {
         EObject current = null;
 
@@ -2147,13 +1831,8 @@ public class InternalContextModelParser extends AbstractInternalAntlrParser {
 
 
         try {
-<<<<<<< HEAD
-            // InternalContextModel.g:677:65: (iv_ruleQualifiedActionServerRef= ruleQualifiedActionServerRef EOF )
-            // InternalContextModel.g:678:2: iv_ruleQualifiedActionServerRef= ruleQualifiedActionServerRef EOF
-=======
             // InternalContextModelParser.g:732:65: (iv_ruleQualifiedActionServerRef= ruleQualifiedActionServerRef EOF )
             // InternalContextModelParser.g:733:2: iv_ruleQualifiedActionServerRef= ruleQualifiedActionServerRef EOF
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
             {
              newCompositeNode(grammarAccess.getQualifiedActionServerRefRule()); 
             pushFollow(FOLLOW_1);
@@ -2180,11 +1859,7 @@ public class InternalContextModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleQualifiedActionServerRef"
-<<<<<<< HEAD
-    // InternalContextModel.g:684:1: ruleQualifiedActionServerRef returns [EObject current=null] : (otherlv_0= 'action:' ( (otherlv_1= RULE_ID ) ) otherlv_2= '.' ( (otherlv_3= RULE_ID ) ) otherlv_4= 'goal_kwargs' ( (lv_kwargs_5_0= ruleKeyWordArguments ) ) ) ;
-=======
     // InternalContextModelParser.g:739:1: ruleQualifiedActionServerRef returns [EObject current=null] : (otherlv_0= Action_1 ( ( ruleRosNames ) ) otherlv_2= FullStop ( ( ruleRosNames ) ) otherlv_4= Goal_kwargs ( (lv_kwargs_5_0= ruleKeyWordArguments ) ) ) ;
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
     public final EObject ruleQualifiedActionServerRef() throws RecognitionException {
         EObject current = null;
 
@@ -2198,23 +1873,6 @@ public class InternalContextModelParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-<<<<<<< HEAD
-            // InternalContextModel.g:690:2: ( (otherlv_0= 'action:' ( (otherlv_1= RULE_ID ) ) otherlv_2= '.' ( (otherlv_3= RULE_ID ) ) otherlv_4= 'goal_kwargs' ( (lv_kwargs_5_0= ruleKeyWordArguments ) ) ) )
-            // InternalContextModel.g:691:2: (otherlv_0= 'action:' ( (otherlv_1= RULE_ID ) ) otherlv_2= '.' ( (otherlv_3= RULE_ID ) ) otherlv_4= 'goal_kwargs' ( (lv_kwargs_5_0= ruleKeyWordArguments ) ) )
-            {
-            // InternalContextModel.g:691:2: (otherlv_0= 'action:' ( (otherlv_1= RULE_ID ) ) otherlv_2= '.' ( (otherlv_3= RULE_ID ) ) otherlv_4= 'goal_kwargs' ( (lv_kwargs_5_0= ruleKeyWordArguments ) ) )
-            // InternalContextModel.g:692:3: otherlv_0= 'action:' ( (otherlv_1= RULE_ID ) ) otherlv_2= '.' ( (otherlv_3= RULE_ID ) ) otherlv_4= 'goal_kwargs' ( (lv_kwargs_5_0= ruleKeyWordArguments ) )
-            {
-            otherlv_0=(Token)match(input,34,FOLLOW_5); 
-
-            			newLeafNode(otherlv_0, grammarAccess.getQualifiedActionServerRefAccess().getActionKeyword_0());
-            		
-            // InternalContextModel.g:696:3: ( (otherlv_1= RULE_ID ) )
-            // InternalContextModel.g:697:4: (otherlv_1= RULE_ID )
-            {
-            // InternalContextModel.g:697:4: (otherlv_1= RULE_ID )
-            // InternalContextModel.g:698:5: otherlv_1= RULE_ID
-=======
             // InternalContextModelParser.g:745:2: ( (otherlv_0= Action_1 ( ( ruleRosNames ) ) otherlv_2= FullStop ( ( ruleRosNames ) ) otherlv_4= Goal_kwargs ( (lv_kwargs_5_0= ruleKeyWordArguments ) ) ) )
             // InternalContextModelParser.g:746:2: (otherlv_0= Action_1 ( ( ruleRosNames ) ) otherlv_2= FullStop ( ( ruleRosNames ) ) otherlv_4= Goal_kwargs ( (lv_kwargs_5_0= ruleKeyWordArguments ) ) )
             {
@@ -2230,17 +1888,12 @@ public class InternalContextModelParser extends AbstractInternalAntlrParser {
             {
             // InternalContextModelParser.g:752:4: ( ruleRosNames )
             // InternalContextModelParser.g:753:5: ruleRosNames
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
             {
 
             					if (current==null) {
             						current = createModelElement(grammarAccess.getQualifiedActionServerRefRule());
             					}
             				
-<<<<<<< HEAD
-            otherlv_1=(Token)match(input,RULE_ID,FOLLOW_23); 
-=======
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
 
             					newCompositeNode(grammarAccess.getQualifiedActionServerRefAccess().getNodeNodeCrossReference_1_0());
             				
@@ -2258,17 +1911,6 @@ public class InternalContextModelParser extends AbstractInternalAntlrParser {
 
             }
 
-<<<<<<< HEAD
-            otherlv_2=(Token)match(input,31,FOLLOW_5); 
-
-            			newLeafNode(otherlv_2, grammarAccess.getQualifiedActionServerRefAccess().getFullStopKeyword_2());
-            		
-            // InternalContextModel.g:713:3: ( (otherlv_3= RULE_ID ) )
-            // InternalContextModel.g:714:4: (otherlv_3= RULE_ID )
-            {
-            // InternalContextModel.g:714:4: (otherlv_3= RULE_ID )
-            // InternalContextModel.g:715:5: otherlv_3= RULE_ID
-=======
             otherlv_2=(Token)match(input,FullStop,FOLLOW_24); 
 
             			newLeafNode(otherlv_2, grammarAccess.getQualifiedActionServerRefAccess().getFullStopKeyword_2());
@@ -2278,17 +1920,12 @@ public class InternalContextModelParser extends AbstractInternalAntlrParser {
             {
             // InternalContextModelParser.g:772:4: ( ruleRosNames )
             // InternalContextModelParser.g:773:5: ruleRosNames
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
             {
 
             					if (current==null) {
             						current = createModelElement(grammarAccess.getQualifiedActionServerRefRule());
             					}
             				
-<<<<<<< HEAD
-            otherlv_3=(Token)match(input,RULE_ID,FOLLOW_25); 
-=======
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
 
             					newCompositeNode(grammarAccess.getQualifiedActionServerRefAccess().getActionServerActionServerCrossReference_3_0());
             				
@@ -2306,17 +1943,6 @@ public class InternalContextModelParser extends AbstractInternalAntlrParser {
 
             }
 
-<<<<<<< HEAD
-            otherlv_4=(Token)match(input,35,FOLLOW_18); 
-
-            			newLeafNode(otherlv_4, grammarAccess.getQualifiedActionServerRefAccess().getGoal_kwargsKeyword_4());
-            		
-            // InternalContextModel.g:730:3: ( (lv_kwargs_5_0= ruleKeyWordArguments ) )
-            // InternalContextModel.g:731:4: (lv_kwargs_5_0= ruleKeyWordArguments )
-            {
-            // InternalContextModel.g:731:4: (lv_kwargs_5_0= ruleKeyWordArguments )
-            // InternalContextModel.g:732:5: lv_kwargs_5_0= ruleKeyWordArguments
-=======
             otherlv_4=(Token)match(input,Goal_kwargs,FOLLOW_18); 
 
             			newLeafNode(otherlv_4, grammarAccess.getQualifiedActionServerRefAccess().getGoal_kwargsKeyword_4());
@@ -2326,7 +1952,6 @@ public class InternalContextModelParser extends AbstractInternalAntlrParser {
             {
             // InternalContextModelParser.g:792:4: (lv_kwargs_5_0= ruleKeyWordArguments )
             // InternalContextModelParser.g:793:5: lv_kwargs_5_0= ruleKeyWordArguments
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
             {
 
             					newCompositeNode(grammarAccess.getQualifiedActionServerRefAccess().getKwargsKeyWordArgumentsParserRuleCall_5_0());
@@ -2376,11 +2001,7 @@ public class InternalContextModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleImport"
-<<<<<<< HEAD
-    // InternalContextModel.g:753:1: entryRuleImport returns [EObject current=null] : iv_ruleImport= ruleImport EOF ;
-=======
     // InternalContextModelParser.g:814:1: entryRuleImport returns [EObject current=null] : iv_ruleImport= ruleImport EOF ;
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
     public final EObject entryRuleImport() throws RecognitionException {
         EObject current = null;
 
@@ -2388,13 +2009,8 @@ public class InternalContextModelParser extends AbstractInternalAntlrParser {
 
 
         try {
-<<<<<<< HEAD
-            // InternalContextModel.g:753:47: (iv_ruleImport= ruleImport EOF )
-            // InternalContextModel.g:754:2: iv_ruleImport= ruleImport EOF
-=======
             // InternalContextModelParser.g:814:47: (iv_ruleImport= ruleImport EOF )
             // InternalContextModelParser.g:815:2: iv_ruleImport= ruleImport EOF
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
             {
              newCompositeNode(grammarAccess.getImportRule()); 
             pushFollow(FOLLOW_1);
@@ -2421,11 +2037,7 @@ public class InternalContextModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleImport"
-<<<<<<< HEAD
-    // InternalContextModel.g:760:1: ruleImport returns [EObject current=null] : (otherlv_0= 'import' ( (lv_importURI_1_0= RULE_STRING ) ) otherlv_2= ';' ) ;
-=======
     // InternalContextModelParser.g:821:1: ruleImport returns [EObject current=null] : (otherlv_0= Import ( (lv_importURI_1_0= RULE_STRING ) ) otherlv_2= Semicolon ) ;
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
     public final EObject ruleImport() throws RecognitionException {
         EObject current = null;
 
@@ -2437,25 +2049,6 @@ public class InternalContextModelParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-<<<<<<< HEAD
-            // InternalContextModel.g:766:2: ( (otherlv_0= 'import' ( (lv_importURI_1_0= RULE_STRING ) ) otherlv_2= ';' ) )
-            // InternalContextModel.g:767:2: (otherlv_0= 'import' ( (lv_importURI_1_0= RULE_STRING ) ) otherlv_2= ';' )
-            {
-            // InternalContextModel.g:767:2: (otherlv_0= 'import' ( (lv_importURI_1_0= RULE_STRING ) ) otherlv_2= ';' )
-            // InternalContextModel.g:768:3: otherlv_0= 'import' ( (lv_importURI_1_0= RULE_STRING ) ) otherlv_2= ';'
-            {
-            otherlv_0=(Token)match(input,36,FOLLOW_18); 
-
-            			newLeafNode(otherlv_0, grammarAccess.getImportAccess().getImportKeyword_0());
-            		
-            // InternalContextModel.g:772:3: ( (lv_importURI_1_0= RULE_STRING ) )
-            // InternalContextModel.g:773:4: (lv_importURI_1_0= RULE_STRING )
-            {
-            // InternalContextModel.g:773:4: (lv_importURI_1_0= RULE_STRING )
-            // InternalContextModel.g:774:5: lv_importURI_1_0= RULE_STRING
-            {
-            lv_importURI_1_0=(Token)match(input,RULE_STRING,FOLLOW_26); 
-=======
             // InternalContextModelParser.g:827:2: ( (otherlv_0= Import ( (lv_importURI_1_0= RULE_STRING ) ) otherlv_2= Semicolon ) )
             // InternalContextModelParser.g:828:2: (otherlv_0= Import ( (lv_importURI_1_0= RULE_STRING ) ) otherlv_2= Semicolon )
             {
@@ -2473,7 +2066,6 @@ public class InternalContextModelParser extends AbstractInternalAntlrParser {
             // InternalContextModelParser.g:835:5: lv_importURI_1_0= RULE_STRING
             {
             lv_importURI_1_0=(Token)match(input,RULE_STRING,FOLLOW_28); 
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
 
             					newLeafNode(lv_importURI_1_0, grammarAccess.getImportAccess().getImportURISTRINGTerminalRuleCall_1_0());
             				
@@ -2493,11 +2085,7 @@ public class InternalContextModelParser extends AbstractInternalAntlrParser {
 
             }
 
-<<<<<<< HEAD
-            otherlv_2=(Token)match(input,37,FOLLOW_2); 
-=======
             otherlv_2=(Token)match(input,Semicolon,FOLLOW_2); 
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
 
             			newLeafNode(otherlv_2, grammarAccess.getImportAccess().getSemicolonKeyword_2());
             		
@@ -11336,32 +10924,6 @@ public class InternalContextModelParser extends AbstractInternalAntlrParser {
 
     public static final BitSet FOLLOW_1 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_2 = new BitSet(new long[]{0x0000000000000002L});
-<<<<<<< HEAD
-    public static final BitSet FOLLOW_3 = new BitSet(new long[]{0x0000001000010002L});
-    public static final BitSet FOLLOW_4 = new BitSet(new long[]{0x0000000000010002L});
-    public static final BitSet FOLLOW_5 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_6 = new BitSet(new long[]{0x0000000000020000L});
-    public static final BitSet FOLLOW_7 = new BitSet(new long[]{0x0000000010000000L});
-    public static final BitSet FOLLOW_8 = new BitSet(new long[]{0x0000000000040000L});
-    public static final BitSet FOLLOW_9 = new BitSet(new long[]{0x0000000000000080L});
-    public static final BitSet FOLLOW_10 = new BitSet(new long[]{0x0000000003480000L});
-    public static final BitSet FOLLOW_11 = new BitSet(new long[]{0x0000000000100000L});
-    public static final BitSet FOLLOW_12 = new BitSet(new long[]{0x0000000000000020L});
-    public static final BitSet FOLLOW_13 = new BitSet(new long[]{0x0000000000200000L});
-    public static final BitSet FOLLOW_14 = new BitSet(new long[]{0x0000000003400000L});
-    public static final BitSet FOLLOW_15 = new BitSet(new long[]{0x0000000000800000L});
-    public static final BitSet FOLLOW_16 = new BitSet(new long[]{0x0000000003000000L});
-    public static final BitSet FOLLOW_17 = new BitSet(new long[]{0x0000000002000000L});
-    public static final BitSet FOLLOW_18 = new BitSet(new long[]{0x0000000000000040L});
-    public static final BitSet FOLLOW_19 = new BitSet(new long[]{0x000000000C000000L});
-    public static final BitSet FOLLOW_20 = new BitSet(new long[]{0x0000000008000000L});
-    public static final BitSet FOLLOW_21 = new BitSet(new long[]{0x0000000020000000L});
-    public static final BitSet FOLLOW_22 = new BitSet(new long[]{0x0000000540000000L});
-    public static final BitSet FOLLOW_23 = new BitSet(new long[]{0x0000000080000000L});
-    public static final BitSet FOLLOW_24 = new BitSet(new long[]{0x0000000200000000L});
-    public static final BitSet FOLLOW_25 = new BitSet(new long[]{0x0000000800000000L});
-    public static final BitSet FOLLOW_26 = new BitSet(new long[]{0x0000002000000000L});
-=======
     public static final BitSet FOLLOW_3 = new BitSet(new long[]{0x0002000000000042L});
     public static final BitSet FOLLOW_4 = new BitSet(new long[]{0x0000000000000042L});
     public static final BitSet FOLLOW_5 = new BitSet(new long[]{0x0000000000000000L,0x0000008000000000L});
@@ -11406,6 +10968,5 @@ public class InternalContextModelParser extends AbstractInternalAntlrParser {
     public static final BitSet FOLLOW_44 = new BitSet(new long[]{0x0000000000000000L,0x0000100000000000L});
     public static final BitSet FOLLOW_45 = new BitSet(new long[]{0x0000000000000000L,0x0000000000200000L});
     public static final BitSet FOLLOW_46 = new BitSet(new long[]{0x0000000000000000L,0x0000000000020000L});
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
 
 }

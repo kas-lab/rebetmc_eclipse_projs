@@ -24,24 +24,6 @@ import java.util.ArrayList;
 @SuppressWarnings("all")
 public class InternalContextModelParser extends AbstractInternalContentAssistParser {
     public static final String[] tokenNames = new String[] {
-<<<<<<< HEAD
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_STRING", "RULE_ID", "RULE_INT", "RULE_BOOLEAN", "RULE_DIGIT", "RULE_BINARY", "RULE_DECINT", "RULE_DOUBLE", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'ContextVariable'", "'{'", "'cache?'", "'function_name'", "'}'", "'cache'", "'length'", "'s'", "'period'", "'ns'", "'proxy'", "'function_lib'", "'source:'", "'origin:'", "'publisher:'", "'.'", "'service:'", "'request_kwargs'", "'action:'", "'goal_kwargs'", "'import'", "';'"
-    };
-    public static final int RULE_BOOLEAN=7;
-    public static final int RULE_STRING=4;
-    public static final int RULE_SL_COMMENT=13;
-    public static final int T__19=19;
-    public static final int T__37=37;
-    public static final int RULE_DOUBLE=11;
-    public static final int T__16=16;
-    public static final int T__17=17;
-    public static final int T__18=18;
-    public static final int T__33=33;
-    public static final int T__34=34;
-    public static final int T__35=35;
-    public static final int T__36=36;
-    public static final int RULE_DECINT=10;
-=======
         "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RelativeNamespace", "PrivateNamespace", "ContextVariable", "GlobalNamespace", "Request_kwargs", "Function_args", "Function_name", "ParameterAny", "Function_lib", "Goal_kwargs", "Publisher", "GraphName", "Float32_1", "Float64_1", "Default", "Duration", "Feedback", "Service_1", "String_2", "Uint16_1", "Uint32_1", "Uint64_1", "Boolean", "Integer", "Action_1", "Float32", "Float64", "Int16_1", "Int32_1", "Int64_1", "Message", "Origin", "Service", "Source", "Uint8_1", "Base64", "Double", "Header", "String", "Struct", "Action", "Bool_1", "Byte_1", "Cache_1", "Char_1", "Import", "Int8_1", "Length", "Period", "Result", "String_1", "Uint16", "Uint32", "Uint64", "Value_1", "Array", "Cache", "Int16", "Int32", "Int64", "Proxy", "Type_1", "Uint8", "Value", "Date", "List", "Bool", "Byte", "Char", "Goal", "Int8", "Name", "Node", "Time", "Type", "Any", "Ns_1", "LeftSquareBracketRightSquareBracket", "Ns", "Comma", "FullStop", "Colon", "Semicolon", "LeftSquareBracket", "RightSquareBracket", "S", "LeftCurlyBracket", "RightCurlyBracket", "RULE_DIGIT", "RULE_BINARY", "RULE_BOOLEAN", "RULE_DECINT", "RULE_DOUBLE", "RULE_DAY", "RULE_MONTH", "RULE_YEAR", "RULE_HOUR", "RULE_MIN_SEC", "RULE_DATE_TIME", "RULE_ID", "RULE_STRING", "RULE_INT", "RULE_MESSAGE_ASIGMENT", "RULE_BEGIN", "RULE_END", "RULE_SL_COMMENT", "RULE_ROS_CONVENTION_A", "RULE_ROS_CONVENTION_PARAM", "RULE_ML_COMMENT", "RULE_WS", "RULE_ANY_OTHER"
     };
     public static final int Origin=35;
@@ -143,7 +125,6 @@ public class InternalContextModelParser extends AbstractInternalContentAssistPar
     public static final int Service_1=21;
     public static final int RULE_ROS_CONVENTION_PARAM=111;
     public static final int Colon=85;
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
     public static final int EOF=-1;
     public static final int Ns=82;
     public static final int RULE_WS=113;
@@ -6378,29 +6359,17 @@ public class InternalContextModelParser extends AbstractInternalContentAssistPar
             // InternalContextModelParser.g:2146:1: ( ( ruleQualifiedPublisherRef ) | ( ruleQualifiedServiceServerRef ) | ( ruleQualifiedActionServerRef ) )
             int alt1=3;
             switch ( input.LA(1) ) {
-<<<<<<< HEAD
-            case 30:
-=======
             case Publisher:
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
                 {
                 alt1=1;
                 }
                 break;
-<<<<<<< HEAD
-            case 32:
-=======
             case Service_1:
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
                 {
                 alt1=2;
                 }
                 break;
-<<<<<<< HEAD
-            case 34:
-=======
             case Action_1:
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
                 {
                 alt1=3;
                 }
@@ -8136,13 +8105,8 @@ public class InternalContextModelParser extends AbstractInternalContentAssistPar
                 int alt9=2;
                 int LA9_0 = input.LA(1);
 
-<<<<<<< HEAD
-                if ( (LA2_0==36) ) {
-                    alt2=1;
-=======
                 if ( (LA9_0==Import) ) {
                     alt9=1;
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
                 }
 
 
@@ -9309,26 +9273,22 @@ public class InternalContextModelParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__ContextVar__Group__12"
-<<<<<<< HEAD
-    // InternalContextModel.g:732:1: rule__ContextVar__Group__12 : rule__ContextVar__Group__12__Impl ;
-=======
     // InternalContextModelParser.g:3018:1: rule__ContextVar__Group__12 : rule__ContextVar__Group__12__Impl rule__ContextVar__Group__13 ;
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
     public final void rule__ContextVar__Group__12() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-<<<<<<< HEAD
-            // InternalContextModel.g:736:1: ( rule__ContextVar__Group__12__Impl )
-            // InternalContextModel.g:737:2: rule__ContextVar__Group__12__Impl
-=======
             // InternalContextModelParser.g:3022:1: ( rule__ContextVar__Group__12__Impl rule__ContextVar__Group__13 )
             // InternalContextModelParser.g:3023:2: rule__ContextVar__Group__12__Impl rule__ContextVar__Group__13
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
             {
-            pushFollow(FOLLOW_2);
+            pushFollow(FOLLOW_13);
             rule__ContextVar__Group__12__Impl();
+
+            state._fsp--;
+
+            pushFollow(FOLLOW_2);
+            rule__ContextVar__Group__13();
 
             state._fsp--;
 
@@ -9351,27 +9311,12 @@ public class InternalContextModelParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__ContextVar__Group__12__Impl"
-<<<<<<< HEAD
-    // InternalContextModel.g:743:1: rule__ContextVar__Group__12__Impl : ( '}' ) ;
-=======
     // InternalContextModelParser.g:3030:1: rule__ContextVar__Group__12__Impl : ( ( rule__ContextVar__Group_12__0 )? ) ;
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
     public final void rule__ContextVar__Group__12__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-<<<<<<< HEAD
-            // InternalContextModel.g:747:1: ( ( '}' ) )
-            // InternalContextModel.g:748:1: ( '}' )
-            {
-            // InternalContextModel.g:748:1: ( '}' )
-            // InternalContextModel.g:749:2: '}'
-            {
-             before(grammarAccess.getContextVarAccess().getRightCurlyBracketKeyword_12()); 
-            match(input,20,FOLLOW_2); 
-             after(grammarAccess.getContextVarAccess().getRightCurlyBracketKeyword_12()); 
-=======
             // InternalContextModelParser.g:3034:1: ( ( ( rule__ContextVar__Group_12__0 )? ) )
             // InternalContextModelParser.g:3035:1: ( ( rule__ContextVar__Group_12__0 )? )
             {
@@ -9402,7 +9347,6 @@ public class InternalContextModelParser extends AbstractInternalContentAssistPar
             }
 
              after(grammarAccess.getContextVarAccess().getGroup_12()); 
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
 
             }
 
@@ -9424,10 +9368,6 @@ public class InternalContextModelParser extends AbstractInternalContentAssistPar
     // $ANTLR end "rule__ContextVar__Group__12__Impl"
 
 
-<<<<<<< HEAD
-    // $ANTLR start "rule__ContextVar__Group_6__0"
-    // InternalContextModel.g:759:1: rule__ContextVar__Group_6__0 : rule__ContextVar__Group_6__0__Impl rule__ContextVar__Group_6__1 ;
-=======
     // $ANTLR start "rule__ContextVar__Group__13"
     // InternalContextModelParser.g:3045:1: rule__ContextVar__Group__13 : rule__ContextVar__Group__13__Impl ;
     public final void rule__ContextVar__Group__13() throws RecognitionException {
@@ -9500,19 +9440,13 @@ public class InternalContextModelParser extends AbstractInternalContentAssistPar
 
     // $ANTLR start "rule__ContextVar__Group_6__0"
     // InternalContextModelParser.g:3072:1: rule__ContextVar__Group_6__0 : rule__ContextVar__Group_6__0__Impl rule__ContextVar__Group_6__1 ;
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
     public final void rule__ContextVar__Group_6__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-<<<<<<< HEAD
-            // InternalContextModel.g:763:1: ( rule__ContextVar__Group_6__0__Impl rule__ContextVar__Group_6__1 )
-            // InternalContextModel.g:764:2: rule__ContextVar__Group_6__0__Impl rule__ContextVar__Group_6__1
-=======
             // InternalContextModelParser.g:3076:1: ( rule__ContextVar__Group_6__0__Impl rule__ContextVar__Group_6__1 )
             // InternalContextModelParser.g:3077:2: rule__ContextVar__Group_6__0__Impl rule__ContextVar__Group_6__1
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
             {
             pushFollow(FOLLOW_14);
             rule__ContextVar__Group_6__0__Impl();
@@ -9543,29 +9477,17 @@ public class InternalContextModelParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__ContextVar__Group_6__0__Impl"
-<<<<<<< HEAD
-    // InternalContextModel.g:771:1: rule__ContextVar__Group_6__0__Impl : ( 'cache' ) ;
-=======
     // InternalContextModelParser.g:3084:1: rule__ContextVar__Group_6__0__Impl : ( Cache ) ;
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
     public final void rule__ContextVar__Group_6__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-<<<<<<< HEAD
-            // InternalContextModel.g:775:1: ( ( 'cache' ) )
-            // InternalContextModel.g:776:1: ( 'cache' )
-            {
-            // InternalContextModel.g:776:1: ( 'cache' )
-            // InternalContextModel.g:777:2: 'cache'
-=======
             // InternalContextModelParser.g:3088:1: ( ( Cache ) )
             // InternalContextModelParser.g:3089:1: ( Cache )
             {
             // InternalContextModelParser.g:3089:1: ( Cache )
             // InternalContextModelParser.g:3090:2: Cache
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
             {
              before(grammarAccess.getContextVarAccess().getCacheKeyword_6_0()); 
             match(input,Cache,FOLLOW_2); 
@@ -9592,23 +9514,14 @@ public class InternalContextModelParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__ContextVar__Group_6__1"
-<<<<<<< HEAD
-    // InternalContextModel.g:786:1: rule__ContextVar__Group_6__1 : rule__ContextVar__Group_6__1__Impl rule__ContextVar__Group_6__2 ;
-=======
     // InternalContextModelParser.g:3099:1: rule__ContextVar__Group_6__1 : rule__ContextVar__Group_6__1__Impl rule__ContextVar__Group_6__2 ;
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
     public final void rule__ContextVar__Group_6__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-<<<<<<< HEAD
-            // InternalContextModel.g:790:1: ( rule__ContextVar__Group_6__1__Impl rule__ContextVar__Group_6__2 )
-            // InternalContextModel.g:791:2: rule__ContextVar__Group_6__1__Impl rule__ContextVar__Group_6__2
-=======
             // InternalContextModelParser.g:3103:1: ( rule__ContextVar__Group_6__1__Impl rule__ContextVar__Group_6__2 )
             // InternalContextModelParser.g:3104:2: rule__ContextVar__Group_6__1__Impl rule__ContextVar__Group_6__2
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
             {
             pushFollow(FOLLOW_15);
             rule__ContextVar__Group_6__1__Impl();
@@ -9639,29 +9552,17 @@ public class InternalContextModelParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__ContextVar__Group_6__1__Impl"
-<<<<<<< HEAD
-    // InternalContextModel.g:798:1: rule__ContextVar__Group_6__1__Impl : ( 'length' ) ;
-=======
     // InternalContextModelParser.g:3111:1: rule__ContextVar__Group_6__1__Impl : ( Length ) ;
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
     public final void rule__ContextVar__Group_6__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-<<<<<<< HEAD
-            // InternalContextModel.g:802:1: ( ( 'length' ) )
-            // InternalContextModel.g:803:1: ( 'length' )
-            {
-            // InternalContextModel.g:803:1: ( 'length' )
-            // InternalContextModel.g:804:2: 'length'
-=======
             // InternalContextModelParser.g:3115:1: ( ( Length ) )
             // InternalContextModelParser.g:3116:1: ( Length )
             {
             // InternalContextModelParser.g:3116:1: ( Length )
             // InternalContextModelParser.g:3117:2: Length
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
             {
              before(grammarAccess.getContextVarAccess().getLengthKeyword_6_1()); 
             match(input,Length,FOLLOW_2); 
@@ -9688,23 +9589,14 @@ public class InternalContextModelParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__ContextVar__Group_6__2"
-<<<<<<< HEAD
-    // InternalContextModel.g:813:1: rule__ContextVar__Group_6__2 : rule__ContextVar__Group_6__2__Impl rule__ContextVar__Group_6__3 ;
-=======
     // InternalContextModelParser.g:3126:1: rule__ContextVar__Group_6__2 : rule__ContextVar__Group_6__2__Impl rule__ContextVar__Group_6__3 ;
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
     public final void rule__ContextVar__Group_6__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-<<<<<<< HEAD
-            // InternalContextModel.g:817:1: ( rule__ContextVar__Group_6__2__Impl rule__ContextVar__Group_6__3 )
-            // InternalContextModel.g:818:2: rule__ContextVar__Group_6__2__Impl rule__ContextVar__Group_6__3
-=======
             // InternalContextModelParser.g:3130:1: ( rule__ContextVar__Group_6__2__Impl rule__ContextVar__Group_6__3 )
             // InternalContextModelParser.g:3131:2: rule__ContextVar__Group_6__2__Impl rule__ContextVar__Group_6__3
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
             {
             pushFollow(FOLLOW_16);
             rule__ContextVar__Group_6__2__Impl();
@@ -9735,27 +9627,12 @@ public class InternalContextModelParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__ContextVar__Group_6__2__Impl"
-<<<<<<< HEAD
-    // InternalContextModel.g:825:1: rule__ContextVar__Group_6__2__Impl : ( ( rule__ContextVar__LengthAssignment_6_2 ) ) ;
-=======
     // InternalContextModelParser.g:3138:1: rule__ContextVar__Group_6__2__Impl : ( ( rule__ContextVar__LengthAssignment_6_2 ) ) ;
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
     public final void rule__ContextVar__Group_6__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-<<<<<<< HEAD
-            // InternalContextModel.g:829:1: ( ( ( rule__ContextVar__LengthAssignment_6_2 ) ) )
-            // InternalContextModel.g:830:1: ( ( rule__ContextVar__LengthAssignment_6_2 ) )
-            {
-            // InternalContextModel.g:830:1: ( ( rule__ContextVar__LengthAssignment_6_2 ) )
-            // InternalContextModel.g:831:2: ( rule__ContextVar__LengthAssignment_6_2 )
-            {
-             before(grammarAccess.getContextVarAccess().getLengthAssignment_6_2()); 
-            // InternalContextModel.g:832:2: ( rule__ContextVar__LengthAssignment_6_2 )
-            // InternalContextModel.g:832:3: rule__ContextVar__LengthAssignment_6_2
-=======
             // InternalContextModelParser.g:3142:1: ( ( ( rule__ContextVar__LengthAssignment_6_2 ) ) )
             // InternalContextModelParser.g:3143:1: ( ( rule__ContextVar__LengthAssignment_6_2 ) )
             {
@@ -9765,7 +9642,6 @@ public class InternalContextModelParser extends AbstractInternalContentAssistPar
              before(grammarAccess.getContextVarAccess().getLengthAssignment_6_2()); 
             // InternalContextModelParser.g:3145:2: ( rule__ContextVar__LengthAssignment_6_2 )
             // InternalContextModelParser.g:3145:3: rule__ContextVar__LengthAssignment_6_2
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
             {
             pushFollow(FOLLOW_2);
             rule__ContextVar__LengthAssignment_6_2();
@@ -9798,23 +9674,14 @@ public class InternalContextModelParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__ContextVar__Group_6__3"
-<<<<<<< HEAD
-    // InternalContextModel.g:840:1: rule__ContextVar__Group_6__3 : rule__ContextVar__Group_6__3__Impl ;
-=======
     // InternalContextModelParser.g:3153:1: rule__ContextVar__Group_6__3 : rule__ContextVar__Group_6__3__Impl ;
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
     public final void rule__ContextVar__Group_6__3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-<<<<<<< HEAD
-            // InternalContextModel.g:844:1: ( rule__ContextVar__Group_6__3__Impl )
-            // InternalContextModel.g:845:2: rule__ContextVar__Group_6__3__Impl
-=======
             // InternalContextModelParser.g:3157:1: ( rule__ContextVar__Group_6__3__Impl )
             // InternalContextModelParser.g:3158:2: rule__ContextVar__Group_6__3__Impl
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
             {
             pushFollow(FOLLOW_2);
             rule__ContextVar__Group_6__3__Impl();
@@ -9840,29 +9707,17 @@ public class InternalContextModelParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__ContextVar__Group_6__3__Impl"
-<<<<<<< HEAD
-    // InternalContextModel.g:851:1: rule__ContextVar__Group_6__3__Impl : ( 's' ) ;
-=======
     // InternalContextModelParser.g:3164:1: rule__ContextVar__Group_6__3__Impl : ( S ) ;
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
     public final void rule__ContextVar__Group_6__3__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-<<<<<<< HEAD
-            // InternalContextModel.g:855:1: ( ( 's' ) )
-            // InternalContextModel.g:856:1: ( 's' )
-            {
-            // InternalContextModel.g:856:1: ( 's' )
-            // InternalContextModel.g:857:2: 's'
-=======
             // InternalContextModelParser.g:3168:1: ( ( S ) )
             // InternalContextModelParser.g:3169:1: ( S )
             {
             // InternalContextModelParser.g:3169:1: ( S )
             // InternalContextModelParser.g:3170:2: S
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
             {
              before(grammarAccess.getContextVarAccess().getSKeyword_6_3()); 
             match(input,S,FOLLOW_2); 
@@ -9889,23 +9744,14 @@ public class InternalContextModelParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__ContextVar__Group_7__0"
-<<<<<<< HEAD
-    // InternalContextModel.g:867:1: rule__ContextVar__Group_7__0 : rule__ContextVar__Group_7__0__Impl rule__ContextVar__Group_7__1 ;
-=======
     // InternalContextModelParser.g:3180:1: rule__ContextVar__Group_7__0 : rule__ContextVar__Group_7__0__Impl rule__ContextVar__Group_7__1 ;
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
     public final void rule__ContextVar__Group_7__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-<<<<<<< HEAD
-            // InternalContextModel.g:871:1: ( rule__ContextVar__Group_7__0__Impl rule__ContextVar__Group_7__1 )
-            // InternalContextModel.g:872:2: rule__ContextVar__Group_7__0__Impl rule__ContextVar__Group_7__1
-=======
             // InternalContextModelParser.g:3184:1: ( rule__ContextVar__Group_7__0__Impl rule__ContextVar__Group_7__1 )
             // InternalContextModelParser.g:3185:2: rule__ContextVar__Group_7__0__Impl rule__ContextVar__Group_7__1
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
             {
             pushFollow(FOLLOW_15);
             rule__ContextVar__Group_7__0__Impl();
@@ -9936,29 +9782,17 @@ public class InternalContextModelParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__ContextVar__Group_7__0__Impl"
-<<<<<<< HEAD
-    // InternalContextModel.g:879:1: rule__ContextVar__Group_7__0__Impl : ( 'period' ) ;
-=======
     // InternalContextModelParser.g:3192:1: rule__ContextVar__Group_7__0__Impl : ( Period ) ;
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
     public final void rule__ContextVar__Group_7__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-<<<<<<< HEAD
-            // InternalContextModel.g:883:1: ( ( 'period' ) )
-            // InternalContextModel.g:884:1: ( 'period' )
-            {
-            // InternalContextModel.g:884:1: ( 'period' )
-            // InternalContextModel.g:885:2: 'period'
-=======
             // InternalContextModelParser.g:3196:1: ( ( Period ) )
             // InternalContextModelParser.g:3197:1: ( Period )
             {
             // InternalContextModelParser.g:3197:1: ( Period )
             // InternalContextModelParser.g:3198:2: Period
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
             {
              before(grammarAccess.getContextVarAccess().getPeriodKeyword_7_0()); 
             match(input,Period,FOLLOW_2); 
@@ -9985,23 +9819,14 @@ public class InternalContextModelParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__ContextVar__Group_7__1"
-<<<<<<< HEAD
-    // InternalContextModel.g:894:1: rule__ContextVar__Group_7__1 : rule__ContextVar__Group_7__1__Impl rule__ContextVar__Group_7__2 ;
-=======
     // InternalContextModelParser.g:3207:1: rule__ContextVar__Group_7__1 : rule__ContextVar__Group_7__1__Impl rule__ContextVar__Group_7__2 ;
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
     public final void rule__ContextVar__Group_7__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-<<<<<<< HEAD
-            // InternalContextModel.g:898:1: ( rule__ContextVar__Group_7__1__Impl rule__ContextVar__Group_7__2 )
-            // InternalContextModel.g:899:2: rule__ContextVar__Group_7__1__Impl rule__ContextVar__Group_7__2
-=======
             // InternalContextModelParser.g:3211:1: ( rule__ContextVar__Group_7__1__Impl rule__ContextVar__Group_7__2 )
             // InternalContextModelParser.g:3212:2: rule__ContextVar__Group_7__1__Impl rule__ContextVar__Group_7__2
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
             {
             pushFollow(FOLLOW_17);
             rule__ContextVar__Group_7__1__Impl();
@@ -10032,27 +9857,12 @@ public class InternalContextModelParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__ContextVar__Group_7__1__Impl"
-<<<<<<< HEAD
-    // InternalContextModel.g:906:1: rule__ContextVar__Group_7__1__Impl : ( ( rule__ContextVar__PeriodAssignment_7_1 ) ) ;
-=======
     // InternalContextModelParser.g:3219:1: rule__ContextVar__Group_7__1__Impl : ( ( rule__ContextVar__PeriodAssignment_7_1 ) ) ;
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
     public final void rule__ContextVar__Group_7__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-<<<<<<< HEAD
-            // InternalContextModel.g:910:1: ( ( ( rule__ContextVar__PeriodAssignment_7_1 ) ) )
-            // InternalContextModel.g:911:1: ( ( rule__ContextVar__PeriodAssignment_7_1 ) )
-            {
-            // InternalContextModel.g:911:1: ( ( rule__ContextVar__PeriodAssignment_7_1 ) )
-            // InternalContextModel.g:912:2: ( rule__ContextVar__PeriodAssignment_7_1 )
-            {
-             before(grammarAccess.getContextVarAccess().getPeriodAssignment_7_1()); 
-            // InternalContextModel.g:913:2: ( rule__ContextVar__PeriodAssignment_7_1 )
-            // InternalContextModel.g:913:3: rule__ContextVar__PeriodAssignment_7_1
-=======
             // InternalContextModelParser.g:3223:1: ( ( ( rule__ContextVar__PeriodAssignment_7_1 ) ) )
             // InternalContextModelParser.g:3224:1: ( ( rule__ContextVar__PeriodAssignment_7_1 ) )
             {
@@ -10062,7 +9872,6 @@ public class InternalContextModelParser extends AbstractInternalContentAssistPar
              before(grammarAccess.getContextVarAccess().getPeriodAssignment_7_1()); 
             // InternalContextModelParser.g:3226:2: ( rule__ContextVar__PeriodAssignment_7_1 )
             // InternalContextModelParser.g:3226:3: rule__ContextVar__PeriodAssignment_7_1
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
             {
             pushFollow(FOLLOW_2);
             rule__ContextVar__PeriodAssignment_7_1();
@@ -10095,23 +9904,14 @@ public class InternalContextModelParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__ContextVar__Group_7__2"
-<<<<<<< HEAD
-    // InternalContextModel.g:921:1: rule__ContextVar__Group_7__2 : rule__ContextVar__Group_7__2__Impl ;
-=======
     // InternalContextModelParser.g:3234:1: rule__ContextVar__Group_7__2 : rule__ContextVar__Group_7__2__Impl ;
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
     public final void rule__ContextVar__Group_7__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-<<<<<<< HEAD
-            // InternalContextModel.g:925:1: ( rule__ContextVar__Group_7__2__Impl )
-            // InternalContextModel.g:926:2: rule__ContextVar__Group_7__2__Impl
-=======
             // InternalContextModelParser.g:3238:1: ( rule__ContextVar__Group_7__2__Impl )
             // InternalContextModelParser.g:3239:2: rule__ContextVar__Group_7__2__Impl
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
             {
             pushFollow(FOLLOW_2);
             rule__ContextVar__Group_7__2__Impl();
@@ -10137,29 +9937,17 @@ public class InternalContextModelParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__ContextVar__Group_7__2__Impl"
-<<<<<<< HEAD
-    // InternalContextModel.g:932:1: rule__ContextVar__Group_7__2__Impl : ( 'ns' ) ;
-=======
     // InternalContextModelParser.g:3245:1: rule__ContextVar__Group_7__2__Impl : ( Ns ) ;
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
     public final void rule__ContextVar__Group_7__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-<<<<<<< HEAD
-            // InternalContextModel.g:936:1: ( ( 'ns' ) )
-            // InternalContextModel.g:937:1: ( 'ns' )
-            {
-            // InternalContextModel.g:937:1: ( 'ns' )
-            // InternalContextModel.g:938:2: 'ns'
-=======
             // InternalContextModelParser.g:3249:1: ( ( Ns ) )
             // InternalContextModelParser.g:3250:1: ( Ns )
             {
             // InternalContextModelParser.g:3250:1: ( Ns )
             // InternalContextModelParser.g:3251:2: Ns
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
             {
              before(grammarAccess.getContextVarAccess().getNsKeyword_7_2()); 
             match(input,Ns,FOLLOW_2); 
@@ -10186,23 +9974,14 @@ public class InternalContextModelParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__ContextVar__Group_8__0"
-<<<<<<< HEAD
-    // InternalContextModel.g:948:1: rule__ContextVar__Group_8__0 : rule__ContextVar__Group_8__0__Impl rule__ContextVar__Group_8__1 ;
-=======
     // InternalContextModelParser.g:3261:1: rule__ContextVar__Group_8__0 : rule__ContextVar__Group_8__0__Impl rule__ContextVar__Group_8__1 ;
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
     public final void rule__ContextVar__Group_8__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-<<<<<<< HEAD
-            // InternalContextModel.g:952:1: ( rule__ContextVar__Group_8__0__Impl rule__ContextVar__Group_8__1 )
-            // InternalContextModel.g:953:2: rule__ContextVar__Group_8__0__Impl rule__ContextVar__Group_8__1
-=======
             // InternalContextModelParser.g:3265:1: ( rule__ContextVar__Group_8__0__Impl rule__ContextVar__Group_8__1 )
             // InternalContextModelParser.g:3266:2: rule__ContextVar__Group_8__0__Impl rule__ContextVar__Group_8__1
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
             {
             pushFollow(FOLLOW_10);
             rule__ContextVar__Group_8__0__Impl();
@@ -10233,29 +10012,17 @@ public class InternalContextModelParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__ContextVar__Group_8__0__Impl"
-<<<<<<< HEAD
-    // InternalContextModel.g:960:1: rule__ContextVar__Group_8__0__Impl : ( 'proxy' ) ;
-=======
     // InternalContextModelParser.g:3273:1: rule__ContextVar__Group_8__0__Impl : ( Proxy ) ;
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
     public final void rule__ContextVar__Group_8__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-<<<<<<< HEAD
-            // InternalContextModel.g:964:1: ( ( 'proxy' ) )
-            // InternalContextModel.g:965:1: ( 'proxy' )
-            {
-            // InternalContextModel.g:965:1: ( 'proxy' )
-            // InternalContextModel.g:966:2: 'proxy'
-=======
             // InternalContextModelParser.g:3277:1: ( ( Proxy ) )
             // InternalContextModelParser.g:3278:1: ( Proxy )
             {
             // InternalContextModelParser.g:3278:1: ( Proxy )
             // InternalContextModelParser.g:3279:2: Proxy
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
             {
              before(grammarAccess.getContextVarAccess().getProxyKeyword_8_0()); 
             match(input,Proxy,FOLLOW_2); 
@@ -10282,23 +10049,14 @@ public class InternalContextModelParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__ContextVar__Group_8__1"
-<<<<<<< HEAD
-    // InternalContextModel.g:975:1: rule__ContextVar__Group_8__1 : rule__ContextVar__Group_8__1__Impl ;
-=======
     // InternalContextModelParser.g:3288:1: rule__ContextVar__Group_8__1 : rule__ContextVar__Group_8__1__Impl ;
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
     public final void rule__ContextVar__Group_8__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-<<<<<<< HEAD
-            // InternalContextModel.g:979:1: ( rule__ContextVar__Group_8__1__Impl )
-            // InternalContextModel.g:980:2: rule__ContextVar__Group_8__1__Impl
-=======
             // InternalContextModelParser.g:3292:1: ( rule__ContextVar__Group_8__1__Impl )
             // InternalContextModelParser.g:3293:2: rule__ContextVar__Group_8__1__Impl
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
             {
             pushFollow(FOLLOW_2);
             rule__ContextVar__Group_8__1__Impl();
@@ -10324,27 +10082,12 @@ public class InternalContextModelParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__ContextVar__Group_8__1__Impl"
-<<<<<<< HEAD
-    // InternalContextModel.g:986:1: rule__ContextVar__Group_8__1__Impl : ( ( rule__ContextVar__DoProxyAssignment_8_1 ) ) ;
-=======
     // InternalContextModelParser.g:3299:1: rule__ContextVar__Group_8__1__Impl : ( ( rule__ContextVar__DoProxyAssignment_8_1 ) ) ;
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
     public final void rule__ContextVar__Group_8__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-<<<<<<< HEAD
-            // InternalContextModel.g:990:1: ( ( ( rule__ContextVar__DoProxyAssignment_8_1 ) ) )
-            // InternalContextModel.g:991:1: ( ( rule__ContextVar__DoProxyAssignment_8_1 ) )
-            {
-            // InternalContextModel.g:991:1: ( ( rule__ContextVar__DoProxyAssignment_8_1 ) )
-            // InternalContextModel.g:992:2: ( rule__ContextVar__DoProxyAssignment_8_1 )
-            {
-             before(grammarAccess.getContextVarAccess().getDoProxyAssignment_8_1()); 
-            // InternalContextModel.g:993:2: ( rule__ContextVar__DoProxyAssignment_8_1 )
-            // InternalContextModel.g:993:3: rule__ContextVar__DoProxyAssignment_8_1
-=======
             // InternalContextModelParser.g:3303:1: ( ( ( rule__ContextVar__DoProxyAssignment_8_1 ) ) )
             // InternalContextModelParser.g:3304:1: ( ( rule__ContextVar__DoProxyAssignment_8_1 ) )
             {
@@ -10354,7 +10097,6 @@ public class InternalContextModelParser extends AbstractInternalContentAssistPar
              before(grammarAccess.getContextVarAccess().getDoProxyAssignment_8_1()); 
             // InternalContextModelParser.g:3306:2: ( rule__ContextVar__DoProxyAssignment_8_1 )
             // InternalContextModelParser.g:3306:3: rule__ContextVar__DoProxyAssignment_8_1
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
             {
             pushFollow(FOLLOW_2);
             rule__ContextVar__DoProxyAssignment_8_1();
@@ -10387,23 +10129,14 @@ public class InternalContextModelParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__ContextVar__Group_11__0"
-<<<<<<< HEAD
-    // InternalContextModel.g:1002:1: rule__ContextVar__Group_11__0 : rule__ContextVar__Group_11__0__Impl rule__ContextVar__Group_11__1 ;
-=======
     // InternalContextModelParser.g:3315:1: rule__ContextVar__Group_11__0 : rule__ContextVar__Group_11__0__Impl rule__ContextVar__Group_11__1 ;
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
     public final void rule__ContextVar__Group_11__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-<<<<<<< HEAD
-            // InternalContextModel.g:1006:1: ( rule__ContextVar__Group_11__0__Impl rule__ContextVar__Group_11__1 )
-            // InternalContextModel.g:1007:2: rule__ContextVar__Group_11__0__Impl rule__ContextVar__Group_11__1
-=======
             // InternalContextModelParser.g:3319:1: ( rule__ContextVar__Group_11__0__Impl rule__ContextVar__Group_11__1 )
             // InternalContextModelParser.g:3320:2: rule__ContextVar__Group_11__0__Impl rule__ContextVar__Group_11__1
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
             {
             pushFollow(FOLLOW_12);
             rule__ContextVar__Group_11__0__Impl();
@@ -10434,29 +10167,17 @@ public class InternalContextModelParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__ContextVar__Group_11__0__Impl"
-<<<<<<< HEAD
-    // InternalContextModel.g:1014:1: rule__ContextVar__Group_11__0__Impl : ( 'function_lib' ) ;
-=======
     // InternalContextModelParser.g:3327:1: rule__ContextVar__Group_11__0__Impl : ( Function_lib ) ;
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
     public final void rule__ContextVar__Group_11__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-<<<<<<< HEAD
-            // InternalContextModel.g:1018:1: ( ( 'function_lib' ) )
-            // InternalContextModel.g:1019:1: ( 'function_lib' )
-            {
-            // InternalContextModel.g:1019:1: ( 'function_lib' )
-            // InternalContextModel.g:1020:2: 'function_lib'
-=======
             // InternalContextModelParser.g:3331:1: ( ( Function_lib ) )
             // InternalContextModelParser.g:3332:1: ( Function_lib )
             {
             // InternalContextModelParser.g:3332:1: ( Function_lib )
             // InternalContextModelParser.g:3333:2: Function_lib
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
             {
              before(grammarAccess.getContextVarAccess().getFunction_libKeyword_11_0()); 
             match(input,Function_lib,FOLLOW_2); 
@@ -10483,23 +10204,14 @@ public class InternalContextModelParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__ContextVar__Group_11__1"
-<<<<<<< HEAD
-    // InternalContextModel.g:1029:1: rule__ContextVar__Group_11__1 : rule__ContextVar__Group_11__1__Impl ;
-=======
     // InternalContextModelParser.g:3342:1: rule__ContextVar__Group_11__1 : rule__ContextVar__Group_11__1__Impl ;
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
     public final void rule__ContextVar__Group_11__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-<<<<<<< HEAD
-            // InternalContextModel.g:1033:1: ( rule__ContextVar__Group_11__1__Impl )
-            // InternalContextModel.g:1034:2: rule__ContextVar__Group_11__1__Impl
-=======
             // InternalContextModelParser.g:3346:1: ( rule__ContextVar__Group_11__1__Impl )
             // InternalContextModelParser.g:3347:2: rule__ContextVar__Group_11__1__Impl
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
             {
             pushFollow(FOLLOW_2);
             rule__ContextVar__Group_11__1__Impl();
@@ -10525,27 +10237,12 @@ public class InternalContextModelParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__ContextVar__Group_11__1__Impl"
-<<<<<<< HEAD
-    // InternalContextModel.g:1040:1: rule__ContextVar__Group_11__1__Impl : ( ( rule__ContextVar__FunctionLibraryAssignment_11_1 ) ) ;
-=======
     // InternalContextModelParser.g:3353:1: rule__ContextVar__Group_11__1__Impl : ( ( rule__ContextVar__FunctionLibraryAssignment_11_1 ) ) ;
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
     public final void rule__ContextVar__Group_11__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-<<<<<<< HEAD
-            // InternalContextModel.g:1044:1: ( ( ( rule__ContextVar__FunctionLibraryAssignment_11_1 ) ) )
-            // InternalContextModel.g:1045:1: ( ( rule__ContextVar__FunctionLibraryAssignment_11_1 ) )
-            {
-            // InternalContextModel.g:1045:1: ( ( rule__ContextVar__FunctionLibraryAssignment_11_1 ) )
-            // InternalContextModel.g:1046:2: ( rule__ContextVar__FunctionLibraryAssignment_11_1 )
-            {
-             before(grammarAccess.getContextVarAccess().getFunctionLibraryAssignment_11_1()); 
-            // InternalContextModel.g:1047:2: ( rule__ContextVar__FunctionLibraryAssignment_11_1 )
-            // InternalContextModel.g:1047:3: rule__ContextVar__FunctionLibraryAssignment_11_1
-=======
             // InternalContextModelParser.g:3357:1: ( ( ( rule__ContextVar__FunctionLibraryAssignment_11_1 ) ) )
             // InternalContextModelParser.g:3358:1: ( ( rule__ContextVar__FunctionLibraryAssignment_11_1 ) )
             {
@@ -10555,7 +10252,6 @@ public class InternalContextModelParser extends AbstractInternalContentAssistPar
              before(grammarAccess.getContextVarAccess().getFunctionLibraryAssignment_11_1()); 
             // InternalContextModelParser.g:3360:2: ( rule__ContextVar__FunctionLibraryAssignment_11_1 )
             // InternalContextModelParser.g:3360:3: rule__ContextVar__FunctionLibraryAssignment_11_1
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
             {
             pushFollow(FOLLOW_2);
             rule__ContextVar__FunctionLibraryAssignment_11_1();
@@ -10587,10 +10283,6 @@ public class InternalContextModelParser extends AbstractInternalContentAssistPar
     // $ANTLR end "rule__ContextVar__Group_11__1__Impl"
 
 
-<<<<<<< HEAD
-    // $ANTLR start "rule__DoCache__Group__0"
-    // InternalContextModel.g:1056:1: rule__DoCache__Group__0 : rule__DoCache__Group__0__Impl rule__DoCache__Group__1 ;
-=======
     // $ANTLR start "rule__ContextVar__Group_12__0"
     // InternalContextModelParser.g:3369:1: rule__ContextVar__Group_12__0 : rule__ContextVar__Group_12__0__Impl rule__ContextVar__Group_12__1 ;
     public final void rule__ContextVar__Group_12__0() throws RecognitionException {
@@ -10748,19 +10440,13 @@ public class InternalContextModelParser extends AbstractInternalContentAssistPar
 
     // $ANTLR start "rule__DoCache__Group__0"
     // InternalContextModelParser.g:3423:1: rule__DoCache__Group__0 : rule__DoCache__Group__0__Impl rule__DoCache__Group__1 ;
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
     public final void rule__DoCache__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-<<<<<<< HEAD
-            // InternalContextModel.g:1060:1: ( rule__DoCache__Group__0__Impl rule__DoCache__Group__1 )
-            // InternalContextModel.g:1061:2: rule__DoCache__Group__0__Impl rule__DoCache__Group__1
-=======
             // InternalContextModelParser.g:3427:1: ( rule__DoCache__Group__0__Impl rule__DoCache__Group__1 )
             // InternalContextModelParser.g:3428:2: rule__DoCache__Group__0__Impl rule__DoCache__Group__1
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
             {
             pushFollow(FOLLOW_10);
             rule__DoCache__Group__0__Impl();
@@ -10791,27 +10477,12 @@ public class InternalContextModelParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__DoCache__Group__0__Impl"
-<<<<<<< HEAD
-    // InternalContextModel.g:1068:1: rule__DoCache__Group__0__Impl : ( () ) ;
-=======
     // InternalContextModelParser.g:3435:1: rule__DoCache__Group__0__Impl : ( () ) ;
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
     public final void rule__DoCache__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-<<<<<<< HEAD
-            // InternalContextModel.g:1072:1: ( ( () ) )
-            // InternalContextModel.g:1073:1: ( () )
-            {
-            // InternalContextModel.g:1073:1: ( () )
-            // InternalContextModel.g:1074:2: ()
-            {
-             before(grammarAccess.getDoCacheAccess().getDoCacheAction_0()); 
-            // InternalContextModel.g:1075:2: ()
-            // InternalContextModel.g:1075:3: 
-=======
             // InternalContextModelParser.g:3439:1: ( ( () ) )
             // InternalContextModelParser.g:3440:1: ( () )
             {
@@ -10821,7 +10492,6 @@ public class InternalContextModelParser extends AbstractInternalContentAssistPar
              before(grammarAccess.getDoCacheAccess().getDoCacheAction_0()); 
             // InternalContextModelParser.g:3442:2: ()
             // InternalContextModelParser.g:3442:3: 
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
             {
             }
 
@@ -10844,23 +10514,14 @@ public class InternalContextModelParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__DoCache__Group__1"
-<<<<<<< HEAD
-    // InternalContextModel.g:1083:1: rule__DoCache__Group__1 : rule__DoCache__Group__1__Impl ;
-=======
     // InternalContextModelParser.g:3450:1: rule__DoCache__Group__1 : rule__DoCache__Group__1__Impl ;
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
     public final void rule__DoCache__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-<<<<<<< HEAD
-            // InternalContextModel.g:1087:1: ( rule__DoCache__Group__1__Impl )
-            // InternalContextModel.g:1088:2: rule__DoCache__Group__1__Impl
-=======
             // InternalContextModelParser.g:3454:1: ( rule__DoCache__Group__1__Impl )
             // InternalContextModelParser.g:3455:2: rule__DoCache__Group__1__Impl
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
             {
             pushFollow(FOLLOW_2);
             rule__DoCache__Group__1__Impl();
@@ -10886,27 +10547,12 @@ public class InternalContextModelParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__DoCache__Group__1__Impl"
-<<<<<<< HEAD
-    // InternalContextModel.g:1094:1: rule__DoCache__Group__1__Impl : ( ( rule__DoCache__DoAssignment_1 ) ) ;
-=======
     // InternalContextModelParser.g:3461:1: rule__DoCache__Group__1__Impl : ( ( rule__DoCache__DoAssignment_1 ) ) ;
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
     public final void rule__DoCache__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-<<<<<<< HEAD
-            // InternalContextModel.g:1098:1: ( ( ( rule__DoCache__DoAssignment_1 ) ) )
-            // InternalContextModel.g:1099:1: ( ( rule__DoCache__DoAssignment_1 ) )
-            {
-            // InternalContextModel.g:1099:1: ( ( rule__DoCache__DoAssignment_1 ) )
-            // InternalContextModel.g:1100:2: ( rule__DoCache__DoAssignment_1 )
-            {
-             before(grammarAccess.getDoCacheAccess().getDoAssignment_1()); 
-            // InternalContextModel.g:1101:2: ( rule__DoCache__DoAssignment_1 )
-            // InternalContextModel.g:1101:3: rule__DoCache__DoAssignment_1
-=======
             // InternalContextModelParser.g:3465:1: ( ( ( rule__DoCache__DoAssignment_1 ) ) )
             // InternalContextModelParser.g:3466:1: ( ( rule__DoCache__DoAssignment_1 ) )
             {
@@ -10916,7 +10562,6 @@ public class InternalContextModelParser extends AbstractInternalContentAssistPar
              before(grammarAccess.getDoCacheAccess().getDoAssignment_1()); 
             // InternalContextModelParser.g:3468:2: ( rule__DoCache__DoAssignment_1 )
             // InternalContextModelParser.g:3468:3: rule__DoCache__DoAssignment_1
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
             {
             pushFollow(FOLLOW_2);
             rule__DoCache__DoAssignment_1();
@@ -10949,23 +10594,14 @@ public class InternalContextModelParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__DoProxy__Group__0"
-<<<<<<< HEAD
-    // InternalContextModel.g:1110:1: rule__DoProxy__Group__0 : rule__DoProxy__Group__0__Impl rule__DoProxy__Group__1 ;
-=======
     // InternalContextModelParser.g:3477:1: rule__DoProxy__Group__0 : rule__DoProxy__Group__0__Impl rule__DoProxy__Group__1 ;
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
     public final void rule__DoProxy__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-<<<<<<< HEAD
-            // InternalContextModel.g:1114:1: ( rule__DoProxy__Group__0__Impl rule__DoProxy__Group__1 )
-            // InternalContextModel.g:1115:2: rule__DoProxy__Group__0__Impl rule__DoProxy__Group__1
-=======
             // InternalContextModelParser.g:3481:1: ( rule__DoProxy__Group__0__Impl rule__DoProxy__Group__1 )
             // InternalContextModelParser.g:3482:2: rule__DoProxy__Group__0__Impl rule__DoProxy__Group__1
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
             {
             pushFollow(FOLLOW_10);
             rule__DoProxy__Group__0__Impl();
@@ -10996,27 +10632,12 @@ public class InternalContextModelParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__DoProxy__Group__0__Impl"
-<<<<<<< HEAD
-    // InternalContextModel.g:1122:1: rule__DoProxy__Group__0__Impl : ( () ) ;
-=======
     // InternalContextModelParser.g:3489:1: rule__DoProxy__Group__0__Impl : ( () ) ;
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
     public final void rule__DoProxy__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-<<<<<<< HEAD
-            // InternalContextModel.g:1126:1: ( ( () ) )
-            // InternalContextModel.g:1127:1: ( () )
-            {
-            // InternalContextModel.g:1127:1: ( () )
-            // InternalContextModel.g:1128:2: ()
-            {
-             before(grammarAccess.getDoProxyAccess().getDoProxyAction_0()); 
-            // InternalContextModel.g:1129:2: ()
-            // InternalContextModel.g:1129:3: 
-=======
             // InternalContextModelParser.g:3493:1: ( ( () ) )
             // InternalContextModelParser.g:3494:1: ( () )
             {
@@ -11026,7 +10647,6 @@ public class InternalContextModelParser extends AbstractInternalContentAssistPar
              before(grammarAccess.getDoProxyAccess().getDoProxyAction_0()); 
             // InternalContextModelParser.g:3496:2: ()
             // InternalContextModelParser.g:3496:3: 
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
             {
             }
 
@@ -11049,23 +10669,14 @@ public class InternalContextModelParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__DoProxy__Group__1"
-<<<<<<< HEAD
-    // InternalContextModel.g:1137:1: rule__DoProxy__Group__1 : rule__DoProxy__Group__1__Impl ;
-=======
     // InternalContextModelParser.g:3504:1: rule__DoProxy__Group__1 : rule__DoProxy__Group__1__Impl ;
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
     public final void rule__DoProxy__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-<<<<<<< HEAD
-            // InternalContextModel.g:1141:1: ( rule__DoProxy__Group__1__Impl )
-            // InternalContextModel.g:1142:2: rule__DoProxy__Group__1__Impl
-=======
             // InternalContextModelParser.g:3508:1: ( rule__DoProxy__Group__1__Impl )
             // InternalContextModelParser.g:3509:2: rule__DoProxy__Group__1__Impl
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
             {
             pushFollow(FOLLOW_2);
             rule__DoProxy__Group__1__Impl();
@@ -11091,27 +10702,12 @@ public class InternalContextModelParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__DoProxy__Group__1__Impl"
-<<<<<<< HEAD
-    // InternalContextModel.g:1148:1: rule__DoProxy__Group__1__Impl : ( ( rule__DoProxy__DoAssignment_1 ) ) ;
-=======
     // InternalContextModelParser.g:3515:1: rule__DoProxy__Group__1__Impl : ( ( rule__DoProxy__DoAssignment_1 ) ) ;
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
     public final void rule__DoProxy__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-<<<<<<< HEAD
-            // InternalContextModel.g:1152:1: ( ( ( rule__DoProxy__DoAssignment_1 ) ) )
-            // InternalContextModel.g:1153:1: ( ( rule__DoProxy__DoAssignment_1 ) )
-            {
-            // InternalContextModel.g:1153:1: ( ( rule__DoProxy__DoAssignment_1 ) )
-            // InternalContextModel.g:1154:2: ( rule__DoProxy__DoAssignment_1 )
-            {
-             before(grammarAccess.getDoProxyAccess().getDoAssignment_1()); 
-            // InternalContextModel.g:1155:2: ( rule__DoProxy__DoAssignment_1 )
-            // InternalContextModel.g:1155:3: rule__DoProxy__DoAssignment_1
-=======
             // InternalContextModelParser.g:3519:1: ( ( ( rule__DoProxy__DoAssignment_1 ) ) )
             // InternalContextModelParser.g:3520:1: ( ( rule__DoProxy__DoAssignment_1 ) )
             {
@@ -11121,7 +10717,6 @@ public class InternalContextModelParser extends AbstractInternalContentAssistPar
              before(grammarAccess.getDoProxyAccess().getDoAssignment_1()); 
             // InternalContextModelParser.g:3522:2: ( rule__DoProxy__DoAssignment_1 )
             // InternalContextModelParser.g:3522:3: rule__DoProxy__DoAssignment_1
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
             {
             pushFollow(FOLLOW_2);
             rule__DoProxy__DoAssignment_1();
@@ -11154,23 +10749,14 @@ public class InternalContextModelParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__DataSource__Group__0"
-<<<<<<< HEAD
-    // InternalContextModel.g:1164:1: rule__DataSource__Group__0 : rule__DataSource__Group__0__Impl rule__DataSource__Group__1 ;
-=======
     // InternalContextModelParser.g:3531:1: rule__DataSource__Group__0 : rule__DataSource__Group__0__Impl rule__DataSource__Group__1 ;
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
     public final void rule__DataSource__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-<<<<<<< HEAD
-            // InternalContextModel.g:1168:1: ( rule__DataSource__Group__0__Impl rule__DataSource__Group__1 )
-            // InternalContextModel.g:1169:2: rule__DataSource__Group__0__Impl rule__DataSource__Group__1
-=======
             // InternalContextModelParser.g:3535:1: ( rule__DataSource__Group__0__Impl rule__DataSource__Group__1 )
             // InternalContextModelParser.g:3536:2: rule__DataSource__Group__0__Impl rule__DataSource__Group__1
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
             {
             pushFollow(FOLLOW_18);
             rule__DataSource__Group__0__Impl();
@@ -11201,26 +10787,12 @@ public class InternalContextModelParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__DataSource__Group__0__Impl"
-<<<<<<< HEAD
-    // InternalContextModel.g:1176:1: rule__DataSource__Group__0__Impl : ( 'source:' ) ;
-=======
     // InternalContextModelParser.g:3543:1: rule__DataSource__Group__0__Impl : ( Source ) ;
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
     public final void rule__DataSource__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-<<<<<<< HEAD
-            // InternalContextModel.g:1180:1: ( ( 'source:' ) )
-            // InternalContextModel.g:1181:1: ( 'source:' )
-            {
-            // InternalContextModel.g:1181:1: ( 'source:' )
-            // InternalContextModel.g:1182:2: 'source:'
-            {
-             before(grammarAccess.getDataSourceAccess().getSourceKeyword_0()); 
-            match(input,28,FOLLOW_2); 
-=======
             // InternalContextModelParser.g:3547:1: ( ( Source ) )
             // InternalContextModelParser.g:3548:1: ( Source )
             {
@@ -11229,7 +10801,6 @@ public class InternalContextModelParser extends AbstractInternalContentAssistPar
             {
              before(grammarAccess.getDataSourceAccess().getSourceKeyword_0()); 
             match(input,Source,FOLLOW_2); 
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
              after(grammarAccess.getDataSourceAccess().getSourceKeyword_0()); 
 
             }
@@ -11253,23 +10824,14 @@ public class InternalContextModelParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__DataSource__Group__1"
-<<<<<<< HEAD
-    // InternalContextModel.g:1191:1: rule__DataSource__Group__1 : rule__DataSource__Group__1__Impl ;
-=======
     // InternalContextModelParser.g:3558:1: rule__DataSource__Group__1 : rule__DataSource__Group__1__Impl ;
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
     public final void rule__DataSource__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-<<<<<<< HEAD
-            // InternalContextModel.g:1195:1: ( rule__DataSource__Group__1__Impl )
-            // InternalContextModel.g:1196:2: rule__DataSource__Group__1__Impl
-=======
             // InternalContextModelParser.g:3562:1: ( rule__DataSource__Group__1__Impl )
             // InternalContextModelParser.g:3563:2: rule__DataSource__Group__1__Impl
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
             {
             pushFollow(FOLLOW_2);
             rule__DataSource__Group__1__Impl();
@@ -11295,27 +10857,12 @@ public class InternalContextModelParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__DataSource__Group__1__Impl"
-<<<<<<< HEAD
-    // InternalContextModel.g:1202:1: rule__DataSource__Group__1__Impl : ( ( rule__DataSource__Group_1__0 ) ) ;
-=======
     // InternalContextModelParser.g:3569:1: rule__DataSource__Group__1__Impl : ( ( rule__DataSource__Group_1__0 ) ) ;
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
     public final void rule__DataSource__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-<<<<<<< HEAD
-            // InternalContextModel.g:1206:1: ( ( ( rule__DataSource__Group_1__0 ) ) )
-            // InternalContextModel.g:1207:1: ( ( rule__DataSource__Group_1__0 ) )
-            {
-            // InternalContextModel.g:1207:1: ( ( rule__DataSource__Group_1__0 ) )
-            // InternalContextModel.g:1208:2: ( rule__DataSource__Group_1__0 )
-            {
-             before(grammarAccess.getDataSourceAccess().getGroup_1()); 
-            // InternalContextModel.g:1209:2: ( rule__DataSource__Group_1__0 )
-            // InternalContextModel.g:1209:3: rule__DataSource__Group_1__0
-=======
             // InternalContextModelParser.g:3573:1: ( ( ( rule__DataSource__Group_1__0 ) ) )
             // InternalContextModelParser.g:3574:1: ( ( rule__DataSource__Group_1__0 ) )
             {
@@ -11325,7 +10872,6 @@ public class InternalContextModelParser extends AbstractInternalContentAssistPar
              before(grammarAccess.getDataSourceAccess().getGroup_1()); 
             // InternalContextModelParser.g:3576:2: ( rule__DataSource__Group_1__0 )
             // InternalContextModelParser.g:3576:3: rule__DataSource__Group_1__0
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
             {
             pushFollow(FOLLOW_2);
             rule__DataSource__Group_1__0();
@@ -11358,23 +10904,14 @@ public class InternalContextModelParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__DataSource__Group_1__0"
-<<<<<<< HEAD
-    // InternalContextModel.g:1218:1: rule__DataSource__Group_1__0 : rule__DataSource__Group_1__0__Impl rule__DataSource__Group_1__1 ;
-=======
     // InternalContextModelParser.g:3585:1: rule__DataSource__Group_1__0 : rule__DataSource__Group_1__0__Impl rule__DataSource__Group_1__1 ;
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
     public final void rule__DataSource__Group_1__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-<<<<<<< HEAD
-            // InternalContextModel.g:1222:1: ( rule__DataSource__Group_1__0__Impl rule__DataSource__Group_1__1 )
-            // InternalContextModel.g:1223:2: rule__DataSource__Group_1__0__Impl rule__DataSource__Group_1__1
-=======
             // InternalContextModelParser.g:3589:1: ( rule__DataSource__Group_1__0__Impl rule__DataSource__Group_1__1 )
             // InternalContextModelParser.g:3590:2: rule__DataSource__Group_1__0__Impl rule__DataSource__Group_1__1
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
             {
             pushFollow(FOLLOW_19);
             rule__DataSource__Group_1__0__Impl();
@@ -11405,26 +10942,12 @@ public class InternalContextModelParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__DataSource__Group_1__0__Impl"
-<<<<<<< HEAD
-    // InternalContextModel.g:1230:1: rule__DataSource__Group_1__0__Impl : ( 'origin:' ) ;
-=======
     // InternalContextModelParser.g:3597:1: rule__DataSource__Group_1__0__Impl : ( Origin ) ;
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
     public final void rule__DataSource__Group_1__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-<<<<<<< HEAD
-            // InternalContextModel.g:1234:1: ( ( 'origin:' ) )
-            // InternalContextModel.g:1235:1: ( 'origin:' )
-            {
-            // InternalContextModel.g:1235:1: ( 'origin:' )
-            // InternalContextModel.g:1236:2: 'origin:'
-            {
-             before(grammarAccess.getDataSourceAccess().getOriginKeyword_1_0()); 
-            match(input,29,FOLLOW_2); 
-=======
             // InternalContextModelParser.g:3601:1: ( ( Origin ) )
             // InternalContextModelParser.g:3602:1: ( Origin )
             {
@@ -11433,7 +10956,6 @@ public class InternalContextModelParser extends AbstractInternalContentAssistPar
             {
              before(grammarAccess.getDataSourceAccess().getOriginKeyword_1_0()); 
             match(input,Origin,FOLLOW_2); 
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
              after(grammarAccess.getDataSourceAccess().getOriginKeyword_1_0()); 
 
             }
@@ -11457,23 +10979,14 @@ public class InternalContextModelParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__DataSource__Group_1__1"
-<<<<<<< HEAD
-    // InternalContextModel.g:1245:1: rule__DataSource__Group_1__1 : rule__DataSource__Group_1__1__Impl ;
-=======
     // InternalContextModelParser.g:3612:1: rule__DataSource__Group_1__1 : rule__DataSource__Group_1__1__Impl ;
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
     public final void rule__DataSource__Group_1__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-<<<<<<< HEAD
-            // InternalContextModel.g:1249:1: ( rule__DataSource__Group_1__1__Impl )
-            // InternalContextModel.g:1250:2: rule__DataSource__Group_1__1__Impl
-=======
             // InternalContextModelParser.g:3616:1: ( rule__DataSource__Group_1__1__Impl )
             // InternalContextModelParser.g:3617:2: rule__DataSource__Group_1__1__Impl
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
             {
             pushFollow(FOLLOW_2);
             rule__DataSource__Group_1__1__Impl();
@@ -11499,27 +11012,12 @@ public class InternalContextModelParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__DataSource__Group_1__1__Impl"
-<<<<<<< HEAD
-    // InternalContextModel.g:1256:1: rule__DataSource__Group_1__1__Impl : ( ( rule__DataSource__RefAssignment_1_1 ) ) ;
-=======
     // InternalContextModelParser.g:3623:1: rule__DataSource__Group_1__1__Impl : ( ( rule__DataSource__RefAssignment_1_1 ) ) ;
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
     public final void rule__DataSource__Group_1__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-<<<<<<< HEAD
-            // InternalContextModel.g:1260:1: ( ( ( rule__DataSource__RefAssignment_1_1 ) ) )
-            // InternalContextModel.g:1261:1: ( ( rule__DataSource__RefAssignment_1_1 ) )
-            {
-            // InternalContextModel.g:1261:1: ( ( rule__DataSource__RefAssignment_1_1 ) )
-            // InternalContextModel.g:1262:2: ( rule__DataSource__RefAssignment_1_1 )
-            {
-             before(grammarAccess.getDataSourceAccess().getRefAssignment_1_1()); 
-            // InternalContextModel.g:1263:2: ( rule__DataSource__RefAssignment_1_1 )
-            // InternalContextModel.g:1263:3: rule__DataSource__RefAssignment_1_1
-=======
             // InternalContextModelParser.g:3627:1: ( ( ( rule__DataSource__RefAssignment_1_1 ) ) )
             // InternalContextModelParser.g:3628:1: ( ( rule__DataSource__RefAssignment_1_1 ) )
             {
@@ -11529,7 +11027,6 @@ public class InternalContextModelParser extends AbstractInternalContentAssistPar
              before(grammarAccess.getDataSourceAccess().getRefAssignment_1_1()); 
             // InternalContextModelParser.g:3630:2: ( rule__DataSource__RefAssignment_1_1 )
             // InternalContextModelParser.g:3630:3: rule__DataSource__RefAssignment_1_1
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
             {
             pushFollow(FOLLOW_2);
             rule__DataSource__RefAssignment_1_1();
@@ -11562,23 +11059,14 @@ public class InternalContextModelParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__QualifiedPublisherRef__Group__0"
-<<<<<<< HEAD
-    // InternalContextModel.g:1272:1: rule__QualifiedPublisherRef__Group__0 : rule__QualifiedPublisherRef__Group__0__Impl rule__QualifiedPublisherRef__Group__1 ;
-=======
     // InternalContextModelParser.g:3639:1: rule__QualifiedPublisherRef__Group__0 : rule__QualifiedPublisherRef__Group__0__Impl rule__QualifiedPublisherRef__Group__1 ;
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
     public final void rule__QualifiedPublisherRef__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-<<<<<<< HEAD
-            // InternalContextModel.g:1276:1: ( rule__QualifiedPublisherRef__Group__0__Impl rule__QualifiedPublisherRef__Group__1 )
-            // InternalContextModel.g:1277:2: rule__QualifiedPublisherRef__Group__0__Impl rule__QualifiedPublisherRef__Group__1
-=======
             // InternalContextModelParser.g:3643:1: ( rule__QualifiedPublisherRef__Group__0__Impl rule__QualifiedPublisherRef__Group__1 )
             // InternalContextModelParser.g:3644:2: rule__QualifiedPublisherRef__Group__0__Impl rule__QualifiedPublisherRef__Group__1
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
             {
             pushFollow(FOLLOW_20);
             rule__QualifiedPublisherRef__Group__0__Impl();
@@ -11609,26 +11097,12 @@ public class InternalContextModelParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__QualifiedPublisherRef__Group__0__Impl"
-<<<<<<< HEAD
-    // InternalContextModel.g:1284:1: rule__QualifiedPublisherRef__Group__0__Impl : ( 'publisher:' ) ;
-=======
     // InternalContextModelParser.g:3651:1: rule__QualifiedPublisherRef__Group__0__Impl : ( Publisher ) ;
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
     public final void rule__QualifiedPublisherRef__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-<<<<<<< HEAD
-            // InternalContextModel.g:1288:1: ( ( 'publisher:' ) )
-            // InternalContextModel.g:1289:1: ( 'publisher:' )
-            {
-            // InternalContextModel.g:1289:1: ( 'publisher:' )
-            // InternalContextModel.g:1290:2: 'publisher:'
-            {
-             before(grammarAccess.getQualifiedPublisherRefAccess().getPublisherKeyword_0()); 
-            match(input,30,FOLLOW_2); 
-=======
             // InternalContextModelParser.g:3655:1: ( ( Publisher ) )
             // InternalContextModelParser.g:3656:1: ( Publisher )
             {
@@ -11637,7 +11111,6 @@ public class InternalContextModelParser extends AbstractInternalContentAssistPar
             {
              before(grammarAccess.getQualifiedPublisherRefAccess().getPublisherKeyword_0()); 
             match(input,Publisher,FOLLOW_2); 
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
              after(grammarAccess.getQualifiedPublisherRefAccess().getPublisherKeyword_0()); 
 
             }
@@ -11661,23 +11134,14 @@ public class InternalContextModelParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__QualifiedPublisherRef__Group__1"
-<<<<<<< HEAD
-    // InternalContextModel.g:1299:1: rule__QualifiedPublisherRef__Group__1 : rule__QualifiedPublisherRef__Group__1__Impl rule__QualifiedPublisherRef__Group__2 ;
-=======
     // InternalContextModelParser.g:3666:1: rule__QualifiedPublisherRef__Group__1 : rule__QualifiedPublisherRef__Group__1__Impl rule__QualifiedPublisherRef__Group__2 ;
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
     public final void rule__QualifiedPublisherRef__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-<<<<<<< HEAD
-            // InternalContextModel.g:1303:1: ( rule__QualifiedPublisherRef__Group__1__Impl rule__QualifiedPublisherRef__Group__2 )
-            // InternalContextModel.g:1304:2: rule__QualifiedPublisherRef__Group__1__Impl rule__QualifiedPublisherRef__Group__2
-=======
             // InternalContextModelParser.g:3670:1: ( rule__QualifiedPublisherRef__Group__1__Impl rule__QualifiedPublisherRef__Group__2 )
             // InternalContextModelParser.g:3671:2: rule__QualifiedPublisherRef__Group__1__Impl rule__QualifiedPublisherRef__Group__2
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
             {
             pushFollow(FOLLOW_21);
             rule__QualifiedPublisherRef__Group__1__Impl();
@@ -11708,27 +11172,12 @@ public class InternalContextModelParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__QualifiedPublisherRef__Group__1__Impl"
-<<<<<<< HEAD
-    // InternalContextModel.g:1311:1: rule__QualifiedPublisherRef__Group__1__Impl : ( ( rule__QualifiedPublisherRef__NodeAssignment_1 ) ) ;
-=======
     // InternalContextModelParser.g:3678:1: rule__QualifiedPublisherRef__Group__1__Impl : ( ( rule__QualifiedPublisherRef__NodeAssignment_1 ) ) ;
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
     public final void rule__QualifiedPublisherRef__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-<<<<<<< HEAD
-            // InternalContextModel.g:1315:1: ( ( ( rule__QualifiedPublisherRef__NodeAssignment_1 ) ) )
-            // InternalContextModel.g:1316:1: ( ( rule__QualifiedPublisherRef__NodeAssignment_1 ) )
-            {
-            // InternalContextModel.g:1316:1: ( ( rule__QualifiedPublisherRef__NodeAssignment_1 ) )
-            // InternalContextModel.g:1317:2: ( rule__QualifiedPublisherRef__NodeAssignment_1 )
-            {
-             before(grammarAccess.getQualifiedPublisherRefAccess().getNodeAssignment_1()); 
-            // InternalContextModel.g:1318:2: ( rule__QualifiedPublisherRef__NodeAssignment_1 )
-            // InternalContextModel.g:1318:3: rule__QualifiedPublisherRef__NodeAssignment_1
-=======
             // InternalContextModelParser.g:3682:1: ( ( ( rule__QualifiedPublisherRef__NodeAssignment_1 ) ) )
             // InternalContextModelParser.g:3683:1: ( ( rule__QualifiedPublisherRef__NodeAssignment_1 ) )
             {
@@ -11738,7 +11187,6 @@ public class InternalContextModelParser extends AbstractInternalContentAssistPar
              before(grammarAccess.getQualifiedPublisherRefAccess().getNodeAssignment_1()); 
             // InternalContextModelParser.g:3685:2: ( rule__QualifiedPublisherRef__NodeAssignment_1 )
             // InternalContextModelParser.g:3685:3: rule__QualifiedPublisherRef__NodeAssignment_1
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
             {
             pushFollow(FOLLOW_2);
             rule__QualifiedPublisherRef__NodeAssignment_1();
@@ -11771,23 +11219,14 @@ public class InternalContextModelParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__QualifiedPublisherRef__Group__2"
-<<<<<<< HEAD
-    // InternalContextModel.g:1326:1: rule__QualifiedPublisherRef__Group__2 : rule__QualifiedPublisherRef__Group__2__Impl rule__QualifiedPublisherRef__Group__3 ;
-=======
     // InternalContextModelParser.g:3693:1: rule__QualifiedPublisherRef__Group__2 : rule__QualifiedPublisherRef__Group__2__Impl rule__QualifiedPublisherRef__Group__3 ;
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
     public final void rule__QualifiedPublisherRef__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-<<<<<<< HEAD
-            // InternalContextModel.g:1330:1: ( rule__QualifiedPublisherRef__Group__2__Impl rule__QualifiedPublisherRef__Group__3 )
-            // InternalContextModel.g:1331:2: rule__QualifiedPublisherRef__Group__2__Impl rule__QualifiedPublisherRef__Group__3
-=======
             // InternalContextModelParser.g:3697:1: ( rule__QualifiedPublisherRef__Group__2__Impl rule__QualifiedPublisherRef__Group__3 )
             // InternalContextModelParser.g:3698:2: rule__QualifiedPublisherRef__Group__2__Impl rule__QualifiedPublisherRef__Group__3
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
             {
             pushFollow(FOLLOW_20);
             rule__QualifiedPublisherRef__Group__2__Impl();
@@ -11818,26 +11257,12 @@ public class InternalContextModelParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__QualifiedPublisherRef__Group__2__Impl"
-<<<<<<< HEAD
-    // InternalContextModel.g:1338:1: rule__QualifiedPublisherRef__Group__2__Impl : ( '.' ) ;
-=======
     // InternalContextModelParser.g:3705:1: rule__QualifiedPublisherRef__Group__2__Impl : ( FullStop ) ;
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
     public final void rule__QualifiedPublisherRef__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-<<<<<<< HEAD
-            // InternalContextModel.g:1342:1: ( ( '.' ) )
-            // InternalContextModel.g:1343:1: ( '.' )
-            {
-            // InternalContextModel.g:1343:1: ( '.' )
-            // InternalContextModel.g:1344:2: '.'
-            {
-             before(grammarAccess.getQualifiedPublisherRefAccess().getFullStopKeyword_2()); 
-            match(input,31,FOLLOW_2); 
-=======
             // InternalContextModelParser.g:3709:1: ( ( FullStop ) )
             // InternalContextModelParser.g:3710:1: ( FullStop )
             {
@@ -11846,7 +11271,6 @@ public class InternalContextModelParser extends AbstractInternalContentAssistPar
             {
              before(grammarAccess.getQualifiedPublisherRefAccess().getFullStopKeyword_2()); 
             match(input,FullStop,FOLLOW_2); 
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
              after(grammarAccess.getQualifiedPublisherRefAccess().getFullStopKeyword_2()); 
 
             }
@@ -11870,23 +11294,14 @@ public class InternalContextModelParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__QualifiedPublisherRef__Group__3"
-<<<<<<< HEAD
-    // InternalContextModel.g:1353:1: rule__QualifiedPublisherRef__Group__3 : rule__QualifiedPublisherRef__Group__3__Impl ;
-=======
     // InternalContextModelParser.g:3720:1: rule__QualifiedPublisherRef__Group__3 : rule__QualifiedPublisherRef__Group__3__Impl ;
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
     public final void rule__QualifiedPublisherRef__Group__3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-<<<<<<< HEAD
-            // InternalContextModel.g:1357:1: ( rule__QualifiedPublisherRef__Group__3__Impl )
-            // InternalContextModel.g:1358:2: rule__QualifiedPublisherRef__Group__3__Impl
-=======
             // InternalContextModelParser.g:3724:1: ( rule__QualifiedPublisherRef__Group__3__Impl )
             // InternalContextModelParser.g:3725:2: rule__QualifiedPublisherRef__Group__3__Impl
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
             {
             pushFollow(FOLLOW_2);
             rule__QualifiedPublisherRef__Group__3__Impl();
@@ -11912,27 +11327,12 @@ public class InternalContextModelParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__QualifiedPublisherRef__Group__3__Impl"
-<<<<<<< HEAD
-    // InternalContextModel.g:1364:1: rule__QualifiedPublisherRef__Group__3__Impl : ( ( rule__QualifiedPublisherRef__PublisherAssignment_3 ) ) ;
-=======
     // InternalContextModelParser.g:3731:1: rule__QualifiedPublisherRef__Group__3__Impl : ( ( rule__QualifiedPublisherRef__PublisherAssignment_3 ) ) ;
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
     public final void rule__QualifiedPublisherRef__Group__3__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-<<<<<<< HEAD
-            // InternalContextModel.g:1368:1: ( ( ( rule__QualifiedPublisherRef__PublisherAssignment_3 ) ) )
-            // InternalContextModel.g:1369:1: ( ( rule__QualifiedPublisherRef__PublisherAssignment_3 ) )
-            {
-            // InternalContextModel.g:1369:1: ( ( rule__QualifiedPublisherRef__PublisherAssignment_3 ) )
-            // InternalContextModel.g:1370:2: ( rule__QualifiedPublisherRef__PublisherAssignment_3 )
-            {
-             before(grammarAccess.getQualifiedPublisherRefAccess().getPublisherAssignment_3()); 
-            // InternalContextModel.g:1371:2: ( rule__QualifiedPublisherRef__PublisherAssignment_3 )
-            // InternalContextModel.g:1371:3: rule__QualifiedPublisherRef__PublisherAssignment_3
-=======
             // InternalContextModelParser.g:3735:1: ( ( ( rule__QualifiedPublisherRef__PublisherAssignment_3 ) ) )
             // InternalContextModelParser.g:3736:1: ( ( rule__QualifiedPublisherRef__PublisherAssignment_3 ) )
             {
@@ -11942,7 +11342,6 @@ public class InternalContextModelParser extends AbstractInternalContentAssistPar
              before(grammarAccess.getQualifiedPublisherRefAccess().getPublisherAssignment_3()); 
             // InternalContextModelParser.g:3738:2: ( rule__QualifiedPublisherRef__PublisherAssignment_3 )
             // InternalContextModelParser.g:3738:3: rule__QualifiedPublisherRef__PublisherAssignment_3
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
             {
             pushFollow(FOLLOW_2);
             rule__QualifiedPublisherRef__PublisherAssignment_3();
@@ -11975,23 +11374,14 @@ public class InternalContextModelParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__QualifiedServiceServerRef__Group__0"
-<<<<<<< HEAD
-    // InternalContextModel.g:1380:1: rule__QualifiedServiceServerRef__Group__0 : rule__QualifiedServiceServerRef__Group__0__Impl rule__QualifiedServiceServerRef__Group__1 ;
-=======
     // InternalContextModelParser.g:3747:1: rule__QualifiedServiceServerRef__Group__0 : rule__QualifiedServiceServerRef__Group__0__Impl rule__QualifiedServiceServerRef__Group__1 ;
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
     public final void rule__QualifiedServiceServerRef__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-<<<<<<< HEAD
-            // InternalContextModel.g:1384:1: ( rule__QualifiedServiceServerRef__Group__0__Impl rule__QualifiedServiceServerRef__Group__1 )
-            // InternalContextModel.g:1385:2: rule__QualifiedServiceServerRef__Group__0__Impl rule__QualifiedServiceServerRef__Group__1
-=======
             // InternalContextModelParser.g:3751:1: ( rule__QualifiedServiceServerRef__Group__0__Impl rule__QualifiedServiceServerRef__Group__1 )
             // InternalContextModelParser.g:3752:2: rule__QualifiedServiceServerRef__Group__0__Impl rule__QualifiedServiceServerRef__Group__1
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
             {
             pushFollow(FOLLOW_20);
             rule__QualifiedServiceServerRef__Group__0__Impl();
@@ -12022,26 +11412,12 @@ public class InternalContextModelParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__QualifiedServiceServerRef__Group__0__Impl"
-<<<<<<< HEAD
-    // InternalContextModel.g:1392:1: rule__QualifiedServiceServerRef__Group__0__Impl : ( 'service:' ) ;
-=======
     // InternalContextModelParser.g:3759:1: rule__QualifiedServiceServerRef__Group__0__Impl : ( Service_1 ) ;
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
     public final void rule__QualifiedServiceServerRef__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-<<<<<<< HEAD
-            // InternalContextModel.g:1396:1: ( ( 'service:' ) )
-            // InternalContextModel.g:1397:1: ( 'service:' )
-            {
-            // InternalContextModel.g:1397:1: ( 'service:' )
-            // InternalContextModel.g:1398:2: 'service:'
-            {
-             before(grammarAccess.getQualifiedServiceServerRefAccess().getServiceKeyword_0()); 
-            match(input,32,FOLLOW_2); 
-=======
             // InternalContextModelParser.g:3763:1: ( ( Service_1 ) )
             // InternalContextModelParser.g:3764:1: ( Service_1 )
             {
@@ -12050,7 +11426,6 @@ public class InternalContextModelParser extends AbstractInternalContentAssistPar
             {
              before(grammarAccess.getQualifiedServiceServerRefAccess().getServiceKeyword_0()); 
             match(input,Service_1,FOLLOW_2); 
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
              after(grammarAccess.getQualifiedServiceServerRefAccess().getServiceKeyword_0()); 
 
             }
@@ -12074,23 +11449,14 @@ public class InternalContextModelParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__QualifiedServiceServerRef__Group__1"
-<<<<<<< HEAD
-    // InternalContextModel.g:1407:1: rule__QualifiedServiceServerRef__Group__1 : rule__QualifiedServiceServerRef__Group__1__Impl rule__QualifiedServiceServerRef__Group__2 ;
-=======
     // InternalContextModelParser.g:3774:1: rule__QualifiedServiceServerRef__Group__1 : rule__QualifiedServiceServerRef__Group__1__Impl rule__QualifiedServiceServerRef__Group__2 ;
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
     public final void rule__QualifiedServiceServerRef__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-<<<<<<< HEAD
-            // InternalContextModel.g:1411:1: ( rule__QualifiedServiceServerRef__Group__1__Impl rule__QualifiedServiceServerRef__Group__2 )
-            // InternalContextModel.g:1412:2: rule__QualifiedServiceServerRef__Group__1__Impl rule__QualifiedServiceServerRef__Group__2
-=======
             // InternalContextModelParser.g:3778:1: ( rule__QualifiedServiceServerRef__Group__1__Impl rule__QualifiedServiceServerRef__Group__2 )
             // InternalContextModelParser.g:3779:2: rule__QualifiedServiceServerRef__Group__1__Impl rule__QualifiedServiceServerRef__Group__2
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
             {
             pushFollow(FOLLOW_21);
             rule__QualifiedServiceServerRef__Group__1__Impl();
@@ -12121,27 +11487,12 @@ public class InternalContextModelParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__QualifiedServiceServerRef__Group__1__Impl"
-<<<<<<< HEAD
-    // InternalContextModel.g:1419:1: rule__QualifiedServiceServerRef__Group__1__Impl : ( ( rule__QualifiedServiceServerRef__NodeAssignment_1 ) ) ;
-=======
     // InternalContextModelParser.g:3786:1: rule__QualifiedServiceServerRef__Group__1__Impl : ( ( rule__QualifiedServiceServerRef__NodeAssignment_1 ) ) ;
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
     public final void rule__QualifiedServiceServerRef__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-<<<<<<< HEAD
-            // InternalContextModel.g:1423:1: ( ( ( rule__QualifiedServiceServerRef__NodeAssignment_1 ) ) )
-            // InternalContextModel.g:1424:1: ( ( rule__QualifiedServiceServerRef__NodeAssignment_1 ) )
-            {
-            // InternalContextModel.g:1424:1: ( ( rule__QualifiedServiceServerRef__NodeAssignment_1 ) )
-            // InternalContextModel.g:1425:2: ( rule__QualifiedServiceServerRef__NodeAssignment_1 )
-            {
-             before(grammarAccess.getQualifiedServiceServerRefAccess().getNodeAssignment_1()); 
-            // InternalContextModel.g:1426:2: ( rule__QualifiedServiceServerRef__NodeAssignment_1 )
-            // InternalContextModel.g:1426:3: rule__QualifiedServiceServerRef__NodeAssignment_1
-=======
             // InternalContextModelParser.g:3790:1: ( ( ( rule__QualifiedServiceServerRef__NodeAssignment_1 ) ) )
             // InternalContextModelParser.g:3791:1: ( ( rule__QualifiedServiceServerRef__NodeAssignment_1 ) )
             {
@@ -12151,7 +11502,6 @@ public class InternalContextModelParser extends AbstractInternalContentAssistPar
              before(grammarAccess.getQualifiedServiceServerRefAccess().getNodeAssignment_1()); 
             // InternalContextModelParser.g:3793:2: ( rule__QualifiedServiceServerRef__NodeAssignment_1 )
             // InternalContextModelParser.g:3793:3: rule__QualifiedServiceServerRef__NodeAssignment_1
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
             {
             pushFollow(FOLLOW_2);
             rule__QualifiedServiceServerRef__NodeAssignment_1();
@@ -12184,23 +11534,14 @@ public class InternalContextModelParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__QualifiedServiceServerRef__Group__2"
-<<<<<<< HEAD
-    // InternalContextModel.g:1434:1: rule__QualifiedServiceServerRef__Group__2 : rule__QualifiedServiceServerRef__Group__2__Impl rule__QualifiedServiceServerRef__Group__3 ;
-=======
     // InternalContextModelParser.g:3801:1: rule__QualifiedServiceServerRef__Group__2 : rule__QualifiedServiceServerRef__Group__2__Impl rule__QualifiedServiceServerRef__Group__3 ;
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
     public final void rule__QualifiedServiceServerRef__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-<<<<<<< HEAD
-            // InternalContextModel.g:1438:1: ( rule__QualifiedServiceServerRef__Group__2__Impl rule__QualifiedServiceServerRef__Group__3 )
-            // InternalContextModel.g:1439:2: rule__QualifiedServiceServerRef__Group__2__Impl rule__QualifiedServiceServerRef__Group__3
-=======
             // InternalContextModelParser.g:3805:1: ( rule__QualifiedServiceServerRef__Group__2__Impl rule__QualifiedServiceServerRef__Group__3 )
             // InternalContextModelParser.g:3806:2: rule__QualifiedServiceServerRef__Group__2__Impl rule__QualifiedServiceServerRef__Group__3
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
             {
             pushFollow(FOLLOW_20);
             rule__QualifiedServiceServerRef__Group__2__Impl();
@@ -12231,26 +11572,12 @@ public class InternalContextModelParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__QualifiedServiceServerRef__Group__2__Impl"
-<<<<<<< HEAD
-    // InternalContextModel.g:1446:1: rule__QualifiedServiceServerRef__Group__2__Impl : ( '.' ) ;
-=======
     // InternalContextModelParser.g:3813:1: rule__QualifiedServiceServerRef__Group__2__Impl : ( FullStop ) ;
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
     public final void rule__QualifiedServiceServerRef__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-<<<<<<< HEAD
-            // InternalContextModel.g:1450:1: ( ( '.' ) )
-            // InternalContextModel.g:1451:1: ( '.' )
-            {
-            // InternalContextModel.g:1451:1: ( '.' )
-            // InternalContextModel.g:1452:2: '.'
-            {
-             before(grammarAccess.getQualifiedServiceServerRefAccess().getFullStopKeyword_2()); 
-            match(input,31,FOLLOW_2); 
-=======
             // InternalContextModelParser.g:3817:1: ( ( FullStop ) )
             // InternalContextModelParser.g:3818:1: ( FullStop )
             {
@@ -12259,7 +11586,6 @@ public class InternalContextModelParser extends AbstractInternalContentAssistPar
             {
              before(grammarAccess.getQualifiedServiceServerRefAccess().getFullStopKeyword_2()); 
             match(input,FullStop,FOLLOW_2); 
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
              after(grammarAccess.getQualifiedServiceServerRefAccess().getFullStopKeyword_2()); 
 
             }
@@ -12283,23 +11609,14 @@ public class InternalContextModelParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__QualifiedServiceServerRef__Group__3"
-<<<<<<< HEAD
-    // InternalContextModel.g:1461:1: rule__QualifiedServiceServerRef__Group__3 : rule__QualifiedServiceServerRef__Group__3__Impl rule__QualifiedServiceServerRef__Group__4 ;
-=======
     // InternalContextModelParser.g:3828:1: rule__QualifiedServiceServerRef__Group__3 : rule__QualifiedServiceServerRef__Group__3__Impl rule__QualifiedServiceServerRef__Group__4 ;
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
     public final void rule__QualifiedServiceServerRef__Group__3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-<<<<<<< HEAD
-            // InternalContextModel.g:1465:1: ( rule__QualifiedServiceServerRef__Group__3__Impl rule__QualifiedServiceServerRef__Group__4 )
-            // InternalContextModel.g:1466:2: rule__QualifiedServiceServerRef__Group__3__Impl rule__QualifiedServiceServerRef__Group__4
-=======
             // InternalContextModelParser.g:3832:1: ( rule__QualifiedServiceServerRef__Group__3__Impl rule__QualifiedServiceServerRef__Group__4 )
             // InternalContextModelParser.g:3833:2: rule__QualifiedServiceServerRef__Group__3__Impl rule__QualifiedServiceServerRef__Group__4
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
             {
             pushFollow(FOLLOW_22);
             rule__QualifiedServiceServerRef__Group__3__Impl();
@@ -12330,27 +11647,12 @@ public class InternalContextModelParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__QualifiedServiceServerRef__Group__3__Impl"
-<<<<<<< HEAD
-    // InternalContextModel.g:1473:1: rule__QualifiedServiceServerRef__Group__3__Impl : ( ( rule__QualifiedServiceServerRef__ServiceServerAssignment_3 ) ) ;
-=======
     // InternalContextModelParser.g:3840:1: rule__QualifiedServiceServerRef__Group__3__Impl : ( ( rule__QualifiedServiceServerRef__ServiceServerAssignment_3 ) ) ;
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
     public final void rule__QualifiedServiceServerRef__Group__3__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-<<<<<<< HEAD
-            // InternalContextModel.g:1477:1: ( ( ( rule__QualifiedServiceServerRef__ServiceServerAssignment_3 ) ) )
-            // InternalContextModel.g:1478:1: ( ( rule__QualifiedServiceServerRef__ServiceServerAssignment_3 ) )
-            {
-            // InternalContextModel.g:1478:1: ( ( rule__QualifiedServiceServerRef__ServiceServerAssignment_3 ) )
-            // InternalContextModel.g:1479:2: ( rule__QualifiedServiceServerRef__ServiceServerAssignment_3 )
-            {
-             before(grammarAccess.getQualifiedServiceServerRefAccess().getServiceServerAssignment_3()); 
-            // InternalContextModel.g:1480:2: ( rule__QualifiedServiceServerRef__ServiceServerAssignment_3 )
-            // InternalContextModel.g:1480:3: rule__QualifiedServiceServerRef__ServiceServerAssignment_3
-=======
             // InternalContextModelParser.g:3844:1: ( ( ( rule__QualifiedServiceServerRef__ServiceServerAssignment_3 ) ) )
             // InternalContextModelParser.g:3845:1: ( ( rule__QualifiedServiceServerRef__ServiceServerAssignment_3 ) )
             {
@@ -12360,7 +11662,6 @@ public class InternalContextModelParser extends AbstractInternalContentAssistPar
              before(grammarAccess.getQualifiedServiceServerRefAccess().getServiceServerAssignment_3()); 
             // InternalContextModelParser.g:3847:2: ( rule__QualifiedServiceServerRef__ServiceServerAssignment_3 )
             // InternalContextModelParser.g:3847:3: rule__QualifiedServiceServerRef__ServiceServerAssignment_3
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
             {
             pushFollow(FOLLOW_2);
             rule__QualifiedServiceServerRef__ServiceServerAssignment_3();
@@ -12393,23 +11694,14 @@ public class InternalContextModelParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__QualifiedServiceServerRef__Group__4"
-<<<<<<< HEAD
-    // InternalContextModel.g:1488:1: rule__QualifiedServiceServerRef__Group__4 : rule__QualifiedServiceServerRef__Group__4__Impl rule__QualifiedServiceServerRef__Group__5 ;
-=======
     // InternalContextModelParser.g:3855:1: rule__QualifiedServiceServerRef__Group__4 : rule__QualifiedServiceServerRef__Group__4__Impl rule__QualifiedServiceServerRef__Group__5 ;
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
     public final void rule__QualifiedServiceServerRef__Group__4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-<<<<<<< HEAD
-            // InternalContextModel.g:1492:1: ( rule__QualifiedServiceServerRef__Group__4__Impl rule__QualifiedServiceServerRef__Group__5 )
-            // InternalContextModel.g:1493:2: rule__QualifiedServiceServerRef__Group__4__Impl rule__QualifiedServiceServerRef__Group__5
-=======
             // InternalContextModelParser.g:3859:1: ( rule__QualifiedServiceServerRef__Group__4__Impl rule__QualifiedServiceServerRef__Group__5 )
             // InternalContextModelParser.g:3860:2: rule__QualifiedServiceServerRef__Group__4__Impl rule__QualifiedServiceServerRef__Group__5
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
             {
             pushFollow(FOLLOW_12);
             rule__QualifiedServiceServerRef__Group__4__Impl();
@@ -12440,26 +11732,12 @@ public class InternalContextModelParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__QualifiedServiceServerRef__Group__4__Impl"
-<<<<<<< HEAD
-    // InternalContextModel.g:1500:1: rule__QualifiedServiceServerRef__Group__4__Impl : ( 'request_kwargs' ) ;
-=======
     // InternalContextModelParser.g:3867:1: rule__QualifiedServiceServerRef__Group__4__Impl : ( Request_kwargs ) ;
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
     public final void rule__QualifiedServiceServerRef__Group__4__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-<<<<<<< HEAD
-            // InternalContextModel.g:1504:1: ( ( 'request_kwargs' ) )
-            // InternalContextModel.g:1505:1: ( 'request_kwargs' )
-            {
-            // InternalContextModel.g:1505:1: ( 'request_kwargs' )
-            // InternalContextModel.g:1506:2: 'request_kwargs'
-            {
-             before(grammarAccess.getQualifiedServiceServerRefAccess().getRequest_kwargsKeyword_4()); 
-            match(input,33,FOLLOW_2); 
-=======
             // InternalContextModelParser.g:3871:1: ( ( Request_kwargs ) )
             // InternalContextModelParser.g:3872:1: ( Request_kwargs )
             {
@@ -12468,7 +11746,6 @@ public class InternalContextModelParser extends AbstractInternalContentAssistPar
             {
              before(grammarAccess.getQualifiedServiceServerRefAccess().getRequest_kwargsKeyword_4()); 
             match(input,Request_kwargs,FOLLOW_2); 
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
              after(grammarAccess.getQualifiedServiceServerRefAccess().getRequest_kwargsKeyword_4()); 
 
             }
@@ -12492,23 +11769,14 @@ public class InternalContextModelParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__QualifiedServiceServerRef__Group__5"
-<<<<<<< HEAD
-    // InternalContextModel.g:1515:1: rule__QualifiedServiceServerRef__Group__5 : rule__QualifiedServiceServerRef__Group__5__Impl ;
-=======
     // InternalContextModelParser.g:3882:1: rule__QualifiedServiceServerRef__Group__5 : rule__QualifiedServiceServerRef__Group__5__Impl ;
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
     public final void rule__QualifiedServiceServerRef__Group__5() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-<<<<<<< HEAD
-            // InternalContextModel.g:1519:1: ( rule__QualifiedServiceServerRef__Group__5__Impl )
-            // InternalContextModel.g:1520:2: rule__QualifiedServiceServerRef__Group__5__Impl
-=======
             // InternalContextModelParser.g:3886:1: ( rule__QualifiedServiceServerRef__Group__5__Impl )
             // InternalContextModelParser.g:3887:2: rule__QualifiedServiceServerRef__Group__5__Impl
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
             {
             pushFollow(FOLLOW_2);
             rule__QualifiedServiceServerRef__Group__5__Impl();
@@ -12534,27 +11802,12 @@ public class InternalContextModelParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__QualifiedServiceServerRef__Group__5__Impl"
-<<<<<<< HEAD
-    // InternalContextModel.g:1526:1: rule__QualifiedServiceServerRef__Group__5__Impl : ( ( rule__QualifiedServiceServerRef__KwargsAssignment_5 ) ) ;
-=======
     // InternalContextModelParser.g:3893:1: rule__QualifiedServiceServerRef__Group__5__Impl : ( ( rule__QualifiedServiceServerRef__KwargsAssignment_5 ) ) ;
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
     public final void rule__QualifiedServiceServerRef__Group__5__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-<<<<<<< HEAD
-            // InternalContextModel.g:1530:1: ( ( ( rule__QualifiedServiceServerRef__KwargsAssignment_5 ) ) )
-            // InternalContextModel.g:1531:1: ( ( rule__QualifiedServiceServerRef__KwargsAssignment_5 ) )
-            {
-            // InternalContextModel.g:1531:1: ( ( rule__QualifiedServiceServerRef__KwargsAssignment_5 ) )
-            // InternalContextModel.g:1532:2: ( rule__QualifiedServiceServerRef__KwargsAssignment_5 )
-            {
-             before(grammarAccess.getQualifiedServiceServerRefAccess().getKwargsAssignment_5()); 
-            // InternalContextModel.g:1533:2: ( rule__QualifiedServiceServerRef__KwargsAssignment_5 )
-            // InternalContextModel.g:1533:3: rule__QualifiedServiceServerRef__KwargsAssignment_5
-=======
             // InternalContextModelParser.g:3897:1: ( ( ( rule__QualifiedServiceServerRef__KwargsAssignment_5 ) ) )
             // InternalContextModelParser.g:3898:1: ( ( rule__QualifiedServiceServerRef__KwargsAssignment_5 ) )
             {
@@ -12564,7 +11817,6 @@ public class InternalContextModelParser extends AbstractInternalContentAssistPar
              before(grammarAccess.getQualifiedServiceServerRefAccess().getKwargsAssignment_5()); 
             // InternalContextModelParser.g:3900:2: ( rule__QualifiedServiceServerRef__KwargsAssignment_5 )
             // InternalContextModelParser.g:3900:3: rule__QualifiedServiceServerRef__KwargsAssignment_5
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
             {
             pushFollow(FOLLOW_2);
             rule__QualifiedServiceServerRef__KwargsAssignment_5();
@@ -12597,23 +11849,14 @@ public class InternalContextModelParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__QualifiedActionServerRef__Group__0"
-<<<<<<< HEAD
-    // InternalContextModel.g:1542:1: rule__QualifiedActionServerRef__Group__0 : rule__QualifiedActionServerRef__Group__0__Impl rule__QualifiedActionServerRef__Group__1 ;
-=======
     // InternalContextModelParser.g:3909:1: rule__QualifiedActionServerRef__Group__0 : rule__QualifiedActionServerRef__Group__0__Impl rule__QualifiedActionServerRef__Group__1 ;
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
     public final void rule__QualifiedActionServerRef__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-<<<<<<< HEAD
-            // InternalContextModel.g:1546:1: ( rule__QualifiedActionServerRef__Group__0__Impl rule__QualifiedActionServerRef__Group__1 )
-            // InternalContextModel.g:1547:2: rule__QualifiedActionServerRef__Group__0__Impl rule__QualifiedActionServerRef__Group__1
-=======
             // InternalContextModelParser.g:3913:1: ( rule__QualifiedActionServerRef__Group__0__Impl rule__QualifiedActionServerRef__Group__1 )
             // InternalContextModelParser.g:3914:2: rule__QualifiedActionServerRef__Group__0__Impl rule__QualifiedActionServerRef__Group__1
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
             {
             pushFollow(FOLLOW_20);
             rule__QualifiedActionServerRef__Group__0__Impl();
@@ -12644,26 +11887,12 @@ public class InternalContextModelParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__QualifiedActionServerRef__Group__0__Impl"
-<<<<<<< HEAD
-    // InternalContextModel.g:1554:1: rule__QualifiedActionServerRef__Group__0__Impl : ( 'action:' ) ;
-=======
     // InternalContextModelParser.g:3921:1: rule__QualifiedActionServerRef__Group__0__Impl : ( Action_1 ) ;
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
     public final void rule__QualifiedActionServerRef__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-<<<<<<< HEAD
-            // InternalContextModel.g:1558:1: ( ( 'action:' ) )
-            // InternalContextModel.g:1559:1: ( 'action:' )
-            {
-            // InternalContextModel.g:1559:1: ( 'action:' )
-            // InternalContextModel.g:1560:2: 'action:'
-            {
-             before(grammarAccess.getQualifiedActionServerRefAccess().getActionKeyword_0()); 
-            match(input,34,FOLLOW_2); 
-=======
             // InternalContextModelParser.g:3925:1: ( ( Action_1 ) )
             // InternalContextModelParser.g:3926:1: ( Action_1 )
             {
@@ -12672,7 +11901,6 @@ public class InternalContextModelParser extends AbstractInternalContentAssistPar
             {
              before(grammarAccess.getQualifiedActionServerRefAccess().getActionKeyword_0()); 
             match(input,Action_1,FOLLOW_2); 
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
              after(grammarAccess.getQualifiedActionServerRefAccess().getActionKeyword_0()); 
 
             }
@@ -12696,23 +11924,14 @@ public class InternalContextModelParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__QualifiedActionServerRef__Group__1"
-<<<<<<< HEAD
-    // InternalContextModel.g:1569:1: rule__QualifiedActionServerRef__Group__1 : rule__QualifiedActionServerRef__Group__1__Impl rule__QualifiedActionServerRef__Group__2 ;
-=======
     // InternalContextModelParser.g:3936:1: rule__QualifiedActionServerRef__Group__1 : rule__QualifiedActionServerRef__Group__1__Impl rule__QualifiedActionServerRef__Group__2 ;
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
     public final void rule__QualifiedActionServerRef__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-<<<<<<< HEAD
-            // InternalContextModel.g:1573:1: ( rule__QualifiedActionServerRef__Group__1__Impl rule__QualifiedActionServerRef__Group__2 )
-            // InternalContextModel.g:1574:2: rule__QualifiedActionServerRef__Group__1__Impl rule__QualifiedActionServerRef__Group__2
-=======
             // InternalContextModelParser.g:3940:1: ( rule__QualifiedActionServerRef__Group__1__Impl rule__QualifiedActionServerRef__Group__2 )
             // InternalContextModelParser.g:3941:2: rule__QualifiedActionServerRef__Group__1__Impl rule__QualifiedActionServerRef__Group__2
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
             {
             pushFollow(FOLLOW_21);
             rule__QualifiedActionServerRef__Group__1__Impl();
@@ -12743,27 +11962,12 @@ public class InternalContextModelParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__QualifiedActionServerRef__Group__1__Impl"
-<<<<<<< HEAD
-    // InternalContextModel.g:1581:1: rule__QualifiedActionServerRef__Group__1__Impl : ( ( rule__QualifiedActionServerRef__NodeAssignment_1 ) ) ;
-=======
     // InternalContextModelParser.g:3948:1: rule__QualifiedActionServerRef__Group__1__Impl : ( ( rule__QualifiedActionServerRef__NodeAssignment_1 ) ) ;
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
     public final void rule__QualifiedActionServerRef__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-<<<<<<< HEAD
-            // InternalContextModel.g:1585:1: ( ( ( rule__QualifiedActionServerRef__NodeAssignment_1 ) ) )
-            // InternalContextModel.g:1586:1: ( ( rule__QualifiedActionServerRef__NodeAssignment_1 ) )
-            {
-            // InternalContextModel.g:1586:1: ( ( rule__QualifiedActionServerRef__NodeAssignment_1 ) )
-            // InternalContextModel.g:1587:2: ( rule__QualifiedActionServerRef__NodeAssignment_1 )
-            {
-             before(grammarAccess.getQualifiedActionServerRefAccess().getNodeAssignment_1()); 
-            // InternalContextModel.g:1588:2: ( rule__QualifiedActionServerRef__NodeAssignment_1 )
-            // InternalContextModel.g:1588:3: rule__QualifiedActionServerRef__NodeAssignment_1
-=======
             // InternalContextModelParser.g:3952:1: ( ( ( rule__QualifiedActionServerRef__NodeAssignment_1 ) ) )
             // InternalContextModelParser.g:3953:1: ( ( rule__QualifiedActionServerRef__NodeAssignment_1 ) )
             {
@@ -12773,7 +11977,6 @@ public class InternalContextModelParser extends AbstractInternalContentAssistPar
              before(grammarAccess.getQualifiedActionServerRefAccess().getNodeAssignment_1()); 
             // InternalContextModelParser.g:3955:2: ( rule__QualifiedActionServerRef__NodeAssignment_1 )
             // InternalContextModelParser.g:3955:3: rule__QualifiedActionServerRef__NodeAssignment_1
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
             {
             pushFollow(FOLLOW_2);
             rule__QualifiedActionServerRef__NodeAssignment_1();
@@ -12806,23 +12009,14 @@ public class InternalContextModelParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__QualifiedActionServerRef__Group__2"
-<<<<<<< HEAD
-    // InternalContextModel.g:1596:1: rule__QualifiedActionServerRef__Group__2 : rule__QualifiedActionServerRef__Group__2__Impl rule__QualifiedActionServerRef__Group__3 ;
-=======
     // InternalContextModelParser.g:3963:1: rule__QualifiedActionServerRef__Group__2 : rule__QualifiedActionServerRef__Group__2__Impl rule__QualifiedActionServerRef__Group__3 ;
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
     public final void rule__QualifiedActionServerRef__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-<<<<<<< HEAD
-            // InternalContextModel.g:1600:1: ( rule__QualifiedActionServerRef__Group__2__Impl rule__QualifiedActionServerRef__Group__3 )
-            // InternalContextModel.g:1601:2: rule__QualifiedActionServerRef__Group__2__Impl rule__QualifiedActionServerRef__Group__3
-=======
             // InternalContextModelParser.g:3967:1: ( rule__QualifiedActionServerRef__Group__2__Impl rule__QualifiedActionServerRef__Group__3 )
             // InternalContextModelParser.g:3968:2: rule__QualifiedActionServerRef__Group__2__Impl rule__QualifiedActionServerRef__Group__3
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
             {
             pushFollow(FOLLOW_20);
             rule__QualifiedActionServerRef__Group__2__Impl();
@@ -12853,26 +12047,12 @@ public class InternalContextModelParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__QualifiedActionServerRef__Group__2__Impl"
-<<<<<<< HEAD
-    // InternalContextModel.g:1608:1: rule__QualifiedActionServerRef__Group__2__Impl : ( '.' ) ;
-=======
     // InternalContextModelParser.g:3975:1: rule__QualifiedActionServerRef__Group__2__Impl : ( FullStop ) ;
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
     public final void rule__QualifiedActionServerRef__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-<<<<<<< HEAD
-            // InternalContextModel.g:1612:1: ( ( '.' ) )
-            // InternalContextModel.g:1613:1: ( '.' )
-            {
-            // InternalContextModel.g:1613:1: ( '.' )
-            // InternalContextModel.g:1614:2: '.'
-            {
-             before(grammarAccess.getQualifiedActionServerRefAccess().getFullStopKeyword_2()); 
-            match(input,31,FOLLOW_2); 
-=======
             // InternalContextModelParser.g:3979:1: ( ( FullStop ) )
             // InternalContextModelParser.g:3980:1: ( FullStop )
             {
@@ -12881,7 +12061,6 @@ public class InternalContextModelParser extends AbstractInternalContentAssistPar
             {
              before(grammarAccess.getQualifiedActionServerRefAccess().getFullStopKeyword_2()); 
             match(input,FullStop,FOLLOW_2); 
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
              after(grammarAccess.getQualifiedActionServerRefAccess().getFullStopKeyword_2()); 
 
             }
@@ -12905,23 +12084,14 @@ public class InternalContextModelParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__QualifiedActionServerRef__Group__3"
-<<<<<<< HEAD
-    // InternalContextModel.g:1623:1: rule__QualifiedActionServerRef__Group__3 : rule__QualifiedActionServerRef__Group__3__Impl rule__QualifiedActionServerRef__Group__4 ;
-=======
     // InternalContextModelParser.g:3990:1: rule__QualifiedActionServerRef__Group__3 : rule__QualifiedActionServerRef__Group__3__Impl rule__QualifiedActionServerRef__Group__4 ;
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
     public final void rule__QualifiedActionServerRef__Group__3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-<<<<<<< HEAD
-            // InternalContextModel.g:1627:1: ( rule__QualifiedActionServerRef__Group__3__Impl rule__QualifiedActionServerRef__Group__4 )
-            // InternalContextModel.g:1628:2: rule__QualifiedActionServerRef__Group__3__Impl rule__QualifiedActionServerRef__Group__4
-=======
             // InternalContextModelParser.g:3994:1: ( rule__QualifiedActionServerRef__Group__3__Impl rule__QualifiedActionServerRef__Group__4 )
             // InternalContextModelParser.g:3995:2: rule__QualifiedActionServerRef__Group__3__Impl rule__QualifiedActionServerRef__Group__4
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
             {
             pushFollow(FOLLOW_23);
             rule__QualifiedActionServerRef__Group__3__Impl();
@@ -12952,27 +12122,12 @@ public class InternalContextModelParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__QualifiedActionServerRef__Group__3__Impl"
-<<<<<<< HEAD
-    // InternalContextModel.g:1635:1: rule__QualifiedActionServerRef__Group__3__Impl : ( ( rule__QualifiedActionServerRef__ActionServerAssignment_3 ) ) ;
-=======
     // InternalContextModelParser.g:4002:1: rule__QualifiedActionServerRef__Group__3__Impl : ( ( rule__QualifiedActionServerRef__ActionServerAssignment_3 ) ) ;
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
     public final void rule__QualifiedActionServerRef__Group__3__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-<<<<<<< HEAD
-            // InternalContextModel.g:1639:1: ( ( ( rule__QualifiedActionServerRef__ActionServerAssignment_3 ) ) )
-            // InternalContextModel.g:1640:1: ( ( rule__QualifiedActionServerRef__ActionServerAssignment_3 ) )
-            {
-            // InternalContextModel.g:1640:1: ( ( rule__QualifiedActionServerRef__ActionServerAssignment_3 ) )
-            // InternalContextModel.g:1641:2: ( rule__QualifiedActionServerRef__ActionServerAssignment_3 )
-            {
-             before(grammarAccess.getQualifiedActionServerRefAccess().getActionServerAssignment_3()); 
-            // InternalContextModel.g:1642:2: ( rule__QualifiedActionServerRef__ActionServerAssignment_3 )
-            // InternalContextModel.g:1642:3: rule__QualifiedActionServerRef__ActionServerAssignment_3
-=======
             // InternalContextModelParser.g:4006:1: ( ( ( rule__QualifiedActionServerRef__ActionServerAssignment_3 ) ) )
             // InternalContextModelParser.g:4007:1: ( ( rule__QualifiedActionServerRef__ActionServerAssignment_3 ) )
             {
@@ -12982,7 +12137,6 @@ public class InternalContextModelParser extends AbstractInternalContentAssistPar
              before(grammarAccess.getQualifiedActionServerRefAccess().getActionServerAssignment_3()); 
             // InternalContextModelParser.g:4009:2: ( rule__QualifiedActionServerRef__ActionServerAssignment_3 )
             // InternalContextModelParser.g:4009:3: rule__QualifiedActionServerRef__ActionServerAssignment_3
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
             {
             pushFollow(FOLLOW_2);
             rule__QualifiedActionServerRef__ActionServerAssignment_3();
@@ -13015,23 +12169,14 @@ public class InternalContextModelParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__QualifiedActionServerRef__Group__4"
-<<<<<<< HEAD
-    // InternalContextModel.g:1650:1: rule__QualifiedActionServerRef__Group__4 : rule__QualifiedActionServerRef__Group__4__Impl rule__QualifiedActionServerRef__Group__5 ;
-=======
     // InternalContextModelParser.g:4017:1: rule__QualifiedActionServerRef__Group__4 : rule__QualifiedActionServerRef__Group__4__Impl rule__QualifiedActionServerRef__Group__5 ;
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
     public final void rule__QualifiedActionServerRef__Group__4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-<<<<<<< HEAD
-            // InternalContextModel.g:1654:1: ( rule__QualifiedActionServerRef__Group__4__Impl rule__QualifiedActionServerRef__Group__5 )
-            // InternalContextModel.g:1655:2: rule__QualifiedActionServerRef__Group__4__Impl rule__QualifiedActionServerRef__Group__5
-=======
             // InternalContextModelParser.g:4021:1: ( rule__QualifiedActionServerRef__Group__4__Impl rule__QualifiedActionServerRef__Group__5 )
             // InternalContextModelParser.g:4022:2: rule__QualifiedActionServerRef__Group__4__Impl rule__QualifiedActionServerRef__Group__5
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
             {
             pushFollow(FOLLOW_12);
             rule__QualifiedActionServerRef__Group__4__Impl();
@@ -13062,26 +12207,12 @@ public class InternalContextModelParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__QualifiedActionServerRef__Group__4__Impl"
-<<<<<<< HEAD
-    // InternalContextModel.g:1662:1: rule__QualifiedActionServerRef__Group__4__Impl : ( 'goal_kwargs' ) ;
-=======
     // InternalContextModelParser.g:4029:1: rule__QualifiedActionServerRef__Group__4__Impl : ( Goal_kwargs ) ;
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
     public final void rule__QualifiedActionServerRef__Group__4__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-<<<<<<< HEAD
-            // InternalContextModel.g:1666:1: ( ( 'goal_kwargs' ) )
-            // InternalContextModel.g:1667:1: ( 'goal_kwargs' )
-            {
-            // InternalContextModel.g:1667:1: ( 'goal_kwargs' )
-            // InternalContextModel.g:1668:2: 'goal_kwargs'
-            {
-             before(grammarAccess.getQualifiedActionServerRefAccess().getGoal_kwargsKeyword_4()); 
-            match(input,35,FOLLOW_2); 
-=======
             // InternalContextModelParser.g:4033:1: ( ( Goal_kwargs ) )
             // InternalContextModelParser.g:4034:1: ( Goal_kwargs )
             {
@@ -13090,7 +12221,6 @@ public class InternalContextModelParser extends AbstractInternalContentAssistPar
             {
              before(grammarAccess.getQualifiedActionServerRefAccess().getGoal_kwargsKeyword_4()); 
             match(input,Goal_kwargs,FOLLOW_2); 
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
              after(grammarAccess.getQualifiedActionServerRefAccess().getGoal_kwargsKeyword_4()); 
 
             }
@@ -13114,23 +12244,14 @@ public class InternalContextModelParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__QualifiedActionServerRef__Group__5"
-<<<<<<< HEAD
-    // InternalContextModel.g:1677:1: rule__QualifiedActionServerRef__Group__5 : rule__QualifiedActionServerRef__Group__5__Impl ;
-=======
     // InternalContextModelParser.g:4044:1: rule__QualifiedActionServerRef__Group__5 : rule__QualifiedActionServerRef__Group__5__Impl ;
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
     public final void rule__QualifiedActionServerRef__Group__5() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-<<<<<<< HEAD
-            // InternalContextModel.g:1681:1: ( rule__QualifiedActionServerRef__Group__5__Impl )
-            // InternalContextModel.g:1682:2: rule__QualifiedActionServerRef__Group__5__Impl
-=======
             // InternalContextModelParser.g:4048:1: ( rule__QualifiedActionServerRef__Group__5__Impl )
             // InternalContextModelParser.g:4049:2: rule__QualifiedActionServerRef__Group__5__Impl
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
             {
             pushFollow(FOLLOW_2);
             rule__QualifiedActionServerRef__Group__5__Impl();
@@ -13156,27 +12277,12 @@ public class InternalContextModelParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__QualifiedActionServerRef__Group__5__Impl"
-<<<<<<< HEAD
-    // InternalContextModel.g:1688:1: rule__QualifiedActionServerRef__Group__5__Impl : ( ( rule__QualifiedActionServerRef__KwargsAssignment_5 ) ) ;
-=======
     // InternalContextModelParser.g:4055:1: rule__QualifiedActionServerRef__Group__5__Impl : ( ( rule__QualifiedActionServerRef__KwargsAssignment_5 ) ) ;
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
     public final void rule__QualifiedActionServerRef__Group__5__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-<<<<<<< HEAD
-            // InternalContextModel.g:1692:1: ( ( ( rule__QualifiedActionServerRef__KwargsAssignment_5 ) ) )
-            // InternalContextModel.g:1693:1: ( ( rule__QualifiedActionServerRef__KwargsAssignment_5 ) )
-            {
-            // InternalContextModel.g:1693:1: ( ( rule__QualifiedActionServerRef__KwargsAssignment_5 ) )
-            // InternalContextModel.g:1694:2: ( rule__QualifiedActionServerRef__KwargsAssignment_5 )
-            {
-             before(grammarAccess.getQualifiedActionServerRefAccess().getKwargsAssignment_5()); 
-            // InternalContextModel.g:1695:2: ( rule__QualifiedActionServerRef__KwargsAssignment_5 )
-            // InternalContextModel.g:1695:3: rule__QualifiedActionServerRef__KwargsAssignment_5
-=======
             // InternalContextModelParser.g:4059:1: ( ( ( rule__QualifiedActionServerRef__KwargsAssignment_5 ) ) )
             // InternalContextModelParser.g:4060:1: ( ( rule__QualifiedActionServerRef__KwargsAssignment_5 ) )
             {
@@ -13186,7 +12292,6 @@ public class InternalContextModelParser extends AbstractInternalContentAssistPar
              before(grammarAccess.getQualifiedActionServerRefAccess().getKwargsAssignment_5()); 
             // InternalContextModelParser.g:4062:2: ( rule__QualifiedActionServerRef__KwargsAssignment_5 )
             // InternalContextModelParser.g:4062:3: rule__QualifiedActionServerRef__KwargsAssignment_5
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
             {
             pushFollow(FOLLOW_2);
             rule__QualifiedActionServerRef__KwargsAssignment_5();
@@ -13219,23 +12324,14 @@ public class InternalContextModelParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__Import__Group__0"
-<<<<<<< HEAD
-    // InternalContextModel.g:1704:1: rule__Import__Group__0 : rule__Import__Group__0__Impl rule__Import__Group__1 ;
-=======
     // InternalContextModelParser.g:4071:1: rule__Import__Group__0 : rule__Import__Group__0__Impl rule__Import__Group__1 ;
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
     public final void rule__Import__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-<<<<<<< HEAD
-            // InternalContextModel.g:1708:1: ( rule__Import__Group__0__Impl rule__Import__Group__1 )
-            // InternalContextModel.g:1709:2: rule__Import__Group__0__Impl rule__Import__Group__1
-=======
             // InternalContextModelParser.g:4075:1: ( rule__Import__Group__0__Impl rule__Import__Group__1 )
             // InternalContextModelParser.g:4076:2: rule__Import__Group__0__Impl rule__Import__Group__1
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
             {
             pushFollow(FOLLOW_12);
             rule__Import__Group__0__Impl();
@@ -13266,26 +12362,12 @@ public class InternalContextModelParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__Import__Group__0__Impl"
-<<<<<<< HEAD
-    // InternalContextModel.g:1716:1: rule__Import__Group__0__Impl : ( 'import' ) ;
-=======
     // InternalContextModelParser.g:4083:1: rule__Import__Group__0__Impl : ( Import ) ;
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
     public final void rule__Import__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-<<<<<<< HEAD
-            // InternalContextModel.g:1720:1: ( ( 'import' ) )
-            // InternalContextModel.g:1721:1: ( 'import' )
-            {
-            // InternalContextModel.g:1721:1: ( 'import' )
-            // InternalContextModel.g:1722:2: 'import'
-            {
-             before(grammarAccess.getImportAccess().getImportKeyword_0()); 
-            match(input,36,FOLLOW_2); 
-=======
             // InternalContextModelParser.g:4087:1: ( ( Import ) )
             // InternalContextModelParser.g:4088:1: ( Import )
             {
@@ -13294,7 +12376,6 @@ public class InternalContextModelParser extends AbstractInternalContentAssistPar
             {
              before(grammarAccess.getImportAccess().getImportKeyword_0()); 
             match(input,Import,FOLLOW_2); 
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
              after(grammarAccess.getImportAccess().getImportKeyword_0()); 
 
             }
@@ -13318,23 +12399,14 @@ public class InternalContextModelParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__Import__Group__1"
-<<<<<<< HEAD
-    // InternalContextModel.g:1731:1: rule__Import__Group__1 : rule__Import__Group__1__Impl rule__Import__Group__2 ;
-=======
     // InternalContextModelParser.g:4098:1: rule__Import__Group__1 : rule__Import__Group__1__Impl rule__Import__Group__2 ;
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
     public final void rule__Import__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-<<<<<<< HEAD
-            // InternalContextModel.g:1735:1: ( rule__Import__Group__1__Impl rule__Import__Group__2 )
-            // InternalContextModel.g:1736:2: rule__Import__Group__1__Impl rule__Import__Group__2
-=======
             // InternalContextModelParser.g:4102:1: ( rule__Import__Group__1__Impl rule__Import__Group__2 )
             // InternalContextModelParser.g:4103:2: rule__Import__Group__1__Impl rule__Import__Group__2
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
             {
             pushFollow(FOLLOW_24);
             rule__Import__Group__1__Impl();
@@ -13365,27 +12437,12 @@ public class InternalContextModelParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__Import__Group__1__Impl"
-<<<<<<< HEAD
-    // InternalContextModel.g:1743:1: rule__Import__Group__1__Impl : ( ( rule__Import__ImportURIAssignment_1 ) ) ;
-=======
     // InternalContextModelParser.g:4110:1: rule__Import__Group__1__Impl : ( ( rule__Import__ImportURIAssignment_1 ) ) ;
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
     public final void rule__Import__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-<<<<<<< HEAD
-            // InternalContextModel.g:1747:1: ( ( ( rule__Import__ImportURIAssignment_1 ) ) )
-            // InternalContextModel.g:1748:1: ( ( rule__Import__ImportURIAssignment_1 ) )
-            {
-            // InternalContextModel.g:1748:1: ( ( rule__Import__ImportURIAssignment_1 ) )
-            // InternalContextModel.g:1749:2: ( rule__Import__ImportURIAssignment_1 )
-            {
-             before(grammarAccess.getImportAccess().getImportURIAssignment_1()); 
-            // InternalContextModel.g:1750:2: ( rule__Import__ImportURIAssignment_1 )
-            // InternalContextModel.g:1750:3: rule__Import__ImportURIAssignment_1
-=======
             // InternalContextModelParser.g:4114:1: ( ( ( rule__Import__ImportURIAssignment_1 ) ) )
             // InternalContextModelParser.g:4115:1: ( ( rule__Import__ImportURIAssignment_1 ) )
             {
@@ -13395,7 +12452,6 @@ public class InternalContextModelParser extends AbstractInternalContentAssistPar
              before(grammarAccess.getImportAccess().getImportURIAssignment_1()); 
             // InternalContextModelParser.g:4117:2: ( rule__Import__ImportURIAssignment_1 )
             // InternalContextModelParser.g:4117:3: rule__Import__ImportURIAssignment_1
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
             {
             pushFollow(FOLLOW_2);
             rule__Import__ImportURIAssignment_1();
@@ -13428,23 +12484,14 @@ public class InternalContextModelParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__Import__Group__2"
-<<<<<<< HEAD
-    // InternalContextModel.g:1758:1: rule__Import__Group__2 : rule__Import__Group__2__Impl ;
-=======
     // InternalContextModelParser.g:4125:1: rule__Import__Group__2 : rule__Import__Group__2__Impl ;
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
     public final void rule__Import__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-<<<<<<< HEAD
-            // InternalContextModel.g:1762:1: ( rule__Import__Group__2__Impl )
-            // InternalContextModel.g:1763:2: rule__Import__Group__2__Impl
-=======
             // InternalContextModelParser.g:4129:1: ( rule__Import__Group__2__Impl )
             // InternalContextModelParser.g:4130:2: rule__Import__Group__2__Impl
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
             {
             pushFollow(FOLLOW_2);
             rule__Import__Group__2__Impl();
@@ -13470,26 +12517,12 @@ public class InternalContextModelParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__Import__Group__2__Impl"
-<<<<<<< HEAD
-    // InternalContextModel.g:1769:1: rule__Import__Group__2__Impl : ( ';' ) ;
-=======
     // InternalContextModelParser.g:4136:1: rule__Import__Group__2__Impl : ( Semicolon ) ;
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
     public final void rule__Import__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-<<<<<<< HEAD
-            // InternalContextModel.g:1773:1: ( ( ';' ) )
-            // InternalContextModel.g:1774:1: ( ';' )
-            {
-            // InternalContextModel.g:1774:1: ( ';' )
-            // InternalContextModel.g:1775:2: ';'
-            {
-             before(grammarAccess.getImportAccess().getSemicolonKeyword_2()); 
-            match(input,37,FOLLOW_2); 
-=======
             // InternalContextModelParser.g:4140:1: ( ( Semicolon ) )
             // InternalContextModelParser.g:4141:1: ( Semicolon )
             {
@@ -13498,7 +12531,6 @@ public class InternalContextModelParser extends AbstractInternalContentAssistPar
             {
              before(grammarAccess.getImportAccess().getSemicolonKeyword_2()); 
             match(input,Semicolon,FOLLOW_2); 
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
              after(grammarAccess.getImportAccess().getSemicolonKeyword_2()); 
 
             }
@@ -26099,29 +25131,17 @@ public class InternalContextModelParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__ContextModel__ImportsAssignment_0"
-<<<<<<< HEAD
-    // InternalContextModel.g:1785:1: rule__ContextModel__ImportsAssignment_0 : ( ruleImport ) ;
-=======
     // InternalContextModelParser.g:8553:1: rule__ContextModel__ImportsAssignment_0 : ( ruleImport ) ;
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
     public final void rule__ContextModel__ImportsAssignment_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-<<<<<<< HEAD
-            // InternalContextModel.g:1789:1: ( ( ruleImport ) )
-            // InternalContextModel.g:1790:2: ( ruleImport )
-            {
-            // InternalContextModel.g:1790:2: ( ruleImport )
-            // InternalContextModel.g:1791:3: ruleImport
-=======
             // InternalContextModelParser.g:8557:1: ( ( ruleImport ) )
             // InternalContextModelParser.g:8558:2: ( ruleImport )
             {
             // InternalContextModelParser.g:8558:2: ( ruleImport )
             // InternalContextModelParser.g:8559:3: ruleImport
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
             {
              before(grammarAccess.getContextModelAccess().getImportsImportParserRuleCall_0_0()); 
             pushFollow(FOLLOW_2);
@@ -26152,29 +25172,17 @@ public class InternalContextModelParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__ContextModel__Context_variablesAssignment_1"
-<<<<<<< HEAD
-    // InternalContextModel.g:1800:1: rule__ContextModel__Context_variablesAssignment_1 : ( ruleContextVar ) ;
-=======
     // InternalContextModelParser.g:8568:1: rule__ContextModel__Context_variablesAssignment_1 : ( ruleContextVar ) ;
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
     public final void rule__ContextModel__Context_variablesAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-<<<<<<< HEAD
-            // InternalContextModel.g:1804:1: ( ( ruleContextVar ) )
-            // InternalContextModel.g:1805:2: ( ruleContextVar )
-            {
-            // InternalContextModel.g:1805:2: ( ruleContextVar )
-            // InternalContextModel.g:1806:3: ruleContextVar
-=======
             // InternalContextModelParser.g:8572:1: ( ( ruleContextVar ) )
             // InternalContextModelParser.g:8573:2: ( ruleContextVar )
             {
             // InternalContextModelParser.g:8573:2: ( ruleContextVar )
             // InternalContextModelParser.g:8574:3: ruleContextVar
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
             {
              before(grammarAccess.getContextModelAccess().getContext_variablesContextVarParserRuleCall_1_0()); 
             pushFollow(FOLLOW_2);
@@ -26205,29 +25213,17 @@ public class InternalContextModelParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__ContextVar__NameAssignment_1"
-<<<<<<< HEAD
-    // InternalContextModel.g:1815:1: rule__ContextVar__NameAssignment_1 : ( RULE_ID ) ;
-=======
     // InternalContextModelParser.g:8583:1: rule__ContextVar__NameAssignment_1 : ( RULE_ID ) ;
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
     public final void rule__ContextVar__NameAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-<<<<<<< HEAD
-            // InternalContextModel.g:1819:1: ( ( RULE_ID ) )
-            // InternalContextModel.g:1820:2: ( RULE_ID )
-            {
-            // InternalContextModel.g:1820:2: ( RULE_ID )
-            // InternalContextModel.g:1821:3: RULE_ID
-=======
             // InternalContextModelParser.g:8587:1: ( ( RULE_ID ) )
             // InternalContextModelParser.g:8588:2: ( RULE_ID )
             {
             // InternalContextModelParser.g:8588:2: ( RULE_ID )
             // InternalContextModelParser.g:8589:3: RULE_ID
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
             {
              before(grammarAccess.getContextVarAccess().getNameIDTerminalRuleCall_1_0()); 
             match(input,RULE_ID,FOLLOW_2); 
@@ -26254,29 +25250,17 @@ public class InternalContextModelParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__ContextVar__SourceAssignment_3"
-<<<<<<< HEAD
-    // InternalContextModel.g:1830:1: rule__ContextVar__SourceAssignment_3 : ( ruleDataSource ) ;
-=======
     // InternalContextModelParser.g:8598:1: rule__ContextVar__SourceAssignment_3 : ( ruleDataSource ) ;
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
     public final void rule__ContextVar__SourceAssignment_3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-<<<<<<< HEAD
-            // InternalContextModel.g:1834:1: ( ( ruleDataSource ) )
-            // InternalContextModel.g:1835:2: ( ruleDataSource )
-            {
-            // InternalContextModel.g:1835:2: ( ruleDataSource )
-            // InternalContextModel.g:1836:3: ruleDataSource
-=======
             // InternalContextModelParser.g:8602:1: ( ( ruleDataSource ) )
             // InternalContextModelParser.g:8603:2: ( ruleDataSource )
             {
             // InternalContextModelParser.g:8603:2: ( ruleDataSource )
             // InternalContextModelParser.g:8604:3: ruleDataSource
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
             {
              before(grammarAccess.getContextVarAccess().getSourceDataSourceParserRuleCall_3_0()); 
             pushFollow(FOLLOW_2);
@@ -26307,29 +25291,17 @@ public class InternalContextModelParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__ContextVar__DoCacheAssignment_5"
-<<<<<<< HEAD
-    // InternalContextModel.g:1845:1: rule__ContextVar__DoCacheAssignment_5 : ( ruleDoCache ) ;
-=======
     // InternalContextModelParser.g:8613:1: rule__ContextVar__DoCacheAssignment_5 : ( ruleDoCache ) ;
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
     public final void rule__ContextVar__DoCacheAssignment_5() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-<<<<<<< HEAD
-            // InternalContextModel.g:1849:1: ( ( ruleDoCache ) )
-            // InternalContextModel.g:1850:2: ( ruleDoCache )
-            {
-            // InternalContextModel.g:1850:2: ( ruleDoCache )
-            // InternalContextModel.g:1851:3: ruleDoCache
-=======
             // InternalContextModelParser.g:8617:1: ( ( ruleDoCache ) )
             // InternalContextModelParser.g:8618:2: ( ruleDoCache )
             {
             // InternalContextModelParser.g:8618:2: ( ruleDoCache )
             // InternalContextModelParser.g:8619:3: ruleDoCache
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
             {
              before(grammarAccess.getContextVarAccess().getDoCacheDoCacheParserRuleCall_5_0()); 
             pushFollow(FOLLOW_2);
@@ -26360,29 +25332,17 @@ public class InternalContextModelParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__ContextVar__LengthAssignment_6_2"
-<<<<<<< HEAD
-    // InternalContextModel.g:1860:1: rule__ContextVar__LengthAssignment_6_2 : ( RULE_INT ) ;
-=======
     // InternalContextModelParser.g:8628:1: rule__ContextVar__LengthAssignment_6_2 : ( RULE_INT ) ;
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
     public final void rule__ContextVar__LengthAssignment_6_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-<<<<<<< HEAD
-            // InternalContextModel.g:1864:1: ( ( RULE_INT ) )
-            // InternalContextModel.g:1865:2: ( RULE_INT )
-            {
-            // InternalContextModel.g:1865:2: ( RULE_INT )
-            // InternalContextModel.g:1866:3: RULE_INT
-=======
             // InternalContextModelParser.g:8632:1: ( ( RULE_INT ) )
             // InternalContextModelParser.g:8633:2: ( RULE_INT )
             {
             // InternalContextModelParser.g:8633:2: ( RULE_INT )
             // InternalContextModelParser.g:8634:3: RULE_INT
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
             {
              before(grammarAccess.getContextVarAccess().getLengthINTTerminalRuleCall_6_2_0()); 
             match(input,RULE_INT,FOLLOW_2); 
@@ -26409,29 +25369,17 @@ public class InternalContextModelParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__ContextVar__PeriodAssignment_7_1"
-<<<<<<< HEAD
-    // InternalContextModel.g:1875:1: rule__ContextVar__PeriodAssignment_7_1 : ( RULE_INT ) ;
-=======
     // InternalContextModelParser.g:8643:1: rule__ContextVar__PeriodAssignment_7_1 : ( RULE_INT ) ;
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
     public final void rule__ContextVar__PeriodAssignment_7_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-<<<<<<< HEAD
-            // InternalContextModel.g:1879:1: ( ( RULE_INT ) )
-            // InternalContextModel.g:1880:2: ( RULE_INT )
-            {
-            // InternalContextModel.g:1880:2: ( RULE_INT )
-            // InternalContextModel.g:1881:3: RULE_INT
-=======
             // InternalContextModelParser.g:8647:1: ( ( RULE_INT ) )
             // InternalContextModelParser.g:8648:2: ( RULE_INT )
             {
             // InternalContextModelParser.g:8648:2: ( RULE_INT )
             // InternalContextModelParser.g:8649:3: RULE_INT
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
             {
              before(grammarAccess.getContextVarAccess().getPeriodINTTerminalRuleCall_7_1_0()); 
             match(input,RULE_INT,FOLLOW_2); 
@@ -26458,29 +25406,17 @@ public class InternalContextModelParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__ContextVar__DoProxyAssignment_8_1"
-<<<<<<< HEAD
-    // InternalContextModel.g:1890:1: rule__ContextVar__DoProxyAssignment_8_1 : ( ruleDoProxy ) ;
-=======
     // InternalContextModelParser.g:8658:1: rule__ContextVar__DoProxyAssignment_8_1 : ( ruleDoProxy ) ;
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
     public final void rule__ContextVar__DoProxyAssignment_8_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-<<<<<<< HEAD
-            // InternalContextModel.g:1894:1: ( ( ruleDoProxy ) )
-            // InternalContextModel.g:1895:2: ( ruleDoProxy )
-            {
-            // InternalContextModel.g:1895:2: ( ruleDoProxy )
-            // InternalContextModel.g:1896:3: ruleDoProxy
-=======
             // InternalContextModelParser.g:8662:1: ( ( ruleDoProxy ) )
             // InternalContextModelParser.g:8663:2: ( ruleDoProxy )
             {
             // InternalContextModelParser.g:8663:2: ( ruleDoProxy )
             // InternalContextModelParser.g:8664:3: ruleDoProxy
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
             {
              before(grammarAccess.getContextVarAccess().getDoProxyDoProxyParserRuleCall_8_1_0()); 
             pushFollow(FOLLOW_2);
@@ -26511,29 +25447,17 @@ public class InternalContextModelParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__ContextVar__FunctionNameAssignment_10"
-<<<<<<< HEAD
-    // InternalContextModel.g:1905:1: rule__ContextVar__FunctionNameAssignment_10 : ( RULE_STRING ) ;
-=======
     // InternalContextModelParser.g:8673:1: rule__ContextVar__FunctionNameAssignment_10 : ( RULE_STRING ) ;
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
     public final void rule__ContextVar__FunctionNameAssignment_10() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-<<<<<<< HEAD
-            // InternalContextModel.g:1909:1: ( ( RULE_STRING ) )
-            // InternalContextModel.g:1910:2: ( RULE_STRING )
-            {
-            // InternalContextModel.g:1910:2: ( RULE_STRING )
-            // InternalContextModel.g:1911:3: RULE_STRING
-=======
             // InternalContextModelParser.g:8677:1: ( ( RULE_STRING ) )
             // InternalContextModelParser.g:8678:2: ( RULE_STRING )
             {
             // InternalContextModelParser.g:8678:2: ( RULE_STRING )
             // InternalContextModelParser.g:8679:3: RULE_STRING
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
             {
              before(grammarAccess.getContextVarAccess().getFunctionNameSTRINGTerminalRuleCall_10_0()); 
             match(input,RULE_STRING,FOLLOW_2); 
@@ -26560,29 +25484,17 @@ public class InternalContextModelParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__ContextVar__FunctionLibraryAssignment_11_1"
-<<<<<<< HEAD
-    // InternalContextModel.g:1920:1: rule__ContextVar__FunctionLibraryAssignment_11_1 : ( RULE_STRING ) ;
-=======
     // InternalContextModelParser.g:8688:1: rule__ContextVar__FunctionLibraryAssignment_11_1 : ( RULE_STRING ) ;
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
     public final void rule__ContextVar__FunctionLibraryAssignment_11_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-<<<<<<< HEAD
-            // InternalContextModel.g:1924:1: ( ( RULE_STRING ) )
-            // InternalContextModel.g:1925:2: ( RULE_STRING )
-            {
-            // InternalContextModel.g:1925:2: ( RULE_STRING )
-            // InternalContextModel.g:1926:3: RULE_STRING
-=======
             // InternalContextModelParser.g:8692:1: ( ( RULE_STRING ) )
             // InternalContextModelParser.g:8693:2: ( RULE_STRING )
             {
             // InternalContextModelParser.g:8693:2: ( RULE_STRING )
             // InternalContextModelParser.g:8694:3: RULE_STRING
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
             {
              before(grammarAccess.getContextVarAccess().getFunctionLibrarySTRINGTerminalRuleCall_11_1_0()); 
             match(input,RULE_STRING,FOLLOW_2); 
@@ -26608,10 +25520,6 @@ public class InternalContextModelParser extends AbstractInternalContentAssistPar
     // $ANTLR end "rule__ContextVar__FunctionLibraryAssignment_11_1"
 
 
-<<<<<<< HEAD
-    // $ANTLR start "rule__DoCache__DoAssignment_1"
-    // InternalContextModel.g:1935:1: rule__DoCache__DoAssignment_1 : ( RULE_BOOLEAN ) ;
-=======
     // $ANTLR start "rule__ContextVar__FunctionArgsAssignment_12_1"
     // InternalContextModelParser.g:8703:1: rule__ContextVar__FunctionArgsAssignment_12_1 : ( RULE_STRING ) ;
     public final void rule__ContextVar__FunctionArgsAssignment_12_1() throws RecognitionException {
@@ -26651,25 +25559,16 @@ public class InternalContextModelParser extends AbstractInternalContentAssistPar
 
     // $ANTLR start "rule__DoCache__DoAssignment_1"
     // InternalContextModelParser.g:8718:1: rule__DoCache__DoAssignment_1 : ( ruleContextBoolean ) ;
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
     public final void rule__DoCache__DoAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-<<<<<<< HEAD
-            // InternalContextModel.g:1939:1: ( ( RULE_BOOLEAN ) )
-            // InternalContextModel.g:1940:2: ( RULE_BOOLEAN )
-            {
-            // InternalContextModel.g:1940:2: ( RULE_BOOLEAN )
-            // InternalContextModel.g:1941:3: RULE_BOOLEAN
-=======
             // InternalContextModelParser.g:8722:1: ( ( ruleContextBoolean ) )
             // InternalContextModelParser.g:8723:2: ( ruleContextBoolean )
             {
             // InternalContextModelParser.g:8723:2: ( ruleContextBoolean )
             // InternalContextModelParser.g:8724:3: ruleContextBoolean
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
             {
              before(grammarAccess.getDoCacheAccess().getDoContextBooleanParserRuleCall_1_0()); 
             pushFollow(FOLLOW_2);
@@ -26700,29 +25599,17 @@ public class InternalContextModelParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__DoProxy__DoAssignment_1"
-<<<<<<< HEAD
-    // InternalContextModel.g:1950:1: rule__DoProxy__DoAssignment_1 : ( RULE_BOOLEAN ) ;
-=======
     // InternalContextModelParser.g:8733:1: rule__DoProxy__DoAssignment_1 : ( ruleContextBoolean ) ;
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
     public final void rule__DoProxy__DoAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-<<<<<<< HEAD
-            // InternalContextModel.g:1954:1: ( ( RULE_BOOLEAN ) )
-            // InternalContextModel.g:1955:2: ( RULE_BOOLEAN )
-            {
-            // InternalContextModel.g:1955:2: ( RULE_BOOLEAN )
-            // InternalContextModel.g:1956:3: RULE_BOOLEAN
-=======
             // InternalContextModelParser.g:8737:1: ( ( ruleContextBoolean ) )
             // InternalContextModelParser.g:8738:2: ( ruleContextBoolean )
             {
             // InternalContextModelParser.g:8738:2: ( ruleContextBoolean )
             // InternalContextModelParser.g:8739:3: ruleContextBoolean
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
             {
              before(grammarAccess.getDoProxyAccess().getDoContextBooleanParserRuleCall_1_0()); 
             pushFollow(FOLLOW_2);
@@ -26753,29 +25640,17 @@ public class InternalContextModelParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__DataSource__RefAssignment_1_1"
-<<<<<<< HEAD
-    // InternalContextModel.g:1965:1: rule__DataSource__RefAssignment_1_1 : ( ruleQualifiedRef ) ;
-=======
     // InternalContextModelParser.g:8748:1: rule__DataSource__RefAssignment_1_1 : ( ruleQualifiedRef ) ;
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
     public final void rule__DataSource__RefAssignment_1_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-<<<<<<< HEAD
-            // InternalContextModel.g:1969:1: ( ( ruleQualifiedRef ) )
-            // InternalContextModel.g:1970:2: ( ruleQualifiedRef )
-            {
-            // InternalContextModel.g:1970:2: ( ruleQualifiedRef )
-            // InternalContextModel.g:1971:3: ruleQualifiedRef
-=======
             // InternalContextModelParser.g:8752:1: ( ( ruleQualifiedRef ) )
             // InternalContextModelParser.g:8753:2: ( ruleQualifiedRef )
             {
             // InternalContextModelParser.g:8753:2: ( ruleQualifiedRef )
             // InternalContextModelParser.g:8754:3: ruleQualifiedRef
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
             {
              before(grammarAccess.getDataSourceAccess().getRefQualifiedRefParserRuleCall_1_1_0()); 
             pushFollow(FOLLOW_2);
@@ -26806,27 +25681,12 @@ public class InternalContextModelParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__QualifiedPublisherRef__NodeAssignment_1"
-<<<<<<< HEAD
-    // InternalContextModel.g:1980:1: rule__QualifiedPublisherRef__NodeAssignment_1 : ( ( RULE_ID ) ) ;
-=======
     // InternalContextModelParser.g:8763:1: rule__QualifiedPublisherRef__NodeAssignment_1 : ( ( ruleRosNames ) ) ;
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
     public final void rule__QualifiedPublisherRef__NodeAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-<<<<<<< HEAD
-            // InternalContextModel.g:1984:1: ( ( ( RULE_ID ) ) )
-            // InternalContextModel.g:1985:2: ( ( RULE_ID ) )
-            {
-            // InternalContextModel.g:1985:2: ( ( RULE_ID ) )
-            // InternalContextModel.g:1986:3: ( RULE_ID )
-            {
-             before(grammarAccess.getQualifiedPublisherRefAccess().getNodeNodeCrossReference_1_0()); 
-            // InternalContextModel.g:1987:3: ( RULE_ID )
-            // InternalContextModel.g:1988:4: RULE_ID
-=======
             // InternalContextModelParser.g:8767:1: ( ( ( ruleRosNames ) ) )
             // InternalContextModelParser.g:8768:2: ( ( ruleRosNames ) )
             {
@@ -26836,7 +25696,6 @@ public class InternalContextModelParser extends AbstractInternalContentAssistPar
              before(grammarAccess.getQualifiedPublisherRefAccess().getNodeNodeCrossReference_1_0()); 
             // InternalContextModelParser.g:8770:3: ( ruleRosNames )
             // InternalContextModelParser.g:8771:4: ruleRosNames
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
             {
              before(grammarAccess.getQualifiedPublisherRefAccess().getNodeNodeRosNamesParserRuleCall_1_0_1()); 
             pushFollow(FOLLOW_2);
@@ -26871,27 +25730,12 @@ public class InternalContextModelParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__QualifiedPublisherRef__PublisherAssignment_3"
-<<<<<<< HEAD
-    // InternalContextModel.g:1999:1: rule__QualifiedPublisherRef__PublisherAssignment_3 : ( ( RULE_ID ) ) ;
-=======
     // InternalContextModelParser.g:8782:1: rule__QualifiedPublisherRef__PublisherAssignment_3 : ( ( ruleRosNames ) ) ;
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
     public final void rule__QualifiedPublisherRef__PublisherAssignment_3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-<<<<<<< HEAD
-            // InternalContextModel.g:2003:1: ( ( ( RULE_ID ) ) )
-            // InternalContextModel.g:2004:2: ( ( RULE_ID ) )
-            {
-            // InternalContextModel.g:2004:2: ( ( RULE_ID ) )
-            // InternalContextModel.g:2005:3: ( RULE_ID )
-            {
-             before(grammarAccess.getQualifiedPublisherRefAccess().getPublisherPublisherCrossReference_3_0()); 
-            // InternalContextModel.g:2006:3: ( RULE_ID )
-            // InternalContextModel.g:2007:4: RULE_ID
-=======
             // InternalContextModelParser.g:8786:1: ( ( ( ruleRosNames ) ) )
             // InternalContextModelParser.g:8787:2: ( ( ruleRosNames ) )
             {
@@ -26901,7 +25745,6 @@ public class InternalContextModelParser extends AbstractInternalContentAssistPar
              before(grammarAccess.getQualifiedPublisherRefAccess().getPublisherPublisherCrossReference_3_0()); 
             // InternalContextModelParser.g:8789:3: ( ruleRosNames )
             // InternalContextModelParser.g:8790:4: ruleRosNames
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
             {
              before(grammarAccess.getQualifiedPublisherRefAccess().getPublisherPublisherRosNamesParserRuleCall_3_0_1()); 
             pushFollow(FOLLOW_2);
@@ -26936,27 +25779,12 @@ public class InternalContextModelParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__QualifiedServiceServerRef__NodeAssignment_1"
-<<<<<<< HEAD
-    // InternalContextModel.g:2018:1: rule__QualifiedServiceServerRef__NodeAssignment_1 : ( ( RULE_ID ) ) ;
-=======
     // InternalContextModelParser.g:8801:1: rule__QualifiedServiceServerRef__NodeAssignment_1 : ( ( ruleRosNames ) ) ;
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
     public final void rule__QualifiedServiceServerRef__NodeAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-<<<<<<< HEAD
-            // InternalContextModel.g:2022:1: ( ( ( RULE_ID ) ) )
-            // InternalContextModel.g:2023:2: ( ( RULE_ID ) )
-            {
-            // InternalContextModel.g:2023:2: ( ( RULE_ID ) )
-            // InternalContextModel.g:2024:3: ( RULE_ID )
-            {
-             before(grammarAccess.getQualifiedServiceServerRefAccess().getNodeNodeCrossReference_1_0()); 
-            // InternalContextModel.g:2025:3: ( RULE_ID )
-            // InternalContextModel.g:2026:4: RULE_ID
-=======
             // InternalContextModelParser.g:8805:1: ( ( ( ruleRosNames ) ) )
             // InternalContextModelParser.g:8806:2: ( ( ruleRosNames ) )
             {
@@ -26966,7 +25794,6 @@ public class InternalContextModelParser extends AbstractInternalContentAssistPar
              before(grammarAccess.getQualifiedServiceServerRefAccess().getNodeNodeCrossReference_1_0()); 
             // InternalContextModelParser.g:8808:3: ( ruleRosNames )
             // InternalContextModelParser.g:8809:4: ruleRosNames
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
             {
              before(grammarAccess.getQualifiedServiceServerRefAccess().getNodeNodeRosNamesParserRuleCall_1_0_1()); 
             pushFollow(FOLLOW_2);
@@ -27001,27 +25828,12 @@ public class InternalContextModelParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__QualifiedServiceServerRef__ServiceServerAssignment_3"
-<<<<<<< HEAD
-    // InternalContextModel.g:2037:1: rule__QualifiedServiceServerRef__ServiceServerAssignment_3 : ( ( RULE_ID ) ) ;
-=======
     // InternalContextModelParser.g:8820:1: rule__QualifiedServiceServerRef__ServiceServerAssignment_3 : ( ( ruleRosNames ) ) ;
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
     public final void rule__QualifiedServiceServerRef__ServiceServerAssignment_3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-<<<<<<< HEAD
-            // InternalContextModel.g:2041:1: ( ( ( RULE_ID ) ) )
-            // InternalContextModel.g:2042:2: ( ( RULE_ID ) )
-            {
-            // InternalContextModel.g:2042:2: ( ( RULE_ID ) )
-            // InternalContextModel.g:2043:3: ( RULE_ID )
-            {
-             before(grammarAccess.getQualifiedServiceServerRefAccess().getServiceServerServiceServerCrossReference_3_0()); 
-            // InternalContextModel.g:2044:3: ( RULE_ID )
-            // InternalContextModel.g:2045:4: RULE_ID
-=======
             // InternalContextModelParser.g:8824:1: ( ( ( ruleRosNames ) ) )
             // InternalContextModelParser.g:8825:2: ( ( ruleRosNames ) )
             {
@@ -27031,7 +25843,6 @@ public class InternalContextModelParser extends AbstractInternalContentAssistPar
              before(grammarAccess.getQualifiedServiceServerRefAccess().getServiceServerServiceServerCrossReference_3_0()); 
             // InternalContextModelParser.g:8827:3: ( ruleRosNames )
             // InternalContextModelParser.g:8828:4: ruleRosNames
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
             {
              before(grammarAccess.getQualifiedServiceServerRefAccess().getServiceServerServiceServerRosNamesParserRuleCall_3_0_1()); 
             pushFollow(FOLLOW_2);
@@ -27066,29 +25877,17 @@ public class InternalContextModelParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__QualifiedServiceServerRef__KwargsAssignment_5"
-<<<<<<< HEAD
-    // InternalContextModel.g:2056:1: rule__QualifiedServiceServerRef__KwargsAssignment_5 : ( ruleKeyWordArguments ) ;
-=======
     // InternalContextModelParser.g:8839:1: rule__QualifiedServiceServerRef__KwargsAssignment_5 : ( ruleKeyWordArguments ) ;
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
     public final void rule__QualifiedServiceServerRef__KwargsAssignment_5() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-<<<<<<< HEAD
-            // InternalContextModel.g:2060:1: ( ( ruleKeyWordArguments ) )
-            // InternalContextModel.g:2061:2: ( ruleKeyWordArguments )
-            {
-            // InternalContextModel.g:2061:2: ( ruleKeyWordArguments )
-            // InternalContextModel.g:2062:3: ruleKeyWordArguments
-=======
             // InternalContextModelParser.g:8843:1: ( ( ruleKeyWordArguments ) )
             // InternalContextModelParser.g:8844:2: ( ruleKeyWordArguments )
             {
             // InternalContextModelParser.g:8844:2: ( ruleKeyWordArguments )
             // InternalContextModelParser.g:8845:3: ruleKeyWordArguments
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
             {
              before(grammarAccess.getQualifiedServiceServerRefAccess().getKwargsKeyWordArgumentsParserRuleCall_5_0()); 
             pushFollow(FOLLOW_2);
@@ -27119,27 +25918,12 @@ public class InternalContextModelParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__QualifiedActionServerRef__NodeAssignment_1"
-<<<<<<< HEAD
-    // InternalContextModel.g:2071:1: rule__QualifiedActionServerRef__NodeAssignment_1 : ( ( RULE_ID ) ) ;
-=======
     // InternalContextModelParser.g:8854:1: rule__QualifiedActionServerRef__NodeAssignment_1 : ( ( ruleRosNames ) ) ;
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
     public final void rule__QualifiedActionServerRef__NodeAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-<<<<<<< HEAD
-            // InternalContextModel.g:2075:1: ( ( ( RULE_ID ) ) )
-            // InternalContextModel.g:2076:2: ( ( RULE_ID ) )
-            {
-            // InternalContextModel.g:2076:2: ( ( RULE_ID ) )
-            // InternalContextModel.g:2077:3: ( RULE_ID )
-            {
-             before(grammarAccess.getQualifiedActionServerRefAccess().getNodeNodeCrossReference_1_0()); 
-            // InternalContextModel.g:2078:3: ( RULE_ID )
-            // InternalContextModel.g:2079:4: RULE_ID
-=======
             // InternalContextModelParser.g:8858:1: ( ( ( ruleRosNames ) ) )
             // InternalContextModelParser.g:8859:2: ( ( ruleRosNames ) )
             {
@@ -27149,7 +25933,6 @@ public class InternalContextModelParser extends AbstractInternalContentAssistPar
              before(grammarAccess.getQualifiedActionServerRefAccess().getNodeNodeCrossReference_1_0()); 
             // InternalContextModelParser.g:8861:3: ( ruleRosNames )
             // InternalContextModelParser.g:8862:4: ruleRosNames
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
             {
              before(grammarAccess.getQualifiedActionServerRefAccess().getNodeNodeRosNamesParserRuleCall_1_0_1()); 
             pushFollow(FOLLOW_2);
@@ -27184,27 +25967,12 @@ public class InternalContextModelParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__QualifiedActionServerRef__ActionServerAssignment_3"
-<<<<<<< HEAD
-    // InternalContextModel.g:2090:1: rule__QualifiedActionServerRef__ActionServerAssignment_3 : ( ( RULE_ID ) ) ;
-=======
     // InternalContextModelParser.g:8873:1: rule__QualifiedActionServerRef__ActionServerAssignment_3 : ( ( ruleRosNames ) ) ;
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
     public final void rule__QualifiedActionServerRef__ActionServerAssignment_3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-<<<<<<< HEAD
-            // InternalContextModel.g:2094:1: ( ( ( RULE_ID ) ) )
-            // InternalContextModel.g:2095:2: ( ( RULE_ID ) )
-            {
-            // InternalContextModel.g:2095:2: ( ( RULE_ID ) )
-            // InternalContextModel.g:2096:3: ( RULE_ID )
-            {
-             before(grammarAccess.getQualifiedActionServerRefAccess().getActionServerActionServerCrossReference_3_0()); 
-            // InternalContextModel.g:2097:3: ( RULE_ID )
-            // InternalContextModel.g:2098:4: RULE_ID
-=======
             // InternalContextModelParser.g:8877:1: ( ( ( ruleRosNames ) ) )
             // InternalContextModelParser.g:8878:2: ( ( ruleRosNames ) )
             {
@@ -27214,7 +25982,6 @@ public class InternalContextModelParser extends AbstractInternalContentAssistPar
              before(grammarAccess.getQualifiedActionServerRefAccess().getActionServerActionServerCrossReference_3_0()); 
             // InternalContextModelParser.g:8880:3: ( ruleRosNames )
             // InternalContextModelParser.g:8881:4: ruleRosNames
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
             {
              before(grammarAccess.getQualifiedActionServerRefAccess().getActionServerActionServerRosNamesParserRuleCall_3_0_1()); 
             pushFollow(FOLLOW_2);
@@ -27249,29 +26016,17 @@ public class InternalContextModelParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__QualifiedActionServerRef__KwargsAssignment_5"
-<<<<<<< HEAD
-    // InternalContextModel.g:2109:1: rule__QualifiedActionServerRef__KwargsAssignment_5 : ( ruleKeyWordArguments ) ;
-=======
     // InternalContextModelParser.g:8892:1: rule__QualifiedActionServerRef__KwargsAssignment_5 : ( ruleKeyWordArguments ) ;
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
     public final void rule__QualifiedActionServerRef__KwargsAssignment_5() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-<<<<<<< HEAD
-            // InternalContextModel.g:2113:1: ( ( ruleKeyWordArguments ) )
-            // InternalContextModel.g:2114:2: ( ruleKeyWordArguments )
-            {
-            // InternalContextModel.g:2114:2: ( ruleKeyWordArguments )
-            // InternalContextModel.g:2115:3: ruleKeyWordArguments
-=======
             // InternalContextModelParser.g:8896:1: ( ( ruleKeyWordArguments ) )
             // InternalContextModelParser.g:8897:2: ( ruleKeyWordArguments )
             {
             // InternalContextModelParser.g:8897:2: ( ruleKeyWordArguments )
             // InternalContextModelParser.g:8898:3: ruleKeyWordArguments
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
             {
              before(grammarAccess.getQualifiedActionServerRefAccess().getKwargsKeyWordArgumentsParserRuleCall_5_0()); 
             pushFollow(FOLLOW_2);
@@ -27302,29 +26057,17 @@ public class InternalContextModelParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__Import__ImportURIAssignment_1"
-<<<<<<< HEAD
-    // InternalContextModel.g:2124:1: rule__Import__ImportURIAssignment_1 : ( RULE_STRING ) ;
-=======
     // InternalContextModelParser.g:8907:1: rule__Import__ImportURIAssignment_1 : ( RULE_STRING ) ;
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
     public final void rule__Import__ImportURIAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-<<<<<<< HEAD
-            // InternalContextModel.g:2128:1: ( ( RULE_STRING ) )
-            // InternalContextModel.g:2129:2: ( RULE_STRING )
-            {
-            // InternalContextModel.g:2129:2: ( RULE_STRING )
-            // InternalContextModel.g:2130:3: RULE_STRING
-=======
             // InternalContextModelParser.g:8911:1: ( ( RULE_STRING ) )
             // InternalContextModelParser.g:8912:2: ( RULE_STRING )
             {
             // InternalContextModelParser.g:8912:2: ( RULE_STRING )
             // InternalContextModelParser.g:8913:3: RULE_STRING
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
             {
              before(grammarAccess.getImportAccess().getImportURISTRINGTerminalRuleCall_1_0()); 
             match(input,RULE_STRING,FOLLOW_2); 
@@ -28842,29 +27585,6 @@ public class InternalContextModelParser extends AbstractInternalContentAssistPar
 
     public static final BitSet FOLLOW_1 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_2 = new BitSet(new long[]{0x0000000000000002L});
-<<<<<<< HEAD
-    public static final BitSet FOLLOW_3 = new BitSet(new long[]{0x0000000000010000L});
-    public static final BitSet FOLLOW_4 = new BitSet(new long[]{0x0000001000000002L});
-    public static final BitSet FOLLOW_5 = new BitSet(new long[]{0x0000000000010002L});
-    public static final BitSet FOLLOW_6 = new BitSet(new long[]{0x0000000000000020L});
-    public static final BitSet FOLLOW_7 = new BitSet(new long[]{0x0000000000020000L});
-    public static final BitSet FOLLOW_8 = new BitSet(new long[]{0x0000000010000000L});
-    public static final BitSet FOLLOW_9 = new BitSet(new long[]{0x0000000000040000L});
-    public static final BitSet FOLLOW_10 = new BitSet(new long[]{0x0000000000000080L});
-    public static final BitSet FOLLOW_11 = new BitSet(new long[]{0x0000000005280000L});
-    public static final BitSet FOLLOW_12 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_13 = new BitSet(new long[]{0x0000000008100000L});
-    public static final BitSet FOLLOW_14 = new BitSet(new long[]{0x0000000000400000L});
-    public static final BitSet FOLLOW_15 = new BitSet(new long[]{0x0000000000000040L});
-    public static final BitSet FOLLOW_16 = new BitSet(new long[]{0x0000000000800000L});
-    public static final BitSet FOLLOW_17 = new BitSet(new long[]{0x0000000002000000L});
-    public static final BitSet FOLLOW_18 = new BitSet(new long[]{0x0000000020000000L});
-    public static final BitSet FOLLOW_19 = new BitSet(new long[]{0x0000000540000000L});
-    public static final BitSet FOLLOW_20 = new BitSet(new long[]{0x0000000080000000L});
-    public static final BitSet FOLLOW_21 = new BitSet(new long[]{0x0000000200000000L});
-    public static final BitSet FOLLOW_22 = new BitSet(new long[]{0x0000000800000000L});
-    public static final BitSet FOLLOW_23 = new BitSet(new long[]{0x0000002000000000L});
-=======
     public static final BitSet FOLLOW_3 = new BitSet(new long[]{0x0000000000000040L});
     public static final BitSet FOLLOW_4 = new BitSet(new long[]{0x0002000000000002L});
     public static final BitSet FOLLOW_5 = new BitSet(new long[]{0x0000000000000042L});
@@ -28948,6 +27668,5 @@ public class InternalContextModelParser extends AbstractInternalContentAssistPar
     public static final BitSet FOLLOW_83 = new BitSet(new long[]{0x0001000000000000L});
     public static final BitSet FOLLOW_84 = new BitSet(new long[]{0x0000020000000000L});
     public static final BitSet FOLLOW_85 = new BitSet(new long[]{0x0000000000000000L,0x0000000000020000L});
->>>>>>> 70bb052 (add RosNames to actions/srvs/topics and regenerated)
 
 }

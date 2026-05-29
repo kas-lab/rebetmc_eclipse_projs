@@ -439,9 +439,12 @@ ruleSetParam returns [EObject current=null]
 						$current = createModelElement(grammarAccess.getSetParamRule());
 					}
 				}
-				otherlv_2=RULE_ID
 				{
-					newLeafNode(otherlv_2, grammarAccess.getSetParamAccess().getNodeRosNodeCrossReference_2_0());
+					newCompositeNode(grammarAccess.getSetParamAccess().getNodeRosNodeCrossReference_2_0());
+				}
+				ruleRosNames
+				{
+					afterParserOrEnumRuleCall();
 				}
 			)
 		)
@@ -523,9 +526,12 @@ ruleSetLifecycle returns [EObject current=null]
 						$current = createModelElement(grammarAccess.getSetLifecycleRule());
 					}
 				}
-				otherlv_2=RULE_ID
 				{
-					newLeafNode(otherlv_2, grammarAccess.getSetLifecycleAccess().getNodeRosNodeCrossReference_2_0());
+					newCompositeNode(grammarAccess.getSetLifecycleAccess().getNodeRosNodeCrossReference_2_0());
+				}
+				ruleRosNames
+				{
+					afterParserOrEnumRuleCall();
 				}
 			)
 		)
@@ -3644,6 +3650,46 @@ ruleEString returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()
 		}
 		{
 			newLeafNode(this_ID_1, grammarAccess.getEStringAccess().getIDTerminalRuleCall_1());
+		}
+	)
+;
+
+// Entry rule entryRuleRosNames
+entryRuleRosNames returns [String current=null]:
+	{ newCompositeNode(grammarAccess.getRosNamesRule()); }
+	iv_ruleRosNames=ruleRosNames
+	{ $current=$iv_ruleRosNames.current.getText(); }
+	EOF;
+
+// Rule RosNames
+ruleRosNames returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		this_ROS_CONVENTION_A_0=RULE_ROS_CONVENTION_A
+		{
+			$current.merge(this_ROS_CONVENTION_A_0);
+		}
+		{
+			newLeafNode(this_ROS_CONVENTION_A_0, grammarAccess.getRosNamesAccess().getROS_CONVENTION_ATerminalRuleCall_0());
+		}
+		    |
+		this_ID_1=RULE_ID
+		{
+			$current.merge(this_ID_1);
+		}
+		{
+			newLeafNode(this_ID_1, grammarAccess.getRosNamesAccess().getIDTerminalRuleCall_1());
+		}
+		    |
+		kw=Node
+		{
+			$current.merge(kw);
+			newLeafNode(kw, grammarAccess.getRosNamesAccess().getNodeKeyword_2());
 		}
 	)
 ;

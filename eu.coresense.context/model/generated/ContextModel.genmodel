@@ -19,6 +19,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ContextModel.ecore#//ContextVar/doProxy"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ContextModel.ecore#//ContextVar/functionName"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ContextModel.ecore#//ContextVar/functionLibrary"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ContextModel.ecore#//ContextVar/functionArgs"/>
     </genClasses>
     <genClasses ecoreClass="ContextModel.ecore#//DoCache">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ContextModel.ecore#//DoCache/do"/>

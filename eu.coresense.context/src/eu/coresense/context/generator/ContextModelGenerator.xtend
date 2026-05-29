@@ -28,13 +28,7 @@ class ContextModelGenerator extends AbstractGenerator {
         this._namer = namer
     }
 
-	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
-//		fsa.generateFile('greetings.txt', 'People to greet: ' + 
-//			resource.allContents
-//				.filter(Greeting)
-//				.map[name]
-//				.join(', '))
-	}
+	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {}
 	
 	private def nodeFromRef(DataSource source)
 	{
@@ -63,6 +57,7 @@ class ContextModelGenerator extends AbstractGenerator {
 			
 			(measure: $«contextvarName», source: $«_namer.uniqueName(contextVariable.source, _namer.uniqueName(nodeFromRef(ref)))») isa measurement_interface,
 				    «IF contextVariable.functionLibrary !== null»has measurement_function_lib '«contextVariable.functionLibrary»',«ENDIF»
+				    «IF contextVariable.functionArgs !== null»has measurement_function_args '«contextVariable.functionArgs»',«ENDIF»
 				    «IF contextVariable.period != 0»has measurement_period «contextVariable.period»,«ENDIF»
 				    «IF ref instanceof QualifiedServiceServerRef»
 				    	 «IF ref.kwargs !== null || ref.kwargs!== ""»has service_request_kwargs '«ref.kwargs»',«ENDIF»

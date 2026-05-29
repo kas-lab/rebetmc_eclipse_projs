@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+  <category-def name="eu.coresense.category" label="CoreSense"/>
+  <feature id="eu.coresense.feature" version="0.0.0">
+    <category name="eu.coresense.category"/>
+  </feature>
+</site>

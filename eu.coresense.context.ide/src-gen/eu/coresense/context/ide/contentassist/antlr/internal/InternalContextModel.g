@@ -735,6 +735,7 @@ rule__ContextVar__Group__12
 	}
 :
 	rule__ContextVar__Group__12__Impl
+	rule__ContextVar__Group__13
 ;
 finally {
 	restoreStackSize(stackSize);
@@ -746,9 +747,35 @@ rule__ContextVar__Group__12__Impl
 	}
 :
 (
-	{ before(grammarAccess.getContextVarAccess().getRightCurlyBracketKeyword_12()); }
+	{ before(grammarAccess.getContextVarAccess().getGroup_12()); }
+	(rule__ContextVar__Group_12__0)?
+	{ after(grammarAccess.getContextVarAccess().getGroup_12()); }
+)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__ContextVar__Group__13
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	rule__ContextVar__Group__13__Impl
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__ContextVar__Group__13__Impl
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+(
+	{ before(grammarAccess.getContextVarAccess().getRightCurlyBracketKeyword_13()); }
 	'}'
-	{ after(grammarAccess.getContextVarAccess().getRightCurlyBracketKeyword_12()); }
+	{ after(grammarAccess.getContextVarAccess().getRightCurlyBracketKeyword_13()); }
 )
 ;
 finally {
@@ -1046,6 +1073,60 @@ rule__ContextVar__Group_11__1__Impl
 	{ before(grammarAccess.getContextVarAccess().getFunctionLibraryAssignment_11_1()); }
 	(rule__ContextVar__FunctionLibraryAssignment_11_1)
 	{ after(grammarAccess.getContextVarAccess().getFunctionLibraryAssignment_11_1()); }
+)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+rule__ContextVar__Group_12__0
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	rule__ContextVar__Group_12__0__Impl
+	rule__ContextVar__Group_12__1
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__ContextVar__Group_12__0__Impl
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+(
+	{ before(grammarAccess.getContextVarAccess().getFunction_argsKeyword_12_0()); }
+	'function_args'
+	{ after(grammarAccess.getContextVarAccess().getFunction_argsKeyword_12_0()); }
+)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__ContextVar__Group_12__1
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	rule__ContextVar__Group_12__1__Impl
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__ContextVar__Group_12__1__Impl
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+(
+	{ before(grammarAccess.getContextVarAccess().getFunctionArgsAssignment_12_1()); }
+	(rule__ContextVar__FunctionArgsAssignment_12_1)
+	{ after(grammarAccess.getContextVarAccess().getFunctionArgsAssignment_12_1()); }
 )
 ;
 finally {
@@ -1926,6 +2007,21 @@ rule__ContextVar__FunctionLibraryAssignment_11_1
 		{ before(grammarAccess.getContextVarAccess().getFunctionLibrarySTRINGTerminalRuleCall_11_1_0()); }
 		RULE_STRING
 		{ after(grammarAccess.getContextVarAccess().getFunctionLibrarySTRINGTerminalRuleCall_11_1_0()); }
+	)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__ContextVar__FunctionArgsAssignment_12_1
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	(
+		{ before(grammarAccess.getContextVarAccess().getFunctionArgsSTRINGTerminalRuleCall_12_1_0()); }
+		RULE_STRING
+		{ after(grammarAccess.getContextVarAccess().getFunctionArgsSTRINGTerminalRuleCall_12_1_0()); }
 	)
 ;
 finally {

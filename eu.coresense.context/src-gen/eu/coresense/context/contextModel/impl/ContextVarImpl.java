@@ -34,6 +34,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  *   <li>{@link eu.coresense.context.contextModel.impl.ContextVarImpl#getDoProxy <em>Do Proxy</em>}</li>
  *   <li>{@link eu.coresense.context.contextModel.impl.ContextVarImpl#getFunctionName <em>Function Name</em>}</li>
  *   <li>{@link eu.coresense.context.contextModel.impl.ContextVarImpl#getFunctionLibrary <em>Function Library</em>}</li>
+ *   <li>{@link eu.coresense.context.contextModel.impl.ContextVarImpl#getFunctionArgs <em>Function Args</em>}</li>
  * </ul>
  *
  * @generated
@@ -169,6 +170,26 @@ public class ContextVarImpl extends MinimalEObjectImpl.Container implements Cont
    * @ordered
    */
   protected String functionLibrary = FUNCTION_LIBRARY_EDEFAULT;
+
+  /**
+   * The default value of the '{@link #getFunctionArgs() <em>Function Args</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getFunctionArgs()
+   * @generated
+   * @ordered
+   */
+  protected static final String FUNCTION_ARGS_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getFunctionArgs() <em>Function Args</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getFunctionArgs()
+   * @generated
+   * @ordered
+   */
+  protected String functionArgs = FUNCTION_ARGS_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
@@ -472,6 +493,31 @@ public class ContextVarImpl extends MinimalEObjectImpl.Container implements Cont
    * @generated
    */
   @Override
+  public String getFunctionArgs()
+  {
+    return functionArgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setFunctionArgs(String newFunctionArgs)
+  {
+    String oldFunctionArgs = functionArgs;
+    functionArgs = newFunctionArgs;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, ContextModelPackage.CONTEXT_VAR__FUNCTION_ARGS, oldFunctionArgs, functionArgs));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
   {
     switch (featureID)
@@ -512,6 +558,8 @@ public class ContextVarImpl extends MinimalEObjectImpl.Container implements Cont
         return getFunctionName();
       case ContextModelPackage.CONTEXT_VAR__FUNCTION_LIBRARY:
         return getFunctionLibrary();
+      case ContextModelPackage.CONTEXT_VAR__FUNCTION_ARGS:
+        return getFunctionArgs();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -549,6 +597,9 @@ public class ContextVarImpl extends MinimalEObjectImpl.Container implements Cont
         return;
       case ContextModelPackage.CONTEXT_VAR__FUNCTION_LIBRARY:
         setFunctionLibrary((String)newValue);
+        return;
+      case ContextModelPackage.CONTEXT_VAR__FUNCTION_ARGS:
+        setFunctionArgs((String)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -588,6 +639,9 @@ public class ContextVarImpl extends MinimalEObjectImpl.Container implements Cont
       case ContextModelPackage.CONTEXT_VAR__FUNCTION_LIBRARY:
         setFunctionLibrary(FUNCTION_LIBRARY_EDEFAULT);
         return;
+      case ContextModelPackage.CONTEXT_VAR__FUNCTION_ARGS:
+        setFunctionArgs(FUNCTION_ARGS_EDEFAULT);
+        return;
     }
     super.eUnset(featureID);
   }
@@ -618,6 +672,8 @@ public class ContextVarImpl extends MinimalEObjectImpl.Container implements Cont
         return FUNCTION_NAME_EDEFAULT == null ? functionName != null : !FUNCTION_NAME_EDEFAULT.equals(functionName);
       case ContextModelPackage.CONTEXT_VAR__FUNCTION_LIBRARY:
         return FUNCTION_LIBRARY_EDEFAULT == null ? functionLibrary != null : !FUNCTION_LIBRARY_EDEFAULT.equals(functionLibrary);
+      case ContextModelPackage.CONTEXT_VAR__FUNCTION_ARGS:
+        return FUNCTION_ARGS_EDEFAULT == null ? functionArgs != null : !FUNCTION_ARGS_EDEFAULT.equals(functionArgs);
     }
     return super.eIsSet(featureID);
   }
@@ -643,6 +699,8 @@ public class ContextVarImpl extends MinimalEObjectImpl.Container implements Cont
     result.append(functionName);
     result.append(", functionLibrary: ");
     result.append(functionLibrary);
+    result.append(", functionArgs: ");
+    result.append(functionArgs);
     result.append(')');
     return result.toString();
   }

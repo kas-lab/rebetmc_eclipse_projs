@@ -87,7 +87,11 @@ public class ContextModelGrammarAccess extends AbstractElementFinder.AbstractGra
 		private final Keyword cFunction_libKeyword_11_0 = (Keyword)cGroup_11.eContents().get(0);
 		private final Assignment cFunctionLibraryAssignment_11_1 = (Assignment)cGroup_11.eContents().get(1);
 		private final RuleCall cFunctionLibrarySTRINGTerminalRuleCall_11_1_0 = (RuleCall)cFunctionLibraryAssignment_11_1.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_12 = (Keyword)cGroup.eContents().get(12);
+		private final Group cGroup_12 = (Group)cGroup.eContents().get(12);
+		private final Keyword cFunction_argsKeyword_12_0 = (Keyword)cGroup_12.eContents().get(0);
+		private final Assignment cFunctionArgsAssignment_12_1 = (Assignment)cGroup_12.eContents().get(1);
+		private final RuleCall cFunctionArgsSTRINGTerminalRuleCall_12_1_0 = (RuleCall)cFunctionArgsAssignment_12_1.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_13 = (Keyword)cGroup.eContents().get(13);
 		
 		//ContextVar:
 		//    'ContextVariable' name=ID
@@ -99,6 +103,7 @@ public class ContextModelGrammarAccess extends AbstractElementFinder.AbstractGra
 		//        ('proxy' doProxy=DoProxy)?
 		//        'function_name' functionName=STRING
 		//        ('function_lib' functionLibrary=STRING)?
+		//        ('function_args' functionArgs=STRING)?
 		//    '}';
 		@Override public ParserRule getRule() { return rule; }
 		
@@ -111,6 +116,7 @@ public class ContextModelGrammarAccess extends AbstractElementFinder.AbstractGra
 		//    ('proxy' doProxy=DoProxy)?
 		//    'function_name' functionName=STRING
 		//    ('function_lib' functionLibrary=STRING)?
+		//    ('function_args' functionArgs=STRING)?
 		//'}'
 		public Group getGroup() { return cGroup; }
 		
@@ -207,8 +213,20 @@ public class ContextModelGrammarAccess extends AbstractElementFinder.AbstractGra
 		//STRING
 		public RuleCall getFunctionLibrarySTRINGTerminalRuleCall_11_1_0() { return cFunctionLibrarySTRINGTerminalRuleCall_11_1_0; }
 		
+		//('function_args' functionArgs=STRING)?
+		public Group getGroup_12() { return cGroup_12; }
+		
+		//'function_args'
+		public Keyword getFunction_argsKeyword_12_0() { return cFunction_argsKeyword_12_0; }
+		
+		//functionArgs=STRING
+		public Assignment getFunctionArgsAssignment_12_1() { return cFunctionArgsAssignment_12_1; }
+		
+		//STRING
+		public RuleCall getFunctionArgsSTRINGTerminalRuleCall_12_1_0() { return cFunctionArgsSTRINGTerminalRuleCall_12_1_0; }
+		
 		//'}'
-		public Keyword getRightCurlyBracketKeyword_12() { return cRightCurlyBracketKeyword_12; }
+		public Keyword getRightCurlyBracketKeyword_13() { return cRightCurlyBracketKeyword_13; }
 	}
 	public class DoCacheElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "eu.coresense.context.ContextModel.DoCache");
@@ -612,6 +630,7 @@ public class ContextModelGrammarAccess extends AbstractElementFinder.AbstractGra
 	//        ('proxy' doProxy=DoProxy)?
 	//        'function_name' functionName=STRING
 	//        ('function_lib' functionLibrary=STRING)?
+	//        ('function_args' functionArgs=STRING)?
 	//    '}';
 	public ContextVarElements getContextVarAccess() {
 		return pContextVar;

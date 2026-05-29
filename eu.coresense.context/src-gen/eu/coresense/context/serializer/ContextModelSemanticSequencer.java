@@ -104,7 +104,8 @@ public class ContextModelSemanticSequencer extends AbstractDelegatingSemanticSeq
 	 *         period=INT? 
 	 *         doProxy=DoProxy? 
 	 *         functionName=STRING 
-	 *         functionLibrary=STRING?
+	 *         functionLibrary=STRING? 
+	 *         functionArgs=STRING?
 	 *     )
 	 * </pre>
 	 */

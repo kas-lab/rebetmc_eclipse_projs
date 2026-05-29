@@ -9,7 +9,7 @@ import com.google.inject.name.Names;
 import eu.coresense.context.generator.ContextModelGenerator;
 import eu.coresense.context.parser.antlr.ContextModelAntlrTokenFileProvider;
 import eu.coresense.context.parser.antlr.ContextModelParser;
-import eu.coresense.context.parser.antlr.internal.InternalContextModelLexer;
+import eu.coresense.context.parser.antlr.lexer.InternalContextModelLexer;
 import eu.coresense.context.scoping.ContextModelScopeProvider;
 import eu.coresense.context.serializer.ContextModelSemanticSequencer;
 import eu.coresense.context.serializer.ContextModelSyntacticSequencer;

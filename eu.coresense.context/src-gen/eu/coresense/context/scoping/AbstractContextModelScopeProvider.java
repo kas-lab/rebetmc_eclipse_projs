@@ -3,7 +3,7 @@
  */
 package eu.coresense.context.scoping;
 
-import org.eclipse.xtext.scoping.impl.DelegatingScopeProvider;
+import de.fraunhofer.ipa.ros.scoping.BasicsScopeProvider;
 
-public abstract class AbstractContextModelScopeProvider extends DelegatingScopeProvider {
+public abstract class AbstractContextModelScopeProvider extends BasicsScopeProvider {
 }

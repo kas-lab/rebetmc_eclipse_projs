@@ -11,6 +11,6 @@ public class ContextModelAntlrTokenFileProvider implements IAntlrTokenFileProvid
 	@Override
 	public InputStream getAntlrTokenFile() {
 		ClassLoader classLoader = getClass().getClassLoader();
-		return classLoader.getResourceAsStream("eu/coresense/context/parser/antlr/internal/InternalContextModel.tokens");
+		return classLoader.getResourceAsStream("eu/coresense/context/parser/antlr/internal/InternalContextModelParser.tokens");
 	}
 }

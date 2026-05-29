@@ -40,7 +40,7 @@ class ContextModelScopeProviderr extends AbstractContextModelScopeProvider {
 	            // scope over all features in the model
 	           	return Scopes.scopeFor(
 		            node.getActionserver(),
-		            [EObject e | QualifiedName.create(Utilities.escape((e as ActionServer).name))],
+		            [EObject e | QualifiedName.create((e as ActionServer).name)],
 		            IScope.NULLSCOPE
 		        )
 	        }
@@ -54,7 +54,7 @@ class ContextModelScopeProviderr extends AbstractContextModelScopeProvider {
 	            // scope over all features in the model
 	            return Scopes.scopeFor(
 		            node.getServiceserver(), 
-		            [EObject e | QualifiedName.create(Utilities.escape((e as ServiceServer).name))],
+		            [EObject e | QualifiedName.create((e as ServiceServer).name)],
 		            IScope.NULLSCOPE
 		        )
 	        }
@@ -68,7 +68,7 @@ class ContextModelScopeProviderr extends AbstractContextModelScopeProvider {
 
 	    	return Scopes.scopeFor(
 	    		allNodes(model,context),
-	    		[EObject e | QualifiedName.create(Utilities.escape((e as ros.Node).name))],
+	    		[EObject e | QualifiedName.create((e as ros.Node).name)],
 	    		IScope.NULLSCOPE
 	    	);
 	    }
@@ -83,7 +83,7 @@ class ContextModelScopeProviderr extends AbstractContextModelScopeProvider {
          // Scopes.scopeFor with lambda keeps '/' literal
          return Scopes.scopeFor(
              publishers, 
-             [EObject e | QualifiedName.create(Utilities.escape((e as Publisher).name))],
+             [EObject e | QualifiedName.create((e as Publisher).name)],
              IScope.NULLSCOPE
          )
      }

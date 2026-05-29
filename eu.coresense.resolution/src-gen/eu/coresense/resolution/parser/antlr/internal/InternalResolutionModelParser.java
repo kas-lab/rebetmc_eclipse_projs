@@ -9572,7 +9572,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleKEYWORD"
-    // InternalResolutionModelParser.g:3541:1: ruleKEYWORD returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (kw= Goal | kw= Message | kw= Result | kw= Feedback | kw= Name | kw= Value | kw= Service | kw= Type | kw= Action | kw= Duration | kw= Time ) ;
+    // InternalResolutionModelParser.g:3541:1: ruleKEYWORD returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (kw= Goal | kw= Message | kw= Result | kw= Feedback | kw= Name | kw= Value | kw= Service | kw= Type | kw= Action | kw= Duration | kw= Time | kw= Node ) ;
     public final AntlrDatatypeRuleToken ruleKEYWORD() throws RecognitionException {
         AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
 
@@ -9582,11 +9582,11 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalResolutionModelParser.g:3547:2: ( (kw= Goal | kw= Message | kw= Result | kw= Feedback | kw= Name | kw= Value | kw= Service | kw= Type | kw= Action | kw= Duration | kw= Time ) )
-            // InternalResolutionModelParser.g:3548:2: (kw= Goal | kw= Message | kw= Result | kw= Feedback | kw= Name | kw= Value | kw= Service | kw= Type | kw= Action | kw= Duration | kw= Time )
+            // InternalResolutionModelParser.g:3547:2: ( (kw= Goal | kw= Message | kw= Result | kw= Feedback | kw= Name | kw= Value | kw= Service | kw= Type | kw= Action | kw= Duration | kw= Time | kw= Node ) )
+            // InternalResolutionModelParser.g:3548:2: (kw= Goal | kw= Message | kw= Result | kw= Feedback | kw= Name | kw= Value | kw= Service | kw= Type | kw= Action | kw= Duration | kw= Time | kw= Node )
             {
-            // InternalResolutionModelParser.g:3548:2: (kw= Goal | kw= Message | kw= Result | kw= Feedback | kw= Name | kw= Value | kw= Service | kw= Type | kw= Action | kw= Duration | kw= Time )
-            int alt28=11;
+            // InternalResolutionModelParser.g:3548:2: (kw= Goal | kw= Message | kw= Result | kw= Feedback | kw= Name | kw= Value | kw= Service | kw= Type | kw= Action | kw= Duration | kw= Time | kw= Node )
+            int alt28=12;
             switch ( input.LA(1) ) {
             case Goal:
                 {
@@ -9641,6 +9641,11 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
             case Time:
                 {
                 alt28=11;
+                }
+                break;
+            case Node:
+                {
+                alt28=12;
                 }
                 break;
             default:
@@ -9772,6 +9777,17 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
                     }
                     break;
+                case 12 :
+                    // InternalResolutionModelParser.g:3615:3: kw= Node
+                    {
+                    kw=(Token)match(input,Node,FOLLOW_2); 
+
+                    			current.merge(kw);
+                    			newLeafNode(kw, grammarAccess.getKEYWORDAccess().getNodeKeyword_11());
+                    		
+
+                    }
+                    break;
 
             }
 
@@ -9795,7 +9811,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleEString"
-    // InternalResolutionModelParser.g:3618:1: entryRuleEString returns [String current=null] : iv_ruleEString= ruleEString EOF ;
+    // InternalResolutionModelParser.g:3624:1: entryRuleEString returns [String current=null] : iv_ruleEString= ruleEString EOF ;
     public final String entryRuleEString() throws RecognitionException {
         String current = null;
 
@@ -9803,8 +9819,8 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalResolutionModelParser.g:3618:47: (iv_ruleEString= ruleEString EOF )
-            // InternalResolutionModelParser.g:3619:2: iv_ruleEString= ruleEString EOF
+            // InternalResolutionModelParser.g:3624:47: (iv_ruleEString= ruleEString EOF )
+            // InternalResolutionModelParser.g:3625:2: iv_ruleEString= ruleEString EOF
             {
              newCompositeNode(grammarAccess.getEStringRule()); 
             pushFollow(FOLLOW_1);
@@ -9831,7 +9847,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleEString"
-    // InternalResolutionModelParser.g:3625:1: ruleEString returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (this_STRING_0= RULE_STRING | this_ID_1= RULE_ID ) ;
+    // InternalResolutionModelParser.g:3631:1: ruleEString returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (this_STRING_0= RULE_STRING | this_ID_1= RULE_ID ) ;
     public final AntlrDatatypeRuleToken ruleEString() throws RecognitionException {
         AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
 
@@ -9842,10 +9858,10 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalResolutionModelParser.g:3631:2: ( (this_STRING_0= RULE_STRING | this_ID_1= RULE_ID ) )
-            // InternalResolutionModelParser.g:3632:2: (this_STRING_0= RULE_STRING | this_ID_1= RULE_ID )
+            // InternalResolutionModelParser.g:3637:2: ( (this_STRING_0= RULE_STRING | this_ID_1= RULE_ID ) )
+            // InternalResolutionModelParser.g:3638:2: (this_STRING_0= RULE_STRING | this_ID_1= RULE_ID )
             {
-            // InternalResolutionModelParser.g:3632:2: (this_STRING_0= RULE_STRING | this_ID_1= RULE_ID )
+            // InternalResolutionModelParser.g:3638:2: (this_STRING_0= RULE_STRING | this_ID_1= RULE_ID )
             int alt29=2;
             int LA29_0 = input.LA(1);
 
@@ -9863,7 +9879,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
             }
             switch (alt29) {
                 case 1 :
-                    // InternalResolutionModelParser.g:3633:3: this_STRING_0= RULE_STRING
+                    // InternalResolutionModelParser.g:3639:3: this_STRING_0= RULE_STRING
                     {
                     this_STRING_0=(Token)match(input,RULE_STRING,FOLLOW_2); 
 
@@ -9876,7 +9892,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // InternalResolutionModelParser.g:3641:3: this_ID_1= RULE_ID
+                    // InternalResolutionModelParser.g:3647:3: this_ID_1= RULE_ID
                     {
                     this_ID_1=(Token)match(input,RULE_ID,FOLLOW_2); 
 
@@ -9911,7 +9927,7 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleLifecycleState"
-    // InternalResolutionModelParser.g:3652:1: ruleLifecycleState returns [Enumerator current=null] : ( (enumLiteral_0= UNCONFIGURED ) | (enumLiteral_1= INACTIVE ) | (enumLiteral_2= ACTIVE ) | (enumLiteral_3= FINALIZED ) ) ;
+    // InternalResolutionModelParser.g:3658:1: ruleLifecycleState returns [Enumerator current=null] : ( (enumLiteral_0= UNCONFIGURED ) | (enumLiteral_1= INACTIVE ) | (enumLiteral_2= ACTIVE ) | (enumLiteral_3= FINALIZED ) ) ;
     public final Enumerator ruleLifecycleState() throws RecognitionException {
         Enumerator current = null;
 
@@ -9924,10 +9940,10 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalResolutionModelParser.g:3658:2: ( ( (enumLiteral_0= UNCONFIGURED ) | (enumLiteral_1= INACTIVE ) | (enumLiteral_2= ACTIVE ) | (enumLiteral_3= FINALIZED ) ) )
-            // InternalResolutionModelParser.g:3659:2: ( (enumLiteral_0= UNCONFIGURED ) | (enumLiteral_1= INACTIVE ) | (enumLiteral_2= ACTIVE ) | (enumLiteral_3= FINALIZED ) )
+            // InternalResolutionModelParser.g:3664:2: ( ( (enumLiteral_0= UNCONFIGURED ) | (enumLiteral_1= INACTIVE ) | (enumLiteral_2= ACTIVE ) | (enumLiteral_3= FINALIZED ) ) )
+            // InternalResolutionModelParser.g:3665:2: ( (enumLiteral_0= UNCONFIGURED ) | (enumLiteral_1= INACTIVE ) | (enumLiteral_2= ACTIVE ) | (enumLiteral_3= FINALIZED ) )
             {
-            // InternalResolutionModelParser.g:3659:2: ( (enumLiteral_0= UNCONFIGURED ) | (enumLiteral_1= INACTIVE ) | (enumLiteral_2= ACTIVE ) | (enumLiteral_3= FINALIZED ) )
+            // InternalResolutionModelParser.g:3665:2: ( (enumLiteral_0= UNCONFIGURED ) | (enumLiteral_1= INACTIVE ) | (enumLiteral_2= ACTIVE ) | (enumLiteral_3= FINALIZED ) )
             int alt30=4;
             switch ( input.LA(1) ) {
             case UNCONFIGURED:
@@ -9959,10 +9975,10 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
 
             switch (alt30) {
                 case 1 :
-                    // InternalResolutionModelParser.g:3660:3: (enumLiteral_0= UNCONFIGURED )
+                    // InternalResolutionModelParser.g:3666:3: (enumLiteral_0= UNCONFIGURED )
                     {
-                    // InternalResolutionModelParser.g:3660:3: (enumLiteral_0= UNCONFIGURED )
-                    // InternalResolutionModelParser.g:3661:4: enumLiteral_0= UNCONFIGURED
+                    // InternalResolutionModelParser.g:3666:3: (enumLiteral_0= UNCONFIGURED )
+                    // InternalResolutionModelParser.g:3667:4: enumLiteral_0= UNCONFIGURED
                     {
                     enumLiteral_0=(Token)match(input,UNCONFIGURED,FOLLOW_2); 
 
@@ -9976,10 +9992,10 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // InternalResolutionModelParser.g:3668:3: (enumLiteral_1= INACTIVE )
+                    // InternalResolutionModelParser.g:3674:3: (enumLiteral_1= INACTIVE )
                     {
-                    // InternalResolutionModelParser.g:3668:3: (enumLiteral_1= INACTIVE )
-                    // InternalResolutionModelParser.g:3669:4: enumLiteral_1= INACTIVE
+                    // InternalResolutionModelParser.g:3674:3: (enumLiteral_1= INACTIVE )
+                    // InternalResolutionModelParser.g:3675:4: enumLiteral_1= INACTIVE
                     {
                     enumLiteral_1=(Token)match(input,INACTIVE,FOLLOW_2); 
 
@@ -9993,10 +10009,10 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 3 :
-                    // InternalResolutionModelParser.g:3676:3: (enumLiteral_2= ACTIVE )
+                    // InternalResolutionModelParser.g:3682:3: (enumLiteral_2= ACTIVE )
                     {
-                    // InternalResolutionModelParser.g:3676:3: (enumLiteral_2= ACTIVE )
-                    // InternalResolutionModelParser.g:3677:4: enumLiteral_2= ACTIVE
+                    // InternalResolutionModelParser.g:3682:3: (enumLiteral_2= ACTIVE )
+                    // InternalResolutionModelParser.g:3683:4: enumLiteral_2= ACTIVE
                     {
                     enumLiteral_2=(Token)match(input,ACTIVE,FOLLOW_2); 
 
@@ -10010,10 +10026,10 @@ public class InternalResolutionModelParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 4 :
-                    // InternalResolutionModelParser.g:3684:3: (enumLiteral_3= FINALIZED )
+                    // InternalResolutionModelParser.g:3690:3: (enumLiteral_3= FINALIZED )
                     {
-                    // InternalResolutionModelParser.g:3684:3: (enumLiteral_3= FINALIZED )
-                    // InternalResolutionModelParser.g:3685:4: enumLiteral_3= FINALIZED
+                    // InternalResolutionModelParser.g:3690:3: (enumLiteral_3= FINALIZED )
+                    // InternalResolutionModelParser.g:3691:4: enumLiteral_3= FINALIZED
                     {
                     enumLiteral_3=(Token)match(input,FINALIZED,FOLLOW_2); 
 

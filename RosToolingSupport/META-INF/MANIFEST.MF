@@ -6,6 +6,8 @@ Bundle-Version: 0.1.0.qualifier
 Require-Bundle: de.fraunhofer.ipa.ros,
  de.fraunhofer.ipa.rossystem,
  org.eclipse.xtext,
+ org.eclipse.emf.ecore,
+ org.eclipse.emf.common,
  eu.coresense.resolution,
  eu.coresense.adaptation,
  eu.coresense.requirements

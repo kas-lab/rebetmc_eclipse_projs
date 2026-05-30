@@ -17,7 +17,6 @@ import eu.coresense.resolution.resolutionModel.SetParam
 import org.eclipse.xtext.naming.QualifiedName
 import eu.coresense.resolution.resolutionModel.FeatureReference
 import ros.Parameter
-import eu.coresense.common.Utilities
 
 class ResolutionModelScopeProviderr  extends AbstractResolutionModelScopeProvider {
 	

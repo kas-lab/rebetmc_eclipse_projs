@@ -3,10 +3,6 @@
  */
 package eu.coresense.resolution.validation;
 
-import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.ecore.util.EcoreUtil;
-import java.util.Iterator;
-
 import org.eclipse.xtext.validation.Check;
 
 import eu.coresense.resolution.resolutionModel.Resolution;
@@ -15,11 +11,8 @@ import eu.coresense.resolution.resolutionModel.SetLifecycle;
 import eu.coresense.resolution.resolutionModel.SetParam;
 
 import ros.ParameterValue;
-import ros.ServiceServer;
 import ros.Node;
-import system.RosInterface;
 import system.RosNode;
-import system.RosParameter;
 
 /**
  * This class contains custom validation rules. 

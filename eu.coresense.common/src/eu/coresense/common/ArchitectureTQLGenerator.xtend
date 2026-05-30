@@ -3,8 +3,6 @@ package eu.coresense.common
 import java.util.List
 import system.Component
 import system.RosNode
-import system.RosPublisherReference
-import system.RosSubscriberReference
 import system.SubSystem
 import system.System
 import java.util.Map

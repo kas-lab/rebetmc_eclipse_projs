@@ -7,8 +7,6 @@ import org.eclipse.xtext.validation.Check;
 
 import eu.coresense.context.contextModel.ContextModelPackage;
 import eu.coresense.context.contextModel.ContextVar;
-import eu.coresense.context.contextModel.DataSource;
-import eu.coresense.context.contextModel.DoCache;
 
 /**
  * This class contains custom validation rules. 

@@ -661,12 +661,10 @@ class TQLGenerator extends AbstractGenerator {
     {
     	val archTQLGenerator = new ArchitectureTQLGenerator(_namer)
 		'''
-		insert
-		
 		«FOR rossys : rosSystems»
 			«archTQLGenerator.generateArchitectureInsertQuery(rossys,false)»
 		«ENDFOR»
-		'''	      
+		'''
     }
     
     def getResolutionModel(TacticsModel t, Resource resource)
@@ -1150,9 +1148,13 @@ class TQLGenerator extends AbstractGenerator {
         }
         
         val contextGenerator = new ContextModelGenerator(_namer)
-        
+
 		escapes = newHashMap
-		val x ='''			
+		val rosSystems = resolutionModels.map[rossystem].toSet
+		val x ='''
+			insert
+
+			«generateArchitectureInsertQuery(rosSystems)»
 			«infinityLiteralsTQL»
 			«thresholdLiteralsTQL»
 			$ta_«lc_tacticName» isa Tactic, has tactic_name "«tacticName»";
@@ -2157,8 +2159,8 @@ class TQLGenerator extends AbstractGenerator {
 				«ENDFOR»
 				$«name» (
 		    	«FOR element : handled SEPARATOR ", "» 
-«««		    	«val nammee = _namer.uniqueName(e)»
-		    	expression:$«element.key»
+«««		    		«val nammee = _namer.uniqueName(e)»
+		    		expression:$«element.key»
 		    	«ENDFOR»
 		    	) isa and_expression;
 				'''

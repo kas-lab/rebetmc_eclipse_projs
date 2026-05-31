@@ -104,6 +104,8 @@ The target platform uses Maven locations to fetch dependencies from GitHub Packa
 3. Search for `Maven PDE Integration` and select it
 4. Click `Next` and finish the installation, then restart Eclipse
 
+**Note:** You might need to increase the Eclipse/java heap to at least 4GB
+
 #### Steps
 
 In Eclipse:

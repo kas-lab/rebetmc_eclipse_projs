@@ -287,7 +287,9 @@ class ArchitectureTQLGenerator extends AbstractGenerator {
 		
 		for (parameter_override : node.rosparameters) {
 			val indexOverride = originalParameters.indexOf(parameter_override.from)
-			originalParameters.get(indexOverride).value = parameter_override.value
+			if (indexOverride >= 0) {
+				originalParameters.get(indexOverride).value = parameter_override.value
+			}
 		}
 		
 		return originalParameters

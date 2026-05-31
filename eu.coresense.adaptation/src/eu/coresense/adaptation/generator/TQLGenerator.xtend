@@ -497,7 +497,7 @@ class TQLGenerator extends AbstractGenerator {
     	}
     	if(lit instanceof StringLiteral)
     	{
-    		return name -> '''$«name» isa ValueString, has string_value «Utilities.valueOfLiteral(lit)»;'''
+    		return name -> '''$«name» isa ValueString, has string_value «Utilities.typeqlString(Utilities.valueOfLiteral(lit).toString)»;'''
     	}
     	if(lit instanceof BooleanLiteral)
     	{

@@ -89,6 +89,15 @@ class Utilities {
         var withSlash = name.replace("_slash_", "/")
         var withTildewithSlash = withSlash.replace("_tilde_","~")
         withTildewithSlash.replace("_dot_",".")
-        
+
+    }
+
+    def static String typeqlString(String s) {
+        if (!s.contains('"'))
+            '"' + s + '"'
+        else if (!s.contains("'"))
+            "'" + s + "'"
+        else
+            '"' + s.replace('"', "'") + '"'
     }
 }

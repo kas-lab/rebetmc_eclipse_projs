@@ -218,7 +218,7 @@ class ArchitectureTQLGenerator extends AbstractGenerator {
 		val paramValNiceName = NiceNameParamValueType(the_value)
 		if(paramValNiceName == "string")
 			'''
-				$«name» isa «SchemaValueFromParam(the_value)», has «NiceNameParamValueType(the_value)»_value "«ParamValueToString(the_value)»";	
+				$«name» isa «SchemaValueFromParam(the_value)», has «NiceNameParamValueType(the_value)»_value «Utilities.typeqlString(ParamValueToString(the_value))»;
 			'''
 		else
 		{

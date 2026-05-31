@@ -64,7 +64,6 @@ import eu.coresense.adaptation.tactics.RelativeEffect
 import java.util.Set
 import java.util.HashMap
 import java.math.BigDecimal
-import java.util.Map.Entry
 import java.util.LinkedHashSet
 import eu.coresense.common.ArchitectureTQLGenerator
 import system.RosNode
@@ -117,7 +116,6 @@ class TacticsNameProvider implements INameProvider {
 				}
             }
             Expr: ctx.makeUnique("expr_")
-			system.RosNode: ctx.makeUnique(obj.name.replace("/", "") + "_node")
 			LogicalOperator: {
 				val LHSName = if (args.length > 1) args.get(0) else "noLHS"
 				val RHSName = if (args.length > 1) args.get(1) else "noRHS"
@@ -149,6 +147,9 @@ class TQLGenerator extends AbstractGenerator {
 	public static final String INF_INT_VAR = "infinity_int";
 	public static final String NEG_INF_DBL_VAR = "negative_infinity_double";
 	public static final String INF_DBL_VAR = "infinity_double";
+	public static final String TQL_FALSE_VAR = "global_false";
+	public static final String TQL_TRUE_VAR = "global_true";
+	
 	
 	public static final String PARAM_VALUES_SUBQUERY_NAME = "param_values";
 	public static final String FEATURE_VAR = "f"
@@ -158,7 +159,6 @@ class TQLGenerator extends AbstractGenerator {
 	public var List<State> allStates = newArrayList
 //	var Map<ContextVar, List<Pair<LiteralWrapper, LiteralWrapper>>> bounds = newHashMap
 	val Map<Pair<ContextVar, Pair<MathOperator,LiteralWrapper>>, String> definedInequalities = newHashMap
-	val Set<String> definedFeaturePropositions = newHashSet
 	public var HashMap<Pair<String, String>,String> escapes = newHashMap
 //	var List<ContextVar> contextKeys = newArrayList
 	public var Set<String> ruleNames = newHashSet	
@@ -504,7 +504,7 @@ class TQLGenerator extends AbstractGenerator {
     		return name -> '''$«name» isa ValueBool, has bool_value «Utilities.valueOfLiteral(lit)»;'''
     	}
     	
-    	throw new Exception("Strange Literal received " + lit.class)
+    	throw new Exception("Strange Literal received " + lit)
     }
     
     private def literalValue(LiteralWrapper litwrapped, String condition_name)
@@ -556,7 +556,7 @@ class TQLGenerator extends AbstractGenerator {
 		
 				'''
 					«litValue.value»
-					$«name» (lhs_value:$t_measured_«measure.name», rhs_value: $«litValue.key») isa «expressionType(operator)»;
+					$«name» (lhs_value:$«_namer.uniqueName(measure)», rhs_value: $«litValue.key») isa «expressionType(operator)»;
 				'''
 			}
 			else if(condition instanceof MeasurementMeasurementCondition)
@@ -567,7 +567,7 @@ class TQLGenerator extends AbstractGenerator {
 				val name = _namer.uniqueName(condition)
 		
 				'''
-					$«name» (lhs_value:$t_measured_«lh_measure.name», rhs_value: $t_measured_«rh_measure.name») isa «expressionType(operator)»;
+					$«name» (lhs_value:$«_namer.uniqueName(lh_measure)», rhs_value: $«_namer.uniqueName(rh_measure)») isa «expressionType(operator)»;
 				'''
 			}
 		}
@@ -581,17 +581,20 @@ class TQLGenerator extends AbstractGenerator {
 	
 	private def inequality(DerivedVarFeature derived)
 	{
-		val name = _namer.uniqueName(derived.feature) + "_is_selected_or_not"
-		val previouslyDefined = definedFeaturePropositions.contains(name)
+		return '''«_namer.uniqueName(derived.feature)»_is_«IF derived.not»not_«ENDIF»selected''' -> ""
+
+	}
+	
+	private def featureProposition(Feature feature)
+	{
+		val sel_name = _namer.uniqueName(feature) + "_is_selected"
+		val not_sel_name = _namer.uniqueName(feature) + "_is_not_selected"
+		val newEntry = '''
+		$«sel_name» (atom: $«_namer.uniqueName(feature)») isa propositional_expression;
+		$«not_sel_name» (expression: $«sel_name») isa not_expression;
 		
-		if(!previouslyDefined)
-		{ 
-			val newEntry = name -> '''$«name» (atom: $«_namer.uniqueName(derived.feature)») isa propositional_expression;'''
-			definedFeaturePropositions.add(name)
-			
-			return newEntry
-		}
-		return name -> "";
+		'''
+		return newEntry
 		
 	}
 	
@@ -605,19 +608,13 @@ class TQLGenerator extends AbstractGenerator {
 			val litValue = literalValue(thresholdValue, name)
 			val newEntry = name -> '''
 				«litValue.value»
-				$«name» (lhs_value:$t_measured_«measure.name», rhs_value: $«litValue.key») isa «expressionType(operator)»;
+				$«name» (lhs_value:$«_namer.uniqueName(measure)», rhs_value: $«litValue.key») isa «expressionType(operator)»;
 			'''
 			
 			definedInequalities.put(new Pair(measure, new Pair(operator, thresholdValue)), name)
 			return newEntry
 		}
 		return definedInequalities.get(new Pair(measure, new Pair(operator, thresholdValue))) -> ""
-//		else if(condition instanceof FeatureCondition)
-//		{
-//			'''
-//			$«_namer.uniqueName(condition)» (atom: $«_namer.uniqueName(condition.variant.feature)») isa propositional_expression;
-//			'''
-//		}
 	}
     
 
@@ -639,24 +636,17 @@ class TQLGenerator extends AbstractGenerator {
 	}
 
 	
-	private def gatherResolutionFeatures(ResolutionModel res_model)
-	{
-		val features = newArrayList
-		
-		for (resolution : res_model.resolutions) {
-			features.add(resolution.featureRef.feature)
-		}
-		
-		return features
-	}
-	
-	
-//	def List<System> collectAllSystems(ResolutionModel model) {
-//    	val List<System> result = newArrayList
-//        collectRecursively(model.rossystem, result)
-//        return result       
-//    }
-            
+//	private def gatherResolutionFeatures(ResolutionModel res_model)
+//	{
+//		val features = newArrayList
+//		
+//		for (resolution : res_model.resolutions) {
+//			features.add(resolution.featureRef.feature)
+//		}
+//		
+//		return features
+//	}
+//  
     def String generateArchitectureInsertQuery(Set<System> rosSystems)
     {
     	val archTQLGenerator = new ArchitectureTQLGenerator(_namer)
@@ -674,31 +664,7 @@ class TQLGenerator extends AbstractGenerator {
     	
     	var List<ResolutionModel> resolutionModels = newArrayList
     	resolutionModels = Utilities.deriveFromImports(resource, '.resolution',t.imports,typeof(ResolutionModel))
-//		
-//		for (imp : t.imports) {
-//			if(imp.importURI.endsWith('resolution'))
-//			{
-//				var uri = URI.createURI(imp.importURI)
-//				if (uri.isRelative()) {
-//					
-//            		uri = uri.resolve(resource.getURI());
-//        		}
-//        		val imported = resource.resourceSet.getResource(uri, true);
-//        		if (imported === null || imported.getContents().isEmpty()) 
-//        		{
-//        			println("ResolutionModel import fail")
-//        		}
-//        			
-//        		
-//        		val root = imported.getContents().get(0);
-//	            if (root instanceof ResolutionModel) {
-//	               	resolutionModels.add(root)
-//				}
-//				
-//			}
-//			
-//		}
-//		
+
 		return resolutionModels;	
     	
     }
@@ -706,29 +672,6 @@ class TQLGenerator extends AbstractGenerator {
     {
     	var List<ContextModel> contextModels = newArrayList
 		contextModels = Utilities.deriveFromImports(resource, '.context',t.imports,typeof(ContextModel))
-//		for (imp : t.imports) {
-//			if(imp.importURI.endsWith('context'))
-//			{
-//				var uri = URI.createURI(imp.importURI)
-//				if (uri.isRelative()) {
-//					
-//            		uri = uri.resolve(resource.getURI());
-//        		}
-//        		val imported = resource.resourceSet.getResource(uri, true);
-//        		if (imported === null || imported.getContents().isEmpty()) 
-//        		{
-//        			println("ContextModel import fail")
-//        		}
-//        			
-//        		
-//        		val root = imported.getContents().get(0);
-//	            if (root instanceof ContextModel) {
-//	               	contextModels.add(root)
-//				}
-//				
-//			}
-//			
-//		}
 		
 		return contextModels;	 	
     }
@@ -764,7 +707,7 @@ class TQLGenerator extends AbstractGenerator {
 		return rossystems;	 	
     }
     
-	private def infinityLiteral(Boolean negative, Literal otherLiteral, String name)
+	private def infinityLiteral(Boolean negative, Literal otherLiteral)
 	{
 		if(otherLiteral === null)
 		{
@@ -806,7 +749,7 @@ class TQLGenerator extends AbstractGenerator {
 		
 		if(lowerBound === null)
 		{
-			lowerBoundTQL = infinityLiteral(true,upperBound.innerLiteral,name + "_inf_val") -> ""
+			lowerBoundTQL = infinityLiteral(true,upperBound.innerLiteral) -> ""
 			upperBoundTQL = literalValue(upperBound, name)
 			val pointToInf = new LiteralWrapper(lowerBoundTQL.key)
 			lowerBoundVar = new DerivedVar(MathOperator.GREQ,contextVar,pointToInf)
@@ -814,25 +757,27 @@ class TQLGenerator extends AbstractGenerator {
 		} 	
 		if(upperBound === null)
 		{
-			upperBoundTQL = infinityLiteral(false,lowerBound.innerLiteral,name + "_inf_val") -> ""
+			upperBoundTQL = infinityLiteral(false,lowerBound.innerLiteral) -> ""
 			lowerBoundTQL = literalValue(lowerBound, name)
 			lowerBoundVar = new DerivedVar(MathOperator.GREQ,contextVar,lowerBound)
 			val pointToInf = new LiteralWrapper(upperBoundTQL.key)
 			upperBoundVar = new DerivedVar(MathOperator.LESS,contextVar, pointToInf)
 		}
-		
-
-//		'''
-//		«lowerBoundTQL.value»
-//		
-//		«upperBoundTQL.value»
-//		
-//		$«name»_lower_bound (lhs_value:$t_measured_«contextVar.name», rhs_value: $«lowerBoundTQL.key») isa greater_than_equal;
-//		$«name»_upper_bound (lhs_value:$t_measured_«contextVar.name», rhs_value: $«upperBoundTQL.key») isa less_than;
-//		'''
-
 		return new And(lowerBoundVar, upperBoundVar)
 		
+	}
+	
+	private def boundToTQL(Boolean boolValue, ContextVar contextVar)
+	{
+		if(boolValue)
+		{
+			return new DerivedVar(MathOperator.EQUAL, contextVar, new LiteralWrapper(TQL_TRUE_VAR))
+		}
+		else
+		{
+			return new DerivedVar(MathOperator.EQUAL, contextVar, new LiteralWrapper(TQL_FALSE_VAR))
+		}
+			
 	}
 	
 	private def And somethingRecursive(List<? extends Expr> x)
@@ -843,44 +788,38 @@ class TQLGenerator extends AbstractGenerator {
 	        new And(x.get(0), somethingRecursive(x.subList(1, x.size)))
 	    }
 	}
-    private def expressionFromState(List<ContextVar> contextVars, List<Feature> features, State stateFeatBounds, String stateName)
+    private def expressionFromState(List<ContextVar> contextVars, List<Feature> features, State state, String stateName)
     {
-    	val stateBounds = stateFeatBounds.contextPrecondition
-    	val featureValuation = stateFeatBounds.featurePrecondition
-    	val y = newArrayList
+    	val stateBounds = state.contextPrecondition
+    	val stateBoolBounds = state.contextBoolPrecondition
+    	val featureValuation = state.featurePrecondition
+    	val boundConditions = newArrayList
+    	println("features " + features.map[Feature f | f.name])
+    	println("valuations " + featureValuation)
+    	println("state name " + state.TQLName)
     	for (element : stateBounds.indexed) {
     		val contextVar = contextVars.get(element.key)
     		val name = contextVar.name + stateName + element.key.toString()
-    		y.add(boundToTQL(element.value, name, contextVars.get(element.key)))
+    		boundConditions.add(boundToTQL(element.value, name, contextVar))
+    	}
+    	for (element : stateBoolBounds.indexed) {
+    		val contextVar = contextVars.get((stateBounds.size() + element.key))
+    		boundConditions.add(boundToTQL(element.value, contextVar))
     	}
     	
-    	val x = newArrayList
+    	val featureConditions = newArrayList
     	for (element : featureValuation.indexed)
     	{
-    		if(element.value)
-    		{
-    			x.add(new DerivedVarFeature(false,features.get(element.key)))
-    		}
+    		//TODO: For features that have isSelected, and are an alternative, it should be unnecessary to add a notSelected for the siblings.
+    			featureConditions.add(new DerivedVarFeature(!element.value,features.get(element.key)))
     	}
-    	var Expr finalX = if (x.size == 1) x.get(0) else somethingRecursive(x)
-
+    	var Expr finalX = if (featureConditions.size == 1) featureConditions.get(0) else somethingRecursive(featureConditions)
+		
+		println("finalX" + finalX)
     	
-    	var Expr finalY = if (y.size == 1) y.get(0) else somethingRecursive(y)
+    	var Expr finalY = if (boundConditions.size == 1) boundConditions.get(0) else somethingRecursive(boundConditions)
 
     	return new And(finalY,finalX)
-    	
-    	
-//		'''
-//			«FOR element : states.values»
-//				«element»
-//			«ENDFOR»
-//			$«stateName»_andexpr (
-//	    	«FOR element : states.keySet» 
-//            expression:$«element»_lower_bound,
-//            expression:$«element»_upper_bound,
-//            expression: ) isa and_expression;
-//	    	«ENDFOR»
-//		'''
     }
     
     private def String infinityLiterals()
@@ -899,6 +838,15 @@ class TQLGenerator extends AbstractGenerator {
     	'''
     }
     
+    private def String booleanLiterals()
+    {
+
+    	'''
+    	$«TQL_FALSE_VAR» isa ValueBool, has bool_value false;
+    	$«TQL_TRUE_VAR» isa ValueBool, has bool_value true;
+    	'''
+    }
+    
     private def thresholdLiterals(Map<ContextVar, Set<LiteralWrapper>> thresholds)
     {
     	var Map<ContextVar, Set<LiteralWrapper>> newThresholds = newHashMap
@@ -908,8 +856,8 @@ class TQLGenerator extends AbstractGenerator {
     		var i = 0
     		for (wrappedLiteral : thresholdEntry.value) {
     			val name = thresholdEntry.key.name + "_thresh_" + i.toString
-    			val x = literalValue(wrappedLiteral,name)
-    			returnText += x.value
+    			val valuePair = literalValue(wrappedLiteral,name)
+    			returnText += valuePair.value
     			returnText += "\n" 
     			if(!wrappedLiteral.isPointer)
     			{
@@ -917,7 +865,7 @@ class TQLGenerator extends AbstractGenerator {
     				{
     					throw new Exception("????")
     				}
-    				newThresholdSet.add(new LiteralWrapper(x.key, wrappedLiteral.innerLiteral)) //upgrade to pointing Literal
+    				newThresholdSet.add(new LiteralWrapper(valuePair.key, wrappedLiteral.innerLiteral)) //upgrade to pointing Literal
     			}
     			else
     			{
@@ -948,6 +896,8 @@ class TQLGenerator extends AbstractGenerator {
 //		println(contextModels.size)
 		var infinityLiteralsTQL = ""
 		var thresholdLiteralsTQL = ""
+		var booleanLiteralsTQL = ""
+		var featurePropsTQL = ""
 		var stateTQLs = newArrayList
 		
 		val Map<Feature, Set<Boolean>> featureSelections = newHashMap
@@ -961,6 +911,7 @@ class TQLGenerator extends AbstractGenerator {
 	        }
 	        
 	        infinityLiteralsTQL = infinityLiterals()
+	        booleanLiteralsTQL = booleanLiterals()
 	        var somePair = thresholdLiterals(thresholds)
 	        thresholdLiteralsTQL = somePair.key
 	        thresholds = somePair.value
@@ -993,6 +944,10 @@ class TQLGenerator extends AbstractGenerator {
 			val Set<List<Boolean>> featureSelectionsToPairs = newHashSet
 			
 			val relevantFeatures = featureSelections.keySet()
+			for (relevantFeature : relevantFeatures) {
+				featurePropsTQL += featureProposition(relevantFeature)		
+				
+			}
 			for (featureList: allConfigurations)
 			{
 				val List<Boolean> selectedOrNot = newArrayList
@@ -1003,60 +958,7 @@ class TQLGenerator extends AbstractGenerator {
 				featureSelectionsToPairs.add(selectedOrNot)
 				
 			}
-//			for (featureSelectionEntry : featureSelections.values)
-//			{
-//				featureSelectionsToPairs.add(featureSelectionEntry.toList)
-//			}
-//	
-//			val featureSelectionCombinations = Utilities.getCartesianProduct(featureSelectionsToPairs)
-//	
-//			val newnewCombos = newArrayList
-//			val coveredFeatures = newArrayList
-//			for (feat : featureSelections.keySet)
-//			{
-//				println("Checking feature " + feat.name)
-//				if(coveredFeatures.indexOf(feat) == -1)
-//				{
-//					println("it was not covered")
-//					val parent = feat.parent
-//					if(parent instanceof Alternative)
-//					{
-//						println("Got alternative " + parent.name)
-//						coveredFeatures.addAll(parent.children)
-//						val valuationIndices = newArrayList
-//						for(altChild : parent.children)
-//						{
-//							val index = featureSelections.keySet.toList.indexOf(altChild)
-//							if(index >= 0)
-//							{
-//								valuationIndices.add(index)	
-//							}
-//						}
-//						
-//						for (newCombination : featureSelectionCombinations)
-//						{
-//							val relevantSlice = newArrayList
-//							for(valuationIndex : valuationIndices)
-//							{
-//								relevantSlice.add(newCombination.get(valuationIndex))
-//							} 
-//							//Since it is an alternative, only one child can be true at a time
-//							 if(!parent.mandatory && relevantSlice.filter[it].size <= 1)
-//							 {
-//							 	newnewCombos.add(newCombination)
-//							 }
-//							 //If the parent is mandatory, at least one child must be true at all times
-//							 else if(parent.mandatory && relevantSlice.filter[it].size == 1)
-//							 {
-//							 	newnewCombos.add(newCombination)
-//							 }
-//							
-//						}
-//							
-//					}
-//					
-//				}
-//			}
+
 			val booleanPreconditions = newArrayList
 			for (x : booleanVars.keySet)
 			{
@@ -1142,19 +1044,21 @@ class TQLGenerator extends AbstractGenerator {
 	        	state.TQLName = state_name
 	        }
 
-	       	for (state : allStates)
-	        {
-	        	println(state.describe())
-	        }
-	        println(stateCount + " states were produced, " + ruleCount + " of which have a rule attached and " + escapes.keySet.size + " have escaped defined")
+//	       	for (state : allStates)
+//	        {
+//	        	println(state.describe())
+//	        }
+//	        println(stateCount + " states were produced, " + ruleCount + " of which have a rule attached and " + escapes.keySet.size + " have escaped defined")
         }
         
         val contextGenerator = new ContextModelGenerator(_namer)
         
 		escapes = newHashMap
-		val x ='''			
+		val fullTacticsTQL ='''			
 			«infinityLiteralsTQL»
 			«thresholdLiteralsTQL»
+			«booleanLiteralsTQL»
+			«featurePropsTQL»
 			$ta_«lc_tacticName» isa Tactic, has tactic_name "«tacticName»";
 			«FOR resolutionModel : resolutionModels»
 			«registerFeatures(resolutionModel.featureModel.root)»	
@@ -1192,12 +1096,10 @@ class TQLGenerator extends AbstractGenerator {
 				    has resolution_model_name "«resolutionModel.name»", has ros_system "«resolutionModel.rossystem.name»";
 			«ENDFOR»
 		'''
-//		yeah()
-//		println(generateFetchQuery(t))
-		
-		return x
+
+		return fullTacticsTQL
 	}
-	
+
 	def createBounds(Map<ContextVar, Set<LiteralWrapper>> thresholds)
 	{
 		val Map<ContextVar, List<Pair<LiteralWrapper, LiteralWrapper>>> bounds = newHashMap
@@ -1753,8 +1655,8 @@ class TQLGenerator extends AbstractGenerator {
 				}
 				if(ruleBody.contextGuard !== null)
 				{
-					val ruleContectCondition = ruleBody.contextGuard.contextCondition
-					val ruleCNF = toCNF(ruleContectCondition)
+					val ruleContextCondition = ruleBody.contextGuard.contextCondition
+					val ruleCNF = toCNF(ruleContextCondition)
 					return checkExpression(ruleCNF, state)
 					
 				}
@@ -1846,6 +1748,8 @@ class TQLGenerator extends AbstractGenerator {
     		}
     		else
     		{
+    			println(ruleConditionCNF)
+    			println("THIS WAS TRIGGERED " + condition.measurement.name)
     			val bool = state.getBoolOn(condition.measurement)
     			switch (condition.operator)
     			{
@@ -1880,14 +1784,15 @@ class TQLGenerator extends AbstractGenerator {
         }
 	}
 	
-	private def compileRule(AdaptationRule c, String lc_tacticName, boolean doingStates)
+	private def compileRule(AdaptationRule rule, String lc_tacticName, boolean doingStates)
 	{
-		ruleNames.add(c.name)
-	if (c instanceof AtomicRule)
+		ruleNames.add(rule.name)
+		println(rule.name)
+	if (rule instanceof AtomicRule)
 	{
-		val ruleName = c.name
-		val lc_ruleName = c.name.toLowerCase
-		val ruleBody = c.ruleBody
+		val ruleName = rule.name
+		val lc_ruleName = rule.name.toLowerCase
+		val ruleBody = rule.ruleBody
 		
 		if(ruleBody instanceof ConditionAction)
 		{
@@ -1909,7 +1814,7 @@ class TQLGenerator extends AbstractGenerator {
 					«IF !doingStates» «ant» «ENDIF»
 					«val someName = lc_ruleName + "fa"»
 					$«someName» (
-					«FOR action : c.ruleBody.atomicAction.actions SEPARATOR ", "»
+					«FOR action : rule.ruleBody.atomicAction.actions SEPARATOR ", "»
 					«IF action instanceof AtomicActionSelectFeature»
 					activation: $«_namer.uniqueName(action.variant.feature)»	
 					«ENDIF»
@@ -1924,7 +1829,14 @@ class TQLGenerator extends AbstractGenerator {
 						«EffectHandling(ruleBody.effect.someEffect, ruleName, doingStates)»
 						$tactic_rule_«lc_ruleName» (tactic:$ta_«lc_tacticName», «IF !doingStates» antecedent:$«ant_name», «ENDIF» consequent:$«someName», effect:$rel_effect_«ruleName.toLowerCase») isa tactic_rule, has rule_name "«ruleName»";
 					«ELSE»
-						$tactic_rule_«lc_ruleName» (tactic:$ta_«lc_tacticName»,  «IF !doingStates» antecedent:$«ant_name», «ENDIF» consequent:$«someName») isa tactic_rule, has rule_name "«ruleName»";
+						$tactic_rule_«lc_ruleName» (tactic:$ta_«lc_tacticName»,  
+													«IF !doingStates» antecedent:$«ant_name», «ENDIF»
+													consequent:$«someName»«IF doingStates»,
+													«FOR c : ruleContextVars(ruleBody) SEPARATOR ", "»
+													involved_measure:$«_namer.uniqueName(c)»
+													«ENDFOR» 
+													«ENDIF»
+													) isa tactic_rule, has rule_name "«ruleName»";
 					«ENDIF»
 		'''
 
@@ -1934,6 +1846,17 @@ class TQLGenerator extends AbstractGenerator {
 		
 
 	}
+	}
+	
+	def ruleContextVars(ConditionAction conditionAction)
+	{
+	
+		return flattenAgain(conditionAction.contextGuard.contextCondition as MeasurementThresholdCondition)
+		    .map[MeasurementCondition mc |
+		        mc.measurement
+		    ]
+		    .toList
+		
 	}
 	
 	def isPositive(RelativeEffect rel_effect)
@@ -2220,6 +2143,7 @@ class TQLGenerator extends AbstractGenerator {
 		return result
 	}
 	
+	
 	def List<MeasurementThresholdCondition> flattenAgain(MeasurementThresholdCondition c) {		
 		val result = newArrayList
 		
@@ -2406,155 +2330,6 @@ class Or extends Expr {
     }
 }
 
-
-class State {
-	val public List<Boolean> featurePrecondition
-	var public String TQLName = "UnnamedState"
-	val public List<String> associatedRulesTQLNames
-	val Map<ContextVar, Pair<LiteralWrapper, LiteralWrapper>> boundPreconditionMap
-	val Map<ContextVar, Boolean> boolPreconditionMap
-	var List<Feature> featureKeys
-	
-	
-	val Map<ContextVar, LiteralWrapper> medianBounds
-	
-	new(List<Pair<LiteralWrapper, LiteralWrapper>> contextPrecondition, List<Boolean> booleanContextPreconditions, List<Boolean> featurePrecondition,List<ContextVar> contextKeys, List<Feature> featureKeys) {
-		boundPreconditionMap = newHashMap
-		medianBounds = newHashMap
-		associatedRulesTQLNames = newArrayList
-		boolPreconditionMap = newHashMap
-		this.featureKeys = featureKeys
-		for (contextKeyIndPair : contextKeys.indexed) {
-			val contextKey = contextKeyIndPair.value
-			if(contextKeyIndPair.key >= contextPrecondition.size())
-			{
-				val boolval = booleanContextPreconditions.get(contextKeyIndPair.key-contextPrecondition.size())
-				boolPreconditionMap.put(contextKey,boolval)
-			}
-			else
-			{
-			val bound = contextPrecondition.get(contextKeyIndPair.key)
-			boundPreconditionMap.put(contextKey,bound)
-			medianBounds.put(contextKey,bound.medianBound)
-			}
-		}
-        this.featurePrecondition = featurePrecondition
-    }
-    
-    def Pair<String,List<String>> stateActionPair()
-    {
-    	TQLName -> associatedRulesTQLNames
-    }
-    
-    def hasRules()
-    {
-    	return associatedRulesTQLNames.size > 0
-    }
-    
-    def addRule(String ruleName)
-    {
-    	associatedRulesTQLNames.add(ruleName)
-    }
-    def getContextBoundPairs()
-    {
-    	return boundPreconditionMap.entrySet
-    }
-    
-    def List<Entry<ContextVar, LiteralWrapper>> getMedians()
-    {
-    	return medianBounds.entrySet.toList
-    }
-    
-    def List<ContextVar> getContextKeys()
-    {
-    	return boundPreconditionMap.keySet.toList
-    }
-    
-    def List<Pair<LiteralWrapper, LiteralWrapper>> getContextPrecondition()
-    {
-    	return boundPreconditionMap.values.toList
-    }
-    
-    def Boolean BoundorBoolPrecondition(ContextVar contextVar)
-    {
-    	val isBound = this.boundPreconditionMap.containsKey(contextVar)
-    	val isBool = this.boolPreconditionMap.containsKey(contextVar)
-    	if(!isBound && !isBool)
-    	{
-    		throw new Exception("ContextVar not defined for state")
-    	}
-    	return isBound //If it is false then it implies that it is a bool.
-    }
-    
-    def Pair<LiteralWrapper, LiteralWrapper> getBoundsOn(ContextVar contextVar)
-    {
-    	return this.boundPreconditionMap.get(contextVar)
-    }
-    
-    def Boolean getBoolOn(ContextVar contextVar)
-    {
-    	return this.boolPreconditionMap.get(contextVar)
-    }
-    
-    private def LiteralWrapper medianBound(Pair<LiteralWrapper, LiteralWrapper> bound)
-	{		
-		val lowerBound = bound.key
-		val upperBound = bound.value
-		if(lowerBound === null)
-		{
-			return upperBound
-		}
-		if(upperBound === null)
-		{
-			return lowerBound
-		}
-		if(lowerBound !== null && upperBound !== null)
-		{
-			return  ((lowerBound + upperBound) / 2)	
-		}
-		throw new Exception("Could not find Median Bound? " + bound.toString())
-	}
-	
-	def describeMedianBounds()
-	{
-		'''
-		 <----- State: «TQLName» Median Bounds
-		«FOR element : this.medianBounds.entrySet»
-			«element.key.name» : «element.value.toString»
-		«ENDFOR»
-		----->
-		'''
-	}
-	
-	def describe()
-	{
-		'''
-		<----- State: «TQLName» General Information
-		Preconditions are
-		<BOOLEAN>
-		«FOR element : boolPreconditionMap.entrySet SEPARATOR "; "»
-			«element.key.name» : «element.value»
-		«ENDFOR»
-		</BOOLEAN>
-		<FEATURE>
-		«FOR element : featurePrecondition.indexed SEPARATOR "; "»
-			«featureKeys.get(element.key).name» : «IF element.value»Selected«ELSE»notSelected«ENDIF»
-		«ENDFOR»
-		</FEATURE>
-		Has «associatedRulesTQLNames.size()» rules attached.
-		«IF !associatedRulesTQLNames.empty»
-			Rules are:
-				«FOR rule : associatedRulesTQLNames SEPARATOR ", "»
-					«rule»
-				«ENDFOR»
-		«ENDIF»
-		----->
-		«describeMedianBounds»
-		'''
-		
-	}
-}
-
 class LiteralWrapper implements Comparable<LiteralWrapper> {
 	val Literal innerLiteral
 	val public Boolean pointer
@@ -2562,6 +2337,7 @@ class LiteralWrapper implements Comparable<LiteralWrapper> {
 	val public String description
 	val public Integer intValue
 	val public BigDecimal decimalValue
+	val public Boolean boolValue
 	
     new(Literal obj) {
         this.innerLiteral = obj
@@ -2570,6 +2346,7 @@ class LiteralWrapper implements Comparable<LiteralWrapper> {
         this.description = "regularWrapped"
         this.intValue = null
         this.decimalValue = null
+        this.boolValue = null
     }
    
     
@@ -2580,6 +2357,7 @@ class LiteralWrapper implements Comparable<LiteralWrapper> {
     	this.description = "regularPointer"
     	this.intValue = null
     	this.decimalValue = null
+    	this.boolValue = null
     }
     
     new(String pointingTo, Literal obj) { //You want to contain the original; literal, but it is already in existence in TQL
@@ -2589,6 +2367,7 @@ class LiteralWrapper implements Comparable<LiteralWrapper> {
     	this.description = "superPointer"
     	this.intValue = null
     	this.decimalValue = null
+    	this.boolValue = null
     }
     
     
@@ -2600,6 +2379,7 @@ class LiteralWrapper implements Comparable<LiteralWrapper> {
     	this.intValue = literalValue
     	this.pointedName = null
     	this.decimalValue = null
+    	this.boolValue = null
     }
     
      new(BigDecimal literalValue)
@@ -2610,6 +2390,18 @@ class LiteralWrapper implements Comparable<LiteralWrapper> {
     	this.intValue = null
     	this.pointedName = null
     	this.decimalValue = literalValue
+    	this.boolValue = null
+    }
+    
+    new(Boolean literalValue)
+    {
+    	this.innerLiteral = null
+    	this.pointer = false
+    	this.description = "nakedValue"
+    	this.intValue = null
+    	this.pointedName = null
+    	this.decimalValue = null
+    	this.boolValue = literalValue
     }
     
     def LiteralWrapper operator_plus(LiteralWrapper other)
@@ -2643,7 +2435,14 @@ class LiteralWrapper implements Comparable<LiteralWrapper> {
     def operator_divide(int i) {
     	if(isNaked)
     	{
-    		return new LiteralWrapper((getNakedValue() as BigDecimal) / new BigDecimal(i))
+    		if(getNakedValue() instanceof BigDecimal)
+    		{
+    			return new LiteralWrapper((getNakedValue() as BigDecimal) / new BigDecimal(i))	
+    		}
+    		else
+    		{
+    			return new LiteralWrapper((getNakedValue() as Integer) / i)
+    		}
     	}
 		if(innerLiteral instanceof IntLiteral)
     	{
@@ -2722,13 +2521,17 @@ class LiteralWrapper implements Comparable<LiteralWrapper> {
 	{
 		if(isNaked())
 		{
-			if(intValue === null)
+			if(intValue !== null)
+			{
+				return intValue
+			}
+			if(decimalValue !== null)
 			{
 				return decimalValue
 			}
-			else
+			if(boolValue !== null)
 			{
-				return intValue
+				return boolValue
 			}
 		}
 	}
@@ -2772,6 +2575,11 @@ class LiteralWrapper implements Comparable<LiteralWrapper> {
         		return this.decimalValue.compareTo(other.decimalValue)
  
         	}
+        	if(this.boolValue !== null && other.boolValue !== null)
+        	{
+        		return this.boolValue.compareTo(other.boolValue)
+ 
+        	}
         }
         if(this.isNaked && !other.isNaked)
         {
@@ -2782,6 +2590,10 @@ class LiteralWrapper implements Comparable<LiteralWrapper> {
         	if(this.decimalValue !== null && other.innerLiteral instanceof DecimalLiteral)
         	{
         		return this.decimalValue.compareTo((other.innerLiteral as DecimalLiteral).value)
+        	}
+        	if(this.boolValue !== null && other.innerLiteral instanceof BooleanLiteral)
+        	{
+        		return this.boolValue.compareTo((other.innerLiteral as BooleanLiteral).value)
         	}
         	
         }
@@ -2794,6 +2606,10 @@ class LiteralWrapper implements Comparable<LiteralWrapper> {
         	if(other.decimalValue !== null && this.innerLiteral instanceof DecimalLiteral)
         	{
         		return (this.innerLiteral as DecimalLiteral).value.compareTo(other.decimalValue)
+        	}
+        	if(other.boolValue !== null && this.innerLiteral instanceof BooleanLiteral)
+        	{
+        		return (this.innerLiteral as BooleanLiteral).value.compareTo(other.boolValue)
         	}
         	
         }

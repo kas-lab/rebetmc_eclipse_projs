@@ -13,7 +13,8 @@ class RosNameProvider implements INameProvider {
 		obj instanceof ros.Node ||
 		obj instanceof ros.Parameter ||
 		obj instanceof ros.ParameterValue ||
-		obj instanceof ros.ParameterSequence
+		obj instanceof ros.ParameterSequence ||
+		obj instanceof system.RosNode
     }
     
     override computeName(Object obj, NamingContext ctx, String... args) {
@@ -56,7 +57,7 @@ class RosNameProvider implements INameProvider {
             	}
 			ros.Node: ctx.makeUnique(obj.name.replace("/", "") + "_node")
 			ros.Parameter: ctx.makeUnique(obj.name.replace('.','_').replace('/','') + "_param")
-
+			system.RosNode: ctx.makeUnique(obj.name.replace("/", "") + "_node") //TODO: This should probably be different from ros.Node, something like, recursive(obj.from + "rosNode")
         }
     }	
 	

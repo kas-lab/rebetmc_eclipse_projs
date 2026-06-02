@@ -84,7 +84,7 @@ mvn -B clean verify -f eu.coresense.parent/pom.xml
 If you tried to build before updating the Maven settings and Maven cached authentication errors, add `-U` once:
 
 ```bash
-mvn -U -B clean verify -f eu.coresense.parent/pom.xml
+mvn -U -B clean verify -f eu.coresense.parent/pom.xml -DskipTests
 ```
 
 The build creates a local Eclipse p2 update site at:
@@ -92,6 +92,26 @@ The build creates a local Eclipse p2 update site at:
 ```text
 eu.coresense.repository/target/repository/
 ```
+
+The resulting .jars get saved in `eu.coresense.repository/target/repository/plugins`
+
+### Syncing JARs to adapt_x
+
+After a successful build, run `update_jars.py` to copy the updated JARs into the adapt_x runtime directory:
+
+```bash
+python update_jars.py
+```
+
+This replaces the `eu.coresense.*`, `RosToolingSupport`, `de.fraunhofer.ipa.*`, `org.eclipse.*`, and `fms.metamodel` JARs in the adapt_x `jars/rem` directory with the freshly built versions. Static JARs (ROS message types, rcljava, rebet_java, third-party utilities) are never touched.
+
+Use `--dry-run` to preview changes without applying them:
+
+```bash
+python update_jars.py --dry-run
+```
+
+The default target directory is `/home/gus/ros_workspaces/suave_rebetmc_ws/src/adapt_x/adapt_x/jars/rem`. Override it with `--jars-dir <path>`.
 
 ### Eclipse build
 

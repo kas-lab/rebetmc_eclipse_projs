@@ -31,14 +31,14 @@ Reconfiguration:
 
 SetParam:
 	'SetParameter' '('
-        node=[rossys::RosNode] ','
+        node=[rossys::RosNode|RosNames] ','
         param=[ros::Parameter] ','
         value=ParameterValue
     ')'
 ;
 
 SetLifecycle:
-	'SetLifecycleState' '(' node=[rossys::RosNode] ',' state=LifecycleState ')'
+	'SetLifecycleState' '(' node=[rossys::RosNode|RosNames] ',' state=LifecycleState ')'
 ;
 
 enum LifecycleState returns LifecycleState:

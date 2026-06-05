@@ -64,7 +64,7 @@ class ResolutionModelScopeProviderr  extends AbstractResolutionModelScopeProvide
 //	        return Scopes.scopeFor(allNodes);
          return Scopes.scopeFor(
             		allNodes, 
-		            [EObject e | QualifiedName.create(Utilities.escape((e as system.RosNode).name))],
+		            [EObject e | QualifiedName.create((e as system.RosNode).name)],
 		            IScope.NULLSCOPE
 		        )
 	    }
@@ -89,7 +89,7 @@ class ResolutionModelScopeProviderr  extends AbstractResolutionModelScopeProvide
 //	        return Scopes.scopeFor(allParams);
          return Scopes.scopeFor(
             		allParams, 
-		            [EObject e | QualifiedName.create(Utilities.escape((e as Parameter).name))],
+		            [EObject e | QualifiedName.create((e as Parameter).name)],
 		            IScope.NULLSCOPE
 		        )
 	    }

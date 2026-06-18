@@ -18,16 +18,16 @@ import org.eclipse.xtext.naming.QualifiedName
 import eu.coresense.resolution.resolutionModel.FeatureReference
 import ros.Parameter
 import eu.coresense.common.Utilities
+import ros.ActionSpec
 
 class ResolutionModelScopeProviderr  extends AbstractResolutionModelScopeProvider {
 	
 	override getScope(EObject context, EReference reference) {
-	    if (reference == ResolutionModelPackage.Literals.FEATURE_REFERENCE__PARENT) {
+	    if (reference == ResolutionModelPackage.Literals.FEATURE_REFERENCE__PARENT || reference == ResolutionModelPackage.Literals.FUNCTIONAL_MAPPING__FEATURE) {
 	    	val model = EcoreUtil2.getContainerOfType(context, ResolutionModel);
 	        if (model !== null && model.getFeatureModel() !== null) {
 	            val featureModel = model.getFeatureModel();
 	            val root = featureModel.getRoot();
-	            //Gather all the leaves, you have access to getChildren() and isLeaf()
 	            val optFeatures = new ArrayList;
 	            collectParents(root, optFeatures);
 	            return Scopes.scopeFor(optFeatures);
@@ -93,8 +93,42 @@ class ResolutionModelScopeProviderr  extends AbstractResolutionModelScopeProvide
 		            IScope.NULLSCOPE
 		        )
 	    }
+	   	if (reference == ResolutionModelPackage.Literals.FUNCTIONAL_MAPPING__ACTION) {
+	        val model = EcoreUtil2.getContainerOfType(context, ResolutionModel);
+	     	
+	     	return Scopes.scopeFor(
+	    		allActions(model,context),
+	    		[EObject e | QualifiedName.create(Utilities.escape((e as ActionSpec).name))],
+	    		IScope.NULLSCOPE
+	    	);
+	    }
 	    return super.getScope(context, reference);
 	}	
+
+
+def List<ActionSpec> allActions(ResolutionModel model, EObject context) {
+     	
+     	val sys_defs = collectAllSystems(model, context.eResource());
+     	
+     	val allActions = new ArrayList<ActionSpec>();
+     	for (system.System sys_def : sys_defs)
+     	{
+     		for(system.Component comp : sys_def.getComponents())
+     		{
+     			if(comp instanceof system.RosNode)
+     			{
+     				val node = comp as system.RosNode;
+     				val originalNodeActionServers = node.from.actionserver
+     				for(actionServer : originalNodeActionServers)
+     				{
+     					allActions.add(actionServer.action);
+     				}
+     				
+     			}
+     		}
+     	}
+     	return allActions;
+	}
 
 
 def void collectParents(Feature feature, List<Feature> parentFeatures) {

@@ -5,6 +5,8 @@ package eu.coresense.context.contextModel;
 
 import org.eclipse.emf.ecore.EObject;
 
+import primitives.AbstractType;
+
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Context Var</b></em>'.
@@ -16,12 +18,14 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link eu.coresense.context.contextModel.ContextVar#getName <em>Name</em>}</li>
  *   <li>{@link eu.coresense.context.contextModel.ContextVar#getSource <em>Source</em>}</li>
+ *   <li>{@link eu.coresense.context.contextModel.ContextVar#getType <em>Type</em>}</li>
  *   <li>{@link eu.coresense.context.contextModel.ContextVar#getDoCache <em>Do Cache</em>}</li>
  *   <li>{@link eu.coresense.context.contextModel.ContextVar#getLength <em>Length</em>}</li>
  *   <li>{@link eu.coresense.context.contextModel.ContextVar#getPeriod <em>Period</em>}</li>
  *   <li>{@link eu.coresense.context.contextModel.ContextVar#getDoProxy <em>Do Proxy</em>}</li>
  *   <li>{@link eu.coresense.context.contextModel.ContextVar#getFunctionName <em>Function Name</em>}</li>
  *   <li>{@link eu.coresense.context.contextModel.ContextVar#getFunctionLibrary <em>Function Library</em>}</li>
+ *   <li>{@link eu.coresense.context.contextModel.ContextVar#getFunctionArgs <em>Function Args</em>}</li>
  * </ul>
  *
  * @see eu.coresense.context.contextModel.ContextModelPackage#getContextVar()
@@ -73,6 +77,28 @@ public interface ContextVar extends EObject
    * @generated
    */
   void setSource(DataSource value);
+
+  /**
+   * Returns the value of the '<em><b>Type</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Type</em>' containment reference.
+   * @see #setType(AbstractType)
+   * @see eu.coresense.context.contextModel.ContextModelPackage#getContextVar_Type()
+   * @model containment="true"
+   * @generated
+   */
+  AbstractType getType();
+
+  /**
+   * Sets the value of the '{@link eu.coresense.context.contextModel.ContextVar#getType <em>Type</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Type</em>' containment reference.
+   * @see #getType()
+   * @generated
+   */
+  void setType(AbstractType value);
 
   /**
    * Returns the value of the '<em><b>Do Cache</b></em>' containment reference.
@@ -205,5 +231,27 @@ public interface ContextVar extends EObject
    * @generated
    */
   void setFunctionLibrary(String value);
+
+  /**
+   * Returns the value of the '<em><b>Function Args</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Function Args</em>' attribute.
+   * @see #setFunctionArgs(String)
+   * @see eu.coresense.context.contextModel.ContextModelPackage#getContextVar_FunctionArgs()
+   * @model
+   * @generated
+   */
+  String getFunctionArgs();
+
+  /**
+   * Sets the value of the '{@link eu.coresense.context.contextModel.ContextVar#getFunctionArgs <em>Function Args</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Function Args</em>' attribute.
+   * @see #getFunctionArgs()
+   * @generated
+   */
+  void setFunctionArgs(String value);
 
 } // ContextVar

@@ -11,10 +11,15 @@ ResolutionModel:
 	(imports+=Import*)
 	'variability_model' featureModel=[BasicFMmetamodel::FeatureModel]';'
 	'ros_system' rossystem=[rossys::System]';'
-	'resolutions' resolutions+=Resolution*;
+	'FunctionalMapping' functionalMapping+=FunctionalMapping
+	'Reconfigurations' resolutions+=Resolution*;
 	
 Resolution:
 	{Resolution} featureRef=FeatureReference ':' 'select:' selection_actions+=Reconfiguration* 'deselect:' deselection_actions+=Reconfiguration*
+;
+
+FunctionalMapping:
+	{FunctionalMapping} feature=[BasicFMmetamodel::Feature] '->' action=[ros::ActionSpec]
 ;
 
 FeatureReference:

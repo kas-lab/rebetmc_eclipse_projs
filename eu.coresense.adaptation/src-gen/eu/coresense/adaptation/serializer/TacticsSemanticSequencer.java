@@ -5,6 +5,7 @@ package eu.coresense.adaptation.serializer;
 
 import com.google.inject.Inject;
 import eu.coresense.adaptation.services.TacticsGrammarAccess;
+import eu.coresense.adaptation.tactics.ActionRules;
 import eu.coresense.adaptation.tactics.AtomicAction;
 import eu.coresense.adaptation.tactics.AtomicActionDeselectFeature;
 import eu.coresense.adaptation.tactics.AtomicActionSelectFeature;
@@ -72,6 +73,9 @@ public class TacticsSemanticSequencer extends AbstractDelegatingSemanticSequence
 			}
 		else if (epackage == TacticsPackage.eINSTANCE)
 			switch (semanticObject.eClass().getClassifierID()) {
+			case TacticsPackage.ACTION_RULES:
+				sequence_ActionRules(context, (ActionRules) semanticObject); 
+				return; 
 			case TacticsPackage.ATOMIC_ACTION:
 				sequence_AtomicAction(context, (AtomicAction) semanticObject); 
 				return; 
@@ -141,6 +145,20 @@ public class TacticsSemanticSequencer extends AbstractDelegatingSemanticSequence
 		if (errorAcceptor != null)
 			errorAcceptor.accept(diagnosticProvider.createInvalidContextOrTypeDiagnostic(semanticObject, context));
 	}
+	
+	/**
+	 * <pre>
+	 * Contexts:
+	 *     ActionRules returns ActionRules
+	 *
+	 * Constraint:
+	 *     (action=[ActionSpec|ID] adaptationRules+=AdaptationRule*)
+	 * </pre>
+	 */
+	protected void sequence_ActionRules(ISerializationContext context, ActionRules semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
 	
 	/**
 	 * <pre>
@@ -596,7 +614,7 @@ public class TacticsSemanticSequencer extends AbstractDelegatingSemanticSequence
 	 *     TacticsModel returns TacticsModel
 	 *
 	 * Constraint:
-	 *     (name=ID imports+=Import* adaptationRules+=AdaptationRule*)
+	 *     (name=ID imports+=Import* actionRules+=ActionRules*)
 	 * </pre>
 	 */
 	protected void sequence_TacticsModel(ISerializationContext context, TacticsModel semanticObject) {

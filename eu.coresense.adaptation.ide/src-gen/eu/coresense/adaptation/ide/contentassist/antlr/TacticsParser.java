@@ -41,6 +41,7 @@ public class TacticsParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getMathOperatorAccess().getAlternatives(), "rule__MathOperator__Alternatives");
 			builder.put(grammarAccess.getLogicalOperatorAccess().getAlternatives(), "rule__LogicalOperator__Alternatives");
 			builder.put(grammarAccess.getTacticsModelAccess().getGroup(), "rule__TacticsModel__Group__0");
+			builder.put(grammarAccess.getActionRulesAccess().getGroup(), "rule__ActionRules__Group__0");
 			builder.put(grammarAccess.getImportAccess().getGroup(), "rule__Import__Group__0");
 			builder.put(grammarAccess.getAtomicRuleAccess().getGroup(), "rule__AtomicRule__Group__0");
 			builder.put(grammarAccess.getRuleSetAccess().getGroup(), "rule__RuleSet__Group__0");
@@ -66,7 +67,9 @@ public class TacticsParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getQualifiedFeatureRefAccess().getGroup(), "rule__QualifiedFeatureRef__Group__0");
 			builder.put(grammarAccess.getTacticsModelAccess().getNameAssignment_1(), "rule__TacticsModel__NameAssignment_1");
 			builder.put(grammarAccess.getTacticsModelAccess().getImportsAssignment_3(), "rule__TacticsModel__ImportsAssignment_3");
-			builder.put(grammarAccess.getTacticsModelAccess().getAdaptationRulesAssignment_4(), "rule__TacticsModel__AdaptationRulesAssignment_4");
+			builder.put(grammarAccess.getTacticsModelAccess().getActionRulesAssignment_4(), "rule__TacticsModel__ActionRulesAssignment_4");
+			builder.put(grammarAccess.getActionRulesAccess().getActionAssignment_0(), "rule__ActionRules__ActionAssignment_0");
+			builder.put(grammarAccess.getActionRulesAccess().getAdaptationRulesAssignment_2(), "rule__ActionRules__AdaptationRulesAssignment_2");
 			builder.put(grammarAccess.getImportAccess().getImportURIAssignment_1(), "rule__Import__ImportURIAssignment_1");
 			builder.put(grammarAccess.getAtomicRuleAccess().getNameAssignment_1(), "rule__AtomicRule__NameAssignment_1");
 			builder.put(grammarAccess.getAtomicRuleAccess().getRuleBodyAssignment_3(), "rule__AtomicRule__RuleBodyAssignment_3");

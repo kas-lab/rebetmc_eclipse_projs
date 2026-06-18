@@ -19,7 +19,8 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  * <ul>
  *   <li>{@link eu.coresense.context.contextModel.ContextModel#getImports <em>Imports</em>}</li>
- *   <li>{@link eu.coresense.context.contextModel.ContextModel#getContext_variables <em>Context variables</em>}</li>
+ *   <li>{@link eu.coresense.context.contextModel.ContextModel#getEnvironmental_variables <em>Environmental variables</em>}</li>
+ *   <li>{@link eu.coresense.context.contextModel.ContextModel#getMission_variables <em>Mission variables</em>}</li>
  * </ul>
  *
  * @see eu.coresense.context.contextModel.ContextModelPackage#getContextModel()
@@ -41,15 +42,27 @@ public interface ContextModel extends EObject
   EList<Import> getImports();
 
   /**
-   * Returns the value of the '<em><b>Context variables</b></em>' containment reference list.
+   * Returns the value of the '<em><b>Environmental variables</b></em>' containment reference list.
    * The list contents are of type {@link eu.coresense.context.contextModel.ContextVar}.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Context variables</em>' containment reference list.
-   * @see eu.coresense.context.contextModel.ContextModelPackage#getContextModel_Context_variables()
+   * @return the value of the '<em>Environmental variables</em>' containment reference list.
+   * @see eu.coresense.context.contextModel.ContextModelPackage#getContextModel_Environmental_variables()
    * @model containment="true"
    * @generated
    */
-  EList<ContextVar> getContext_variables();
+  EList<ContextVar> getEnvironmental_variables();
+
+  /**
+   * Returns the value of the '<em><b>Mission variables</b></em>' containment reference list.
+   * The list contents are of type {@link eu.coresense.context.contextModel.MissionVar}.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Mission variables</em>' containment reference list.
+   * @see eu.coresense.context.contextModel.ContextModelPackage#getContextModel_Mission_variables()
+   * @model containment="true"
+   * @generated
+   */
+  EList<MissionVar> getMission_variables();
 
 } // ContextModel

@@ -80,6 +80,13 @@ public class TacticsSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case TacticsPackage.ACTION_RULES:
+      {
+        ActionRules actionRules = (ActionRules)theEObject;
+        T result = caseActionRules(actionRules);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case TacticsPackage.ADAPTATION_RULE:
       {
         AdaptationRule adaptationRule = (AdaptationRule)theEObject;
@@ -263,6 +270,22 @@ public class TacticsSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseTacticsModel(TacticsModel object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Action Rules</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Action Rules</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseActionRules(ActionRules object)
   {
     return null;
   }

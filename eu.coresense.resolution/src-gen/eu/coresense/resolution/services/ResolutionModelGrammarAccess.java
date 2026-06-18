@@ -46,23 +46,28 @@ public class ResolutionModelGrammarAccess extends AbstractElementFinder.Abstract
 		private final CrossReference cRossystemSystemCrossReference_8_0 = (CrossReference)cRossystemAssignment_8.eContents().get(0);
 		private final RuleCall cRossystemSystemIDTerminalRuleCall_8_0_1 = (RuleCall)cRossystemSystemCrossReference_8_0.eContents().get(1);
 		private final Keyword cSemicolonKeyword_9 = (Keyword)cGroup.eContents().get(9);
-		private final Keyword cResolutionsKeyword_10 = (Keyword)cGroup.eContents().get(10);
-		private final Assignment cResolutionsAssignment_11 = (Assignment)cGroup.eContents().get(11);
-		private final RuleCall cResolutionsResolutionParserRuleCall_11_0 = (RuleCall)cResolutionsAssignment_11.eContents().get(0);
+		private final Keyword cFunctionalMappingKeyword_10 = (Keyword)cGroup.eContents().get(10);
+		private final Assignment cFunctionalMappingAssignment_11 = (Assignment)cGroup.eContents().get(11);
+		private final RuleCall cFunctionalMappingFunctionalMappingParserRuleCall_11_0 = (RuleCall)cFunctionalMappingAssignment_11.eContents().get(0);
+		private final Keyword cReconfigurationsKeyword_12 = (Keyword)cGroup.eContents().get(12);
+		private final Assignment cResolutionsAssignment_13 = (Assignment)cGroup.eContents().get(13);
+		private final RuleCall cResolutionsResolutionParserRuleCall_13_0 = (RuleCall)cResolutionsAssignment_13.eContents().get(0);
 		
 		//ResolutionModel:
 		//    'name' name=ID ';'
 		//    (imports+=Import*)
 		//    'variability_model' featureModel=[BasicFMmetamodel::FeatureModel]';'
 		//    'ros_system' rossystem=[rossys::System]';'
-		//    'resolutions' resolutions+=Resolution*;
+		//    'FunctionalMapping' functionalMapping+=FunctionalMapping
+		//    'Reconfigurations' resolutions+=Resolution*;
 		@Override public ParserRule getRule() { return rule; }
 		
 		//'name' name=ID ';'
 		//(imports+=Import*)
 		//'variability_model' featureModel=[BasicFMmetamodel::FeatureModel]';'
 		//'ros_system' rossystem=[rossys::System]';'
-		//'resolutions' resolutions+=Resolution*
+		//'FunctionalMapping' functionalMapping+=FunctionalMapping
+		//'Reconfigurations' resolutions+=Resolution*
 		public Group getGroup() { return cGroup; }
 		
 		//'name'
@@ -113,14 +118,23 @@ public class ResolutionModelGrammarAccess extends AbstractElementFinder.Abstract
 		//';'
 		public Keyword getSemicolonKeyword_9() { return cSemicolonKeyword_9; }
 		
-		//'resolutions'
-		public Keyword getResolutionsKeyword_10() { return cResolutionsKeyword_10; }
+		//'FunctionalMapping'
+		public Keyword getFunctionalMappingKeyword_10() { return cFunctionalMappingKeyword_10; }
+		
+		//functionalMapping+=FunctionalMapping
+		public Assignment getFunctionalMappingAssignment_11() { return cFunctionalMappingAssignment_11; }
+		
+		//FunctionalMapping
+		public RuleCall getFunctionalMappingFunctionalMappingParserRuleCall_11_0() { return cFunctionalMappingFunctionalMappingParserRuleCall_11_0; }
+		
+		//'Reconfigurations'
+		public Keyword getReconfigurationsKeyword_12() { return cReconfigurationsKeyword_12; }
 		
 		//resolutions+=Resolution*
-		public Assignment getResolutionsAssignment_11() { return cResolutionsAssignment_11; }
+		public Assignment getResolutionsAssignment_13() { return cResolutionsAssignment_13; }
 		
 		//Resolution
-		public RuleCall getResolutionsResolutionParserRuleCall_11_0() { return cResolutionsResolutionParserRuleCall_11_0; }
+		public RuleCall getResolutionsResolutionParserRuleCall_13_0() { return cResolutionsResolutionParserRuleCall_13_0; }
 	}
 	public class ResolutionElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "eu.coresense.resolution.ResolutionModel.Resolution");
@@ -173,6 +187,50 @@ public class ResolutionModelGrammarAccess extends AbstractElementFinder.Abstract
 		
 		//Reconfiguration
 		public RuleCall getDeselection_actionsReconfigurationParserRuleCall_6_0() { return cDeselection_actionsReconfigurationParserRuleCall_6_0; }
+	}
+	public class FunctionalMappingElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "eu.coresense.resolution.ResolutionModel.FunctionalMapping");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cFunctionalMappingAction_0 = (Action)cGroup.eContents().get(0);
+		private final Assignment cFeatureAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final CrossReference cFeatureFeatureCrossReference_1_0 = (CrossReference)cFeatureAssignment_1.eContents().get(0);
+		private final RuleCall cFeatureFeatureIDTerminalRuleCall_1_0_1 = (RuleCall)cFeatureFeatureCrossReference_1_0.eContents().get(1);
+		private final Keyword cHyphenMinusGreaterThanSignKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Assignment cActionAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final CrossReference cActionActionSpecCrossReference_3_0 = (CrossReference)cActionAssignment_3.eContents().get(0);
+		private final RuleCall cActionActionSpecIDTerminalRuleCall_3_0_1 = (RuleCall)cActionActionSpecCrossReference_3_0.eContents().get(1);
+		
+		//FunctionalMapping:
+		//    {FunctionalMapping} feature=[BasicFMmetamodel::Feature] '->' action=[ros::ActionSpec]
+		//;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//{FunctionalMapping} feature=[BasicFMmetamodel::Feature] '->' action=[ros::ActionSpec]
+		public Group getGroup() { return cGroup; }
+		
+		//{FunctionalMapping}
+		public Action getFunctionalMappingAction_0() { return cFunctionalMappingAction_0; }
+		
+		//feature=[BasicFMmetamodel::Feature]
+		public Assignment getFeatureAssignment_1() { return cFeatureAssignment_1; }
+		
+		//[BasicFMmetamodel::Feature]
+		public CrossReference getFeatureFeatureCrossReference_1_0() { return cFeatureFeatureCrossReference_1_0; }
+		
+		//ID
+		public RuleCall getFeatureFeatureIDTerminalRuleCall_1_0_1() { return cFeatureFeatureIDTerminalRuleCall_1_0_1; }
+		
+		//'->'
+		public Keyword getHyphenMinusGreaterThanSignKeyword_2() { return cHyphenMinusGreaterThanSignKeyword_2; }
+		
+		//action=[ros::ActionSpec]
+		public Assignment getActionAssignment_3() { return cActionAssignment_3; }
+		
+		//[ros::ActionSpec]
+		public CrossReference getActionActionSpecCrossReference_3_0() { return cActionActionSpecCrossReference_3_0; }
+		
+		//ID
+		public RuleCall getActionActionSpecIDTerminalRuleCall_3_0_1() { return cActionActionSpecIDTerminalRuleCall_3_0_1; }
 	}
 	public class FeatureReferenceElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "eu.coresense.resolution.ResolutionModel.FeatureReference");
@@ -429,6 +487,7 @@ public class ResolutionModelGrammarAccess extends AbstractElementFinder.Abstract
 	
 	private final ResolutionModelElements pResolutionModel;
 	private final ResolutionElements pResolution;
+	private final FunctionalMappingElements pFunctionalMapping;
 	private final FeatureReferenceElements pFeatureReference;
 	private final ImportElements pImport;
 	private final ReconfigurationElements pReconfiguration;
@@ -452,6 +511,7 @@ public class ResolutionModelGrammarAccess extends AbstractElementFinder.Abstract
 		this.gaTerminals = gaTerminals;
 		this.pResolutionModel = new ResolutionModelElements();
 		this.pResolution = new ResolutionElements();
+		this.pFunctionalMapping = new FunctionalMappingElements();
 		this.pFeatureReference = new FeatureReferenceElements();
 		this.pImport = new ImportElements();
 		this.pReconfiguration = new ReconfigurationElements();
@@ -497,7 +557,8 @@ public class ResolutionModelGrammarAccess extends AbstractElementFinder.Abstract
 	//    (imports+=Import*)
 	//    'variability_model' featureModel=[BasicFMmetamodel::FeatureModel]';'
 	//    'ros_system' rossystem=[rossys::System]';'
-	//    'resolutions' resolutions+=Resolution*;
+	//    'FunctionalMapping' functionalMapping+=FunctionalMapping
+	//    'Reconfigurations' resolutions+=Resolution*;
 	public ResolutionModelElements getResolutionModelAccess() {
 		return pResolutionModel;
 	}
@@ -515,6 +576,17 @@ public class ResolutionModelGrammarAccess extends AbstractElementFinder.Abstract
 	
 	public ParserRule getResolutionRule() {
 		return getResolutionAccess().getRule();
+	}
+	
+	//FunctionalMapping:
+	//    {FunctionalMapping} feature=[BasicFMmetamodel::Feature] '->' action=[ros::ActionSpec]
+	//;
+	public FunctionalMappingElements getFunctionalMappingAccess() {
+		return pFunctionalMapping;
+	}
+	
+	public ParserRule getFunctionalMappingRule() {
+		return getFunctionalMappingAccess().getRule();
 	}
 	
 	//FeatureReference:

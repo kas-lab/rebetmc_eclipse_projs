@@ -22,6 +22,7 @@ import uma.caosd.rhea.BasicFMmetamodel.FeatureModel;
  *   <li>{@link eu.coresense.resolution.resolutionModel.ResolutionModel#getImports <em>Imports</em>}</li>
  *   <li>{@link eu.coresense.resolution.resolutionModel.ResolutionModel#getFeatureModel <em>Feature Model</em>}</li>
  *   <li>{@link eu.coresense.resolution.resolutionModel.ResolutionModel#getRossystem <em>Rossystem</em>}</li>
+ *   <li>{@link eu.coresense.resolution.resolutionModel.ResolutionModel#getFunctionalMapping <em>Functional Mapping</em>}</li>
  *   <li>{@link eu.coresense.resolution.resolutionModel.ResolutionModel#getResolutions <em>Resolutions</em>}</li>
  * </ul>
  *
@@ -108,6 +109,18 @@ public interface ResolutionModel extends EObject
    * @generated
    */
   void setRossystem(system.System value);
+
+  /**
+   * Returns the value of the '<em><b>Functional Mapping</b></em>' containment reference list.
+   * The list contents are of type {@link eu.coresense.resolution.resolutionModel.FunctionalMapping}.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Functional Mapping</em>' containment reference list.
+   * @see eu.coresense.resolution.resolutionModel.ResolutionModelPackage#getResolutionModel_FunctionalMapping()
+   * @model containment="true"
+   * @generated
+   */
+  EList<FunctionalMapping> getFunctionalMapping();
 
   /**
    * Returns the value of the '<em><b>Resolutions</b></em>' containment reference list.

@@ -7,6 +7,11 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="imports" upperBound="-1"
         eType="ecore:EClass platform:/resource/eu.coresense.common/model/common.ecore#//Import"
         containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="actionRules" upperBound="-1"
+        eType="#//ActionRules" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ActionRules">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="action" eType="ecore:EClass platform:/resource/de.fraunhofer.ipa.ros/model/ros.ecore#//ActionSpec"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="adaptationRules" upperBound="-1"
         eType="#//AdaptationRule" containment="true"/>
   </eClassifiers>

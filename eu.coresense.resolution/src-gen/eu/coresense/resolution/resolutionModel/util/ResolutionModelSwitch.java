@@ -87,6 +87,13 @@ public class ResolutionModelSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case ResolutionModelPackage.FUNCTIONAL_MAPPING:
+      {
+        FunctionalMapping functionalMapping = (FunctionalMapping)theEObject;
+        T result = caseFunctionalMapping(functionalMapping);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case ResolutionModelPackage.FEATURE_REFERENCE:
       {
         FeatureReference featureReference = (FeatureReference)theEObject;
@@ -156,6 +163,22 @@ public class ResolutionModelSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseResolution(Resolution object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Functional Mapping</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Functional Mapping</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseFunctionalMapping(FunctionalMapping object)
   {
     return null;
   }

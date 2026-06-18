@@ -4,7 +4,9 @@
 package eu.coresense.adaptation.scoping;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
@@ -18,8 +20,10 @@ import org.eclipse.xtext.scoping.Scopes;
 import eu.coresense.adaptation.tactics.QualifiedFeatureRef;
 import eu.coresense.adaptation.tactics.TacticsModel;
 import eu.coresense.adaptation.tactics.TacticsPackage;
+import eu.coresense.common.Utilities;
 import eu.coresense.resolution.resolutionModel.Resolution;
 import eu.coresense.resolution.resolutionModel.ResolutionModel;
+import ros.ActionSpec;
 import uma.caosd.rhea.BasicFMmetamodel.Feature;
 import uma.caosd.rhea.BasicFMmetamodel.FeatureModel;
 
@@ -56,6 +60,16 @@ public class TacticsScopeProvider extends AbstractTacticsScopeProvider {
 	            FeatureModel fm = model.getFeatureModel();
 	            // scope over all features in the model
 	            return Scopes.scopeFor(EcoreUtil2.getAllContentsOfType(fm, Feature.class));
+	        }
+	        return IScope.NULLSCOPE;
+	    }
+	    if (reference == TacticsPackage.Literals.ACTION_RULES__ACTION)
+	    {
+	    	TacticsModel model = EcoreUtil2.getContainerOfType(context, TacticsModel.class);
+	        if (model != null) {
+	            List<ActionSpec> actionSpecs = getActionSpecs(model, context.eResource());
+	            // scope over all features in the model
+	            return Scopes.scopeFor(actionSpecs);
 	        }
 	        return IScope.NULLSCOPE;
 	    }
@@ -100,6 +114,22 @@ private List<ResolutionModel> getResolutionModel(TacticsModel model, Resource cu
     }
 
     return result;
+}
+
+private List<ActionSpec> getActionSpecs(TacticsModel t, Resource resource)
+{
+	List<ActionSpec> actionSpecs = new ArrayList<>();
+	List<ros.PackageSet> packages = new ArrayList<>();
+	packages = Utilities.deriveFromImports(resource, ".ros",t.getImports(),ros.PackageSet.class);
+	for (ros.PackageSet packageset : packages) {
+		for(ros.Package package1 : packageset.getPackage())
+		{
+				actionSpecs.addAll(package1.getSpec().stream()
+					.filter(arg0 -> arg0 instanceof ActionSpec).map(arg0 -> (ActionSpec) arg0).collect(Collectors.toList()));
+		}
+	}
+	
+	return actionSpecs;	 	
 }
 
 }

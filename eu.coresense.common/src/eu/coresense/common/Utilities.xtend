@@ -4,6 +4,8 @@ import java.util.List
 import java.util.ArrayList
 import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.emf.common.util.URI
+import system.Component
+import system.SubSystem
 
 class Utilities {
 	def static valueOfLiteral(Literal lit)
@@ -25,6 +27,37 @@ class Utilities {
     		return lit.value
     	}
     }
+    
+    private def static void collectRecursively(system.System ros_sys, List<system.System> result) {
+    	if (ros_sys === null || result.contains(ros_sys)) return;
+    	result.add(ros_sys);
+
+	    for (Component comp : ros_sys.getComponents()) {
+	        if (comp instanceof SubSystem) {
+	            Utilities.collectRecursively(comp.getSystem(), result);
+	        }
+	    }
+	}
+    def static List<system.System> collectAllSystems(system.System rossystem) {
+    	val List<system.System> result = newArrayList
+        Utilities.collectRecursively(rossystem, result)
+        return result       
+    }
+    
+    def static List<system.RosNode> rosNodesFromSystem(system.System ros_system) {
+    	val node_list = newArrayList
+    	
+    	for (component : ros_system.components)
+    	{
+    		if(component instanceof system.RosNode)
+    		{
+    			node_list.add(component as system.RosNode)
+    		}
+    	}
+    	
+    	return node_list    	
+    }
+    
     
     
 	def static <T extends Object> List<List<T>> getCartesianProduct(List<List<T>> sets) {
@@ -68,6 +101,10 @@ class Utilities {
         		val root = imported.getContents().get(0);
 	            if (clas.isInstance(root)) {
 	               	entities.add(clas.cast(root))
+				}
+				else
+				{
+					println("Root actually has type of " + root.class.toString())
 				}
 				
 			}

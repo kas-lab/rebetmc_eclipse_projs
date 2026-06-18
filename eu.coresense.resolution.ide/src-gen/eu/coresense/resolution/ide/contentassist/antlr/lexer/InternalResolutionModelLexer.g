@@ -11,6 +11,8 @@ package eu.coresense.resolution.ide.contentassist.antlr.lexer;
 import org.eclipse.xtext.ide.editor.contentassist.antlr.internal.Lexer;
 }
 
+FunctionalMapping : 'FunctionalMapping';
+
 RelativeNamespace : 'RelativeNamespace';
 
 SetLifecycleState : 'SetLifecycleState';
@@ -19,6 +21,8 @@ Variability_model : 'variability_model';
 
 PrivateNamespace : 'PrivateNamespace';
 
+Reconfigurations : 'Reconfigurations';
+
 GlobalNamespace : 'GlobalNamespace';
 
 ParameterAny : 'ParameterAny';
@@ -26,8 +30,6 @@ ParameterAny : 'ParameterAny';
 SetParameter : 'SetParameter';
 
 UNCONFIGURED : 'UNCONFIGURED';
-
-Resolutions : 'resolutions';
 
 Ros_system : 'ros_system';
 
@@ -154,6 +156,8 @@ Type : 'type';
 Any : 'Any';
 
 Ns : 'ns:';
+
+HyphenMinusGreaterThanSign : '->';
 
 LeftSquareBracketRightSquareBracket : '[]';
 

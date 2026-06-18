@@ -3,6 +3,7 @@
  */
 package eu.coresense.adaptation.tactics.impl;
 
+import eu.coresense.adaptation.tactics.ActionRules;
 import eu.coresense.adaptation.tactics.AdaptationRule;
 import eu.coresense.adaptation.tactics.AtomicAction;
 import eu.coresense.adaptation.tactics.AtomicActionDeselectFeature;
@@ -66,6 +67,13 @@ public class TacticsPackageImpl extends EPackageImpl implements TacticsPackage
    * @generated
    */
   private EClass tacticsModelEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass actionRulesEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -277,13 +285,13 @@ public class TacticsPackageImpl extends EPackageImpl implements TacticsPackage
     isInited = true;
 
     // Initialize simple dependencies
+    RosPackage.eINSTANCE.eClass();
     CommonPackage.eINSTANCE.eClass();
     ContextModelPackage.eINSTANCE.eClass();
     ResolutionModelPackage.eINSTANCE.eClass();
     BasicFMmetamodelPackage.eINSTANCE.eClass();
-    RosPackage.eINSTANCE.eClass();
-    RossystemPackage.eINSTANCE.eClass();
     PrimitivesPackage.eINSTANCE.eClass();
+    RossystemPackage.eINSTANCE.eClass();
 
     // Create package meta-data objects
     theTacticsPackage.createPackageContents();
@@ -338,9 +346,42 @@ public class TacticsPackageImpl extends EPackageImpl implements TacticsPackage
    * @generated
    */
   @Override
-  public EReference getTacticsModel_AdaptationRules()
+  public EReference getTacticsModel_ActionRules()
   {
     return (EReference)tacticsModelEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getActionRules()
+  {
+    return actionRulesEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getActionRules_Action()
+  {
+    return (EReference)actionRulesEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getActionRules_AdaptationRules()
+  {
+    return (EReference)actionRulesEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -949,7 +990,11 @@ public class TacticsPackageImpl extends EPackageImpl implements TacticsPackage
     tacticsModelEClass = createEClass(TACTICS_MODEL);
     createEAttribute(tacticsModelEClass, TACTICS_MODEL__NAME);
     createEReference(tacticsModelEClass, TACTICS_MODEL__IMPORTS);
-    createEReference(tacticsModelEClass, TACTICS_MODEL__ADAPTATION_RULES);
+    createEReference(tacticsModelEClass, TACTICS_MODEL__ACTION_RULES);
+
+    actionRulesEClass = createEClass(ACTION_RULES);
+    createEReference(actionRulesEClass, ACTION_RULES__ACTION);
+    createEReference(actionRulesEClass, ACTION_RULES__ADAPTATION_RULES);
 
     adaptationRuleEClass = createEClass(ADAPTATION_RULE);
     createEAttribute(adaptationRuleEClass, ADAPTATION_RULE__NAME);
@@ -1054,6 +1099,7 @@ public class TacticsPackageImpl extends EPackageImpl implements TacticsPackage
 
     // Obtain other dependent packages
     CommonPackage theCommonPackage = (CommonPackage)EPackage.Registry.INSTANCE.getEPackage(CommonPackage.eNS_URI);
+    RosPackage theRosPackage = (RosPackage)EPackage.Registry.INSTANCE.getEPackage(RosPackage.eNS_URI);
     ContextModelPackage theContextModelPackage = (ContextModelPackage)EPackage.Registry.INSTANCE.getEPackage(ContextModelPackage.eNS_URI);
     ResolutionModelPackage theResolutionModelPackage = (ResolutionModelPackage)EPackage.Registry.INSTANCE.getEPackage(ResolutionModelPackage.eNS_URI);
     BasicFMmetamodelPackage theBasicFMmetamodelPackage = (BasicFMmetamodelPackage)EPackage.Registry.INSTANCE.getEPackage(BasicFMmetamodelPackage.eNS_URI);
@@ -1079,7 +1125,11 @@ public class TacticsPackageImpl extends EPackageImpl implements TacticsPackage
     initEClass(tacticsModelEClass, TacticsModel.class, "TacticsModel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getTacticsModel_Name(), ecorePackage.getEString(), "name", null, 0, 1, TacticsModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getTacticsModel_Imports(), theCommonPackage.getImport(), null, "imports", null, 0, -1, TacticsModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getTacticsModel_AdaptationRules(), this.getAdaptationRule(), null, "adaptationRules", null, 0, -1, TacticsModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getTacticsModel_ActionRules(), this.getActionRules(), null, "actionRules", null, 0, -1, TacticsModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(actionRulesEClass, ActionRules.class, "ActionRules", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getActionRules_Action(), theRosPackage.getActionSpec(), null, "action", null, 0, 1, ActionRules.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getActionRules_AdaptationRules(), this.getAdaptationRule(), null, "adaptationRules", null, 0, -1, ActionRules.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(adaptationRuleEClass, AdaptationRule.class, "AdaptationRule", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getAdaptationRule_Name(), ecorePackage.getEString(), "name", null, 0, 1, AdaptationRule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

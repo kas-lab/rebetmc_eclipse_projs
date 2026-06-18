@@ -12,6 +12,7 @@ import eu.coresense.context.contextModel.ContextVar;
 import eu.coresense.context.contextModel.DataSource;
 import eu.coresense.context.contextModel.DoCache;
 import eu.coresense.context.contextModel.DoProxy;
+import eu.coresense.context.contextModel.MissionVar;
 import eu.coresense.context.contextModel.QualifiedActionServerRef;
 import eu.coresense.context.contextModel.QualifiedPublisherRef;
 import eu.coresense.context.contextModel.QualifiedRef;
@@ -27,6 +28,8 @@ import org.eclipse.emf.ecore.impl.EPackageImpl;
 import primitives.PrimitivesPackage;
 
 import ros.RosPackage;
+
+import system.RossystemPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -49,6 +52,13 @@ public class ContextModelPackageImpl extends EPackageImpl implements ContextMode
    * @generated
    */
   private EClass contextVarEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass missionVarEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -148,9 +158,10 @@ public class ContextModelPackageImpl extends EPackageImpl implements ContextMode
     isInited = true;
 
     // Initialize simple dependencies
-    RosPackage.eINSTANCE.eClass();
-    CommonPackage.eINSTANCE.eClass();
     PrimitivesPackage.eINSTANCE.eClass();
+    RosPackage.eINSTANCE.eClass();
+    RossystemPackage.eINSTANCE.eClass();
+    CommonPackage.eINSTANCE.eClass();
 
     // Create package meta-data objects
     theContextModelPackage.createPackageContents();
@@ -194,9 +205,20 @@ public class ContextModelPackageImpl extends EPackageImpl implements ContextMode
    * @generated
    */
   @Override
-  public EReference getContextModel_Context_variables()
+  public EReference getContextModel_Environmental_variables()
   {
     return (EReference)contextModelEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getContextModel_Mission_variables()
+  {
+    return (EReference)contextModelEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -238,7 +260,7 @@ public class ContextModelPackageImpl extends EPackageImpl implements ContextMode
    * @generated
    */
   @Override
-  public EReference getContextVar_DoCache()
+  public EReference getContextVar_Type()
   {
     return (EReference)contextVarEClass.getEStructuralFeatures().get(2);
   }
@@ -249,9 +271,9 @@ public class ContextModelPackageImpl extends EPackageImpl implements ContextMode
    * @generated
    */
   @Override
-  public EAttribute getContextVar_Length()
+  public EReference getContextVar_DoCache()
   {
-    return (EAttribute)contextVarEClass.getEStructuralFeatures().get(3);
+    return (EReference)contextVarEClass.getEStructuralFeatures().get(3);
   }
 
   /**
@@ -260,7 +282,7 @@ public class ContextModelPackageImpl extends EPackageImpl implements ContextMode
    * @generated
    */
   @Override
-  public EAttribute getContextVar_Period()
+  public EAttribute getContextVar_Length()
   {
     return (EAttribute)contextVarEClass.getEStructuralFeatures().get(4);
   }
@@ -271,9 +293,20 @@ public class ContextModelPackageImpl extends EPackageImpl implements ContextMode
    * @generated
    */
   @Override
+  public EAttribute getContextVar_Period()
+  {
+    return (EAttribute)contextVarEClass.getEStructuralFeatures().get(5);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public EReference getContextVar_DoProxy()
   {
-    return (EReference)contextVarEClass.getEStructuralFeatures().get(5);
+    return (EReference)contextVarEClass.getEStructuralFeatures().get(6);
   }
 
   /**
@@ -284,7 +317,7 @@ public class ContextModelPackageImpl extends EPackageImpl implements ContextMode
   @Override
   public EAttribute getContextVar_FunctionName()
   {
-    return (EAttribute)contextVarEClass.getEStructuralFeatures().get(6);
+    return (EAttribute)contextVarEClass.getEStructuralFeatures().get(7);
   }
 
   /**
@@ -295,7 +328,51 @@ public class ContextModelPackageImpl extends EPackageImpl implements ContextMode
   @Override
   public EAttribute getContextVar_FunctionLibrary()
   {
-    return (EAttribute)contextVarEClass.getEStructuralFeatures().get(7);
+    return (EAttribute)contextVarEClass.getEStructuralFeatures().get(8);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getContextVar_FunctionArgs()
+  {
+    return (EAttribute)contextVarEClass.getEStructuralFeatures().get(9);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getMissionVar()
+  {
+    return missionVarEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getMissionVar_Action()
+  {
+    return (EReference)missionVarEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getMissionVar_Context_vars()
+  {
+    return (EReference)missionVarEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -507,17 +584,24 @@ public class ContextModelPackageImpl extends EPackageImpl implements ContextMode
     // Create classes and their features
     contextModelEClass = createEClass(CONTEXT_MODEL);
     createEReference(contextModelEClass, CONTEXT_MODEL__IMPORTS);
-    createEReference(contextModelEClass, CONTEXT_MODEL__CONTEXT_VARIABLES);
+    createEReference(contextModelEClass, CONTEXT_MODEL__ENVIRONMENTAL_VARIABLES);
+    createEReference(contextModelEClass, CONTEXT_MODEL__MISSION_VARIABLES);
 
     contextVarEClass = createEClass(CONTEXT_VAR);
     createEAttribute(contextVarEClass, CONTEXT_VAR__NAME);
     createEReference(contextVarEClass, CONTEXT_VAR__SOURCE);
+    createEReference(contextVarEClass, CONTEXT_VAR__TYPE);
     createEReference(contextVarEClass, CONTEXT_VAR__DO_CACHE);
     createEAttribute(contextVarEClass, CONTEXT_VAR__LENGTH);
     createEAttribute(contextVarEClass, CONTEXT_VAR__PERIOD);
     createEReference(contextVarEClass, CONTEXT_VAR__DO_PROXY);
     createEAttribute(contextVarEClass, CONTEXT_VAR__FUNCTION_NAME);
     createEAttribute(contextVarEClass, CONTEXT_VAR__FUNCTION_LIBRARY);
+    createEAttribute(contextVarEClass, CONTEXT_VAR__FUNCTION_ARGS);
+
+    missionVarEClass = createEClass(MISSION_VAR);
+    createEReference(missionVarEClass, MISSION_VAR__ACTION);
+    createEReference(missionVarEClass, MISSION_VAR__CONTEXT_VARS);
 
     doCacheEClass = createEClass(DO_CACHE);
     createEAttribute(doCacheEClass, DO_CACHE__DO);
@@ -569,7 +653,9 @@ public class ContextModelPackageImpl extends EPackageImpl implements ContextMode
 
     // Obtain other dependent packages
     CommonPackage theCommonPackage = (CommonPackage)EPackage.Registry.INSTANCE.getEPackage(CommonPackage.eNS_URI);
+    PrimitivesPackage thePrimitivesPackage = (PrimitivesPackage)EPackage.Registry.INSTANCE.getEPackage(PrimitivesPackage.eNS_URI);
     RosPackage theRosPackage = (RosPackage)EPackage.Registry.INSTANCE.getEPackage(RosPackage.eNS_URI);
+    RossystemPackage theRossystemPackage = (RossystemPackage)EPackage.Registry.INSTANCE.getEPackage(RossystemPackage.eNS_URI);
 
     // Create type parameters
 
@@ -583,17 +669,24 @@ public class ContextModelPackageImpl extends EPackageImpl implements ContextMode
     // Initialize classes and features; add operations and parameters
     initEClass(contextModelEClass, ContextModel.class, "ContextModel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getContextModel_Imports(), theCommonPackage.getImport(), null, "imports", null, 0, -1, ContextModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getContextModel_Context_variables(), this.getContextVar(), null, "context_variables", null, 0, -1, ContextModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getContextModel_Environmental_variables(), this.getContextVar(), null, "environmental_variables", null, 0, -1, ContextModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getContextModel_Mission_variables(), this.getMissionVar(), null, "mission_variables", null, 0, -1, ContextModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(contextVarEClass, ContextVar.class, "ContextVar", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getContextVar_Name(), ecorePackage.getEString(), "name", null, 0, 1, ContextVar.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getContextVar_Source(), this.getDataSource(), null, "source", null, 0, 1, ContextVar.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getContextVar_Type(), thePrimitivesPackage.getAbstractType(), null, "type", null, 0, 1, ContextVar.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getContextVar_DoCache(), this.getDoCache(), null, "doCache", null, 0, 1, ContextVar.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getContextVar_Length(), ecorePackage.getEInt(), "length", null, 0, 1, ContextVar.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getContextVar_Period(), ecorePackage.getEInt(), "period", null, 0, 1, ContextVar.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getContextVar_DoProxy(), this.getDoProxy(), null, "doProxy", null, 0, 1, ContextVar.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getContextVar_FunctionName(), ecorePackage.getEString(), "functionName", null, 0, 1, ContextVar.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getContextVar_FunctionLibrary(), ecorePackage.getEString(), "functionLibrary", null, 0, 1, ContextVar.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getContextVar_FunctionArgs(), ecorePackage.getEString(), "functionArgs", null, 0, 1, ContextVar.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(missionVarEClass, MissionVar.class, "MissionVar", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getMissionVar_Action(), theRosPackage.getActionSpec(), null, "action", null, 0, 1, MissionVar.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getMissionVar_Context_vars(), this.getContextVar(), null, "context_vars", null, 0, -1, MissionVar.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(doCacheEClass, DoCache.class, "DoCache", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getDoCache_Do(), ecorePackage.getEBoolean(), "do", null, 0, 1, DoCache.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -605,7 +698,7 @@ public class ContextModelPackageImpl extends EPackageImpl implements ContextMode
     initEReference(getDataSource_Ref(), this.getQualifiedRef(), null, "ref", null, 0, 1, DataSource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(qualifiedRefEClass, QualifiedRef.class, "QualifiedRef", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getQualifiedRef_Node(), theRosPackage.getNode(), null, "node", null, 0, 1, QualifiedRef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getQualifiedRef_Node(), theRossystemPackage.getRosNode(), null, "node", null, 0, 1, QualifiedRef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(qualifiedPublisherRefEClass, QualifiedPublisherRef.class, "QualifiedPublisherRef", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getQualifiedPublisherRef_Publisher(), theRosPackage.getPublisher(), null, "publisher", null, 0, 1, QualifiedPublisherRef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

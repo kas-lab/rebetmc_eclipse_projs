@@ -33,6 +33,15 @@ public interface TacticsFactory extends EFactory
   TacticsModel createTacticsModel();
 
   /**
+   * Returns a new object of class '<em>Action Rules</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Action Rules</em>'.
+   * @generated
+   */
+  ActionRules createActionRules();
+
+  /**
    * Returns a new object of class '<em>Adaptation Rule</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

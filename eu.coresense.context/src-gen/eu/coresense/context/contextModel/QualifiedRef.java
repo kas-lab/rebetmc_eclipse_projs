@@ -5,7 +5,7 @@ package eu.coresense.context.contextModel;
 
 import org.eclipse.emf.ecore.EObject;
 
-import ros.Node;
+import system.RosNode;
 
 /**
  * <!-- begin-user-doc -->
@@ -30,12 +30,12 @@ public interface QualifiedRef extends EObject
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the value of the '<em>Node</em>' reference.
-   * @see #setNode(Node)
+   * @see #setNode(RosNode)
    * @see eu.coresense.context.contextModel.ContextModelPackage#getQualifiedRef_Node()
    * @model
    * @generated
    */
-  Node getNode();
+  RosNode getNode();
 
   /**
    * Sets the value of the '{@link eu.coresense.context.contextModel.QualifiedRef#getNode <em>Node</em>}' reference.
@@ -45,6 +45,6 @@ public interface QualifiedRef extends EObject
    * @see #getNode()
    * @generated
    */
-  void setNode(Node value);
+  void setNode(RosNode value);
 
 } // QualifiedRef

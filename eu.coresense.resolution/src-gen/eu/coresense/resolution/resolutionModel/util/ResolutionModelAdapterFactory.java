@@ -86,6 +86,11 @@ public class ResolutionModelAdapterFactory extends AdapterFactoryImpl
         return createResolutionAdapter();
       }
       @Override
+      public Adapter caseFunctionalMapping(FunctionalMapping object)
+      {
+        return createFunctionalMappingAdapter();
+      }
+      @Override
       public Adapter caseFeatureReference(FeatureReference object)
       {
         return createFeatureReferenceAdapter();
@@ -158,6 +163,21 @@ public class ResolutionModelAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createResolutionAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link eu.coresense.resolution.resolutionModel.FunctionalMapping <em>Functional Mapping</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see eu.coresense.resolution.resolutionModel.FunctionalMapping
+   * @generated
+   */
+  public Adapter createFunctionalMappingAdapter()
   {
     return null;
   }

@@ -3,6 +3,7 @@
  */
 package eu.coresense.resolution.resolutionModel.impl;
 
+import eu.coresense.resolution.resolutionModel.FunctionalMapping;
 import eu.coresense.resolution.resolutionModel.Import;
 import eu.coresense.resolution.resolutionModel.Resolution;
 import eu.coresense.resolution.resolutionModel.ResolutionModel;
@@ -38,6 +39,7 @@ import uma.caosd.rhea.BasicFMmetamodel.FeatureModel;
  *   <li>{@link eu.coresense.resolution.resolutionModel.impl.ResolutionModelImpl#getImports <em>Imports</em>}</li>
  *   <li>{@link eu.coresense.resolution.resolutionModel.impl.ResolutionModelImpl#getFeatureModel <em>Feature Model</em>}</li>
  *   <li>{@link eu.coresense.resolution.resolutionModel.impl.ResolutionModelImpl#getRossystem <em>Rossystem</em>}</li>
+ *   <li>{@link eu.coresense.resolution.resolutionModel.impl.ResolutionModelImpl#getFunctionalMapping <em>Functional Mapping</em>}</li>
  *   <li>{@link eu.coresense.resolution.resolutionModel.impl.ResolutionModelImpl#getResolutions <em>Resolutions</em>}</li>
  * </ul>
  *
@@ -94,6 +96,16 @@ public class ResolutionModelImpl extends MinimalEObjectImpl.Container implements
    * @ordered
    */
   protected system.System rossystem;
+
+  /**
+   * The cached value of the '{@link #getFunctionalMapping() <em>Functional Mapping</em>}' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getFunctionalMapping()
+   * @generated
+   * @ordered
+   */
+  protected EList<FunctionalMapping> functionalMapping;
 
   /**
    * The cached value of the '{@link #getResolutions() <em>Resolutions</em>}' containment reference list.
@@ -262,6 +274,21 @@ public class ResolutionModelImpl extends MinimalEObjectImpl.Container implements
    * @generated
    */
   @Override
+  public EList<FunctionalMapping> getFunctionalMapping()
+  {
+    if (functionalMapping == null)
+    {
+      functionalMapping = new EObjectContainmentEList<FunctionalMapping>(FunctionalMapping.class, this, ResolutionModelPackage.RESOLUTION_MODEL__FUNCTIONAL_MAPPING);
+    }
+    return functionalMapping;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public EList<Resolution> getResolutions()
   {
     if (resolutions == null)
@@ -283,6 +310,8 @@ public class ResolutionModelImpl extends MinimalEObjectImpl.Container implements
     {
       case ResolutionModelPackage.RESOLUTION_MODEL__IMPORTS:
         return ((InternalEList<?>)getImports()).basicRemove(otherEnd, msgs);
+      case ResolutionModelPackage.RESOLUTION_MODEL__FUNCTIONAL_MAPPING:
+        return ((InternalEList<?>)getFunctionalMapping()).basicRemove(otherEnd, msgs);
       case ResolutionModelPackage.RESOLUTION_MODEL__RESOLUTIONS:
         return ((InternalEList<?>)getResolutions()).basicRemove(otherEnd, msgs);
     }
@@ -309,6 +338,8 @@ public class ResolutionModelImpl extends MinimalEObjectImpl.Container implements
       case ResolutionModelPackage.RESOLUTION_MODEL__ROSSYSTEM:
         if (resolve) return getRossystem();
         return basicGetRossystem();
+      case ResolutionModelPackage.RESOLUTION_MODEL__FUNCTIONAL_MAPPING:
+        return getFunctionalMapping();
       case ResolutionModelPackage.RESOLUTION_MODEL__RESOLUTIONS:
         return getResolutions();
     }
@@ -338,6 +369,10 @@ public class ResolutionModelImpl extends MinimalEObjectImpl.Container implements
         return;
       case ResolutionModelPackage.RESOLUTION_MODEL__ROSSYSTEM:
         setRossystem((system.System)newValue);
+        return;
+      case ResolutionModelPackage.RESOLUTION_MODEL__FUNCTIONAL_MAPPING:
+        getFunctionalMapping().clear();
+        getFunctionalMapping().addAll((Collection<? extends FunctionalMapping>)newValue);
         return;
       case ResolutionModelPackage.RESOLUTION_MODEL__RESOLUTIONS:
         getResolutions().clear();
@@ -369,6 +404,9 @@ public class ResolutionModelImpl extends MinimalEObjectImpl.Container implements
       case ResolutionModelPackage.RESOLUTION_MODEL__ROSSYSTEM:
         setRossystem((system.System)null);
         return;
+      case ResolutionModelPackage.RESOLUTION_MODEL__FUNCTIONAL_MAPPING:
+        getFunctionalMapping().clear();
+        return;
       case ResolutionModelPackage.RESOLUTION_MODEL__RESOLUTIONS:
         getResolutions().clear();
         return;
@@ -394,6 +432,8 @@ public class ResolutionModelImpl extends MinimalEObjectImpl.Container implements
         return featureModel != null;
       case ResolutionModelPackage.RESOLUTION_MODEL__ROSSYSTEM:
         return rossystem != null;
+      case ResolutionModelPackage.RESOLUTION_MODEL__FUNCTIONAL_MAPPING:
+        return functionalMapping != null && !functionalMapping.isEmpty();
       case ResolutionModelPackage.RESOLUTION_MODEL__RESOLUTIONS:
         return resolutions != null && !resolutions.isEmpty();
     }

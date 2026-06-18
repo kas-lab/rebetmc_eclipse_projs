@@ -8,6 +8,8 @@
         eType="#//Import" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="featureModel" eType="ecore:EClass platform:/resource/fms.metamodel/model/BasicFMmetamodel.ecore#//FeatureModel"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="rossystem" eType="ecore:EClass platform:/resource/de.fraunhofer.ipa.rossystem/model/rossystem.ecore#//System"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="functionalMapping" upperBound="-1"
+        eType="#//FunctionalMapping" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="resolutions" upperBound="-1"
         eType="#//Resolution" containment="true"/>
   </eClassifiers>
@@ -18,6 +20,10 @@
         eType="#//Reconfiguration" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="deselection_actions" upperBound="-1"
         eType="#//Reconfiguration" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="FunctionalMapping">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="feature" eType="ecore:EClass platform:/resource/fms.metamodel/model/BasicFMmetamodel.ecore#//Feature"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="action" eType="ecore:EClass platform:/resource/de.fraunhofer.ipa.ros/model/ros.ecore#//ActionSpec"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="FeatureReference">
     <eStructuralFeatures xsi:type="ecore:EReference" name="parent" eType="ecore:EClass platform:/resource/fms.metamodel/model/BasicFMmetamodel.ecore#//Feature"/>

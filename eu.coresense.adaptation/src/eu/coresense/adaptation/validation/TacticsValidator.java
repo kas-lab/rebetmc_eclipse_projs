@@ -13,8 +13,16 @@ import eu.coresense.adaptation.tactics.AtomicAction;
 import eu.coresense.adaptation.tactics.AtomicActionDeselectFeature;
 import eu.coresense.adaptation.tactics.AtomicActionSelectFeature;
 import eu.coresense.adaptation.tactics.AtomicSimpleAction;
+import eu.coresense.adaptation.tactics.MeasurementThresholdCondition;
 import eu.coresense.adaptation.tactics.QualifiedFeatureRef;
 import eu.coresense.adaptation.tactics.TacticsPackage;
+import eu.coresense.common.Literal;
+import eu.coresense.common.IntLiteral;
+import eu.coresense.common.DecimalLiteral;
+import eu.coresense.common.StringLiteral;
+import eu.coresense.common.BooleanLiteral;
+import eu.coresense.context.contextModel.QualifiedPublisherRef;
+import primitives.AbstractType;
 import uma.caosd.rhea.BasicFMmetamodel.Alternative;
 import uma.caosd.rhea.BasicFMmetamodel.BasicFMmetamodelPackage;
 import uma.caosd.rhea.BasicFMmetamodel.Feature;
@@ -47,9 +55,41 @@ public class TacticsValidator extends AbstractTacticsValidator {
 					selectPresent = (remainingAction instanceof AtomicActionSelectFeature && remainingParent == featureParent);
 				}
 				
-				if(!selectPresent) error("Youu cannot deselect from an mandatory alternative with more than two children without providing a new child to select.",null);	
+				if(!selectPresent) error("You cannot deselect from an mandatory alternative with more than two children without providing a new child to select.",null);	
 			}	
 		}
+	}
+	
+	@Check
+	public void thresholdTypeMatch(MeasurementThresholdCondition condition)
+	{
+		var thresholdValue = condition.getThresholdValue();
+		var abstractType = condition.getMeasurement().getType();
+		boolean pass = false;
+		switch(thresholdValue) {
+			case IntLiteral i: pass = intLike(abstractType); break;
+			case DecimalLiteral d: pass = floatLike(abstractType); break;
+			case StringLiteral s: pass = abstractType instanceof primitives.string; break;
+			case BooleanLiteral b: pass = abstractType instanceof primitives.bool; break;
+			default:
+				break;
+				
+		}
+		if(!pass)
+		{
+			error("Type mistmatch between threshold and context variable", null);
+		}
+		
+	}
+	
+	private boolean floatLike(AbstractType potentialFloat)
+	{
+		return (potentialFloat instanceof primitives.float32 || potentialFloat instanceof primitives.float64);
+	}
+	
+	private boolean intLike(AbstractType potentialInt)
+	{
+		return (potentialInt instanceof primitives.int8 || potentialInt instanceof primitives.int16 || potentialInt instanceof primitives.int32 || potentialInt instanceof primitives.int64 );
 	}
 }
 	

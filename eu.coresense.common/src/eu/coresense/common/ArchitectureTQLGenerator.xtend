@@ -249,8 +249,8 @@ class ArchitectureTQLGenerator extends AbstractGenerator {
 				insert
 			«ENDIF»
 			
-			«FOR rossys : collectAllSystems(rossystem)»
-				«val nodesList = rosNodesFromSystem(rossys)»
+			«FOR rossys : Utilities.collectAllSystems(rossystem)»
+				«val nodesList = Utilities.rosNodesFromSystem(rossys)»
 				«FOR comp : nodesList»
 					«generateInsertQuery(comp)»
 				«ENDFOR»
@@ -451,22 +451,8 @@ class ArchitectureTQLGenerator extends AbstractGenerator {
 		'''			    
     }
     
-    def List<System> collectAllSystems(System rossystem) {
-    	val List<System> result = newArrayList
-        collectRecursively(rossystem, result)
-        return result       
-    }
-    
-    private def void collectRecursively(System ros_sys, List<System> result) {
-    	if (ros_sys === null || result.contains(ros_sys)) return;
-    	result.add(ros_sys);
 
-	    for (Component comp : ros_sys.getComponents()) {
-	        if (comp instanceof SubSystem) {
-	            collectRecursively(comp.getSystem(), result);
-	        }
-	    }
-	}
+
 	
 	def String processSubNodes(List<RosNode> rosNodes)
     {
@@ -495,18 +481,6 @@ class ArchitectureTQLGenerator extends AbstractGenerator {
 		'''
     }
     
-    def List<RosNode> rosNodesFromSystem(System ros_system) {
-    	val node_list = newArrayList
-    	
-    	for (component : ros_system.components)
-    	{
-    		if(component instanceof RosNode)
-    		{
-    			node_list.add(component as RosNode)
-    		}
-    	}
-    	
-    	return node_list    	
-    }
+
 				    
 }

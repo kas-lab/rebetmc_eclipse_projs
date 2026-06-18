@@ -77,13 +77,22 @@ public interface ContextModelPackage extends EPackage
   int CONTEXT_MODEL__IMPORTS = 0;
 
   /**
-   * The feature id for the '<em><b>Context variables</b></em>' containment reference list.
+   * The feature id for the '<em><b>Environmental variables</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int CONTEXT_MODEL__CONTEXT_VARIABLES = 1;
+  int CONTEXT_MODEL__ENVIRONMENTAL_VARIABLES = 1;
+
+  /**
+   * The feature id for the '<em><b>Mission variables</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CONTEXT_MODEL__MISSION_VARIABLES = 2;
 
   /**
    * The number of structural features of the '<em>Context Model</em>' class.
@@ -92,7 +101,7 @@ public interface ContextModelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CONTEXT_MODEL_FEATURE_COUNT = 2;
+  int CONTEXT_MODEL_FEATURE_COUNT = 3;
 
   /**
    * The meta object id for the '{@link eu.coresense.context.contextModel.impl.ContextVarImpl <em>Context Var</em>}' class.
@@ -123,13 +132,22 @@ public interface ContextModelPackage extends EPackage
   int CONTEXT_VAR__SOURCE = 1;
 
   /**
+   * The feature id for the '<em><b>Type</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CONTEXT_VAR__TYPE = 2;
+
+  /**
    * The feature id for the '<em><b>Do Cache</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int CONTEXT_VAR__DO_CACHE = 2;
+  int CONTEXT_VAR__DO_CACHE = 3;
 
   /**
    * The feature id for the '<em><b>Length</b></em>' attribute.
@@ -138,7 +156,7 @@ public interface ContextModelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CONTEXT_VAR__LENGTH = 3;
+  int CONTEXT_VAR__LENGTH = 4;
 
   /**
    * The feature id for the '<em><b>Period</b></em>' attribute.
@@ -147,7 +165,7 @@ public interface ContextModelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CONTEXT_VAR__PERIOD = 4;
+  int CONTEXT_VAR__PERIOD = 5;
 
   /**
    * The feature id for the '<em><b>Do Proxy</b></em>' containment reference.
@@ -156,7 +174,7 @@ public interface ContextModelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CONTEXT_VAR__DO_PROXY = 5;
+  int CONTEXT_VAR__DO_PROXY = 6;
 
   /**
    * The feature id for the '<em><b>Function Name</b></em>' attribute.
@@ -165,7 +183,7 @@ public interface ContextModelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CONTEXT_VAR__FUNCTION_NAME = 6;
+  int CONTEXT_VAR__FUNCTION_NAME = 7;
 
   /**
    * The feature id for the '<em><b>Function Library</b></em>' attribute.
@@ -174,7 +192,16 @@ public interface ContextModelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CONTEXT_VAR__FUNCTION_LIBRARY = 7;
+  int CONTEXT_VAR__FUNCTION_LIBRARY = 8;
+
+  /**
+   * The feature id for the '<em><b>Function Args</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CONTEXT_VAR__FUNCTION_ARGS = 9;
 
   /**
    * The number of structural features of the '<em>Context Var</em>' class.
@@ -183,7 +210,44 @@ public interface ContextModelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CONTEXT_VAR_FEATURE_COUNT = 8;
+  int CONTEXT_VAR_FEATURE_COUNT = 10;
+
+  /**
+   * The meta object id for the '{@link eu.coresense.context.contextModel.impl.MissionVarImpl <em>Mission Var</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see eu.coresense.context.contextModel.impl.MissionVarImpl
+   * @see eu.coresense.context.contextModel.impl.ContextModelPackageImpl#getMissionVar()
+   * @generated
+   */
+  int MISSION_VAR = 2;
+
+  /**
+   * The feature id for the '<em><b>Action</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MISSION_VAR__ACTION = 0;
+
+  /**
+   * The feature id for the '<em><b>Context vars</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MISSION_VAR__CONTEXT_VARS = 1;
+
+  /**
+   * The number of structural features of the '<em>Mission Var</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MISSION_VAR_FEATURE_COUNT = 2;
 
   /**
    * The meta object id for the '{@link eu.coresense.context.contextModel.impl.DoCacheImpl <em>Do Cache</em>}' class.
@@ -193,7 +257,7 @@ public interface ContextModelPackage extends EPackage
    * @see eu.coresense.context.contextModel.impl.ContextModelPackageImpl#getDoCache()
    * @generated
    */
-  int DO_CACHE = 2;
+  int DO_CACHE = 3;
 
   /**
    * The feature id for the '<em><b>Do</b></em>' attribute.
@@ -221,7 +285,7 @@ public interface ContextModelPackage extends EPackage
    * @see eu.coresense.context.contextModel.impl.ContextModelPackageImpl#getDoProxy()
    * @generated
    */
-  int DO_PROXY = 3;
+  int DO_PROXY = 4;
 
   /**
    * The feature id for the '<em><b>Do</b></em>' attribute.
@@ -249,7 +313,7 @@ public interface ContextModelPackage extends EPackage
    * @see eu.coresense.context.contextModel.impl.ContextModelPackageImpl#getDataSource()
    * @generated
    */
-  int DATA_SOURCE = 4;
+  int DATA_SOURCE = 5;
 
   /**
    * The feature id for the '<em><b>Ref</b></em>' containment reference.
@@ -277,7 +341,7 @@ public interface ContextModelPackage extends EPackage
    * @see eu.coresense.context.contextModel.impl.ContextModelPackageImpl#getQualifiedRef()
    * @generated
    */
-  int QUALIFIED_REF = 5;
+  int QUALIFIED_REF = 6;
 
   /**
    * The feature id for the '<em><b>Node</b></em>' reference.
@@ -305,7 +369,7 @@ public interface ContextModelPackage extends EPackage
    * @see eu.coresense.context.contextModel.impl.ContextModelPackageImpl#getQualifiedPublisherRef()
    * @generated
    */
-  int QUALIFIED_PUBLISHER_REF = 6;
+  int QUALIFIED_PUBLISHER_REF = 7;
 
   /**
    * The feature id for the '<em><b>Node</b></em>' reference.
@@ -342,7 +406,7 @@ public interface ContextModelPackage extends EPackage
    * @see eu.coresense.context.contextModel.impl.ContextModelPackageImpl#getQualifiedServiceServerRef()
    * @generated
    */
-  int QUALIFIED_SERVICE_SERVER_REF = 7;
+  int QUALIFIED_SERVICE_SERVER_REF = 8;
 
   /**
    * The feature id for the '<em><b>Node</b></em>' reference.
@@ -388,7 +452,7 @@ public interface ContextModelPackage extends EPackage
    * @see eu.coresense.context.contextModel.impl.ContextModelPackageImpl#getQualifiedActionServerRef()
    * @generated
    */
-  int QUALIFIED_ACTION_SERVER_REF = 8;
+  int QUALIFIED_ACTION_SERVER_REF = 9;
 
   /**
    * The feature id for the '<em><b>Node</b></em>' reference.
@@ -449,15 +513,26 @@ public interface ContextModelPackage extends EPackage
   EReference getContextModel_Imports();
 
   /**
-   * Returns the meta object for the containment reference list '{@link eu.coresense.context.contextModel.ContextModel#getContext_variables <em>Context variables</em>}'.
+   * Returns the meta object for the containment reference list '{@link eu.coresense.context.contextModel.ContextModel#getEnvironmental_variables <em>Environmental variables</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Context variables</em>'.
-   * @see eu.coresense.context.contextModel.ContextModel#getContext_variables()
+   * @return the meta object for the containment reference list '<em>Environmental variables</em>'.
+   * @see eu.coresense.context.contextModel.ContextModel#getEnvironmental_variables()
    * @see #getContextModel()
    * @generated
    */
-  EReference getContextModel_Context_variables();
+  EReference getContextModel_Environmental_variables();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link eu.coresense.context.contextModel.ContextModel#getMission_variables <em>Mission variables</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Mission variables</em>'.
+   * @see eu.coresense.context.contextModel.ContextModel#getMission_variables()
+   * @see #getContextModel()
+   * @generated
+   */
+  EReference getContextModel_Mission_variables();
 
   /**
    * Returns the meta object for class '{@link eu.coresense.context.contextModel.ContextVar <em>Context Var</em>}'.
@@ -490,6 +565,17 @@ public interface ContextModelPackage extends EPackage
    * @generated
    */
   EReference getContextVar_Source();
+
+  /**
+   * Returns the meta object for the containment reference '{@link eu.coresense.context.contextModel.ContextVar#getType <em>Type</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Type</em>'.
+   * @see eu.coresense.context.contextModel.ContextVar#getType()
+   * @see #getContextVar()
+   * @generated
+   */
+  EReference getContextVar_Type();
 
   /**
    * Returns the meta object for the containment reference '{@link eu.coresense.context.contextModel.ContextVar#getDoCache <em>Do Cache</em>}'.
@@ -556,6 +642,49 @@ public interface ContextModelPackage extends EPackage
    * @generated
    */
   EAttribute getContextVar_FunctionLibrary();
+
+  /**
+   * Returns the meta object for the attribute '{@link eu.coresense.context.contextModel.ContextVar#getFunctionArgs <em>Function Args</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Function Args</em>'.
+   * @see eu.coresense.context.contextModel.ContextVar#getFunctionArgs()
+   * @see #getContextVar()
+   * @generated
+   */
+  EAttribute getContextVar_FunctionArgs();
+
+  /**
+   * Returns the meta object for class '{@link eu.coresense.context.contextModel.MissionVar <em>Mission Var</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Mission Var</em>'.
+   * @see eu.coresense.context.contextModel.MissionVar
+   * @generated
+   */
+  EClass getMissionVar();
+
+  /**
+   * Returns the meta object for the reference '{@link eu.coresense.context.contextModel.MissionVar#getAction <em>Action</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Action</em>'.
+   * @see eu.coresense.context.contextModel.MissionVar#getAction()
+   * @see #getMissionVar()
+   * @generated
+   */
+  EReference getMissionVar_Action();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link eu.coresense.context.contextModel.MissionVar#getContext_vars <em>Context vars</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Context vars</em>'.
+   * @see eu.coresense.context.contextModel.MissionVar#getContext_vars()
+   * @see #getMissionVar()
+   * @generated
+   */
+  EReference getMissionVar_Context_vars();
 
   /**
    * Returns the meta object for class '{@link eu.coresense.context.contextModel.DoCache <em>Do Cache</em>}'.
@@ -768,12 +897,20 @@ public interface ContextModelPackage extends EPackage
     EReference CONTEXT_MODEL__IMPORTS = eINSTANCE.getContextModel_Imports();
 
     /**
-     * The meta object literal for the '<em><b>Context variables</b></em>' containment reference list feature.
+     * The meta object literal for the '<em><b>Environmental variables</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference CONTEXT_MODEL__CONTEXT_VARIABLES = eINSTANCE.getContextModel_Context_variables();
+    EReference CONTEXT_MODEL__ENVIRONMENTAL_VARIABLES = eINSTANCE.getContextModel_Environmental_variables();
+
+    /**
+     * The meta object literal for the '<em><b>Mission variables</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference CONTEXT_MODEL__MISSION_VARIABLES = eINSTANCE.getContextModel_Mission_variables();
 
     /**
      * The meta object literal for the '{@link eu.coresense.context.contextModel.impl.ContextVarImpl <em>Context Var</em>}' class.
@@ -800,6 +937,14 @@ public interface ContextModelPackage extends EPackage
      * @generated
      */
     EReference CONTEXT_VAR__SOURCE = eINSTANCE.getContextVar_Source();
+
+    /**
+     * The meta object literal for the '<em><b>Type</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference CONTEXT_VAR__TYPE = eINSTANCE.getContextVar_Type();
 
     /**
      * The meta object literal for the '<em><b>Do Cache</b></em>' containment reference feature.
@@ -848,6 +993,40 @@ public interface ContextModelPackage extends EPackage
      * @generated
      */
     EAttribute CONTEXT_VAR__FUNCTION_LIBRARY = eINSTANCE.getContextVar_FunctionLibrary();
+
+    /**
+     * The meta object literal for the '<em><b>Function Args</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute CONTEXT_VAR__FUNCTION_ARGS = eINSTANCE.getContextVar_FunctionArgs();
+
+    /**
+     * The meta object literal for the '{@link eu.coresense.context.contextModel.impl.MissionVarImpl <em>Mission Var</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see eu.coresense.context.contextModel.impl.MissionVarImpl
+     * @see eu.coresense.context.contextModel.impl.ContextModelPackageImpl#getMissionVar()
+     * @generated
+     */
+    EClass MISSION_VAR = eINSTANCE.getMissionVar();
+
+    /**
+     * The meta object literal for the '<em><b>Action</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference MISSION_VAR__ACTION = eINSTANCE.getMissionVar_Action();
+
+    /**
+     * The meta object literal for the '<em><b>Context vars</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference MISSION_VAR__CONTEXT_VARS = eINSTANCE.getMissionVar_Context_vars();
 
     /**
      * The meta object literal for the '{@link eu.coresense.context.contextModel.impl.DoCacheImpl <em>Do Cache</em>}' class.

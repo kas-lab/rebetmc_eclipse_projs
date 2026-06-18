@@ -4,6 +4,7 @@
 package eu.coresense.resolution.resolutionModel.impl;
 
 import eu.coresense.resolution.resolutionModel.FeatureReference;
+import eu.coresense.resolution.resolutionModel.FunctionalMapping;
 import eu.coresense.resolution.resolutionModel.Import;
 import eu.coresense.resolution.resolutionModel.LifecycleState;
 import eu.coresense.resolution.resolutionModel.Reconfiguration;
@@ -51,6 +52,13 @@ public class ResolutionModelPackageImpl extends EPackageImpl implements Resoluti
    * @generated
    */
   private EClass resolutionEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass functionalMappingEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -223,9 +231,20 @@ public class ResolutionModelPackageImpl extends EPackageImpl implements Resoluti
    * @generated
    */
   @Override
-  public EReference getResolutionModel_Resolutions()
+  public EReference getResolutionModel_FunctionalMapping()
   {
     return (EReference)resolutionModelEClass.getEStructuralFeatures().get(4);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getResolutionModel_Resolutions()
+  {
+    return (EReference)resolutionModelEClass.getEStructuralFeatures().get(5);
   }
 
   /**
@@ -270,6 +289,39 @@ public class ResolutionModelPackageImpl extends EPackageImpl implements Resoluti
   public EReference getResolution_Deselection_actions()
   {
     return (EReference)resolutionEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getFunctionalMapping()
+  {
+    return functionalMappingEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getFunctionalMapping_Feature()
+  {
+    return (EReference)functionalMappingEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getFunctionalMapping_Action()
+  {
+    return (EReference)functionalMappingEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -451,12 +503,17 @@ public class ResolutionModelPackageImpl extends EPackageImpl implements Resoluti
     createEReference(resolutionModelEClass, RESOLUTION_MODEL__IMPORTS);
     createEReference(resolutionModelEClass, RESOLUTION_MODEL__FEATURE_MODEL);
     createEReference(resolutionModelEClass, RESOLUTION_MODEL__ROSSYSTEM);
+    createEReference(resolutionModelEClass, RESOLUTION_MODEL__FUNCTIONAL_MAPPING);
     createEReference(resolutionModelEClass, RESOLUTION_MODEL__RESOLUTIONS);
 
     resolutionEClass = createEClass(RESOLUTION);
     createEReference(resolutionEClass, RESOLUTION__FEATURE_REF);
     createEReference(resolutionEClass, RESOLUTION__SELECTION_ACTIONS);
     createEReference(resolutionEClass, RESOLUTION__DESELECTION_ACTIONS);
+
+    functionalMappingEClass = createEClass(FUNCTIONAL_MAPPING);
+    createEReference(functionalMappingEClass, FUNCTIONAL_MAPPING__FEATURE);
+    createEReference(functionalMappingEClass, FUNCTIONAL_MAPPING__ACTION);
 
     featureReferenceEClass = createEClass(FEATURE_REFERENCE);
     createEReference(featureReferenceEClass, FEATURE_REFERENCE__PARENT);
@@ -522,12 +579,17 @@ public class ResolutionModelPackageImpl extends EPackageImpl implements Resoluti
     initEReference(getResolutionModel_Imports(), this.getImport(), null, "imports", null, 0, -1, ResolutionModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getResolutionModel_FeatureModel(), theBasicFMmetamodelPackage.getFeatureModel(), null, "featureModel", null, 0, 1, ResolutionModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getResolutionModel_Rossystem(), theRossystemPackage.getSystem(), null, "rossystem", null, 0, 1, ResolutionModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getResolutionModel_FunctionalMapping(), this.getFunctionalMapping(), null, "functionalMapping", null, 0, -1, ResolutionModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getResolutionModel_Resolutions(), this.getResolution(), null, "resolutions", null, 0, -1, ResolutionModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(resolutionEClass, Resolution.class, "Resolution", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getResolution_FeatureRef(), this.getFeatureReference(), null, "featureRef", null, 0, 1, Resolution.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getResolution_Selection_actions(), this.getReconfiguration(), null, "selection_actions", null, 0, -1, Resolution.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getResolution_Deselection_actions(), this.getReconfiguration(), null, "deselection_actions", null, 0, -1, Resolution.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(functionalMappingEClass, FunctionalMapping.class, "FunctionalMapping", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getFunctionalMapping_Feature(), theBasicFMmetamodelPackage.getFeature(), null, "feature", null, 0, 1, FunctionalMapping.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getFunctionalMapping_Action(), theRosPackage.getActionSpec(), null, "action", null, 0, 1, FunctionalMapping.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(featureReferenceEClass, FeatureReference.class, "FeatureReference", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getFeatureReference_Parent(), theBasicFMmetamodelPackage.getFeature(), null, "parent", null, 0, 1, FeatureReference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

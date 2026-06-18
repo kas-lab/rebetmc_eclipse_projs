@@ -86,6 +86,11 @@ public class ContextModelAdapterFactory extends AdapterFactoryImpl
         return createContextVarAdapter();
       }
       @Override
+      public Adapter caseMissionVar(MissionVar object)
+      {
+        return createMissionVarAdapter();
+      }
+      @Override
       public Adapter caseDoCache(DoCache object)
       {
         return createDoCacheAdapter();
@@ -168,6 +173,21 @@ public class ContextModelAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createContextVarAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link eu.coresense.context.contextModel.MissionVar <em>Mission Var</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see eu.coresense.context.contextModel.MissionVar
+   * @generated
+   */
+  public Adapter createMissionVarAdapter()
   {
     return null;
   }

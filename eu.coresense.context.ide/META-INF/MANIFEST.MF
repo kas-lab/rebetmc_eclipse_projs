@@ -12,4 +12,5 @@ Require-Bundle: eu.coresense.context,
  org.antlr.runtime;bundle-version="[3.2.0,3.2.1)"
 Bundle-RequiredExecutionEnvironment: JavaSE-21
 Export-Package: eu.coresense.context.ide.contentassist.antlr,
- eu.coresense.context.ide.contentassist.antlr.internal
+ eu.coresense.context.ide.contentassist.antlr.internal,
+ eu.coresense.context.ide.contentassist.antlr.lexer

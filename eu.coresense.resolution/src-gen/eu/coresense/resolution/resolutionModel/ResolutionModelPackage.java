@@ -105,13 +105,22 @@ public interface ResolutionModelPackage extends EPackage
   int RESOLUTION_MODEL__ROSSYSTEM = 3;
 
   /**
+   * The feature id for the '<em><b>Functional Mapping</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int RESOLUTION_MODEL__FUNCTIONAL_MAPPING = 4;
+
+  /**
    * The feature id for the '<em><b>Resolutions</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int RESOLUTION_MODEL__RESOLUTIONS = 4;
+  int RESOLUTION_MODEL__RESOLUTIONS = 5;
 
   /**
    * The number of structural features of the '<em>Resolution Model</em>' class.
@@ -120,7 +129,7 @@ public interface ResolutionModelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int RESOLUTION_MODEL_FEATURE_COUNT = 5;
+  int RESOLUTION_MODEL_FEATURE_COUNT = 6;
 
   /**
    * The meta object id for the '{@link eu.coresense.resolution.resolutionModel.impl.ResolutionImpl <em>Resolution</em>}' class.
@@ -169,6 +178,43 @@ public interface ResolutionModelPackage extends EPackage
   int RESOLUTION_FEATURE_COUNT = 3;
 
   /**
+   * The meta object id for the '{@link eu.coresense.resolution.resolutionModel.impl.FunctionalMappingImpl <em>Functional Mapping</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see eu.coresense.resolution.resolutionModel.impl.FunctionalMappingImpl
+   * @see eu.coresense.resolution.resolutionModel.impl.ResolutionModelPackageImpl#getFunctionalMapping()
+   * @generated
+   */
+  int FUNCTIONAL_MAPPING = 2;
+
+  /**
+   * The feature id for the '<em><b>Feature</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FUNCTIONAL_MAPPING__FEATURE = 0;
+
+  /**
+   * The feature id for the '<em><b>Action</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FUNCTIONAL_MAPPING__ACTION = 1;
+
+  /**
+   * The number of structural features of the '<em>Functional Mapping</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FUNCTIONAL_MAPPING_FEATURE_COUNT = 2;
+
+  /**
    * The meta object id for the '{@link eu.coresense.resolution.resolutionModel.impl.FeatureReferenceImpl <em>Feature Reference</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -176,7 +222,7 @@ public interface ResolutionModelPackage extends EPackage
    * @see eu.coresense.resolution.resolutionModel.impl.ResolutionModelPackageImpl#getFeatureReference()
    * @generated
    */
-  int FEATURE_REFERENCE = 2;
+  int FEATURE_REFERENCE = 3;
 
   /**
    * The feature id for the '<em><b>Parent</b></em>' reference.
@@ -213,7 +259,7 @@ public interface ResolutionModelPackage extends EPackage
    * @see eu.coresense.resolution.resolutionModel.impl.ResolutionModelPackageImpl#getImport()
    * @generated
    */
-  int IMPORT = 3;
+  int IMPORT = 4;
 
   /**
    * The feature id for the '<em><b>Import URI</b></em>' attribute.
@@ -241,7 +287,7 @@ public interface ResolutionModelPackage extends EPackage
    * @see eu.coresense.resolution.resolutionModel.impl.ResolutionModelPackageImpl#getReconfiguration()
    * @generated
    */
-  int RECONFIGURATION = 4;
+  int RECONFIGURATION = 5;
 
   /**
    * The feature id for the '<em><b>Node</b></em>' reference.
@@ -269,7 +315,7 @@ public interface ResolutionModelPackage extends EPackage
    * @see eu.coresense.resolution.resolutionModel.impl.ResolutionModelPackageImpl#getSetParam()
    * @generated
    */
-  int SET_PARAM = 5;
+  int SET_PARAM = 6;
 
   /**
    * The feature id for the '<em><b>Node</b></em>' reference.
@@ -315,7 +361,7 @@ public interface ResolutionModelPackage extends EPackage
    * @see eu.coresense.resolution.resolutionModel.impl.ResolutionModelPackageImpl#getSetLifecycle()
    * @generated
    */
-  int SET_LIFECYCLE = 6;
+  int SET_LIFECYCLE = 7;
 
   /**
    * The feature id for the '<em><b>Node</b></em>' reference.
@@ -352,7 +398,7 @@ public interface ResolutionModelPackage extends EPackage
    * @see eu.coresense.resolution.resolutionModel.impl.ResolutionModelPackageImpl#getLifecycleState()
    * @generated
    */
-  int LIFECYCLE_STATE = 7;
+  int LIFECYCLE_STATE = 8;
 
 
   /**
@@ -410,6 +456,17 @@ public interface ResolutionModelPackage extends EPackage
   EReference getResolutionModel_Rossystem();
 
   /**
+   * Returns the meta object for the containment reference list '{@link eu.coresense.resolution.resolutionModel.ResolutionModel#getFunctionalMapping <em>Functional Mapping</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Functional Mapping</em>'.
+   * @see eu.coresense.resolution.resolutionModel.ResolutionModel#getFunctionalMapping()
+   * @see #getResolutionModel()
+   * @generated
+   */
+  EReference getResolutionModel_FunctionalMapping();
+
+  /**
    * Returns the meta object for the containment reference list '{@link eu.coresense.resolution.resolutionModel.ResolutionModel#getResolutions <em>Resolutions</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -462,6 +519,38 @@ public interface ResolutionModelPackage extends EPackage
    * @generated
    */
   EReference getResolution_Deselection_actions();
+
+  /**
+   * Returns the meta object for class '{@link eu.coresense.resolution.resolutionModel.FunctionalMapping <em>Functional Mapping</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Functional Mapping</em>'.
+   * @see eu.coresense.resolution.resolutionModel.FunctionalMapping
+   * @generated
+   */
+  EClass getFunctionalMapping();
+
+  /**
+   * Returns the meta object for the reference '{@link eu.coresense.resolution.resolutionModel.FunctionalMapping#getFeature <em>Feature</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Feature</em>'.
+   * @see eu.coresense.resolution.resolutionModel.FunctionalMapping#getFeature()
+   * @see #getFunctionalMapping()
+   * @generated
+   */
+  EReference getFunctionalMapping_Feature();
+
+  /**
+   * Returns the meta object for the reference '{@link eu.coresense.resolution.resolutionModel.FunctionalMapping#getAction <em>Action</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Action</em>'.
+   * @see eu.coresense.resolution.resolutionModel.FunctionalMapping#getAction()
+   * @see #getFunctionalMapping()
+   * @generated
+   */
+  EReference getFunctionalMapping_Action();
 
   /**
    * Returns the meta object for class '{@link eu.coresense.resolution.resolutionModel.FeatureReference <em>Feature Reference</em>}'.
@@ -666,6 +755,14 @@ public interface ResolutionModelPackage extends EPackage
     EReference RESOLUTION_MODEL__ROSSYSTEM = eINSTANCE.getResolutionModel_Rossystem();
 
     /**
+     * The meta object literal for the '<em><b>Functional Mapping</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference RESOLUTION_MODEL__FUNCTIONAL_MAPPING = eINSTANCE.getResolutionModel_FunctionalMapping();
+
+    /**
      * The meta object literal for the '<em><b>Resolutions</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -706,6 +803,32 @@ public interface ResolutionModelPackage extends EPackage
      * @generated
      */
     EReference RESOLUTION__DESELECTION_ACTIONS = eINSTANCE.getResolution_Deselection_actions();
+
+    /**
+     * The meta object literal for the '{@link eu.coresense.resolution.resolutionModel.impl.FunctionalMappingImpl <em>Functional Mapping</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see eu.coresense.resolution.resolutionModel.impl.FunctionalMappingImpl
+     * @see eu.coresense.resolution.resolutionModel.impl.ResolutionModelPackageImpl#getFunctionalMapping()
+     * @generated
+     */
+    EClass FUNCTIONAL_MAPPING = eINSTANCE.getFunctionalMapping();
+
+    /**
+     * The meta object literal for the '<em><b>Feature</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference FUNCTIONAL_MAPPING__FEATURE = eINSTANCE.getFunctionalMapping_Feature();
+
+    /**
+     * The meta object literal for the '<em><b>Action</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference FUNCTIONAL_MAPPING__ACTION = eINSTANCE.getFunctionalMapping_Action();
 
     /**
      * The meta object literal for the '{@link eu.coresense.resolution.resolutionModel.impl.FeatureReferenceImpl <em>Feature Reference</em>}' class.

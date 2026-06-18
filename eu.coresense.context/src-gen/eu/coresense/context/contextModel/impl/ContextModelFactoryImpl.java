@@ -67,6 +67,7 @@ public class ContextModelFactoryImpl extends EFactoryImpl implements ContextMode
     {
       case ContextModelPackage.CONTEXT_MODEL: return createContextModel();
       case ContextModelPackage.CONTEXT_VAR: return createContextVar();
+      case ContextModelPackage.MISSION_VAR: return createMissionVar();
       case ContextModelPackage.DO_CACHE: return createDoCache();
       case ContextModelPackage.DO_PROXY: return createDoProxy();
       case ContextModelPackage.DATA_SOURCE: return createDataSource();
@@ -101,6 +102,18 @@ public class ContextModelFactoryImpl extends EFactoryImpl implements ContextMode
   {
     ContextVarImpl contextVar = new ContextVarImpl();
     return contextVar;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public MissionVar createMissionVar()
+  {
+    MissionVarImpl missionVar = new MissionVarImpl();
+    return missionVar;
   }
 
   /**

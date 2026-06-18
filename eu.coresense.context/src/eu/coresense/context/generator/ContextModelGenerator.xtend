@@ -35,34 +35,19 @@ class ContextModelGenerator extends AbstractGenerator {
 //				.map[name]
 //				.join(', '))
 	}
-	
-	private def nodeFromRef(DataSource source)
-	{
-		val ref = source.ref
-		if(ref instanceof QualifiedPublisherRef)
-		{
-			return ref.node
-		}
-		if(ref instanceof QualifiedServiceServerRef)
-		{
-			return ref.node
-		}
-		if(ref instanceof QualifiedActionServerRef)
-		{
-			return ref.node
-		}
-	}
+
 	
 	def registerMeasurements(ContextModel contextModel)
 	{
 		'''
-		«FOR contextVariable : contextModel.context_variables»
+		«FOR contextVariable : contextModel.environmental_variables»
 			«val contextvarName = _namer.uniqueName(contextVariable)»
-			«val ref = contextVariable.source»
+			«val ref = contextVariable.source.ref»
 			$«contextvarName» isa Measure, has measure_name "«contextVariable.name»";
 			
-			(measure: $«contextvarName», source: $«_namer.uniqueName(contextVariable.source, _namer.uniqueName(nodeFromRef(ref)))») isa measurement_interface,
+			(measure: $«contextvarName», source: $«_namer.uniqueName(contextVariable.source, _namer.uniqueName(ref.node))») isa measurement_interface,
 				    «IF contextVariable.functionLibrary !== null»has measurement_function_lib '«contextVariable.functionLibrary»',«ENDIF»
+				    «IF contextVariable.functionArgs !== null»has measurement_function_args '«contextVariable.functionArgs»',«ENDIF»
 				    «IF contextVariable.period != 0»has measurement_period «contextVariable.period»,«ENDIF»
 				    «IF ref instanceof QualifiedServiceServerRef»
 				    	 «IF ref.kwargs !== null || ref.kwargs!== ""»has service_request_kwargs '«ref.kwargs»',«ENDIF»

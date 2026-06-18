@@ -42,6 +42,15 @@ public interface ContextModelFactory extends EFactory
   ContextVar createContextVar();
 
   /**
+   * Returns a new object of class '<em>Mission Var</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Mission Var</em>'.
+   * @generated
+   */
+  MissionVar createMissionVar();
+
+  /**
    * Returns a new object of class '<em>Do Cache</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

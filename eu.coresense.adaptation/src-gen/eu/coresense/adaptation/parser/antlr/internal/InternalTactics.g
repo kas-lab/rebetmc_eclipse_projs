@@ -125,22 +125,81 @@ ruleTacticsModel returns [EObject current=null]
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getTacticsModelAccess().getAdaptationRulesAdaptationRuleParserRuleCall_4_0());
+					newCompositeNode(grammarAccess.getTacticsModelAccess().getActionRulesActionRulesParserRuleCall_4_0());
 				}
-				lv_adaptationRules_4_0=ruleAdaptationRule
+				lv_actionRules_4_0=ruleActionRules
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getTacticsModelRule());
 					}
 					add(
 						$current,
+						"actionRules",
+						lv_actionRules_4_0,
+						"eu.coresense.adaptation.Tactics.ActionRules");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)*
+	)
+;
+
+// Entry rule entryRuleActionRules
+entryRuleActionRules returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getActionRulesRule()); }
+	iv_ruleActionRules=ruleActionRules
+	{ $current=$iv_ruleActionRules.current; }
+	EOF;
+
+// Rule ActionRules
+ruleActionRules returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		(
+			(
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getActionRulesRule());
+					}
+				}
+				otherlv_0=RULE_ID
+				{
+					newLeafNode(otherlv_0, grammarAccess.getActionRulesAccess().getActionActionSpecCrossReference_0_0());
+				}
+			)
+		)
+		otherlv_1='{'
+		{
+			newLeafNode(otherlv_1, grammarAccess.getActionRulesAccess().getLeftCurlyBracketKeyword_1());
+		}
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getActionRulesAccess().getAdaptationRulesAdaptationRuleParserRuleCall_2_0());
+				}
+				lv_adaptationRules_2_0=ruleAdaptationRule
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getActionRulesRule());
+					}
+					add(
+						$current,
 						"adaptationRules",
-						lv_adaptationRules_4_0,
+						lv_adaptationRules_2_0,
 						"eu.coresense.adaptation.Tactics.AdaptationRule");
 					afterParserOrEnumRuleCall();
 				}
 			)
 		)*
+		otherlv_3='}'
+		{
+			newLeafNode(otherlv_3, grammarAccess.getActionRulesAccess().getRightCurlyBracketKeyword_3());
+		}
 	)
 ;
 

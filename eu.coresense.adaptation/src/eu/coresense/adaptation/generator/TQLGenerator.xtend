@@ -76,6 +76,9 @@ import de.ovgu.featureide.fm.core.init.FMCoreLibrary
 import java.nio.file.Files
 import java.io.FileWriter
 import eu.coresense.variability.generator.FeatureModelGenerator
+import org.eclipse.emf.common.util.EList
+import uma.caosd.rhea.BasicFMmetamodel.CrossTreeConstraint
+import uma.caosd.rhea.AdvancedConstraintsFMmetamodel.AdvancedConstraint
 
 /**
  * Generates code from your model files on save.
@@ -177,9 +180,13 @@ class TQLGenerator extends AbstractGenerator {
 
  	globalResource = resource
     for (e : resource.allContents.toIterable.filter(TacticsModel)) {
-        fsa.generateFile(
-            e.name + ".tql",
-            e.compile(true))
+        for(tqlspec: e.compile(true, false).indexed)
+        {
+        	fsa.generateFile(
+            e.name + e.actionRules.get(tqlspec.key).action.name + ".tql",
+            tqlspec.value)
+            
+         }
 	}
 
 	
@@ -302,13 +309,13 @@ class TQLGenerator extends AbstractGenerator {
 		
 	}
 	
-    def String generateTQL(TacticsModel model, Resource resource, Boolean doStates) {
+    def List<String> generateTQL(TacticsModel model, Resource resource, Boolean doStates, Boolean considerFeatures) {
     	globalResource = resource;
-    	return compile(model, doStates).toString()
+    	return compile(model, doStates, considerFeatures)
     }
     
-     def String generateTQL(TacticsModel model, Resource resource) {
-    	return generateTQL(model, resource, false)
+     def List<String> generateTQL(TacticsModel model, Resource resource) {
+    	return generateTQL(model, resource, false, false)
     }
     
     def String getPackage(RosNode node) {
@@ -556,7 +563,7 @@ class TQLGenerator extends AbstractGenerator {
 		
 				'''
 					«litValue.value»
-					$«name» (lhs_value:$«_namer.uniqueName(measure)», rhs_value: $«litValue.key») isa «expressionType(operator)»;
+					$«name» (lhs_value:$«_namer.uniqueName(measure)», rhs_value: $«litValue.key») isa «expressionType(operator)», has expression_name "«name»";
 				'''
 			}
 			else if(condition instanceof MeasurementMeasurementCondition)
@@ -567,7 +574,7 @@ class TQLGenerator extends AbstractGenerator {
 				val name = _namer.uniqueName(condition)
 		
 				'''
-					$«name» (lhs_value:$«_namer.uniqueName(lh_measure)», rhs_value: $«_namer.uniqueName(rh_measure)») isa «expressionType(operator)»;
+					$«name» (lhs_value:$«_namer.uniqueName(lh_measure)», rhs_value: $«_namer.uniqueName(rh_measure)») isa «expressionType(operator)» has expression_name "";
 				'''
 			}
 		}
@@ -606,9 +613,10 @@ class TQLGenerator extends AbstractGenerator {
 		{ 
 			val name = measure.name + "_" + operator.getName().toLowerCase + "_" + thresholdValue.tqlName
 			val litValue = literalValue(thresholdValue, name)
+			val expression_name = measure.name.toLowerCase() + "_" + operator.toString().toLowerCase() + "_" + thresholdValue.toString()
 			val newEntry = name -> '''
 				«litValue.value»
-				$«name» (lhs_value:$«_namer.uniqueName(measure)», rhs_value: $«litValue.key») isa «expressionType(operator)»;
+				$«name» (lhs_value:$«_namer.uniqueName(measure)», rhs_value: $«litValue.key») isa «expressionType(operator)», has expression_name "«expression_name»";
 			'''
 			
 			definedInequalities.put(new Pair(measure, new Pair(operator, thresholdValue)), name)
@@ -788,15 +796,12 @@ class TQLGenerator extends AbstractGenerator {
 	        new And(x.get(0), somethingRecursive(x.subList(1, x.size)))
 	    }
 	}
-    private def expressionFromState(List<ContextVar> contextVars, List<Feature> features, State state, String stateName)
+    private def expressionFromState(List<ContextVar> contextVars, List<Feature> features, State state, String stateName, Boolean considerFeatures)
     {
     	val stateBounds = state.contextPrecondition
     	val stateBoolBounds = state.contextBoolPrecondition
     	val featureValuation = state.featurePrecondition
     	val boundConditions = newArrayList
-    	println("features " + features.map[Feature f | f.name])
-    	println("valuations " + featureValuation)
-    	println("state name " + state.TQLName)
     	for (element : stateBounds.indexed) {
     		val contextVar = contextVars.get(element.key)
     		val name = contextVar.name + stateName + element.key.toString()
@@ -806,7 +811,9 @@ class TQLGenerator extends AbstractGenerator {
     		val contextVar = contextVars.get((stateBounds.size() + element.key))
     		boundConditions.add(boundToTQL(element.value, contextVar))
     	}
-    	
+    	var Expr finalY = if (boundConditions.size == 1) boundConditions.get(0) else somethingRecursive(boundConditions)
+    	if(considerFeatures)
+    	{
     	val featureConditions = newArrayList
     	for (element : featureValuation.indexed)
     	{
@@ -814,12 +821,15 @@ class TQLGenerator extends AbstractGenerator {
     			featureConditions.add(new DerivedVarFeature(!element.value,features.get(element.key)))
     	}
     	var Expr finalX = if (featureConditions.size == 1) featureConditions.get(0) else somethingRecursive(featureConditions)
-		
-		println("finalX" + finalX)
     	
-    	var Expr finalY = if (boundConditions.size == 1) boundConditions.get(0) else somethingRecursive(boundConditions)
 
     	return new And(finalY,finalX)
+    	
+    	}
+    	else
+    	{
+    		return finalY	
+    	}
     }
     
     private def String infinityLiterals()
@@ -878,227 +888,328 @@ class TQLGenerator extends AbstractGenerator {
     	}
     	return returnText ->  newThresholds
     }
-	private def compile(TacticsModel t, Boolean doStates)
+    
+    
+    private def findServerForAction(ros.ActionSpec actionSpec, HashSet<System> rosSystems)
+    {
+    	for (rosSystem : rosSystems) {
+    		val nodes = Utilities.collectAllSystems(rosSystem).map[Utilities.rosNodesFromSystem(it)].flatten()
+    		println(nodes.size())
+    		for (node : nodes)
+    		{
+    			println(node.from.actionserver.size())
+    			for(actionserver : node.from.actionserver)
+    			{
+    				//For whatever reason, the object hash of the actionSpec and action server's action differ outside of Eclipse
+					if(actionserver.action == actionSpec || actionserver.action.name == actionSpec.name)
+					{
+						println("actionserver " + actionserver.name + " with action " + actionserver.action.name + " did match")
+						val nodeName = _namer.uniqueName(node.from)
+						return _namer.uniqueName(actionserver, nodeName)
+						 
+					}
+					else
+					{
+						println(actionSpec)
+						println(actionserver.action)
+						println("actionserver " + actionserver.name + " with action " + actionserver.action.name + " did not match")
+					}
+    			
+    			}
+    		}
+    		
+    	}
+    }
+    
+    
+	private def compile(TacticsModel t, Boolean doStates, Boolean considerFeatures)
 	{
 		ruleNames = newHashSet
-//		println(generateFetchApplicableTactics(t.resolutionModel, "one", "two"))
-//		println(generateUpdateInEffect(newArrayList('MoveQuickly')))
+
 		val tacticName = t.name
 		val lc_tacticName = t.name.toLowerCase	
 		
 		val List<ResolutionModel> resolutionModels = getResolutionModel(t, globalResource)
 		val List<ContextModel> contextModels = getContextModel(t, globalResource)
 		
-//		println(generateArchitectureInsertQuery(resolutionModels.get(0)))
-//		println("--------")
-//		println(resolutionModels.size)    
-//		println("SZIEEE")
-//		println(contextModels.size)
-		var infinityLiteralsTQL = ""
-		var thresholdLiteralsTQL = ""
-		var booleanLiteralsTQL = ""
-		var featurePropsTQL = ""
-		var stateTQLs = newArrayList
-		
-		val Map<Feature, Set<Boolean>> featureSelections = newHashMap
-		var Map<ContextVar, Set<LiteralWrapper>> thresholds = newHashMap
-		val Map<ContextVar, Set<Boolean>> booleanVars = newHashMap
-		if(doStates)
+		val List<String> tacticTQLs = newArrayList
+
+		for(actionRule : t.actionRules)
 		{
+			val HashSet<System> rossystems = newHashSet
+			resolutionModels.forEach[rossystems.add(it.getRossystem())]
+			contextModels.forEach[rossystems.addAll(rossystemfromContextModel(it,globalResource))]
 			
-	        for (rule : t.adaptationRules) {
-	        	registerComparisonsFromRule(rule,thresholds, featureSelections,booleanVars)
-	        }
+        	val serverName = findServerForAction(actionRule.action, rossystems)
+        	
+        	generateArchitectureInsertQuery(rossystems)
+
+			var infinityLiteralsTQL = ""
+			var thresholdLiteralsTQL = ""
+			var booleanLiteralsTQL = ""
+			var featurePropsTQL = ""
+			var stateTQLs = newArrayList
+			
+			val Map<Feature, Set<Boolean>> featureSelections = newHashMap
+			var Map<ContextVar, Set<LiteralWrapper>> thresholds = newHashMap
+			val Map<ContextVar, Set<Boolean>> booleanVars = newHashMap
+		
+			if(doStates)
+			{
+			
+		        for (rule : actionRule.adaptationRules) {
+		        	registerComparisonsFromRule(rule,thresholds, featureSelections,booleanVars)
+		        }
 	        
-	        infinityLiteralsTQL = infinityLiterals()
-	        booleanLiteralsTQL = booleanLiterals()
-	        var somePair = thresholdLiterals(thresholds)
-	        thresholdLiteralsTQL = somePair.key
-	        thresholds = somePair.value
-	       	
-	        val bounds = createBounds(thresholds)
-	        val contextKeys = bounds.keySet.toList
-	        val values = bounds.values.toList
-
-	       	val product = Utilities.getCartesianProduct(values)
-			allStates = newArrayList
-			
-			
-			LibraryManager.registerLibrary(FMCoreLibrary.getInstance())
-      		
-      		val generator = new FeatureModelGenerator()
-
-        	val fm_xml = generator.generateXml(resolutionModels.get(0).featureModel)
-
-	        val path = Files.createTempFile("featuremodel", ".xml")
-	        val fw = new FileWriter(path.toFile(), true)
-	        fw.write(fm_xml)
-	        fw.close()
-	        val featureModel = FeatureModelManager.load(path)
+		        infinityLiteralsTQL = infinityLiterals()
+		        booleanLiteralsTQL = booleanLiterals()
+		        var somePair = thresholdLiterals(thresholds)
+		        thresholdLiteralsTQL = somePair.key
+		        thresholds = somePair.value
+		       	
+		        val bounds = createBounds(thresholds)
+		        val contextKeys = bounds.keySet.toList
+		        val values = bounds.values.toList
 	
-	        val formula = new FeatureModelFormula(featureModel)
-	        val configuration = new Configuration(formula)
-	        val configurationAnalyzer = new ConfigurationAnalyzer(formula, configuration)
-	        val allConfigurations = configurationAnalyzer.getSolutions(100000)
-
-			val Set<List<Boolean>> featureSelectionsToPairs = newHashSet
-			
-			val relevantFeatures = featureSelections.keySet()
-			for (relevantFeature : relevantFeatures) {
-				featurePropsTQL += featureProposition(relevantFeature)		
+		       	val product = Utilities.getCartesianProduct(values)
+				allStates = newArrayList
 				
-			}
-			for (featureList: allConfigurations)
-			{
-				val List<Boolean> selectedOrNot = newArrayList
-				for (relevantFeature : relevantFeatures)
-				{
-					selectedOrNot.add(featureList.contains(relevantFeature.name))
+				
+				LibraryManager.registerLibrary(FMCoreLibrary.getInstance())
+	      		
+	      		val generator = new FeatureModelGenerator()
+	
+	        	val fm_xml = generator.generateXml(resolutionModels.get(0).featureModel)
+	
+		        val path = Files.createTempFile("featuremodel", ".xml")
+		        val fw = new FileWriter(path.toFile(), true)
+		        fw.write(fm_xml)
+		        fw.close()
+		        val featureModel = FeatureModelManager.load(path)
+		
+		        val formula = new FeatureModelFormula(featureModel)
+		        val configuration = new Configuration(formula)
+		        val configurationAnalyzer = new ConfigurationAnalyzer(formula, configuration)
+		        val allConfigurations = configurationAnalyzer.getSolutions(100000)
+	
+				val Set<List<Boolean>> featureSelectionsToPairs = newHashSet
+				
+				val relevantFeatures = featureSelections.keySet()
+				for (relevantFeature : relevantFeatures) {
+					featurePropsTQL += featureProposition(relevantFeature)		
+					
 				}
-				featureSelectionsToPairs.add(selectedOrNot)
-				
-			}
-
-			val booleanPreconditions = newArrayList
-			for (x : booleanVars.keySet)
-			{
-				contextKeys.add(x)
-				booleanPreconditions.add(booleanVars.get(x).toList)
-			}
-			
-			val booleanPreconditionsCombinations = Utilities.getCartesianProduct(booleanPreconditions)
-			
-			val featureKeys = featureSelections.keySet.toList
-//			println("size of newnewCombos " + newnewCombos.size())
-//			println("a combo's length " + newnewCombos.get(0).size())
-//			println("a combo  looks like " + newnewCombos.get(0))
-			for (featurevaluationCombo : featureSelectionsToPairs)
-			{
-				
-				for (contextBooleanPrecondition : booleanPreconditionsCombinations)
+				for (featureList: allConfigurations)
 				{
-					for (contextBoundPrecondition : product)
+					val List<Boolean> selectedOrNot = newArrayList
+					for (relevantFeature : relevantFeatures)
 					{
-						allStates.add(new State(contextBoundPrecondition, contextBooleanPrecondition, featurevaluationCombo, contextKeys, featureKeys))
+						selectedOrNot.add(featureList.contains(relevantFeature.name))
+					}
+					featureSelectionsToPairs.add(selectedOrNot)
+					
+				}
+	
+				val booleanPreconditions = newArrayList
+				for (x : booleanVars.keySet)
+				{
+					contextKeys.add(x)
+					booleanPreconditions.add(booleanVars.get(x).toList)
+				}
+				
+				val booleanPreconditionsCombinations = Utilities.getCartesianProduct(booleanPreconditions)
+				
+				val featureKeys = featureSelections.keySet.toList
+				
+				if(considerFeatures)
+				{
+					for (featurevaluationCombo : featureSelectionsToPairs)
+					{
+						
+						for (contextBooleanPrecondition : booleanPreconditionsCombinations)
+						{
+							for (contextBoundPrecondition : product)
+							{
+								allStates.add(new State(contextBoundPrecondition, contextBooleanPrecondition, featurevaluationCombo, contextKeys, featureKeys))
+							}
+							
+						}
+					}
+				
+				}
+				else
+				{
+						for (contextBooleanPrecondition : booleanPreconditionsCombinations)
+						{
+							for (contextBoundPrecondition : product)
+							{
+								allStates.add(new State(contextBoundPrecondition, contextBooleanPrecondition, contextKeys, featureKeys))
+							}
+							
+						}
+				}
+				
+				println("Produced " + allStates.size() + " states")
+	
+			    var ruleCount = 0
+		        var stateCount = 0
+		        for (state : allStates)
+		        {
+		        	for (rule : actionRule.adaptationRules) {
+		        		if(checkAgainstBounds(rule, featureKeys, state))
+		        		{
+		        			state.addRule(rule.name)
+		        		}
+		        	}
+	//	        	println(state.describeMedianBounds)
+		        	
+		        	val expr = expressionFromState(contextKeys,featureKeys, state,"", considerFeatures)
+		        	val state_inCNF = toCNF(expr)
+	
+		        	
+		//        	println("createAntecedent")
+		        	val antecedent = createAntecedent(state_inCNF)
+		        	if(state.hasRules)
+		        	{
+		        		ruleCount+=1
+		        	}
+		        	stateCount +=1
+		        	val state_name = "state_" + antecedent.key
+		        	val medianNames = newArrayList
+		        	var median_statement = ""
+		        	
+		        	for (median_entry : state.medians)
+		        	{
+		        		val median_name = state_name + "_median_" + median_entry.key.name
+		        		medianNames.add(median_name)
+		        		
+		        		median_statement += '''
+		        	$«median_name» (measure: $«_namer.uniqueName(median_entry.key)») isa MedianValuation,
+		        	    has median_bound_value «median_entry.value.toString»;
+		        	    
+		        	'''
+		        	}
+	
+	
+		        	
+		        	val state_statement =
+		        	'''
+		        	$«state_name»( 
+		        	«FOR rule_name : state.associatedRulesTQLNames SEPARATOR ", "»
+		        	rule: $tactic_rule_«rule_name.toLowerCase»«ENDFOR»«IF state.hasRules»,«ENDIF»
+		        	«FOR median_name : medianNames SEPARATOR ", "»
+		        	median_valuation: $«median_name»«ENDFOR»,
+		        	ros_action: $«serverName»,
+		        	antecedent: $«antecedent.key») isa state, has state_name "«state_name»";
+		        	'''
+		        	
+		        	stateTQLs.add(antecedent.value + median_statement + state_statement)
+		        	state.TQLName = state_name
+		        }
+
+        	}
+        	val contextGenerator = new ContextModelGenerator(_namer)
+        
+			escapes = newHashMap
+			val fullTacticsTQL ='''		
+				«infinityLiteralsTQL»
+				«thresholdLiteralsTQL»
+				«booleanLiteralsTQL»
+				«featurePropsTQL»
+				$ta_«lc_tacticName» isa Tactic, has tactic_name "«tacticName»";
+				$ta_«lc_tacticName»_to_action(ros_action:$«serverName», tactic:$ta_«lc_tacticName») isa tactic_to_action;
+				«FOR resolutionModel : resolutionModels»
+				«registerFeatures(resolutionModel.featureModel.root)»	
+				«registerConstraints(resolutionModel.featureModel.crossTreeConstraints)»	
+				«ENDFOR»
+				«FOR contextModel : contextModels»
+				«contextGenerator.registerMeasurements(contextModel)»
+				«ENDFOR»
+	«««			«registerNodes(t.resolutionModel)»
+				«FOR rule : actionRule.adaptationRules»
+					«compileRule(rule,lc_tacticName, doStates)»
+				«ENDFOR»
+				«IF doStates»
+					«FOR stateTQL : stateTQLs»
+						«stateTQL»
+					«ENDFOR»
+				«ENDIF»
+	
+				«FOR resolutionModel : resolutionModels»
+					«FOR functionalMapping : resolutionModel.functionalMapping»
+						«var featureName = _namer.uniqueName(functionalMapping.feature)»
+						«var actionName = findServerForAction(functionalMapping.action,rossystems)»
+						$f_map_«featureName»_«actionName»(feature:$«featureName», ros_action:$«actionName») isa functional_mapping;
+					«ENDFOR»
+					«compileResolution(resolutionModel)»				
+					$res_«resolutionModel.name» (tactic: $ta_«lc_tacticName»,
+					 «FOR resolution : resolutionModel.resolutions SEPARATOR ", "»
+					«IF !resolution.selection_actions.empty && !resolution.deselection_actions.empty»
+					variant_resolution:$«_namer.uniqueName(resolution)»_act, variant_resolution:$«_namer.uniqueName(resolution)»_deact
+					«ELSE»
+					«IF !resolution.selection_actions.empty»
+					variant_resolution:$«_namer.uniqueName(resolution)»_act
+					«ELSE»
+					«IF !resolution.deselection_actions.empty»
+					variant_resolution:$«_namer.uniqueName(resolution)»_deact
+					«ENDIF»
+					«ENDIF»
+					«ENDIF»
+					 «ENDFOR») 
+					 isa resolution_model, 
+					    has resolution_model_name "«resolutionModel.name»", has ros_system "«resolutionModel.rossystem.name»";
+				«ENDFOR»
+			'''
+	
+			tacticTQLs.add(fullTacticsTQL)
+	        	
+			
+		}
+	
+    	return tacticTQLs    
+      
+	}
+		
+	def registerConstraints(EList<CrossTreeConstraint> list) {
+			val result = new StringBuilder()
+			for (constraint : list) {
+				val adv_const = constraint as AdvancedConstraint
+				val lhs = _namer.uniqueName(adv_const.term.feature)
+				val rhs = _namer.uniqueName(adv_const.term.operands.first.feature)
+				switch(adv_const.term.type)
+				{
+					case AND: {
+						throw new Exception("Not Implemented Yet")
+					}
+					case EQUIV: {
+						result.append('''
+						(constraint:$«lhs», constrained:$«rhs») isa requires_constraint;
+						(constraint:$«rhs», constrained:$«lhs») isa requires_constraint;
+						''')
+					}
+					case EXCLUDES: {
+						result.append( '''(constraint:$«lhs», constrained:$«rhs») isa excludes_constraint;''')
+					}
+					case FEATURE: {
+						throw new Exception("Not Implemented Yet")
+					}
+					case IMPLIES: {
+						result.append( '''(constraint:$«lhs», constrained:$«rhs») isa requires_constraint;''')
+					}
+					case NOT: {
+						throw new Exception("Not Implemented Yet")
+					}
+					case OR: {
+						throw new Exception("Not Implemented Yet")
+					}
+					case XOR: {
+						throw new Exception("Not Implemented Yet")
 					}
 					
 				}
 			}
-						
-			
-	//        println(featureKeys)
-	//		println(contextKeys)
-	//
-		    var ruleCount = 0
-	        var stateCount = 0
-	        for (state : allStates)
-	        {
-	        	for (rule : t.adaptationRules) {
-	        		if(checkAgainstBounds(rule, featureKeys, state))
-	        		{
-	        			state.addRule(rule.name)
-	        		}
-	        	}
-//	        	println(state.describeMedianBounds)
-	        	
-	        	val expr = expressionFromState(contextKeys,featureKeys, state,"")
-	        	val state_inCNF = toCNF(expr)
-
-	        	
-	//        	println("createAntecedent")
-	        	val antecedent = createAntecedent(state_inCNF)
-	        	if(state.hasRules)
-	        	{
-	        		ruleCount+=1
-	        	}
-	        	stateCount +=1
-	        	val state_name = "state_" + antecedent.key
-	        	val medianNames = newArrayList
-	        	var median_statement = ""
-	        	
-	        	for (median_entry : state.medians)
-	        	{
-	        		val median_name = state_name + "_median_" + median_entry.key.name
-	        		medianNames.add(median_name)
-	        		
-	        		median_statement += '''
-	        	$«median_name» (measure: $«_namer.uniqueName(median_entry.key)») isa MedianValuation,
-	        	    has median_bound_value «median_entry.value.toString»;
-	        	    
-	        	'''
-	        	}
-
-
-	        	
-	        	val state_statement =
-	        	'''
-	        	$«state_name»( 
-	        	«FOR rule_name : state.associatedRulesTQLNames SEPARATOR ", "»
-	        	rule: $tactic_rule_«rule_name.toLowerCase»«ENDFOR»«IF state.hasRules»,«ENDIF»
-	        	«FOR median_name : medianNames SEPARATOR ", "»
-	        	median_valuation: $«median_name»«ENDFOR»,
-	        	antecedent: $«antecedent.key») isa state, has state_name "«state_name»";
-	        	'''
-	        	
-	        	stateTQLs.add(antecedent.value + median_statement + state_statement)
-	        	state.TQLName = state_name
-	        }
-
-//	       	for (state : allStates)
-//	        {
-//	        	println(state.describe())
-//	        }
-//	        println(stateCount + " states were produced, " + ruleCount + " of which have a rule attached and " + escapes.keySet.size + " have escaped defined")
-        }
-        
-        val contextGenerator = new ContextModelGenerator(_namer)
-        
-		escapes = newHashMap
-		val fullTacticsTQL ='''			
-			«infinityLiteralsTQL»
-			«thresholdLiteralsTQL»
-			«booleanLiteralsTQL»
-			«featurePropsTQL»
-			$ta_«lc_tacticName» isa Tactic, has tactic_name "«tacticName»";
-			«FOR resolutionModel : resolutionModels»
-			«registerFeatures(resolutionModel.featureModel.root)»	
-			«ENDFOR»
-			«FOR contextModel : contextModels»
-			«contextGenerator.registerMeasurements(contextModel)»
-			«ENDFOR»
-«««			«registerNodes(t.resolutionModel)»
-			«FOR rule : t.adaptationRules»
-				«compileRule(rule,lc_tacticName, doStates)»
-			«ENDFOR»
-			«IF doStates»
-				«FOR stateTQL : stateTQLs»
-					«stateTQL»
-				«ENDFOR»
-			«ENDIF»
-
-			«FOR resolutionModel : resolutionModels»
-				«compileResolution(resolutionModel)»				
-				$res_«resolutionModel.name» (tactic: $ta_«lc_tacticName»,
-				 «FOR resolution : resolutionModel.resolutions SEPARATOR ", "»
-				«IF !resolution.selection_actions.empty && !resolution.deselection_actions.empty»
-				variant_resolution:$«_namer.uniqueName(resolution)»_act, variant_resolution:$«_namer.uniqueName(resolution)»_deact
-				«ELSE»
-				«IF !resolution.selection_actions.empty»
-				variant_resolution:$«_namer.uniqueName(resolution)»_act
-				«ELSE»
-				«IF !resolution.deselection_actions.empty»
-				variant_resolution:$«_namer.uniqueName(resolution)»_deact
-				«ENDIF»
-				«ENDIF»
-				«ENDIF»
-				 «ENDFOR») 
-				 isa resolution_model, 
-				    has resolution_model_name "«resolutionModel.name»", has ros_system "«resolutionModel.rossystem.name»";
-			«ENDFOR»
-		'''
-
-		return fullTacticsTQL
-	}
+			return result
+		}
 
 	def createBounds(Map<ContextVar, Set<LiteralWrapper>> thresholds)
 	{
@@ -1163,35 +1274,7 @@ class TQLGenerator extends AbstractGenerator {
 				return new DerivedVar(MathOperator.DIFFERENT,c_var, lit)
 		}
 	}
-		
-	private def registerFeatures(List<Feature> f_list)
-	{		
-		'''
-		
-		# define Feature Model
-		«FOR feature : f_list»
-			$«_namer.uniqueName(feature)» isa Feature, has feature_name "«feature.name»", has mandatory «feature.mandatory»;
-		«ENDFOR»
-		«FOR feature : f_list»
-			«IF feature instanceof Alternative»
-				$«_namer.uniqueName(feature)» (parent: $«_namer.uniqueName(feature)»,
-					«FOR child_feature : feature.children SEPARATOR ", "»
-						child: $«_namer.uniqueName(child_feature)»
-					«ENDFOR»
-				) isa alternative;	
-			«ENDIF»
-			«IF feature instanceof OrGroup»
-				$«_namer.uniqueName(feature)» (parent: $«_namer.uniqueName(feature)», 
-					«FOR child_feature : feature.children SEPARATOR ", "»
-						child: $«_namer.uniqueName(child_feature)»
-					«ENDFOR»
-				) isa or_group;	
-			«ENDIF»
-		«ENDFOR»
-		
-		'''			
-	}
-	
+			
 	private def registerFeatures(Feature root)
 	{
 	    val visited = new LinkedHashSet<Feature>()
@@ -1203,6 +1286,7 @@ class TQLGenerator extends AbstractGenerator {
 	    ]
 	    result		
 	}
+	
 
 	def void collectPostOrder(Feature feature, LinkedHashSet<Feature> visited) {
 	    for (child : feature.children) {
@@ -1445,14 +1529,14 @@ class TQLGenerator extends AbstractGenerator {
 			
 			'''
 				«x»
-				$«reconf_name» (node: $«rosnode_name», parameter: $«_namer.uniqueName(reconfig.param)», parameter_value: $«name») isa set_nodes_parameters;
+				$«reconf_name» (node: $«rosnode_name», parameter: $«_namer.uniqueName(reconfig.param)», parameter_value: $«name») isa set_nodes_parameters, has action_name "«reconf_name»";
 			'''
 			//sp_max_speed_low isa SetParameter, has node_name "velocity_smoother", has parameter-value "ros.impl.ParameterSequenceImpl@6d63db68", has parameter-type "ros.impl.ParameterArrayTypeImpl@54206577";
 		}
 		else if(reconfig instanceof SetLifecycle)
 		{
 			'''
-				$«reconf_name» (node: $«rosnode_name») isa set_lifecycle_state, has lifecycle_state "«reconfig.state.toString.toLowerCase»";
+				$«reconf_name» (node: $«rosnode_name») isa set_lifecycle_state, has lifecycle_state "«reconfig.state.toString.toLowerCase»", has action_name "«reconf_name»";
 			'''
 			
 		}
@@ -1626,29 +1710,32 @@ class TQLGenerator extends AbstractGenerator {
 					
 			if(ruleBody instanceof ConditionAction)
 			{
-				if(ruleBody.featureGuard !== null)
+				if(featureValuation !== null)
 				{
-					val featureCondition = ruleBody.featureGuard.featureCondition
-					
-					val isFeatures = flattenAgain(featureCondition)
-					
-					for (isFeature : isFeatures)
+					if(ruleBody.featureGuard !== null)
 					{
-						val featureInQuestion = isFeature.variant.feature
-						val featureIndex = featureKeys.indexOf(featureInQuestion)
-						if(isFeature.not === null || isFeature.not != "!") {
-							//Selected
-							if(featureValuation.get(featureIndex) != true)
-							{
-								return false
-							}
-						}
-						else
+						val featureCondition = ruleBody.featureGuard.featureCondition
+						
+						val isFeatures = flattenAgain(featureCondition)
+						
+						for (isFeature : isFeatures)
 						{
-							//!Selected
-							if(featureValuation.get(featureIndex) == true)
+							val featureInQuestion = isFeature.variant.feature
+							val featureIndex = featureKeys.indexOf(featureInQuestion)
+							if(isFeature.not === null || isFeature.not != "!") {
+								//Selected
+								if(featureValuation.get(featureIndex) != true)
+								{
+									return false
+								}
+							}
+							else
 							{
-								return false
+								//!Selected
+								if(featureValuation.get(featureIndex) == true)
+								{
+									return false
+								}
 							}
 						}
 					}
@@ -1748,8 +1835,6 @@ class TQLGenerator extends AbstractGenerator {
     		}
     		else
     		{
-    			println(ruleConditionCNF)
-    			println("THIS WAS TRIGGERED " + condition.measurement.name)
     			val bool = state.getBoolOn(condition.measurement)
     			switch (condition.operator)
     			{
@@ -1787,7 +1872,6 @@ class TQLGenerator extends AbstractGenerator {
 	private def compileRule(AdaptationRule rule, String lc_tacticName, boolean doingStates)
 	{
 		ruleNames.add(rule.name)
-		println(rule.name)
 	if (rule instanceof AtomicRule)
 	{
 		val ruleName = rule.name

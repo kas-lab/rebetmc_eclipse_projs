@@ -8,6 +8,7 @@ import eu.coresense.common.Import;
 import eu.coresense.context.contextModel.ContextModel;
 import eu.coresense.context.contextModel.ContextModelPackage;
 import eu.coresense.context.contextModel.ContextVar;
+import eu.coresense.context.contextModel.MissionVar;
 
 import java.util.Collection;
 
@@ -32,7 +33,8 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * </p>
  * <ul>
  *   <li>{@link eu.coresense.context.contextModel.impl.ContextModelImpl#getImports <em>Imports</em>}</li>
- *   <li>{@link eu.coresense.context.contextModel.impl.ContextModelImpl#getContext_variables <em>Context variables</em>}</li>
+ *   <li>{@link eu.coresense.context.contextModel.impl.ContextModelImpl#getEnvironmental_variables <em>Environmental variables</em>}</li>
+ *   <li>{@link eu.coresense.context.contextModel.impl.ContextModelImpl#getMission_variables <em>Mission variables</em>}</li>
  * </ul>
  *
  * @generated
@@ -50,14 +52,24 @@ public class ContextModelImpl extends MinimalEObjectImpl.Container implements Co
   protected EList<Import> imports;
 
   /**
-   * The cached value of the '{@link #getContext_variables() <em>Context variables</em>}' containment reference list.
+   * The cached value of the '{@link #getEnvironmental_variables() <em>Environmental variables</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getContext_variables()
+   * @see #getEnvironmental_variables()
    * @generated
    * @ordered
    */
-  protected EList<ContextVar> context_variables;
+  protected EList<ContextVar> environmental_variables;
+
+  /**
+   * The cached value of the '{@link #getMission_variables() <em>Mission variables</em>}' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getMission_variables()
+   * @generated
+   * @ordered
+   */
+  protected EList<MissionVar> mission_variables;
 
   /**
    * <!-- begin-user-doc -->
@@ -101,13 +113,28 @@ public class ContextModelImpl extends MinimalEObjectImpl.Container implements Co
    * @generated
    */
   @Override
-  public EList<ContextVar> getContext_variables()
+  public EList<ContextVar> getEnvironmental_variables()
   {
-    if (context_variables == null)
+    if (environmental_variables == null)
     {
-      context_variables = new EObjectContainmentEList<ContextVar>(ContextVar.class, this, ContextModelPackage.CONTEXT_MODEL__CONTEXT_VARIABLES);
+      environmental_variables = new EObjectContainmentEList<ContextVar>(ContextVar.class, this, ContextModelPackage.CONTEXT_MODEL__ENVIRONMENTAL_VARIABLES);
     }
-    return context_variables;
+    return environmental_variables;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EList<MissionVar> getMission_variables()
+  {
+    if (mission_variables == null)
+    {
+      mission_variables = new EObjectContainmentEList<MissionVar>(MissionVar.class, this, ContextModelPackage.CONTEXT_MODEL__MISSION_VARIABLES);
+    }
+    return mission_variables;
   }
 
   /**
@@ -122,8 +149,10 @@ public class ContextModelImpl extends MinimalEObjectImpl.Container implements Co
     {
       case ContextModelPackage.CONTEXT_MODEL__IMPORTS:
         return ((InternalEList<?>)getImports()).basicRemove(otherEnd, msgs);
-      case ContextModelPackage.CONTEXT_MODEL__CONTEXT_VARIABLES:
-        return ((InternalEList<?>)getContext_variables()).basicRemove(otherEnd, msgs);
+      case ContextModelPackage.CONTEXT_MODEL__ENVIRONMENTAL_VARIABLES:
+        return ((InternalEList<?>)getEnvironmental_variables()).basicRemove(otherEnd, msgs);
+      case ContextModelPackage.CONTEXT_MODEL__MISSION_VARIABLES:
+        return ((InternalEList<?>)getMission_variables()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -140,8 +169,10 @@ public class ContextModelImpl extends MinimalEObjectImpl.Container implements Co
     {
       case ContextModelPackage.CONTEXT_MODEL__IMPORTS:
         return getImports();
-      case ContextModelPackage.CONTEXT_MODEL__CONTEXT_VARIABLES:
-        return getContext_variables();
+      case ContextModelPackage.CONTEXT_MODEL__ENVIRONMENTAL_VARIABLES:
+        return getEnvironmental_variables();
+      case ContextModelPackage.CONTEXT_MODEL__MISSION_VARIABLES:
+        return getMission_variables();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -161,9 +192,13 @@ public class ContextModelImpl extends MinimalEObjectImpl.Container implements Co
         getImports().clear();
         getImports().addAll((Collection<? extends Import>)newValue);
         return;
-      case ContextModelPackage.CONTEXT_MODEL__CONTEXT_VARIABLES:
-        getContext_variables().clear();
-        getContext_variables().addAll((Collection<? extends ContextVar>)newValue);
+      case ContextModelPackage.CONTEXT_MODEL__ENVIRONMENTAL_VARIABLES:
+        getEnvironmental_variables().clear();
+        getEnvironmental_variables().addAll((Collection<? extends ContextVar>)newValue);
+        return;
+      case ContextModelPackage.CONTEXT_MODEL__MISSION_VARIABLES:
+        getMission_variables().clear();
+        getMission_variables().addAll((Collection<? extends MissionVar>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -182,8 +217,11 @@ public class ContextModelImpl extends MinimalEObjectImpl.Container implements Co
       case ContextModelPackage.CONTEXT_MODEL__IMPORTS:
         getImports().clear();
         return;
-      case ContextModelPackage.CONTEXT_MODEL__CONTEXT_VARIABLES:
-        getContext_variables().clear();
+      case ContextModelPackage.CONTEXT_MODEL__ENVIRONMENTAL_VARIABLES:
+        getEnvironmental_variables().clear();
+        return;
+      case ContextModelPackage.CONTEXT_MODEL__MISSION_VARIABLES:
+        getMission_variables().clear();
         return;
     }
     super.eUnset(featureID);
@@ -201,8 +239,10 @@ public class ContextModelImpl extends MinimalEObjectImpl.Container implements Co
     {
       case ContextModelPackage.CONTEXT_MODEL__IMPORTS:
         return imports != null && !imports.isEmpty();
-      case ContextModelPackage.CONTEXT_MODEL__CONTEXT_VARIABLES:
-        return context_variables != null && !context_variables.isEmpty();
+      case ContextModelPackage.CONTEXT_MODEL__ENVIRONMENTAL_VARIABLES:
+        return environmental_variables != null && !environmental_variables.isEmpty();
+      case ContextModelPackage.CONTEXT_MODEL__MISSION_VARIABLES:
+        return mission_variables != null && !mission_variables.isEmpty();
     }
     return super.eIsSet(featureID);
   }

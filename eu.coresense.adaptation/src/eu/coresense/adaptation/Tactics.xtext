@@ -6,13 +6,22 @@ import "http://caosd.lcc.uma.es/BasicFMmetamodel" as BasicFMmetamodel
 import "http://www.coresense.eu/context/ContextModel" as contextModel
 import "http://www.eclipse.org/emf/2002/Ecore" as ecore
 import "https://coresense.eu/common" as common
+import "http://www.ipa.fraunhofer.de/ros" as ros
 generate tactics "http://www.coresense.eu/adaptation/Tactics"
 
 TacticsModel:
 	'name' name=ID ';' 
 	(imports+=Import*)
-	(adaptationRules+=AdaptationRule*)
+	(actionRules+=ActionRules*)
 ;
+
+
+ActionRules:
+	action=[ros::ActionSpec] "{"
+		(adaptationRules+=AdaptationRule*)
+	"}"
+;
+
 
 Import returns common::Import:
 	'import' importURI=STRING ';'

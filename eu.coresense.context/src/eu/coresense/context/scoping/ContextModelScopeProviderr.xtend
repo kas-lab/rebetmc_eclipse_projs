@@ -21,7 +21,7 @@ import ros.ServiceServer
 import ros.ActionServer
 import eu.coresense.common.Import
 import eu.coresense.common.Utilities
-
+import ros.ActionSpec
 
 class ContextModelScopeProviderr extends AbstractContextModelScopeProvider {
 
@@ -34,12 +34,12 @@ class ContextModelScopeProviderr extends AbstractContextModelScopeProvider {
 	    	val qref = context as QualifiedActionServerRef;
 	        val node = qref.node;
 	  
-	        if (node !== null && node.getActionserver().size() != 0) {
+	        if (node !== null && node.from.getActionserver().size() != 0) {
 	        	
 
 	            // scope over all features in the model
 	           	return Scopes.scopeFor(
-		            node.getActionserver(),
+		            node.from.getActionserver(),
 		            [EObject e | QualifiedName.create(Utilities.escape((e as ActionServer).name))],
 		            IScope.NULLSCOPE
 		        )
@@ -50,10 +50,10 @@ class ContextModelScopeProviderr extends AbstractContextModelScopeProvider {
 	    {
 	    	val qref = context as QualifiedServiceServerRef;
 	        val node = qref.node;
-	        if (node !== null && node.getServiceserver().size() != 0) {
+	        if (node !== null && node.from.getServiceserver().size() != 0) {
 	            // scope over all features in the model
 	            return Scopes.scopeFor(
-		            node.getServiceserver(), 
+		            node.from.getServiceserver(), 
 		            [EObject e | QualifiedName.create(Utilities.escape((e as ServiceServer).name))],
 		            IScope.NULLSCOPE
 		        )
@@ -61,24 +61,34 @@ class ContextModelScopeProviderr extends AbstractContextModelScopeProvider {
 	        return IScope.NULLSCOPE;
 	    }
 	    //TODO: These could be separated to only get nodes which have at least one service_server, action_server, publisher.
-        if(reference == ContextModelPackage.Literals.QUALIFIED_REF__NODE
-        )
+        if(reference == ContextModelPackage.Literals.QUALIFIED_REF__NODE)
 	    {
 	    	val model = EcoreUtil2.getContainerOfType(context, ContextModel);
 
 	    	return Scopes.scopeFor(
 	    		allNodes(model,context),
-	    		[EObject e | QualifiedName.create(Utilities.escape((e as ros.Node).name))],
+	    		[EObject e | QualifiedName.create(Utilities.escape((e as system.RosNode).name))],
 	    		IScope.NULLSCOPE
 	    	);
+	    }
+	    if(reference == ContextModelPackage.Literals.MISSION_VAR__ACTION)
+	    {
+	    	val model = EcoreUtil2.getContainerOfType(context, ContextModel);
+
+	    	return Scopes.scopeFor(
+	    		allActions(model,context),
+	    		[EObject e | QualifiedName.create(Utilities.escape((e as ActionSpec).name))],
+	    		IScope.NULLSCOPE
+	    	);
+	    	
 	    }
          super.getScope(context, reference)
      }
 
      def IScope scope_QualifiedPublisherRef_publisher(QualifiedPublisherRef context, EReference ref) {
          if (context.node === null) return IScope.NULLSCOPE
-
-         val publishers = context.node.publisher
+		
+         val publishers = context.node.from.publisher
 
          // Scopes.scopeFor with lambda keeps '/' literal
          return Scopes.scopeFor(
@@ -87,12 +97,12 @@ class ContextModelScopeProviderr extends AbstractContextModelScopeProvider {
              IScope.NULLSCOPE
          )
      }
-     
-     def List<ros.Node> allNodes(ContextModel model, EObject context) {
+
+     def List<ActionSpec> allActions(ContextModel model, EObject context) {
      	
      	val sys_defs = collectAllSystems(model, context.eResource());
      	
-     	val allNodes = new ArrayList<ros.Node>();
+     	val allActions = new ArrayList<ActionSpec>();
      	for (system.System sys_def : sys_defs)
      	{
      		for(system.Component comp : sys_def.getComponents())
@@ -100,7 +110,32 @@ class ContextModelScopeProviderr extends AbstractContextModelScopeProvider {
      			if(comp instanceof system.RosNode)
      			{
      				val node = comp as system.RosNode;
-     				allNodes.add(node.getFrom());
+     				val originalNodeActionServers = node.from.actionserver
+     				for(actionServer : originalNodeActionServers)
+     				{
+     					allActions.add(actionServer.action);
+     				}
+     				
+     			}
+     		}
+     	}
+     	return allActions;
+	}
+
+     
+     def List<system.RosNode> allNodes(ContextModel model, EObject context) {
+     	
+     	val sys_defs = collectAllSystems(model, context.eResource());
+     	
+     	val allNodes = new ArrayList<system.RosNode>();
+     	for (system.System sys_def : sys_defs)
+     	{
+     		for(system.Component comp : sys_def.getComponents())
+     		{
+     			if(comp instanceof system.RosNode)
+     			{
+     				val node = comp as system.RosNode;
+     				allNodes.add(node);
      			}
      		}
      	}

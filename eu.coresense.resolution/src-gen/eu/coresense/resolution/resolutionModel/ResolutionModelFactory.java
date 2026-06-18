@@ -42,6 +42,15 @@ public interface ResolutionModelFactory extends EFactory
   Resolution createResolution();
 
   /**
+   * Returns a new object of class '<em>Functional Mapping</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Functional Mapping</em>'.
+   * @generated
+   */
+  FunctionalMapping createFunctionalMapping();
+
+  /**
    * Returns a new object of class '<em>Feature Reference</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

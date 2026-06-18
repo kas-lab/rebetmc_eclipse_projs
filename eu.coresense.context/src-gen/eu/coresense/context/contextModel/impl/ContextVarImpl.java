@@ -18,6 +18,8 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
+import primitives.AbstractType;
+
 /**
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Context Var</b></em>'.
@@ -28,12 +30,14 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * <ul>
  *   <li>{@link eu.coresense.context.contextModel.impl.ContextVarImpl#getName <em>Name</em>}</li>
  *   <li>{@link eu.coresense.context.contextModel.impl.ContextVarImpl#getSource <em>Source</em>}</li>
+ *   <li>{@link eu.coresense.context.contextModel.impl.ContextVarImpl#getType <em>Type</em>}</li>
  *   <li>{@link eu.coresense.context.contextModel.impl.ContextVarImpl#getDoCache <em>Do Cache</em>}</li>
  *   <li>{@link eu.coresense.context.contextModel.impl.ContextVarImpl#getLength <em>Length</em>}</li>
  *   <li>{@link eu.coresense.context.contextModel.impl.ContextVarImpl#getPeriod <em>Period</em>}</li>
  *   <li>{@link eu.coresense.context.contextModel.impl.ContextVarImpl#getDoProxy <em>Do Proxy</em>}</li>
  *   <li>{@link eu.coresense.context.contextModel.impl.ContextVarImpl#getFunctionName <em>Function Name</em>}</li>
  *   <li>{@link eu.coresense.context.contextModel.impl.ContextVarImpl#getFunctionLibrary <em>Function Library</em>}</li>
+ *   <li>{@link eu.coresense.context.contextModel.impl.ContextVarImpl#getFunctionArgs <em>Function Args</em>}</li>
  * </ul>
  *
  * @generated
@@ -69,6 +73,16 @@ public class ContextVarImpl extends MinimalEObjectImpl.Container implements Cont
    * @ordered
    */
   protected DataSource source;
+
+  /**
+   * The cached value of the '{@link #getType() <em>Type</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getType()
+   * @generated
+   * @ordered
+   */
+  protected AbstractType type;
 
   /**
    * The cached value of the '{@link #getDoCache() <em>Do Cache</em>}' containment reference.
@@ -171,6 +185,26 @@ public class ContextVarImpl extends MinimalEObjectImpl.Container implements Cont
   protected String functionLibrary = FUNCTION_LIBRARY_EDEFAULT;
 
   /**
+   * The default value of the '{@link #getFunctionArgs() <em>Function Args</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getFunctionArgs()
+   * @generated
+   * @ordered
+   */
+  protected static final String FUNCTION_ARGS_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getFunctionArgs() <em>Function Args</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getFunctionArgs()
+   * @generated
+   * @ordered
+   */
+  protected String functionArgs = FUNCTION_ARGS_EDEFAULT;
+
+  /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -264,6 +298,56 @@ public class ContextVarImpl extends MinimalEObjectImpl.Container implements Cont
     }
     else if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, ContextModelPackage.CONTEXT_VAR__SOURCE, newSource, newSource));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public AbstractType getType()
+  {
+    return type;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetType(AbstractType newType, NotificationChain msgs)
+  {
+    AbstractType oldType = type;
+    type = newType;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ContextModelPackage.CONTEXT_VAR__TYPE, oldType, newType);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setType(AbstractType newType)
+  {
+    if (newType != type)
+    {
+      NotificationChain msgs = null;
+      if (type != null)
+        msgs = ((InternalEObject)type).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ContextModelPackage.CONTEXT_VAR__TYPE, null, msgs);
+      if (newType != null)
+        msgs = ((InternalEObject)newType).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ContextModelPackage.CONTEXT_VAR__TYPE, null, msgs);
+      msgs = basicSetType(newType, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, ContextModelPackage.CONTEXT_VAR__TYPE, newType, newType));
   }
 
   /**
@@ -472,12 +556,39 @@ public class ContextVarImpl extends MinimalEObjectImpl.Container implements Cont
    * @generated
    */
   @Override
+  public String getFunctionArgs()
+  {
+    return functionArgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setFunctionArgs(String newFunctionArgs)
+  {
+    String oldFunctionArgs = functionArgs;
+    functionArgs = newFunctionArgs;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, ContextModelPackage.CONTEXT_VAR__FUNCTION_ARGS, oldFunctionArgs, functionArgs));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
   {
     switch (featureID)
     {
       case ContextModelPackage.CONTEXT_VAR__SOURCE:
         return basicSetSource(null, msgs);
+      case ContextModelPackage.CONTEXT_VAR__TYPE:
+        return basicSetType(null, msgs);
       case ContextModelPackage.CONTEXT_VAR__DO_CACHE:
         return basicSetDoCache(null, msgs);
       case ContextModelPackage.CONTEXT_VAR__DO_PROXY:
@@ -500,6 +611,8 @@ public class ContextVarImpl extends MinimalEObjectImpl.Container implements Cont
         return getName();
       case ContextModelPackage.CONTEXT_VAR__SOURCE:
         return getSource();
+      case ContextModelPackage.CONTEXT_VAR__TYPE:
+        return getType();
       case ContextModelPackage.CONTEXT_VAR__DO_CACHE:
         return getDoCache();
       case ContextModelPackage.CONTEXT_VAR__LENGTH:
@@ -512,6 +625,8 @@ public class ContextVarImpl extends MinimalEObjectImpl.Container implements Cont
         return getFunctionName();
       case ContextModelPackage.CONTEXT_VAR__FUNCTION_LIBRARY:
         return getFunctionLibrary();
+      case ContextModelPackage.CONTEXT_VAR__FUNCTION_ARGS:
+        return getFunctionArgs();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -532,6 +647,9 @@ public class ContextVarImpl extends MinimalEObjectImpl.Container implements Cont
       case ContextModelPackage.CONTEXT_VAR__SOURCE:
         setSource((DataSource)newValue);
         return;
+      case ContextModelPackage.CONTEXT_VAR__TYPE:
+        setType((AbstractType)newValue);
+        return;
       case ContextModelPackage.CONTEXT_VAR__DO_CACHE:
         setDoCache((DoCache)newValue);
         return;
@@ -549,6 +667,9 @@ public class ContextVarImpl extends MinimalEObjectImpl.Container implements Cont
         return;
       case ContextModelPackage.CONTEXT_VAR__FUNCTION_LIBRARY:
         setFunctionLibrary((String)newValue);
+        return;
+      case ContextModelPackage.CONTEXT_VAR__FUNCTION_ARGS:
+        setFunctionArgs((String)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -570,6 +691,9 @@ public class ContextVarImpl extends MinimalEObjectImpl.Container implements Cont
       case ContextModelPackage.CONTEXT_VAR__SOURCE:
         setSource((DataSource)null);
         return;
+      case ContextModelPackage.CONTEXT_VAR__TYPE:
+        setType((AbstractType)null);
+        return;
       case ContextModelPackage.CONTEXT_VAR__DO_CACHE:
         setDoCache((DoCache)null);
         return;
@@ -587,6 +711,9 @@ public class ContextVarImpl extends MinimalEObjectImpl.Container implements Cont
         return;
       case ContextModelPackage.CONTEXT_VAR__FUNCTION_LIBRARY:
         setFunctionLibrary(FUNCTION_LIBRARY_EDEFAULT);
+        return;
+      case ContextModelPackage.CONTEXT_VAR__FUNCTION_ARGS:
+        setFunctionArgs(FUNCTION_ARGS_EDEFAULT);
         return;
     }
     super.eUnset(featureID);
@@ -606,6 +733,8 @@ public class ContextVarImpl extends MinimalEObjectImpl.Container implements Cont
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
       case ContextModelPackage.CONTEXT_VAR__SOURCE:
         return source != null;
+      case ContextModelPackage.CONTEXT_VAR__TYPE:
+        return type != null;
       case ContextModelPackage.CONTEXT_VAR__DO_CACHE:
         return doCache != null;
       case ContextModelPackage.CONTEXT_VAR__LENGTH:
@@ -618,6 +747,8 @@ public class ContextVarImpl extends MinimalEObjectImpl.Container implements Cont
         return FUNCTION_NAME_EDEFAULT == null ? functionName != null : !FUNCTION_NAME_EDEFAULT.equals(functionName);
       case ContextModelPackage.CONTEXT_VAR__FUNCTION_LIBRARY:
         return FUNCTION_LIBRARY_EDEFAULT == null ? functionLibrary != null : !FUNCTION_LIBRARY_EDEFAULT.equals(functionLibrary);
+      case ContextModelPackage.CONTEXT_VAR__FUNCTION_ARGS:
+        return FUNCTION_ARGS_EDEFAULT == null ? functionArgs != null : !FUNCTION_ARGS_EDEFAULT.equals(functionArgs);
     }
     return super.eIsSet(featureID);
   }
@@ -643,6 +774,8 @@ public class ContextVarImpl extends MinimalEObjectImpl.Container implements Cont
     result.append(functionName);
     result.append(", functionLibrary: ");
     result.append(functionLibrary);
+    result.append(", functionArgs: ");
+    result.append(functionArgs);
     result.append(')');
     return result.toString();
   }

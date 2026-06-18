@@ -35,19 +35,19 @@ public class TacticsGrammarAccess extends AbstractElementFinder.AbstractGrammarE
 		private final Keyword cSemicolonKeyword_2 = (Keyword)cGroup.eContents().get(2);
 		private final Assignment cImportsAssignment_3 = (Assignment)cGroup.eContents().get(3);
 		private final RuleCall cImportsImportParserRuleCall_3_0 = (RuleCall)cImportsAssignment_3.eContents().get(0);
-		private final Assignment cAdaptationRulesAssignment_4 = (Assignment)cGroup.eContents().get(4);
-		private final RuleCall cAdaptationRulesAdaptationRuleParserRuleCall_4_0 = (RuleCall)cAdaptationRulesAssignment_4.eContents().get(0);
+		private final Assignment cActionRulesAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final RuleCall cActionRulesActionRulesParserRuleCall_4_0 = (RuleCall)cActionRulesAssignment_4.eContents().get(0);
 		
 		//TacticsModel:
 		//    'name' name=ID ';'
 		//    (imports+=Import*)
-		//    (adaptationRules+=AdaptationRule*)
+		//    (actionRules+=ActionRules*)
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
 		//'name' name=ID ';'
 		//(imports+=Import*)
-		//(adaptationRules+=AdaptationRule*)
+		//(actionRules+=ActionRules*)
 		public Group getGroup() { return cGroup; }
 		
 		//'name'
@@ -68,11 +68,55 @@ public class TacticsGrammarAccess extends AbstractElementFinder.AbstractGrammarE
 		//Import
 		public RuleCall getImportsImportParserRuleCall_3_0() { return cImportsImportParserRuleCall_3_0; }
 		
+		//(actionRules+=ActionRules*)
+		public Assignment getActionRulesAssignment_4() { return cActionRulesAssignment_4; }
+		
+		//ActionRules
+		public RuleCall getActionRulesActionRulesParserRuleCall_4_0() { return cActionRulesActionRulesParserRuleCall_4_0; }
+	}
+	public class ActionRulesElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "eu.coresense.adaptation.Tactics.ActionRules");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Assignment cActionAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final CrossReference cActionActionSpecCrossReference_0_0 = (CrossReference)cActionAssignment_0.eContents().get(0);
+		private final RuleCall cActionActionSpecIDTerminalRuleCall_0_0_1 = (RuleCall)cActionActionSpecCrossReference_0_0.eContents().get(1);
+		private final Keyword cLeftCurlyBracketKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cAdaptationRulesAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cAdaptationRulesAdaptationRuleParserRuleCall_2_0 = (RuleCall)cAdaptationRulesAssignment_2.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		
+		//ActionRules:
+		//    action=[ros::ActionSpec] "{"
+		//        (adaptationRules+=AdaptationRule*)
+		//    "}"
+		//;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//action=[ros::ActionSpec] "{"
+		//    (adaptationRules+=AdaptationRule*)
+		//"}"
+		public Group getGroup() { return cGroup; }
+		
+		//action=[ros::ActionSpec]
+		public Assignment getActionAssignment_0() { return cActionAssignment_0; }
+		
+		//[ros::ActionSpec]
+		public CrossReference getActionActionSpecCrossReference_0_0() { return cActionActionSpecCrossReference_0_0; }
+		
+		//ID
+		public RuleCall getActionActionSpecIDTerminalRuleCall_0_0_1() { return cActionActionSpecIDTerminalRuleCall_0_0_1; }
+		
+		//"{"
+		public Keyword getLeftCurlyBracketKeyword_1() { return cLeftCurlyBracketKeyword_1; }
+		
 		//(adaptationRules+=AdaptationRule*)
-		public Assignment getAdaptationRulesAssignment_4() { return cAdaptationRulesAssignment_4; }
+		public Assignment getAdaptationRulesAssignment_2() { return cAdaptationRulesAssignment_2; }
 		
 		//AdaptationRule
-		public RuleCall getAdaptationRulesAdaptationRuleParserRuleCall_4_0() { return cAdaptationRulesAdaptationRuleParserRuleCall_4_0; }
+		public RuleCall getAdaptationRulesAdaptationRuleParserRuleCall_2_0() { return cAdaptationRulesAdaptationRuleParserRuleCall_2_0; }
+		
+		//"}"
+		public Keyword getRightCurlyBracketKeyword_3() { return cRightCurlyBracketKeyword_3; }
 	}
 	public class ImportElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "eu.coresense.adaptation.Tactics.Import");
@@ -1150,6 +1194,7 @@ public class TacticsGrammarAccess extends AbstractElementFinder.AbstractGrammarE
 	}
 	
 	private final TacticsModelElements pTacticsModel;
+	private final ActionRulesElements pActionRules;
 	private final ImportElements pImport;
 	private final AdaptationRuleElements pAdaptationRule;
 	private final AtomicRuleElements pAtomicRule;
@@ -1194,6 +1239,7 @@ public class TacticsGrammarAccess extends AbstractElementFinder.AbstractGrammarE
 		this.grammar = internalFindGrammar(grammarProvider);
 		this.gaTerminals = gaTerminals;
 		this.pTacticsModel = new TacticsModelElements();
+		this.pActionRules = new ActionRulesElements();
 		this.pImport = new ImportElements();
 		this.pAdaptationRule = new AdaptationRuleElements();
 		this.pAtomicRule = new AtomicRuleElements();
@@ -1259,7 +1305,7 @@ public class TacticsGrammarAccess extends AbstractElementFinder.AbstractGrammarE
 	//TacticsModel:
 	//    'name' name=ID ';'
 	//    (imports+=Import*)
-	//    (adaptationRules+=AdaptationRule*)
+	//    (actionRules+=ActionRules*)
 	//;
 	public TacticsModelElements getTacticsModelAccess() {
 		return pTacticsModel;
@@ -1267,6 +1313,19 @@ public class TacticsGrammarAccess extends AbstractElementFinder.AbstractGrammarE
 	
 	public ParserRule getTacticsModelRule() {
 		return getTacticsModelAccess().getRule();
+	}
+	
+	//ActionRules:
+	//    action=[ros::ActionSpec] "{"
+	//        (adaptationRules+=AdaptationRule*)
+	//    "}"
+	//;
+	public ActionRulesElements getActionRulesAccess() {
+		return pActionRules;
+	}
+	
+	public ParserRule getActionRulesRule() {
+		return getActionRulesAccess().getRule();
 	}
 	
 	//Import returns common::Import:

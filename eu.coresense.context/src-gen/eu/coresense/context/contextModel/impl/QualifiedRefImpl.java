@@ -14,7 +14,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
-import ros.Node;
+import system.RosNode;
 
 /**
  * <!-- begin-user-doc -->
@@ -39,7 +39,7 @@ public class QualifiedRefImpl extends MinimalEObjectImpl.Container implements Qu
    * @generated
    * @ordered
    */
-  protected Node node;
+  protected RosNode node;
 
   /**
    * <!-- begin-user-doc -->
@@ -68,12 +68,12 @@ public class QualifiedRefImpl extends MinimalEObjectImpl.Container implements Qu
    * @generated
    */
   @Override
-  public Node getNode()
+  public RosNode getNode()
   {
     if (node != null && node.eIsProxy())
     {
       InternalEObject oldNode = (InternalEObject)node;
-      node = (Node)eResolveProxy(oldNode);
+      node = (RosNode)eResolveProxy(oldNode);
       if (node != oldNode)
       {
         if (eNotificationRequired())
@@ -88,7 +88,7 @@ public class QualifiedRefImpl extends MinimalEObjectImpl.Container implements Qu
    * <!-- end-user-doc -->
    * @generated
    */
-  public Node basicGetNode()
+  public RosNode basicGetNode()
   {
     return node;
   }
@@ -99,9 +99,9 @@ public class QualifiedRefImpl extends MinimalEObjectImpl.Container implements Qu
    * @generated
    */
   @Override
-  public void setNode(Node newNode)
+  public void setNode(RosNode newNode)
   {
-    Node oldNode = node;
+    RosNode oldNode = node;
     node = newNode;
     if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, ContextModelPackage.QUALIFIED_REF__NODE, oldNode, node));
@@ -135,7 +135,7 @@ public class QualifiedRefImpl extends MinimalEObjectImpl.Container implements Qu
     switch (featureID)
     {
       case ContextModelPackage.QUALIFIED_REF__NODE:
-        setNode((Node)newValue);
+        setNode((RosNode)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -152,7 +152,7 @@ public class QualifiedRefImpl extends MinimalEObjectImpl.Container implements Qu
     switch (featureID)
     {
       case ContextModelPackage.QUALIFIED_REF__NODE:
-        setNode((Node)null);
+        setNode((RosNode)null);
         return;
     }
     super.eUnset(featureID);

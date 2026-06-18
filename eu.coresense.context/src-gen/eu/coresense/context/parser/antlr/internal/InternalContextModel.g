@@ -77,11 +77,18 @@ ruleContextModel returns [EObject current=null]
 }:
 	(
 		(
+			{
+				$current = forceCreateModelElement(
+					grammarAccess.getContextModelAccess().getContextModelAction_0(),
+					$current);
+			}
+		)
+		(
 			(
 				{
-					newCompositeNode(grammarAccess.getContextModelAccess().getImportsImportParserRuleCall_0_0());
+					newCompositeNode(grammarAccess.getContextModelAccess().getImportsImportParserRuleCall_1_0());
 				}
-				lv_imports_0_0=ruleImport
+				lv_imports_1_0=ruleImport
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getContextModelRule());
@@ -89,31 +96,74 @@ ruleContextModel returns [EObject current=null]
 					add(
 						$current,
 						"imports",
-						lv_imports_0_0,
+						lv_imports_1_0,
 						"eu.coresense.context.ContextModel.Import");
 					afterParserOrEnumRuleCall();
 				}
 			)
 		)*
+		otherlv_2='Environmental'
+		{
+			newLeafNode(otherlv_2, grammarAccess.getContextModelAccess().getEnvironmentalKeyword_2());
+		}
+		otherlv_3='{'
+		{
+			newLeafNode(otherlv_3, grammarAccess.getContextModelAccess().getLeftCurlyBracketKeyword_3());
+		}
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getContextModelAccess().getContext_variablesContextVarParserRuleCall_1_0());
+					newCompositeNode(grammarAccess.getContextModelAccess().getEnvironmental_variablesContextVarParserRuleCall_4_0());
 				}
-				lv_context_variables_1_0=ruleContextVar
+				lv_environmental_variables_4_0=ruleContextVar
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getContextModelRule());
 					}
 					add(
 						$current,
-						"context_variables",
-						lv_context_variables_1_0,
+						"environmental_variables",
+						lv_environmental_variables_4_0,
 						"eu.coresense.context.ContextModel.ContextVar");
 					afterParserOrEnumRuleCall();
 				}
 			)
 		)*
+		otherlv_5='}'
+		{
+			newLeafNode(otherlv_5, grammarAccess.getContextModelAccess().getRightCurlyBracketKeyword_5());
+		}
+		otherlv_6='Mission-Related'
+		{
+			newLeafNode(otherlv_6, grammarAccess.getContextModelAccess().getMissionRelatedKeyword_6());
+		}
+		otherlv_7='{'
+		{
+			newLeafNode(otherlv_7, grammarAccess.getContextModelAccess().getLeftCurlyBracketKeyword_7());
+		}
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getContextModelAccess().getMission_variablesMissionVarParserRuleCall_8_0());
+				}
+				lv_mission_variables_8_0=ruleMissionVar
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getContextModelRule());
+					}
+					add(
+						$current,
+						"mission_variables",
+						lv_mission_variables_8_0,
+						"eu.coresense.context.ContextModel.MissionVar");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)*
+		otherlv_9='}'
+		{
+			newLeafNode(otherlv_9, grammarAccess.getContextModelAccess().getRightCurlyBracketKeyword_9());
+		}
 	)
 ;
 
@@ -336,6 +386,61 @@ ruleContextVar returns [EObject current=null]
 		{
 			newLeafNode(otherlv_19, grammarAccess.getContextVarAccess().getRightCurlyBracketKeyword_12());
 		}
+	)
+;
+
+// Entry rule entryRuleMissionVar
+entryRuleMissionVar returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getMissionVarRule()); }
+	iv_ruleMissionVar=ruleMissionVar
+	{ $current=$iv_ruleMissionVar.current; }
+	EOF;
+
+// Rule MissionVar
+ruleMissionVar returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		(
+			(
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getMissionVarRule());
+					}
+				}
+				otherlv_0=RULE_ID
+				{
+					newLeafNode(otherlv_0, grammarAccess.getMissionVarAccess().getActionActionSpecCrossReference_0_0());
+				}
+			)
+		)
+		otherlv_1=':'
+		{
+			newLeafNode(otherlv_1, grammarAccess.getMissionVarAccess().getColonKeyword_1());
+		}
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getMissionVarAccess().getContext_varsContextVarParserRuleCall_2_0());
+				}
+				lv_context_vars_2_0=ruleContextVar
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getMissionVarRule());
+					}
+					add(
+						$current,
+						"context_vars",
+						lv_context_vars_2_0,
+						"eu.coresense.context.ContextModel.ContextVar");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)*
 	)
 ;
 
@@ -573,7 +678,7 @@ ruleQualifiedPublisherRef returns [EObject current=null]
 				}
 				otherlv_1=RULE_ID
 				{
-					newLeafNode(otherlv_1, grammarAccess.getQualifiedPublisherRefAccess().getNodeNodeCrossReference_1_0());
+					newLeafNode(otherlv_1, grammarAccess.getQualifiedPublisherRefAccess().getNodeRosNodeCrossReference_1_0());
 				}
 			)
 		)
@@ -626,7 +731,7 @@ ruleQualifiedServiceServerRef returns [EObject current=null]
 				}
 				otherlv_1=RULE_ID
 				{
-					newLeafNode(otherlv_1, grammarAccess.getQualifiedServiceServerRefAccess().getNodeNodeCrossReference_1_0());
+					newLeafNode(otherlv_1, grammarAccess.getQualifiedServiceServerRefAccess().getNodeRosNodeCrossReference_1_0());
 				}
 			)
 		)
@@ -702,7 +807,7 @@ ruleQualifiedActionServerRef returns [EObject current=null]
 				}
 				otherlv_1=RULE_ID
 				{
-					newLeafNode(otherlv_1, grammarAccess.getQualifiedActionServerRefAccess().getNodeNodeCrossReference_1_0());
+					newLeafNode(otherlv_1, grammarAccess.getQualifiedActionServerRefAccess().getNodeRosNodeCrossReference_1_0());
 				}
 			)
 		)

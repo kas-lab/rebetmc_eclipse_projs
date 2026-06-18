@@ -15,17 +15,19 @@ Require-Bundle: org.eclipse.xtext,
  org.eclipse.emf.common,
  org.antlr.runtime;bundle-version="[3.2.0,3.2.1)",
  de.fraunhofer.ipa.rossystem;bundle-version="3.0.0",
- eu.coresense.common;bundle-version="0.1.0"
+ eu.coresense.common;bundle-version="0.1.0",
+ de.fraunhofer.ipa.ros.xtext;bundle-version="3.0.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-21
 Export-Package: eu.coresense.context.contextModel.util,
  eu.coresense.context.services,
  eu.coresense.context.serializer,
- eu.coresense.context.parser.antlr.internal,
  eu.coresense.context,
- eu.coresense.context.parser.antlr,
  eu.coresense.context.contextModel,
  eu.coresense.context.contextModel.impl,
  eu.coresense.context.validation,
  eu.coresense.context.scoping,
- eu.coresense.context.generator
+ eu.coresense.context.generator,
+ eu.coresense.context.parser.antlr.internal,
+ eu.coresense.context.parser.antlr,
+ eu.coresense.context.parser.antlr.lexer
 Import-Package: org.apache.log4j

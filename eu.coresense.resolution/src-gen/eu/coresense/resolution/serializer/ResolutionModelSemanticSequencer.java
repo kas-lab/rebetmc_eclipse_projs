@@ -6,6 +6,7 @@ package eu.coresense.resolution.serializer;
 import com.google.inject.Inject;
 import de.fraunhofer.ipa.ros.serializer.BasicsSemanticSequencer;
 import eu.coresense.resolution.resolutionModel.FeatureReference;
+import eu.coresense.resolution.resolutionModel.FunctionalMapping;
 import eu.coresense.resolution.resolutionModel.Import;
 import eu.coresense.resolution.resolutionModel.Resolution;
 import eu.coresense.resolution.resolutionModel.ResolutionModel;
@@ -198,6 +199,9 @@ public class ResolutionModelSemanticSequencer extends BasicsSemanticSequencer {
 			case ResolutionModelPackage.FEATURE_REFERENCE:
 				sequence_FeatureReference(context, (FeatureReference) semanticObject); 
 				return; 
+			case ResolutionModelPackage.FUNCTIONAL_MAPPING:
+				sequence_FunctionalMapping(context, (FunctionalMapping) semanticObject); 
+				return; 
 			case ResolutionModelPackage.IMPORT:
 				sequence_Import(context, (Import) semanticObject); 
 				return; 
@@ -328,6 +332,29 @@ public class ResolutionModelSemanticSequencer extends BasicsSemanticSequencer {
 	/**
 	 * <pre>
 	 * Contexts:
+	 *     FunctionalMapping returns FunctionalMapping
+	 *
+	 * Constraint:
+	 *     (feature=[Feature|ID] action=[ActionSpec|ID])
+	 * </pre>
+	 */
+	protected void sequence_FunctionalMapping(ISerializationContext context, FunctionalMapping semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, ResolutionModelPackage.Literals.FUNCTIONAL_MAPPING__FEATURE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ResolutionModelPackage.Literals.FUNCTIONAL_MAPPING__FEATURE));
+			if (transientValues.isValueTransient(semanticObject, ResolutionModelPackage.Literals.FUNCTIONAL_MAPPING__ACTION) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ResolutionModelPackage.Literals.FUNCTIONAL_MAPPING__ACTION));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getFunctionalMappingAccess().getFeatureFeatureIDTerminalRuleCall_1_0_1(), semanticObject.eGet(ResolutionModelPackage.Literals.FUNCTIONAL_MAPPING__FEATURE, false));
+		feeder.accept(grammarAccess.getFunctionalMappingAccess().getActionActionSpecIDTerminalRuleCall_3_0_1(), semanticObject.eGet(ResolutionModelPackage.Literals.FUNCTIONAL_MAPPING__ACTION, false));
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
 	 *     Import returns Import
 	 *
 	 * Constraint:
@@ -351,7 +378,14 @@ public class ResolutionModelSemanticSequencer extends BasicsSemanticSequencer {
 	 *     ResolutionModel returns ResolutionModel
 	 *
 	 * Constraint:
-	 *     (name=ID imports+=Import* featureModel=[FeatureModel|ID] rossystem=[System|ID] resolutions+=Resolution*)
+	 *     (
+	 *         name=ID 
+	 *         imports+=Import* 
+	 *         featureModel=[FeatureModel|ID] 
+	 *         rossystem=[System|ID] 
+	 *         functionalMapping+=FunctionalMapping 
+	 *         resolutions+=Resolution*
+	 *     )
 	 * </pre>
 	 */
 	protected void sequence_ResolutionModel(ISerializationContext context, ResolutionModel semanticObject) {

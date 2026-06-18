@@ -157,16 +157,39 @@ ruleResolutionModel returns [EObject current=null]
 		{
 			newLeafNode(otherlv_9, grammarAccess.getResolutionModelAccess().getSemicolonKeyword_9());
 		}
-		otherlv_10=Resolutions
+		otherlv_10=FunctionalMapping
 		{
-			newLeafNode(otherlv_10, grammarAccess.getResolutionModelAccess().getResolutionsKeyword_10());
+			newLeafNode(otherlv_10, grammarAccess.getResolutionModelAccess().getFunctionalMappingKeyword_10());
 		}
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getResolutionModelAccess().getResolutionsResolutionParserRuleCall_11_0());
+					newCompositeNode(grammarAccess.getResolutionModelAccess().getFunctionalMappingFunctionalMappingParserRuleCall_11_0());
 				}
-				lv_resolutions_11_0=ruleResolution
+				lv_functionalMapping_11_0=ruleFunctionalMapping
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getResolutionModelRule());
+					}
+					add(
+						$current,
+						"functionalMapping",
+						lv_functionalMapping_11_0,
+						"eu.coresense.resolution.ResolutionModel.FunctionalMapping");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
+		otherlv_12=Reconfigurations
+		{
+			newLeafNode(otherlv_12, grammarAccess.getResolutionModelAccess().getReconfigurationsKeyword_12());
+		}
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getResolutionModelAccess().getResolutionsResolutionParserRuleCall_13_0());
+				}
+				lv_resolutions_13_0=ruleResolution
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getResolutionModelRule());
@@ -174,7 +197,7 @@ ruleResolutionModel returns [EObject current=null]
 					add(
 						$current,
 						"resolutions",
-						lv_resolutions_11_0,
+						lv_resolutions_13_0,
 						"eu.coresense.resolution.ResolutionModel.Resolution");
 					afterParserOrEnumRuleCall();
 				}
@@ -275,6 +298,62 @@ ruleResolution returns [EObject current=null]
 				}
 			)
 		)*
+	)
+;
+
+// Entry rule entryRuleFunctionalMapping
+entryRuleFunctionalMapping returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getFunctionalMappingRule()); }
+	iv_ruleFunctionalMapping=ruleFunctionalMapping
+	{ $current=$iv_ruleFunctionalMapping.current; }
+	EOF;
+
+// Rule FunctionalMapping
+ruleFunctionalMapping returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		(
+			{
+				$current = forceCreateModelElement(
+					grammarAccess.getFunctionalMappingAccess().getFunctionalMappingAction_0(),
+					$current);
+			}
+		)
+		(
+			(
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getFunctionalMappingRule());
+					}
+				}
+				otherlv_1=RULE_ID
+				{
+					newLeafNode(otherlv_1, grammarAccess.getFunctionalMappingAccess().getFeatureFeatureCrossReference_1_0());
+				}
+			)
+		)
+		otherlv_2=HyphenMinusGreaterThanSign
+		{
+			newLeafNode(otherlv_2, grammarAccess.getFunctionalMappingAccess().getHyphenMinusGreaterThanSignKeyword_2());
+		}
+		(
+			(
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getFunctionalMappingRule());
+					}
+				}
+				otherlv_3=RULE_ID
+				{
+					newLeafNode(otherlv_3, grammarAccess.getFunctionalMappingAccess().getActionActionSpecCrossReference_3_0());
+				}
+			)
+		)
 	)
 ;
 

@@ -87,6 +87,13 @@ public class ContextModelSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case ContextModelPackage.MISSION_VAR:
+      {
+        MissionVar missionVar = (MissionVar)theEObject;
+        T result = caseMissionVar(missionVar);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case ContextModelPackage.DO_CACHE:
       {
         DoCache doCache = (DoCache)theEObject;
@@ -171,6 +178,22 @@ public class ContextModelSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseContextVar(ContextVar object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Mission Var</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Mission Var</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseMissionVar(MissionVar object)
   {
     return null;
   }

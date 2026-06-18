@@ -40,6 +40,29 @@ class State {
         this.featurePrecondition = featurePrecondition
     }
     
+    new(List<Pair<LiteralWrapper, LiteralWrapper>> contextPrecondition, List<Boolean> booleanContextPreconditions, List<ContextVar> contextKeys, List<Feature> featureKeys) {
+		boundPreconditionMap = newHashMap
+		medianBounds = newHashMap
+		associatedRulesTQLNames = newArrayList
+		boolPreconditionMap = newHashMap
+		this.featureKeys = featureKeys
+		for (contextKeyIndPair : contextKeys.indexed) {
+			val contextKey = contextKeyIndPair.value
+			if(contextKeyIndPair.key >= contextPrecondition.size())
+			{
+				val boolval = booleanContextPreconditions.get(contextKeyIndPair.key-contextPrecondition.size())
+				boolPreconditionMap.put(contextKey,boolval)
+			}
+			else
+			{
+			val bound = contextPrecondition.get(contextKeyIndPair.key)
+			boundPreconditionMap.put(contextKey,bound)
+			medianBounds.put(contextKey,bound.medianBound)
+			}
+		}
+        this.featurePrecondition = null
+    }
+    
     def Pair<String,List<String>> stateActionPair()
     {
     	TQLName -> associatedRulesTQLNames
@@ -140,11 +163,13 @@ class State {
 			«element.key.name» : «element.value»
 		«ENDFOR»
 		</BOOLEAN>
+		«IF featurePrecondition !== null»
 		<FEATURE>
 		«FOR element : featurePrecondition.indexed SEPARATOR "; "»
 			«featureKeys.get(element.key).name» : «IF element.value»Selected«ELSE»notSelected«ENDIF»
 		«ENDFOR»
 		</FEATURE>
+		«ENDIF»
 		Has «associatedRulesTQLNames.size()» rules attached.
 		«IF !associatedRulesTQLNames.empty»
 			Rules are:

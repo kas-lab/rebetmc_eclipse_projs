@@ -17,12 +17,17 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ResolutionModel.ecore#//ResolutionModel/imports"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ResolutionModel.ecore#//ResolutionModel/featureModel"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ResolutionModel.ecore#//ResolutionModel/rossystem"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ResolutionModel.ecore#//ResolutionModel/functionalMapping"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ResolutionModel.ecore#//ResolutionModel/resolutions"/>
     </genClasses>
     <genClasses ecoreClass="ResolutionModel.ecore#//Resolution">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ResolutionModel.ecore#//Resolution/featureRef"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ResolutionModel.ecore#//Resolution/selection_actions"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ResolutionModel.ecore#//Resolution/deselection_actions"/>
+    </genClasses>
+    <genClasses ecoreClass="ResolutionModel.ecore#//FunctionalMapping">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ResolutionModel.ecore#//FunctionalMapping/feature"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ResolutionModel.ecore#//FunctionalMapping/action"/>
     </genClasses>
     <genClasses ecoreClass="ResolutionModel.ecore#//FeatureReference">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ResolutionModel.ecore#//FeatureReference/parent"/>

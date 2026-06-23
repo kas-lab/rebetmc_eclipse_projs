@@ -33,6 +33,7 @@ DYNAMIC_PREFIXES = (
     "eu.coresense.resolution_",
     "eu.coresense.variability_",
     "RosToolingSupport_",
+    "featureidewrapper_",
     "de.fraunhofer.ipa.",
     "org.eclipse.",
     "fms.metamodel",

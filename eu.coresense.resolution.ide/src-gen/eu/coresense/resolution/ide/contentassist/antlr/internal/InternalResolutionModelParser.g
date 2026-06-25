@@ -2833,7 +2833,7 @@ rule__ResolutionModel__Group__11__Impl
 :
 (
 	{ before(grammarAccess.getResolutionModelAccess().getFunctionalMappingAssignment_11()); }
-	(rule__ResolutionModel__FunctionalMappingAssignment_11)
+	(rule__ResolutionModel__FunctionalMappingAssignment_11)*
 	{ after(grammarAccess.getResolutionModelAccess().getFunctionalMappingAssignment_11()); }
 )
 ;

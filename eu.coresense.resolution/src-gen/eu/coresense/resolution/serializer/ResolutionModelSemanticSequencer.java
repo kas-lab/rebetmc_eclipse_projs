@@ -383,7 +383,7 @@ public class ResolutionModelSemanticSequencer extends BasicsSemanticSequencer {
 	 *         imports+=Import* 
 	 *         featureModel=[FeatureModel|ID] 
 	 *         rossystem=[System|ID] 
-	 *         functionalMapping+=FunctionalMapping 
+	 *         functionalMapping+=FunctionalMapping* 
 	 *         resolutions+=Resolution*
 	 *     )
 	 * </pre>

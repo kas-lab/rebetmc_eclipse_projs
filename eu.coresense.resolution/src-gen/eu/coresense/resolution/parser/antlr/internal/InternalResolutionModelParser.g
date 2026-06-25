@@ -179,7 +179,7 @@ ruleResolutionModel returns [EObject current=null]
 					afterParserOrEnumRuleCall();
 				}
 			)
-		)
+		)*
 		otherlv_12=Reconfigurations
 		{
 			newLeafNode(otherlv_12, grammarAccess.getResolutionModelAccess().getReconfigurationsKeyword_12());

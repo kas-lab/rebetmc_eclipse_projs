@@ -58,7 +58,7 @@ public class ResolutionModelGrammarAccess extends AbstractElementFinder.Abstract
 		//    (imports+=Import*)
 		//    'variability_model' featureModel=[BasicFMmetamodel::FeatureModel]';'
 		//    'ros_system' rossystem=[rossys::System]';'
-		//    'FunctionalMapping' functionalMapping+=FunctionalMapping
+		//    'FunctionalMapping' functionalMapping+=FunctionalMapping*
 		//    'Reconfigurations' resolutions+=Resolution*;
 		@Override public ParserRule getRule() { return rule; }
 		
@@ -66,7 +66,7 @@ public class ResolutionModelGrammarAccess extends AbstractElementFinder.Abstract
 		//(imports+=Import*)
 		//'variability_model' featureModel=[BasicFMmetamodel::FeatureModel]';'
 		//'ros_system' rossystem=[rossys::System]';'
-		//'FunctionalMapping' functionalMapping+=FunctionalMapping
+		//'FunctionalMapping' functionalMapping+=FunctionalMapping*
 		//'Reconfigurations' resolutions+=Resolution*
 		public Group getGroup() { return cGroup; }
 		
@@ -121,7 +121,7 @@ public class ResolutionModelGrammarAccess extends AbstractElementFinder.Abstract
 		//'FunctionalMapping'
 		public Keyword getFunctionalMappingKeyword_10() { return cFunctionalMappingKeyword_10; }
 		
-		//functionalMapping+=FunctionalMapping
+		//functionalMapping+=FunctionalMapping*
 		public Assignment getFunctionalMappingAssignment_11() { return cFunctionalMappingAssignment_11; }
 		
 		//FunctionalMapping
@@ -557,7 +557,7 @@ public class ResolutionModelGrammarAccess extends AbstractElementFinder.Abstract
 	//    (imports+=Import*)
 	//    'variability_model' featureModel=[BasicFMmetamodel::FeatureModel]';'
 	//    'ros_system' rossystem=[rossys::System]';'
-	//    'FunctionalMapping' functionalMapping+=FunctionalMapping
+	//    'FunctionalMapping' functionalMapping+=FunctionalMapping*
 	//    'Reconfigurations' resolutions+=Resolution*;
 	public ResolutionModelElements getResolutionModelAccess() {
 		return pResolutionModel;

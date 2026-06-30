@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?pde version="3.8"?>
+<target name="ReBetMC 2026-03" sequenceNumber="1">
+  <locations>
+    <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
+      <unit id="org.eclipse.sdk.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.xtext.sdk.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.sirius.specifier.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.egit.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.m2e.feature.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.emf.mwe2.launch" version="0.0.0"/>
+      <unit id="org.apache.commons.commons-logging" version="0.0.0"/>
+      <repository location="https://download.eclipse.org/releases/2026-03"/>
+      <repository location="https://download.eclipse.org/eclipse/updates/4.39"/>
+      <repository location="https://download.eclipse.org/modeling/tmf/xtext/updates/releases/2.42.0/"/>
+      <repository location="https://download.eclipse.org/modeling/emft/mwe/updates/releases/"/>
+      <repository location="https://download.eclipse.org/tools/orbit/simrel/orbit-aggregation/2026-03/"/>
+    </location>
+    <location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
+      <unit id="org.eclipse.xtext.sdk.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.xtext.testing" version="0.0.0"/>
+      <unit id="org.eclipse.xtext.ui.testing" version="0.0.0"/>
+      <unit id="org.eclipse.xtext.xbase.testing" version="0.0.0"/>
+      <unit id="org.eclipse.xtext.xbase.ui.testing" version="0.0.0"/>
+      <repository location="https://download.eclipse.org/modeling/tmf/xtext/updates/releases/2.42.0/"/>
+    </location>
+    <location includeDependencyDepth="none" includeSource="false" missingManifest="use" type="Maven">
+      <dependencies>
+        <dependency>
+          <groupId>org.jspecify</groupId>
+          <artifactId>jspecify</artifactId>
+          <version>1.0.0</version>
+          <type>jar</type>
+        </dependency>
+        <dependency>
+          <groupId>uma.caosd</groupId>
+          <artifactId>fms.metamodel</artifactId>
+          <version>1.0.0</version>
+          <type>jar</type>
+        </dependency>
+        <dependency>
+          <groupId>de.fraunhofer.ipa.ros</groupId>
+          <artifactId>de.fraunhofer.ipa.ros</artifactId>
+          <version>3.1.0.rc1</version>
+          <type>jar</type>
+        </dependency>
+        <dependency>
+          <groupId>de.fraunhofer.ipa.ros</groupId>
+          <artifactId>de.fraunhofer.ipa.rossystem</artifactId>
+          <version>3.1.0.rc1</version>
+          <type>jar</type>
+        </dependency>
+        <dependency>
+          <groupId>de.fraunhofer.ipa.ros</groupId>
+          <artifactId>de.fraunhofer.ipa.ros.xtext</artifactId>
+          <version>3.1.0.rc1</version>
+          <type>jar</type>
+        </dependency>
+        <dependency>
+          <groupId>de.fraunhofer.ipa.ros</groupId>
+          <artifactId>de.fraunhofer.ipa.ros.xtext.ide</artifactId>
+          <version>3.1.0.rc1</version>
+          <type>jar</type>
+        </dependency>
+        <dependency>
+          <groupId>de.fraunhofer.ipa.ros</groupId>
+          <artifactId>de.fraunhofer.ipa.ros.xtext.ui</artifactId>
+          <version>3.1.0.rc1</version>
+          <type>jar</type>
+        </dependency>
+      </dependencies>
+      <repositories>
+        <repository>
+          <id>central</id>
+          <url>https://repo1.maven.org/maven2/</url>
+        </repository>
+        <repository>
+          <id>kas-lab-splc2020</id>
+          <url>https://maven.pkg.github.com/kas-lab/splc2020</url>
+        </repository>
+        <repository>
+          <id>kas-lab-rostooling</id>
+          <url>https://maven.pkg.github.com/kas-lab/RosTooling</url>
+        </repository>
+      </repositories>
+    </location>
+  </locations>
+  <environment>
+    <os>linux</os>
+    <ws>gtk</ws>
+    <arch>x86_64</arch>
+    <nl>en_US</nl>
+  </environment>
+</target>

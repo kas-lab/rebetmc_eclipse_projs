@@ -1,0 +1,75 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<units size='2'>
+  <unit id='eu.coresense.feature.feature.jar' version='0.1.0.SNAPSHOT'>
+    <properties size='6'>
+      <property name='org.eclipse.equinox.p2.name' value='CoreSense Feature'/>
+      <property name='org.eclipse.equinox.p2.provider' value='kas-lab'/>
+      <property name='maven-groupId' value='eu.coresense'/>
+      <property name='maven-artifactId' value='eu.coresense.feature'/>
+      <property name='maven-version' value='0.1.0-SNAPSHOT'/>
+      <property name='maven-type' value='eclipse-feature'/>
+    </properties>
+    <provides size='3'>
+      <provided namespace='org.eclipse.equinox.p2.iu' name='eu.coresense.feature.feature.jar' version='0.1.0.SNAPSHOT'/>
+      <provided namespace='org.eclipse.equinox.p2.eclipse.type' name='feature' version='1.0.0'/>
+      <provided namespace='org.eclipse.update.feature' name='eu.coresense.feature' version='0.1.0.SNAPSHOT'/>
+    </provides>
+    <filter>
+      (org.eclipse.update.install.features=true)
+    </filter>
+    <artifacts size='1'>
+      <artifact classifier='org.eclipse.update.feature' id='eu.coresense.feature' version='0.1.0.SNAPSHOT'/>
+    </artifacts>
+    <touchpoint id='org.eclipse.equinox.p2.osgi' version='1.0.0'/>
+    <touchpointData size='1'>
+      <instructions size='1'>
+        <instruction key='zipped'>
+          true
+        </instruction>
+      </instructions>
+    </touchpointData>
+  </unit>
+  <unit id='eu.coresense.feature.feature.group' version='0.1.0.SNAPSHOT' singleton='false'>
+    <update id='eu.coresense.feature.feature.group' range='[0.0.0,0.1.0.SNAPSHOT)' severity='0'/>
+    <properties size='7'>
+      <property name='org.eclipse.equinox.p2.name' value='CoreSense Feature'/>
+      <property name='org.eclipse.equinox.p2.provider' value='kas-lab'/>
+      <property name='org.eclipse.equinox.p2.type.group' value='true'/>
+      <property name='maven-groupId' value='eu.coresense'/>
+      <property name='maven-artifactId' value='eu.coresense.feature'/>
+      <property name='maven-version' value='0.1.0-SNAPSHOT'/>
+      <property name='maven-type' value='eclipse-feature'/>
+    </properties>
+    <provides size='1'>
+      <provided namespace='org.eclipse.equinox.p2.iu' name='eu.coresense.feature.feature.group' version='0.1.0.SNAPSHOT'/>
+    </provides>
+    <requires size='21'>
+      <required namespace='org.eclipse.equinox.p2.iu' name='eu.coresense.common' range='[0.1.0.SNAPSHOT,0.1.0.SNAPSHOT]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='eu.coresense.common.edit' range='[0.1.0.SNAPSHOT,0.1.0.SNAPSHOT]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='eu.coresense.common.editor' range='[0.1.0.SNAPSHOT,0.1.0.SNAPSHOT]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='eu.coresense.context' range='[0.1.0.SNAPSHOT,0.1.0.SNAPSHOT]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='eu.coresense.context.ide' range='[0.1.0.SNAPSHOT,0.1.0.SNAPSHOT]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='eu.coresense.context.ui' range='[0.1.0.SNAPSHOT,0.1.0.SNAPSHOT]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='eu.coresense.requirements' range='[0.1.0.SNAPSHOT,0.1.0.SNAPSHOT]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='eu.coresense.requirements.ide' range='[0.1.0.SNAPSHOT,0.1.0.SNAPSHOT]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='eu.coresense.requirements.ui' range='[0.1.0.SNAPSHOT,0.1.0.SNAPSHOT]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='eu.coresense.resolution' range='[0.1.0.SNAPSHOT,0.1.0.SNAPSHOT]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='eu.coresense.resolution.ide' range='[0.1.0.SNAPSHOT,0.1.0.SNAPSHOT]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='eu.coresense.resolution.ui' range='[0.1.0.SNAPSHOT,0.1.0.SNAPSHOT]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='eu.coresense.variability' range='[0.1.0.SNAPSHOT,0.1.0.SNAPSHOT]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='eu.coresense.variability.ide' range='[0.1.0.SNAPSHOT,0.1.0.SNAPSHOT]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='eu.coresense.variability.ui' range='[0.1.0.SNAPSHOT,0.1.0.SNAPSHOT]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='featureidewrapper' range='[1.0.0,1.0.0]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='eu.coresense.adaptation' range='[0.1.0.SNAPSHOT,0.1.0.SNAPSHOT]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='eu.coresense.adaptation.ide' range='[0.1.0.SNAPSHOT,0.1.0.SNAPSHOT]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='eu.coresense.adaptation.ui' range='[0.1.0.SNAPSHOT,0.1.0.SNAPSHOT]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='RosToolingSupport' range='[0.1.0.SNAPSHOT,0.1.0.SNAPSHOT]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='eu.coresense.feature.feature.jar' range='[0.1.0.SNAPSHOT,0.1.0.SNAPSHOT]'>
+        <filter>
+          (org.eclipse.update.install.features=true)
+        </filter>
+      </required>
+    </requires>
+    <touchpoint id='null' version='0.0.0'/>
+  </unit>
+</units>

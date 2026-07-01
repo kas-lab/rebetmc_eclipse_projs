@@ -24,20 +24,20 @@ import ros.InterfaceType
 
 class ArchitectureTQLGenerator extends AbstractGenerator {
 	extension NameProvider _namer
-	
+
 	@Inject
     new(NameProvider namer) {
         this._namer = namer
     }
 
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
-//		fsa.generateFile('greetings.txt', 'People to greet: ' + 
+//		fsa.generateFile('greetings.txt', 'People to greet: ' +
 //			resource.allContents
 //				.filter(Greeting)
 //				.map[name]
 //				.join(', '))
 	}
-	
+
 	def String getInterfaceName(InterfaceType interface_, RosNode node){
 
 	    var interfaceName = interface_.name
@@ -87,10 +87,10 @@ class ArchitectureTQLGenerator extends AbstractGenerator {
 				}
 			}
 		}
-		
+
 		return interfaceName
     }
-	
+
 	// This is a class that should probably be inside .rossystem's generator, but I am avoiding modifying rosTooling for now.
 	def String NiceNameParamValueType(ParameterValue param_value)
 	{
@@ -106,9 +106,9 @@ class ArchitectureTQLGenerator extends AbstractGenerator {
 			ParameterInteger:
 				"integer"
 		}
-		
+
 	}
-	
+
 	def String SchemaValueFromParam(ParameterValue param_value)
 	{
 		//(boolean|boolean_array|double|double_array|long|long_array|string|string_array)
@@ -123,11 +123,11 @@ class ArchitectureTQLGenerator extends AbstractGenerator {
 			ParameterInteger:
 				"ValueInteger"
 			ParameterSequence:
-				"ValueArray" 
+				"ValueArray"
 			default:
 				param_value.class.toString()
 		}
-		
+
 	}
 	def String SchemaValueFromParam(ros.ParameterType param_type)
 	{
@@ -147,10 +147,10 @@ class ArchitectureTQLGenerator extends AbstractGenerator {
 			default:
 				param_type.class.toString()
 		}
-		
+
 	}
-	
-		
+
+
 	def String paramSubClass (ParameterValue param_value)
 	{
 		//(boolean|boolean_array|double|double_array|long|long_array|string|string_array)
@@ -165,11 +165,11 @@ class ArchitectureTQLGenerator extends AbstractGenerator {
 			ParameterInteger:
 				"ParameterInteger"
 			ParameterSequence:
-				"Parameter" + SchemaValueFromParam(param_value.value.get(0)) + "Array" 
+				"Parameter" + SchemaValueFromParam(param_value.value.get(0)) + "Array"
 		}
-		
+
 	}
-	
+
 	def String paramSubClass (ros.ParameterType param_type)
 	{
 		//(boolean|boolean_array|double|double_array|long|long_array|string|string_array)
@@ -184,22 +184,22 @@ class ArchitectureTQLGenerator extends AbstractGenerator {
 			ros.ParameterIntegerType:
 				"ParameterInteger"
 			ros.ParameterArrayType:
-				paramSubClass(param_type.type) + "Array" 
+				paramSubClass(param_type.type) + "Array"
 		}
-		
+
 	}
-	
+
 	def dispatch String ParamValueToString(ParameterSequence p) {
 	    val parts = p.value.map[ParamValueToString(it)]
     	return "[" + parts.join(", ") + "]"
 	}
-	
+
 	def dispatch String ParamValueToString(ParameterBoolean p) { p.value.toString()}
 	def dispatch String ParamValueToString(ParameterInteger p) { p.value.toString()}
 	def dispatch String ParamValueToString(ParameterDouble p) {
 		return doubleToTQLDouble(p.value)
 	}
-	
+
 	def doubleToTQLDouble(double d)
 	{
 		val format = new java.text.DecimalFormat("0.0############################")
@@ -207,28 +207,28 @@ class ArchitectureTQLGenerator extends AbstractGenerator {
 		format.format(d).toString()
 	}
 	def dispatch String ParamValueToString(ParameterString p) { p.value}
-	
-	
+
+
 	def dispatch String ParamValueToString(ParameterValue p) {
 	    println("Unknown parameter type: " + p.class.name)
 	    return "ValueTypeNotYetImplementedInGenerator"
 	}
-	
+
 	def describeParameter(String name, ParameterValue the_value) {
 		val paramValNiceName = NiceNameParamValueType(the_value)
 		if(paramValNiceName == "string")
 			'''
-				$«name» isa «SchemaValueFromParam(the_value)», has «NiceNameParamValueType(the_value)»_value "«ParamValueToString(the_value)»";	
+				$«name» isa «SchemaValueFromParam(the_value)», has «NiceNameParamValueType(the_value)»_value «Utilities.typeqlString(ParamValueToString(the_value))»;
 			'''
 		else
 		{
 			'''
-				$«name» isa «SchemaValueFromParam(the_value)», has «NiceNameParamValueType(the_value)»_value «ParamValueToString(the_value)»;	
+				$«name» isa «SchemaValueFromParam(the_value)», has «NiceNameParamValueType(the_value)»_value «ParamValueToString(the_value)»;
 			'''
-			
+
 		}
 	}
-	
+
 	def describeParameter(String name, Parameter param) {
 		if(param.value !== null)
 		{
@@ -237,43 +237,43 @@ class ArchitectureTQLGenerator extends AbstractGenerator {
 		val the_type = param.type
 		//TODO: Consider whether I should restore the 'has' and put an empty value.
 		'''
-			$«name» isa «SchemaValueFromParam(the_type)»;	
+			$«name» isa «SchemaValueFromParam(the_type)»;
 		'''
 
 	}
-	
+
 	def String generateArchitectureInsertQuery(System rossystem, Boolean includeInsert)
     {
 		'''
 			«IF includeInsert»
 				insert
 			«ENDIF»
-			
+
 			«FOR rossys : Utilities.collectAllSystems(rossystem)»
 				«val nodesList = Utilities.rosNodesFromSystem(rossys)»
 				«FOR comp : nodesList»
 					«generateInsertQuery(comp)»
 				«ENDFOR»
 				«processSubNodes(nodesList)»
-				
+
 			«ENDFOR»
-		'''	      
-    	
+		'''
+
     }
-    
-    	
+
+
 	def String generateArchitectureInsertQuery(System rossystem)
     {
 		return generateArchitectureInsertQuery(rossystem, true)
     }
-    
-    
+
+
 	def String describeNode(ros.Node node, String namespace)
 	{
 		val serviceServers = node.getServiceserver();
-	    
+
 	    val isLifecycle = serviceServers.exists[ server | server.service.fullname == "lifecycle_msgs/ChangeState"]
-	    
+
 	    val node_kind = isLifecycle ? "LifeCycleNode" : "ROSNode"
 	    val nodeName = _namer.uniqueName(node)
 		'''
@@ -282,26 +282,26 @@ class ArchitectureTQLGenerator extends AbstractGenerator {
 			has namespace "«namespace»";
 		'''
 	}
-      
+
     def List<Parameter> getParameters(RosNode node)
 	{
 		val originalParameters = node.from.parameter
-		
+
 		for (parameter_override : node.rosparameters) {
 			val indexOverride = originalParameters.indexOf(parameter_override.from)
 			originalParameters.get(indexOverride).value = parameter_override.value
 		}
-		
+
 		return originalParameters
 	}
-	
+
 	def Pair<CharSequence, String> ParamValueToValueEntity(Parameter the_parameter, String parent_name) {
 		val the_value = the_parameter.value
 //		println("parent_name " + parent_name)
 //		println("thevalue " + the_value)
 		if(the_value instanceof ParameterSequence)
 		{
-			
+
 			val result = newArrayList
 			val parseq_name = _namer.uniqueName(the_value, parent_name)
 //			println(parseq_name)
@@ -312,14 +312,14 @@ class ArchitectureTQLGenerator extends AbstractGenerator {
 					«describeParameter(_namer.uniqueName(param_value.value, parent_name), param_value.value)»
 					$«parseq_name»_elem_«param_value.key» (array: $«parseq_name», array_value: $«_namer.uniqueName(param_value.value, parent_name)») isa at_index, has index «param_value.key»;
 				«ENDFOR»
-				
+
 			'''
 			// Insert end thing for the actual array :-)
 			for (param_value : the_value.value) {
 				result.add(_namer.uniqueName(param_value, parent_name))
 			}
 			return body -> parseq_name
-		} 
+		}
 		else
 		{
 			val name = _namer.uniqueName(the_value, parent_name)
@@ -327,7 +327,7 @@ class ArchitectureTQLGenerator extends AbstractGenerator {
 			return single -> name
 		}
 	}
-	
+
 	def int handleDuration(String duration_field)
     {
     	if(duration_field == 'infinite')
@@ -339,7 +339,7 @@ class ArchitectureTQLGenerator extends AbstractGenerator {
     		Integer.parseInt(duration_field)
     	}
     }
-	
+
 	def String handleQoS(ros.QualityOfService qos, String interfaceName)
     {
     	if(qos !== null)
@@ -357,20 +357,20 @@ class ArchitectureTQLGenerator extends AbstractGenerator {
 		    if (qos.leaseDuration !== null) 'has lease_duration ' + handleDuration(qos.leaseDuration) else null
 		).filterNull
     	'''
-				
+
 				$«qosName» isa QoSProfile,
 				 	   	«qosProps.join(",\n")»
 				;
-				
+
 				$«qosName»_rel (interface: $«interfaceName», qos: $«qosName») isa has_qos;
 			'''
     	}
     }
-    
+
     def String generateInsertQuery(RosNode node)
     {
     	val innerNode = node.from
-	    
+
 	    val nodeName = _namer.uniqueName(innerNode)
 	    '''
 			«describeNode(innerNode, node.namespace)»
@@ -387,7 +387,7 @@ class ArchitectureTQLGenerator extends AbstractGenerator {
 				«ENDIF»
 			«ENDFOR»
 			«IF !node.getParameters.empty»
-				
+
 				$«nodeName»_parameters (
 					node: $«nodeName»,
 					«FOR parameter : node.getParameters SEPARATOR ", "»
@@ -402,9 +402,9 @@ class ArchitectureTQLGenerator extends AbstractGenerator {
 				has interface_name "«topicName»",
 				has interface_type "«subscription.message.fullname»";
 				«handleQoS(subscription.qos, subName)»
-				
+
 				(node: $«nodeName», subscriber: $«subName») isa has_topic;
-				
+
 			«ENDFOR»
 			«FOR publication : innerNode.publisher»
 				«val pubName = _namer.uniqueName(publication, nodeName)»
@@ -413,7 +413,7 @@ class ArchitectureTQLGenerator extends AbstractGenerator {
 				has interface_name "«topicName»",
 				has interface_type "«publication.message.fullname»";
 				«handleQoS(publication.qos, pubName)»
-				
+
 				(node: $«nodeName», publisher: $«pubName») isa has_topic;
 			«ENDFOR»
 			«FOR actionClient : innerNode.actionclient»
@@ -422,7 +422,7 @@ class ArchitectureTQLGenerator extends AbstractGenerator {
 				$«acName» isa ActionClient,
 				has interface_name "«interfaceName»",
 				has interface_type "«actionClient.action.fullname»";
-				(node: $«nodeName», client: $«acName») isa has_action;	
+				(node: $«nodeName», client: $«acName») isa has_action;
 			«ENDFOR»
 			«FOR actionServer : innerNode.actionserver»
 				«val asName = _namer.uniqueName(actionServer, nodeName)»
@@ -430,7 +430,7 @@ class ArchitectureTQLGenerator extends AbstractGenerator {
 				$«asName» isa ActionServer,
 				has interface_name "«interfaceName»",
 				has interface_type "«actionServer.action.fullname»";
-				(node: $«nodeName», server: $«asName») isa has_action;	
+				(node: $«nodeName», server: $«asName») isa has_action;
 			«ENDFOR»
 			«FOR serviceClient : innerNode.serviceclient»
 				«val acName = _namer.uniqueName(serviceClient, nodeName)»
@@ -438,7 +438,7 @@ class ArchitectureTQLGenerator extends AbstractGenerator {
 				$«acName» isa ServiceClient,
 				has interface_name "«interfaceName»",
 				has interface_type "«serviceClient.service.fullname»";
-				(node: $«nodeName», client: $«acName») isa has_service;	
+				(node: $«nodeName», client: $«acName») isa has_service;
 			«ENDFOR»
 			«FOR serviceServer : innerNode.serviceserver»
 				«val asName = _namer.uniqueName(serviceServer, nodeName)»
@@ -446,14 +446,14 @@ class ArchitectureTQLGenerator extends AbstractGenerator {
 				$«asName» isa ServiceServer,
 				has interface_name "«interfaceName»",
 				has interface_type "«serviceServer.service.fullname»";
-				(node: $«nodeName», server: $«asName») isa has_service;	
+				(node: $«nodeName», server: $«asName») isa has_service;
 			«ENDFOR»
-		'''			    
+		'''
     }
-    
 
 
-	
+
+
 	def String processSubNodes(List<RosNode> rosNodes)
     {
     	val Map<ros.Node, List<RosNode>> parenthood = newHashMap
@@ -473,14 +473,14 @@ class ArchitectureTQLGenerator extends AbstractGenerator {
     	'''
 			«FOR family : parenthood.entrySet»
 				(node: $«uniqueName(family.key)»,
-				«FOR child : family.value SEPARATOR ", "» 
+				«FOR child : family.value SEPARATOR ", "»
 					subnode: $«uniqueName(child.from)»
 				«ENDFOR»
 				) isa subnode;
 			«ENDFOR»
 		'''
     }
-    
 
-				    
+
+
 }

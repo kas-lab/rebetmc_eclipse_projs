@@ -27,7 +27,7 @@ class Utilities {
     		return lit.value
     	}
     }
-    
+
     private def static void collectRecursively(system.System ros_sys, List<system.System> result) {
     	if (ros_sys === null || result.contains(ros_sys)) return;
     	result.add(ros_sys);
@@ -41,12 +41,12 @@ class Utilities {
     def static List<system.System> collectAllSystems(system.System rossystem) {
     	val List<system.System> result = newArrayList
         Utilities.collectRecursively(rossystem, result)
-        return result       
+        return result
     }
-    
+
     def static List<system.RosNode> rosNodesFromSystem(system.System ros_system) {
     	val node_list = newArrayList
-    	
+
     	for (component : ros_system.components)
     	{
     		if(component instanceof system.RosNode)
@@ -54,18 +54,18 @@ class Utilities {
     			node_list.add(component as system.RosNode)
     		}
     	}
-    	
-    	return node_list    	
+
+    	return node_list
     }
-    
-    
-    
+
+
+
 	def static <T extends Object> List<List<T>> getCartesianProduct(List<List<T>> sets) {
 	    val List<List<T>> result = newArrayList
 	    getCartesianProductHelper(sets, 0, newArrayList, result);
 	    return result;
 	}
-	
+
 	def static <T extends Object> void getCartesianProductHelper(List<List<T>> sets, int index, List<T> current, List<List<T>> result) {
 	    if (index == sets.size()) {
 	        result.add(new ArrayList(current))
@@ -78,26 +78,26 @@ class Utilities {
 	        current.remove(current.size() - 1)
 	    }
 	}
-	
+
 	def static <T extends Object> List<T> deriveFromImports(Resource resource, String fileSuffix, List<Import> imports, Class<T> clas)
 	{
 		val List<T> entities = newArrayList
-		
+
 		for (imp : imports) {
 			if(imp.importURI.endsWith(fileSuffix))
 			{
 				var uri = URI.createURI(imp.importURI)
 				if (uri.isRelative()) {
-					
+
             		uri = uri.resolve(resource.getURI());
         		}
         		val imported = resource.resourceSet.getResource(uri, true);
-        		if (imported === null || imported.getContents().isEmpty()) 
+        		if (imported === null || imported.getContents().isEmpty())
         		{
         			println("ResolutionModel import fail")
         		}
-        			
-        		
+
+
         		val root = imported.getContents().get(0);
 	            if (clas.isInstance(root)) {
 	               	entities.add(clas.cast(root))
@@ -106,15 +106,15 @@ class Utilities {
 				{
 					println("Root actually has type of " + root.class.toString())
 				}
-				
+
 			}
-			
+
 		}
-		
-		return entities;	
-		
+
+		return entities;
+
 	}
-	
+
 	def static String escape(String name) {
         var noSlash = name.replace("/", "_slash_")
         var noTildenoSlash = noSlash.replace("~","_tilde_")
@@ -126,6 +126,15 @@ class Utilities {
         var withSlash = name.replace("_slash_", "/")
         var withTildewithSlash = withSlash.replace("_tilde_","~")
         withTildewithSlash.replace("_dot_",".")
-        
+
+    }
+
+    def static String typeqlString(String s) {
+        if (!s.contains('"'))
+            '"' + s + '"'
+        else if (!s.contains("'"))
+            "'" + s + "'"
+        else
+            '"' + s.replace('"', "'") + '"'
     }
 }

@@ -6,7 +6,9 @@ package eu.coresense.context.serializer;
 import com.google.inject.Inject;
 import de.fraunhofer.ipa.ros.serializer.BasicsSemanticSequencer;
 import eu.coresense.common.CommonPackage;
+import eu.coresense.common.DecimalLiteral;
 import eu.coresense.common.Import;
+import eu.coresense.common.IntLiteral;
 import eu.coresense.context.contextModel.ContextModel;
 import eu.coresense.context.contextModel.ContextModelPackage;
 import eu.coresense.context.contextModel.ContextVar;
@@ -101,8 +103,14 @@ public class ContextModelSemanticSequencer extends BasicsSemanticSequencer {
 		Set<Parameter> parameters = context.getEnabledBooleanParameters();
 		if (epackage == CommonPackage.eINSTANCE)
 			switch (semanticObject.eClass().getClassifierID()) {
+			case CommonPackage.DECIMAL_LITERAL:
+				sequence_DecimalLiteral(context, (DecimalLiteral) semanticObject); 
+				return; 
 			case CommonPackage.IMPORT:
 				sequence_Import(context, (Import) semanticObject); 
+				return; 
+			case CommonPackage.INT_LITERAL:
+				sequence_IntLiteral(context, (IntLiteral) semanticObject); 
 				return; 
 			}
 		else if (epackage == ContextModelPackage.eINSTANCE)
@@ -352,7 +360,8 @@ public class ContextModelSemanticSequencer extends BasicsSemanticSequencer {
 	 *         doProxy=DoProxy? 
 	 *         functionName=STRING 
 	 *         functionLibrary=STRING? 
-	 *         functionArgs=STRING?
+	 *         functionArgs=STRING? 
+	 *         thresholds+=Literal*
 	 *     )
 	 * </pre>
 	 */
@@ -377,6 +386,27 @@ public class ContextModelSemanticSequencer extends BasicsSemanticSequencer {
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getDataSourceAccess().getRefQualifiedRefParserRuleCall_1_1_0(), semanticObject.getRef());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
+	 *     Literal returns DecimalLiteral
+	 *     DecimalLiteral returns DecimalLiteral
+	 *
+	 * Constraint:
+	 *     value=DECIMAL
+	 * </pre>
+	 */
+	protected void sequence_DecimalLiteral(ISerializationContext context, DecimalLiteral semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, CommonPackage.Literals.DECIMAL_LITERAL__VALUE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, CommonPackage.Literals.DECIMAL_LITERAL__VALUE));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getDecimalLiteralAccess().getValueDECIMALTerminalRuleCall_0(), semanticObject.getValue());
 		feeder.finish();
 	}
 	
@@ -437,6 +467,27 @@ public class ContextModelSemanticSequencer extends BasicsSemanticSequencer {
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getImportAccess().getImportURISTRINGTerminalRuleCall_1_0(), semanticObject.getImportURI());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
+	 *     Literal returns IntLiteral
+	 *     IntLiteral returns IntLiteral
+	 *
+	 * Constraint:
+	 *     value=INT
+	 * </pre>
+	 */
+	protected void sequence_IntLiteral(ISerializationContext context, IntLiteral semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, CommonPackage.Literals.INT_LITERAL__VALUE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, CommonPackage.Literals.INT_LITERAL__VALUE));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getIntLiteralAccess().getValueINTTerminalRuleCall_0(), semanticObject.getValue());
 		feeder.finish();
 	}
 	

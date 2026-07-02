@@ -30,7 +30,26 @@ ContextVar:
 		'function_name' functionName=STRING
 		('function_lib' functionLibrary=STRING)?
 		('function_args' functionArgs=STRING)?
+		('thresholds' thresholds+=Literal*)?
 	'}';
+	
+Literal returns common::Literal:
+	IntLiteral
+    | DecimalLiteral
+;
+
+IntLiteral returns common::IntLiteral:
+    value=INT
+;
+
+DecimalLiteral returns common::DecimalLiteral:
+    value=DECIMAL
+;
+
+
+terminal DECIMAL returns ecore::EBigDecimal:
+    INT '.' INT
+;
 
 MissionVar:
 	action=[ros::ActionSpec] ':' context_vars+=ContextVar*

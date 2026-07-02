@@ -37,6 +37,8 @@ Goal_kwargs : 'goal_kwargs';
 
 Publisher : 'publisher:';
 
+Thresholds : 'thresholds';
+
 GraphName : 'GraphName';
 
 Float32_1 : 'float32[]';
@@ -190,6 +192,8 @@ S : 's';
 LeftCurlyBracket : '{';
 
 RightCurlyBracket : '}';
+
+RULE_DECIMAL : RULE_INT '.' RULE_INT;
 
 fragment RULE_DIGIT : '0'..'9';
 

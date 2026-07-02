@@ -3,20 +3,29 @@
  */
 package eu.coresense.context.contextModel.impl;
 
+import eu.coresense.common.Literal;
+
 import eu.coresense.context.contextModel.ContextModelPackage;
 import eu.coresense.context.contextModel.ContextVar;
 import eu.coresense.context.contextModel.DataSource;
 import eu.coresense.context.contextModel.DoCache;
 import eu.coresense.context.contextModel.DoProxy;
 
+import java.util.Collection;
+
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 
 import primitives.AbstractType;
 
@@ -38,6 +47,7 @@ import primitives.AbstractType;
  *   <li>{@link eu.coresense.context.contextModel.impl.ContextVarImpl#getFunctionName <em>Function Name</em>}</li>
  *   <li>{@link eu.coresense.context.contextModel.impl.ContextVarImpl#getFunctionLibrary <em>Function Library</em>}</li>
  *   <li>{@link eu.coresense.context.contextModel.impl.ContextVarImpl#getFunctionArgs <em>Function Args</em>}</li>
+ *   <li>{@link eu.coresense.context.contextModel.impl.ContextVarImpl#getThresholds <em>Thresholds</em>}</li>
  * </ul>
  *
  * @generated
@@ -203,6 +213,16 @@ public class ContextVarImpl extends MinimalEObjectImpl.Container implements Cont
    * @ordered
    */
   protected String functionArgs = FUNCTION_ARGS_EDEFAULT;
+
+  /**
+   * The cached value of the '{@link #getThresholds() <em>Thresholds</em>}' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getThresholds()
+   * @generated
+   * @ordered
+   */
+  protected EList<Literal> thresholds;
 
   /**
    * <!-- begin-user-doc -->
@@ -581,6 +601,21 @@ public class ContextVarImpl extends MinimalEObjectImpl.Container implements Cont
    * @generated
    */
   @Override
+  public EList<Literal> getThresholds()
+  {
+    if (thresholds == null)
+    {
+      thresholds = new EObjectContainmentEList<Literal>(Literal.class, this, ContextModelPackage.CONTEXT_VAR__THRESHOLDS);
+    }
+    return thresholds;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
   {
     switch (featureID)
@@ -593,6 +628,8 @@ public class ContextVarImpl extends MinimalEObjectImpl.Container implements Cont
         return basicSetDoCache(null, msgs);
       case ContextModelPackage.CONTEXT_VAR__DO_PROXY:
         return basicSetDoProxy(null, msgs);
+      case ContextModelPackage.CONTEXT_VAR__THRESHOLDS:
+        return ((InternalEList<?>)getThresholds()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -627,6 +664,8 @@ public class ContextVarImpl extends MinimalEObjectImpl.Container implements Cont
         return getFunctionLibrary();
       case ContextModelPackage.CONTEXT_VAR__FUNCTION_ARGS:
         return getFunctionArgs();
+      case ContextModelPackage.CONTEXT_VAR__THRESHOLDS:
+        return getThresholds();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -636,6 +675,7 @@ public class ContextVarImpl extends MinimalEObjectImpl.Container implements Cont
    * <!-- end-user-doc -->
    * @generated
    */
+  @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue)
   {
@@ -670,6 +710,10 @@ public class ContextVarImpl extends MinimalEObjectImpl.Container implements Cont
         return;
       case ContextModelPackage.CONTEXT_VAR__FUNCTION_ARGS:
         setFunctionArgs((String)newValue);
+        return;
+      case ContextModelPackage.CONTEXT_VAR__THRESHOLDS:
+        getThresholds().clear();
+        getThresholds().addAll((Collection<? extends Literal>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -715,6 +759,9 @@ public class ContextVarImpl extends MinimalEObjectImpl.Container implements Cont
       case ContextModelPackage.CONTEXT_VAR__FUNCTION_ARGS:
         setFunctionArgs(FUNCTION_ARGS_EDEFAULT);
         return;
+      case ContextModelPackage.CONTEXT_VAR__THRESHOLDS:
+        getThresholds().clear();
+        return;
     }
     super.eUnset(featureID);
   }
@@ -749,6 +796,8 @@ public class ContextVarImpl extends MinimalEObjectImpl.Container implements Cont
         return FUNCTION_LIBRARY_EDEFAULT == null ? functionLibrary != null : !FUNCTION_LIBRARY_EDEFAULT.equals(functionLibrary);
       case ContextModelPackage.CONTEXT_VAR__FUNCTION_ARGS:
         return FUNCTION_ARGS_EDEFAULT == null ? functionArgs != null : !FUNCTION_ARGS_EDEFAULT.equals(functionArgs);
+      case ContextModelPackage.CONTEXT_VAR__THRESHOLDS:
+        return thresholds != null && !thresholds.isEmpty();
     }
     return super.eIsSet(featureID);
   }

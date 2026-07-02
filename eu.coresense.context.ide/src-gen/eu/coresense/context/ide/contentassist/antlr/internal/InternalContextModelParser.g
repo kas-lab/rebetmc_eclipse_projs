@@ -109,6 +109,7 @@ import eu.coresense.context.services.ContextModelGrammarAccess;
 		tokenNameToValue.put("Float32_1", "'float32[]'");
 		tokenNameToValue.put("Float64_1", "'float64[]'");
 		tokenNameToValue.put("Publisher", "'publisher:'");
+		tokenNameToValue.put("Thresholds", "'thresholds'");
 		tokenNameToValue.put("Goal_kwargs", "'goal_kwargs'");
 		tokenNameToValue.put("ParameterAny", "'ParameterAny'");
 		tokenNameToValue.put("Function_lib", "'function_lib'");
@@ -185,6 +186,81 @@ ruleContextVar
 		{ before(grammarAccess.getContextVarAccess().getGroup()); }
 		(rule__ContextVar__Group__0)
 		{ after(grammarAccess.getContextVarAccess().getGroup()); }
+	)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+// Entry rule entryRuleLiteral
+entryRuleLiteral
+:
+{ before(grammarAccess.getLiteralRule()); }
+	 ruleLiteral
+{ after(grammarAccess.getLiteralRule()); } 
+	 EOF 
+;
+
+// Rule Literal
+ruleLiteral 
+	@init {
+		int stackSize = keepStackSize();
+	}
+	:
+	(
+		{ before(grammarAccess.getLiteralAccess().getAlternatives()); }
+		(rule__Literal__Alternatives)
+		{ after(grammarAccess.getLiteralAccess().getAlternatives()); }
+	)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+// Entry rule entryRuleIntLiteral
+entryRuleIntLiteral
+:
+{ before(grammarAccess.getIntLiteralRule()); }
+	 ruleIntLiteral
+{ after(grammarAccess.getIntLiteralRule()); } 
+	 EOF 
+;
+
+// Rule IntLiteral
+ruleIntLiteral 
+	@init {
+		int stackSize = keepStackSize();
+	}
+	:
+	(
+		{ before(grammarAccess.getIntLiteralAccess().getValueAssignment()); }
+		(rule__IntLiteral__ValueAssignment)
+		{ after(grammarAccess.getIntLiteralAccess().getValueAssignment()); }
+	)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+// Entry rule entryRuleDecimalLiteral
+entryRuleDecimalLiteral
+:
+{ before(grammarAccess.getDecimalLiteralRule()); }
+	 ruleDecimalLiteral
+{ after(grammarAccess.getDecimalLiteralRule()); } 
+	 EOF 
+;
+
+// Rule DecimalLiteral
+ruleDecimalLiteral 
+	@init {
+		int stackSize = keepStackSize();
+	}
+	:
+	(
+		{ before(grammarAccess.getDecimalLiteralAccess().getValueAssignment()); }
+		(rule__DecimalLiteral__ValueAssignment)
+		{ after(grammarAccess.getDecimalLiteralAccess().getValueAssignment()); }
 	)
 ;
 finally {
@@ -2141,6 +2217,27 @@ finally {
 	restoreStackSize(stackSize);
 }
 
+rule__Literal__Alternatives
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	(
+		{ before(grammarAccess.getLiteralAccess().getIntLiteralParserRuleCall_0()); }
+		ruleIntLiteral
+		{ after(grammarAccess.getLiteralAccess().getIntLiteralParserRuleCall_0()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getLiteralAccess().getDecimalLiteralParserRuleCall_1()); }
+		ruleDecimalLiteral
+		{ after(grammarAccess.getLiteralAccess().getDecimalLiteralParserRuleCall_1()); }
+	)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
 rule__QualifiedRef__Alternatives
 	@init {
 		int stackSize = keepStackSize();
@@ -3287,6 +3384,7 @@ rule__ContextVar__Group__15
 	}
 :
 	rule__ContextVar__Group__15__Impl
+	rule__ContextVar__Group__16
 ;
 finally {
 	restoreStackSize(stackSize);
@@ -3298,9 +3396,35 @@ rule__ContextVar__Group__15__Impl
 	}
 :
 (
-	{ before(grammarAccess.getContextVarAccess().getRightCurlyBracketKeyword_15()); }
+	{ before(grammarAccess.getContextVarAccess().getGroup_15()); }
+	(rule__ContextVar__Group_15__0)?
+	{ after(grammarAccess.getContextVarAccess().getGroup_15()); }
+)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__ContextVar__Group__16
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	rule__ContextVar__Group__16__Impl
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__ContextVar__Group__16__Impl
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+(
+	{ before(grammarAccess.getContextVarAccess().getRightCurlyBracketKeyword_16()); }
 	RightCurlyBracket
-	{ after(grammarAccess.getContextVarAccess().getRightCurlyBracketKeyword_15()); }
+	{ after(grammarAccess.getContextVarAccess().getRightCurlyBracketKeyword_16()); }
 )
 ;
 finally {
@@ -3652,6 +3776,60 @@ rule__ContextVar__Group_14__1__Impl
 	{ before(grammarAccess.getContextVarAccess().getFunctionArgsAssignment_14_1()); }
 	(rule__ContextVar__FunctionArgsAssignment_14_1)
 	{ after(grammarAccess.getContextVarAccess().getFunctionArgsAssignment_14_1()); }
+)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+rule__ContextVar__Group_15__0
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	rule__ContextVar__Group_15__0__Impl
+	rule__ContextVar__Group_15__1
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__ContextVar__Group_15__0__Impl
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+(
+	{ before(grammarAccess.getContextVarAccess().getThresholdsKeyword_15_0()); }
+	Thresholds
+	{ after(grammarAccess.getContextVarAccess().getThresholdsKeyword_15_0()); }
+)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__ContextVar__Group_15__1
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	rule__ContextVar__Group_15__1__Impl
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__ContextVar__Group_15__1__Impl
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+(
+	{ before(grammarAccess.getContextVarAccess().getThresholdsAssignment_15_1()); }
+	(rule__ContextVar__ThresholdsAssignment_15_1)*
+	{ after(grammarAccess.getContextVarAccess().getThresholdsAssignment_15_1()); }
 )
 ;
 finally {
@@ -9059,6 +9237,51 @@ rule__ContextVar__FunctionArgsAssignment_14_1
 		{ before(grammarAccess.getContextVarAccess().getFunctionArgsSTRINGTerminalRuleCall_14_1_0()); }
 		RULE_STRING
 		{ after(grammarAccess.getContextVarAccess().getFunctionArgsSTRINGTerminalRuleCall_14_1_0()); }
+	)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__ContextVar__ThresholdsAssignment_15_1
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	(
+		{ before(grammarAccess.getContextVarAccess().getThresholdsLiteralParserRuleCall_15_1_0()); }
+		ruleLiteral
+		{ after(grammarAccess.getContextVarAccess().getThresholdsLiteralParserRuleCall_15_1_0()); }
+	)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__IntLiteral__ValueAssignment
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	(
+		{ before(grammarAccess.getIntLiteralAccess().getValueINTTerminalRuleCall_0()); }
+		RULE_INT
+		{ after(grammarAccess.getIntLiteralAccess().getValueINTTerminalRuleCall_0()); }
+	)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__DecimalLiteral__ValueAssignment
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	(
+		{ before(grammarAccess.getDecimalLiteralAccess().getValueDECIMALTerminalRuleCall_0()); }
+		RULE_DECIMAL
+		{ after(grammarAccess.getDecimalLiteralAccess().getValueDECIMALTerminalRuleCall_0()); }
 	)
 ;
 finally {

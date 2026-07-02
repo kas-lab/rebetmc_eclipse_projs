@@ -169,14 +169,12 @@ public class RosToolingSupport {
 			
 			EObject root = resource.getContents().get(0);
 			if (root != null) {
-				java.lang.System.out.println("Loaded model with root of type: " + root.getClass().getName() + " from file: " + resource.getURI());
 				validate(resource);
 			} else {
 				java.lang.System.out.println("Root is null for file: " + resource.getURI());
 			}
 		}
 		
-		java.lang.System.out.println("-----Loaded " + resources.size() + " ." + fileExtension + " files-----\n\n");
 		return resources;
  	}
 

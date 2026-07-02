@@ -204,13 +204,22 @@ public interface ContextModelPackage extends EPackage
   int CONTEXT_VAR__FUNCTION_ARGS = 9;
 
   /**
+   * The feature id for the '<em><b>Thresholds</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CONTEXT_VAR__THRESHOLDS = 10;
+
+  /**
    * The number of structural features of the '<em>Context Var</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int CONTEXT_VAR_FEATURE_COUNT = 10;
+  int CONTEXT_VAR_FEATURE_COUNT = 11;
 
   /**
    * The meta object id for the '{@link eu.coresense.context.contextModel.impl.MissionVarImpl <em>Mission Var</em>}' class.
@@ -655,6 +664,17 @@ public interface ContextModelPackage extends EPackage
   EAttribute getContextVar_FunctionArgs();
 
   /**
+   * Returns the meta object for the containment reference list '{@link eu.coresense.context.contextModel.ContextVar#getThresholds <em>Thresholds</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Thresholds</em>'.
+   * @see eu.coresense.context.contextModel.ContextVar#getThresholds()
+   * @see #getContextVar()
+   * @generated
+   */
+  EReference getContextVar_Thresholds();
+
+  /**
    * Returns the meta object for class '{@link eu.coresense.context.contextModel.MissionVar <em>Mission Var</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1001,6 +1021,14 @@ public interface ContextModelPackage extends EPackage
      * @generated
      */
     EAttribute CONTEXT_VAR__FUNCTION_ARGS = eINSTANCE.getContextVar_FunctionArgs();
+
+    /**
+     * The meta object literal for the '<em><b>Thresholds</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference CONTEXT_VAR__THRESHOLDS = eINSTANCE.getContextVar_Thresholds();
 
     /**
      * The meta object literal for the '{@link eu.coresense.context.contextModel.impl.MissionVarImpl <em>Mission Var</em>}' class.

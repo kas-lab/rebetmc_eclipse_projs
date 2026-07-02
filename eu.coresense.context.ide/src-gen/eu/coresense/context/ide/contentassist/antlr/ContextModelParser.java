@@ -33,6 +33,7 @@ public class ContextModelParser extends AbstractContentAssistParser {
 		}
 		
 		private static void init(ImmutableMap.Builder<AbstractElement, String> builder, ContextModelGrammarAccess grammarAccess) {
+			builder.put(grammarAccess.getLiteralAccess().getAlternatives(), "rule__Literal__Alternatives");
 			builder.put(grammarAccess.getQualifiedRefAccess().getAlternatives(), "rule__QualifiedRef__Alternatives");
 			builder.put(grammarAccess.getNamespaceAccess().getAlternatives(), "rule__Namespace__Alternatives");
 			builder.put(grammarAccess.getRosParamNamesAccess().getAlternatives(), "rule__RosParamNames__Alternatives");
@@ -50,6 +51,7 @@ public class ContextModelParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getContextVarAccess().getGroup_10(), "rule__ContextVar__Group_10__0");
 			builder.put(grammarAccess.getContextVarAccess().getGroup_13(), "rule__ContextVar__Group_13__0");
 			builder.put(grammarAccess.getContextVarAccess().getGroup_14(), "rule__ContextVar__Group_14__0");
+			builder.put(grammarAccess.getContextVarAccess().getGroup_15(), "rule__ContextVar__Group_15__0");
 			builder.put(grammarAccess.getMissionVarAccess().getGroup(), "rule__MissionVar__Group__0");
 			builder.put(grammarAccess.getDoCacheAccess().getGroup(), "rule__DoCache__Group__0");
 			builder.put(grammarAccess.getDoProxyAccess().getGroup(), "rule__DoProxy__Group__0");
@@ -145,6 +147,9 @@ public class ContextModelParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getContextVarAccess().getFunctionNameAssignment_12(), "rule__ContextVar__FunctionNameAssignment_12");
 			builder.put(grammarAccess.getContextVarAccess().getFunctionLibraryAssignment_13_1(), "rule__ContextVar__FunctionLibraryAssignment_13_1");
 			builder.put(grammarAccess.getContextVarAccess().getFunctionArgsAssignment_14_1(), "rule__ContextVar__FunctionArgsAssignment_14_1");
+			builder.put(grammarAccess.getContextVarAccess().getThresholdsAssignment_15_1(), "rule__ContextVar__ThresholdsAssignment_15_1");
+			builder.put(grammarAccess.getIntLiteralAccess().getValueAssignment(), "rule__IntLiteral__ValueAssignment");
+			builder.put(grammarAccess.getDecimalLiteralAccess().getValueAssignment(), "rule__DecimalLiteral__ValueAssignment");
 			builder.put(grammarAccess.getMissionVarAccess().getActionAssignment_0(), "rule__MissionVar__ActionAssignment_0");
 			builder.put(grammarAccess.getMissionVarAccess().getContext_varsAssignment_2(), "rule__MissionVar__Context_varsAssignment_2");
 			builder.put(grammarAccess.getDoCacheAccess().getDoAssignment_1(), "rule__DoCache__DoAssignment_1");

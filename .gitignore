@@ -12,3 +12,5 @@
 **/target/classes/
 **/xtend-gen/*
 !**/xtend-gen/.gitkeep
+
+__pycache__

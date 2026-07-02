@@ -28,6 +28,7 @@ import eu.coresense.requirements.requirementsModel.Proposition
 import eu.coresense.requirements.requirementsModel.BooleanStatement
 import eu.coresense.requirements.requirementsModel.MembershipFunction
 import eu.coresense.requirements.requirementsModel.FuzzyTriangular
+import eu.coresense.context.contextModel.ContextVar
 
 /**
  * Generates code from your model files on save.
@@ -68,6 +69,26 @@ class RequirementsModelGenerator extends AbstractGenerator {
     	$«togetherName» (expression: $«firstInner.key», expression: $«secondInner.key») isa fuzzy_«suffix»;
 		'''
 	}
+	
+	    
+    def static List<ContextVar> extractContextVars(List<Requirement> requirements)
+    {
+    	val contextVars = newArrayList
+    	for (requirement : requirements) {
+    		var expression = requirement.expression
+    		
+    		switch expression 
+    		{
+    				Quantifiable: {
+    					contextVars.add(expression.contextVariable)
+    				}
+    				Proposition: {
+    					contextVars.add(expression.condition.measurement)
+    				}
+    		}
+    	}
+    	return contextVars
+    }
 	
 	def Pair<String,String> generateInsert(CompoundExpression compoundExpression, Requirement parentRequirement)
 	{

@@ -8,6 +8,13 @@ import system.Component
 import system.SubSystem
 
 class Utilities {
+	
+	public static final String NEG_INF_INT_VAR = "negative_infinity_int";
+	public static final String INF_INT_VAR = "infinity_int";
+	public static final String NEG_INF_DBL_VAR = "negative_infinity_double";
+	public static final String INF_DBL_VAR = "infinity_double";
+	public static final String TQL_FALSE_VAR = "global_false";
+	public static final String TQL_TRUE_VAR = "global_true";
 	def static valueOfLiteral(Literal lit)
     {
     	if(lit instanceof IntLiteral)
@@ -27,7 +34,19 @@ class Utilities {
     		return lit.value
     	}
     }
-
+    
+    def static double literalDouble(Literal lit)
+    {
+    	switch lit{
+    		IntLiteral:
+    			return lit.value
+    		DecimalLiteral:
+    			return lit.value.doubleValue
+    		default:
+    			throw new Exception("not a number-y Literal")
+    	}
+    }
+    
     private def static void collectRecursively(system.System ros_sys, List<system.System> result) {
     	if (ros_sys === null || result.contains(ros_sys)) return;
     	result.add(ros_sys);

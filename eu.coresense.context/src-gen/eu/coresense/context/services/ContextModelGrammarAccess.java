@@ -147,7 +147,11 @@ public class ContextModelGrammarAccess extends AbstractElementFinder.AbstractGra
 		private final Keyword cFunction_argsKeyword_14_0 = (Keyword)cGroup_14.eContents().get(0);
 		private final Assignment cFunctionArgsAssignment_14_1 = (Assignment)cGroup_14.eContents().get(1);
 		private final RuleCall cFunctionArgsSTRINGTerminalRuleCall_14_1_0 = (RuleCall)cFunctionArgsAssignment_14_1.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_15 = (Keyword)cGroup.eContents().get(15);
+		private final Group cGroup_15 = (Group)cGroup.eContents().get(15);
+		private final Keyword cThresholdsKeyword_15_0 = (Keyword)cGroup_15.eContents().get(0);
+		private final Assignment cThresholdsAssignment_15_1 = (Assignment)cGroup_15.eContents().get(1);
+		private final RuleCall cThresholdsLiteralParserRuleCall_15_1_0 = (RuleCall)cThresholdsAssignment_15_1.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_16 = (Keyword)cGroup.eContents().get(16);
 		
 		//ContextVar:
 		//    'ContextVariable' name=ID
@@ -161,6 +165,7 @@ public class ContextModelGrammarAccess extends AbstractElementFinder.AbstractGra
 		//        'function_name' functionName=STRING
 		//        ('function_lib' functionLibrary=STRING)?
 		//        ('function_args' functionArgs=STRING)?
+		//        ('thresholds' thresholds+=Literal*)?
 		//    '}';
 		@Override public ParserRule getRule() { return rule; }
 		
@@ -175,6 +180,7 @@ public class ContextModelGrammarAccess extends AbstractElementFinder.AbstractGra
 		//    'function_name' functionName=STRING
 		//    ('function_lib' functionLibrary=STRING)?
 		//    ('function_args' functionArgs=STRING)?
+		//    ('thresholds' thresholds+=Literal*)?
 		//'}'
 		public Group getGroup() { return cGroup; }
 		
@@ -292,8 +298,74 @@ public class ContextModelGrammarAccess extends AbstractElementFinder.AbstractGra
 		//STRING
 		public RuleCall getFunctionArgsSTRINGTerminalRuleCall_14_1_0() { return cFunctionArgsSTRINGTerminalRuleCall_14_1_0; }
 		
+		//('thresholds' thresholds+=Literal*)?
+		public Group getGroup_15() { return cGroup_15; }
+		
+		//'thresholds'
+		public Keyword getThresholdsKeyword_15_0() { return cThresholdsKeyword_15_0; }
+		
+		//thresholds+=Literal*
+		public Assignment getThresholdsAssignment_15_1() { return cThresholdsAssignment_15_1; }
+		
+		//Literal
+		public RuleCall getThresholdsLiteralParserRuleCall_15_1_0() { return cThresholdsLiteralParserRuleCall_15_1_0; }
+		
 		//'}'
-		public Keyword getRightCurlyBracketKeyword_15() { return cRightCurlyBracketKeyword_15; }
+		public Keyword getRightCurlyBracketKeyword_16() { return cRightCurlyBracketKeyword_16; }
+	}
+	public class LiteralElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "eu.coresense.context.ContextModel.Literal");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final RuleCall cIntLiteralParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final RuleCall cDecimalLiteralParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		
+		//Literal returns common::Literal:
+		//    IntLiteral
+		//    | DecimalLiteral
+		//;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//IntLiteral
+		//| DecimalLiteral
+		public Alternatives getAlternatives() { return cAlternatives; }
+		
+		//IntLiteral
+		public RuleCall getIntLiteralParserRuleCall_0() { return cIntLiteralParserRuleCall_0; }
+		
+		//DecimalLiteral
+		public RuleCall getDecimalLiteralParserRuleCall_1() { return cDecimalLiteralParserRuleCall_1; }
+	}
+	public class IntLiteralElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "eu.coresense.context.ContextModel.IntLiteral");
+		private final Assignment cValueAssignment = (Assignment)rule.eContents().get(1);
+		private final RuleCall cValueINTTerminalRuleCall_0 = (RuleCall)cValueAssignment.eContents().get(0);
+		
+		//IntLiteral returns common::IntLiteral:
+		//    value=INT
+		//;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//value=INT
+		public Assignment getValueAssignment() { return cValueAssignment; }
+		
+		//INT
+		public RuleCall getValueINTTerminalRuleCall_0() { return cValueINTTerminalRuleCall_0; }
+	}
+	public class DecimalLiteralElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "eu.coresense.context.ContextModel.DecimalLiteral");
+		private final Assignment cValueAssignment = (Assignment)rule.eContents().get(1);
+		private final RuleCall cValueDECIMALTerminalRuleCall_0 = (RuleCall)cValueAssignment.eContents().get(0);
+		
+		//DecimalLiteral returns common::DecimalLiteral:
+		//    value=DECIMAL
+		//;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//value=DECIMAL
+		public Assignment getValueAssignment() { return cValueAssignment; }
+		
+		//DECIMAL
+		public RuleCall getValueDECIMALTerminalRuleCall_0() { return cValueDECIMALTerminalRuleCall_0; }
 	}
 	public class MissionVarElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "eu.coresense.context.ContextModel.MissionVar");
@@ -656,6 +728,10 @@ public class ContextModelGrammarAccess extends AbstractElementFinder.AbstractGra
 	
 	private final ContextModelElements pContextModel;
 	private final ContextVarElements pContextVar;
+	private final LiteralElements pLiteral;
+	private final IntLiteralElements pIntLiteral;
+	private final DecimalLiteralElements pDecimalLiteral;
+	private final TerminalRule tDECIMAL;
 	private final MissionVarElements pMissionVar;
 	private final DoCacheElements pDoCache;
 	private final DoProxyElements pDoProxy;
@@ -683,6 +759,10 @@ public class ContextModelGrammarAccess extends AbstractElementFinder.AbstractGra
 		this.gaTerminals = gaTerminals;
 		this.pContextModel = new ContextModelElements();
 		this.pContextVar = new ContextVarElements();
+		this.pLiteral = new LiteralElements();
+		this.pIntLiteral = new IntLiteralElements();
+		this.pDecimalLiteral = new DecimalLiteralElements();
+		this.tDECIMAL = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "eu.coresense.context.ContextModel.DECIMAL");
 		this.pMissionVar = new MissionVarElements();
 		this.pDoCache = new DoCacheElements();
 		this.pDoProxy = new DoProxyElements();
@@ -758,6 +838,7 @@ public class ContextModelGrammarAccess extends AbstractElementFinder.AbstractGra
 	//        'function_name' functionName=STRING
 	//        ('function_lib' functionLibrary=STRING)?
 	//        ('function_args' functionArgs=STRING)?
+	//        ('thresholds' thresholds+=Literal*)?
 	//    '}';
 	public ContextVarElements getContextVarAccess() {
 		return pContextVar;
@@ -765,6 +846,47 @@ public class ContextModelGrammarAccess extends AbstractElementFinder.AbstractGra
 	
 	public ParserRule getContextVarRule() {
 		return getContextVarAccess().getRule();
+	}
+	
+	//Literal returns common::Literal:
+	//    IntLiteral
+	//    | DecimalLiteral
+	//;
+	public LiteralElements getLiteralAccess() {
+		return pLiteral;
+	}
+	
+	public ParserRule getLiteralRule() {
+		return getLiteralAccess().getRule();
+	}
+	
+	//IntLiteral returns common::IntLiteral:
+	//    value=INT
+	//;
+	public IntLiteralElements getIntLiteralAccess() {
+		return pIntLiteral;
+	}
+	
+	public ParserRule getIntLiteralRule() {
+		return getIntLiteralAccess().getRule();
+	}
+	
+	//DecimalLiteral returns common::DecimalLiteral:
+	//    value=DECIMAL
+	//;
+	public DecimalLiteralElements getDecimalLiteralAccess() {
+		return pDecimalLiteral;
+	}
+	
+	public ParserRule getDecimalLiteralRule() {
+		return getDecimalLiteralAccess().getRule();
+	}
+	
+	//terminal DECIMAL returns ecore::EBigDecimal:
+	//    INT '.' INT
+	//;
+	public TerminalRule getDECIMALRule() {
+		return tDECIMAL;
 	}
 	
 	//MissionVar:

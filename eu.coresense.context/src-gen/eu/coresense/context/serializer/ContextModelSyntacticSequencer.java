@@ -21,11 +21,13 @@ import org.eclipse.xtext.serializer.sequencer.AbstractSyntacticSequencer;
 public class ContextModelSyntacticSequencer extends AbstractSyntacticSequencer {
 
 	protected ContextModelGrammarAccess grammarAccess;
+	protected AbstractElementAlias match_ContextVar_ThresholdsKeyword_15_0_q;
 	protected AbstractElementAlias match_ParameterStruct___LeftSquareBracketKeyword_1_0_BEGINTerminalRuleCall_1_1_RightSquareBracketKeyword_1_3_ENDTerminalRuleCall_1_4__q;
 	
 	@Inject
 	protected void init(IGrammarAccess access) {
 		grammarAccess = (ContextModelGrammarAccess) access;
+		match_ContextVar_ThresholdsKeyword_15_0_q = new TokenAlias(false, true, grammarAccess.getContextVarAccess().getThresholdsKeyword_15_0());
 		match_ParameterStruct___LeftSquareBracketKeyword_1_0_BEGINTerminalRuleCall_1_1_RightSquareBracketKeyword_1_3_ENDTerminalRuleCall_1_4__q = new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getParameterStructAccess().getLeftSquareBracketKeyword_1_0()), new TokenAlias(false, false, grammarAccess.getParameterStructAccess().getBEGINTerminalRuleCall_1_1()), new TokenAlias(false, false, grammarAccess.getParameterStructAccess().getRightSquareBracketKeyword_1_3()), new TokenAlias(false, false, grammarAccess.getParameterStructAccess().getENDTerminalRuleCall_1_4()));
 	}
 	
@@ -56,12 +58,30 @@ public class ContextModelSyntacticSequencer extends AbstractSyntacticSequencer {
 		List<INode> transitionNodes = collectNodes(fromNode, toNode);
 		for (AbstractElementAlias syntax : transition.getAmbiguousSyntaxes()) {
 			List<INode> syntaxNodes = getNodesFor(transitionNodes, syntax);
-			if (match_ParameterStruct___LeftSquareBracketKeyword_1_0_BEGINTerminalRuleCall_1_1_RightSquareBracketKeyword_1_3_ENDTerminalRuleCall_1_4__q.equals(syntax))
+			if (match_ContextVar_ThresholdsKeyword_15_0_q.equals(syntax))
+				emit_ContextVar_ThresholdsKeyword_15_0_q(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_ParameterStruct___LeftSquareBracketKeyword_1_0_BEGINTerminalRuleCall_1_1_RightSquareBracketKeyword_1_3_ENDTerminalRuleCall_1_4__q.equals(syntax))
 				emit_ParameterStruct___LeftSquareBracketKeyword_1_0_BEGINTerminalRuleCall_1_1_RightSquareBracketKeyword_1_3_ENDTerminalRuleCall_1_4__q(semanticObject, getLastNavigableState(), syntaxNodes);
 			else acceptNodes(getLastNavigableState(), syntaxNodes);
 		}
 	}
 
+	/**
+	 * <pre>
+	 * Ambiguous syntax:
+	 *     'thresholds'?
+	 *
+	 * This ambiguous syntax occurs at:
+	 *     functionArgs=STRING (ambiguity) '}' (rule end)
+	 *     functionLibrary=STRING (ambiguity) '}' (rule end)
+	 *     functionName=STRING (ambiguity) '}' (rule end)
+	 
+	 * </pre>
+	 */
+	protected void emit_ContextVar_ThresholdsKeyword_15_0_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
 	/**
 	 * <pre>
 	 * Ambiguous syntax:

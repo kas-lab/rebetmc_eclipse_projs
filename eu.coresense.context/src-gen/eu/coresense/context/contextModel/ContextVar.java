@@ -3,6 +3,10 @@
  */
 package eu.coresense.context.contextModel;
 
+import eu.coresense.common.Literal;
+
+import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EObject;
 
 import primitives.AbstractType;
@@ -26,6 +30,7 @@ import primitives.AbstractType;
  *   <li>{@link eu.coresense.context.contextModel.ContextVar#getFunctionName <em>Function Name</em>}</li>
  *   <li>{@link eu.coresense.context.contextModel.ContextVar#getFunctionLibrary <em>Function Library</em>}</li>
  *   <li>{@link eu.coresense.context.contextModel.ContextVar#getFunctionArgs <em>Function Args</em>}</li>
+ *   <li>{@link eu.coresense.context.contextModel.ContextVar#getThresholds <em>Thresholds</em>}</li>
  * </ul>
  *
  * @see eu.coresense.context.contextModel.ContextModelPackage#getContextVar()
@@ -253,5 +258,17 @@ public interface ContextVar extends EObject
    * @generated
    */
   void setFunctionArgs(String value);
+
+  /**
+   * Returns the value of the '<em><b>Thresholds</b></em>' containment reference list.
+   * The list contents are of type {@link eu.coresense.common.Literal}.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Thresholds</em>' containment reference list.
+   * @see eu.coresense.context.contextModel.ContextModelPackage#getContextVar_Thresholds()
+   * @model containment="true"
+   * @generated
+   */
+  EList<Literal> getThresholds();
 
 } // ContextVar

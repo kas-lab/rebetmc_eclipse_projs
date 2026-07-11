@@ -1,0 +1,6 @@
+eu.coresense:featureidewrapper:eclipse-plugin:lib/SPLCAT.jar @ /home/gus/eclipse_workspaces/rebet-elvin-version_100/git/rebetmc_eclipse_projs/featureidewrapper
+eu.coresense:featureidewrapper:eclipse-plugin:lib/antlr-3.4.jar @ /home/gus/eclipse_workspaces/rebet-elvin-version_100/git/rebetmc_eclipse_projs/featureidewrapper
+eu.coresense:featureidewrapper:eclipse-plugin:lib/guidsl.jar @ /home/gus/eclipse_workspaces/rebet-elvin-version_100/git/rebetmc_eclipse_projs/featureidewrapper
+eu.coresense:featureidewrapper:eclipse-plugin:lib/org.sat4j.core.jar @ /home/gus/eclipse_workspaces/rebet-elvin-version_100/git/rebetmc_eclipse_projs/featureidewrapper
+eu.coresense:featureidewrapper:eclipse-plugin:lib/org.sat4j.pb.jar @ /home/gus/eclipse_workspaces/rebet-elvin-version_100/git/rebetmc_eclipse_projs/featureidewrapper
+eu.coresense:featureidewrapper:eclipse-plugin:lib/splar.jar @ /home/gus/eclipse_workspaces/rebet-elvin-version_100/git/rebetmc_eclipse_projs/featureidewrapper

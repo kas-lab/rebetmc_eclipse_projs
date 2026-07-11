@@ -3,7 +3,13 @@ Bundle-ManifestVersion: 2
 Bundle-Name: Featureidewrapper
 Bundle-SymbolicName: featureidewrapper
 Bundle-Version: 1.0.0
-Bundle-ClassPath: ., lib/antlr-3.4.jar, lib/org.sat4j.core.jar
+Bundle-ClassPath: .,
+ lib/antlr-3.4.jar,
+ lib/org.sat4j.core.jar,
+ lib/org.sat4j.pb.jar,
+ lib/splar.jar,
+ lib/SPLCAT.jar,
+ lib/guidsl.jar
 Export-Package: de.ovgu.featureide.fm.core,
  de.ovgu.featureide.fm.core.analysis,
  de.ovgu.featureide.fm.core.analysis.cnf,
@@ -75,4 +81,4 @@ Export-Package: de.ovgu.featureide.fm.core,
  org.prop4j.explain.solvers.impl.sat4j
 Bundle-RequiredExecutionEnvironment: JavaSE-21
 Automatic-Module-Name: featureidewrapper
-Require-Bundle: org.sat4j.core;visibility:=reexport
+Require-Bundle: org.jsr-305

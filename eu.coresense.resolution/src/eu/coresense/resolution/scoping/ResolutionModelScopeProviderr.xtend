@@ -23,7 +23,7 @@ import ros.ActionSpec
 class ResolutionModelScopeProviderr  extends AbstractResolutionModelScopeProvider {
 	
 	override getScope(EObject context, EReference reference) {
-	    if (reference == ResolutionModelPackage.Literals.FEATURE_REFERENCE__PARENT || reference == ResolutionModelPackage.Literals.FUNCTIONAL_MAPPING__FEATURE) {
+	    if (reference == ResolutionModelPackage.Literals.FEATURE_REFERENCE__PARENT) {
 	    	val model = EcoreUtil2.getContainerOfType(context, ResolutionModel);
 	        if (model !== null && model.getFeatureModel() !== null) {
 	            val featureModel = model.getFeatureModel();
@@ -31,6 +31,14 @@ class ResolutionModelScopeProviderr  extends AbstractResolutionModelScopeProvide
 	            val optFeatures = new ArrayList;
 	            collectParents(root, optFeatures);
 	            return Scopes.scopeFor(optFeatures);
+	        }
+	    }
+	    if (reference == ResolutionModelPackage.Literals.FUNCTIONAL_MAPPING__FEATURE) {
+	        val model = EcoreUtil2.getContainerOfType(context, ResolutionModel);
+	        if (model !== null && model.getFeatureModel() !== null) {
+	            val allFeatures = new ArrayList<Feature>;
+	            collectAllFeatures(model.getFeatureModel().getRoot(), allFeatures);
+	            return Scopes.scopeFor(allFeatures);
 	        }
 	    }
 	   	if (reference == ResolutionModelPackage.Literals.FEATURE_REFERENCE__FEATURE) {
@@ -141,6 +149,15 @@ def void collectParents(Feature feature, List<Feature> parentFeatures) {
         	collectParents(child, parentFeatures);
 	    }
     }
+}
+
+def void collectAllFeatures(Feature feature, List<Feature> features) {
+	if (feature !== null) {
+		features.add(feature);
+		for (Feature child : feature.getChildren()) {
+			collectAllFeatures(child, features);
+		}
+	}
 }
 
 

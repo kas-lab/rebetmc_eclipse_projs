@@ -14,7 +14,7 @@
     <tycho-version>4.0.12</tycho-version>
     <tycho.disableP2Mirrors>true</tycho.disableP2Mirrors>
     <xtextVersion>2.42.0</xtextVersion>
-    <rostooling.version>3.1.0.rc1</rostooling.version>
+    <rostooling.version>3.1.0.rc2</rostooling.version>
     <fms.version>1.0.0</fms.version>
   </properties>
 

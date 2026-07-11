@@ -35,31 +35,31 @@
         <dependency>
           <groupId>de.fraunhofer.ipa.ros</groupId>
           <artifactId>de.fraunhofer.ipa.ros</artifactId>
-          <version>3.1.0.rc1</version>
+          <version>3.1.0.rc2</version>
           <type>jar</type>
         </dependency>
         <dependency>
           <groupId>de.fraunhofer.ipa.ros</groupId>
           <artifactId>de.fraunhofer.ipa.rossystem</artifactId>
-          <version>3.1.0.rc1</version>
+          <version>3.1.0.rc2</version>
           <type>jar</type>
         </dependency>
         <dependency>
           <groupId>de.fraunhofer.ipa.ros</groupId>
           <artifactId>de.fraunhofer.ipa.ros.xtext</artifactId>
-          <version>3.1.0.rc1</version>
+          <version>3.1.0.rc2</version>
           <type>jar</type>
         </dependency>
         <dependency>
           <groupId>de.fraunhofer.ipa.ros</groupId>
           <artifactId>de.fraunhofer.ipa.ros.xtext.ide</artifactId>
-          <version>3.1.0.rc1</version>
+          <version>3.1.0.rc2</version>
           <type>jar</type>
         </dependency>
         <dependency>
           <groupId>de.fraunhofer.ipa.ros</groupId>
           <artifactId>de.fraunhofer.ipa.ros.xtext.ui</artifactId>
-          <version>3.1.0.rc1</version>
+          <version>3.1.0.rc2</version>
           <type>jar</type>
         </dependency>
       </dependencies>

@@ -9,7 +9,8 @@ Bundle-ActivationPolicy: lazy
 Require-Bundle: eu.coresense.context,
  org.eclipse.xtext.ide,
  org.eclipse.xtext.xbase.ide,
- org.antlr.runtime;bundle-version="[3.2.0,3.2.1)"
+ org.antlr.runtime;bundle-version="[3.2.0,3.2.1)",
+ de.fraunhofer.ipa.ros.xtext;bundle-version="3.0.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-21
 Export-Package: eu.coresense.context.ide.contentassist.antlr,
  eu.coresense.context.ide.contentassist.antlr.internal,

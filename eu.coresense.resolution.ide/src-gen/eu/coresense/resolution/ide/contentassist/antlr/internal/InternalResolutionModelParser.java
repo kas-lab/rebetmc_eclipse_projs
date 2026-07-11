@@ -8533,7 +8533,7 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
             // InternalResolutionModelParser.g:2794:1: ( rule__ResolutionModel__Group__10__Impl rule__ResolutionModel__Group__11 )
             // InternalResolutionModelParser.g:2795:2: rule__ResolutionModel__Group__10__Impl rule__ResolutionModel__Group__11
             {
-            pushFollow(FOLLOW_3);
+            pushFollow(FOLLOW_9);
             rule__ResolutionModel__Group__10__Impl();
 
             state._fsp--;
@@ -8637,29 +8637,47 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
 
 
     // $ANTLR start "rule__ResolutionModel__Group__11__Impl"
-    // InternalResolutionModelParser.g:2829:1: rule__ResolutionModel__Group__11__Impl : ( ( rule__ResolutionModel__FunctionalMappingAssignment_11 ) ) ;
+    // InternalResolutionModelParser.g:2829:1: rule__ResolutionModel__Group__11__Impl : ( ( rule__ResolutionModel__FunctionalMappingAssignment_11 )* ) ;
     public final void rule__ResolutionModel__Group__11__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalResolutionModelParser.g:2833:1: ( ( ( rule__ResolutionModel__FunctionalMappingAssignment_11 ) ) )
-            // InternalResolutionModelParser.g:2834:1: ( ( rule__ResolutionModel__FunctionalMappingAssignment_11 ) )
+            // InternalResolutionModelParser.g:2833:1: ( ( ( rule__ResolutionModel__FunctionalMappingAssignment_11 )* ) )
+            // InternalResolutionModelParser.g:2834:1: ( ( rule__ResolutionModel__FunctionalMappingAssignment_11 )* )
             {
-            // InternalResolutionModelParser.g:2834:1: ( ( rule__ResolutionModel__FunctionalMappingAssignment_11 ) )
-            // InternalResolutionModelParser.g:2835:2: ( rule__ResolutionModel__FunctionalMappingAssignment_11 )
+            // InternalResolutionModelParser.g:2834:1: ( ( rule__ResolutionModel__FunctionalMappingAssignment_11 )* )
+            // InternalResolutionModelParser.g:2835:2: ( rule__ResolutionModel__FunctionalMappingAssignment_11 )*
             {
              before(grammarAccess.getResolutionModelAccess().getFunctionalMappingAssignment_11()); 
-            // InternalResolutionModelParser.g:2836:2: ( rule__ResolutionModel__FunctionalMappingAssignment_11 )
-            // InternalResolutionModelParser.g:2836:3: rule__ResolutionModel__FunctionalMappingAssignment_11
-            {
-            pushFollow(FOLLOW_2);
-            rule__ResolutionModel__FunctionalMappingAssignment_11();
+            // InternalResolutionModelParser.g:2836:2: ( rule__ResolutionModel__FunctionalMappingAssignment_11 )*
+            loop10:
+            do {
+                int alt10=2;
+                int LA10_0 = input.LA(1);
 
-            state._fsp--;
+                if ( (LA10_0==RULE_ID) ) {
+                    alt10=1;
+                }
 
 
-            }
+                switch (alt10) {
+            	case 1 :
+            	    // InternalResolutionModelParser.g:2836:3: rule__ResolutionModel__FunctionalMappingAssignment_11
+            	    {
+            	    pushFollow(FOLLOW_10);
+            	    rule__ResolutionModel__FunctionalMappingAssignment_11();
+
+            	    state._fsp--;
+
+
+            	    }
+            	    break;
+
+            	default :
+            	    break loop10;
+                }
+            } while (true);
 
              after(grammarAccess.getResolutionModelAccess().getFunctionalMappingAssignment_11()); 
 
@@ -8806,17 +8824,17 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
             {
              before(grammarAccess.getResolutionModelAccess().getResolutionsAssignment_13()); 
             // InternalResolutionModelParser.g:2889:2: ( rule__ResolutionModel__ResolutionsAssignment_13 )*
-            loop10:
+            loop11:
             do {
-                int alt10=2;
-                int LA10_0 = input.LA(1);
+                int alt11=2;
+                int LA11_0 = input.LA(1);
 
-                if ( (LA10_0==RULE_ID) ) {
-                    alt10=1;
+                if ( (LA11_0==RULE_ID) ) {
+                    alt11=1;
                 }
 
 
-                switch (alt10) {
+                switch (alt11) {
             	case 1 :
             	    // InternalResolutionModelParser.g:2889:3: rule__ResolutionModel__ResolutionsAssignment_13
             	    {
@@ -8830,7 +8848,7 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
             	    break;
 
             	default :
-            	    break loop10;
+            	    break loop11;
                 }
             } while (true);
 
@@ -9219,17 +9237,17 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
             {
              before(grammarAccess.getResolutionAccess().getSelection_actionsAssignment_4()); 
             // InternalResolutionModelParser.g:3025:2: ( rule__Resolution__Selection_actionsAssignment_4 )*
-            loop11:
+            loop12:
             do {
-                int alt11=2;
-                int LA11_0 = input.LA(1);
+                int alt12=2;
+                int LA12_0 = input.LA(1);
 
-                if ( (LA11_0==SetLifecycleState||LA11_0==SetParameter) ) {
-                    alt11=1;
+                if ( (LA12_0==SetLifecycleState||LA12_0==SetParameter) ) {
+                    alt12=1;
                 }
 
 
-                switch (alt11) {
+                switch (alt12) {
             	case 1 :
             	    // InternalResolutionModelParser.g:3025:3: rule__Resolution__Selection_actionsAssignment_4
             	    {
@@ -9243,7 +9261,7 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
             	    break;
 
             	default :
-            	    break loop11;
+            	    break loop12;
                 }
             } while (true);
 
@@ -9392,17 +9410,17 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
             {
              before(grammarAccess.getResolutionAccess().getDeselection_actionsAssignment_6()); 
             // InternalResolutionModelParser.g:3078:2: ( rule__Resolution__Deselection_actionsAssignment_6 )*
-            loop12:
+            loop13:
             do {
-                int alt12=2;
-                int LA12_0 = input.LA(1);
+                int alt13=2;
+                int LA13_0 = input.LA(1);
 
-                if ( (LA12_0==SetLifecycleState||LA12_0==SetParameter) ) {
-                    alt12=1;
+                if ( (LA13_0==SetLifecycleState||LA13_0==SetParameter) ) {
+                    alt13=1;
                 }
 
 
-                switch (alt12) {
+                switch (alt13) {
             	case 1 :
             	    // InternalResolutionModelParser.g:3078:3: rule__Resolution__Deselection_actionsAssignment_6
             	    {
@@ -9416,7 +9434,7 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
             	    break;
 
             	default :
-            	    break loop12;
+            	    break loop13;
                 }
             } while (true);
 
@@ -11515,13 +11533,13 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
             {
              before(grammarAccess.getGlobalNamespaceAccess().getGroup_2()); 
             // InternalResolutionModelParser.g:3807:2: ( rule__GlobalNamespace__Group_2__0 )?
-            int alt13=2;
-            int LA13_0 = input.LA(1);
+            int alt14=2;
+            int LA14_0 = input.LA(1);
 
-            if ( (LA13_0==LeftSquareBracket) ) {
-                alt13=1;
+            if ( (LA14_0==LeftSquareBracket) ) {
+                alt14=1;
             }
-            switch (alt13) {
+            switch (alt14) {
                 case 1 :
                     // InternalResolutionModelParser.g:3807:3: rule__GlobalNamespace__Group_2__0
                     {
@@ -11771,17 +11789,17 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
             {
              before(grammarAccess.getGlobalNamespaceAccess().getGroup_2_2()); 
             // InternalResolutionModelParser.g:3889:2: ( rule__GlobalNamespace__Group_2_2__0 )*
-            loop14:
+            loop15:
             do {
-                int alt14=2;
-                int LA14_0 = input.LA(1);
+                int alt15=2;
+                int LA15_0 = input.LA(1);
 
-                if ( (LA14_0==Comma) ) {
-                    alt14=1;
+                if ( (LA15_0==Comma) ) {
+                    alt15=1;
                 }
 
 
-                switch (alt14) {
+                switch (alt15) {
             	case 1 :
             	    // InternalResolutionModelParser.g:3889:3: rule__GlobalNamespace__Group_2_2__0
             	    {
@@ -11795,7 +11813,7 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
             	    break;
 
             	default :
-            	    break loop14;
+            	    break loop15;
                 }
             } while (true);
 
@@ -12244,13 +12262,13 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
             {
              before(grammarAccess.getRelativeNamespace_ImplAccess().getGroup_2()); 
             // InternalResolutionModelParser.g:4050:2: ( rule__RelativeNamespace_Impl__Group_2__0 )?
-            int alt15=2;
-            int LA15_0 = input.LA(1);
+            int alt16=2;
+            int LA16_0 = input.LA(1);
 
-            if ( (LA15_0==LeftSquareBracket) ) {
-                alt15=1;
+            if ( (LA16_0==LeftSquareBracket) ) {
+                alt16=1;
             }
-            switch (alt15) {
+            switch (alt16) {
                 case 1 :
                     // InternalResolutionModelParser.g:4050:3: rule__RelativeNamespace_Impl__Group_2__0
                     {
@@ -12500,17 +12518,17 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
             {
              before(grammarAccess.getRelativeNamespace_ImplAccess().getGroup_2_2()); 
             // InternalResolutionModelParser.g:4132:2: ( rule__RelativeNamespace_Impl__Group_2_2__0 )*
-            loop16:
+            loop17:
             do {
-                int alt16=2;
-                int LA16_0 = input.LA(1);
+                int alt17=2;
+                int LA17_0 = input.LA(1);
 
-                if ( (LA16_0==Comma) ) {
-                    alt16=1;
+                if ( (LA17_0==Comma) ) {
+                    alt17=1;
                 }
 
 
-                switch (alt16) {
+                switch (alt17) {
             	case 1 :
             	    // InternalResolutionModelParser.g:4132:3: rule__RelativeNamespace_Impl__Group_2_2__0
             	    {
@@ -12524,7 +12542,7 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
             	    break;
 
             	default :
-            	    break loop16;
+            	    break loop17;
                 }
             } while (true);
 
@@ -12973,13 +12991,13 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
             {
              before(grammarAccess.getPrivateNamespaceAccess().getGroup_2()); 
             // InternalResolutionModelParser.g:4293:2: ( rule__PrivateNamespace__Group_2__0 )?
-            int alt17=2;
-            int LA17_0 = input.LA(1);
+            int alt18=2;
+            int LA18_0 = input.LA(1);
 
-            if ( (LA17_0==LeftSquareBracket) ) {
-                alt17=1;
+            if ( (LA18_0==LeftSquareBracket) ) {
+                alt18=1;
             }
-            switch (alt17) {
+            switch (alt18) {
                 case 1 :
                     // InternalResolutionModelParser.g:4293:3: rule__PrivateNamespace__Group_2__0
                     {
@@ -13229,17 +13247,17 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
             {
              before(grammarAccess.getPrivateNamespaceAccess().getGroup_2_2()); 
             // InternalResolutionModelParser.g:4375:2: ( rule__PrivateNamespace__Group_2_2__0 )*
-            loop18:
+            loop19:
             do {
-                int alt18=2;
-                int LA18_0 = input.LA(1);
+                int alt19=2;
+                int LA19_0 = input.LA(1);
 
-                if ( (LA18_0==Comma) ) {
-                    alt18=1;
+                if ( (LA19_0==Comma) ) {
+                    alt19=1;
                 }
 
 
-                switch (alt18) {
+                switch (alt19) {
             	case 1 :
             	    // InternalResolutionModelParser.g:4375:3: rule__PrivateNamespace__Group_2_2__0
             	    {
@@ -13253,7 +13271,7 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
             	    break;
 
             	default :
-            	    break loop18;
+            	    break loop19;
                 }
             } while (true);
 
@@ -13867,17 +13885,17 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
             {
              before(grammarAccess.getParameterListTypeAccess().getGroup_4()); 
             // InternalResolutionModelParser.g:4591:2: ( rule__ParameterListType__Group_4__0 )*
-            loop19:
+            loop20:
             do {
-                int alt19=2;
-                int LA19_0 = input.LA(1);
+                int alt20=2;
+                int LA20_0 = input.LA(1);
 
-                if ( (LA19_0==Comma) ) {
-                    alt19=1;
+                if ( (LA20_0==Comma) ) {
+                    alt20=1;
                 }
 
 
-                switch (alt19) {
+                switch (alt20) {
             	case 1 :
             	    // InternalResolutionModelParser.g:4591:3: rule__ParameterListType__Group_4__0
             	    {
@@ -13891,7 +13909,7 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
             	    break;
 
             	default :
-            	    break loop19;
+            	    break loop20;
                 }
             } while (true);
 
@@ -14505,17 +14523,17 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
             {
              before(grammarAccess.getParameterStructTypeAccess().getGroup_4()); 
             // InternalResolutionModelParser.g:4807:2: ( rule__ParameterStructType__Group_4__0 )*
-            loop20:
+            loop21:
             do {
-                int alt20=2;
-                int LA20_0 = input.LA(1);
+                int alt21=2;
+                int LA21_0 = input.LA(1);
 
-                if ( (LA20_0==Comma) ) {
-                    alt20=1;
+                if ( (LA21_0==Comma) ) {
+                    alt21=1;
                 }
 
 
-                switch (alt20) {
+                switch (alt21) {
             	case 1 :
             	    // InternalResolutionModelParser.g:4807:3: rule__ParameterStructType__Group_4__0
             	    {
@@ -14529,7 +14547,7 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
             	    break;
 
             	default :
-            	    break loop20;
+            	    break loop21;
                 }
             } while (true);
 
@@ -14978,13 +14996,13 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
             {
              before(grammarAccess.getParameterIntegerTypeAccess().getGroup_2()); 
             // InternalResolutionModelParser.g:4968:2: ( rule__ParameterIntegerType__Group_2__0 )?
-            int alt21=2;
-            int LA21_0 = input.LA(1);
+            int alt22=2;
+            int LA22_0 = input.LA(1);
 
-            if ( (LA21_0==Default) ) {
-                alt21=1;
+            if ( (LA22_0==Default) ) {
+                alt22=1;
             }
-            switch (alt21) {
+            switch (alt22) {
                 case 1 :
                     // InternalResolutionModelParser.g:4968:3: rule__ParameterIntegerType__Group_2__0
                     {
@@ -15374,13 +15392,13 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
             {
              before(grammarAccess.getParameterStringTypeAccess().getGroup_2()); 
             // InternalResolutionModelParser.g:5103:2: ( rule__ParameterStringType__Group_2__0 )?
-            int alt22=2;
-            int LA22_0 = input.LA(1);
+            int alt23=2;
+            int LA23_0 = input.LA(1);
 
-            if ( (LA22_0==Default) ) {
-                alt22=1;
+            if ( (LA23_0==Default) ) {
+                alt23=1;
             }
-            switch (alt22) {
+            switch (alt23) {
                 case 1 :
                     // InternalResolutionModelParser.g:5103:3: rule__ParameterStringType__Group_2__0
                     {
@@ -15770,13 +15788,13 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
             {
              before(grammarAccess.getParameterDoubleTypeAccess().getGroup_2()); 
             // InternalResolutionModelParser.g:5238:2: ( rule__ParameterDoubleType__Group_2__0 )?
-            int alt23=2;
-            int LA23_0 = input.LA(1);
+            int alt24=2;
+            int LA24_0 = input.LA(1);
 
-            if ( (LA23_0==Default) ) {
-                alt23=1;
+            if ( (LA24_0==Default) ) {
+                alt24=1;
             }
-            switch (alt23) {
+            switch (alt24) {
                 case 1 :
                     // InternalResolutionModelParser.g:5238:3: rule__ParameterDoubleType__Group_2__0
                     {
@@ -16166,13 +16184,13 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
             {
              before(grammarAccess.getParameterBooleanTypeAccess().getGroup_2()); 
             // InternalResolutionModelParser.g:5373:2: ( rule__ParameterBooleanType__Group_2__0 )?
-            int alt24=2;
-            int LA24_0 = input.LA(1);
+            int alt25=2;
+            int LA25_0 = input.LA(1);
 
-            if ( (LA24_0==Default) ) {
-                alt24=1;
+            if ( (LA25_0==Default) ) {
+                alt25=1;
             }
-            switch (alt24) {
+            switch (alt25) {
                 case 1 :
                     // InternalResolutionModelParser.g:5373:3: rule__ParameterBooleanType__Group_2__0
                     {
@@ -16562,13 +16580,13 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
             {
              before(grammarAccess.getParameterBase64TypeAccess().getGroup_2()); 
             // InternalResolutionModelParser.g:5508:2: ( rule__ParameterBase64Type__Group_2__0 )?
-            int alt25=2;
-            int LA25_0 = input.LA(1);
+            int alt26=2;
+            int LA26_0 = input.LA(1);
 
-            if ( (LA25_0==Default) ) {
-                alt25=1;
+            if ( (LA26_0==Default) ) {
+                alt26=1;
             }
-            switch (alt25) {
+            switch (alt26) {
                 case 1 :
                     // InternalResolutionModelParser.g:5508:3: rule__ParameterBase64Type__Group_2__0
                     {
@@ -17118,13 +17136,13 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
             {
              before(grammarAccess.getParameterArrayTypeAccess().getGroup_4()); 
             // InternalResolutionModelParser.g:5697:2: ( rule__ParameterArrayType__Group_4__0 )?
-            int alt26=2;
-            int LA26_0 = input.LA(1);
+            int alt27=2;
+            int LA27_0 = input.LA(1);
 
-            if ( (LA26_0==Default) ) {
-                alt26=1;
+            if ( (LA27_0==Default) ) {
+                alt27=1;
             }
-            switch (alt26) {
+            switch (alt27) {
                 case 1 :
                     // InternalResolutionModelParser.g:5697:3: rule__ParameterArrayType__Group_4__0
                     {
@@ -17604,17 +17622,17 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
             {
              before(grammarAccess.getParameterListAccess().getGroup_3()); 
             // InternalResolutionModelParser.g:5860:2: ( rule__ParameterList__Group_3__0 )*
-            loop27:
+            loop28:
             do {
-                int alt27=2;
-                int LA27_0 = input.LA(1);
+                int alt28=2;
+                int LA28_0 = input.LA(1);
 
-                if ( (LA27_0==Comma) ) {
-                    alt27=1;
+                if ( (LA28_0==Comma) ) {
+                    alt28=1;
                 }
 
 
-                switch (alt27) {
+                switch (alt28) {
             	case 1 :
             	    // InternalResolutionModelParser.g:5860:3: rule__ParameterList__Group_3__0
             	    {
@@ -17628,7 +17646,7 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
             	    break;
 
             	default :
-            	    break loop27;
+            	    break loop28;
                 }
             } while (true);
 
@@ -18077,13 +18095,13 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
             {
              before(grammarAccess.getParameterAnyAccess().getGroup_2()); 
             // InternalResolutionModelParser.g:6021:2: ( rule__ParameterAny__Group_2__0 )?
-            int alt28=2;
-            int LA28_0 = input.LA(1);
+            int alt29=2;
+            int LA29_0 = input.LA(1);
 
-            if ( (LA28_0==Value) ) {
-                alt28=1;
+            if ( (LA29_0==Value) ) {
+                alt29=1;
             }
-            switch (alt28) {
+            switch (alt29) {
                 case 1 :
                     // InternalResolutionModelParser.g:6021:3: rule__ParameterAny__Group_2__0
                     {
@@ -18398,13 +18416,13 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
             {
              before(grammarAccess.getParameterStructAccess().getGroup_1()); 
             // InternalResolutionModelParser.g:6129:2: ( rule__ParameterStruct__Group_1__0 )?
-            int alt29=2;
-            int LA29_0 = input.LA(1);
+            int alt30=2;
+            int LA30_0 = input.LA(1);
 
-            if ( (LA29_0==LeftSquareBracket) ) {
-                alt29=1;
+            if ( (LA30_0==LeftSquareBracket) ) {
+                alt30=1;
             }
-            switch (alt29) {
+            switch (alt30) {
                 case 1 :
                     // InternalResolutionModelParser.g:6129:3: rule__ParameterStruct__Group_1__0
                     {
@@ -18644,17 +18662,17 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
             {
              before(grammarAccess.getParameterStructAccess().getValueAssignment_1_2()); 
             // InternalResolutionModelParser.g:6211:2: ( rule__ParameterStruct__ValueAssignment_1_2 )*
-            loop30:
+            loop31:
             do {
-                int alt30=2;
-                int LA30_0 = input.LA(1);
+                int alt31=2;
+                int LA31_0 = input.LA(1);
 
-                if ( ((LA30_0>=RULE_ID && LA30_0<=RULE_STRING)) ) {
-                    alt30=1;
+                if ( ((LA31_0>=RULE_ID && LA31_0<=RULE_STRING)) ) {
+                    alt31=1;
                 }
 
 
-                switch (alt30) {
+                switch (alt31) {
             	case 1 :
             	    // InternalResolutionModelParser.g:6211:3: rule__ParameterStruct__ValueAssignment_1_2
             	    {
@@ -18668,7 +18686,7 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
             	    break;
 
             	default :
-            	    break loop30;
+            	    break loop31;
                 }
             } while (true);
 
@@ -26120,10 +26138,10 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
         }
     }
     static final String dfa_8s = "\44\uffff";
-    static final String dfa_9s = "\36\uffff\2\42\4\uffff";
+    static final String dfa_9s = "\36\uffff\2\43\4\uffff";
     static final String dfa_10s = "\1\22\35\uffff\2\116\4\uffff";
     static final String dfa_11s = "\1\144\35\uffff\2\116\4\uffff";
-    static final String dfa_12s = "\1\uffff\1\1\1\2\1\3\1\4\1\5\1\6\1\7\1\10\1\11\1\12\1\13\1\14\1\15\1\16\1\17\1\20\1\21\1\22\1\23\1\24\1\25\1\26\1\27\1\30\1\31\1\32\1\33\1\34\1\35\2\uffff\1\40\1\41\1\36\1\37";
+    static final String dfa_12s = "\1\uffff\1\1\1\2\1\3\1\4\1\5\1\6\1\7\1\10\1\11\1\12\1\13\1\14\1\15\1\16\1\17\1\20\1\21\1\22\1\23\1\24\1\25\1\26\1\27\1\30\1\31\1\32\1\33\1\34\1\35\2\uffff\1\40\1\41\1\37\1\36";
     static final String dfa_13s = "\44\uffff}>";
     static final String[] dfa_14s = {
             "\1\32\1\33\2\uffff\1\17\1\uffff\1\34\1\25\1\27\1\31\2\uffff\1\12\1\13\1\24\1\26\1\30\3\uffff\1\23\3\uffff\1\20\3\uffff\1\21\1\35\1\41\1\uffff\1\22\1\uffff\1\14\1\5\1\7\1\11\2\uffff\1\4\1\6\1\10\1\uffff\1\3\3\uffff\1\1\1\15\1\40\1\uffff\1\2\2\uffff\1\16\31\uffff\1\37\1\36",
@@ -26156,8 +26174,8 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
             "",
             "",
             "",
-            "\1\43",
-            "\1\43",
+            "\1\42",
+            "\1\42",
             "",
             "",
             "",
@@ -26199,7 +26217,7 @@ public class InternalResolutionModelParser extends AbstractInternalContentAssist
     public static final BitSet FOLLOW_6 = new BitSet(new long[]{0x0002000000000002L});
     public static final BitSet FOLLOW_7 = new BitSet(new long[]{0x0000000000004000L});
     public static final BitSet FOLLOW_8 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_9 = new BitSet(new long[]{0x0000000000000200L});
+    public static final BitSet FOLLOW_9 = new BitSet(new long[]{0x0000000000000200L,0x0000000800000000L});
     public static final BitSet FOLLOW_10 = new BitSet(new long[]{0x0000000000000002L,0x0000000800000000L});
     public static final BitSet FOLLOW_11 = new BitSet(new long[]{0x0000000000000000L,0x0000000000080000L});
     public static final BitSet FOLLOW_12 = new BitSet(new long[]{0x0000001000000000L});

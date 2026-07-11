@@ -11,7 +11,7 @@ ResolutionModel:
 	(imports+=Import*)
 	'variability_model' featureModel=[BasicFMmetamodel::FeatureModel]';'
 	'ros_system' rossystem=[rossys::System]';'
-	'FunctionalMapping' functionalMapping+=FunctionalMapping
+	'FunctionalMapping' functionalMapping+=FunctionalMapping*
 	'Reconfigurations' resolutions+=Resolution*;
 	
 Resolution:

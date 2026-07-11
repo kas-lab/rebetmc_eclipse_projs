@@ -52,6 +52,8 @@ import primitives.PrimitivesPackage;
 
 import ros.RosPackage;
 
+import system.RossystemPackage;
+
 /**
  * <!-- begin-user-doc -->
  * An implementation of the model <b>Package</b>.
@@ -321,8 +323,9 @@ public class RequirementsModelPackageImpl extends EPackageImpl implements Requir
     // Initialize simple dependencies
     CommonPackage.eINSTANCE.eClass();
     ContextModelPackage.eINSTANCE.eClass();
-    RosPackage.eINSTANCE.eClass();
     PrimitivesPackage.eINSTANCE.eClass();
+    RosPackage.eINSTANCE.eClass();
+    RossystemPackage.eINSTANCE.eClass();
 
     // Create package meta-data objects
     theRequirementsModelPackage.createPackageContents();

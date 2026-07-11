@@ -422,10 +422,141 @@ ruleContextVar returns [EObject current=null]
 				)
 			)
 		)?
-		otherlv_23=RightCurlyBracket
+		(
+			otherlv_23=Thresholds
+			{
+				newLeafNode(otherlv_23, grammarAccess.getContextVarAccess().getThresholdsKeyword_15_0());
+			}
+			(
+				(
+					{
+						newCompositeNode(grammarAccess.getContextVarAccess().getThresholdsLiteralParserRuleCall_15_1_0());
+					}
+					lv_thresholds_24_0=ruleLiteral
+					{
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getContextVarRule());
+						}
+						add(
+							$current,
+							"thresholds",
+							lv_thresholds_24_0,
+							"eu.coresense.context.ContextModel.Literal");
+						afterParserOrEnumRuleCall();
+					}
+				)
+			)*
+		)?
+		otherlv_25=RightCurlyBracket
 		{
-			newLeafNode(otherlv_23, grammarAccess.getContextVarAccess().getRightCurlyBracketKeyword_15());
+			newLeafNode(otherlv_25, grammarAccess.getContextVarAccess().getRightCurlyBracketKeyword_16());
 		}
+	)
+;
+
+// Entry rule entryRuleLiteral
+entryRuleLiteral returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getLiteralRule()); }
+	iv_ruleLiteral=ruleLiteral
+	{ $current=$iv_ruleLiteral.current; }
+	EOF;
+
+// Rule Literal
+ruleLiteral returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		{
+			newCompositeNode(grammarAccess.getLiteralAccess().getIntLiteralParserRuleCall_0());
+		}
+		this_IntLiteral_0=ruleIntLiteral
+		{
+			$current = $this_IntLiteral_0.current;
+			afterParserOrEnumRuleCall();
+		}
+		    |
+		{
+			newCompositeNode(grammarAccess.getLiteralAccess().getDecimalLiteralParserRuleCall_1());
+		}
+		this_DecimalLiteral_1=ruleDecimalLiteral
+		{
+			$current = $this_DecimalLiteral_1.current;
+			afterParserOrEnumRuleCall();
+		}
+	)
+;
+
+// Entry rule entryRuleIntLiteral
+entryRuleIntLiteral returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getIntLiteralRule()); }
+	iv_ruleIntLiteral=ruleIntLiteral
+	{ $current=$iv_ruleIntLiteral.current; }
+	EOF;
+
+// Rule IntLiteral
+ruleIntLiteral returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		(
+			lv_value_0_0=RULE_INT
+			{
+				newLeafNode(lv_value_0_0, grammarAccess.getIntLiteralAccess().getValueINTTerminalRuleCall_0());
+			}
+			{
+				if ($current==null) {
+					$current = createModelElement(grammarAccess.getIntLiteralRule());
+				}
+				setWithLastConsumed(
+					$current,
+					"value",
+					lv_value_0_0,
+					"org.eclipse.xtext.common.Terminals.INT");
+			}
+		)
+	)
+;
+
+// Entry rule entryRuleDecimalLiteral
+entryRuleDecimalLiteral returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getDecimalLiteralRule()); }
+	iv_ruleDecimalLiteral=ruleDecimalLiteral
+	{ $current=$iv_ruleDecimalLiteral.current; }
+	EOF;
+
+// Rule DecimalLiteral
+ruleDecimalLiteral returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		(
+			lv_value_0_0=RULE_DECIMAL
+			{
+				newLeafNode(lv_value_0_0, grammarAccess.getDecimalLiteralAccess().getValueDECIMALTerminalRuleCall_0());
+			}
+			{
+				if ($current==null) {
+					$current = createModelElement(grammarAccess.getDecimalLiteralRule());
+				}
+				setWithLastConsumed(
+					$current,
+					"value",
+					lv_value_0_0,
+					"eu.coresense.context.ContextModel.DECIMAL");
+			}
+		)
 	)
 ;
 

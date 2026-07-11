@@ -348,6 +348,17 @@ public class ContextModelPackageImpl extends EPackageImpl implements ContextMode
    * @generated
    */
   @Override
+  public EReference getContextVar_Thresholds()
+  {
+    return (EReference)contextVarEClass.getEStructuralFeatures().get(10);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public EClass getMissionVar()
   {
     return missionVarEClass;
@@ -598,6 +609,7 @@ public class ContextModelPackageImpl extends EPackageImpl implements ContextMode
     createEAttribute(contextVarEClass, CONTEXT_VAR__FUNCTION_NAME);
     createEAttribute(contextVarEClass, CONTEXT_VAR__FUNCTION_LIBRARY);
     createEAttribute(contextVarEClass, CONTEXT_VAR__FUNCTION_ARGS);
+    createEReference(contextVarEClass, CONTEXT_VAR__THRESHOLDS);
 
     missionVarEClass = createEClass(MISSION_VAR);
     createEReference(missionVarEClass, MISSION_VAR__ACTION);
@@ -683,6 +695,7 @@ public class ContextModelPackageImpl extends EPackageImpl implements ContextMode
     initEAttribute(getContextVar_FunctionName(), ecorePackage.getEString(), "functionName", null, 0, 1, ContextVar.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getContextVar_FunctionLibrary(), ecorePackage.getEString(), "functionLibrary", null, 0, 1, ContextVar.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getContextVar_FunctionArgs(), ecorePackage.getEString(), "functionArgs", null, 0, 1, ContextVar.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getContextVar_Thresholds(), theCommonPackage.getLiteral(), null, "thresholds", null, 0, -1, ContextVar.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(missionVarEClass, MissionVar.class, "MissionVar", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getMissionVar_Action(), theRosPackage.getActionSpec(), null, "action", null, 0, 1, MissionVar.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

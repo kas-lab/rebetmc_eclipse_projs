@@ -91,6 +91,11 @@ def main() -> None:
         action="store_true",
         help="Print planned changes without modifying anything",
     )
+    parser.add_argument(
+        "--force",
+        action="store_true",
+        help="Update JARs even when the target file already exists",
+    )
     args = parser.parse_args()
 
     if not BUILD_PLUGINS.exists():
@@ -147,7 +152,7 @@ def main() -> None:
             if not args.dry_run:
                 old.unlink()
 
-        if dest.exists() and not old_versions:
+        if dest.exists() and not old_versions and not args.force:
             skipped.append(src.name)
             continue
 

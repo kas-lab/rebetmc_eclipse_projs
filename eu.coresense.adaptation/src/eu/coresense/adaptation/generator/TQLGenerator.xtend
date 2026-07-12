@@ -5,6 +5,7 @@ package eu.coresense.adaptation.generator
 
 import com.google.inject.Inject
 import eu.coresense.adaptation.tactics.AdaptationRule
+import eu.coresense.adaptation.tactics.ActionRules
 import eu.coresense.adaptation.tactics.AtomicRule
 import eu.coresense.adaptation.tactics.Condition
 import eu.coresense.adaptation.tactics.ConditionAction
@@ -318,6 +319,11 @@ class TQLGenerator extends AbstractGenerator {
     def List<String> generateTQL(TacticsModel model, Resource resource, Boolean doStates, Boolean considerFeatures) {
     	globalResource = resource;
     	return compile(model, doStates, considerFeatures)
+    }
+
+    def String generateCombinedTQL(TacticsModel model, Resource resource, Boolean doStates, Boolean considerFeatures) {
+    	globalResource = resource
+    	return compileDocument(model, model.actionRules, doStates, considerFeatures, true)
     }
 
      def List<String> generateTQL(TacticsModel model, Resource resource) {
@@ -1017,83 +1023,71 @@ class TQLGenerator extends AbstractGenerator {
 
 	private def compile(TacticsModel t, Boolean doStates, Boolean considerFeatures)
 	{
+		val List<String> tacticTQLs = newArrayList
+		for (actionRule : t.actionRules)
+		{
+			tacticTQLs.add(compileDocument(t, newArrayList(actionRule), doStates, considerFeatures, false))
+		}
+    	return tacticTQLs
+	}
+
+	private def String compileDocument(TacticsModel t, List<ActionRules> actionRules,
+		Boolean doStates, Boolean considerFeatures, boolean uniqueActionRelations)
+	{
 		this.doStates = doStates
 		this.considerFeatures = considerFeatures
 		ruleNames = newHashSet
+		escapes = newHashMap
 
 		val tacticName = t.name
-		val lc_tacticName = t.name.toLowerCase
-
+		val lcTacticName = tacticName.toLowerCase
 		val List<ResolutionModel> resolutionModels = getResolutionModel(t, globalResource)
 		val List<ContextModel> contextModels = getContextModel(t, globalResource)
+		val HashSet<System> rosSystems = newHashSet
+		resolutionModels.forEach[rosSystems.add(it.rossystem)]
+		contextModels.forEach[rosSystems.addAll(rossystemfromContextModel(it, globalResource))]
+		val contextGenerator = new ContextModelGenerator(_namer)
 
-		val List<String> tacticTQLs = newArrayList
-		var doneStatesTQL = ""
-
-		for(actionRule : t.actionRules)
-		{
-			val HashSet<System> rossystems = newHashSet
-			resolutionModels.forEach[rossystems.add(it.getRossystem())]
-			contextModels.forEach[rossystems.addAll(rossystemfromContextModel(it,globalResource))]
-
-        	val serverName = findServerForAction(actionRule.action, rossystems)
-
-//        	generateArchitectureInsertQuery(rossystems)
-        	val contextGenerator = new ContextModelGenerator(_namer)
-
-			escapes = newHashMap
-			val fullTacticsTQL ='''
-
-				$ta_«lc_tacticName» isa Tactic, has tactic_name "«tacticName»";
-				$ta_«lc_tacticName»_to_action(ros_action:$«serverName», tactic:$ta_«lc_tacticName») isa tactic_to_action;
-				«FOR resolutionModel : resolutionModels»
+		'''
+			$ta_«lcTacticName» isa Tactic, has tactic_name "«tacticName»";
+			«FOR actionRule : actionRules»
+				«val serverName = findServerForAction(actionRule.action, rosSystems)»
+				«val relationSuffix = if (uniqueActionRelations) "_" + serverName else ""»
+				$ta_«lcTacticName»_to_action«relationSuffix»(ros_action:$«serverName», tactic:$ta_«lcTacticName») isa tactic_to_action;
+			«ENDFOR»
+			«FOR resolutionModel : resolutionModels»
 				«registerFeatures(resolutionModel.featureModel.root)»
 				«registerConstraints(resolutionModel.featureModel.crossTreeConstraints)»
-				«ENDFOR»
-				«FOR contextModel : contextModels»
+			«ENDFOR»
+			«FOR contextModel : contextModels»
 				«contextGenerator.registerMeasurements(contextModel)»
-				«ENDFOR»
-	«««			«registerNodes(t.resolutionModel)»
+			«ENDFOR»
+			«FOR actionRule : actionRules»
 				«FOR rule : actionRule.adaptationRules»
-					«compileRule(rule,lc_tacticName, doStates)»
+					«compileRule(rule, lcTacticName, doStates)»
 				«ENDFOR»
-				«IF doStates»
-				«doneStatesTQL»
-				«ENDIF»
-
-				«FOR resolutionModel : resolutionModels»
-					«FOR functionalMapping : resolutionModel.functionalMapping»
-						«var featureName = _namer.uniqueName(functionalMapping.feature)»
-						«var actionName = findServerForAction(functionalMapping.action,rossystems)»
-						$f_map_«featureName»_«actionName»(feature:$«featureName», ros_action:$«actionName») isa functional_mapping;
-					«ENDFOR»
-					«compileResolution(resolutionModel)»
-					$res_«resolutionModel.name» (tactic: $ta_«lc_tacticName»,
-					 «FOR resolution : resolutionModel.resolutions SEPARATOR ", "»
+			«ENDFOR»
+			«FOR resolutionModel : resolutionModels»
+				«FOR functionalMapping : resolutionModel.functionalMapping»
+					«var featureName = _namer.uniqueName(functionalMapping.feature)»
+					«var actionName = findServerForAction(functionalMapping.action, rosSystems)»
+					$f_map_«featureName»_«actionName»(feature:$«featureName», ros_action:$«actionName») isa functional_mapping;
+				«ENDFOR»
+				«compileResolution(resolutionModel)»
+				$res_«resolutionModel.name» (tactic: $ta_«lcTacticName»,
+				 «FOR resolution : resolutionModel.resolutions SEPARATOR ", "»
 					«IF !resolution.selection_actions.empty && !resolution.deselection_actions.empty»
-					variant_resolution:$«_namer.uniqueName(resolution)»_act, variant_resolution:$«_namer.uniqueName(resolution)»_deact
-					«ELSE»
-					«IF !resolution.selection_actions.empty»
-					variant_resolution:$«_namer.uniqueName(resolution)»_act
-					«ELSE»
-					«IF !resolution.deselection_actions.empty»
-					variant_resolution:$«_namer.uniqueName(resolution)»_deact
+						variant_resolution:$«_namer.uniqueName(resolution)»_act, variant_resolution:$«_namer.uniqueName(resolution)»_deact
+					«ELSEIF !resolution.selection_actions.empty»
+						variant_resolution:$«_namer.uniqueName(resolution)»_act
+					«ELSEIF !resolution.deselection_actions.empty»
+						variant_resolution:$«_namer.uniqueName(resolution)»_deact
 					«ENDIF»
-					«ENDIF»
-					«ENDIF»
-					 «ENDFOR»)
-					 isa resolution_model,
-					    has resolution_model_name "«resolutionModel.name»", has ros_system "«resolutionModel.rossystem.name»";
-				«ENDFOR»
-			'''
-
-			tacticTQLs.add(fullTacticsTQL)
-
-
-		}
-
-    	return tacticTQLs
-
+				 «ENDFOR»)
+				 isa resolution_model,
+				    has resolution_model_name "«resolutionModel.name»", has ros_system "«resolutionModel.rossystem.name»";
+			«ENDFOR»
+		'''
 	}
 
 	def registerConstraints(EList<CrossTreeConstraint> list) {

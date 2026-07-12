@@ -45,3 +45,100 @@ A validator determines if a DSL entry passes, beyond its grammar. This is like d
 [XText Grammar Definition](eu.coresense.variability/src/eu/coresense/variability/FeatureModel.xtext)
 
 [Validator](eu.coresense.variability/src/eu/coresense/variability/validation/FeatureModelValidator.java)
+
+## MAVEN
+
+Build skiping tests
+
+```
+mvn -B clean verify -f eu.coresense.parent/pom.xml -DskipTests
+```
+
+## Tests with maven
+
+```sh
+mvn -q -B verify \
+    -f eu.coresense.parent/pom.xml \
+    -Dtest=ResolutionModelScopeTest
+```
+
+`-q` makes Maven quiet so that test results are easier to inspect.
+
+### Combined adaptation TQL generator tests
+
+`CombinedTQLGeneratorTest` loads the SUAVE models, verifies that rules from all
+action groups are present, checks that shared declarations occur only once,
+and confirms that the original per-action generation API still works.
+
+Set `CORESENSE_SUAVE_MODELS` to the directory containing the `interfaces`,
+`ros`, `system`, and `tactical_retreat` model directories. If it is not set,
+JUnit skips these tests.
+
+```sh
+export CORESENSE_SUAVE_MODELS=$HOME/ros_workspaces/suave_rebetmc_ws/src/suave_rebetmc/models
+
+mvn -q -B verify \
+    -f eu.coresense.parent/pom.xml \
+    -Dtest=CombinedTQLGeneratorTest
+```
+
+The results are also written under:
+
+```text
+eu.coresense.adaptation.tests/target/surefire-reports/
+```
+
+### Optional TypeDB integration test
+
+The TypeDB integration test is in the `adapt_x` repository. It loads an
+already-generated combined TQL file into a uniquely named temporary database
+and deletes that database after the test.
+
+Required environment variable:
+
+- `CORESENSE_GENERATED_TQL` is the absolute path to the generated TQL file.
+
+Optional environment variable:
+
+- `TYPEDB_ADDRESS` selects the TypeDB server and defaults to `localhost:1729`.
+
+From the ROS workspace, run:
+
+```sh
+cd /home/gus/ros_workspaces/suave_rebetmc_ws
+source /opt/ros/humble/setup.bash
+source install/setup.bash
+
+export CORESENSE_GENERATED_TQL=/absolute/path/to/suave_rebetmc.tql
+export TYPEDB_ADDRESS=localhost:1729
+
+PYTHONPATH=src/adapt_x/adapt_x \
+python3 -m pytest -q \
+    src/adapt_x/adapt_x/test/test_combined_tql_typedb.py
+```
+
+When TypeDB and its compatible Python driver are available only in the
+`suave_rebetmc` container, copy the generated file into the container and run
+the same pytest command there:
+
+```sh
+docker cp /absolute/path/to/suave_rebetmc.tql \
+    suave_rebetmc:/tmp/suave_rebetmc.tql
+
+docker exec suave_rebetmc bash -lc '
+    cd /home/ubuntu-user/suave_ws &&
+    CORESENSE_GENERATED_TQL=/tmp/suave_rebetmc.tql \
+    TYPEDB_ADDRESS=localhost:1729 \
+    PYTHONPATH=src/adapt_x/adapt_x \
+    python3 -m pytest -q \
+        src/adapt_x/adapt_x/test/test_combined_tql_typedb.py
+'
+```
+
+## Running only the test in Eclipse
+
+  This is the fastest option:
+
+  1. Open ResolutionModelScopeTest.java.
+  2. Right-click the editor or class in Package Explorer.
+  3. Select Run As → JUnit Plug-in Test.

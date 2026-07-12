@@ -7,6 +7,14 @@ Bundle-Version: 1.0.0.qualifier
 Bundle-SymbolicName: eu.coresense.adaptation.tests; singleton:=true
 Bundle-ActivationPolicy: lazy
 Require-Bundle: eu.coresense.adaptation,
+ eu.coresense.common,
+ eu.coresense.context,
+ eu.coresense.resolution,
+ eu.coresense.variability,
+ fms.metamodel,
+ de.fraunhofer.ipa.ros.xtext,
+ de.fraunhofer.ipa.ros2.xtext,
+ de.fraunhofer.ipa.rossystem.xtext,
  org.eclipse.xtext.testing,
  org.eclipse.xtext.xbase.testing,
  org.eclipse.xtext.xbase.lib;bundle-version="2.38.0"

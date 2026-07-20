@@ -5,9 +5,9 @@
     <properties size='9'>
       <property name='artifact.size' value='5859423'/>
       <property name='download.size' value='5859423'/>
-      <property name='download.checksum.sha-512' value='9eda247623c598eff28e19503ba19b597df5d7e923e813c225c9ac4b5b00da7ff38bc3aea3b88eaca6a5590a279b985fd6378e396f2fe07c46b72d3a8ab17383'/>
-      <property name='download.checksum.sha-1' value='c7641dc7fc675582fd97b6cb2126c7184dc94a45'/>
-      <property name='download.checksum.sha-256' value='88bd25c74cef44c011973b0c65460ff05fdad2f03a6312b700ba71aa56408ebd'/>
+      <property name='download.checksum.sha-512' value='e8f2a4f11eab31e475e56a131975711cc3088f2540d101bcad0edd7d16c99067c3ef50964911bcbd2c9d11c7033914f8bc5acb1292cb79a0ee2cd6b009caa5b0'/>
+      <property name='download.checksum.sha-1' value='8b5ee46971a1ccae2f352c7072547f10ee38f6e9'/>
+      <property name='download.checksum.sha-256' value='4f3cb5a663371ec0599d6a16bc162e9d3742a02a8140c422fc66c96d123b378f'/>
       <property name='maven-groupId' value='eu.coresense'/>
       <property name='maven-artifactId' value='featureidewrapper'/>
       <property name='maven-version' value='1.0.0'/>

@@ -550,7 +550,8 @@ class TQLGenerator extends AbstractGenerator {
     		}
     	}
     }
-    private def inequality(Condition condition)
+
+	private def inequality(Condition condition)
 	{
 		if(condition instanceof MeasurementCondition)
 		{
@@ -788,10 +789,8 @@ class TQLGenerator extends AbstractGenerator {
     {
     	for (rosSystem : rosSystems) {
     		val nodes = Utilities.collectAllSystems(rosSystem).map[Utilities.rosNodesFromSystem(it)].flatten()
-    		println(nodes.size())
     		for (node : nodes)
     		{
-    			println(node.from.actionserver.size())
     			for(actionserver : node.from.actionserver)
     			{
     				//For whatever reason, the object hash of the actionSpec and action server's action differ outside of Eclipse
@@ -801,12 +800,6 @@ class TQLGenerator extends AbstractGenerator {
 						val nodeName = _namer.uniqueName(node.from)
 						return _namer.uniqueName(actionserver, nodeName)
 
-					}
-					else
-					{
-						println(actionSpec)
-						println(actionserver.action)
-						println("actionserver " + actionserver.name + " with action " + actionserver.action.name + " did not match")
 					}
 
     			}
@@ -1611,7 +1604,6 @@ class TQLGenerator extends AbstractGenerator {
 
 		if(ruleBody instanceof ConditionAction)
 		{
-
 			val toCheck = conditionCombos(ruleBody)
 			if(toCheck === null)
 			{
@@ -1793,7 +1785,6 @@ class TQLGenerator extends AbstractGenerator {
     	return new Pair(name, final_expr)
 	}
 	def Pair<String, String> createAntecedent(Expr e) {
-		println("Creating Antecedent")
     	switch e {
 
 	        Or: {
@@ -1830,9 +1821,6 @@ class TQLGenerator extends AbstractGenerator {
 	        			throw new Exception("did not expect an AND from flattend ANDs")
 	        		}
 	        	}
-	        	for (element : handled) {
-	        		println("HANDLED")
-	        	}
 	        	val name = uniqueName(e)
 				val x = '''
 				«FOR element : handled»
@@ -1845,7 +1833,6 @@ class TQLGenerator extends AbstractGenerator {
 		    	«ENDFOR»
 		    	) isa and_expression;
 				'''
-				println(x)
 
 				return new Pair(name, x)
 	    	}
@@ -1971,7 +1958,7 @@ class DerivedVarFeature extends Expr{
         this.feature = feature
     }
 
-	 override toString() {
+	override toString() {
         if(!this.not)
     	{
     		"isSelected(" + feature.name + ")"

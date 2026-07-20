@@ -21,7 +21,7 @@ class RequirementsModelParsingTest {
 	@Test
 	def void loadModel() {
 		val result = parseHelper.parse('''
-			Hello Xtext!
+			availability, Reliability: "The system shall remain available", true
 		''')
 		Assertions.assertNotNull(result)
 		val errors = result.eResource.errors

@@ -21,7 +21,12 @@ class FeatureModelParsingTest {
 	@Test
 	def void loadModel() {
 		val result = parseHelper.parse('''
-			Hello Xtext!
+			feature_model {
+				name testModel
+				root Feature rootFeature id rootFeature
+				crossTreeConstraints {
+				}
+			}
 		''')
 		Assertions.assertNotNull(result)
 		val errors = result.eResource.errors

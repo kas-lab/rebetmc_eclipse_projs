@@ -19,6 +19,7 @@ Require-Bundle: eu.coresense.adaptation,
  org.eclipse.xtext.xbase.testing,
  org.eclipse.xtext.xbase.lib;bundle-version="2.38.0"
 Import-Package: org.junit.jupiter.api;version="[5.1.0,6.0.0)",
+ org.junit.jupiter.api.condition;version="[5.1.0,6.0.0)",
  org.junit.jupiter.api.extension;version="[5.1.0,6.0.0)"
 Bundle-RequiredExecutionEnvironment: JavaSE-21
 Export-Package: eu.coresense.adaptation.tests;x-internal=true

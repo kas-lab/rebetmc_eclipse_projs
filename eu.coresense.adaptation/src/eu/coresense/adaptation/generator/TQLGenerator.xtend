@@ -580,9 +580,21 @@ class TQLGenerator extends AbstractGenerator {
 		}
 		else if(condition instanceof FeatureCondition)
 		{
-			'''
-			$«_namer.uniqueName(condition)» (atom: $«_namer.uniqueName(condition.variant.feature)») isa propositional_expression;
-			'''
+			val name = _namer.uniqueName(condition)
+			val featureName = _namer.uniqueName(condition.variant.feature)
+			if(condition.not == "!")
+			{
+				'''
+				$«name»_positive (atom: $«featureName») isa propositional_expression;
+				$«name» (expression: $«name»_positive) isa not_expression;
+				'''
+			}
+			else
+			{
+				'''
+				$«name» (atom: $«featureName») isa propositional_expression;
+				'''
+			}
 		}
 	}
 

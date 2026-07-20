@@ -99,6 +99,21 @@ class CombinedTQLGeneratorTest {
     }
 
     @Test
+    void combinedOutputWrapsNegatedFeatureCondition() {
+        String tql = generator.generateCombinedTQL(model, modelResource, false, false);
+        Pattern wrapper = Pattern.compile(
+            "\\$(is_selected_f_recover_motion(?:_\\d+)?)_positive\\s*"
+                + "\\(atom: \\$f_recover_motion\\) isa propositional_expression;\\s*"
+                + "\\$\\1\\s*\\(expression: \\$\\1_positive\\) isa not_expression;");
+        Matcher matcher = wrapper.matcher(tql);
+
+        assertTrue(matcher.find());
+        assertTrue(Pattern.compile("expression:\\s*\\$"
+            + Pattern.quote(matcher.group(1)) + "(?![a-zA-Z0-9_])")
+            .matcher(tql).find());
+    }
+
+    @Test
     void combinedOutputEmitsSharedDeclarationsOnce() {
         String tql = generator.generateCombinedTQL(model, modelResource, false, false);
 

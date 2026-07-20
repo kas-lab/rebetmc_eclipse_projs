@@ -91,6 +91,14 @@ class CombinedTQLGeneratorTest {
     }
 
     @Test
+    void combinedOutputQuotesContextStringLiteralsOnce() {
+        String tql = generator.generateCombinedTQL(model, modelResource, false, false);
+
+        assertTrue(tql.contains("has string_value \"RECOVERED\""));
+        assertFalse(tql.contains("has string_value '\"RECOVERED\"'"));
+    }
+
+    @Test
     void combinedOutputEmitsSharedDeclarationsOnce() {
         String tql = generator.generateCombinedTQL(model, modelResource, false, false);
 

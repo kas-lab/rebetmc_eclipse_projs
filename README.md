@@ -10,8 +10,8 @@ A scope provider determines how the references in the DSL are handled. For examp
 A validator determines if a DSL entry passes, beyond its grammar. This is like determining what is a logic error vs. a syntax error. The grammar determines the latter, the validator the prior.
 
 
-## Adaptation Tactics Model: 
- 
+## Adaptation Tactics Model:
+
 [XText Grammar Definition](eu.coresense.adaptation/src/eu/coresense/adaptation/Tactics.xtext)
 
 [TQL Generator](eu.coresense.adaptation/src/eu/coresense/adaptation/generator/TQLGenerator.xtend)
@@ -50,7 +50,7 @@ A validator determines if a DSL entry passes, beyond its grammar. This is like d
 
 Build skiping tests
 
-```
+```bash
 mvn -B clean verify -f eu.coresense.parent/pom.xml -DskipTests
 ```
 

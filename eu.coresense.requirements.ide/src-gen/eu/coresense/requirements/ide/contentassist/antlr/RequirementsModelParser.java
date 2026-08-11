@@ -34,6 +34,7 @@ public class RequirementsModelParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getCompoundExpressionAccess().getAlternatives(), "rule__CompoundExpression__Alternatives");
 			builder.put(grammarAccess.getStatementAccess().getAlternatives(), "rule__Statement__Alternatives");
 			builder.put(grammarAccess.getExpressionAccess().getAlternatives(), "rule__Expression__Alternatives");
+			builder.put(grammarAccess.getMembershipFunctionAccess().getAlternatives(), "rule__MembershipFunction__Alternatives");
 			builder.put(grammarAccess.getTimeAccess().getAlternatives_1(), "rule__Time__Alternatives_1");
 			builder.put(grammarAccess.getLiteralAccess().getAlternatives(), "rule__Literal__Alternatives");
 			builder.put(grammarAccess.getQualityAttributeAccess().getAlternatives(), "rule__QualityAttribute__Alternatives");
@@ -56,6 +57,8 @@ public class RequirementsModelParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getAsCloseFreqAccess().getGroup(), "rule__AsCloseFreq__Group__0");
 			builder.put(grammarAccess.getAsCloseLitAccess().getGroup(), "rule__AsCloseLit__Group__0");
 			builder.put(grammarAccess.getFuzzyTriangularAccess().getGroup(), "rule__FuzzyTriangular__Group__0");
+			builder.put(grammarAccess.getFuzzyRightShoulderAccess().getGroup(), "rule__FuzzyRightShoulder__Group__0");
+			builder.put(grammarAccess.getFuzzyLeftShoulderAccess().getGroup(), "rule__FuzzyLeftShoulder__Group__0");
 			builder.put(grammarAccess.getQuantifiableAccess().getGroup(), "rule__Quantifiable__Group__0");
 			builder.put(grammarAccess.getMayAccess().getGroup(), "rule__May__Group__0");
 			builder.put(grammarAccess.getMayAlternativeAccess().getGroup(), "rule__MayAlternative__Group__0");
@@ -90,6 +93,7 @@ public class RequirementsModelParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getInAccess().getExpressionAssignment_4(), "rule__In__ExpressionAssignment_4");
 			builder.put(grammarAccess.getAsAsPossibleAccess().getTimeFrequencyAssignment_1(), "rule__AsAsPossible__TimeFrequencyAssignment_1");
 			builder.put(grammarAccess.getAsAsPossibleAccess().getQuantityAssignment_5(), "rule__AsAsPossible__QuantityAssignment_5");
+			builder.put(grammarAccess.getAsAsPossibleAccess().getMembershipFunctionAssignment_7(), "rule__AsAsPossible__MembershipFunctionAssignment_7");
 			builder.put(grammarAccess.getAsCloseFreqAccess().getFrequencyAssignment_6(), "rule__AsCloseFreq__FrequencyAssignment_6");
 			builder.put(grammarAccess.getAsCloseFreqAccess().getExpressionAssignment_8(), "rule__AsCloseFreq__ExpressionAssignment_8");
 			builder.put(grammarAccess.getAsCloseLitAccess().getQuantityAssignment_6(), "rule__AsCloseLit__QuantityAssignment_6");
@@ -98,6 +102,10 @@ public class RequirementsModelParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getFuzzyTriangularAccess().getAAssignment_2(), "rule__FuzzyTriangular__AAssignment_2");
 			builder.put(grammarAccess.getFuzzyTriangularAccess().getBAssignment_4(), "rule__FuzzyTriangular__BAssignment_4");
 			builder.put(grammarAccess.getFuzzyTriangularAccess().getCAssignment_6(), "rule__FuzzyTriangular__CAssignment_6");
+			builder.put(grammarAccess.getFuzzyRightShoulderAccess().getFootAssignment_3(), "rule__FuzzyRightShoulder__FootAssignment_3");
+			builder.put(grammarAccess.getFuzzyRightShoulderAccess().getShoulderAssignment_6(), "rule__FuzzyRightShoulder__ShoulderAssignment_6");
+			builder.put(grammarAccess.getFuzzyLeftShoulderAccess().getFootAssignment_3(), "rule__FuzzyLeftShoulder__FootAssignment_3");
+			builder.put(grammarAccess.getFuzzyLeftShoulderAccess().getShoulderAssignment_6(), "rule__FuzzyLeftShoulder__ShoulderAssignment_6");
 			builder.put(grammarAccess.getQuantifiableAccess().getContextVariableAssignment_1(), "rule__Quantifiable__ContextVariableAssignment_1");
 			builder.put(grammarAccess.getMayAccess().getExpressionAssignment_2(), "rule__May__ExpressionAssignment_2");
 			builder.put(grammarAccess.getMayAccess().getAlternativesAssignment_4(), "rule__May__AlternativesAssignment_4");

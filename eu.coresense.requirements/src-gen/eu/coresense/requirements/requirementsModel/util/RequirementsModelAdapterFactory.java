@@ -186,6 +186,16 @@ public class RequirementsModelAdapterFactory extends AdapterFactoryImpl
         return createFuzzyTriangularAdapter();
       }
       @Override
+      public Adapter caseFuzzyRightShoulder(FuzzyRightShoulder object)
+      {
+        return createFuzzyRightShoulderAdapter();
+      }
+      @Override
+      public Adapter caseFuzzyLeftShoulder(FuzzyLeftShoulder object)
+      {
+        return createFuzzyLeftShoulderAdapter();
+      }
+      @Override
       public Adapter caseQuantifiable(Quantifiable object)
       {
         return createQuantifiableAdapter();
@@ -558,6 +568,36 @@ public class RequirementsModelAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createFuzzyTriangularAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link eu.coresense.requirements.requirementsModel.FuzzyRightShoulder <em>Fuzzy Right Shoulder</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see eu.coresense.requirements.requirementsModel.FuzzyRightShoulder
+   * @generated
+   */
+  public Adapter createFuzzyRightShoulderAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link eu.coresense.requirements.requirementsModel.FuzzyLeftShoulder <em>Fuzzy Left Shoulder</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see eu.coresense.requirements.requirementsModel.FuzzyLeftShoulder
+   * @generated
+   */
+  public Adapter createFuzzyLeftShoulderAdapter()
   {
     return null;
   }

@@ -222,6 +222,24 @@ public interface RequirementsModelFactory extends EFactory
   FuzzyTriangular createFuzzyTriangular();
 
   /**
+   * Returns a new object of class '<em>Fuzzy Right Shoulder</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Fuzzy Right Shoulder</em>'.
+   * @generated
+   */
+  FuzzyRightShoulder createFuzzyRightShoulder();
+
+  /**
+   * Returns a new object of class '<em>Fuzzy Left Shoulder</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Fuzzy Left Shoulder</em>'.
+   * @generated
+   */
+  FuzzyLeftShoulder createFuzzyLeftShoulder();
+
+  /**
    * Returns a new object of class '<em>Quantifiable</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

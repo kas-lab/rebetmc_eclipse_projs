@@ -1025,9 +1025,32 @@ ruleAsAsPossible returns [EObject current=null]
 				}
 			)
 		)
-		otherlv_6=')'
+		otherlv_6=','
 		{
-			newLeafNode(otherlv_6, grammarAccess.getAsAsPossibleAccess().getRightParenthesisKeyword_6());
+			newLeafNode(otherlv_6, grammarAccess.getAsAsPossibleAccess().getCommaKeyword_6());
+		}
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getAsAsPossibleAccess().getMembershipFunctionMembershipFunctionParserRuleCall_7_0());
+				}
+				lv_membershipFunction_7_0=ruleMembershipFunction
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getAsAsPossibleRule());
+					}
+					set(
+						$current,
+						"membershipFunction",
+						lv_membershipFunction_7_0,
+						"eu.coresense.requirements.RequirementsModel.MembershipFunction");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
+		otherlv_8=')'
+		{
+			newLeafNode(otherlv_8, grammarAccess.getAsAsPossibleAccess().getRightParenthesisKeyword_8());
 		}
 	)
 ;
@@ -1464,14 +1487,34 @@ ruleMembershipFunction returns [EObject current=null]
 @after {
 	leaveRule();
 }:
-	{
-		newCompositeNode(grammarAccess.getMembershipFunctionAccess().getFuzzyTriangularParserRuleCall());
-	}
-	this_FuzzyTriangular_0=ruleFuzzyTriangular
-	{
-		$current = $this_FuzzyTriangular_0.current;
-		afterParserOrEnumRuleCall();
-	}
+	(
+		{
+			newCompositeNode(grammarAccess.getMembershipFunctionAccess().getFuzzyTriangularParserRuleCall_0());
+		}
+		this_FuzzyTriangular_0=ruleFuzzyTriangular
+		{
+			$current = $this_FuzzyTriangular_0.current;
+			afterParserOrEnumRuleCall();
+		}
+		    |
+		{
+			newCompositeNode(grammarAccess.getMembershipFunctionAccess().getFuzzyRightShoulderParserRuleCall_1());
+		}
+		this_FuzzyRightShoulder_1=ruleFuzzyRightShoulder
+		{
+			$current = $this_FuzzyRightShoulder_1.current;
+			afterParserOrEnumRuleCall();
+		}
+		    |
+		{
+			newCompositeNode(grammarAccess.getMembershipFunctionAccess().getFuzzyLeftShoulderParserRuleCall_2());
+		}
+		this_FuzzyLeftShoulder_2=ruleFuzzyLeftShoulder
+		{
+			$current = $this_FuzzyLeftShoulder_2.current;
+			afterParserOrEnumRuleCall();
+		}
+	)
 ;
 
 // Entry rule entryRuleFuzzyTriangular
@@ -1563,6 +1606,164 @@ ruleFuzzyTriangular returns [EObject current=null]
 		otherlv_7=')'
 		{
 			newLeafNode(otherlv_7, grammarAccess.getFuzzyTriangularAccess().getRightParenthesisKeyword_7());
+		}
+	)
+;
+
+// Entry rule entryRuleFuzzyRightShoulder
+entryRuleFuzzyRightShoulder returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getFuzzyRightShoulderRule()); }
+	iv_ruleFuzzyRightShoulder=ruleFuzzyRightShoulder
+	{ $current=$iv_ruleFuzzyRightShoulder.current; }
+	EOF;
+
+// Rule FuzzyRightShoulder
+ruleFuzzyRightShoulder returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		otherlv_0='FuzzyRightShoulder'
+		{
+			newLeafNode(otherlv_0, grammarAccess.getFuzzyRightShoulderAccess().getFuzzyRightShoulderKeyword_0());
+		}
+		otherlv_1='('
+		{
+			newLeafNode(otherlv_1, grammarAccess.getFuzzyRightShoulderAccess().getLeftParenthesisKeyword_1());
+		}
+		otherlv_2='foot='
+		{
+			newLeafNode(otherlv_2, grammarAccess.getFuzzyRightShoulderAccess().getFootKeyword_2());
+		}
+		(
+			(
+				lv_foot_3_0=RULE_DECIMAL
+				{
+					newLeafNode(lv_foot_3_0, grammarAccess.getFuzzyRightShoulderAccess().getFootDECIMALTerminalRuleCall_3_0());
+				}
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getFuzzyRightShoulderRule());
+					}
+					setWithLastConsumed(
+						$current,
+						"foot",
+						lv_foot_3_0,
+						"eu.coresense.requirements.RequirementsModel.DECIMAL");
+				}
+			)
+		)
+		otherlv_4=','
+		{
+			newLeafNode(otherlv_4, grammarAccess.getFuzzyRightShoulderAccess().getCommaKeyword_4());
+		}
+		otherlv_5='shoulder='
+		{
+			newLeafNode(otherlv_5, grammarAccess.getFuzzyRightShoulderAccess().getShoulderKeyword_5());
+		}
+		(
+			(
+				lv_shoulder_6_0=RULE_DECIMAL
+				{
+					newLeafNode(lv_shoulder_6_0, grammarAccess.getFuzzyRightShoulderAccess().getShoulderDECIMALTerminalRuleCall_6_0());
+				}
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getFuzzyRightShoulderRule());
+					}
+					setWithLastConsumed(
+						$current,
+						"shoulder",
+						lv_shoulder_6_0,
+						"eu.coresense.requirements.RequirementsModel.DECIMAL");
+				}
+			)
+		)
+		otherlv_7=')'
+		{
+			newLeafNode(otherlv_7, grammarAccess.getFuzzyRightShoulderAccess().getRightParenthesisKeyword_7());
+		}
+	)
+;
+
+// Entry rule entryRuleFuzzyLeftShoulder
+entryRuleFuzzyLeftShoulder returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getFuzzyLeftShoulderRule()); }
+	iv_ruleFuzzyLeftShoulder=ruleFuzzyLeftShoulder
+	{ $current=$iv_ruleFuzzyLeftShoulder.current; }
+	EOF;
+
+// Rule FuzzyLeftShoulder
+ruleFuzzyLeftShoulder returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		otherlv_0='FuzzyLeftShoulder'
+		{
+			newLeafNode(otherlv_0, grammarAccess.getFuzzyLeftShoulderAccess().getFuzzyLeftShoulderKeyword_0());
+		}
+		otherlv_1='('
+		{
+			newLeafNode(otherlv_1, grammarAccess.getFuzzyLeftShoulderAccess().getLeftParenthesisKeyword_1());
+		}
+		otherlv_2='foot='
+		{
+			newLeafNode(otherlv_2, grammarAccess.getFuzzyLeftShoulderAccess().getFootKeyword_2());
+		}
+		(
+			(
+				lv_foot_3_0=RULE_DECIMAL
+				{
+					newLeafNode(lv_foot_3_0, grammarAccess.getFuzzyLeftShoulderAccess().getFootDECIMALTerminalRuleCall_3_0());
+				}
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getFuzzyLeftShoulderRule());
+					}
+					setWithLastConsumed(
+						$current,
+						"foot",
+						lv_foot_3_0,
+						"eu.coresense.requirements.RequirementsModel.DECIMAL");
+				}
+			)
+		)
+		otherlv_4=','
+		{
+			newLeafNode(otherlv_4, grammarAccess.getFuzzyLeftShoulderAccess().getCommaKeyword_4());
+		}
+		otherlv_5='shoulder='
+		{
+			newLeafNode(otherlv_5, grammarAccess.getFuzzyLeftShoulderAccess().getShoulderKeyword_5());
+		}
+		(
+			(
+				lv_shoulder_6_0=RULE_DECIMAL
+				{
+					newLeafNode(lv_shoulder_6_0, grammarAccess.getFuzzyLeftShoulderAccess().getShoulderDECIMALTerminalRuleCall_6_0());
+				}
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getFuzzyLeftShoulderRule());
+					}
+					setWithLastConsumed(
+						$current,
+						"shoulder",
+						lv_shoulder_6_0,
+						"eu.coresense.requirements.RequirementsModel.DECIMAL");
+				}
+			)
+		)
+		otherlv_7=')'
+		{
+			newLeafNode(otherlv_7, grammarAccess.getFuzzyLeftShoulderAccess().getRightParenthesisKeyword_7());
 		}
 	)
 ;

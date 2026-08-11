@@ -82,6 +82,10 @@ import eu.coresense.common.LiteralComparator
 import static extension eu.coresense.common.LiteralExtensions.*
 import eu.coresense.requirements.requirementsModel.RequirementsModel
 import eu.coresense.requirements.generator.RequirementsModelGenerator
+import primitives.AbstractType
+import eu.coresense.adaptation.tactics.TacticsFactory
+import eu.coresense.common.CommonFactory
+import java.math.BigDecimal
 
 /**
  * Generates code from your model files on save.
@@ -159,18 +163,18 @@ class TQLGenerator extends AbstractGenerator {
 	public static final String PARAM_VALUES_SUBQUERY_NAME = "param_values";
 	public static final String FEATURE_VAR = "f"
 	public static final String RULE_VAR = "tactic_rule"
-	public var Resource globalResource = null
+	public static var Resource globalResource = null
 	public val Map<Pair<String,String>, Pair<HashSet<String>, HashSet<String>>> topics = newHashMap
-	public var List<State> allStates = newArrayList
+//	public var List<State> allStates = newArrayList
 //	var Map<ContextVar, List<Pair<LiteralWrapper, LiteralWrapper>>> bounds = newHashMap
 	val Map<Pair<ContextVar, Pair<MathOperator,Literal>>, String> definedLitInequalities = newHashMap
 	val Map<Pair<ContextVar, Pair<MathOperator,Literal>>, String> definedPointInequalities = newHashMap
 	public var HashMap<Pair<String, String>,String> escapes = newHashMap
 //	var List<ContextVar> contextKeys = newArrayList
 	public var Set<String> ruleNames = newHashSet	
-	var Map<ContextVar, List<Literal>> thresholds
-	var Map<Feature, Set<Boolean>> featureSelections
-	var Map<ContextVar, Set<Boolean>> booleanVars
+	var static Map<ContextVar, List<Literal>> thresholds
+	var static Map<Feature, Set<Boolean>> featureSelections
+	var static Map<ContextVar, Set<Boolean>> booleanVars
 	
 	
     
@@ -197,6 +201,12 @@ class TQLGenerator extends AbstractGenerator {
 
 	
 	}
+	
+	def static void setGlobalResource(Resource resource)
+	{
+		globalResource = resource
+	}
+	
 	
 	def String SchemaValueFromParam(ParameterValue param_value)
 	{
@@ -673,7 +683,7 @@ class TQLGenerator extends AbstractGenerator {
 		'''	      
     }
     
-    def getResolutionModel(TacticsModel t, Resource resource)
+    def static getResolutionModel(TacticsModel t, Resource resource)
     {
     	
     	var List<ResolutionModel> resolutionModels = newArrayList
@@ -796,16 +806,28 @@ class TQLGenerator extends AbstractGenerator {
     	}
     }
     
+    def static booleanPreconditionsCombinations(List<ContextVar> contextKeys)
+    {
+		val booleanPreconditions = newArrayList
+		for (x : booleanVars.keySet)
+		{
+			contextKeys.add(x)
+			booleanPreconditions.add(booleanVars.get(x).toList)
+		}
+		
+		return Utilities.getCartesianProduct(booleanPreconditions)
+    }
+    
 
-	def createStates(
-		List<ResolutionModel> resolutionModels, List<AdaptationRule> adaptationRules, String serverName) {
+	def static createStates(
+		List<ResolutionModel> resolutionModels, List<AdaptationRule> adaptationRules, Boolean considerFeatures) {
 		       	
 		        val bounds = createBounds()
 		        val contextKeys = bounds.keySet.toList
 		        val values = bounds.values.toList
 	
 		       	val product = Utilities.getCartesianProduct(values)
-				allStates = newArrayList
+				var allStates = newArrayList
 				
 				
 				LibraryManager.registerLibrary(FMCoreLibrary.getInstance())
@@ -839,15 +861,8 @@ class TQLGenerator extends AbstractGenerator {
 					featureSelectionsToPairs.add(selectedOrNot)
 					
 				}
-	
-				val booleanPreconditions = newArrayList
-				for (x : booleanVars.keySet)
-				{
-					contextKeys.add(x)
-					booleanPreconditions.add(booleanVars.get(x).toList)
-				}
-				
-				val booleanPreconditionsCombinations = Utilities.getCartesianProduct(booleanPreconditions)
+					
+				val booleanPreconditionsCombinations = booleanPreconditionsCombinations(contextKeys)
 				
 				val featureKeys = featureSelections.keySet.toList
 				
@@ -873,16 +888,25 @@ class TQLGenerator extends AbstractGenerator {
 						{
 							for (contextBoundPrecondition : product)
 							{
-								allStates.add(new State(contextBoundPrecondition, contextBooleanPrecondition, contextKeys, featureKeys))
+								allStates.add(new State(contextBoundPrecondition, contextBooleanPrecondition, null, contextKeys, featureKeys))
 							}
 							
 						}
 				}
+				for (state : allStates){
+					for (rule : adaptationRules) {
+		        		if(state.checkAgainstBounds(rule))
+		        		{
+		        			state.addRule(rule)
+		        		}
+		        	}
+	        	
+	        	}
 				
 				return allStates
     }
     
-    def String genStatesTQL(List<State> allStates, List<AdaptationRule> adaptationRules, String serverName)
+    def String genStatesTQL(List<State> allStates, String serverName)
     {
 		var thresholdLiteralsTQL = ""
 		var featurePropsTQL = ""
@@ -896,12 +920,6 @@ class TQLGenerator extends AbstractGenerator {
 		var stateCount = 0
         for (state : allStates)
         {
-        	for (rule : adaptationRules) {
-        		if(state.checkAgainstBounds(rule))
-        		{
-        			state.addRule(rule)
-        		}
-        	}
 //	        	println(state.describeMedianBounds)
         	val relevantFeatures = featureSelections.keySet()
 			for (relevantFeature : relevantFeatures) {
@@ -964,7 +982,7 @@ class TQLGenerator extends AbstractGenerator {
 				'''
     }
     
-    def List<String> generateStates(TacticsModel t)
+    def List<String> generateStates(TacticsModel t, Boolean fresh)
     {
     	val List<ResolutionModel> resolutionModels = getResolutionModel(t, globalResource)
     	val HashSet<System> rossystems = newHashSet
@@ -972,30 +990,113 @@ class TQLGenerator extends AbstractGenerator {
 		val List<String> stateTQLs = newArrayList
     	for(actionRule : t.actionRules)
 		{
-			featureSelections = newHashMap
-			thresholds = newHashMap
-			booleanVars = newHashMap
+			if(fresh)
+			{
+				featureSelections = newHashMap
+				thresholds = newHashMap
+				booleanVars = newHashMap
+			
+			}
 			val serverName = findServerForAction(actionRule.action, rossystems)
 			for (rule : actionRule.adaptationRules) {
 		        	registerComparisonsFromRule(rule)
 		     }
-    		var states = createStates(resolutionModels, actionRule.adaptationRules, serverName)
-    		stateTQLs.add(genStatesTQL(states,actionRule.adaptationRules, serverName))
+    		var states = createStates(resolutionModels, actionRule.adaptationRules, considerFeatures)
+    		stateTQLs.add(genStatesTQL(states, serverName))
     	}
     	return stateTQLs
+    }
+    
+    def List<String> generateStates(TacticsModel t)
+    {
+    	generateStates(t, true)
+    }
+    
+    def printThresholds()
+    {
+    	for (element : thresholds.entrySet) {
+    		println(element.key.name + ": " + element.value.toString())
+    	}
     }
 
     
     def List<String> generateStates(TacticsModel t, RequirementsModel r)
     {
+		featureSelections = newHashMap
+		thresholds = newHashMap
+		booleanVars = newHashMap
     	val reqContextVars = RequirementsModelGenerator.extractContextVars(r.requirements)
-    	for (contextVar : reqContextVars) {	
+    	println("req contextVars extracted " + reqContextVars.size())
+    	
+    	for (contextVar : reqContextVars) {
     		processThresholds(contextVar)
     	}
-    	generateStates(t)
+    	printThresholds()
+    	generateStates(t,false)
     }
     
-    def processThresholds(ContextVar contextVar)
+    def static Map<String,List<State>> createStates(TacticsModel t, RequirementsModel r, Boolean considerFeatures)
+    {
+    	
+		featureSelections = newHashMap
+		thresholds = newHashMap
+		booleanVars = newHashMap
+    	val reqContextVars = RequirementsModelGenerator.extractContextVars(r.requirements)
+    	println("req contextVars extracted " + reqContextVars.size())
+    	
+    	for (contextVar : reqContextVars) {
+    		processThresholds(contextVar)
+    	}
+
+    	val List<ResolutionModel> resolutionModels = getResolutionModel(t, globalResource)
+    	val HashSet<System> rossystems = newHashSet
+		resolutionModels.forEach[rossystems.add(it.getRossystem())]
+		val actionStates = newHashMap
+    	for(actionRule : t.actionRules)
+		{
+//			val serverName = findServerForAction(actionRule.action, rossystems)
+			for (rule : actionRule.adaptationRules) {
+		        	registerComparisonsFromRule(rule)
+		     }
+    		var states = createStates(resolutionModels, actionRule.adaptationRules, considerFeatures)
+    		
+    		actionStates.put(actionRule.action.name, states)
+    	}
+    	return actionStates
+    }
+    
+    def static List<State> createStates(ContextModel c)
+    {
+
+		featureSelections = newHashMap
+		thresholds = newHashMap
+		booleanVars = newHashMap
+    	
+    	for (contextVar : c.environmental_variables) {
+    		processThresholds(contextVar)
+    	}
+
+		val bounds = createBounds()
+        val contextKeys = bounds.keySet.toList
+        val values = bounds.values.toList
+
+       	val product = Utilities.getCartesianProduct(values)
+		var allStates = newArrayList
+		val booleanPreconditionsCombinations = booleanPreconditionsCombinations(contextKeys)
+		
+		for (contextBooleanPrecondition : booleanPreconditionsCombinations)
+		{
+			for (contextBoundPrecondition : product)
+			{
+				allStates.add(new State(contextBoundPrecondition, contextBooleanPrecondition, null, contextKeys, null))
+			}
+			
+		}
+		
+    	return allStates
+    }
+    
+    def static processThresholds(ContextVar contextVar)
     {
 	   	if(contextVar.hasThresholds)
 		{
@@ -1005,9 +1106,20 @@ class TQLGenerator extends AbstractGenerator {
 			}
 			
 		}
+		else if(contextVar.type instanceof primitives.bool)
+		{
+			if(booleanVars.get(contextVar) === null)
+			{
+				var Set<Boolean> newList =  new HashSet<Boolean>()
+				newList.add(true)
+				newList.add(false)
+	
+				booleanVars.put(contextVar,newList)
+			}
+		}
     }
     
-    def hasThresholds(ContextVar contextVar)
+    def static hasThresholds(ContextVar contextVar)
     {
     	return contextVar.thresholds !== null && contextVar.thresholds.size > 0	
     }
@@ -1028,6 +1140,8 @@ class TQLGenerator extends AbstractGenerator {
 		
 		val List<String> tacticTQLs = newArrayList
 		var doneStatesTQL = ""
+		
+		createStates(contextModels.get(0))
 
 		for(actionRule : t.actionRules)
 		{
@@ -1135,15 +1249,22 @@ class TQLGenerator extends AbstractGenerator {
 			}
 			return result
 		}
+		
+	def static negInfLiteral()
+	{
+		val emptyLit = CommonFactory.eINSTANCE.createDecimalLiteral()
+		emptyLit.value = new BigDecimal(-99999999.9)
+		return emptyLit
+	}
 
-	def createBounds()
+	def static createBounds()
 	{
 		val Map<ContextVar, List<Pair<Literal, Literal>>> bounds = newHashMap
 		for (measurement : thresholds.keySet) {
 			var List<Pair<Literal,Literal>> boundPairs = newArrayList
 			val sortedThresholds = thresholds.get(measurement).toList().sortWith(new LiteralComparator)
 			boundPairs.add(null -> sortedThresholds.first)
-			
+
 			if(sortedThresholds.size() > 1)
 			{
 				for (indexedLiteral : sortedThresholds.indexed) {
@@ -1160,7 +1281,7 @@ class TQLGenerator extends AbstractGenerator {
 		return bounds
 	}
 	
-	def printBoundPairs(List<Pair<Literal,Literal>> boundPairs)
+	def static printBoundPairs(List<Pair<Literal,Literal>> boundPairs)
 	{
 		for (element : boundPairs) {
 			if(element.key === null)
@@ -1463,7 +1584,7 @@ class TQLGenerator extends AbstractGenerator {
 		
 	}
 	
-	private def recordFeatureCondition(FeatureCondition feat_cond)
+	private def static recordFeatureCondition(FeatureCondition feat_cond)
 	{
 		for (element : flattenAgain(feat_cond)) {
 			if(featureSelections.get(element.variant) !== null)
@@ -1482,7 +1603,7 @@ class TQLGenerator extends AbstractGenerator {
 		
 	}
 	
-	private def recordMeasurementConditionOnlyLiteral(MeasurementThresholdCondition mes_cond)
+	private def static recordMeasurementConditionOnlyLiteral(MeasurementThresholdCondition mes_cond)
 	{
 		for (element : flattenAgain(mes_cond)) {
 			if(element.thresholdValue instanceof BooleanLiteral)
@@ -1516,7 +1637,7 @@ class TQLGenerator extends AbstractGenerator {
 		
 	}
 	
-	private def addToThresholds(ContextVar cVar, Literal lit)
+	private def static addToThresholds(ContextVar cVar, Literal lit)
 	{
 		if(thresholds.get(cVar) !== null)
 				{
@@ -1555,7 +1676,7 @@ class TQLGenerator extends AbstractGenerator {
 		return null
 	}
 	
-	private def registerComparisonsFromRule(AdaptationRule adap_rule)
+	private def static registerComparisonsFromRule(AdaptationRule adap_rule)
 	{
 		if(adap_rule instanceof AtomicRule)
 		{
@@ -1589,9 +1710,6 @@ class TQLGenerator extends AbstractGenerator {
 		x+="]"
 		return x
 	}
-
-	
-
 
 	private def compileRule(AdaptationRule rule, String lc_tacticName, boolean doingStates)
 	{
@@ -1634,7 +1752,7 @@ class TQLGenerator extends AbstractGenerator {
 «««					$tactic_rule_«lc_ruleName» (tactic:$ta_«lc_tacticName», antecedent:$«ant_name», consequent:$«_namer.uniqueName(c.ruleBody.atomicAction.actions.get(0).variant.feature)» ) isa tactic_rule, has rule_name "«ruleName»";
 					
 					«IF ruleBody.effect !== null»
-						«EffectHandling(ruleBody.effect.someEffect, ruleName)»
+«««						«EffectHandling(ruleBody.effect.someEffect, ruleName)»
 						$tactic_rule_«lc_ruleName» (tactic:$ta_«lc_tacticName», «IF !doingStates» antecedent:$«ant_name», «ENDIF» consequent:$«someName», effect:$rel_effect_«ruleName.toLowerCase») isa tactic_rule, has rule_name "«ruleName»";
 					«ELSE»
 						$tactic_rule_«lc_ruleName» (tactic:$ta_«lc_tacticName»,  
@@ -1691,7 +1809,7 @@ class TQLGenerator extends AbstractGenerator {
 	}
 	
 	
-	def findNextState(Double affectedValue, ContextVar contextVar, State currentState)
+	def findNextState(Double affectedValue, ContextVar contextVar, State currentState, List<State> allStates)
 	{
 		val currentFeatureState = currentState.featurePrecondition
 		for (potentialState : allStates) {
@@ -1718,7 +1836,7 @@ class TQLGenerator extends AbstractGenerator {
 	}
 	
 	
-	def String EffectHandling(Effect effect, String ruleName)
+	def String EffectHandling(Effect effect, String ruleName, List<State> allStates)
 	{
 		if(effect instanceof RelativeEffect)
 		{
@@ -1752,7 +1870,7 @@ class TQLGenerator extends AbstractGenerator {
 				    }
 				
 				    if (escaped !== null) {
-				        val nextState = findNextState(escaped, effect.measurement, state)
+				        val nextState = findNextState(escaped, effect.measurement, state, allStates)
 				        escapes.put(state.TQLName -> ruleName, nextState.TQLName)
 				    }
 				}				
@@ -1786,7 +1904,6 @@ class TQLGenerator extends AbstractGenerator {
     	return new Pair(name, final_expr)
 	}
 	def Pair<String, String> createAntecedent(Expr e) {
-		println("Creating Antecedent")
     	switch e {
 	
 	        Or: {
@@ -1823,9 +1940,7 @@ class TQLGenerator extends AbstractGenerator {
 	        			throw new Exception("did not expect an AND from flattend ANDs")
 	        		}
 	        	}
-	        	for (element : handled) {
-	        		println("HANDLED")
-	        	}
+
 	        	val name = uniqueName(e)
 				val x = '''
 				«FOR element : handled»
@@ -1857,7 +1972,7 @@ class TQLGenerator extends AbstractGenerator {
 	}
 	
 	
-	def List<MeasurementThresholdCondition> flattenAgain(MeasurementThresholdCondition c) {		
+	def static List<MeasurementThresholdCondition> flattenAgain(MeasurementThresholdCondition c) {		
 		val result = newArrayList
 		
 		var current = c
@@ -1871,7 +1986,7 @@ class TQLGenerator extends AbstractGenerator {
 		return result
 	}
 	
-	def List<FeatureCondition> flattenAgain(FeatureCondition c) {		
+	def static List<FeatureCondition> flattenAgain(FeatureCondition c) {		
 		val result = newArrayList
 		
 		var current = c

@@ -18,6 +18,8 @@ import eu.coresense.requirements.requirementsModel.Before;
 import eu.coresense.requirements.requirementsModel.BooleanStatement;
 import eu.coresense.requirements.requirementsModel.Condition;
 import eu.coresense.requirements.requirementsModel.Eventually;
+import eu.coresense.requirements.requirementsModel.FuzzyLeftShoulder;
+import eu.coresense.requirements.requirementsModel.FuzzyRightShoulder;
 import eu.coresense.requirements.requirementsModel.FuzzyTriangular;
 import eu.coresense.requirements.requirementsModel.In;
 import eu.coresense.requirements.requirementsModel.May;
@@ -100,6 +102,12 @@ public class RequirementsModelSemanticSequencer extends AbstractDelegatingSemant
 				return; 
 			case RequirementsModelPackage.EVENTUALLY:
 				sequence_Eventually(context, (Eventually) semanticObject); 
+				return; 
+			case RequirementsModelPackage.FUZZY_LEFT_SHOULDER:
+				sequence_FuzzyLeftShoulder(context, (FuzzyLeftShoulder) semanticObject); 
+				return; 
+			case RequirementsModelPackage.FUZZY_RIGHT_SHOULDER:
+				sequence_FuzzyRightShoulder(context, (FuzzyRightShoulder) semanticObject); 
 				return; 
 			case RequirementsModelPackage.FUZZY_TRIANGULAR:
 				sequence_FuzzyTriangular(context, (FuzzyTriangular) semanticObject); 
@@ -204,7 +212,7 @@ public class RequirementsModelSemanticSequencer extends AbstractDelegatingSemant
 	 *     Expression returns AsAsPossible
 	 *
 	 * Constraint:
-	 *     (timeFrequency=Timeliness quantity=Quantifiable)
+	 *     (timeFrequency=Timeliness quantity=Quantifiable membershipFunction=MembershipFunction)
 	 * </pre>
 	 */
 	protected void sequence_AsAsPossible(ISerializationContext context, AsAsPossible semanticObject) {
@@ -213,10 +221,13 @@ public class RequirementsModelSemanticSequencer extends AbstractDelegatingSemant
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, RequirementsModelPackage.Literals.AS_AS_POSSIBLE__TIME_FREQUENCY));
 			if (transientValues.isValueTransient(semanticObject, RequirementsModelPackage.Literals.AS_AS_POSSIBLE__QUANTITY) == ValueTransient.YES)
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, RequirementsModelPackage.Literals.AS_AS_POSSIBLE__QUANTITY));
+			if (transientValues.isValueTransient(semanticObject, RequirementsModelPackage.Literals.AS_AS_POSSIBLE__MEMBERSHIP_FUNCTION) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, RequirementsModelPackage.Literals.AS_AS_POSSIBLE__MEMBERSHIP_FUNCTION));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getAsAsPossibleAccess().getTimeFrequencyTimelinessEnumRuleCall_1_0(), semanticObject.getTimeFrequency());
 		feeder.accept(grammarAccess.getAsAsPossibleAccess().getQuantityQuantifiableParserRuleCall_5_0(), semanticObject.getQuantity());
+		feeder.accept(grammarAccess.getAsAsPossibleAccess().getMembershipFunctionMembershipFunctionParserRuleCall_7_0(), semanticObject.getMembershipFunction());
 		feeder.finish();
 	}
 	
@@ -391,6 +402,54 @@ public class RequirementsModelSemanticSequencer extends AbstractDelegatingSemant
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getEventuallyAccess().getExpressionExpressionParserRuleCall_2_0(), semanticObject.getExpression());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
+	 *     MembershipFunction returns FuzzyLeftShoulder
+	 *     FuzzyLeftShoulder returns FuzzyLeftShoulder
+	 *
+	 * Constraint:
+	 *     (foot=DECIMAL shoulder=DECIMAL)
+	 * </pre>
+	 */
+	protected void sequence_FuzzyLeftShoulder(ISerializationContext context, FuzzyLeftShoulder semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, RequirementsModelPackage.Literals.FUZZY_LEFT_SHOULDER__FOOT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, RequirementsModelPackage.Literals.FUZZY_LEFT_SHOULDER__FOOT));
+			if (transientValues.isValueTransient(semanticObject, RequirementsModelPackage.Literals.FUZZY_LEFT_SHOULDER__SHOULDER) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, RequirementsModelPackage.Literals.FUZZY_LEFT_SHOULDER__SHOULDER));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getFuzzyLeftShoulderAccess().getFootDECIMALTerminalRuleCall_3_0(), semanticObject.getFoot());
+		feeder.accept(grammarAccess.getFuzzyLeftShoulderAccess().getShoulderDECIMALTerminalRuleCall_6_0(), semanticObject.getShoulder());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
+	 *     MembershipFunction returns FuzzyRightShoulder
+	 *     FuzzyRightShoulder returns FuzzyRightShoulder
+	 *
+	 * Constraint:
+	 *     (foot=DECIMAL shoulder=DECIMAL)
+	 * </pre>
+	 */
+	protected void sequence_FuzzyRightShoulder(ISerializationContext context, FuzzyRightShoulder semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, RequirementsModelPackage.Literals.FUZZY_RIGHT_SHOULDER__FOOT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, RequirementsModelPackage.Literals.FUZZY_RIGHT_SHOULDER__FOOT));
+			if (transientValues.isValueTransient(semanticObject, RequirementsModelPackage.Literals.FUZZY_RIGHT_SHOULDER__SHOULDER) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, RequirementsModelPackage.Literals.FUZZY_RIGHT_SHOULDER__SHOULDER));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getFuzzyRightShoulderAccess().getFootDECIMALTerminalRuleCall_3_0(), semanticObject.getFoot());
+		feeder.accept(grammarAccess.getFuzzyRightShoulderAccess().getShoulderDECIMALTerminalRuleCall_6_0(), semanticObject.getShoulder());
 		feeder.finish();
 	}
 	

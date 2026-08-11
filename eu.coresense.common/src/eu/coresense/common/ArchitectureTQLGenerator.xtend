@@ -248,14 +248,14 @@ class ArchitectureTQLGenerator extends AbstractGenerator {
 			«IF includeInsert»
 				insert
 			«ENDIF»
-
+			
 			«FOR rossys : Utilities.collectAllSystems(rossystem)»
 				«val nodesList = Utilities.rosNodesFromSystem(rossys)»
 				«FOR comp : nodesList»
 					«generateInsertQuery(comp)»
 				«ENDFOR»
 				«processSubNodes(nodesList)»
-
+			
 			«ENDFOR»
 		'''
 
@@ -312,7 +312,7 @@ class ArchitectureTQLGenerator extends AbstractGenerator {
 					«describeParameter(_namer.uniqueName(param_value.value, parent_name), param_value.value)»
 					$«parseq_name»_elem_«param_value.key» (array: $«parseq_name», array_value: $«_namer.uniqueName(param_value.value, parent_name)») isa at_index, has index «param_value.key»;
 				«ENDFOR»
-
+				
 			'''
 			// Insert end thing for the actual array :-)
 			for (param_value : the_value.value) {
@@ -357,11 +357,11 @@ class ArchitectureTQLGenerator extends AbstractGenerator {
 		    if (qos.leaseDuration !== null) 'has lease_duration ' + handleDuration(qos.leaseDuration) else null
 		).filterNull
     	'''
-
+				
 				$«qosName» isa QoSProfile,
 				 	   	«qosProps.join(",\n")»
 				;
-
+				
 				$«qosName»_rel (interface: $«interfaceName», qos: $«qosName») isa has_qos;
 			'''
     	}
@@ -387,13 +387,13 @@ class ArchitectureTQLGenerator extends AbstractGenerator {
 				«ENDIF»
 			«ENDFOR»
 			«IF !node.getParameters.empty»
-
-				$«nodeName»_parameters (
-					node: $«nodeName»,
-					«FOR parameter : node.getParameters SEPARATOR ", "»
-						parameter: $«_namer.uniqueName(parameter)»
-					«ENDFOR»
-					) isa has_parameter;
+			
+					$«nodeName»_parameters (
+						node: $«nodeName»,
+						«FOR parameter : node.getParameters SEPARATOR ", "»
+							parameter: $«_namer.uniqueName(parameter)»
+						«ENDFOR»
+						) isa has_parameter;
 			«ENDIF»
 			«FOR subscription : innerNode.subscriber»
 				«val subName = _namer.uniqueName(subscription, nodeName)»
@@ -402,9 +402,9 @@ class ArchitectureTQLGenerator extends AbstractGenerator {
 				has interface_name "«topicName»",
 				has interface_type "«subscription.message.fullname»";
 				«handleQoS(subscription.qos, subName)»
-
+			
 				(node: $«nodeName», subscriber: $«subName») isa has_topic;
-
+			
 			«ENDFOR»
 			«FOR publication : innerNode.publisher»
 				«val pubName = _namer.uniqueName(publication, nodeName)»
@@ -413,7 +413,7 @@ class ArchitectureTQLGenerator extends AbstractGenerator {
 				has interface_name "«topicName»",
 				has interface_type "«publication.message.fullname»";
 				«handleQoS(publication.qos, pubName)»
-
+			
 				(node: $«nodeName», publisher: $«pubName») isa has_topic;
 			«ENDFOR»
 			«FOR actionClient : innerNode.actionclient»

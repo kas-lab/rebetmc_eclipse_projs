@@ -76,6 +76,7 @@
     <genClasses ecoreClass="RequirementsModel.ecore#//AsAsPossible">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RequirementsModel.ecore#//AsAsPossible/timeFrequency"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RequirementsModel.ecore#//AsAsPossible/quantity"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RequirementsModel.ecore#//AsAsPossible/membershipFunction"/>
     </genClasses>
     <genClasses ecoreClass="RequirementsModel.ecore#//CompoundExpression">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RequirementsModel.ecore#//CompoundExpression/leftExpression"/>
@@ -97,6 +98,14 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RequirementsModel.ecore#//FuzzyTriangular/a"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RequirementsModel.ecore#//FuzzyTriangular/b"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RequirementsModel.ecore#//FuzzyTriangular/c"/>
+    </genClasses>
+    <genClasses ecoreClass="RequirementsModel.ecore#//FuzzyRightShoulder">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RequirementsModel.ecore#//FuzzyRightShoulder/foot"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RequirementsModel.ecore#//FuzzyRightShoulder/shoulder"/>
+    </genClasses>
+    <genClasses ecoreClass="RequirementsModel.ecore#//FuzzyLeftShoulder">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RequirementsModel.ecore#//FuzzyLeftShoulder/foot"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RequirementsModel.ecore#//FuzzyLeftShoulder/shoulder"/>
     </genClasses>
     <genClasses ecoreClass="RequirementsModel.ecore#//Quantifiable">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference RequirementsModel.ecore#//Quantifiable/contextVariable"/>

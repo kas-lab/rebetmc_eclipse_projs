@@ -15,6 +15,7 @@ package eu.coresense.requirements.requirementsModel;
  * <ul>
  *   <li>{@link eu.coresense.requirements.requirementsModel.AsAsPossible#getTimeFrequency <em>Time Frequency</em>}</li>
  *   <li>{@link eu.coresense.requirements.requirementsModel.AsAsPossible#getQuantity <em>Quantity</em>}</li>
+ *   <li>{@link eu.coresense.requirements.requirementsModel.AsAsPossible#getMembershipFunction <em>Membership Function</em>}</li>
  * </ul>
  *
  * @see eu.coresense.requirements.requirementsModel.RequirementsModelPackage#getAsAsPossible()
@@ -69,5 +70,27 @@ public interface AsAsPossible extends Expression
    * @generated
    */
   void setQuantity(Quantifiable value);
+
+  /**
+   * Returns the value of the '<em><b>Membership Function</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Membership Function</em>' containment reference.
+   * @see #setMembershipFunction(MembershipFunction)
+   * @see eu.coresense.requirements.requirementsModel.RequirementsModelPackage#getAsAsPossible_MembershipFunction()
+   * @model containment="true"
+   * @generated
+   */
+  MembershipFunction getMembershipFunction();
+
+  /**
+   * Sets the value of the '{@link eu.coresense.requirements.requirementsModel.AsAsPossible#getMembershipFunction <em>Membership Function</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Membership Function</em>' containment reference.
+   * @see #getMembershipFunction()
+   * @generated
+   */
+  void setMembershipFunction(MembershipFunction value);
 
 } // AsAsPossible

@@ -18,6 +18,8 @@ import eu.coresense.requirements.requirementsModel.CompoundExpression;
 import eu.coresense.requirements.requirementsModel.Condition;
 import eu.coresense.requirements.requirementsModel.Eventually;
 import eu.coresense.requirements.requirementsModel.Expression;
+import eu.coresense.requirements.requirementsModel.FuzzyLeftShoulder;
+import eu.coresense.requirements.requirementsModel.FuzzyRightShoulder;
 import eu.coresense.requirements.requirementsModel.FuzzyTriangular;
 import eu.coresense.requirements.requirementsModel.In;
 import eu.coresense.requirements.requirementsModel.LogicalOperator;
@@ -215,6 +217,20 @@ public class RequirementsModelPackageImpl extends EPackageImpl implements Requir
    * @generated
    */
   private EClass fuzzyTriangularEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass fuzzyRightShoulderEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass fuzzyLeftShoulderEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -765,6 +781,17 @@ public class RequirementsModelPackageImpl extends EPackageImpl implements Requir
    * @generated
    */
   @Override
+  public EReference getAsAsPossible_MembershipFunction()
+  {
+    return (EReference)asAsPossibleEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public EClass getCompoundExpression()
   {
     return compoundExpressionEClass;
@@ -944,6 +971,72 @@ public class RequirementsModelPackageImpl extends EPackageImpl implements Requir
   public EAttribute getFuzzyTriangular_C()
   {
     return (EAttribute)fuzzyTriangularEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getFuzzyRightShoulder()
+  {
+    return fuzzyRightShoulderEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getFuzzyRightShoulder_Foot()
+  {
+    return (EAttribute)fuzzyRightShoulderEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getFuzzyRightShoulder_Shoulder()
+  {
+    return (EAttribute)fuzzyRightShoulderEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getFuzzyLeftShoulder()
+  {
+    return fuzzyLeftShoulderEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getFuzzyLeftShoulder_Foot()
+  {
+    return (EAttribute)fuzzyLeftShoulderEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getFuzzyLeftShoulder_Shoulder()
+  {
+    return (EAttribute)fuzzyLeftShoulderEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -1194,6 +1287,7 @@ public class RequirementsModelPackageImpl extends EPackageImpl implements Requir
     asAsPossibleEClass = createEClass(AS_AS_POSSIBLE);
     createEAttribute(asAsPossibleEClass, AS_AS_POSSIBLE__TIME_FREQUENCY);
     createEReference(asAsPossibleEClass, AS_AS_POSSIBLE__QUANTITY);
+    createEReference(asAsPossibleEClass, AS_AS_POSSIBLE__MEMBERSHIP_FUNCTION);
 
     compoundExpressionEClass = createEClass(COMPOUND_EXPRESSION);
     createEReference(compoundExpressionEClass, COMPOUND_EXPRESSION__LEFT_EXPRESSION);
@@ -1218,6 +1312,14 @@ public class RequirementsModelPackageImpl extends EPackageImpl implements Requir
     createEAttribute(fuzzyTriangularEClass, FUZZY_TRIANGULAR__A);
     createEAttribute(fuzzyTriangularEClass, FUZZY_TRIANGULAR__B);
     createEAttribute(fuzzyTriangularEClass, FUZZY_TRIANGULAR__C);
+
+    fuzzyRightShoulderEClass = createEClass(FUZZY_RIGHT_SHOULDER);
+    createEAttribute(fuzzyRightShoulderEClass, FUZZY_RIGHT_SHOULDER__FOOT);
+    createEAttribute(fuzzyRightShoulderEClass, FUZZY_RIGHT_SHOULDER__SHOULDER);
+
+    fuzzyLeftShoulderEClass = createEClass(FUZZY_LEFT_SHOULDER);
+    createEAttribute(fuzzyLeftShoulderEClass, FUZZY_LEFT_SHOULDER__FOOT);
+    createEAttribute(fuzzyLeftShoulderEClass, FUZZY_LEFT_SHOULDER__SHOULDER);
 
     quantifiableEClass = createEClass(QUANTIFIABLE);
     createEReference(quantifiableEClass, QUANTIFIABLE__CONTEXT_VARIABLE);
@@ -1292,6 +1394,8 @@ public class RequirementsModelPackageImpl extends EPackageImpl implements Requir
     asCloseFreqEClass.getESuperTypes().add(this.getExpression());
     asCloseLitEClass.getESuperTypes().add(this.getExpression());
     fuzzyTriangularEClass.getESuperTypes().add(this.getMembershipFunction());
+    fuzzyRightShoulderEClass.getESuperTypes().add(this.getMembershipFunction());
+    fuzzyLeftShoulderEClass.getESuperTypes().add(this.getMembershipFunction());
     quantifiableEClass.getESuperTypes().add(this.getStatement());
     mayEClass.getESuperTypes().add(this.getExpression());
 
@@ -1348,6 +1452,7 @@ public class RequirementsModelPackageImpl extends EPackageImpl implements Requir
     initEClass(asAsPossibleEClass, AsAsPossible.class, "AsAsPossible", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getAsAsPossible_TimeFrequency(), this.getTimeliness(), "timeFrequency", null, 0, 1, AsAsPossible.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getAsAsPossible_Quantity(), this.getQuantifiable(), null, "quantity", null, 0, 1, AsAsPossible.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getAsAsPossible_MembershipFunction(), this.getMembershipFunction(), null, "membershipFunction", null, 0, 1, AsAsPossible.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(compoundExpressionEClass, CompoundExpression.class, "CompoundExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getCompoundExpression_LeftExpression(), this.getExpression(), null, "leftExpression", null, 0, 1, CompoundExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1372,6 +1477,14 @@ public class RequirementsModelPackageImpl extends EPackageImpl implements Requir
     initEAttribute(getFuzzyTriangular_A(), ecorePackage.getEBigDecimal(), "a", null, 0, 1, FuzzyTriangular.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getFuzzyTriangular_B(), ecorePackage.getEBigDecimal(), "b", null, 0, 1, FuzzyTriangular.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getFuzzyTriangular_C(), ecorePackage.getEBigDecimal(), "c", null, 0, 1, FuzzyTriangular.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(fuzzyRightShoulderEClass, FuzzyRightShoulder.class, "FuzzyRightShoulder", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getFuzzyRightShoulder_Foot(), ecorePackage.getEBigDecimal(), "foot", null, 0, 1, FuzzyRightShoulder.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getFuzzyRightShoulder_Shoulder(), ecorePackage.getEBigDecimal(), "shoulder", null, 0, 1, FuzzyRightShoulder.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(fuzzyLeftShoulderEClass, FuzzyLeftShoulder.class, "FuzzyLeftShoulder", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getFuzzyLeftShoulder_Foot(), ecorePackage.getEBigDecimal(), "foot", null, 0, 1, FuzzyLeftShoulder.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getFuzzyLeftShoulder_Shoulder(), ecorePackage.getEBigDecimal(), "shoulder", null, 0, 1, FuzzyLeftShoulder.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(quantifiableEClass, Quantifiable.class, "Quantifiable", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getQuantifiable_ContextVariable(), theContextModelPackage.getContextVar(), null, "contextVariable", null, 0, 1, Quantifiable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

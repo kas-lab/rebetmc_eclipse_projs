@@ -86,6 +86,8 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="timeFrequency" eType="#//Timeliness"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="quantity" eType="#//Quantifiable"
         containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="membershipFunction" eType="#//MembershipFunction"
+        containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="CompoundExpression" eSuperTypes="#//Expression">
     <eStructuralFeatures xsi:type="ecore:EReference" name="leftExpression" eType="#//Expression"
@@ -114,6 +116,14 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="a" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBigDecimal"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="b" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBigDecimal"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="c" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBigDecimal"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="FuzzyRightShoulder" eSuperTypes="#//MembershipFunction">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="foot" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBigDecimal"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="shoulder" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBigDecimal"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="FuzzyLeftShoulder" eSuperTypes="#//MembershipFunction">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="foot" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBigDecimal"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="shoulder" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBigDecimal"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Quantifiable" eSuperTypes="#//Statement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="contextVariable" eType="ecore:EClass platform:/resource/eu.coresense.context/model/generated/ContextModel.ecore#//ContextVar"/>

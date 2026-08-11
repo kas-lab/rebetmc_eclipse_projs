@@ -671,13 +671,22 @@ public interface RequirementsModelPackage extends EPackage
   int AS_AS_POSSIBLE__QUANTITY = EXPRESSION_FEATURE_COUNT + 1;
 
   /**
+   * The feature id for the '<em><b>Membership Function</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int AS_AS_POSSIBLE__MEMBERSHIP_FUNCTION = EXPRESSION_FEATURE_COUNT + 2;
+
+  /**
    * The number of structural features of the '<em>As As Possible</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int AS_AS_POSSIBLE_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 2;
+  int AS_AS_POSSIBLE_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 3;
 
   /**
    * The meta object id for the '{@link eu.coresense.requirements.requirementsModel.impl.AsCloseFreqImpl <em>As Close Freq</em>}' class.
@@ -828,6 +837,80 @@ public interface RequirementsModelPackage extends EPackage
   int FUZZY_TRIANGULAR_FEATURE_COUNT = MEMBERSHIP_FUNCTION_FEATURE_COUNT + 3;
 
   /**
+   * The meta object id for the '{@link eu.coresense.requirements.requirementsModel.impl.FuzzyRightShoulderImpl <em>Fuzzy Right Shoulder</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see eu.coresense.requirements.requirementsModel.impl.FuzzyRightShoulderImpl
+   * @see eu.coresense.requirements.requirementsModel.impl.RequirementsModelPackageImpl#getFuzzyRightShoulder()
+   * @generated
+   */
+  int FUZZY_RIGHT_SHOULDER = 22;
+
+  /**
+   * The feature id for the '<em><b>Foot</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FUZZY_RIGHT_SHOULDER__FOOT = MEMBERSHIP_FUNCTION_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Shoulder</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FUZZY_RIGHT_SHOULDER__SHOULDER = MEMBERSHIP_FUNCTION_FEATURE_COUNT + 1;
+
+  /**
+   * The number of structural features of the '<em>Fuzzy Right Shoulder</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FUZZY_RIGHT_SHOULDER_FEATURE_COUNT = MEMBERSHIP_FUNCTION_FEATURE_COUNT + 2;
+
+  /**
+   * The meta object id for the '{@link eu.coresense.requirements.requirementsModel.impl.FuzzyLeftShoulderImpl <em>Fuzzy Left Shoulder</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see eu.coresense.requirements.requirementsModel.impl.FuzzyLeftShoulderImpl
+   * @see eu.coresense.requirements.requirementsModel.impl.RequirementsModelPackageImpl#getFuzzyLeftShoulder()
+   * @generated
+   */
+  int FUZZY_LEFT_SHOULDER = 23;
+
+  /**
+   * The feature id for the '<em><b>Foot</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FUZZY_LEFT_SHOULDER__FOOT = MEMBERSHIP_FUNCTION_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Shoulder</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FUZZY_LEFT_SHOULDER__SHOULDER = MEMBERSHIP_FUNCTION_FEATURE_COUNT + 1;
+
+  /**
+   * The number of structural features of the '<em>Fuzzy Left Shoulder</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FUZZY_LEFT_SHOULDER_FEATURE_COUNT = MEMBERSHIP_FUNCTION_FEATURE_COUNT + 2;
+
+  /**
    * The meta object id for the '{@link eu.coresense.requirements.requirementsModel.impl.QuantifiableImpl <em>Quantifiable</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -835,7 +918,7 @@ public interface RequirementsModelPackage extends EPackage
    * @see eu.coresense.requirements.requirementsModel.impl.RequirementsModelPackageImpl#getQuantifiable()
    * @generated
    */
-  int QUANTIFIABLE = 22;
+  int QUANTIFIABLE = 24;
 
   /**
    * The feature id for the '<em><b>Context Variable</b></em>' reference.
@@ -863,7 +946,7 @@ public interface RequirementsModelPackage extends EPackage
    * @see eu.coresense.requirements.requirementsModel.impl.RequirementsModelPackageImpl#getMay()
    * @generated
    */
-  int MAY = 23;
+  int MAY = 25;
 
   /**
    * The feature id for the '<em><b>Expression</b></em>' containment reference.
@@ -900,7 +983,7 @@ public interface RequirementsModelPackage extends EPackage
    * @see eu.coresense.requirements.requirementsModel.impl.RequirementsModelPackageImpl#getMayAlternative()
    * @generated
    */
-  int MAY_ALTERNATIVE = 24;
+  int MAY_ALTERNATIVE = 26;
 
   /**
    * The feature id for the '<em><b>Expression</b></em>' containment reference.
@@ -928,7 +1011,7 @@ public interface RequirementsModelPackage extends EPackage
    * @see eu.coresense.requirements.requirementsModel.impl.RequirementsModelPackageImpl#getTimeInterval()
    * @generated
    */
-  int TIME_INTERVAL = 25;
+  int TIME_INTERVAL = 27;
 
   /**
    * The feature id for the '<em><b>After</b></em>' containment reference.
@@ -965,7 +1048,7 @@ public interface RequirementsModelPackage extends EPackage
    * @see eu.coresense.requirements.requirementsModel.impl.RequirementsModelPackageImpl#getTime()
    * @generated
    */
-  int TIME = 26;
+  int TIME = 28;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -993,7 +1076,7 @@ public interface RequirementsModelPackage extends EPackage
    * @see eu.coresense.requirements.requirementsModel.impl.RequirementsModelPackageImpl#getQualityAttribute()
    * @generated
    */
-  int QUALITY_ATTRIBUTE = 27;
+  int QUALITY_ATTRIBUTE = 29;
 
   /**
    * The meta object id for the '{@link eu.coresense.requirements.requirementsModel.LogicalOperator <em>Logical Operator</em>}' enum.
@@ -1003,7 +1086,7 @@ public interface RequirementsModelPackage extends EPackage
    * @see eu.coresense.requirements.requirementsModel.impl.RequirementsModelPackageImpl#getLogicalOperator()
    * @generated
    */
-  int LOGICAL_OPERATOR = 28;
+  int LOGICAL_OPERATOR = 30;
 
   /**
    * The meta object id for the '{@link eu.coresense.requirements.requirementsModel.Timeliness <em>Timeliness</em>}' enum.
@@ -1013,7 +1096,7 @@ public interface RequirementsModelPackage extends EPackage
    * @see eu.coresense.requirements.requirementsModel.impl.RequirementsModelPackageImpl#getTimeliness()
    * @generated
    */
-  int TIMELINESS = 29;
+  int TIMELINESS = 31;
 
 
   /**
@@ -1420,6 +1503,17 @@ public interface RequirementsModelPackage extends EPackage
   EReference getAsAsPossible_Quantity();
 
   /**
+   * Returns the meta object for the containment reference '{@link eu.coresense.requirements.requirementsModel.AsAsPossible#getMembershipFunction <em>Membership Function</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Membership Function</em>'.
+   * @see eu.coresense.requirements.requirementsModel.AsAsPossible#getMembershipFunction()
+   * @see #getAsAsPossible()
+   * @generated
+   */
+  EReference getAsAsPossible_MembershipFunction();
+
+  /**
    * Returns the meta object for class '{@link eu.coresense.requirements.requirementsModel.CompoundExpression <em>Compound Expression</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1598,6 +1692,70 @@ public interface RequirementsModelPackage extends EPackage
    * @generated
    */
   EAttribute getFuzzyTriangular_C();
+
+  /**
+   * Returns the meta object for class '{@link eu.coresense.requirements.requirementsModel.FuzzyRightShoulder <em>Fuzzy Right Shoulder</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Fuzzy Right Shoulder</em>'.
+   * @see eu.coresense.requirements.requirementsModel.FuzzyRightShoulder
+   * @generated
+   */
+  EClass getFuzzyRightShoulder();
+
+  /**
+   * Returns the meta object for the attribute '{@link eu.coresense.requirements.requirementsModel.FuzzyRightShoulder#getFoot <em>Foot</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Foot</em>'.
+   * @see eu.coresense.requirements.requirementsModel.FuzzyRightShoulder#getFoot()
+   * @see #getFuzzyRightShoulder()
+   * @generated
+   */
+  EAttribute getFuzzyRightShoulder_Foot();
+
+  /**
+   * Returns the meta object for the attribute '{@link eu.coresense.requirements.requirementsModel.FuzzyRightShoulder#getShoulder <em>Shoulder</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Shoulder</em>'.
+   * @see eu.coresense.requirements.requirementsModel.FuzzyRightShoulder#getShoulder()
+   * @see #getFuzzyRightShoulder()
+   * @generated
+   */
+  EAttribute getFuzzyRightShoulder_Shoulder();
+
+  /**
+   * Returns the meta object for class '{@link eu.coresense.requirements.requirementsModel.FuzzyLeftShoulder <em>Fuzzy Left Shoulder</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Fuzzy Left Shoulder</em>'.
+   * @see eu.coresense.requirements.requirementsModel.FuzzyLeftShoulder
+   * @generated
+   */
+  EClass getFuzzyLeftShoulder();
+
+  /**
+   * Returns the meta object for the attribute '{@link eu.coresense.requirements.requirementsModel.FuzzyLeftShoulder#getFoot <em>Foot</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Foot</em>'.
+   * @see eu.coresense.requirements.requirementsModel.FuzzyLeftShoulder#getFoot()
+   * @see #getFuzzyLeftShoulder()
+   * @generated
+   */
+  EAttribute getFuzzyLeftShoulder_Foot();
+
+  /**
+   * Returns the meta object for the attribute '{@link eu.coresense.requirements.requirementsModel.FuzzyLeftShoulder#getShoulder <em>Shoulder</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Shoulder</em>'.
+   * @see eu.coresense.requirements.requirementsModel.FuzzyLeftShoulder#getShoulder()
+   * @see #getFuzzyLeftShoulder()
+   * @generated
+   */
+  EAttribute getFuzzyLeftShoulder_Shoulder();
 
   /**
    * Returns the meta object for class '{@link eu.coresense.requirements.requirementsModel.Quantifiable <em>Quantifiable</em>}'.
@@ -2114,6 +2272,14 @@ public interface RequirementsModelPackage extends EPackage
     EReference AS_AS_POSSIBLE__QUANTITY = eINSTANCE.getAsAsPossible_Quantity();
 
     /**
+     * The meta object literal for the '<em><b>Membership Function</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference AS_AS_POSSIBLE__MEMBERSHIP_FUNCTION = eINSTANCE.getAsAsPossible_MembershipFunction();
+
+    /**
      * The meta object literal for the '{@link eu.coresense.requirements.requirementsModel.impl.CompoundExpressionImpl <em>Compound Expression</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -2262,6 +2428,58 @@ public interface RequirementsModelPackage extends EPackage
      * @generated
      */
     EAttribute FUZZY_TRIANGULAR__C = eINSTANCE.getFuzzyTriangular_C();
+
+    /**
+     * The meta object literal for the '{@link eu.coresense.requirements.requirementsModel.impl.FuzzyRightShoulderImpl <em>Fuzzy Right Shoulder</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see eu.coresense.requirements.requirementsModel.impl.FuzzyRightShoulderImpl
+     * @see eu.coresense.requirements.requirementsModel.impl.RequirementsModelPackageImpl#getFuzzyRightShoulder()
+     * @generated
+     */
+    EClass FUZZY_RIGHT_SHOULDER = eINSTANCE.getFuzzyRightShoulder();
+
+    /**
+     * The meta object literal for the '<em><b>Foot</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute FUZZY_RIGHT_SHOULDER__FOOT = eINSTANCE.getFuzzyRightShoulder_Foot();
+
+    /**
+     * The meta object literal for the '<em><b>Shoulder</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute FUZZY_RIGHT_SHOULDER__SHOULDER = eINSTANCE.getFuzzyRightShoulder_Shoulder();
+
+    /**
+     * The meta object literal for the '{@link eu.coresense.requirements.requirementsModel.impl.FuzzyLeftShoulderImpl <em>Fuzzy Left Shoulder</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see eu.coresense.requirements.requirementsModel.impl.FuzzyLeftShoulderImpl
+     * @see eu.coresense.requirements.requirementsModel.impl.RequirementsModelPackageImpl#getFuzzyLeftShoulder()
+     * @generated
+     */
+    EClass FUZZY_LEFT_SHOULDER = eINSTANCE.getFuzzyLeftShoulder();
+
+    /**
+     * The meta object literal for the '<em><b>Foot</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute FUZZY_LEFT_SHOULDER__FOOT = eINSTANCE.getFuzzyLeftShoulder_Foot();
+
+    /**
+     * The meta object literal for the '<em><b>Shoulder</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute FUZZY_LEFT_SHOULDER__SHOULDER = eINSTANCE.getFuzzyLeftShoulder_Shoulder();
 
     /**
      * The meta object literal for the '{@link eu.coresense.requirements.requirementsModel.impl.QuantifiableImpl <em>Quantifiable</em>}' class.

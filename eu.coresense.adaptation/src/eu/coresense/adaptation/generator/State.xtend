@@ -33,42 +33,169 @@ import eu.coresense.common.StringLiteral
 import org.eclipse.emf.common.util.EList
 import static extension eu.coresense.common.LiteralExtensions.*
 import eu.coresense.common.LiteralComparator
+import eu.coresense.adaptation.tactics.TacticsFactory
+import eu.coresense.adaptation.tactics.MeasurementCondition
+import eu.coresense.adaptation.tactics.LogicalOperator
+import eu.coresense.common.CommonFactory
+import org.eclipse.emf.ecore.util.EcoreUtil
 
 class State {
 	val public List<Boolean> featurePrecondition
 	var public String TQLName = "UnnamedState"
 	val public List<String> associatedRulesTQLNames
 	val public List<AdaptationRule> associatedRules
-	val Map<ContextVar, Pair<Literal, Literal>> boundPreconditionMap
+	val Map<ContextVar, Pair<Literal,Literal>> boundPreconditionMap
 	val Map<ContextVar, Boolean> boolPreconditionMap
 	var List<Feature> featureKeys
+	var public MeasurementCondition precondition
 	
 	
 	val Map<ContextVar, Double> medianBounds
 	
-	new(List<Pair<Literal, Literal>> contextPrecondition, List<Boolean> booleanContextPreconditions, List<Boolean> featurePrecondition,List<ContextVar> contextKeys, List<Feature> featureKeys) {
+	def static constructMeasurementThresholdCondition(ContextVar measurement, MathOperator op, Literal thresholdValue)
+	{
+		val x = TacticsFactory.eINSTANCE.createMeasurementThresholdCondition()
+		x.measurement = measurement
+		x.operator = op
+		x.thresholdValue = thresholdValue
+		return x
+	}
+	
+	def static render(MeasurementCondition mes)
+	{
+		var str = ""
+	   if(mes instanceof MeasurementThresholdCondition)
+	   {
+       		str += mes.measurement.name + mes.operator + mes.thresholdValue.render
+       
+       }
+       var current = mes
+       	while (current !== null && current.secondTerm !== null) {
+       		str += " " + current.logicalOp + " "
+       		if(mes.secondTerm instanceof MeasurementThresholdCondition)
+	  		{
+	  			current = current.secondTerm
+	  			
+       			str += current.measurement.name + current.operator +  (current as MeasurementThresholdCondition).thresholdValue.render
+       		}
+       		
+		}
+		return str
+	}
+	
+	new(List<Pair<Literal, Literal>> contextPrecondition, List<Boolean> booleanContextPreconditions, List<Boolean> featurePrecondition, List<ContextVar> contextKeys, List<Feature> featureKeys) {
 		boundPreconditionMap = newHashMap
 		medianBounds = newHashMap
 		associatedRulesTQLNames = newArrayList
 		associatedRules = newArrayList
 		boolPreconditionMap = newHashMap
+		precondition = null
 		this.featureKeys = featureKeys
-		for (contextKeyIndPair : contextKeys.indexed) {
-			val contextKey = contextKeyIndPair.value
-			if(contextKeyIndPair.key >= contextPrecondition.size())
+		this.featurePrecondition = featurePrecondition
+		for (var i = 0 ; i < contextPrecondition.size() ; i++)
+		{
+			val contextKey = contextKeys.get(i)
+			val bound = contextPrecondition.get(i)
+			var MeasurementThresholdCondition lowerComp = null
+			var MeasurementThresholdCondition upperComp = null
+			val lowerBound = bound.key
+			val upperBound = bound.value
+			var MeasurementCondition comp = null
+			// If neither bounds are infinite
+			if(upperBound !== null && lowerBound !== null)
 			{
-				val boolval = booleanContextPreconditions.get(contextKeyIndPair.key-contextPrecondition.size())
-				boolPreconditionMap.put(contextKey,boolval)
+				upperComp = constructMeasurementThresholdCondition(contextKey, MathOperator.LESS, EcoreUtil.copy(upperBound))
+				lowerComp = constructMeasurementThresholdCondition(contextKey, MathOperator.GREQ, EcoreUtil.copy(lowerBound))
+				
+				//combine
+				lowerComp.logicalOp = LogicalOperator.AND
+				lowerComp.secondTerm = upperComp
+				comp = lowerComp
+			}
+			else 
+			{
+				if(upperBound !== null)
+				{
+					upperComp = constructMeasurementThresholdCondition(contextKey, MathOperator.LESS, EcoreUtil.copy(upperBound))
+					comp = upperComp
+				}
+				if(lowerBound !== null)
+				{
+					lowerComp = constructMeasurementThresholdCondition(contextKey, MathOperator.GREQ, EcoreUtil.copy(lowerBound))
+					comp = lowerComp
+				}
+			}
+			
+			if(precondition === null)
+			{
+				precondition = comp
 			}
 			else
 			{
-			val bound = contextPrecondition.get(contextKeyIndPair.key)
+				//Append to the end
+				var current = precondition
+				while (current.secondTerm !== null) {
+				    current = current.secondTerm
+				}
+				current.secondTerm = comp
+			}
+
 			boundPreconditionMap.put(contextKey,bound)
 			medianBounds.put(contextKey,bound.medianBound)
-			}
+			
 		}
-        this.featurePrecondition = featurePrecondition
+		for (var i = contextPrecondition.size() ; i < contextKeys.length ; i++)
+		{
+				val boolval = booleanContextPreconditions.get(i-contextPrecondition.size())
+				boolPreconditionMap.put(contextKeys.get(i),boolval)
+				
+				val boolLit = CommonFactory.eINSTANCE.createBooleanLiteral()
+				boolLit.value = boolval
+				
+				val comp = constructMeasurementThresholdCondition(contextKeys.get(i), MathOperator.EQUAL,boolLit)
+				
+				if(precondition === null)
+				{
+					precondition = comp
+				}
+				else
+				{
+					//Append to the end
+					var current = precondition
+					while (current.secondTerm !== null) {
+					    current = current.secondTerm
+					}
+					current.secondTerm = comp
+				}
+			
+		}
+		println("state precondition " + precondition.render)
     }
+    
+//    new(List<Pair<Literal, Literal>> contextPrecondition, List<Boolean> booleanContextPreconditions, List<ContextVar> contextKeys, List<Feature> featureKeys) {
+////		boundPreconditionMap = newHashMap
+////		medianBounds = newHashMap
+////		associatedRulesTQLNames = newArrayList
+////		associatedRules = newArrayList
+////		boolPreconditionMap = newHashMap
+////		this.featureKeys = featureKeys
+////		precondition = null
+////		for (contextKeyIndPair : contextKeys.indexed) {
+////			val contextKey = contextKeyIndPair.value
+////			if(contextKeyIndPair.key >= contextPrecondition.size())
+////			{
+////				val boolval = booleanContextPreconditions.get(contextKeyIndPair.key-contextPrecondition.size())
+////				boolPreconditionMap.put(contextKey,boolval)
+////			}
+////			else
+////			{
+////			val bound = contextPrecondition.get(contextKeyIndPair.key)
+////			boundPreconditionMap.put(contextKey,bound)
+////			medianBounds.put(contextKey,bound.medianBound)
+////			}
+////		}
+////        this.featurePrecondition = null
+//    }
     
     def boolean varAgainstBounds(Var ruleConditionCNF)
 	{
@@ -150,29 +277,7 @@ class State {
 		return false
 	}
 
-    new(List<Pair<Literal, Literal>> contextPrecondition, List<Boolean> booleanContextPreconditions, List<ContextVar> contextKeys, List<Feature> featureKeys) {
-		boundPreconditionMap = newHashMap
-		medianBounds = newHashMap
-		associatedRulesTQLNames = newArrayList
-		associatedRules = newArrayList
-		boolPreconditionMap = newHashMap
-		this.featureKeys = featureKeys
-		for (contextKeyIndPair : contextKeys.indexed) {
-			val contextKey = contextKeyIndPair.value
-			if(contextKeyIndPair.key >= contextPrecondition.size())
-			{
-				val boolval = booleanContextPreconditions.get(contextKeyIndPair.key-contextPrecondition.size())
-				boolPreconditionMap.put(contextKey,boolval)
-			}
-			else
-			{
-			val bound = contextPrecondition.get(contextKeyIndPair.key)
-			boundPreconditionMap.put(contextKey,bound)
-			medianBounds.put(contextKey,bound.medianBound)
-			}
-		}
-        this.featurePrecondition = null
-    }
+
     
     def Pair<String,List<String>> stateActionPair()
     {
@@ -193,6 +298,12 @@ class State {
     {
     	return boundPreconditionMap.entrySet
     }
+    
+    def getContextBoolConditions()
+    {
+    	return boolPreconditionMap.entrySet
+    }
+    
     
     def List<Entry<ContextVar, Double>> getMedians()
     {
@@ -263,6 +374,20 @@ class State {
 		«ENDFOR»
 		----->
 		'''
+	}
+	
+	def String name()
+	{
+		var name = ""
+		for (element : boolPreconditionMap.entrySet) {
+			name += '''«element.key.name»==«element.value»;'''
+		}
+		name += "|"
+		
+		for (element : boundPreconditionMap.entrySet) {
+			name += '''«IF element.value.key !== null»«element.value.key.render»«ELSE»-inf«ENDIF»<«element.key.name»<«IF element.value.value !== null»«element.value.value.render»«ELSE»inf«ENDIF»;'''
+		}
+		return name
 	}
 	
 	def describe()
@@ -660,7 +785,7 @@ class State {
 						{
 							for (contextBoundPrecondition : product)
 							{
-								allStates.add(new State(contextBoundPrecondition, contextBooleanPrecondition, contextKeys, featureKeys))
+								allStates.add(new State(contextBoundPrecondition, contextBooleanPrecondition, null, contextKeys, featureKeys))
 							}
 							
 						}

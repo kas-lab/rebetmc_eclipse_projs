@@ -88,6 +88,8 @@ public class RequirementsModelFactoryImpl extends EFactoryImpl implements Requir
       case RequirementsModelPackage.AS_CLOSE_LIT: return createAsCloseLit();
       case RequirementsModelPackage.MEMBERSHIP_FUNCTION: return createMembershipFunction();
       case RequirementsModelPackage.FUZZY_TRIANGULAR: return createFuzzyTriangular();
+      case RequirementsModelPackage.FUZZY_RIGHT_SHOULDER: return createFuzzyRightShoulder();
+      case RequirementsModelPackage.FUZZY_LEFT_SHOULDER: return createFuzzyLeftShoulder();
       case RequirementsModelPackage.QUANTIFIABLE: return createQuantifiable();
       case RequirementsModelPackage.MAY: return createMay();
       case RequirementsModelPackage.MAY_ALTERNATIVE: return createMayAlternative();
@@ -402,6 +404,30 @@ public class RequirementsModelFactoryImpl extends EFactoryImpl implements Requir
   {
     FuzzyTriangularImpl fuzzyTriangular = new FuzzyTriangularImpl();
     return fuzzyTriangular;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public FuzzyRightShoulder createFuzzyRightShoulder()
+  {
+    FuzzyRightShoulderImpl fuzzyRightShoulder = new FuzzyRightShoulderImpl();
+    return fuzzyRightShoulder;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public FuzzyLeftShoulder createFuzzyLeftShoulder()
+  {
+    FuzzyLeftShoulderImpl fuzzyLeftShoulder = new FuzzyLeftShoulderImpl();
+    return fuzzyLeftShoulder;
   }
 
   /**

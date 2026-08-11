@@ -63,7 +63,7 @@ ThisUntil: 'THIS' leftExpression=Expression 'UNTIL' rightExpression=Expression ;
 Before: 'BEFORE' event=Event '(' expression=Expression ')';
 After: 'AFTER' event=Event '(' expression=Expression ')' ;
 In: 'IN' '(' deadline=TimeInterval ',' expression=Expression ')';
-AsAsPossible: 'AS' timeFrequency=Timeliness 'AS' 'POSSIBLE' '(' quantity=Quantifiable ')';
+AsAsPossible: 'AS' timeFrequency=Timeliness 'AS' 'POSSIBLE' '(' quantity=Quantifiable ',' membershipFunction=MembershipFunction ')';
 
 
 CompoundExpression:
@@ -124,11 +124,21 @@ AsCloseLit:
 ;
 
 MembershipFunction:
-	FuzzyTriangular
+	FuzzyTriangular |
+	FuzzyRightShoulder |
+	FuzzyLeftShoulder
 ;
 
 FuzzyTriangular:
 	'FuzzyTriangular' '(' a=DECIMAL ',' b=DECIMAL ',' c=DECIMAL ')'
+;
+
+FuzzyRightShoulder:
+	'FuzzyRightShoulder' '(' 'foot=' foot=DECIMAL ',' 'shoulder='shoulder=DECIMAL')'
+;
+
+FuzzyLeftShoulder:
+	'FuzzyLeftShoulder' '(' 'foot=' foot=DECIMAL ',' 'shoulder='shoulder=DECIMAL')'
 ;
 
 

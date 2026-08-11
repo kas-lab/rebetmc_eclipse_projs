@@ -28,8 +28,20 @@ import eu.coresense.adaptation.tactics.TacticsPackage;
 import eu.coresense.requirements.requirementsModel.RequirementsModelPackage;	
 
 
-public class RosToolingSupport {
 
+
+public class RosToolingSupport {
+	
+	public static class LoadResult {
+	    public final Injector injector;
+	    public final List<Resource> resources;
+
+	    public LoadResult(Injector injector, List<Resource> resources) {
+	        this.injector = injector;
+	        this.resources = resources;
+	    }
+	}
+	
 	public static void registerEPackages() {
     // Register the EPackages for the models you want to load
     ResolutionModelPackage.eINSTANCE.eClass();
@@ -133,7 +145,7 @@ public class RosToolingSupport {
 		throw new IllegalArgumentException("Unsupported parameter type: " + param.getClass().getName());
 	}
 
-	public static List<Resource> loadModel(ISetup setup, ResourceSet resSet, String fileExtension, String... filePaths) throws Exception {
+	public static LoadResult loadModel(ISetup setup, ResourceSet resSet, String fileExtension, String... filePaths) throws Exception {
 		List<Resource> resources = new ArrayList<>();
 		Injector injector = setup.createInjectorAndDoEMFRegistration();
 		Resource.Factory.Registry reg = Resource.Factory.Registry.INSTANCE;
@@ -175,7 +187,7 @@ public class RosToolingSupport {
 			}
 		}
 		
-		return resources;
+		return new LoadResult(injector, resources);
  	}
 
 	public static void validate(Resource resource) throws RuntimeException

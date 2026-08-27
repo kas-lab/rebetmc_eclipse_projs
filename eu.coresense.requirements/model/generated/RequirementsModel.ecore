@@ -3,10 +3,15 @@
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="requirementsModel" nsURI="http://www.coresense.eu/requirements/RequirementsModel"
     nsPrefix="requirementsModel">
   <eClassifiers xsi:type="ecore:EClass" name="RequirementsModel">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="imports" upperBound="-1"
+        eType="ecore:EClass platform:/resource/eu.coresense.common/model/common.ecore#//Import"
+        containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="requirements" upperBound="-1"
         eType="#//Requirement" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Requirement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="featureQualifier" eType="#//FeatureQualifier"
+        containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="qa" eType="#//QualityAttribute"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="naturalLanguageDescription"
@@ -24,6 +29,9 @@
     <eLiterals name="MAINTAINABILITY" value="6" literal="Maintainability"/>
     <eLiterals name="FLEXIBILITY" value="7" literal="Flexibility"/>
     <eLiterals name="SAFETY" value="8" literal="Safety"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="FeatureQualifier">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="feature" eType="ecore:EClass platform:/resource/fms.metamodel/model/BasicFMmetamodel.ecore#//Feature"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Condition">
     <eStructuralFeatures xsi:type="ecore:EReference" name="measurement" eType="ecore:EClass platform:/resource/eu.coresense.context/model/generated/ContextModel.ecore#//ContextVar"/>

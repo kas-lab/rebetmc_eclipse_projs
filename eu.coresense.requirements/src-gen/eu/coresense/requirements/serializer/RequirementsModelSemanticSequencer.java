@@ -7,6 +7,7 @@ import com.google.inject.Inject;
 import eu.coresense.common.BooleanLiteral;
 import eu.coresense.common.CommonPackage;
 import eu.coresense.common.DecimalLiteral;
+import eu.coresense.common.Import;
 import eu.coresense.common.IntLiteral;
 import eu.coresense.common.StringLiteral;
 import eu.coresense.requirements.requirementsModel.After;
@@ -18,6 +19,7 @@ import eu.coresense.requirements.requirementsModel.Before;
 import eu.coresense.requirements.requirementsModel.BooleanStatement;
 import eu.coresense.requirements.requirementsModel.Condition;
 import eu.coresense.requirements.requirementsModel.Eventually;
+import eu.coresense.requirements.requirementsModel.FeatureQualifier;
 import eu.coresense.requirements.requirementsModel.FuzzyLeftShoulder;
 import eu.coresense.requirements.requirementsModel.FuzzyRightShoulder;
 import eu.coresense.requirements.requirementsModel.FuzzyTriangular;
@@ -67,6 +69,9 @@ public class RequirementsModelSemanticSequencer extends AbstractDelegatingSemant
 			case CommonPackage.DECIMAL_LITERAL:
 				sequence_DecimalLiteral(context, (DecimalLiteral) semanticObject); 
 				return; 
+			case CommonPackage.IMPORT:
+				sequence_Import(context, (Import) semanticObject); 
+				return; 
 			case CommonPackage.INT_LITERAL:
 				sequence_IntLiteral(context, (IntLiteral) semanticObject); 
 				return; 
@@ -102,6 +107,9 @@ public class RequirementsModelSemanticSequencer extends AbstractDelegatingSemant
 				return; 
 			case RequirementsModelPackage.EVENTUALLY:
 				sequence_Eventually(context, (Eventually) semanticObject); 
+				return; 
+			case RequirementsModelPackage.FEATURE_QUALIFIER:
+				sequence_FeatureQualifier(context, (FeatureQualifier) semanticObject); 
 				return; 
 			case RequirementsModelPackage.FUZZY_LEFT_SHOULDER:
 				sequence_FuzzyLeftShoulder(context, (FuzzyLeftShoulder) semanticObject); 
@@ -409,6 +417,26 @@ public class RequirementsModelSemanticSequencer extends AbstractDelegatingSemant
 	/**
 	 * <pre>
 	 * Contexts:
+	 *     FeatureQualifier returns FeatureQualifier
+	 *
+	 * Constraint:
+	 *     feature=[Feature|ID]
+	 * </pre>
+	 */
+	protected void sequence_FeatureQualifier(ISerializationContext context, FeatureQualifier semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, RequirementsModelPackage.Literals.FEATURE_QUALIFIER__FEATURE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, RequirementsModelPackage.Literals.FEATURE_QUALIFIER__FEATURE));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getFeatureQualifierAccess().getFeatureFeatureIDTerminalRuleCall_1_0_1(), semanticObject.eGet(RequirementsModelPackage.Literals.FEATURE_QUALIFIER__FEATURE, false));
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
 	 *     MembershipFunction returns FuzzyLeftShoulder
 	 *     FuzzyLeftShoulder returns FuzzyLeftShoulder
 	 *
@@ -477,6 +505,26 @@ public class RequirementsModelSemanticSequencer extends AbstractDelegatingSemant
 		feeder.accept(grammarAccess.getFuzzyTriangularAccess().getADECIMALTerminalRuleCall_2_0(), semanticObject.getA());
 		feeder.accept(grammarAccess.getFuzzyTriangularAccess().getBDECIMALTerminalRuleCall_4_0(), semanticObject.getB());
 		feeder.accept(grammarAccess.getFuzzyTriangularAccess().getCDECIMALTerminalRuleCall_6_0(), semanticObject.getC());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
+	 *     Import returns Import
+	 *
+	 * Constraint:
+	 *     importURI=STRING
+	 * </pre>
+	 */
+	protected void sequence_Import(ISerializationContext context, Import semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, CommonPackage.Literals.IMPORT__IMPORT_URI) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, CommonPackage.Literals.IMPORT__IMPORT_URI));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getImportAccess().getImportURISTRINGTerminalRuleCall_1_0(), semanticObject.getImportURI());
 		feeder.finish();
 	}
 	
@@ -657,26 +705,11 @@ public class RequirementsModelSemanticSequencer extends AbstractDelegatingSemant
 	 *     Requirement returns Requirement
 	 *
 	 * Constraint:
-	 *     (name=ID qa=QualityAttribute naturalLanguageDescription=STRING expression=Expression)
+	 *     (featureQualifier=FeatureQualifier? name=ID qa=QualityAttribute naturalLanguageDescription=STRING expression=Expression)
 	 * </pre>
 	 */
 	protected void sequence_Requirement(ISerializationContext context, Requirement semanticObject) {
-		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, RequirementsModelPackage.Literals.REQUIREMENT__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, RequirementsModelPackage.Literals.REQUIREMENT__NAME));
-			if (transientValues.isValueTransient(semanticObject, RequirementsModelPackage.Literals.REQUIREMENT__QA) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, RequirementsModelPackage.Literals.REQUIREMENT__QA));
-			if (transientValues.isValueTransient(semanticObject, RequirementsModelPackage.Literals.REQUIREMENT__NATURAL_LANGUAGE_DESCRIPTION) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, RequirementsModelPackage.Literals.REQUIREMENT__NATURAL_LANGUAGE_DESCRIPTION));
-			if (transientValues.isValueTransient(semanticObject, RequirementsModelPackage.Literals.REQUIREMENT__EXPRESSION) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, RequirementsModelPackage.Literals.REQUIREMENT__EXPRESSION));
-		}
-		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getRequirementAccess().getNameIDTerminalRuleCall_0_0(), semanticObject.getName());
-		feeder.accept(grammarAccess.getRequirementAccess().getQaQualityAttributeEnumRuleCall_2_0(), semanticObject.getQa());
-		feeder.accept(grammarAccess.getRequirementAccess().getNaturalLanguageDescriptionSTRINGTerminalRuleCall_4_0(), semanticObject.getNaturalLanguageDescription());
-		feeder.accept(grammarAccess.getRequirementAccess().getExpressionExpressionParserRuleCall_6_0(), semanticObject.getExpression());
-		feeder.finish();
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
@@ -686,7 +719,7 @@ public class RequirementsModelSemanticSequencer extends AbstractDelegatingSemant
 	 *     RequirementsModel returns RequirementsModel
 	 *
 	 * Constraint:
-	 *     requirements+=Requirement+
+	 *     ((imports+=Import+ requirements+=Requirement+) | requirements+=Requirement+)?
 	 * </pre>
 	 */
 	protected void sequence_RequirementsModel(ISerializationContext context, RequirementsModel semanticObject) {

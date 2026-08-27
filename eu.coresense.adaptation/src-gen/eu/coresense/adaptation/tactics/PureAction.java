@@ -14,6 +14,6 @@ package eu.coresense.adaptation.tactics;
  * @model
  * @generated
  */
-public interface PureAction extends RuleBody
+public interface PureAction extends TacticAction
 {
 } // PureAction

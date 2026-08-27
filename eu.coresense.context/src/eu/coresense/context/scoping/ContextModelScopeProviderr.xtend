@@ -22,6 +22,10 @@ import ros.ActionServer
 import eu.coresense.common.Import
 import eu.coresense.common.Utilities
 import ros.ActionSpec
+import ros.RosPackage
+import primitives.PrimitivesPackage
+import ros.TopicSpecMsgRef
+import ros.ArrayTopicSpecMsgRef
 
 class ContextModelScopeProviderr extends AbstractContextModelScopeProvider {
 
@@ -82,6 +86,33 @@ class ContextModelScopeProviderr extends AbstractContextModelScopeProvider {
 	    	);
 	    	
 	    }
+	   	if(reference == ContextModelPackage.Literals.MISSION_VAR__ACTION)
+	    {
+	    	val model = EcoreUtil2.getContainerOfType(context, ContextModel);
+
+	    	return Scopes.scopeFor(
+	    		allActions(model,context),
+	    		[EObject e | QualifiedName.create(Utilities.escape((e as ActionSpec).name))],
+	    		IScope.NULLSCOPE
+	    	);
+	    	
+	    }
+	   	if(context instanceof TopicSpecMsgRef || context instanceof ArrayTopicSpecMsgRef)
+	    {
+	    	val model = EcoreUtil2.getContainerOfType(context, ContextModel);
+			val packageSets = Utilities.deriveFromImports(context.eResource(), ".ros",model.imports,typeof(ros.PackageSet));
+			val allSpecs = newArrayList
+			for (packageSet : packageSets) {
+				for(pkg : packageSet.package) {
+					allSpecs.addAll(pkg.spec)
+				}
+			}
+	    	return Scopes.scopeFor(
+	    		allSpecs
+	    	);
+	    	
+	    }
+	  
          super.getScope(context, reference)
      }
 

@@ -78,6 +78,24 @@ public interface ContextModelFactory extends EFactory
   DataSource createDataSource();
 
   /**
+   * Returns a new object of class '<em>Reference</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Reference</em>'.
+   * @generated
+   */
+  Reference createReference();
+
+  /**
+   * Returns a new object of class '<em>Composite Ref</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Composite Ref</em>'.
+   * @generated
+   */
+  CompositeRef createCompositeRef();
+
+  /**
    * Returns a new object of class '<em>Qualified Ref</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

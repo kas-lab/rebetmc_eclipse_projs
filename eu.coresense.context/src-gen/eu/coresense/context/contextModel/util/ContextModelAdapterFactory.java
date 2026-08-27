@@ -106,6 +106,16 @@ public class ContextModelAdapterFactory extends AdapterFactoryImpl
         return createDataSourceAdapter();
       }
       @Override
+      public Adapter caseReference(Reference object)
+      {
+        return createReferenceAdapter();
+      }
+      @Override
+      public Adapter caseCompositeRef(CompositeRef object)
+      {
+        return createCompositeRefAdapter();
+      }
+      @Override
       public Adapter caseQualifiedRef(QualifiedRef object)
       {
         return createQualifiedRefAdapter();
@@ -233,6 +243,36 @@ public class ContextModelAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createDataSourceAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link eu.coresense.context.contextModel.Reference <em>Reference</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see eu.coresense.context.contextModel.Reference
+   * @generated
+   */
+  public Adapter createReferenceAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link eu.coresense.context.contextModel.CompositeRef <em>Composite Ref</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see eu.coresense.context.contextModel.CompositeRef
+   * @generated
+   */
+  public Adapter createCompositeRefAdapter()
   {
     return null;
   }

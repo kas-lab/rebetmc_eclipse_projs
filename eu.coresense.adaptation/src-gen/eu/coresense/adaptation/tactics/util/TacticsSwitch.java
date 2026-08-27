@@ -102,21 +102,6 @@ public class TacticsSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case TacticsPackage.RULE_SET:
-      {
-        RuleSet ruleSet = (RuleSet)theEObject;
-        T result = caseRuleSet(ruleSet);
-        if (result == null) result = caseAdaptationRule(ruleSet);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case TacticsPackage.ATOMIC_RULE_WITH_PRIORITY:
-      {
-        AtomicRuleWithPriority atomicRuleWithPriority = (AtomicRuleWithPriority)theEObject;
-        T result = caseAtomicRuleWithPriority(atomicRuleWithPriority);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
       case TacticsPackage.ATOMIC_ACTION:
       {
         AtomicAction atomicAction = (AtomicAction)theEObject;
@@ -138,11 +123,18 @@ public class TacticsSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case TacticsPackage.TACTIC_ACTION:
+      {
+        TacticAction tacticAction = (TacticAction)theEObject;
+        T result = caseTacticAction(tacticAction);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case TacticsPackage.PURE_ACTION:
       {
         PureAction pureAction = (PureAction)theEObject;
         T result = casePureAction(pureAction);
-        if (result == null) result = caseRuleBody(pureAction);
+        if (result == null) result = caseTacticAction(pureAction);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -150,7 +142,7 @@ public class TacticsSwitch<T> extends Switch<T>
       {
         ConditionAction conditionAction = (ConditionAction)theEObject;
         T result = caseConditionAction(conditionAction);
-        if (result == null) result = caseRuleBody(conditionAction);
+        if (result == null) result = caseTacticAction(conditionAction);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -194,14 +186,6 @@ public class TacticsSwitch<T> extends Switch<T>
       {
         FeatureCondition featureCondition = (FeatureCondition)theEObject;
         T result = caseFeatureCondition(featureCondition);
-        if (result == null) result = caseCondition(featureCondition);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case TacticsPackage.CONDITION:
-      {
-        Condition condition = (Condition)theEObject;
-        T result = caseCondition(condition);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -209,7 +193,6 @@ public class TacticsSwitch<T> extends Switch<T>
       {
         MeasurementCondition measurementCondition = (MeasurementCondition)theEObject;
         T result = caseMeasurementCondition(measurementCondition);
-        if (result == null) result = caseCondition(measurementCondition);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -218,7 +201,6 @@ public class TacticsSwitch<T> extends Switch<T>
         MeasurementThresholdCondition measurementThresholdCondition = (MeasurementThresholdCondition)theEObject;
         T result = caseMeasurementThresholdCondition(measurementThresholdCondition);
         if (result == null) result = caseMeasurementCondition(measurementThresholdCondition);
-        if (result == null) result = caseCondition(measurementThresholdCondition);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -227,7 +209,6 @@ public class TacticsSwitch<T> extends Switch<T>
         MeasurementMeasurementCondition measurementMeasurementCondition = (MeasurementMeasurementCondition)theEObject;
         T result = caseMeasurementMeasurementCondition(measurementMeasurementCondition);
         if (result == null) result = caseMeasurementCondition(measurementMeasurementCondition);
-        if (result == null) result = caseCondition(measurementMeasurementCondition);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -323,38 +304,6 @@ public class TacticsSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Rule Set</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Rule Set</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseRuleSet(RuleSet object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Atomic Rule With Priority</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Atomic Rule With Priority</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseAtomicRuleWithPriority(AtomicRuleWithPriority object)
-  {
-    return null;
-  }
-
-  /**
    * Returns the result of interpreting the object as an instance of '<em>Atomic Action</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -398,6 +347,22 @@ public class TacticsSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseRuleBody(RuleBody object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Tactic Action</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Tactic Action</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseTacticAction(TacticAction object)
   {
     return null;
   }
@@ -526,22 +491,6 @@ public class TacticsSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseFeatureCondition(FeatureCondition object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Condition</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Condition</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseCondition(Condition object)
   {
     return null;
   }

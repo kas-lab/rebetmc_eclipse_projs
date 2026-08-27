@@ -28,12 +28,12 @@ public interface DataSource extends EObject
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the value of the '<em>Ref</em>' containment reference.
-   * @see #setRef(QualifiedRef)
+   * @see #setRef(Reference)
    * @see eu.coresense.context.contextModel.ContextModelPackage#getDataSource_Ref()
    * @model containment="true"
    * @generated
    */
-  QualifiedRef getRef();
+  Reference getRef();
 
   /**
    * Sets the value of the '{@link eu.coresense.context.contextModel.DataSource#getRef <em>Ref</em>}' containment reference.
@@ -43,6 +43,6 @@ public interface DataSource extends EObject
    * @see #getRef()
    * @generated
    */
-  void setRef(QualifiedRef value);
+  void setRef(Reference value);
 
 } // DataSource

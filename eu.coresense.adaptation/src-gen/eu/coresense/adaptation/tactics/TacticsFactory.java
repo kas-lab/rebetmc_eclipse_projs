@@ -60,24 +60,6 @@ public interface TacticsFactory extends EFactory
   AtomicRule createAtomicRule();
 
   /**
-   * Returns a new object of class '<em>Rule Set</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Rule Set</em>'.
-   * @generated
-   */
-  RuleSet createRuleSet();
-
-  /**
-   * Returns a new object of class '<em>Atomic Rule With Priority</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Atomic Rule With Priority</em>'.
-   * @generated
-   */
-  AtomicRuleWithPriority createAtomicRuleWithPriority();
-
-  /**
    * Returns a new object of class '<em>Atomic Action</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -103,6 +85,15 @@ public interface TacticsFactory extends EFactory
    * @generated
    */
   RuleBody createRuleBody();
+
+  /**
+   * Returns a new object of class '<em>Tactic Action</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Tactic Action</em>'.
+   * @generated
+   */
+  TacticAction createTacticAction();
 
   /**
    * Returns a new object of class '<em>Pure Action</em>'.
@@ -175,15 +166,6 @@ public interface TacticsFactory extends EFactory
    * @generated
    */
   FeatureCondition createFeatureCondition();
-
-  /**
-   * Returns a new object of class '<em>Condition</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Condition</em>'.
-   * @generated
-   */
-  Condition createCondition();
 
   /**
    * Returns a new object of class '<em>Measurement Condition</em>'.

@@ -70,11 +70,10 @@ public class TacticsFactoryImpl extends EFactoryImpl implements TacticsFactory
       case TacticsPackage.ACTION_RULES: return createActionRules();
       case TacticsPackage.ADAPTATION_RULE: return createAdaptationRule();
       case TacticsPackage.ATOMIC_RULE: return createAtomicRule();
-      case TacticsPackage.RULE_SET: return createRuleSet();
-      case TacticsPackage.ATOMIC_RULE_WITH_PRIORITY: return createAtomicRuleWithPriority();
       case TacticsPackage.ATOMIC_ACTION: return createAtomicAction();
       case TacticsPackage.ATOMIC_SIMPLE_ACTION: return createAtomicSimpleAction();
       case TacticsPackage.RULE_BODY: return createRuleBody();
+      case TacticsPackage.TACTIC_ACTION: return createTacticAction();
       case TacticsPackage.PURE_ACTION: return createPureAction();
       case TacticsPackage.CONDITION_ACTION: return createConditionAction();
       case TacticsPackage.CONTEXT_GUARD: return createContextGuard();
@@ -83,7 +82,6 @@ public class TacticsFactoryImpl extends EFactoryImpl implements TacticsFactory
       case TacticsPackage.EFFECT: return createEffect();
       case TacticsPackage.RELATIVE_EFFECT: return createRelativeEffect();
       case TacticsPackage.FEATURE_CONDITION: return createFeatureCondition();
-      case TacticsPackage.CONDITION: return createCondition();
       case TacticsPackage.MEASUREMENT_CONDITION: return createMeasurementCondition();
       case TacticsPackage.MEASUREMENT_THRESHOLD_CONDITION: return createMeasurementThresholdCondition();
       case TacticsPackage.MEASUREMENT_MEASUREMENT_CONDITION: return createMeasurementMeasurementCondition();
@@ -183,30 +181,6 @@ public class TacticsFactoryImpl extends EFactoryImpl implements TacticsFactory
    * @generated
    */
   @Override
-  public RuleSet createRuleSet()
-  {
-    RuleSetImpl ruleSet = new RuleSetImpl();
-    return ruleSet;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public AtomicRuleWithPriority createAtomicRuleWithPriority()
-  {
-    AtomicRuleWithPriorityImpl atomicRuleWithPriority = new AtomicRuleWithPriorityImpl();
-    return atomicRuleWithPriority;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
   public AtomicAction createAtomicAction()
   {
     AtomicActionImpl atomicAction = new AtomicActionImpl();
@@ -235,6 +209,18 @@ public class TacticsFactoryImpl extends EFactoryImpl implements TacticsFactory
   {
     RuleBodyImpl ruleBody = new RuleBodyImpl();
     return ruleBody;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public TacticAction createTacticAction()
+  {
+    TacticActionImpl tacticAction = new TacticActionImpl();
+    return tacticAction;
   }
 
   /**
@@ -331,18 +317,6 @@ public class TacticsFactoryImpl extends EFactoryImpl implements TacticsFactory
   {
     FeatureConditionImpl featureCondition = new FeatureConditionImpl();
     return featureCondition;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public Condition createCondition()
-  {
-    ConditionImpl condition = new ConditionImpl();
-    return condition;
   }
 
   /**

@@ -2,9 +2,11 @@ grammar eu.coresense.requirements.RequirementsModel with org.eclipse.xtext.commo
 import "http://www.eclipse.org/emf/2002/Ecore" as ecore
 import "http://www.coresense.eu/context/ContextModel" as contextModel
 import "https://coresense.eu/common" as common
+import "http://caosd.lcc.uma.es/BasicFMmetamodel" as BasicFMmetamodel
 generate requirementsModel "http://www.coresense.eu/requirements/RequirementsModel"
 
 RequirementsModel:
+	(imports+=Import*)
 	requirements+=Requirement*;
 	
 //Requirement:
@@ -12,7 +14,11 @@ RequirementsModel:
 
 	
 Requirement:
-	name=ID ',' qa=QualityAttribute ':' naturalLanguageDescription=STRING ',' expression=Expression;
+	featureQualifier=FeatureQualifier? name=ID ',' qa=QualityAttribute ':' naturalLanguageDescription=STRING ',' expression=Expression;
+
+Import returns common::Import:
+	'import' importURI=STRING ';'
+;
 
 
 
@@ -30,6 +36,10 @@ SAFETY='Safety'
 
 enum MathOperator returns common::MathOperator:
 	LESS='<' | GREATER='>' | EQUAL='==' | DIFFERENT='<>'	
+;
+
+FeatureQualifier:
+	'[' feature=[BasicFMmetamodel::Feature] ']'
 ;
 
 

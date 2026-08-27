@@ -37,6 +37,10 @@
     <genClasses ecoreClass="ContextModel.ecore#//DataSource">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ContextModel.ecore#//DataSource/ref"/>
     </genClasses>
+    <genClasses ecoreClass="ContextModel.ecore#//Reference"/>
+    <genClasses ecoreClass="ContextModel.ecore#//CompositeRef">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ContextModel.ecore#//CompositeRef/contextVars"/>
+    </genClasses>
     <genClasses ecoreClass="ContextModel.ecore#//QualifiedRef">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ContextModel.ecore#//QualifiedRef/node"/>
     </genClasses>

@@ -3,6 +3,7 @@
  */
 package eu.coresense.adaptation.tactics;
 
+import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
@@ -15,6 +16,7 @@ package eu.coresense.adaptation.tactics;
  * <ul>
  *   <li>{@link eu.coresense.adaptation.tactics.FeatureCondition#getNot <em>Not</em>}</li>
  *   <li>{@link eu.coresense.adaptation.tactics.FeatureCondition#getVariant <em>Variant</em>}</li>
+ *   <li>{@link eu.coresense.adaptation.tactics.FeatureCondition#getLogicalOp <em>Logical Op</em>}</li>
  *   <li>{@link eu.coresense.adaptation.tactics.FeatureCondition#getSecondTerm <em>Second Term</em>}</li>
  * </ul>
  *
@@ -22,7 +24,7 @@ package eu.coresense.adaptation.tactics;
  * @model
  * @generated
  */
-public interface FeatureCondition extends Condition
+public interface FeatureCondition extends EObject
 {
   /**
    * Returns the value of the '<em><b>Not</b></em>' attribute.
@@ -67,6 +69,31 @@ public interface FeatureCondition extends Condition
    * @generated
    */
   void setVariant(QualifiedFeatureRef value);
+
+  /**
+   * Returns the value of the '<em><b>Logical Op</b></em>' attribute.
+   * The literals are from the enumeration {@link eu.coresense.adaptation.tactics.LogicalOperator}.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Logical Op</em>' attribute.
+   * @see eu.coresense.adaptation.tactics.LogicalOperator
+   * @see #setLogicalOp(LogicalOperator)
+   * @see eu.coresense.adaptation.tactics.TacticsPackage#getFeatureCondition_LogicalOp()
+   * @model
+   * @generated
+   */
+  LogicalOperator getLogicalOp();
+
+  /**
+   * Sets the value of the '{@link eu.coresense.adaptation.tactics.FeatureCondition#getLogicalOp <em>Logical Op</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Logical Op</em>' attribute.
+   * @see eu.coresense.adaptation.tactics.LogicalOperator
+   * @see #getLogicalOp()
+   * @generated
+   */
+  void setLogicalOp(LogicalOperator value);
 
   /**
    * Returns the value of the '<em><b>Second Term</b></em>' containment reference.

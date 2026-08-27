@@ -138,7 +138,7 @@ public class ContextModelGrammarAccess extends AbstractElementFinder.AbstractGra
 		private final RuleCall cDoProxyDoProxyParserRuleCall_10_1_0 = (RuleCall)cDoProxyAssignment_10_1.eContents().get(0);
 		private final Keyword cFunction_nameKeyword_11 = (Keyword)cGroup.eContents().get(11);
 		private final Assignment cFunctionNameAssignment_12 = (Assignment)cGroup.eContents().get(12);
-		private final RuleCall cFunctionNameSTRINGTerminalRuleCall_12_0 = (RuleCall)cFunctionNameAssignment_12.eContents().get(0);
+		private final RuleCall cFunctionNameFunctionNameParserRuleCall_12_0 = (RuleCall)cFunctionNameAssignment_12.eContents().get(0);
 		private final Group cGroup_13 = (Group)cGroup.eContents().get(13);
 		private final Keyword cFunction_libKeyword_13_0 = (Keyword)cGroup_13.eContents().get(0);
 		private final Assignment cFunctionLibraryAssignment_13_1 = (Assignment)cGroup_13.eContents().get(1);
@@ -162,7 +162,7 @@ public class ContextModelGrammarAccess extends AbstractElementFinder.AbstractGra
 		//        ('cache' 'length' length=INT 's')?
 		//        ('period' period=INT 'ns')?
 		//        ('proxy' doProxy=DoProxy)?
-		//        'function_name' functionName=STRING
+		//        'function_name' functionName=FunctionName
 		//        ('function_lib' functionLibrary=STRING)?
 		//        ('function_args' functionArgs=STRING)?
 		//        ('thresholds' thresholds+=Literal*)?
@@ -177,7 +177,7 @@ public class ContextModelGrammarAccess extends AbstractElementFinder.AbstractGra
 		//    ('cache' 'length' length=INT 's')?
 		//    ('period' period=INT 'ns')?
 		//    ('proxy' doProxy=DoProxy)?
-		//    'function_name' functionName=STRING
+		//    'function_name' functionName=FunctionName
 		//    ('function_lib' functionLibrary=STRING)?
 		//    ('function_args' functionArgs=STRING)?
 		//    ('thresholds' thresholds+=Literal*)?
@@ -268,11 +268,11 @@ public class ContextModelGrammarAccess extends AbstractElementFinder.AbstractGra
 		//'function_name'
 		public Keyword getFunction_nameKeyword_11() { return cFunction_nameKeyword_11; }
 		
-		//functionName=STRING
+		//functionName=FunctionName
 		public Assignment getFunctionNameAssignment_12() { return cFunctionNameAssignment_12; }
 		
-		//STRING
-		public RuleCall getFunctionNameSTRINGTerminalRuleCall_12_0() { return cFunctionNameSTRINGTerminalRuleCall_12_0; }
+		//FunctionName
+		public RuleCall getFunctionNameFunctionNameParserRuleCall_12_0() { return cFunctionNameFunctionNameParserRuleCall_12_0; }
 		
 		//('function_lib' functionLibrary=STRING)?
 		public Group getGroup_13() { return cGroup_13; }
@@ -334,6 +334,34 @@ public class ContextModelGrammarAccess extends AbstractElementFinder.AbstractGra
 		
 		//DecimalLiteral
 		public RuleCall getDecimalLiteralParserRuleCall_1() { return cDecimalLiteralParserRuleCall_1; }
+	}
+	public class FunctionNameElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "eu.coresense.context.ContextModel.FunctionName");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final RuleCall cSTRINGTerminalRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final Keyword cMeta_countKeyword_1 = (Keyword)cAlternatives.eContents().get(1);
+		private final Keyword cMeta_last_publishedKeyword_2 = (Keyword)cAlternatives.eContents().get(2);
+		private final Keyword cMeta_has_publishedKeyword_3 = (Keyword)cAlternatives.eContents().get(3);
+		
+		//FunctionName returns ecore::EString:
+		//    STRING | 'meta_count' | 'meta_last_published' | 'meta_has_published'
+		//;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//STRING | 'meta_count' | 'meta_last_published' | 'meta_has_published'
+		public Alternatives getAlternatives() { return cAlternatives; }
+		
+		//STRING
+		public RuleCall getSTRINGTerminalRuleCall_0() { return cSTRINGTerminalRuleCall_0; }
+		
+		//'meta_count'
+		public Keyword getMeta_countKeyword_1() { return cMeta_countKeyword_1; }
+		
+		//'meta_last_published'
+		public Keyword getMeta_last_publishedKeyword_2() { return cMeta_last_publishedKeyword_2; }
+		
+		//'meta_has_published'
+		public Keyword getMeta_has_publishedKeyword_3() { return cMeta_has_publishedKeyword_3; }
 	}
 	public class IntLiteralElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "eu.coresense.context.ContextModel.IntLiteral");
@@ -458,19 +486,19 @@ public class ContextModelGrammarAccess extends AbstractElementFinder.AbstractGra
 		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
 		private final Keyword cOriginKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
 		private final Assignment cRefAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
-		private final RuleCall cRefQualifiedRefParserRuleCall_1_1_0 = (RuleCall)cRefAssignment_1_1.eContents().get(0);
+		private final RuleCall cRefReferenceParserRuleCall_1_1_0 = (RuleCall)cRefAssignment_1_1.eContents().get(0);
 		
 		//DataSource:
 		//    'source:'
 		//    (
-		//        'origin:'ref=QualifiedRef
+		//        'origin:'ref=Reference
 		//    )
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
 		//'source:'
 		//(
-		//    'origin:'ref=QualifiedRef
+		//    'origin:'ref=Reference
 		//)
 		public Group getGroup() { return cGroup; }
 		
@@ -478,18 +506,18 @@ public class ContextModelGrammarAccess extends AbstractElementFinder.AbstractGra
 		public Keyword getSourceKeyword_0() { return cSourceKeyword_0; }
 		
 		//(
-		//    'origin:'ref=QualifiedRef
+		//    'origin:'ref=Reference
 		//)
 		public Group getGroup_1() { return cGroup_1; }
 		
 		//'origin:'
 		public Keyword getOriginKeyword_1_0() { return cOriginKeyword_1_0; }
 		
-		//ref=QualifiedRef
+		//ref=Reference
 		public Assignment getRefAssignment_1_1() { return cRefAssignment_1_1; }
 		
-		//QualifiedRef
-		public RuleCall getRefQualifiedRefParserRuleCall_1_1_0() { return cRefQualifiedRefParserRuleCall_1_1_0; }
+		//Reference
+		public RuleCall getRefReferenceParserRuleCall_1_1_0() { return cRefReferenceParserRuleCall_1_1_0; }
 	}
 	public class KeyWordArgumentsElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "eu.coresense.context.ContextModel.KeyWordArguments");
@@ -502,6 +530,56 @@ public class ContextModelGrammarAccess extends AbstractElementFinder.AbstractGra
 		
 		//STRING
 		public RuleCall getSTRINGTerminalRuleCall() { return cSTRINGTerminalRuleCall; }
+	}
+	public class ReferenceElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "eu.coresense.context.ContextModel.Reference");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final RuleCall cQualifiedRefParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final RuleCall cCompositeRefParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		
+		//Reference:
+		//    QualifiedRef | CompositeRef
+		//;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//QualifiedRef | CompositeRef
+		public Alternatives getAlternatives() { return cAlternatives; }
+		
+		//QualifiedRef
+		public RuleCall getQualifiedRefParserRuleCall_0() { return cQualifiedRefParserRuleCall_0; }
+		
+		//CompositeRef
+		public RuleCall getCompositeRefParserRuleCall_1() { return cCompositeRefParserRuleCall_1; }
+	}
+	public class CompositeRefElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "eu.coresense.context.ContextModel.CompositeRef");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cCompositeRefAction_0 = (Action)cGroup.eContents().get(0);
+		private final Assignment cContextVarsAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final CrossReference cContextVarsContextVarCrossReference_1_0 = (CrossReference)cContextVarsAssignment_1.eContents().get(0);
+		private final RuleCall cContextVarsContextVarIDTerminalRuleCall_1_0_1 = (RuleCall)cContextVarsContextVarCrossReference_1_0.eContents().get(1);
+		
+		//CompositeRef:
+		//    {CompositeRef}
+		//    contextVars+=[ContextVar]*
+		//;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//{CompositeRef}
+		//contextVars+=[ContextVar]*
+		public Group getGroup() { return cGroup; }
+		
+		//{CompositeRef}
+		public Action getCompositeRefAction_0() { return cCompositeRefAction_0; }
+		
+		//contextVars+=[ContextVar]*
+		public Assignment getContextVarsAssignment_1() { return cContextVarsAssignment_1; }
+		
+		//[ContextVar]
+		public CrossReference getContextVarsContextVarCrossReference_1_0() { return cContextVarsContextVarCrossReference_1_0; }
+		
+		//ID
+		public RuleCall getContextVarsContextVarIDTerminalRuleCall_1_0_1() { return cContextVarsContextVarIDTerminalRuleCall_1_0_1; }
 	}
 	public class QualifiedRefElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "eu.coresense.context.ContextModel.QualifiedRef");
@@ -729,6 +807,7 @@ public class ContextModelGrammarAccess extends AbstractElementFinder.AbstractGra
 	private final ContextModelElements pContextModel;
 	private final ContextVarElements pContextVar;
 	private final LiteralElements pLiteral;
+	private final FunctionNameElements pFunctionName;
 	private final IntLiteralElements pIntLiteral;
 	private final DecimalLiteralElements pDecimalLiteral;
 	private final TerminalRule tDECIMAL;
@@ -737,6 +816,8 @@ public class ContextModelGrammarAccess extends AbstractElementFinder.AbstractGra
 	private final DoProxyElements pDoProxy;
 	private final DataSourceElements pDataSource;
 	private final KeyWordArgumentsElements pKeyWordArguments;
+	private final ReferenceElements pReference;
+	private final CompositeRefElements pCompositeRef;
 	private final QualifiedRefElements pQualifiedRef;
 	private final QualifiedPublisherRefElements pQualifiedPublisherRef;
 	private final QualifiedServiceServerRefElements pQualifiedServiceServerRef;
@@ -760,6 +841,7 @@ public class ContextModelGrammarAccess extends AbstractElementFinder.AbstractGra
 		this.pContextModel = new ContextModelElements();
 		this.pContextVar = new ContextVarElements();
 		this.pLiteral = new LiteralElements();
+		this.pFunctionName = new FunctionNameElements();
 		this.pIntLiteral = new IntLiteralElements();
 		this.pDecimalLiteral = new DecimalLiteralElements();
 		this.tDECIMAL = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "eu.coresense.context.ContextModel.DECIMAL");
@@ -768,6 +850,8 @@ public class ContextModelGrammarAccess extends AbstractElementFinder.AbstractGra
 		this.pDoProxy = new DoProxyElements();
 		this.pDataSource = new DataSourceElements();
 		this.pKeyWordArguments = new KeyWordArgumentsElements();
+		this.pReference = new ReferenceElements();
+		this.pCompositeRef = new CompositeRefElements();
 		this.pQualifiedRef = new QualifiedRefElements();
 		this.pQualifiedPublisherRef = new QualifiedPublisherRefElements();
 		this.pQualifiedServiceServerRef = new QualifiedServiceServerRefElements();
@@ -835,7 +919,7 @@ public class ContextModelGrammarAccess extends AbstractElementFinder.AbstractGra
 	//        ('cache' 'length' length=INT 's')?
 	//        ('period' period=INT 'ns')?
 	//        ('proxy' doProxy=DoProxy)?
-	//        'function_name' functionName=STRING
+	//        'function_name' functionName=FunctionName
 	//        ('function_lib' functionLibrary=STRING)?
 	//        ('function_args' functionArgs=STRING)?
 	//        ('thresholds' thresholds+=Literal*)?
@@ -858,6 +942,17 @@ public class ContextModelGrammarAccess extends AbstractElementFinder.AbstractGra
 	
 	public ParserRule getLiteralRule() {
 		return getLiteralAccess().getRule();
+	}
+	
+	//FunctionName returns ecore::EString:
+	//    STRING | 'meta_count' | 'meta_last_published' | 'meta_has_published'
+	//;
+	public FunctionNameElements getFunctionNameAccess() {
+		return pFunctionName;
+	}
+	
+	public ParserRule getFunctionNameRule() {
+		return getFunctionNameAccess().getRule();
 	}
 	
 	//IntLiteral returns common::IntLiteral:
@@ -925,7 +1020,7 @@ public class ContextModelGrammarAccess extends AbstractElementFinder.AbstractGra
 	//DataSource:
 	//    'source:'
 	//    (
-	//        'origin:'ref=QualifiedRef
+	//        'origin:'ref=Reference
 	//    )
 	//;
 	public DataSourceElements getDataSourceAccess() {
@@ -945,6 +1040,29 @@ public class ContextModelGrammarAccess extends AbstractElementFinder.AbstractGra
 	
 	public ParserRule getKeyWordArgumentsRule() {
 		return getKeyWordArgumentsAccess().getRule();
+	}
+	
+	//Reference:
+	//    QualifiedRef | CompositeRef
+	//;
+	public ReferenceElements getReferenceAccess() {
+		return pReference;
+	}
+	
+	public ParserRule getReferenceRule() {
+		return getReferenceAccess().getRule();
+	}
+	
+	//CompositeRef:
+	//    {CompositeRef}
+	//    contextVars+=[ContextVar]*
+	//;
+	public CompositeRefElements getCompositeRefAccess() {
+		return pCompositeRef;
+	}
+	
+	public ParserRule getCompositeRefRule() {
+		return getCompositeRefAccess().getRule();
 	}
 	
 	////TODO: Handle remapped topics, actions, services.

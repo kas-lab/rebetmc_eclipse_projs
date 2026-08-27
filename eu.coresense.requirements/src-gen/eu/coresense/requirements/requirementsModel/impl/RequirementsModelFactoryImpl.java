@@ -68,6 +68,7 @@ public class RequirementsModelFactoryImpl extends EFactoryImpl implements Requir
     {
       case RequirementsModelPackage.REQUIREMENTS_MODEL: return createRequirementsModel();
       case RequirementsModelPackage.REQUIREMENT: return createRequirement();
+      case RequirementsModelPackage.FEATURE_QUALIFIER: return createFeatureQualifier();
       case RequirementsModelPackage.CONDITION: return createCondition();
       case RequirementsModelPackage.PROPOSITION: return createProposition();
       case RequirementsModelPackage.BOOLEAN_STATEMENT: return createBooleanStatement();
@@ -164,6 +165,18 @@ public class RequirementsModelFactoryImpl extends EFactoryImpl implements Requir
   {
     RequirementImpl requirement = new RequirementImpl();
     return requirement;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public FeatureQualifier createFeatureQualifier()
+  {
+    FeatureQualifierImpl featureQualifier = new FeatureQualifierImpl();
+    return featureQualifier;
   }
 
   /**

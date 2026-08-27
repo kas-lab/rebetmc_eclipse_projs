@@ -3,6 +3,7 @@ grammar eu.coresense.adaptation.Tactics with org.eclipse.xtext.common.Terminals
 import "http://coresense.eu/resolution/ResolutionModel" as resolutionModel
 import "http://www.coresense.eu/variability/FeatureModel" as variabilityModel
 import "http://caosd.lcc.uma.es/BasicFMmetamodel" as BasicFMmetamodel
+import "http://www.coresense.eu/requirements/RequirementsModel" as requirementsModel
 import "http://www.coresense.eu/context/ContextModel" as contextModel
 import "http://www.eclipse.org/emf/2002/Ecore" as ecore
 import "https://coresense.eu/common" as common
@@ -17,7 +18,7 @@ TacticsModel:
 
 
 ActionRules:
-	action=[ros::ActionSpec] "{"
+	action=[ros::ActionSpec] requirement=[requirementsModel::Requirement]? "{"
 		(adaptationRules+=AdaptationRule*)
 	"}"
 ;
@@ -28,23 +29,12 @@ Import returns common::Import:
 ;
 
 AdaptationRule:
- 	AtomicRule | RuleSet
+ 	AtomicRule
 ;
 
 AtomicRule:
 	'rule' name=ID '{' 
 	ruleBody=RuleBody '}' ';'
-;
-
-RuleSet:
-	'rule_set' name=ID '{' 
-	atomicRules+=AtomicRuleWithPriority+
-	'}'';'
-;
-
-AtomicRuleWithPriority:
-	'rule' name=ID 'priority' priorityValue=INT '{'
-	ruleBody=RuleBody '}'
 ;
 
 AtomicAction:
@@ -54,8 +44,13 @@ AtomicSimpleAction:
     AtomicActionSelectFeature | AtomicActionDeselectFeature;
 
 RuleBody:
-	(PureAction | ConditionAction) effect=EffectBlock?
+	action=TacticAction effect=EffectBlock?
 ;
+
+TacticAction:
+	(PureAction | ConditionAction)
+;
+
 
 PureAction:
 	atomicAction=AtomicAction
@@ -89,16 +84,15 @@ RelativeEffect:
 	sign=INCDEC effectValue=Literal measurement=[contextModel::ContextVar]
 ;
 
-// Find a better name for secondTerm
-// Find a way for using parenthesis for priority between operators
-// Find a way of expressing complex conditions, with operators priorities
+
 FeatureCondition:
 	not=('!')? 'selected(' variant=QualifiedFeatureRef ')' 	( logicalOp=LogicalOperator secondTerm=FeatureCondition )? 
 ;
 
-Condition:
-	MeasurementCondition | FeatureCondition
-;
+//
+//Condition:
+//	MeasurementCondition | FeatureCondition
+//;
 
 
 MeasurementCondition:

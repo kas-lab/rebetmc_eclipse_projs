@@ -5,6 +5,7 @@ package eu.coresense.context.contextModel.impl;
 
 import eu.coresense.common.CommonPackage;
 
+import eu.coresense.context.contextModel.CompositeRef;
 import eu.coresense.context.contextModel.ContextModel;
 import eu.coresense.context.contextModel.ContextModelFactory;
 import eu.coresense.context.contextModel.ContextModelPackage;
@@ -17,6 +18,7 @@ import eu.coresense.context.contextModel.QualifiedActionServerRef;
 import eu.coresense.context.contextModel.QualifiedPublisherRef;
 import eu.coresense.context.contextModel.QualifiedRef;
 import eu.coresense.context.contextModel.QualifiedServiceServerRef;
+import eu.coresense.context.contextModel.Reference;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
@@ -80,6 +82,20 @@ public class ContextModelPackageImpl extends EPackageImpl implements ContextMode
    * @generated
    */
   private EClass dataSourceEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass referenceEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass compositeRefEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -458,6 +474,39 @@ public class ContextModelPackageImpl extends EPackageImpl implements ContextMode
    * @generated
    */
   @Override
+  public EClass getReference()
+  {
+    return referenceEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getCompositeRef()
+  {
+    return compositeRefEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getCompositeRef_ContextVars()
+  {
+    return (EReference)compositeRefEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public EClass getQualifiedRef()
   {
     return qualifiedRefEClass;
@@ -624,6 +673,11 @@ public class ContextModelPackageImpl extends EPackageImpl implements ContextMode
     dataSourceEClass = createEClass(DATA_SOURCE);
     createEReference(dataSourceEClass, DATA_SOURCE__REF);
 
+    referenceEClass = createEClass(REFERENCE);
+
+    compositeRefEClass = createEClass(COMPOSITE_REF);
+    createEReference(compositeRefEClass, COMPOSITE_REF__CONTEXT_VARS);
+
     qualifiedRefEClass = createEClass(QUALIFIED_REF);
     createEReference(qualifiedRefEClass, QUALIFIED_REF__NODE);
 
@@ -674,6 +728,8 @@ public class ContextModelPackageImpl extends EPackageImpl implements ContextMode
     // Set bounds for type parameters
 
     // Add supertypes to classes
+    compositeRefEClass.getESuperTypes().add(this.getReference());
+    qualifiedRefEClass.getESuperTypes().add(this.getReference());
     qualifiedPublisherRefEClass.getESuperTypes().add(this.getQualifiedRef());
     qualifiedServiceServerRefEClass.getESuperTypes().add(this.getQualifiedRef());
     qualifiedActionServerRefEClass.getESuperTypes().add(this.getQualifiedRef());
@@ -708,7 +764,12 @@ public class ContextModelPackageImpl extends EPackageImpl implements ContextMode
     initEAttribute(getDoProxy_Do(), ecorePackage.getEBoolean(), "do", null, 0, 1, DoProxy.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(dataSourceEClass, DataSource.class, "DataSource", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getDataSource_Ref(), this.getQualifiedRef(), null, "ref", null, 0, 1, DataSource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getDataSource_Ref(), this.getReference(), null, "ref", null, 0, 1, DataSource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(referenceEClass, Reference.class, "Reference", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+    initEClass(compositeRefEClass, CompositeRef.class, "CompositeRef", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getCompositeRef_ContextVars(), this.getContextVar(), null, "contextVars", null, 0, -1, CompositeRef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(qualifiedRefEClass, QualifiedRef.class, "QualifiedRef", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getQualifiedRef_Node(), theRossystemPackage.getRosNode(), null, "node", null, 0, 1, QualifiedRef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

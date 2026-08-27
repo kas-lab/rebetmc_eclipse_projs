@@ -71,6 +71,8 @@ public class ContextModelFactoryImpl extends EFactoryImpl implements ContextMode
       case ContextModelPackage.DO_CACHE: return createDoCache();
       case ContextModelPackage.DO_PROXY: return createDoProxy();
       case ContextModelPackage.DATA_SOURCE: return createDataSource();
+      case ContextModelPackage.REFERENCE: return createReference();
+      case ContextModelPackage.COMPOSITE_REF: return createCompositeRef();
       case ContextModelPackage.QUALIFIED_REF: return createQualifiedRef();
       case ContextModelPackage.QUALIFIED_PUBLISHER_REF: return createQualifiedPublisherRef();
       case ContextModelPackage.QUALIFIED_SERVICE_SERVER_REF: return createQualifiedServiceServerRef();
@@ -150,6 +152,30 @@ public class ContextModelFactoryImpl extends EFactoryImpl implements ContextMode
   {
     DataSourceImpl dataSource = new DataSourceImpl();
     return dataSource;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Reference createReference()
+  {
+    ReferenceImpl reference = new ReferenceImpl();
+    return reference;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public CompositeRef createCompositeRef()
+  {
+    CompositeRefImpl compositeRef = new CompositeRefImpl();
+    return compositeRef;
   }
 
   /**

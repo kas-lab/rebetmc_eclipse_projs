@@ -34,6 +34,8 @@ public class ContextModelParser extends AbstractContentAssistParser {
 		
 		private static void init(ImmutableMap.Builder<AbstractElement, String> builder, ContextModelGrammarAccess grammarAccess) {
 			builder.put(grammarAccess.getLiteralAccess().getAlternatives(), "rule__Literal__Alternatives");
+			builder.put(grammarAccess.getFunctionNameAccess().getAlternatives(), "rule__FunctionName__Alternatives");
+			builder.put(grammarAccess.getReferenceAccess().getAlternatives(), "rule__Reference__Alternatives");
 			builder.put(grammarAccess.getQualifiedRefAccess().getAlternatives(), "rule__QualifiedRef__Alternatives");
 			builder.put(grammarAccess.getNamespaceAccess().getAlternatives(), "rule__Namespace__Alternatives");
 			builder.put(grammarAccess.getRosParamNamesAccess().getAlternatives(), "rule__RosParamNames__Alternatives");
@@ -57,6 +59,7 @@ public class ContextModelParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getDoProxyAccess().getGroup(), "rule__DoProxy__Group__0");
 			builder.put(grammarAccess.getDataSourceAccess().getGroup(), "rule__DataSource__Group__0");
 			builder.put(grammarAccess.getDataSourceAccess().getGroup_1(), "rule__DataSource__Group_1__0");
+			builder.put(grammarAccess.getCompositeRefAccess().getGroup(), "rule__CompositeRef__Group__0");
 			builder.put(grammarAccess.getQualifiedPublisherRefAccess().getGroup(), "rule__QualifiedPublisherRef__Group__0");
 			builder.put(grammarAccess.getQualifiedServiceServerRefAccess().getGroup(), "rule__QualifiedServiceServerRef__Group__0");
 			builder.put(grammarAccess.getQualifiedActionServerRefAccess().getGroup(), "rule__QualifiedActionServerRef__Group__0");
@@ -155,6 +158,7 @@ public class ContextModelParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getDoCacheAccess().getDoAssignment_1(), "rule__DoCache__DoAssignment_1");
 			builder.put(grammarAccess.getDoProxyAccess().getDoAssignment_1(), "rule__DoProxy__DoAssignment_1");
 			builder.put(grammarAccess.getDataSourceAccess().getRefAssignment_1_1(), "rule__DataSource__RefAssignment_1_1");
+			builder.put(grammarAccess.getCompositeRefAccess().getContextVarsAssignment_1(), "rule__CompositeRef__ContextVarsAssignment_1");
 			builder.put(grammarAccess.getQualifiedPublisherRefAccess().getNodeAssignment_1(), "rule__QualifiedPublisherRef__NodeAssignment_1");
 			builder.put(grammarAccess.getQualifiedPublisherRefAccess().getPublisherAssignment_3(), "rule__QualifiedPublisherRef__PublisherAssignment_3");
 			builder.put(grammarAccess.getQualifiedServiceServerRefAccess().getNodeAssignment_1(), "rule__QualifiedServiceServerRef__NodeAssignment_1");

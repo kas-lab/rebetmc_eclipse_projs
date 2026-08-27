@@ -3,8 +3,6 @@
  */
 package eu.coresense.context.contextModel;
 
-import org.eclipse.emf.ecore.EObject;
-
 import system.RosNode;
 
 /**
@@ -23,7 +21,7 @@ import system.RosNode;
  * @model
  * @generated
  */
-public interface QualifiedRef extends EObject
+public interface QualifiedRef extends Reference
 {
   /**
    * Returns the value of the '<em><b>Node</b></em>' reference.

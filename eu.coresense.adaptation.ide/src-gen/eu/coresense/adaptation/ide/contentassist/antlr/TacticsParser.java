@@ -31,11 +31,9 @@ public class TacticsParser extends AbstractContentAssistParser {
 		}
 		
 		private static void init(ImmutableMap.Builder<AbstractElement, String> builder, TacticsGrammarAccess grammarAccess) {
-			builder.put(grammarAccess.getAdaptationRuleAccess().getAlternatives(), "rule__AdaptationRule__Alternatives");
 			builder.put(grammarAccess.getAtomicSimpleActionAccess().getAlternatives(), "rule__AtomicSimpleAction__Alternatives");
-			builder.put(grammarAccess.getRuleBodyAccess().getAlternatives_0(), "rule__RuleBody__Alternatives_0");
+			builder.put(grammarAccess.getTacticActionAccess().getAlternatives(), "rule__TacticAction__Alternatives");
 			builder.put(grammarAccess.getConditionActionAccess().getAlternatives_2(), "rule__ConditionAction__Alternatives_2");
-			builder.put(grammarAccess.getConditionAccess().getAlternatives(), "rule__Condition__Alternatives");
 			builder.put(grammarAccess.getMeasurementConditionAccess().getAlternatives(), "rule__MeasurementCondition__Alternatives");
 			builder.put(grammarAccess.getLiteralAccess().getAlternatives(), "rule__Literal__Alternatives");
 			builder.put(grammarAccess.getMathOperatorAccess().getAlternatives(), "rule__MathOperator__Alternatives");
@@ -44,8 +42,6 @@ public class TacticsParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getActionRulesAccess().getGroup(), "rule__ActionRules__Group__0");
 			builder.put(grammarAccess.getImportAccess().getGroup(), "rule__Import__Group__0");
 			builder.put(grammarAccess.getAtomicRuleAccess().getGroup(), "rule__AtomicRule__Group__0");
-			builder.put(grammarAccess.getRuleSetAccess().getGroup(), "rule__RuleSet__Group__0");
-			builder.put(grammarAccess.getAtomicRuleWithPriorityAccess().getGroup(), "rule__AtomicRuleWithPriority__Group__0");
 			builder.put(grammarAccess.getAtomicActionAccess().getGroup(), "rule__AtomicAction__Group__0");
 			builder.put(grammarAccess.getAtomicActionAccess().getGroup_3(), "rule__AtomicAction__Group_3__0");
 			builder.put(grammarAccess.getRuleBodyAccess().getGroup(), "rule__RuleBody__Group__0");
@@ -69,17 +65,14 @@ public class TacticsParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getTacticsModelAccess().getImportsAssignment_3(), "rule__TacticsModel__ImportsAssignment_3");
 			builder.put(grammarAccess.getTacticsModelAccess().getActionRulesAssignment_4(), "rule__TacticsModel__ActionRulesAssignment_4");
 			builder.put(grammarAccess.getActionRulesAccess().getActionAssignment_0(), "rule__ActionRules__ActionAssignment_0");
-			builder.put(grammarAccess.getActionRulesAccess().getAdaptationRulesAssignment_2(), "rule__ActionRules__AdaptationRulesAssignment_2");
+			builder.put(grammarAccess.getActionRulesAccess().getRequirementAssignment_1(), "rule__ActionRules__RequirementAssignment_1");
+			builder.put(grammarAccess.getActionRulesAccess().getAdaptationRulesAssignment_3(), "rule__ActionRules__AdaptationRulesAssignment_3");
 			builder.put(grammarAccess.getImportAccess().getImportURIAssignment_1(), "rule__Import__ImportURIAssignment_1");
 			builder.put(grammarAccess.getAtomicRuleAccess().getNameAssignment_1(), "rule__AtomicRule__NameAssignment_1");
 			builder.put(grammarAccess.getAtomicRuleAccess().getRuleBodyAssignment_3(), "rule__AtomicRule__RuleBodyAssignment_3");
-			builder.put(grammarAccess.getRuleSetAccess().getNameAssignment_1(), "rule__RuleSet__NameAssignment_1");
-			builder.put(grammarAccess.getRuleSetAccess().getAtomicRulesAssignment_3(), "rule__RuleSet__AtomicRulesAssignment_3");
-			builder.put(grammarAccess.getAtomicRuleWithPriorityAccess().getNameAssignment_1(), "rule__AtomicRuleWithPriority__NameAssignment_1");
-			builder.put(grammarAccess.getAtomicRuleWithPriorityAccess().getPriorityValueAssignment_3(), "rule__AtomicRuleWithPriority__PriorityValueAssignment_3");
-			builder.put(grammarAccess.getAtomicRuleWithPriorityAccess().getRuleBodyAssignment_5(), "rule__AtomicRuleWithPriority__RuleBodyAssignment_5");
 			builder.put(grammarAccess.getAtomicActionAccess().getActionsAssignment_2(), "rule__AtomicAction__ActionsAssignment_2");
 			builder.put(grammarAccess.getAtomicActionAccess().getActionsAssignment_3_1(), "rule__AtomicAction__ActionsAssignment_3_1");
+			builder.put(grammarAccess.getRuleBodyAccess().getActionAssignment_0(), "rule__RuleBody__ActionAssignment_0");
 			builder.put(grammarAccess.getRuleBodyAccess().getEffectAssignment_1(), "rule__RuleBody__EffectAssignment_1");
 			builder.put(grammarAccess.getPureActionAccess().getAtomicActionAssignment(), "rule__PureAction__AtomicActionAssignment");
 			builder.put(grammarAccess.getConditionActionAccess().getContextGuardAssignment_2_0_0(), "rule__ConditionAction__ContextGuardAssignment_2_0_0");

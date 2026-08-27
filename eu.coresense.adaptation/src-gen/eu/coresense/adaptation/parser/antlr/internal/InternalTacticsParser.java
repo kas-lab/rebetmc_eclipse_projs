@@ -22,7 +22,7 @@ import java.util.ArrayList;
 @SuppressWarnings("all")
 public class InternalTacticsParser extends AbstractInternalAntlrParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_STRING", "RULE_INT", "RULE_INCDEC", "RULE_DECIMAL", "RULE_BOOLEAN", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'name'", "';'", "'{'", "'}'", "'import'", "'rule'", "'rule_set'", "'priority'", "'action'", "'AND'", "'guard'", "'context'", "'('", "')'", "'features'", "'effect'", "'!'", "'selected('", "'select_variant'", "'unselect_variant'", "'.'", "'<'", "'>'", "'=='", "'!='", "'>='", "'<='", "'OR'"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_STRING", "RULE_INCDEC", "RULE_INT", "RULE_DECIMAL", "RULE_BOOLEAN", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'name'", "';'", "'{'", "'}'", "'import'", "'rule'", "'action'", "'AND'", "'guard'", "'context'", "'('", "')'", "'features'", "'effect'", "'!'", "'selected('", "'select_variant'", "'unselect_variant'", "'.'", "'<'", "'>'", "'=='", "'!='", "'>='", "'<='", "'OR'"
     };
     public static final int RULE_BOOLEAN=9;
     public static final int RULE_STRING=5;
@@ -32,7 +32,7 @@ public class InternalTacticsParser extends AbstractInternalAntlrParser {
     public static final int T__37=37;
     public static final int T__16=16;
     public static final int T__38=38;
-    public static final int RULE_INCDEC=7;
+    public static final int RULE_INCDEC=6;
     public static final int T__17=17;
     public static final int T__39=39;
     public static final int T__18=18;
@@ -52,15 +52,13 @@ public class InternalTacticsParser extends AbstractInternalAntlrParser {
     public static final int T__26=26;
     public static final int T__27=27;
     public static final int T__28=28;
-    public static final int RULE_INT=6;
+    public static final int RULE_INT=7;
     public static final int T__29=29;
     public static final int T__22=22;
     public static final int RULE_ML_COMMENT=10;
     public static final int T__23=23;
     public static final int T__24=24;
     public static final int T__25=25;
-    public static final int T__40=40;
-    public static final int T__41=41;
     public static final int T__20=20;
     public static final int T__21=21;
 
@@ -353,25 +351,26 @@ public class InternalTacticsParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleActionRules"
-    // InternalTactics.g:155:1: ruleActionRules returns [EObject current=null] : ( ( (otherlv_0= RULE_ID ) ) otherlv_1= '{' ( (lv_adaptationRules_2_0= ruleAdaptationRule ) )* otherlv_3= '}' ) ;
+    // InternalTactics.g:155:1: ruleActionRules returns [EObject current=null] : ( ( (otherlv_0= RULE_ID ) ) ( (otherlv_1= RULE_ID ) )? otherlv_2= '{' ( (lv_adaptationRules_3_0= ruleAdaptationRule ) )* otherlv_4= '}' ) ;
     public final EObject ruleActionRules() throws RecognitionException {
         EObject current = null;
 
         Token otherlv_0=null;
         Token otherlv_1=null;
-        Token otherlv_3=null;
-        EObject lv_adaptationRules_2_0 = null;
+        Token otherlv_2=null;
+        Token otherlv_4=null;
+        EObject lv_adaptationRules_3_0 = null;
 
 
 
         	enterRule();
 
         try {
-            // InternalTactics.g:161:2: ( ( ( (otherlv_0= RULE_ID ) ) otherlv_1= '{' ( (lv_adaptationRules_2_0= ruleAdaptationRule ) )* otherlv_3= '}' ) )
-            // InternalTactics.g:162:2: ( ( (otherlv_0= RULE_ID ) ) otherlv_1= '{' ( (lv_adaptationRules_2_0= ruleAdaptationRule ) )* otherlv_3= '}' )
+            // InternalTactics.g:161:2: ( ( ( (otherlv_0= RULE_ID ) ) ( (otherlv_1= RULE_ID ) )? otherlv_2= '{' ( (lv_adaptationRules_3_0= ruleAdaptationRule ) )* otherlv_4= '}' ) )
+            // InternalTactics.g:162:2: ( ( (otherlv_0= RULE_ID ) ) ( (otherlv_1= RULE_ID ) )? otherlv_2= '{' ( (lv_adaptationRules_3_0= ruleAdaptationRule ) )* otherlv_4= '}' )
             {
-            // InternalTactics.g:162:2: ( ( (otherlv_0= RULE_ID ) ) otherlv_1= '{' ( (lv_adaptationRules_2_0= ruleAdaptationRule ) )* otherlv_3= '}' )
-            // InternalTactics.g:163:3: ( (otherlv_0= RULE_ID ) ) otherlv_1= '{' ( (lv_adaptationRules_2_0= ruleAdaptationRule ) )* otherlv_3= '}'
+            // InternalTactics.g:162:2: ( ( (otherlv_0= RULE_ID ) ) ( (otherlv_1= RULE_ID ) )? otherlv_2= '{' ( (lv_adaptationRules_3_0= ruleAdaptationRule ) )* otherlv_4= '}' )
+            // InternalTactics.g:163:3: ( (otherlv_0= RULE_ID ) ) ( (otherlv_1= RULE_ID ) )? otherlv_2= '{' ( (lv_adaptationRules_3_0= ruleAdaptationRule ) )* otherlv_4= '}'
             {
             // InternalTactics.g:163:3: ( (otherlv_0= RULE_ID ) )
             // InternalTactics.g:164:4: (otherlv_0= RULE_ID )
@@ -394,33 +393,65 @@ public class InternalTacticsParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,16,FOLLOW_8); 
+            // InternalTactics.g:176:3: ( (otherlv_1= RULE_ID ) )?
+            int alt3=2;
+            int LA3_0 = input.LA(1);
 
-            			newLeafNode(otherlv_1, grammarAccess.getActionRulesAccess().getLeftCurlyBracketKeyword_1());
+            if ( (LA3_0==RULE_ID) ) {
+                alt3=1;
+            }
+            switch (alt3) {
+                case 1 :
+                    // InternalTactics.g:177:4: (otherlv_1= RULE_ID )
+                    {
+                    // InternalTactics.g:177:4: (otherlv_1= RULE_ID )
+                    // InternalTactics.g:178:5: otherlv_1= RULE_ID
+                    {
+
+                    					if (current==null) {
+                    						current = createModelElement(grammarAccess.getActionRulesRule());
+                    					}
+                    				
+                    otherlv_1=(Token)match(input,RULE_ID,FOLLOW_8); 
+
+                    					newLeafNode(otherlv_1, grammarAccess.getActionRulesAccess().getRequirementRequirementCrossReference_1_0());
+                    				
+
+                    }
+
+
+                    }
+                    break;
+
+            }
+
+            otherlv_2=(Token)match(input,16,FOLLOW_9); 
+
+            			newLeafNode(otherlv_2, grammarAccess.getActionRulesAccess().getLeftCurlyBracketKeyword_2());
             		
-            // InternalTactics.g:180:3: ( (lv_adaptationRules_2_0= ruleAdaptationRule ) )*
-            loop3:
+            // InternalTactics.g:193:3: ( (lv_adaptationRules_3_0= ruleAdaptationRule ) )*
+            loop4:
             do {
-                int alt3=2;
-                int LA3_0 = input.LA(1);
+                int alt4=2;
+                int LA4_0 = input.LA(1);
 
-                if ( ((LA3_0>=19 && LA3_0<=20)) ) {
-                    alt3=1;
+                if ( (LA4_0==19) ) {
+                    alt4=1;
                 }
 
 
-                switch (alt3) {
+                switch (alt4) {
             	case 1 :
-            	    // InternalTactics.g:181:4: (lv_adaptationRules_2_0= ruleAdaptationRule )
+            	    // InternalTactics.g:194:4: (lv_adaptationRules_3_0= ruleAdaptationRule )
             	    {
-            	    // InternalTactics.g:181:4: (lv_adaptationRules_2_0= ruleAdaptationRule )
-            	    // InternalTactics.g:182:5: lv_adaptationRules_2_0= ruleAdaptationRule
+            	    // InternalTactics.g:194:4: (lv_adaptationRules_3_0= ruleAdaptationRule )
+            	    // InternalTactics.g:195:5: lv_adaptationRules_3_0= ruleAdaptationRule
             	    {
 
-            	    					newCompositeNode(grammarAccess.getActionRulesAccess().getAdaptationRulesAdaptationRuleParserRuleCall_2_0());
+            	    					newCompositeNode(grammarAccess.getActionRulesAccess().getAdaptationRulesAdaptationRuleParserRuleCall_3_0());
             	    				
-            	    pushFollow(FOLLOW_8);
-            	    lv_adaptationRules_2_0=ruleAdaptationRule();
+            	    pushFollow(FOLLOW_9);
+            	    lv_adaptationRules_3_0=ruleAdaptationRule();
 
             	    state._fsp--;
 
@@ -431,7 +462,7 @@ public class InternalTacticsParser extends AbstractInternalAntlrParser {
             	    					add(
             	    						current,
             	    						"adaptationRules",
-            	    						lv_adaptationRules_2_0,
+            	    						lv_adaptationRules_3_0,
             	    						"eu.coresense.adaptation.Tactics.AdaptationRule");
             	    					afterParserOrEnumRuleCall();
             	    				
@@ -443,13 +474,13 @@ public class InternalTacticsParser extends AbstractInternalAntlrParser {
             	    break;
 
             	default :
-            	    break loop3;
+            	    break loop4;
                 }
             } while (true);
 
-            otherlv_3=(Token)match(input,17,FOLLOW_2); 
+            otherlv_4=(Token)match(input,17,FOLLOW_2); 
 
-            			newLeafNode(otherlv_3, grammarAccess.getActionRulesAccess().getRightCurlyBracketKeyword_3());
+            			newLeafNode(otherlv_4, grammarAccess.getActionRulesAccess().getRightCurlyBracketKeyword_4());
             		
 
             }
@@ -474,7 +505,7 @@ public class InternalTacticsParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleImport"
-    // InternalTactics.g:207:1: entryRuleImport returns [EObject current=null] : iv_ruleImport= ruleImport EOF ;
+    // InternalTactics.g:220:1: entryRuleImport returns [EObject current=null] : iv_ruleImport= ruleImport EOF ;
     public final EObject entryRuleImport() throws RecognitionException {
         EObject current = null;
 
@@ -482,8 +513,8 @@ public class InternalTacticsParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalTactics.g:207:47: (iv_ruleImport= ruleImport EOF )
-            // InternalTactics.g:208:2: iv_ruleImport= ruleImport EOF
+            // InternalTactics.g:220:47: (iv_ruleImport= ruleImport EOF )
+            // InternalTactics.g:221:2: iv_ruleImport= ruleImport EOF
             {
              newCompositeNode(grammarAccess.getImportRule()); 
             pushFollow(FOLLOW_1);
@@ -510,7 +541,7 @@ public class InternalTacticsParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleImport"
-    // InternalTactics.g:214:1: ruleImport returns [EObject current=null] : (otherlv_0= 'import' ( (lv_importURI_1_0= RULE_STRING ) ) otherlv_2= ';' ) ;
+    // InternalTactics.g:227:1: ruleImport returns [EObject current=null] : (otherlv_0= 'import' ( (lv_importURI_1_0= RULE_STRING ) ) otherlv_2= ';' ) ;
     public final EObject ruleImport() throws RecognitionException {
         EObject current = null;
 
@@ -522,21 +553,21 @@ public class InternalTacticsParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalTactics.g:220:2: ( (otherlv_0= 'import' ( (lv_importURI_1_0= RULE_STRING ) ) otherlv_2= ';' ) )
-            // InternalTactics.g:221:2: (otherlv_0= 'import' ( (lv_importURI_1_0= RULE_STRING ) ) otherlv_2= ';' )
+            // InternalTactics.g:233:2: ( (otherlv_0= 'import' ( (lv_importURI_1_0= RULE_STRING ) ) otherlv_2= ';' ) )
+            // InternalTactics.g:234:2: (otherlv_0= 'import' ( (lv_importURI_1_0= RULE_STRING ) ) otherlv_2= ';' )
             {
-            // InternalTactics.g:221:2: (otherlv_0= 'import' ( (lv_importURI_1_0= RULE_STRING ) ) otherlv_2= ';' )
-            // InternalTactics.g:222:3: otherlv_0= 'import' ( (lv_importURI_1_0= RULE_STRING ) ) otherlv_2= ';'
+            // InternalTactics.g:234:2: (otherlv_0= 'import' ( (lv_importURI_1_0= RULE_STRING ) ) otherlv_2= ';' )
+            // InternalTactics.g:235:3: otherlv_0= 'import' ( (lv_importURI_1_0= RULE_STRING ) ) otherlv_2= ';'
             {
-            otherlv_0=(Token)match(input,18,FOLLOW_9); 
+            otherlv_0=(Token)match(input,18,FOLLOW_10); 
 
             			newLeafNode(otherlv_0, grammarAccess.getImportAccess().getImportKeyword_0());
             		
-            // InternalTactics.g:226:3: ( (lv_importURI_1_0= RULE_STRING ) )
-            // InternalTactics.g:227:4: (lv_importURI_1_0= RULE_STRING )
+            // InternalTactics.g:239:3: ( (lv_importURI_1_0= RULE_STRING ) )
+            // InternalTactics.g:240:4: (lv_importURI_1_0= RULE_STRING )
             {
-            // InternalTactics.g:227:4: (lv_importURI_1_0= RULE_STRING )
-            // InternalTactics.g:228:5: lv_importURI_1_0= RULE_STRING
+            // InternalTactics.g:240:4: (lv_importURI_1_0= RULE_STRING )
+            // InternalTactics.g:241:5: lv_importURI_1_0= RULE_STRING
             {
             lv_importURI_1_0=(Token)match(input,RULE_STRING,FOLLOW_4); 
 
@@ -585,7 +616,7 @@ public class InternalTacticsParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleAdaptationRule"
-    // InternalTactics.g:252:1: entryRuleAdaptationRule returns [EObject current=null] : iv_ruleAdaptationRule= ruleAdaptationRule EOF ;
+    // InternalTactics.g:265:1: entryRuleAdaptationRule returns [EObject current=null] : iv_ruleAdaptationRule= ruleAdaptationRule EOF ;
     public final EObject entryRuleAdaptationRule() throws RecognitionException {
         EObject current = null;
 
@@ -593,8 +624,8 @@ public class InternalTacticsParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalTactics.g:252:55: (iv_ruleAdaptationRule= ruleAdaptationRule EOF )
-            // InternalTactics.g:253:2: iv_ruleAdaptationRule= ruleAdaptationRule EOF
+            // InternalTactics.g:265:55: (iv_ruleAdaptationRule= ruleAdaptationRule EOF )
+            // InternalTactics.g:266:2: iv_ruleAdaptationRule= ruleAdaptationRule EOF
             {
              newCompositeNode(grammarAccess.getAdaptationRuleRule()); 
             pushFollow(FOLLOW_1);
@@ -621,78 +652,32 @@ public class InternalTacticsParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleAdaptationRule"
-    // InternalTactics.g:259:1: ruleAdaptationRule returns [EObject current=null] : (this_AtomicRule_0= ruleAtomicRule | this_RuleSet_1= ruleRuleSet ) ;
+    // InternalTactics.g:272:1: ruleAdaptationRule returns [EObject current=null] : this_AtomicRule_0= ruleAtomicRule ;
     public final EObject ruleAdaptationRule() throws RecognitionException {
         EObject current = null;
 
         EObject this_AtomicRule_0 = null;
-
-        EObject this_RuleSet_1 = null;
 
 
 
         	enterRule();
 
         try {
-            // InternalTactics.g:265:2: ( (this_AtomicRule_0= ruleAtomicRule | this_RuleSet_1= ruleRuleSet ) )
-            // InternalTactics.g:266:2: (this_AtomicRule_0= ruleAtomicRule | this_RuleSet_1= ruleRuleSet )
+            // InternalTactics.g:278:2: (this_AtomicRule_0= ruleAtomicRule )
+            // InternalTactics.g:279:2: this_AtomicRule_0= ruleAtomicRule
             {
-            // InternalTactics.g:266:2: (this_AtomicRule_0= ruleAtomicRule | this_RuleSet_1= ruleRuleSet )
-            int alt4=2;
-            int LA4_0 = input.LA(1);
 
-            if ( (LA4_0==19) ) {
-                alt4=1;
-            }
-            else if ( (LA4_0==20) ) {
-                alt4=2;
-            }
-            else {
-                NoViableAltException nvae =
-                    new NoViableAltException("", 4, 0, input);
+            		newCompositeNode(grammarAccess.getAdaptationRuleAccess().getAtomicRuleParserRuleCall());
+            	
+            pushFollow(FOLLOW_2);
+            this_AtomicRule_0=ruleAtomicRule();
 
-                throw nvae;
-            }
-            switch (alt4) {
-                case 1 :
-                    // InternalTactics.g:267:3: this_AtomicRule_0= ruleAtomicRule
-                    {
-
-                    			newCompositeNode(grammarAccess.getAdaptationRuleAccess().getAtomicRuleParserRuleCall_0());
-                    		
-                    pushFollow(FOLLOW_2);
-                    this_AtomicRule_0=ruleAtomicRule();
-
-                    state._fsp--;
+            state._fsp--;
 
 
-                    			current = this_AtomicRule_0;
-                    			afterParserOrEnumRuleCall();
-                    		
-
-                    }
-                    break;
-                case 2 :
-                    // InternalTactics.g:276:3: this_RuleSet_1= ruleRuleSet
-                    {
-
-                    			newCompositeNode(grammarAccess.getAdaptationRuleAccess().getRuleSetParserRuleCall_1());
-                    		
-                    pushFollow(FOLLOW_2);
-                    this_RuleSet_1=ruleRuleSet();
-
-                    state._fsp--;
-
-
-                    			current = this_RuleSet_1;
-                    			afterParserOrEnumRuleCall();
-                    		
-
-                    }
-                    break;
-
-            }
-
+            		current = this_AtomicRule_0;
+            		afterParserOrEnumRuleCall();
+            	
 
             }
 
@@ -713,7 +698,7 @@ public class InternalTacticsParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleAtomicRule"
-    // InternalTactics.g:288:1: entryRuleAtomicRule returns [EObject current=null] : iv_ruleAtomicRule= ruleAtomicRule EOF ;
+    // InternalTactics.g:290:1: entryRuleAtomicRule returns [EObject current=null] : iv_ruleAtomicRule= ruleAtomicRule EOF ;
     public final EObject entryRuleAtomicRule() throws RecognitionException {
         EObject current = null;
 
@@ -721,8 +706,8 @@ public class InternalTacticsParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalTactics.g:288:51: (iv_ruleAtomicRule= ruleAtomicRule EOF )
-            // InternalTactics.g:289:2: iv_ruleAtomicRule= ruleAtomicRule EOF
+            // InternalTactics.g:290:51: (iv_ruleAtomicRule= ruleAtomicRule EOF )
+            // InternalTactics.g:291:2: iv_ruleAtomicRule= ruleAtomicRule EOF
             {
              newCompositeNode(grammarAccess.getAtomicRuleRule()); 
             pushFollow(FOLLOW_1);
@@ -749,7 +734,7 @@ public class InternalTacticsParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleAtomicRule"
-    // InternalTactics.g:295:1: ruleAtomicRule returns [EObject current=null] : (otherlv_0= 'rule' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' ( (lv_ruleBody_3_0= ruleRuleBody ) ) otherlv_4= '}' otherlv_5= ';' ) ;
+    // InternalTactics.g:297:1: ruleAtomicRule returns [EObject current=null] : (otherlv_0= 'rule' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' ( (lv_ruleBody_3_0= ruleRuleBody ) ) otherlv_4= '}' otherlv_5= ';' ) ;
     public final EObject ruleAtomicRule() throws RecognitionException {
         EObject current = null;
 
@@ -765,23 +750,23 @@ public class InternalTacticsParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalTactics.g:301:2: ( (otherlv_0= 'rule' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' ( (lv_ruleBody_3_0= ruleRuleBody ) ) otherlv_4= '}' otherlv_5= ';' ) )
-            // InternalTactics.g:302:2: (otherlv_0= 'rule' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' ( (lv_ruleBody_3_0= ruleRuleBody ) ) otherlv_4= '}' otherlv_5= ';' )
+            // InternalTactics.g:303:2: ( (otherlv_0= 'rule' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' ( (lv_ruleBody_3_0= ruleRuleBody ) ) otherlv_4= '}' otherlv_5= ';' ) )
+            // InternalTactics.g:304:2: (otherlv_0= 'rule' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' ( (lv_ruleBody_3_0= ruleRuleBody ) ) otherlv_4= '}' otherlv_5= ';' )
             {
-            // InternalTactics.g:302:2: (otherlv_0= 'rule' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' ( (lv_ruleBody_3_0= ruleRuleBody ) ) otherlv_4= '}' otherlv_5= ';' )
-            // InternalTactics.g:303:3: otherlv_0= 'rule' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' ( (lv_ruleBody_3_0= ruleRuleBody ) ) otherlv_4= '}' otherlv_5= ';'
+            // InternalTactics.g:304:2: (otherlv_0= 'rule' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' ( (lv_ruleBody_3_0= ruleRuleBody ) ) otherlv_4= '}' otherlv_5= ';' )
+            // InternalTactics.g:305:3: otherlv_0= 'rule' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' ( (lv_ruleBody_3_0= ruleRuleBody ) ) otherlv_4= '}' otherlv_5= ';'
             {
             otherlv_0=(Token)match(input,19,FOLLOW_3); 
 
             			newLeafNode(otherlv_0, grammarAccess.getAtomicRuleAccess().getRuleKeyword_0());
             		
-            // InternalTactics.g:307:3: ( (lv_name_1_0= RULE_ID ) )
-            // InternalTactics.g:308:4: (lv_name_1_0= RULE_ID )
+            // InternalTactics.g:309:3: ( (lv_name_1_0= RULE_ID ) )
+            // InternalTactics.g:310:4: (lv_name_1_0= RULE_ID )
             {
-            // InternalTactics.g:308:4: (lv_name_1_0= RULE_ID )
-            // InternalTactics.g:309:5: lv_name_1_0= RULE_ID
+            // InternalTactics.g:310:4: (lv_name_1_0= RULE_ID )
+            // InternalTactics.g:311:5: lv_name_1_0= RULE_ID
             {
-            lv_name_1_0=(Token)match(input,RULE_ID,FOLLOW_7); 
+            lv_name_1_0=(Token)match(input,RULE_ID,FOLLOW_8); 
 
             					newLeafNode(lv_name_1_0, grammarAccess.getAtomicRuleAccess().getNameIDTerminalRuleCall_1_0());
             				
@@ -801,20 +786,20 @@ public class InternalTacticsParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_2=(Token)match(input,16,FOLLOW_10); 
+            otherlv_2=(Token)match(input,16,FOLLOW_11); 
 
             			newLeafNode(otherlv_2, grammarAccess.getAtomicRuleAccess().getLeftCurlyBracketKeyword_2());
             		
-            // InternalTactics.g:329:3: ( (lv_ruleBody_3_0= ruleRuleBody ) )
-            // InternalTactics.g:330:4: (lv_ruleBody_3_0= ruleRuleBody )
+            // InternalTactics.g:331:3: ( (lv_ruleBody_3_0= ruleRuleBody ) )
+            // InternalTactics.g:332:4: (lv_ruleBody_3_0= ruleRuleBody )
             {
-            // InternalTactics.g:330:4: (lv_ruleBody_3_0= ruleRuleBody )
-            // InternalTactics.g:331:5: lv_ruleBody_3_0= ruleRuleBody
+            // InternalTactics.g:332:4: (lv_ruleBody_3_0= ruleRuleBody )
+            // InternalTactics.g:333:5: lv_ruleBody_3_0= ruleRuleBody
             {
 
             					newCompositeNode(grammarAccess.getAtomicRuleAccess().getRuleBodyRuleBodyParserRuleCall_3_0());
             				
-            pushFollow(FOLLOW_11);
+            pushFollow(FOLLOW_12);
             lv_ruleBody_3_0=ruleRuleBody();
 
             state._fsp--;
@@ -866,366 +851,8 @@ public class InternalTacticsParser extends AbstractInternalAntlrParser {
     // $ANTLR end "ruleAtomicRule"
 
 
-    // $ANTLR start "entryRuleRuleSet"
-    // InternalTactics.g:360:1: entryRuleRuleSet returns [EObject current=null] : iv_ruleRuleSet= ruleRuleSet EOF ;
-    public final EObject entryRuleRuleSet() throws RecognitionException {
-        EObject current = null;
-
-        EObject iv_ruleRuleSet = null;
-
-
-        try {
-            // InternalTactics.g:360:48: (iv_ruleRuleSet= ruleRuleSet EOF )
-            // InternalTactics.g:361:2: iv_ruleRuleSet= ruleRuleSet EOF
-            {
-             newCompositeNode(grammarAccess.getRuleSetRule()); 
-            pushFollow(FOLLOW_1);
-            iv_ruleRuleSet=ruleRuleSet();
-
-            state._fsp--;
-
-             current =iv_ruleRuleSet; 
-            match(input,EOF,FOLLOW_2); 
-
-            }
-
-        }
-
-            catch (RecognitionException re) {
-                recover(input,re);
-                appendSkippedTokens();
-            }
-        finally {
-        }
-        return current;
-    }
-    // $ANTLR end "entryRuleRuleSet"
-
-
-    // $ANTLR start "ruleRuleSet"
-    // InternalTactics.g:367:1: ruleRuleSet returns [EObject current=null] : (otherlv_0= 'rule_set' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' ( (lv_atomicRules_3_0= ruleAtomicRuleWithPriority ) )+ otherlv_4= '}' otherlv_5= ';' ) ;
-    public final EObject ruleRuleSet() throws RecognitionException {
-        EObject current = null;
-
-        Token otherlv_0=null;
-        Token lv_name_1_0=null;
-        Token otherlv_2=null;
-        Token otherlv_4=null;
-        Token otherlv_5=null;
-        EObject lv_atomicRules_3_0 = null;
-
-
-
-        	enterRule();
-
-        try {
-            // InternalTactics.g:373:2: ( (otherlv_0= 'rule_set' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' ( (lv_atomicRules_3_0= ruleAtomicRuleWithPriority ) )+ otherlv_4= '}' otherlv_5= ';' ) )
-            // InternalTactics.g:374:2: (otherlv_0= 'rule_set' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' ( (lv_atomicRules_3_0= ruleAtomicRuleWithPriority ) )+ otherlv_4= '}' otherlv_5= ';' )
-            {
-            // InternalTactics.g:374:2: (otherlv_0= 'rule_set' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' ( (lv_atomicRules_3_0= ruleAtomicRuleWithPriority ) )+ otherlv_4= '}' otherlv_5= ';' )
-            // InternalTactics.g:375:3: otherlv_0= 'rule_set' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' ( (lv_atomicRules_3_0= ruleAtomicRuleWithPriority ) )+ otherlv_4= '}' otherlv_5= ';'
-            {
-            otherlv_0=(Token)match(input,20,FOLLOW_3); 
-
-            			newLeafNode(otherlv_0, grammarAccess.getRuleSetAccess().getRule_setKeyword_0());
-            		
-            // InternalTactics.g:379:3: ( (lv_name_1_0= RULE_ID ) )
-            // InternalTactics.g:380:4: (lv_name_1_0= RULE_ID )
-            {
-            // InternalTactics.g:380:4: (lv_name_1_0= RULE_ID )
-            // InternalTactics.g:381:5: lv_name_1_0= RULE_ID
-            {
-            lv_name_1_0=(Token)match(input,RULE_ID,FOLLOW_7); 
-
-            					newLeafNode(lv_name_1_0, grammarAccess.getRuleSetAccess().getNameIDTerminalRuleCall_1_0());
-            				
-
-            					if (current==null) {
-            						current = createModelElement(grammarAccess.getRuleSetRule());
-            					}
-            					setWithLastConsumed(
-            						current,
-            						"name",
-            						lv_name_1_0,
-            						"org.eclipse.xtext.common.Terminals.ID");
-            				
-
-            }
-
-
-            }
-
-            otherlv_2=(Token)match(input,16,FOLLOW_12); 
-
-            			newLeafNode(otherlv_2, grammarAccess.getRuleSetAccess().getLeftCurlyBracketKeyword_2());
-            		
-            // InternalTactics.g:401:3: ( (lv_atomicRules_3_0= ruleAtomicRuleWithPriority ) )+
-            int cnt5=0;
-            loop5:
-            do {
-                int alt5=2;
-                int LA5_0 = input.LA(1);
-
-                if ( (LA5_0==19) ) {
-                    alt5=1;
-                }
-
-
-                switch (alt5) {
-            	case 1 :
-            	    // InternalTactics.g:402:4: (lv_atomicRules_3_0= ruleAtomicRuleWithPriority )
-            	    {
-            	    // InternalTactics.g:402:4: (lv_atomicRules_3_0= ruleAtomicRuleWithPriority )
-            	    // InternalTactics.g:403:5: lv_atomicRules_3_0= ruleAtomicRuleWithPriority
-            	    {
-
-            	    					newCompositeNode(grammarAccess.getRuleSetAccess().getAtomicRulesAtomicRuleWithPriorityParserRuleCall_3_0());
-            	    				
-            	    pushFollow(FOLLOW_13);
-            	    lv_atomicRules_3_0=ruleAtomicRuleWithPriority();
-
-            	    state._fsp--;
-
-
-            	    					if (current==null) {
-            	    						current = createModelElementForParent(grammarAccess.getRuleSetRule());
-            	    					}
-            	    					add(
-            	    						current,
-            	    						"atomicRules",
-            	    						lv_atomicRules_3_0,
-            	    						"eu.coresense.adaptation.Tactics.AtomicRuleWithPriority");
-            	    					afterParserOrEnumRuleCall();
-            	    				
-
-            	    }
-
-
-            	    }
-            	    break;
-
-            	default :
-            	    if ( cnt5 >= 1 ) break loop5;
-                        EarlyExitException eee =
-                            new EarlyExitException(5, input);
-                        throw eee;
-                }
-                cnt5++;
-            } while (true);
-
-            otherlv_4=(Token)match(input,17,FOLLOW_4); 
-
-            			newLeafNode(otherlv_4, grammarAccess.getRuleSetAccess().getRightCurlyBracketKeyword_4());
-            		
-            otherlv_5=(Token)match(input,15,FOLLOW_2); 
-
-            			newLeafNode(otherlv_5, grammarAccess.getRuleSetAccess().getSemicolonKeyword_5());
-            		
-
-            }
-
-
-            }
-
-
-            	leaveRule();
-
-        }
-
-            catch (RecognitionException re) {
-                recover(input,re);
-                appendSkippedTokens();
-            }
-        finally {
-        }
-        return current;
-    }
-    // $ANTLR end "ruleRuleSet"
-
-
-    // $ANTLR start "entryRuleAtomicRuleWithPriority"
-    // InternalTactics.g:432:1: entryRuleAtomicRuleWithPriority returns [EObject current=null] : iv_ruleAtomicRuleWithPriority= ruleAtomicRuleWithPriority EOF ;
-    public final EObject entryRuleAtomicRuleWithPriority() throws RecognitionException {
-        EObject current = null;
-
-        EObject iv_ruleAtomicRuleWithPriority = null;
-
-
-        try {
-            // InternalTactics.g:432:63: (iv_ruleAtomicRuleWithPriority= ruleAtomicRuleWithPriority EOF )
-            // InternalTactics.g:433:2: iv_ruleAtomicRuleWithPriority= ruleAtomicRuleWithPriority EOF
-            {
-             newCompositeNode(grammarAccess.getAtomicRuleWithPriorityRule()); 
-            pushFollow(FOLLOW_1);
-            iv_ruleAtomicRuleWithPriority=ruleAtomicRuleWithPriority();
-
-            state._fsp--;
-
-             current =iv_ruleAtomicRuleWithPriority; 
-            match(input,EOF,FOLLOW_2); 
-
-            }
-
-        }
-
-            catch (RecognitionException re) {
-                recover(input,re);
-                appendSkippedTokens();
-            }
-        finally {
-        }
-        return current;
-    }
-    // $ANTLR end "entryRuleAtomicRuleWithPriority"
-
-
-    // $ANTLR start "ruleAtomicRuleWithPriority"
-    // InternalTactics.g:439:1: ruleAtomicRuleWithPriority returns [EObject current=null] : (otherlv_0= 'rule' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= 'priority' ( (lv_priorityValue_3_0= RULE_INT ) ) otherlv_4= '{' ( (lv_ruleBody_5_0= ruleRuleBody ) ) otherlv_6= '}' ) ;
-    public final EObject ruleAtomicRuleWithPriority() throws RecognitionException {
-        EObject current = null;
-
-        Token otherlv_0=null;
-        Token lv_name_1_0=null;
-        Token otherlv_2=null;
-        Token lv_priorityValue_3_0=null;
-        Token otherlv_4=null;
-        Token otherlv_6=null;
-        EObject lv_ruleBody_5_0 = null;
-
-
-
-        	enterRule();
-
-        try {
-            // InternalTactics.g:445:2: ( (otherlv_0= 'rule' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= 'priority' ( (lv_priorityValue_3_0= RULE_INT ) ) otherlv_4= '{' ( (lv_ruleBody_5_0= ruleRuleBody ) ) otherlv_6= '}' ) )
-            // InternalTactics.g:446:2: (otherlv_0= 'rule' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= 'priority' ( (lv_priorityValue_3_0= RULE_INT ) ) otherlv_4= '{' ( (lv_ruleBody_5_0= ruleRuleBody ) ) otherlv_6= '}' )
-            {
-            // InternalTactics.g:446:2: (otherlv_0= 'rule' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= 'priority' ( (lv_priorityValue_3_0= RULE_INT ) ) otherlv_4= '{' ( (lv_ruleBody_5_0= ruleRuleBody ) ) otherlv_6= '}' )
-            // InternalTactics.g:447:3: otherlv_0= 'rule' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= 'priority' ( (lv_priorityValue_3_0= RULE_INT ) ) otherlv_4= '{' ( (lv_ruleBody_5_0= ruleRuleBody ) ) otherlv_6= '}'
-            {
-            otherlv_0=(Token)match(input,19,FOLLOW_3); 
-
-            			newLeafNode(otherlv_0, grammarAccess.getAtomicRuleWithPriorityAccess().getRuleKeyword_0());
-            		
-            // InternalTactics.g:451:3: ( (lv_name_1_0= RULE_ID ) )
-            // InternalTactics.g:452:4: (lv_name_1_0= RULE_ID )
-            {
-            // InternalTactics.g:452:4: (lv_name_1_0= RULE_ID )
-            // InternalTactics.g:453:5: lv_name_1_0= RULE_ID
-            {
-            lv_name_1_0=(Token)match(input,RULE_ID,FOLLOW_14); 
-
-            					newLeafNode(lv_name_1_0, grammarAccess.getAtomicRuleWithPriorityAccess().getNameIDTerminalRuleCall_1_0());
-            				
-
-            					if (current==null) {
-            						current = createModelElement(grammarAccess.getAtomicRuleWithPriorityRule());
-            					}
-            					setWithLastConsumed(
-            						current,
-            						"name",
-            						lv_name_1_0,
-            						"org.eclipse.xtext.common.Terminals.ID");
-            				
-
-            }
-
-
-            }
-
-            otherlv_2=(Token)match(input,21,FOLLOW_15); 
-
-            			newLeafNode(otherlv_2, grammarAccess.getAtomicRuleWithPriorityAccess().getPriorityKeyword_2());
-            		
-            // InternalTactics.g:473:3: ( (lv_priorityValue_3_0= RULE_INT ) )
-            // InternalTactics.g:474:4: (lv_priorityValue_3_0= RULE_INT )
-            {
-            // InternalTactics.g:474:4: (lv_priorityValue_3_0= RULE_INT )
-            // InternalTactics.g:475:5: lv_priorityValue_3_0= RULE_INT
-            {
-            lv_priorityValue_3_0=(Token)match(input,RULE_INT,FOLLOW_7); 
-
-            					newLeafNode(lv_priorityValue_3_0, grammarAccess.getAtomicRuleWithPriorityAccess().getPriorityValueINTTerminalRuleCall_3_0());
-            				
-
-            					if (current==null) {
-            						current = createModelElement(grammarAccess.getAtomicRuleWithPriorityRule());
-            					}
-            					setWithLastConsumed(
-            						current,
-            						"priorityValue",
-            						lv_priorityValue_3_0,
-            						"org.eclipse.xtext.common.Terminals.INT");
-            				
-
-            }
-
-
-            }
-
-            otherlv_4=(Token)match(input,16,FOLLOW_10); 
-
-            			newLeafNode(otherlv_4, grammarAccess.getAtomicRuleWithPriorityAccess().getLeftCurlyBracketKeyword_4());
-            		
-            // InternalTactics.g:495:3: ( (lv_ruleBody_5_0= ruleRuleBody ) )
-            // InternalTactics.g:496:4: (lv_ruleBody_5_0= ruleRuleBody )
-            {
-            // InternalTactics.g:496:4: (lv_ruleBody_5_0= ruleRuleBody )
-            // InternalTactics.g:497:5: lv_ruleBody_5_0= ruleRuleBody
-            {
-
-            					newCompositeNode(grammarAccess.getAtomicRuleWithPriorityAccess().getRuleBodyRuleBodyParserRuleCall_5_0());
-            				
-            pushFollow(FOLLOW_11);
-            lv_ruleBody_5_0=ruleRuleBody();
-
-            state._fsp--;
-
-
-            					if (current==null) {
-            						current = createModelElementForParent(grammarAccess.getAtomicRuleWithPriorityRule());
-            					}
-            					set(
-            						current,
-            						"ruleBody",
-            						lv_ruleBody_5_0,
-            						"eu.coresense.adaptation.Tactics.RuleBody");
-            					afterParserOrEnumRuleCall();
-            				
-
-            }
-
-
-            }
-
-            otherlv_6=(Token)match(input,17,FOLLOW_2); 
-
-            			newLeafNode(otherlv_6, grammarAccess.getAtomicRuleWithPriorityAccess().getRightCurlyBracketKeyword_6());
-            		
-
-            }
-
-
-            }
-
-
-            	leaveRule();
-
-        }
-
-            catch (RecognitionException re) {
-                recover(input,re);
-                appendSkippedTokens();
-            }
-        finally {
-        }
-        return current;
-    }
-    // $ANTLR end "ruleAtomicRuleWithPriority"
-
-
     // $ANTLR start "entryRuleAtomicAction"
-    // InternalTactics.g:522:1: entryRuleAtomicAction returns [EObject current=null] : iv_ruleAtomicAction= ruleAtomicAction EOF ;
+    // InternalTactics.g:362:1: entryRuleAtomicAction returns [EObject current=null] : iv_ruleAtomicAction= ruleAtomicAction EOF ;
     public final EObject entryRuleAtomicAction() throws RecognitionException {
         EObject current = null;
 
@@ -1233,8 +860,8 @@ public class InternalTacticsParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalTactics.g:522:53: (iv_ruleAtomicAction= ruleAtomicAction EOF )
-            // InternalTactics.g:523:2: iv_ruleAtomicAction= ruleAtomicAction EOF
+            // InternalTactics.g:362:53: (iv_ruleAtomicAction= ruleAtomicAction EOF )
+            // InternalTactics.g:363:2: iv_ruleAtomicAction= ruleAtomicAction EOF
             {
              newCompositeNode(grammarAccess.getAtomicActionRule()); 
             pushFollow(FOLLOW_1);
@@ -1261,7 +888,7 @@ public class InternalTacticsParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleAtomicAction"
-    // InternalTactics.g:529:1: ruleAtomicAction returns [EObject current=null] : (otherlv_0= 'action' otherlv_1= '{' ( (lv_actions_2_0= ruleAtomicSimpleAction ) ) (otherlv_3= 'AND' ( (lv_actions_4_0= ruleAtomicSimpleAction ) ) )* otherlv_5= '}' ) ;
+    // InternalTactics.g:369:1: ruleAtomicAction returns [EObject current=null] : (otherlv_0= 'action' otherlv_1= '{' ( (lv_actions_2_0= ruleAtomicSimpleAction ) ) (otherlv_3= 'AND' ( (lv_actions_4_0= ruleAtomicSimpleAction ) ) )* otherlv_5= '}' ) ;
     public final EObject ruleAtomicAction() throws RecognitionException {
         EObject current = null;
 
@@ -1278,30 +905,30 @@ public class InternalTacticsParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalTactics.g:535:2: ( (otherlv_0= 'action' otherlv_1= '{' ( (lv_actions_2_0= ruleAtomicSimpleAction ) ) (otherlv_3= 'AND' ( (lv_actions_4_0= ruleAtomicSimpleAction ) ) )* otherlv_5= '}' ) )
-            // InternalTactics.g:536:2: (otherlv_0= 'action' otherlv_1= '{' ( (lv_actions_2_0= ruleAtomicSimpleAction ) ) (otherlv_3= 'AND' ( (lv_actions_4_0= ruleAtomicSimpleAction ) ) )* otherlv_5= '}' )
+            // InternalTactics.g:375:2: ( (otherlv_0= 'action' otherlv_1= '{' ( (lv_actions_2_0= ruleAtomicSimpleAction ) ) (otherlv_3= 'AND' ( (lv_actions_4_0= ruleAtomicSimpleAction ) ) )* otherlv_5= '}' ) )
+            // InternalTactics.g:376:2: (otherlv_0= 'action' otherlv_1= '{' ( (lv_actions_2_0= ruleAtomicSimpleAction ) ) (otherlv_3= 'AND' ( (lv_actions_4_0= ruleAtomicSimpleAction ) ) )* otherlv_5= '}' )
             {
-            // InternalTactics.g:536:2: (otherlv_0= 'action' otherlv_1= '{' ( (lv_actions_2_0= ruleAtomicSimpleAction ) ) (otherlv_3= 'AND' ( (lv_actions_4_0= ruleAtomicSimpleAction ) ) )* otherlv_5= '}' )
-            // InternalTactics.g:537:3: otherlv_0= 'action' otherlv_1= '{' ( (lv_actions_2_0= ruleAtomicSimpleAction ) ) (otherlv_3= 'AND' ( (lv_actions_4_0= ruleAtomicSimpleAction ) ) )* otherlv_5= '}'
+            // InternalTactics.g:376:2: (otherlv_0= 'action' otherlv_1= '{' ( (lv_actions_2_0= ruleAtomicSimpleAction ) ) (otherlv_3= 'AND' ( (lv_actions_4_0= ruleAtomicSimpleAction ) ) )* otherlv_5= '}' )
+            // InternalTactics.g:377:3: otherlv_0= 'action' otherlv_1= '{' ( (lv_actions_2_0= ruleAtomicSimpleAction ) ) (otherlv_3= 'AND' ( (lv_actions_4_0= ruleAtomicSimpleAction ) ) )* otherlv_5= '}'
             {
-            otherlv_0=(Token)match(input,22,FOLLOW_7); 
+            otherlv_0=(Token)match(input,20,FOLLOW_8); 
 
             			newLeafNode(otherlv_0, grammarAccess.getAtomicActionAccess().getActionKeyword_0());
             		
-            otherlv_1=(Token)match(input,16,FOLLOW_16); 
+            otherlv_1=(Token)match(input,16,FOLLOW_13); 
 
             			newLeafNode(otherlv_1, grammarAccess.getAtomicActionAccess().getLeftCurlyBracketKeyword_1());
             		
-            // InternalTactics.g:545:3: ( (lv_actions_2_0= ruleAtomicSimpleAction ) )
-            // InternalTactics.g:546:4: (lv_actions_2_0= ruleAtomicSimpleAction )
+            // InternalTactics.g:385:3: ( (lv_actions_2_0= ruleAtomicSimpleAction ) )
+            // InternalTactics.g:386:4: (lv_actions_2_0= ruleAtomicSimpleAction )
             {
-            // InternalTactics.g:546:4: (lv_actions_2_0= ruleAtomicSimpleAction )
-            // InternalTactics.g:547:5: lv_actions_2_0= ruleAtomicSimpleAction
+            // InternalTactics.g:386:4: (lv_actions_2_0= ruleAtomicSimpleAction )
+            // InternalTactics.g:387:5: lv_actions_2_0= ruleAtomicSimpleAction
             {
 
             					newCompositeNode(grammarAccess.getAtomicActionAccess().getActionsAtomicSimpleActionParserRuleCall_2_0());
             				
-            pushFollow(FOLLOW_17);
+            pushFollow(FOLLOW_14);
             lv_actions_2_0=ruleAtomicSimpleAction();
 
             state._fsp--;
@@ -1323,35 +950,35 @@ public class InternalTacticsParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalTactics.g:564:3: (otherlv_3= 'AND' ( (lv_actions_4_0= ruleAtomicSimpleAction ) ) )*
-            loop6:
+            // InternalTactics.g:404:3: (otherlv_3= 'AND' ( (lv_actions_4_0= ruleAtomicSimpleAction ) ) )*
+            loop5:
             do {
-                int alt6=2;
-                int LA6_0 = input.LA(1);
+                int alt5=2;
+                int LA5_0 = input.LA(1);
 
-                if ( (LA6_0==23) ) {
-                    alt6=1;
+                if ( (LA5_0==21) ) {
+                    alt5=1;
                 }
 
 
-                switch (alt6) {
+                switch (alt5) {
             	case 1 :
-            	    // InternalTactics.g:565:4: otherlv_3= 'AND' ( (lv_actions_4_0= ruleAtomicSimpleAction ) )
+            	    // InternalTactics.g:405:4: otherlv_3= 'AND' ( (lv_actions_4_0= ruleAtomicSimpleAction ) )
             	    {
-            	    otherlv_3=(Token)match(input,23,FOLLOW_16); 
+            	    otherlv_3=(Token)match(input,21,FOLLOW_13); 
 
             	    				newLeafNode(otherlv_3, grammarAccess.getAtomicActionAccess().getANDKeyword_3_0());
             	    			
-            	    // InternalTactics.g:569:4: ( (lv_actions_4_0= ruleAtomicSimpleAction ) )
-            	    // InternalTactics.g:570:5: (lv_actions_4_0= ruleAtomicSimpleAction )
+            	    // InternalTactics.g:409:4: ( (lv_actions_4_0= ruleAtomicSimpleAction ) )
+            	    // InternalTactics.g:410:5: (lv_actions_4_0= ruleAtomicSimpleAction )
             	    {
-            	    // InternalTactics.g:570:5: (lv_actions_4_0= ruleAtomicSimpleAction )
-            	    // InternalTactics.g:571:6: lv_actions_4_0= ruleAtomicSimpleAction
+            	    // InternalTactics.g:410:5: (lv_actions_4_0= ruleAtomicSimpleAction )
+            	    // InternalTactics.g:411:6: lv_actions_4_0= ruleAtomicSimpleAction
             	    {
 
             	    						newCompositeNode(grammarAccess.getAtomicActionAccess().getActionsAtomicSimpleActionParserRuleCall_3_1_0());
             	    					
-            	    pushFollow(FOLLOW_17);
+            	    pushFollow(FOLLOW_14);
             	    lv_actions_4_0=ruleAtomicSimpleAction();
 
             	    state._fsp--;
@@ -1378,7 +1005,7 @@ public class InternalTacticsParser extends AbstractInternalAntlrParser {
             	    break;
 
             	default :
-            	    break loop6;
+            	    break loop5;
                 }
             } while (true);
 
@@ -1409,7 +1036,7 @@ public class InternalTacticsParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleAtomicSimpleAction"
-    // InternalTactics.g:597:1: entryRuleAtomicSimpleAction returns [EObject current=null] : iv_ruleAtomicSimpleAction= ruleAtomicSimpleAction EOF ;
+    // InternalTactics.g:437:1: entryRuleAtomicSimpleAction returns [EObject current=null] : iv_ruleAtomicSimpleAction= ruleAtomicSimpleAction EOF ;
     public final EObject entryRuleAtomicSimpleAction() throws RecognitionException {
         EObject current = null;
 
@@ -1417,8 +1044,8 @@ public class InternalTacticsParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalTactics.g:597:59: (iv_ruleAtomicSimpleAction= ruleAtomicSimpleAction EOF )
-            // InternalTactics.g:598:2: iv_ruleAtomicSimpleAction= ruleAtomicSimpleAction EOF
+            // InternalTactics.g:437:59: (iv_ruleAtomicSimpleAction= ruleAtomicSimpleAction EOF )
+            // InternalTactics.g:438:2: iv_ruleAtomicSimpleAction= ruleAtomicSimpleAction EOF
             {
              newCompositeNode(grammarAccess.getAtomicSimpleActionRule()); 
             pushFollow(FOLLOW_1);
@@ -1445,7 +1072,7 @@ public class InternalTacticsParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleAtomicSimpleAction"
-    // InternalTactics.g:604:1: ruleAtomicSimpleAction returns [EObject current=null] : (this_AtomicActionSelectFeature_0= ruleAtomicActionSelectFeature | this_AtomicActionDeselectFeature_1= ruleAtomicActionDeselectFeature ) ;
+    // InternalTactics.g:444:1: ruleAtomicSimpleAction returns [EObject current=null] : (this_AtomicActionSelectFeature_0= ruleAtomicActionSelectFeature | this_AtomicActionDeselectFeature_1= ruleAtomicActionDeselectFeature ) ;
     public final EObject ruleAtomicSimpleAction() throws RecognitionException {
         EObject current = null;
 
@@ -1458,28 +1085,28 @@ public class InternalTacticsParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalTactics.g:610:2: ( (this_AtomicActionSelectFeature_0= ruleAtomicActionSelectFeature | this_AtomicActionDeselectFeature_1= ruleAtomicActionDeselectFeature ) )
-            // InternalTactics.g:611:2: (this_AtomicActionSelectFeature_0= ruleAtomicActionSelectFeature | this_AtomicActionDeselectFeature_1= ruleAtomicActionDeselectFeature )
+            // InternalTactics.g:450:2: ( (this_AtomicActionSelectFeature_0= ruleAtomicActionSelectFeature | this_AtomicActionDeselectFeature_1= ruleAtomicActionDeselectFeature ) )
+            // InternalTactics.g:451:2: (this_AtomicActionSelectFeature_0= ruleAtomicActionSelectFeature | this_AtomicActionDeselectFeature_1= ruleAtomicActionDeselectFeature )
             {
-            // InternalTactics.g:611:2: (this_AtomicActionSelectFeature_0= ruleAtomicActionSelectFeature | this_AtomicActionDeselectFeature_1= ruleAtomicActionDeselectFeature )
-            int alt7=2;
-            int LA7_0 = input.LA(1);
+            // InternalTactics.g:451:2: (this_AtomicActionSelectFeature_0= ruleAtomicActionSelectFeature | this_AtomicActionDeselectFeature_1= ruleAtomicActionDeselectFeature )
+            int alt6=2;
+            int LA6_0 = input.LA(1);
 
-            if ( (LA7_0==32) ) {
-                alt7=1;
+            if ( (LA6_0==30) ) {
+                alt6=1;
             }
-            else if ( (LA7_0==33) ) {
-                alt7=2;
+            else if ( (LA6_0==31) ) {
+                alt6=2;
             }
             else {
                 NoViableAltException nvae =
-                    new NoViableAltException("", 7, 0, input);
+                    new NoViableAltException("", 6, 0, input);
 
                 throw nvae;
             }
-            switch (alt7) {
+            switch (alt6) {
                 case 1 :
-                    // InternalTactics.g:612:3: this_AtomicActionSelectFeature_0= ruleAtomicActionSelectFeature
+                    // InternalTactics.g:452:3: this_AtomicActionSelectFeature_0= ruleAtomicActionSelectFeature
                     {
 
                     			newCompositeNode(grammarAccess.getAtomicSimpleActionAccess().getAtomicActionSelectFeatureParserRuleCall_0());
@@ -1497,7 +1124,7 @@ public class InternalTacticsParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // InternalTactics.g:621:3: this_AtomicActionDeselectFeature_1= ruleAtomicActionDeselectFeature
+                    // InternalTactics.g:461:3: this_AtomicActionDeselectFeature_1= ruleAtomicActionDeselectFeature
                     {
 
                     			newCompositeNode(grammarAccess.getAtomicSimpleActionAccess().getAtomicActionDeselectFeatureParserRuleCall_1());
@@ -1537,7 +1164,7 @@ public class InternalTacticsParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleRuleBody"
-    // InternalTactics.g:633:1: entryRuleRuleBody returns [EObject current=null] : iv_ruleRuleBody= ruleRuleBody EOF ;
+    // InternalTactics.g:473:1: entryRuleRuleBody returns [EObject current=null] : iv_ruleRuleBody= ruleRuleBody EOF ;
     public final EObject entryRuleRuleBody() throws RecognitionException {
         EObject current = null;
 
@@ -1545,8 +1172,8 @@ public class InternalTacticsParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalTactics.g:633:49: (iv_ruleRuleBody= ruleRuleBody EOF )
-            // InternalTactics.g:634:2: iv_ruleRuleBody= ruleRuleBody EOF
+            // InternalTactics.g:473:49: (iv_ruleRuleBody= ruleRuleBody EOF )
+            // InternalTactics.g:474:2: iv_ruleRuleBody= ruleRuleBody EOF
             {
              newCompositeNode(grammarAccess.getRuleBodyRule()); 
             pushFollow(FOLLOW_1);
@@ -1573,102 +1200,75 @@ public class InternalTacticsParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleRuleBody"
-    // InternalTactics.g:640:1: ruleRuleBody returns [EObject current=null] : ( (this_PureAction_0= rulePureAction | this_ConditionAction_1= ruleConditionAction ) ( (lv_effect_2_0= ruleEffectBlock ) )? ) ;
+    // InternalTactics.g:480:1: ruleRuleBody returns [EObject current=null] : ( ( (lv_action_0_0= ruleTacticAction ) ) ( (lv_effect_1_0= ruleEffectBlock ) )? ) ;
     public final EObject ruleRuleBody() throws RecognitionException {
         EObject current = null;
 
-        EObject this_PureAction_0 = null;
+        EObject lv_action_0_0 = null;
 
-        EObject this_ConditionAction_1 = null;
-
-        EObject lv_effect_2_0 = null;
+        EObject lv_effect_1_0 = null;
 
 
 
         	enterRule();
 
         try {
-            // InternalTactics.g:646:2: ( ( (this_PureAction_0= rulePureAction | this_ConditionAction_1= ruleConditionAction ) ( (lv_effect_2_0= ruleEffectBlock ) )? ) )
-            // InternalTactics.g:647:2: ( (this_PureAction_0= rulePureAction | this_ConditionAction_1= ruleConditionAction ) ( (lv_effect_2_0= ruleEffectBlock ) )? )
+            // InternalTactics.g:486:2: ( ( ( (lv_action_0_0= ruleTacticAction ) ) ( (lv_effect_1_0= ruleEffectBlock ) )? ) )
+            // InternalTactics.g:487:2: ( ( (lv_action_0_0= ruleTacticAction ) ) ( (lv_effect_1_0= ruleEffectBlock ) )? )
             {
-            // InternalTactics.g:647:2: ( (this_PureAction_0= rulePureAction | this_ConditionAction_1= ruleConditionAction ) ( (lv_effect_2_0= ruleEffectBlock ) )? )
-            // InternalTactics.g:648:3: (this_PureAction_0= rulePureAction | this_ConditionAction_1= ruleConditionAction ) ( (lv_effect_2_0= ruleEffectBlock ) )?
+            // InternalTactics.g:487:2: ( ( (lv_action_0_0= ruleTacticAction ) ) ( (lv_effect_1_0= ruleEffectBlock ) )? )
+            // InternalTactics.g:488:3: ( (lv_action_0_0= ruleTacticAction ) ) ( (lv_effect_1_0= ruleEffectBlock ) )?
             {
-            // InternalTactics.g:648:3: (this_PureAction_0= rulePureAction | this_ConditionAction_1= ruleConditionAction )
-            int alt8=2;
-            int LA8_0 = input.LA(1);
+            // InternalTactics.g:488:3: ( (lv_action_0_0= ruleTacticAction ) )
+            // InternalTactics.g:489:4: (lv_action_0_0= ruleTacticAction )
+            {
+            // InternalTactics.g:489:4: (lv_action_0_0= ruleTacticAction )
+            // InternalTactics.g:490:5: lv_action_0_0= ruleTacticAction
+            {
 
-            if ( (LA8_0==22) ) {
-                alt8=1;
-            }
-            else if ( (LA8_0==24) ) {
-                alt8=2;
-            }
-            else {
-                NoViableAltException nvae =
-                    new NoViableAltException("", 8, 0, input);
+            					newCompositeNode(grammarAccess.getRuleBodyAccess().getActionTacticActionParserRuleCall_0_0());
+            				
+            pushFollow(FOLLOW_15);
+            lv_action_0_0=ruleTacticAction();
 
-                throw nvae;
+            state._fsp--;
+
+
+            					if (current==null) {
+            						current = createModelElementForParent(grammarAccess.getRuleBodyRule());
+            					}
+            					set(
+            						current,
+            						"action",
+            						lv_action_0_0,
+            						"eu.coresense.adaptation.Tactics.TacticAction");
+            					afterParserOrEnumRuleCall();
+            				
+
             }
-            switch (alt8) {
+
+
+            }
+
+            // InternalTactics.g:507:3: ( (lv_effect_1_0= ruleEffectBlock ) )?
+            int alt7=2;
+            int LA7_0 = input.LA(1);
+
+            if ( (LA7_0==27) ) {
+                alt7=1;
+            }
+            switch (alt7) {
                 case 1 :
-                    // InternalTactics.g:649:4: this_PureAction_0= rulePureAction
+                    // InternalTactics.g:508:4: (lv_effect_1_0= ruleEffectBlock )
                     {
-
-                    				newCompositeNode(grammarAccess.getRuleBodyAccess().getPureActionParserRuleCall_0_0());
-                    			
-                    pushFollow(FOLLOW_18);
-                    this_PureAction_0=rulePureAction();
-
-                    state._fsp--;
-
-
-                    				current = this_PureAction_0;
-                    				afterParserOrEnumRuleCall();
-                    			
-
-                    }
-                    break;
-                case 2 :
-                    // InternalTactics.g:658:4: this_ConditionAction_1= ruleConditionAction
-                    {
-
-                    				newCompositeNode(grammarAccess.getRuleBodyAccess().getConditionActionParserRuleCall_0_1());
-                    			
-                    pushFollow(FOLLOW_18);
-                    this_ConditionAction_1=ruleConditionAction();
-
-                    state._fsp--;
-
-
-                    				current = this_ConditionAction_1;
-                    				afterParserOrEnumRuleCall();
-                    			
-
-                    }
-                    break;
-
-            }
-
-            // InternalTactics.g:667:3: ( (lv_effect_2_0= ruleEffectBlock ) )?
-            int alt9=2;
-            int LA9_0 = input.LA(1);
-
-            if ( (LA9_0==29) ) {
-                alt9=1;
-            }
-            switch (alt9) {
-                case 1 :
-                    // InternalTactics.g:668:4: (lv_effect_2_0= ruleEffectBlock )
-                    {
-                    // InternalTactics.g:668:4: (lv_effect_2_0= ruleEffectBlock )
-                    // InternalTactics.g:669:5: lv_effect_2_0= ruleEffectBlock
+                    // InternalTactics.g:508:4: (lv_effect_1_0= ruleEffectBlock )
+                    // InternalTactics.g:509:5: lv_effect_1_0= ruleEffectBlock
                     {
 
                     					newCompositeNode(grammarAccess.getRuleBodyAccess().getEffectEffectBlockParserRuleCall_1_0());
                     				
                     pushFollow(FOLLOW_2);
-                    lv_effect_2_0=ruleEffectBlock();
+                    lv_effect_1_0=ruleEffectBlock();
 
                     state._fsp--;
 
@@ -1679,7 +1279,7 @@ public class InternalTacticsParser extends AbstractInternalAntlrParser {
                     					set(
                     						current,
                     						"effect",
-                    						lv_effect_2_0,
+                    						lv_effect_1_0,
                     						"eu.coresense.adaptation.Tactics.EffectBlock");
                     					afterParserOrEnumRuleCall();
                     				
@@ -1714,8 +1314,136 @@ public class InternalTacticsParser extends AbstractInternalAntlrParser {
     // $ANTLR end "ruleRuleBody"
 
 
+    // $ANTLR start "entryRuleTacticAction"
+    // InternalTactics.g:530:1: entryRuleTacticAction returns [EObject current=null] : iv_ruleTacticAction= ruleTacticAction EOF ;
+    public final EObject entryRuleTacticAction() throws RecognitionException {
+        EObject current = null;
+
+        EObject iv_ruleTacticAction = null;
+
+
+        try {
+            // InternalTactics.g:530:53: (iv_ruleTacticAction= ruleTacticAction EOF )
+            // InternalTactics.g:531:2: iv_ruleTacticAction= ruleTacticAction EOF
+            {
+             newCompositeNode(grammarAccess.getTacticActionRule()); 
+            pushFollow(FOLLOW_1);
+            iv_ruleTacticAction=ruleTacticAction();
+
+            state._fsp--;
+
+             current =iv_ruleTacticAction; 
+            match(input,EOF,FOLLOW_2); 
+
+            }
+
+        }
+
+            catch (RecognitionException re) {
+                recover(input,re);
+                appendSkippedTokens();
+            }
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "entryRuleTacticAction"
+
+
+    // $ANTLR start "ruleTacticAction"
+    // InternalTactics.g:537:1: ruleTacticAction returns [EObject current=null] : (this_PureAction_0= rulePureAction | this_ConditionAction_1= ruleConditionAction ) ;
+    public final EObject ruleTacticAction() throws RecognitionException {
+        EObject current = null;
+
+        EObject this_PureAction_0 = null;
+
+        EObject this_ConditionAction_1 = null;
+
+
+
+        	enterRule();
+
+        try {
+            // InternalTactics.g:543:2: ( (this_PureAction_0= rulePureAction | this_ConditionAction_1= ruleConditionAction ) )
+            // InternalTactics.g:544:2: (this_PureAction_0= rulePureAction | this_ConditionAction_1= ruleConditionAction )
+            {
+            // InternalTactics.g:544:2: (this_PureAction_0= rulePureAction | this_ConditionAction_1= ruleConditionAction )
+            int alt8=2;
+            int LA8_0 = input.LA(1);
+
+            if ( (LA8_0==20) ) {
+                alt8=1;
+            }
+            else if ( (LA8_0==22) ) {
+                alt8=2;
+            }
+            else {
+                NoViableAltException nvae =
+                    new NoViableAltException("", 8, 0, input);
+
+                throw nvae;
+            }
+            switch (alt8) {
+                case 1 :
+                    // InternalTactics.g:545:3: this_PureAction_0= rulePureAction
+                    {
+
+                    			newCompositeNode(grammarAccess.getTacticActionAccess().getPureActionParserRuleCall_0());
+                    		
+                    pushFollow(FOLLOW_2);
+                    this_PureAction_0=rulePureAction();
+
+                    state._fsp--;
+
+
+                    			current = this_PureAction_0;
+                    			afterParserOrEnumRuleCall();
+                    		
+
+                    }
+                    break;
+                case 2 :
+                    // InternalTactics.g:554:3: this_ConditionAction_1= ruleConditionAction
+                    {
+
+                    			newCompositeNode(grammarAccess.getTacticActionAccess().getConditionActionParserRuleCall_1());
+                    		
+                    pushFollow(FOLLOW_2);
+                    this_ConditionAction_1=ruleConditionAction();
+
+                    state._fsp--;
+
+
+                    			current = this_ConditionAction_1;
+                    			afterParserOrEnumRuleCall();
+                    		
+
+                    }
+                    break;
+
+            }
+
+
+            }
+
+
+            	leaveRule();
+
+        }
+
+            catch (RecognitionException re) {
+                recover(input,re);
+                appendSkippedTokens();
+            }
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "ruleTacticAction"
+
+
     // $ANTLR start "entryRulePureAction"
-    // InternalTactics.g:690:1: entryRulePureAction returns [EObject current=null] : iv_rulePureAction= rulePureAction EOF ;
+    // InternalTactics.g:566:1: entryRulePureAction returns [EObject current=null] : iv_rulePureAction= rulePureAction EOF ;
     public final EObject entryRulePureAction() throws RecognitionException {
         EObject current = null;
 
@@ -1723,8 +1451,8 @@ public class InternalTacticsParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalTactics.g:690:51: (iv_rulePureAction= rulePureAction EOF )
-            // InternalTactics.g:691:2: iv_rulePureAction= rulePureAction EOF
+            // InternalTactics.g:566:51: (iv_rulePureAction= rulePureAction EOF )
+            // InternalTactics.g:567:2: iv_rulePureAction= rulePureAction EOF
             {
              newCompositeNode(grammarAccess.getPureActionRule()); 
             pushFollow(FOLLOW_1);
@@ -1751,7 +1479,7 @@ public class InternalTacticsParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "rulePureAction"
-    // InternalTactics.g:697:1: rulePureAction returns [EObject current=null] : ( (lv_atomicAction_0_0= ruleAtomicAction ) ) ;
+    // InternalTactics.g:573:1: rulePureAction returns [EObject current=null] : ( (lv_atomicAction_0_0= ruleAtomicAction ) ) ;
     public final EObject rulePureAction() throws RecognitionException {
         EObject current = null;
 
@@ -1762,14 +1490,14 @@ public class InternalTacticsParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalTactics.g:703:2: ( ( (lv_atomicAction_0_0= ruleAtomicAction ) ) )
-            // InternalTactics.g:704:2: ( (lv_atomicAction_0_0= ruleAtomicAction ) )
+            // InternalTactics.g:579:2: ( ( (lv_atomicAction_0_0= ruleAtomicAction ) ) )
+            // InternalTactics.g:580:2: ( (lv_atomicAction_0_0= ruleAtomicAction ) )
             {
-            // InternalTactics.g:704:2: ( (lv_atomicAction_0_0= ruleAtomicAction ) )
-            // InternalTactics.g:705:3: (lv_atomicAction_0_0= ruleAtomicAction )
+            // InternalTactics.g:580:2: ( (lv_atomicAction_0_0= ruleAtomicAction ) )
+            // InternalTactics.g:581:3: (lv_atomicAction_0_0= ruleAtomicAction )
             {
-            // InternalTactics.g:705:3: (lv_atomicAction_0_0= ruleAtomicAction )
-            // InternalTactics.g:706:4: lv_atomicAction_0_0= ruleAtomicAction
+            // InternalTactics.g:581:3: (lv_atomicAction_0_0= ruleAtomicAction )
+            // InternalTactics.g:582:4: lv_atomicAction_0_0= ruleAtomicAction
             {
 
             				newCompositeNode(grammarAccess.getPureActionAccess().getAtomicActionAtomicActionParserRuleCall_0());
@@ -1816,7 +1544,7 @@ public class InternalTacticsParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleConditionAction"
-    // InternalTactics.g:726:1: entryRuleConditionAction returns [EObject current=null] : iv_ruleConditionAction= ruleConditionAction EOF ;
+    // InternalTactics.g:602:1: entryRuleConditionAction returns [EObject current=null] : iv_ruleConditionAction= ruleConditionAction EOF ;
     public final EObject entryRuleConditionAction() throws RecognitionException {
         EObject current = null;
 
@@ -1824,8 +1552,8 @@ public class InternalTacticsParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalTactics.g:726:56: (iv_ruleConditionAction= ruleConditionAction EOF )
-            // InternalTactics.g:727:2: iv_ruleConditionAction= ruleConditionAction EOF
+            // InternalTactics.g:602:56: (iv_ruleConditionAction= ruleConditionAction EOF )
+            // InternalTactics.g:603:2: iv_ruleConditionAction= ruleConditionAction EOF
             {
              newCompositeNode(grammarAccess.getConditionActionRule()); 
             pushFollow(FOLLOW_1);
@@ -1852,7 +1580,7 @@ public class InternalTacticsParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleConditionAction"
-    // InternalTactics.g:733:1: ruleConditionAction returns [EObject current=null] : (otherlv_0= 'guard' otherlv_1= '{' ( ( ( (lv_contextGuard_2_0= ruleContextGuard ) ) ( (lv_featureGuard_3_0= ruleFeatureGuard ) )? ) | ( ( (lv_featureGuard_4_0= ruleFeatureGuard ) ) ( (lv_contextGuard_5_0= ruleContextGuard ) )? ) ) otherlv_6= '}' ( (lv_atomicAction_7_0= ruleAtomicAction ) ) ) ;
+    // InternalTactics.g:609:1: ruleConditionAction returns [EObject current=null] : (otherlv_0= 'guard' otherlv_1= '{' ( ( ( (lv_contextGuard_2_0= ruleContextGuard ) ) ( (lv_featureGuard_3_0= ruleFeatureGuard ) )? ) | ( ( (lv_featureGuard_4_0= ruleFeatureGuard ) ) ( (lv_contextGuard_5_0= ruleContextGuard ) )? ) ) otherlv_6= '}' ( (lv_atomicAction_7_0= ruleAtomicAction ) ) ) ;
     public final EObject ruleConditionAction() throws RecognitionException {
         EObject current = null;
 
@@ -1874,53 +1602,53 @@ public class InternalTacticsParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalTactics.g:739:2: ( (otherlv_0= 'guard' otherlv_1= '{' ( ( ( (lv_contextGuard_2_0= ruleContextGuard ) ) ( (lv_featureGuard_3_0= ruleFeatureGuard ) )? ) | ( ( (lv_featureGuard_4_0= ruleFeatureGuard ) ) ( (lv_contextGuard_5_0= ruleContextGuard ) )? ) ) otherlv_6= '}' ( (lv_atomicAction_7_0= ruleAtomicAction ) ) ) )
-            // InternalTactics.g:740:2: (otherlv_0= 'guard' otherlv_1= '{' ( ( ( (lv_contextGuard_2_0= ruleContextGuard ) ) ( (lv_featureGuard_3_0= ruleFeatureGuard ) )? ) | ( ( (lv_featureGuard_4_0= ruleFeatureGuard ) ) ( (lv_contextGuard_5_0= ruleContextGuard ) )? ) ) otherlv_6= '}' ( (lv_atomicAction_7_0= ruleAtomicAction ) ) )
+            // InternalTactics.g:615:2: ( (otherlv_0= 'guard' otherlv_1= '{' ( ( ( (lv_contextGuard_2_0= ruleContextGuard ) ) ( (lv_featureGuard_3_0= ruleFeatureGuard ) )? ) | ( ( (lv_featureGuard_4_0= ruleFeatureGuard ) ) ( (lv_contextGuard_5_0= ruleContextGuard ) )? ) ) otherlv_6= '}' ( (lv_atomicAction_7_0= ruleAtomicAction ) ) ) )
+            // InternalTactics.g:616:2: (otherlv_0= 'guard' otherlv_1= '{' ( ( ( (lv_contextGuard_2_0= ruleContextGuard ) ) ( (lv_featureGuard_3_0= ruleFeatureGuard ) )? ) | ( ( (lv_featureGuard_4_0= ruleFeatureGuard ) ) ( (lv_contextGuard_5_0= ruleContextGuard ) )? ) ) otherlv_6= '}' ( (lv_atomicAction_7_0= ruleAtomicAction ) ) )
             {
-            // InternalTactics.g:740:2: (otherlv_0= 'guard' otherlv_1= '{' ( ( ( (lv_contextGuard_2_0= ruleContextGuard ) ) ( (lv_featureGuard_3_0= ruleFeatureGuard ) )? ) | ( ( (lv_featureGuard_4_0= ruleFeatureGuard ) ) ( (lv_contextGuard_5_0= ruleContextGuard ) )? ) ) otherlv_6= '}' ( (lv_atomicAction_7_0= ruleAtomicAction ) ) )
-            // InternalTactics.g:741:3: otherlv_0= 'guard' otherlv_1= '{' ( ( ( (lv_contextGuard_2_0= ruleContextGuard ) ) ( (lv_featureGuard_3_0= ruleFeatureGuard ) )? ) | ( ( (lv_featureGuard_4_0= ruleFeatureGuard ) ) ( (lv_contextGuard_5_0= ruleContextGuard ) )? ) ) otherlv_6= '}' ( (lv_atomicAction_7_0= ruleAtomicAction ) )
+            // InternalTactics.g:616:2: (otherlv_0= 'guard' otherlv_1= '{' ( ( ( (lv_contextGuard_2_0= ruleContextGuard ) ) ( (lv_featureGuard_3_0= ruleFeatureGuard ) )? ) | ( ( (lv_featureGuard_4_0= ruleFeatureGuard ) ) ( (lv_contextGuard_5_0= ruleContextGuard ) )? ) ) otherlv_6= '}' ( (lv_atomicAction_7_0= ruleAtomicAction ) ) )
+            // InternalTactics.g:617:3: otherlv_0= 'guard' otherlv_1= '{' ( ( ( (lv_contextGuard_2_0= ruleContextGuard ) ) ( (lv_featureGuard_3_0= ruleFeatureGuard ) )? ) | ( ( (lv_featureGuard_4_0= ruleFeatureGuard ) ) ( (lv_contextGuard_5_0= ruleContextGuard ) )? ) ) otherlv_6= '}' ( (lv_atomicAction_7_0= ruleAtomicAction ) )
             {
-            otherlv_0=(Token)match(input,24,FOLLOW_7); 
+            otherlv_0=(Token)match(input,22,FOLLOW_8); 
 
             			newLeafNode(otherlv_0, grammarAccess.getConditionActionAccess().getGuardKeyword_0());
             		
-            otherlv_1=(Token)match(input,16,FOLLOW_19); 
+            otherlv_1=(Token)match(input,16,FOLLOW_16); 
 
             			newLeafNode(otherlv_1, grammarAccess.getConditionActionAccess().getLeftCurlyBracketKeyword_1());
             		
-            // InternalTactics.g:749:3: ( ( ( (lv_contextGuard_2_0= ruleContextGuard ) ) ( (lv_featureGuard_3_0= ruleFeatureGuard ) )? ) | ( ( (lv_featureGuard_4_0= ruleFeatureGuard ) ) ( (lv_contextGuard_5_0= ruleContextGuard ) )? ) )
-            int alt12=2;
-            int LA12_0 = input.LA(1);
+            // InternalTactics.g:625:3: ( ( ( (lv_contextGuard_2_0= ruleContextGuard ) ) ( (lv_featureGuard_3_0= ruleFeatureGuard ) )? ) | ( ( (lv_featureGuard_4_0= ruleFeatureGuard ) ) ( (lv_contextGuard_5_0= ruleContextGuard ) )? ) )
+            int alt11=2;
+            int LA11_0 = input.LA(1);
 
-            if ( (LA12_0==25) ) {
-                alt12=1;
+            if ( (LA11_0==23) ) {
+                alt11=1;
             }
-            else if ( (LA12_0==28) ) {
-                alt12=2;
+            else if ( (LA11_0==26) ) {
+                alt11=2;
             }
             else {
                 NoViableAltException nvae =
-                    new NoViableAltException("", 12, 0, input);
+                    new NoViableAltException("", 11, 0, input);
 
                 throw nvae;
             }
-            switch (alt12) {
+            switch (alt11) {
                 case 1 :
-                    // InternalTactics.g:750:4: ( ( (lv_contextGuard_2_0= ruleContextGuard ) ) ( (lv_featureGuard_3_0= ruleFeatureGuard ) )? )
+                    // InternalTactics.g:626:4: ( ( (lv_contextGuard_2_0= ruleContextGuard ) ) ( (lv_featureGuard_3_0= ruleFeatureGuard ) )? )
                     {
-                    // InternalTactics.g:750:4: ( ( (lv_contextGuard_2_0= ruleContextGuard ) ) ( (lv_featureGuard_3_0= ruleFeatureGuard ) )? )
-                    // InternalTactics.g:751:5: ( (lv_contextGuard_2_0= ruleContextGuard ) ) ( (lv_featureGuard_3_0= ruleFeatureGuard ) )?
+                    // InternalTactics.g:626:4: ( ( (lv_contextGuard_2_0= ruleContextGuard ) ) ( (lv_featureGuard_3_0= ruleFeatureGuard ) )? )
+                    // InternalTactics.g:627:5: ( (lv_contextGuard_2_0= ruleContextGuard ) ) ( (lv_featureGuard_3_0= ruleFeatureGuard ) )?
                     {
-                    // InternalTactics.g:751:5: ( (lv_contextGuard_2_0= ruleContextGuard ) )
-                    // InternalTactics.g:752:6: (lv_contextGuard_2_0= ruleContextGuard )
+                    // InternalTactics.g:627:5: ( (lv_contextGuard_2_0= ruleContextGuard ) )
+                    // InternalTactics.g:628:6: (lv_contextGuard_2_0= ruleContextGuard )
                     {
-                    // InternalTactics.g:752:6: (lv_contextGuard_2_0= ruleContextGuard )
-                    // InternalTactics.g:753:7: lv_contextGuard_2_0= ruleContextGuard
+                    // InternalTactics.g:628:6: (lv_contextGuard_2_0= ruleContextGuard )
+                    // InternalTactics.g:629:7: lv_contextGuard_2_0= ruleContextGuard
                     {
 
                     							newCompositeNode(grammarAccess.getConditionActionAccess().getContextGuardContextGuardParserRuleCall_2_0_0_0());
                     						
-                    pushFollow(FOLLOW_20);
+                    pushFollow(FOLLOW_17);
                     lv_contextGuard_2_0=ruleContextGuard();
 
                     state._fsp--;
@@ -1942,24 +1670,24 @@ public class InternalTacticsParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // InternalTactics.g:770:5: ( (lv_featureGuard_3_0= ruleFeatureGuard ) )?
-                    int alt10=2;
-                    int LA10_0 = input.LA(1);
+                    // InternalTactics.g:646:5: ( (lv_featureGuard_3_0= ruleFeatureGuard ) )?
+                    int alt9=2;
+                    int LA9_0 = input.LA(1);
 
-                    if ( (LA10_0==28) ) {
-                        alt10=1;
+                    if ( (LA9_0==26) ) {
+                        alt9=1;
                     }
-                    switch (alt10) {
+                    switch (alt9) {
                         case 1 :
-                            // InternalTactics.g:771:6: (lv_featureGuard_3_0= ruleFeatureGuard )
+                            // InternalTactics.g:647:6: (lv_featureGuard_3_0= ruleFeatureGuard )
                             {
-                            // InternalTactics.g:771:6: (lv_featureGuard_3_0= ruleFeatureGuard )
-                            // InternalTactics.g:772:7: lv_featureGuard_3_0= ruleFeatureGuard
+                            // InternalTactics.g:647:6: (lv_featureGuard_3_0= ruleFeatureGuard )
+                            // InternalTactics.g:648:7: lv_featureGuard_3_0= ruleFeatureGuard
                             {
 
                             							newCompositeNode(grammarAccess.getConditionActionAccess().getFeatureGuardFeatureGuardParserRuleCall_2_0_1_0());
                             						
-                            pushFollow(FOLLOW_11);
+                            pushFollow(FOLLOW_12);
                             lv_featureGuard_3_0=ruleFeatureGuard();
 
                             state._fsp--;
@@ -1991,21 +1719,21 @@ public class InternalTacticsParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // InternalTactics.g:791:4: ( ( (lv_featureGuard_4_0= ruleFeatureGuard ) ) ( (lv_contextGuard_5_0= ruleContextGuard ) )? )
+                    // InternalTactics.g:667:4: ( ( (lv_featureGuard_4_0= ruleFeatureGuard ) ) ( (lv_contextGuard_5_0= ruleContextGuard ) )? )
                     {
-                    // InternalTactics.g:791:4: ( ( (lv_featureGuard_4_0= ruleFeatureGuard ) ) ( (lv_contextGuard_5_0= ruleContextGuard ) )? )
-                    // InternalTactics.g:792:5: ( (lv_featureGuard_4_0= ruleFeatureGuard ) ) ( (lv_contextGuard_5_0= ruleContextGuard ) )?
+                    // InternalTactics.g:667:4: ( ( (lv_featureGuard_4_0= ruleFeatureGuard ) ) ( (lv_contextGuard_5_0= ruleContextGuard ) )? )
+                    // InternalTactics.g:668:5: ( (lv_featureGuard_4_0= ruleFeatureGuard ) ) ( (lv_contextGuard_5_0= ruleContextGuard ) )?
                     {
-                    // InternalTactics.g:792:5: ( (lv_featureGuard_4_0= ruleFeatureGuard ) )
-                    // InternalTactics.g:793:6: (lv_featureGuard_4_0= ruleFeatureGuard )
+                    // InternalTactics.g:668:5: ( (lv_featureGuard_4_0= ruleFeatureGuard ) )
+                    // InternalTactics.g:669:6: (lv_featureGuard_4_0= ruleFeatureGuard )
                     {
-                    // InternalTactics.g:793:6: (lv_featureGuard_4_0= ruleFeatureGuard )
-                    // InternalTactics.g:794:7: lv_featureGuard_4_0= ruleFeatureGuard
+                    // InternalTactics.g:669:6: (lv_featureGuard_4_0= ruleFeatureGuard )
+                    // InternalTactics.g:670:7: lv_featureGuard_4_0= ruleFeatureGuard
                     {
 
                     							newCompositeNode(grammarAccess.getConditionActionAccess().getFeatureGuardFeatureGuardParserRuleCall_2_1_0_0());
                     						
-                    pushFollow(FOLLOW_21);
+                    pushFollow(FOLLOW_18);
                     lv_featureGuard_4_0=ruleFeatureGuard();
 
                     state._fsp--;
@@ -2027,24 +1755,24 @@ public class InternalTacticsParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // InternalTactics.g:811:5: ( (lv_contextGuard_5_0= ruleContextGuard ) )?
-                    int alt11=2;
-                    int LA11_0 = input.LA(1);
+                    // InternalTactics.g:687:5: ( (lv_contextGuard_5_0= ruleContextGuard ) )?
+                    int alt10=2;
+                    int LA10_0 = input.LA(1);
 
-                    if ( (LA11_0==25) ) {
-                        alt11=1;
+                    if ( (LA10_0==23) ) {
+                        alt10=1;
                     }
-                    switch (alt11) {
+                    switch (alt10) {
                         case 1 :
-                            // InternalTactics.g:812:6: (lv_contextGuard_5_0= ruleContextGuard )
+                            // InternalTactics.g:688:6: (lv_contextGuard_5_0= ruleContextGuard )
                             {
-                            // InternalTactics.g:812:6: (lv_contextGuard_5_0= ruleContextGuard )
-                            // InternalTactics.g:813:7: lv_contextGuard_5_0= ruleContextGuard
+                            // InternalTactics.g:688:6: (lv_contextGuard_5_0= ruleContextGuard )
+                            // InternalTactics.g:689:7: lv_contextGuard_5_0= ruleContextGuard
                             {
 
                             							newCompositeNode(grammarAccess.getConditionActionAccess().getContextGuardContextGuardParserRuleCall_2_1_1_0());
                             						
-                            pushFollow(FOLLOW_11);
+                            pushFollow(FOLLOW_12);
                             lv_contextGuard_5_0=ruleContextGuard();
 
                             state._fsp--;
@@ -2078,15 +1806,15 @@ public class InternalTacticsParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_6=(Token)match(input,17,FOLLOW_22); 
+            otherlv_6=(Token)match(input,17,FOLLOW_19); 
 
             			newLeafNode(otherlv_6, grammarAccess.getConditionActionAccess().getRightCurlyBracketKeyword_3());
             		
-            // InternalTactics.g:836:3: ( (lv_atomicAction_7_0= ruleAtomicAction ) )
-            // InternalTactics.g:837:4: (lv_atomicAction_7_0= ruleAtomicAction )
+            // InternalTactics.g:712:3: ( (lv_atomicAction_7_0= ruleAtomicAction ) )
+            // InternalTactics.g:713:4: (lv_atomicAction_7_0= ruleAtomicAction )
             {
-            // InternalTactics.g:837:4: (lv_atomicAction_7_0= ruleAtomicAction )
-            // InternalTactics.g:838:5: lv_atomicAction_7_0= ruleAtomicAction
+            // InternalTactics.g:713:4: (lv_atomicAction_7_0= ruleAtomicAction )
+            // InternalTactics.g:714:5: lv_atomicAction_7_0= ruleAtomicAction
             {
 
             					newCompositeNode(grammarAccess.getConditionActionAccess().getAtomicActionAtomicActionParserRuleCall_4_0());
@@ -2136,7 +1864,7 @@ public class InternalTacticsParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleContextGuard"
-    // InternalTactics.g:859:1: entryRuleContextGuard returns [EObject current=null] : iv_ruleContextGuard= ruleContextGuard EOF ;
+    // InternalTactics.g:735:1: entryRuleContextGuard returns [EObject current=null] : iv_ruleContextGuard= ruleContextGuard EOF ;
     public final EObject entryRuleContextGuard() throws RecognitionException {
         EObject current = null;
 
@@ -2144,8 +1872,8 @@ public class InternalTacticsParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalTactics.g:859:53: (iv_ruleContextGuard= ruleContextGuard EOF )
-            // InternalTactics.g:860:2: iv_ruleContextGuard= ruleContextGuard EOF
+            // InternalTactics.g:735:53: (iv_ruleContextGuard= ruleContextGuard EOF )
+            // InternalTactics.g:736:2: iv_ruleContextGuard= ruleContextGuard EOF
             {
              newCompositeNode(grammarAccess.getContextGuardRule()); 
             pushFollow(FOLLOW_1);
@@ -2172,7 +1900,7 @@ public class InternalTacticsParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleContextGuard"
-    // InternalTactics.g:866:1: ruleContextGuard returns [EObject current=null] : (otherlv_0= 'context' otherlv_1= '(' ( (lv_contextCondition_2_0= ruleMeasurementCondition ) ) otherlv_3= ')' ) ;
+    // InternalTactics.g:742:1: ruleContextGuard returns [EObject current=null] : (otherlv_0= 'context' otherlv_1= '(' ( (lv_contextCondition_2_0= ruleMeasurementCondition ) ) otherlv_3= ')' ) ;
     public final EObject ruleContextGuard() throws RecognitionException {
         EObject current = null;
 
@@ -2186,30 +1914,30 @@ public class InternalTacticsParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalTactics.g:872:2: ( (otherlv_0= 'context' otherlv_1= '(' ( (lv_contextCondition_2_0= ruleMeasurementCondition ) ) otherlv_3= ')' ) )
-            // InternalTactics.g:873:2: (otherlv_0= 'context' otherlv_1= '(' ( (lv_contextCondition_2_0= ruleMeasurementCondition ) ) otherlv_3= ')' )
+            // InternalTactics.g:748:2: ( (otherlv_0= 'context' otherlv_1= '(' ( (lv_contextCondition_2_0= ruleMeasurementCondition ) ) otherlv_3= ')' ) )
+            // InternalTactics.g:749:2: (otherlv_0= 'context' otherlv_1= '(' ( (lv_contextCondition_2_0= ruleMeasurementCondition ) ) otherlv_3= ')' )
             {
-            // InternalTactics.g:873:2: (otherlv_0= 'context' otherlv_1= '(' ( (lv_contextCondition_2_0= ruleMeasurementCondition ) ) otherlv_3= ')' )
-            // InternalTactics.g:874:3: otherlv_0= 'context' otherlv_1= '(' ( (lv_contextCondition_2_0= ruleMeasurementCondition ) ) otherlv_3= ')'
+            // InternalTactics.g:749:2: (otherlv_0= 'context' otherlv_1= '(' ( (lv_contextCondition_2_0= ruleMeasurementCondition ) ) otherlv_3= ')' )
+            // InternalTactics.g:750:3: otherlv_0= 'context' otherlv_1= '(' ( (lv_contextCondition_2_0= ruleMeasurementCondition ) ) otherlv_3= ')'
             {
-            otherlv_0=(Token)match(input,25,FOLLOW_23); 
+            otherlv_0=(Token)match(input,23,FOLLOW_20); 
 
             			newLeafNode(otherlv_0, grammarAccess.getContextGuardAccess().getContextKeyword_0());
             		
-            otherlv_1=(Token)match(input,26,FOLLOW_3); 
+            otherlv_1=(Token)match(input,24,FOLLOW_3); 
 
             			newLeafNode(otherlv_1, grammarAccess.getContextGuardAccess().getLeftParenthesisKeyword_1());
             		
-            // InternalTactics.g:882:3: ( (lv_contextCondition_2_0= ruleMeasurementCondition ) )
-            // InternalTactics.g:883:4: (lv_contextCondition_2_0= ruleMeasurementCondition )
+            // InternalTactics.g:758:3: ( (lv_contextCondition_2_0= ruleMeasurementCondition ) )
+            // InternalTactics.g:759:4: (lv_contextCondition_2_0= ruleMeasurementCondition )
             {
-            // InternalTactics.g:883:4: (lv_contextCondition_2_0= ruleMeasurementCondition )
-            // InternalTactics.g:884:5: lv_contextCondition_2_0= ruleMeasurementCondition
+            // InternalTactics.g:759:4: (lv_contextCondition_2_0= ruleMeasurementCondition )
+            // InternalTactics.g:760:5: lv_contextCondition_2_0= ruleMeasurementCondition
             {
 
             					newCompositeNode(grammarAccess.getContextGuardAccess().getContextConditionMeasurementConditionParserRuleCall_2_0());
             				
-            pushFollow(FOLLOW_24);
+            pushFollow(FOLLOW_21);
             lv_contextCondition_2_0=ruleMeasurementCondition();
 
             state._fsp--;
@@ -2231,7 +1959,7 @@ public class InternalTacticsParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_3=(Token)match(input,27,FOLLOW_2); 
+            otherlv_3=(Token)match(input,25,FOLLOW_2); 
 
             			newLeafNode(otherlv_3, grammarAccess.getContextGuardAccess().getRightParenthesisKeyword_3());
             		
@@ -2258,7 +1986,7 @@ public class InternalTacticsParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleFeatureGuard"
-    // InternalTactics.g:909:1: entryRuleFeatureGuard returns [EObject current=null] : iv_ruleFeatureGuard= ruleFeatureGuard EOF ;
+    // InternalTactics.g:785:1: entryRuleFeatureGuard returns [EObject current=null] : iv_ruleFeatureGuard= ruleFeatureGuard EOF ;
     public final EObject entryRuleFeatureGuard() throws RecognitionException {
         EObject current = null;
 
@@ -2266,8 +1994,8 @@ public class InternalTacticsParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalTactics.g:909:53: (iv_ruleFeatureGuard= ruleFeatureGuard EOF )
-            // InternalTactics.g:910:2: iv_ruleFeatureGuard= ruleFeatureGuard EOF
+            // InternalTactics.g:785:53: (iv_ruleFeatureGuard= ruleFeatureGuard EOF )
+            // InternalTactics.g:786:2: iv_ruleFeatureGuard= ruleFeatureGuard EOF
             {
              newCompositeNode(grammarAccess.getFeatureGuardRule()); 
             pushFollow(FOLLOW_1);
@@ -2294,7 +2022,7 @@ public class InternalTacticsParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleFeatureGuard"
-    // InternalTactics.g:916:1: ruleFeatureGuard returns [EObject current=null] : (otherlv_0= 'features' otherlv_1= '(' ( (lv_featureCondition_2_0= ruleFeatureCondition ) ) otherlv_3= ')' ) ;
+    // InternalTactics.g:792:1: ruleFeatureGuard returns [EObject current=null] : (otherlv_0= 'features' otherlv_1= '(' ( (lv_featureCondition_2_0= ruleFeatureCondition ) ) otherlv_3= ')' ) ;
     public final EObject ruleFeatureGuard() throws RecognitionException {
         EObject current = null;
 
@@ -2308,30 +2036,30 @@ public class InternalTacticsParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalTactics.g:922:2: ( (otherlv_0= 'features' otherlv_1= '(' ( (lv_featureCondition_2_0= ruleFeatureCondition ) ) otherlv_3= ')' ) )
-            // InternalTactics.g:923:2: (otherlv_0= 'features' otherlv_1= '(' ( (lv_featureCondition_2_0= ruleFeatureCondition ) ) otherlv_3= ')' )
+            // InternalTactics.g:798:2: ( (otherlv_0= 'features' otherlv_1= '(' ( (lv_featureCondition_2_0= ruleFeatureCondition ) ) otherlv_3= ')' ) )
+            // InternalTactics.g:799:2: (otherlv_0= 'features' otherlv_1= '(' ( (lv_featureCondition_2_0= ruleFeatureCondition ) ) otherlv_3= ')' )
             {
-            // InternalTactics.g:923:2: (otherlv_0= 'features' otherlv_1= '(' ( (lv_featureCondition_2_0= ruleFeatureCondition ) ) otherlv_3= ')' )
-            // InternalTactics.g:924:3: otherlv_0= 'features' otherlv_1= '(' ( (lv_featureCondition_2_0= ruleFeatureCondition ) ) otherlv_3= ')'
+            // InternalTactics.g:799:2: (otherlv_0= 'features' otherlv_1= '(' ( (lv_featureCondition_2_0= ruleFeatureCondition ) ) otherlv_3= ')' )
+            // InternalTactics.g:800:3: otherlv_0= 'features' otherlv_1= '(' ( (lv_featureCondition_2_0= ruleFeatureCondition ) ) otherlv_3= ')'
             {
-            otherlv_0=(Token)match(input,28,FOLLOW_23); 
+            otherlv_0=(Token)match(input,26,FOLLOW_20); 
 
             			newLeafNode(otherlv_0, grammarAccess.getFeatureGuardAccess().getFeaturesKeyword_0());
             		
-            otherlv_1=(Token)match(input,26,FOLLOW_25); 
+            otherlv_1=(Token)match(input,24,FOLLOW_22); 
 
             			newLeafNode(otherlv_1, grammarAccess.getFeatureGuardAccess().getLeftParenthesisKeyword_1());
             		
-            // InternalTactics.g:932:3: ( (lv_featureCondition_2_0= ruleFeatureCondition ) )
-            // InternalTactics.g:933:4: (lv_featureCondition_2_0= ruleFeatureCondition )
+            // InternalTactics.g:808:3: ( (lv_featureCondition_2_0= ruleFeatureCondition ) )
+            // InternalTactics.g:809:4: (lv_featureCondition_2_0= ruleFeatureCondition )
             {
-            // InternalTactics.g:933:4: (lv_featureCondition_2_0= ruleFeatureCondition )
-            // InternalTactics.g:934:5: lv_featureCondition_2_0= ruleFeatureCondition
+            // InternalTactics.g:809:4: (lv_featureCondition_2_0= ruleFeatureCondition )
+            // InternalTactics.g:810:5: lv_featureCondition_2_0= ruleFeatureCondition
             {
 
             					newCompositeNode(grammarAccess.getFeatureGuardAccess().getFeatureConditionFeatureConditionParserRuleCall_2_0());
             				
-            pushFollow(FOLLOW_24);
+            pushFollow(FOLLOW_21);
             lv_featureCondition_2_0=ruleFeatureCondition();
 
             state._fsp--;
@@ -2353,7 +2081,7 @@ public class InternalTacticsParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_3=(Token)match(input,27,FOLLOW_2); 
+            otherlv_3=(Token)match(input,25,FOLLOW_2); 
 
             			newLeafNode(otherlv_3, grammarAccess.getFeatureGuardAccess().getRightParenthesisKeyword_3());
             		
@@ -2380,7 +2108,7 @@ public class InternalTacticsParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleEffectBlock"
-    // InternalTactics.g:959:1: entryRuleEffectBlock returns [EObject current=null] : iv_ruleEffectBlock= ruleEffectBlock EOF ;
+    // InternalTactics.g:835:1: entryRuleEffectBlock returns [EObject current=null] : iv_ruleEffectBlock= ruleEffectBlock EOF ;
     public final EObject entryRuleEffectBlock() throws RecognitionException {
         EObject current = null;
 
@@ -2388,8 +2116,8 @@ public class InternalTacticsParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalTactics.g:959:52: (iv_ruleEffectBlock= ruleEffectBlock EOF )
-            // InternalTactics.g:960:2: iv_ruleEffectBlock= ruleEffectBlock EOF
+            // InternalTactics.g:835:52: (iv_ruleEffectBlock= ruleEffectBlock EOF )
+            // InternalTactics.g:836:2: iv_ruleEffectBlock= ruleEffectBlock EOF
             {
              newCompositeNode(grammarAccess.getEffectBlockRule()); 
             pushFollow(FOLLOW_1);
@@ -2416,7 +2144,7 @@ public class InternalTacticsParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleEffectBlock"
-    // InternalTactics.g:966:1: ruleEffectBlock returns [EObject current=null] : ( () otherlv_1= 'effect' otherlv_2= '{' ( (lv_someEffect_3_0= ruleEffect ) ) otherlv_4= '}' ) ;
+    // InternalTactics.g:842:1: ruleEffectBlock returns [EObject current=null] : ( () otherlv_1= 'effect' otherlv_2= '{' ( (lv_someEffect_3_0= ruleEffect ) ) otherlv_4= '}' ) ;
     public final EObject ruleEffectBlock() throws RecognitionException {
         EObject current = null;
 
@@ -2430,14 +2158,14 @@ public class InternalTacticsParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalTactics.g:972:2: ( ( () otherlv_1= 'effect' otherlv_2= '{' ( (lv_someEffect_3_0= ruleEffect ) ) otherlv_4= '}' ) )
-            // InternalTactics.g:973:2: ( () otherlv_1= 'effect' otherlv_2= '{' ( (lv_someEffect_3_0= ruleEffect ) ) otherlv_4= '}' )
+            // InternalTactics.g:848:2: ( ( () otherlv_1= 'effect' otherlv_2= '{' ( (lv_someEffect_3_0= ruleEffect ) ) otherlv_4= '}' ) )
+            // InternalTactics.g:849:2: ( () otherlv_1= 'effect' otherlv_2= '{' ( (lv_someEffect_3_0= ruleEffect ) ) otherlv_4= '}' )
             {
-            // InternalTactics.g:973:2: ( () otherlv_1= 'effect' otherlv_2= '{' ( (lv_someEffect_3_0= ruleEffect ) ) otherlv_4= '}' )
-            // InternalTactics.g:974:3: () otherlv_1= 'effect' otherlv_2= '{' ( (lv_someEffect_3_0= ruleEffect ) ) otherlv_4= '}'
+            // InternalTactics.g:849:2: ( () otherlv_1= 'effect' otherlv_2= '{' ( (lv_someEffect_3_0= ruleEffect ) ) otherlv_4= '}' )
+            // InternalTactics.g:850:3: () otherlv_1= 'effect' otherlv_2= '{' ( (lv_someEffect_3_0= ruleEffect ) ) otherlv_4= '}'
             {
-            // InternalTactics.g:974:3: ()
-            // InternalTactics.g:975:4: 
+            // InternalTactics.g:850:3: ()
+            // InternalTactics.g:851:4: 
             {
 
             				current = forceCreateModelElement(
@@ -2447,24 +2175,24 @@ public class InternalTacticsParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,29,FOLLOW_7); 
+            otherlv_1=(Token)match(input,27,FOLLOW_8); 
 
             			newLeafNode(otherlv_1, grammarAccess.getEffectBlockAccess().getEffectKeyword_1());
             		
-            otherlv_2=(Token)match(input,16,FOLLOW_26); 
+            otherlv_2=(Token)match(input,16,FOLLOW_23); 
 
             			newLeafNode(otherlv_2, grammarAccess.getEffectBlockAccess().getLeftCurlyBracketKeyword_2());
             		
-            // InternalTactics.g:989:3: ( (lv_someEffect_3_0= ruleEffect ) )
-            // InternalTactics.g:990:4: (lv_someEffect_3_0= ruleEffect )
+            // InternalTactics.g:865:3: ( (lv_someEffect_3_0= ruleEffect ) )
+            // InternalTactics.g:866:4: (lv_someEffect_3_0= ruleEffect )
             {
-            // InternalTactics.g:990:4: (lv_someEffect_3_0= ruleEffect )
-            // InternalTactics.g:991:5: lv_someEffect_3_0= ruleEffect
+            // InternalTactics.g:866:4: (lv_someEffect_3_0= ruleEffect )
+            // InternalTactics.g:867:5: lv_someEffect_3_0= ruleEffect
             {
 
             					newCompositeNode(grammarAccess.getEffectBlockAccess().getSomeEffectEffectParserRuleCall_3_0());
             				
-            pushFollow(FOLLOW_11);
+            pushFollow(FOLLOW_12);
             lv_someEffect_3_0=ruleEffect();
 
             state._fsp--;
@@ -2513,7 +2241,7 @@ public class InternalTacticsParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleEffect"
-    // InternalTactics.g:1016:1: entryRuleEffect returns [EObject current=null] : iv_ruleEffect= ruleEffect EOF ;
+    // InternalTactics.g:892:1: entryRuleEffect returns [EObject current=null] : iv_ruleEffect= ruleEffect EOF ;
     public final EObject entryRuleEffect() throws RecognitionException {
         EObject current = null;
 
@@ -2521,8 +2249,8 @@ public class InternalTacticsParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalTactics.g:1016:47: (iv_ruleEffect= ruleEffect EOF )
-            // InternalTactics.g:1017:2: iv_ruleEffect= ruleEffect EOF
+            // InternalTactics.g:892:47: (iv_ruleEffect= ruleEffect EOF )
+            // InternalTactics.g:893:2: iv_ruleEffect= ruleEffect EOF
             {
              newCompositeNode(grammarAccess.getEffectRule()); 
             pushFollow(FOLLOW_1);
@@ -2549,7 +2277,7 @@ public class InternalTacticsParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleEffect"
-    // InternalTactics.g:1023:1: ruleEffect returns [EObject current=null] : this_RelativeEffect_0= ruleRelativeEffect ;
+    // InternalTactics.g:899:1: ruleEffect returns [EObject current=null] : this_RelativeEffect_0= ruleRelativeEffect ;
     public final EObject ruleEffect() throws RecognitionException {
         EObject current = null;
 
@@ -2560,8 +2288,8 @@ public class InternalTacticsParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalTactics.g:1029:2: (this_RelativeEffect_0= ruleRelativeEffect )
-            // InternalTactics.g:1030:2: this_RelativeEffect_0= ruleRelativeEffect
+            // InternalTactics.g:905:2: (this_RelativeEffect_0= ruleRelativeEffect )
+            // InternalTactics.g:906:2: this_RelativeEffect_0= ruleRelativeEffect
             {
 
             		newCompositeNode(grammarAccess.getEffectAccess().getRelativeEffectParserRuleCall());
@@ -2595,7 +2323,7 @@ public class InternalTacticsParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleRelativeEffect"
-    // InternalTactics.g:1041:1: entryRuleRelativeEffect returns [EObject current=null] : iv_ruleRelativeEffect= ruleRelativeEffect EOF ;
+    // InternalTactics.g:917:1: entryRuleRelativeEffect returns [EObject current=null] : iv_ruleRelativeEffect= ruleRelativeEffect EOF ;
     public final EObject entryRuleRelativeEffect() throws RecognitionException {
         EObject current = null;
 
@@ -2603,8 +2331,8 @@ public class InternalTacticsParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalTactics.g:1041:55: (iv_ruleRelativeEffect= ruleRelativeEffect EOF )
-            // InternalTactics.g:1042:2: iv_ruleRelativeEffect= ruleRelativeEffect EOF
+            // InternalTactics.g:917:55: (iv_ruleRelativeEffect= ruleRelativeEffect EOF )
+            // InternalTactics.g:918:2: iv_ruleRelativeEffect= ruleRelativeEffect EOF
             {
              newCompositeNode(grammarAccess.getRelativeEffectRule()); 
             pushFollow(FOLLOW_1);
@@ -2631,7 +2359,7 @@ public class InternalTacticsParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleRelativeEffect"
-    // InternalTactics.g:1048:1: ruleRelativeEffect returns [EObject current=null] : ( ( (lv_sign_0_0= RULE_INCDEC ) ) ( (lv_effectValue_1_0= ruleLiteral ) ) ( (otherlv_2= RULE_ID ) ) ) ;
+    // InternalTactics.g:924:1: ruleRelativeEffect returns [EObject current=null] : ( ( (lv_sign_0_0= RULE_INCDEC ) ) ( (lv_effectValue_1_0= ruleLiteral ) ) ( (otherlv_2= RULE_ID ) ) ) ;
     public final EObject ruleRelativeEffect() throws RecognitionException {
         EObject current = null;
 
@@ -2644,19 +2372,19 @@ public class InternalTacticsParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalTactics.g:1054:2: ( ( ( (lv_sign_0_0= RULE_INCDEC ) ) ( (lv_effectValue_1_0= ruleLiteral ) ) ( (otherlv_2= RULE_ID ) ) ) )
-            // InternalTactics.g:1055:2: ( ( (lv_sign_0_0= RULE_INCDEC ) ) ( (lv_effectValue_1_0= ruleLiteral ) ) ( (otherlv_2= RULE_ID ) ) )
+            // InternalTactics.g:930:2: ( ( ( (lv_sign_0_0= RULE_INCDEC ) ) ( (lv_effectValue_1_0= ruleLiteral ) ) ( (otherlv_2= RULE_ID ) ) ) )
+            // InternalTactics.g:931:2: ( ( (lv_sign_0_0= RULE_INCDEC ) ) ( (lv_effectValue_1_0= ruleLiteral ) ) ( (otherlv_2= RULE_ID ) ) )
             {
-            // InternalTactics.g:1055:2: ( ( (lv_sign_0_0= RULE_INCDEC ) ) ( (lv_effectValue_1_0= ruleLiteral ) ) ( (otherlv_2= RULE_ID ) ) )
-            // InternalTactics.g:1056:3: ( (lv_sign_0_0= RULE_INCDEC ) ) ( (lv_effectValue_1_0= ruleLiteral ) ) ( (otherlv_2= RULE_ID ) )
+            // InternalTactics.g:931:2: ( ( (lv_sign_0_0= RULE_INCDEC ) ) ( (lv_effectValue_1_0= ruleLiteral ) ) ( (otherlv_2= RULE_ID ) ) )
+            // InternalTactics.g:932:3: ( (lv_sign_0_0= RULE_INCDEC ) ) ( (lv_effectValue_1_0= ruleLiteral ) ) ( (otherlv_2= RULE_ID ) )
             {
-            // InternalTactics.g:1056:3: ( (lv_sign_0_0= RULE_INCDEC ) )
-            // InternalTactics.g:1057:4: (lv_sign_0_0= RULE_INCDEC )
+            // InternalTactics.g:932:3: ( (lv_sign_0_0= RULE_INCDEC ) )
+            // InternalTactics.g:933:4: (lv_sign_0_0= RULE_INCDEC )
             {
-            // InternalTactics.g:1057:4: (lv_sign_0_0= RULE_INCDEC )
-            // InternalTactics.g:1058:5: lv_sign_0_0= RULE_INCDEC
+            // InternalTactics.g:933:4: (lv_sign_0_0= RULE_INCDEC )
+            // InternalTactics.g:934:5: lv_sign_0_0= RULE_INCDEC
             {
-            lv_sign_0_0=(Token)match(input,RULE_INCDEC,FOLLOW_27); 
+            lv_sign_0_0=(Token)match(input,RULE_INCDEC,FOLLOW_24); 
 
             					newLeafNode(lv_sign_0_0, grammarAccess.getRelativeEffectAccess().getSignINCDECTerminalRuleCall_0_0());
             				
@@ -2676,11 +2404,11 @@ public class InternalTacticsParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalTactics.g:1074:3: ( (lv_effectValue_1_0= ruleLiteral ) )
-            // InternalTactics.g:1075:4: (lv_effectValue_1_0= ruleLiteral )
+            // InternalTactics.g:950:3: ( (lv_effectValue_1_0= ruleLiteral ) )
+            // InternalTactics.g:951:4: (lv_effectValue_1_0= ruleLiteral )
             {
-            // InternalTactics.g:1075:4: (lv_effectValue_1_0= ruleLiteral )
-            // InternalTactics.g:1076:5: lv_effectValue_1_0= ruleLiteral
+            // InternalTactics.g:951:4: (lv_effectValue_1_0= ruleLiteral )
+            // InternalTactics.g:952:5: lv_effectValue_1_0= ruleLiteral
             {
 
             					newCompositeNode(grammarAccess.getRelativeEffectAccess().getEffectValueLiteralParserRuleCall_1_0());
@@ -2707,11 +2435,11 @@ public class InternalTacticsParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalTactics.g:1093:3: ( (otherlv_2= RULE_ID ) )
-            // InternalTactics.g:1094:4: (otherlv_2= RULE_ID )
+            // InternalTactics.g:969:3: ( (otherlv_2= RULE_ID ) )
+            // InternalTactics.g:970:4: (otherlv_2= RULE_ID )
             {
-            // InternalTactics.g:1094:4: (otherlv_2= RULE_ID )
-            // InternalTactics.g:1095:5: otherlv_2= RULE_ID
+            // InternalTactics.g:970:4: (otherlv_2= RULE_ID )
+            // InternalTactics.g:971:5: otherlv_2= RULE_ID
             {
 
             					if (current==null) {
@@ -2751,7 +2479,7 @@ public class InternalTacticsParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleFeatureCondition"
-    // InternalTactics.g:1110:1: entryRuleFeatureCondition returns [EObject current=null] : iv_ruleFeatureCondition= ruleFeatureCondition EOF ;
+    // InternalTactics.g:986:1: entryRuleFeatureCondition returns [EObject current=null] : iv_ruleFeatureCondition= ruleFeatureCondition EOF ;
     public final EObject entryRuleFeatureCondition() throws RecognitionException {
         EObject current = null;
 
@@ -2759,8 +2487,8 @@ public class InternalTacticsParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalTactics.g:1110:57: (iv_ruleFeatureCondition= ruleFeatureCondition EOF )
-            // InternalTactics.g:1111:2: iv_ruleFeatureCondition= ruleFeatureCondition EOF
+            // InternalTactics.g:986:57: (iv_ruleFeatureCondition= ruleFeatureCondition EOF )
+            // InternalTactics.g:987:2: iv_ruleFeatureCondition= ruleFeatureCondition EOF
             {
              newCompositeNode(grammarAccess.getFeatureConditionRule()); 
             pushFollow(FOLLOW_1);
@@ -2787,7 +2515,7 @@ public class InternalTacticsParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleFeatureCondition"
-    // InternalTactics.g:1117:1: ruleFeatureCondition returns [EObject current=null] : ( ( (lv_not_0_0= '!' ) )? otherlv_1= 'selected(' ( (lv_variant_2_0= ruleQualifiedFeatureRef ) ) otherlv_3= ')' ( ( (lv_logicalOp_4_0= ruleLogicalOperator ) ) ( (lv_secondTerm_5_0= ruleFeatureCondition ) ) )? ) ;
+    // InternalTactics.g:993:1: ruleFeatureCondition returns [EObject current=null] : ( ( (lv_not_0_0= '!' ) )? otherlv_1= 'selected(' ( (lv_variant_2_0= ruleQualifiedFeatureRef ) ) otherlv_3= ')' ( ( (lv_logicalOp_4_0= ruleLogicalOperator ) ) ( (lv_secondTerm_5_0= ruleFeatureCondition ) ) )? ) ;
     public final EObject ruleFeatureCondition() throws RecognitionException {
         EObject current = null;
 
@@ -2805,27 +2533,27 @@ public class InternalTacticsParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalTactics.g:1123:2: ( ( ( (lv_not_0_0= '!' ) )? otherlv_1= 'selected(' ( (lv_variant_2_0= ruleQualifiedFeatureRef ) ) otherlv_3= ')' ( ( (lv_logicalOp_4_0= ruleLogicalOperator ) ) ( (lv_secondTerm_5_0= ruleFeatureCondition ) ) )? ) )
-            // InternalTactics.g:1124:2: ( ( (lv_not_0_0= '!' ) )? otherlv_1= 'selected(' ( (lv_variant_2_0= ruleQualifiedFeatureRef ) ) otherlv_3= ')' ( ( (lv_logicalOp_4_0= ruleLogicalOperator ) ) ( (lv_secondTerm_5_0= ruleFeatureCondition ) ) )? )
+            // InternalTactics.g:999:2: ( ( ( (lv_not_0_0= '!' ) )? otherlv_1= 'selected(' ( (lv_variant_2_0= ruleQualifiedFeatureRef ) ) otherlv_3= ')' ( ( (lv_logicalOp_4_0= ruleLogicalOperator ) ) ( (lv_secondTerm_5_0= ruleFeatureCondition ) ) )? ) )
+            // InternalTactics.g:1000:2: ( ( (lv_not_0_0= '!' ) )? otherlv_1= 'selected(' ( (lv_variant_2_0= ruleQualifiedFeatureRef ) ) otherlv_3= ')' ( ( (lv_logicalOp_4_0= ruleLogicalOperator ) ) ( (lv_secondTerm_5_0= ruleFeatureCondition ) ) )? )
             {
-            // InternalTactics.g:1124:2: ( ( (lv_not_0_0= '!' ) )? otherlv_1= 'selected(' ( (lv_variant_2_0= ruleQualifiedFeatureRef ) ) otherlv_3= ')' ( ( (lv_logicalOp_4_0= ruleLogicalOperator ) ) ( (lv_secondTerm_5_0= ruleFeatureCondition ) ) )? )
-            // InternalTactics.g:1125:3: ( (lv_not_0_0= '!' ) )? otherlv_1= 'selected(' ( (lv_variant_2_0= ruleQualifiedFeatureRef ) ) otherlv_3= ')' ( ( (lv_logicalOp_4_0= ruleLogicalOperator ) ) ( (lv_secondTerm_5_0= ruleFeatureCondition ) ) )?
+            // InternalTactics.g:1000:2: ( ( (lv_not_0_0= '!' ) )? otherlv_1= 'selected(' ( (lv_variant_2_0= ruleQualifiedFeatureRef ) ) otherlv_3= ')' ( ( (lv_logicalOp_4_0= ruleLogicalOperator ) ) ( (lv_secondTerm_5_0= ruleFeatureCondition ) ) )? )
+            // InternalTactics.g:1001:3: ( (lv_not_0_0= '!' ) )? otherlv_1= 'selected(' ( (lv_variant_2_0= ruleQualifiedFeatureRef ) ) otherlv_3= ')' ( ( (lv_logicalOp_4_0= ruleLogicalOperator ) ) ( (lv_secondTerm_5_0= ruleFeatureCondition ) ) )?
             {
-            // InternalTactics.g:1125:3: ( (lv_not_0_0= '!' ) )?
-            int alt13=2;
-            int LA13_0 = input.LA(1);
+            // InternalTactics.g:1001:3: ( (lv_not_0_0= '!' ) )?
+            int alt12=2;
+            int LA12_0 = input.LA(1);
 
-            if ( (LA13_0==30) ) {
-                alt13=1;
+            if ( (LA12_0==28) ) {
+                alt12=1;
             }
-            switch (alt13) {
+            switch (alt12) {
                 case 1 :
-                    // InternalTactics.g:1126:4: (lv_not_0_0= '!' )
+                    // InternalTactics.g:1002:4: (lv_not_0_0= '!' )
                     {
-                    // InternalTactics.g:1126:4: (lv_not_0_0= '!' )
-                    // InternalTactics.g:1127:5: lv_not_0_0= '!'
+                    // InternalTactics.g:1002:4: (lv_not_0_0= '!' )
+                    // InternalTactics.g:1003:5: lv_not_0_0= '!'
                     {
-                    lv_not_0_0=(Token)match(input,30,FOLLOW_28); 
+                    lv_not_0_0=(Token)match(input,28,FOLLOW_25); 
 
                     					newLeafNode(lv_not_0_0, grammarAccess.getFeatureConditionAccess().getNotExclamationMarkKeyword_0_0());
                     				
@@ -2844,20 +2572,20 @@ public class InternalTacticsParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,31,FOLLOW_3); 
+            otherlv_1=(Token)match(input,29,FOLLOW_3); 
 
             			newLeafNode(otherlv_1, grammarAccess.getFeatureConditionAccess().getSelectedKeyword_1());
             		
-            // InternalTactics.g:1143:3: ( (lv_variant_2_0= ruleQualifiedFeatureRef ) )
-            // InternalTactics.g:1144:4: (lv_variant_2_0= ruleQualifiedFeatureRef )
+            // InternalTactics.g:1019:3: ( (lv_variant_2_0= ruleQualifiedFeatureRef ) )
+            // InternalTactics.g:1020:4: (lv_variant_2_0= ruleQualifiedFeatureRef )
             {
-            // InternalTactics.g:1144:4: (lv_variant_2_0= ruleQualifiedFeatureRef )
-            // InternalTactics.g:1145:5: lv_variant_2_0= ruleQualifiedFeatureRef
+            // InternalTactics.g:1020:4: (lv_variant_2_0= ruleQualifiedFeatureRef )
+            // InternalTactics.g:1021:5: lv_variant_2_0= ruleQualifiedFeatureRef
             {
 
             					newCompositeNode(grammarAccess.getFeatureConditionAccess().getVariantQualifiedFeatureRefParserRuleCall_2_0());
             				
-            pushFollow(FOLLOW_24);
+            pushFollow(FOLLOW_21);
             lv_variant_2_0=ruleQualifiedFeatureRef();
 
             state._fsp--;
@@ -2879,31 +2607,31 @@ public class InternalTacticsParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_3=(Token)match(input,27,FOLLOW_29); 
+            otherlv_3=(Token)match(input,25,FOLLOW_26); 
 
             			newLeafNode(otherlv_3, grammarAccess.getFeatureConditionAccess().getRightParenthesisKeyword_3());
             		
-            // InternalTactics.g:1166:3: ( ( (lv_logicalOp_4_0= ruleLogicalOperator ) ) ( (lv_secondTerm_5_0= ruleFeatureCondition ) ) )?
-            int alt14=2;
-            int LA14_0 = input.LA(1);
+            // InternalTactics.g:1042:3: ( ( (lv_logicalOp_4_0= ruleLogicalOperator ) ) ( (lv_secondTerm_5_0= ruleFeatureCondition ) ) )?
+            int alt13=2;
+            int LA13_0 = input.LA(1);
 
-            if ( (LA14_0==23||LA14_0==41) ) {
-                alt14=1;
+            if ( (LA13_0==21||LA13_0==39) ) {
+                alt13=1;
             }
-            switch (alt14) {
+            switch (alt13) {
                 case 1 :
-                    // InternalTactics.g:1167:4: ( (lv_logicalOp_4_0= ruleLogicalOperator ) ) ( (lv_secondTerm_5_0= ruleFeatureCondition ) )
+                    // InternalTactics.g:1043:4: ( (lv_logicalOp_4_0= ruleLogicalOperator ) ) ( (lv_secondTerm_5_0= ruleFeatureCondition ) )
                     {
-                    // InternalTactics.g:1167:4: ( (lv_logicalOp_4_0= ruleLogicalOperator ) )
-                    // InternalTactics.g:1168:5: (lv_logicalOp_4_0= ruleLogicalOperator )
+                    // InternalTactics.g:1043:4: ( (lv_logicalOp_4_0= ruleLogicalOperator ) )
+                    // InternalTactics.g:1044:5: (lv_logicalOp_4_0= ruleLogicalOperator )
                     {
-                    // InternalTactics.g:1168:5: (lv_logicalOp_4_0= ruleLogicalOperator )
-                    // InternalTactics.g:1169:6: lv_logicalOp_4_0= ruleLogicalOperator
+                    // InternalTactics.g:1044:5: (lv_logicalOp_4_0= ruleLogicalOperator )
+                    // InternalTactics.g:1045:6: lv_logicalOp_4_0= ruleLogicalOperator
                     {
 
                     						newCompositeNode(grammarAccess.getFeatureConditionAccess().getLogicalOpLogicalOperatorEnumRuleCall_4_0_0());
                     					
-                    pushFollow(FOLLOW_25);
+                    pushFollow(FOLLOW_22);
                     lv_logicalOp_4_0=ruleLogicalOperator();
 
                     state._fsp--;
@@ -2925,11 +2653,11 @@ public class InternalTacticsParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // InternalTactics.g:1186:4: ( (lv_secondTerm_5_0= ruleFeatureCondition ) )
-                    // InternalTactics.g:1187:5: (lv_secondTerm_5_0= ruleFeatureCondition )
+                    // InternalTactics.g:1062:4: ( (lv_secondTerm_5_0= ruleFeatureCondition ) )
+                    // InternalTactics.g:1063:5: (lv_secondTerm_5_0= ruleFeatureCondition )
                     {
-                    // InternalTactics.g:1187:5: (lv_secondTerm_5_0= ruleFeatureCondition )
-                    // InternalTactics.g:1188:6: lv_secondTerm_5_0= ruleFeatureCondition
+                    // InternalTactics.g:1063:5: (lv_secondTerm_5_0= ruleFeatureCondition )
+                    // InternalTactics.g:1064:6: lv_secondTerm_5_0= ruleFeatureCondition
                     {
 
                     						newCompositeNode(grammarAccess.getFeatureConditionAccess().getSecondTermFeatureConditionParserRuleCall_4_1_0());
@@ -2985,7 +2713,7 @@ public class InternalTacticsParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleMeasurementCondition"
-    // InternalTactics.g:1210:1: entryRuleMeasurementCondition returns [EObject current=null] : iv_ruleMeasurementCondition= ruleMeasurementCondition EOF ;
+    // InternalTactics.g:1086:1: entryRuleMeasurementCondition returns [EObject current=null] : iv_ruleMeasurementCondition= ruleMeasurementCondition EOF ;
     public final EObject entryRuleMeasurementCondition() throws RecognitionException {
         EObject current = null;
 
@@ -2993,8 +2721,8 @@ public class InternalTacticsParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalTactics.g:1210:61: (iv_ruleMeasurementCondition= ruleMeasurementCondition EOF )
-            // InternalTactics.g:1211:2: iv_ruleMeasurementCondition= ruleMeasurementCondition EOF
+            // InternalTactics.g:1086:61: (iv_ruleMeasurementCondition= ruleMeasurementCondition EOF )
+            // InternalTactics.g:1087:2: iv_ruleMeasurementCondition= ruleMeasurementCondition EOF
             {
              newCompositeNode(grammarAccess.getMeasurementConditionRule()); 
             pushFollow(FOLLOW_1);
@@ -3021,7 +2749,7 @@ public class InternalTacticsParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleMeasurementCondition"
-    // InternalTactics.g:1217:1: ruleMeasurementCondition returns [EObject current=null] : (this_MeasurementThresholdCondition_0= ruleMeasurementThresholdCondition | this_MeasurementMeasurementCondition_1= ruleMeasurementMeasurementCondition ) ;
+    // InternalTactics.g:1093:1: ruleMeasurementCondition returns [EObject current=null] : (this_MeasurementThresholdCondition_0= ruleMeasurementThresholdCondition | this_MeasurementMeasurementCondition_1= ruleMeasurementMeasurementCondition ) ;
     public final EObject ruleMeasurementCondition() throws RecognitionException {
         EObject current = null;
 
@@ -3034,15 +2762,15 @@ public class InternalTacticsParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalTactics.g:1223:2: ( (this_MeasurementThresholdCondition_0= ruleMeasurementThresholdCondition | this_MeasurementMeasurementCondition_1= ruleMeasurementMeasurementCondition ) )
-            // InternalTactics.g:1224:2: (this_MeasurementThresholdCondition_0= ruleMeasurementThresholdCondition | this_MeasurementMeasurementCondition_1= ruleMeasurementMeasurementCondition )
+            // InternalTactics.g:1099:2: ( (this_MeasurementThresholdCondition_0= ruleMeasurementThresholdCondition | this_MeasurementMeasurementCondition_1= ruleMeasurementMeasurementCondition ) )
+            // InternalTactics.g:1100:2: (this_MeasurementThresholdCondition_0= ruleMeasurementThresholdCondition | this_MeasurementMeasurementCondition_1= ruleMeasurementMeasurementCondition )
             {
-            // InternalTactics.g:1224:2: (this_MeasurementThresholdCondition_0= ruleMeasurementThresholdCondition | this_MeasurementMeasurementCondition_1= ruleMeasurementMeasurementCondition )
-            int alt15=2;
-            alt15 = dfa15.predict(input);
-            switch (alt15) {
+            // InternalTactics.g:1100:2: (this_MeasurementThresholdCondition_0= ruleMeasurementThresholdCondition | this_MeasurementMeasurementCondition_1= ruleMeasurementMeasurementCondition )
+            int alt14=2;
+            alt14 = dfa14.predict(input);
+            switch (alt14) {
                 case 1 :
-                    // InternalTactics.g:1225:3: this_MeasurementThresholdCondition_0= ruleMeasurementThresholdCondition
+                    // InternalTactics.g:1101:3: this_MeasurementThresholdCondition_0= ruleMeasurementThresholdCondition
                     {
 
                     			newCompositeNode(grammarAccess.getMeasurementConditionAccess().getMeasurementThresholdConditionParserRuleCall_0());
@@ -3060,7 +2788,7 @@ public class InternalTacticsParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // InternalTactics.g:1234:3: this_MeasurementMeasurementCondition_1= ruleMeasurementMeasurementCondition
+                    // InternalTactics.g:1110:3: this_MeasurementMeasurementCondition_1= ruleMeasurementMeasurementCondition
                     {
 
                     			newCompositeNode(grammarAccess.getMeasurementConditionAccess().getMeasurementMeasurementConditionParserRuleCall_1());
@@ -3100,7 +2828,7 @@ public class InternalTacticsParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleMeasurementThresholdCondition"
-    // InternalTactics.g:1246:1: entryRuleMeasurementThresholdCondition returns [EObject current=null] : iv_ruleMeasurementThresholdCondition= ruleMeasurementThresholdCondition EOF ;
+    // InternalTactics.g:1122:1: entryRuleMeasurementThresholdCondition returns [EObject current=null] : iv_ruleMeasurementThresholdCondition= ruleMeasurementThresholdCondition EOF ;
     public final EObject entryRuleMeasurementThresholdCondition() throws RecognitionException {
         EObject current = null;
 
@@ -3108,8 +2836,8 @@ public class InternalTacticsParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalTactics.g:1246:70: (iv_ruleMeasurementThresholdCondition= ruleMeasurementThresholdCondition EOF )
-            // InternalTactics.g:1247:2: iv_ruleMeasurementThresholdCondition= ruleMeasurementThresholdCondition EOF
+            // InternalTactics.g:1122:70: (iv_ruleMeasurementThresholdCondition= ruleMeasurementThresholdCondition EOF )
+            // InternalTactics.g:1123:2: iv_ruleMeasurementThresholdCondition= ruleMeasurementThresholdCondition EOF
             {
              newCompositeNode(grammarAccess.getMeasurementThresholdConditionRule()); 
             pushFollow(FOLLOW_1);
@@ -3136,7 +2864,7 @@ public class InternalTacticsParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleMeasurementThresholdCondition"
-    // InternalTactics.g:1253:1: ruleMeasurementThresholdCondition returns [EObject current=null] : ( ( (otherlv_0= RULE_ID ) ) ( (lv_operator_1_0= ruleMathOperator ) ) ( (lv_thresholdValue_2_0= ruleLiteral ) ) ( ( (lv_logicalOp_3_0= ruleLogicalOperator ) ) ( (lv_secondTerm_4_0= ruleMeasurementCondition ) ) )? ) ;
+    // InternalTactics.g:1129:1: ruleMeasurementThresholdCondition returns [EObject current=null] : ( ( (otherlv_0= RULE_ID ) ) ( (lv_operator_1_0= ruleMathOperator ) ) ( (lv_thresholdValue_2_0= ruleLiteral ) ) ( ( (lv_logicalOp_3_0= ruleLogicalOperator ) ) ( (lv_secondTerm_4_0= ruleMeasurementCondition ) ) )? ) ;
     public final EObject ruleMeasurementThresholdCondition() throws RecognitionException {
         EObject current = null;
 
@@ -3154,24 +2882,24 @@ public class InternalTacticsParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalTactics.g:1259:2: ( ( ( (otherlv_0= RULE_ID ) ) ( (lv_operator_1_0= ruleMathOperator ) ) ( (lv_thresholdValue_2_0= ruleLiteral ) ) ( ( (lv_logicalOp_3_0= ruleLogicalOperator ) ) ( (lv_secondTerm_4_0= ruleMeasurementCondition ) ) )? ) )
-            // InternalTactics.g:1260:2: ( ( (otherlv_0= RULE_ID ) ) ( (lv_operator_1_0= ruleMathOperator ) ) ( (lv_thresholdValue_2_0= ruleLiteral ) ) ( ( (lv_logicalOp_3_0= ruleLogicalOperator ) ) ( (lv_secondTerm_4_0= ruleMeasurementCondition ) ) )? )
+            // InternalTactics.g:1135:2: ( ( ( (otherlv_0= RULE_ID ) ) ( (lv_operator_1_0= ruleMathOperator ) ) ( (lv_thresholdValue_2_0= ruleLiteral ) ) ( ( (lv_logicalOp_3_0= ruleLogicalOperator ) ) ( (lv_secondTerm_4_0= ruleMeasurementCondition ) ) )? ) )
+            // InternalTactics.g:1136:2: ( ( (otherlv_0= RULE_ID ) ) ( (lv_operator_1_0= ruleMathOperator ) ) ( (lv_thresholdValue_2_0= ruleLiteral ) ) ( ( (lv_logicalOp_3_0= ruleLogicalOperator ) ) ( (lv_secondTerm_4_0= ruleMeasurementCondition ) ) )? )
             {
-            // InternalTactics.g:1260:2: ( ( (otherlv_0= RULE_ID ) ) ( (lv_operator_1_0= ruleMathOperator ) ) ( (lv_thresholdValue_2_0= ruleLiteral ) ) ( ( (lv_logicalOp_3_0= ruleLogicalOperator ) ) ( (lv_secondTerm_4_0= ruleMeasurementCondition ) ) )? )
-            // InternalTactics.g:1261:3: ( (otherlv_0= RULE_ID ) ) ( (lv_operator_1_0= ruleMathOperator ) ) ( (lv_thresholdValue_2_0= ruleLiteral ) ) ( ( (lv_logicalOp_3_0= ruleLogicalOperator ) ) ( (lv_secondTerm_4_0= ruleMeasurementCondition ) ) )?
+            // InternalTactics.g:1136:2: ( ( (otherlv_0= RULE_ID ) ) ( (lv_operator_1_0= ruleMathOperator ) ) ( (lv_thresholdValue_2_0= ruleLiteral ) ) ( ( (lv_logicalOp_3_0= ruleLogicalOperator ) ) ( (lv_secondTerm_4_0= ruleMeasurementCondition ) ) )? )
+            // InternalTactics.g:1137:3: ( (otherlv_0= RULE_ID ) ) ( (lv_operator_1_0= ruleMathOperator ) ) ( (lv_thresholdValue_2_0= ruleLiteral ) ) ( ( (lv_logicalOp_3_0= ruleLogicalOperator ) ) ( (lv_secondTerm_4_0= ruleMeasurementCondition ) ) )?
             {
-            // InternalTactics.g:1261:3: ( (otherlv_0= RULE_ID ) )
-            // InternalTactics.g:1262:4: (otherlv_0= RULE_ID )
+            // InternalTactics.g:1137:3: ( (otherlv_0= RULE_ID ) )
+            // InternalTactics.g:1138:4: (otherlv_0= RULE_ID )
             {
-            // InternalTactics.g:1262:4: (otherlv_0= RULE_ID )
-            // InternalTactics.g:1263:5: otherlv_0= RULE_ID
+            // InternalTactics.g:1138:4: (otherlv_0= RULE_ID )
+            // InternalTactics.g:1139:5: otherlv_0= RULE_ID
             {
 
             					if (current==null) {
             						current = createModelElement(grammarAccess.getMeasurementThresholdConditionRule());
             					}
             				
-            otherlv_0=(Token)match(input,RULE_ID,FOLLOW_30); 
+            otherlv_0=(Token)match(input,RULE_ID,FOLLOW_27); 
 
             					newLeafNode(otherlv_0, grammarAccess.getMeasurementThresholdConditionAccess().getMeasurementContextVarCrossReference_0_0());
             				
@@ -3181,16 +2909,16 @@ public class InternalTacticsParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalTactics.g:1274:3: ( (lv_operator_1_0= ruleMathOperator ) )
-            // InternalTactics.g:1275:4: (lv_operator_1_0= ruleMathOperator )
+            // InternalTactics.g:1150:3: ( (lv_operator_1_0= ruleMathOperator ) )
+            // InternalTactics.g:1151:4: (lv_operator_1_0= ruleMathOperator )
             {
-            // InternalTactics.g:1275:4: (lv_operator_1_0= ruleMathOperator )
-            // InternalTactics.g:1276:5: lv_operator_1_0= ruleMathOperator
+            // InternalTactics.g:1151:4: (lv_operator_1_0= ruleMathOperator )
+            // InternalTactics.g:1152:5: lv_operator_1_0= ruleMathOperator
             {
 
             					newCompositeNode(grammarAccess.getMeasurementThresholdConditionAccess().getOperatorMathOperatorEnumRuleCall_1_0());
             				
-            pushFollow(FOLLOW_27);
+            pushFollow(FOLLOW_24);
             lv_operator_1_0=ruleMathOperator();
 
             state._fsp--;
@@ -3212,16 +2940,16 @@ public class InternalTacticsParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalTactics.g:1293:3: ( (lv_thresholdValue_2_0= ruleLiteral ) )
-            // InternalTactics.g:1294:4: (lv_thresholdValue_2_0= ruleLiteral )
+            // InternalTactics.g:1169:3: ( (lv_thresholdValue_2_0= ruleLiteral ) )
+            // InternalTactics.g:1170:4: (lv_thresholdValue_2_0= ruleLiteral )
             {
-            // InternalTactics.g:1294:4: (lv_thresholdValue_2_0= ruleLiteral )
-            // InternalTactics.g:1295:5: lv_thresholdValue_2_0= ruleLiteral
+            // InternalTactics.g:1170:4: (lv_thresholdValue_2_0= ruleLiteral )
+            // InternalTactics.g:1171:5: lv_thresholdValue_2_0= ruleLiteral
             {
 
             					newCompositeNode(grammarAccess.getMeasurementThresholdConditionAccess().getThresholdValueLiteralParserRuleCall_2_0());
             				
-            pushFollow(FOLLOW_29);
+            pushFollow(FOLLOW_26);
             lv_thresholdValue_2_0=ruleLiteral();
 
             state._fsp--;
@@ -3243,22 +2971,22 @@ public class InternalTacticsParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalTactics.g:1312:3: ( ( (lv_logicalOp_3_0= ruleLogicalOperator ) ) ( (lv_secondTerm_4_0= ruleMeasurementCondition ) ) )?
-            int alt16=2;
-            int LA16_0 = input.LA(1);
+            // InternalTactics.g:1188:3: ( ( (lv_logicalOp_3_0= ruleLogicalOperator ) ) ( (lv_secondTerm_4_0= ruleMeasurementCondition ) ) )?
+            int alt15=2;
+            int LA15_0 = input.LA(1);
 
-            if ( (LA16_0==23||LA16_0==41) ) {
-                alt16=1;
+            if ( (LA15_0==21||LA15_0==39) ) {
+                alt15=1;
             }
-            switch (alt16) {
+            switch (alt15) {
                 case 1 :
-                    // InternalTactics.g:1313:4: ( (lv_logicalOp_3_0= ruleLogicalOperator ) ) ( (lv_secondTerm_4_0= ruleMeasurementCondition ) )
+                    // InternalTactics.g:1189:4: ( (lv_logicalOp_3_0= ruleLogicalOperator ) ) ( (lv_secondTerm_4_0= ruleMeasurementCondition ) )
                     {
-                    // InternalTactics.g:1313:4: ( (lv_logicalOp_3_0= ruleLogicalOperator ) )
-                    // InternalTactics.g:1314:5: (lv_logicalOp_3_0= ruleLogicalOperator )
+                    // InternalTactics.g:1189:4: ( (lv_logicalOp_3_0= ruleLogicalOperator ) )
+                    // InternalTactics.g:1190:5: (lv_logicalOp_3_0= ruleLogicalOperator )
                     {
-                    // InternalTactics.g:1314:5: (lv_logicalOp_3_0= ruleLogicalOperator )
-                    // InternalTactics.g:1315:6: lv_logicalOp_3_0= ruleLogicalOperator
+                    // InternalTactics.g:1190:5: (lv_logicalOp_3_0= ruleLogicalOperator )
+                    // InternalTactics.g:1191:6: lv_logicalOp_3_0= ruleLogicalOperator
                     {
 
                     						newCompositeNode(grammarAccess.getMeasurementThresholdConditionAccess().getLogicalOpLogicalOperatorEnumRuleCall_3_0_0());
@@ -3285,11 +3013,11 @@ public class InternalTacticsParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // InternalTactics.g:1332:4: ( (lv_secondTerm_4_0= ruleMeasurementCondition ) )
-                    // InternalTactics.g:1333:5: (lv_secondTerm_4_0= ruleMeasurementCondition )
+                    // InternalTactics.g:1208:4: ( (lv_secondTerm_4_0= ruleMeasurementCondition ) )
+                    // InternalTactics.g:1209:5: (lv_secondTerm_4_0= ruleMeasurementCondition )
                     {
-                    // InternalTactics.g:1333:5: (lv_secondTerm_4_0= ruleMeasurementCondition )
-                    // InternalTactics.g:1334:6: lv_secondTerm_4_0= ruleMeasurementCondition
+                    // InternalTactics.g:1209:5: (lv_secondTerm_4_0= ruleMeasurementCondition )
+                    // InternalTactics.g:1210:6: lv_secondTerm_4_0= ruleMeasurementCondition
                     {
 
                     						newCompositeNode(grammarAccess.getMeasurementThresholdConditionAccess().getSecondTermMeasurementConditionParserRuleCall_3_1_0());
@@ -3345,7 +3073,7 @@ public class InternalTacticsParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleMeasurementMeasurementCondition"
-    // InternalTactics.g:1356:1: entryRuleMeasurementMeasurementCondition returns [EObject current=null] : iv_ruleMeasurementMeasurementCondition= ruleMeasurementMeasurementCondition EOF ;
+    // InternalTactics.g:1232:1: entryRuleMeasurementMeasurementCondition returns [EObject current=null] : iv_ruleMeasurementMeasurementCondition= ruleMeasurementMeasurementCondition EOF ;
     public final EObject entryRuleMeasurementMeasurementCondition() throws RecognitionException {
         EObject current = null;
 
@@ -3353,8 +3081,8 @@ public class InternalTacticsParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalTactics.g:1356:72: (iv_ruleMeasurementMeasurementCondition= ruleMeasurementMeasurementCondition EOF )
-            // InternalTactics.g:1357:2: iv_ruleMeasurementMeasurementCondition= ruleMeasurementMeasurementCondition EOF
+            // InternalTactics.g:1232:72: (iv_ruleMeasurementMeasurementCondition= ruleMeasurementMeasurementCondition EOF )
+            // InternalTactics.g:1233:2: iv_ruleMeasurementMeasurementCondition= ruleMeasurementMeasurementCondition EOF
             {
              newCompositeNode(grammarAccess.getMeasurementMeasurementConditionRule()); 
             pushFollow(FOLLOW_1);
@@ -3381,7 +3109,7 @@ public class InternalTacticsParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleMeasurementMeasurementCondition"
-    // InternalTactics.g:1363:1: ruleMeasurementMeasurementCondition returns [EObject current=null] : ( ( (otherlv_0= RULE_ID ) ) ( (lv_operator_1_0= ruleMathOperator ) ) ( (otherlv_2= RULE_ID ) ) ( ( (lv_logicalOp_3_0= ruleLogicalOperator ) ) ( (lv_secondTerm_4_0= ruleMeasurementCondition ) ) )? ) ;
+    // InternalTactics.g:1239:1: ruleMeasurementMeasurementCondition returns [EObject current=null] : ( ( (otherlv_0= RULE_ID ) ) ( (lv_operator_1_0= ruleMathOperator ) ) ( (otherlv_2= RULE_ID ) ) ( ( (lv_logicalOp_3_0= ruleLogicalOperator ) ) ( (lv_secondTerm_4_0= ruleMeasurementCondition ) ) )? ) ;
     public final EObject ruleMeasurementMeasurementCondition() throws RecognitionException {
         EObject current = null;
 
@@ -3398,24 +3126,24 @@ public class InternalTacticsParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalTactics.g:1369:2: ( ( ( (otherlv_0= RULE_ID ) ) ( (lv_operator_1_0= ruleMathOperator ) ) ( (otherlv_2= RULE_ID ) ) ( ( (lv_logicalOp_3_0= ruleLogicalOperator ) ) ( (lv_secondTerm_4_0= ruleMeasurementCondition ) ) )? ) )
-            // InternalTactics.g:1370:2: ( ( (otherlv_0= RULE_ID ) ) ( (lv_operator_1_0= ruleMathOperator ) ) ( (otherlv_2= RULE_ID ) ) ( ( (lv_logicalOp_3_0= ruleLogicalOperator ) ) ( (lv_secondTerm_4_0= ruleMeasurementCondition ) ) )? )
+            // InternalTactics.g:1245:2: ( ( ( (otherlv_0= RULE_ID ) ) ( (lv_operator_1_0= ruleMathOperator ) ) ( (otherlv_2= RULE_ID ) ) ( ( (lv_logicalOp_3_0= ruleLogicalOperator ) ) ( (lv_secondTerm_4_0= ruleMeasurementCondition ) ) )? ) )
+            // InternalTactics.g:1246:2: ( ( (otherlv_0= RULE_ID ) ) ( (lv_operator_1_0= ruleMathOperator ) ) ( (otherlv_2= RULE_ID ) ) ( ( (lv_logicalOp_3_0= ruleLogicalOperator ) ) ( (lv_secondTerm_4_0= ruleMeasurementCondition ) ) )? )
             {
-            // InternalTactics.g:1370:2: ( ( (otherlv_0= RULE_ID ) ) ( (lv_operator_1_0= ruleMathOperator ) ) ( (otherlv_2= RULE_ID ) ) ( ( (lv_logicalOp_3_0= ruleLogicalOperator ) ) ( (lv_secondTerm_4_0= ruleMeasurementCondition ) ) )? )
-            // InternalTactics.g:1371:3: ( (otherlv_0= RULE_ID ) ) ( (lv_operator_1_0= ruleMathOperator ) ) ( (otherlv_2= RULE_ID ) ) ( ( (lv_logicalOp_3_0= ruleLogicalOperator ) ) ( (lv_secondTerm_4_0= ruleMeasurementCondition ) ) )?
+            // InternalTactics.g:1246:2: ( ( (otherlv_0= RULE_ID ) ) ( (lv_operator_1_0= ruleMathOperator ) ) ( (otherlv_2= RULE_ID ) ) ( ( (lv_logicalOp_3_0= ruleLogicalOperator ) ) ( (lv_secondTerm_4_0= ruleMeasurementCondition ) ) )? )
+            // InternalTactics.g:1247:3: ( (otherlv_0= RULE_ID ) ) ( (lv_operator_1_0= ruleMathOperator ) ) ( (otherlv_2= RULE_ID ) ) ( ( (lv_logicalOp_3_0= ruleLogicalOperator ) ) ( (lv_secondTerm_4_0= ruleMeasurementCondition ) ) )?
             {
-            // InternalTactics.g:1371:3: ( (otherlv_0= RULE_ID ) )
-            // InternalTactics.g:1372:4: (otherlv_0= RULE_ID )
+            // InternalTactics.g:1247:3: ( (otherlv_0= RULE_ID ) )
+            // InternalTactics.g:1248:4: (otherlv_0= RULE_ID )
             {
-            // InternalTactics.g:1372:4: (otherlv_0= RULE_ID )
-            // InternalTactics.g:1373:5: otherlv_0= RULE_ID
+            // InternalTactics.g:1248:4: (otherlv_0= RULE_ID )
+            // InternalTactics.g:1249:5: otherlv_0= RULE_ID
             {
 
             					if (current==null) {
             						current = createModelElement(grammarAccess.getMeasurementMeasurementConditionRule());
             					}
             				
-            otherlv_0=(Token)match(input,RULE_ID,FOLLOW_30); 
+            otherlv_0=(Token)match(input,RULE_ID,FOLLOW_27); 
 
             					newLeafNode(otherlv_0, grammarAccess.getMeasurementMeasurementConditionAccess().getMeasurementContextVarCrossReference_0_0());
             				
@@ -3425,11 +3153,11 @@ public class InternalTacticsParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalTactics.g:1384:3: ( (lv_operator_1_0= ruleMathOperator ) )
-            // InternalTactics.g:1385:4: (lv_operator_1_0= ruleMathOperator )
+            // InternalTactics.g:1260:3: ( (lv_operator_1_0= ruleMathOperator ) )
+            // InternalTactics.g:1261:4: (lv_operator_1_0= ruleMathOperator )
             {
-            // InternalTactics.g:1385:4: (lv_operator_1_0= ruleMathOperator )
-            // InternalTactics.g:1386:5: lv_operator_1_0= ruleMathOperator
+            // InternalTactics.g:1261:4: (lv_operator_1_0= ruleMathOperator )
+            // InternalTactics.g:1262:5: lv_operator_1_0= ruleMathOperator
             {
 
             					newCompositeNode(grammarAccess.getMeasurementMeasurementConditionAccess().getOperatorMathOperatorEnumRuleCall_1_0());
@@ -3456,18 +3184,18 @@ public class InternalTacticsParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalTactics.g:1403:3: ( (otherlv_2= RULE_ID ) )
-            // InternalTactics.g:1404:4: (otherlv_2= RULE_ID )
+            // InternalTactics.g:1279:3: ( (otherlv_2= RULE_ID ) )
+            // InternalTactics.g:1280:4: (otherlv_2= RULE_ID )
             {
-            // InternalTactics.g:1404:4: (otherlv_2= RULE_ID )
-            // InternalTactics.g:1405:5: otherlv_2= RULE_ID
+            // InternalTactics.g:1280:4: (otherlv_2= RULE_ID )
+            // InternalTactics.g:1281:5: otherlv_2= RULE_ID
             {
 
             					if (current==null) {
             						current = createModelElement(grammarAccess.getMeasurementMeasurementConditionRule());
             					}
             				
-            otherlv_2=(Token)match(input,RULE_ID,FOLLOW_29); 
+            otherlv_2=(Token)match(input,RULE_ID,FOLLOW_26); 
 
             					newLeafNode(otherlv_2, grammarAccess.getMeasurementMeasurementConditionAccess().getOtherMeasurementContextVarCrossReference_2_0());
             				
@@ -3477,22 +3205,22 @@ public class InternalTacticsParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalTactics.g:1416:3: ( ( (lv_logicalOp_3_0= ruleLogicalOperator ) ) ( (lv_secondTerm_4_0= ruleMeasurementCondition ) ) )?
-            int alt17=2;
-            int LA17_0 = input.LA(1);
+            // InternalTactics.g:1292:3: ( ( (lv_logicalOp_3_0= ruleLogicalOperator ) ) ( (lv_secondTerm_4_0= ruleMeasurementCondition ) ) )?
+            int alt16=2;
+            int LA16_0 = input.LA(1);
 
-            if ( (LA17_0==23||LA17_0==41) ) {
-                alt17=1;
+            if ( (LA16_0==21||LA16_0==39) ) {
+                alt16=1;
             }
-            switch (alt17) {
+            switch (alt16) {
                 case 1 :
-                    // InternalTactics.g:1417:4: ( (lv_logicalOp_3_0= ruleLogicalOperator ) ) ( (lv_secondTerm_4_0= ruleMeasurementCondition ) )
+                    // InternalTactics.g:1293:4: ( (lv_logicalOp_3_0= ruleLogicalOperator ) ) ( (lv_secondTerm_4_0= ruleMeasurementCondition ) )
                     {
-                    // InternalTactics.g:1417:4: ( (lv_logicalOp_3_0= ruleLogicalOperator ) )
-                    // InternalTactics.g:1418:5: (lv_logicalOp_3_0= ruleLogicalOperator )
+                    // InternalTactics.g:1293:4: ( (lv_logicalOp_3_0= ruleLogicalOperator ) )
+                    // InternalTactics.g:1294:5: (lv_logicalOp_3_0= ruleLogicalOperator )
                     {
-                    // InternalTactics.g:1418:5: (lv_logicalOp_3_0= ruleLogicalOperator )
-                    // InternalTactics.g:1419:6: lv_logicalOp_3_0= ruleLogicalOperator
+                    // InternalTactics.g:1294:5: (lv_logicalOp_3_0= ruleLogicalOperator )
+                    // InternalTactics.g:1295:6: lv_logicalOp_3_0= ruleLogicalOperator
                     {
 
                     						newCompositeNode(grammarAccess.getMeasurementMeasurementConditionAccess().getLogicalOpLogicalOperatorEnumRuleCall_3_0_0());
@@ -3519,11 +3247,11 @@ public class InternalTacticsParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // InternalTactics.g:1436:4: ( (lv_secondTerm_4_0= ruleMeasurementCondition ) )
-                    // InternalTactics.g:1437:5: (lv_secondTerm_4_0= ruleMeasurementCondition )
+                    // InternalTactics.g:1312:4: ( (lv_secondTerm_4_0= ruleMeasurementCondition ) )
+                    // InternalTactics.g:1313:5: (lv_secondTerm_4_0= ruleMeasurementCondition )
                     {
-                    // InternalTactics.g:1437:5: (lv_secondTerm_4_0= ruleMeasurementCondition )
-                    // InternalTactics.g:1438:6: lv_secondTerm_4_0= ruleMeasurementCondition
+                    // InternalTactics.g:1313:5: (lv_secondTerm_4_0= ruleMeasurementCondition )
+                    // InternalTactics.g:1314:6: lv_secondTerm_4_0= ruleMeasurementCondition
                     {
 
                     						newCompositeNode(grammarAccess.getMeasurementMeasurementConditionAccess().getSecondTermMeasurementConditionParserRuleCall_3_1_0());
@@ -3579,7 +3307,7 @@ public class InternalTacticsParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleAtomicActionSelectFeature"
-    // InternalTactics.g:1460:1: entryRuleAtomicActionSelectFeature returns [EObject current=null] : iv_ruleAtomicActionSelectFeature= ruleAtomicActionSelectFeature EOF ;
+    // InternalTactics.g:1336:1: entryRuleAtomicActionSelectFeature returns [EObject current=null] : iv_ruleAtomicActionSelectFeature= ruleAtomicActionSelectFeature EOF ;
     public final EObject entryRuleAtomicActionSelectFeature() throws RecognitionException {
         EObject current = null;
 
@@ -3587,8 +3315,8 @@ public class InternalTacticsParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalTactics.g:1460:66: (iv_ruleAtomicActionSelectFeature= ruleAtomicActionSelectFeature EOF )
-            // InternalTactics.g:1461:2: iv_ruleAtomicActionSelectFeature= ruleAtomicActionSelectFeature EOF
+            // InternalTactics.g:1336:66: (iv_ruleAtomicActionSelectFeature= ruleAtomicActionSelectFeature EOF )
+            // InternalTactics.g:1337:2: iv_ruleAtomicActionSelectFeature= ruleAtomicActionSelectFeature EOF
             {
              newCompositeNode(grammarAccess.getAtomicActionSelectFeatureRule()); 
             pushFollow(FOLLOW_1);
@@ -3615,7 +3343,7 @@ public class InternalTacticsParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleAtomicActionSelectFeature"
-    // InternalTactics.g:1467:1: ruleAtomicActionSelectFeature returns [EObject current=null] : (otherlv_0= 'select_variant' otherlv_1= '(' ( (lv_variant_2_0= ruleQualifiedFeatureRef ) ) otherlv_3= ')' ) ;
+    // InternalTactics.g:1343:1: ruleAtomicActionSelectFeature returns [EObject current=null] : (otherlv_0= 'select_variant' otherlv_1= '(' ( (lv_variant_2_0= ruleQualifiedFeatureRef ) ) otherlv_3= ')' ) ;
     public final EObject ruleAtomicActionSelectFeature() throws RecognitionException {
         EObject current = null;
 
@@ -3629,30 +3357,30 @@ public class InternalTacticsParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalTactics.g:1473:2: ( (otherlv_0= 'select_variant' otherlv_1= '(' ( (lv_variant_2_0= ruleQualifiedFeatureRef ) ) otherlv_3= ')' ) )
-            // InternalTactics.g:1474:2: (otherlv_0= 'select_variant' otherlv_1= '(' ( (lv_variant_2_0= ruleQualifiedFeatureRef ) ) otherlv_3= ')' )
+            // InternalTactics.g:1349:2: ( (otherlv_0= 'select_variant' otherlv_1= '(' ( (lv_variant_2_0= ruleQualifiedFeatureRef ) ) otherlv_3= ')' ) )
+            // InternalTactics.g:1350:2: (otherlv_0= 'select_variant' otherlv_1= '(' ( (lv_variant_2_0= ruleQualifiedFeatureRef ) ) otherlv_3= ')' )
             {
-            // InternalTactics.g:1474:2: (otherlv_0= 'select_variant' otherlv_1= '(' ( (lv_variant_2_0= ruleQualifiedFeatureRef ) ) otherlv_3= ')' )
-            // InternalTactics.g:1475:3: otherlv_0= 'select_variant' otherlv_1= '(' ( (lv_variant_2_0= ruleQualifiedFeatureRef ) ) otherlv_3= ')'
+            // InternalTactics.g:1350:2: (otherlv_0= 'select_variant' otherlv_1= '(' ( (lv_variant_2_0= ruleQualifiedFeatureRef ) ) otherlv_3= ')' )
+            // InternalTactics.g:1351:3: otherlv_0= 'select_variant' otherlv_1= '(' ( (lv_variant_2_0= ruleQualifiedFeatureRef ) ) otherlv_3= ')'
             {
-            otherlv_0=(Token)match(input,32,FOLLOW_23); 
+            otherlv_0=(Token)match(input,30,FOLLOW_20); 
 
             			newLeafNode(otherlv_0, grammarAccess.getAtomicActionSelectFeatureAccess().getSelect_variantKeyword_0());
             		
-            otherlv_1=(Token)match(input,26,FOLLOW_3); 
+            otherlv_1=(Token)match(input,24,FOLLOW_3); 
 
             			newLeafNode(otherlv_1, grammarAccess.getAtomicActionSelectFeatureAccess().getLeftParenthesisKeyword_1());
             		
-            // InternalTactics.g:1483:3: ( (lv_variant_2_0= ruleQualifiedFeatureRef ) )
-            // InternalTactics.g:1484:4: (lv_variant_2_0= ruleQualifiedFeatureRef )
+            // InternalTactics.g:1359:3: ( (lv_variant_2_0= ruleQualifiedFeatureRef ) )
+            // InternalTactics.g:1360:4: (lv_variant_2_0= ruleQualifiedFeatureRef )
             {
-            // InternalTactics.g:1484:4: (lv_variant_2_0= ruleQualifiedFeatureRef )
-            // InternalTactics.g:1485:5: lv_variant_2_0= ruleQualifiedFeatureRef
+            // InternalTactics.g:1360:4: (lv_variant_2_0= ruleQualifiedFeatureRef )
+            // InternalTactics.g:1361:5: lv_variant_2_0= ruleQualifiedFeatureRef
             {
 
             					newCompositeNode(grammarAccess.getAtomicActionSelectFeatureAccess().getVariantQualifiedFeatureRefParserRuleCall_2_0());
             				
-            pushFollow(FOLLOW_24);
+            pushFollow(FOLLOW_21);
             lv_variant_2_0=ruleQualifiedFeatureRef();
 
             state._fsp--;
@@ -3674,7 +3402,7 @@ public class InternalTacticsParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_3=(Token)match(input,27,FOLLOW_2); 
+            otherlv_3=(Token)match(input,25,FOLLOW_2); 
 
             			newLeafNode(otherlv_3, grammarAccess.getAtomicActionSelectFeatureAccess().getRightParenthesisKeyword_3());
             		
@@ -3701,7 +3429,7 @@ public class InternalTacticsParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleAtomicActionDeselectFeature"
-    // InternalTactics.g:1510:1: entryRuleAtomicActionDeselectFeature returns [EObject current=null] : iv_ruleAtomicActionDeselectFeature= ruleAtomicActionDeselectFeature EOF ;
+    // InternalTactics.g:1386:1: entryRuleAtomicActionDeselectFeature returns [EObject current=null] : iv_ruleAtomicActionDeselectFeature= ruleAtomicActionDeselectFeature EOF ;
     public final EObject entryRuleAtomicActionDeselectFeature() throws RecognitionException {
         EObject current = null;
 
@@ -3709,8 +3437,8 @@ public class InternalTacticsParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalTactics.g:1510:68: (iv_ruleAtomicActionDeselectFeature= ruleAtomicActionDeselectFeature EOF )
-            // InternalTactics.g:1511:2: iv_ruleAtomicActionDeselectFeature= ruleAtomicActionDeselectFeature EOF
+            // InternalTactics.g:1386:68: (iv_ruleAtomicActionDeselectFeature= ruleAtomicActionDeselectFeature EOF )
+            // InternalTactics.g:1387:2: iv_ruleAtomicActionDeselectFeature= ruleAtomicActionDeselectFeature EOF
             {
              newCompositeNode(grammarAccess.getAtomicActionDeselectFeatureRule()); 
             pushFollow(FOLLOW_1);
@@ -3737,7 +3465,7 @@ public class InternalTacticsParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleAtomicActionDeselectFeature"
-    // InternalTactics.g:1517:1: ruleAtomicActionDeselectFeature returns [EObject current=null] : (otherlv_0= 'unselect_variant' otherlv_1= '(' ( (lv_variant_2_0= ruleQualifiedFeatureRef ) ) otherlv_3= ')' ) ;
+    // InternalTactics.g:1393:1: ruleAtomicActionDeselectFeature returns [EObject current=null] : (otherlv_0= 'unselect_variant' otherlv_1= '(' ( (lv_variant_2_0= ruleQualifiedFeatureRef ) ) otherlv_3= ')' ) ;
     public final EObject ruleAtomicActionDeselectFeature() throws RecognitionException {
         EObject current = null;
 
@@ -3751,30 +3479,30 @@ public class InternalTacticsParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalTactics.g:1523:2: ( (otherlv_0= 'unselect_variant' otherlv_1= '(' ( (lv_variant_2_0= ruleQualifiedFeatureRef ) ) otherlv_3= ')' ) )
-            // InternalTactics.g:1524:2: (otherlv_0= 'unselect_variant' otherlv_1= '(' ( (lv_variant_2_0= ruleQualifiedFeatureRef ) ) otherlv_3= ')' )
+            // InternalTactics.g:1399:2: ( (otherlv_0= 'unselect_variant' otherlv_1= '(' ( (lv_variant_2_0= ruleQualifiedFeatureRef ) ) otherlv_3= ')' ) )
+            // InternalTactics.g:1400:2: (otherlv_0= 'unselect_variant' otherlv_1= '(' ( (lv_variant_2_0= ruleQualifiedFeatureRef ) ) otherlv_3= ')' )
             {
-            // InternalTactics.g:1524:2: (otherlv_0= 'unselect_variant' otherlv_1= '(' ( (lv_variant_2_0= ruleQualifiedFeatureRef ) ) otherlv_3= ')' )
-            // InternalTactics.g:1525:3: otherlv_0= 'unselect_variant' otherlv_1= '(' ( (lv_variant_2_0= ruleQualifiedFeatureRef ) ) otherlv_3= ')'
+            // InternalTactics.g:1400:2: (otherlv_0= 'unselect_variant' otherlv_1= '(' ( (lv_variant_2_0= ruleQualifiedFeatureRef ) ) otherlv_3= ')' )
+            // InternalTactics.g:1401:3: otherlv_0= 'unselect_variant' otherlv_1= '(' ( (lv_variant_2_0= ruleQualifiedFeatureRef ) ) otherlv_3= ')'
             {
-            otherlv_0=(Token)match(input,33,FOLLOW_23); 
+            otherlv_0=(Token)match(input,31,FOLLOW_20); 
 
             			newLeafNode(otherlv_0, grammarAccess.getAtomicActionDeselectFeatureAccess().getUnselect_variantKeyword_0());
             		
-            otherlv_1=(Token)match(input,26,FOLLOW_3); 
+            otherlv_1=(Token)match(input,24,FOLLOW_3); 
 
             			newLeafNode(otherlv_1, grammarAccess.getAtomicActionDeselectFeatureAccess().getLeftParenthesisKeyword_1());
             		
-            // InternalTactics.g:1533:3: ( (lv_variant_2_0= ruleQualifiedFeatureRef ) )
-            // InternalTactics.g:1534:4: (lv_variant_2_0= ruleQualifiedFeatureRef )
+            // InternalTactics.g:1409:3: ( (lv_variant_2_0= ruleQualifiedFeatureRef ) )
+            // InternalTactics.g:1410:4: (lv_variant_2_0= ruleQualifiedFeatureRef )
             {
-            // InternalTactics.g:1534:4: (lv_variant_2_0= ruleQualifiedFeatureRef )
-            // InternalTactics.g:1535:5: lv_variant_2_0= ruleQualifiedFeatureRef
+            // InternalTactics.g:1410:4: (lv_variant_2_0= ruleQualifiedFeatureRef )
+            // InternalTactics.g:1411:5: lv_variant_2_0= ruleQualifiedFeatureRef
             {
 
             					newCompositeNode(grammarAccess.getAtomicActionDeselectFeatureAccess().getVariantQualifiedFeatureRefParserRuleCall_2_0());
             				
-            pushFollow(FOLLOW_24);
+            pushFollow(FOLLOW_21);
             lv_variant_2_0=ruleQualifiedFeatureRef();
 
             state._fsp--;
@@ -3796,7 +3524,7 @@ public class InternalTacticsParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_3=(Token)match(input,27,FOLLOW_2); 
+            otherlv_3=(Token)match(input,25,FOLLOW_2); 
 
             			newLeafNode(otherlv_3, grammarAccess.getAtomicActionDeselectFeatureAccess().getRightParenthesisKeyword_3());
             		
@@ -3823,7 +3551,7 @@ public class InternalTacticsParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleQualifiedFeatureRef"
-    // InternalTactics.g:1560:1: entryRuleQualifiedFeatureRef returns [EObject current=null] : iv_ruleQualifiedFeatureRef= ruleQualifiedFeatureRef EOF ;
+    // InternalTactics.g:1436:1: entryRuleQualifiedFeatureRef returns [EObject current=null] : iv_ruleQualifiedFeatureRef= ruleQualifiedFeatureRef EOF ;
     public final EObject entryRuleQualifiedFeatureRef() throws RecognitionException {
         EObject current = null;
 
@@ -3831,8 +3559,8 @@ public class InternalTacticsParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalTactics.g:1560:60: (iv_ruleQualifiedFeatureRef= ruleQualifiedFeatureRef EOF )
-            // InternalTactics.g:1561:2: iv_ruleQualifiedFeatureRef= ruleQualifiedFeatureRef EOF
+            // InternalTactics.g:1436:60: (iv_ruleQualifiedFeatureRef= ruleQualifiedFeatureRef EOF )
+            // InternalTactics.g:1437:2: iv_ruleQualifiedFeatureRef= ruleQualifiedFeatureRef EOF
             {
              newCompositeNode(grammarAccess.getQualifiedFeatureRefRule()); 
             pushFollow(FOLLOW_1);
@@ -3859,7 +3587,7 @@ public class InternalTacticsParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleQualifiedFeatureRef"
-    // InternalTactics.g:1567:1: ruleQualifiedFeatureRef returns [EObject current=null] : ( ( (otherlv_0= RULE_ID ) ) otherlv_1= '.' ( (otherlv_2= RULE_ID ) ) ) ;
+    // InternalTactics.g:1443:1: ruleQualifiedFeatureRef returns [EObject current=null] : ( ( (otherlv_0= RULE_ID ) ) otherlv_1= '.' ( (otherlv_2= RULE_ID ) ) ) ;
     public final EObject ruleQualifiedFeatureRef() throws RecognitionException {
         EObject current = null;
 
@@ -3871,24 +3599,24 @@ public class InternalTacticsParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalTactics.g:1573:2: ( ( ( (otherlv_0= RULE_ID ) ) otherlv_1= '.' ( (otherlv_2= RULE_ID ) ) ) )
-            // InternalTactics.g:1574:2: ( ( (otherlv_0= RULE_ID ) ) otherlv_1= '.' ( (otherlv_2= RULE_ID ) ) )
+            // InternalTactics.g:1449:2: ( ( ( (otherlv_0= RULE_ID ) ) otherlv_1= '.' ( (otherlv_2= RULE_ID ) ) ) )
+            // InternalTactics.g:1450:2: ( ( (otherlv_0= RULE_ID ) ) otherlv_1= '.' ( (otherlv_2= RULE_ID ) ) )
             {
-            // InternalTactics.g:1574:2: ( ( (otherlv_0= RULE_ID ) ) otherlv_1= '.' ( (otherlv_2= RULE_ID ) ) )
-            // InternalTactics.g:1575:3: ( (otherlv_0= RULE_ID ) ) otherlv_1= '.' ( (otherlv_2= RULE_ID ) )
+            // InternalTactics.g:1450:2: ( ( (otherlv_0= RULE_ID ) ) otherlv_1= '.' ( (otherlv_2= RULE_ID ) ) )
+            // InternalTactics.g:1451:3: ( (otherlv_0= RULE_ID ) ) otherlv_1= '.' ( (otherlv_2= RULE_ID ) )
             {
-            // InternalTactics.g:1575:3: ( (otherlv_0= RULE_ID ) )
-            // InternalTactics.g:1576:4: (otherlv_0= RULE_ID )
+            // InternalTactics.g:1451:3: ( (otherlv_0= RULE_ID ) )
+            // InternalTactics.g:1452:4: (otherlv_0= RULE_ID )
             {
-            // InternalTactics.g:1576:4: (otherlv_0= RULE_ID )
-            // InternalTactics.g:1577:5: otherlv_0= RULE_ID
+            // InternalTactics.g:1452:4: (otherlv_0= RULE_ID )
+            // InternalTactics.g:1453:5: otherlv_0= RULE_ID
             {
 
             					if (current==null) {
             						current = createModelElement(grammarAccess.getQualifiedFeatureRefRule());
             					}
             				
-            otherlv_0=(Token)match(input,RULE_ID,FOLLOW_31); 
+            otherlv_0=(Token)match(input,RULE_ID,FOLLOW_28); 
 
             					newLeafNode(otherlv_0, grammarAccess.getQualifiedFeatureRefAccess().getModelResolutionModelCrossReference_0_0());
             				
@@ -3898,15 +3626,15 @@ public class InternalTacticsParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,34,FOLLOW_3); 
+            otherlv_1=(Token)match(input,32,FOLLOW_3); 
 
             			newLeafNode(otherlv_1, grammarAccess.getQualifiedFeatureRefAccess().getFullStopKeyword_1());
             		
-            // InternalTactics.g:1592:3: ( (otherlv_2= RULE_ID ) )
-            // InternalTactics.g:1593:4: (otherlv_2= RULE_ID )
+            // InternalTactics.g:1468:3: ( (otherlv_2= RULE_ID ) )
+            // InternalTactics.g:1469:4: (otherlv_2= RULE_ID )
             {
-            // InternalTactics.g:1593:4: (otherlv_2= RULE_ID )
-            // InternalTactics.g:1594:5: otherlv_2= RULE_ID
+            // InternalTactics.g:1469:4: (otherlv_2= RULE_ID )
+            // InternalTactics.g:1470:5: otherlv_2= RULE_ID
             {
 
             					if (current==null) {
@@ -3946,7 +3674,7 @@ public class InternalTacticsParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleLiteral"
-    // InternalTactics.g:1609:1: entryRuleLiteral returns [EObject current=null] : iv_ruleLiteral= ruleLiteral EOF ;
+    // InternalTactics.g:1485:1: entryRuleLiteral returns [EObject current=null] : iv_ruleLiteral= ruleLiteral EOF ;
     public final EObject entryRuleLiteral() throws RecognitionException {
         EObject current = null;
 
@@ -3954,8 +3682,8 @@ public class InternalTacticsParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalTactics.g:1609:48: (iv_ruleLiteral= ruleLiteral EOF )
-            // InternalTactics.g:1610:2: iv_ruleLiteral= ruleLiteral EOF
+            // InternalTactics.g:1485:48: (iv_ruleLiteral= ruleLiteral EOF )
+            // InternalTactics.g:1486:2: iv_ruleLiteral= ruleLiteral EOF
             {
              newCompositeNode(grammarAccess.getLiteralRule()); 
             pushFollow(FOLLOW_1);
@@ -3982,7 +3710,7 @@ public class InternalTacticsParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleLiteral"
-    // InternalTactics.g:1616:1: ruleLiteral returns [EObject current=null] : (this_IntLiteral_0= ruleIntLiteral | this_DecimalLiteral_1= ruleDecimalLiteral | this_StringLiteral_2= ruleStringLiteral | this_BooleanLiteral_3= ruleBooleanLiteral ) ;
+    // InternalTactics.g:1492:1: ruleLiteral returns [EObject current=null] : (this_IntLiteral_0= ruleIntLiteral | this_DecimalLiteral_1= ruleDecimalLiteral | this_StringLiteral_2= ruleStringLiteral | this_BooleanLiteral_3= ruleBooleanLiteral ) ;
     public final EObject ruleLiteral() throws RecognitionException {
         EObject current = null;
 
@@ -3999,42 +3727,42 @@ public class InternalTacticsParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalTactics.g:1622:2: ( (this_IntLiteral_0= ruleIntLiteral | this_DecimalLiteral_1= ruleDecimalLiteral | this_StringLiteral_2= ruleStringLiteral | this_BooleanLiteral_3= ruleBooleanLiteral ) )
-            // InternalTactics.g:1623:2: (this_IntLiteral_0= ruleIntLiteral | this_DecimalLiteral_1= ruleDecimalLiteral | this_StringLiteral_2= ruleStringLiteral | this_BooleanLiteral_3= ruleBooleanLiteral )
+            // InternalTactics.g:1498:2: ( (this_IntLiteral_0= ruleIntLiteral | this_DecimalLiteral_1= ruleDecimalLiteral | this_StringLiteral_2= ruleStringLiteral | this_BooleanLiteral_3= ruleBooleanLiteral ) )
+            // InternalTactics.g:1499:2: (this_IntLiteral_0= ruleIntLiteral | this_DecimalLiteral_1= ruleDecimalLiteral | this_StringLiteral_2= ruleStringLiteral | this_BooleanLiteral_3= ruleBooleanLiteral )
             {
-            // InternalTactics.g:1623:2: (this_IntLiteral_0= ruleIntLiteral | this_DecimalLiteral_1= ruleDecimalLiteral | this_StringLiteral_2= ruleStringLiteral | this_BooleanLiteral_3= ruleBooleanLiteral )
-            int alt18=4;
+            // InternalTactics.g:1499:2: (this_IntLiteral_0= ruleIntLiteral | this_DecimalLiteral_1= ruleDecimalLiteral | this_StringLiteral_2= ruleStringLiteral | this_BooleanLiteral_3= ruleBooleanLiteral )
+            int alt17=4;
             switch ( input.LA(1) ) {
             case RULE_INT:
                 {
-                alt18=1;
+                alt17=1;
                 }
                 break;
             case RULE_DECIMAL:
                 {
-                alt18=2;
+                alt17=2;
                 }
                 break;
             case RULE_STRING:
                 {
-                alt18=3;
+                alt17=3;
                 }
                 break;
             case RULE_BOOLEAN:
                 {
-                alt18=4;
+                alt17=4;
                 }
                 break;
             default:
                 NoViableAltException nvae =
-                    new NoViableAltException("", 18, 0, input);
+                    new NoViableAltException("", 17, 0, input);
 
                 throw nvae;
             }
 
-            switch (alt18) {
+            switch (alt17) {
                 case 1 :
-                    // InternalTactics.g:1624:3: this_IntLiteral_0= ruleIntLiteral
+                    // InternalTactics.g:1500:3: this_IntLiteral_0= ruleIntLiteral
                     {
 
                     			newCompositeNode(grammarAccess.getLiteralAccess().getIntLiteralParserRuleCall_0());
@@ -4052,7 +3780,7 @@ public class InternalTacticsParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // InternalTactics.g:1633:3: this_DecimalLiteral_1= ruleDecimalLiteral
+                    // InternalTactics.g:1509:3: this_DecimalLiteral_1= ruleDecimalLiteral
                     {
 
                     			newCompositeNode(grammarAccess.getLiteralAccess().getDecimalLiteralParserRuleCall_1());
@@ -4070,7 +3798,7 @@ public class InternalTacticsParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 3 :
-                    // InternalTactics.g:1642:3: this_StringLiteral_2= ruleStringLiteral
+                    // InternalTactics.g:1518:3: this_StringLiteral_2= ruleStringLiteral
                     {
 
                     			newCompositeNode(grammarAccess.getLiteralAccess().getStringLiteralParserRuleCall_2());
@@ -4088,7 +3816,7 @@ public class InternalTacticsParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 4 :
-                    // InternalTactics.g:1651:3: this_BooleanLiteral_3= ruleBooleanLiteral
+                    // InternalTactics.g:1527:3: this_BooleanLiteral_3= ruleBooleanLiteral
                     {
 
                     			newCompositeNode(grammarAccess.getLiteralAccess().getBooleanLiteralParserRuleCall_3());
@@ -4128,7 +3856,7 @@ public class InternalTacticsParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleIntLiteral"
-    // InternalTactics.g:1663:1: entryRuleIntLiteral returns [EObject current=null] : iv_ruleIntLiteral= ruleIntLiteral EOF ;
+    // InternalTactics.g:1539:1: entryRuleIntLiteral returns [EObject current=null] : iv_ruleIntLiteral= ruleIntLiteral EOF ;
     public final EObject entryRuleIntLiteral() throws RecognitionException {
         EObject current = null;
 
@@ -4136,8 +3864,8 @@ public class InternalTacticsParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalTactics.g:1663:51: (iv_ruleIntLiteral= ruleIntLiteral EOF )
-            // InternalTactics.g:1664:2: iv_ruleIntLiteral= ruleIntLiteral EOF
+            // InternalTactics.g:1539:51: (iv_ruleIntLiteral= ruleIntLiteral EOF )
+            // InternalTactics.g:1540:2: iv_ruleIntLiteral= ruleIntLiteral EOF
             {
              newCompositeNode(grammarAccess.getIntLiteralRule()); 
             pushFollow(FOLLOW_1);
@@ -4164,7 +3892,7 @@ public class InternalTacticsParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleIntLiteral"
-    // InternalTactics.g:1670:1: ruleIntLiteral returns [EObject current=null] : ( (lv_value_0_0= RULE_INT ) ) ;
+    // InternalTactics.g:1546:1: ruleIntLiteral returns [EObject current=null] : ( (lv_value_0_0= RULE_INT ) ) ;
     public final EObject ruleIntLiteral() throws RecognitionException {
         EObject current = null;
 
@@ -4174,14 +3902,14 @@ public class InternalTacticsParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalTactics.g:1676:2: ( ( (lv_value_0_0= RULE_INT ) ) )
-            // InternalTactics.g:1677:2: ( (lv_value_0_0= RULE_INT ) )
+            // InternalTactics.g:1552:2: ( ( (lv_value_0_0= RULE_INT ) ) )
+            // InternalTactics.g:1553:2: ( (lv_value_0_0= RULE_INT ) )
             {
-            // InternalTactics.g:1677:2: ( (lv_value_0_0= RULE_INT ) )
-            // InternalTactics.g:1678:3: (lv_value_0_0= RULE_INT )
+            // InternalTactics.g:1553:2: ( (lv_value_0_0= RULE_INT ) )
+            // InternalTactics.g:1554:3: (lv_value_0_0= RULE_INT )
             {
-            // InternalTactics.g:1678:3: (lv_value_0_0= RULE_INT )
-            // InternalTactics.g:1679:4: lv_value_0_0= RULE_INT
+            // InternalTactics.g:1554:3: (lv_value_0_0= RULE_INT )
+            // InternalTactics.g:1555:4: lv_value_0_0= RULE_INT
             {
             lv_value_0_0=(Token)match(input,RULE_INT,FOLLOW_2); 
 
@@ -4223,7 +3951,7 @@ public class InternalTacticsParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleDecimalLiteral"
-    // InternalTactics.g:1698:1: entryRuleDecimalLiteral returns [EObject current=null] : iv_ruleDecimalLiteral= ruleDecimalLiteral EOF ;
+    // InternalTactics.g:1574:1: entryRuleDecimalLiteral returns [EObject current=null] : iv_ruleDecimalLiteral= ruleDecimalLiteral EOF ;
     public final EObject entryRuleDecimalLiteral() throws RecognitionException {
         EObject current = null;
 
@@ -4231,8 +3959,8 @@ public class InternalTacticsParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalTactics.g:1698:55: (iv_ruleDecimalLiteral= ruleDecimalLiteral EOF )
-            // InternalTactics.g:1699:2: iv_ruleDecimalLiteral= ruleDecimalLiteral EOF
+            // InternalTactics.g:1574:55: (iv_ruleDecimalLiteral= ruleDecimalLiteral EOF )
+            // InternalTactics.g:1575:2: iv_ruleDecimalLiteral= ruleDecimalLiteral EOF
             {
              newCompositeNode(grammarAccess.getDecimalLiteralRule()); 
             pushFollow(FOLLOW_1);
@@ -4259,7 +3987,7 @@ public class InternalTacticsParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleDecimalLiteral"
-    // InternalTactics.g:1705:1: ruleDecimalLiteral returns [EObject current=null] : ( (lv_value_0_0= RULE_DECIMAL ) ) ;
+    // InternalTactics.g:1581:1: ruleDecimalLiteral returns [EObject current=null] : ( (lv_value_0_0= RULE_DECIMAL ) ) ;
     public final EObject ruleDecimalLiteral() throws RecognitionException {
         EObject current = null;
 
@@ -4269,14 +3997,14 @@ public class InternalTacticsParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalTactics.g:1711:2: ( ( (lv_value_0_0= RULE_DECIMAL ) ) )
-            // InternalTactics.g:1712:2: ( (lv_value_0_0= RULE_DECIMAL ) )
+            // InternalTactics.g:1587:2: ( ( (lv_value_0_0= RULE_DECIMAL ) ) )
+            // InternalTactics.g:1588:2: ( (lv_value_0_0= RULE_DECIMAL ) )
             {
-            // InternalTactics.g:1712:2: ( (lv_value_0_0= RULE_DECIMAL ) )
-            // InternalTactics.g:1713:3: (lv_value_0_0= RULE_DECIMAL )
+            // InternalTactics.g:1588:2: ( (lv_value_0_0= RULE_DECIMAL ) )
+            // InternalTactics.g:1589:3: (lv_value_0_0= RULE_DECIMAL )
             {
-            // InternalTactics.g:1713:3: (lv_value_0_0= RULE_DECIMAL )
-            // InternalTactics.g:1714:4: lv_value_0_0= RULE_DECIMAL
+            // InternalTactics.g:1589:3: (lv_value_0_0= RULE_DECIMAL )
+            // InternalTactics.g:1590:4: lv_value_0_0= RULE_DECIMAL
             {
             lv_value_0_0=(Token)match(input,RULE_DECIMAL,FOLLOW_2); 
 
@@ -4318,7 +4046,7 @@ public class InternalTacticsParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleStringLiteral"
-    // InternalTactics.g:1733:1: entryRuleStringLiteral returns [EObject current=null] : iv_ruleStringLiteral= ruleStringLiteral EOF ;
+    // InternalTactics.g:1609:1: entryRuleStringLiteral returns [EObject current=null] : iv_ruleStringLiteral= ruleStringLiteral EOF ;
     public final EObject entryRuleStringLiteral() throws RecognitionException {
         EObject current = null;
 
@@ -4326,8 +4054,8 @@ public class InternalTacticsParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalTactics.g:1733:54: (iv_ruleStringLiteral= ruleStringLiteral EOF )
-            // InternalTactics.g:1734:2: iv_ruleStringLiteral= ruleStringLiteral EOF
+            // InternalTactics.g:1609:54: (iv_ruleStringLiteral= ruleStringLiteral EOF )
+            // InternalTactics.g:1610:2: iv_ruleStringLiteral= ruleStringLiteral EOF
             {
              newCompositeNode(grammarAccess.getStringLiteralRule()); 
             pushFollow(FOLLOW_1);
@@ -4354,7 +4082,7 @@ public class InternalTacticsParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleStringLiteral"
-    // InternalTactics.g:1740:1: ruleStringLiteral returns [EObject current=null] : ( (lv_value_0_0= RULE_STRING ) ) ;
+    // InternalTactics.g:1616:1: ruleStringLiteral returns [EObject current=null] : ( (lv_value_0_0= RULE_STRING ) ) ;
     public final EObject ruleStringLiteral() throws RecognitionException {
         EObject current = null;
 
@@ -4364,14 +4092,14 @@ public class InternalTacticsParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalTactics.g:1746:2: ( ( (lv_value_0_0= RULE_STRING ) ) )
-            // InternalTactics.g:1747:2: ( (lv_value_0_0= RULE_STRING ) )
+            // InternalTactics.g:1622:2: ( ( (lv_value_0_0= RULE_STRING ) ) )
+            // InternalTactics.g:1623:2: ( (lv_value_0_0= RULE_STRING ) )
             {
-            // InternalTactics.g:1747:2: ( (lv_value_0_0= RULE_STRING ) )
-            // InternalTactics.g:1748:3: (lv_value_0_0= RULE_STRING )
+            // InternalTactics.g:1623:2: ( (lv_value_0_0= RULE_STRING ) )
+            // InternalTactics.g:1624:3: (lv_value_0_0= RULE_STRING )
             {
-            // InternalTactics.g:1748:3: (lv_value_0_0= RULE_STRING )
-            // InternalTactics.g:1749:4: lv_value_0_0= RULE_STRING
+            // InternalTactics.g:1624:3: (lv_value_0_0= RULE_STRING )
+            // InternalTactics.g:1625:4: lv_value_0_0= RULE_STRING
             {
             lv_value_0_0=(Token)match(input,RULE_STRING,FOLLOW_2); 
 
@@ -4413,7 +4141,7 @@ public class InternalTacticsParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleBooleanLiteral"
-    // InternalTactics.g:1768:1: entryRuleBooleanLiteral returns [EObject current=null] : iv_ruleBooleanLiteral= ruleBooleanLiteral EOF ;
+    // InternalTactics.g:1644:1: entryRuleBooleanLiteral returns [EObject current=null] : iv_ruleBooleanLiteral= ruleBooleanLiteral EOF ;
     public final EObject entryRuleBooleanLiteral() throws RecognitionException {
         EObject current = null;
 
@@ -4421,8 +4149,8 @@ public class InternalTacticsParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalTactics.g:1768:55: (iv_ruleBooleanLiteral= ruleBooleanLiteral EOF )
-            // InternalTactics.g:1769:2: iv_ruleBooleanLiteral= ruleBooleanLiteral EOF
+            // InternalTactics.g:1644:55: (iv_ruleBooleanLiteral= ruleBooleanLiteral EOF )
+            // InternalTactics.g:1645:2: iv_ruleBooleanLiteral= ruleBooleanLiteral EOF
             {
              newCompositeNode(grammarAccess.getBooleanLiteralRule()); 
             pushFollow(FOLLOW_1);
@@ -4449,7 +4177,7 @@ public class InternalTacticsParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleBooleanLiteral"
-    // InternalTactics.g:1775:1: ruleBooleanLiteral returns [EObject current=null] : ( (lv_value_0_0= RULE_BOOLEAN ) ) ;
+    // InternalTactics.g:1651:1: ruleBooleanLiteral returns [EObject current=null] : ( (lv_value_0_0= RULE_BOOLEAN ) ) ;
     public final EObject ruleBooleanLiteral() throws RecognitionException {
         EObject current = null;
 
@@ -4459,14 +4187,14 @@ public class InternalTacticsParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalTactics.g:1781:2: ( ( (lv_value_0_0= RULE_BOOLEAN ) ) )
-            // InternalTactics.g:1782:2: ( (lv_value_0_0= RULE_BOOLEAN ) )
+            // InternalTactics.g:1657:2: ( ( (lv_value_0_0= RULE_BOOLEAN ) ) )
+            // InternalTactics.g:1658:2: ( (lv_value_0_0= RULE_BOOLEAN ) )
             {
-            // InternalTactics.g:1782:2: ( (lv_value_0_0= RULE_BOOLEAN ) )
-            // InternalTactics.g:1783:3: (lv_value_0_0= RULE_BOOLEAN )
+            // InternalTactics.g:1658:2: ( (lv_value_0_0= RULE_BOOLEAN ) )
+            // InternalTactics.g:1659:3: (lv_value_0_0= RULE_BOOLEAN )
             {
-            // InternalTactics.g:1783:3: (lv_value_0_0= RULE_BOOLEAN )
-            // InternalTactics.g:1784:4: lv_value_0_0= RULE_BOOLEAN
+            // InternalTactics.g:1659:3: (lv_value_0_0= RULE_BOOLEAN )
+            // InternalTactics.g:1660:4: lv_value_0_0= RULE_BOOLEAN
             {
             lv_value_0_0=(Token)match(input,RULE_BOOLEAN,FOLLOW_2); 
 
@@ -4508,7 +4236,7 @@ public class InternalTacticsParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleMathOperator"
-    // InternalTactics.g:1803:1: ruleMathOperator returns [Enumerator current=null] : ( (enumLiteral_0= '<' ) | (enumLiteral_1= '>' ) | (enumLiteral_2= '==' ) | (enumLiteral_3= '!=' ) | (enumLiteral_4= '>=' ) | (enumLiteral_5= '<=' ) ) ;
+    // InternalTactics.g:1679:1: ruleMathOperator returns [Enumerator current=null] : ( (enumLiteral_0= '<' ) | (enumLiteral_1= '>' ) | (enumLiteral_2= '==' ) | (enumLiteral_3= '!=' ) | (enumLiteral_4= '>=' ) | (enumLiteral_5= '<=' ) ) ;
     public final Enumerator ruleMathOperator() throws RecognitionException {
         Enumerator current = null;
 
@@ -4523,57 +4251,57 @@ public class InternalTacticsParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalTactics.g:1809:2: ( ( (enumLiteral_0= '<' ) | (enumLiteral_1= '>' ) | (enumLiteral_2= '==' ) | (enumLiteral_3= '!=' ) | (enumLiteral_4= '>=' ) | (enumLiteral_5= '<=' ) ) )
-            // InternalTactics.g:1810:2: ( (enumLiteral_0= '<' ) | (enumLiteral_1= '>' ) | (enumLiteral_2= '==' ) | (enumLiteral_3= '!=' ) | (enumLiteral_4= '>=' ) | (enumLiteral_5= '<=' ) )
+            // InternalTactics.g:1685:2: ( ( (enumLiteral_0= '<' ) | (enumLiteral_1= '>' ) | (enumLiteral_2= '==' ) | (enumLiteral_3= '!=' ) | (enumLiteral_4= '>=' ) | (enumLiteral_5= '<=' ) ) )
+            // InternalTactics.g:1686:2: ( (enumLiteral_0= '<' ) | (enumLiteral_1= '>' ) | (enumLiteral_2= '==' ) | (enumLiteral_3= '!=' ) | (enumLiteral_4= '>=' ) | (enumLiteral_5= '<=' ) )
             {
-            // InternalTactics.g:1810:2: ( (enumLiteral_0= '<' ) | (enumLiteral_1= '>' ) | (enumLiteral_2= '==' ) | (enumLiteral_3= '!=' ) | (enumLiteral_4= '>=' ) | (enumLiteral_5= '<=' ) )
-            int alt19=6;
+            // InternalTactics.g:1686:2: ( (enumLiteral_0= '<' ) | (enumLiteral_1= '>' ) | (enumLiteral_2= '==' ) | (enumLiteral_3= '!=' ) | (enumLiteral_4= '>=' ) | (enumLiteral_5= '<=' ) )
+            int alt18=6;
             switch ( input.LA(1) ) {
+            case 33:
+                {
+                alt18=1;
+                }
+                break;
+            case 34:
+                {
+                alt18=2;
+                }
+                break;
             case 35:
                 {
-                alt19=1;
+                alt18=3;
                 }
                 break;
             case 36:
                 {
-                alt19=2;
+                alt18=4;
                 }
                 break;
             case 37:
                 {
-                alt19=3;
+                alt18=5;
                 }
                 break;
             case 38:
                 {
-                alt19=4;
-                }
-                break;
-            case 39:
-                {
-                alt19=5;
-                }
-                break;
-            case 40:
-                {
-                alt19=6;
+                alt18=6;
                 }
                 break;
             default:
                 NoViableAltException nvae =
-                    new NoViableAltException("", 19, 0, input);
+                    new NoViableAltException("", 18, 0, input);
 
                 throw nvae;
             }
 
-            switch (alt19) {
+            switch (alt18) {
                 case 1 :
-                    // InternalTactics.g:1811:3: (enumLiteral_0= '<' )
+                    // InternalTactics.g:1687:3: (enumLiteral_0= '<' )
                     {
-                    // InternalTactics.g:1811:3: (enumLiteral_0= '<' )
-                    // InternalTactics.g:1812:4: enumLiteral_0= '<'
+                    // InternalTactics.g:1687:3: (enumLiteral_0= '<' )
+                    // InternalTactics.g:1688:4: enumLiteral_0= '<'
                     {
-                    enumLiteral_0=(Token)match(input,35,FOLLOW_2); 
+                    enumLiteral_0=(Token)match(input,33,FOLLOW_2); 
 
                     				current = grammarAccess.getMathOperatorAccess().getLESSEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
                     				newLeafNode(enumLiteral_0, grammarAccess.getMathOperatorAccess().getLESSEnumLiteralDeclaration_0());
@@ -4585,12 +4313,12 @@ public class InternalTacticsParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // InternalTactics.g:1819:3: (enumLiteral_1= '>' )
+                    // InternalTactics.g:1695:3: (enumLiteral_1= '>' )
                     {
-                    // InternalTactics.g:1819:3: (enumLiteral_1= '>' )
-                    // InternalTactics.g:1820:4: enumLiteral_1= '>'
+                    // InternalTactics.g:1695:3: (enumLiteral_1= '>' )
+                    // InternalTactics.g:1696:4: enumLiteral_1= '>'
                     {
-                    enumLiteral_1=(Token)match(input,36,FOLLOW_2); 
+                    enumLiteral_1=(Token)match(input,34,FOLLOW_2); 
 
                     				current = grammarAccess.getMathOperatorAccess().getGREATEREnumLiteralDeclaration_1().getEnumLiteral().getInstance();
                     				newLeafNode(enumLiteral_1, grammarAccess.getMathOperatorAccess().getGREATEREnumLiteralDeclaration_1());
@@ -4602,12 +4330,12 @@ public class InternalTacticsParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 3 :
-                    // InternalTactics.g:1827:3: (enumLiteral_2= '==' )
+                    // InternalTactics.g:1703:3: (enumLiteral_2= '==' )
                     {
-                    // InternalTactics.g:1827:3: (enumLiteral_2= '==' )
-                    // InternalTactics.g:1828:4: enumLiteral_2= '=='
+                    // InternalTactics.g:1703:3: (enumLiteral_2= '==' )
+                    // InternalTactics.g:1704:4: enumLiteral_2= '=='
                     {
-                    enumLiteral_2=(Token)match(input,37,FOLLOW_2); 
+                    enumLiteral_2=(Token)match(input,35,FOLLOW_2); 
 
                     				current = grammarAccess.getMathOperatorAccess().getEQUALEnumLiteralDeclaration_2().getEnumLiteral().getInstance();
                     				newLeafNode(enumLiteral_2, grammarAccess.getMathOperatorAccess().getEQUALEnumLiteralDeclaration_2());
@@ -4619,12 +4347,12 @@ public class InternalTacticsParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 4 :
-                    // InternalTactics.g:1835:3: (enumLiteral_3= '!=' )
+                    // InternalTactics.g:1711:3: (enumLiteral_3= '!=' )
                     {
-                    // InternalTactics.g:1835:3: (enumLiteral_3= '!=' )
-                    // InternalTactics.g:1836:4: enumLiteral_3= '!='
+                    // InternalTactics.g:1711:3: (enumLiteral_3= '!=' )
+                    // InternalTactics.g:1712:4: enumLiteral_3= '!='
                     {
-                    enumLiteral_3=(Token)match(input,38,FOLLOW_2); 
+                    enumLiteral_3=(Token)match(input,36,FOLLOW_2); 
 
                     				current = grammarAccess.getMathOperatorAccess().getDIFFERENTEnumLiteralDeclaration_3().getEnumLiteral().getInstance();
                     				newLeafNode(enumLiteral_3, grammarAccess.getMathOperatorAccess().getDIFFERENTEnumLiteralDeclaration_3());
@@ -4636,12 +4364,12 @@ public class InternalTacticsParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 5 :
-                    // InternalTactics.g:1843:3: (enumLiteral_4= '>=' )
+                    // InternalTactics.g:1719:3: (enumLiteral_4= '>=' )
                     {
-                    // InternalTactics.g:1843:3: (enumLiteral_4= '>=' )
-                    // InternalTactics.g:1844:4: enumLiteral_4= '>='
+                    // InternalTactics.g:1719:3: (enumLiteral_4= '>=' )
+                    // InternalTactics.g:1720:4: enumLiteral_4= '>='
                     {
-                    enumLiteral_4=(Token)match(input,39,FOLLOW_2); 
+                    enumLiteral_4=(Token)match(input,37,FOLLOW_2); 
 
                     				current = grammarAccess.getMathOperatorAccess().getGREQEnumLiteralDeclaration_4().getEnumLiteral().getInstance();
                     				newLeafNode(enumLiteral_4, grammarAccess.getMathOperatorAccess().getGREQEnumLiteralDeclaration_4());
@@ -4653,12 +4381,12 @@ public class InternalTacticsParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 6 :
-                    // InternalTactics.g:1851:3: (enumLiteral_5= '<=' )
+                    // InternalTactics.g:1727:3: (enumLiteral_5= '<=' )
                     {
-                    // InternalTactics.g:1851:3: (enumLiteral_5= '<=' )
-                    // InternalTactics.g:1852:4: enumLiteral_5= '<='
+                    // InternalTactics.g:1727:3: (enumLiteral_5= '<=' )
+                    // InternalTactics.g:1728:4: enumLiteral_5= '<='
                     {
-                    enumLiteral_5=(Token)match(input,40,FOLLOW_2); 
+                    enumLiteral_5=(Token)match(input,38,FOLLOW_2); 
 
                     				current = grammarAccess.getMathOperatorAccess().getLEQEnumLiteralDeclaration_5().getEnumLiteral().getInstance();
                     				newLeafNode(enumLiteral_5, grammarAccess.getMathOperatorAccess().getLEQEnumLiteralDeclaration_5());
@@ -4692,7 +4420,7 @@ public class InternalTacticsParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleLogicalOperator"
-    // InternalTactics.g:1862:1: ruleLogicalOperator returns [Enumerator current=null] : ( (enumLiteral_0= 'AND' ) | (enumLiteral_1= 'OR' ) ) ;
+    // InternalTactics.g:1738:1: ruleLogicalOperator returns [Enumerator current=null] : ( (enumLiteral_0= 'AND' ) | (enumLiteral_1= 'OR' ) ) ;
     public final Enumerator ruleLogicalOperator() throws RecognitionException {
         Enumerator current = null;
 
@@ -4703,33 +4431,33 @@ public class InternalTacticsParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalTactics.g:1868:2: ( ( (enumLiteral_0= 'AND' ) | (enumLiteral_1= 'OR' ) ) )
-            // InternalTactics.g:1869:2: ( (enumLiteral_0= 'AND' ) | (enumLiteral_1= 'OR' ) )
+            // InternalTactics.g:1744:2: ( ( (enumLiteral_0= 'AND' ) | (enumLiteral_1= 'OR' ) ) )
+            // InternalTactics.g:1745:2: ( (enumLiteral_0= 'AND' ) | (enumLiteral_1= 'OR' ) )
             {
-            // InternalTactics.g:1869:2: ( (enumLiteral_0= 'AND' ) | (enumLiteral_1= 'OR' ) )
-            int alt20=2;
-            int LA20_0 = input.LA(1);
+            // InternalTactics.g:1745:2: ( (enumLiteral_0= 'AND' ) | (enumLiteral_1= 'OR' ) )
+            int alt19=2;
+            int LA19_0 = input.LA(1);
 
-            if ( (LA20_0==23) ) {
-                alt20=1;
+            if ( (LA19_0==21) ) {
+                alt19=1;
             }
-            else if ( (LA20_0==41) ) {
-                alt20=2;
+            else if ( (LA19_0==39) ) {
+                alt19=2;
             }
             else {
                 NoViableAltException nvae =
-                    new NoViableAltException("", 20, 0, input);
+                    new NoViableAltException("", 19, 0, input);
 
                 throw nvae;
             }
-            switch (alt20) {
+            switch (alt19) {
                 case 1 :
-                    // InternalTactics.g:1870:3: (enumLiteral_0= 'AND' )
+                    // InternalTactics.g:1746:3: (enumLiteral_0= 'AND' )
                     {
-                    // InternalTactics.g:1870:3: (enumLiteral_0= 'AND' )
-                    // InternalTactics.g:1871:4: enumLiteral_0= 'AND'
+                    // InternalTactics.g:1746:3: (enumLiteral_0= 'AND' )
+                    // InternalTactics.g:1747:4: enumLiteral_0= 'AND'
                     {
-                    enumLiteral_0=(Token)match(input,23,FOLLOW_2); 
+                    enumLiteral_0=(Token)match(input,21,FOLLOW_2); 
 
                     				current = grammarAccess.getLogicalOperatorAccess().getANDEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
                     				newLeafNode(enumLiteral_0, grammarAccess.getLogicalOperatorAccess().getANDEnumLiteralDeclaration_0());
@@ -4741,12 +4469,12 @@ public class InternalTacticsParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // InternalTactics.g:1878:3: (enumLiteral_1= 'OR' )
+                    // InternalTactics.g:1754:3: (enumLiteral_1= 'OR' )
                     {
-                    // InternalTactics.g:1878:3: (enumLiteral_1= 'OR' )
-                    // InternalTactics.g:1879:4: enumLiteral_1= 'OR'
+                    // InternalTactics.g:1754:3: (enumLiteral_1= 'OR' )
+                    // InternalTactics.g:1755:4: enumLiteral_1= 'OR'
                     {
-                    enumLiteral_1=(Token)match(input,41,FOLLOW_2); 
+                    enumLiteral_1=(Token)match(input,39,FOLLOW_2); 
 
                     				current = grammarAccess.getLogicalOperatorAccess().getOREnumLiteralDeclaration_1().getEnumLiteral().getInstance();
                     				newLeafNode(enumLiteral_1, grammarAccess.getLogicalOperatorAccess().getOREnumLiteralDeclaration_1());
@@ -4781,21 +4509,21 @@ public class InternalTacticsParser extends AbstractInternalAntlrParser {
     // Delegated rules
 
 
-    protected DFA15 dfa15 = new DFA15(this);
+    protected DFA14 dfa14 = new DFA14(this);
     static final String dfa_1s = "\12\uffff";
-    static final String dfa_2s = "\1\4\1\43\6\4\2\uffff";
-    static final String dfa_3s = "\1\4\1\50\6\11\2\uffff";
+    static final String dfa_2s = "\1\4\1\41\6\4\2\uffff";
+    static final String dfa_3s = "\1\4\1\46\6\11\2\uffff";
     static final String dfa_4s = "\10\uffff\1\1\1\2";
     static final String dfa_5s = "\12\uffff}>";
     static final String[] dfa_6s = {
             "\1\1",
             "\1\2\1\3\1\4\1\5\1\6\1\7",
-            "\1\11\2\10\1\uffff\2\10",
-            "\1\11\2\10\1\uffff\2\10",
-            "\1\11\2\10\1\uffff\2\10",
-            "\1\11\2\10\1\uffff\2\10",
-            "\1\11\2\10\1\uffff\2\10",
-            "\1\11\2\10\1\uffff\2\10",
+            "\1\11\1\10\1\uffff\3\10",
+            "\1\11\1\10\1\uffff\3\10",
+            "\1\11\1\10\1\uffff\3\10",
+            "\1\11\1\10\1\uffff\3\10",
+            "\1\11\1\10\1\uffff\3\10",
+            "\1\11\1\10\1\uffff\3\10",
             "",
             ""
     };
@@ -4807,11 +4535,11 @@ public class InternalTacticsParser extends AbstractInternalAntlrParser {
     static final short[] dfa_5 = DFA.unpackEncodedString(dfa_5s);
     static final short[][] dfa_6 = unpackEncodedStringArray(dfa_6s);
 
-    class DFA15 extends DFA {
+    class DFA14 extends DFA {
 
-        public DFA15(BaseRecognizer recognizer) {
+        public DFA14(BaseRecognizer recognizer) {
             this.recognizer = recognizer;
-            this.decisionNumber = 15;
+            this.decisionNumber = 14;
             this.eot = dfa_1;
             this.eof = dfa_1;
             this.min = dfa_2;
@@ -4821,7 +4549,7 @@ public class InternalTacticsParser extends AbstractInternalAntlrParser {
             this.transition = dfa_6;
         }
         public String getDescription() {
-            return "1224:2: (this_MeasurementThresholdCondition_0= ruleMeasurementThresholdCondition | this_MeasurementMeasurementCondition_1= ruleMeasurementMeasurementCondition )";
+            return "1100:2: (this_MeasurementThresholdCondition_0= ruleMeasurementThresholdCondition | this_MeasurementMeasurementCondition_1= ruleMeasurementMeasurementCondition )";
         }
     }
  
@@ -4832,30 +4560,27 @@ public class InternalTacticsParser extends AbstractInternalAntlrParser {
     public static final BitSet FOLLOW_4 = new BitSet(new long[]{0x0000000000008000L});
     public static final BitSet FOLLOW_5 = new BitSet(new long[]{0x0000000000040012L});
     public static final BitSet FOLLOW_6 = new BitSet(new long[]{0x0000000000000012L});
-    public static final BitSet FOLLOW_7 = new BitSet(new long[]{0x0000000000010000L});
-    public static final BitSet FOLLOW_8 = new BitSet(new long[]{0x00000000001A0000L});
-    public static final BitSet FOLLOW_9 = new BitSet(new long[]{0x0000000000000020L});
-    public static final BitSet FOLLOW_10 = new BitSet(new long[]{0x0000000001400000L});
-    public static final BitSet FOLLOW_11 = new BitSet(new long[]{0x0000000000020000L});
-    public static final BitSet FOLLOW_12 = new BitSet(new long[]{0x0000000000080000L});
-    public static final BitSet FOLLOW_13 = new BitSet(new long[]{0x00000000000A0000L});
-    public static final BitSet FOLLOW_14 = new BitSet(new long[]{0x0000000000200000L});
-    public static final BitSet FOLLOW_15 = new BitSet(new long[]{0x0000000000000040L});
-    public static final BitSet FOLLOW_16 = new BitSet(new long[]{0x0000000300000000L});
-    public static final BitSet FOLLOW_17 = new BitSet(new long[]{0x0000000000820000L});
-    public static final BitSet FOLLOW_18 = new BitSet(new long[]{0x0000000020000002L});
-    public static final BitSet FOLLOW_19 = new BitSet(new long[]{0x0000000012000000L});
-    public static final BitSet FOLLOW_20 = new BitSet(new long[]{0x0000000012020000L});
-    public static final BitSet FOLLOW_21 = new BitSet(new long[]{0x0000000002020000L});
-    public static final BitSet FOLLOW_22 = new BitSet(new long[]{0x0000000000400000L});
-    public static final BitSet FOLLOW_23 = new BitSet(new long[]{0x0000000004000000L});
-    public static final BitSet FOLLOW_24 = new BitSet(new long[]{0x0000000008000000L});
-    public static final BitSet FOLLOW_25 = new BitSet(new long[]{0x00000000C0000000L});
-    public static final BitSet FOLLOW_26 = new BitSet(new long[]{0x0000000000000080L});
-    public static final BitSet FOLLOW_27 = new BitSet(new long[]{0x0000000000000360L});
-    public static final BitSet FOLLOW_28 = new BitSet(new long[]{0x0000000080000000L});
-    public static final BitSet FOLLOW_29 = new BitSet(new long[]{0x0000020000800002L});
-    public static final BitSet FOLLOW_30 = new BitSet(new long[]{0x000001F800000000L});
-    public static final BitSet FOLLOW_31 = new BitSet(new long[]{0x0000000400000000L});
+    public static final BitSet FOLLOW_7 = new BitSet(new long[]{0x0000000000010010L});
+    public static final BitSet FOLLOW_8 = new BitSet(new long[]{0x0000000000010000L});
+    public static final BitSet FOLLOW_9 = new BitSet(new long[]{0x00000000000A0000L});
+    public static final BitSet FOLLOW_10 = new BitSet(new long[]{0x0000000000000020L});
+    public static final BitSet FOLLOW_11 = new BitSet(new long[]{0x0000000000500000L});
+    public static final BitSet FOLLOW_12 = new BitSet(new long[]{0x0000000000020000L});
+    public static final BitSet FOLLOW_13 = new BitSet(new long[]{0x00000000C0000000L});
+    public static final BitSet FOLLOW_14 = new BitSet(new long[]{0x0000000000220000L});
+    public static final BitSet FOLLOW_15 = new BitSet(new long[]{0x0000000008000002L});
+    public static final BitSet FOLLOW_16 = new BitSet(new long[]{0x0000000004800000L});
+    public static final BitSet FOLLOW_17 = new BitSet(new long[]{0x0000000004820000L});
+    public static final BitSet FOLLOW_18 = new BitSet(new long[]{0x0000000000820000L});
+    public static final BitSet FOLLOW_19 = new BitSet(new long[]{0x0000000000100000L});
+    public static final BitSet FOLLOW_20 = new BitSet(new long[]{0x0000000001000000L});
+    public static final BitSet FOLLOW_21 = new BitSet(new long[]{0x0000000002000000L});
+    public static final BitSet FOLLOW_22 = new BitSet(new long[]{0x0000000030000000L});
+    public static final BitSet FOLLOW_23 = new BitSet(new long[]{0x0000000000000040L});
+    public static final BitSet FOLLOW_24 = new BitSet(new long[]{0x00000000000003A0L});
+    public static final BitSet FOLLOW_25 = new BitSet(new long[]{0x0000000020000000L});
+    public static final BitSet FOLLOW_26 = new BitSet(new long[]{0x0000008000200002L});
+    public static final BitSet FOLLOW_27 = new BitSet(new long[]{0x0000007E00000000L});
+    public static final BitSet FOLLOW_28 = new BitSet(new long[]{0x0000000100000000L});
 
 }

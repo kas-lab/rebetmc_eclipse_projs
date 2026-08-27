@@ -86,6 +86,11 @@ public class RequirementsModelAdapterFactory extends AdapterFactoryImpl
         return createRequirementAdapter();
       }
       @Override
+      public Adapter caseFeatureQualifier(FeatureQualifier object)
+      {
+        return createFeatureQualifierAdapter();
+      }
+      @Override
       public Adapter caseCondition(Condition object)
       {
         return createConditionAdapter();
@@ -268,6 +273,21 @@ public class RequirementsModelAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createRequirementAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link eu.coresense.requirements.requirementsModel.FeatureQualifier <em>Feature Qualifier</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see eu.coresense.requirements.requirementsModel.FeatureQualifier
+   * @generated
+   */
+  public Adapter createFeatureQualifierAdapter()
   {
     return null;
   }

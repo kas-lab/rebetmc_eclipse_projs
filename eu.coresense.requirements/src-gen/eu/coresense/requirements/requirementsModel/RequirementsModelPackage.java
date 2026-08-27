@@ -69,13 +69,22 @@ public interface RequirementsModelPackage extends EPackage
   int REQUIREMENTS_MODEL = 0;
 
   /**
+   * The feature id for the '<em><b>Imports</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int REQUIREMENTS_MODEL__IMPORTS = 0;
+
+  /**
    * The feature id for the '<em><b>Requirements</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int REQUIREMENTS_MODEL__REQUIREMENTS = 0;
+  int REQUIREMENTS_MODEL__REQUIREMENTS = 1;
 
   /**
    * The number of structural features of the '<em>Requirements Model</em>' class.
@@ -84,7 +93,7 @@ public interface RequirementsModelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int REQUIREMENTS_MODEL_FEATURE_COUNT = 1;
+  int REQUIREMENTS_MODEL_FEATURE_COUNT = 2;
 
   /**
    * The meta object id for the '{@link eu.coresense.requirements.requirementsModel.impl.RequirementImpl <em>Requirement</em>}' class.
@@ -97,13 +106,22 @@ public interface RequirementsModelPackage extends EPackage
   int REQUIREMENT = 1;
 
   /**
+   * The feature id for the '<em><b>Feature Qualifier</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int REQUIREMENT__FEATURE_QUALIFIER = 0;
+
+  /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int REQUIREMENT__NAME = 0;
+  int REQUIREMENT__NAME = 1;
 
   /**
    * The feature id for the '<em><b>Qa</b></em>' attribute.
@@ -112,7 +130,7 @@ public interface RequirementsModelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int REQUIREMENT__QA = 1;
+  int REQUIREMENT__QA = 2;
 
   /**
    * The feature id for the '<em><b>Natural Language Description</b></em>' attribute.
@@ -121,7 +139,7 @@ public interface RequirementsModelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int REQUIREMENT__NATURAL_LANGUAGE_DESCRIPTION = 2;
+  int REQUIREMENT__NATURAL_LANGUAGE_DESCRIPTION = 3;
 
   /**
    * The feature id for the '<em><b>Expression</b></em>' containment reference.
@@ -130,7 +148,7 @@ public interface RequirementsModelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int REQUIREMENT__EXPRESSION = 3;
+  int REQUIREMENT__EXPRESSION = 4;
 
   /**
    * The number of structural features of the '<em>Requirement</em>' class.
@@ -139,7 +157,35 @@ public interface RequirementsModelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int REQUIREMENT_FEATURE_COUNT = 4;
+  int REQUIREMENT_FEATURE_COUNT = 5;
+
+  /**
+   * The meta object id for the '{@link eu.coresense.requirements.requirementsModel.impl.FeatureQualifierImpl <em>Feature Qualifier</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see eu.coresense.requirements.requirementsModel.impl.FeatureQualifierImpl
+   * @see eu.coresense.requirements.requirementsModel.impl.RequirementsModelPackageImpl#getFeatureQualifier()
+   * @generated
+   */
+  int FEATURE_QUALIFIER = 2;
+
+  /**
+   * The feature id for the '<em><b>Feature</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FEATURE_QUALIFIER__FEATURE = 0;
+
+  /**
+   * The number of structural features of the '<em>Feature Qualifier</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FEATURE_QUALIFIER_FEATURE_COUNT = 1;
 
   /**
    * The meta object id for the '{@link eu.coresense.requirements.requirementsModel.impl.ConditionImpl <em>Condition</em>}' class.
@@ -149,7 +195,7 @@ public interface RequirementsModelPackage extends EPackage
    * @see eu.coresense.requirements.requirementsModel.impl.RequirementsModelPackageImpl#getCondition()
    * @generated
    */
-  int CONDITION = 2;
+  int CONDITION = 3;
 
   /**
    * The feature id for the '<em><b>Measurement</b></em>' reference.
@@ -213,7 +259,7 @@ public interface RequirementsModelPackage extends EPackage
    * @see eu.coresense.requirements.requirementsModel.impl.RequirementsModelPackageImpl#getExpression()
    * @generated
    */
-  int EXPRESSION = 17;
+  int EXPRESSION = 18;
 
   /**
    * The number of structural features of the '<em>Expression</em>' class.
@@ -232,7 +278,7 @@ public interface RequirementsModelPackage extends EPackage
    * @see eu.coresense.requirements.requirementsModel.impl.RequirementsModelPackageImpl#getStatement()
    * @generated
    */
-  int STATEMENT = 16;
+  int STATEMENT = 17;
 
   /**
    * The number of structural features of the '<em>Statement</em>' class.
@@ -251,7 +297,7 @@ public interface RequirementsModelPackage extends EPackage
    * @see eu.coresense.requirements.requirementsModel.impl.RequirementsModelPackageImpl#getProposition()
    * @generated
    */
-  int PROPOSITION = 3;
+  int PROPOSITION = 4;
 
   /**
    * The feature id for the '<em><b>Condition</b></em>' containment reference.
@@ -279,7 +325,7 @@ public interface RequirementsModelPackage extends EPackage
    * @see eu.coresense.requirements.requirementsModel.impl.RequirementsModelPackageImpl#getBooleanStatement()
    * @generated
    */
-  int BOOLEAN_STATEMENT = 4;
+  int BOOLEAN_STATEMENT = 5;
 
   /**
    * The feature id for the '<em><b>Boolean Value</b></em>' attribute.
@@ -307,7 +353,7 @@ public interface RequirementsModelPackage extends EPackage
    * @see eu.coresense.requirements.requirementsModel.impl.RequirementsModelPackageImpl#getCompoundExpression()
    * @generated
    */
-  int COMPOUND_EXPRESSION = 15;
+  int COMPOUND_EXPRESSION = 16;
 
   /**
    * The feature id for the '<em><b>Left Expression</b></em>' containment reference.
@@ -344,7 +390,7 @@ public interface RequirementsModelPackage extends EPackage
    * @see eu.coresense.requirements.requirementsModel.impl.RequirementsModelPackageImpl#getAnd()
    * @generated
    */
-  int AND = 5;
+  int AND = 6;
 
   /**
    * The feature id for the '<em><b>Left Expression</b></em>' containment reference.
@@ -381,7 +427,7 @@ public interface RequirementsModelPackage extends EPackage
    * @see eu.coresense.requirements.requirementsModel.impl.RequirementsModelPackageImpl#getOr()
    * @generated
    */
-  int OR = 6;
+  int OR = 7;
 
   /**
    * The feature id for the '<em><b>Left Expression</b></em>' containment reference.
@@ -418,7 +464,7 @@ public interface RequirementsModelPackage extends EPackage
    * @see eu.coresense.requirements.requirementsModel.impl.RequirementsModelPackageImpl#getShall()
    * @generated
    */
-  int SHALL = 7;
+  int SHALL = 8;
 
   /**
    * The feature id for the '<em><b>Expression</b></em>' containment reference.
@@ -446,7 +492,7 @@ public interface RequirementsModelPackage extends EPackage
    * @see eu.coresense.requirements.requirementsModel.impl.RequirementsModelPackageImpl#getNegation()
    * @generated
    */
-  int NEGATION = 8;
+  int NEGATION = 9;
 
   /**
    * The feature id for the '<em><b>Expression</b></em>' containment reference.
@@ -474,7 +520,7 @@ public interface RequirementsModelPackage extends EPackage
    * @see eu.coresense.requirements.requirementsModel.impl.RequirementsModelPackageImpl#getEventually()
    * @generated
    */
-  int EVENTUALLY = 9;
+  int EVENTUALLY = 10;
 
   /**
    * The feature id for the '<em><b>Expression</b></em>' containment reference.
@@ -502,7 +548,7 @@ public interface RequirementsModelPackage extends EPackage
    * @see eu.coresense.requirements.requirementsModel.impl.RequirementsModelPackageImpl#getThisUntil()
    * @generated
    */
-  int THIS_UNTIL = 10;
+  int THIS_UNTIL = 11;
 
   /**
    * The feature id for the '<em><b>Left Expression</b></em>' containment reference.
@@ -539,7 +585,7 @@ public interface RequirementsModelPackage extends EPackage
    * @see eu.coresense.requirements.requirementsModel.impl.RequirementsModelPackageImpl#getBefore()
    * @generated
    */
-  int BEFORE = 11;
+  int BEFORE = 12;
 
   /**
    * The feature id for the '<em><b>Event</b></em>' attribute.
@@ -576,7 +622,7 @@ public interface RequirementsModelPackage extends EPackage
    * @see eu.coresense.requirements.requirementsModel.impl.RequirementsModelPackageImpl#getAfter()
    * @generated
    */
-  int AFTER = 12;
+  int AFTER = 13;
 
   /**
    * The feature id for the '<em><b>Event</b></em>' attribute.
@@ -613,7 +659,7 @@ public interface RequirementsModelPackage extends EPackage
    * @see eu.coresense.requirements.requirementsModel.impl.RequirementsModelPackageImpl#getIn()
    * @generated
    */
-  int IN = 13;
+  int IN = 14;
 
   /**
    * The feature id for the '<em><b>Deadline</b></em>' containment reference.
@@ -650,7 +696,7 @@ public interface RequirementsModelPackage extends EPackage
    * @see eu.coresense.requirements.requirementsModel.impl.RequirementsModelPackageImpl#getAsAsPossible()
    * @generated
    */
-  int AS_AS_POSSIBLE = 14;
+  int AS_AS_POSSIBLE = 15;
 
   /**
    * The feature id for the '<em><b>Time Frequency</b></em>' attribute.
@@ -696,7 +742,7 @@ public interface RequirementsModelPackage extends EPackage
    * @see eu.coresense.requirements.requirementsModel.impl.RequirementsModelPackageImpl#getAsCloseFreq()
    * @generated
    */
-  int AS_CLOSE_FREQ = 18;
+  int AS_CLOSE_FREQ = 19;
 
   /**
    * The feature id for the '<em><b>Frequency</b></em>' containment reference.
@@ -733,7 +779,7 @@ public interface RequirementsModelPackage extends EPackage
    * @see eu.coresense.requirements.requirementsModel.impl.RequirementsModelPackageImpl#getAsCloseLit()
    * @generated
    */
-  int AS_CLOSE_LIT = 19;
+  int AS_CLOSE_LIT = 20;
 
   /**
    * The feature id for the '<em><b>Quantity</b></em>' containment reference.
@@ -779,7 +825,7 @@ public interface RequirementsModelPackage extends EPackage
    * @see eu.coresense.requirements.requirementsModel.impl.RequirementsModelPackageImpl#getMembershipFunction()
    * @generated
    */
-  int MEMBERSHIP_FUNCTION = 20;
+  int MEMBERSHIP_FUNCTION = 21;
 
   /**
    * The number of structural features of the '<em>Membership Function</em>' class.
@@ -798,7 +844,7 @@ public interface RequirementsModelPackage extends EPackage
    * @see eu.coresense.requirements.requirementsModel.impl.RequirementsModelPackageImpl#getFuzzyTriangular()
    * @generated
    */
-  int FUZZY_TRIANGULAR = 21;
+  int FUZZY_TRIANGULAR = 22;
 
   /**
    * The feature id for the '<em><b>A</b></em>' attribute.
@@ -844,7 +890,7 @@ public interface RequirementsModelPackage extends EPackage
    * @see eu.coresense.requirements.requirementsModel.impl.RequirementsModelPackageImpl#getFuzzyRightShoulder()
    * @generated
    */
-  int FUZZY_RIGHT_SHOULDER = 22;
+  int FUZZY_RIGHT_SHOULDER = 23;
 
   /**
    * The feature id for the '<em><b>Foot</b></em>' attribute.
@@ -881,7 +927,7 @@ public interface RequirementsModelPackage extends EPackage
    * @see eu.coresense.requirements.requirementsModel.impl.RequirementsModelPackageImpl#getFuzzyLeftShoulder()
    * @generated
    */
-  int FUZZY_LEFT_SHOULDER = 23;
+  int FUZZY_LEFT_SHOULDER = 24;
 
   /**
    * The feature id for the '<em><b>Foot</b></em>' attribute.
@@ -918,7 +964,7 @@ public interface RequirementsModelPackage extends EPackage
    * @see eu.coresense.requirements.requirementsModel.impl.RequirementsModelPackageImpl#getQuantifiable()
    * @generated
    */
-  int QUANTIFIABLE = 24;
+  int QUANTIFIABLE = 25;
 
   /**
    * The feature id for the '<em><b>Context Variable</b></em>' reference.
@@ -946,7 +992,7 @@ public interface RequirementsModelPackage extends EPackage
    * @see eu.coresense.requirements.requirementsModel.impl.RequirementsModelPackageImpl#getMay()
    * @generated
    */
-  int MAY = 25;
+  int MAY = 26;
 
   /**
    * The feature id for the '<em><b>Expression</b></em>' containment reference.
@@ -983,7 +1029,7 @@ public interface RequirementsModelPackage extends EPackage
    * @see eu.coresense.requirements.requirementsModel.impl.RequirementsModelPackageImpl#getMayAlternative()
    * @generated
    */
-  int MAY_ALTERNATIVE = 26;
+  int MAY_ALTERNATIVE = 27;
 
   /**
    * The feature id for the '<em><b>Expression</b></em>' containment reference.
@@ -1011,7 +1057,7 @@ public interface RequirementsModelPackage extends EPackage
    * @see eu.coresense.requirements.requirementsModel.impl.RequirementsModelPackageImpl#getTimeInterval()
    * @generated
    */
-  int TIME_INTERVAL = 27;
+  int TIME_INTERVAL = 28;
 
   /**
    * The feature id for the '<em><b>After</b></em>' containment reference.
@@ -1048,7 +1094,7 @@ public interface RequirementsModelPackage extends EPackage
    * @see eu.coresense.requirements.requirementsModel.impl.RequirementsModelPackageImpl#getTime()
    * @generated
    */
-  int TIME = 28;
+  int TIME = 29;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -1076,7 +1122,7 @@ public interface RequirementsModelPackage extends EPackage
    * @see eu.coresense.requirements.requirementsModel.impl.RequirementsModelPackageImpl#getQualityAttribute()
    * @generated
    */
-  int QUALITY_ATTRIBUTE = 29;
+  int QUALITY_ATTRIBUTE = 30;
 
   /**
    * The meta object id for the '{@link eu.coresense.requirements.requirementsModel.LogicalOperator <em>Logical Operator</em>}' enum.
@@ -1086,7 +1132,7 @@ public interface RequirementsModelPackage extends EPackage
    * @see eu.coresense.requirements.requirementsModel.impl.RequirementsModelPackageImpl#getLogicalOperator()
    * @generated
    */
-  int LOGICAL_OPERATOR = 30;
+  int LOGICAL_OPERATOR = 31;
 
   /**
    * The meta object id for the '{@link eu.coresense.requirements.requirementsModel.Timeliness <em>Timeliness</em>}' enum.
@@ -1096,7 +1142,7 @@ public interface RequirementsModelPackage extends EPackage
    * @see eu.coresense.requirements.requirementsModel.impl.RequirementsModelPackageImpl#getTimeliness()
    * @generated
    */
-  int TIMELINESS = 31;
+  int TIMELINESS = 32;
 
 
   /**
@@ -1108,6 +1154,17 @@ public interface RequirementsModelPackage extends EPackage
    * @generated
    */
   EClass getRequirementsModel();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link eu.coresense.requirements.requirementsModel.RequirementsModel#getImports <em>Imports</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Imports</em>'.
+   * @see eu.coresense.requirements.requirementsModel.RequirementsModel#getImports()
+   * @see #getRequirementsModel()
+   * @generated
+   */
+  EReference getRequirementsModel_Imports();
 
   /**
    * Returns the meta object for the containment reference list '{@link eu.coresense.requirements.requirementsModel.RequirementsModel#getRequirements <em>Requirements</em>}'.
@@ -1129,6 +1186,17 @@ public interface RequirementsModelPackage extends EPackage
    * @generated
    */
   EClass getRequirement();
+
+  /**
+   * Returns the meta object for the containment reference '{@link eu.coresense.requirements.requirementsModel.Requirement#getFeatureQualifier <em>Feature Qualifier</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Feature Qualifier</em>'.
+   * @see eu.coresense.requirements.requirementsModel.Requirement#getFeatureQualifier()
+   * @see #getRequirement()
+   * @generated
+   */
+  EReference getRequirement_FeatureQualifier();
 
   /**
    * Returns the meta object for the attribute '{@link eu.coresense.requirements.requirementsModel.Requirement#getName <em>Name</em>}'.
@@ -1173,6 +1241,27 @@ public interface RequirementsModelPackage extends EPackage
    * @generated
    */
   EReference getRequirement_Expression();
+
+  /**
+   * Returns the meta object for class '{@link eu.coresense.requirements.requirementsModel.FeatureQualifier <em>Feature Qualifier</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Feature Qualifier</em>'.
+   * @see eu.coresense.requirements.requirementsModel.FeatureQualifier
+   * @generated
+   */
+  EClass getFeatureQualifier();
+
+  /**
+   * Returns the meta object for the reference '{@link eu.coresense.requirements.requirementsModel.FeatureQualifier#getFeature <em>Feature</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Feature</em>'.
+   * @see eu.coresense.requirements.requirementsModel.FeatureQualifier#getFeature()
+   * @see #getFeatureQualifier()
+   * @generated
+   */
+  EReference getFeatureQualifier_Feature();
 
   /**
    * Returns the meta object for class '{@link eu.coresense.requirements.requirementsModel.Condition <em>Condition</em>}'.
@@ -1948,6 +2037,14 @@ public interface RequirementsModelPackage extends EPackage
     EClass REQUIREMENTS_MODEL = eINSTANCE.getRequirementsModel();
 
     /**
+     * The meta object literal for the '<em><b>Imports</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference REQUIREMENTS_MODEL__IMPORTS = eINSTANCE.getRequirementsModel_Imports();
+
+    /**
      * The meta object literal for the '<em><b>Requirements</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -1964,6 +2061,14 @@ public interface RequirementsModelPackage extends EPackage
      * @generated
      */
     EClass REQUIREMENT = eINSTANCE.getRequirement();
+
+    /**
+     * The meta object literal for the '<em><b>Feature Qualifier</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference REQUIREMENT__FEATURE_QUALIFIER = eINSTANCE.getRequirement_FeatureQualifier();
 
     /**
      * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
@@ -1996,6 +2101,24 @@ public interface RequirementsModelPackage extends EPackage
      * @generated
      */
     EReference REQUIREMENT__EXPRESSION = eINSTANCE.getRequirement_Expression();
+
+    /**
+     * The meta object literal for the '{@link eu.coresense.requirements.requirementsModel.impl.FeatureQualifierImpl <em>Feature Qualifier</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see eu.coresense.requirements.requirementsModel.impl.FeatureQualifierImpl
+     * @see eu.coresense.requirements.requirementsModel.impl.RequirementsModelPackageImpl#getFeatureQualifier()
+     * @generated
+     */
+    EClass FEATURE_QUALIFIER = eINSTANCE.getFeatureQualifier();
+
+    /**
+     * The meta object literal for the '<em><b>Feature</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference FEATURE_QUALIFIER__FEATURE = eINSTANCE.getFeatureQualifier_Feature();
 
     /**
      * The meta object literal for the '{@link eu.coresense.requirements.requirementsModel.impl.ConditionImpl <em>Condition</em>}' class.

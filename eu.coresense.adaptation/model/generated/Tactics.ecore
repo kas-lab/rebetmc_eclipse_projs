@@ -12,23 +12,13 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ActionRules">
     <eStructuralFeatures xsi:type="ecore:EReference" name="action" eType="ecore:EClass platform:/resource/de.fraunhofer.ipa.ros/model/ros.ecore#//ActionSpec"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="requirement" eType="ecore:EClass platform:/resource/eu.coresense.requirements/model/generated/RequirementsModel.ecore#//Requirement"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="adaptationRules" upperBound="-1"
         eType="#//AdaptationRule" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="AdaptationRule">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AdaptationRule"/>
   <eClassifiers xsi:type="ecore:EClass" name="AtomicRule" eSuperTypes="#//AdaptationRule">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="ruleBody" eType="#//RuleBody"
-        containment="true"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="RuleSet" eSuperTypes="#//AdaptationRule">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="atomicRules" upperBound="-1"
-        eType="#//AtomicRuleWithPriority" containment="true"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="AtomicRuleWithPriority">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="priorityValue" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="ruleBody" eType="#//RuleBody"
         containment="true"/>
   </eClassifiers>
@@ -41,13 +31,17 @@
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="RuleBody">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="action" eType="#//TacticAction"
+        containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="effect" eType="#//EffectBlock"
         containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TacticAction">
     <eStructuralFeatures xsi:type="ecore:EReference" name="atomicAction" eType="#//AtomicAction"
         containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="PureAction" eSuperTypes="#//RuleBody"/>
-  <eClassifiers xsi:type="ecore:EClass" name="ConditionAction" eSuperTypes="#//RuleBody">
+  <eClassifiers xsi:type="ecore:EClass" name="PureAction" eSuperTypes="#//TacticAction"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ConditionAction" eSuperTypes="#//TacticAction">
     <eStructuralFeatures xsi:type="ecore:EReference" name="contextGuard" eType="#//ContextGuard"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="featureGuard" eType="#//FeatureGuard"
@@ -72,19 +66,18 @@
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="measurement" eType="ecore:EClass platform:/resource/eu.coresense.context/model/generated/ContextModel.ecore#//ContextVar"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="FeatureCondition" eSuperTypes="#//Condition">
+  <eClassifiers xsi:type="ecore:EClass" name="FeatureCondition">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="not" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="variant" eType="#//QualifiedFeatureRef"
         containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="logicalOp" eType="#//LogicalOperator"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="secondTerm" eType="#//FeatureCondition"
         containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Condition">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="logicalOp" eType="#//LogicalOperator"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="MeasurementCondition" eSuperTypes="#//Condition">
+  <eClassifiers xsi:type="ecore:EClass" name="MeasurementCondition">
     <eStructuralFeatures xsi:type="ecore:EReference" name="measurement" eType="ecore:EClass platform:/resource/eu.coresense.context/model/generated/ContextModel.ecore#//ContextVar"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="operator" eType="ecore:EEnum platform:/resource/eu.coresense.common/model/common.ecore#//MathOperator"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="logicalOp" eType="#//LogicalOperator"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="secondTerm" eType="#//MeasurementCondition"
         containment="true"/>
   </eClassifiers>

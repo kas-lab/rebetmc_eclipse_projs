@@ -12,7 +12,6 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import system.RosNode;
 
@@ -29,7 +28,7 @@ import system.RosNode;
  *
  * @generated
  */
-public class QualifiedRefImpl extends MinimalEObjectImpl.Container implements QualifiedRef
+public class QualifiedRefImpl extends ReferenceImpl implements QualifiedRef
 {
   /**
    * The cached value of the '{@link #getNode() <em>Node</em>}' reference.

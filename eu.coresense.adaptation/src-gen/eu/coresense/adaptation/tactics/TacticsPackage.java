@@ -124,13 +124,22 @@ public interface TacticsPackage extends EPackage
   int ACTION_RULES__ACTION = 0;
 
   /**
+   * The feature id for the '<em><b>Requirement</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ACTION_RULES__REQUIREMENT = 1;
+
+  /**
    * The feature id for the '<em><b>Adaptation Rules</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int ACTION_RULES__ADAPTATION_RULES = 1;
+  int ACTION_RULES__ADAPTATION_RULES = 2;
 
   /**
    * The number of structural features of the '<em>Action Rules</em>' class.
@@ -139,7 +148,7 @@ public interface TacticsPackage extends EPackage
    * @generated
    * @ordered
    */
-  int ACTION_RULES_FEATURE_COUNT = 2;
+  int ACTION_RULES_FEATURE_COUNT = 3;
 
   /**
    * The meta object id for the '{@link eu.coresense.adaptation.tactics.impl.AdaptationRuleImpl <em>Adaptation Rule</em>}' class.
@@ -152,22 +161,13 @@ public interface TacticsPackage extends EPackage
   int ADAPTATION_RULE = 2;
 
   /**
-   * The feature id for the '<em><b>Name</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int ADAPTATION_RULE__NAME = 0;
-
-  /**
    * The number of structural features of the '<em>Adaptation Rule</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int ADAPTATION_RULE_FEATURE_COUNT = 1;
+  int ADAPTATION_RULE_FEATURE_COUNT = 0;
 
   /**
    * The meta object id for the '{@link eu.coresense.adaptation.tactics.impl.AtomicRuleImpl <em>Atomic Rule</em>}' class.
@@ -186,7 +186,7 @@ public interface TacticsPackage extends EPackage
    * @generated
    * @ordered
    */
-  int ATOMIC_RULE__NAME = ADAPTATION_RULE__NAME;
+  int ATOMIC_RULE__NAME = ADAPTATION_RULE_FEATURE_COUNT + 0;
 
   /**
    * The feature id for the '<em><b>Rule Body</b></em>' containment reference.
@@ -195,7 +195,7 @@ public interface TacticsPackage extends EPackage
    * @generated
    * @ordered
    */
-  int ATOMIC_RULE__RULE_BODY = ADAPTATION_RULE_FEATURE_COUNT + 0;
+  int ATOMIC_RULE__RULE_BODY = ADAPTATION_RULE_FEATURE_COUNT + 1;
 
   /**
    * The number of structural features of the '<em>Atomic Rule</em>' class.
@@ -204,90 +204,7 @@ public interface TacticsPackage extends EPackage
    * @generated
    * @ordered
    */
-  int ATOMIC_RULE_FEATURE_COUNT = ADAPTATION_RULE_FEATURE_COUNT + 1;
-
-  /**
-   * The meta object id for the '{@link eu.coresense.adaptation.tactics.impl.RuleSetImpl <em>Rule Set</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see eu.coresense.adaptation.tactics.impl.RuleSetImpl
-   * @see eu.coresense.adaptation.tactics.impl.TacticsPackageImpl#getRuleSet()
-   * @generated
-   */
-  int RULE_SET = 4;
-
-  /**
-   * The feature id for the '<em><b>Name</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int RULE_SET__NAME = ADAPTATION_RULE__NAME;
-
-  /**
-   * The feature id for the '<em><b>Atomic Rules</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int RULE_SET__ATOMIC_RULES = ADAPTATION_RULE_FEATURE_COUNT + 0;
-
-  /**
-   * The number of structural features of the '<em>Rule Set</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int RULE_SET_FEATURE_COUNT = ADAPTATION_RULE_FEATURE_COUNT + 1;
-
-  /**
-   * The meta object id for the '{@link eu.coresense.adaptation.tactics.impl.AtomicRuleWithPriorityImpl <em>Atomic Rule With Priority</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see eu.coresense.adaptation.tactics.impl.AtomicRuleWithPriorityImpl
-   * @see eu.coresense.adaptation.tactics.impl.TacticsPackageImpl#getAtomicRuleWithPriority()
-   * @generated
-   */
-  int ATOMIC_RULE_WITH_PRIORITY = 5;
-
-  /**
-   * The feature id for the '<em><b>Name</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int ATOMIC_RULE_WITH_PRIORITY__NAME = 0;
-
-  /**
-   * The feature id for the '<em><b>Priority Value</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int ATOMIC_RULE_WITH_PRIORITY__PRIORITY_VALUE = 1;
-
-  /**
-   * The feature id for the '<em><b>Rule Body</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int ATOMIC_RULE_WITH_PRIORITY__RULE_BODY = 2;
-
-  /**
-   * The number of structural features of the '<em>Atomic Rule With Priority</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int ATOMIC_RULE_WITH_PRIORITY_FEATURE_COUNT = 3;
+  int ATOMIC_RULE_FEATURE_COUNT = ADAPTATION_RULE_FEATURE_COUNT + 2;
 
   /**
    * The meta object id for the '{@link eu.coresense.adaptation.tactics.impl.AtomicActionImpl <em>Atomic Action</em>}' class.
@@ -297,7 +214,7 @@ public interface TacticsPackage extends EPackage
    * @see eu.coresense.adaptation.tactics.impl.TacticsPackageImpl#getAtomicAction()
    * @generated
    */
-  int ATOMIC_ACTION = 6;
+  int ATOMIC_ACTION = 4;
 
   /**
    * The feature id for the '<em><b>Actions</b></em>' containment reference list.
@@ -325,7 +242,7 @@ public interface TacticsPackage extends EPackage
    * @see eu.coresense.adaptation.tactics.impl.TacticsPackageImpl#getAtomicSimpleAction()
    * @generated
    */
-  int ATOMIC_SIMPLE_ACTION = 7;
+  int ATOMIC_SIMPLE_ACTION = 5;
 
   /**
    * The feature id for the '<em><b>Variant</b></em>' containment reference.
@@ -353,7 +270,16 @@ public interface TacticsPackage extends EPackage
    * @see eu.coresense.adaptation.tactics.impl.TacticsPackageImpl#getRuleBody()
    * @generated
    */
-  int RULE_BODY = 8;
+  int RULE_BODY = 6;
+
+  /**
+   * The feature id for the '<em><b>Action</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int RULE_BODY__ACTION = 0;
 
   /**
    * The feature id for the '<em><b>Effect</b></em>' containment reference.
@@ -362,16 +288,7 @@ public interface TacticsPackage extends EPackage
    * @generated
    * @ordered
    */
-  int RULE_BODY__EFFECT = 0;
-
-  /**
-   * The feature id for the '<em><b>Atomic Action</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int RULE_BODY__ATOMIC_ACTION = 1;
+  int RULE_BODY__EFFECT = 1;
 
   /**
    * The number of structural features of the '<em>Rule Body</em>' class.
@@ -383,23 +300,14 @@ public interface TacticsPackage extends EPackage
   int RULE_BODY_FEATURE_COUNT = 2;
 
   /**
-   * The meta object id for the '{@link eu.coresense.adaptation.tactics.impl.PureActionImpl <em>Pure Action</em>}' class.
+   * The meta object id for the '{@link eu.coresense.adaptation.tactics.impl.TacticActionImpl <em>Tactic Action</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see eu.coresense.adaptation.tactics.impl.PureActionImpl
-   * @see eu.coresense.adaptation.tactics.impl.TacticsPackageImpl#getPureAction()
+   * @see eu.coresense.adaptation.tactics.impl.TacticActionImpl
+   * @see eu.coresense.adaptation.tactics.impl.TacticsPackageImpl#getTacticAction()
    * @generated
    */
-  int PURE_ACTION = 9;
-
-  /**
-   * The feature id for the '<em><b>Effect</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int PURE_ACTION__EFFECT = RULE_BODY__EFFECT;
+  int TACTIC_ACTION = 7;
 
   /**
    * The feature id for the '<em><b>Atomic Action</b></em>' containment reference.
@@ -408,7 +316,35 @@ public interface TacticsPackage extends EPackage
    * @generated
    * @ordered
    */
-  int PURE_ACTION__ATOMIC_ACTION = RULE_BODY__ATOMIC_ACTION;
+  int TACTIC_ACTION__ATOMIC_ACTION = 0;
+
+  /**
+   * The number of structural features of the '<em>Tactic Action</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TACTIC_ACTION_FEATURE_COUNT = 1;
+
+  /**
+   * The meta object id for the '{@link eu.coresense.adaptation.tactics.impl.PureActionImpl <em>Pure Action</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see eu.coresense.adaptation.tactics.impl.PureActionImpl
+   * @see eu.coresense.adaptation.tactics.impl.TacticsPackageImpl#getPureAction()
+   * @generated
+   */
+  int PURE_ACTION = 8;
+
+  /**
+   * The feature id for the '<em><b>Atomic Action</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PURE_ACTION__ATOMIC_ACTION = TACTIC_ACTION__ATOMIC_ACTION;
 
   /**
    * The number of structural features of the '<em>Pure Action</em>' class.
@@ -417,7 +353,7 @@ public interface TacticsPackage extends EPackage
    * @generated
    * @ordered
    */
-  int PURE_ACTION_FEATURE_COUNT = RULE_BODY_FEATURE_COUNT + 0;
+  int PURE_ACTION_FEATURE_COUNT = TACTIC_ACTION_FEATURE_COUNT + 0;
 
   /**
    * The meta object id for the '{@link eu.coresense.adaptation.tactics.impl.ConditionActionImpl <em>Condition Action</em>}' class.
@@ -427,16 +363,7 @@ public interface TacticsPackage extends EPackage
    * @see eu.coresense.adaptation.tactics.impl.TacticsPackageImpl#getConditionAction()
    * @generated
    */
-  int CONDITION_ACTION = 10;
-
-  /**
-   * The feature id for the '<em><b>Effect</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int CONDITION_ACTION__EFFECT = RULE_BODY__EFFECT;
+  int CONDITION_ACTION = 9;
 
   /**
    * The feature id for the '<em><b>Atomic Action</b></em>' containment reference.
@@ -445,7 +372,7 @@ public interface TacticsPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CONDITION_ACTION__ATOMIC_ACTION = RULE_BODY__ATOMIC_ACTION;
+  int CONDITION_ACTION__ATOMIC_ACTION = TACTIC_ACTION__ATOMIC_ACTION;
 
   /**
    * The feature id for the '<em><b>Context Guard</b></em>' containment reference.
@@ -454,7 +381,7 @@ public interface TacticsPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CONDITION_ACTION__CONTEXT_GUARD = RULE_BODY_FEATURE_COUNT + 0;
+  int CONDITION_ACTION__CONTEXT_GUARD = TACTIC_ACTION_FEATURE_COUNT + 0;
 
   /**
    * The feature id for the '<em><b>Feature Guard</b></em>' containment reference.
@@ -463,7 +390,7 @@ public interface TacticsPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CONDITION_ACTION__FEATURE_GUARD = RULE_BODY_FEATURE_COUNT + 1;
+  int CONDITION_ACTION__FEATURE_GUARD = TACTIC_ACTION_FEATURE_COUNT + 1;
 
   /**
    * The number of structural features of the '<em>Condition Action</em>' class.
@@ -472,7 +399,7 @@ public interface TacticsPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CONDITION_ACTION_FEATURE_COUNT = RULE_BODY_FEATURE_COUNT + 2;
+  int CONDITION_ACTION_FEATURE_COUNT = TACTIC_ACTION_FEATURE_COUNT + 2;
 
   /**
    * The meta object id for the '{@link eu.coresense.adaptation.tactics.impl.ContextGuardImpl <em>Context Guard</em>}' class.
@@ -482,7 +409,7 @@ public interface TacticsPackage extends EPackage
    * @see eu.coresense.adaptation.tactics.impl.TacticsPackageImpl#getContextGuard()
    * @generated
    */
-  int CONTEXT_GUARD = 11;
+  int CONTEXT_GUARD = 10;
 
   /**
    * The feature id for the '<em><b>Context Condition</b></em>' containment reference.
@@ -510,7 +437,7 @@ public interface TacticsPackage extends EPackage
    * @see eu.coresense.adaptation.tactics.impl.TacticsPackageImpl#getFeatureGuard()
    * @generated
    */
-  int FEATURE_GUARD = 12;
+  int FEATURE_GUARD = 11;
 
   /**
    * The feature id for the '<em><b>Feature Condition</b></em>' containment reference.
@@ -538,7 +465,7 @@ public interface TacticsPackage extends EPackage
    * @see eu.coresense.adaptation.tactics.impl.TacticsPackageImpl#getEffectBlock()
    * @generated
    */
-  int EFFECT_BLOCK = 13;
+  int EFFECT_BLOCK = 12;
 
   /**
    * The feature id for the '<em><b>Some Effect</b></em>' containment reference.
@@ -566,7 +493,7 @@ public interface TacticsPackage extends EPackage
    * @see eu.coresense.adaptation.tactics.impl.TacticsPackageImpl#getEffect()
    * @generated
    */
-  int EFFECT = 14;
+  int EFFECT = 13;
 
   /**
    * The number of structural features of the '<em>Effect</em>' class.
@@ -585,7 +512,7 @@ public interface TacticsPackage extends EPackage
    * @see eu.coresense.adaptation.tactics.impl.TacticsPackageImpl#getRelativeEffect()
    * @generated
    */
-  int RELATIVE_EFFECT = 15;
+  int RELATIVE_EFFECT = 14;
 
   /**
    * The feature id for the '<em><b>Sign</b></em>' attribute.
@@ -624,34 +551,6 @@ public interface TacticsPackage extends EPackage
   int RELATIVE_EFFECT_FEATURE_COUNT = EFFECT_FEATURE_COUNT + 3;
 
   /**
-   * The meta object id for the '{@link eu.coresense.adaptation.tactics.impl.ConditionImpl <em>Condition</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see eu.coresense.adaptation.tactics.impl.ConditionImpl
-   * @see eu.coresense.adaptation.tactics.impl.TacticsPackageImpl#getCondition()
-   * @generated
-   */
-  int CONDITION = 17;
-
-  /**
-   * The feature id for the '<em><b>Logical Op</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int CONDITION__LOGICAL_OP = 0;
-
-  /**
-   * The number of structural features of the '<em>Condition</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int CONDITION_FEATURE_COUNT = 1;
-
-  /**
    * The meta object id for the '{@link eu.coresense.adaptation.tactics.impl.FeatureConditionImpl <em>Feature Condition</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -659,16 +558,7 @@ public interface TacticsPackage extends EPackage
    * @see eu.coresense.adaptation.tactics.impl.TacticsPackageImpl#getFeatureCondition()
    * @generated
    */
-  int FEATURE_CONDITION = 16;
-
-  /**
-   * The feature id for the '<em><b>Logical Op</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int FEATURE_CONDITION__LOGICAL_OP = CONDITION__LOGICAL_OP;
+  int FEATURE_CONDITION = 15;
 
   /**
    * The feature id for the '<em><b>Not</b></em>' attribute.
@@ -677,7 +567,7 @@ public interface TacticsPackage extends EPackage
    * @generated
    * @ordered
    */
-  int FEATURE_CONDITION__NOT = CONDITION_FEATURE_COUNT + 0;
+  int FEATURE_CONDITION__NOT = 0;
 
   /**
    * The feature id for the '<em><b>Variant</b></em>' containment reference.
@@ -686,7 +576,16 @@ public interface TacticsPackage extends EPackage
    * @generated
    * @ordered
    */
-  int FEATURE_CONDITION__VARIANT = CONDITION_FEATURE_COUNT + 1;
+  int FEATURE_CONDITION__VARIANT = 1;
+
+  /**
+   * The feature id for the '<em><b>Logical Op</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FEATURE_CONDITION__LOGICAL_OP = 2;
 
   /**
    * The feature id for the '<em><b>Second Term</b></em>' containment reference.
@@ -695,7 +594,7 @@ public interface TacticsPackage extends EPackage
    * @generated
    * @ordered
    */
-  int FEATURE_CONDITION__SECOND_TERM = CONDITION_FEATURE_COUNT + 2;
+  int FEATURE_CONDITION__SECOND_TERM = 3;
 
   /**
    * The number of structural features of the '<em>Feature Condition</em>' class.
@@ -704,7 +603,7 @@ public interface TacticsPackage extends EPackage
    * @generated
    * @ordered
    */
-  int FEATURE_CONDITION_FEATURE_COUNT = CONDITION_FEATURE_COUNT + 3;
+  int FEATURE_CONDITION_FEATURE_COUNT = 4;
 
   /**
    * The meta object id for the '{@link eu.coresense.adaptation.tactics.impl.MeasurementConditionImpl <em>Measurement Condition</em>}' class.
@@ -714,16 +613,7 @@ public interface TacticsPackage extends EPackage
    * @see eu.coresense.adaptation.tactics.impl.TacticsPackageImpl#getMeasurementCondition()
    * @generated
    */
-  int MEASUREMENT_CONDITION = 18;
-
-  /**
-   * The feature id for the '<em><b>Logical Op</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int MEASUREMENT_CONDITION__LOGICAL_OP = CONDITION__LOGICAL_OP;
+  int MEASUREMENT_CONDITION = 16;
 
   /**
    * The feature id for the '<em><b>Measurement</b></em>' reference.
@@ -732,7 +622,7 @@ public interface TacticsPackage extends EPackage
    * @generated
    * @ordered
    */
-  int MEASUREMENT_CONDITION__MEASUREMENT = CONDITION_FEATURE_COUNT + 0;
+  int MEASUREMENT_CONDITION__MEASUREMENT = 0;
 
   /**
    * The feature id for the '<em><b>Operator</b></em>' attribute.
@@ -741,7 +631,16 @@ public interface TacticsPackage extends EPackage
    * @generated
    * @ordered
    */
-  int MEASUREMENT_CONDITION__OPERATOR = CONDITION_FEATURE_COUNT + 1;
+  int MEASUREMENT_CONDITION__OPERATOR = 1;
+
+  /**
+   * The feature id for the '<em><b>Logical Op</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MEASUREMENT_CONDITION__LOGICAL_OP = 2;
 
   /**
    * The feature id for the '<em><b>Second Term</b></em>' containment reference.
@@ -750,7 +649,7 @@ public interface TacticsPackage extends EPackage
    * @generated
    * @ordered
    */
-  int MEASUREMENT_CONDITION__SECOND_TERM = CONDITION_FEATURE_COUNT + 2;
+  int MEASUREMENT_CONDITION__SECOND_TERM = 3;
 
   /**
    * The number of structural features of the '<em>Measurement Condition</em>' class.
@@ -759,7 +658,7 @@ public interface TacticsPackage extends EPackage
    * @generated
    * @ordered
    */
-  int MEASUREMENT_CONDITION_FEATURE_COUNT = CONDITION_FEATURE_COUNT + 3;
+  int MEASUREMENT_CONDITION_FEATURE_COUNT = 4;
 
   /**
    * The meta object id for the '{@link eu.coresense.adaptation.tactics.impl.MeasurementThresholdConditionImpl <em>Measurement Threshold Condition</em>}' class.
@@ -769,16 +668,7 @@ public interface TacticsPackage extends EPackage
    * @see eu.coresense.adaptation.tactics.impl.TacticsPackageImpl#getMeasurementThresholdCondition()
    * @generated
    */
-  int MEASUREMENT_THRESHOLD_CONDITION = 19;
-
-  /**
-   * The feature id for the '<em><b>Logical Op</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int MEASUREMENT_THRESHOLD_CONDITION__LOGICAL_OP = MEASUREMENT_CONDITION__LOGICAL_OP;
+  int MEASUREMENT_THRESHOLD_CONDITION = 17;
 
   /**
    * The feature id for the '<em><b>Measurement</b></em>' reference.
@@ -797,6 +687,15 @@ public interface TacticsPackage extends EPackage
    * @ordered
    */
   int MEASUREMENT_THRESHOLD_CONDITION__OPERATOR = MEASUREMENT_CONDITION__OPERATOR;
+
+  /**
+   * The feature id for the '<em><b>Logical Op</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MEASUREMENT_THRESHOLD_CONDITION__LOGICAL_OP = MEASUREMENT_CONDITION__LOGICAL_OP;
 
   /**
    * The feature id for the '<em><b>Second Term</b></em>' containment reference.
@@ -833,16 +732,7 @@ public interface TacticsPackage extends EPackage
    * @see eu.coresense.adaptation.tactics.impl.TacticsPackageImpl#getMeasurementMeasurementCondition()
    * @generated
    */
-  int MEASUREMENT_MEASUREMENT_CONDITION = 20;
-
-  /**
-   * The feature id for the '<em><b>Logical Op</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int MEASUREMENT_MEASUREMENT_CONDITION__LOGICAL_OP = MEASUREMENT_CONDITION__LOGICAL_OP;
+  int MEASUREMENT_MEASUREMENT_CONDITION = 18;
 
   /**
    * The feature id for the '<em><b>Measurement</b></em>' reference.
@@ -861,6 +751,15 @@ public interface TacticsPackage extends EPackage
    * @ordered
    */
   int MEASUREMENT_MEASUREMENT_CONDITION__OPERATOR = MEASUREMENT_CONDITION__OPERATOR;
+
+  /**
+   * The feature id for the '<em><b>Logical Op</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MEASUREMENT_MEASUREMENT_CONDITION__LOGICAL_OP = MEASUREMENT_CONDITION__LOGICAL_OP;
 
   /**
    * The feature id for the '<em><b>Second Term</b></em>' containment reference.
@@ -897,7 +796,7 @@ public interface TacticsPackage extends EPackage
    * @see eu.coresense.adaptation.tactics.impl.TacticsPackageImpl#getAtomicActionSelectFeature()
    * @generated
    */
-  int ATOMIC_ACTION_SELECT_FEATURE = 21;
+  int ATOMIC_ACTION_SELECT_FEATURE = 19;
 
   /**
    * The feature id for the '<em><b>Variant</b></em>' containment reference.
@@ -925,7 +824,7 @@ public interface TacticsPackage extends EPackage
    * @see eu.coresense.adaptation.tactics.impl.TacticsPackageImpl#getAtomicActionDeselectFeature()
    * @generated
    */
-  int ATOMIC_ACTION_DESELECT_FEATURE = 22;
+  int ATOMIC_ACTION_DESELECT_FEATURE = 20;
 
   /**
    * The feature id for the '<em><b>Variant</b></em>' containment reference.
@@ -953,7 +852,7 @@ public interface TacticsPackage extends EPackage
    * @see eu.coresense.adaptation.tactics.impl.TacticsPackageImpl#getQualifiedFeatureRef()
    * @generated
    */
-  int QUALIFIED_FEATURE_REF = 23;
+  int QUALIFIED_FEATURE_REF = 21;
 
   /**
    * The feature id for the '<em><b>Model</b></em>' reference.
@@ -990,7 +889,7 @@ public interface TacticsPackage extends EPackage
    * @see eu.coresense.adaptation.tactics.impl.TacticsPackageImpl#getLogicalOperator()
    * @generated
    */
-  int LOGICAL_OPERATOR = 24;
+  int LOGICAL_OPERATOR = 22;
 
 
   /**
@@ -1058,6 +957,17 @@ public interface TacticsPackage extends EPackage
   EReference getActionRules_Action();
 
   /**
+   * Returns the meta object for the reference '{@link eu.coresense.adaptation.tactics.ActionRules#getRequirement <em>Requirement</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Requirement</em>'.
+   * @see eu.coresense.adaptation.tactics.ActionRules#getRequirement()
+   * @see #getActionRules()
+   * @generated
+   */
+  EReference getActionRules_Requirement();
+
+  /**
    * Returns the meta object for the containment reference list '{@link eu.coresense.adaptation.tactics.ActionRules#getAdaptationRules <em>Adaptation Rules</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1079,17 +989,6 @@ public interface TacticsPackage extends EPackage
   EClass getAdaptationRule();
 
   /**
-   * Returns the meta object for the attribute '{@link eu.coresense.adaptation.tactics.AdaptationRule#getName <em>Name</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Name</em>'.
-   * @see eu.coresense.adaptation.tactics.AdaptationRule#getName()
-   * @see #getAdaptationRule()
-   * @generated
-   */
-  EAttribute getAdaptationRule_Name();
-
-  /**
    * Returns the meta object for class '{@link eu.coresense.adaptation.tactics.AtomicRule <em>Atomic Rule</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1098,6 +997,17 @@ public interface TacticsPackage extends EPackage
    * @generated
    */
   EClass getAtomicRule();
+
+  /**
+   * Returns the meta object for the attribute '{@link eu.coresense.adaptation.tactics.AtomicRule#getName <em>Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Name</em>'.
+   * @see eu.coresense.adaptation.tactics.AtomicRule#getName()
+   * @see #getAtomicRule()
+   * @generated
+   */
+  EAttribute getAtomicRule_Name();
 
   /**
    * Returns the meta object for the containment reference '{@link eu.coresense.adaptation.tactics.AtomicRule#getRuleBody <em>Rule Body</em>}'.
@@ -1109,70 +1019,6 @@ public interface TacticsPackage extends EPackage
    * @generated
    */
   EReference getAtomicRule_RuleBody();
-
-  /**
-   * Returns the meta object for class '{@link eu.coresense.adaptation.tactics.RuleSet <em>Rule Set</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Rule Set</em>'.
-   * @see eu.coresense.adaptation.tactics.RuleSet
-   * @generated
-   */
-  EClass getRuleSet();
-
-  /**
-   * Returns the meta object for the containment reference list '{@link eu.coresense.adaptation.tactics.RuleSet#getAtomicRules <em>Atomic Rules</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Atomic Rules</em>'.
-   * @see eu.coresense.adaptation.tactics.RuleSet#getAtomicRules()
-   * @see #getRuleSet()
-   * @generated
-   */
-  EReference getRuleSet_AtomicRules();
-
-  /**
-   * Returns the meta object for class '{@link eu.coresense.adaptation.tactics.AtomicRuleWithPriority <em>Atomic Rule With Priority</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Atomic Rule With Priority</em>'.
-   * @see eu.coresense.adaptation.tactics.AtomicRuleWithPriority
-   * @generated
-   */
-  EClass getAtomicRuleWithPriority();
-
-  /**
-   * Returns the meta object for the attribute '{@link eu.coresense.adaptation.tactics.AtomicRuleWithPriority#getName <em>Name</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Name</em>'.
-   * @see eu.coresense.adaptation.tactics.AtomicRuleWithPriority#getName()
-   * @see #getAtomicRuleWithPriority()
-   * @generated
-   */
-  EAttribute getAtomicRuleWithPriority_Name();
-
-  /**
-   * Returns the meta object for the attribute '{@link eu.coresense.adaptation.tactics.AtomicRuleWithPriority#getPriorityValue <em>Priority Value</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Priority Value</em>'.
-   * @see eu.coresense.adaptation.tactics.AtomicRuleWithPriority#getPriorityValue()
-   * @see #getAtomicRuleWithPriority()
-   * @generated
-   */
-  EAttribute getAtomicRuleWithPriority_PriorityValue();
-
-  /**
-   * Returns the meta object for the containment reference '{@link eu.coresense.adaptation.tactics.AtomicRuleWithPriority#getRuleBody <em>Rule Body</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Rule Body</em>'.
-   * @see eu.coresense.adaptation.tactics.AtomicRuleWithPriority#getRuleBody()
-   * @see #getAtomicRuleWithPriority()
-   * @generated
-   */
-  EReference getAtomicRuleWithPriority_RuleBody();
 
   /**
    * Returns the meta object for class '{@link eu.coresense.adaptation.tactics.AtomicAction <em>Atomic Action</em>}'.
@@ -1227,6 +1073,17 @@ public interface TacticsPackage extends EPackage
   EClass getRuleBody();
 
   /**
+   * Returns the meta object for the containment reference '{@link eu.coresense.adaptation.tactics.RuleBody#getAction <em>Action</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Action</em>'.
+   * @see eu.coresense.adaptation.tactics.RuleBody#getAction()
+   * @see #getRuleBody()
+   * @generated
+   */
+  EReference getRuleBody_Action();
+
+  /**
    * Returns the meta object for the containment reference '{@link eu.coresense.adaptation.tactics.RuleBody#getEffect <em>Effect</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1238,15 +1095,25 @@ public interface TacticsPackage extends EPackage
   EReference getRuleBody_Effect();
 
   /**
-   * Returns the meta object for the containment reference '{@link eu.coresense.adaptation.tactics.RuleBody#getAtomicAction <em>Atomic Action</em>}'.
+   * Returns the meta object for class '{@link eu.coresense.adaptation.tactics.TacticAction <em>Tactic Action</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Tactic Action</em>'.
+   * @see eu.coresense.adaptation.tactics.TacticAction
+   * @generated
+   */
+  EClass getTacticAction();
+
+  /**
+   * Returns the meta object for the containment reference '{@link eu.coresense.adaptation.tactics.TacticAction#getAtomicAction <em>Atomic Action</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference '<em>Atomic Action</em>'.
-   * @see eu.coresense.adaptation.tactics.RuleBody#getAtomicAction()
-   * @see #getRuleBody()
+   * @see eu.coresense.adaptation.tactics.TacticAction#getAtomicAction()
+   * @see #getTacticAction()
    * @generated
    */
-  EReference getRuleBody_AtomicAction();
+  EReference getTacticAction_AtomicAction();
 
   /**
    * Returns the meta object for class '{@link eu.coresense.adaptation.tactics.PureAction <em>Pure Action</em>}'.
@@ -1439,6 +1306,17 @@ public interface TacticsPackage extends EPackage
   EReference getFeatureCondition_Variant();
 
   /**
+   * Returns the meta object for the attribute '{@link eu.coresense.adaptation.tactics.FeatureCondition#getLogicalOp <em>Logical Op</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Logical Op</em>'.
+   * @see eu.coresense.adaptation.tactics.FeatureCondition#getLogicalOp()
+   * @see #getFeatureCondition()
+   * @generated
+   */
+  EAttribute getFeatureCondition_LogicalOp();
+
+  /**
    * Returns the meta object for the containment reference '{@link eu.coresense.adaptation.tactics.FeatureCondition#getSecondTerm <em>Second Term</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1448,27 +1326,6 @@ public interface TacticsPackage extends EPackage
    * @generated
    */
   EReference getFeatureCondition_SecondTerm();
-
-  /**
-   * Returns the meta object for class '{@link eu.coresense.adaptation.tactics.Condition <em>Condition</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Condition</em>'.
-   * @see eu.coresense.adaptation.tactics.Condition
-   * @generated
-   */
-  EClass getCondition();
-
-  /**
-   * Returns the meta object for the attribute '{@link eu.coresense.adaptation.tactics.Condition#getLogicalOp <em>Logical Op</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Logical Op</em>'.
-   * @see eu.coresense.adaptation.tactics.Condition#getLogicalOp()
-   * @see #getCondition()
-   * @generated
-   */
-  EAttribute getCondition_LogicalOp();
 
   /**
    * Returns the meta object for class '{@link eu.coresense.adaptation.tactics.MeasurementCondition <em>Measurement Condition</em>}'.
@@ -1501,6 +1358,17 @@ public interface TacticsPackage extends EPackage
    * @generated
    */
   EAttribute getMeasurementCondition_Operator();
+
+  /**
+   * Returns the meta object for the attribute '{@link eu.coresense.adaptation.tactics.MeasurementCondition#getLogicalOp <em>Logical Op</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Logical Op</em>'.
+   * @see eu.coresense.adaptation.tactics.MeasurementCondition#getLogicalOp()
+   * @see #getMeasurementCondition()
+   * @generated
+   */
+  EAttribute getMeasurementCondition_LogicalOp();
 
   /**
    * Returns the meta object for the containment reference '{@link eu.coresense.adaptation.tactics.MeasurementCondition#getSecondTerm <em>Second Term</em>}'.
@@ -1693,6 +1561,14 @@ public interface TacticsPackage extends EPackage
     EReference ACTION_RULES__ACTION = eINSTANCE.getActionRules_Action();
 
     /**
+     * The meta object literal for the '<em><b>Requirement</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference ACTION_RULES__REQUIREMENT = eINSTANCE.getActionRules_Requirement();
+
+    /**
      * The meta object literal for the '<em><b>Adaptation Rules</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -1711,14 +1587,6 @@ public interface TacticsPackage extends EPackage
     EClass ADAPTATION_RULE = eINSTANCE.getAdaptationRule();
 
     /**
-     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute ADAPTATION_RULE__NAME = eINSTANCE.getAdaptationRule_Name();
-
-    /**
      * The meta object literal for the '{@link eu.coresense.adaptation.tactics.impl.AtomicRuleImpl <em>Atomic Rule</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -1729,64 +1597,20 @@ public interface TacticsPackage extends EPackage
     EClass ATOMIC_RULE = eINSTANCE.getAtomicRule();
 
     /**
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute ATOMIC_RULE__NAME = eINSTANCE.getAtomicRule_Name();
+
+    /**
      * The meta object literal for the '<em><b>Rule Body</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
     EReference ATOMIC_RULE__RULE_BODY = eINSTANCE.getAtomicRule_RuleBody();
-
-    /**
-     * The meta object literal for the '{@link eu.coresense.adaptation.tactics.impl.RuleSetImpl <em>Rule Set</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see eu.coresense.adaptation.tactics.impl.RuleSetImpl
-     * @see eu.coresense.adaptation.tactics.impl.TacticsPackageImpl#getRuleSet()
-     * @generated
-     */
-    EClass RULE_SET = eINSTANCE.getRuleSet();
-
-    /**
-     * The meta object literal for the '<em><b>Atomic Rules</b></em>' containment reference list feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference RULE_SET__ATOMIC_RULES = eINSTANCE.getRuleSet_AtomicRules();
-
-    /**
-     * The meta object literal for the '{@link eu.coresense.adaptation.tactics.impl.AtomicRuleWithPriorityImpl <em>Atomic Rule With Priority</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see eu.coresense.adaptation.tactics.impl.AtomicRuleWithPriorityImpl
-     * @see eu.coresense.adaptation.tactics.impl.TacticsPackageImpl#getAtomicRuleWithPriority()
-     * @generated
-     */
-    EClass ATOMIC_RULE_WITH_PRIORITY = eINSTANCE.getAtomicRuleWithPriority();
-
-    /**
-     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute ATOMIC_RULE_WITH_PRIORITY__NAME = eINSTANCE.getAtomicRuleWithPriority_Name();
-
-    /**
-     * The meta object literal for the '<em><b>Priority Value</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute ATOMIC_RULE_WITH_PRIORITY__PRIORITY_VALUE = eINSTANCE.getAtomicRuleWithPriority_PriorityValue();
-
-    /**
-     * The meta object literal for the '<em><b>Rule Body</b></em>' containment reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference ATOMIC_RULE_WITH_PRIORITY__RULE_BODY = eINSTANCE.getAtomicRuleWithPriority_RuleBody();
 
     /**
      * The meta object literal for the '{@link eu.coresense.adaptation.tactics.impl.AtomicActionImpl <em>Atomic Action</em>}' class.
@@ -1835,6 +1659,14 @@ public interface TacticsPackage extends EPackage
     EClass RULE_BODY = eINSTANCE.getRuleBody();
 
     /**
+     * The meta object literal for the '<em><b>Action</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference RULE_BODY__ACTION = eINSTANCE.getRuleBody_Action();
+
+    /**
      * The meta object literal for the '<em><b>Effect</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -1843,12 +1675,22 @@ public interface TacticsPackage extends EPackage
     EReference RULE_BODY__EFFECT = eINSTANCE.getRuleBody_Effect();
 
     /**
+     * The meta object literal for the '{@link eu.coresense.adaptation.tactics.impl.TacticActionImpl <em>Tactic Action</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see eu.coresense.adaptation.tactics.impl.TacticActionImpl
+     * @see eu.coresense.adaptation.tactics.impl.TacticsPackageImpl#getTacticAction()
+     * @generated
+     */
+    EClass TACTIC_ACTION = eINSTANCE.getTacticAction();
+
+    /**
      * The meta object literal for the '<em><b>Atomic Action</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference RULE_BODY__ATOMIC_ACTION = eINSTANCE.getRuleBody_AtomicAction();
+    EReference TACTIC_ACTION__ATOMIC_ACTION = eINSTANCE.getTacticAction_AtomicAction();
 
     /**
      * The meta object literal for the '{@link eu.coresense.adaptation.tactics.impl.PureActionImpl <em>Pure Action</em>}' class.
@@ -2011,30 +1853,20 @@ public interface TacticsPackage extends EPackage
     EReference FEATURE_CONDITION__VARIANT = eINSTANCE.getFeatureCondition_Variant();
 
     /**
+     * The meta object literal for the '<em><b>Logical Op</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute FEATURE_CONDITION__LOGICAL_OP = eINSTANCE.getFeatureCondition_LogicalOp();
+
+    /**
      * The meta object literal for the '<em><b>Second Term</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
     EReference FEATURE_CONDITION__SECOND_TERM = eINSTANCE.getFeatureCondition_SecondTerm();
-
-    /**
-     * The meta object literal for the '{@link eu.coresense.adaptation.tactics.impl.ConditionImpl <em>Condition</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see eu.coresense.adaptation.tactics.impl.ConditionImpl
-     * @see eu.coresense.adaptation.tactics.impl.TacticsPackageImpl#getCondition()
-     * @generated
-     */
-    EClass CONDITION = eINSTANCE.getCondition();
-
-    /**
-     * The meta object literal for the '<em><b>Logical Op</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute CONDITION__LOGICAL_OP = eINSTANCE.getCondition_LogicalOp();
 
     /**
      * The meta object literal for the '{@link eu.coresense.adaptation.tactics.impl.MeasurementConditionImpl <em>Measurement Condition</em>}' class.
@@ -2061,6 +1893,14 @@ public interface TacticsPackage extends EPackage
      * @generated
      */
     EAttribute MEASUREMENT_CONDITION__OPERATOR = eINSTANCE.getMeasurementCondition_Operator();
+
+    /**
+     * The meta object literal for the '<em><b>Logical Op</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute MEASUREMENT_CONDITION__LOGICAL_OP = eINSTANCE.getMeasurementCondition_LogicalOp();
 
     /**
      * The meta object literal for the '<em><b>Second Term</b></em>' containment reference feature.

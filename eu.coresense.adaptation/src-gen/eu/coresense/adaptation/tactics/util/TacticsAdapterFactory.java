@@ -96,16 +96,6 @@ public class TacticsAdapterFactory extends AdapterFactoryImpl
         return createAtomicRuleAdapter();
       }
       @Override
-      public Adapter caseRuleSet(RuleSet object)
-      {
-        return createRuleSetAdapter();
-      }
-      @Override
-      public Adapter caseAtomicRuleWithPriority(AtomicRuleWithPriority object)
-      {
-        return createAtomicRuleWithPriorityAdapter();
-      }
-      @Override
       public Adapter caseAtomicAction(AtomicAction object)
       {
         return createAtomicActionAdapter();
@@ -119,6 +109,11 @@ public class TacticsAdapterFactory extends AdapterFactoryImpl
       public Adapter caseRuleBody(RuleBody object)
       {
         return createRuleBodyAdapter();
+      }
+      @Override
+      public Adapter caseTacticAction(TacticAction object)
+      {
+        return createTacticActionAdapter();
       }
       @Override
       public Adapter casePureAction(PureAction object)
@@ -159,11 +154,6 @@ public class TacticsAdapterFactory extends AdapterFactoryImpl
       public Adapter caseFeatureCondition(FeatureCondition object)
       {
         return createFeatureConditionAdapter();
-      }
-      @Override
-      public Adapter caseCondition(Condition object)
-      {
-        return createConditionAdapter();
       }
       @Override
       public Adapter caseMeasurementCondition(MeasurementCondition object)
@@ -278,36 +268,6 @@ public class TacticsAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link eu.coresense.adaptation.tactics.RuleSet <em>Rule Set</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see eu.coresense.adaptation.tactics.RuleSet
-   * @generated
-   */
-  public Adapter createRuleSetAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link eu.coresense.adaptation.tactics.AtomicRuleWithPriority <em>Atomic Rule With Priority</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see eu.coresense.adaptation.tactics.AtomicRuleWithPriority
-   * @generated
-   */
-  public Adapter createAtomicRuleWithPriorityAdapter()
-  {
-    return null;
-  }
-
-  /**
    * Creates a new adapter for an object of class '{@link eu.coresense.adaptation.tactics.AtomicAction <em>Atomic Action</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -348,6 +308,21 @@ public class TacticsAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createRuleBodyAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link eu.coresense.adaptation.tactics.TacticAction <em>Tactic Action</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see eu.coresense.adaptation.tactics.TacticAction
+   * @generated
+   */
+  public Adapter createTacticActionAdapter()
   {
     return null;
   }
@@ -468,21 +443,6 @@ public class TacticsAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createFeatureConditionAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link eu.coresense.adaptation.tactics.Condition <em>Condition</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see eu.coresense.adaptation.tactics.Condition
-   * @generated
-   */
-  public Adapter createConditionAdapter()
   {
     return null;
   }

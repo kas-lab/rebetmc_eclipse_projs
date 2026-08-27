@@ -42,6 +42,15 @@ public interface RequirementsModelFactory extends EFactory
   Requirement createRequirement();
 
   /**
+   * Returns a new object of class '<em>Feature Qualifier</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Feature Qualifier</em>'.
+   * @generated
+   */
+  FeatureQualifier createFeatureQualifier();
+
+  /**
    * Returns a new object of class '<em>Condition</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

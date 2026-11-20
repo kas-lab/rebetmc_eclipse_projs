@@ -1,4 +1,4 @@
-# RebetMC - Tactical Retreat - Eclipse Projects
+# Tactical Retreat - ECore Model and XText DSL Projects
 
 Important Files:
 It is quite a hassle to navigate through java projects, here are some hyperlinks to help you:
@@ -11,6 +11,8 @@ A validator determines if a DSL entry passes, beyond its grammar. This is like d
 
 
 ## Adaptation Tactics Model: 
+
+![Adaptation Tactics Model class diagram](eu.coresense.common/docs/diagrams/tactics_model_class_diagram.svg)
  
 [XText Grammar Definition](eu.coresense.adaptation/src/eu/coresense/adaptation/Tactics.xtext)
 
@@ -22,6 +24,8 @@ A validator determines if a DSL entry passes, beyond its grammar. This is like d
 
 ## Context Model:
 
+![Context Model class diagram](eu.coresense.common/docs/diagrams/context_model_class_diagram.svg)
+
 [XText Grammar Definition](eu.coresense.context/src/eu/coresense/context/ContextModel.xtext)
 
 [Scope Provider](eu.coresense.context/src/eu/coresense/adaptation/scoping/ContextModelScopeProviderr.xtend)
@@ -30,9 +34,13 @@ A validator determines if a DSL entry passes, beyond its grammar. This is like d
 
 ## Requirements Model:
 
+![Requirements Model class diagram](eu.coresense.common/docs/diagrams/requirements_class_diagram.svg)
+
 [XText Grammar Definition](eu.coresense.requirements/src/eu/coresense/requirements/RequirementsModel.xtext)
 
 ## Resolution Model:
+
+![Resolution Model class diagram](eu.coresense.common/docs/diagrams/resolution_class_diagram.svg)
 
 [XText Grammar Definition](eu.coresense.resolution/src/eu/coresense/resolution/ResolutionModel.xtext)
 
@@ -41,6 +49,8 @@ A validator determines if a DSL entry passes, beyond its grammar. This is like d
 [Validator](eu.coresense.resolution/src/eu/coresense/resolution/validation/ResolutionModelValidator.java)
 
 ## Variability Model
+
+![Variability Model class diagram](eu.coresense.common/docs/diagrams/variability_class_diagram.svg)
 
 [XText Grammar Definition](eu.coresense.variability/src/eu/coresense/variability/FeatureModel.xtext)
 

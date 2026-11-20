@@ -3,32 +3,40 @@
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="requirementsModel" nsURI="http://www.coresense.eu/requirements/RequirementsModel"
     nsPrefix="requirementsModel">
   <eClassifiers xsi:type="ecore:EClass" name="RequirementsModel">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="imports" upperBound="-1"
+        eType="ecore:EClass ../../../eu.coresense.common/model/common.ecore#//Import"
+        containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="requirements" upperBound="-1"
         eType="#//Requirement" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Requirement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="featureQualifier" eType="#//FeatureQualifier"
+        containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="qa" eType="#//QualityAttribute"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="naturalLanguageDescription"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="expression" eType="#//Expression"
-        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="expression" lowerBound="1"
+        eType="#//Expression" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="QualityAttribute">
-    <eLiterals name="FUNCTIONAL" literal="Functional suitability"/>
-    <eLiterals name="PERFORMANCE" value="1" literal="Performance efficiency"/>
+    <eLiterals name="FUNCTIONAL SUITABILITY" literal="Functional suitability"/>
+    <eLiterals name="PERFORMANCE EFFICIENCY" value="1" literal="Performance efficiency"/>
     <eLiterals name="COMPATIBILITY" value="2" literal="Compatibility"/>
-    <eLiterals name="INTERACTION" value="3" literal="Interaction capability"/>
+    <eLiterals name="INTERACTION CAPABILITY" value="3" literal="Interaction capability"/>
     <eLiterals name="RELIABILITY" value="4" literal="Reliability"/>
     <eLiterals name="SECURITY" value="5" literal="Security"/>
     <eLiterals name="MAINTAINABILITY" value="6" literal="Maintainability"/>
     <eLiterals name="FLEXIBILITY" value="7" literal="Flexibility"/>
     <eLiterals name="SAFETY" value="8" literal="Safety"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="FeatureQualifier">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="feature" eType="ecore:EClass ../../../fms.metamodel/model/BasicFMmetamodel.ecore#//Feature"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Condition">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="measurement" eType="ecore:EClass platform:/resource/eu.coresense.context/model/generated/ContextModel.ecore#//ContextVar"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="operator" eType="ecore:EEnum platform:/resource/eu.coresense.common/model/common.ecore#//MathOperator"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="value" eType="ecore:EClass platform:/resource/eu.coresense.common/model/common.ecore#//Literal"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="measurement" eType="ecore:EClass ../../../eu.coresense.context/model/generated/ContextModel.ecore#//ContextVar"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="operator" eType="ecore:EEnum ../../../eu.coresense.common/model/common.ecore#//MathOperator"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="value" eType="ecore:EClass ../../../eu.coresense.common/model/common.ecore#//Literal"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="logicalOp" eType="#//LogicalOperator"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="secondTerm" eType="#//Condition"
@@ -45,8 +53,8 @@
     <eLiterals name="FEW" value="3" literal="FEW"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Proposition" eSuperTypes="#//Statement">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="condition" eType="#//Condition"
-        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="condition" lowerBound="1"
+        eType="#//Condition" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="BooleanStatement" eSuperTypes="#//Statement">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="booleanValue" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
@@ -54,12 +62,12 @@
   <eClassifiers xsi:type="ecore:EClass" name="And" eSuperTypes="#//CompoundExpression"/>
   <eClassifiers xsi:type="ecore:EClass" name="Or" eSuperTypes="#//CompoundExpression"/>
   <eClassifiers xsi:type="ecore:EClass" name="Shall" eSuperTypes="#//Expression">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="expression" eType="#//Expression"
-        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="expression" lowerBound="1"
+        eType="#//Expression" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Negation" eSuperTypes="#//Expression">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="expression" eType="#//Expression"
-        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="expression" lowerBound="1"
+        eType="#//Expression" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Eventually" eSuperTypes="#//Expression">
     <eStructuralFeatures xsi:type="ecore:EReference" name="expression" eType="#//Expression"
@@ -86,26 +94,28 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="timeFrequency" eType="#//Timeliness"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="quantity" eType="#//Quantifiable"
         containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="membershipFunction" eType="#//MembershipFunction"
+        containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="CompoundExpression" eSuperTypes="#//Expression">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="leftExpression" eType="#//Expression"
-        containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="rightExpression" eType="#//Expression"
-        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="leftExpression" lowerBound="1"
+        eType="#//Expression" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="rightExpression" lowerBound="1"
+        eType="#//Expression" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Statement" eSuperTypes="#//Expression"/>
   <eClassifiers xsi:type="ecore:EClass" name="Expression"/>
   <eClassifiers xsi:type="ecore:EClass" name="AsCloseFreq" eSuperTypes="#//Expression">
     <eStructuralFeatures xsi:type="ecore:EReference" name="frequency" eType="#//Time"
         containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="expression" eType="#//Expression"
-        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="expression" lowerBound="1"
+        eType="#//Expression" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AsCloseLit" eSuperTypes="#//Expression">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="quantity" eType="ecore:EClass platform:/resource/eu.coresense.common/model/common.ecore#//Literal"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="quantity" eType="ecore:EClass ../../../eu.coresense.common/model/common.ecore#//Literal"
         containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="comparator" eType="#//Quantifiable"
-        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="comparator" lowerBound="1"
+        eType="#//Quantifiable" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="membershipFunction" eType="#//MembershipFunction"
         containment="true"/>
   </eClassifiers>
@@ -115,12 +125,20 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="b" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBigDecimal"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="c" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBigDecimal"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="FuzzyRightShoulder" eSuperTypes="#//MembershipFunction">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="foot" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBigDecimal"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="shoulder" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBigDecimal"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="FuzzyLeftShoulder" eSuperTypes="#//MembershipFunction">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="foot" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBigDecimal"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="shoulder" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBigDecimal"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Quantifiable" eSuperTypes="#//Statement">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="contextVariable" eType="ecore:EClass platform:/resource/eu.coresense.context/model/generated/ContextModel.ecore#//ContextVar"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="contextVariable" eType="ecore:EClass ../../../eu.coresense.context/model/generated/ContextModel.ecore#//ContextVar"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="May" eSuperTypes="#//Expression">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="expression" eType="#//Expression"
-        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="expression" lowerBound="1"
+        eType="#//Expression" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="alternatives" upperBound="-1"
         eType="#//MayAlternative" containment="true"/>
   </eClassifiers>

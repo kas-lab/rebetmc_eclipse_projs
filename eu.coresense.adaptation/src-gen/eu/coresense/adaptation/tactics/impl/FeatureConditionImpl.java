@@ -4,6 +4,7 @@
 package eu.coresense.adaptation.tactics.impl;
 
 import eu.coresense.adaptation.tactics.FeatureCondition;
+import eu.coresense.adaptation.tactics.LogicalOperator;
 import eu.coresense.adaptation.tactics.QualifiedFeatureRef;
 import eu.coresense.adaptation.tactics.TacticsPackage;
 
@@ -14,6 +15,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -25,12 +27,13 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * <ul>
  *   <li>{@link eu.coresense.adaptation.tactics.impl.FeatureConditionImpl#getNot <em>Not</em>}</li>
  *   <li>{@link eu.coresense.adaptation.tactics.impl.FeatureConditionImpl#getVariant <em>Variant</em>}</li>
+ *   <li>{@link eu.coresense.adaptation.tactics.impl.FeatureConditionImpl#getLogicalOp <em>Logical Op</em>}</li>
  *   <li>{@link eu.coresense.adaptation.tactics.impl.FeatureConditionImpl#getSecondTerm <em>Second Term</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class FeatureConditionImpl extends ConditionImpl implements FeatureCondition
+public class FeatureConditionImpl extends MinimalEObjectImpl.Container implements FeatureCondition
 {
   /**
    * The default value of the '{@link #getNot() <em>Not</em>}' attribute.
@@ -61,6 +64,26 @@ public class FeatureConditionImpl extends ConditionImpl implements FeatureCondit
    * @ordered
    */
   protected QualifiedFeatureRef variant;
+
+  /**
+   * The default value of the '{@link #getLogicalOp() <em>Logical Op</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getLogicalOp()
+   * @generated
+   * @ordered
+   */
+  protected static final LogicalOperator LOGICAL_OP_EDEFAULT = LogicalOperator.AND;
+
+  /**
+   * The cached value of the '{@link #getLogicalOp() <em>Logical Op</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getLogicalOp()
+   * @generated
+   * @ordered
+   */
+  protected LogicalOperator logicalOp = LOGICAL_OP_EDEFAULT;
 
   /**
    * The cached value of the '{@link #getSecondTerm() <em>Second Term</em>}' containment reference.
@@ -174,6 +197,31 @@ public class FeatureConditionImpl extends ConditionImpl implements FeatureCondit
    * @generated
    */
   @Override
+  public LogicalOperator getLogicalOp()
+  {
+    return logicalOp;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setLogicalOp(LogicalOperator newLogicalOp)
+  {
+    LogicalOperator oldLogicalOp = logicalOp;
+    logicalOp = newLogicalOp == null ? LOGICAL_OP_EDEFAULT : newLogicalOp;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, TacticsPackage.FEATURE_CONDITION__LOGICAL_OP, oldLogicalOp, logicalOp));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public FeatureCondition getSecondTerm()
   {
     return secondTerm;
@@ -250,6 +298,8 @@ public class FeatureConditionImpl extends ConditionImpl implements FeatureCondit
         return getNot();
       case TacticsPackage.FEATURE_CONDITION__VARIANT:
         return getVariant();
+      case TacticsPackage.FEATURE_CONDITION__LOGICAL_OP:
+        return getLogicalOp();
       case TacticsPackage.FEATURE_CONDITION__SECOND_TERM:
         return getSecondTerm();
     }
@@ -271,6 +321,9 @@ public class FeatureConditionImpl extends ConditionImpl implements FeatureCondit
         return;
       case TacticsPackage.FEATURE_CONDITION__VARIANT:
         setVariant((QualifiedFeatureRef)newValue);
+        return;
+      case TacticsPackage.FEATURE_CONDITION__LOGICAL_OP:
+        setLogicalOp((LogicalOperator)newValue);
         return;
       case TacticsPackage.FEATURE_CONDITION__SECOND_TERM:
         setSecondTerm((FeatureCondition)newValue);
@@ -295,6 +348,9 @@ public class FeatureConditionImpl extends ConditionImpl implements FeatureCondit
       case TacticsPackage.FEATURE_CONDITION__VARIANT:
         setVariant((QualifiedFeatureRef)null);
         return;
+      case TacticsPackage.FEATURE_CONDITION__LOGICAL_OP:
+        setLogicalOp(LOGICAL_OP_EDEFAULT);
+        return;
       case TacticsPackage.FEATURE_CONDITION__SECOND_TERM:
         setSecondTerm((FeatureCondition)null);
         return;
@@ -316,6 +372,8 @@ public class FeatureConditionImpl extends ConditionImpl implements FeatureCondit
         return NOT_EDEFAULT == null ? not != null : !NOT_EDEFAULT.equals(not);
       case TacticsPackage.FEATURE_CONDITION__VARIANT:
         return variant != null;
+      case TacticsPackage.FEATURE_CONDITION__LOGICAL_OP:
+        return logicalOp != LOGICAL_OP_EDEFAULT;
       case TacticsPackage.FEATURE_CONDITION__SECOND_TERM:
         return secondTerm != null;
     }
@@ -335,6 +393,8 @@ public class FeatureConditionImpl extends ConditionImpl implements FeatureCondit
     StringBuilder result = new StringBuilder(super.toString());
     result.append(" (not: ");
     result.append(not);
+    result.append(", logicalOp: ");
+    result.append(logicalOp);
     result.append(')');
     return result.toString();
   }

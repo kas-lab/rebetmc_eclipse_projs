@@ -3,7 +3,7 @@
  */
 package eu.coresense.adaptation.tactics.impl;
 
-import eu.coresense.adaptation.tactics.ActionRules;
+import eu.coresense.adaptation.tactics.Tactic;
 import eu.coresense.adaptation.tactics.TacticsModel;
 import eu.coresense.adaptation.tactics.TacticsPackage;
 
@@ -35,7 +35,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <ul>
  *   <li>{@link eu.coresense.adaptation.tactics.impl.TacticsModelImpl#getName <em>Name</em>}</li>
  *   <li>{@link eu.coresense.adaptation.tactics.impl.TacticsModelImpl#getImports <em>Imports</em>}</li>
- *   <li>{@link eu.coresense.adaptation.tactics.impl.TacticsModelImpl#getActionRules <em>Action Rules</em>}</li>
+ *   <li>{@link eu.coresense.adaptation.tactics.impl.TacticsModelImpl#getTactics <em>Tactics</em>}</li>
  * </ul>
  *
  * @generated
@@ -73,14 +73,14 @@ public class TacticsModelImpl extends MinimalEObjectImpl.Container implements Ta
   protected EList<Import> imports;
 
   /**
-   * The cached value of the '{@link #getActionRules() <em>Action Rules</em>}' containment reference list.
+   * The cached value of the '{@link #getTactics() <em>Tactics</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getActionRules()
+   * @see #getTactics()
    * @generated
    * @ordered
    */
-  protected EList<ActionRules> actionRules;
+  protected EList<Tactic> tactics;
 
   /**
    * <!-- begin-user-doc -->
@@ -149,13 +149,13 @@ public class TacticsModelImpl extends MinimalEObjectImpl.Container implements Ta
    * @generated
    */
   @Override
-  public EList<ActionRules> getActionRules()
+  public EList<Tactic> getTactics()
   {
-    if (actionRules == null)
+    if (tactics == null)
     {
-      actionRules = new EObjectContainmentEList<ActionRules>(ActionRules.class, this, TacticsPackage.TACTICS_MODEL__ACTION_RULES);
+      tactics = new EObjectContainmentEList<Tactic>(Tactic.class, this, TacticsPackage.TACTICS_MODEL__TACTICS);
     }
-    return actionRules;
+    return tactics;
   }
 
   /**
@@ -170,8 +170,8 @@ public class TacticsModelImpl extends MinimalEObjectImpl.Container implements Ta
     {
       case TacticsPackage.TACTICS_MODEL__IMPORTS:
         return ((InternalEList<?>)getImports()).basicRemove(otherEnd, msgs);
-      case TacticsPackage.TACTICS_MODEL__ACTION_RULES:
-        return ((InternalEList<?>)getActionRules()).basicRemove(otherEnd, msgs);
+      case TacticsPackage.TACTICS_MODEL__TACTICS:
+        return ((InternalEList<?>)getTactics()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -190,8 +190,8 @@ public class TacticsModelImpl extends MinimalEObjectImpl.Container implements Ta
         return getName();
       case TacticsPackage.TACTICS_MODEL__IMPORTS:
         return getImports();
-      case TacticsPackage.TACTICS_MODEL__ACTION_RULES:
-        return getActionRules();
+      case TacticsPackage.TACTICS_MODEL__TACTICS:
+        return getTactics();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -214,9 +214,9 @@ public class TacticsModelImpl extends MinimalEObjectImpl.Container implements Ta
         getImports().clear();
         getImports().addAll((Collection<? extends Import>)newValue);
         return;
-      case TacticsPackage.TACTICS_MODEL__ACTION_RULES:
-        getActionRules().clear();
-        getActionRules().addAll((Collection<? extends ActionRules>)newValue);
+      case TacticsPackage.TACTICS_MODEL__TACTICS:
+        getTactics().clear();
+        getTactics().addAll((Collection<? extends Tactic>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -238,8 +238,8 @@ public class TacticsModelImpl extends MinimalEObjectImpl.Container implements Ta
       case TacticsPackage.TACTICS_MODEL__IMPORTS:
         getImports().clear();
         return;
-      case TacticsPackage.TACTICS_MODEL__ACTION_RULES:
-        getActionRules().clear();
+      case TacticsPackage.TACTICS_MODEL__TACTICS:
+        getTactics().clear();
         return;
     }
     super.eUnset(featureID);
@@ -259,8 +259,8 @@ public class TacticsModelImpl extends MinimalEObjectImpl.Container implements Ta
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
       case TacticsPackage.TACTICS_MODEL__IMPORTS:
         return imports != null && !imports.isEmpty();
-      case TacticsPackage.TACTICS_MODEL__ACTION_RULES:
-        return actionRules != null && !actionRules.isEmpty();
+      case TacticsPackage.TACTICS_MODEL__TACTICS:
+        return tactics != null && !tactics.isEmpty();
     }
     return super.eIsSet(featureID);
   }

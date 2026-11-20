@@ -27,75 +27,157 @@ public class RequirementsModelGrammarAccess extends AbstractElementFinder.Abstra
 	
 	public class RequirementsModelElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "eu.coresense.requirements.RequirementsModel.RequirementsModel");
-		private final Assignment cRequirementsAssignment = (Assignment)rule.eContents().get(1);
-		private final RuleCall cRequirementsRequirementParserRuleCall_0 = (RuleCall)cRequirementsAssignment.eContents().get(0);
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Assignment cImportsAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final RuleCall cImportsImportParserRuleCall_0_0 = (RuleCall)cImportsAssignment_0.eContents().get(0);
+		private final Assignment cRequirementsAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cRequirementsRequirementParserRuleCall_1_0 = (RuleCall)cRequirementsAssignment_1.eContents().get(0);
 		
 		//RequirementsModel:
+		//    (imports+=Import*)
 		//    requirements+=Requirement*;
 		@Override public ParserRule getRule() { return rule; }
 		
+		//(imports+=Import*)
 		//requirements+=Requirement*
-		public Assignment getRequirementsAssignment() { return cRequirementsAssignment; }
+		public Group getGroup() { return cGroup; }
+		
+		//(imports+=Import*)
+		public Assignment getImportsAssignment_0() { return cImportsAssignment_0; }
+		
+		//Import
+		public RuleCall getImportsImportParserRuleCall_0_0() { return cImportsImportParserRuleCall_0_0; }
+		
+		//requirements+=Requirement*
+		public Assignment getRequirementsAssignment_1() { return cRequirementsAssignment_1; }
 		
 		//Requirement
-		public RuleCall getRequirementsRequirementParserRuleCall_0() { return cRequirementsRequirementParserRuleCall_0; }
+		public RuleCall getRequirementsRequirementParserRuleCall_1_0() { return cRequirementsRequirementParserRuleCall_1_0; }
 	}
 	public class RequirementElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "eu.coresense.requirements.RequirementsModel.Requirement");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Assignment cNameAssignment_0 = (Assignment)cGroup.eContents().get(0);
-		private final RuleCall cNameIDTerminalRuleCall_0_0 = (RuleCall)cNameAssignment_0.eContents().get(0);
-		private final Keyword cCommaKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Assignment cQaAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cQaQualityAttributeEnumRuleCall_2_0 = (RuleCall)cQaAssignment_2.eContents().get(0);
-		private final Keyword cColonKeyword_3 = (Keyword)cGroup.eContents().get(3);
-		private final Assignment cNaturalLanguageDescriptionAssignment_4 = (Assignment)cGroup.eContents().get(4);
-		private final RuleCall cNaturalLanguageDescriptionSTRINGTerminalRuleCall_4_0 = (RuleCall)cNaturalLanguageDescriptionAssignment_4.eContents().get(0);
-		private final Keyword cCommaKeyword_5 = (Keyword)cGroup.eContents().get(5);
-		private final Assignment cExpressionAssignment_6 = (Assignment)cGroup.eContents().get(6);
-		private final RuleCall cExpressionExpressionParserRuleCall_6_0 = (RuleCall)cExpressionAssignment_6.eContents().get(0);
+		private final Assignment cFeatureQualifierAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final RuleCall cFeatureQualifierFeatureQualifierParserRuleCall_0_0 = (RuleCall)cFeatureQualifierAssignment_0.eContents().get(0);
+		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
+		private final Keyword cCommaKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Assignment cQaAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cQaQualityAttributeEnumRuleCall_3_0 = (RuleCall)cQaAssignment_3.eContents().get(0);
+		private final Keyword cColonKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		private final Assignment cNaturalLanguageDescriptionAssignment_5 = (Assignment)cGroup.eContents().get(5);
+		private final RuleCall cNaturalLanguageDescriptionSTRINGTerminalRuleCall_5_0 = (RuleCall)cNaturalLanguageDescriptionAssignment_5.eContents().get(0);
+		private final Keyword cCommaKeyword_6 = (Keyword)cGroup.eContents().get(6);
+		private final Assignment cExpressionAssignment_7 = (Assignment)cGroup.eContents().get(7);
+		private final RuleCall cExpressionExpressionParserRuleCall_7_0 = (RuleCall)cExpressionAssignment_7.eContents().get(0);
 		
 		////Requirement:
 		////    name=ID ',' qa=QualityAttribute ':' naturalLanguageDescription=STRING ',' rule=Statement;
 		//Requirement:
-		//    name=ID ',' qa=QualityAttribute ':' naturalLanguageDescription=STRING ',' expression=Expression;
+		//    featureQualifier=FeatureQualifier? name=ID ',' qa=QualityAttribute ':' naturalLanguageDescription=STRING ',' expression=Expression;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//name=ID ',' qa=QualityAttribute ':' naturalLanguageDescription=STRING ',' expression=Expression
+		//featureQualifier=FeatureQualifier? name=ID ',' qa=QualityAttribute ':' naturalLanguageDescription=STRING ',' expression=Expression
 		public Group getGroup() { return cGroup; }
 		
+		//featureQualifier=FeatureQualifier?
+		public Assignment getFeatureQualifierAssignment_0() { return cFeatureQualifierAssignment_0; }
+		
+		//FeatureQualifier
+		public RuleCall getFeatureQualifierFeatureQualifierParserRuleCall_0_0() { return cFeatureQualifierFeatureQualifierParserRuleCall_0_0; }
+		
 		//name=ID
-		public Assignment getNameAssignment_0() { return cNameAssignment_0; }
+		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
 		
 		//ID
-		public RuleCall getNameIDTerminalRuleCall_0_0() { return cNameIDTerminalRuleCall_0_0; }
+		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
 		
 		//','
-		public Keyword getCommaKeyword_1() { return cCommaKeyword_1; }
+		public Keyword getCommaKeyword_2() { return cCommaKeyword_2; }
 		
 		//qa=QualityAttribute
-		public Assignment getQaAssignment_2() { return cQaAssignment_2; }
+		public Assignment getQaAssignment_3() { return cQaAssignment_3; }
 		
 		//QualityAttribute
-		public RuleCall getQaQualityAttributeEnumRuleCall_2_0() { return cQaQualityAttributeEnumRuleCall_2_0; }
+		public RuleCall getQaQualityAttributeEnumRuleCall_3_0() { return cQaQualityAttributeEnumRuleCall_3_0; }
 		
 		//':'
-		public Keyword getColonKeyword_3() { return cColonKeyword_3; }
+		public Keyword getColonKeyword_4() { return cColonKeyword_4; }
 		
 		//naturalLanguageDescription=STRING
-		public Assignment getNaturalLanguageDescriptionAssignment_4() { return cNaturalLanguageDescriptionAssignment_4; }
+		public Assignment getNaturalLanguageDescriptionAssignment_5() { return cNaturalLanguageDescriptionAssignment_5; }
 		
 		//STRING
-		public RuleCall getNaturalLanguageDescriptionSTRINGTerminalRuleCall_4_0() { return cNaturalLanguageDescriptionSTRINGTerminalRuleCall_4_0; }
+		public RuleCall getNaturalLanguageDescriptionSTRINGTerminalRuleCall_5_0() { return cNaturalLanguageDescriptionSTRINGTerminalRuleCall_5_0; }
 		
 		//','
-		public Keyword getCommaKeyword_5() { return cCommaKeyword_5; }
+		public Keyword getCommaKeyword_6() { return cCommaKeyword_6; }
 		
 		//expression=Expression
-		public Assignment getExpressionAssignment_6() { return cExpressionAssignment_6; }
+		public Assignment getExpressionAssignment_7() { return cExpressionAssignment_7; }
 		
 		//Expression
-		public RuleCall getExpressionExpressionParserRuleCall_6_0() { return cExpressionExpressionParserRuleCall_6_0; }
+		public RuleCall getExpressionExpressionParserRuleCall_7_0() { return cExpressionExpressionParserRuleCall_7_0; }
+	}
+	public class ImportElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "eu.coresense.requirements.RequirementsModel.Import");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cImportKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cImportURIAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cImportURISTRINGTerminalRuleCall_1_0 = (RuleCall)cImportURIAssignment_1.eContents().get(0);
+		private final Keyword cSemicolonKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		
+		//Import returns common::Import:
+		//    'import' importURI=STRING ';'
+		//;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//'import' importURI=STRING ';'
+		public Group getGroup() { return cGroup; }
+		
+		//'import'
+		public Keyword getImportKeyword_0() { return cImportKeyword_0; }
+		
+		//importURI=STRING
+		public Assignment getImportURIAssignment_1() { return cImportURIAssignment_1; }
+		
+		//STRING
+		public RuleCall getImportURISTRINGTerminalRuleCall_1_0() { return cImportURISTRINGTerminalRuleCall_1_0; }
+		
+		//';'
+		public Keyword getSemicolonKeyword_2() { return cSemicolonKeyword_2; }
+	}
+	public class FeatureQualifierElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "eu.coresense.requirements.RequirementsModel.FeatureQualifier");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cLeftSquareBracketKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cFeatureAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final CrossReference cFeatureFeatureCrossReference_1_0 = (CrossReference)cFeatureAssignment_1.eContents().get(0);
+		private final RuleCall cFeatureFeatureIDTerminalRuleCall_1_0_1 = (RuleCall)cFeatureFeatureCrossReference_1_0.eContents().get(1);
+		private final Keyword cRightSquareBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		
+		//FeatureQualifier:
+		//    '[' feature=[BasicFMmetamodel::Feature] ']'
+		//;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//'[' feature=[BasicFMmetamodel::Feature] ']'
+		public Group getGroup() { return cGroup; }
+		
+		//'['
+		public Keyword getLeftSquareBracketKeyword_0() { return cLeftSquareBracketKeyword_0; }
+		
+		//feature=[BasicFMmetamodel::Feature]
+		public Assignment getFeatureAssignment_1() { return cFeatureAssignment_1; }
+		
+		//[BasicFMmetamodel::Feature]
+		public CrossReference getFeatureFeatureCrossReference_1_0() { return cFeatureFeatureCrossReference_1_0; }
+		
+		//ID
+		public RuleCall getFeatureFeatureIDTerminalRuleCall_1_0_1() { return cFeatureFeatureIDTerminalRuleCall_1_0_1; }
+		
+		//']'
+		public Keyword getRightSquareBracketKeyword_2() { return cRightSquareBracketKeyword_2; }
 	}
 	public class ConditionElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "eu.coresense.requirements.RequirementsModel.Condition");
@@ -530,12 +612,15 @@ public class RequirementsModelGrammarAccess extends AbstractElementFinder.Abstra
 		private final Keyword cLeftParenthesisKeyword_4 = (Keyword)cGroup.eContents().get(4);
 		private final Assignment cQuantityAssignment_5 = (Assignment)cGroup.eContents().get(5);
 		private final RuleCall cQuantityQuantifiableParserRuleCall_5_0 = (RuleCall)cQuantityAssignment_5.eContents().get(0);
-		private final Keyword cRightParenthesisKeyword_6 = (Keyword)cGroup.eContents().get(6);
+		private final Keyword cCommaKeyword_6 = (Keyword)cGroup.eContents().get(6);
+		private final Assignment cMembershipFunctionAssignment_7 = (Assignment)cGroup.eContents().get(7);
+		private final RuleCall cMembershipFunctionMembershipFunctionParserRuleCall_7_0 = (RuleCall)cMembershipFunctionAssignment_7.eContents().get(0);
+		private final Keyword cRightParenthesisKeyword_8 = (Keyword)cGroup.eContents().get(8);
 		
-		//AsAsPossible: 'AS' timeFrequency=Timeliness 'AS' 'POSSIBLE' '(' quantity=Quantifiable ')';
+		//AsAsPossible: 'AS' timeFrequency=Timeliness 'AS' 'POSSIBLE' '(' quantity=Quantifiable ',' membershipFunction=MembershipFunction ')';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'AS' timeFrequency=Timeliness 'AS' 'POSSIBLE' '(' quantity=Quantifiable ')'
+		//'AS' timeFrequency=Timeliness 'AS' 'POSSIBLE' '(' quantity=Quantifiable ',' membershipFunction=MembershipFunction ')'
 		public Group getGroup() { return cGroup; }
 		
 		//'AS'
@@ -562,8 +647,17 @@ public class RequirementsModelGrammarAccess extends AbstractElementFinder.Abstra
 		//Quantifiable
 		public RuleCall getQuantityQuantifiableParserRuleCall_5_0() { return cQuantityQuantifiableParserRuleCall_5_0; }
 		
+		//','
+		public Keyword getCommaKeyword_6() { return cCommaKeyword_6; }
+		
+		//membershipFunction=MembershipFunction
+		public Assignment getMembershipFunctionAssignment_7() { return cMembershipFunctionAssignment_7; }
+		
+		//MembershipFunction
+		public RuleCall getMembershipFunctionMembershipFunctionParserRuleCall_7_0() { return cMembershipFunctionMembershipFunctionParserRuleCall_7_0; }
+		
 		//')'
-		public Keyword getRightParenthesisKeyword_6() { return cRightParenthesisKeyword_6; }
+		public Keyword getRightParenthesisKeyword_8() { return cRightParenthesisKeyword_8; }
 	}
 	public class CompoundExpressionElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "eu.coresense.requirements.RequirementsModel.CompoundExpression");
@@ -857,15 +951,31 @@ public class RequirementsModelGrammarAccess extends AbstractElementFinder.Abstra
 	}
 	public class MembershipFunctionElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "eu.coresense.requirements.RequirementsModel.MembershipFunction");
-		private final RuleCall cFuzzyTriangularParserRuleCall = (RuleCall)rule.eContents().get(1);
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final RuleCall cFuzzyTriangularParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final RuleCall cFuzzyRightShoulderParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		private final RuleCall cFuzzyLeftShoulderParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
 		
 		//MembershipFunction:
-		//    FuzzyTriangular
+		//    FuzzyTriangular |
+		//    FuzzyRightShoulder |
+		//    FuzzyLeftShoulder
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
+		//FuzzyTriangular |
+		//FuzzyRightShoulder |
+		//FuzzyLeftShoulder
+		public Alternatives getAlternatives() { return cAlternatives; }
+		
 		//FuzzyTriangular
-		public RuleCall getFuzzyTriangularParserRuleCall() { return cFuzzyTriangularParserRuleCall; }
+		public RuleCall getFuzzyTriangularParserRuleCall_0() { return cFuzzyTriangularParserRuleCall_0; }
+		
+		//FuzzyRightShoulder
+		public RuleCall getFuzzyRightShoulderParserRuleCall_1() { return cFuzzyRightShoulderParserRuleCall_1; }
+		
+		//FuzzyLeftShoulder
+		public RuleCall getFuzzyLeftShoulderParserRuleCall_2() { return cFuzzyLeftShoulderParserRuleCall_2; }
 	}
 	public class FuzzyTriangularElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "eu.coresense.requirements.RequirementsModel.FuzzyTriangular");
@@ -919,6 +1029,110 @@ public class RequirementsModelGrammarAccess extends AbstractElementFinder.Abstra
 		
 		//DECIMAL
 		public RuleCall getCDECIMALTerminalRuleCall_6_0() { return cCDECIMALTerminalRuleCall_6_0; }
+		
+		//')'
+		public Keyword getRightParenthesisKeyword_7() { return cRightParenthesisKeyword_7; }
+	}
+	public class FuzzyRightShoulderElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "eu.coresense.requirements.RequirementsModel.FuzzyRightShoulder");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cFuzzyRightShoulderKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Keyword cLeftParenthesisKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Keyword cFootKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Assignment cFootAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cFootDECIMALTerminalRuleCall_3_0 = (RuleCall)cFootAssignment_3.eContents().get(0);
+		private final Keyword cCommaKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		private final Keyword cShoulderKeyword_5 = (Keyword)cGroup.eContents().get(5);
+		private final Assignment cShoulderAssignment_6 = (Assignment)cGroup.eContents().get(6);
+		private final RuleCall cShoulderDECIMALTerminalRuleCall_6_0 = (RuleCall)cShoulderAssignment_6.eContents().get(0);
+		private final Keyword cRightParenthesisKeyword_7 = (Keyword)cGroup.eContents().get(7);
+		
+		//FuzzyRightShoulder:
+		//    'FuzzyRightShoulder' '(' 'foot=' foot=DECIMAL ',' 'shoulder='shoulder=DECIMAL')'
+		//;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//'FuzzyRightShoulder' '(' 'foot=' foot=DECIMAL ',' 'shoulder='shoulder=DECIMAL')'
+		public Group getGroup() { return cGroup; }
+		
+		//'FuzzyRightShoulder'
+		public Keyword getFuzzyRightShoulderKeyword_0() { return cFuzzyRightShoulderKeyword_0; }
+		
+		//'('
+		public Keyword getLeftParenthesisKeyword_1() { return cLeftParenthesisKeyword_1; }
+		
+		//'foot='
+		public Keyword getFootKeyword_2() { return cFootKeyword_2; }
+		
+		//foot=DECIMAL
+		public Assignment getFootAssignment_3() { return cFootAssignment_3; }
+		
+		//DECIMAL
+		public RuleCall getFootDECIMALTerminalRuleCall_3_0() { return cFootDECIMALTerminalRuleCall_3_0; }
+		
+		//','
+		public Keyword getCommaKeyword_4() { return cCommaKeyword_4; }
+		
+		//'shoulder='
+		public Keyword getShoulderKeyword_5() { return cShoulderKeyword_5; }
+		
+		//shoulder=DECIMAL
+		public Assignment getShoulderAssignment_6() { return cShoulderAssignment_6; }
+		
+		//DECIMAL
+		public RuleCall getShoulderDECIMALTerminalRuleCall_6_0() { return cShoulderDECIMALTerminalRuleCall_6_0; }
+		
+		//')'
+		public Keyword getRightParenthesisKeyword_7() { return cRightParenthesisKeyword_7; }
+	}
+	public class FuzzyLeftShoulderElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "eu.coresense.requirements.RequirementsModel.FuzzyLeftShoulder");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cFuzzyLeftShoulderKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Keyword cLeftParenthesisKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Keyword cFootKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Assignment cFootAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cFootDECIMALTerminalRuleCall_3_0 = (RuleCall)cFootAssignment_3.eContents().get(0);
+		private final Keyword cCommaKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		private final Keyword cShoulderKeyword_5 = (Keyword)cGroup.eContents().get(5);
+		private final Assignment cShoulderAssignment_6 = (Assignment)cGroup.eContents().get(6);
+		private final RuleCall cShoulderDECIMALTerminalRuleCall_6_0 = (RuleCall)cShoulderAssignment_6.eContents().get(0);
+		private final Keyword cRightParenthesisKeyword_7 = (Keyword)cGroup.eContents().get(7);
+		
+		//FuzzyLeftShoulder:
+		//    'FuzzyLeftShoulder' '(' 'foot=' foot=DECIMAL ',' 'shoulder='shoulder=DECIMAL')'
+		//;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//'FuzzyLeftShoulder' '(' 'foot=' foot=DECIMAL ',' 'shoulder='shoulder=DECIMAL')'
+		public Group getGroup() { return cGroup; }
+		
+		//'FuzzyLeftShoulder'
+		public Keyword getFuzzyLeftShoulderKeyword_0() { return cFuzzyLeftShoulderKeyword_0; }
+		
+		//'('
+		public Keyword getLeftParenthesisKeyword_1() { return cLeftParenthesisKeyword_1; }
+		
+		//'foot='
+		public Keyword getFootKeyword_2() { return cFootKeyword_2; }
+		
+		//foot=DECIMAL
+		public Assignment getFootAssignment_3() { return cFootAssignment_3; }
+		
+		//DECIMAL
+		public RuleCall getFootDECIMALTerminalRuleCall_3_0() { return cFootDECIMALTerminalRuleCall_3_0; }
+		
+		//','
+		public Keyword getCommaKeyword_4() { return cCommaKeyword_4; }
+		
+		//'shoulder='
+		public Keyword getShoulderKeyword_5() { return cShoulderKeyword_5; }
+		
+		//shoulder=DECIMAL
+		public Assignment getShoulderAssignment_6() { return cShoulderAssignment_6; }
+		
+		//DECIMAL
+		public RuleCall getShoulderDECIMALTerminalRuleCall_6_0() { return cShoulderDECIMALTerminalRuleCall_6_0; }
 		
 		//')'
 		public Keyword getRightParenthesisKeyword_7() { return cRightParenthesisKeyword_7; }
@@ -1440,8 +1654,10 @@ public class RequirementsModelGrammarAccess extends AbstractElementFinder.Abstra
 	
 	private final RequirementsModelElements pRequirementsModel;
 	private final RequirementElements pRequirement;
+	private final ImportElements pImport;
 	private final QualityAttributeElements eQualityAttribute;
 	private final MathOperatorElements eMathOperator;
+	private final FeatureQualifierElements pFeatureQualifier;
 	private final ConditionElements pCondition;
 	private final LogicalOperatorElements eLogicalOperator;
 	private final TimelinessElements eTimeliness;
@@ -1464,6 +1680,8 @@ public class RequirementsModelGrammarAccess extends AbstractElementFinder.Abstra
 	private final AsCloseLitElements pAsCloseLit;
 	private final MembershipFunctionElements pMembershipFunction;
 	private final FuzzyTriangularElements pFuzzyTriangular;
+	private final FuzzyRightShoulderElements pFuzzyRightShoulder;
+	private final FuzzyLeftShoulderElements pFuzzyLeftShoulder;
 	private final QuantifiableElements pQuantifiable;
 	private final MayElements pMay;
 	private final MayAlternativeElements pMayAlternative;
@@ -1489,8 +1707,10 @@ public class RequirementsModelGrammarAccess extends AbstractElementFinder.Abstra
 		this.gaTerminals = gaTerminals;
 		this.pRequirementsModel = new RequirementsModelElements();
 		this.pRequirement = new RequirementElements();
+		this.pImport = new ImportElements();
 		this.eQualityAttribute = new QualityAttributeElements();
 		this.eMathOperator = new MathOperatorElements();
+		this.pFeatureQualifier = new FeatureQualifierElements();
 		this.pCondition = new ConditionElements();
 		this.eLogicalOperator = new LogicalOperatorElements();
 		this.eTimeliness = new TimelinessElements();
@@ -1513,6 +1733,8 @@ public class RequirementsModelGrammarAccess extends AbstractElementFinder.Abstra
 		this.pAsCloseLit = new AsCloseLitElements();
 		this.pMembershipFunction = new MembershipFunctionElements();
 		this.pFuzzyTriangular = new FuzzyTriangularElements();
+		this.pFuzzyRightShoulder = new FuzzyRightShoulderElements();
+		this.pFuzzyLeftShoulder = new FuzzyLeftShoulderElements();
 		this.pQuantifiable = new QuantifiableElements();
 		this.pMay = new MayElements();
 		this.pMayAlternative = new MayAlternativeElements();
@@ -1556,6 +1778,7 @@ public class RequirementsModelGrammarAccess extends AbstractElementFinder.Abstra
 
 	
 	//RequirementsModel:
+	//    (imports+=Import*)
 	//    requirements+=Requirement*;
 	public RequirementsModelElements getRequirementsModelAccess() {
 		return pRequirementsModel;
@@ -1568,13 +1791,24 @@ public class RequirementsModelGrammarAccess extends AbstractElementFinder.Abstra
 	////Requirement:
 	////    name=ID ',' qa=QualityAttribute ':' naturalLanguageDescription=STRING ',' rule=Statement;
 	//Requirement:
-	//    name=ID ',' qa=QualityAttribute ':' naturalLanguageDescription=STRING ',' expression=Expression;
+	//    featureQualifier=FeatureQualifier? name=ID ',' qa=QualityAttribute ':' naturalLanguageDescription=STRING ',' expression=Expression;
 	public RequirementElements getRequirementAccess() {
 		return pRequirement;
 	}
 	
 	public ParserRule getRequirementRule() {
 		return getRequirementAccess().getRule();
+	}
+	
+	//Import returns common::Import:
+	//    'import' importURI=STRING ';'
+	//;
+	public ImportElements getImportAccess() {
+		return pImport;
+	}
+	
+	public ParserRule getImportRule() {
+		return getImportAccess().getRule();
 	}
 	
 	//enum QualityAttribute:
@@ -1605,6 +1839,17 @@ public class RequirementsModelGrammarAccess extends AbstractElementFinder.Abstra
 	
 	public EnumRule getMathOperatorRule() {
 		return getMathOperatorAccess().getRule();
+	}
+	
+	//FeatureQualifier:
+	//    '[' feature=[BasicFMmetamodel::Feature] ']'
+	//;
+	public FeatureQualifierElements getFeatureQualifierAccess() {
+		return pFeatureQualifier;
+	}
+	
+	public ParserRule getFeatureQualifierRule() {
+		return getFeatureQualifierAccess().getRule();
 	}
 	
 	//Condition:
@@ -1744,7 +1989,7 @@ public class RequirementsModelGrammarAccess extends AbstractElementFinder.Abstra
 		return getInAccess().getRule();
 	}
 	
-	//AsAsPossible: 'AS' timeFrequency=Timeliness 'AS' 'POSSIBLE' '(' quantity=Quantifiable ')';
+	//AsAsPossible: 'AS' timeFrequency=Timeliness 'AS' 'POSSIBLE' '(' quantity=Quantifiable ',' membershipFunction=MembershipFunction ')';
 	public AsAsPossibleElements getAsAsPossibleAccess() {
 		return pAsAsPossible;
 	}
@@ -1844,7 +2089,9 @@ public class RequirementsModelGrammarAccess extends AbstractElementFinder.Abstra
 	}
 	
 	//MembershipFunction:
-	//    FuzzyTriangular
+	//    FuzzyTriangular |
+	//    FuzzyRightShoulder |
+	//    FuzzyLeftShoulder
 	//;
 	public MembershipFunctionElements getMembershipFunctionAccess() {
 		return pMembershipFunction;
@@ -1863,6 +2110,28 @@ public class RequirementsModelGrammarAccess extends AbstractElementFinder.Abstra
 	
 	public ParserRule getFuzzyTriangularRule() {
 		return getFuzzyTriangularAccess().getRule();
+	}
+	
+	//FuzzyRightShoulder:
+	//    'FuzzyRightShoulder' '(' 'foot=' foot=DECIMAL ',' 'shoulder='shoulder=DECIMAL')'
+	//;
+	public FuzzyRightShoulderElements getFuzzyRightShoulderAccess() {
+		return pFuzzyRightShoulder;
+	}
+	
+	public ParserRule getFuzzyRightShoulderRule() {
+		return getFuzzyRightShoulderAccess().getRule();
+	}
+	
+	//FuzzyLeftShoulder:
+	//    'FuzzyLeftShoulder' '(' 'foot=' foot=DECIMAL ',' 'shoulder='shoulder=DECIMAL')'
+	//;
+	public FuzzyLeftShoulderElements getFuzzyLeftShoulderAccess() {
+		return pFuzzyLeftShoulder;
+	}
+	
+	public ParserRule getFuzzyLeftShoulderRule() {
+		return getFuzzyLeftShoulderAccess().getRule();
 	}
 	
 	//Quantifiable:

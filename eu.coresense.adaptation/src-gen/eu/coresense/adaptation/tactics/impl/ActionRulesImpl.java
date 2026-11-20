@@ -7,6 +7,8 @@ import eu.coresense.adaptation.tactics.ActionRules;
 import eu.coresense.adaptation.tactics.AdaptationRule;
 import eu.coresense.adaptation.tactics.TacticsPackage;
 
+import eu.coresense.requirements.requirementsModel.Requirement;
+
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -34,6 +36,7 @@ import ros.ActionSpec;
  * </p>
  * <ul>
  *   <li>{@link eu.coresense.adaptation.tactics.impl.ActionRulesImpl#getAction <em>Action</em>}</li>
+ *   <li>{@link eu.coresense.adaptation.tactics.impl.ActionRulesImpl#getRequirement <em>Requirement</em>}</li>
  *   <li>{@link eu.coresense.adaptation.tactics.impl.ActionRulesImpl#getAdaptationRules <em>Adaptation Rules</em>}</li>
  * </ul>
  *
@@ -50,6 +53,16 @@ public class ActionRulesImpl extends MinimalEObjectImpl.Container implements Act
    * @ordered
    */
   protected ActionSpec action;
+
+  /**
+   * The cached value of the '{@link #getRequirement() <em>Requirement</em>}' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getRequirement()
+   * @generated
+   * @ordered
+   */
+  protected Requirement requirement;
 
   /**
    * The cached value of the '{@link #getAdaptationRules() <em>Adaptation Rules</em>}' containment reference list.
@@ -133,6 +146,51 @@ public class ActionRulesImpl extends MinimalEObjectImpl.Container implements Act
    * @generated
    */
   @Override
+  public Requirement getRequirement()
+  {
+    if (requirement != null && requirement.eIsProxy())
+    {
+      InternalEObject oldRequirement = (InternalEObject)requirement;
+      requirement = (Requirement)eResolveProxy(oldRequirement);
+      if (requirement != oldRequirement)
+      {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, TacticsPackage.ACTION_RULES__REQUIREMENT, oldRequirement, requirement));
+      }
+    }
+    return requirement;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Requirement basicGetRequirement()
+  {
+    return requirement;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setRequirement(Requirement newRequirement)
+  {
+    Requirement oldRequirement = requirement;
+    requirement = newRequirement;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, TacticsPackage.ACTION_RULES__REQUIREMENT, oldRequirement, requirement));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public EList<AdaptationRule> getAdaptationRules()
   {
     if (adaptationRules == null)
@@ -171,6 +229,9 @@ public class ActionRulesImpl extends MinimalEObjectImpl.Container implements Act
       case TacticsPackage.ACTION_RULES__ACTION:
         if (resolve) return getAction();
         return basicGetAction();
+      case TacticsPackage.ACTION_RULES__REQUIREMENT:
+        if (resolve) return getRequirement();
+        return basicGetRequirement();
       case TacticsPackage.ACTION_RULES__ADAPTATION_RULES:
         return getAdaptationRules();
     }
@@ -190,6 +251,9 @@ public class ActionRulesImpl extends MinimalEObjectImpl.Container implements Act
     {
       case TacticsPackage.ACTION_RULES__ACTION:
         setAction((ActionSpec)newValue);
+        return;
+      case TacticsPackage.ACTION_RULES__REQUIREMENT:
+        setRequirement((Requirement)newValue);
         return;
       case TacticsPackage.ACTION_RULES__ADAPTATION_RULES:
         getAdaptationRules().clear();
@@ -212,6 +276,9 @@ public class ActionRulesImpl extends MinimalEObjectImpl.Container implements Act
       case TacticsPackage.ACTION_RULES__ACTION:
         setAction((ActionSpec)null);
         return;
+      case TacticsPackage.ACTION_RULES__REQUIREMENT:
+        setRequirement((Requirement)null);
+        return;
       case TacticsPackage.ACTION_RULES__ADAPTATION_RULES:
         getAdaptationRules().clear();
         return;
@@ -231,6 +298,8 @@ public class ActionRulesImpl extends MinimalEObjectImpl.Container implements Act
     {
       case TacticsPackage.ACTION_RULES__ACTION:
         return action != null;
+      case TacticsPackage.ACTION_RULES__REQUIREMENT:
+        return requirement != null;
       case TacticsPackage.ACTION_RULES__ADAPTATION_RULES:
         return adaptationRules != null && !adaptationRules.isEmpty();
     }

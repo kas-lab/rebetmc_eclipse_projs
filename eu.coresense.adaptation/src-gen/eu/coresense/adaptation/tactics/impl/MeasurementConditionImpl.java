@@ -3,6 +3,7 @@
  */
 package eu.coresense.adaptation.tactics.impl;
 
+import eu.coresense.adaptation.tactics.LogicalOperator;
 import eu.coresense.adaptation.tactics.MeasurementCondition;
 import eu.coresense.adaptation.tactics.TacticsPackage;
 
@@ -17,6 +18,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -28,12 +30,13 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * <ul>
  *   <li>{@link eu.coresense.adaptation.tactics.impl.MeasurementConditionImpl#getMeasurement <em>Measurement</em>}</li>
  *   <li>{@link eu.coresense.adaptation.tactics.impl.MeasurementConditionImpl#getOperator <em>Operator</em>}</li>
+ *   <li>{@link eu.coresense.adaptation.tactics.impl.MeasurementConditionImpl#getLogicalOp <em>Logical Op</em>}</li>
  *   <li>{@link eu.coresense.adaptation.tactics.impl.MeasurementConditionImpl#getSecondTerm <em>Second Term</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class MeasurementConditionImpl extends ConditionImpl implements MeasurementCondition
+public class MeasurementConditionImpl extends MinimalEObjectImpl.Container implements MeasurementCondition
 {
   /**
    * The cached value of the '{@link #getMeasurement() <em>Measurement</em>}' reference.
@@ -64,6 +67,26 @@ public class MeasurementConditionImpl extends ConditionImpl implements Measureme
    * @ordered
    */
   protected MathOperator operator = OPERATOR_EDEFAULT;
+
+  /**
+   * The default value of the '{@link #getLogicalOp() <em>Logical Op</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getLogicalOp()
+   * @generated
+   * @ordered
+   */
+  protected static final LogicalOperator LOGICAL_OP_EDEFAULT = LogicalOperator.AND;
+
+  /**
+   * The cached value of the '{@link #getLogicalOp() <em>Logical Op</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getLogicalOp()
+   * @generated
+   * @ordered
+   */
+  protected LogicalOperator logicalOp = LOGICAL_OP_EDEFAULT;
 
   /**
    * The cached value of the '{@link #getSecondTerm() <em>Second Term</em>}' containment reference.
@@ -172,6 +195,31 @@ public class MeasurementConditionImpl extends ConditionImpl implements Measureme
    * @generated
    */
   @Override
+  public LogicalOperator getLogicalOp()
+  {
+    return logicalOp;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setLogicalOp(LogicalOperator newLogicalOp)
+  {
+    LogicalOperator oldLogicalOp = logicalOp;
+    logicalOp = newLogicalOp == null ? LOGICAL_OP_EDEFAULT : newLogicalOp;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, TacticsPackage.MEASUREMENT_CONDITION__LOGICAL_OP, oldLogicalOp, logicalOp));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public MeasurementCondition getSecondTerm()
   {
     return secondTerm;
@@ -247,6 +295,8 @@ public class MeasurementConditionImpl extends ConditionImpl implements Measureme
         return basicGetMeasurement();
       case TacticsPackage.MEASUREMENT_CONDITION__OPERATOR:
         return getOperator();
+      case TacticsPackage.MEASUREMENT_CONDITION__LOGICAL_OP:
+        return getLogicalOp();
       case TacticsPackage.MEASUREMENT_CONDITION__SECOND_TERM:
         return getSecondTerm();
     }
@@ -268,6 +318,9 @@ public class MeasurementConditionImpl extends ConditionImpl implements Measureme
         return;
       case TacticsPackage.MEASUREMENT_CONDITION__OPERATOR:
         setOperator((MathOperator)newValue);
+        return;
+      case TacticsPackage.MEASUREMENT_CONDITION__LOGICAL_OP:
+        setLogicalOp((LogicalOperator)newValue);
         return;
       case TacticsPackage.MEASUREMENT_CONDITION__SECOND_TERM:
         setSecondTerm((MeasurementCondition)newValue);
@@ -292,6 +345,9 @@ public class MeasurementConditionImpl extends ConditionImpl implements Measureme
       case TacticsPackage.MEASUREMENT_CONDITION__OPERATOR:
         setOperator(OPERATOR_EDEFAULT);
         return;
+      case TacticsPackage.MEASUREMENT_CONDITION__LOGICAL_OP:
+        setLogicalOp(LOGICAL_OP_EDEFAULT);
+        return;
       case TacticsPackage.MEASUREMENT_CONDITION__SECOND_TERM:
         setSecondTerm((MeasurementCondition)null);
         return;
@@ -313,6 +369,8 @@ public class MeasurementConditionImpl extends ConditionImpl implements Measureme
         return measurement != null;
       case TacticsPackage.MEASUREMENT_CONDITION__OPERATOR:
         return operator != OPERATOR_EDEFAULT;
+      case TacticsPackage.MEASUREMENT_CONDITION__LOGICAL_OP:
+        return logicalOp != LOGICAL_OP_EDEFAULT;
       case TacticsPackage.MEASUREMENT_CONDITION__SECOND_TERM:
         return secondTerm != null;
     }
@@ -332,6 +390,8 @@ public class MeasurementConditionImpl extends ConditionImpl implements Measureme
     StringBuilder result = new StringBuilder(super.toString());
     result.append(" (operator: ");
     result.append(operator);
+    result.append(", logicalOp: ");
+    result.append(logicalOp);
     result.append(')');
     return result.toString();
   }

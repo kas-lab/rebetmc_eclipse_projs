@@ -128,6 +128,9 @@ class FeatureModelGenerator extends AbstractGenerator {
         fsa.generateFile(
             e.name + ".xml",
             e.generateXml)
+        fsa.generateFile(
+            e.name + "_conf.xml",
+            e.generateConfiguration)
 	}
         
        
@@ -264,6 +267,19 @@ class FeatureModelGenerator extends AbstractGenerator {
         </featureModel>
     '''
 
+def String generateConfiguration(FeatureModel fm) '''
+        <configuration>
+        	«generateXMLFeatConf(fm.root)»
+        </configuration>
+    '''
+
+    def String generateXMLFeatConf(Feature f) {        
+        val selecAttr = if (f.selected) ' manual="selected" automatic="undefined"' else ' manual="undefined" automatic="undefined"'
+        
+        return '''<feature name="«f.name»" «selecAttr»/>
+		«IF f.children !== null && f.children.size > 0»«FOR c : f.children»«generateXMLFeatConf(c)»«ENDFOR»«ENDIF»'''
+	}
+	
     def String generateXmlFeature(Feature f, int indentLevel) {
         val indent = "\t".repeat(indentLevel)
         val nextIndent = "\t".repeat(indentLevel + 1)

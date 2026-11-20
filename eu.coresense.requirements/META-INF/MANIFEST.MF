@@ -16,7 +16,10 @@ Require-Bundle: org.eclipse.xtext,
  org.antlr.runtime;bundle-version="[3.2.0,3.2.1)",
  de.fraunhofer.ipa.ros;bundle-version="3.0.0",
  eu.coresense.common;bundle-version="0.1.0",
- de.fraunhofer.ipa.rossystem;bundle-version="3.0.0"
+ de.fraunhofer.ipa.rossystem;bundle-version="3.0.0",
+ fms.metamodel;bundle-version="1.0.0",
+ org.eclipse.xtend.lib;bundle-version="2.38.0",
+ eu.coresense.variability;bundle-version="1.0.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-21
 Export-Package: eu.coresense.requirements.requirementsModel.impl,
  eu.coresense.requirements.requirementsModel.util,

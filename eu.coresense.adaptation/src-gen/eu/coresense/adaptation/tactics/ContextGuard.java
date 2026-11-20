@@ -28,12 +28,12 @@ public interface ContextGuard extends EObject
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the value of the '<em>Context Condition</em>' containment reference.
-   * @see #setContextCondition(MeasurementCondition)
+   * @see #setContextCondition(ContextCondition)
    * @see eu.coresense.adaptation.tactics.TacticsPackage#getContextGuard_ContextCondition()
    * @model containment="true"
    * @generated
    */
-  MeasurementCondition getContextCondition();
+  ContextCondition getContextCondition();
 
   /**
    * Sets the value of the '{@link eu.coresense.adaptation.tactics.ContextGuard#getContextCondition <em>Context Condition</em>}' containment reference.
@@ -43,6 +43,6 @@ public interface ContextGuard extends EObject
    * @see #getContextCondition()
    * @generated
    */
-  void setContextCondition(MeasurementCondition value);
+  void setContextCondition(ContextCondition value);
 
 } // ContextGuard

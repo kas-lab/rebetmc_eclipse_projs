@@ -9,6 +9,7 @@ import eu.coresense.common.CommonPackage;
 import eu.coresense.common.DecimalLiteral;
 import eu.coresense.common.Import;
 import eu.coresense.common.IntLiteral;
+import eu.coresense.context.contextModel.CompositeRef;
 import eu.coresense.context.contextModel.ContextModel;
 import eu.coresense.context.contextModel.ContextModelPackage;
 import eu.coresense.context.contextModel.ContextVar;
@@ -115,6 +116,9 @@ public class ContextModelSemanticSequencer extends BasicsSemanticSequencer {
 			}
 		else if (epackage == ContextModelPackage.eINSTANCE)
 			switch (semanticObject.eClass().getClassifierID()) {
+			case ContextModelPackage.COMPOSITE_REF:
+				sequence_CompositeRef(context, (CompositeRef) semanticObject); 
+				return; 
 			case ContextModelPackage.CONTEXT_MODEL:
 				sequence_ContextModel(context, (ContextModel) semanticObject); 
 				return; 
@@ -333,6 +337,21 @@ public class ContextModelSemanticSequencer extends BasicsSemanticSequencer {
 	/**
 	 * <pre>
 	 * Contexts:
+	 *     Reference returns CompositeRef
+	 *     CompositeRef returns CompositeRef
+	 *
+	 * Constraint:
+	 *     contextVars+=[ContextVar|ID]*
+	 * </pre>
+	 */
+	protected void sequence_CompositeRef(ISerializationContext context, CompositeRef semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
 	 *     ContextModel returns ContextModel
 	 *
 	 * Constraint:
@@ -358,7 +377,7 @@ public class ContextModelSemanticSequencer extends BasicsSemanticSequencer {
 	 *         length=INT? 
 	 *         period=INT? 
 	 *         doProxy=DoProxy? 
-	 *         functionName=STRING 
+	 *         functionName=FunctionName 
 	 *         functionLibrary=STRING? 
 	 *         functionArgs=STRING? 
 	 *         thresholds+=Literal*
@@ -376,7 +395,7 @@ public class ContextModelSemanticSequencer extends BasicsSemanticSequencer {
 	 *     DataSource returns DataSource
 	 *
 	 * Constraint:
-	 *     ref=QualifiedRef
+	 *     ref=Reference
 	 * </pre>
 	 */
 	protected void sequence_DataSource(ISerializationContext context, DataSource semanticObject) {
@@ -385,7 +404,7 @@ public class ContextModelSemanticSequencer extends BasicsSemanticSequencer {
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ContextModelPackage.Literals.DATA_SOURCE__REF));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getDataSourceAccess().getRefQualifiedRefParserRuleCall_1_1_0(), semanticObject.getRef());
+		feeder.accept(grammarAccess.getDataSourceAccess().getRefReferenceParserRuleCall_1_1_0(), semanticObject.getRef());
 		feeder.finish();
 	}
 	
@@ -509,6 +528,7 @@ public class ContextModelSemanticSequencer extends BasicsSemanticSequencer {
 	/**
 	 * <pre>
 	 * Contexts:
+	 *     Reference returns QualifiedActionServerRef
 	 *     QualifiedRef returns QualifiedActionServerRef
 	 *     QualifiedActionServerRef returns QualifiedActionServerRef
 	 *
@@ -536,6 +556,7 @@ public class ContextModelSemanticSequencer extends BasicsSemanticSequencer {
 	/**
 	 * <pre>
 	 * Contexts:
+	 *     Reference returns QualifiedPublisherRef
 	 *     QualifiedRef returns QualifiedPublisherRef
 	 *     QualifiedPublisherRef returns QualifiedPublisherRef
 	 *
@@ -560,6 +581,7 @@ public class ContextModelSemanticSequencer extends BasicsSemanticSequencer {
 	/**
 	 * <pre>
 	 * Contexts:
+	 *     Reference returns QualifiedServiceServerRef
 	 *     QualifiedRef returns QualifiedServiceServerRef
 	 *     QualifiedServiceServerRef returns QualifiedServiceServerRef
 	 *

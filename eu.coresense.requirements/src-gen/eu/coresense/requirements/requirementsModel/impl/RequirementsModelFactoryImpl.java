@@ -68,6 +68,7 @@ public class RequirementsModelFactoryImpl extends EFactoryImpl implements Requir
     {
       case RequirementsModelPackage.REQUIREMENTS_MODEL: return createRequirementsModel();
       case RequirementsModelPackage.REQUIREMENT: return createRequirement();
+      case RequirementsModelPackage.FEATURE_QUALIFIER: return createFeatureQualifier();
       case RequirementsModelPackage.CONDITION: return createCondition();
       case RequirementsModelPackage.PROPOSITION: return createProposition();
       case RequirementsModelPackage.BOOLEAN_STATEMENT: return createBooleanStatement();
@@ -88,6 +89,8 @@ public class RequirementsModelFactoryImpl extends EFactoryImpl implements Requir
       case RequirementsModelPackage.AS_CLOSE_LIT: return createAsCloseLit();
       case RequirementsModelPackage.MEMBERSHIP_FUNCTION: return createMembershipFunction();
       case RequirementsModelPackage.FUZZY_TRIANGULAR: return createFuzzyTriangular();
+      case RequirementsModelPackage.FUZZY_RIGHT_SHOULDER: return createFuzzyRightShoulder();
+      case RequirementsModelPackage.FUZZY_LEFT_SHOULDER: return createFuzzyLeftShoulder();
       case RequirementsModelPackage.QUANTIFIABLE: return createQuantifiable();
       case RequirementsModelPackage.MAY: return createMay();
       case RequirementsModelPackage.MAY_ALTERNATIVE: return createMayAlternative();
@@ -162,6 +165,18 @@ public class RequirementsModelFactoryImpl extends EFactoryImpl implements Requir
   {
     RequirementImpl requirement = new RequirementImpl();
     return requirement;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public FeatureQualifier createFeatureQualifier()
+  {
+    FeatureQualifierImpl featureQualifier = new FeatureQualifierImpl();
+    return featureQualifier;
   }
 
   /**
@@ -402,6 +417,30 @@ public class RequirementsModelFactoryImpl extends EFactoryImpl implements Requir
   {
     FuzzyTriangularImpl fuzzyTriangular = new FuzzyTriangularImpl();
     return fuzzyTriangular;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public FuzzyRightShoulder createFuzzyRightShoulder()
+  {
+    FuzzyRightShoulderImpl fuzzyRightShoulder = new FuzzyRightShoulderImpl();
+    return fuzzyRightShoulder;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public FuzzyLeftShoulder createFuzzyLeftShoulder()
+  {
+    FuzzyLeftShoulderImpl fuzzyLeftShoulder = new FuzzyLeftShoulderImpl();
+    return fuzzyLeftShoulder;
   }
 
   /**

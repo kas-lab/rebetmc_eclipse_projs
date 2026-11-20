@@ -5,7 +5,7 @@ package eu.coresense.context.contextModel.impl;
 
 import eu.coresense.context.contextModel.ContextModelPackage;
 import eu.coresense.context.contextModel.DataSource;
-import eu.coresense.context.contextModel.QualifiedRef;
+import eu.coresense.context.contextModel.Reference;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -39,7 +39,7 @@ public class DataSourceImpl extends MinimalEObjectImpl.Container implements Data
    * @generated
    * @ordered
    */
-  protected QualifiedRef ref;
+  protected Reference ref;
 
   /**
    * <!-- begin-user-doc -->
@@ -68,7 +68,7 @@ public class DataSourceImpl extends MinimalEObjectImpl.Container implements Data
    * @generated
    */
   @Override
-  public QualifiedRef getRef()
+  public Reference getRef()
   {
     return ref;
   }
@@ -78,9 +78,9 @@ public class DataSourceImpl extends MinimalEObjectImpl.Container implements Data
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetRef(QualifiedRef newRef, NotificationChain msgs)
+  public NotificationChain basicSetRef(Reference newRef, NotificationChain msgs)
   {
-    QualifiedRef oldRef = ref;
+    Reference oldRef = ref;
     ref = newRef;
     if (eNotificationRequired())
     {
@@ -96,7 +96,7 @@ public class DataSourceImpl extends MinimalEObjectImpl.Container implements Data
    * @generated
    */
   @Override
-  public void setRef(QualifiedRef newRef)
+  public void setRef(Reference newRef)
   {
     if (newRef != ref)
     {
@@ -155,7 +155,7 @@ public class DataSourceImpl extends MinimalEObjectImpl.Container implements Data
     switch (featureID)
     {
       case ContextModelPackage.DATA_SOURCE__REF:
-        setRef((QualifiedRef)newValue);
+        setRef((Reference)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -172,7 +172,7 @@ public class DataSourceImpl extends MinimalEObjectImpl.Container implements Data
     switch (featureID)
     {
       case ContextModelPackage.DATA_SOURCE__REF:
-        setRef((QualifiedRef)null);
+        setRef((Reference)null);
         return;
     }
     super.eUnset(featureID);

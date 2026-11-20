@@ -74,7 +74,7 @@ public class ContextModelSyntacticSequencer extends AbstractSyntacticSequencer {
 	 * This ambiguous syntax occurs at:
 	 *     functionArgs=STRING (ambiguity) '}' (rule end)
 	 *     functionLibrary=STRING (ambiguity) '}' (rule end)
-	 *     functionName=STRING (ambiguity) '}' (rule end)
+	 *     functionName=FunctionName (ambiguity) '}' (rule end)
 	 
 	 * </pre>
 	 */

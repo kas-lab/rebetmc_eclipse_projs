@@ -11,6 +11,10 @@ package eu.coresense.context.ide.contentassist.antlr.lexer;
 import org.eclipse.xtext.ide.editor.contentassist.antlr.internal.Lexer;
 }
 
+Meta_last_published : 'meta_last_published';
+
+Meta_has_published : 'meta_has_published';
+
 RelativeNamespace : 'RelativeNamespace';
 
 PrivateNamespace : 'PrivateNamespace';
@@ -34,6 +38,8 @@ ParameterAny : 'ParameterAny';
 Function_lib : 'function_lib';
 
 Goal_kwargs : 'goal_kwargs';
+
+Meta_count : 'meta_count';
 
 Publisher : 'publisher:';
 

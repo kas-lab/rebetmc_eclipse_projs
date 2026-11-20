@@ -3,6 +3,8 @@
  */
 package eu.coresense.requirements.requirementsModel.impl;
 
+import eu.coresense.common.Import;
+
 import eu.coresense.requirements.requirementsModel.Requirement;
 import eu.coresense.requirements.requirementsModel.RequirementsModel;
 import eu.coresense.requirements.requirementsModel.RequirementsModelPackage;
@@ -29,6 +31,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * </p>
  * <ul>
+ *   <li>{@link eu.coresense.requirements.requirementsModel.impl.RequirementsModelImpl#getImports <em>Imports</em>}</li>
  *   <li>{@link eu.coresense.requirements.requirementsModel.impl.RequirementsModelImpl#getRequirements <em>Requirements</em>}</li>
  * </ul>
  *
@@ -36,6 +39,16 @@ import org.eclipse.emf.ecore.util.InternalEList;
  */
 public class RequirementsModelImpl extends MinimalEObjectImpl.Container implements RequirementsModel
 {
+  /**
+   * The cached value of the '{@link #getImports() <em>Imports</em>}' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getImports()
+   * @generated
+   * @ordered
+   */
+  protected EList<Import> imports;
+
   /**
    * The cached value of the '{@link #getRequirements() <em>Requirements</em>}' containment reference list.
    * <!-- begin-user-doc -->
@@ -73,6 +86,21 @@ public class RequirementsModelImpl extends MinimalEObjectImpl.Container implemen
    * @generated
    */
   @Override
+  public EList<Import> getImports()
+  {
+    if (imports == null)
+    {
+      imports = new EObjectContainmentEList<Import>(Import.class, this, RequirementsModelPackage.REQUIREMENTS_MODEL__IMPORTS);
+    }
+    return imports;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public EList<Requirement> getRequirements()
   {
     if (requirements == null)
@@ -92,6 +120,8 @@ public class RequirementsModelImpl extends MinimalEObjectImpl.Container implemen
   {
     switch (featureID)
     {
+      case RequirementsModelPackage.REQUIREMENTS_MODEL__IMPORTS:
+        return ((InternalEList<?>)getImports()).basicRemove(otherEnd, msgs);
       case RequirementsModelPackage.REQUIREMENTS_MODEL__REQUIREMENTS:
         return ((InternalEList<?>)getRequirements()).basicRemove(otherEnd, msgs);
     }
@@ -108,6 +138,8 @@ public class RequirementsModelImpl extends MinimalEObjectImpl.Container implemen
   {
     switch (featureID)
     {
+      case RequirementsModelPackage.REQUIREMENTS_MODEL__IMPORTS:
+        return getImports();
       case RequirementsModelPackage.REQUIREMENTS_MODEL__REQUIREMENTS:
         return getRequirements();
     }
@@ -125,6 +157,10 @@ public class RequirementsModelImpl extends MinimalEObjectImpl.Container implemen
   {
     switch (featureID)
     {
+      case RequirementsModelPackage.REQUIREMENTS_MODEL__IMPORTS:
+        getImports().clear();
+        getImports().addAll((Collection<? extends Import>)newValue);
+        return;
       case RequirementsModelPackage.REQUIREMENTS_MODEL__REQUIREMENTS:
         getRequirements().clear();
         getRequirements().addAll((Collection<? extends Requirement>)newValue);
@@ -143,6 +179,9 @@ public class RequirementsModelImpl extends MinimalEObjectImpl.Container implemen
   {
     switch (featureID)
     {
+      case RequirementsModelPackage.REQUIREMENTS_MODEL__IMPORTS:
+        getImports().clear();
+        return;
       case RequirementsModelPackage.REQUIREMENTS_MODEL__REQUIREMENTS:
         getRequirements().clear();
         return;
@@ -160,6 +199,8 @@ public class RequirementsModelImpl extends MinimalEObjectImpl.Container implemen
   {
     switch (featureID)
     {
+      case RequirementsModelPackage.REQUIREMENTS_MODEL__IMPORTS:
+        return imports != null && !imports.isEmpty();
       case RequirementsModelPackage.REQUIREMENTS_MODEL__REQUIREMENTS:
         return requirements != null && !requirements.isEmpty();
     }

@@ -30,7 +30,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *
  * @generated
  */
-public class ConditionActionImpl extends RuleBodyImpl implements ConditionAction
+public class ConditionActionImpl extends TacticActionImpl implements ConditionAction
 {
   /**
    * The cached value of the '{@link #getContextGuard() <em>Context Guard</em>}' containment reference.

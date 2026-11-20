@@ -27,7 +27,7 @@ ContextVar:
 		('cache' 'length' length=INT 's')?
 		('period' period=INT 'ns')?
 		('proxy' doProxy=DoProxy)?
-		'function_name' functionName=STRING
+		'function_name' functionName=FunctionName
 		('function_lib' functionLibrary=STRING)?
 		('function_args' functionArgs=STRING)?
 		('thresholds' thresholds+=Literal*)?
@@ -36,6 +36,10 @@ ContextVar:
 Literal returns common::Literal:
 	IntLiteral
     | DecimalLiteral
+;
+
+FunctionName returns ecore::EString:
+	STRING | 'meta_count' | 'meta_last_published' | 'meta_has_published'
 ;
 
 IntLiteral returns common::IntLiteral:
@@ -66,13 +70,23 @@ DoProxy:
 DataSource:
 	'source:'
     (
-        'origin:'ref=QualifiedRef 
+        'origin:'ref=Reference 
     )
 ;
 
 KeyWordArguments:
 	STRING
 ;
+
+Reference:
+	QualifiedRef | CompositeRef
+;
+
+CompositeRef:
+	{CompositeRef}
+	contextVars+=[ContextVar]*
+;
+
 //TODO: Handle remapped topics, actions, services.
 QualifiedRef:
 	QualifiedPublisherRef | QualifiedServiceServerRef | QualifiedActionServerRef

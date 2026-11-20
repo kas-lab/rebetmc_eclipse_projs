@@ -81,54 +81,34 @@ public class TacticsAdapterFactory extends AdapterFactoryImpl
         return createTacticsModelAdapter();
       }
       @Override
-      public Adapter caseActionRules(ActionRules object)
+      public Adapter caseTactic(Tactic object)
       {
-        return createActionRulesAdapter();
+        return createTacticAdapter();
       }
       @Override
-      public Adapter caseAdaptationRule(AdaptationRule object)
+      public Adapter caseActionTactics(ActionTactics object)
       {
-        return createAdaptationRuleAdapter();
+        return createActionTacticsAdapter();
       }
       @Override
-      public Adapter caseAtomicRule(AtomicRule object)
+      public Adapter casePureTactic(PureTactic object)
       {
-        return createAtomicRuleAdapter();
+        return createPureTacticAdapter();
       }
       @Override
-      public Adapter caseRuleSet(RuleSet object)
+      public Adapter caseSelection(Selection object)
       {
-        return createRuleSetAdapter();
+        return createSelectionAdapter();
       }
       @Override
-      public Adapter caseAtomicRuleWithPriority(AtomicRuleWithPriority object)
+      public Adapter caseTacticAction(TacticAction object)
       {
-        return createAtomicRuleWithPriorityAdapter();
+        return createTacticActionAdapter();
       }
       @Override
-      public Adapter caseAtomicAction(AtomicAction object)
+      public Adapter caseGuard(Guard object)
       {
-        return createAtomicActionAdapter();
-      }
-      @Override
-      public Adapter caseAtomicSimpleAction(AtomicSimpleAction object)
-      {
-        return createAtomicSimpleActionAdapter();
-      }
-      @Override
-      public Adapter caseRuleBody(RuleBody object)
-      {
-        return createRuleBodyAdapter();
-      }
-      @Override
-      public Adapter casePureAction(PureAction object)
-      {
-        return createPureActionAdapter();
-      }
-      @Override
-      public Adapter caseConditionAction(ConditionAction object)
-      {
-        return createConditionActionAdapter();
+        return createGuardAdapter();
       }
       @Override
       public Adapter caseContextGuard(ContextGuard object)
@@ -141,54 +121,34 @@ public class TacticsAdapterFactory extends AdapterFactoryImpl
         return createFeatureGuardAdapter();
       }
       @Override
-      public Adapter caseEffectBlock(EffectBlock object)
-      {
-        return createEffectBlockAdapter();
-      }
-      @Override
-      public Adapter caseEffect(Effect object)
-      {
-        return createEffectAdapter();
-      }
-      @Override
-      public Adapter caseRelativeEffect(RelativeEffect object)
-      {
-        return createRelativeEffectAdapter();
-      }
-      @Override
       public Adapter caseFeatureCondition(FeatureCondition object)
       {
         return createFeatureConditionAdapter();
       }
       @Override
-      public Adapter caseCondition(Condition object)
+      public Adapter caseContextCondition(ContextCondition object)
       {
-        return createConditionAdapter();
+        return createContextConditionAdapter();
       }
       @Override
-      public Adapter caseMeasurementCondition(MeasurementCondition object)
+      public Adapter caseContextThresholdCondition(ContextThresholdCondition object)
       {
-        return createMeasurementConditionAdapter();
+        return createContextThresholdConditionAdapter();
       }
       @Override
-      public Adapter caseMeasurementThresholdCondition(MeasurementThresholdCondition object)
+      public Adapter caseContextContextCondition(ContextContextCondition object)
       {
-        return createMeasurementThresholdConditionAdapter();
+        return createContextContextConditionAdapter();
       }
       @Override
-      public Adapter caseMeasurementMeasurementCondition(MeasurementMeasurementCondition object)
+      public Adapter caseSelectVariant(SelectVariant object)
       {
-        return createMeasurementMeasurementConditionAdapter();
+        return createSelectVariantAdapter();
       }
       @Override
-      public Adapter caseAtomicActionSelectFeature(AtomicActionSelectFeature object)
+      public Adapter caseDeselectVariant(DeselectVariant object)
       {
-        return createAtomicActionSelectFeatureAdapter();
-      }
-      @Override
-      public Adapter caseAtomicActionDeselectFeature(AtomicActionDeselectFeature object)
-      {
-        return createAtomicActionDeselectFeatureAdapter();
+        return createDeselectVariantAdapter();
       }
       @Override
       public Adapter caseQualifiedFeatureRef(QualifiedFeatureRef object)
@@ -233,151 +193,91 @@ public class TacticsAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link eu.coresense.adaptation.tactics.ActionRules <em>Action Rules</em>}'.
+   * Creates a new adapter for an object of class '{@link eu.coresense.adaptation.tactics.Tactic <em>Tactic</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see eu.coresense.adaptation.tactics.ActionRules
+   * @see eu.coresense.adaptation.tactics.Tactic
    * @generated
    */
-  public Adapter createActionRulesAdapter()
+  public Adapter createTacticAdapter()
   {
     return null;
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link eu.coresense.adaptation.tactics.AdaptationRule <em>Adaptation Rule</em>}'.
+   * Creates a new adapter for an object of class '{@link eu.coresense.adaptation.tactics.ActionTactics <em>Action Tactics</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see eu.coresense.adaptation.tactics.AdaptationRule
+   * @see eu.coresense.adaptation.tactics.ActionTactics
    * @generated
    */
-  public Adapter createAdaptationRuleAdapter()
+  public Adapter createActionTacticsAdapter()
   {
     return null;
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link eu.coresense.adaptation.tactics.AtomicRule <em>Atomic Rule</em>}'.
+   * Creates a new adapter for an object of class '{@link eu.coresense.adaptation.tactics.PureTactic <em>Pure Tactic</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see eu.coresense.adaptation.tactics.AtomicRule
+   * @see eu.coresense.adaptation.tactics.PureTactic
    * @generated
    */
-  public Adapter createAtomicRuleAdapter()
+  public Adapter createPureTacticAdapter()
   {
     return null;
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link eu.coresense.adaptation.tactics.RuleSet <em>Rule Set</em>}'.
+   * Creates a new adapter for an object of class '{@link eu.coresense.adaptation.tactics.Selection <em>Selection</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see eu.coresense.adaptation.tactics.RuleSet
+   * @see eu.coresense.adaptation.tactics.Selection
    * @generated
    */
-  public Adapter createRuleSetAdapter()
+  public Adapter createSelectionAdapter()
   {
     return null;
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link eu.coresense.adaptation.tactics.AtomicRuleWithPriority <em>Atomic Rule With Priority</em>}'.
+   * Creates a new adapter for an object of class '{@link eu.coresense.adaptation.tactics.TacticAction <em>Tactic Action</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see eu.coresense.adaptation.tactics.AtomicRuleWithPriority
+   * @see eu.coresense.adaptation.tactics.TacticAction
    * @generated
    */
-  public Adapter createAtomicRuleWithPriorityAdapter()
+  public Adapter createTacticActionAdapter()
   {
     return null;
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link eu.coresense.adaptation.tactics.AtomicAction <em>Atomic Action</em>}'.
+   * Creates a new adapter for an object of class '{@link eu.coresense.adaptation.tactics.Guard <em>Guard</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see eu.coresense.adaptation.tactics.AtomicAction
+   * @see eu.coresense.adaptation.tactics.Guard
    * @generated
    */
-  public Adapter createAtomicActionAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link eu.coresense.adaptation.tactics.AtomicSimpleAction <em>Atomic Simple Action</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see eu.coresense.adaptation.tactics.AtomicSimpleAction
-   * @generated
-   */
-  public Adapter createAtomicSimpleActionAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link eu.coresense.adaptation.tactics.RuleBody <em>Rule Body</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see eu.coresense.adaptation.tactics.RuleBody
-   * @generated
-   */
-  public Adapter createRuleBodyAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link eu.coresense.adaptation.tactics.PureAction <em>Pure Action</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see eu.coresense.adaptation.tactics.PureAction
-   * @generated
-   */
-  public Adapter createPureActionAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link eu.coresense.adaptation.tactics.ConditionAction <em>Condition Action</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see eu.coresense.adaptation.tactics.ConditionAction
-   * @generated
-   */
-  public Adapter createConditionActionAdapter()
+  public Adapter createGuardAdapter()
   {
     return null;
   }
@@ -413,51 +313,6 @@ public class TacticsAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link eu.coresense.adaptation.tactics.EffectBlock <em>Effect Block</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see eu.coresense.adaptation.tactics.EffectBlock
-   * @generated
-   */
-  public Adapter createEffectBlockAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link eu.coresense.adaptation.tactics.Effect <em>Effect</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see eu.coresense.adaptation.tactics.Effect
-   * @generated
-   */
-  public Adapter createEffectAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link eu.coresense.adaptation.tactics.RelativeEffect <em>Relative Effect</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see eu.coresense.adaptation.tactics.RelativeEffect
-   * @generated
-   */
-  public Adapter createRelativeEffectAdapter()
-  {
-    return null;
-  }
-
-  /**
    * Creates a new adapter for an object of class '{@link eu.coresense.adaptation.tactics.FeatureCondition <em>Feature Condition</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -473,91 +328,76 @@ public class TacticsAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link eu.coresense.adaptation.tactics.Condition <em>Condition</em>}'.
+   * Creates a new adapter for an object of class '{@link eu.coresense.adaptation.tactics.ContextCondition <em>Context Condition</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see eu.coresense.adaptation.tactics.Condition
+   * @see eu.coresense.adaptation.tactics.ContextCondition
    * @generated
    */
-  public Adapter createConditionAdapter()
+  public Adapter createContextConditionAdapter()
   {
     return null;
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link eu.coresense.adaptation.tactics.MeasurementCondition <em>Measurement Condition</em>}'.
+   * Creates a new adapter for an object of class '{@link eu.coresense.adaptation.tactics.ContextThresholdCondition <em>Context Threshold Condition</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see eu.coresense.adaptation.tactics.MeasurementCondition
+   * @see eu.coresense.adaptation.tactics.ContextThresholdCondition
    * @generated
    */
-  public Adapter createMeasurementConditionAdapter()
+  public Adapter createContextThresholdConditionAdapter()
   {
     return null;
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link eu.coresense.adaptation.tactics.MeasurementThresholdCondition <em>Measurement Threshold Condition</em>}'.
+   * Creates a new adapter for an object of class '{@link eu.coresense.adaptation.tactics.ContextContextCondition <em>Context Context Condition</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see eu.coresense.adaptation.tactics.MeasurementThresholdCondition
+   * @see eu.coresense.adaptation.tactics.ContextContextCondition
    * @generated
    */
-  public Adapter createMeasurementThresholdConditionAdapter()
+  public Adapter createContextContextConditionAdapter()
   {
     return null;
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link eu.coresense.adaptation.tactics.MeasurementMeasurementCondition <em>Measurement Measurement Condition</em>}'.
+   * Creates a new adapter for an object of class '{@link eu.coresense.adaptation.tactics.SelectVariant <em>Select Variant</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see eu.coresense.adaptation.tactics.MeasurementMeasurementCondition
+   * @see eu.coresense.adaptation.tactics.SelectVariant
    * @generated
    */
-  public Adapter createMeasurementMeasurementConditionAdapter()
+  public Adapter createSelectVariantAdapter()
   {
     return null;
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link eu.coresense.adaptation.tactics.AtomicActionSelectFeature <em>Atomic Action Select Feature</em>}'.
+   * Creates a new adapter for an object of class '{@link eu.coresense.adaptation.tactics.DeselectVariant <em>Deselect Variant</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see eu.coresense.adaptation.tactics.AtomicActionSelectFeature
+   * @see eu.coresense.adaptation.tactics.DeselectVariant
    * @generated
    */
-  public Adapter createAtomicActionSelectFeatureAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link eu.coresense.adaptation.tactics.AtomicActionDeselectFeature <em>Atomic Action Deselect Feature</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see eu.coresense.adaptation.tactics.AtomicActionDeselectFeature
-   * @generated
-   */
-  public Adapter createAtomicActionDeselectFeatureAdapter()
+  public Adapter createDeselectVariantAdapter()
   {
     return null;
   }

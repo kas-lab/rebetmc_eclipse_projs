@@ -3,6 +3,8 @@
  */
 package eu.coresense.adaptation.tactics;
 
+import eu.coresense.requirements.requirementsModel.Requirement;
+
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EObject;
@@ -19,6 +21,7 @@ import ros.ActionSpec;
  * </p>
  * <ul>
  *   <li>{@link eu.coresense.adaptation.tactics.ActionRules#getAction <em>Action</em>}</li>
+ *   <li>{@link eu.coresense.adaptation.tactics.ActionRules#getRequirement <em>Requirement</em>}</li>
  *   <li>{@link eu.coresense.adaptation.tactics.ActionRules#getAdaptationRules <em>Adaptation Rules</em>}</li>
  * </ul>
  *
@@ -49,6 +52,28 @@ public interface ActionRules extends EObject
    * @generated
    */
   void setAction(ActionSpec value);
+
+  /**
+   * Returns the value of the '<em><b>Requirement</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Requirement</em>' reference.
+   * @see #setRequirement(Requirement)
+   * @see eu.coresense.adaptation.tactics.TacticsPackage#getActionRules_Requirement()
+   * @model
+   * @generated
+   */
+  Requirement getRequirement();
+
+  /**
+   * Sets the value of the '{@link eu.coresense.adaptation.tactics.ActionRules#getRequirement <em>Requirement</em>}' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Requirement</em>' reference.
+   * @see #getRequirement()
+   * @generated
+   */
+  void setRequirement(Requirement value);
 
   /**
    * Returns the value of the '<em><b>Adaptation Rules</b></em>' containment reference list.

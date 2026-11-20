@@ -4,6 +4,7 @@
 package eu.coresense.requirements.requirementsModel.impl;
 
 import eu.coresense.requirements.requirementsModel.AsAsPossible;
+import eu.coresense.requirements.requirementsModel.MembershipFunction;
 import eu.coresense.requirements.requirementsModel.Quantifiable;
 import eu.coresense.requirements.requirementsModel.RequirementsModelPackage;
 import eu.coresense.requirements.requirementsModel.Timeliness;
@@ -26,6 +27,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * <ul>
  *   <li>{@link eu.coresense.requirements.requirementsModel.impl.AsAsPossibleImpl#getTimeFrequency <em>Time Frequency</em>}</li>
  *   <li>{@link eu.coresense.requirements.requirementsModel.impl.AsAsPossibleImpl#getQuantity <em>Quantity</em>}</li>
+ *   <li>{@link eu.coresense.requirements.requirementsModel.impl.AsAsPossibleImpl#getMembershipFunction <em>Membership Function</em>}</li>
  * </ul>
  *
  * @generated
@@ -61,6 +63,16 @@ public class AsAsPossibleImpl extends ExpressionImpl implements AsAsPossible
    * @ordered
    */
   protected Quantifiable quantity;
+
+  /**
+   * The cached value of the '{@link #getMembershipFunction() <em>Membership Function</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getMembershipFunction()
+   * @generated
+   * @ordered
+   */
+  protected MembershipFunction membershipFunction;
 
   /**
    * <!-- begin-user-doc -->
@@ -164,12 +176,64 @@ public class AsAsPossibleImpl extends ExpressionImpl implements AsAsPossible
    * @generated
    */
   @Override
+  public MembershipFunction getMembershipFunction()
+  {
+    return membershipFunction;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetMembershipFunction(MembershipFunction newMembershipFunction, NotificationChain msgs)
+  {
+    MembershipFunction oldMembershipFunction = membershipFunction;
+    membershipFunction = newMembershipFunction;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, RequirementsModelPackage.AS_AS_POSSIBLE__MEMBERSHIP_FUNCTION, oldMembershipFunction, newMembershipFunction);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setMembershipFunction(MembershipFunction newMembershipFunction)
+  {
+    if (newMembershipFunction != membershipFunction)
+    {
+      NotificationChain msgs = null;
+      if (membershipFunction != null)
+        msgs = ((InternalEObject)membershipFunction).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - RequirementsModelPackage.AS_AS_POSSIBLE__MEMBERSHIP_FUNCTION, null, msgs);
+      if (newMembershipFunction != null)
+        msgs = ((InternalEObject)newMembershipFunction).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - RequirementsModelPackage.AS_AS_POSSIBLE__MEMBERSHIP_FUNCTION, null, msgs);
+      msgs = basicSetMembershipFunction(newMembershipFunction, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, RequirementsModelPackage.AS_AS_POSSIBLE__MEMBERSHIP_FUNCTION, newMembershipFunction, newMembershipFunction));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
   {
     switch (featureID)
     {
       case RequirementsModelPackage.AS_AS_POSSIBLE__QUANTITY:
         return basicSetQuantity(null, msgs);
+      case RequirementsModelPackage.AS_AS_POSSIBLE__MEMBERSHIP_FUNCTION:
+        return basicSetMembershipFunction(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -188,6 +252,8 @@ public class AsAsPossibleImpl extends ExpressionImpl implements AsAsPossible
         return getTimeFrequency();
       case RequirementsModelPackage.AS_AS_POSSIBLE__QUANTITY:
         return getQuantity();
+      case RequirementsModelPackage.AS_AS_POSSIBLE__MEMBERSHIP_FUNCTION:
+        return getMembershipFunction();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -207,6 +273,9 @@ public class AsAsPossibleImpl extends ExpressionImpl implements AsAsPossible
         return;
       case RequirementsModelPackage.AS_AS_POSSIBLE__QUANTITY:
         setQuantity((Quantifiable)newValue);
+        return;
+      case RequirementsModelPackage.AS_AS_POSSIBLE__MEMBERSHIP_FUNCTION:
+        setMembershipFunction((MembershipFunction)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -228,6 +297,9 @@ public class AsAsPossibleImpl extends ExpressionImpl implements AsAsPossible
       case RequirementsModelPackage.AS_AS_POSSIBLE__QUANTITY:
         setQuantity((Quantifiable)null);
         return;
+      case RequirementsModelPackage.AS_AS_POSSIBLE__MEMBERSHIP_FUNCTION:
+        setMembershipFunction((MembershipFunction)null);
+        return;
     }
     super.eUnset(featureID);
   }
@@ -246,6 +318,8 @@ public class AsAsPossibleImpl extends ExpressionImpl implements AsAsPossible
         return timeFrequency != TIME_FREQUENCY_EDEFAULT;
       case RequirementsModelPackage.AS_AS_POSSIBLE__QUANTITY:
         return quantity != null;
+      case RequirementsModelPackage.AS_AS_POSSIBLE__MEMBERSHIP_FUNCTION:
+        return membershipFunction != null;
     }
     return super.eIsSet(featureID);
   }

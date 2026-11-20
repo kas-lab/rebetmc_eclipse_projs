@@ -9,12 +9,12 @@ import java.util.stream.Collectors;
 
 import org.eclipse.xtext.validation.Check;
 
-import eu.coresense.adaptation.tactics.AtomicAction;
-import eu.coresense.adaptation.tactics.AtomicActionDeselectFeature;
-import eu.coresense.adaptation.tactics.AtomicActionSelectFeature;
-import eu.coresense.adaptation.tactics.AtomicSimpleAction;
-import eu.coresense.adaptation.tactics.MeasurementThresholdCondition;
+import eu.coresense.adaptation.tactics.ContextThresholdCondition;
+import eu.coresense.adaptation.tactics.DeselectVariant;
 import eu.coresense.adaptation.tactics.QualifiedFeatureRef;
+import eu.coresense.adaptation.tactics.SelectVariant;
+import eu.coresense.adaptation.tactics.Selection;
+import eu.coresense.adaptation.tactics.TacticAction;
 import eu.coresense.adaptation.tactics.TacticsPackage;
 import eu.coresense.common.Literal;
 import eu.coresense.common.IntLiteral;
@@ -35,24 +35,24 @@ import uma.caosd.rhea.BasicFMmetamodel.Feature;
 public class TacticsValidator extends AbstractTacticsValidator {
 	
 	@Check
-	public void checkDeselect(AtomicAction action)
+	public void checkDeselect(TacticAction action)
 	{
 		int numActions = action.getActions().size();
 		for (int i = 0; i < numActions; i++) 
 		{
-			AtomicSimpleAction simpleAction = action.getActions().get(i);
-			if(!(simpleAction instanceof AtomicActionDeselectFeature)) return;
+			Selection simpleAction = action.getActions().get(i);
+			if(!(simpleAction instanceof DeselectVariant)) return;
 			
 			Feature featureParent = simpleAction.getVariant().getFeature().getParent();
 			
 			if(featureParent instanceof Alternative && featureParent.isMandatory())
 			{
 				if(featureParent.getChildren().size() <= 2) return;
-				List<AtomicSimpleAction> remainingActions = action.getActions().subList(i+1,numActions);
+				List<Selection> remainingActions = action.getActions().subList(i+1,numActions);
 				boolean selectPresent = false;
-				for (AtomicSimpleAction remainingAction : remainingActions) {
+				for (Selection remainingAction : remainingActions) {
 					Feature remainingParent = remainingAction.getVariant().getFeature().getParent();
-					selectPresent = (remainingAction instanceof AtomicActionSelectFeature && remainingParent == featureParent);
+					selectPresent = (remainingAction instanceof SelectVariant && remainingParent == featureParent);
 				}
 				
 				if(!selectPresent) error("You cannot deselect from an mandatory alternative with more than two children without providing a new child to select.",null);	
@@ -61,10 +61,10 @@ public class TacticsValidator extends AbstractTacticsValidator {
 	}
 	
 	@Check
-	public void thresholdTypeMatch(MeasurementThresholdCondition condition)
+	public void thresholdTypeMatch(ContextThresholdCondition condition)
 	{
 		var thresholdValue = condition.getThresholdValue();
-		var abstractType = condition.getMeasurement().getType();
+		var abstractType = condition.getContextVar().getType();
 		boolean pass = false;
 		switch(thresholdValue) {
 			case IntLiteral i: pass = intLike(abstractType); break;

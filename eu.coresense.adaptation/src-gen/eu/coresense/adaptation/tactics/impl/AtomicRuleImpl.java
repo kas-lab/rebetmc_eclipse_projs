@@ -23,6 +23,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * The following features are implemented:
  * </p>
  * <ul>
+ *   <li>{@link eu.coresense.adaptation.tactics.impl.AtomicRuleImpl#getName <em>Name</em>}</li>
  *   <li>{@link eu.coresense.adaptation.tactics.impl.AtomicRuleImpl#getRuleBody <em>Rule Body</em>}</li>
  * </ul>
  *
@@ -30,6 +31,26 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  */
 public class AtomicRuleImpl extends AdaptationRuleImpl implements AtomicRule
 {
+  /**
+   * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getName()
+   * @generated
+   * @ordered
+   */
+  protected static final String NAME_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getName()
+   * @generated
+   * @ordered
+   */
+  protected String name = NAME_EDEFAULT;
+
   /**
    * The cached value of the '{@link #getRuleBody() <em>Rule Body</em>}' containment reference.
    * <!-- begin-user-doc -->
@@ -59,6 +80,31 @@ public class AtomicRuleImpl extends AdaptationRuleImpl implements AtomicRule
   protected EClass eStaticClass()
   {
     return TacticsPackage.Literals.ATOMIC_RULE;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public String getName()
+  {
+    return name;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setName(String newName)
+  {
+    String oldName = name;
+    name = newName;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, TacticsPackage.ATOMIC_RULE__NAME, oldName, name));
   }
 
   /**
@@ -137,6 +183,8 @@ public class AtomicRuleImpl extends AdaptationRuleImpl implements AtomicRule
   {
     switch (featureID)
     {
+      case TacticsPackage.ATOMIC_RULE__NAME:
+        return getName();
       case TacticsPackage.ATOMIC_RULE__RULE_BODY:
         return getRuleBody();
     }
@@ -153,6 +201,9 @@ public class AtomicRuleImpl extends AdaptationRuleImpl implements AtomicRule
   {
     switch (featureID)
     {
+      case TacticsPackage.ATOMIC_RULE__NAME:
+        setName((String)newValue);
+        return;
       case TacticsPackage.ATOMIC_RULE__RULE_BODY:
         setRuleBody((RuleBody)newValue);
         return;
@@ -170,6 +221,9 @@ public class AtomicRuleImpl extends AdaptationRuleImpl implements AtomicRule
   {
     switch (featureID)
     {
+      case TacticsPackage.ATOMIC_RULE__NAME:
+        setName(NAME_EDEFAULT);
+        return;
       case TacticsPackage.ATOMIC_RULE__RULE_BODY:
         setRuleBody((RuleBody)null);
         return;
@@ -187,10 +241,29 @@ public class AtomicRuleImpl extends AdaptationRuleImpl implements AtomicRule
   {
     switch (featureID)
     {
+      case TacticsPackage.ATOMIC_RULE__NAME:
+        return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
       case TacticsPackage.ATOMIC_RULE__RULE_BODY:
         return ruleBody != null;
     }
     return super.eIsSet(featureID);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public String toString()
+  {
+    if (eIsProxy()) return super.toString();
+
+    StringBuilder result = new StringBuilder(super.toString());
+    result.append(" (name: ");
+    result.append(name);
+    result.append(')');
+    return result.toString();
   }
 
 } //AtomicRuleImpl

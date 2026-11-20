@@ -29,6 +29,10 @@ import eu.coresense.requirements.requirementsModel.BooleanStatement
 import eu.coresense.requirements.requirementsModel.MembershipFunction
 import eu.coresense.requirements.requirementsModel.FuzzyTriangular
 import eu.coresense.context.contextModel.ContextVar
+import eu.coresense.requirements.requirementsModel.Eventually
+import eu.coresense.requirements.requirementsModel.May
+import eu.coresense.requirements.requirementsModel.AsAsPossible
+import eu.coresense.requirements.requirementsModel.Timeliness
 
 /**
  * Generates code from your model files on save.
@@ -46,11 +50,11 @@ class RequirementsModelGenerator extends AbstractGenerator {
 
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
 		_namer.register(new ContextNameProvider(_namer))
-	    for (e : resource.allContents.toIterable.filter(RequirementsModel)) {
-	        fsa.generateFile(
-	            "test" + ".tql",
-	            e.compile)
-		}
+//	    for (e : resource.allContents.toIterable.filter(RequirementsModel)) {
+//	        fsa.generateFile(
+//	            "test" + ".tql",
+//	            e.compile)
+//		}
 	}
 	
 	private def compile(RequirementsModel t)
@@ -75,19 +79,47 @@ class RequirementsModelGenerator extends AbstractGenerator {
     {
     	val contextVars = newArrayList
     	for (requirement : requirements) {
-    		var expression = requirement.expression
-    		
-    		switch expression 
+    		var expressions = newArrayList
+    		allExpressions(requirement.expression, expressions)
+
+    		for (expression : expressions)
     		{
-    				Quantifiable: {
-    					contextVars.add(expression.contextVariable)
-    				}
-    				Proposition: {
-    					contextVars.add(expression.condition.measurement)
-    				}
+    			println(expression.class)
+	    		switch expression 
+	    		{
+	    				Quantifiable: contextVars.add(expression.contextVariable)
+	    				Proposition: contextVars.add(expression.condition.measurement)
+	    				AsCloseLit: contextVars.add(expression.comparator.contextVariable)
+	    				AsAsPossible: contextVars.add(expression.quantity.contextVariable) 
+	    		}
+    		
     		}
     	}
     	return contextVars
+    }
+    
+    def static void allExpressions(Expression expression, List<Expression> expressions)
+    {
+    	expressions.add(expression)
+	    switch expression 
+		{
+				Shall: allExpressions(expression.expression, expressions)
+				Negation: allExpressions(expression.expression, expressions)
+				May:
+				{
+					allExpressions(expression.expression, expressions)
+					for (alt : expression.alternatives) {
+						allExpressions(alt.expression, expressions)	
+					}
+				}
+				CompoundExpression:
+				{
+					allExpressions(expression.leftExpression, expressions)
+					allExpressions(expression.rightExpression, expressions)	
+				}
+				default:
+					return
+		}
     }
 	
 	def Pair<String,String> generateInsert(CompoundExpression compoundExpression, Requirement parentRequirement)
@@ -187,6 +219,18 @@ class RequirementsModelGenerator extends AbstractGenerator {
 //	        	return propExpName -> '''
 //	        	$«propExpName» (atom: $«_namer.uniqueName(expression.contextVariable)») isa propositional_expression;
 //	        	'''
+	        }
+	        AsAsPossible: {
+	        	val innerStatement = generateInsert(expression.quantity, null)
+	        	val membershipStatement = generateInsert(expression.membershipFunction, name)
+	        	switch (expression.timeFrequency) {
+	        		case Timeliness.MANY: {
+	        			
+	        		}
+	        		default: {
+	        			throw new Exception("NotYetImplemented Timeliness")
+	        		}
+	        	}
 	        }
 	    }
 		

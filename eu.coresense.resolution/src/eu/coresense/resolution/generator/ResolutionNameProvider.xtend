@@ -22,22 +22,10 @@ class ResolutionNameProvider implements INameProvider {
             Resolution: ctx.makeUnique(obj.featureRef.feature.name.toLowerCase() + "_resolution")
             SetParam: ctx.makeUnique("sp_" + Utilities.escape(obj.param.name.toLowerCase()))
             SetLifecycle: {
-            	val nodeName = if (args.length > 0) args.get(0) else "noNodeNameGiven"
-            	ctx.makeUnique("slc_" + nodeName.toLowerCase() + "_" + obj.state.toString().toLowerCase())
-            }
-            Reconfiguration: {
-            	val node = obj.node
-				if(obj instanceof SetParam)
-				{
-					return computeName(obj, ctx)
-				}
-				else if(obj instanceof SetLifecycle)
-				{
-					return computeName(obj, ctx, node.name)	
-				}
-            }
-            
+            	val nodeName = obj.node.name
+            	ctx.makeUnique("slc_" + Utilities.escape(nodeName.toLowerCase()) + "_" + obj.state.toString().toLowerCase())
+            }            
         }
     }	
 	
-}
+} 

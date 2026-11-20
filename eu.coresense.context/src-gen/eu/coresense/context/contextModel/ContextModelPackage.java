@@ -343,6 +343,53 @@ public interface ContextModelPackage extends EPackage
   int DATA_SOURCE_FEATURE_COUNT = 1;
 
   /**
+   * The meta object id for the '{@link eu.coresense.context.contextModel.impl.ReferenceImpl <em>Reference</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see eu.coresense.context.contextModel.impl.ReferenceImpl
+   * @see eu.coresense.context.contextModel.impl.ContextModelPackageImpl#getReference()
+   * @generated
+   */
+  int REFERENCE = 6;
+
+  /**
+   * The number of structural features of the '<em>Reference</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int REFERENCE_FEATURE_COUNT = 0;
+
+  /**
+   * The meta object id for the '{@link eu.coresense.context.contextModel.impl.CompositeRefImpl <em>Composite Ref</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see eu.coresense.context.contextModel.impl.CompositeRefImpl
+   * @see eu.coresense.context.contextModel.impl.ContextModelPackageImpl#getCompositeRef()
+   * @generated
+   */
+  int COMPOSITE_REF = 7;
+
+  /**
+   * The feature id for the '<em><b>Context Vars</b></em>' reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int COMPOSITE_REF__CONTEXT_VARS = REFERENCE_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>Composite Ref</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int COMPOSITE_REF_FEATURE_COUNT = REFERENCE_FEATURE_COUNT + 1;
+
+  /**
    * The meta object id for the '{@link eu.coresense.context.contextModel.impl.QualifiedRefImpl <em>Qualified Ref</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -350,7 +397,7 @@ public interface ContextModelPackage extends EPackage
    * @see eu.coresense.context.contextModel.impl.ContextModelPackageImpl#getQualifiedRef()
    * @generated
    */
-  int QUALIFIED_REF = 6;
+  int QUALIFIED_REF = 8;
 
   /**
    * The feature id for the '<em><b>Node</b></em>' reference.
@@ -359,7 +406,7 @@ public interface ContextModelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int QUALIFIED_REF__NODE = 0;
+  int QUALIFIED_REF__NODE = REFERENCE_FEATURE_COUNT + 0;
 
   /**
    * The number of structural features of the '<em>Qualified Ref</em>' class.
@@ -368,7 +415,7 @@ public interface ContextModelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int QUALIFIED_REF_FEATURE_COUNT = 1;
+  int QUALIFIED_REF_FEATURE_COUNT = REFERENCE_FEATURE_COUNT + 1;
 
   /**
    * The meta object id for the '{@link eu.coresense.context.contextModel.impl.QualifiedPublisherRefImpl <em>Qualified Publisher Ref</em>}' class.
@@ -378,7 +425,7 @@ public interface ContextModelPackage extends EPackage
    * @see eu.coresense.context.contextModel.impl.ContextModelPackageImpl#getQualifiedPublisherRef()
    * @generated
    */
-  int QUALIFIED_PUBLISHER_REF = 7;
+  int QUALIFIED_PUBLISHER_REF = 9;
 
   /**
    * The feature id for the '<em><b>Node</b></em>' reference.
@@ -415,7 +462,7 @@ public interface ContextModelPackage extends EPackage
    * @see eu.coresense.context.contextModel.impl.ContextModelPackageImpl#getQualifiedServiceServerRef()
    * @generated
    */
-  int QUALIFIED_SERVICE_SERVER_REF = 8;
+  int QUALIFIED_SERVICE_SERVER_REF = 10;
 
   /**
    * The feature id for the '<em><b>Node</b></em>' reference.
@@ -461,7 +508,7 @@ public interface ContextModelPackage extends EPackage
    * @see eu.coresense.context.contextModel.impl.ContextModelPackageImpl#getQualifiedActionServerRef()
    * @generated
    */
-  int QUALIFIED_ACTION_SERVER_REF = 9;
+  int QUALIFIED_ACTION_SERVER_REF = 11;
 
   /**
    * The feature id for the '<em><b>Node</b></em>' reference.
@@ -768,6 +815,37 @@ public interface ContextModelPackage extends EPackage
    * @generated
    */
   EReference getDataSource_Ref();
+
+  /**
+   * Returns the meta object for class '{@link eu.coresense.context.contextModel.Reference <em>Reference</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Reference</em>'.
+   * @see eu.coresense.context.contextModel.Reference
+   * @generated
+   */
+  EClass getReference();
+
+  /**
+   * Returns the meta object for class '{@link eu.coresense.context.contextModel.CompositeRef <em>Composite Ref</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Composite Ref</em>'.
+   * @see eu.coresense.context.contextModel.CompositeRef
+   * @generated
+   */
+  EClass getCompositeRef();
+
+  /**
+   * Returns the meta object for the reference list '{@link eu.coresense.context.contextModel.CompositeRef#getContextVars <em>Context Vars</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference list '<em>Context Vars</em>'.
+   * @see eu.coresense.context.contextModel.CompositeRef#getContextVars()
+   * @see #getCompositeRef()
+   * @generated
+   */
+  EReference getCompositeRef_ContextVars();
 
   /**
    * Returns the meta object for class '{@link eu.coresense.context.contextModel.QualifiedRef <em>Qualified Ref</em>}'.
@@ -1109,6 +1187,34 @@ public interface ContextModelPackage extends EPackage
      * @generated
      */
     EReference DATA_SOURCE__REF = eINSTANCE.getDataSource_Ref();
+
+    /**
+     * The meta object literal for the '{@link eu.coresense.context.contextModel.impl.ReferenceImpl <em>Reference</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see eu.coresense.context.contextModel.impl.ReferenceImpl
+     * @see eu.coresense.context.contextModel.impl.ContextModelPackageImpl#getReference()
+     * @generated
+     */
+    EClass REFERENCE = eINSTANCE.getReference();
+
+    /**
+     * The meta object literal for the '{@link eu.coresense.context.contextModel.impl.CompositeRefImpl <em>Composite Ref</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see eu.coresense.context.contextModel.impl.CompositeRefImpl
+     * @see eu.coresense.context.contextModel.impl.ContextModelPackageImpl#getCompositeRef()
+     * @generated
+     */
+    EClass COMPOSITE_REF = eINSTANCE.getCompositeRef();
+
+    /**
+     * The meta object literal for the '<em><b>Context Vars</b></em>' reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference COMPOSITE_REF__CONTEXT_VARS = eINSTANCE.getCompositeRef_ContextVars();
 
     /**
      * The meta object literal for the '{@link eu.coresense.context.contextModel.impl.QualifiedRefImpl <em>Qualified Ref</em>}' class.

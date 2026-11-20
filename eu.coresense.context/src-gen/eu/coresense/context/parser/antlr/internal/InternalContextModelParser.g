@@ -358,19 +358,20 @@ ruleContextVar returns [EObject current=null]
 		}
 		(
 			(
-				lv_functionName_18_0=RULE_STRING
 				{
-					newLeafNode(lv_functionName_18_0, grammarAccess.getContextVarAccess().getFunctionNameSTRINGTerminalRuleCall_12_0());
+					newCompositeNode(grammarAccess.getContextVarAccess().getFunctionNameFunctionNameParserRuleCall_12_0());
 				}
+				lv_functionName_18_0=ruleFunctionName
 				{
 					if ($current==null) {
-						$current = createModelElement(grammarAccess.getContextVarRule());
+						$current = createModelElementForParent(grammarAccess.getContextVarRule());
 					}
-					setWithLastConsumed(
+					set(
 						$current,
 						"functionName",
 						lv_functionName_18_0,
-						"org.eclipse.xtext.common.Terminals.STRING");
+						"eu.coresense.context.ContextModel.FunctionName");
+					afterParserOrEnumRuleCall();
 				}
 			)
 		)
@@ -486,6 +487,50 @@ ruleLiteral returns [EObject current=null]
 		{
 			$current = $this_DecimalLiteral_1.current;
 			afterParserOrEnumRuleCall();
+		}
+	)
+;
+
+// Entry rule entryRuleFunctionName
+entryRuleFunctionName returns [String current=null]:
+	{ newCompositeNode(grammarAccess.getFunctionNameRule()); }
+	iv_ruleFunctionName=ruleFunctionName
+	{ $current=$iv_ruleFunctionName.current.getText(); }
+	EOF;
+
+// Rule FunctionName
+ruleFunctionName returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		this_STRING_0=RULE_STRING
+		{
+			$current.merge(this_STRING_0);
+		}
+		{
+			newLeafNode(this_STRING_0, grammarAccess.getFunctionNameAccess().getSTRINGTerminalRuleCall_0());
+		}
+		    |
+		kw=Meta_count
+		{
+			$current.merge(kw);
+			newLeafNode(kw, grammarAccess.getFunctionNameAccess().getMeta_countKeyword_1());
+		}
+		    |
+		kw=Meta_last_published
+		{
+			$current.merge(kw);
+			newLeafNode(kw, grammarAccess.getFunctionNameAccess().getMeta_last_publishedKeyword_2());
+		}
+		    |
+		kw=Meta_has_published
+		{
+			$current.merge(kw);
+			newLeafNode(kw, grammarAccess.getFunctionNameAccess().getMeta_has_publishedKeyword_3());
 		}
 	)
 ;
@@ -733,9 +778,9 @@ ruleDataSource returns [EObject current=null]
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getDataSourceAccess().getRefQualifiedRefParserRuleCall_1_1_0());
+						newCompositeNode(grammarAccess.getDataSourceAccess().getRefReferenceParserRuleCall_1_1_0());
 					}
-					lv_ref_2_0=ruleQualifiedRef
+					lv_ref_2_0=ruleReference
 					{
 						if ($current==null) {
 							$current = createModelElementForParent(grammarAccess.getDataSourceRule());
@@ -744,7 +789,7 @@ ruleDataSource returns [EObject current=null]
 							$current,
 							"ref",
 							lv_ref_2_0,
-							"eu.coresense.context.ContextModel.QualifiedRef");
+							"eu.coresense.context.ContextModel.Reference");
 						afterParserOrEnumRuleCall();
 					}
 				)
@@ -775,6 +820,81 @@ ruleKeyWordArguments returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRu
 	{
 		newLeafNode(this_STRING_0, grammarAccess.getKeyWordArgumentsAccess().getSTRINGTerminalRuleCall());
 	}
+;
+
+// Entry rule entryRuleReference
+entryRuleReference returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getReferenceRule()); }
+	iv_ruleReference=ruleReference
+	{ $current=$iv_ruleReference.current; }
+	EOF;
+
+// Rule Reference
+ruleReference returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		{
+			newCompositeNode(grammarAccess.getReferenceAccess().getQualifiedRefParserRuleCall_0());
+		}
+		this_QualifiedRef_0=ruleQualifiedRef
+		{
+			$current = $this_QualifiedRef_0.current;
+			afterParserOrEnumRuleCall();
+		}
+		    |
+		{
+			newCompositeNode(grammarAccess.getReferenceAccess().getCompositeRefParserRuleCall_1());
+		}
+		this_CompositeRef_1=ruleCompositeRef
+		{
+			$current = $this_CompositeRef_1.current;
+			afterParserOrEnumRuleCall();
+		}
+	)
+;
+
+// Entry rule entryRuleCompositeRef
+entryRuleCompositeRef returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getCompositeRefRule()); }
+	iv_ruleCompositeRef=ruleCompositeRef
+	{ $current=$iv_ruleCompositeRef.current; }
+	EOF;
+
+// Rule CompositeRef
+ruleCompositeRef returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		(
+			{
+				$current = forceCreateModelElement(
+					grammarAccess.getCompositeRefAccess().getCompositeRefAction_0(),
+					$current);
+			}
+		)
+		(
+			(
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getCompositeRefRule());
+					}
+				}
+				otherlv_1=RULE_ID
+				{
+					newLeafNode(otherlv_1, grammarAccess.getCompositeRefAccess().getContextVarsContextVarCrossReference_1_0());
+				}
+			)
+		)*
+	)
 ;
 
 // Entry rule entryRuleQualifiedRef

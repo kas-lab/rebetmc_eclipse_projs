@@ -3,6 +3,8 @@
  */
 package eu.coresense.requirements.requirementsModel;
 
+import eu.coresense.common.Import;
+
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EObject;
@@ -16,6 +18,7 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
+ *   <li>{@link eu.coresense.requirements.requirementsModel.RequirementsModel#getImports <em>Imports</em>}</li>
  *   <li>{@link eu.coresense.requirements.requirementsModel.RequirementsModel#getRequirements <em>Requirements</em>}</li>
  * </ul>
  *
@@ -25,6 +28,18 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface RequirementsModel extends EObject
 {
+  /**
+   * Returns the value of the '<em><b>Imports</b></em>' containment reference list.
+   * The list contents are of type {@link eu.coresense.common.Import}.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Imports</em>' containment reference list.
+   * @see eu.coresense.requirements.requirementsModel.RequirementsModelPackage#getRequirementsModel_Imports()
+   * @model containment="true"
+   * @generated
+   */
+  EList<Import> getImports();
+
   /**
    * Returns the value of the '<em><b>Requirements</b></em>' containment reference list.
    * The list contents are of type {@link eu.coresense.requirements.requirementsModel.Requirement}.

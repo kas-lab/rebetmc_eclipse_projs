@@ -23,13 +23,27 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import eu.coresense.resolution.resolutionModel.ResolutionModelPackage;
 import system.RossystemPackage;
+import ros.ParameterType;
+import ros.RosFactory;
 import ros.RosPackage;
 import eu.coresense.adaptation.tactics.TacticsPackage;
 import eu.coresense.requirements.requirementsModel.RequirementsModelPackage;	
+import system.RossystemFactory;
+
 
 
 public class RosToolingSupport {
+	
+	public static class LoadResult {
+	    public final Injector injector;
+	    public final List<Resource> resources;
 
+	    public LoadResult(Injector injector, List<Resource> resources) {
+	        this.injector = injector;
+	        this.resources = resources;
+	    }
+	}
+	
 	public static void registerEPackages() {
     // Register the EPackages for the models you want to load
     ResolutionModelPackage.eINSTANCE.eClass();
@@ -90,6 +104,111 @@ public class RosToolingSupport {
 			.findFirst()
 			.orElse(null);
 	}
+	
+	public static void updateRosParameter(system.RosParameter rosParam, ros.ParameterValue p_val) {
+		boolean valueSame = rosParam.getValue().equals(p_val);
+
+		if(!valueSame)
+		{
+			java.lang.System.out.println("Parameter value changed for " + rosParam.getName() + ", updating rossystem.");
+			rosParam.setValue(p_val);
+		}
+	}
+	
+	public static void newRosParameter(RosNode rosNode, ros.Parameter originalParameter, ros.ParameterValue p_val) {
+		boolean valueSame = originalParameter.getValue().equals(p_val);
+
+		if(!valueSame)
+		{
+			java.lang.System.out.println("Adding parameter " + originalParameter.getName() + ", to rossystem.");
+			system.RosParameter new_parameter = RossystemFactory.eINSTANCE.createRosParameter();
+			new_parameter.setName(originalParameter.getName());
+			new_parameter.setValue(p_val);
+			new_parameter.setFrom(originalParameter);
+
+			rosNode.getRosparameters().add(new_parameter);
+		}
+	}
+	
+
+	public static void newParameter(ros.Node node, String paramName, ros.ParameterValue p_val) {
+		ros.Parameter new_parameter = RosFactory.eINSTANCE.createParameter();
+
+		new_parameter.setName(paramName);
+		new_parameter.setValue(p_val);
+		new_parameter.setType((ParameterType) typeFromValue(p_val));
+
+		node.getParameter().add(new_parameter);
+	}
+	
+	public static ros.ParameterValue convertParameterValue(double value) {
+	    return convertParameterValue((Object) Double.valueOf(value));
+	}
+
+	public static ros.ParameterValue convertParameterValue(boolean value) {
+	    return convertParameterValue((Object) Boolean.valueOf(value));
+	}
+
+	public static ros.ParameterValue convertParameterValue(int value) {
+	    return convertParameterValue((Object) Integer.valueOf(value));
+	}
+
+	public static ros.ParameterValue convertParameterValue(long value) {
+	    return convertParameterValue((Object) Long.valueOf(value));
+	}
+
+	public static ros.ParameterValue convertParameterValue(String value) {
+	    return convertParameterValue((Object) value);
+	}
+
+	
+	private static ros.ParameterValue convertParameterValue(Object value) {
+	    if (value instanceof Double d) {
+	        ros.ParameterDouble param =
+	                RosFactory.eINSTANCE.createParameterDouble();
+	        param.setValue(d);
+	        return param;
+
+	    } else if (value instanceof String s) {
+	        ros.ParameterString param =
+	                RosFactory.eINSTANCE.createParameterString();
+	        param.setValue(s);
+	        return param;
+
+	    } else if (value instanceof Boolean b) {
+	        ros.ParameterBoolean param =
+	                RosFactory.eINSTANCE.createParameterBoolean();
+	        param.setValue(b);
+	        return param;
+
+	    } else if (value instanceof Integer || value instanceof Long) {
+	        ros.ParameterInteger param =
+	                RosFactory.eINSTANCE.createParameterInteger();
+	        param.setValue(((Number) value).intValue());
+	        return param;
+
+	    } else if (value instanceof byte[] bytes) {
+	        ros.ParameterBase64 param =
+	                RosFactory.eINSTANCE.createParameterBase64();
+	        param.setValue(bytes);
+	        return param;
+
+	    } else if (value instanceof List<?> list) {
+	        ros.ParameterSequence sequence =
+	                RosFactory.eINSTANCE.createParameterSequence();
+
+	        for (Object item : list) {
+	            sequence.getValue().add(convertParameterValue(item));
+	        }
+
+	        return sequence;
+
+	    } else {
+	        throw new IllegalArgumentException(
+	                "Unsupported parameter value type: "
+	                        + (value == null ? "null" : value.getClass().getName()));
+	    }
+	}
 
 	public static RosNode nodeInRosSystems(String nodeName, List<Resource> rosSystemResources) {
 		for (Resource resource : rosSystemResources) {
@@ -100,7 +219,7 @@ public class RosToolingSupport {
 				}
 				system.RosNode ros_node = (system.RosNode) component;
 
-				if (nodeName.equals(ros_node.getName()))
+				if (nodeName.replaceFirst("^/", "").equals(ros_node.getName().replaceFirst("^/", "")))
 				{
 					return ros_node;
 				}
@@ -133,7 +252,27 @@ public class RosToolingSupport {
 		throw new IllegalArgumentException("Unsupported parameter type: " + param.getClass().getName());
 	}
 
-	public static List<Resource> loadModel(ISetup setup, ResourceSet resSet, String fileExtension, String... filePaths) throws Exception {
+	
+	public static Object typeFromValue(ros.ParameterValue param) {
+		if (param instanceof ros.ParameterBoolean) {
+			return ros.ParameterBooleanType.class;
+		} else if (param instanceof ros.ParameterInteger) {
+			return ros.ParameterIntegerType.class;
+		} else if (param instanceof ros.ParameterDouble) {
+			return ros.ParameterDoubleType.class;
+		} else if (param instanceof ros.ParameterString) {
+			return ros.ParameterStringType.class;
+		} else if (param instanceof ros.ParameterBase64) {
+			return ros.ParameterBase64Type.class;
+		} else if (param instanceof ros.ParameterSequence) {
+			return ros.ParameterListType.class;
+		}
+		else if (param == null) {
+			return null;
+		}
+		throw new IllegalArgumentException("Unsupported parameter type: " + param.getClass().getName());
+	}
+	public static LoadResult loadModel(ISetup setup, ResourceSet resSet, String fileExtension, String... filePaths) throws Exception {
 		List<Resource> resources = new ArrayList<>();
 		Injector injector = setup.createInjectorAndDoEMFRegistration();
 		Resource.Factory.Registry reg = Resource.Factory.Registry.INSTANCE;
@@ -175,7 +314,7 @@ public class RosToolingSupport {
 			}
 		}
 		
-		return resources;
+		return new LoadResult(injector, resources);
  	}
 
 	public static void validate(Resource resource) throws RuntimeException

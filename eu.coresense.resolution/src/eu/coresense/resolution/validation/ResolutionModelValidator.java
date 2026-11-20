@@ -39,14 +39,14 @@ public class ResolutionModelValidator extends AbstractResolutionModelValidator {
 //		}
 //	}
 	
-	@Check
-	public void checkNonEmpty(Resolution resolution) {
-	    if (resolution.getSelection_actions().isEmpty() && resolution.getDeselection_actions().isEmpty())
-	    {
-	    	error("Please do not leave empty resolutions",ResolutionModelPackage.Literals.RESOLUTION__FEATURE_REF);
-	    }
-	}
-	
+//	@Check
+//	public void checkNonEmpty(Resolution resolution) {
+//	    if (resolution.getSelection_actions().isEmpty() && resolution.getDeselection_actions().isEmpty())
+//	    {
+//	    	error("Please do not leave empty resolutions",ResolutionModelPackage.Literals.RESOLUTION__FEATURE_REF);
+//	    }
+//	}
+//	
 	@Check
 	public void checkParameterValueMatchesType(SetParam param) {
 	    ros.Parameter declaredParam = param.getParam();

@@ -14,6 +14,7 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
+ *   <li>{@link eu.coresense.requirements.requirementsModel.Requirement#getFeatureQualifier <em>Feature Qualifier</em>}</li>
  *   <li>{@link eu.coresense.requirements.requirementsModel.Requirement#getName <em>Name</em>}</li>
  *   <li>{@link eu.coresense.requirements.requirementsModel.Requirement#getQa <em>Qa</em>}</li>
  *   <li>{@link eu.coresense.requirements.requirementsModel.Requirement#getNaturalLanguageDescription <em>Natural Language Description</em>}</li>
@@ -26,6 +27,28 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface Requirement extends EObject
 {
+  /**
+   * Returns the value of the '<em><b>Feature Qualifier</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Feature Qualifier</em>' containment reference.
+   * @see #setFeatureQualifier(FeatureQualifier)
+   * @see eu.coresense.requirements.requirementsModel.RequirementsModelPackage#getRequirement_FeatureQualifier()
+   * @model containment="true"
+   * @generated
+   */
+  FeatureQualifier getFeatureQualifier();
+
+  /**
+   * Sets the value of the '{@link eu.coresense.requirements.requirementsModel.Requirement#getFeatureQualifier <em>Feature Qualifier</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Feature Qualifier</em>' containment reference.
+   * @see #getFeatureQualifier()
+   * @generated
+   */
+  void setFeatureQualifier(FeatureQualifier value);
+
   /**
    * Returns the value of the '<em><b>Name</b></em>' attribute.
    * <!-- begin-user-doc -->

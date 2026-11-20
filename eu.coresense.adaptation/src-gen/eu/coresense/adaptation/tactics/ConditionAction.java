@@ -21,7 +21,7 @@ package eu.coresense.adaptation.tactics;
  * @model
  * @generated
  */
-public interface ConditionAction extends RuleBody
+public interface ConditionAction extends TacticAction
 {
   /**
    * Returns the value of the '<em><b>Context Guard</b></em>' containment reference.

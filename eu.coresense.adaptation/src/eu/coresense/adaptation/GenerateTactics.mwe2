@@ -36,6 +36,7 @@ Workflow {
 			referencedResource = "platform:/resource/eu.coresense.context/model/generated/ContextModel.genmodel"
 			referencedResource = "platform:/resource/eu.coresense.resolution/model/generated/ResolutionModel.genmodel"
 			referencedResource = "platform:/resource/eu.coresense.variability/model/generated/FeatureModel.genmodel"
+			referencedResource = "platform:/resource/eu.coresense.requirements/model/generated/RequirementsModel.genmodel"
 			referencedResource = "platform:/resource/eu.coresense.common/model/common.genmodel"
 			referencedResource = "platform:/resource/fms.metamodel/model/BasicConstraintsFM/BasicConstraintsFMmetamodel.genmodel"
 			referencedResource = "platform:/resource/fms.metamodel/model/BasicFMmetamodel.genmodel"

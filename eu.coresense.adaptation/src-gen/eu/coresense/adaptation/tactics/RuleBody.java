@@ -14,8 +14,8 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
+ *   <li>{@link eu.coresense.adaptation.tactics.RuleBody#getAction <em>Action</em>}</li>
  *   <li>{@link eu.coresense.adaptation.tactics.RuleBody#getEffect <em>Effect</em>}</li>
- *   <li>{@link eu.coresense.adaptation.tactics.RuleBody#getAtomicAction <em>Atomic Action</em>}</li>
  * </ul>
  *
  * @see eu.coresense.adaptation.tactics.TacticsPackage#getRuleBody()
@@ -24,6 +24,28 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface RuleBody extends EObject
 {
+  /**
+   * Returns the value of the '<em><b>Action</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Action</em>' containment reference.
+   * @see #setAction(TacticAction)
+   * @see eu.coresense.adaptation.tactics.TacticsPackage#getRuleBody_Action()
+   * @model containment="true"
+   * @generated
+   */
+  TacticAction getAction();
+
+  /**
+   * Sets the value of the '{@link eu.coresense.adaptation.tactics.RuleBody#getAction <em>Action</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Action</em>' containment reference.
+   * @see #getAction()
+   * @generated
+   */
+  void setAction(TacticAction value);
+
   /**
    * Returns the value of the '<em><b>Effect</b></em>' containment reference.
    * <!-- begin-user-doc -->
@@ -45,27 +67,5 @@ public interface RuleBody extends EObject
    * @generated
    */
   void setEffect(EffectBlock value);
-
-  /**
-   * Returns the value of the '<em><b>Atomic Action</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Atomic Action</em>' containment reference.
-   * @see #setAtomicAction(AtomicAction)
-   * @see eu.coresense.adaptation.tactics.TacticsPackage#getRuleBody_AtomicAction()
-   * @model containment="true"
-   * @generated
-   */
-  AtomicAction getAtomicAction();
-
-  /**
-   * Sets the value of the '{@link eu.coresense.adaptation.tactics.RuleBody#getAtomicAction <em>Atomic Action</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Atomic Action</em>' containment reference.
-   * @see #getAtomicAction()
-   * @generated
-   */
-  void setAtomicAction(AtomicAction value);
 
 } // RuleBody

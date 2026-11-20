@@ -2,9 +2,11 @@ grammar eu.coresense.requirements.RequirementsModel with org.eclipse.xtext.commo
 import "http://www.eclipse.org/emf/2002/Ecore" as ecore
 import "http://www.coresense.eu/context/ContextModel" as contextModel
 import "https://coresense.eu/common" as common
+import "http://caosd.lcc.uma.es/BasicFMmetamodel" as BasicFMmetamodel
 generate requirementsModel "http://www.coresense.eu/requirements/RequirementsModel"
 
 RequirementsModel:
+	(imports+=Import*)
 	requirements+=Requirement*;
 	
 //Requirement:
@@ -12,7 +14,11 @@ RequirementsModel:
 
 	
 Requirement:
-	name=ID ',' qa=QualityAttribute ':' naturalLanguageDescription=STRING ',' expression=Expression;
+	featureQualifier=FeatureQualifier? name=ID ',' qa=QualityAttribute ':' naturalLanguageDescription=STRING ',' expression=Expression;
+
+Import returns common::Import:
+	'import' importURI=STRING ';'
+;
 
 
 
@@ -30,6 +36,10 @@ SAFETY='Safety'
 
 enum MathOperator returns common::MathOperator:
 	LESS='<' | GREATER='>' | EQUAL='==' | DIFFERENT='<>'	
+;
+
+FeatureQualifier:
+	'[' feature=[BasicFMmetamodel::Feature] ']'
 ;
 
 
@@ -63,7 +73,7 @@ ThisUntil: 'THIS' leftExpression=Expression 'UNTIL' rightExpression=Expression ;
 Before: 'BEFORE' event=Event '(' expression=Expression ')';
 After: 'AFTER' event=Event '(' expression=Expression ')' ;
 In: 'IN' '(' deadline=TimeInterval ',' expression=Expression ')';
-AsAsPossible: 'AS' timeFrequency=Timeliness 'AS' 'POSSIBLE' '(' quantity=Quantifiable ')';
+AsAsPossible: 'AS' timeFrequency=Timeliness 'AS' 'POSSIBLE' '(' quantity=Quantifiable ',' membershipFunction=MembershipFunction ')';
 
 
 CompoundExpression:
@@ -124,11 +134,21 @@ AsCloseLit:
 ;
 
 MembershipFunction:
-	FuzzyTriangular
+	FuzzyTriangular |
+	FuzzyRightShoulder |
+	FuzzyLeftShoulder
 ;
 
 FuzzyTriangular:
 	'FuzzyTriangular' '(' a=DECIMAL ',' b=DECIMAL ',' c=DECIMAL ')'
+;
+
+FuzzyRightShoulder:
+	'FuzzyRightShoulder' '(' 'foot=' foot=DECIMAL ',' 'shoulder='shoulder=DECIMAL')'
+;
+
+FuzzyLeftShoulder:
+	'FuzzyLeftShoulder' '(' 'foot=' foot=DECIMAL ',' 'shoulder='shoulder=DECIMAL')'
 ;
 
 

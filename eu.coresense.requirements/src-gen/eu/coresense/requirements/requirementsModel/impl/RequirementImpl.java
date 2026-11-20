@@ -4,6 +4,7 @@
 package eu.coresense.requirements.requirementsModel.impl;
 
 import eu.coresense.requirements.requirementsModel.Expression;
+import eu.coresense.requirements.requirementsModel.FeatureQualifier;
 import eu.coresense.requirements.requirementsModel.QualityAttribute;
 import eu.coresense.requirements.requirementsModel.Requirement;
 import eu.coresense.requirements.requirementsModel.RequirementsModelPackage;
@@ -25,6 +26,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * The following features are implemented:
  * </p>
  * <ul>
+ *   <li>{@link eu.coresense.requirements.requirementsModel.impl.RequirementImpl#getFeatureQualifier <em>Feature Qualifier</em>}</li>
  *   <li>{@link eu.coresense.requirements.requirementsModel.impl.RequirementImpl#getName <em>Name</em>}</li>
  *   <li>{@link eu.coresense.requirements.requirementsModel.impl.RequirementImpl#getQa <em>Qa</em>}</li>
  *   <li>{@link eu.coresense.requirements.requirementsModel.impl.RequirementImpl#getNaturalLanguageDescription <em>Natural Language Description</em>}</li>
@@ -35,6 +37,16 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  */
 public class RequirementImpl extends MinimalEObjectImpl.Container implements Requirement
 {
+  /**
+   * The cached value of the '{@link #getFeatureQualifier() <em>Feature Qualifier</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getFeatureQualifier()
+   * @generated
+   * @ordered
+   */
+  protected FeatureQualifier featureQualifier;
+
   /**
    * The default value of the '{@link #getName() <em>Name</em>}' attribute.
    * <!-- begin-user-doc -->
@@ -124,6 +136,56 @@ public class RequirementImpl extends MinimalEObjectImpl.Container implements Req
   protected EClass eStaticClass()
   {
     return RequirementsModelPackage.Literals.REQUIREMENT;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public FeatureQualifier getFeatureQualifier()
+  {
+    return featureQualifier;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetFeatureQualifier(FeatureQualifier newFeatureQualifier, NotificationChain msgs)
+  {
+    FeatureQualifier oldFeatureQualifier = featureQualifier;
+    featureQualifier = newFeatureQualifier;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, RequirementsModelPackage.REQUIREMENT__FEATURE_QUALIFIER, oldFeatureQualifier, newFeatureQualifier);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setFeatureQualifier(FeatureQualifier newFeatureQualifier)
+  {
+    if (newFeatureQualifier != featureQualifier)
+    {
+      NotificationChain msgs = null;
+      if (featureQualifier != null)
+        msgs = ((InternalEObject)featureQualifier).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - RequirementsModelPackage.REQUIREMENT__FEATURE_QUALIFIER, null, msgs);
+      if (newFeatureQualifier != null)
+        msgs = ((InternalEObject)newFeatureQualifier).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - RequirementsModelPackage.REQUIREMENT__FEATURE_QUALIFIER, null, msgs);
+      msgs = basicSetFeatureQualifier(newFeatureQualifier, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, RequirementsModelPackage.REQUIREMENT__FEATURE_QUALIFIER, newFeatureQualifier, newFeatureQualifier));
   }
 
   /**
@@ -261,6 +323,8 @@ public class RequirementImpl extends MinimalEObjectImpl.Container implements Req
   {
     switch (featureID)
     {
+      case RequirementsModelPackage.REQUIREMENT__FEATURE_QUALIFIER:
+        return basicSetFeatureQualifier(null, msgs);
       case RequirementsModelPackage.REQUIREMENT__EXPRESSION:
         return basicSetExpression(null, msgs);
     }
@@ -277,6 +341,8 @@ public class RequirementImpl extends MinimalEObjectImpl.Container implements Req
   {
     switch (featureID)
     {
+      case RequirementsModelPackage.REQUIREMENT__FEATURE_QUALIFIER:
+        return getFeatureQualifier();
       case RequirementsModelPackage.REQUIREMENT__NAME:
         return getName();
       case RequirementsModelPackage.REQUIREMENT__QA:
@@ -299,6 +365,9 @@ public class RequirementImpl extends MinimalEObjectImpl.Container implements Req
   {
     switch (featureID)
     {
+      case RequirementsModelPackage.REQUIREMENT__FEATURE_QUALIFIER:
+        setFeatureQualifier((FeatureQualifier)newValue);
+        return;
       case RequirementsModelPackage.REQUIREMENT__NAME:
         setName((String)newValue);
         return;
@@ -325,6 +394,9 @@ public class RequirementImpl extends MinimalEObjectImpl.Container implements Req
   {
     switch (featureID)
     {
+      case RequirementsModelPackage.REQUIREMENT__FEATURE_QUALIFIER:
+        setFeatureQualifier((FeatureQualifier)null);
+        return;
       case RequirementsModelPackage.REQUIREMENT__NAME:
         setName(NAME_EDEFAULT);
         return;
@@ -351,6 +423,8 @@ public class RequirementImpl extends MinimalEObjectImpl.Container implements Req
   {
     switch (featureID)
     {
+      case RequirementsModelPackage.REQUIREMENT__FEATURE_QUALIFIER:
+        return featureQualifier != null;
       case RequirementsModelPackage.REQUIREMENT__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
       case RequirementsModelPackage.REQUIREMENT__QA:

@@ -15,7 +15,7 @@ import org.eclipse.emf.ecore.EClass;
  *
  * @generated
  */
-public class PureActionImpl extends RuleBodyImpl implements PureAction
+public class PureActionImpl extends TacticActionImpl implements PureAction
 {
   /**
    * <!-- begin-user-doc -->

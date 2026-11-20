@@ -115,10 +115,26 @@ public class ContextModelSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case ContextModelPackage.REFERENCE:
+      {
+        Reference reference = (Reference)theEObject;
+        T result = caseReference(reference);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case ContextModelPackage.COMPOSITE_REF:
+      {
+        CompositeRef compositeRef = (CompositeRef)theEObject;
+        T result = caseCompositeRef(compositeRef);
+        if (result == null) result = caseReference(compositeRef);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case ContextModelPackage.QUALIFIED_REF:
       {
         QualifiedRef qualifiedRef = (QualifiedRef)theEObject;
         T result = caseQualifiedRef(qualifiedRef);
+        if (result == null) result = caseReference(qualifiedRef);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -127,6 +143,7 @@ public class ContextModelSwitch<T> extends Switch<T>
         QualifiedPublisherRef qualifiedPublisherRef = (QualifiedPublisherRef)theEObject;
         T result = caseQualifiedPublisherRef(qualifiedPublisherRef);
         if (result == null) result = caseQualifiedRef(qualifiedPublisherRef);
+        if (result == null) result = caseReference(qualifiedPublisherRef);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -135,6 +152,7 @@ public class ContextModelSwitch<T> extends Switch<T>
         QualifiedServiceServerRef qualifiedServiceServerRef = (QualifiedServiceServerRef)theEObject;
         T result = caseQualifiedServiceServerRef(qualifiedServiceServerRef);
         if (result == null) result = caseQualifiedRef(qualifiedServiceServerRef);
+        if (result == null) result = caseReference(qualifiedServiceServerRef);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -143,6 +161,7 @@ public class ContextModelSwitch<T> extends Switch<T>
         QualifiedActionServerRef qualifiedActionServerRef = (QualifiedActionServerRef)theEObject;
         T result = caseQualifiedActionServerRef(qualifiedActionServerRef);
         if (result == null) result = caseQualifiedRef(qualifiedActionServerRef);
+        if (result == null) result = caseReference(qualifiedActionServerRef);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -242,6 +261,38 @@ public class ContextModelSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseDataSource(DataSource object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Reference</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Reference</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseReference(Reference object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Composite Ref</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Composite Ref</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseCompositeRef(CompositeRef object)
   {
     return null;
   }

@@ -87,6 +87,13 @@ public class RequirementsModelSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case RequirementsModelPackage.FEATURE_QUALIFIER:
+      {
+        FeatureQualifier featureQualifier = (FeatureQualifier)theEObject;
+        T result = caseFeatureQualifier(featureQualifier);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case RequirementsModelPackage.CONDITION:
       {
         Condition condition = (Condition)theEObject;
@@ -249,6 +256,22 @@ public class RequirementsModelSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case RequirementsModelPackage.FUZZY_RIGHT_SHOULDER:
+      {
+        FuzzyRightShoulder fuzzyRightShoulder = (FuzzyRightShoulder)theEObject;
+        T result = caseFuzzyRightShoulder(fuzzyRightShoulder);
+        if (result == null) result = caseMembershipFunction(fuzzyRightShoulder);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case RequirementsModelPackage.FUZZY_LEFT_SHOULDER:
+      {
+        FuzzyLeftShoulder fuzzyLeftShoulder = (FuzzyLeftShoulder)theEObject;
+        T result = caseFuzzyLeftShoulder(fuzzyLeftShoulder);
+        if (result == null) result = caseMembershipFunction(fuzzyLeftShoulder);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case RequirementsModelPackage.QUANTIFIABLE:
       {
         Quantifiable quantifiable = (Quantifiable)theEObject;
@@ -319,6 +342,22 @@ public class RequirementsModelSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseRequirement(Requirement object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Feature Qualifier</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Feature Qualifier</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseFeatureQualifier(FeatureQualifier object)
   {
     return null;
   }
@@ -639,6 +678,38 @@ public class RequirementsModelSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseFuzzyTriangular(FuzzyTriangular object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Fuzzy Right Shoulder</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Fuzzy Right Shoulder</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseFuzzyRightShoulder(FuzzyRightShoulder object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Fuzzy Left Shoulder</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Fuzzy Left Shoulder</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseFuzzyLeftShoulder(FuzzyLeftShoulder object)
   {
     return null;
   }

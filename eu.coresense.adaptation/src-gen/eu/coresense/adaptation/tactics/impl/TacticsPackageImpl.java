@@ -3,27 +3,21 @@
  */
 package eu.coresense.adaptation.tactics.impl;
 
-import eu.coresense.adaptation.tactics.ActionRules;
-import eu.coresense.adaptation.tactics.AdaptationRule;
-import eu.coresense.adaptation.tactics.AtomicAction;
-import eu.coresense.adaptation.tactics.AtomicActionDeselectFeature;
-import eu.coresense.adaptation.tactics.AtomicActionSelectFeature;
-import eu.coresense.adaptation.tactics.AtomicRule;
-import eu.coresense.adaptation.tactics.AtomicSimpleAction;
-import eu.coresense.adaptation.tactics.ConditionAction;
+import eu.coresense.adaptation.tactics.ActionTactics;
+import eu.coresense.adaptation.tactics.ContextCondition;
+import eu.coresense.adaptation.tactics.ContextContextCondition;
 import eu.coresense.adaptation.tactics.ContextGuard;
-import eu.coresense.adaptation.tactics.Effect;
-import eu.coresense.adaptation.tactics.EffectBlock;
+import eu.coresense.adaptation.tactics.ContextThresholdCondition;
+import eu.coresense.adaptation.tactics.DeselectVariant;
 import eu.coresense.adaptation.tactics.FeatureCondition;
 import eu.coresense.adaptation.tactics.FeatureGuard;
+import eu.coresense.adaptation.tactics.Guard;
 import eu.coresense.adaptation.tactics.LogicalOperator;
-import eu.coresense.adaptation.tactics.MeasurementCondition;
-import eu.coresense.adaptation.tactics.MeasurementMeasurementCondition;
-import eu.coresense.adaptation.tactics.MeasurementThresholdCondition;
-import eu.coresense.adaptation.tactics.PureAction;
+import eu.coresense.adaptation.tactics.PureTactic;
 import eu.coresense.adaptation.tactics.QualifiedFeatureRef;
-import eu.coresense.adaptation.tactics.RelativeEffect;
-import eu.coresense.adaptation.tactics.RuleBody;
+import eu.coresense.adaptation.tactics.SelectVariant;
+import eu.coresense.adaptation.tactics.Selection;
+import eu.coresense.adaptation.tactics.Tactic;
 import eu.coresense.adaptation.tactics.TacticAction;
 import eu.coresense.adaptation.tactics.TacticsFactory;
 import eu.coresense.adaptation.tactics.TacticsModel;
@@ -73,42 +67,28 @@ public class TacticsPackageImpl extends EPackageImpl implements TacticsPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass actionRulesEClass = null;
+  private EClass tacticEClass = null;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass adaptationRuleEClass = null;
+  private EClass actionTacticsEClass = null;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass atomicRuleEClass = null;
+  private EClass pureTacticEClass = null;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass atomicActionEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass atomicSimpleActionEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass ruleBodyEClass = null;
+  private EClass selectionEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -122,14 +102,7 @@ public class TacticsPackageImpl extends EPackageImpl implements TacticsPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass pureActionEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass conditionActionEClass = null;
+  private EClass guardEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -150,27 +123,6 @@ public class TacticsPackageImpl extends EPackageImpl implements TacticsPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass effectBlockEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass effectEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass relativeEffectEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   private EClass featureConditionEClass = null;
 
   /**
@@ -178,35 +130,35 @@ public class TacticsPackageImpl extends EPackageImpl implements TacticsPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass measurementConditionEClass = null;
+  private EClass contextConditionEClass = null;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass measurementThresholdConditionEClass = null;
+  private EClass contextThresholdConditionEClass = null;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass measurementMeasurementConditionEClass = null;
+  private EClass contextContextConditionEClass = null;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass atomicActionSelectFeatureEClass = null;
+  private EClass selectVariantEClass = null;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass atomicActionDeselectFeatureEClass = null;
+  private EClass deselectVariantEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -333,7 +285,7 @@ public class TacticsPackageImpl extends EPackageImpl implements TacticsPackage
    * @generated
    */
   @Override
-  public EReference getTacticsModel_ActionRules()
+  public EReference getTacticsModel_Tactics()
   {
     return (EReference)tacticsModelEClass.getEStructuralFeatures().get(2);
   }
@@ -344,9 +296,9 @@ public class TacticsPackageImpl extends EPackageImpl implements TacticsPackage
    * @generated
    */
   @Override
-  public EClass getActionRules()
+  public EClass getTactic()
   {
-    return actionRulesEClass;
+    return tacticEClass;
   }
 
   /**
@@ -355,9 +307,9 @@ public class TacticsPackageImpl extends EPackageImpl implements TacticsPackage
    * @generated
    */
   @Override
-  public EReference getActionRules_Action()
+  public EReference getTactic_Requirement()
   {
-    return (EReference)actionRulesEClass.getEStructuralFeatures().get(0);
+    return (EReference)tacticEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -366,9 +318,9 @@ public class TacticsPackageImpl extends EPackageImpl implements TacticsPackage
    * @generated
    */
   @Override
-  public EReference getActionRules_Requirement()
+  public EClass getActionTactics()
   {
-    return (EReference)actionRulesEClass.getEStructuralFeatures().get(1);
+    return actionTacticsEClass;
   }
 
   /**
@@ -377,9 +329,9 @@ public class TacticsPackageImpl extends EPackageImpl implements TacticsPackage
    * @generated
    */
   @Override
-  public EReference getActionRules_AdaptationRules()
+  public EReference getActionTactics_Action()
   {
-    return (EReference)actionRulesEClass.getEStructuralFeatures().get(2);
+    return (EReference)actionTacticsEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -388,9 +340,9 @@ public class TacticsPackageImpl extends EPackageImpl implements TacticsPackage
    * @generated
    */
   @Override
-  public EClass getAdaptationRule()
+  public EReference getActionTactics_Tactics()
   {
-    return adaptationRuleEClass;
+    return (EReference)actionTacticsEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -399,9 +351,9 @@ public class TacticsPackageImpl extends EPackageImpl implements TacticsPackage
    * @generated
    */
   @Override
-  public EClass getAtomicRule()
+  public EClass getPureTactic()
   {
-    return atomicRuleEClass;
+    return pureTacticEClass;
   }
 
   /**
@@ -410,9 +362,9 @@ public class TacticsPackageImpl extends EPackageImpl implements TacticsPackage
    * @generated
    */
   @Override
-  public EAttribute getAtomicRule_Name()
+  public EAttribute getPureTactic_Name()
   {
-    return (EAttribute)atomicRuleEClass.getEStructuralFeatures().get(0);
+    return (EAttribute)pureTacticEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -421,9 +373,9 @@ public class TacticsPackageImpl extends EPackageImpl implements TacticsPackage
    * @generated
    */
   @Override
-  public EReference getAtomicRule_RuleBody()
+  public EReference getPureTactic_Guard()
   {
-    return (EReference)atomicRuleEClass.getEStructuralFeatures().get(1);
+    return (EReference)pureTacticEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -432,9 +384,9 @@ public class TacticsPackageImpl extends EPackageImpl implements TacticsPackage
    * @generated
    */
   @Override
-  public EClass getAtomicAction()
+  public EReference getPureTactic_Action()
   {
-    return atomicActionEClass;
+    return (EReference)pureTacticEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -443,9 +395,9 @@ public class TacticsPackageImpl extends EPackageImpl implements TacticsPackage
    * @generated
    */
   @Override
-  public EReference getAtomicAction_Actions()
+  public EClass getSelection()
   {
-    return (EReference)atomicActionEClass.getEStructuralFeatures().get(0);
+    return selectionEClass;
   }
 
   /**
@@ -454,53 +406,9 @@ public class TacticsPackageImpl extends EPackageImpl implements TacticsPackage
    * @generated
    */
   @Override
-  public EClass getAtomicSimpleAction()
+  public EReference getSelection_Variant()
   {
-    return atomicSimpleActionEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EReference getAtomicSimpleAction_Variant()
-  {
-    return (EReference)atomicSimpleActionEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EClass getRuleBody()
-  {
-    return ruleBodyEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EReference getRuleBody_Action()
-  {
-    return (EReference)ruleBodyEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EReference getRuleBody_Effect()
-  {
-    return (EReference)ruleBodyEClass.getEStructuralFeatures().get(1);
+    return (EReference)selectionEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -520,7 +428,7 @@ public class TacticsPackageImpl extends EPackageImpl implements TacticsPackage
    * @generated
    */
   @Override
-  public EReference getTacticAction_AtomicAction()
+  public EReference getTacticAction_Actions()
   {
     return (EReference)tacticActionEClass.getEStructuralFeatures().get(0);
   }
@@ -531,9 +439,9 @@ public class TacticsPackageImpl extends EPackageImpl implements TacticsPackage
    * @generated
    */
   @Override
-  public EClass getPureAction()
+  public EClass getGuard()
   {
-    return pureActionEClass;
+    return guardEClass;
   }
 
   /**
@@ -542,9 +450,9 @@ public class TacticsPackageImpl extends EPackageImpl implements TacticsPackage
    * @generated
    */
   @Override
-  public EClass getConditionAction()
+  public EReference getGuard_ContextGuard()
   {
-    return conditionActionEClass;
+    return (EReference)guardEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -553,20 +461,9 @@ public class TacticsPackageImpl extends EPackageImpl implements TacticsPackage
    * @generated
    */
   @Override
-  public EReference getConditionAction_ContextGuard()
+  public EReference getGuard_FeatureGuard()
   {
-    return (EReference)conditionActionEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EReference getConditionAction_FeatureGuard()
-  {
-    return (EReference)conditionActionEClass.getEStructuralFeatures().get(1);
+    return (EReference)guardEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -611,83 +508,6 @@ public class TacticsPackageImpl extends EPackageImpl implements TacticsPackage
   public EReference getFeatureGuard_FeatureCondition()
   {
     return (EReference)featureGuardEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EClass getEffectBlock()
-  {
-    return effectBlockEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EReference getEffectBlock_SomeEffect()
-  {
-    return (EReference)effectBlockEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EClass getEffect()
-  {
-    return effectEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EClass getRelativeEffect()
-  {
-    return relativeEffectEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EAttribute getRelativeEffect_Sign()
-  {
-    return (EAttribute)relativeEffectEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EReference getRelativeEffect_EffectValue()
-  {
-    return (EReference)relativeEffectEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EReference getRelativeEffect_Measurement()
-  {
-    return (EReference)relativeEffectEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -751,9 +571,9 @@ public class TacticsPackageImpl extends EPackageImpl implements TacticsPackage
    * @generated
    */
   @Override
-  public EClass getMeasurementCondition()
+  public EClass getContextCondition()
   {
-    return measurementConditionEClass;
+    return contextConditionEClass;
   }
 
   /**
@@ -762,9 +582,9 @@ public class TacticsPackageImpl extends EPackageImpl implements TacticsPackage
    * @generated
    */
   @Override
-  public EReference getMeasurementCondition_Measurement()
+  public EReference getContextCondition_ContextVar()
   {
-    return (EReference)measurementConditionEClass.getEStructuralFeatures().get(0);
+    return (EReference)contextConditionEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -773,9 +593,9 @@ public class TacticsPackageImpl extends EPackageImpl implements TacticsPackage
    * @generated
    */
   @Override
-  public EAttribute getMeasurementCondition_Operator()
+  public EAttribute getContextCondition_Operator()
   {
-    return (EAttribute)measurementConditionEClass.getEStructuralFeatures().get(1);
+    return (EAttribute)contextConditionEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -784,9 +604,9 @@ public class TacticsPackageImpl extends EPackageImpl implements TacticsPackage
    * @generated
    */
   @Override
-  public EAttribute getMeasurementCondition_LogicalOp()
+  public EAttribute getContextCondition_LogicalOp()
   {
-    return (EAttribute)measurementConditionEClass.getEStructuralFeatures().get(2);
+    return (EAttribute)contextConditionEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -795,9 +615,9 @@ public class TacticsPackageImpl extends EPackageImpl implements TacticsPackage
    * @generated
    */
   @Override
-  public EReference getMeasurementCondition_SecondTerm()
+  public EReference getContextCondition_SecondTerm()
   {
-    return (EReference)measurementConditionEClass.getEStructuralFeatures().get(3);
+    return (EReference)contextConditionEClass.getEStructuralFeatures().get(3);
   }
 
   /**
@@ -806,9 +626,9 @@ public class TacticsPackageImpl extends EPackageImpl implements TacticsPackage
    * @generated
    */
   @Override
-  public EClass getMeasurementThresholdCondition()
+  public EClass getContextThresholdCondition()
   {
-    return measurementThresholdConditionEClass;
+    return contextThresholdConditionEClass;
   }
 
   /**
@@ -817,9 +637,9 @@ public class TacticsPackageImpl extends EPackageImpl implements TacticsPackage
    * @generated
    */
   @Override
-  public EReference getMeasurementThresholdCondition_ThresholdValue()
+  public EReference getContextThresholdCondition_ThresholdValue()
   {
-    return (EReference)measurementThresholdConditionEClass.getEStructuralFeatures().get(0);
+    return (EReference)contextThresholdConditionEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -828,9 +648,9 @@ public class TacticsPackageImpl extends EPackageImpl implements TacticsPackage
    * @generated
    */
   @Override
-  public EClass getMeasurementMeasurementCondition()
+  public EClass getContextContextCondition()
   {
-    return measurementMeasurementConditionEClass;
+    return contextContextConditionEClass;
   }
 
   /**
@@ -839,9 +659,9 @@ public class TacticsPackageImpl extends EPackageImpl implements TacticsPackage
    * @generated
    */
   @Override
-  public EReference getMeasurementMeasurementCondition_OtherMeasurement()
+  public EReference getContextContextCondition_OtherContextVar()
   {
-    return (EReference)measurementMeasurementConditionEClass.getEStructuralFeatures().get(0);
+    return (EReference)contextContextConditionEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -850,9 +670,9 @@ public class TacticsPackageImpl extends EPackageImpl implements TacticsPackage
    * @generated
    */
   @Override
-  public EClass getAtomicActionSelectFeature()
+  public EClass getSelectVariant()
   {
-    return atomicActionSelectFeatureEClass;
+    return selectVariantEClass;
   }
 
   /**
@@ -861,9 +681,9 @@ public class TacticsPackageImpl extends EPackageImpl implements TacticsPackage
    * @generated
    */
   @Override
-  public EClass getAtomicActionDeselectFeature()
+  public EClass getDeselectVariant()
   {
-    return atomicActionDeselectFeatureEClass;
+    return deselectVariantEClass;
   }
 
   /**
@@ -944,37 +764,29 @@ public class TacticsPackageImpl extends EPackageImpl implements TacticsPackage
     tacticsModelEClass = createEClass(TACTICS_MODEL);
     createEAttribute(tacticsModelEClass, TACTICS_MODEL__NAME);
     createEReference(tacticsModelEClass, TACTICS_MODEL__IMPORTS);
-    createEReference(tacticsModelEClass, TACTICS_MODEL__ACTION_RULES);
+    createEReference(tacticsModelEClass, TACTICS_MODEL__TACTICS);
 
-    actionRulesEClass = createEClass(ACTION_RULES);
-    createEReference(actionRulesEClass, ACTION_RULES__ACTION);
-    createEReference(actionRulesEClass, ACTION_RULES__REQUIREMENT);
-    createEReference(actionRulesEClass, ACTION_RULES__ADAPTATION_RULES);
+    tacticEClass = createEClass(TACTIC);
+    createEReference(tacticEClass, TACTIC__REQUIREMENT);
 
-    adaptationRuleEClass = createEClass(ADAPTATION_RULE);
+    actionTacticsEClass = createEClass(ACTION_TACTICS);
+    createEReference(actionTacticsEClass, ACTION_TACTICS__ACTION);
+    createEReference(actionTacticsEClass, ACTION_TACTICS__TACTICS);
 
-    atomicRuleEClass = createEClass(ATOMIC_RULE);
-    createEAttribute(atomicRuleEClass, ATOMIC_RULE__NAME);
-    createEReference(atomicRuleEClass, ATOMIC_RULE__RULE_BODY);
+    pureTacticEClass = createEClass(PURE_TACTIC);
+    createEAttribute(pureTacticEClass, PURE_TACTIC__NAME);
+    createEReference(pureTacticEClass, PURE_TACTIC__GUARD);
+    createEReference(pureTacticEClass, PURE_TACTIC__ACTION);
 
-    atomicActionEClass = createEClass(ATOMIC_ACTION);
-    createEReference(atomicActionEClass, ATOMIC_ACTION__ACTIONS);
-
-    atomicSimpleActionEClass = createEClass(ATOMIC_SIMPLE_ACTION);
-    createEReference(atomicSimpleActionEClass, ATOMIC_SIMPLE_ACTION__VARIANT);
-
-    ruleBodyEClass = createEClass(RULE_BODY);
-    createEReference(ruleBodyEClass, RULE_BODY__ACTION);
-    createEReference(ruleBodyEClass, RULE_BODY__EFFECT);
+    selectionEClass = createEClass(SELECTION);
+    createEReference(selectionEClass, SELECTION__VARIANT);
 
     tacticActionEClass = createEClass(TACTIC_ACTION);
-    createEReference(tacticActionEClass, TACTIC_ACTION__ATOMIC_ACTION);
+    createEReference(tacticActionEClass, TACTIC_ACTION__ACTIONS);
 
-    pureActionEClass = createEClass(PURE_ACTION);
-
-    conditionActionEClass = createEClass(CONDITION_ACTION);
-    createEReference(conditionActionEClass, CONDITION_ACTION__CONTEXT_GUARD);
-    createEReference(conditionActionEClass, CONDITION_ACTION__FEATURE_GUARD);
+    guardEClass = createEClass(GUARD);
+    createEReference(guardEClass, GUARD__CONTEXT_GUARD);
+    createEReference(guardEClass, GUARD__FEATURE_GUARD);
 
     contextGuardEClass = createEClass(CONTEXT_GUARD);
     createEReference(contextGuardEClass, CONTEXT_GUARD__CONTEXT_CONDITION);
@@ -982,37 +794,27 @@ public class TacticsPackageImpl extends EPackageImpl implements TacticsPackage
     featureGuardEClass = createEClass(FEATURE_GUARD);
     createEReference(featureGuardEClass, FEATURE_GUARD__FEATURE_CONDITION);
 
-    effectBlockEClass = createEClass(EFFECT_BLOCK);
-    createEReference(effectBlockEClass, EFFECT_BLOCK__SOME_EFFECT);
-
-    effectEClass = createEClass(EFFECT);
-
-    relativeEffectEClass = createEClass(RELATIVE_EFFECT);
-    createEAttribute(relativeEffectEClass, RELATIVE_EFFECT__SIGN);
-    createEReference(relativeEffectEClass, RELATIVE_EFFECT__EFFECT_VALUE);
-    createEReference(relativeEffectEClass, RELATIVE_EFFECT__MEASUREMENT);
-
     featureConditionEClass = createEClass(FEATURE_CONDITION);
     createEAttribute(featureConditionEClass, FEATURE_CONDITION__NOT);
     createEReference(featureConditionEClass, FEATURE_CONDITION__VARIANT);
     createEAttribute(featureConditionEClass, FEATURE_CONDITION__LOGICAL_OP);
     createEReference(featureConditionEClass, FEATURE_CONDITION__SECOND_TERM);
 
-    measurementConditionEClass = createEClass(MEASUREMENT_CONDITION);
-    createEReference(measurementConditionEClass, MEASUREMENT_CONDITION__MEASUREMENT);
-    createEAttribute(measurementConditionEClass, MEASUREMENT_CONDITION__OPERATOR);
-    createEAttribute(measurementConditionEClass, MEASUREMENT_CONDITION__LOGICAL_OP);
-    createEReference(measurementConditionEClass, MEASUREMENT_CONDITION__SECOND_TERM);
+    contextConditionEClass = createEClass(CONTEXT_CONDITION);
+    createEReference(contextConditionEClass, CONTEXT_CONDITION__CONTEXT_VAR);
+    createEAttribute(contextConditionEClass, CONTEXT_CONDITION__OPERATOR);
+    createEAttribute(contextConditionEClass, CONTEXT_CONDITION__LOGICAL_OP);
+    createEReference(contextConditionEClass, CONTEXT_CONDITION__SECOND_TERM);
 
-    measurementThresholdConditionEClass = createEClass(MEASUREMENT_THRESHOLD_CONDITION);
-    createEReference(measurementThresholdConditionEClass, MEASUREMENT_THRESHOLD_CONDITION__THRESHOLD_VALUE);
+    contextThresholdConditionEClass = createEClass(CONTEXT_THRESHOLD_CONDITION);
+    createEReference(contextThresholdConditionEClass, CONTEXT_THRESHOLD_CONDITION__THRESHOLD_VALUE);
 
-    measurementMeasurementConditionEClass = createEClass(MEASUREMENT_MEASUREMENT_CONDITION);
-    createEReference(measurementMeasurementConditionEClass, MEASUREMENT_MEASUREMENT_CONDITION__OTHER_MEASUREMENT);
+    contextContextConditionEClass = createEClass(CONTEXT_CONTEXT_CONDITION);
+    createEReference(contextContextConditionEClass, CONTEXT_CONTEXT_CONDITION__OTHER_CONTEXT_VAR);
 
-    atomicActionSelectFeatureEClass = createEClass(ATOMIC_ACTION_SELECT_FEATURE);
+    selectVariantEClass = createEClass(SELECT_VARIANT);
 
-    atomicActionDeselectFeatureEClass = createEClass(ATOMIC_ACTION_DESELECT_FEATURE);
+    deselectVariantEClass = createEClass(DESELECT_VARIANT);
 
     qualifiedFeatureRefEClass = createEClass(QUALIFIED_FEATURE_REF);
     createEReference(qualifiedFeatureRefEClass, QUALIFIED_FEATURE_REF__MODEL);
@@ -1048,8 +850,8 @@ public class TacticsPackageImpl extends EPackageImpl implements TacticsPackage
 
     // Obtain other dependent packages
     CommonPackage theCommonPackage = (CommonPackage)EPackage.Registry.INSTANCE.getEPackage(CommonPackage.eNS_URI);
-    RosPackage theRosPackage = (RosPackage)EPackage.Registry.INSTANCE.getEPackage(RosPackage.eNS_URI);
     RequirementsModelPackage theRequirementsModelPackage = (RequirementsModelPackage)EPackage.Registry.INSTANCE.getEPackage(RequirementsModelPackage.eNS_URI);
+    RosPackage theRosPackage = (RosPackage)EPackage.Registry.INSTANCE.getEPackage(RosPackage.eNS_URI);
     ContextModelPackage theContextModelPackage = (ContextModelPackage)EPackage.Registry.INSTANCE.getEPackage(ContextModelPackage.eNS_URI);
     ResolutionModelPackage theResolutionModelPackage = (ResolutionModelPackage)EPackage.Registry.INSTANCE.getEPackage(ResolutionModelPackage.eNS_URI);
     BasicFMmetamodelPackage theBasicFMmetamodelPackage = (BasicFMmetamodelPackage)EPackage.Registry.INSTANCE.getEPackage(BasicFMmetamodelPackage.eNS_URI);
@@ -1059,66 +861,46 @@ public class TacticsPackageImpl extends EPackageImpl implements TacticsPackage
     // Set bounds for type parameters
 
     // Add supertypes to classes
-    atomicRuleEClass.getESuperTypes().add(this.getAdaptationRule());
-    pureActionEClass.getESuperTypes().add(this.getTacticAction());
-    conditionActionEClass.getESuperTypes().add(this.getTacticAction());
-    relativeEffectEClass.getESuperTypes().add(this.getEffect());
-    measurementThresholdConditionEClass.getESuperTypes().add(this.getMeasurementCondition());
-    measurementMeasurementConditionEClass.getESuperTypes().add(this.getMeasurementCondition());
-    atomicActionSelectFeatureEClass.getESuperTypes().add(this.getAtomicSimpleAction());
-    atomicActionDeselectFeatureEClass.getESuperTypes().add(this.getAtomicSimpleAction());
+    actionTacticsEClass.getESuperTypes().add(this.getTactic());
+    pureTacticEClass.getESuperTypes().add(this.getTactic());
+    contextThresholdConditionEClass.getESuperTypes().add(this.getContextCondition());
+    contextContextConditionEClass.getESuperTypes().add(this.getContextCondition());
+    selectVariantEClass.getESuperTypes().add(this.getSelection());
+    deselectVariantEClass.getESuperTypes().add(this.getSelection());
 
     // Initialize classes and features; add operations and parameters
     initEClass(tacticsModelEClass, TacticsModel.class, "TacticsModel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getTacticsModel_Name(), ecorePackage.getEString(), "name", null, 0, 1, TacticsModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getTacticsModel_Imports(), theCommonPackage.getImport(), null, "imports", null, 0, -1, TacticsModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getTacticsModel_ActionRules(), this.getActionRules(), null, "actionRules", null, 0, -1, TacticsModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getTacticsModel_Tactics(), this.getTactic(), null, "tactics", null, 0, -1, TacticsModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(actionRulesEClass, ActionRules.class, "ActionRules", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getActionRules_Action(), theRosPackage.getActionSpec(), null, "action", null, 0, 1, ActionRules.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getActionRules_Requirement(), theRequirementsModelPackage.getRequirement(), null, "requirement", null, 0, 1, ActionRules.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getActionRules_AdaptationRules(), this.getAdaptationRule(), null, "adaptationRules", null, 0, -1, ActionRules.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(tacticEClass, Tactic.class, "Tactic", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getTactic_Requirement(), theRequirementsModelPackage.getRequirement(), null, "requirement", null, 0, 1, Tactic.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(adaptationRuleEClass, AdaptationRule.class, "AdaptationRule", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEClass(actionTacticsEClass, ActionTactics.class, "ActionTactics", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getActionTactics_Action(), theRosPackage.getActionSpec(), null, "action", null, 0, 1, ActionTactics.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getActionTactics_Tactics(), this.getPureTactic(), null, "tactics", null, 0, -1, ActionTactics.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(atomicRuleEClass, AtomicRule.class, "AtomicRule", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getAtomicRule_Name(), ecorePackage.getEString(), "name", null, 0, 1, AtomicRule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getAtomicRule_RuleBody(), this.getRuleBody(), null, "ruleBody", null, 0, 1, AtomicRule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(pureTacticEClass, PureTactic.class, "PureTactic", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getPureTactic_Name(), ecorePackage.getEString(), "name", null, 0, 1, PureTactic.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getPureTactic_Guard(), this.getGuard(), null, "guard", null, 0, 1, PureTactic.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getPureTactic_Action(), this.getTacticAction(), null, "action", null, 0, 1, PureTactic.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(atomicActionEClass, AtomicAction.class, "AtomicAction", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getAtomicAction_Actions(), this.getAtomicSimpleAction(), null, "actions", null, 0, -1, AtomicAction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(atomicSimpleActionEClass, AtomicSimpleAction.class, "AtomicSimpleAction", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getAtomicSimpleAction_Variant(), this.getQualifiedFeatureRef(), null, "variant", null, 0, 1, AtomicSimpleAction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(ruleBodyEClass, RuleBody.class, "RuleBody", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getRuleBody_Action(), this.getTacticAction(), null, "action", null, 0, 1, RuleBody.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getRuleBody_Effect(), this.getEffectBlock(), null, "effect", null, 0, 1, RuleBody.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(selectionEClass, Selection.class, "Selection", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getSelection_Variant(), this.getQualifiedFeatureRef(), null, "variant", null, 0, 1, Selection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(tacticActionEClass, TacticAction.class, "TacticAction", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getTacticAction_AtomicAction(), this.getAtomicAction(), null, "atomicAction", null, 0, 1, TacticAction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getTacticAction_Actions(), this.getSelection(), null, "actions", null, 0, -1, TacticAction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(pureActionEClass, PureAction.class, "PureAction", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-    initEClass(conditionActionEClass, ConditionAction.class, "ConditionAction", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getConditionAction_ContextGuard(), this.getContextGuard(), null, "contextGuard", null, 0, 1, ConditionAction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getConditionAction_FeatureGuard(), this.getFeatureGuard(), null, "featureGuard", null, 0, 1, ConditionAction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(guardEClass, Guard.class, "Guard", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getGuard_ContextGuard(), this.getContextGuard(), null, "contextGuard", null, 0, 1, Guard.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getGuard_FeatureGuard(), this.getFeatureGuard(), null, "featureGuard", null, 0, 1, Guard.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(contextGuardEClass, ContextGuard.class, "ContextGuard", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getContextGuard_ContextCondition(), this.getMeasurementCondition(), null, "contextCondition", null, 0, 1, ContextGuard.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getContextGuard_ContextCondition(), this.getContextCondition(), null, "contextCondition", null, 0, 1, ContextGuard.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(featureGuardEClass, FeatureGuard.class, "FeatureGuard", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getFeatureGuard_FeatureCondition(), this.getFeatureCondition(), null, "featureCondition", null, 0, 1, FeatureGuard.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(effectBlockEClass, EffectBlock.class, "EffectBlock", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getEffectBlock_SomeEffect(), this.getEffect(), null, "someEffect", null, 0, 1, EffectBlock.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(effectEClass, Effect.class, "Effect", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-    initEClass(relativeEffectEClass, RelativeEffect.class, "RelativeEffect", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getRelativeEffect_Sign(), ecorePackage.getEString(), "sign", null, 0, 1, RelativeEffect.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getRelativeEffect_EffectValue(), theCommonPackage.getLiteral(), null, "effectValue", null, 0, 1, RelativeEffect.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getRelativeEffect_Measurement(), theContextModelPackage.getContextVar(), null, "measurement", null, 0, 1, RelativeEffect.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(featureConditionEClass, FeatureCondition.class, "FeatureCondition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getFeatureCondition_Not(), ecorePackage.getEString(), "not", null, 0, 1, FeatureCondition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1126,21 +908,21 @@ public class TacticsPackageImpl extends EPackageImpl implements TacticsPackage
     initEAttribute(getFeatureCondition_LogicalOp(), this.getLogicalOperator(), "logicalOp", null, 0, 1, FeatureCondition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getFeatureCondition_SecondTerm(), this.getFeatureCondition(), null, "secondTerm", null, 0, 1, FeatureCondition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(measurementConditionEClass, MeasurementCondition.class, "MeasurementCondition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getMeasurementCondition_Measurement(), theContextModelPackage.getContextVar(), null, "measurement", null, 0, 1, MeasurementCondition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getMeasurementCondition_Operator(), theCommonPackage.getMathOperator(), "operator", null, 0, 1, MeasurementCondition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getMeasurementCondition_LogicalOp(), this.getLogicalOperator(), "logicalOp", null, 0, 1, MeasurementCondition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getMeasurementCondition_SecondTerm(), this.getMeasurementCondition(), null, "secondTerm", null, 0, 1, MeasurementCondition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(contextConditionEClass, ContextCondition.class, "ContextCondition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getContextCondition_ContextVar(), theContextModelPackage.getContextVar(), null, "contextVar", null, 0, 1, ContextCondition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getContextCondition_Operator(), theCommonPackage.getMathOperator(), "operator", null, 0, 1, ContextCondition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getContextCondition_LogicalOp(), this.getLogicalOperator(), "logicalOp", null, 0, 1, ContextCondition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getContextCondition_SecondTerm(), this.getContextCondition(), null, "secondTerm", null, 0, 1, ContextCondition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(measurementThresholdConditionEClass, MeasurementThresholdCondition.class, "MeasurementThresholdCondition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getMeasurementThresholdCondition_ThresholdValue(), theCommonPackage.getLiteral(), null, "thresholdValue", null, 0, 1, MeasurementThresholdCondition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(contextThresholdConditionEClass, ContextThresholdCondition.class, "ContextThresholdCondition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getContextThresholdCondition_ThresholdValue(), theCommonPackage.getLiteral(), null, "thresholdValue", null, 0, 1, ContextThresholdCondition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(measurementMeasurementConditionEClass, MeasurementMeasurementCondition.class, "MeasurementMeasurementCondition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getMeasurementMeasurementCondition_OtherMeasurement(), theContextModelPackage.getContextVar(), null, "otherMeasurement", null, 0, 1, MeasurementMeasurementCondition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(contextContextConditionEClass, ContextContextCondition.class, "ContextContextCondition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getContextContextCondition_OtherContextVar(), theContextModelPackage.getContextVar(), null, "otherContextVar", null, 0, 1, ContextContextCondition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(atomicActionSelectFeatureEClass, AtomicActionSelectFeature.class, "AtomicActionSelectFeature", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEClass(selectVariantEClass, SelectVariant.class, "SelectVariant", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-    initEClass(atomicActionDeselectFeatureEClass, AtomicActionDeselectFeature.class, "AtomicActionDeselectFeature", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEClass(deselectVariantEClass, DeselectVariant.class, "DeselectVariant", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     initEClass(qualifiedFeatureRefEClass, QualifiedFeatureRef.class, "QualifiedFeatureRef", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getQualifiedFeatureRef_Model(), theResolutionModelPackage.getResolutionModel(), null, "model", null, 0, 1, QualifiedFeatureRef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

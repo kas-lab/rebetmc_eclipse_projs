@@ -8,6 +8,12 @@ import org.eclipse.xtext.generator.AbstractGenerator
 import org.eclipse.xtext.generator.IFileSystemAccess2
 import org.eclipse.xtext.generator.IGeneratorContext
 import com.google.inject.Inject
+import eu.coresense.common.NameProvider
+import eu.coresense.resolution.generator.ResolutionNameProvider
+import eu.coresense.adaptation.tactics.TacticsModel
+import java.util.List
+import eu.coresense.resolution.resolutionModel.ResolutionModel
+import eu.coresense.common.Utilities
 
 /**
  * Generates code from your model files on save.
@@ -15,8 +21,28 @@ import com.google.inject.Inject
  * See https://www.eclipse.org/Xtext/documentation/303_runtime_concepts.html#code-generation
  */
 class TacticsGenerator extends AbstractGenerator {
-	@Inject extension TQLGenerator tqlgen
-	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
-		tqlgen.doGenerate(resource, fsa, context);
+	
+	override doGenerate(Resource input, IFileSystemAccess2 fsa, IGeneratorContext context) {
+		val _namer = new NameProvider
+		_namer.register(new ResolutionNameProvider)
+
+	    for (e : input.allContents.toIterable.filter(TacticsModel)) {
+	        var List<ResolutionModel> resolutionModels = newArrayList
+    		resolutionModels = Utilities.deriveFromImports(input, '.resolution',e.imports,typeof(ResolutionModel))
+    		for (resolutionModel : resolutionModels) {
+    			for (resolution : resolutionModel.resolutions) {
+    				for (selection_action : resolution.selection_actions)
+    				{
+    					println(_namer.uniqueName(selection_action))
+    				}
+    			}
+    		}
+		}
+//		throw new UnsupportedOperationException("TODO: auto-generated method stub")
 	}
+	
+//	@Inject extension TQLGenerator tqlgen
+//	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
+//		tqlgen.doGenerate(resource, fsa, context);
+//	}
 }

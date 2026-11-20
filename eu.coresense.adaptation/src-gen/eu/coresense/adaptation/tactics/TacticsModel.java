@@ -20,7 +20,7 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link eu.coresense.adaptation.tactics.TacticsModel#getName <em>Name</em>}</li>
  *   <li>{@link eu.coresense.adaptation.tactics.TacticsModel#getImports <em>Imports</em>}</li>
- *   <li>{@link eu.coresense.adaptation.tactics.TacticsModel#getActionRules <em>Action Rules</em>}</li>
+ *   <li>{@link eu.coresense.adaptation.tactics.TacticsModel#getTactics <em>Tactics</em>}</li>
  * </ul>
  *
  * @see eu.coresense.adaptation.tactics.TacticsPackage#getTacticsModel()
@@ -64,15 +64,15 @@ public interface TacticsModel extends EObject
   EList<Import> getImports();
 
   /**
-   * Returns the value of the '<em><b>Action Rules</b></em>' containment reference list.
-   * The list contents are of type {@link eu.coresense.adaptation.tactics.ActionRules}.
+   * Returns the value of the '<em><b>Tactics</b></em>' containment reference list.
+   * The list contents are of type {@link eu.coresense.adaptation.tactics.Tactic}.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Action Rules</em>' containment reference list.
-   * @see eu.coresense.adaptation.tactics.TacticsPackage#getTacticsModel_ActionRules()
+   * @return the value of the '<em>Tactics</em>' containment reference list.
+   * @see eu.coresense.adaptation.tactics.TacticsPackage#getTacticsModel_Tactics()
    * @model containment="true"
    * @generated
    */
-  EList<ActionRules> getActionRules();
+  EList<Tactic> getTactics();
 
 } // TacticsModel

@@ -13,35 +13,29 @@
     <genClasses ecoreClass="Tactics.ecore#//TacticsModel">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Tactics.ecore#//TacticsModel/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Tactics.ecore#//TacticsModel/imports"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Tactics.ecore#//TacticsModel/actionRules"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Tactics.ecore#//TacticsModel/tactics"/>
     </genClasses>
-    <genClasses ecoreClass="Tactics.ecore#//ActionRules">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Tactics.ecore#//ActionRules/action"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Tactics.ecore#//ActionRules/requirement"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Tactics.ecore#//ActionRules/adaptationRules"/>
+    <genClasses ecoreClass="Tactics.ecore#//Tactic">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Tactics.ecore#//Tactic/requirement"/>
     </genClasses>
-    <genClasses ecoreClass="Tactics.ecore#//AdaptationRule"/>
-    <genClasses ecoreClass="Tactics.ecore#//AtomicRule">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Tactics.ecore#//AtomicRule/name"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Tactics.ecore#//AtomicRule/ruleBody"/>
+    <genClasses ecoreClass="Tactics.ecore#//ActionTactics">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Tactics.ecore#//ActionTactics/action"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Tactics.ecore#//ActionTactics/tactics"/>
     </genClasses>
-    <genClasses ecoreClass="Tactics.ecore#//AtomicAction">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Tactics.ecore#//AtomicAction/actions"/>
+    <genClasses ecoreClass="Tactics.ecore#//PureTactic">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Tactics.ecore#//PureTactic/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Tactics.ecore#//PureTactic/guard"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Tactics.ecore#//PureTactic/action"/>
     </genClasses>
-    <genClasses ecoreClass="Tactics.ecore#//AtomicSimpleAction">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Tactics.ecore#//AtomicSimpleAction/variant"/>
-    </genClasses>
-    <genClasses ecoreClass="Tactics.ecore#//RuleBody">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Tactics.ecore#//RuleBody/action"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Tactics.ecore#//RuleBody/effect"/>
+    <genClasses ecoreClass="Tactics.ecore#//Selection">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Tactics.ecore#//Selection/variant"/>
     </genClasses>
     <genClasses ecoreClass="Tactics.ecore#//TacticAction">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Tactics.ecore#//TacticAction/atomicAction"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Tactics.ecore#//TacticAction/actions"/>
     </genClasses>
-    <genClasses ecoreClass="Tactics.ecore#//PureAction"/>
-    <genClasses ecoreClass="Tactics.ecore#//ConditionAction">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Tactics.ecore#//ConditionAction/contextGuard"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Tactics.ecore#//ConditionAction/featureGuard"/>
+    <genClasses ecoreClass="Tactics.ecore#//Guard">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Tactics.ecore#//Guard/contextGuard"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Tactics.ecore#//Guard/featureGuard"/>
     </genClasses>
     <genClasses ecoreClass="Tactics.ecore#//ContextGuard">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Tactics.ecore#//ContextGuard/contextCondition"/>
@@ -49,35 +43,26 @@
     <genClasses ecoreClass="Tactics.ecore#//FeatureGuard">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Tactics.ecore#//FeatureGuard/featureCondition"/>
     </genClasses>
-    <genClasses ecoreClass="Tactics.ecore#//EffectBlock">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Tactics.ecore#//EffectBlock/someEffect"/>
-    </genClasses>
-    <genClasses ecoreClass="Tactics.ecore#//Effect"/>
-    <genClasses ecoreClass="Tactics.ecore#//RelativeEffect">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Tactics.ecore#//RelativeEffect/sign"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Tactics.ecore#//RelativeEffect/effectValue"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Tactics.ecore#//RelativeEffect/measurement"/>
-    </genClasses>
     <genClasses ecoreClass="Tactics.ecore#//FeatureCondition">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Tactics.ecore#//FeatureCondition/not"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Tactics.ecore#//FeatureCondition/variant"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Tactics.ecore#//FeatureCondition/logicalOp"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Tactics.ecore#//FeatureCondition/secondTerm"/>
     </genClasses>
-    <genClasses ecoreClass="Tactics.ecore#//MeasurementCondition">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Tactics.ecore#//MeasurementCondition/measurement"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Tactics.ecore#//MeasurementCondition/operator"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Tactics.ecore#//MeasurementCondition/logicalOp"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Tactics.ecore#//MeasurementCondition/secondTerm"/>
+    <genClasses ecoreClass="Tactics.ecore#//ContextCondition">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Tactics.ecore#//ContextCondition/contextVar"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Tactics.ecore#//ContextCondition/operator"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Tactics.ecore#//ContextCondition/logicalOp"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Tactics.ecore#//ContextCondition/secondTerm"/>
     </genClasses>
-    <genClasses ecoreClass="Tactics.ecore#//MeasurementThresholdCondition">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Tactics.ecore#//MeasurementThresholdCondition/thresholdValue"/>
+    <genClasses ecoreClass="Tactics.ecore#//ContextThresholdCondition">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Tactics.ecore#//ContextThresholdCondition/thresholdValue"/>
     </genClasses>
-    <genClasses ecoreClass="Tactics.ecore#//MeasurementMeasurementCondition">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Tactics.ecore#//MeasurementMeasurementCondition/otherMeasurement"/>
+    <genClasses ecoreClass="Tactics.ecore#//ContextContextCondition">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Tactics.ecore#//ContextContextCondition/otherContextVar"/>
     </genClasses>
-    <genClasses ecoreClass="Tactics.ecore#//AtomicActionSelectFeature"/>
-    <genClasses ecoreClass="Tactics.ecore#//AtomicActionDeselectFeature"/>
+    <genClasses ecoreClass="Tactics.ecore#//SelectVariant"/>
+    <genClasses ecoreClass="Tactics.ecore#//DeselectVariant"/>
     <genClasses ecoreClass="Tactics.ecore#//QualifiedFeatureRef">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Tactics.ecore#//QualifiedFeatureRef/model"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Tactics.ecore#//QualifiedFeatureRef/feature"/>

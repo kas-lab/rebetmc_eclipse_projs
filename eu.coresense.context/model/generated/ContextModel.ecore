@@ -4,18 +4,16 @@
     nsPrefix="contextModel">
   <eClassifiers xsi:type="ecore:EClass" name="ContextModel">
     <eStructuralFeatures xsi:type="ecore:EReference" name="imports" upperBound="-1"
-        eType="ecore:EClass platform:/resource/eu.coresense.common/model/common.ecore#//Import"
+        eType="ecore:EClass ../../../eu.coresense.common/model/common.ecore#//Import"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="environmental_variables"
         upperBound="-1" eType="#//ContextVar" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="mission_variables" upperBound="-1"
-        eType="#//MissionVar" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ContextVar">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="source" eType="#//DataSource"
-        containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="type" eType="ecore:EClass platform:/resource/de.fraunhofer.ipa.ros/model/PrimitivesTypes.ecore#//AbstractType"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="source" lowerBound="1"
+        eType="#//DataSource" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="type" eType="ecore:EClass ../../../de.fraunhofer.ipa.ros/model/PrimitivesTypes.ecore#//AbstractType"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="doCache" eType="#//DoCache"
         containment="true"/>
@@ -27,13 +25,8 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="functionLibrary" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="functionArgs" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="thresholds" upperBound="-1"
-        eType="ecore:EClass platform:/resource/eu.coresense.common/model/common.ecore#//Literal"
+        eType="ecore:EClass ../../../eu.coresense.common/model/common.ecore#//Literal"
         containment="true"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="MissionVar">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="action" eType="ecore:EClass platform:/resource/de.fraunhofer.ipa.ros/model/ros.ecore#//ActionSpec"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="context_vars" upperBound="-1"
-        eType="#//ContextVar" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DoCache">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="do" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
@@ -42,26 +35,26 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="do" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DataSource">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="ref" eType="#//Reference"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ref" lowerBound="1" eType="#//Reference"
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Reference"/>
   <eClassifiers xsi:type="ecore:EClass" name="CompositeRef" eSuperTypes="#//Reference">
     <eStructuralFeatures xsi:type="ecore:EReference" name="contextVars" unique="false"
-        upperBound="-1" eType="#//ContextVar"/>
+        lowerBound="1" upperBound="-1" eType="#//ContextVar"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="QualifiedRef" eSuperTypes="#//Reference">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="node" eType="ecore:EClass platform:/resource/de.fraunhofer.ipa.rossystem/model/rossystem.ecore#//RosNode"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="node" eType="ecore:EClass ../../../de.fraunhofer.ipa.rossystem/model/rossystem.ecore#//RosNode"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="QualifiedPublisherRef" eSuperTypes="#//QualifiedRef">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="publisher" eType="ecore:EClass platform:/resource/de.fraunhofer.ipa.ros/model/ros.ecore#//Publisher"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="publisher" eType="ecore:EClass ../../../de.fraunhofer.ipa.ros/model/ros.ecore#//Publisher"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="QualifiedServiceServerRef" eSuperTypes="#//QualifiedRef">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="serviceServer" eType="ecore:EClass platform:/resource/de.fraunhofer.ipa.ros/model/ros.ecore#//ServiceServer"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="serviceServer" eType="ecore:EClass ../../../de.fraunhofer.ipa.ros/model/ros.ecore#//ServiceServer"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="kwargs" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="QualifiedActionServerRef" eSuperTypes="#//QualifiedRef">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="actionServer" eType="ecore:EClass platform:/resource/de.fraunhofer.ipa.ros/model/ros.ecore#//ActionServer"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="actionServer" eType="ecore:EClass ../../../de.fraunhofer.ipa.ros/model/ros.ecore#//ActionServer"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="kwargs" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
 </ecore:EPackage>

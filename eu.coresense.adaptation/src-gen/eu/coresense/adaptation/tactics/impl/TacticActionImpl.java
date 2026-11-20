@@ -3,18 +3,23 @@
  */
 package eu.coresense.adaptation.tactics.impl;
 
-import eu.coresense.adaptation.tactics.AtomicAction;
+import eu.coresense.adaptation.tactics.Selection;
 import eu.coresense.adaptation.tactics.TacticAction;
 import eu.coresense.adaptation.tactics.TacticsPackage;
 
-import org.eclipse.emf.common.notify.Notification;
+import java.util.Collection;
+
 import org.eclipse.emf.common.notify.NotificationChain;
+
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -24,7 +29,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link eu.coresense.adaptation.tactics.impl.TacticActionImpl#getAtomicAction <em>Atomic Action</em>}</li>
+ *   <li>{@link eu.coresense.adaptation.tactics.impl.TacticActionImpl#getActions <em>Actions</em>}</li>
  * </ul>
  *
  * @generated
@@ -32,14 +37,14 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 public class TacticActionImpl extends MinimalEObjectImpl.Container implements TacticAction
 {
   /**
-   * The cached value of the '{@link #getAtomicAction() <em>Atomic Action</em>}' containment reference.
+   * The cached value of the '{@link #getActions() <em>Actions</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getAtomicAction()
+   * @see #getActions()
    * @generated
    * @ordered
    */
-  protected AtomicAction atomicAction;
+  protected EList<Selection> actions;
 
   /**
    * <!-- begin-user-doc -->
@@ -68,48 +73,13 @@ public class TacticActionImpl extends MinimalEObjectImpl.Container implements Ta
    * @generated
    */
   @Override
-  public AtomicAction getAtomicAction()
+  public EList<Selection> getActions()
   {
-    return atomicAction;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public NotificationChain basicSetAtomicAction(AtomicAction newAtomicAction, NotificationChain msgs)
-  {
-    AtomicAction oldAtomicAction = atomicAction;
-    atomicAction = newAtomicAction;
-    if (eNotificationRequired())
+    if (actions == null)
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, TacticsPackage.TACTIC_ACTION__ATOMIC_ACTION, oldAtomicAction, newAtomicAction);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
+      actions = new EObjectContainmentEList<Selection>(Selection.class, this, TacticsPackage.TACTIC_ACTION__ACTIONS);
     }
-    return msgs;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public void setAtomicAction(AtomicAction newAtomicAction)
-  {
-    if (newAtomicAction != atomicAction)
-    {
-      NotificationChain msgs = null;
-      if (atomicAction != null)
-        msgs = ((InternalEObject)atomicAction).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - TacticsPackage.TACTIC_ACTION__ATOMIC_ACTION, null, msgs);
-      if (newAtomicAction != null)
-        msgs = ((InternalEObject)newAtomicAction).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - TacticsPackage.TACTIC_ACTION__ATOMIC_ACTION, null, msgs);
-      msgs = basicSetAtomicAction(newAtomicAction, msgs);
-      if (msgs != null) msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, TacticsPackage.TACTIC_ACTION__ATOMIC_ACTION, newAtomicAction, newAtomicAction));
+    return actions;
   }
 
   /**
@@ -122,8 +92,8 @@ public class TacticActionImpl extends MinimalEObjectImpl.Container implements Ta
   {
     switch (featureID)
     {
-      case TacticsPackage.TACTIC_ACTION__ATOMIC_ACTION:
-        return basicSetAtomicAction(null, msgs);
+      case TacticsPackage.TACTIC_ACTION__ACTIONS:
+        return ((InternalEList<?>)getActions()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -138,8 +108,8 @@ public class TacticActionImpl extends MinimalEObjectImpl.Container implements Ta
   {
     switch (featureID)
     {
-      case TacticsPackage.TACTIC_ACTION__ATOMIC_ACTION:
-        return getAtomicAction();
+      case TacticsPackage.TACTIC_ACTION__ACTIONS:
+        return getActions();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -149,13 +119,15 @@ public class TacticActionImpl extends MinimalEObjectImpl.Container implements Ta
    * <!-- end-user-doc -->
    * @generated
    */
+  @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue)
   {
     switch (featureID)
     {
-      case TacticsPackage.TACTIC_ACTION__ATOMIC_ACTION:
-        setAtomicAction((AtomicAction)newValue);
+      case TacticsPackage.TACTIC_ACTION__ACTIONS:
+        getActions().clear();
+        getActions().addAll((Collection<? extends Selection>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -171,8 +143,8 @@ public class TacticActionImpl extends MinimalEObjectImpl.Container implements Ta
   {
     switch (featureID)
     {
-      case TacticsPackage.TACTIC_ACTION__ATOMIC_ACTION:
-        setAtomicAction((AtomicAction)null);
+      case TacticsPackage.TACTIC_ACTION__ACTIONS:
+        getActions().clear();
         return;
     }
     super.eUnset(featureID);
@@ -188,8 +160,8 @@ public class TacticActionImpl extends MinimalEObjectImpl.Container implements Ta
   {
     switch (featureID)
     {
-      case TacticsPackage.TACTIC_ACTION__ATOMIC_ACTION:
-        return atomicAction != null;
+      case TacticsPackage.TACTIC_ACTION__ACTIONS:
+        return actions != null && !actions.isEmpty();
     }
     return super.eIsSet(featureID);
   }

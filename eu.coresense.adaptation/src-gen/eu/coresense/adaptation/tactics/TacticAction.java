@@ -3,6 +3,8 @@
  */
 package eu.coresense.adaptation.tactics;
 
+import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -14,7 +16,7 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link eu.coresense.adaptation.tactics.TacticAction#getAtomicAction <em>Atomic Action</em>}</li>
+ *   <li>{@link eu.coresense.adaptation.tactics.TacticAction#getActions <em>Actions</em>}</li>
  * </ul>
  *
  * @see eu.coresense.adaptation.tactics.TacticsPackage#getTacticAction()
@@ -24,25 +26,15 @@ import org.eclipse.emf.ecore.EObject;
 public interface TacticAction extends EObject
 {
   /**
-   * Returns the value of the '<em><b>Atomic Action</b></em>' containment reference.
+   * Returns the value of the '<em><b>Actions</b></em>' containment reference list.
+   * The list contents are of type {@link eu.coresense.adaptation.tactics.Selection}.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Atomic Action</em>' containment reference.
-   * @see #setAtomicAction(AtomicAction)
-   * @see eu.coresense.adaptation.tactics.TacticsPackage#getTacticAction_AtomicAction()
+   * @return the value of the '<em>Actions</em>' containment reference list.
+   * @see eu.coresense.adaptation.tactics.TacticsPackage#getTacticAction_Actions()
    * @model containment="true"
    * @generated
    */
-  AtomicAction getAtomicAction();
-
-  /**
-   * Sets the value of the '{@link eu.coresense.adaptation.tactics.TacticAction#getAtomicAction <em>Atomic Action</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Atomic Action</em>' containment reference.
-   * @see #getAtomicAction()
-   * @generated
-   */
-  void setAtomicAction(AtomicAction value);
+  EList<Selection> getActions();
 
 } // TacticAction

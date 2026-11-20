@@ -67,26 +67,20 @@ public class TacticsFactoryImpl extends EFactoryImpl implements TacticsFactory
     switch (eClass.getClassifierID())
     {
       case TacticsPackage.TACTICS_MODEL: return createTacticsModel();
-      case TacticsPackage.ACTION_RULES: return createActionRules();
-      case TacticsPackage.ADAPTATION_RULE: return createAdaptationRule();
-      case TacticsPackage.ATOMIC_RULE: return createAtomicRule();
-      case TacticsPackage.ATOMIC_ACTION: return createAtomicAction();
-      case TacticsPackage.ATOMIC_SIMPLE_ACTION: return createAtomicSimpleAction();
-      case TacticsPackage.RULE_BODY: return createRuleBody();
+      case TacticsPackage.TACTIC: return createTactic();
+      case TacticsPackage.ACTION_TACTICS: return createActionTactics();
+      case TacticsPackage.PURE_TACTIC: return createPureTactic();
+      case TacticsPackage.SELECTION: return createSelection();
       case TacticsPackage.TACTIC_ACTION: return createTacticAction();
-      case TacticsPackage.PURE_ACTION: return createPureAction();
-      case TacticsPackage.CONDITION_ACTION: return createConditionAction();
+      case TacticsPackage.GUARD: return createGuard();
       case TacticsPackage.CONTEXT_GUARD: return createContextGuard();
       case TacticsPackage.FEATURE_GUARD: return createFeatureGuard();
-      case TacticsPackage.EFFECT_BLOCK: return createEffectBlock();
-      case TacticsPackage.EFFECT: return createEffect();
-      case TacticsPackage.RELATIVE_EFFECT: return createRelativeEffect();
       case TacticsPackage.FEATURE_CONDITION: return createFeatureCondition();
-      case TacticsPackage.MEASUREMENT_CONDITION: return createMeasurementCondition();
-      case TacticsPackage.MEASUREMENT_THRESHOLD_CONDITION: return createMeasurementThresholdCondition();
-      case TacticsPackage.MEASUREMENT_MEASUREMENT_CONDITION: return createMeasurementMeasurementCondition();
-      case TacticsPackage.ATOMIC_ACTION_SELECT_FEATURE: return createAtomicActionSelectFeature();
-      case TacticsPackage.ATOMIC_ACTION_DESELECT_FEATURE: return createAtomicActionDeselectFeature();
+      case TacticsPackage.CONTEXT_CONDITION: return createContextCondition();
+      case TacticsPackage.CONTEXT_THRESHOLD_CONDITION: return createContextThresholdCondition();
+      case TacticsPackage.CONTEXT_CONTEXT_CONDITION: return createContextContextCondition();
+      case TacticsPackage.SELECT_VARIANT: return createSelectVariant();
+      case TacticsPackage.DESELECT_VARIANT: return createDeselectVariant();
       case TacticsPackage.QUALIFIED_FEATURE_REF: return createQualifiedFeatureRef();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
@@ -145,10 +139,10 @@ public class TacticsFactoryImpl extends EFactoryImpl implements TacticsFactory
    * @generated
    */
   @Override
-  public ActionRules createActionRules()
+  public Tactic createTactic()
   {
-    ActionRulesImpl actionRules = new ActionRulesImpl();
-    return actionRules;
+    TacticImpl tactic = new TacticImpl();
+    return tactic;
   }
 
   /**
@@ -157,10 +151,10 @@ public class TacticsFactoryImpl extends EFactoryImpl implements TacticsFactory
    * @generated
    */
   @Override
-  public AdaptationRule createAdaptationRule()
+  public ActionTactics createActionTactics()
   {
-    AdaptationRuleImpl adaptationRule = new AdaptationRuleImpl();
-    return adaptationRule;
+    ActionTacticsImpl actionTactics = new ActionTacticsImpl();
+    return actionTactics;
   }
 
   /**
@@ -169,10 +163,10 @@ public class TacticsFactoryImpl extends EFactoryImpl implements TacticsFactory
    * @generated
    */
   @Override
-  public AtomicRule createAtomicRule()
+  public PureTactic createPureTactic()
   {
-    AtomicRuleImpl atomicRule = new AtomicRuleImpl();
-    return atomicRule;
+    PureTacticImpl pureTactic = new PureTacticImpl();
+    return pureTactic;
   }
 
   /**
@@ -181,34 +175,10 @@ public class TacticsFactoryImpl extends EFactoryImpl implements TacticsFactory
    * @generated
    */
   @Override
-  public AtomicAction createAtomicAction()
+  public Selection createSelection()
   {
-    AtomicActionImpl atomicAction = new AtomicActionImpl();
-    return atomicAction;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public AtomicSimpleAction createAtomicSimpleAction()
-  {
-    AtomicSimpleActionImpl atomicSimpleAction = new AtomicSimpleActionImpl();
-    return atomicSimpleAction;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public RuleBody createRuleBody()
-  {
-    RuleBodyImpl ruleBody = new RuleBodyImpl();
-    return ruleBody;
+    SelectionImpl selection = new SelectionImpl();
+    return selection;
   }
 
   /**
@@ -229,22 +199,10 @@ public class TacticsFactoryImpl extends EFactoryImpl implements TacticsFactory
    * @generated
    */
   @Override
-  public PureAction createPureAction()
+  public Guard createGuard()
   {
-    PureActionImpl pureAction = new PureActionImpl();
-    return pureAction;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public ConditionAction createConditionAction()
-  {
-    ConditionActionImpl conditionAction = new ConditionActionImpl();
-    return conditionAction;
+    GuardImpl guard = new GuardImpl();
+    return guard;
   }
 
   /**
@@ -277,42 +235,6 @@ public class TacticsFactoryImpl extends EFactoryImpl implements TacticsFactory
    * @generated
    */
   @Override
-  public EffectBlock createEffectBlock()
-  {
-    EffectBlockImpl effectBlock = new EffectBlockImpl();
-    return effectBlock;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public Effect createEffect()
-  {
-    EffectImpl effect = new EffectImpl();
-    return effect;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public RelativeEffect createRelativeEffect()
-  {
-    RelativeEffectImpl relativeEffect = new RelativeEffectImpl();
-    return relativeEffect;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
   public FeatureCondition createFeatureCondition()
   {
     FeatureConditionImpl featureCondition = new FeatureConditionImpl();
@@ -325,10 +247,10 @@ public class TacticsFactoryImpl extends EFactoryImpl implements TacticsFactory
    * @generated
    */
   @Override
-  public MeasurementCondition createMeasurementCondition()
+  public ContextCondition createContextCondition()
   {
-    MeasurementConditionImpl measurementCondition = new MeasurementConditionImpl();
-    return measurementCondition;
+    ContextConditionImpl contextCondition = new ContextConditionImpl();
+    return contextCondition;
   }
 
   /**
@@ -337,10 +259,10 @@ public class TacticsFactoryImpl extends EFactoryImpl implements TacticsFactory
    * @generated
    */
   @Override
-  public MeasurementThresholdCondition createMeasurementThresholdCondition()
+  public ContextThresholdCondition createContextThresholdCondition()
   {
-    MeasurementThresholdConditionImpl measurementThresholdCondition = new MeasurementThresholdConditionImpl();
-    return measurementThresholdCondition;
+    ContextThresholdConditionImpl contextThresholdCondition = new ContextThresholdConditionImpl();
+    return contextThresholdCondition;
   }
 
   /**
@@ -349,10 +271,10 @@ public class TacticsFactoryImpl extends EFactoryImpl implements TacticsFactory
    * @generated
    */
   @Override
-  public MeasurementMeasurementCondition createMeasurementMeasurementCondition()
+  public ContextContextCondition createContextContextCondition()
   {
-    MeasurementMeasurementConditionImpl measurementMeasurementCondition = new MeasurementMeasurementConditionImpl();
-    return measurementMeasurementCondition;
+    ContextContextConditionImpl contextContextCondition = new ContextContextConditionImpl();
+    return contextContextCondition;
   }
 
   /**
@@ -361,10 +283,10 @@ public class TacticsFactoryImpl extends EFactoryImpl implements TacticsFactory
    * @generated
    */
   @Override
-  public AtomicActionSelectFeature createAtomicActionSelectFeature()
+  public SelectVariant createSelectVariant()
   {
-    AtomicActionSelectFeatureImpl atomicActionSelectFeature = new AtomicActionSelectFeatureImpl();
-    return atomicActionSelectFeature;
+    SelectVariantImpl selectVariant = new SelectVariantImpl();
+    return selectVariant;
   }
 
   /**
@@ -373,10 +295,10 @@ public class TacticsFactoryImpl extends EFactoryImpl implements TacticsFactory
    * @generated
    */
   @Override
-  public AtomicActionDeselectFeature createAtomicActionDeselectFeature()
+  public DeselectVariant createDeselectVariant()
   {
-    AtomicActionDeselectFeatureImpl atomicActionDeselectFeature = new AtomicActionDeselectFeatureImpl();
-    return atomicActionDeselectFeature;
+    DeselectVariantImpl deselectVariant = new DeselectVariantImpl();
+    return deselectVariant;
   }
 
   /**

@@ -6,7 +6,6 @@ package eu.coresense.adaptation.services;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import java.util.List;
-import org.eclipse.xtext.Action;
 import org.eclipse.xtext.Alternatives;
 import org.eclipse.xtext.Assignment;
 import org.eclipse.xtext.CrossReference;
@@ -35,19 +34,19 @@ public class TacticsGrammarAccess extends AbstractElementFinder.AbstractGrammarE
 		private final Keyword cSemicolonKeyword_2 = (Keyword)cGroup.eContents().get(2);
 		private final Assignment cImportsAssignment_3 = (Assignment)cGroup.eContents().get(3);
 		private final RuleCall cImportsImportParserRuleCall_3_0 = (RuleCall)cImportsAssignment_3.eContents().get(0);
-		private final Assignment cActionRulesAssignment_4 = (Assignment)cGroup.eContents().get(4);
-		private final RuleCall cActionRulesActionRulesParserRuleCall_4_0 = (RuleCall)cActionRulesAssignment_4.eContents().get(0);
+		private final Assignment cTacticsAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final RuleCall cTacticsTacticParserRuleCall_4_0 = (RuleCall)cTacticsAssignment_4.eContents().get(0);
 		
 		//TacticsModel:
 		//    'name' name=ID ';'
 		//    (imports+=Import*)
-		//    (actionRules+=ActionRules*)
+		//    (tactics+=Tactic*)
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
 		//'name' name=ID ';'
 		//(imports+=Import*)
-		//(actionRules+=ActionRules*)
+		//(tactics+=Tactic*)
 		public Group getGroup() { return cGroup; }
 		
 		//'name'
@@ -68,64 +67,86 @@ public class TacticsGrammarAccess extends AbstractElementFinder.AbstractGrammarE
 		//Import
 		public RuleCall getImportsImportParserRuleCall_3_0() { return cImportsImportParserRuleCall_3_0; }
 		
-		//(actionRules+=ActionRules*)
-		public Assignment getActionRulesAssignment_4() { return cActionRulesAssignment_4; }
+		//(tactics+=Tactic*)
+		public Assignment getTacticsAssignment_4() { return cTacticsAssignment_4; }
 		
-		//ActionRules
-		public RuleCall getActionRulesActionRulesParserRuleCall_4_0() { return cActionRulesActionRulesParserRuleCall_4_0; }
+		//Tactic
+		public RuleCall getTacticsTacticParserRuleCall_4_0() { return cTacticsTacticParserRuleCall_4_0; }
 	}
-	public class ActionRulesElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "eu.coresense.adaptation.Tactics.ActionRules");
+	public class TacticElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "eu.coresense.adaptation.Tactics.Tactic");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final RuleCall cActionTacticsParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final RuleCall cPureTacticParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		
+		//Tactic:
+		//    ActionTactics | PureTactic
+		//;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//ActionTactics | PureTactic
+		public Alternatives getAlternatives() { return cAlternatives; }
+		
+		//ActionTactics
+		public RuleCall getActionTacticsParserRuleCall_0() { return cActionTacticsParserRuleCall_0; }
+		
+		//PureTactic
+		public RuleCall getPureTacticParserRuleCall_1() { return cPureTacticParserRuleCall_1; }
+	}
+	public class ActionTacticsElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "eu.coresense.adaptation.Tactics.ActionTactics");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Assignment cActionAssignment_0 = (Assignment)cGroup.eContents().get(0);
-		private final CrossReference cActionActionSpecCrossReference_0_0 = (CrossReference)cActionAssignment_0.eContents().get(0);
-		private final RuleCall cActionActionSpecIDTerminalRuleCall_0_0_1 = (RuleCall)cActionActionSpecCrossReference_0_0.eContents().get(1);
-		private final Assignment cRequirementAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final CrossReference cRequirementRequirementCrossReference_1_0 = (CrossReference)cRequirementAssignment_1.eContents().get(0);
-		private final RuleCall cRequirementRequirementIDTerminalRuleCall_1_0_1 = (RuleCall)cRequirementRequirementCrossReference_1_0.eContents().get(1);
+		private final Assignment cRequirementAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final CrossReference cRequirementRequirementCrossReference_0_0 = (CrossReference)cRequirementAssignment_0.eContents().get(0);
+		private final RuleCall cRequirementRequirementIDTerminalRuleCall_0_0_1 = (RuleCall)cRequirementRequirementCrossReference_0_0.eContents().get(1);
+		private final Assignment cActionAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final CrossReference cActionActionSpecCrossReference_1_0 = (CrossReference)cActionAssignment_1.eContents().get(0);
+		private final RuleCall cActionActionSpecIDTerminalRuleCall_1_0_1 = (RuleCall)cActionActionSpecCrossReference_1_0.eContents().get(1);
 		private final Keyword cLeftCurlyBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
-		private final Assignment cAdaptationRulesAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final RuleCall cAdaptationRulesAdaptationRuleParserRuleCall_3_0 = (RuleCall)cAdaptationRulesAssignment_3.eContents().get(0);
+		private final Assignment cTacticsAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cTacticsPureTacticParserRuleCall_3_0 = (RuleCall)cTacticsAssignment_3.eContents().get(0);
 		private final Keyword cRightCurlyBracketKeyword_4 = (Keyword)cGroup.eContents().get(4);
 		
-		//ActionRules:
-		//    action=[ros::ActionSpec] requirement=[requirementsModel::Requirement]? "{"
-		//        (adaptationRules+=AdaptationRule*)
+		//ActionTactics:
+		//    requirement=[requirementsModel::Requirement]?
+		//    action=[ros::ActionSpec] "{"
+		//        (tactics+=PureTactic*)
 		//    "}"
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//action=[ros::ActionSpec] requirement=[requirementsModel::Requirement]? "{"
-		//    (adaptationRules+=AdaptationRule*)
+		//requirement=[requirementsModel::Requirement]?
+		//action=[ros::ActionSpec] "{"
+		//    (tactics+=PureTactic*)
 		//"}"
 		public Group getGroup() { return cGroup; }
 		
-		//action=[ros::ActionSpec]
-		public Assignment getActionAssignment_0() { return cActionAssignment_0; }
-		
-		//[ros::ActionSpec]
-		public CrossReference getActionActionSpecCrossReference_0_0() { return cActionActionSpecCrossReference_0_0; }
-		
-		//ID
-		public RuleCall getActionActionSpecIDTerminalRuleCall_0_0_1() { return cActionActionSpecIDTerminalRuleCall_0_0_1; }
-		
 		//requirement=[requirementsModel::Requirement]?
-		public Assignment getRequirementAssignment_1() { return cRequirementAssignment_1; }
+		public Assignment getRequirementAssignment_0() { return cRequirementAssignment_0; }
 		
 		//[requirementsModel::Requirement]
-		public CrossReference getRequirementRequirementCrossReference_1_0() { return cRequirementRequirementCrossReference_1_0; }
+		public CrossReference getRequirementRequirementCrossReference_0_0() { return cRequirementRequirementCrossReference_0_0; }
 		
 		//ID
-		public RuleCall getRequirementRequirementIDTerminalRuleCall_1_0_1() { return cRequirementRequirementIDTerminalRuleCall_1_0_1; }
+		public RuleCall getRequirementRequirementIDTerminalRuleCall_0_0_1() { return cRequirementRequirementIDTerminalRuleCall_0_0_1; }
+		
+		//action=[ros::ActionSpec]
+		public Assignment getActionAssignment_1() { return cActionAssignment_1; }
+		
+		//[ros::ActionSpec]
+		public CrossReference getActionActionSpecCrossReference_1_0() { return cActionActionSpecCrossReference_1_0; }
+		
+		//ID
+		public RuleCall getActionActionSpecIDTerminalRuleCall_1_0_1() { return cActionActionSpecIDTerminalRuleCall_1_0_1; }
 		
 		//"{"
 		public Keyword getLeftCurlyBracketKeyword_2() { return cLeftCurlyBracketKeyword_2; }
 		
-		//(adaptationRules+=AdaptationRule*)
-		public Assignment getAdaptationRulesAssignment_3() { return cAdaptationRulesAssignment_3; }
+		//(tactics+=PureTactic*)
+		public Assignment getTacticsAssignment_3() { return cTacticsAssignment_3; }
 		
-		//AdaptationRule
-		public RuleCall getAdaptationRulesAdaptationRuleParserRuleCall_3_0() { return cAdaptationRulesAdaptationRuleParserRuleCall_3_0; }
+		//PureTactic
+		public RuleCall getTacticsPureTacticParserRuleCall_3_0() { return cTacticsPureTacticParserRuleCall_3_0; }
 		
 		//"}"
 		public Keyword getRightCurlyBracketKeyword_4() { return cRightCurlyBracketKeyword_4; }
@@ -158,82 +179,114 @@ public class TacticsGrammarAccess extends AbstractElementFinder.AbstractGrammarE
 		//';'
 		public Keyword getSemicolonKeyword_2() { return cSemicolonKeyword_2; }
 	}
-	public class AdaptationRuleElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "eu.coresense.adaptation.Tactics.AdaptationRule");
-		private final RuleCall cAtomicRuleParserRuleCall = (RuleCall)rule.eContents().get(1);
-		
-		//AdaptationRule:
-		//     AtomicRule
-		//;
-		@Override public ParserRule getRule() { return rule; }
-		
-		//AtomicRule
-		public RuleCall getAtomicRuleParserRuleCall() { return cAtomicRuleParserRuleCall; }
-	}
-	public class AtomicRuleElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "eu.coresense.adaptation.Tactics.AtomicRule");
+	public class PureTacticElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "eu.coresense.adaptation.Tactics.PureTactic");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cRuleKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
-		private final Keyword cLeftCurlyBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
-		private final Assignment cRuleBodyAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final RuleCall cRuleBodyRuleBodyParserRuleCall_3_0 = (RuleCall)cRuleBodyAssignment_3.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_4 = (Keyword)cGroup.eContents().get(4);
-		private final Keyword cSemicolonKeyword_5 = (Keyword)cGroup.eContents().get(5);
+		private final Assignment cRequirementAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final CrossReference cRequirementRequirementCrossReference_0_0 = (CrossReference)cRequirementAssignment_0.eContents().get(0);
+		private final RuleCall cRequirementRequirementIDTerminalRuleCall_0_0_1 = (RuleCall)cRequirementRequirementCrossReference_0_0.eContents().get(1);
+		private final Keyword cRuleKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cNameIDTerminalRuleCall_2_0 = (RuleCall)cNameAssignment_2.eContents().get(0);
+		private final Keyword cLeftCurlyBracketKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		private final Assignment cGuardAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final RuleCall cGuardGuardParserRuleCall_4_0 = (RuleCall)cGuardAssignment_4.eContents().get(0);
+		private final Assignment cActionAssignment_5 = (Assignment)cGroup.eContents().get(5);
+		private final RuleCall cActionTacticActionParserRuleCall_5_0 = (RuleCall)cActionAssignment_5.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_6 = (Keyword)cGroup.eContents().get(6);
+		private final Keyword cSemicolonKeyword_7 = (Keyword)cGroup.eContents().get(7);
 		
-		//AtomicRule:
+		//PureTactic:
+		//    requirement=[requirementsModel::Requirement]?
 		//    'rule' name=ID '{'
-		//    ruleBody=RuleBody '}' ';'
+		//    guard=Guard?
+		//    action=TacticAction '}' ';'
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
+		//requirement=[requirementsModel::Requirement]?
 		//'rule' name=ID '{'
-		//ruleBody=RuleBody '}' ';'
+		//guard=Guard?
+		//action=TacticAction '}' ';'
 		public Group getGroup() { return cGroup; }
 		
-		//'rule'
-		public Keyword getRuleKeyword_0() { return cRuleKeyword_0; }
+		//requirement=[requirementsModel::Requirement]?
+		public Assignment getRequirementAssignment_0() { return cRequirementAssignment_0; }
 		
-		//name=ID
-		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
+		//[requirementsModel::Requirement]
+		public CrossReference getRequirementRequirementCrossReference_0_0() { return cRequirementRequirementCrossReference_0_0; }
 		
 		//ID
-		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
+		public RuleCall getRequirementRequirementIDTerminalRuleCall_0_0_1() { return cRequirementRequirementIDTerminalRuleCall_0_0_1; }
+		
+		//'rule'
+		public Keyword getRuleKeyword_1() { return cRuleKeyword_1; }
+		
+		//name=ID
+		public Assignment getNameAssignment_2() { return cNameAssignment_2; }
+		
+		//ID
+		public RuleCall getNameIDTerminalRuleCall_2_0() { return cNameIDTerminalRuleCall_2_0; }
 		
 		//'{'
-		public Keyword getLeftCurlyBracketKeyword_2() { return cLeftCurlyBracketKeyword_2; }
+		public Keyword getLeftCurlyBracketKeyword_3() { return cLeftCurlyBracketKeyword_3; }
 		
-		//ruleBody=RuleBody
-		public Assignment getRuleBodyAssignment_3() { return cRuleBodyAssignment_3; }
+		//guard=Guard?
+		public Assignment getGuardAssignment_4() { return cGuardAssignment_4; }
 		
-		//RuleBody
-		public RuleCall getRuleBodyRuleBodyParserRuleCall_3_0() { return cRuleBodyRuleBodyParserRuleCall_3_0; }
+		//Guard
+		public RuleCall getGuardGuardParserRuleCall_4_0() { return cGuardGuardParserRuleCall_4_0; }
+		
+		//action=TacticAction
+		public Assignment getActionAssignment_5() { return cActionAssignment_5; }
+		
+		//TacticAction
+		public RuleCall getActionTacticActionParserRuleCall_5_0() { return cActionTacticActionParserRuleCall_5_0; }
 		
 		//'}'
-		public Keyword getRightCurlyBracketKeyword_4() { return cRightCurlyBracketKeyword_4; }
+		public Keyword getRightCurlyBracketKeyword_6() { return cRightCurlyBracketKeyword_6; }
 		
 		//';'
-		public Keyword getSemicolonKeyword_5() { return cSemicolonKeyword_5; }
+		public Keyword getSemicolonKeyword_7() { return cSemicolonKeyword_7; }
 	}
-	public class AtomicActionElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "eu.coresense.adaptation.Tactics.AtomicAction");
+	public class SelectionElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "eu.coresense.adaptation.Tactics.Selection");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final RuleCall cSelectVariantParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final RuleCall cDeselectVariantParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		
+		//Selection:
+		//    SelectVariant | DeselectVariant;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//SelectVariant | DeselectVariant
+		public Alternatives getAlternatives() { return cAlternatives; }
+		
+		//SelectVariant
+		public RuleCall getSelectVariantParserRuleCall_0() { return cSelectVariantParserRuleCall_0; }
+		
+		//DeselectVariant
+		public RuleCall getDeselectVariantParserRuleCall_1() { return cDeselectVariantParserRuleCall_1; }
+	}
+	public class TacticActionElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "eu.coresense.adaptation.Tactics.TacticAction");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cActionKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Keyword cLeftCurlyBracketKeyword_1 = (Keyword)cGroup.eContents().get(1);
 		private final Assignment cActionsAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cActionsAtomicSimpleActionParserRuleCall_2_0 = (RuleCall)cActionsAssignment_2.eContents().get(0);
+		private final RuleCall cActionsSelectionParserRuleCall_2_0 = (RuleCall)cActionsAssignment_2.eContents().get(0);
 		private final Group cGroup_3 = (Group)cGroup.eContents().get(3);
 		private final Keyword cANDKeyword_3_0 = (Keyword)cGroup_3.eContents().get(0);
 		private final Assignment cActionsAssignment_3_1 = (Assignment)cGroup_3.eContents().get(1);
-		private final RuleCall cActionsAtomicSimpleActionParserRuleCall_3_1_0 = (RuleCall)cActionsAssignment_3_1.eContents().get(0);
+		private final RuleCall cActionsSelectionParserRuleCall_3_1_0 = (RuleCall)cActionsAssignment_3_1.eContents().get(0);
 		private final Keyword cRightCurlyBracketKeyword_4 = (Keyword)cGroup.eContents().get(4);
 		
-		//AtomicAction:
-		//    'action' '{' actions+=AtomicSimpleAction ('AND' actions+=AtomicSimpleAction)*'}';
+		//TacticAction:
+		//    'action' '{' actions+=Selection ('AND' actions+=Selection)*'}'
+		//;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'action' '{' actions+=AtomicSimpleAction ('AND' actions+=AtomicSimpleAction)*'}'
+		//'action' '{' actions+=Selection ('AND' actions+=Selection)*'}'
 		public Group getGroup() { return cGroup; }
 		
 		//'action'
@@ -242,112 +295,29 @@ public class TacticsGrammarAccess extends AbstractElementFinder.AbstractGrammarE
 		//'{'
 		public Keyword getLeftCurlyBracketKeyword_1() { return cLeftCurlyBracketKeyword_1; }
 		
-		//actions+=AtomicSimpleAction
+		//actions+=Selection
 		public Assignment getActionsAssignment_2() { return cActionsAssignment_2; }
 		
-		//AtomicSimpleAction
-		public RuleCall getActionsAtomicSimpleActionParserRuleCall_2_0() { return cActionsAtomicSimpleActionParserRuleCall_2_0; }
+		//Selection
+		public RuleCall getActionsSelectionParserRuleCall_2_0() { return cActionsSelectionParserRuleCall_2_0; }
 		
-		//('AND' actions+=AtomicSimpleAction)*
+		//('AND' actions+=Selection)*
 		public Group getGroup_3() { return cGroup_3; }
 		
 		//'AND'
 		public Keyword getANDKeyword_3_0() { return cANDKeyword_3_0; }
 		
-		//actions+=AtomicSimpleAction
+		//actions+=Selection
 		public Assignment getActionsAssignment_3_1() { return cActionsAssignment_3_1; }
 		
-		//AtomicSimpleAction
-		public RuleCall getActionsAtomicSimpleActionParserRuleCall_3_1_0() { return cActionsAtomicSimpleActionParserRuleCall_3_1_0; }
+		//Selection
+		public RuleCall getActionsSelectionParserRuleCall_3_1_0() { return cActionsSelectionParserRuleCall_3_1_0; }
 		
 		//'}'
 		public Keyword getRightCurlyBracketKeyword_4() { return cRightCurlyBracketKeyword_4; }
 	}
-	public class AtomicSimpleActionElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "eu.coresense.adaptation.Tactics.AtomicSimpleAction");
-		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final RuleCall cAtomicActionSelectFeatureParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
-		private final RuleCall cAtomicActionDeselectFeatureParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
-		
-		//AtomicSimpleAction:
-		//    AtomicActionSelectFeature | AtomicActionDeselectFeature;
-		@Override public ParserRule getRule() { return rule; }
-		
-		//AtomicActionSelectFeature | AtomicActionDeselectFeature
-		public Alternatives getAlternatives() { return cAlternatives; }
-		
-		//AtomicActionSelectFeature
-		public RuleCall getAtomicActionSelectFeatureParserRuleCall_0() { return cAtomicActionSelectFeatureParserRuleCall_0; }
-		
-		//AtomicActionDeselectFeature
-		public RuleCall getAtomicActionDeselectFeatureParserRuleCall_1() { return cAtomicActionDeselectFeatureParserRuleCall_1; }
-	}
-	public class RuleBodyElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "eu.coresense.adaptation.Tactics.RuleBody");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Assignment cActionAssignment_0 = (Assignment)cGroup.eContents().get(0);
-		private final RuleCall cActionTacticActionParserRuleCall_0_0 = (RuleCall)cActionAssignment_0.eContents().get(0);
-		private final Assignment cEffectAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cEffectEffectBlockParserRuleCall_1_0 = (RuleCall)cEffectAssignment_1.eContents().get(0);
-		
-		//RuleBody:
-		//    action=TacticAction effect=EffectBlock?
-		//;
-		@Override public ParserRule getRule() { return rule; }
-		
-		//action=TacticAction effect=EffectBlock?
-		public Group getGroup() { return cGroup; }
-		
-		//action=TacticAction
-		public Assignment getActionAssignment_0() { return cActionAssignment_0; }
-		
-		//TacticAction
-		public RuleCall getActionTacticActionParserRuleCall_0_0() { return cActionTacticActionParserRuleCall_0_0; }
-		
-		//effect=EffectBlock?
-		public Assignment getEffectAssignment_1() { return cEffectAssignment_1; }
-		
-		//EffectBlock
-		public RuleCall getEffectEffectBlockParserRuleCall_1_0() { return cEffectEffectBlockParserRuleCall_1_0; }
-	}
-	public class TacticActionElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "eu.coresense.adaptation.Tactics.TacticAction");
-		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final RuleCall cPureActionParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
-		private final RuleCall cConditionActionParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
-		
-		//TacticAction:
-		//    (PureAction | ConditionAction)
-		//;
-		@Override public ParserRule getRule() { return rule; }
-		
-		//(PureAction | ConditionAction)
-		public Alternatives getAlternatives() { return cAlternatives; }
-		
-		//PureAction
-		public RuleCall getPureActionParserRuleCall_0() { return cPureActionParserRuleCall_0; }
-		
-		//ConditionAction
-		public RuleCall getConditionActionParserRuleCall_1() { return cConditionActionParserRuleCall_1; }
-	}
-	public class PureActionElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "eu.coresense.adaptation.Tactics.PureAction");
-		private final Assignment cAtomicActionAssignment = (Assignment)rule.eContents().get(1);
-		private final RuleCall cAtomicActionAtomicActionParserRuleCall_0 = (RuleCall)cAtomicActionAssignment.eContents().get(0);
-		
-		//PureAction:
-		//    atomicAction=AtomicAction
-		//;
-		@Override public ParserRule getRule() { return rule; }
-		
-		//atomicAction=AtomicAction
-		public Assignment getAtomicActionAssignment() { return cAtomicActionAssignment; }
-		
-		//AtomicAction
-		public RuleCall getAtomicActionAtomicActionParserRuleCall_0() { return cAtomicActionAtomicActionParserRuleCall_0; }
-	}
-	public class ConditionActionElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "eu.coresense.adaptation.Tactics.ConditionAction");
+	public class GuardElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "eu.coresense.adaptation.Tactics.Guard");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cGuardKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Keyword cLeftCurlyBracketKeyword_1 = (Keyword)cGroup.eContents().get(1);
@@ -363,17 +333,14 @@ public class TacticsGrammarAccess extends AbstractElementFinder.AbstractGrammarE
 		private final Assignment cContextGuardAssignment_2_1_1 = (Assignment)cGroup_2_1.eContents().get(1);
 		private final RuleCall cContextGuardContextGuardParserRuleCall_2_1_1_0 = (RuleCall)cContextGuardAssignment_2_1_1.eContents().get(0);
 		private final Keyword cRightCurlyBracketKeyword_3 = (Keyword)cGroup.eContents().get(3);
-		private final Assignment cAtomicActionAssignment_4 = (Assignment)cGroup.eContents().get(4);
-		private final RuleCall cAtomicActionAtomicActionParserRuleCall_4_0 = (RuleCall)cAtomicActionAssignment_4.eContents().get(0);
 		
-		//ConditionAction:
+		//Guard:
 		//    'guard' '{'
 		//        (
 		//            contextGuard=ContextGuard featureGuard=FeatureGuard?
 		//          | featureGuard=FeatureGuard contextGuard=ContextGuard?
 		//        )
-		//        '}'
-		//        atomicAction=AtomicAction;
+		//        '}';
 		@Override public ParserRule getRule() { return rule; }
 		
 		//'guard' '{'
@@ -382,7 +349,6 @@ public class TacticsGrammarAccess extends AbstractElementFinder.AbstractGrammarE
 		//      | featureGuard=FeatureGuard contextGuard=ContextGuard?
 		//    )
 		//    '}'
-		//    atomicAction=AtomicAction
 		public Group getGroup() { return cGroup; }
 		
 		//'guard'
@@ -429,12 +395,6 @@ public class TacticsGrammarAccess extends AbstractElementFinder.AbstractGrammarE
 		
 		//'}'
 		public Keyword getRightCurlyBracketKeyword_3() { return cRightCurlyBracketKeyword_3; }
-		
-		//atomicAction=AtomicAction
-		public Assignment getAtomicActionAssignment_4() { return cAtomicActionAssignment_4; }
-		
-		//AtomicAction
-		public RuleCall getAtomicActionAtomicActionParserRuleCall_4_0() { return cAtomicActionAtomicActionParserRuleCall_4_0; }
 	}
 	public class ContextGuardElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "eu.coresense.adaptation.Tactics.ContextGuard");
@@ -442,14 +402,14 @@ public class TacticsGrammarAccess extends AbstractElementFinder.AbstractGrammarE
 		private final Keyword cContextKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Keyword cLeftParenthesisKeyword_1 = (Keyword)cGroup.eContents().get(1);
 		private final Assignment cContextConditionAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cContextConditionMeasurementConditionParserRuleCall_2_0 = (RuleCall)cContextConditionAssignment_2.eContents().get(0);
+		private final RuleCall cContextConditionContextConditionParserRuleCall_2_0 = (RuleCall)cContextConditionAssignment_2.eContents().get(0);
 		private final Keyword cRightParenthesisKeyword_3 = (Keyword)cGroup.eContents().get(3);
 		
 		//ContextGuard:
-		//    'context' '(' contextCondition=MeasurementCondition ')';
+		//    'context' '(' contextCondition=ContextCondition ')';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'context' '(' contextCondition=MeasurementCondition ')'
+		//'context' '(' contextCondition=ContextCondition ')'
 		public Group getGroup() { return cGroup; }
 		
 		//'context'
@@ -458,11 +418,11 @@ public class TacticsGrammarAccess extends AbstractElementFinder.AbstractGrammarE
 		//'('
 		public Keyword getLeftParenthesisKeyword_1() { return cLeftParenthesisKeyword_1; }
 		
-		//contextCondition=MeasurementCondition
+		//contextCondition=ContextCondition
 		public Assignment getContextConditionAssignment_2() { return cContextConditionAssignment_2; }
 		
-		//MeasurementCondition
-		public RuleCall getContextConditionMeasurementConditionParserRuleCall_2_0() { return cContextConditionMeasurementConditionParserRuleCall_2_0; }
+		//ContextCondition
+		public RuleCall getContextConditionContextConditionParserRuleCall_2_0() { return cContextConditionContextConditionParserRuleCall_2_0; }
 		
 		//')'
 		public Keyword getRightParenthesisKeyword_3() { return cRightParenthesisKeyword_3; }
@@ -498,96 +458,6 @@ public class TacticsGrammarAccess extends AbstractElementFinder.AbstractGrammarE
 		//')'
 		public Keyword getRightParenthesisKeyword_3() { return cRightParenthesisKeyword_3; }
 	}
-	public class EffectBlockElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "eu.coresense.adaptation.Tactics.EffectBlock");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Action cEffectBlockAction_0 = (Action)cGroup.eContents().get(0);
-		private final Keyword cEffectKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Keyword cLeftCurlyBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
-		private final Assignment cSomeEffectAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final RuleCall cSomeEffectEffectParserRuleCall_3_0 = (RuleCall)cSomeEffectAssignment_3.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_4 = (Keyword)cGroup.eContents().get(4);
-		
-		//EffectBlock:
-		//    {EffectBlock}
-		//    'effect' '{' someEffect=Effect'}'
-		//;
-		@Override public ParserRule getRule() { return rule; }
-		
-		//{EffectBlock}
-		//'effect' '{' someEffect=Effect'}'
-		public Group getGroup() { return cGroup; }
-		
-		//{EffectBlock}
-		public Action getEffectBlockAction_0() { return cEffectBlockAction_0; }
-		
-		//'effect'
-		public Keyword getEffectKeyword_1() { return cEffectKeyword_1; }
-		
-		//'{'
-		public Keyword getLeftCurlyBracketKeyword_2() { return cLeftCurlyBracketKeyword_2; }
-		
-		//someEffect=Effect
-		public Assignment getSomeEffectAssignment_3() { return cSomeEffectAssignment_3; }
-		
-		//Effect
-		public RuleCall getSomeEffectEffectParserRuleCall_3_0() { return cSomeEffectEffectParserRuleCall_3_0; }
-		
-		//'}'
-		public Keyword getRightCurlyBracketKeyword_4() { return cRightCurlyBracketKeyword_4; }
-	}
-	public class EffectElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "eu.coresense.adaptation.Tactics.Effect");
-		private final RuleCall cRelativeEffectParserRuleCall = (RuleCall)rule.eContents().get(1);
-		
-		//Effect:
-		//    RelativeEffect
-		//;
-		@Override public ParserRule getRule() { return rule; }
-		
-		//RelativeEffect
-		public RuleCall getRelativeEffectParserRuleCall() { return cRelativeEffectParserRuleCall; }
-	}
-	public class RelativeEffectElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "eu.coresense.adaptation.Tactics.RelativeEffect");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Assignment cSignAssignment_0 = (Assignment)cGroup.eContents().get(0);
-		private final RuleCall cSignINCDECTerminalRuleCall_0_0 = (RuleCall)cSignAssignment_0.eContents().get(0);
-		private final Assignment cEffectValueAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cEffectValueLiteralParserRuleCall_1_0 = (RuleCall)cEffectValueAssignment_1.eContents().get(0);
-		private final Assignment cMeasurementAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final CrossReference cMeasurementContextVarCrossReference_2_0 = (CrossReference)cMeasurementAssignment_2.eContents().get(0);
-		private final RuleCall cMeasurementContextVarIDTerminalRuleCall_2_0_1 = (RuleCall)cMeasurementContextVarCrossReference_2_0.eContents().get(1);
-		
-		//RelativeEffect:
-		//    sign=INCDEC effectValue=Literal measurement=[contextModel::ContextVar]
-		//;
-		@Override public ParserRule getRule() { return rule; }
-		
-		//sign=INCDEC effectValue=Literal measurement=[contextModel::ContextVar]
-		public Group getGroup() { return cGroup; }
-		
-		//sign=INCDEC
-		public Assignment getSignAssignment_0() { return cSignAssignment_0; }
-		
-		//INCDEC
-		public RuleCall getSignINCDECTerminalRuleCall_0_0() { return cSignINCDECTerminalRuleCall_0_0; }
-		
-		//effectValue=Literal
-		public Assignment getEffectValueAssignment_1() { return cEffectValueAssignment_1; }
-		
-		//Literal
-		public RuleCall getEffectValueLiteralParserRuleCall_1_0() { return cEffectValueLiteralParserRuleCall_1_0; }
-		
-		//measurement=[contextModel::ContextVar]
-		public Assignment getMeasurementAssignment_2() { return cMeasurementAssignment_2; }
-		
-		//[contextModel::ContextVar]
-		public CrossReference getMeasurementContextVarCrossReference_2_0() { return cMeasurementContextVarCrossReference_2_0; }
-		
-		//ID
-		public RuleCall getMeasurementContextVarIDTerminalRuleCall_2_0_1() { return cMeasurementContextVarIDTerminalRuleCall_2_0_1; }
-	}
 	public class FeatureConditionElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "eu.coresense.adaptation.Tactics.FeatureCondition");
 		private final Group cGroup = (Group)rule.eContents().get(1);
@@ -603,6 +473,18 @@ public class TacticsGrammarAccess extends AbstractElementFinder.AbstractGrammarE
 		private final Assignment cSecondTermAssignment_4_1 = (Assignment)cGroup_4.eContents().get(1);
 		private final RuleCall cSecondTermFeatureConditionParserRuleCall_4_1_0 = (RuleCall)cSecondTermAssignment_4_1.eContents().get(0);
 		
+		////EffectBlock:
+		////    {EffectBlock}
+		////    'effect' '{' someEffect=Effect'}'
+		////;
+		////
+		////Effect:
+		////    RelativeEffect
+		////;
+		////
+		////RelativeEffect:
+		////    sign=INCDEC effectValue=Literal measurement=[contextModel::ContextVar]
+		////;
 		//FeatureCondition:
 		//    not=('!')? 'selected(' variant=QualifiedFeatureRef ')'     ( logicalOp=LogicalOperator secondTerm=FeatureCondition )?
 		//;
@@ -644,36 +526,36 @@ public class TacticsGrammarAccess extends AbstractElementFinder.AbstractGrammarE
 		//FeatureCondition
 		public RuleCall getSecondTermFeatureConditionParserRuleCall_4_1_0() { return cSecondTermFeatureConditionParserRuleCall_4_1_0; }
 	}
-	public class MeasurementConditionElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "eu.coresense.adaptation.Tactics.MeasurementCondition");
+	public class ContextConditionElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "eu.coresense.adaptation.Tactics.ContextCondition");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final RuleCall cMeasurementThresholdConditionParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
-		private final RuleCall cMeasurementMeasurementConditionParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		private final RuleCall cContextThresholdConditionParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final RuleCall cContextContextConditionParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
 		
 		////
 		////Condition:
-		////    MeasurementCondition | FeatureCondition
+		////    ContextCondition | FeatureCondition
 		////;
-		//MeasurementCondition:
-		//    MeasurementThresholdCondition | MeasurementMeasurementCondition
+		//ContextCondition:
+		//    ContextThresholdCondition | ContextContextCondition
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//MeasurementThresholdCondition | MeasurementMeasurementCondition
+		//ContextThresholdCondition | ContextContextCondition
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
-		//MeasurementThresholdCondition
-		public RuleCall getMeasurementThresholdConditionParserRuleCall_0() { return cMeasurementThresholdConditionParserRuleCall_0; }
+		//ContextThresholdCondition
+		public RuleCall getContextThresholdConditionParserRuleCall_0() { return cContextThresholdConditionParserRuleCall_0; }
 		
-		//MeasurementMeasurementCondition
-		public RuleCall getMeasurementMeasurementConditionParserRuleCall_1() { return cMeasurementMeasurementConditionParserRuleCall_1; }
+		//ContextContextCondition
+		public RuleCall getContextContextConditionParserRuleCall_1() { return cContextContextConditionParserRuleCall_1; }
 	}
-	public class MeasurementThresholdConditionElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "eu.coresense.adaptation.Tactics.MeasurementThresholdCondition");
+	public class ContextThresholdConditionElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "eu.coresense.adaptation.Tactics.ContextThresholdCondition");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Assignment cMeasurementAssignment_0 = (Assignment)cGroup.eContents().get(0);
-		private final CrossReference cMeasurementContextVarCrossReference_0_0 = (CrossReference)cMeasurementAssignment_0.eContents().get(0);
-		private final RuleCall cMeasurementContextVarIDTerminalRuleCall_0_0_1 = (RuleCall)cMeasurementContextVarCrossReference_0_0.eContents().get(1);
+		private final Assignment cContextVarAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final CrossReference cContextVarContextVarCrossReference_0_0 = (CrossReference)cContextVarAssignment_0.eContents().get(0);
+		private final RuleCall cContextVarContextVarIDTerminalRuleCall_0_0_1 = (RuleCall)cContextVarContextVarCrossReference_0_0.eContents().get(1);
 		private final Assignment cOperatorAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cOperatorMathOperatorEnumRuleCall_1_0 = (RuleCall)cOperatorAssignment_1.eContents().get(0);
 		private final Assignment cThresholdValueAssignment_2 = (Assignment)cGroup.eContents().get(2);
@@ -682,28 +564,28 @@ public class TacticsGrammarAccess extends AbstractElementFinder.AbstractGrammarE
 		private final Assignment cLogicalOpAssignment_3_0 = (Assignment)cGroup_3.eContents().get(0);
 		private final RuleCall cLogicalOpLogicalOperatorEnumRuleCall_3_0_0 = (RuleCall)cLogicalOpAssignment_3_0.eContents().get(0);
 		private final Assignment cSecondTermAssignment_3_1 = (Assignment)cGroup_3.eContents().get(1);
-		private final RuleCall cSecondTermMeasurementConditionParserRuleCall_3_1_0 = (RuleCall)cSecondTermAssignment_3_1.eContents().get(0);
+		private final RuleCall cSecondTermContextConditionParserRuleCall_3_1_0 = (RuleCall)cSecondTermAssignment_3_1.eContents().get(0);
 		
-		//MeasurementThresholdCondition:
-		//    measurement=[contextModel::ContextVar]
+		//ContextThresholdCondition:
+		//    contextVar=[contextModel::ContextVar]
 		//    operator=MathOperator thresholdValue=Literal
-		//    ( logicalOp=LogicalOperator secondTerm=MeasurementCondition )?
+		//    ( logicalOp=LogicalOperator secondTerm=ContextCondition )?
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//measurement=[contextModel::ContextVar]
+		//contextVar=[contextModel::ContextVar]
 		//operator=MathOperator thresholdValue=Literal
-		//( logicalOp=LogicalOperator secondTerm=MeasurementCondition )?
+		//( logicalOp=LogicalOperator secondTerm=ContextCondition )?
 		public Group getGroup() { return cGroup; }
 		
-		//measurement=[contextModel::ContextVar]
-		public Assignment getMeasurementAssignment_0() { return cMeasurementAssignment_0; }
+		//contextVar=[contextModel::ContextVar]
+		public Assignment getContextVarAssignment_0() { return cContextVarAssignment_0; }
 		
 		//[contextModel::ContextVar]
-		public CrossReference getMeasurementContextVarCrossReference_0_0() { return cMeasurementContextVarCrossReference_0_0; }
+		public CrossReference getContextVarContextVarCrossReference_0_0() { return cContextVarContextVarCrossReference_0_0; }
 		
 		//ID
-		public RuleCall getMeasurementContextVarIDTerminalRuleCall_0_0_1() { return cMeasurementContextVarIDTerminalRuleCall_0_0_1; }
+		public RuleCall getContextVarContextVarIDTerminalRuleCall_0_0_1() { return cContextVarContextVarIDTerminalRuleCall_0_0_1; }
 		
 		//operator=MathOperator
 		public Assignment getOperatorAssignment_1() { return cOperatorAssignment_1; }
@@ -717,7 +599,7 @@ public class TacticsGrammarAccess extends AbstractElementFinder.AbstractGrammarE
 		//Literal
 		public RuleCall getThresholdValueLiteralParserRuleCall_2_0() { return cThresholdValueLiteralParserRuleCall_2_0; }
 		
-		//( logicalOp=LogicalOperator secondTerm=MeasurementCondition )?
+		//( logicalOp=LogicalOperator secondTerm=ContextCondition )?
 		public Group getGroup_3() { return cGroup_3; }
 		
 		//logicalOp=LogicalOperator
@@ -726,49 +608,49 @@ public class TacticsGrammarAccess extends AbstractElementFinder.AbstractGrammarE
 		//LogicalOperator
 		public RuleCall getLogicalOpLogicalOperatorEnumRuleCall_3_0_0() { return cLogicalOpLogicalOperatorEnumRuleCall_3_0_0; }
 		
-		//secondTerm=MeasurementCondition
+		//secondTerm=ContextCondition
 		public Assignment getSecondTermAssignment_3_1() { return cSecondTermAssignment_3_1; }
 		
-		//MeasurementCondition
-		public RuleCall getSecondTermMeasurementConditionParserRuleCall_3_1_0() { return cSecondTermMeasurementConditionParserRuleCall_3_1_0; }
+		//ContextCondition
+		public RuleCall getSecondTermContextConditionParserRuleCall_3_1_0() { return cSecondTermContextConditionParserRuleCall_3_1_0; }
 	}
-	public class MeasurementMeasurementConditionElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "eu.coresense.adaptation.Tactics.MeasurementMeasurementCondition");
+	public class ContextContextConditionElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "eu.coresense.adaptation.Tactics.ContextContextCondition");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Assignment cMeasurementAssignment_0 = (Assignment)cGroup.eContents().get(0);
-		private final CrossReference cMeasurementContextVarCrossReference_0_0 = (CrossReference)cMeasurementAssignment_0.eContents().get(0);
-		private final RuleCall cMeasurementContextVarIDTerminalRuleCall_0_0_1 = (RuleCall)cMeasurementContextVarCrossReference_0_0.eContents().get(1);
+		private final Assignment cContextVarAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final CrossReference cContextVarContextVarCrossReference_0_0 = (CrossReference)cContextVarAssignment_0.eContents().get(0);
+		private final RuleCall cContextVarContextVarIDTerminalRuleCall_0_0_1 = (RuleCall)cContextVarContextVarCrossReference_0_0.eContents().get(1);
 		private final Assignment cOperatorAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cOperatorMathOperatorEnumRuleCall_1_0 = (RuleCall)cOperatorAssignment_1.eContents().get(0);
-		private final Assignment cOtherMeasurementAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final CrossReference cOtherMeasurementContextVarCrossReference_2_0 = (CrossReference)cOtherMeasurementAssignment_2.eContents().get(0);
-		private final RuleCall cOtherMeasurementContextVarIDTerminalRuleCall_2_0_1 = (RuleCall)cOtherMeasurementContextVarCrossReference_2_0.eContents().get(1);
+		private final Assignment cOtherContextVarAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final CrossReference cOtherContextVarContextVarCrossReference_2_0 = (CrossReference)cOtherContextVarAssignment_2.eContents().get(0);
+		private final RuleCall cOtherContextVarContextVarIDTerminalRuleCall_2_0_1 = (RuleCall)cOtherContextVarContextVarCrossReference_2_0.eContents().get(1);
 		private final Group cGroup_3 = (Group)cGroup.eContents().get(3);
 		private final Assignment cLogicalOpAssignment_3_0 = (Assignment)cGroup_3.eContents().get(0);
 		private final RuleCall cLogicalOpLogicalOperatorEnumRuleCall_3_0_0 = (RuleCall)cLogicalOpAssignment_3_0.eContents().get(0);
 		private final Assignment cSecondTermAssignment_3_1 = (Assignment)cGroup_3.eContents().get(1);
-		private final RuleCall cSecondTermMeasurementConditionParserRuleCall_3_1_0 = (RuleCall)cSecondTermAssignment_3_1.eContents().get(0);
+		private final RuleCall cSecondTermContextConditionParserRuleCall_3_1_0 = (RuleCall)cSecondTermAssignment_3_1.eContents().get(0);
 		
-		//MeasurementMeasurementCondition:
-		//    measurement=[contextModel::ContextVar]
-		//    operator=MathOperator otherMeasurement=[contextModel::ContextVar]
-		//    ( logicalOp=LogicalOperator secondTerm=MeasurementCondition )?
+		//ContextContextCondition:
+		//    contextVar=[contextModel::ContextVar]
+		//    operator=MathOperator otherContextVar=[contextModel::ContextVar]
+		//    ( logicalOp=LogicalOperator secondTerm=ContextCondition )?
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//measurement=[contextModel::ContextVar]
-		//operator=MathOperator otherMeasurement=[contextModel::ContextVar]
-		//( logicalOp=LogicalOperator secondTerm=MeasurementCondition )?
+		//contextVar=[contextModel::ContextVar]
+		//operator=MathOperator otherContextVar=[contextModel::ContextVar]
+		//( logicalOp=LogicalOperator secondTerm=ContextCondition )?
 		public Group getGroup() { return cGroup; }
 		
-		//measurement=[contextModel::ContextVar]
-		public Assignment getMeasurementAssignment_0() { return cMeasurementAssignment_0; }
+		//contextVar=[contextModel::ContextVar]
+		public Assignment getContextVarAssignment_0() { return cContextVarAssignment_0; }
 		
 		//[contextModel::ContextVar]
-		public CrossReference getMeasurementContextVarCrossReference_0_0() { return cMeasurementContextVarCrossReference_0_0; }
+		public CrossReference getContextVarContextVarCrossReference_0_0() { return cContextVarContextVarCrossReference_0_0; }
 		
 		//ID
-		public RuleCall getMeasurementContextVarIDTerminalRuleCall_0_0_1() { return cMeasurementContextVarIDTerminalRuleCall_0_0_1; }
+		public RuleCall getContextVarContextVarIDTerminalRuleCall_0_0_1() { return cContextVarContextVarIDTerminalRuleCall_0_0_1; }
 		
 		//operator=MathOperator
 		public Assignment getOperatorAssignment_1() { return cOperatorAssignment_1; }
@@ -776,16 +658,16 @@ public class TacticsGrammarAccess extends AbstractElementFinder.AbstractGrammarE
 		//MathOperator
 		public RuleCall getOperatorMathOperatorEnumRuleCall_1_0() { return cOperatorMathOperatorEnumRuleCall_1_0; }
 		
-		//otherMeasurement=[contextModel::ContextVar]
-		public Assignment getOtherMeasurementAssignment_2() { return cOtherMeasurementAssignment_2; }
+		//otherContextVar=[contextModel::ContextVar]
+		public Assignment getOtherContextVarAssignment_2() { return cOtherContextVarAssignment_2; }
 		
 		//[contextModel::ContextVar]
-		public CrossReference getOtherMeasurementContextVarCrossReference_2_0() { return cOtherMeasurementContextVarCrossReference_2_0; }
+		public CrossReference getOtherContextVarContextVarCrossReference_2_0() { return cOtherContextVarContextVarCrossReference_2_0; }
 		
 		//ID
-		public RuleCall getOtherMeasurementContextVarIDTerminalRuleCall_2_0_1() { return cOtherMeasurementContextVarIDTerminalRuleCall_2_0_1; }
+		public RuleCall getOtherContextVarContextVarIDTerminalRuleCall_2_0_1() { return cOtherContextVarContextVarIDTerminalRuleCall_2_0_1; }
 		
-		//( logicalOp=LogicalOperator secondTerm=MeasurementCondition )?
+		//( logicalOp=LogicalOperator secondTerm=ContextCondition )?
 		public Group getGroup_3() { return cGroup_3; }
 		
 		//logicalOp=LogicalOperator
@@ -794,14 +676,14 @@ public class TacticsGrammarAccess extends AbstractElementFinder.AbstractGrammarE
 		//LogicalOperator
 		public RuleCall getLogicalOpLogicalOperatorEnumRuleCall_3_0_0() { return cLogicalOpLogicalOperatorEnumRuleCall_3_0_0; }
 		
-		//secondTerm=MeasurementCondition
+		//secondTerm=ContextCondition
 		public Assignment getSecondTermAssignment_3_1() { return cSecondTermAssignment_3_1; }
 		
-		//MeasurementCondition
-		public RuleCall getSecondTermMeasurementConditionParserRuleCall_3_1_0() { return cSecondTermMeasurementConditionParserRuleCall_3_1_0; }
+		//ContextCondition
+		public RuleCall getSecondTermContextConditionParserRuleCall_3_1_0() { return cSecondTermContextConditionParserRuleCall_3_1_0; }
 	}
-	public class AtomicActionSelectFeatureElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "eu.coresense.adaptation.Tactics.AtomicActionSelectFeature");
+	public class SelectVariantElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "eu.coresense.adaptation.Tactics.SelectVariant");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cSelect_variantKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Keyword cLeftParenthesisKeyword_1 = (Keyword)cGroup.eContents().get(1);
@@ -809,7 +691,7 @@ public class TacticsGrammarAccess extends AbstractElementFinder.AbstractGrammarE
 		private final RuleCall cVariantQualifiedFeatureRefParserRuleCall_2_0 = (RuleCall)cVariantAssignment_2.eContents().get(0);
 		private final Keyword cRightParenthesisKeyword_3 = (Keyword)cGroup.eContents().get(3);
 		
-		//AtomicActionSelectFeature:
+		//SelectVariant:
 		//    'select_variant' '(' variant=QualifiedFeatureRef ')'
 		//;
 		@Override public ParserRule getRule() { return rule; }
@@ -832,8 +714,8 @@ public class TacticsGrammarAccess extends AbstractElementFinder.AbstractGrammarE
 		//')'
 		public Keyword getRightParenthesisKeyword_3() { return cRightParenthesisKeyword_3; }
 	}
-	public class AtomicActionDeselectFeatureElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "eu.coresense.adaptation.Tactics.AtomicActionDeselectFeature");
+	public class DeselectVariantElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "eu.coresense.adaptation.Tactics.DeselectVariant");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cUnselect_variantKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Keyword cLeftParenthesisKeyword_1 = (Keyword)cGroup.eContents().get(1);
@@ -841,7 +723,7 @@ public class TacticsGrammarAccess extends AbstractElementFinder.AbstractGrammarE
 		private final RuleCall cVariantQualifiedFeatureRefParserRuleCall_2_0 = (RuleCall)cVariantAssignment_2.eContents().get(0);
 		private final Keyword cRightParenthesisKeyword_3 = (Keyword)cGroup.eContents().get(3);
 		
-		//AtomicActionDeselectFeature:
+		//DeselectVariant:
 		//    'unselect_variant' '('variant=QualifiedFeatureRef')'
 		//;
 		@Override public ParserRule getRule() { return rule; }
@@ -1093,29 +975,23 @@ public class TacticsGrammarAccess extends AbstractElementFinder.AbstractGrammarE
 	}
 	
 	private final TacticsModelElements pTacticsModel;
-	private final ActionRulesElements pActionRules;
+	private final TacticElements pTactic;
+	private final ActionTacticsElements pActionTactics;
 	private final ImportElements pImport;
-	private final AdaptationRuleElements pAdaptationRule;
-	private final AtomicRuleElements pAtomicRule;
-	private final AtomicActionElements pAtomicAction;
-	private final AtomicSimpleActionElements pAtomicSimpleAction;
-	private final RuleBodyElements pRuleBody;
+	private final PureTacticElements pPureTactic;
+	private final SelectionElements pSelection;
 	private final TacticActionElements pTacticAction;
-	private final PureActionElements pPureAction;
-	private final ConditionActionElements pConditionAction;
+	private final GuardElements pGuard;
 	private final ContextGuardElements pContextGuard;
 	private final FeatureGuardElements pFeatureGuard;
-	private final EffectBlockElements pEffectBlock;
-	private final EffectElements pEffect;
-	private final RelativeEffectElements pRelativeEffect;
 	private final FeatureConditionElements pFeatureCondition;
-	private final MeasurementConditionElements pMeasurementCondition;
-	private final MeasurementThresholdConditionElements pMeasurementThresholdCondition;
-	private final MeasurementMeasurementConditionElements pMeasurementMeasurementCondition;
+	private final ContextConditionElements pContextCondition;
+	private final ContextThresholdConditionElements pContextThresholdCondition;
+	private final ContextContextConditionElements pContextContextCondition;
 	private final MathOperatorElements eMathOperator;
 	private final LogicalOperatorElements eLogicalOperator;
-	private final AtomicActionSelectFeatureElements pAtomicActionSelectFeature;
-	private final AtomicActionDeselectFeatureElements pAtomicActionDeselectFeature;
+	private final SelectVariantElements pSelectVariant;
+	private final DeselectVariantElements pDeselectVariant;
 	private final QualifiedFeatureRefElements pQualifiedFeatureRef;
 	private final LiteralElements pLiteral;
 	private final IntLiteralElements pIntLiteral;
@@ -1124,7 +1000,6 @@ public class TacticsGrammarAccess extends AbstractElementFinder.AbstractGrammarE
 	private final BooleanLiteralElements pBooleanLiteral;
 	private final TerminalRule tDECIMAL;
 	private final TerminalRule tBOOLEAN;
-	private final TerminalRule tINCDEC;
 	
 	private final Grammar grammar;
 	
@@ -1136,29 +1011,23 @@ public class TacticsGrammarAccess extends AbstractElementFinder.AbstractGrammarE
 		this.grammar = internalFindGrammar(grammarProvider);
 		this.gaTerminals = gaTerminals;
 		this.pTacticsModel = new TacticsModelElements();
-		this.pActionRules = new ActionRulesElements();
+		this.pTactic = new TacticElements();
+		this.pActionTactics = new ActionTacticsElements();
 		this.pImport = new ImportElements();
-		this.pAdaptationRule = new AdaptationRuleElements();
-		this.pAtomicRule = new AtomicRuleElements();
-		this.pAtomicAction = new AtomicActionElements();
-		this.pAtomicSimpleAction = new AtomicSimpleActionElements();
-		this.pRuleBody = new RuleBodyElements();
+		this.pPureTactic = new PureTacticElements();
+		this.pSelection = new SelectionElements();
 		this.pTacticAction = new TacticActionElements();
-		this.pPureAction = new PureActionElements();
-		this.pConditionAction = new ConditionActionElements();
+		this.pGuard = new GuardElements();
 		this.pContextGuard = new ContextGuardElements();
 		this.pFeatureGuard = new FeatureGuardElements();
-		this.pEffectBlock = new EffectBlockElements();
-		this.pEffect = new EffectElements();
-		this.pRelativeEffect = new RelativeEffectElements();
 		this.pFeatureCondition = new FeatureConditionElements();
-		this.pMeasurementCondition = new MeasurementConditionElements();
-		this.pMeasurementThresholdCondition = new MeasurementThresholdConditionElements();
-		this.pMeasurementMeasurementCondition = new MeasurementMeasurementConditionElements();
+		this.pContextCondition = new ContextConditionElements();
+		this.pContextThresholdCondition = new ContextThresholdConditionElements();
+		this.pContextContextCondition = new ContextContextConditionElements();
 		this.eMathOperator = new MathOperatorElements();
 		this.eLogicalOperator = new LogicalOperatorElements();
-		this.pAtomicActionSelectFeature = new AtomicActionSelectFeatureElements();
-		this.pAtomicActionDeselectFeature = new AtomicActionDeselectFeatureElements();
+		this.pSelectVariant = new SelectVariantElements();
+		this.pDeselectVariant = new DeselectVariantElements();
 		this.pQualifiedFeatureRef = new QualifiedFeatureRefElements();
 		this.pLiteral = new LiteralElements();
 		this.pIntLiteral = new IntLiteralElements();
@@ -1167,7 +1036,6 @@ public class TacticsGrammarAccess extends AbstractElementFinder.AbstractGrammarE
 		this.pBooleanLiteral = new BooleanLiteralElements();
 		this.tDECIMAL = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "eu.coresense.adaptation.Tactics.DECIMAL");
 		this.tBOOLEAN = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "eu.coresense.adaptation.Tactics.BOOLEAN");
-		this.tINCDEC = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "eu.coresense.adaptation.Tactics.INCDEC");
 	}
 	
 	protected Grammar internalFindGrammar(GrammarProvider grammarProvider) {
@@ -1200,7 +1068,7 @@ public class TacticsGrammarAccess extends AbstractElementFinder.AbstractGrammarE
 	//TacticsModel:
 	//    'name' name=ID ';'
 	//    (imports+=Import*)
-	//    (actionRules+=ActionRules*)
+	//    (tactics+=Tactic*)
 	//;
 	public TacticsModelElements getTacticsModelAccess() {
 		return pTacticsModel;
@@ -1210,17 +1078,29 @@ public class TacticsGrammarAccess extends AbstractElementFinder.AbstractGrammarE
 		return getTacticsModelAccess().getRule();
 	}
 	
-	//ActionRules:
-	//    action=[ros::ActionSpec] requirement=[requirementsModel::Requirement]? "{"
-	//        (adaptationRules+=AdaptationRule*)
-	//    "}"
+	//Tactic:
+	//    ActionTactics | PureTactic
 	//;
-	public ActionRulesElements getActionRulesAccess() {
-		return pActionRules;
+	public TacticElements getTacticAccess() {
+		return pTactic;
 	}
 	
-	public ParserRule getActionRulesRule() {
-		return getActionRulesAccess().getRule();
+	public ParserRule getTacticRule() {
+		return getTacticAccess().getRule();
+	}
+	
+	//ActionTactics:
+	//    requirement=[requirementsModel::Requirement]?
+	//    action=[ros::ActionSpec] "{"
+	//        (tactics+=PureTactic*)
+	//    "}"
+	//;
+	public ActionTacticsElements getActionTacticsAccess() {
+		return pActionTactics;
+	}
+	
+	public ParserRule getActionTacticsRule() {
+		return getActionTacticsAccess().getRule();
 	}
 	
 	//Import returns common::Import:
@@ -1234,62 +1114,32 @@ public class TacticsGrammarAccess extends AbstractElementFinder.AbstractGrammarE
 		return getImportAccess().getRule();
 	}
 	
-	//AdaptationRule:
-	//     AtomicRule
-	//;
-	public AdaptationRuleElements getAdaptationRuleAccess() {
-		return pAdaptationRule;
-	}
-	
-	public ParserRule getAdaptationRuleRule() {
-		return getAdaptationRuleAccess().getRule();
-	}
-	
-	//AtomicRule:
+	//PureTactic:
+	//    requirement=[requirementsModel::Requirement]?
 	//    'rule' name=ID '{'
-	//    ruleBody=RuleBody '}' ';'
+	//    guard=Guard?
+	//    action=TacticAction '}' ';'
 	//;
-	public AtomicRuleElements getAtomicRuleAccess() {
-		return pAtomicRule;
+	public PureTacticElements getPureTacticAccess() {
+		return pPureTactic;
 	}
 	
-	public ParserRule getAtomicRuleRule() {
-		return getAtomicRuleAccess().getRule();
+	public ParserRule getPureTacticRule() {
+		return getPureTacticAccess().getRule();
 	}
 	
-	//AtomicAction:
-	//    'action' '{' actions+=AtomicSimpleAction ('AND' actions+=AtomicSimpleAction)*'}';
-	public AtomicActionElements getAtomicActionAccess() {
-		return pAtomicAction;
+	//Selection:
+	//    SelectVariant | DeselectVariant;
+	public SelectionElements getSelectionAccess() {
+		return pSelection;
 	}
 	
-	public ParserRule getAtomicActionRule() {
-		return getAtomicActionAccess().getRule();
-	}
-	
-	//AtomicSimpleAction:
-	//    AtomicActionSelectFeature | AtomicActionDeselectFeature;
-	public AtomicSimpleActionElements getAtomicSimpleActionAccess() {
-		return pAtomicSimpleAction;
-	}
-	
-	public ParserRule getAtomicSimpleActionRule() {
-		return getAtomicSimpleActionAccess().getRule();
-	}
-	
-	//RuleBody:
-	//    action=TacticAction effect=EffectBlock?
-	//;
-	public RuleBodyElements getRuleBodyAccess() {
-		return pRuleBody;
-	}
-	
-	public ParserRule getRuleBodyRule() {
-		return getRuleBodyAccess().getRule();
+	public ParserRule getSelectionRule() {
+		return getSelectionAccess().getRule();
 	}
 	
 	//TacticAction:
-	//    (PureAction | ConditionAction)
+	//    'action' '{' actions+=Selection ('AND' actions+=Selection)*'}'
 	//;
 	public TacticActionElements getTacticActionAccess() {
 		return pTacticAction;
@@ -1299,35 +1149,23 @@ public class TacticsGrammarAccess extends AbstractElementFinder.AbstractGrammarE
 		return getTacticActionAccess().getRule();
 	}
 	
-	//PureAction:
-	//    atomicAction=AtomicAction
-	//;
-	public PureActionElements getPureActionAccess() {
-		return pPureAction;
-	}
-	
-	public ParserRule getPureActionRule() {
-		return getPureActionAccess().getRule();
-	}
-	
-	//ConditionAction:
+	//Guard:
 	//    'guard' '{'
 	//        (
 	//            contextGuard=ContextGuard featureGuard=FeatureGuard?
 	//          | featureGuard=FeatureGuard contextGuard=ContextGuard?
 	//        )
-	//        '}'
-	//        atomicAction=AtomicAction;
-	public ConditionActionElements getConditionActionAccess() {
-		return pConditionAction;
+	//        '}';
+	public GuardElements getGuardAccess() {
+		return pGuard;
 	}
 	
-	public ParserRule getConditionActionRule() {
-		return getConditionActionAccess().getRule();
+	public ParserRule getGuardRule() {
+		return getGuardAccess().getRule();
 	}
 	
 	//ContextGuard:
-	//    'context' '(' contextCondition=MeasurementCondition ')';
+	//    'context' '(' contextCondition=ContextCondition ')';
 	public ContextGuardElements getContextGuardAccess() {
 		return pContextGuard;
 	}
@@ -1346,40 +1184,18 @@ public class TacticsGrammarAccess extends AbstractElementFinder.AbstractGrammarE
 		return getFeatureGuardAccess().getRule();
 	}
 	
-	//EffectBlock:
-	//    {EffectBlock}
-	//    'effect' '{' someEffect=Effect'}'
-	//;
-	public EffectBlockElements getEffectBlockAccess() {
-		return pEffectBlock;
-	}
-	
-	public ParserRule getEffectBlockRule() {
-		return getEffectBlockAccess().getRule();
-	}
-	
-	//Effect:
-	//    RelativeEffect
-	//;
-	public EffectElements getEffectAccess() {
-		return pEffect;
-	}
-	
-	public ParserRule getEffectRule() {
-		return getEffectAccess().getRule();
-	}
-	
-	//RelativeEffect:
-	//    sign=INCDEC effectValue=Literal measurement=[contextModel::ContextVar]
-	//;
-	public RelativeEffectElements getRelativeEffectAccess() {
-		return pRelativeEffect;
-	}
-	
-	public ParserRule getRelativeEffectRule() {
-		return getRelativeEffectAccess().getRule();
-	}
-	
+	////EffectBlock:
+	////    {EffectBlock}
+	////    'effect' '{' someEffect=Effect'}'
+	////;
+	////
+	////Effect:
+	////    RelativeEffect
+	////;
+	////
+	////RelativeEffect:
+	////    sign=INCDEC effectValue=Literal measurement=[contextModel::ContextVar]
+	////;
 	//FeatureCondition:
 	//    not=('!')? 'selected(' variant=QualifiedFeatureRef ')'     ( logicalOp=LogicalOperator secondTerm=FeatureCondition )?
 	//;
@@ -1393,43 +1209,43 @@ public class TacticsGrammarAccess extends AbstractElementFinder.AbstractGrammarE
 	
 	////
 	////Condition:
-	////    MeasurementCondition | FeatureCondition
+	////    ContextCondition | FeatureCondition
 	////;
-	//MeasurementCondition:
-	//    MeasurementThresholdCondition | MeasurementMeasurementCondition
+	//ContextCondition:
+	//    ContextThresholdCondition | ContextContextCondition
 	//;
-	public MeasurementConditionElements getMeasurementConditionAccess() {
-		return pMeasurementCondition;
+	public ContextConditionElements getContextConditionAccess() {
+		return pContextCondition;
 	}
 	
-	public ParserRule getMeasurementConditionRule() {
-		return getMeasurementConditionAccess().getRule();
+	public ParserRule getContextConditionRule() {
+		return getContextConditionAccess().getRule();
 	}
 	
-	//MeasurementThresholdCondition:
-	//    measurement=[contextModel::ContextVar]
+	//ContextThresholdCondition:
+	//    contextVar=[contextModel::ContextVar]
 	//    operator=MathOperator thresholdValue=Literal
-	//    ( logicalOp=LogicalOperator secondTerm=MeasurementCondition )?
+	//    ( logicalOp=LogicalOperator secondTerm=ContextCondition )?
 	//;
-	public MeasurementThresholdConditionElements getMeasurementThresholdConditionAccess() {
-		return pMeasurementThresholdCondition;
+	public ContextThresholdConditionElements getContextThresholdConditionAccess() {
+		return pContextThresholdCondition;
 	}
 	
-	public ParserRule getMeasurementThresholdConditionRule() {
-		return getMeasurementThresholdConditionAccess().getRule();
+	public ParserRule getContextThresholdConditionRule() {
+		return getContextThresholdConditionAccess().getRule();
 	}
 	
-	//MeasurementMeasurementCondition:
-	//    measurement=[contextModel::ContextVar]
-	//    operator=MathOperator otherMeasurement=[contextModel::ContextVar]
-	//    ( logicalOp=LogicalOperator secondTerm=MeasurementCondition )?
+	//ContextContextCondition:
+	//    contextVar=[contextModel::ContextVar]
+	//    operator=MathOperator otherContextVar=[contextModel::ContextVar]
+	//    ( logicalOp=LogicalOperator secondTerm=ContextCondition )?
 	//;
-	public MeasurementMeasurementConditionElements getMeasurementMeasurementConditionAccess() {
-		return pMeasurementMeasurementCondition;
+	public ContextContextConditionElements getContextContextConditionAccess() {
+		return pContextContextCondition;
 	}
 	
-	public ParserRule getMeasurementMeasurementConditionRule() {
-		return getMeasurementMeasurementConditionAccess().getRule();
+	public ParserRule getContextContextConditionRule() {
+		return getContextContextConditionAccess().getRule();
 	}
 	
 	//enum MathOperator returns common::MathOperator:
@@ -1454,26 +1270,26 @@ public class TacticsGrammarAccess extends AbstractElementFinder.AbstractGrammarE
 		return getLogicalOperatorAccess().getRule();
 	}
 	
-	//AtomicActionSelectFeature:
+	//SelectVariant:
 	//    'select_variant' '(' variant=QualifiedFeatureRef ')'
 	//;
-	public AtomicActionSelectFeatureElements getAtomicActionSelectFeatureAccess() {
-		return pAtomicActionSelectFeature;
+	public SelectVariantElements getSelectVariantAccess() {
+		return pSelectVariant;
 	}
 	
-	public ParserRule getAtomicActionSelectFeatureRule() {
-		return getAtomicActionSelectFeatureAccess().getRule();
+	public ParserRule getSelectVariantRule() {
+		return getSelectVariantAccess().getRule();
 	}
 	
-	//AtomicActionDeselectFeature:
+	//DeselectVariant:
 	//    'unselect_variant' '('variant=QualifiedFeatureRef')'
 	//;
-	public AtomicActionDeselectFeatureElements getAtomicActionDeselectFeatureAccess() {
-		return pAtomicActionDeselectFeature;
+	public DeselectVariantElements getDeselectVariantAccess() {
+		return pDeselectVariant;
 	}
 	
-	public ParserRule getAtomicActionDeselectFeatureRule() {
-		return getAtomicActionDeselectFeatureAccess().getRule();
+	public ParserRule getDeselectVariantRule() {
+		return getDeselectVariantAccess().getRule();
 	}
 	
 	//QualifiedFeatureRef:
@@ -1557,13 +1373,6 @@ public class TacticsGrammarAccess extends AbstractElementFinder.AbstractGrammarE
 	//;
 	public TerminalRule getBOOLEANRule() {
 		return tBOOLEAN;
-	}
-	
-	//terminal INCDEC returns ecore::EString:
-	//    '+' | '-'
-	//;
-	public TerminalRule getINCDECRule() {
-		return tINCDEC;
 	}
 	
 	//terminal ID: '^'?('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|'_'|'0'..'9')*;

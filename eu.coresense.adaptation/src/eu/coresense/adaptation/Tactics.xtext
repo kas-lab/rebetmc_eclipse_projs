@@ -13,13 +13,18 @@ generate tactics "http://www.coresense.eu/adaptation/Tactics"
 TacticsModel:
 	'name' name=ID ';' 
 	(imports+=Import*)
-	(actionRules+=ActionRules*)
+	(tactics+=Tactic*)
 ;
 
 
-ActionRules:
-	action=[ros::ActionSpec] requirement=[requirementsModel::Requirement]? "{"
-		(adaptationRules+=AdaptationRule*)
+Tactic:
+    ActionTactics | PureTactic
+;
+
+ActionTactics:
+	requirement=[requirementsModel::Requirement]?
+	action=[ros::ActionSpec] "{"
+		(tactics+=PureTactic*)
 	"}"
 ;
 
@@ -28,61 +33,49 @@ Import returns common::Import:
 	'import' importURI=STRING ';'
 ;
 
-AdaptationRule:
- 	AtomicRule
-;
-
-AtomicRule:
+PureTactic:
+	requirement=[requirementsModel::Requirement]?
 	'rule' name=ID '{' 
-	ruleBody=RuleBody '}' ';'
+	guard=Guard?
+	action=TacticAction '}' ';'
 ;
 
-AtomicAction:
-    'action' '{' actions+=AtomicSimpleAction ('AND' actions+=AtomicSimpleAction)*'}';
     
-AtomicSimpleAction:
-    AtomicActionSelectFeature | AtomicActionDeselectFeature;
+    
+Selection:
+    SelectVariant | DeselectVariant;
 
-RuleBody:
-	action=TacticAction effect=EffectBlock?
-;
 
 TacticAction:
-	(PureAction | ConditionAction)
+	'action' '{' actions+=Selection ('AND' actions+=Selection)*'}'
 ;
 
-
-PureAction:
-	atomicAction=AtomicAction
-;
-
-ConditionAction:
+Guard:
     'guard' '{'
         (
             contextGuard=ContextGuard featureGuard=FeatureGuard?
           | featureGuard=FeatureGuard contextGuard=ContextGuard?
         )
-        '}'
-        atomicAction=AtomicAction;
+        '}';
     
 ContextGuard:
-    'context' '(' contextCondition=MeasurementCondition ')';
+    'context' '(' contextCondition=ContextCondition ')';
 
 FeatureGuard:
     'features' '(' featureCondition=FeatureCondition ')';
 
-EffectBlock:
-	{EffectBlock}
-	'effect' '{' someEffect=Effect'}'
-;
-
-Effect:
-	RelativeEffect
-;
-
-RelativeEffect:
-	sign=INCDEC effectValue=Literal measurement=[contextModel::ContextVar]
-;
+//EffectBlock:
+//	{EffectBlock}
+//	'effect' '{' someEffect=Effect'}'
+//;
+//
+//Effect:
+//	RelativeEffect
+//;
+//
+//RelativeEffect:
+//	sign=INCDEC effectValue=Literal measurement=[contextModel::ContextVar]
+//;
 
 
 FeatureCondition:
@@ -91,24 +84,24 @@ FeatureCondition:
 
 //
 //Condition:
-//	MeasurementCondition | FeatureCondition
+//	ContextCondition | FeatureCondition
 //;
 
 
-MeasurementCondition:
-	MeasurementThresholdCondition | MeasurementMeasurementCondition
+ContextCondition:
+	ContextThresholdCondition | ContextContextCondition
 ;
 
-MeasurementThresholdCondition:
-	measurement=[contextModel::ContextVar]
+ContextThresholdCondition:
+	contextVar=[contextModel::ContextVar]
 	operator=MathOperator thresholdValue=Literal 
-	( logicalOp=LogicalOperator secondTerm=MeasurementCondition )? 
+	( logicalOp=LogicalOperator secondTerm=ContextCondition )? 
 ;
 
-MeasurementMeasurementCondition:
-	measurement=[contextModel::ContextVar]
-	operator=MathOperator otherMeasurement=[contextModel::ContextVar] 
-	( logicalOp=LogicalOperator secondTerm=MeasurementCondition )? 
+ContextContextCondition:
+	contextVar=[contextModel::ContextVar]
+	operator=MathOperator otherContextVar=[contextModel::ContextVar] 
+	( logicalOp=LogicalOperator secondTerm=ContextCondition )? 
 ;
 
 enum MathOperator returns common::MathOperator:
@@ -119,11 +112,11 @@ enum LogicalOperator:
 	AND='AND' | OR='OR' 
 ;
 
-AtomicActionSelectFeature:
+SelectVariant:
 	'select_variant' '(' variant=QualifiedFeatureRef ')'	
 ;
 
-AtomicActionDeselectFeature:
+DeselectVariant:
 	'unselect_variant' '('variant=QualifiedFeatureRef')'
 ;
 
@@ -162,6 +155,6 @@ terminal BOOLEAN returns ecore::EBoolean:
     'true' | 'false'
 ;
 
-terminal INCDEC returns ecore::EString:
-	'+' | '-'
-;
+//terminal INCDEC returns ecore::EString:
+//	'+' | '-'
+//;

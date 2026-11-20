@@ -36,7 +36,7 @@ import uma.caosd.rhea.BasicFMmetamodel.FeatureModel;
 public class TacticsScopeProvider extends AbstractTacticsScopeProvider {
 	@Override
 	public IScope getScope(EObject context, EReference reference) {
-	    if (reference == TacticsPackage.Literals.ATOMIC_SIMPLE_ACTION__VARIANT) {
+	    if (reference == TacticsPackage.Literals.SELECTION__VARIANT) {
 	        TacticsModel model = EcoreUtil2.getContainerOfType(context, TacticsModel.class);
 	       
 	        if (model != null) {
@@ -63,7 +63,7 @@ public class TacticsScopeProvider extends AbstractTacticsScopeProvider {
 	        }
 	        return IScope.NULLSCOPE;
 	    }
-	    if (reference == TacticsPackage.Literals.ACTION_RULES__ACTION)
+	    if (reference == TacticsPackage.Literals.ACTION_TACTICS__ACTION)
 	    {
 	    	TacticsModel model = EcoreUtil2.getContainerOfType(context, TacticsModel.class);
 	        if (model != null) {

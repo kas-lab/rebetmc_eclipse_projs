@@ -3,8 +3,8 @@
  */
 package eu.coresense.adaptation.tactics.impl;
 
+import eu.coresense.adaptation.tactics.ContextCondition;
 import eu.coresense.adaptation.tactics.ContextGuard;
-import eu.coresense.adaptation.tactics.MeasurementCondition;
 import eu.coresense.adaptation.tactics.TacticsPackage;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -39,7 +39,7 @@ public class ContextGuardImpl extends MinimalEObjectImpl.Container implements Co
    * @generated
    * @ordered
    */
-  protected MeasurementCondition contextCondition;
+  protected ContextCondition contextCondition;
 
   /**
    * <!-- begin-user-doc -->
@@ -68,7 +68,7 @@ public class ContextGuardImpl extends MinimalEObjectImpl.Container implements Co
    * @generated
    */
   @Override
-  public MeasurementCondition getContextCondition()
+  public ContextCondition getContextCondition()
   {
     return contextCondition;
   }
@@ -78,9 +78,9 @@ public class ContextGuardImpl extends MinimalEObjectImpl.Container implements Co
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetContextCondition(MeasurementCondition newContextCondition, NotificationChain msgs)
+  public NotificationChain basicSetContextCondition(ContextCondition newContextCondition, NotificationChain msgs)
   {
-    MeasurementCondition oldContextCondition = contextCondition;
+    ContextCondition oldContextCondition = contextCondition;
     contextCondition = newContextCondition;
     if (eNotificationRequired())
     {
@@ -96,7 +96,7 @@ public class ContextGuardImpl extends MinimalEObjectImpl.Container implements Co
    * @generated
    */
   @Override
-  public void setContextCondition(MeasurementCondition newContextCondition)
+  public void setContextCondition(ContextCondition newContextCondition)
   {
     if (newContextCondition != contextCondition)
     {
@@ -155,7 +155,7 @@ public class ContextGuardImpl extends MinimalEObjectImpl.Container implements Co
     switch (featureID)
     {
       case TacticsPackage.CONTEXT_GUARD__CONTEXT_CONDITION:
-        setContextCondition((MeasurementCondition)newValue);
+        setContextCondition((ContextCondition)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -172,7 +172,7 @@ public class ContextGuardImpl extends MinimalEObjectImpl.Container implements Co
     switch (featureID)
     {
       case TacticsPackage.CONTEXT_GUARD__CONTEXT_CONDITION:
-        setContextCondition((MeasurementCondition)null);
+        setContextCondition((ContextCondition)null);
         return;
     }
     super.eUnset(featureID);
